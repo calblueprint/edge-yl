@@ -20,13 +20,12 @@ class Login extends React.Component {
       header: {
         position: 'relative',
         width: '100%',
-        paddingBottom: 24,
         textAlign: 'center',
       },
       input: {
         width: '100%',
         padding: 8,
-        marginBottom: 24,
+        marginTop: 24,
         boxSizing: 'border-box',
       },
     };
@@ -36,7 +35,7 @@ class Login extends React.Component {
     return (
       <div style={this.styles.container}>
         <div style={this.styles.header}>
-          <span>Login</span>
+          <h2>Login</h2>
         </div>
         <div style={this.styles.form}>
           <input
