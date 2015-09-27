@@ -2,10 +2,91 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+$ash: #565A5C;
+$black: #343434;
+$gray: #878B8D;
+$white: #FFFFFF;
+
+$font-family: 'Montserrat', sans-serif;
+
+$font-size-largest: 36px;
+$font-size-larger: 30px;
+$font-size-large: 24px;
+$font-size-medium: 18px;
+$font-size-small: 16px;
+$font-size-smaller: 14px;
+$font-size-smallest: 12px;
+
+$font-weight-large: 700;
+$font-weight-medium: 400;
+
 body {
   position: relative;
   width: 100vw;
   min-height: 100vh;
   padding: 0;
   margin: 0;
+  background-color: #f5f5f5;
+}
+
+h1,
+h2,
+h3 {
+  position: relative;
+  padding: 0;
+  margin: 0;
+  color: $ash;
+  font-weight: $font-weight-medium;
+  font-family: $font-family;
+  white-space: pre-wrap;
+  outline: none;
+}
+
+h1 {
+  font-size: $font-size-largest;
+  line-height: 64px;
+}
+
+h2 {
+  font-size: $font-size-larger;
+  line-height: $font-size-largest;
+}
+
+h3 {
+  font-size: $font-size-large;
+  line-height: $font-size-larger;
+}
+
+hr {
+  border: 1px solid $gray;
+}
+
+a,
+p,
+li,
+span,
+input {
+  position: relative;
+  padding: 0;
+  margin: 0;
+  color: $ash;
+  font-size: $font-size-smallest;
+  font-weight: $font-weight-medium;
+  font-family: $font-family;
+  text-decoration: none;
+  white-space: pre-wrap;
+  outline: none;
+}
+
+ol,
+ul {
+  position: relative;
+  padding: 0;
+  margin: 0;
+}
+
+pre {
+  display: block;
+  position: relative;
+  clear: both;
 }
