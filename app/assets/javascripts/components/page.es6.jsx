@@ -1,11 +1,15 @@
 class Page extends React.Component {
 
-  render() {
-    return (
-      <div>
-            <Header />
-            <Login />
-      </div>
-    );
-  }
+    get styles() {
+        return {};
+    }
+
+    render() {
+        return (
+                <div>
+                <Header />
+                <Login />
+                </div>
+        );
+    }
 }
