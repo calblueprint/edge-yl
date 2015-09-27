@@ -1,7 +1,7 @@
 development: &default
   adapter:   postgresql
   encoding:  utf8
-  username:
+  username:  soniayang
   password:
   pool:      2
   timeout:   5000
