@@ -4,7 +4,7 @@ class Header extends React.Component {
     return {
       container: {
         height: 48,
-        backgroundColor: '#c3e2f4',
+        backgroundColor: '#68B1DE',
       },
       title: {
         color: '#ffffff',
