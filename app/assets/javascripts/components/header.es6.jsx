@@ -1,10 +1,11 @@
-class Page extends React.Component {
-  
+class Header extends React.Component {
+
   render() {
     return (
       <div>
-        <Header />
+        HI
       </div>
     );
   }
 }
+
