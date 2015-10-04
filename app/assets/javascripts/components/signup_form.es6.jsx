@@ -33,6 +33,7 @@ class SignupForm extends React.Component {
           placeholder={'confirmation'}
           style={this.styles.input}>
         </input>
+        <GeneralButton content={'Signup'} />
       </div>
     );
   }
