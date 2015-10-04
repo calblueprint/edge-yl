@@ -1,9 +1,9 @@
 class ProfilePage extends React.Component {
-  render () {
+  render() {
     return (
-    	<div> 
-    		<Sidebar />
-    	</div>
+      <div> 
+        <Sidebar />
+      </div>
     );
   }
 }

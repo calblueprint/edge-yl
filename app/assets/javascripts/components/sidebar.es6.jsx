@@ -1,9 +1,9 @@
 class Sidebar extends React.Component {
-  render () {
+  render() {
     return (
-    	<div> 
-    	
-    	</div>
+      <div> 
+
+      </div>
     );
   }
 }
