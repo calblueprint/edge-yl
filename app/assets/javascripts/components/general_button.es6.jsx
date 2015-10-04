@@ -43,8 +43,7 @@ class GeneralButton extends React.Component {
     }
   }
 
-  render () {
-    console.log(this.props.route);
+  render() {
     return (
       <a
         href={this.props.route}

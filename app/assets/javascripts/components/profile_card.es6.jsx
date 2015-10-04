@@ -15,7 +15,7 @@ class ProfileCard extends React.Component {
     };
   }
 
-  render () {
+  render() {
     return (
       <div style={this.styles.container}>
         <span>profile card!</span>
