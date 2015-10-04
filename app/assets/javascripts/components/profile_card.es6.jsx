@@ -6,7 +6,6 @@ class ProfileCard extends React.Component {
         position: 'relative',
         width: 300,
       },
-
     }
   }
 
