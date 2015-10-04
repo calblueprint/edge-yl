@@ -10,8 +10,6 @@ class ProfilePage extends React.Component {
       body: {
         position: 'relative',
         width: '100%',
-        height: '100%',
-        paddingTop: 48,
       },
     };
   }

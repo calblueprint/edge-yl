@@ -3,7 +3,7 @@ class Header extends React.Component {
   get styles() {
     return {
       container: {
-        position: 'fixed',
+        position: 'relative',
         width: '100%',
         height: 48,
         backgroundColor: '#68B1DE',

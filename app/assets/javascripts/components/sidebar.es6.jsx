@@ -4,7 +4,7 @@ class Sidebar extends React.Component {
     return {
       container: {
         position: 'absolute',
-        top: 48,
+        top: 0,
         left: 0,
         width: 172,
         height: '100%',

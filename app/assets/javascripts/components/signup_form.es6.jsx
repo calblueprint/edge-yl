@@ -13,7 +13,7 @@ class SignupForm extends React.Component {
         marginTop: 24,
         boxSizing: 'border-box',
       },
-    }
+    };
   }
 
   render () {
