@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
-  root 'pages#login'
-
   get 'dashboard', to: 'pages#dashboard'
+  get 'login', to: 'pages#login'
+  get 'signup', to: 'pages#signup'
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -14,7 +14,7 @@ class Page extends React.Component {
     return (
       <div style={this.styles.container}>
         <Header />
-        <Login />
+        <Login isLogin={this.props.isLogin} />
       </div>
     );
   }

@@ -20,14 +20,22 @@ class Login extends React.Component {
     };
   }
 
+  renderForm() {
+    if (this.props.isLogin) {
+      return <LoginForm />;
+    } else {
+      return <SignupForm />;
+    }
+  }
+
   render() {
+    var title = this.props.isLogin ? 'Login' : 'Signup';
     return (
       <div style={this.styles.container}>
         <div style={this.styles.header}>
-          <h2>Login</h2>
-          <span>This is where you login</span>
+          <h2>{title}</h2>
         </div>
-        <SignupForm />
+        {this.renderForm()}
       </div>
     );
   }
