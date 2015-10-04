@@ -14,7 +14,7 @@ class ProfileGrid extends React.Component {
     };
   }
 
-  render () {
+  render() {
     return (
       <div style={this.styles.container}>
         Profile Grid

@@ -6,7 +6,7 @@ class ProfileCard extends React.Component {
         position: 'relative',
         width: 300,
       },
-    }
+    };
   }
 
   render () {
@@ -14,7 +14,7 @@ class ProfileCard extends React.Component {
       <div style={this.styles.container}>
         profile card!
       </div>
-    )
+    );
   }
 }
 
