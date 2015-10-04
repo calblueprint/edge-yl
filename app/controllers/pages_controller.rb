@@ -10,6 +10,10 @@ class PagesController < ApplicationController
     render 'authorization'
   end
 
+  def profile
+
+  end
+
   def dashboard
   end
 	

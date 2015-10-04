@@ -1,4 +1,4 @@
-class Page extends React.Component {
+class AuthorizationPage extends React.Component {
 
   static get propTypes() {
     return {
