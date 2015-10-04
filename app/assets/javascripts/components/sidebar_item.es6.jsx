@@ -20,7 +20,7 @@ class SidebarItem extends React.Component {
   render() {
     return (
       <div style={this.styles.container}>
-        <p style={this.styles.textLabel}> Item! </p>
+        <span style={this.styles.textLabel}>Item!</span>
       </div>
     );
   }
