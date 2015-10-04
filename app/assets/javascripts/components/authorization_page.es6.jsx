@@ -3,7 +3,7 @@ class AuthorizationPage extends React.Component {
   static get propTypes() {
     return {
       isLogin: React.PropTypes.bool.isRequired,
-    }
+    };
   }
 
   get styles() {
