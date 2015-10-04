@@ -1,7 +1,18 @@
 class ProfileCard extends React.Component {
+
+  get styles() {
+    return {
+      container: {
+        position: 'relative',
+        width: 300,
+      },
+
+    }
+  }
+
   render () {
     return (
-      <div>
+      <div style={this.styles.container}>
         profile card!
       </div>
     )
