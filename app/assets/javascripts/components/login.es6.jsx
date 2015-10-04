@@ -12,21 +12,10 @@ class Login extends React.Component {
         borderColor: '#e5e6e9 #dfe0e4 #d0d1d5',
         borderRadius: 3,
       },
-      form: {
-        position: 'relative',
-        width: '100%',
-        textAlign: 'center',
-      },
       header: {
         position: 'relative',
         width: '100%',
         textAlign: 'center',
-      },
-      input: {
-        width: '100%',
-        padding: 8,
-        marginTop: 24,
-        boxSizing: 'border-box',
       },
     };
   }
@@ -36,17 +25,9 @@ class Login extends React.Component {
       <div style={this.styles.container}>
         <div style={this.styles.header}>
           <h2>Login</h2>
+          <span>This is where you login</span>
         </div>
-        <div style={this.styles.form}>
-          <input
-            placeholder='email'
-            style={this.styles.input}>
-          </input>
-          <input
-            placeholder='password'
-            style={this.styles.input}>
-          </input>
-        </div>
+        <LoginForm />
       </div>
     );
   }
