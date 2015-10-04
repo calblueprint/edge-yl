@@ -20,11 +20,11 @@ class LoginForm extends React.Component {
     return (
       <div style={this.styles.container}>
         <input
-          placeholder='email'
+          placeholder={'email'}
           style={this.styles.input}>
         </input>
         <input
-          placeholder='password'
+          placeholder={'password'}
           style={this.styles.input}>
         </input>
       </div>

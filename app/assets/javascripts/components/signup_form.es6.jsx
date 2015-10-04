@@ -20,17 +20,17 @@ class SignupForm extends React.Component {
     return (
       <div style={this.styles.container}>
         <input
-          placeholder='email'
+          placeholder={'email'}
           style={this.styles.input}>
         </input>
         <input
           password={true}
-          placeholder='password'
+          placeholder={'password'}
           style={this.styles.input}>
         </input>
         <input
           password={true}
-          placeholder='confirmation'
+          placeholder={'confirmation'}
           style={this.styles.input}>
         </input>
       </div>
