@@ -1,5 +1,11 @@
 class Page extends React.Component {
 
+  static get propTypes() {
+    return {
+      isLogin: React.PropTypes.bool.isRequired,
+    }
+  }
+
   get styles() {
     return {
       container: {
