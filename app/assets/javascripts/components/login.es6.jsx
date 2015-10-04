@@ -27,7 +27,7 @@ class Login extends React.Component {
           <h2>Login</h2>
           <span>This is where you login</span>
         </div>
-        <LoginForm />
+        <SignupForm />
       </div>
     );
   }
