@@ -20,7 +20,7 @@ class Page extends React.Component {
     return (
       <div style={this.styles.container}>
         <Header />
-        <Login isLogin={this.props.isLogin} />
+        <AuthorizationModal isLogin={this.props.isLogin} />
       </div>
     );
   }

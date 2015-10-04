@@ -1,4 +1,4 @@
-class Login extends React.Component {
+class AuthorizationModal extends React.Component {
 
   static get propTypes() {
     return {
