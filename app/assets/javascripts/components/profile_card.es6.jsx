@@ -1,21 +1,18 @@
-class ProfilePage extends React.Component {
-  
+class ProfileCard extends React.Component {
+
   get styles() {
     return {
       container: {
         position: 'relative',
-        width: '100vw',
-        height: '100vh',
+        width: 300,
       },
     };
   }
 
-  render() {
+  render () {
     return (
       <div style={this.styles.container}>
-        <Header />
-        <Sidebar />
-        <ProfileGrid />
+        profile card!
       </div>
     );
   }
