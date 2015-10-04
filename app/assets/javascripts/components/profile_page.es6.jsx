@@ -7,6 +7,12 @@ class ProfilePage extends React.Component {
         width: '100vw',
         height: '100vh',
       },
+      body: {
+        position: 'relative',
+        width: '100%',
+        height: '100%',
+        paddingTop: 48,
+      }
     };
   }
 
@@ -14,8 +20,10 @@ class ProfilePage extends React.Component {
     return (
       <div style={this.styles.container}>
         <Header />
-        <Sidebar />
-        <ProfileGrid />
+        <div style={this.styles.body}>
+          <Sidebar />
+          <ProfileGrid />
+        </div>
       </div>
     );
   }

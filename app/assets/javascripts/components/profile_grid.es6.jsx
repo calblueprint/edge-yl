@@ -6,6 +6,7 @@ class ProfileGrid extends React.Component {
         position: 'relative',
         width: 356,
         padding: 24,
+        margin: 'auto',
         backgroundColor: 'white',
         border: '1px solid',
         borderColor: '#e5e6e9 #dfe0e4 #d0d1d5',
