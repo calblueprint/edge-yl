@@ -15,6 +15,7 @@ class ProfilePage extends React.Component {
       <div style={this.styles.container}>
         <Header />
         <Sidebar />
+        <ProfileGrid />
       </div>
     );
   }
