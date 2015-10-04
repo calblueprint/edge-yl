@@ -34,16 +34,17 @@ class GeneralButton extends React.Component {
   }
 
   handleClick(event) {
-    event.preventDefault();
-    event.stopPropagation();
-    if (this.props.route !== '') {
-      // Route
-    } else if (this.props.action !== null) {
-      this.props.action();
+    if (this.props.route === '') {
+      event.preventDefault();
+      event.stopPropagation();
+      if (this.prop.action !== null) {
+        this.props.action();
+      }
     }
   }
 
   render () {
+    console.log(this.props.route);
     return (
       <a
         href={this.props.route}
