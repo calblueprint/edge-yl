@@ -13,7 +13,7 @@ class SignupForm extends React.Component {
         marginTop: 24,
         boxSizing: 'border-box',
       },
-    }
+    };
   }
 
   render () {
@@ -33,6 +33,7 @@ class SignupForm extends React.Component {
           placeholder={'confirmation'}
           style={this.styles.input}>
         </input>
+        <GeneralButton content={'Signup'} />
       </div>
     );
   }

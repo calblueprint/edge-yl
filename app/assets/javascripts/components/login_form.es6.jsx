@@ -13,10 +13,10 @@ class LoginForm extends React.Component {
         marginTop: 24,
         boxSizing: 'border-box',
       },
-    }
+    };
   }
 
-  render () {
+  render() {
     return (
       <div style={this.styles.container}>
         <input
@@ -27,6 +27,9 @@ class LoginForm extends React.Component {
           placeholder={'password'}
           style={this.styles.input}>
         </input>
+        <GeneralButton
+          content={'Login'}
+          route={'/profile'} />
       </div>
     );
   }

@@ -10,17 +10,19 @@ class SidebarItem extends React.Component {
         borderColor: 'gray',
         borderWidth: 1,
       },
-      textLabel: {
+      label: {
+        position: 'relative',
       	textAlign: 'right',
       	fontSize: 25,
-      }
+      },
     };
   }
 
   render() {
     return (
       <div style={this.styles.container}>
-        <span style={this.styles.textLabel}>Item!</span>
+        <i className={"fa fa-beer fa-lg"}></i>
+        <span style={this.styles.label}>Item!</span>
       </div>
     );
   }
