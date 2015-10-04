@@ -1,5 +1,11 @@
-class Login extends React.Component {
+class AuthorizationModal extends React.Component {
 
+  static get propTypes() {
+    return {
+      isLogin: React.PropTypes.bool.isRequired,
+    }
+  }
+  
   get styles() {
     return {
       container: {
@@ -12,41 +18,30 @@ class Login extends React.Component {
         borderColor: '#e5e6e9 #dfe0e4 #d0d1d5',
         borderRadius: 3,
       },
-      form: {
-        position: 'relative',
-        width: '100%',
-        textAlign: 'center',
-      },
       header: {
         position: 'relative',
         width: '100%',
         textAlign: 'center',
       },
-      input: {
-        width: '100%',
-        padding: 8,
-        marginTop: 24,
-        boxSizing: 'border-box',
-      },
     };
   }
 
+  renderForm() {
+    if (this.props.isLogin) {
+      return <LoginForm />;
+    } else {
+      return <SignupForm />;
+    }
+  }
+
   render() {
+    var title = this.props.isLogin ? 'Login' : 'Signup';
     return (
       <div style={this.styles.container}>
         <div style={this.styles.header}>
-          <h2>Login</h2>
+          <h2>{title}</h2>
         </div>
-        <div style={this.styles.form}>
-          <input
-            placeholder='email'
-            style={this.styles.input}>
-          </input>
-          <input
-            placeholder='password'
-            style={this.styles.input}>
-          </input>
-        </div>
+        {this.renderForm()}
       </div>
     );
   }

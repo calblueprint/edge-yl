@@ -1,5 +1,11 @@
 class Page extends React.Component {
 
+  static get propTypes() {
+    return {
+      isLogin: React.PropTypes.bool.isRequired,
+    }
+  }
+
   get styles() {
     return {
       container: {
@@ -14,7 +20,7 @@ class Page extends React.Component {
     return (
       <div style={this.styles.container}>
         <Header />
-        <Login />
+        <AuthorizationModal isLogin={this.props.isLogin} />
       </div>
     );
   }
