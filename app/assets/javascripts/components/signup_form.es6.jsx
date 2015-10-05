@@ -16,7 +16,7 @@ class SignupForm extends React.Component {
     };
   }
 
-  render () {
+  render() {
     return (
       <div style={this.styles.container}>
         <input
@@ -24,14 +24,14 @@ class SignupForm extends React.Component {
           style={this.styles.input}>
         </input>
         <input
-          password={true}
           placeholder={'password'}
-          style={this.styles.input}>
+          style={this.styles.input}
+          type={'password'}>
         </input>
         <input
-          password={true}
           placeholder={'confirmation'}
-          style={this.styles.input}>
+          style={this.styles.input}
+          type={'password'}>
         </input>
         <GeneralButton content={'Signup'} />
       </div>

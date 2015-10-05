@@ -25,7 +25,8 @@ class LoginForm extends React.Component {
         </input>
         <input
           placeholder={'password'}
-          style={this.styles.input}>
+          style={this.styles.input}
+          type={'password'}>
         </input>
         <GeneralButton
           content={'Login'}
