@@ -6,6 +6,12 @@ class AuthenticationPage extends React.Component {
     };
   }
 
+  static get defaultProps() {
+    return {
+      isLogin: true,
+    };
+  }
+
   get styles() {
     return {
       container: {

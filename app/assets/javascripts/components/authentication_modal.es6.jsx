@@ -5,6 +5,12 @@ class AuthenticationModal extends React.Component {
       isLogin: React.PropTypes.bool.isRequired,
     };
   }
+
+  static get defaultProps() {
+    return {
+      isLogin: true,
+    };
+  }
   
   get styles() {
     return {
