@@ -8,9 +8,10 @@ class SignupForm extends React.Component {
         textAlign: 'center',
       },
       input: {
+        position: 'relative',
         width: '100%',
         padding: 8,
-        marginTop: 24,
+        marginBottom: 24,
         boxSizing: 'border-box',
       },
     };
