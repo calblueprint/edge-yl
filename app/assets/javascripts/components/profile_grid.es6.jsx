@@ -7,6 +7,7 @@ class ProfileGrid extends React.Component {
         width: 712,
         height: '100%',
         margin: 'auto',
+        padding: 5,
       },
     };
   }

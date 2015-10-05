@@ -8,6 +8,7 @@ class Sidebar extends React.Component {
         left: 0,
         width: 172,
         height: '100%',
+        padding: 5,
       },
     };
   }
