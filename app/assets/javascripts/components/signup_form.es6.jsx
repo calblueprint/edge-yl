@@ -21,6 +21,7 @@ class SignupForm extends React.Component {
     return (
       <div style={this.styles.container}>
         <input
+          autoFocus={true}
           placeholder={'email'}
           style={this.styles.input}>
         </input>
