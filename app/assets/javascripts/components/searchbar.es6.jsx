@@ -3,28 +3,21 @@ class SearchBar extends Component {
   get styles() {
     return {
       container: {
-        position: 'absolute',
-        left: '460px',
-        height: '36px',
-        width: '500px',
-        display: 'inline',
-        float: 'left',
-        backgroundColor: 'red',
+        position: 'relative',
+        height: 36,
+        minWidth: 144,
+        margin: '0 133',
+        color: 'white',
+        backgroundColor: 'blue',
       },
       icon: {
-        display: 'inline',
-        padding: '6px 15px',
-        backgroundColor: '#207CCA',
-        color: 'white',
-        height: '100%',
-        width: '50px',
+        position: 'relative',
+        height: 36,
+        width: 72,
+        display: 'inline-block',
       },
       search_field: {
-        display: 'inline',
-        padding:'8px 15px',
-        height: '100%',
-        width: '400px',
-        border: 'none',
+        width: '100%',
       }
     }
   }
