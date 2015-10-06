@@ -8,30 +8,32 @@ class SignupForm extends React.Component {
         textAlign: 'center',
       },
       input: {
+        position: 'relative',
         width: '100%',
         padding: 8,
-        marginTop: 24,
+        marginBottom: 24,
         boxSizing: 'border-box',
       },
     };
   }
 
-  render () {
+  render() {
     return (
       <div style={this.styles.container}>
         <input
+          autoFocus={true}
           placeholder={'email'}
           style={this.styles.input}>
         </input>
         <input
-          password={true}
           placeholder={'password'}
-          style={this.styles.input}>
+          style={this.styles.input}
+          type={'password'}>
         </input>
         <input
-          password={true}
           placeholder={'confirmation'}
-          style={this.styles.input}>
+          style={this.styles.input}
+          type={'password'}>
         </input>
         <GeneralButton content={'Signup'} />
       </div>

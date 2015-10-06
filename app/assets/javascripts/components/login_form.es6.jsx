@@ -8,9 +8,10 @@ class LoginForm extends React.Component {
         textAlign: 'center',
       },
       input: {
+        position: 'relative',
         width: '100%',
         padding: 8,
-        marginTop: 24,
+        marginBottom: 24,
         boxSizing: 'border-box',
       },
     };
@@ -20,12 +21,14 @@ class LoginForm extends React.Component {
     return (
       <div style={this.styles.container}>
         <input
+          autoFocus={true}
           placeholder={'email'}
           style={this.styles.input}>
         </input>
         <input
           placeholder={'password'}
-          style={this.styles.input}>
+          style={this.styles.input}
+          type={'password'}>
         </input>
         <GeneralButton
           content={'Login'}
