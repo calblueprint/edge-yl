@@ -1,5 +1,10 @@
 class GeneralButton extends React.Component {
 
+  constructor(props) {
+    super(props);
+    this.state = { hover: false };
+  }
+
   static get propTypes() {
     return {
       action: React.PropTypes.func,
@@ -30,7 +35,15 @@ class GeneralButton extends React.Component {
         borderRadius: 2,
         fontSize: '14px',
       },
+      hover: {
+        borderBottom: 0,
+      },
     };
+  }
+
+  componentDidMount() {
+    var node = React.findDOMNode(this.refs.container);
+    node.addEventListener('mouseenter', this.handleMouseEnter.bind(this));
   }
 
   handleClick(event) {
@@ -43,12 +56,21 @@ class GeneralButton extends React.Component {
     }
   }
 
+  handleMouseEnter(event) {
+    this.setState({ hover: true });
+  }
+
   render() {
+    var style = Object.assign(
+      this.styles.container,
+      this.state.hover && this.styles.hover
+    );
     return (
       <a
         href={this.props.route}
         onClick={this.handleClick.bind(this)}
-        style={this.styles.container}>
+        ref={'container'}
+        style={style}>
         {this.props.content}
       </a>
     );
