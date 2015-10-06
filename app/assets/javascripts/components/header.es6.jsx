@@ -22,6 +22,7 @@ class Header extends Component {
       title: {
         position: 'relative',
         color: '#ffffff',
+        display: 'inline-block'
       },
     };
   }
@@ -50,6 +51,7 @@ class Header extends Component {
         <span style={this.styles.title}>
           {'edge-yl'}
         </span>
+        <SearchBar/>
       </div>
     );
   }
