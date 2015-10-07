@@ -12,7 +12,6 @@ class Sidebar extends Component {
     };
   }
 
-
   get styles() {
     return {
       container: {
@@ -36,7 +35,7 @@ class Sidebar extends Component {
     );
     return (
       <div style={style}>
-        <SidebarGroup /> 
+        <SidebarGroup />
         <SidebarGroup />
       </div>
     );

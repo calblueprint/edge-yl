@@ -11,7 +11,6 @@ class Header extends Component {
       handleSidebarClick: null,
     };
   }
-
   get styles() {
     return {
       container: {
