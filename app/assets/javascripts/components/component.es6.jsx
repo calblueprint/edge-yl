@@ -2,7 +2,7 @@ class Component extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = this.defaultState;
+    this.state = this.constructor.defaultState;
   }
 
   static get propTypes() {

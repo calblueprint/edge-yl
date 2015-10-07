@@ -1,9 +1,4 @@
-class GeneralButton extends React.Component {
-
-  constructor(props) {
-    super(props);
-    this.state = { hover: false };
-  }
+class GeneralButton extends Component {
 
   static get propTypes() {
     return {
@@ -21,6 +16,12 @@ class GeneralButton extends React.Component {
     };
   }
 
+  static get defaultState() {
+    return {
+      mouse: 'up',
+    }
+  }
+
   get styles() {
     return {
       container: {
@@ -34,7 +35,7 @@ class GeneralButton extends React.Component {
         borderRadius: 2,
         fontSize: '14px',
       },
-      hover: {
+      down: {
         borderBottom: 0,
       },
     };
@@ -58,23 +59,23 @@ class GeneralButton extends React.Component {
   }
 
   handleMouseDown(event) {
-    this.setState({ hover: true });
+    this.setState({ mouse: 'down' });
   }
 
   handleMouseUp(event) {
-    this.setState({ hover: false });
+    this.setState({ mouse: 'up' });
   }
 
   handleMouseLeave(event) {
-    if (this.state.hover) {
-      this.setState({ hover: false });
+    if (this.state.mouse === 'down') {
+      this.setState({ mouse: 'up' });
     }
   }
 
   render() {
     var style = Object.assign(
       this.styles.container,
-      this.state.hover && this.styles.hover
+      this.state.mouse === 'down' && this.styles.down
     );
     return (
       <a
