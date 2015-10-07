@@ -1,4 +1,4 @@
-class LoginForm extends React.Component {
+class LoginForm extends Component {
 
   get styles() {
     return {

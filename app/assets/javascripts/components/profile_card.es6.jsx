@@ -1,4 +1,4 @@
-class ProfileCard extends React.Component {
+class ProfileCard extends Component {
 
   get styles() {
     return {

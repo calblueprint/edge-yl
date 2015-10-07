@@ -1,4 +1,4 @@
-class SignupForm extends React.Component {
+class SignupForm extends Component {
 
   get styles() {
     return {
