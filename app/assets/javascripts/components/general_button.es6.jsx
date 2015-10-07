@@ -67,7 +67,6 @@ class GeneralButton extends React.Component {
 
   handleMouseLeave(event) {
     if (this.state.hover) {
-      console.log('leaving');
       this.setState({ hover: false });
     }
   }
