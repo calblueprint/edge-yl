@@ -35,7 +35,7 @@ class GeneralButton extends React.Component {
         fontSize: '14px',
       },
       hover: {
-        border: 0,
+        borderBottom: 0,
       },
     };
   }
@@ -77,7 +77,6 @@ class GeneralButton extends React.Component {
       this.styles.container,
       this.state.hover && this.styles.hover
     );
-    console.log(this.state.hover);
     return (
       <a
         href={this.props.route}
