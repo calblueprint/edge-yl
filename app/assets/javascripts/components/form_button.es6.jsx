@@ -1,4 +1,4 @@
-class GeneralButton extends Component {
+class FormButton extends Component {
 
   static get propTypes() {
     return {
@@ -39,8 +39,7 @@ class GeneralButton extends Component {
     return (
       <Clickable
         styles={this.styles}
-        {...this.props}
-      />
+        {...this.props} />
     );
   }
 }

@@ -30,7 +30,7 @@ class LoginForm extends Component {
           style={this.styles.input}
           type={'password'}>
         </input>
-        <GeneralButton
+        <FormButton
           content={'Login'}
           route={'/profile'} />
       </div>

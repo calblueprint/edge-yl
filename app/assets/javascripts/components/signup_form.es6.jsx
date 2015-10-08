@@ -35,7 +35,9 @@ class SignupForm extends Component {
           style={this.styles.input}
           type={'password'}>
         </input>
-        <GeneralButton content={'Signup'} />
+        <FormButton
+          content={'Signup'}
+          route={'/profile'} />
       </div>
     );
   }
