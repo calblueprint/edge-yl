@@ -2,28 +2,25 @@ class GeneralButton extends Component {
 
   static get propTypes() {
     return {
-      action: React.PropTypes.func,
-      route: React.PropTypes.string,
+      func: React.PropTypes.func,
       content: React.PropTypes.string.isRequired,
+      route: React.PropTypes.string,
     };
   }
 
   static get defaultProps() {
     return {
-      action: null,
-      route: '',
+      func: null,
       content: '',
+      route: '',
     };
-  }
-
-  static get defaultState() {
-    return {
-      mouse: 'up',
-    }
   }
 
   get styles() {
     return {
+      action: {
+        borderBottom: 0,
+      },
       container: {
         display: 'inline-block',
         verticalAlgin: 'middle',
@@ -35,56 +32,15 @@ class GeneralButton extends Component {
         borderRadius: 2,
         fontSize: '14px',
       },
-      down: {
-        borderBottom: 0,
-      },
     };
   }
 
-  componentDidMount() {
-    var node = React.findDOMNode(this.refs.container);
-    node.addEventListener('mousedown', this.handleMouseDown.bind(this));
-    node.addEventListener('mouseleave', this.handleMouseLeave.bind(this));
-    node.addEventListener('mouseup', this.handleMouseUp.bind(this));
-  }
-
-  handleClick(event) {
-    if (this.props.route === '') {
-      event.preventDefault();
-      event.stopPropagation();
-      if (this.prop.action !== null) {
-        this.props.action();
-      }
-    }
-  }
-
-  handleMouseDown(event) {
-    this.setState({ mouse: 'down' });
-  }
-
-  handleMouseUp(event) {
-    this.setState({ mouse: 'up' });
-  }
-
-  handleMouseLeave(event) {
-    if (this.state.mouse === 'down') {
-      this.setState({ mouse: 'up' });
-    }
-  }
-
   render() {
-    var style = Object.assign(
-      this.styles.container,
-      this.state.mouse === 'down' && this.styles.down
-    );
     return (
-      <a
-        href={this.props.route}
-        onClick={this.handleClick.bind(this)}
-        ref={'container'}
-        style={style}>
-        {this.props.content}
-      </a>
+      <Clickable
+        styles={this.styles}
+        {...this.props}
+      />
     );
   }
 }
