@@ -2,32 +2,32 @@ class ProfileCardBody extends React.Component {
 
   static get propTypes() {
     return {
-      cardBody: React.PropTypes.string,
+      cardBody: React.PropTypes.string.isRequired,
     };
   }
 
   static get defaultProps() {
     return {
       cardBody: '',
-    }
+    };
   }
 
   get styles() {
     return {
       container: {
         position: 'relative',
-        padding: '12px',
-        height: '186px',
+        padding: 12,
+        height: 186,
       },
     };
   }
   
-  render () {
+  render() {
     return (
       <div style={this.styles.container}>
         {this.props.cardBody}
       </div>
-    )
+    );
   }
 }
 

@@ -1,17 +1,17 @@
 class ProfileCard extends React.Component {
 
-  static getpropTypes() {
+  static get propTypes() {
     return {
-      cardName: React.PropTypes.string,
-      cardBody: React.PropTypes.string,
-    }
+      cardName: React.PropTypes.string.isRequired,
+      cardBody: React.PropTypes.string.isRequired,
+    };
   }
 
   static get defaultProps() {
     return {
       cardName: '',
       cardBody: '',
-    }
+    };
   }
 
   get styles() {
@@ -20,7 +20,7 @@ class ProfileCard extends React.Component {
         display: 'inline-block',
         position: 'relative',
         width: '33%',
-        height: '250px',
+        height: 250,
         backgroundColor: 'white',
         border: '1px solid',
         borderColor: '#e5e6e9 #dfe0e4 #d0d1d5',
