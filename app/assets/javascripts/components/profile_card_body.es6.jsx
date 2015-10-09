@@ -1,7 +1,21 @@
 class ProfileCardBody extends React.Component {
+
+  static get propTypes() {
+    return {
+      cardBody: React.PropTypes.string,
+    };
+  }
+
+  static get defaultProps() {
+    return {
+      cardBody: '',
+    }
+  }
+
   get styles() {
     return {
       container: {
+        position: 'relative',
         padding: '12px',
         height: '186px',
       },
@@ -11,7 +25,7 @@ class ProfileCardBody extends React.Component {
   render () {
     return (
       <div style={this.styles.container}>
-        profile card body text
+        {this.props.cardBody}
       </div>
     )
   }
