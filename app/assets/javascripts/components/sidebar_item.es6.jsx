@@ -1,28 +1,38 @@
 class SidebarItem extends React.Component {
 
-	get styles() {
+  static get propTypes() {
+    return {
+      label: React.PropTypes.string,
+      icon: React.PropTypes.string,
+    };
+  }
+
+  get styles() {
     return {
       container: {
         position: 'relative',
         width: '100%',
         padding: 30,
-        borderStyle: 'solid',
-        borderColor: 'gray',
-        borderWidth: 1,
       },
       label: {
         position: 'relative',
-      	textAlign: 'right',
-      	fontSize: 25,
+        fontSize: 15,
+        padding: 20,
       },
+      icon: {
+        width: 15,
+        height: 'auto',
+      },   
     };
   }
 
   render() {
     return (
       <div style={this.styles.container}>
-        <i className={"fa fa-beer fa-lg"}></i>
-        <span style={this.styles.label}>Item!</span>
+        <i 
+          style={this.styles.icon}
+          className={this.props.icon}/>
+        <span style={this.styles.label}>{this.props.label}</span>
       </div>
     );
   }
