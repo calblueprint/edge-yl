@@ -1,5 +1,10 @@
 class GeneralButton extends React.Component {
 
+  constructor(props) {
+    super(props);
+    this.state = { hover: false };
+  }
+
   static get propTypes() {
     return {
       action: React.PropTypes.func,
@@ -25,12 +30,21 @@ class GeneralButton extends React.Component {
         padding: '6px 12px',
         color: 'white',
         backgroundColor: '#68B1DE',
-        borderBottom: '2px solid',
-        borderColor: '#28719E',
+        borderBottom: '2px solid #28719E',
         borderRadius: 2,
         fontSize: '14px',
       },
+      hover: {
+        borderBottom: 0,
+      },
     };
+  }
+
+  componentDidMount() {
+    var node = React.findDOMNode(this.refs.container);
+    node.addEventListener('mousedown', this.handleMouseDown.bind(this));
+    node.addEventListener('mouseleave', this.handleMouseLeave.bind(this));
+    node.addEventListener('mouseup', this.handleMouseUp.bind(this));
   }
 
   handleClick(event) {
@@ -43,12 +57,31 @@ class GeneralButton extends React.Component {
     }
   }
 
+  handleMouseDown(event) {
+    this.setState({ hover: true });
+  }
+
+  handleMouseUp(event) {
+    this.setState({ hover: false });
+  }
+
+  handleMouseLeave(event) {
+    if (this.state.hover) {
+      this.setState({ hover: false });
+    }
+  }
+
   render() {
+    var style = Object.assign(
+      this.styles.container,
+      this.state.hover && this.styles.hover
+    );
     return (
       <a
         href={this.props.route}
         onClick={this.handleClick.bind(this)}
-        style={this.styles.container}>
+        ref={'container'}
+        style={style}>
         {this.props.content}
       </a>
     );

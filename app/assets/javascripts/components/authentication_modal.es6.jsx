@@ -1,8 +1,14 @@
-class AuthorizationModal extends React.Component {
+class AuthenticationModal extends React.Component {
 
   static get propTypes() {
     return {
       isLogin: React.PropTypes.bool.isRequired,
+    };
+  }
+
+  static get defaultProps() {
+    return {
+      isLogin: true,
     };
   }
   
@@ -18,9 +24,10 @@ class AuthorizationModal extends React.Component {
         borderColor: '#e5e6e9 #dfe0e4 #d0d1d5',
         borderRadius: 3,
       },
-      header: {
+      head: {
         position: 'relative',
         width: '100%',
+        marginBottom: 24,
         textAlign: 'center',
       },
     };
@@ -38,7 +45,7 @@ class AuthorizationModal extends React.Component {
     var title = this.props.isLogin ? 'Login' : 'Signup';
     return (
       <div style={this.styles.container}>
-        <div style={this.styles.header}>
+        <div style={this.styles.head}>
           <h2>{title}</h2>
         </div>
         {this.renderForm()}

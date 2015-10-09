@@ -1,8 +1,14 @@
-class AuthorizationPage extends React.Component {
+class AuthenticationPage extends React.Component {
 
   static get propTypes() {
     return {
       isLogin: React.PropTypes.bool.isRequired,
+    };
+  }
+
+  static get defaultProps() {
+    return {
+      isLogin: true,
     };
   }
 
@@ -20,7 +26,7 @@ class AuthorizationPage extends React.Component {
     return (
       <div style={this.styles.container}>
         <Header />
-        <AuthorizationModal isLogin={this.props.isLogin} />
+        <AuthenticationModal isLogin={this.props.isLogin} />
       </div>
     );
   }

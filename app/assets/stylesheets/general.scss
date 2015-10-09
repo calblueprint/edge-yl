@@ -1,9 +1,6 @@
-// Place all the styles related to the pages controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
 $ash: #565A5C;
 $black: #343434;
+$blue: #68B1DE;
 $gray: #878B8D;
 $white: #FFFFFF;
 
@@ -74,8 +71,24 @@ input {
   font-weight: $font-weight-medium;
   font-family: $font-family;
   text-decoration: none;
+  box-sizing: border-box;
   white-space: pre-wrap;
   outline: none;
+}
+
+input,
+textarea {
+  border: 1px solid $gray;
+  -webkit-transition: all 0.375s ease-in-out;
+  -moz-transition: all 0.375s ease-in-out;
+  -ms-transition: all 0.375s ease-in-out;
+  -o-transition: all 0.375s ease-in-out;
+}
+
+input:focus,
+textarea:focus {
+  border: 1px solid $blue;
+  box-shadow: 0 0 3px $blue;
 }
 
 ol,
