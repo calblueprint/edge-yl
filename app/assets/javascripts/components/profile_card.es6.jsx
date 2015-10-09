@@ -1,11 +1,25 @@
 class ProfileCard extends React.Component {
 
+  static getpropTypes() {
+    return {
+      cardName: React.PropTypes.string,
+      cardBody: React.PropTypes.string,
+    }
+  }
+
+  static get defaultProps() {
+    return {
+      cardName: '',
+      cardBody: '',
+    }
+  }
+
   get styles() {
     return {
       container: {
         display: 'inline-block',
         position: 'relative',
-        width: '250px',
+        width: '33%',
         height: '250px',
         backgroundColor: 'white',
         border: '1px solid',
@@ -18,8 +32,8 @@ class ProfileCard extends React.Component {
   render() {
     return (
       <div style={this.styles.container}>
-        <ProfileCardHead />
-        <ProfileCardBody />
+        <ProfileCardHead cardName={this.props.cardName} />
+        <ProfileCardBody cardBody={this.props.cardBody} />
       </div>
     );
   }

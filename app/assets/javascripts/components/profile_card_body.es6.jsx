@@ -1,5 +1,4 @@
 class ProfileCardBody extends React.Component {
-
   get styles() {
     return {
       container: {

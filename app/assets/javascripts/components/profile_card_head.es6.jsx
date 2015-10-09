@@ -1,4 +1,17 @@
 class ProfileCardHead extends React.Component {
+
+  static get propTypes() {
+    return {
+      cardName: React.PropTypes.string,
+    };
+  }
+
+  static get defaultProps() {
+    return {
+      cardName: '',
+    }
+  }
+
   get styles() {
     return {
       container: {
@@ -8,7 +21,7 @@ class ProfileCardHead extends React.Component {
         width: '100%',
         padding: 1
       },
-      title: {
+      cardName: {
         float: 'left',
         lineHeight: '40px',
         fontSize: '24px',
@@ -25,8 +38,8 @@ class ProfileCardHead extends React.Component {
   render () {
     return (
       <div style={this.styles.container}>
-        <div style={this.styles.title}>
-          CardName
+        <div style={this.styles.cardName}>
+          {this.props.cardName}
         </div>
         <i className={"fa fa-pencil-square-o fa-2x"} style={this.styles.icon}></i>
       </div>

@@ -15,15 +15,33 @@ class ProfileGrid extends React.Component {
   render() {
     return (
       <div style={this.styles.container}> 
-        <ProfileCard />
-        <ProfileCard />
-        <ProfileCard />
-        <ProfileCard />
-        <ProfileCard />
-        <ProfileCard />
-        <ProfileCard />
-        <ProfileCard />
-        <ProfileCard />
+        <ProfileCard 
+          cardName={'Card Name'}
+          cardBody={'profile card body text'}/>
+        <ProfileCard 
+          cardName={'Card Name'}
+          cardBody={'profile card body text'}/>
+        <ProfileCard 
+          cardName={'Card Name'}
+          cardBody={'profile card body text'}/>
+        <ProfileCard 
+          cardName={'Card Name'}
+          cardBody={'profile card body text'}/>
+        <ProfileCard 
+          cardName={'Card Name'}
+          cardBody={'profile card body text'}/>
+        <ProfileCard 
+          cardName={'Card Name'}
+          cardBody={'profile card body text'}/>
+        <ProfileCard 
+          cardName={'Card Name'}
+          cardBody={'profile card body text'}/>
+        <ProfileCard 
+          cardName={'Card Name'}
+          cardBody={'profile card body text'}/>
+        <ProfileCard 
+          cardName={'Card Name'}
+          cardBody={'profile card body text'}/>
       </div>
     );
   }
