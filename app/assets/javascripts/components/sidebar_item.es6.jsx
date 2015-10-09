@@ -2,8 +2,8 @@ class SidebarItem extends React.Component {
 
   static get propTypes() {
     return {
-      label: React.PropTypes.string,
-      icon: React.PropTypes.string,
+      label: React.PropTypes.string.isRequired,
+      icon: React.PropTypes.string.isRequired,
     };
   }
 
@@ -16,11 +16,11 @@ class SidebarItem extends React.Component {
       },
       label: {
         position: 'relative',
-        fontSize: 15,
+        fontSize: '14px',
         padding: 20,
       },
       icon: {
-        width: 15,
+        width: 16,
         height: 'auto',
       },   
     };
@@ -31,7 +31,7 @@ class SidebarItem extends React.Component {
       <div style={this.styles.container}>
         <i 
           style={this.styles.icon}
-          className={this.props.icon}/>
+          className={this.props.icon} />
         <span style={this.styles.label}>{this.props.label}</span>
       </div>
     );
