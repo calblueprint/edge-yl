@@ -17,15 +17,13 @@ class ProfileCardHead extends React.Component {
       container: {
         height: 40,
         verticalAlign: 'middle',
-        textAlign: 'right',
         width: '100%',
-        padding: 1
       },
       cardName: {
         float: 'left',
         lineHeight: '40px',
-        fontSize: '24px',
         marginLeft: '5px',
+        fontSize: '24px',
       },
       icon: {
         float: 'right',
