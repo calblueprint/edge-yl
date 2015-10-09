@@ -1,5 +1,31 @@
-EDGE Youth Leadership
+edge-yl
 ==========
+
+## Setup
+
+First, make a file for your environment variables:
+
+    touch config/initializers/_environment_variables.rb
+
+Note that this project uses Devise so you should set `Devise.secret_key` in `_environment_variables.rb`.
+
+Second, copy over the `database.yml` file from `config/sample/database.yml` to `config/database.yml`:
+
+    cp config/sample/database.yml config/database.yml
+
+Third, create the database:
+
+    rake db:create
+
+Fourth, migrate the database:
+
+    rake db:migrate
+
+Fifth, start the server:
+
+    rails server -p <port-number>
+
+Happy developing!
 
 ## Blueprint
 ![bp](https://raw.githubusercontent.com/calblueprint/calblueprint.org.old/master/app/assets/images/banner-facebook.png "Blueprint Banner")
