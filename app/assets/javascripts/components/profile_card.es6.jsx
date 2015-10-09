@@ -5,8 +5,8 @@ class ProfileCard extends React.Component {
       container: {
         display: 'inline-block',
         position: 'relative',
-        width: 172,
-        padding: 24,
+        width: '250px',
+        height: '250px',
         backgroundColor: 'white',
         border: '1px solid',
         borderColor: '#e5e6e9 #dfe0e4 #d0d1d5',
@@ -18,9 +18,9 @@ class ProfileCard extends React.Component {
   render() {
     return (
       <div style={this.styles.container}>
-        <span>profile card!</span>
+        <ProfileCardHead />
+        <ProfileCardBody />
       </div>
     );
   }
 }
-
