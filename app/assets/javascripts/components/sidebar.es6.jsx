@@ -5,7 +5,7 @@ class Sidebar extends React.Component {
       container: {
         position: 'absolute',
         top: 0,
-        left: 0,
+        left: 5,
         width: 172,
         height: '100%',
         padding: 5,
@@ -16,9 +16,8 @@ class Sidebar extends React.Component {
   render() {
     return (
       <div style={this.styles.container}>
-        <SidebarItem />
-        <SidebarItem />
-        <SidebarItem />
+        <SidebarGroup /> 
+        <SidebarGroup />
       </div>
     );
   }
