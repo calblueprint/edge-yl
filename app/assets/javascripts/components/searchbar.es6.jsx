@@ -1,38 +1,46 @@
-class SearchBar extends React.Component {
+class SearchBar extends Component {
 
   get styles() {
     return {
       container: {
-        position: 'relative',
-        height: 36,
-        minWidth: 144,
-        margin: '0 133',
-        color: 'white',
-        backgroundColor: 'blue',
+        position: 'absolute',
+        left: '460px',
+        height: '36px',
+        width: '500px',
+        display: 'inline',
+        float: 'left',
+        backgroundColor: 'red',
       },
       icon: {
-        position: 'relative',
-        height: 36,
-        width: 72,
-        display: 'inline-block',
+        display: 'inline',
+        padding: '6px 15px',
+        backgroundColor: '#207CCA',
+        color: 'white',
+        height: '100%',
+        width: '50px',
       },
       search_field: {
-        width: '100%',
+        display: 'inline',
+        padding:'8px 15px',
+        height: '100%',
+        width: '400px',
+        border: 'none',
       }
     }
   }
 
   render() {
     return (
-      <div style={this.styles.container}>
-        <div style={this.styles.icon}>
-          <img src='https://ssl.gstatic.com/bt/C3341AA7A1A076756462EE2E5CD71C11/2x/ic_search_wht_24dp_r1_2x.png'/>
+      <form style={this.styles.container}>
+        <div type='button'
+            style={this.styles.icon}>
+          <i className={"fa fa-search fa-1x"} style={this.styles.icon}></i>
         </div>
-        <input 
+        <input
           placeholder={'Search'}
           style={this.styles.search_field}>
         </input>
-      </div>
+      </form>
     );
   }
 }
