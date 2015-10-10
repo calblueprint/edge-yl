@@ -7,7 +7,7 @@ class Clickable extends Component {
       route: React.PropTypes.string,
       styles: React.PropTypes.shape({
         action: React.PropTypes.object.isRequired,
-        container: React.PropTypes.object.isRequired,
+        default: React.PropTypes.object.isRequired,
       }).isRequired,
     };
   }
@@ -61,7 +61,7 @@ class Clickable extends Component {
   render() {
     var style = Object.assign(
       {},
-      this.props.styles.container,
+      this.props.styles.default,
       this.state.action && this.props.styles.action
     );
     return (

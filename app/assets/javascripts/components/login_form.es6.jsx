@@ -3,18 +3,17 @@ class LoginForm extends Component {
   get styles() {
     return {
       container: {
+        display: 'flex',
+        flexDirection: 'column',
         position: 'relative',
         width: '100%',
       },
-      footer: {
-        display: 'flex',
-        justifyContent: 'center',
+      label: {
         position: 'relative',
-        height: 32,
+        marginBottom: 6,
       },
       input: {
         position: 'relative',
-        width: '100%',
         padding: 8,
         marginBottom: 24,
         boxSizing: 'border-box',
@@ -25,25 +24,26 @@ class LoginForm extends Component {
   render() {
     return (
       <div style={this.styles.container}>
-        <label>Email</label>
+        <label style={this.styles.label}>
+          Email
+        </label>
         <input
           autoFocus={true}
-          placeholder={'email'}
+          placeholder={'example@email.com'}
           style={this.styles.input}>
         </input>
-        <label>Password</label>
+        <label style={this.styles.label}>
+          Password
+        </label>
         <input
-          placeholder={'password'}
+          placeholder={'topsecretpassword'}
           style={this.styles.input}
           type={'password'}>
         </input>
-        <div style={this.styles.footer}>
-          <FormButton
-            content={'Login'}
-            route={'/profile'} />
-        </div>
+        <FormButton
+          content={'Login'}
+          route={'/profile'} />
       </div>
     );
   }
 }
-
