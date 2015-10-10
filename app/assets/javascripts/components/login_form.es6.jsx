@@ -5,7 +5,12 @@ class LoginForm extends Component {
       container: {
         position: 'relative',
         width: '100%',
-        textAlign: 'center',
+      },
+      footer: {
+        display: 'flex',
+        justifyContent: 'center',
+        position: 'relative',
+        height: 32,
       },
       input: {
         position: 'relative',
@@ -20,19 +25,23 @@ class LoginForm extends Component {
   render() {
     return (
       <div style={this.styles.container}>
+        <label>Email</label>
         <input
           autoFocus={true}
           placeholder={'email'}
           style={this.styles.input}>
         </input>
+        <label>Password</label>
         <input
           placeholder={'password'}
           style={this.styles.input}
           type={'password'}>
         </input>
-        <FormButton
-          content={'Login'}
-          route={'/profile'} />
+        <div style={this.styles.footer}>
+          <FormButton
+            content={'Login'}
+            route={'/profile'} />
+        </div>
       </div>
     );
   }
