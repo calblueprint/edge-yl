@@ -1,6 +1,6 @@
   Rails.application.routes.draw do
 
-  get 'dashboard', to: 'pages#dashboard'
+  root 'pages#login'
   get 'login', to: 'pages#login'
   get 'signup', to: 'pages#signup'
   get 'profile', to: 'pages#profile'
