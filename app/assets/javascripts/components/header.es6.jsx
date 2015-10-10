@@ -4,7 +4,6 @@ class Header extends Component {
     return {
       container: {
         position: 'relative',
-        width: '100%',
         height: 48,
         backgroundColor: '#68B1DE',
       },

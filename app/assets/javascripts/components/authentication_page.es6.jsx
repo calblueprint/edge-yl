@@ -15,9 +15,18 @@ class AuthenticationPage extends Component {
   get styles() {
     return {
       container: {
+        display: 'flex',
+        flexDirection: 'column',
         position: 'relative',
         width: '100vw',
         height: '100vh',
+      },
+      body: {
+        display: 'flex',
+        flex: '1',
+        justifyContent: 'center',
+        alignItems: 'center',
+        position: 'relative',
       },
     };
   }
@@ -26,7 +35,10 @@ class AuthenticationPage extends Component {
     return (
       <div style={this.styles.container}>
         <Header />
-        <AuthenticationModal isLogin={this.props.isLogin} />
+        <div style={this.styles.body}>
+          <AuthenticationModal
+            isLogin={this.props.isLogin} />
+        </div>
       </div>
     );
   }
