@@ -23,12 +23,31 @@ class AuthenticationPage extends Component {
       },
       body: {
         display: 'flex',
-        flex: '1',
+        flexDirection: 'column',
         justifyContent: 'center',
+        alignItems: 'center',
+        flex: '1',
         alignItems: 'center',
         position: 'relative',
       },
+      footer: {
+        position: 'relative',
+        marginTop: 8,
+      },
     };
+  }
+
+  renderToggle() {
+    var bool = this.props.isLogin;
+    var content = bool ? 'Sign up' : 'Log in';
+    var label = bool ? 'Don\'t have an account?' : 'Already have an account?';
+    var href = bool ? '/signup' : 'login';
+    return (
+      <div style={this.styles.footer}>
+        <span>{label}</span>
+        <a href={href}>{' ' + content}</a>
+      </div>
+    );
   }
 
   render() {
@@ -38,6 +57,7 @@ class AuthenticationPage extends Component {
         <div style={this.styles.body}>
           <AuthenticationModal
             isLogin={this.props.isLogin} />
+          {this.renderToggle()}
         </div>
       </div>
     );
