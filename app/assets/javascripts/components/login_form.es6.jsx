@@ -41,7 +41,7 @@ class LoginForm extends Component {
           type={'password'}>
         </input>
         <FormButton
-          content={'Login'}
+          content={'Log in'}
           route={'/profile'} />
       </div>
     );

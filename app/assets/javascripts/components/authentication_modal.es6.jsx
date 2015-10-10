@@ -40,13 +40,19 @@ class AuthenticationModal extends Component {
     }
   }
 
-  render() {
+  renderHeader() {
     var title = this.props.isLogin ? 'Login' : 'Signup';
     return (
+      <div style={this.styles.head}>
+        <h2>{title}</h2>
+      </div>
+    );
+  }
+
+  render() {
+    return (
       <div style={this.styles.container}>
-        <div style={this.styles.head}>
-          <h2>{title}</h2>
-        </div>
+        {this.renderHeader()}
         {this.renderForm()}
       </div>
     );

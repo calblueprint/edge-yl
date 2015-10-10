@@ -48,7 +48,7 @@ class SignupForm extends Component {
           type={'password'}>
         </input>
         <FormButton
-          content={'Signup'}
+          content={'Sign up'}
           route={'/profile'} />
       </div>
     );
