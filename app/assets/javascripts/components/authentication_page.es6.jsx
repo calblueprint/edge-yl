@@ -32,7 +32,7 @@ class AuthenticationPage extends Component {
       },
       footer: {
         position: 'relative',
-        marginTop: 8,
+        marginTop: 12,
       },
     };
   }
@@ -44,8 +44,8 @@ class AuthenticationPage extends Component {
     var href = bool ? '/signup' : 'login';
     return (
       <div style={this.styles.footer}>
-        <span>{label}</span>
-        <a href={href}>{' ' + content}</a>
+        <span>{label + ' '}</span>
+        <a href={href}><u>{content}</u></a>
       </div>
     );
   }
@@ -55,8 +55,7 @@ class AuthenticationPage extends Component {
       <div style={this.styles.container}>
         <Header />
         <div style={this.styles.body}>
-          <AuthenticationModal
-            isLogin={this.props.isLogin} />
+          <AuthenticationModal {...this.props} />
           {this.renderToggle()}
         </div>
       </div>
