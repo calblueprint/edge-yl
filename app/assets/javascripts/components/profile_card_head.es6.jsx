@@ -27,7 +27,7 @@ class ProfileCardHead extends React.Component {
         top: '0px',
         right: '6px',
         lineHeight: '40px',
-      }
+      },
     };
   }
   
