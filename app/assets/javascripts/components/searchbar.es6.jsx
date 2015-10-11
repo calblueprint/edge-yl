@@ -1,29 +1,31 @@
-class SearchBar extends Component {
+class SearchBar extends React.Component {
 
   get styles() {
     return {
       container: {
+        display: 'flex',
         position: 'absolute',
-        left: '460px',
+        left: '200px',
         height: '36px',
         width: '500px',
-        display: 'inline',
+        margin: 'auto',
         float: 'left',
         backgroundColor: 'red',
       },
       icon: {
-        display: 'inline',
+        flex: '1',
+        display: 'inline-block',
+        height: '100%',
         padding: '6px 15px',
+        boxSizing: 'border-box',
         backgroundColor: '#207CCA',
         color: 'white',
-        height: '100%',
-        width: '50px',
       },
       search_field: {
-        display: 'inline',
-        padding:'8px 15px',
+        display: 'inline-block',
+        flex: '10',
         height: '100%',
-        width: '400px',
+        padding:'8px 15px',
         border: 'none',
       }
     }
@@ -32,7 +34,7 @@ class SearchBar extends Component {
   render() {
     return (
       <form style={this.styles.container}>
-        <div type='button'
+        <div
             style={this.styles.icon}>
           <i className={"fa fa-search fa-1x"} style={this.styles.icon}></i>
         </div>
