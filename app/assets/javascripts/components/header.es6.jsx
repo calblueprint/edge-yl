@@ -23,12 +23,11 @@ class Header extends Component {
       },
       leftTitle: {
         display: 'flex',
-        position: 'relative',
-        width: '172px',
         alignItems: 'center',
         alignSelf: 'stretch',
-        color: 'white',
-        fontSize: '24px',
+        position: 'relative',
+        width: '172px',
+        paddingLeft: '24px',
       },
       middleSearch: {
         display: 'flex',
@@ -45,7 +44,6 @@ class Header extends Component {
       },
       icon: {
         position: 'relative',
-        paddingLeft: '16px',
         color: 'white',
         fontSize: '16px',
       },
@@ -79,7 +77,7 @@ class Header extends Component {
           </Clickable>
         </div>
         <div style={this.styles.middleSearch}>
-          <SearchBar />
+          <HeaderSearch />
         </div>
         <div style={this.styles.rightButtons}>
           <Clickable
