@@ -21,7 +21,6 @@ class ProfileCard extends Component {
         flexDirection: 'column',
         position: 'relative',
         width: '30%',
-        height: 250,
         margin: '1.5% 1.5%',
         backgroundColor: 'white',
         border: '1px solid',
