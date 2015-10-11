@@ -3,13 +3,16 @@ class SignupForm extends Component {
   get styles() {
     return {
       container: {
+        display: 'flex',
+        flexDirection: 'column',
         position: 'relative',
-        width: '100%',
-        textAlign: 'center',
+      },
+      label: {
+        position: 'relative',
+        marginBottom: 6,
       },
       input: {
         position: 'relative',
-        width: '100%',
         padding: 8,
         marginBottom: 24,
         boxSizing: 'border-box',
@@ -20,23 +23,32 @@ class SignupForm extends Component {
   render() {
     return (
       <div style={this.styles.container}>
+        <label style={this.styles.label}>
+          Email
+        </label>
         <input
           autoFocus={true}
-          placeholder={'email'}
+          placeholder={'example@email.com'}
           style={this.styles.input}>
         </input>
+        <label style={this.styles.label}>
+          Password
+        </label>
         <input
-          placeholder={'password'}
+          placeholder={'topsecretpassword'}
           style={this.styles.input}
           type={'password'}>
         </input>
+        <label style={this.styles.label}>
+          Password Confirmation
+        </label>
         <input
-          placeholder={'confirmation'}
+          placeholder={'topsecretpassword'}
           style={this.styles.input}
           type={'password'}>
         </input>
         <FormButton
-          content={'Signup'}
+          content={'Sign up'}
           route={'/profile'} />
       </div>
     );

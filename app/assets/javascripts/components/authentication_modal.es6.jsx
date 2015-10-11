@@ -16,9 +16,8 @@ class AuthenticationModal extends Component {
     return {
       container: {
         position: 'relative',
-        width: 356,
-        padding: 24,
-        margin: '128px auto',
+        width: 372,
+        padding: 36,
         backgroundColor: 'white',
         border: '1px solid',
         borderColor: '#e5e6e9 #dfe0e4 #d0d1d5',
@@ -41,13 +40,19 @@ class AuthenticationModal extends Component {
     }
   }
 
-  render() {
+  renderHeader() {
     var title = this.props.isLogin ? 'Login' : 'Signup';
     return (
+      <div style={this.styles.head}>
+        <h2>{title}</h2>
+      </div>
+    );
+  }
+
+  render() {
+    return (
       <div style={this.styles.container}>
-        <div style={this.styles.head}>
-          <h2>{title}</h2>
-        </div>
+        {this.renderHeader()}
         {this.renderForm()}
       </div>
     );
