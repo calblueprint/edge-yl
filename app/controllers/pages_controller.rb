@@ -13,4 +13,8 @@ class PagesController < ApplicationController
   def profile
 
   end
+
+  def profile_show
+    render 'profile_show'
+  end
 end
