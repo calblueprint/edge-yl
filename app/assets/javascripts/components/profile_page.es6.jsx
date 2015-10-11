@@ -12,6 +12,7 @@ class ProfilePage extends Component {
         position: 'relative',
         width: '100vw',
         height: '100vh',
+        backgroundColor: '#eaf0f2',
       },
       body: {
         flex: 1,

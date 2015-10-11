@@ -4,15 +4,14 @@ class SearchBar extends Component {
     return {
       container: {
         display: 'flex',
-        height: '36px',
-        width: '500px',
-        margin: 'auto',
+        flex: 1,
+        height: '30px',
       },
-      icon: {
+      leftSection: {
+        display: 'flex',
         flex: '1',
-        height: '100%',
-        padding: '6px 15px',
-        boxSizing: 'border-box',
+        justifyContent: 'center',
+        alignItems: 'center',
         backgroundColor: '#207CCA',
         color: 'white',
       },
@@ -28,8 +27,7 @@ class SearchBar extends Component {
   render() {
     return (
       <form style={this.styles.container}>
-        <div
-            style={this.styles.icon}>
+        <div style={this.styles.leftSection}>
           <i
             className={"fa fa-search fa-1x"}
             style={this.styles.icon}>

@@ -14,14 +14,35 @@ class Header extends Component {
   get styles() {
     return {
       container: {
+        display:'flex',
+        alignItems: 'center',
         position: 'relative',
         height: '48px',
         backgroundColor: '#68B1DE',
+        boxShadow: '0 0 5px 0 rgba(0, 0, 0, 0.25)',
       },
-      title: {
+      leftTitle: {
+        display: 'flex',
+        flex: 1,
+        alignItems: 'center',
+        alignSelf: 'stretch',
+        color: 'white',
+        fontSize: '24px',
+      },
+      middleSearch: {
+        display: 'flex',
+        flex: 3,
+        alignItems: 'center',
+        alignSelf: 'stretch',
+      },
+      rightButtons: {
+        flex: 1,
+        alignItems: 'center',
+        alignSelf: 'stretch',
+      },
+      icon: {
         position: 'relative',
-        color: '#ffffff',
-        display: 'inline-block'
+        marginRight: '10px',
       },
     };
   }
@@ -43,14 +64,19 @@ class Header extends Component {
   render() {
     return (
       <div style={this.styles.container}>
-        <Clickable
-          content={'S'}
-          func={this.props.handleSidebarClick}
-          styles={this.clickableStyles} />
-        <span style={this.styles.title}>
-          {'edge-yl'}
-        </span>
-        <SearchBar/>
+        <div style={this.styles.leftTitle}>
+          <Clickable
+            content={'S'}
+            func={this.props.handleSidebarClick}
+            styles={this.clickableStyles} />
+          <i className={"fa fa-bars fa-x"} style={this.styles.icon}></i>
+        </div>
+        <div style={this.styles.middleSearch}>
+          <SearchBar />
+        </div>
+        <div style={this.styles.rightButtons}>
+          
+        </div>
       </div>
     );
   }
