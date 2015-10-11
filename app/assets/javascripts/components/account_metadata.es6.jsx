@@ -17,17 +17,18 @@ class AccountMetadata extends Component {
         overflow: 'hidden',
         width: '250px',
         height: 'auto',
-        paddingTop: '30px',
+        paddingTop: '80px',
       },
 
       name: {
-        paddingTop: '20px',
+        paddingTop: '25px',
         paddingBottom:'15px',
         fontSize: '32px',
       }, 
       position: {
-        fontSize: '18px',
+        fontSize: '15px',
         paddingBottom: '20px',
+        fontStyle: 'italic',
 
       },
       // body: {
