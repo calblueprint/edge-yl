@@ -15,23 +15,18 @@ class ProfileCardHead extends React.Component {
   get styles() {
     return {
       container: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
         position: 'relative',
-        height: 40,
-        verticalAlign: 'middle',
-        width: '100%',
-      },
-      cardName: {
-        position: 'relative',
-        float: 'left',
-        lineHeight: '40px',
-        marginLeft: 5,
-        fontSize: 24,
+        height: '40px',
+        borderBottom: 'solid #D6D6D6 1px',
       },
       icon: {
-        position: 'relative',
-        float: 'right',
+        position: 'absolute',
+        top: '0',
+        right: '6',
         lineHeight: '40px',
-        marginRight: 5,
       }
     };
   }
@@ -39,10 +34,8 @@ class ProfileCardHead extends React.Component {
   render() {
     return (
       <div style={this.styles.container}>
-        <div style={this.styles.cardName}>
-          {this.props.cardName}
-        </div>
-        <i className={"fa fa-pencil-square-o fa-2x"} style={this.styles.icon}></i>
+        <span>{this.props.cardName}</span>
+        <i className={"fa fa-pencil-square-o"} style={this.styles.icon}></i>
       </div>
     );
   }

@@ -17,10 +17,12 @@ class ProfileCard extends Component {
   get styles() {
     return {
       container: {
-        display: 'inline-block',
+        display: 'flex',
+        flexDirection: 'column',
         position: 'relative',
-        width: '33%',
+        width: '30%',
         height: 250,
+        margin: '1.5% 1.5%',
         backgroundColor: 'white',
         border: '1px solid',
         borderColor: '#e5e6e9 #dfe0e4 #d0d1d5',
