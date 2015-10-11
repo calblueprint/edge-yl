@@ -7,9 +7,9 @@ class Clickable extends Component {
       func: React.PropTypes.func,
       route: React.PropTypes.string,
       styles: React.PropTypes.shape({
-        action: React.PropTypes.object.isRequired,
-        default: React.PropTypes.object.isRequired,
-      }).isRequired,
+        action: React.PropTypes.object,
+        default: React.PropTypes.object,
+      }),
     };
   }
 

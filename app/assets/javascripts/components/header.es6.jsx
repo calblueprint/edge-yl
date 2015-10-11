@@ -39,10 +39,13 @@ class Header extends Component {
       },
       rightButtons: {
         display: 'flex',
+        justifyContent: 'flex-end',
         alignItems: 'center',
         alignSelf: 'stretch',
         position: 'relative',
         width: '172px',
+        paddingRight: '24px',
+        boxSizing: 'border-box',
       },
       icon: {
         position: 'relative',
@@ -56,12 +59,12 @@ class Header extends Component {
     return {
       default: {
         position: 'relative',
-        width: '16px',
-        height: '16px',
-        padding: '4px',
+        width: '30px',
+        height: '30px',
+        padding: '8px',
         color: 'white',
         border: '2px solid white',
-        borderRadius: '8px',
+        borderRadius: '15px',
       },
     };
   }
