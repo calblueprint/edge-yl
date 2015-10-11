@@ -15,9 +15,10 @@ class ProfileCardBody extends React.Component {
   get styles() {
     return {
       container: {
+        flex: 1,
         position: 'relative',
-        padding: 12,
-        height: 186,
+        padding: '12px',
+        height: '186px',
       },
     };
   }
@@ -25,7 +26,7 @@ class ProfileCardBody extends React.Component {
   render() {
     return (
       <div style={this.styles.container}>
-        {this.props.cardBody}
+        <span>{this.props.cardBody}</span>
       </div>
     );
   }
