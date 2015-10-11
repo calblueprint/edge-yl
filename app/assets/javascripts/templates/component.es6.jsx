@@ -1,4 +1,4 @@
-class Component extends Component {
+class Component extends React.Component {
 
   constructor(props) {
     super(props);
