@@ -19,24 +19,16 @@ class ProfileGrid extends Component {
         flex: 1,
         flexWrap: 'wrap',
         justifyContent: 'space-between',
+        alignContent: 'flex-start',
         position: 'relative',
         padding: '0 12px',
-        transition: 'padding 0.5s ease-out',
-      },
-      notShow: {
-        paddingLeft: '0px',
       },
     };
   }
 
   render() {
-    var style = Object.assign(
-      {},
-      this.styles.container,
-      !this.props.shouldShow && this.styles.notShow
-    );
     return (
-      <div style={style}>
+      <div style={this.styles.container}>
         <ProfileCard
           cardName={'Card Name'}
           cardBody={'profile card body text'}/>
