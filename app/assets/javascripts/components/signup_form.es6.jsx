@@ -1,4 +1,4 @@
-class SignupForm extends React.Component {
+class SignupForm extends Component {
 
   get styles() {
     return {
@@ -35,7 +35,9 @@ class SignupForm extends React.Component {
           style={this.styles.input}
           type={'password'}>
         </input>
-        <GeneralButton content={'Signup'} />
+        <FormButton
+          content={'Signup'}
+          route={'/profile'} />
       </div>
     );
   }

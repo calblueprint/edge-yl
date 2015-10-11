@@ -1,4 +1,4 @@
-class ProfilePage extends React.Component {
+class ProfilePage extends Component {
   
   get styles() {
     return {

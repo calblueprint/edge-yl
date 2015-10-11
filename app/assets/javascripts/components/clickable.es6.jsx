@@ -1,43 +1,30 @@
-class GeneralButton extends React.Component {
-
-  constructor(props) {
-    super(props);
-    this.state = { hover: false };
-  }
+class Clickable extends Component {
 
   static get propTypes() {
     return {
-      action: React.PropTypes.func,
-      route: React.PropTypes.string,
       content: React.PropTypes.string.isRequired,
+      func: React.PropTypes.func,
+      route: React.PropTypes.string,
+      styles: React.PropTypes.shape({
+        action: React.PropTypes.object.isRequired,
+        container: React.PropTypes.object.isRequired,
+      }).isRequired,
     };
   }
 
   static get defaultProps() {
     return {
-      action: null,
-      route: '',
       content: '',
+      func: null,
+      route: '',
+      styles: {},
     };
   }
 
-  get styles() {
+  static get defaultState() {
     return {
-      container: {
-        display: 'inline-block',
-        verticalAlgin: 'middle',
-        position: 'relative',
-        padding: '6px 12px',
-        color: 'white',
-        backgroundColor: '#68B1DE',
-        borderBottom: '2px solid #28719E',
-        borderRadius: 2,
-        fontSize: '14px',
-      },
-      hover: {
-        borderBottom: 0,
-      },
-    };
+      action: false,
+    }
   }
 
   componentDidMount() {
@@ -51,30 +38,31 @@ class GeneralButton extends React.Component {
     if (this.props.route === '') {
       event.preventDefault();
       event.stopPropagation();
-      if (this.prop.action !== null) {
-        this.props.action();
+      if (this.props.func !== null) {
+        this.props.func();
       }
     }
   }
 
   handleMouseDown(event) {
-    this.setState({ hover: true });
+    this.setState({ action: true });
   }
 
   handleMouseUp(event) {
-    this.setState({ hover: false });
+    this.setState({ action: false });
   }
 
   handleMouseLeave(event) {
-    if (this.state.hover) {
-      this.setState({ hover: false });
+    if (this.state.action) {
+      this.setState({ action: false });
     }
   }
 
   render() {
     var style = Object.assign(
-      this.styles.container,
-      this.state.hover && this.styles.hover
+      {},
+      this.props.styles.container,
+      this.state.action && this.props.styles.action
     );
     return (
       <a
@@ -87,4 +75,3 @@ class GeneralButton extends React.Component {
     );
   }
 }
-

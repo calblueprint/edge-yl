@@ -1,4 +1,4 @@
-class Header extends React.Component {
+class Header extends Component {
 
   get styles() {
     return {
