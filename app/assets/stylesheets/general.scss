@@ -1,7 +1,6 @@
 $ash: #565A5C;
 $black: #343434;
 $blue: #68B1DE;
-$light_blue: #207cca;
 $gray: #878B8D;
 $white: #FFFFFF;
 
@@ -78,21 +77,19 @@ span {
   outline: none;
 }
 
-input[type=text],
-input[type=password],
 textarea {
   border: 1px solid $gray;
-  -webkit-transition: all 0.30s ease-in-out;
-  -moz-transition: all 0.30s ease-in-out;
-  -ms-transition: all 0.30s ease-in-out;
-  -o-transition: all 0.30s ease-in-out;
+  -webkit-transition: all 0.375s ease-in-out;
+  -moz-transition: all 0.375s ease-in-out;
+  -ms-transition: all 0.375s ease-in-out;
+  -o-transition: all 0.375s ease-in-out;
 }
 
 input[type=text]:focus,
 input[type=password]:focus,
 textarea:focus {
   border: 1px solid $blue;
-  box-shadow: 0 0 2px $blue;
+  box-shadow: 0 0 3px $blue;
 }
 
 ol,
