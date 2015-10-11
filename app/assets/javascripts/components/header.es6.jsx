@@ -23,7 +23,8 @@ class Header extends Component {
       },
       leftTitle: {
         display: 'flex',
-        flex: 1,
+        position: 'relative',
+        width: '172px',
         alignItems: 'center',
         alignSelf: 'stretch',
         color: 'white',
@@ -31,7 +32,7 @@ class Header extends Component {
       },
       middleSearch: {
         display: 'flex',
-        flex: 3,
+        flex: 4,
         alignItems: 'center',
         alignSelf: 'stretch',
       },

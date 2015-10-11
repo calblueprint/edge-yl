@@ -18,11 +18,11 @@ class Sidebar extends Component {
         position: 'absolute',
         top: '0px',
         left: '0px',
-        width: '236px',
+        width: '172px',
         transition: 'left 0.5s ease-out',
       },
       notShow: {
-        left: '-236px',
+        left: '-172px',
       },
     };
   }

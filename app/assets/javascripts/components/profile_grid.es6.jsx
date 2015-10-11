@@ -17,8 +17,9 @@ class ProfileGrid extends Component {
       container: {
         display: 'flex',
         flexWrap: 'wrap',
+        justifyContent: 'space-between',
         position: 'relative',
-        paddingLeft: '232px',
+        paddingLeft: '172px',
         transition: 'padding 0.5s ease-out',
       },
       notShow: {
