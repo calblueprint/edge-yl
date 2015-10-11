@@ -33,6 +33,7 @@ class ProfileGrid extends Component {
       this.styles.container,
       !this.props.shouldShow && this.styles.notShow
     );
+    console.log(Routes);
     return (
       <div style={style}>
         <ProfileCard
