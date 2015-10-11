@@ -15,39 +15,32 @@ class Header extends Component {
   get styles() {
     return {
       container: {
-        // display:'flexbox',
+        display:'flex',
+        alignItems: 'center',
         position: 'relative',
         height: '48px',
         backgroundColor: '#68B1DE',
-        padding: 10,
         boxShadow: '0 0 50px 0 rgba(0, 0, 0, 0.15)',
       },
-
-      left_title: {
-        display: 'inline-block',
+      leftTitle: {
+        flex: 1,
         color: 'white',
-        fontSize: '25px',
+        fontSize: '24px',
       },
-
-      middle_search: {
-        display: 'inline-block',
-        width: '50%',
+      middleSearch: {
+        flex: 2,
         color: 'white',
         textAlign: 'center'
       },
-
-      right_buttons: {
-        display: 'inline-block',
-        float: 'right',
-        width: '25%',
+      rightButtons: {
+        flex: 1,
         color: 'white',
         fontSize: '20px',
       },
-
       icon: {
         position: 'relative',
         marginRight: '10px',
-      }
+      },
     };
   }
 
@@ -68,33 +61,19 @@ class Header extends Component {
   render() {
     return (
       <div style={this.styles.container}>
-<<<<<<< HEAD
-        <div style={this.styles.left_title}>
+        <div style={this.styles.leftTitle}>
+          <Clickable
+            content={'S'}
+            func={this.props.handleSidebarClick}
+            styles={this.clickableStyles} />
           <i className={"fa fa-bars fa-x"} style={this.styles.icon}></i>
-          {'Edge Youth Leadership'}
         </div>
-        <div style={this.styles.middle_search}>
+        <div style={this.styles.middleSearch}>
           {"[ Max's searchbar goes here ]"}
         </div>
-        <div style={this.styles.right_buttons}>
-          <GeneralButton
-            content={'About'} />
-          <GeneralButton
-            content={'Login'} />
-          <GeneralButton
-            content={'Signup'} />
-          <GeneralButton
-            content={'Contact'} />
+        <div style={this.styles.rightButtons}>
+          
         </div>
-=======
-        <Clickable
-          content={'S'}
-          func={this.props.handleSidebarClick}
-          styles={this.clickableStyles} />
-        <span style={this.styles.title}>
-          {'edge-yl'}
-        </span>
->>>>>>> 937e4686521a6278dc3b56b55a3ce691de065462
       </div>
     );
   }
