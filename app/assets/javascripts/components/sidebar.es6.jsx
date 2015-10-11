@@ -20,8 +20,9 @@ class Sidebar extends Component {
         top: 0,
         left: 0,
         width: '236px',
+        transition: 'left 0.5s ease-out'
       },
-      show: {
+      notShow: {
         left: '-236px',
       },
     };
@@ -31,7 +32,7 @@ class Sidebar extends Component {
     var style = Object.assign(
       {},
       this.styles.container,
-      this.props.shouldShow && this.styles.show
+      !this.props.shouldShow && this.styles.notShow
     );
     return (
       <div style={style}>

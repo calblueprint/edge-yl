@@ -26,7 +26,6 @@ class ProfilePage extends Component {
   }
 
   render() {
-    console.log(this.state.sidebar);
     return (
       <div style={this.styles.container}>
         <Header
