@@ -11,7 +11,7 @@ class AuthenticationModal extends Component {
       isLogin: true,
     };
   }
-  
+
   get styles() {
     return {
       container: {

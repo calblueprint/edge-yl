@@ -1,5 +1,5 @@
 class ProfileGrid extends Component {
-  
+
   get styles() {
     return {
       container: {
@@ -13,32 +13,32 @@ class ProfileGrid extends Component {
 
   render() {
     return (
-      <div style={this.styles.container}> 
-        <ProfileCard 
+      <div style={this.styles.container}>
+        <ProfileCard
           cardName={'Card Name'}
           cardBody={'profile card body text'}/>
-        <ProfileCard 
+        <ProfileCard
           cardName={'Card Name'}
           cardBody={'profile card body text'}/>
-        <ProfileCard 
+        <ProfileCard
           cardName={'Card Name'}
           cardBody={'profile card body text'}/>
-        <ProfileCard 
+        <ProfileCard
           cardName={'Card Name'}
           cardBody={'profile card body text'}/>
-        <ProfileCard 
+        <ProfileCard
           cardName={'Card Name'}
           cardBody={'profile card body text'}/>
-        <ProfileCard 
+        <ProfileCard
           cardName={'Card Name'}
           cardBody={'profile card body text'}/>
-        <ProfileCard 
+        <ProfileCard
           cardName={'Card Name'}
           cardBody={'profile card body text'}/>
-        <ProfileCard 
+        <ProfileCard
           cardName={'Card Name'}
           cardBody={'profile card body text'}/>
-        <ProfileCard 
+        <ProfileCard
           cardName={'Card Name'}
           cardBody={'profile card body text'}/>
       </div>

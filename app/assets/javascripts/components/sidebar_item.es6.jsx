@@ -23,14 +23,14 @@ class SidebarItem extends Component {
       icon: {
         width: '16px',
         height: 'auto',
-      },   
+      },
     };
   }
 
   render() {
     return (
       <div style={this.styles.container}>
-        <i 
+        <i
           style={this.styles.icon}
           className={this.props.icon} />
         <span style={this.styles.label}>{this.props.label}</span>
