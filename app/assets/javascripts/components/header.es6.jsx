@@ -19,7 +19,7 @@ class Header extends Component {
         position: 'relative',
         height: '48px',
         backgroundColor: '#68B1DE',
-        boxShadow: '0 0 50px 0 rgba(0, 0, 0, 0.15)',
+        boxShadow: '0 0 5px 0 rgba(0, 0, 0, 0.25)',
       },
       leftTitle: {
         display: 'flex',
