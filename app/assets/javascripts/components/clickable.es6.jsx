@@ -29,6 +29,7 @@ class Clickable extends Component {
 
   componentDidMount() {
     var node = React.findDOMNode(this.refs.container);
+    node.addEventListener('click', this.handleClick.bind(this));
     node.addEventListener('mousedown', this.handleMouseDown.bind(this));
     node.addEventListener('mouseleave', this.handleMouseLeave.bind(this));
     node.addEventListener('mouseup', this.handleMouseUp.bind(this));
@@ -67,7 +68,6 @@ class Clickable extends Component {
     return (
       <a
         href={this.props.route}
-        onClick={this.handleClick.bind(this)}
         ref={'container'}
         style={style}>
         {this.props.content}

@@ -1,5 +1,9 @@
 class ProfilePage extends Component {
-  
+
+  static get defaultState() {
+    return { sidebar: true };
+  }
+
   get styles() {
     return {
       container: {
@@ -17,12 +21,18 @@ class ProfilePage extends Component {
     };
   }
 
+  handleClick(event) {
+    this.setState({ sidebar: !this.state.sidebar });
+  }
+
   render() {
+    console.log(this.state.sidebar);
     return (
       <div style={this.styles.container}>
-        <Header />
+        <Header
+          handleSidebarClick={this.handleClick.bind(this)} />
         <div style={this.styles.body}>
-          <Sidebar />
+          <Sidebar shouldShow={this.state.sidebar} />
           <ProfileGrid />
         </div>
       </div>
