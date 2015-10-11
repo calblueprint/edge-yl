@@ -75,7 +75,10 @@ class Header extends Component {
           <SearchBar />
         </div>
         <div style={this.styles.rightButtons}>
-          
+          <Clickable
+            content={'P'}
+            route={Routes.pages.profile}
+            styles={this.clickableStyles} />
         </div>
       </div>
     );
