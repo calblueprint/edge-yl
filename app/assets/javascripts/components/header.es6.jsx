@@ -21,7 +21,7 @@ class Header extends Component {
         backgroundColor: '#68B1DE',
         boxShadow: '0 0 5px 0 rgba(0, 0, 0, 0.25)',
       },
-      leftTitle: {
+      leftSection: {
         display: 'flex',
         alignItems: 'center',
         alignSelf: 'stretch',
@@ -30,14 +30,14 @@ class Header extends Component {
         paddingLeft: '24px',
         boxSizing: 'border-box',
       },
-      middleSearch: {
+      middleSection: {
         display: 'flex',
         flex: 1,
         padding: '0 12px',
         alignItems: 'center',
         alignSelf: 'stretch',
       },
-      rightButtons: {
+      rightSection: {
         display: 'flex',
         justifyContent: 'flex-end',
         alignItems: 'center',
@@ -50,7 +50,17 @@ class Header extends Component {
       icon: {
         position: 'relative',
         color: 'white',
-        fontSize: '16px',
+        fontSize: '20px',
+        alignItems: 'center',
+        alignSelf: 'stretch',
+      },
+      rightIcons: {
+        position: 'relative',
+        color: 'white',
+        fontSize: '24px',
+        padding: '20px',
+        alignItems: 'center',
+        alignSelf: 'stretch',
       },
     };
   }
@@ -64,7 +74,19 @@ class Header extends Component {
         padding: '8px',
         color: 'white',
         border: '2px solid white',
-        borderRadius: '15px',
+        borderRadius: '12px',
+      },
+    };
+  }
+
+  get titleStyle() {
+    return {
+      default: {
+        position: 'relative',
+        color: 'white',
+        paddingRight: '16px',
+        fontColor: 'white',
+        fontSize: '24px',
       },
     };
   }
@@ -72,7 +94,7 @@ class Header extends Component {
   render() {
     return (
       <div style={this.styles.container}>
-        <div style={this.styles.leftTitle}>
+        <div style={this.styles.leftSection}>
           <Clickable
             func={this.props.handleSidebarClick}>
             <i
@@ -81,14 +103,28 @@ class Header extends Component {
             </i>
           </Clickable>
         </div>
-        <div style={this.styles.middleSearch}>
+        <div style={this.styles.middleSection}>
+          <Clickable
+            content={'EDGE'}
+            route={Routes.pages.login}
+            styles={this.titleStyle} />        
           <HeaderSearch />
         </div>
-        <div style={this.styles.rightButtons}>
+        <div style={this.styles.rightSection}>    
           <Clickable
-            content={'P'}
-            route={Routes.pages.profile}
-            styles={this.clickableStyles} />
+            route={Routes.pages.mail}>
+            <i
+              className={"fa fa-envelope-o fa-x"}
+              style={this.styles.rightIcons}>
+            </i>
+          </Clickable>
+          <Clickable
+            route={Routes.pages.profile}>
+            <i
+              className={"fa fa-user fa-x"}
+              style={this.styles.rightIcons}>
+            </i>
+          </Clickable>
         </div>
       </div>
     );

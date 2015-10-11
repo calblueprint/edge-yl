@@ -3,6 +3,7 @@ var Routes = {
     login: '/login',
     signup: '/signup',
     profile: '/profile',
+    mail: '/mail',
   },
   profiles: {
     index: '/profiles',
