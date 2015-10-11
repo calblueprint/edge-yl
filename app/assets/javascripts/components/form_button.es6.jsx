@@ -22,7 +22,7 @@ class FormButton extends Component {
         display: 'flex',
         justifyContent: 'center',
         position: 'relative',
-        height: 32,
+        height: '32px',
       },
     }
   }
@@ -30,7 +30,7 @@ class FormButton extends Component {
   get clickableStyles() {
     return {
       action: {
-        borderBottom: 0,
+        borderBottom: '0px',
       },
       default: {
         display: 'inline-block',
@@ -40,7 +40,7 @@ class FormButton extends Component {
         color: 'white',
         backgroundColor: '#68B1DE',
         borderBottom: '2px solid #28719E',
-        borderRadius: 2,
+        borderRadius: '2px',
         fontSize: '14px',
       },
     };

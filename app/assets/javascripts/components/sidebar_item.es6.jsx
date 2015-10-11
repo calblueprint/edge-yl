@@ -12,7 +12,7 @@ class SidebarItem extends Component {
       container: {
         position: 'relative',
         width: '100%',
-        padding: 30,
+        padding: '30px',
         boxSizing: 'border-box',
       },
       label: {
@@ -21,7 +21,7 @@ class SidebarItem extends Component {
         paddingLeft: '12px',
       },
       icon: {
-        width: 16,
+        width: '16px',
         height: 'auto',
       },   
     };

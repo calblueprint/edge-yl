@@ -5,7 +5,7 @@ class ProfileGrid extends Component {
       container: {
         position: 'relative',
         width: '70%',
-        padding: 10,
+        padding: '10px',
         float: 'right',
       },
     };

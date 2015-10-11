@@ -20,11 +20,11 @@ class ProfileCard extends Component {
         display: 'inline-block',
         position: 'relative',
         width: '33%',
-        height: 250,
+        height: '250px',
         backgroundColor: 'white',
         border: '1px solid',
         borderColor: '#e5e6e9 #dfe0e4 #d0d1d5',
-        borderRadius: 3,
+        borderRadius: '3px',
       },
     };
   }
