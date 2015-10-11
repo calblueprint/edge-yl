@@ -3,6 +3,7 @@ class Header extends React.Component {
   get styles() {
     return {
       container: {
+        // display:'flexbox',
         position: 'relative',
         verticalAlign: 'middle',
         width: '100%',
@@ -19,19 +20,24 @@ class Header extends React.Component {
       },
 
       middle_search: {
-        width: '50%',
         display: 'inline-block',
+        width: '50%',
         color: 'white',
         textAlign: 'center'
       },
 
       right_buttons: {
+        display: 'inline-block',
         float: 'right',
         width: '25%',
-        display: 'inline-block',
         color: 'white',
         fontSize: '20px',
       },
+
+      icon: {
+        position: 'relative',
+        marginRight: '10px',
+      }
     };
   }
 
@@ -39,6 +45,7 @@ class Header extends React.Component {
     return (
       <div style={this.styles.container}>
         <div style={this.styles.left_title}>
+          <i className={"fa fa-bars fa-x"} style={this.styles.icon}></i>
           {'Edge Youth Leadership'}
         </div>
         <div style={this.styles.middle_search}>
