@@ -9,12 +9,12 @@ class SignupForm extends Component {
       },
       label: {
         position: 'relative',
-        marginBottom: 6,
+        marginBottom: '6px',
       },
       input: {
         position: 'relative',
-        padding: 8,
-        marginBottom: 24,
+        padding: '8px',
+        marginBottom: '24px',
         boxSizing: 'border-box',
       },
     };

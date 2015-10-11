@@ -17,8 +17,8 @@ class ProfileCardBody extends React.Component {
       container: {
         flex: 1,
         position: 'relative',
-        padding: 12,
-        height: 186,
+        padding: '12px',
+        height: '186px',
       },
     };
   }
