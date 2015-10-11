@@ -14,7 +14,7 @@ class PagesController < ApplicationController
 
   end
 
-  def dashboard
+  def profile_show
+    render 'profile_show'
   end
-	
 end

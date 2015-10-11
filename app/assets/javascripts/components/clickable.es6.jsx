@@ -7,7 +7,7 @@ class Clickable extends Component {
       route: React.PropTypes.string,
       styles: React.PropTypes.shape({
         action: React.PropTypes.object.isRequired,
-        container: React.PropTypes.object.isRequired,
+        default: React.PropTypes.object.isRequired,
       }).isRequired,
     };
   }
@@ -29,6 +29,7 @@ class Clickable extends Component {
 
   componentDidMount() {
     var node = React.findDOMNode(this.refs.container);
+    node.addEventListener('click', this.handleClick.bind(this));
     node.addEventListener('mousedown', this.handleMouseDown.bind(this));
     node.addEventListener('mouseleave', this.handleMouseLeave.bind(this));
     node.addEventListener('mouseup', this.handleMouseUp.bind(this));
@@ -61,13 +62,12 @@ class Clickable extends Component {
   render() {
     var style = Object.assign(
       {},
-      this.props.styles.container,
+      this.props.styles.default,
       this.state.action && this.props.styles.action
     );
     return (
       <a
         href={this.props.route}
-        onClick={this.handleClick.bind(this)}
         ref={'container'}
         style={style}>
         {this.props.content}

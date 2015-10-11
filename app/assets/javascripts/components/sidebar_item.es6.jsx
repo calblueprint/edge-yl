@@ -13,11 +13,12 @@ class SidebarItem extends Component {
         position: 'relative',
         width: '100%',
         padding: 30,
+        boxSizing: 'border-box',
       },
       label: {
         position: 'relative',
         fontSize: '14px',
-        padding: 20,
+        paddingLeft: '12px',
       },
       icon: {
         width: 16,

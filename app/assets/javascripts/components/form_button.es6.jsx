@@ -18,10 +18,21 @@ class FormButton extends Component {
 
   get styles() {
     return {
+      container: {
+        display: 'flex',
+        justifyContent: 'center',
+        position: 'relative',
+        height: 32,
+      },
+    }
+  }
+
+  get clickableStyles() {
+    return {
       action: {
         borderBottom: 0,
       },
-      container: {
+      default: {
         display: 'inline-block',
         verticalAlgin: 'middle',
         position: 'relative',
@@ -37,9 +48,11 @@ class FormButton extends Component {
 
   render() {
     return (
-      <Clickable
-        styles={this.styles}
-        {...this.props} />
+      <div style={this.styles.container}>
+        <Clickable
+          styles={this.clickableStyles}
+          {...this.props} />
+      </div>
     );
   }
 }
