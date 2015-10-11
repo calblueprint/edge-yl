@@ -1,4 +1,4 @@
-class ProfileGrid extends React.Component {
+class ProfileGrid extends Component {
   
   get styles() {
     return {

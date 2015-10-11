@@ -1,4 +1,4 @@
-class Sidebar extends React.Component {
+class Sidebar extends Component {
 
   get styles() {
     return {
