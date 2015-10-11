@@ -28,6 +28,7 @@ class Header extends Component {
         position: 'relative',
         width: '172px',
         paddingLeft: '24px',
+        boxSizing: 'border-box',
       },
       middleSearch: {
         display: 'flex',
@@ -37,10 +38,11 @@ class Header extends Component {
         alignSelf: 'stretch',
       },
       rightButtons: {
-        position: 'relative',
-        width: '172px',
+        display: 'flex',
         alignItems: 'center',
         alignSelf: 'stretch',
+        position: 'relative',
+        width: '172px',
       },
       icon: {
         position: 'relative',

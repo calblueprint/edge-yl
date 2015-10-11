@@ -21,8 +21,10 @@ class SidebarItem extends Component {
         paddingLeft: '12px',
       },
       icon: {
+        position: 'relative',
         width: '16px',
         height: 'auto',
+        color: '#565A5C',
       },
     };
   }
