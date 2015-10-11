@@ -3,10 +3,10 @@ class ProfileGrid extends Component {
   get styles() {
     return {
       container: {
+        display: 'flex',
+        flexWrap: 'wrap',
         position: 'relative',
-        width: '70%',
-        padding: '10px',
-        float: 'right',
+        paddingLeft: '232px',
       },
     };
   }
@@ -14,15 +14,6 @@ class ProfileGrid extends Component {
   render() {
     return (
       <div style={this.styles.container}>
-        <ProfileCard
-          cardName={'Card Name'}
-          cardBody={'profile card body text'}/>
-        <ProfileCard
-          cardName={'Card Name'}
-          cardBody={'profile card body text'}/>
-        <ProfileCard
-          cardName={'Card Name'}
-          cardBody={'profile card body text'}/>
         <ProfileCard
           cardName={'Card Name'}
           cardBody={'profile card body text'}/>
