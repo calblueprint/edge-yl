@@ -32,7 +32,7 @@ class AuthenticationPage extends Component {
       },
       footer: {
         position: 'relative',
-        marginTop: 12,
+        marginTop: '12px',
       },
     };
   }

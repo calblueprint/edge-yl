@@ -5,9 +5,8 @@ class Sidebar extends Component {
       container: {
         position: 'absolute',
         top: 0,
-        left: 5,
-        width: 172,
-        height: '100%',
+        left: 0,
+        width: '236px',
       },
     };
   }
