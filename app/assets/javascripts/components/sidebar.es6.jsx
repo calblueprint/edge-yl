@@ -19,7 +19,7 @@ class Sidebar extends Component {
         top: '0px',
         left: '0px',
         width: '236px',
-        transition: 'left 0.5s ease-out'
+        transition: 'left 0.5s ease-out',
       },
       notShow: {
         left: '-236px',

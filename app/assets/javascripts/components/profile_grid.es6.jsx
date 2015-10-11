@@ -1,5 +1,17 @@
 class ProfileGrid extends Component {
 
+  static get propTypes() {
+    return {
+      shouldShow: React.PropTypes.bool.isRequired,
+    };
+  }
+
+  static get defaultProps() {
+    return {
+      shouldShow: true,
+    };
+  }
+
   get styles() {
     return {
       container: {
@@ -7,13 +19,22 @@ class ProfileGrid extends Component {
         flexWrap: 'wrap',
         position: 'relative',
         paddingLeft: '232px',
+        transition: 'padding 0.5s ease-out',
+      },
+      notShow: {
+        paddingLeft: '0px',
       },
     };
   }
 
   render() {
+    var style = Object.assign(
+      {},
+      this.styles.container,
+      !this.props.shouldShow && this.styles.notShow
+    );
     return (
-      <div style={this.styles.container}>
+      <div style={style}>
         <ProfileCard
           cardName={'Card Name'}
           cardBody={'profile card body text'}/>

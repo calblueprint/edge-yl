@@ -33,7 +33,7 @@ class ProfilePage extends Component {
           handleSidebarClick={this.handleClick.bind(this)} />
         <div style={this.styles.body}>
           <Sidebar shouldShow={this.state.sidebar} />
-          <ProfileGrid />
+          <ProfileGrid shouldShow={this.state.sidebar} />
         </div>
       </div>
     );
