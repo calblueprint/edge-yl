@@ -11,7 +11,6 @@ class Header extends Component {
       handleSidebarClick: null,
     };
   }
-
   get styles() {
     return {
       container: {
@@ -23,19 +22,23 @@ class Header extends Component {
         boxShadow: '0 0 50px 0 rgba(0, 0, 0, 0.15)',
       },
       leftTitle: {
+        display: 'flex',
         flex: 1,
+        alignItems: 'center',
+        alignSelf: 'stretch',
         color: 'white',
         fontSize: '24px',
       },
       middleSearch: {
-        flex: 2,
-        color: 'white',
-        textAlign: 'center'
+        display: 'flex',
+        flex: 3,
+        alignItems: 'center',
+        alignSelf: 'stretch',
       },
       rightButtons: {
         flex: 1,
-        color: 'white',
-        fontSize: '20px',
+        alignItems: 'center',
+        alignSelf: 'stretch',
       },
       icon: {
         position: 'relative',
@@ -69,7 +72,7 @@ class Header extends Component {
           <i className={"fa fa-bars fa-x"} style={this.styles.icon}></i>
         </div>
         <div style={this.styles.middleSearch}>
-          {"[ Max's searchbar goes here ]"}
+          <SearchBar />
         </div>
         <div style={this.styles.rightButtons}>
           

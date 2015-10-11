@@ -11,22 +11,22 @@ class AuthenticationModal extends Component {
       isLogin: true,
     };
   }
-  
+
   get styles() {
     return {
       container: {
         position: 'relative',
-        width: 372,
-        padding: 36,
+        width: '372px',
+        padding: '36px',
         backgroundColor: 'white',
         border: '1px solid',
         borderColor: '#e5e6e9 #dfe0e4 #d0d1d5',
-        borderRadius: 3,
+        borderRadius: '3px',
       },
       head: {
         position: 'relative',
         width: '100%',
-        marginBottom: 24,
+        marginBottom: '24px',
         textAlign: 'center',
       },
     };

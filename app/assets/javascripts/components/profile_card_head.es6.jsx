@@ -16,7 +16,7 @@ class ProfileCardHead extends React.Component {
     return {
       container: {
         position: 'relative',
-        height: 40,
+        height: '40px',
         verticalAlign: 'middle',
         width: '100%',
       },
@@ -24,14 +24,14 @@ class ProfileCardHead extends React.Component {
         position: 'relative',
         float: 'left',
         lineHeight: '40px',
-        marginLeft: 5,
-        fontSize: 24,
+        marginLeft: '5px',
+        fontSize: '24px',
       },
       icon: {
         position: 'relative',
         float: 'right',
         lineHeight: '40px',
-        marginRight: 5,
+        marginRight: '5px',
       }
     };
   }

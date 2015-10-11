@@ -1,11 +1,11 @@
 class ProfileGrid extends Component {
-  
+
   get styles() {
     return {
       container: {
         position: 'relative',
         width: '70%',
-        padding: 10,
+        padding: '10px',
         float: 'right',
       },
     };
@@ -13,32 +13,32 @@ class ProfileGrid extends Component {
 
   render() {
     return (
-      <div style={this.styles.container}> 
-        <ProfileCard 
+      <div style={this.styles.container}>
+        <ProfileCard
           cardName={'Card Name'}
           cardBody={'profile card body text'}/>
-        <ProfileCard 
+        <ProfileCard
           cardName={'Card Name'}
           cardBody={'profile card body text'}/>
-        <ProfileCard 
+        <ProfileCard
           cardName={'Card Name'}
           cardBody={'profile card body text'}/>
-        <ProfileCard 
+        <ProfileCard
           cardName={'Card Name'}
           cardBody={'profile card body text'}/>
-        <ProfileCard 
+        <ProfileCard
           cardName={'Card Name'}
           cardBody={'profile card body text'}/>
-        <ProfileCard 
+        <ProfileCard
           cardName={'Card Name'}
           cardBody={'profile card body text'}/>
-        <ProfileCard 
+        <ProfileCard
           cardName={'Card Name'}
           cardBody={'profile card body text'}/>
-        <ProfileCard 
+        <ProfileCard
           cardName={'Card Name'}
           cardBody={'profile card body text'}/>
-        <ProfileCard 
+        <ProfileCard
           cardName={'Card Name'}
           cardBody={'profile card body text'}/>
       </div>
