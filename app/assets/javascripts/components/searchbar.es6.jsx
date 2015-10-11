@@ -4,17 +4,12 @@ class SearchBar extends React.Component {
     return {
       container: {
         display: 'flex',
-        position: 'absolute',
-        left: '200px',
         height: '36px',
         width: '500px',
         margin: 'auto',
-        float: 'left',
-        backgroundColor: 'red',
       },
       icon: {
         flex: '1',
-        display: 'inline-block',
         height: '100%',
         padding: '6px 15px',
         boxSizing: 'border-box',
@@ -22,7 +17,6 @@ class SearchBar extends React.Component {
         color: 'white',
       },
       search_field: {
-        display: 'inline-block',
         flex: '10',
         height: '100%',
         padding:'8px 15px',
