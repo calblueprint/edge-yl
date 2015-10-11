@@ -42,7 +42,9 @@ class Header extends Component {
       },
       icon: {
         position: 'relative',
-        marginRight: '10px',
+        paddingLeft: '16px',
+        color: 'white',
+        fontSize: '16px',
       },
     };
   }
@@ -66,10 +68,12 @@ class Header extends Component {
       <div style={this.styles.container}>
         <div style={this.styles.leftTitle}>
           <Clickable
-            content={'S'}
-            func={this.props.handleSidebarClick}
-            styles={this.clickableStyles} />
-          <i className={"fa fa-bars fa-x"} style={this.styles.icon}></i>
+            func={this.props.handleSidebarClick}>
+            <i
+              className={"fa fa-bars fa-x"}
+              style={this.styles.icon}>
+            </i>
+          </Clickable>
         </div>
         <div style={this.styles.middleSearch}>
           <SearchBar />
