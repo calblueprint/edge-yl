@@ -1,4 +1,4 @@
-class SearchBar extends React.Component {
+class SearchBar extends Component {
 
   get styles() {
     return {
