@@ -24,8 +24,8 @@ class ProfileCardHead extends React.Component {
       },
       icon: {
         position: 'absolute',
-        top: '0',
-        right: '6',
+        top: '0px',
+        right: '6px',
         lineHeight: '40px',
       }
     };
