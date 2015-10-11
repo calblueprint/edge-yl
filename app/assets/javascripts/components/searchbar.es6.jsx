@@ -16,13 +16,13 @@ class SearchBar extends React.Component {
         backgroundColor: '#207CCA',
         color: 'white',
       },
-      search_field: {
+      searchField: {
         flex: '10',
         height: '100%',
         padding:'8px 15px',
         border: 'none',
-      }
-    }
+      },
+    };
   }
 
   render() {
@@ -30,11 +30,14 @@ class SearchBar extends React.Component {
       <form style={this.styles.container}>
         <div
             style={this.styles.icon}>
-          <i className={"fa fa-search fa-1x"} style={this.styles.icon}></i>
+          <i
+            className={"fa fa-search fa-1x"}
+            style={this.styles.icon}>
+          </i>
         </div>
         <input
           placeholder={'Search'}
-          style={this.styles.search_field}>
+          style={this.styles.searchField}>
         </input>
       </form>
     );

@@ -17,12 +17,9 @@ class Header extends Component {
         position: 'relative',
         height: '48px',
         backgroundColor: '#68B1DE',
-        float: 'left',
-        display: 'inline-block'
       },
       title: {
         position: 'relative',
-        width: '20px',
         color: '#ffffff',
         display: 'inline-block'
       },

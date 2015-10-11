@@ -77,6 +77,7 @@ span {
   outline: none;
 }
 
+input:focus,
 textarea {
   border: 1px solid $gray;
   -webkit-transition: all 0.375s ease-in-out;
@@ -85,8 +86,7 @@ textarea {
   -o-transition: all 0.375s ease-in-out;
 }
 
-input[type=text]:focus,
-input[type=password]:focus,
+input:focus,
 textarea:focus {
   border: 1px solid $blue;
   box-shadow: 0 0 3px $blue;
