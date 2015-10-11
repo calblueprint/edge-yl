@@ -32,12 +32,14 @@ class Header extends Component {
       },
       middleSearch: {
         display: 'flex',
-        flex: 4,
+        flex: 1,
+        padding: '0 12px',
         alignItems: 'center',
         alignSelf: 'stretch',
       },
       rightButtons: {
-        flex: 1,
+        position: 'relative',
+        width: '172px',
         alignItems: 'center',
         alignSelf: 'stretch',
       },

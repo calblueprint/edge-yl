@@ -16,10 +16,11 @@ class ProfileGrid extends Component {
     return {
       container: {
         display: 'flex',
+        flex: 1,
         flexWrap: 'wrap',
         justifyContent: 'space-between',
         position: 'relative',
-        paddingLeft: '172px',
+        padding: '0 12px',
         transition: 'padding 0.5s ease-out',
       },
       notShow: {
@@ -34,7 +35,6 @@ class ProfileGrid extends Component {
       this.styles.container,
       !this.props.shouldShow && this.styles.notShow
     );
-    console.log(Routes);
     return (
       <div style={style}>
         <ProfileCard
