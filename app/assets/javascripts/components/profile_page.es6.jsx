@@ -15,9 +15,14 @@ class ProfilePage extends Component {
         backgroundColor: '#eaf0f2',
       },
       body: {
+        display: 'flex',
         flex: 1,
         position: 'relative',
-        width: '100%',
+        paddingLeft: '172px',
+      },
+      placeholder: {
+        position: 'relative',
+        width: '172px',
       },
     };
   }
@@ -33,7 +38,8 @@ class ProfilePage extends Component {
           handleSidebarClick={this.handleClick.bind(this)} />
         <div style={this.styles.body}>
           <Sidebar shouldShow={this.state.sidebar} />
-          <ProfileGrid />
+          <ProfileGrid shouldShow={this.state.sidebar} />
+          <div style={this.styles.placeholder}></div>
         </div>
       </div>
     );

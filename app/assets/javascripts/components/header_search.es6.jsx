@@ -1,4 +1,4 @@
-class SearchBar extends Component {
+class HeaderSearch extends Component {
 
   get styles() {
     return {
@@ -9,14 +9,14 @@ class SearchBar extends Component {
       },
       leftSection: {
         display: 'flex',
-        flex: '1',
+        width: '64px',
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#207CCA',
         color: 'white',
       },
       searchField: {
-        flex: '10',
+        flex: 1,
         height: '100%',
         padding:'8px 15px',
         border: 'none',

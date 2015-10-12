@@ -23,26 +23,34 @@ class Header extends Component {
       },
       leftTitle: {
         display: 'flex',
-        flex: 1,
         alignItems: 'center',
         alignSelf: 'stretch',
-        color: 'white',
-        fontSize: '24px',
+        position: 'relative',
+        width: '172px',
+        paddingLeft: '24px',
+        boxSizing: 'border-box',
       },
       middleSearch: {
         display: 'flex',
-        flex: 3,
+        flex: 1,
+        padding: '0 12px',
         alignItems: 'center',
         alignSelf: 'stretch',
       },
       rightButtons: {
-        flex: 1,
+        display: 'flex',
+        justifyContent: 'flex-end',
         alignItems: 'center',
         alignSelf: 'stretch',
+        position: 'relative',
+        width: '172px',
+        paddingRight: '24px',
+        boxSizing: 'border-box',
       },
       icon: {
         position: 'relative',
-        marginRight: '10px',
+        color: 'white',
+        fontSize: '16px',
       },
     };
   }
@@ -51,12 +59,12 @@ class Header extends Component {
     return {
       default: {
         position: 'relative',
-        width: '16px',
-        height: '16px',
-        padding: '4px',
+        width: '30px',
+        height: '30px',
+        padding: '8px',
         color: 'white',
         border: '2px solid white',
-        borderRadius: '8px',
+        borderRadius: '15px',
       },
     };
   }
@@ -66,16 +74,21 @@ class Header extends Component {
       <div style={this.styles.container}>
         <div style={this.styles.leftTitle}>
           <Clickable
-            content={'S'}
-            func={this.props.handleSidebarClick}
-            styles={this.clickableStyles} />
-          <i className={"fa fa-bars fa-x"} style={this.styles.icon}></i>
+            func={this.props.handleSidebarClick}>
+            <i
+              className={"fa fa-bars fa-x"}
+              style={this.styles.icon}>
+            </i>
+          </Clickable>
         </div>
         <div style={this.styles.middleSearch}>
-          <SearchBar />
+          <HeaderSearch />
         </div>
         <div style={this.styles.rightButtons}>
-          
+          <Clickable
+            content={'P'}
+            route={Routes.pages.profile}
+            styles={this.clickableStyles} />
         </div>
       </div>
     );

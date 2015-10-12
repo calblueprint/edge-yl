@@ -2,19 +2,21 @@ class Clickable extends Component {
 
   static get propTypes() {
     return {
-      content: React.PropTypes.string.isRequired,
+      content: React.PropTypes.string,
+      children: React.PropTypes.node,
       func: React.PropTypes.func,
       route: React.PropTypes.string,
       styles: React.PropTypes.shape({
-        action: React.PropTypes.object.isRequired,
-        default: React.PropTypes.object.isRequired,
-      }).isRequired,
+        action: React.PropTypes.object,
+        default: React.PropTypes.object,
+      }),
     };
   }
 
   static get defaultProps() {
     return {
       content: '',
+      children: null,
       func: null,
       route: '',
       styles: {},
@@ -59,6 +61,13 @@ class Clickable extends Component {
     }
   }
 
+  renderChildren() {
+    if (this.props.children) {
+      return this.props.children;
+    } else {
+      return <span>{this.props.content}</span>;
+    }
+  }
   render() {
     var style = Object.assign(
       {},
@@ -70,7 +79,7 @@ class Clickable extends Component {
         href={this.props.route}
         ref={'container'}
         style={style}>
-        {this.props.content}
+        {this.renderChildren()}
       </a>
     );
   }
