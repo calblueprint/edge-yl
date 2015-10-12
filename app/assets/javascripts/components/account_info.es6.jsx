@@ -6,49 +6,61 @@ class AccountInfo extends Component {
         display: 'flex',
         flexDirection: 'column',
         position: 'relative',
-        alignItems: 'center',
         width: '100%',
         borderBottom: 'solid #D6D6D6 3px',
       },
       email: {
         display: 'flex',
-        paddingTop: '24px',
-        paddingBottom:'16px',
         fontSize: '16px',
         alignSelf: 'flex-start',
         flex: '1',
       }, 
       password: {
         display: 'flex',
-        fontSize: '16px',
-        paddingBottom: '20px',
+        fontSize: '16px',       
         alignSelf: 'flex-start',
         flex: '1',
+      },
+      row: {
+        display: 'flex',
+        flexDirection: 'row',
+        position: 'relative',
+        padding: '15px', 
+        width: '100%',
       },
     };
   }
 
-  get titleStyle() {
+  get buttonStyle() {
     return {
       default: {
+        display: 'flex',
+        alignSelf: 'flex-end',
         position: 'relative',
-        color: 'white',
-        paddingRight: '16px',
-        fontColor: 'white',
-        fontSize: '24px',
+        color: 'black',
+        fontColor: 'black',
+        fontSize: '16',
       },
     };
   }
   render() {
     return (
       <div style={this.styles.container}>
-        <span style={this.styles.email} >Email: soniayang@edgeyl.org</span>
-        <span style={this.styles.password}>Password: ********** </span>
-        <Clickable
-          content={'CHANGE'}
-          route={Routes.pages.login}
-          styles={this.titleStyle} />      
-      </div>
+        <div style= {this.styles.row}>
+          <span style={this.styles.email} >Email: soniayangsux@edgeyl.org</span>
+          <Clickable
+            content={'Change'}
+            route={Routes.pages.profile}
+            styles={this.buttonStyle} />   
+        </div>
+        <div style= {this.styles.row}>
+          <span style={this.styles.password}>Password: ********** </span>
+          <Clickable
+            content={'Change'}
+            route={Routes.pages.profile}
+            styles={this.buttonStyle} />        
+        </div>     
+      </div>         
     );
   }
 }
