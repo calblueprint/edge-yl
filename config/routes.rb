@@ -3,6 +3,7 @@
   root 'pages#login'
   get 'login', to: 'pages#login'
   get 'signup', to: 'pages#signup'
+  get 'mail', to: 'pages#mail'
   get 'profile', to: 'pages#profile'
   get 'profiles/:id', to: 'pages#profile_show'
   

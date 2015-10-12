@@ -65,7 +65,7 @@ class Clickable extends Component {
     if (this.props.children) {
       return this.props.children;
     } else {
-      return <span>{this.props.content}</span>;
+      return this.props.content;
     }
   }
   render() {
