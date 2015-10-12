@@ -25,8 +25,9 @@ class AccountInfo extends Component {
         display: 'flex',
         flexDirection: 'row',
         position: 'relative',
-        padding: '15px', 
         width: '100%',
+        paddingTop: '20px',
+        paddingBottom:'14px', 
       },
     };
   }
