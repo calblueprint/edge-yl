@@ -22,11 +22,13 @@ class AccountPage extends Component {
         width: '100%',
       },
       content: {
+        display: 'flex', 
+        flexDirection: 'column',
         marginLeft: '236px', 
         position: 'relative',
         display: 'flex',
         width: '712px',
-        height: '100%',
+        height: '600px',
         backgroundColor: 'white',
         border: '1px solid',
         borderColor: '#e5e6e9 #dfe0e4 #d0d1d5',
@@ -50,7 +52,7 @@ class AccountPage extends Component {
           <Sidebar shouldShow={this.state.sidebar} />
           <div style = {this.styles.content}> 
             <AccountMetadata />
-
+            <AccountInfo />
           </div>
         </div>
       </div>
