@@ -11,15 +11,15 @@ class AccountInfo extends Component {
       },
       email: {
         display: 'flex',
-        fontSize: '16px',
-        alignSelf: 'flex-start',
         flex: '1',
+        alignSelf: 'flex-start',
+        fontSize: '16px',
       }, 
       password: {
         display: 'flex',
-        fontSize: '16px',       
-        alignSelf: 'flex-start',
         flex: '1',
+        alignSelf: 'flex-start',
+        fontSize: '16px',
       },
       row: {
         display: 'flex',
@@ -32,7 +32,7 @@ class AccountInfo extends Component {
     };
   }
 
-  get buttonStyle() {
+  get buttonStyles() {
     return {
       default: {
         display: 'flex',
@@ -44,6 +44,7 @@ class AccountInfo extends Component {
       },
     };
   }
+
   render() {
     return (
       <div style={this.styles.container}>
@@ -52,14 +53,14 @@ class AccountInfo extends Component {
           <Clickable
             content={'Change'}
             route={Routes.pages.profile}
-            styles={this.buttonStyle} />   
+            styles={this.buttonStyles} />   
         </div>
         <div style= {this.styles.row}>
-          <span style={this.styles.password}>Password: ********** </span>
+          <span style={this.styles.password}>Password: **********</span>
           <Clickable
             content={'Change'}
             route={Routes.pages.profile}
-            styles={this.buttonStyle} />        
+            styles={this.buttonStyles} />        
         </div>     
       </div>         
     );

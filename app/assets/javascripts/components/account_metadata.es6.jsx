@@ -17,7 +17,6 @@ class AccountMetadata extends Component {
         height: 'auto',
         marginTop: '76px',
       },
-
       name: {
         paddingTop: '24px',
         paddingBottom:'16px',
