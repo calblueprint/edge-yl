@@ -18,15 +18,21 @@ class AccountPage extends Component {
         position: 'relative',
         display: 'flex', 
         flexDirection: 'row',
-  			justifyContent: 'center',
+        justifyContent: 'center',
         width: '100%',
       },
       content: {
-      	marginLeft: '236px', 
-      	position: 'relative',
-      	display: 'flex',
-      	width: '712px',
-      	height: '100%',
+        marginLeft: '236px', 
+        position: 'relative',
+        display: 'flex',
+        width: '712px',
+        height: '100%',
+        backgroundColor: 'white',
+        border: '1px solid',
+        borderColor: '#e5e6e9 #dfe0e4 #d0d1d5',
+        borderRadius: '3px',
+        marginTop: '30px',
+        padding: '0px 45px',
       },
     };
   }
@@ -43,8 +49,8 @@ class AccountPage extends Component {
         <div style={this.styles.body}>
           <Sidebar shouldShow={this.state.sidebar} />
           <div style = {this.styles.content}> 
-          	<AccountMetadata />
-            <AccountInfo />
+            <AccountMetadata />
+
           </div>
         </div>
       </div>
