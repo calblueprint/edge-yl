@@ -51,16 +51,12 @@ class Header extends Component {
         position: 'relative',
         color: 'white',
         fontSize: '20px',
-        alignItems: 'center',
-        alignSelf: 'stretch',
       },
       rightIcons: {
         position: 'relative',
         color: 'white',
         fontSize: '24px',
         padding: '20px',
-        alignItems: 'center',
-        alignSelf: 'stretch',
       },
     };
   }
