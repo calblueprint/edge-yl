@@ -27,8 +27,7 @@ class AccountPage extends Component {
       	display: 'flex',
       	width: '712px',
       	height: '100%',
-      	//border: '1px solid red',
-      }
+      },
     };
   }
 
@@ -45,7 +44,7 @@ class AccountPage extends Component {
           <Sidebar shouldShow={this.state.sidebar} />
           <div style = {this.styles.content}> 
           	<AccountMetadata />
-
+            <AccountInfo />
           </div>
         </div>
       </div>
