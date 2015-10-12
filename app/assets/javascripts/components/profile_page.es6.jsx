@@ -18,11 +18,11 @@ class ProfilePage extends Component {
         display: 'flex',
         flex: 1,
         position: 'relative',
-        paddingLeft: '172px',
+        paddingLeft: '196px',
       },
       placeholder: {
         position: 'relative',
-        width: '172px',
+        width: '196px',
       },
     };
   }
