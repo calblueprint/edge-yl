@@ -14,7 +14,7 @@ class AccountPage extends Component {
         height: '100vh',
       },
       body: {
-        flex: 1,
+        flex: '1',
         position: 'relative',
         display: 'flex', 
         flexDirection: 'row',
@@ -50,7 +50,7 @@ class AccountPage extends Component {
           handleSidebarClick={this.handleClick.bind(this)} />
         <div style={this.styles.body}>
           <Sidebar shouldShow={this.state.sidebar} />
-          <div style = {this.styles.content}> 
+          <div style={this.styles.content}> 
             <AccountMetadata />
             <AccountInfo />
           </div>

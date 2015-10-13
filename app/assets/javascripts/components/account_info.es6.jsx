@@ -6,7 +6,6 @@ class AccountInfo extends Component {
         display: 'flex',
         flexDirection: 'column',
         position: 'relative',
-        width: '100%',
         borderBottom: 'solid #D6D6D6 3px',
       },
       email: {
@@ -23,7 +22,6 @@ class AccountInfo extends Component {
       },
       row: {
         display: 'flex',
-        flexDirection: 'row',
         position: 'relative',
         width: '100%',
         paddingTop: '20px',
@@ -40,7 +38,7 @@ class AccountInfo extends Component {
         position: 'relative',
         color: 'black',
         fontColor: 'black',
-        fontSize: '16',
+        fontSize: '16px',
       },
     };
   }
@@ -49,7 +47,7 @@ class AccountInfo extends Component {
     return (
       <div style={this.styles.container}>
         <div style= {this.styles.row}>
-          <span style={this.styles.email} >Email: soniayangsux@edgeyl.org</span>
+          <span style={this.styles.email}>Email: soniayangsux@edgeyl.org</span>
           <Clickable
             content={'Change'}
             route={Routes.pages.profile}
