@@ -34,7 +34,7 @@ class HeaderSearch extends Component {
           </i>
         </div>
         <input
-          placeholder={'Search'}
+          placeholder={'Search for a student, school, or recruiter'}
           style={this.styles.searchField}>
         </input>
       </form>
