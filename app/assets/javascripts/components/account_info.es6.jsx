@@ -53,7 +53,7 @@ class AccountInfo extends Component {
             route={Routes.pages.profile}
             styles={this.buttonStyles} />   
         </div>
-        <div style= {this.styles.row}>
+        <div style={this.styles.row}>
           <span style={this.styles.password}>Password: **********</span>
           <Clickable
             content={'Change'}

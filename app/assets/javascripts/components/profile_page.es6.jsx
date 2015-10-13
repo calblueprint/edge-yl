@@ -10,19 +10,17 @@ class ProfilePage extends Component {
         display: 'flex',
         flexDirection: 'column',
         position: 'relative',
-        width: '100vw',
         height: '100vh',
-        backgroundColor: '#eaf0f2',
       },
       body: {
         display: 'flex',
-        flex: 1,
+        flex: '1',
         position: 'relative',
-        paddingLeft: '172px',
+        paddingLeft: '196px',
       },
       placeholder: {
         position: 'relative',
-        width: '172px',
+        width: '196px',
       },
     };
   }

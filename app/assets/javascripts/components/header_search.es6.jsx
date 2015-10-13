@@ -4,7 +4,7 @@ class HeaderSearch extends Component {
     return {
       container: {
         display: 'flex',
-        flex: 1,
+        flex: '1',
         height: '30px',
       },
       leftSection: {
@@ -16,7 +16,7 @@ class HeaderSearch extends Component {
         color: 'white',
       },
       searchField: {
-        flex: 1,
+        flex: '1',
         height: '100%',
         padding:'8px 15px',
         border: 'none',
@@ -34,7 +34,7 @@ class HeaderSearch extends Component {
           </i>
         </div>
         <input
-          placeholder={'Search'}
+          placeholder={'Search for a student, school, or recruiter'}
           style={this.styles.searchField}>
         </input>
       </form>

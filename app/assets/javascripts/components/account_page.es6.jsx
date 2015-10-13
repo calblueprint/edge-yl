@@ -10,31 +10,29 @@ class AccountPage extends Component {
         display: 'flex',
         flexDirection: 'column',
         position: 'relative',
-        width: '100vw',
         height: '100vh',
       },
       body: {
+        display: 'flex',
         flex: '1',
         position: 'relative',
-        display: 'flex', 
-        flexDirection: 'row',
-        justifyContent: 'center',
-        width: '100%',
+        paddingLeft: '196px',
       },
       content: {
         display: 'flex', 
         flexDirection: 'column',
-        marginLeft: '236px', 
+        flex: '1',
         position: 'relative',
-        display: 'flex',
-        width: '712px',
+        padding: '0 12px',
         height: '600px',
         backgroundColor: 'white',
         border: '1px solid',
         borderColor: '#e5e6e9 #dfe0e4 #d0d1d5',
         borderRadius: '3px',
-        marginTop: '30px',
-        padding: '0px 45px',
+      },
+      placeholder: {
+        position: 'relative',
+        width: '196px',
       },
     };
   }
@@ -54,6 +52,7 @@ class AccountPage extends Component {
             <AccountMetadata />
             <AccountInfo />
           </div>
+          <div style={this.styles.placeholder}></div>
         </div>
       </div>
     );
