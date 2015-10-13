@@ -18,8 +18,7 @@ class AuthenticationPage extends Component {
         display: 'flex',
         flexDirection: 'column',
         position: 'relative',
-        width: '100vw',
-        height: '100vh',
+        height: '100vw',
       },
       body: {
         display: 'flex',

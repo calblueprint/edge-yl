@@ -10,9 +10,7 @@ class AccountPage extends Component {
         display: 'flex',
         flexDirection: 'column',
         position: 'relative',
-        width: '100vw',
-        height: '100vh',
-        backgroundColor: '#eaf0f2',
+        height: '100vw',
       },
       body: {
         display: 'flex',
