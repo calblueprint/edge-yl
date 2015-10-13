@@ -13,7 +13,7 @@ class AccountPage extends Component {
         height: '100vh',
       },
       body: {
-        display: 'flex',asdf
+        display: 'flex',
         flex: '1',
         position: 'relative',
         paddingLeft: '196px',
