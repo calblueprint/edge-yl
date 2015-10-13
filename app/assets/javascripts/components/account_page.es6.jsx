@@ -52,11 +52,7 @@ class AccountPage extends Component {
           <Sidebar shouldShow={this.state.sidebar} />
           <div style = {this.styles.content}> 
             <AccountMetadata />
-<<<<<<< HEAD
-
-=======
             <AccountInfo />
->>>>>>> d7778a416f5bce2b4b1f32b016ab4217eb63b2db
           </div>
         </div>
       </div>
