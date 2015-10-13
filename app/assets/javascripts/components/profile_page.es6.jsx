@@ -10,7 +10,7 @@ class ProfilePage extends Component {
         display: 'flex',
         flexDirection: 'column',
         position: 'relative',
-        height: '100vw',
+        height: '100vh',
       },
       body: {
         display: 'flex',
