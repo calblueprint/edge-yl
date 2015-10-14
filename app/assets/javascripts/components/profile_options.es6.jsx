@@ -3,44 +3,35 @@ class ProfileOptions extends Component {
   get styles() {
     return {
       container: {
-        display: 'flex',
-        flexDirection: 'column',
         position: 'relative',
-        width: '100%',
-        borderBottom: 'solid #D6D6D6 3px',
+        padding: '24px',
+        marginTop: '2%',
+        backgroundColor: 'white',
+        border: '1px solid',
+        borderColor: '#e5e6e9 #dfe0e4 #d0d1d5',
+        borderRadius: '3px',
       },
-      email: {
-        display: 'flex',
+      field: {
         flex: '1',
+        position: 'relative',
         alignSelf: 'flex-start',
         fontSize: '16px',
       }, 
-      password: {
-        display: 'flex',
-        flex: '1',
-        alignSelf: 'flex-start',
-        fontSize: '16px',
-      },
       row: {
         display: 'flex',
-        flexDirection: 'row',
         position: 'relative',
-        width: '100%',
-        paddingTop: '20px',
-        paddingBottom:'14px', 
+        paddingTop: '24px',
       },
     };
   }
 
-  get buttonStyles() {
+  get clickableStyles() {
     return {
       default: {
         display: 'flex',
         alignSelf: 'flex-end',
         position: 'relative',
-        color: 'black',
-        fontColor: 'black',
-        fontSize: '16',
+        fontSize: '16px',
       },
     };
   }
@@ -49,18 +40,18 @@ class ProfileOptions extends Component {
     return (
       <div style={this.styles.container}>
         <div style= {this.styles.row}>
-          <span style={this.styles.email} >Email: soniayangsux@edgeyl.org</span>
+          <span style={this.styles.field}>Email: soniayangsux@edgeyl.org</span>
           <Clickable
             content={'Change'}
             route={Routes.pages.profile}
-            styles={this.buttonStyles} />   
+            styles={this.clickableStyles} />   
         </div>
         <div style= {this.styles.row}>
-          <span style={this.styles.password}>Password: **********</span>
+          <span style={this.styles.field}>Password: **********</span>
           <Clickable
             content={'Change'}
             route={Routes.pages.profile}
-            styles={this.buttonStyles} />        
+            styles={this.clickableStyles} />        
         </div>     
       </div>         
     );

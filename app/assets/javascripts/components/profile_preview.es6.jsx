@@ -5,26 +5,29 @@ class ProfilePreview extends Component {
       container: {
         display: 'flex',
         flexDirection: 'column',
-        position: 'relative',
         alignItems: 'center',
-        width: '100%',
-        borderBottom: 'solid #D6D6D6 3px',
+        position: 'relative',
+        padding: '24px 0px',
+        marginTop: '2%',
+        backgroundColor: 'white',
+        border: '1px solid',
+        borderColor: '#e5e6e9 #dfe0e4 #d0d1d5',
+        borderRadius: '3px',
       },
       image: {
+        position: 'relative',
+        width: '312px',
         borderRadius: '50%',
-        overflow: 'hidden',
-        width: '250px',
-        height: 'auto',
-        marginTop: '76px',
       },
       name: {
+        position: 'relative',
         paddingTop: '24px',
-        paddingBottom:'16px',
         fontSize: '32px',
       }, 
       position: {
+        position: 'relative',
         fontSize: '16px',
-        paddingBottom: '20px',
+        paddingTop: '12px',
         fontStyle: 'italic',
       },
     };
@@ -36,8 +39,12 @@ class ProfilePreview extends Component {
         <img 
           src='https://scontent.fsnc1-1.fna.fbcdn.net/hphotos-xfp1/t31.0-8/11856297_10200932572512494_2256826043885795533_o.jpg' 
           style={this.styles.image} /> 
-        <span style={this.styles.name} >Anthony Huang</span>
-        <span style={this.styles.position}>Volunteer, Recruitment Group</span>
+        <span style={this.styles.name}>
+          {'Anthony Huang'}
+        </span>
+        <span style={this.styles.position}>
+          {'Volunteer, Recruitment Group'}
+        </span>
       </div>
     );
   }

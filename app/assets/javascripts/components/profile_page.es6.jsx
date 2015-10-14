@@ -36,7 +36,7 @@ class ProfilePage extends Component {
           handleSidebarClick={this.handleClick.bind(this)} />
         <div style={this.styles.body}>
           <Sidebar shouldShow={this.state.sidebar} />
-          <ProfileCard />
+          <ProfileCards />
           <div style={this.styles.placeholder}></div>
         </div>
       </div>

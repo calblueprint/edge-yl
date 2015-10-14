@@ -1,4 +1,4 @@
-class ProfileCard extends Component {
+class ProfileCards extends Component {
 
   get styles() {
     return {
@@ -8,11 +8,6 @@ class ProfileCard extends Component {
         flex: 1,
         position: 'relative',
         padding: '0 12px',
-        height: '600px',
-        backgroundColor: 'white',
-        border: '1px solid',
-        borderColor: '#e5e6e9 #dfe0e4 #d0d1d5',
-        borderRadius: '3px',
       },
     };
   }
