@@ -1,4 +1,4 @@
-class ProfileCard extends Component {
+class StudentCard extends Component {
 
   static get propTypes() {
     return {
@@ -34,8 +34,8 @@ class ProfileCard extends Component {
   render() {
     return (
       <div style={this.styles.container}>
-        <ProfileCardHead cardName={this.props.cardName} />
-        <ProfileCardBody cardBody={this.props.cardBody} />
+        <StudentCardHead cardName={this.props.cardName} />
+        <StudentCardBody cardBody={this.props.cardBody} />
       </div>
     );
   }

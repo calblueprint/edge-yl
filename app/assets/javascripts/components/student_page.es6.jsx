@@ -1,4 +1,4 @@
-class ProfilePage extends Component {
+class StudentPage extends Component {
 
   static get defaultState() {
     return { sidebar: true };
@@ -36,7 +36,7 @@ class ProfilePage extends Component {
           handleSidebarClick={this.handleClick.bind(this)} />
         <div style={this.styles.body}>
           <Sidebar shouldShow={this.state.sidebar} />
-          <ProfileGrid shouldShow={this.state.sidebar} />
+          <StudentGrid shouldShow={this.state.sidebar} />
           <div style={this.styles.placeholder}></div>
         </div>
       </div>
