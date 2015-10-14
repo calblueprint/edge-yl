@@ -26,6 +26,8 @@ class StudentsPage extends Component {
       // when abstracting general Page component out of pages.
       subbody: {
         flex: '1',
+        position: 'relative',
+        padding: '0px 12px',
       },
     };
   }
