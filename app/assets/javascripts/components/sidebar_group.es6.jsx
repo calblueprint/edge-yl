@@ -10,7 +10,7 @@ class SidebarGroup extends React.Component {
   }
 
   render() {
-    return(
+    return (
       <div style={this.styles.container}>
         <SidebarItem 
           label={'Students'} 
