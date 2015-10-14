@@ -33,7 +33,7 @@ class StudentPage extends Component {
     return (
       <div style={this.styles.container}>
         <Header
-          handleSidebarClick={this.handleClick.bind(this)} />
+          handleClick={this.handleClick.bind(this)} />
         <div style={this.styles.body}>
           <Sidebar shouldShow={this.state.sidebar} />
           <StudentGrid shouldShow={this.state.sidebar} />

@@ -1,4 +1,4 @@
-class ProfilePage extends Component {
+class StudentsPage extends Component {
 
   static get defaultState() {
     return { sidebar: true };
@@ -36,11 +36,10 @@ class ProfilePage extends Component {
           handleClick={this.handleClick.bind(this)} />
         <div style={this.styles.body}>
           <Sidebar shouldShow={this.state.sidebar} />
-          <ProfileCards />
+
           <div style={this.styles.placeholder}></div>
         </div>
       </div>
     );
   }
 }
-
