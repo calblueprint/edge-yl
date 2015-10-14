@@ -22,6 +22,11 @@ class StudentsPage extends Component {
         position: 'relative',
         width: '196px',
       },
+      // TODO(Warren): Refactor this style out - might happen
+      // when abstracting general Page component out of pages.
+      subbody: {
+        flex: '1',
+      },
     };
   }
 
@@ -36,7 +41,10 @@ class StudentsPage extends Component {
           handleClick={this.handleClick.bind(this)} />
         <div style={this.styles.body}>
           <Sidebar shouldShow={this.state.sidebar} />
-
+          <div style={this.styles.subbody}>
+            <StudentsFilter />
+            <StudentsGrid />
+          </div>
           <div style={this.styles.placeholder}></div>
         </div>
       </div>
