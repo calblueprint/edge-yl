@@ -1,4 +1,4 @@
-class AccountInfo extends Component {
+class ProfileOptions extends Component {
 
   get styles() {
     return {

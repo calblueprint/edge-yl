@@ -1,4 +1,4 @@
-class AccountMetadata extends Component {
+class ProfilePreview extends Component {
 
   get styles() {
     return {
