@@ -17,7 +17,7 @@ class StudentsFilter extends Component {
   render() {
     return (
       <div style={this.styles.container}>
-
+        {'StudentsFilter'}
       </div>
     );
   }
