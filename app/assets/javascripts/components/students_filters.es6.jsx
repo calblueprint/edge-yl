@@ -1,4 +1,4 @@
-class StudentsFilter extends Component {
+class StudentsFilters extends Component {
 
   get styles() {
     return {
@@ -17,7 +17,7 @@ class StudentsFilter extends Component {
   render() {
     return (
       <div style={this.styles.container}>
-        {'StudentsFilter'}
+        {'StudentsFilters'}
       </div>
     );
   }

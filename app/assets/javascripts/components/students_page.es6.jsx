@@ -44,7 +44,7 @@ class StudentsPage extends Component {
         <div style={this.styles.body}>
           <Sidebar shouldShow={this.state.sidebar} />
           <div style={this.styles.subbody}>
-            <StudentsFilter />
+            <StudentsFilters />
             <StudentsGrid />
           </div>
           <div style={this.styles.placeholder}></div>
