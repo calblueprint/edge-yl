@@ -32,7 +32,7 @@ class Header extends Component {
       },
       middleSection: {
         display: 'flex',
-        flex: 1,
+        flex: '1',
         padding: '0 12px',
         alignItems: 'center',
         alignSelf: 'stretch',

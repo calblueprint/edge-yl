@@ -14,7 +14,7 @@ class StudentPage extends Component {
       },
       body: {
         display: 'flex',
-        flex: 1,
+        flex: '1',
         position: 'relative',
         paddingLeft: '196px',
       },

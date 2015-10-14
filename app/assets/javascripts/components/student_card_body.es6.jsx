@@ -15,7 +15,7 @@ class StudentCardBody extends React.Component {
   get styles() {
     return {
       container: {
-        flex: 1,
+        flex: '1',
         position: 'relative',
         padding: '12px',
         height: '186px',

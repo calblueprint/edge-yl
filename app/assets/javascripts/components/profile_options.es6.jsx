@@ -40,14 +40,18 @@ class ProfileOptions extends Component {
     return (
       <div style={this.styles.container}>
         <div style= {this.styles.row}>
-          <span style={this.styles.field}>Email: soniayangsux@edgeyl.org</span>
+          <span style={this.styles.field}>
+            {'Email: soniayangsux@edgeyl.org'}
+          </span>
           <Clickable
             content={'Change'}
             route={Routes.pages.profile}
             styles={this.clickableStyles} />   
         </div>
         <div style= {this.styles.row}>
-          <span style={this.styles.field}>Password: **********</span>
+          <span style={this.styles.field}>
+            {'Password: **********'}
+          </span>
           <Clickable
             content={'Change'}
             route={Routes.pages.profile}
