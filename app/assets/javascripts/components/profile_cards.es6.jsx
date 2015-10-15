@@ -5,9 +5,9 @@ class ProfileCards extends Component {
       container: {
         display: 'flex', 
         flexDirection: 'column',
-        flex: 1,
+        flex: '1',
         position: 'relative',
-        padding: '0 12px',
+        padding: '0px 12px',
       },
     };
   }
