@@ -29,6 +29,10 @@ class StudentGrid extends Component {
   render() {
     return (
       <div style={this.styles.container}>
+        <StudentFilter
+          filterList={['cat', 'mouse', 'dog']}
+          isExpanded={false}
+          selected={'cat'} />
         <StudentCard
           cardName={'Card Name'}
           cardBody={'profile card body text'}/>
