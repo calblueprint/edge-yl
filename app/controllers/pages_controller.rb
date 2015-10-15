@@ -10,11 +10,10 @@ class PagesController < ApplicationController
     render 'authentication'
   end
 
+  def mail
+  end
+
   def profile
-
   end
 
-  def profile_show
-    render 'profile_show'
-  end
 end

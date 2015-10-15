@@ -1,4 +1,4 @@
-class ProfileGrid extends Component {
+class StudentGrid extends Component {
 
   static get propTypes() {
     return {
@@ -29,22 +29,22 @@ class ProfileGrid extends Component {
   render() {
     return (
       <div style={this.styles.container}>
-        <ProfileCard
+        <StudentCard
           cardName={'Card Name'}
           cardBody={'profile card body text'}/>
-        <ProfileCard
+        <StudentCard
           cardName={'Card Name'}
           cardBody={'profile card body text'}/>
-        <ProfileCard
+        <StudentCard
           cardName={'Card Name'}
           cardBody={'profile card body text'}/>
-        <ProfileCard
+        <StudentCard
           cardName={'Card Name'}
           cardBody={'profile card body text'}/>
-        <ProfileCard
+        <StudentCard
           cardName={'Card Name'}
           cardBody={'profile card body text'}/>
-        <ProfileCard
+        <StudentCard
           cardName={'Card Name'}
           cardBody={'profile card body text'}/>
       </div>

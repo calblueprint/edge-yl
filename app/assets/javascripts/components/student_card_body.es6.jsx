@@ -1,4 +1,4 @@
-class ProfileCardBody extends React.Component {
+class StudentCardBody extends React.Component {
 
   static get propTypes() {
     return {
