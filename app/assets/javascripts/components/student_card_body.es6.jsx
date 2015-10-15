@@ -1,4 +1,4 @@
-class ProfileCardBody extends React.Component {
+class StudentCardBody extends React.Component {
 
   static get propTypes() {
     return {
@@ -15,7 +15,7 @@ class ProfileCardBody extends React.Component {
   get styles() {
     return {
       container: {
-        flex: 1,
+        flex: '1',
         position: 'relative',
         padding: '12px',
         height: '186px',

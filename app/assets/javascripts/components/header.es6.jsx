@@ -2,13 +2,13 @@ class Header extends Component {
 
   static get propTypes() {
     return {
-      handleSidebarClick: React.PropTypes.func.isRequired,
+      handleClick: React.PropTypes.func.isRequired,
     };
   }
 
   static get defaultProps() {
     return {
-      handleSidebarClick: null,
+      handleClick: null,
     };
   }
   get styles() {
@@ -32,7 +32,7 @@ class Header extends Component {
       },
       middleSection: {
         display: 'flex',
-        flex: 1,
+        flex: '1',
         padding: '0 12px',
         alignItems: 'center',
         alignSelf: 'stretch',
@@ -65,20 +65,6 @@ class Header extends Component {
     return {
       default: {
         position: 'relative',
-        width: '30px',
-        height: '30px',
-        padding: '8px',
-        color: 'white',
-        border: '2px solid white',
-        borderRadius: '12px',
-      },
-    };
-  }
-
-  get titleStyle() {
-    return {
-      default: {
-        position: 'relative',
         color: 'white',
         paddingRight: '16px',
         fontColor: 'white',
@@ -92,7 +78,7 @@ class Header extends Component {
       <div style={this.styles.container}>
         <div style={this.styles.leftSection}>
           <Clickable
-            func={this.props.handleSidebarClick}>
+            func={this.props.handleClick}>
             <i
               className={"fa fa-bars fa-x"}
               style={this.styles.icon}>
@@ -103,7 +89,7 @@ class Header extends Component {
           <Clickable
             content={'EDGE'}
             route={Routes.pages.login}
-            styles={this.titleStyle} />        
+            styles={this.clickableStyles} />        
           <HeaderSearch />
         </div>
         <div style={this.styles.rightSection}>    

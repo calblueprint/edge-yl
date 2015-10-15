@@ -10,16 +10,16 @@ class SidebarGroup extends React.Component {
   }
 
   render() {
-    return(
+    return (
       <div style={this.styles.container}>
         <SidebarItem 
-          label={'Student'} 
+          label={'Students'} 
           icon={'fa fa-pencil fa-lg'} />
         <SidebarItem 
-          label={'School'}
+          label={'Schools'}
           icon={'fa fa-building-o fa-lg'} />
         <SidebarItem 
-          label={'Staff'}
+          label={'Volunteers'}
           icon={'fa fa-male fa-lg'} />
       </div>
     );

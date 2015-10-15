@@ -1,4 +1,4 @@
-class ProfilePage extends Component {
+class StudentsPage extends Component {
 
   static get defaultState() {
     return { sidebar: true };
@@ -22,6 +22,13 @@ class ProfilePage extends Component {
         position: 'relative',
         width: '196px',
       },
+      // TODO(Warren): Refactor this style out - might happen
+      // when abstracting general Page component out of pages.
+      subbody: {
+        flex: '1',
+        position: 'relative',
+        padding: '0px 12px',
+      },
     };
   }
 
@@ -36,11 +43,13 @@ class ProfilePage extends Component {
           handleClick={this.handleClick.bind(this)} />
         <div style={this.styles.body}>
           <Sidebar shouldShow={this.state.sidebar} />
-          <ProfileCards />
+          <div style={this.styles.subbody}>
+            <StudentsFilters />
+            <StudentsGrid />
+          </div>
           <div style={this.styles.placeholder}></div>
         </div>
       </div>
     );
   }
 }
-
