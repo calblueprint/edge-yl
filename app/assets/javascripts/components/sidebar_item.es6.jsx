@@ -42,7 +42,7 @@ class SidebarItem extends Component {
       },
       hover: {
         backgroundColor: "#C1D6D8"
-      }
+      },
     };
   }
 

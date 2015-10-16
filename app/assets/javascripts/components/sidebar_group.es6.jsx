@@ -10,7 +10,7 @@ class SidebarGroup extends React.Component {
       border: { 
         borderBottom: 'solid #D6D6D6 1px',
         marginLeft: '14px',
-      }
+      },
     };
   }
 
