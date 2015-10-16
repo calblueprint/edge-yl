@@ -7,8 +7,9 @@ class Clickable extends Component {
       func: React.PropTypes.func,
       route: React.PropTypes.string,
       styles: React.PropTypes.shape({
-        action: React.PropTypes.object,
+        click: React.PropTypes.object,
         default: React.PropTypes.object,
+        hover: React.PropTypes.object,
       }),
     };
   }
@@ -19,7 +20,11 @@ class Clickable extends Component {
       children: null,
       func: null,
       route: '',
-      styles: {},
+      styles: {
+        click: {},
+        default: {},
+        hover: {},
+      },
     };
   }
 
@@ -75,10 +80,12 @@ class Clickable extends Component {
     }
   }
   render() {
+    var styles = this.props.styles;
     var style = Object.assign(
       {},
-      this.props.styles.default,
-      this.state.action && this.props.styles.action
+      styles.default,
+      this.state.mouse === 'click' && styles.click,
+      this.state.mouse === 'hover' && styles.hover
     );
     return (
       <a
