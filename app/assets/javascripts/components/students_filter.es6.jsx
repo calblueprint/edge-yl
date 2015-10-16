@@ -1,10 +1,10 @@
-class StudentFilter extends Component {
+class StudentsFilter extends Component {
 
   static get propTypes() {
     return {
       isExpanded: React.PropTypes.bool.isRequired,
       filterList: React.PropTypes.arrayOf(React.PropTypes.string).isRequired,
-      selected: React.Proptypes.string,
+      selected: React.PropTypes.string,
     };
   }
 
@@ -16,8 +16,11 @@ class StudentFilter extends Component {
     };
   }
 
-  select(item) {
-    this.props.selected = item;
+  handleSelect(item) {
+    function select() {
+      this.setState({ selected: item });
+    }
+    return select.bind(this)
   }
 
   get styles() {
@@ -26,36 +29,36 @@ class StudentFilter extends Component {
         display: 'flex',
         height: '40px',
       },
-      expanded: {
-        flex: 1,
-        position: relative,
+      action: {
+        height: '100px',
+        backgroundColor: 'blue',
       },
     };
   }
 
-  renderListItems() {
-    var items = [];
-    for (var i = 0; i < this.props.list.length; i++) {
-      var item = this.props.list[i];
-      items.push(
-        <div onClick={this.select.bind(null, item)}>
-          <span>{item}</span>
-        </div>
+  renderListItem(item) {
+    return (
+      <Clickable
+        func={this.handleSelect(item)}>
+        <div>{item}</div>
+      </Clickable>
       );
     }
-    return items;
+
+  renderListItems() {
+    return this.props.filterList.map(this.renderListItem.bind(this));
   }
 
-  render () {
+  render() {
     var style = Object.assign(
       {},
       this.styles.container,
       this.styles.isExpanded && this.styles.expanded
-    )
+    );
     return (
-      <div styles={container}>
+      <div styles={this.styles.container}>
         <div>
-          <span> {this.props.selected} </span>
+          <span>{this.state.selected}</span>
           <i className="fa fa-angle-down"></i>
         </div>
         <div style={style}>

@@ -17,7 +17,10 @@ class StudentsFilters extends Component {
   render() {
     return (
       <div style={this.styles.container}>
-        {'StudentsFilters'}
+        <StudentsFilter
+          filterList={['cat', 'mouse', 'dog']}
+          isExpanded={false}
+          selected={'cat'}/>
       </div>
     );
   }
