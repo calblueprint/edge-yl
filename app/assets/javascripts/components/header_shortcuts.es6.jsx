@@ -20,6 +20,7 @@ class HeaderShortcuts extends Component {
       },
     };
   }
+  
   render() {
     return (
       <div style={this.styles.container}>
