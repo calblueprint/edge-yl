@@ -16,6 +16,10 @@ class StudentsFilter extends Component {
     };
   }
 
+  handleExpand() {
+    this.setState({ isExpanded: !this.state.isExpanded })
+  }
+
   handleSelect(item) {
     function select() {
       this.setState({ selected: item });
@@ -27,11 +31,24 @@ class StudentsFilter extends Component {
     return {
       container: {
         display: 'flex',
-        height: '40px',
+        flex: '1',
+        flexDirection: 'column',
+        height: '36px',
+        border: '1px solid',
+        borderColor: '#e5e6e9 #dfe0e4 #d0d1d5',
+        overflow: 'hidden',
       },
-      action: {
+      expanded: {
         height: '100px',
-        backgroundColor: 'blue',
+      },
+    };
+  }
+
+  get clickableStyles() {
+    return {
+      default: {
+        height: '36px',
+        color: 'blue',
       },
     };
   }
@@ -39,7 +56,8 @@ class StudentsFilter extends Component {
   renderListItem(item) {
     return (
       <Clickable
-        func={this.handleSelect(item)}>
+        func={this.handleSelect(item)}
+        styles={this.clickableStyles}>
         <div>{item}</div>
       </Clickable>
       );
@@ -53,14 +71,16 @@ class StudentsFilter extends Component {
     var style = Object.assign(
       {},
       this.styles.container,
-      this.styles.isExpanded && this.styles.expanded
+      this.state.isExpanded && this.styles.expanded
     );
     return (
-      <div styles={this.styles.container}>
-        <div>
-          <span>{this.state.selected}</span>
+      <div style={style}>
+        <Clickable
+          func={this.handleExpand.bind(this)}
+          styles={this.clickableStyles}>
+          <span>{this.state.selected || this.props.selected}</span>
           <i className="fa fa-angle-down"></i>
-        </div>
+        </Clickable>
         <div style={style}>
           <div>
             {this.renderListItems()}
