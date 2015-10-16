@@ -11,6 +11,7 @@ class Header extends Component {
       handleClick: null,
     };
   }
+
   get styles() {
     return {
       container: {
@@ -88,20 +89,20 @@ class Header extends Component {
         <div style={this.styles.middleSection}>
           <Clickable
             content={'EDGE'}
-            route={Routes.pages.login}
+            route={RouteConstants.pages.login}
             styles={this.clickableStyles} />        
           <HeaderSearch />
         </div>
         <div style={this.styles.rightSection}>    
           <Clickable
-            route={Routes.pages.mail}>
+            route={RouteConstants.pages.mail}>
             <i
               className={"fa fa-envelope-o fa-x"}
               style={this.styles.rightIcons}>
             </i>
           </Clickable>
           <Clickable
-            route={Routes.pages.profile}>
+            route={RouteConstants.pages.profile}>
             <i
               className={"fa fa-user fa-x"}
               style={this.styles.rightIcons}>
