@@ -53,7 +53,7 @@ class StudentsCard extends React.Component {
           {this.props.student.status}<br />
         </div>
       </div>
-    )
+    );
   }
 }
 
