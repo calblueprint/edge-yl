@@ -49,7 +49,7 @@ class SignupForm extends Component {
         </input>
         <FormButton
           content={'Sign up'}
-          route={Routes.profiles.show} />
+          route={RouteConstants.students.show} />
       </div>
     );
   }

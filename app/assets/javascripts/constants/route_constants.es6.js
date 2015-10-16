@@ -1,12 +1,12 @@
-var Routes = {
+var RouteConstants = {
   pages: {
     login: '/login',
     signup: '/signup',
     profile: '/profile',
     mail: '/mail',
   },
-  profiles: {
-    index: '/profiles',
-    show: '/profiles/1',
+  students: {
+    index: '/students',
+    show: '/students/1',
   },
 };

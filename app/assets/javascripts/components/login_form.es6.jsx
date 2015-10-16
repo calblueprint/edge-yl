@@ -42,7 +42,7 @@ class LoginForm extends Component {
         </input>
         <FormButton
           content={'Log in'}
-          route={Routes.profiles.show} />
+          route={RouteConstants.students.show} />
       </div>
     );
   }
