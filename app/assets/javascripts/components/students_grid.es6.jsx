@@ -4,6 +4,10 @@ class StudentsGrid extends Component {
     return {
       container: {
         display: 'flex',
+        flex: '1',
+        flexWrap: 'wrap',
+        justifyContent: 'space-between',
+        alignContent: 'flex-start',
         position: 'relative',
         marginTop: '2%',
       },

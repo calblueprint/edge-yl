@@ -30,21 +30,20 @@ class StudentsCard extends React.Component {
     return {
       container: {
         display: 'flex',
-        flexDirection: 'column',
+        flexDirection: 'row',
         position: 'relative',
-        width: '50%',
-        height: '400px',
+        height: '312px',
         backgroundColor: 'white',
         border: '1px solid',
         borderColor: '#e5e6e9 #dfe0e4 #d0d1d5',
         borderRadius: '3px',
       },
-    image: {
-        position: 'relative',
-        width: '20px',
-        borderRadius: '50%',
-      },
-
+      image: {
+          position: 'relative',
+          width: '200px',
+          height: '200px',
+          borderRadius: '50%',
+        },
       info: {
 
       },
