@@ -34,7 +34,7 @@ class StudentsCard extends React.Component {
         borderRadius: '50%',
       },
       info: {
-        paddingLeft: '12px',
+        paddingLeft: '24px',
       },
     };
   }
@@ -47,7 +47,7 @@ class StudentsCard extends React.Component {
           style={this.styles.image} /> 
         <div style={this.styles.info}>
           {this.props.student.first_name}
-          {this.props.student.last_name}
+          {this.props.student.last_name}<br />
           {this.props.student.birthday}, {this.props.student.age}<br />
           {this.props.student.school}<br />
           {this.props.student.status}<br />
