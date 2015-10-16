@@ -7,8 +7,9 @@ class Clickable extends Component {
       func: React.PropTypes.func,
       route: React.PropTypes.string,
       styles: React.PropTypes.shape({
-        action: React.PropTypes.object,
+        click: React.PropTypes.object,
         default: React.PropTypes.object,
+        hover: React.PropTypes.object,
       }),
     };
   }
@@ -19,13 +20,18 @@ class Clickable extends Component {
       children: null,
       func: null,
       route: '',
-      styles: {},
+      styles: {
+        click: {},
+        default: {},
+        hover: {},
+      },
     };
   }
 
   static get defaultState() {
+    // Mouse state 'enum': 'click', 'default', 'hover'.
     return {
-      action: false,
+      mouse: 'default',
     }
   }
 
@@ -33,6 +39,7 @@ class Clickable extends Component {
     var node = React.findDOMNode(this.refs.container);
     node.addEventListener('click', this.handleClick.bind(this));
     node.addEventListener('mousedown', this.handleMouseDown.bind(this));
+    node.addEventListener('mouseenter', this.handleMouseEnter.bind(this));
     node.addEventListener('mouseleave', this.handleMouseLeave.bind(this));
     node.addEventListener('mouseup', this.handleMouseUp.bind(this));
   }
@@ -48,16 +55,20 @@ class Clickable extends Component {
   }
 
   handleMouseDown(event) {
-    this.setState({ action: true });
+    this.setState({ mouse: 'click' });
+  }
+
+  handleMouseEnter(event) {
+    this.setState({ mouse: 'hover' });
   }
 
   handleMouseUp(event) {
-    this.setState({ action: false });
+    this.setState({ mouse: 'hover' });
   }
 
   handleMouseLeave(event) {
-    if (this.state.action) {
-      this.setState({ action: false });
+    if (this.state.mouse !== 'default') {
+      this.setState({ mouse: 'default' });
     }
   }
 
@@ -68,11 +79,14 @@ class Clickable extends Component {
       return this.props.content;
     }
   }
+  
   render() {
+    var styles = this.props.styles;
     var style = Object.assign(
       {},
-      this.props.styles.default,
-      this.state.action && this.props.styles.action
+      styles.default,
+      this.state.mouse === 'click' && styles.click,
+      this.state.mouse === 'hover' && styles.hover
     );
     return (
       <a
