@@ -38,16 +38,6 @@ class Header extends Component {
         alignItems: 'center',
         alignSelf: 'stretch',
       },
-      rightSection: {
-        display: 'flex',
-        justifyContent: 'flex-end',
-        alignItems: 'center',
-        alignSelf: 'stretch',
-        position: 'relative',
-        width: '196px',
-        paddingRight: '24px',
-        boxSizing: 'border-box',
-      },
       icon: {
         position: 'relative',
         color: 'white',
@@ -93,22 +83,7 @@ class Header extends Component {
             styles={this.clickableStyles} />        
           <HeaderSearch />
         </div>
-        <div style={this.styles.rightSection}>    
-          <Clickable
-            route={RouteConstants.pages.mail}>
-            <i
-              className={"fa fa-envelope-o fa-x"}
-              style={this.styles.rightIcons}>
-            </i>
-          </Clickable>
-          <Clickable
-            route={RouteConstants.pages.profile}>
-            <i
-              className={"fa fa-user fa-x"}
-              style={this.styles.rightIcons}>
-            </i>
-          </Clickable>
-        </div>
+        <HeaderShortcuts /> 
       </div>
     );
   }
