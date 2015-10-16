@@ -43,7 +43,7 @@ class StudentsCard extends React.Component {
           width: '200px',
           height: '200px',
           borderRadius: '50%',
-        },
+      },
       info: {
 
       },
