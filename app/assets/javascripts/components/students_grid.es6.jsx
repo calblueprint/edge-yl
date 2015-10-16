@@ -17,7 +17,7 @@ class StudentsGrid extends Component {
       container: {
         display: 'flex',
         flexWrap: 'wrap',
-        justifyContent:'space-between',
+        justifyContent: 'space-between',
         alignContent: 'flex-start',
         flex: '1',
         position: 'relative',
