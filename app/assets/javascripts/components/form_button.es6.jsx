@@ -29,12 +29,11 @@ class FormButton extends Component {
 
   get clickableStyles() {
     return {
-      action: {
+      click: {
+        backgroundColor: '#78C1EE',
         borderBottom: '0px',
       },
       default: {
-        display: 'inline-block',
-        verticalAlgin: 'middle',
         position: 'relative',
         padding: '6px 12px',
         color: 'white',
@@ -42,6 +41,9 @@ class FormButton extends Component {
         borderBottom: '2px solid #28719E',
         borderRadius: '2px',
         fontSize: '14px',
+      },
+      hover: {
+        backgroundColor: '#78C1EE',
       },
     };
   }
