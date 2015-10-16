@@ -45,7 +45,6 @@ class StudentsCard extends React.Component {
         position: 'relative',
         width: '122px',
         height: '122px',
-        padding: '0 12px',
         borderRadius: '50%',
       },
       info: {
