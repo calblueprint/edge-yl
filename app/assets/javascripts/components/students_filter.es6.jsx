@@ -17,14 +17,13 @@ class StudentsFilter extends Component {
   }
 
   handleExpand() {
-    this.setState({ isExpanded: !this.state.isExpanded })
+    this.setState({ isExpanded: !this.state.isExpanded });
   }
 
-  handleSelect(item) {
-    function select() {
+  generateSelectHandler(item) {
+    return function() {
       this.setState({ selected: item });
-    }
-    return select.bind(this)
+    }.bind(this);
   }
 
   get styles() {
@@ -57,12 +56,12 @@ class StudentsFilter extends Component {
   renderListItem(item) {
     return (
       <Clickable
-        func={this.handleSelect(item)}
+        func={this.generateSelectHandler(item)}
         styles={this.clickableStyles}>
         <div>{item}</div>
       </Clickable>
-      );
-    }
+    );
+  }
 
   renderListItems() {
     return this.props.filterList.map(this.renderListItem.bind(this));
