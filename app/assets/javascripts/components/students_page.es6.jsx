@@ -41,6 +41,7 @@ class StudentsPage extends Component {
         email: 'katelyn_marchan@gmail.com',
         first_name: 'Katelyn',
         last_name: 'Marchan',
+        id: 1,
         phone_number: '(408) 436-7654',
         school: 'School One',
         status: 'Pending',
@@ -51,6 +52,7 @@ class StudentsPage extends Component {
         email: 'jonie_distefano@gmail.com',
         first_name: 'Jonie',
         last_name: 'Distefano',
+        id: 2,
         phone_number: '(510) 333-3333',
         school: 'School Two',
         status: 'Attending',
@@ -61,6 +63,7 @@ class StudentsPage extends Component {
         email: 'melva_currence@gmail.com',
         first_name: 'Melva',
         last_name: 'Currence',
+        id: 3,
         phone_number: '(888) 555-5555',
         school: 'School Three',
         status: 'Pending',
@@ -81,7 +84,7 @@ class StudentsPage extends Component {
           <Sidebar shouldShow={this.state.sidebar} />
           <div style={this.styles.subbody}>
             <StudentsFilters />
-            <StudentsGrid />
+            <StudentsGrid students={this.students} />
           </div>
           <div style={this.styles.placeholder}></div>
         </div>

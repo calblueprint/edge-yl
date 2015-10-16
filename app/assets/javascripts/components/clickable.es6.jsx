@@ -79,6 +79,7 @@ class Clickable extends Component {
       return this.props.content;
     }
   }
+  
   render() {
     var styles = this.props.styles;
     var style = Object.assign(
