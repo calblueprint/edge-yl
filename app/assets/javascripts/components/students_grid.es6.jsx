@@ -1,31 +1,48 @@
 class StudentsGrid extends Component {
 
+  static get propTypes() {
+    return {
+      students: React.PropTypes.array.isRequired,
+    };
+  }
+
+  static get defaultProps() {
+    return {
+      students: [],
+    };
+  }
+
   get styles() {
     return {
       container: {
         display: 'flex',
-        flex: '1',
         flexWrap: 'wrap',
-        justifyContent: 'space-between',
+        justifyContent:'space-between',
         alignContent: 'flex-start',
+        flex: '1',
         position: 'relative',
-        marginTop: '2%',
       },
     };
+  }
+
+  renderCard(student) {
+    return (
+      <StudentsCard
+        key={student.id}
+        student={student} />
+    );
+  }
+
+  renderCards() {
+    return (
+      this.props.students.map(this.renderCard.bind(this))
+    );
   }
 
   render() {
     return (
       <div style={this.styles.container}>
-        <StudentsCard
-          firstName={'Anthony'}
-          lastName={'Huang'}
-          birthday={'May 6, 1995'}
-          age={'20'}
-          phoneNumber={'888-888-8888'} 
-          email={'anthonyhuang@edgeyl.org'}
-          school={'UC Berkeley'}
-          status={'Volunteer, Recruitment Group'} />
+        {this.renderCards()}
       </div>
     );
   }
