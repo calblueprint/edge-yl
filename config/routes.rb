@@ -9,6 +9,7 @@
   get 'profile', to: 'pages#profile'
 
   resources :students, only: [:index, :show]
+  resources :schools, only: [:index, :show]
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
