@@ -33,13 +33,15 @@ class StudentsFilter extends Component {
         display: 'flex',
         flex: '1',
         flexDirection: 'column',
-        height: '36px',
+        justifyContent: 'center',
+        height: '22px',
         border: '1px solid',
         borderColor: '#e5e6e9 #dfe0e4 #d0d1d5',
         overflow: 'hidden',
       },
       expanded: {
         height: '100px',
+        overflow: 'scroll',
       },
     };
   }
@@ -47,8 +49,7 @@ class StudentsFilter extends Component {
   get clickableStyles() {
     return {
       default: {
-        height: '36px',
-        color: 'blue',
+        height: '22px',
       },
     };
   }
@@ -82,9 +83,7 @@ class StudentsFilter extends Component {
           <i className="fa fa-angle-down"></i>
         </Clickable>
         <div style={style}>
-          <div>
-            {this.renderListItems()}
-          </div>
+          {this.renderListItems()}
         </div>
       </div>
     );
