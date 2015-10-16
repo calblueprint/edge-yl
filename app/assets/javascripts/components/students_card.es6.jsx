@@ -2,27 +2,13 @@ class StudentsCard extends React.Component {
 
   static get propTypes() {
     return {
-      firstName: React.PropTypes.string.isRequired,
-      lastName: React.PropTypes.string.isRequired,
-      birthday: React.PropTypes.string.isRequired,
-      age: React.PropTypes.string.isRequired,
-      phoneNumber: React.PropTypes.string.isRequired,
-      email: React.PropTypes.string.isRequired,
-      school: React.PropTypes.string.isRequired,
-      status: React.PropTypes.string.isRequired,
+      student: React.PropTypes.array.isRequired,
     };
   }
 
   static get defaultProps() {
     return {
-      firstName: '',
-      lastName: '',
-      birthday: '',
-      age: '',
-      phoneNumber: '',
-      email: '',
-      school: '',
-      status: '',
+      student: []
     };
   }
 
