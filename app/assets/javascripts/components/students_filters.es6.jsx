@@ -21,11 +21,11 @@ class StudentsFilters extends Component {
         <StudentsFilter
           filterList={['Warren', 'Anthony', 'Sonia']}
           isExpanded={false}
-          selected={'Anthony'}/>
+          selected={'Anthony'} />
         <StudentsFilter
           filterList={['UnzUnz', 'Max', 'Cat']}
           isExpanded={false}
-          selected={'Max'}/>
+          selected={'Max'} />
       </div>
     );
   }

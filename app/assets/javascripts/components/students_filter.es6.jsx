@@ -79,7 +79,7 @@ class StudentsFilter extends Component {
           func={this.handleExpand.bind(this)}
           styles={this.clickableStyles}>
           <span>{this.state.selected || this.props.selected}</span>
-          <i className="fa fa-angle-down"></i>
+          <i className={"fa fa-angle-down"}></i>
         </Clickable>
         <div style={style}>
           {this.renderListItems()}
