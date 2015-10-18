@@ -37,7 +37,6 @@ class StudentCard extends Component {
     return (
       <div style={this.styles.container}>
         <StudentCardHead cardName={this.props.cardName} />
-        <StudentCardBody cardBody={this.props.cardBody} />
         <StudentPreview student={this.props.student} />
       </div>
     );
