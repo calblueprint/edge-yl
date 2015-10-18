@@ -45,7 +45,6 @@ class StudentPage extends Component {
   }
 
   render() {
-    console.log(this.student);
     return (
       <div style={this.styles.container}>
         <Header

@@ -4,7 +4,7 @@ class StudentCard extends Component {
     return {
       cardName: React.PropTypes.string.isRequired,
       cardBody: React.PropTypes.string.isRequired,
-      student: React.PropTypes.shape.isRequired,
+      student: React.PropTypes.object.isRequired,
     };
   }
 

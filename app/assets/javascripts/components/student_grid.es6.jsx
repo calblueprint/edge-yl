@@ -2,7 +2,7 @@ class StudentGrid extends Component {
 
   static get propTypes() {
     return {
-      student: React.PropTypes.shape.isRequired,
+      student: React.PropTypes.object.isRequired,
     };
   }
 
