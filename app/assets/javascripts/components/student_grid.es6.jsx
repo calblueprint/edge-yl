@@ -30,15 +30,14 @@ class StudentGrid extends Component {
     return (
       <div style={this.styles.container}>
         <StudentCard
-          cardName={'Card Name'}
-          cardBody={'profile card body text'}
-          student={this.props.student} />
+          student={this.props.student}
+          type={'preview'} />
         <StudentCard
-          cardName={'Card Name'}
-          cardBody={'profile card body text'}/>
+          student={this.props.student}
+          type={'contact'} />
         <StudentCard
-          cardName={'Card Name'}
-          cardBody={'profile card body text'}/>
+          student={this.props.student}
+          type={'parent'} />
       </div>
     );
   }
