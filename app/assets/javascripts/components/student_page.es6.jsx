@@ -53,7 +53,7 @@ class StudentPage extends Component {
           handleClick={this.handleClick.bind(this)} />
         <div style={this.styles.body}>
           <Sidebar shouldShow={this.state.sidebar} />
-          <StudentGrid />
+          <StudentGrid student={this.student} />
           <div style={this.styles.placeholder}></div>
         </div>
       </div>

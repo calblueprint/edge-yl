@@ -2,11 +2,13 @@ class StudentGrid extends Component {
 
   static get propTypes() {
     return {
+      student: React.PropTypes.shape.isRequired,
     };
   }
 
   static get defaultProps() {
     return {
+      student: {},
     };
   }
 
@@ -29,16 +31,8 @@ class StudentGrid extends Component {
       <div style={this.styles.container}>
         <StudentCard
           cardName={'Card Name'}
-          cardBody={'profile card body text'}/>
-        <StudentCard
-          cardName={'Card Name'}
-          cardBody={'profile card body text'}/>
-        <StudentCard
-          cardName={'Card Name'}
-          cardBody={'profile card body text'}/>
-        <StudentCard
-          cardName={'Card Name'}
-          cardBody={'profile card body text'}/>
+          cardBody={'profile card body text'}
+          student={this.props.student} />
         <StudentCard
           cardName={'Card Name'}
           cardBody={'profile card body text'}/>

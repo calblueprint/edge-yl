@@ -4,6 +4,7 @@ class StudentCard extends Component {
     return {
       cardName: React.PropTypes.string.isRequired,
       cardBody: React.PropTypes.string.isRequired,
+      student: React.PropTypes.shape.isRequired,
     };
   }
 
@@ -11,6 +12,7 @@ class StudentCard extends Component {
     return {
       cardName: '',
       cardBody: '',
+      student: {},
     };
   }
 
@@ -36,6 +38,7 @@ class StudentCard extends Component {
       <div style={this.styles.container}>
         <StudentCardHead cardName={this.props.cardName} />
         <StudentCardBody cardBody={this.props.cardBody} />
+        <StudentPreview student={this.props.student} />
       </div>
     );
   }
