@@ -1,4 +1,4 @@
-class StudentCardBody extends React.Component {
+class StudentCardBody extends Component {
 
   static get propTypes() {
     return {
@@ -22,7 +22,7 @@ class StudentCardBody extends React.Component {
       },
     };
   }
-  
+
   render() {
     return (
       <div style={this.styles.container}>

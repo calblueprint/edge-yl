@@ -1,4 +1,4 @@
-class SidebarGroup extends React.Component {
+class SidebarGroup extends Component {
 
   get styles() {
     return {
@@ -7,7 +7,7 @@ class SidebarGroup extends React.Component {
         flexDirection: 'column',
         position: 'relative',
       },
-      border: { 
+      border: {
         borderBottom: 'solid #D6D6D6 1px',
         marginLeft: '14px',
       },
@@ -17,17 +17,17 @@ class SidebarGroup extends React.Component {
   render() {
     return (
       <div style={this.styles.container}>
-        <SidebarItem 
-          label={'Students'} 
-          icon={'fa fa-pencil fa-lg'} 
+        <SidebarItem
+          label={'Students'}
+          icon={'fa fa-pencil fa-lg'}
           route={RouteConstants.students.index}/>
-        <SidebarItem 
+        <SidebarItem
           label={'Schools'}
-          icon={'fa fa-building-o fa-lg'} 
+          icon={'fa fa-building-o fa-lg'}
           route={RouteConstants.students.index}/>
-        <SidebarItem 
+        <SidebarItem
           label={'Volunteers'}
-          icon={'fa fa-male fa-lg'} 
+          icon={'fa fa-male fa-lg'}
           route={RouteConstants.students.index}/>
         <div style={this.styles.border}/>
       </div>

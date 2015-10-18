@@ -1,4 +1,4 @@
-class StudentCardHead extends React.Component {
+class StudentCardHead extends Component {
 
   static get propTypes() {
     return {
@@ -30,7 +30,7 @@ class StudentCardHead extends React.Component {
       },
     };
   }
-  
+
   render() {
     return (
       <div style={this.styles.container}>

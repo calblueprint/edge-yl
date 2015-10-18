@@ -2,13 +2,11 @@ class StudentGrid extends Component {
 
   static get propTypes() {
     return {
-      shouldShow: React.PropTypes.bool.isRequired,
     };
   }
 
   static get defaultProps() {
     return {
-      shouldShow: true,
     };
   }
 
