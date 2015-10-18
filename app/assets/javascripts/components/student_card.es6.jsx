@@ -44,7 +44,7 @@ class StudentCard extends Component {
   render() {
     return (
       <div style={this.styles.container}>
-        <StudentCardHead {...this.props} />
+        <StudentEdit {...this.props} />
         {this.renderBody()}
       </div>
     );

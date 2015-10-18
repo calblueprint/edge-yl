@@ -1,14 +1,17 @@
-class StudentCardHead extends Component {
+class StudentEdit extends Component {
 
   static get propTypes() {
     return {
-      cardName: React.PropTypes.string.isRequired,
+      student: React.PropTypes.object.isRequired,
+      // TODO(Warren): change this proptype to an enum.
+      type: React.PropTypes.string.isRequired,
     };
   }
 
   static get defaultProps() {
     return {
-      cardName: '',
+      student: {},
+      type: 'preview',
     };
   }
 
@@ -31,11 +34,27 @@ class StudentCardHead extends Component {
     };
   }
 
+  renderTitle() {
+    switch (this.props.type) {
+      case 'preview':
+        return 'Student Preview';
+      case 'contact':
+        return 'Student Information';
+      case 'parent':
+        return 'Parent Information';
+      default:
+        return 'Student Preview';
+    };
+  }
+
   render() {
     return (
       <div style={this.styles.container}>
-        <span>{this.props.cardName}</span>
-        <i className={"fa fa-pencil-square-o"} style={this.styles.icon}></i>
+        <span>{this.renderTitle()}</span>
+        <i
+          className={"fa fa-pencil-square-o"}
+          style={this.styles.icon}>
+        </i>
       </div>
     );
   }
