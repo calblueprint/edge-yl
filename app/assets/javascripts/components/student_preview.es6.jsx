@@ -1,34 +1,36 @@
-class StudentCardBody extends React.Component {
+class StudentPreview extends Component {
 
   static get propTypes() {
     return {
-      cardBody: React.PropTypes.string.isRequired,
+      student: React.PropTypes.object.isRequired,
     };
   }
 
   static get defaultProps() {
     return {
-      cardBody: '',
+      student: {},
     };
   }
 
   get styles() {
     return {
       container: {
+        display: 'flex',
+        flexDirection: 'column',
         flex: '1',
         position: 'relative',
         padding: '12px',
-        height: '186px',
       },
     };
   }
-  
+
   render() {
+    var student = this.props.student;
     return (
       <div style={this.styles.container}>
-        <span>{this.props.cardBody}</span>
+        {student.first_name + ' ' + student.last_name}
+        {student.birthday + ' ' + student.age + ' years old'}
       </div>
     );
   }
 }
-
