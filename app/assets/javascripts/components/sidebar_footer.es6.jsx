@@ -8,16 +8,13 @@ class SidebarFooter extends Component {
     return {
       container: {
         display: 'flex',
-        flex: '1', 
-        flexDirection: 'row',
         position: 'relative',
         padding: '20px',
         marginLeft: '14px',
         alignItems: 'center',
-       
+        justifyContent: 'center',
       },
       text: {
-        height: '100%',
         paddingRight: '5px',
       },
       img: {
@@ -30,15 +27,10 @@ class SidebarFooter extends Component {
   get clickableStyles() {
     return { 
       default: { 
-        flex: '1',
-        position:'relative',
         maxHeight: '34px',
         maxWidth: '34px',
-        width: 'auto',
         transition: 'transform 0.5s ease-out',
-        display: 'inline-block',
       },
-
       hover: {
         transform: 'rotate(360deg)',
       },
@@ -52,8 +44,9 @@ class SidebarFooter extends Component {
         <Clickable
           styles={this.clickableStyles}
           route={RouteConstants.students.index}>
-          <img src='https://avatars3.githubusercontent.com/u/2729578?v=3&s=200'
-              style={this.styles.img}/>
+          <img 
+            src='https://avatars3.githubusercontent.com/u/2729578?v=3&s=200'
+            style={this.styles.img}/>
         </Clickable>
       </div>
     );
