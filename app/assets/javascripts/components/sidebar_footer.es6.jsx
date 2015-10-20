@@ -39,7 +39,7 @@ class SidebarFooter extends Component {
         <span style={this.styles.text}>Powered by</span>
         <Clickable
           styles={this.clickableStyles}
-          route={RouteConstants.students.index}>
+          route='http://www.calblueprint.org/'>
           <img 
             src='https://avatars3.githubusercontent.com/u/2729578?v=3&s=200'
             style={this.styles.image}/>
