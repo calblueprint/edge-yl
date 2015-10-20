@@ -3,6 +3,7 @@ class StudentsFilters extends Component {
   get styles() {
     return {
       container: {
+        display: 'flex',
         position: 'relative',
         padding: '24px',
         marginTop: '2%',
@@ -17,7 +18,14 @@ class StudentsFilters extends Component {
   render() {
     return (
       <div style={this.styles.container}>
-        {'StudentsFilters'}
+        <StudentsFilter
+          filterList={['Warren', 'Anthony', 'Sonia']}
+          isExpanded={false}
+          selected={'Anthony'} />
+        <StudentsFilter
+          filterList={['UnzUnz', 'Max', 'Cat']}
+          isExpanded={false}
+          selected={'Max'} />
       </div>
     );
   }

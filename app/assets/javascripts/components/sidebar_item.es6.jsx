@@ -4,6 +4,7 @@ class SidebarItem extends Component {
     return {
       label: React.PropTypes.string.isRequired,
       icon: React.PropTypes.string.isRequired,
+      route: React.PropTypes.string.isRequired,
     };
   }
 
@@ -29,14 +30,32 @@ class SidebarItem extends Component {
     };
   }
 
+  get clickableStyles() {
+    return {
+      default: {
+        flex: '1',
+        position: 'relative',
+        padding: '14px',
+        boxSizing: 'border-box',
+        marginLeft: '14px',
+        marginTop: '14px',
+      },
+      hover: {
+        backgroundColor: "#C1D6D8"
+      },
+    };
+  }
+
   render() {
     return (
-      <div style={this.styles.container}>
+      <Clickable
+        styles={this.clickableStyles} 
+        route={this.props.route} >
         <i
           style={this.styles.icon}
           className={this.props.icon} />
         <span style={this.styles.label}>{this.props.label}</span>
-      </div>
+      </Clickable>
     );
   }
 }

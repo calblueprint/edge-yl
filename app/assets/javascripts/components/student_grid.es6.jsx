@@ -2,13 +2,13 @@ class StudentGrid extends Component {
 
   static get propTypes() {
     return {
-      shouldShow: React.PropTypes.bool.isRequired,
+      student: React.PropTypes.object.isRequired,
     };
   }
 
   static get defaultProps() {
     return {
-      shouldShow: true,
+      student: {},
     };
   }
 
@@ -30,23 +30,14 @@ class StudentGrid extends Component {
     return (
       <div style={this.styles.container}>
         <StudentCard
-          cardName={'Card Name'}
-          cardBody={'profile card body text'}/>
+          student={this.props.student}
+          type={'preview'} />
         <StudentCard
-          cardName={'Card Name'}
-          cardBody={'profile card body text'}/>
+          student={this.props.student}
+          type={'contact'} />
         <StudentCard
-          cardName={'Card Name'}
-          cardBody={'profile card body text'}/>
-        <StudentCard
-          cardName={'Card Name'}
-          cardBody={'profile card body text'}/>
-        <StudentCard
-          cardName={'Card Name'}
-          cardBody={'profile card body text'}/>
-        <StudentCard
-          cardName={'Card Name'}
-          cardBody={'profile card body text'}/>
+          student={this.props.student}
+          type={'parent'} />
       </div>
     );
   }
