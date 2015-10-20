@@ -35,8 +35,10 @@ class SidebarFooter extends Component {
         maxHeight: '34px',
         maxWidth: '34px',
         width: 'auto',
-        transition: 'transform 2s ease-out',
+        transition: 'transform 0.5s ease-out',
+        display: 'inline-block',
       },
+
       hover: {
         transform: 'rotate(360deg)',
       },
