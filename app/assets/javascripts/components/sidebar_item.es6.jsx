@@ -49,8 +49,8 @@ class SidebarItem extends Component {
   render() {
     return (
       <Clickable
-        styles = {this.clickableStyles} 
-        route = {this.props.route} >
+        styles={this.clickableStyles} 
+        route={this.props.route} >
         <i
           style={this.styles.icon}
           className={this.props.icon} />
