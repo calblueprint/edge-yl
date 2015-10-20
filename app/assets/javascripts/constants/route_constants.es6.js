@@ -14,7 +14,9 @@ class RoutesSingleton {
   get students() {
     return {
       index: '/students',
-      show: '/students/1',
+      show: function(id) {
+        return `/students/${id}`;
+      },
     };
   }
 }
