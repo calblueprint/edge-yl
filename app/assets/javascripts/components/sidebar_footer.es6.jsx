@@ -1,9 +1,5 @@
 class SidebarFooter extends Component {
 
-  static get defaultState() {
-    return {};
-  }
-
   get styles() {
     return {
       container: {
@@ -17,7 +13,7 @@ class SidebarFooter extends Component {
       text: {
         paddingRight: '5px',
       },
-      img: {
+      image: {
        height: '100%',
        width: '100%',
       },
@@ -46,7 +42,7 @@ class SidebarFooter extends Component {
           route={RouteConstants.students.index}>
           <img 
             src='https://avatars3.githubusercontent.com/u/2729578?v=3&s=200'
-            style={this.styles.img}/>
+            style={this.styles.image}/>
         </Clickable>
       </div>
     );
