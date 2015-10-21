@@ -45,7 +45,7 @@ class StudentsPage extends Component {
         home_address: '2616 Telegraph Avenue',
         phone_number: '(408) 436-7654',
         school: 'School One',
-        school_address: 'School Ones address'
+        school_address: 'School Ones address',
         status: 'Pending',
       },
       {
@@ -58,7 +58,7 @@ class StudentsPage extends Component {
         home_address: '123 Fake Street',        
         phone_number: '(510) 333-3333',
         school: 'School Two',
-        school_address: 'School Twos address'
+        school_address: 'School Twos address',
         status: 'Attending',
       },
       {
@@ -71,7 +71,7 @@ class StudentsPage extends Component {
         home_address: 'Cory Hall Rm 512',
         phone_number: '(888) 555-5555',
         school: 'School Three',
-        school_address: 'School Threes address'
+        school_address: 'School Threes address',
         status: 'Pending',
       },
     ];

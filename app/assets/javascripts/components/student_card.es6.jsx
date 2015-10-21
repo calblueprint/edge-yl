@@ -39,7 +39,7 @@ class StudentCard extends Component {
       case 'contact':
         return <StudentContact {...this.props} />;
       case 'parent':
-        return <StudentContact {...this.props} />;
+        return <StudentParent {...this.props} />;
       default:
         return <StudentPreview {...this.props} />;
     }
