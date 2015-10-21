@@ -1,4 +1,4 @@
-class AuthenticationModal extends Component {
+class AuthenticationCard extends Component {
 
   static get propTypes() {
     return {
@@ -14,15 +14,15 @@ class AuthenticationModal extends Component {
 
   get styles() {
     return {
-      container: {
-        position: 'relative',
-        width: '372px',
-        padding: '36px',
-        backgroundColor: 'white',
-        border: '1px solid',
-        borderColor: '#e5e6e9 #dfe0e4 #d0d1d5',
-        borderRadius: '3px',
-      },
+      container: Object.assign(
+        {},
+        {
+          position: 'relative',
+          width: '372px',
+          padding: '36px',
+        },
+        StyleConstants.cards.default
+      ),
       head: {
         position: 'relative',
         width: '100%',

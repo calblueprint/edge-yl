@@ -54,7 +54,7 @@ class AuthenticationPage extends Component {
       <div style={this.styles.container}>
         <Header />
         <div style={this.styles.body}>
-          <AuthenticationModal {...this.props} />
+          <AuthenticationCard {...this.props} />
           {this.renderToggle()}
         </div>
       </div>
