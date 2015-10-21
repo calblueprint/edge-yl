@@ -44,6 +44,7 @@ class StudentEdit extends Component {
         return 'Parent Information';
       default:
         return 'Student Preview';
+        
     };
   }
 
