@@ -17,18 +17,18 @@ class StudentCard extends Component {
 
   get styles() {
     return {
-      container: {
-        display: 'flex',
-        flexDirection: 'column',
-        position: 'relative',
-        width: '32.5%',
-        height: '312px',
-        marginTop: '1%',
-        backgroundColor: 'white',
-        border: '1px solid',
-        borderColor: '#e5e6e9 #dfe0e4 #d0d1d5',
-        borderRadius: '3px',
-      },
+      container: Object.assign(
+        {},
+        {
+          display: 'flex',
+          flexDirection: 'column',
+          position: 'relative',
+          width: '32.5%',
+          height: '312px',
+          marginTop: '1%',
+        },
+        StyleConstants.cards.default
+      ),
     };
   }
 
