@@ -30,10 +30,13 @@ class StudentPreview extends Component {
       <div>
         <span>{'Contact'}</span>
         <div style={this.styles.container}>
-          {student.first_name + ' ' + student.last_name}
-          {student.birthday + ' ' + student.age + ' years old'}
+          {student.phone_number}
+          {student.home_address}
+          {student.email}
         </div>
         <span>{'School'}</span>
+          {student.school}
+          {student.school_address}
       </div>
     );
   }
