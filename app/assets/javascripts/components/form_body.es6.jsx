@@ -12,7 +12,6 @@ class FormBody extends Component {
     return {};
   }
 
-
   render() {
     return(
       <div>
