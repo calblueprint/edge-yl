@@ -42,6 +42,8 @@ class StudentEdit extends Component {
         return 'Student Information';
       case 'parent':
         return 'Parent Information';
+      case 'conference':
+        return 'Conference Information';
       default:
         return 'Student Preview';
     };
