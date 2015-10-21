@@ -16,7 +16,4 @@ class PagesController < ApplicationController
   def profile
   end
 
-  def form
-  end
-
 end
