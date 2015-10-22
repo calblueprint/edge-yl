@@ -22,8 +22,8 @@ class StudentConference extends Component {
         padding: '12px',
       },
       heading: {
-        fontSize: '16px'
-      }
+        fontSize: '16px',
+      },
     };
   }
 
@@ -31,15 +31,15 @@ class StudentConference extends Component {
     var student = this.props.student;
     return (
       <div style={this.styles.container}>
-        <span style={this.styles.heading}>{'Status'}</span>
-          {student.status + '\n\n'}
-        <span style={this.styles.heading}>{'Group'}</span>
+        <h2 style={this.styles.heading}>{'Status'}</h2>
+          {student.status}
+        <h2 style={this.styles.heading}>{'Group'}</h2>
           {student.group_letter}
           {student.team_leader_name}
-          {student.junior_crew_name + '\n\n'}
-        <span style={this.styles.heading}>{'Rooming'}</span>
+          {student.junior_crew_name}
+        <h2 style={this.styles.heading}>{'Rooming'}</h2>
           {student.dorm_room_number}
-          {student.roommate_name + '\n\n'}
+          {student.roommate_name}
       </div>
     );
   }
