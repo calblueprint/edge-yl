@@ -1,7 +1,7 @@
-edge-yl
+EDGE Youth Leadership Web Application
 ==========
 
-## Setup
+### Setup
 
 First, make a file for your environment variables:
 
@@ -27,7 +27,35 @@ Fifth, start the server:
 
 Happy developing!
 
-## Blueprint
+### Setup
+
+##### CSS Style Guide
+
+    display,
+    flexFlow,
+    justifyContent,
+    alignItems,
+    alignContent,
+    flex,
+    alignSelf,
+    position,
+    top,
+    left,
+    zIndex,
+    width,
+    height,
+    padding,
+    margin,
+    backgroundColor,
+    border,
+    borderColor,
+    borderRadius,
+    color,
+    font,
+    boxSizing,
+    transition,
+
+### Powered by Blueprint
 ![bp](https://raw.githubusercontent.com/calblueprint/calblueprint.org.old/master/app/assets/images/banner-facebook.png "Blueprint Banner")
 **[Blueprint](http://www.calblueprint.org/)** is a student-run UC Berkeley
 organization devoted to matching the skills of its members to our desire to see
