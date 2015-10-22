@@ -37,6 +37,11 @@ class StudentPage extends Component {
       phone_number: '(408) 436-7654',
       school: 'School One',
       status: 'Pending',
+      group_letter: 'Group A',
+      team_leader_name: 'Warren Shen',
+      junior_crew_name: 'Edge Crew',
+      dorm_room_number: 'Cory 301',
+      roommate_name: 'Anthony Huang',
     };
   }
 
