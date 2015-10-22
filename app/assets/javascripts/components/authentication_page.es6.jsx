@@ -17,12 +17,6 @@ class AuthenticationPage extends Component {
       container: {
         display: 'flex',
         flexDirection: 'column',
-        position: 'relative',
-        height: '100vh',
-      },
-      body: {
-        display: 'flex',
-        flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
         flex: '1',
@@ -35,7 +29,7 @@ class AuthenticationPage extends Component {
     };
   }
 
-  renderToggle() {
+  renderFooter() {
     var bool = this.props.isLogin;
     var content = bool ? 'Sign up' : 'Log in';
     var label = bool ? 'Don\'t have an account?' : 'Already have an account?';
@@ -50,11 +44,11 @@ class AuthenticationPage extends Component {
 
   render() {
     return (
-      <div style={this.styles.container}>
+      <div style={StyleConstants.pages.default}>
         <Header />
-        <div style={this.styles.body}>
+        <div style={this.styles.container}>
           <AuthenticationCard {...this.props} />
-          {this.renderToggle()}
+          {this.renderFooter()}
         </div>
       </div>
     );

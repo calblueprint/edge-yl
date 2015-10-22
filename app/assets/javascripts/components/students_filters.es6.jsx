@@ -4,6 +4,7 @@ class StudentsFilters extends Component {
     return {
       container: {
         display: 'flex',
+        flex: '1',
         position: 'relative',
         padding: '24px',
         marginTop: '2%',
