@@ -17,6 +17,8 @@ class AuthenticationCard extends Component {
       container: Object.assign(
         {},
         {
+          display: 'flex',
+          flexDirection: 'column',
           position: 'relative',
           width: '372px',
           padding: '36px',
@@ -25,7 +27,6 @@ class AuthenticationCard extends Component {
       ),
       head: {
         position: 'relative',
-        width: '100%',
         marginBottom: '24px',
         textAlign: 'center',
       },
@@ -33,18 +34,13 @@ class AuthenticationCard extends Component {
   }
 
   renderForm() {
-    if (this.props.isLogin) {
-      return <LoginForm />;
-    } else {
-      return <SignupForm />;
-    }
+    return this.props.isLogin ? <LoginForm /> : <SignupForm />;
   }
 
   renderHeader() {
-    var title = this.props.isLogin ? 'Login' : 'Signup';
     return (
       <div style={this.styles.head}>
-        <h2>{title}</h2>
+        <h2>{this.props.isLogin ? 'Login' : 'Signup'}</h2>
       </div>
     );
   }

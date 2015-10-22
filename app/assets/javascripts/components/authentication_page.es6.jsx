@@ -26,7 +26,6 @@ class AuthenticationPage extends Component {
         justifyContent: 'center',
         alignItems: 'center',
         flex: '1',
-        alignItems: 'center',
         position: 'relative',
       },
       footer: {
