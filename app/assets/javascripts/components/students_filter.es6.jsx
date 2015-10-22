@@ -16,26 +16,14 @@ class StudentsFilter extends Component {
     };
   }
 
-  handleExpand() {
-    this.setState({ isExpanded: !this.state.isExpanded });
-  }
-
-  generateSelectHandler(item) {
-    return function() {
-      this.setState({ selected: item });
-    }.bind(this);
-  }
-
   get styles() {
     return {
       container: {
         display: 'flex',
-        flex: '1',
         flexDirection: 'column',
         justifyContent: 'center',
+        flex: '1',
         height: '22px',
-        border: '1px solid',
-        borderColor: '#e5e6e9 #dfe0e4 #d0d1d5',
         overflow: 'hidden',
       },
       expanded: {
@@ -51,6 +39,16 @@ class StudentsFilter extends Component {
         height: '22px',
       },
     };
+  }
+
+  handleExpand() {
+    this.setState({ isExpanded: !this.state.isExpanded });
+  }
+
+  generateSelectHandler(item) {
+    return function() {
+      this.setState({ selected: item });
+    }.bind(this);
   }
 
   renderListItem(item) {
