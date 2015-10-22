@@ -1,4 +1,4 @@
-class StudentPreview extends Component {
+class StudentContact extends Component {
 
   static get propTypes() {
     return {
@@ -21,23 +21,24 @@ class StudentPreview extends Component {
         position: 'relative',
         padding: '12px',
       },
+      heading: {
+        fontSize: '16px',
+      },
     };
   }
 
   render() {
     var student = this.props.student;
     return (
-      <div>
-        <span>{'Contact'}</span>
         <div style={this.styles.container}>
-          {student.phone_number}
-          {student.home_address}
-          {student.email}
+          <h2 style={this.styles.heading}>{'Contact'}</h2>
+            {student.phone_number}
+            {student.home_address}
+            {student.email}
+          <h2 style={this.styles.heading}>{'School'}</h2>
+            {student.school}
+            {student.school_address}
         </div>
-        <span>{'School'}</span>
-          {student.school}
-          {student.school_address}
-      </div>
     );
   }
 }
