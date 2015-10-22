@@ -27,7 +27,6 @@ class SidebarFooter extends Component {
     return {
       default: {
         lineHeight: '0px',
-        transformOrigin: '50% 50%',
         transition: 'transform 0.75s ease-out',
       },
       hover: {
