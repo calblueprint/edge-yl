@@ -36,6 +36,8 @@ class StudentCard extends Component {
     switch (this.props.type) {
       case 'preview':
         return <StudentPreview {...this.props} />;
+      case 'conference':
+        return <StudentConference {...this.props} />;
       default:
         return <StudentPreview {...this.props} />;
     }

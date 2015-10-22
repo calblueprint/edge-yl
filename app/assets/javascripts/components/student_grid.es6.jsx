@@ -38,6 +38,9 @@ class StudentGrid extends Component {
         <StudentCard
           student={this.props.student}
           type={'parent'} />
+        <StudentCard
+          student={this.props.student}
+          type={'conference'} />
       </div>
     );
   }
