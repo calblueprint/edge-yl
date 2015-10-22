@@ -6,10 +6,10 @@ class SidebarGroup extends Component {
         display: 'flex',
         flexDirection: 'column',
         position: 'relative',
-        marginTop: '14px',
       },
       border: {
         borderBottom: 'solid #D6D6D6 1px',
+        marginTop: '14px',
         marginLeft: '14px',
       },
     };
