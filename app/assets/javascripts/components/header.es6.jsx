@@ -31,35 +31,11 @@ class Header extends Component {
         paddingLeft: '24px',
         boxSizing: 'border-box',
       },
-      middleSection: {
-        display: 'flex',
-        flex: '1',
-        padding: '0 12px',
-        alignItems: 'center',
-        alignSelf: 'stretch',
-      },
-      icon: {
-        position: 'relative',
-        color: 'white',
-        fontSize: '20px',
-      },
       rightIcons: {
         position: 'relative',
         color: 'white',
         fontSize: '24px',
         padding: '20px',
-      },
-    };
-  }
-
-  get clickableStyles() {
-    return {
-      default: {
-        position: 'relative',
-        color: 'white',
-        paddingRight: '16px',
-        fontColor: 'white',
-        fontSize: '24px',
       },
     };
   }
@@ -76,14 +52,8 @@ class Header extends Component {
             </i>
           </Clickable>
         </div>
-        <div style={this.styles.middleSection}>
-          <Clickable
-            content={'EDGE'}
-            route={RouteConstants.pages.login}
-            styles={this.clickableStyles} />        
-          <HeaderSearch />
-        </div>
-        <HeaderShortcuts /> 
+        <HeaderNavigation />
+        <HeaderShortcuts />
       </div>
     );
   }
