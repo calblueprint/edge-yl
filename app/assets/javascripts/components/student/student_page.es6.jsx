@@ -12,7 +12,6 @@ class StudentPage extends Component {
         paddingLeft: '196px',
       },
       placeholder: {
-        position: 'relative',
         width: '196px',
       },
     };

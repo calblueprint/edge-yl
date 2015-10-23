@@ -11,7 +11,6 @@ class SidebarItem extends Component {
   get styles() {
     return {
       container: {
-        width: '100%',
         padding: '30px',
         boxSizing: 'border-box',
       },
@@ -21,7 +20,7 @@ class SidebarItem extends Component {
       },
       icon: {
         width: '16px',
-        color: '#565A5C',
+        color: StyleConstants.colors.ash,
       },
     };
   }
@@ -36,7 +35,7 @@ class SidebarItem extends Component {
         boxSizing: 'border-box',
       },
       hover: {
-        backgroundColor: "#C1D6D8"
+        backgroundColor: StyleConstants.colors.highlight,
       },
     };
   }

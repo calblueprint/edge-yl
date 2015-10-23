@@ -23,7 +23,6 @@ class StudentCard extends Component {
         {
           display: 'flex',
           flexFlow: 'column',
-          position: 'relative',
           width: '32.5%',
           height: '312px',
           marginTop: '1%',

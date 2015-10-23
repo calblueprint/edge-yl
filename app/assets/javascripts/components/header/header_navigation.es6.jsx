@@ -10,7 +10,7 @@ class HeaderNavigation extends Component {
         padding: '0px 12px',
       },
       icon: {
-        color: 'white',
+        color: StyleConstants.colors.white,
         fontSize: '20px',
       },
     };
@@ -20,7 +20,7 @@ class HeaderNavigation extends Component {
     return {
       default: {
         paddingRight: '16px',
-        color: 'white',
+        color: StyleConstants.colors.white,
         fontSize: '24px',
       },
     };

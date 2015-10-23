@@ -15,13 +15,13 @@ class Header extends Component {
   get styles() {
     return {
       container: {
-        display:'flex',
+        display: 'flex',
         alignItems: 'center',
         height: '48px',
-        backgroundColor: '#68B1DE',
+        backgroundColor: StyleConstants.colors.blue,
         boxShadow: '0px 0px 5px 0px rgba(0, 0, 0, 0.25)',
       },
-      leftSection: {
+      sidebar: {
         display: 'flex',
         alignItems: 'center',
         alignSelf: 'stretch',
@@ -30,7 +30,7 @@ class Header extends Component {
         boxSizing: 'border-box',
       },
       icon: {
-        color: 'white',
+        color: StyleConstants.colors.white,
         fontSize: '24px',
       },
     };
@@ -39,7 +39,7 @@ class Header extends Component {
   render() {
     return (
       <div style={this.styles.container}>
-        <div style={this.styles.leftSection}>
+        <div style={this.styles.sidebar}>
           <Clickable
             func={this.props.handleClick}>
             <i
