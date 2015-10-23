@@ -9,9 +9,9 @@ class HeaderSearch extends Component {
       },
       leftSection: {
         display: 'flex',
-        width: '64px',
         justifyContent: 'center',
         alignItems: 'center',
+        width: '64px',
         backgroundColor: '#207CCA',
         color: 'white',
       },
