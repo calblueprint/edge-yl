@@ -31,6 +31,11 @@ class Header extends Component {
         paddingLeft: '24px',
         boxSizing: 'border-box',
       },
+      icon: {
+        position: 'relative',
+        color: 'white',
+        fontSize: '24px',
+      },
     };
   }
 

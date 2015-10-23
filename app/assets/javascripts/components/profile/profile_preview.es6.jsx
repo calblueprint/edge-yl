@@ -2,18 +2,19 @@ class ProfilePreview extends Component {
 
   get styles() {
     return {
-      container: {
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        position: 'relative',
-        padding: '24px 0px',
-        marginTop: '2%',
-        backgroundColor: 'white',
-        border: '1px solid',
-        borderColor: '#e5e6e9 #dfe0e4 #d0d1d5',
-        borderRadius: '3px',
-      },
+      container: Object.assign(
+        {},
+        StyleConstants.cards.default,
+        {
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          position: 'relative',
+          padding: '24px 0px',
+          marginTop: '2%',
+        }
+      ),
+
       image: {
         position: 'relative',
         width: '312px',

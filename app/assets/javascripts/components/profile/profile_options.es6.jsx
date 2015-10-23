@@ -2,15 +2,15 @@ class ProfileOptions extends Component {
 
   get styles() {
     return {
-      container: {
-        position: 'relative',
-        padding: '24px',
-        marginTop: '2%',
-        backgroundColor: 'white',
-        border: '1px solid',
-        borderColor: '#e5e6e9 #dfe0e4 #d0d1d5',
-        borderRadius: '3px',
-      },
+      container: Object.assign(
+        {},
+        StyleConstants.cards.default,
+        {
+          position: 'relative',
+          padding: '24px',
+          marginTop: '2%',
+        }
+      ),
       field: {
         flex: '1',
         position: 'relative',
@@ -45,7 +45,7 @@ class ProfileOptions extends Component {
           </span>
           <Clickable
             content={'Change'}
-            route={Routes.pages.profile}
+            route={RouteConstants.pages.profile}
             styles={this.clickableStyles} />   
         </div>
         <div style= {this.styles.row}>
@@ -54,7 +54,7 @@ class ProfileOptions extends Component {
           </span>
           <Clickable
             content={'Change'}
-            route={Routes.pages.profile}
+            route={RouteConstants.pages.profile}
             styles={this.clickableStyles} />        
         </div>     
       </div>         

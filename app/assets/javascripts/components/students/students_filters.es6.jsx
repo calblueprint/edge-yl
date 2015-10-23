@@ -2,18 +2,17 @@ class StudentsFilters extends Component {
 
   get styles() {
     return {
-      container: {
-        display: 'flex',
-        position: 'relative',
-        padding: '0 24px',
-        marginTop: '2%',
-        // TODO(Anthony): Refactor out this card style!
-        backgroundColor: 'white',
-        border: '1px solid',
-        borderColor: '#e5e6e9 #dfe0e4 #d0d1d5',
-        borderRadius: '3px',
-        boxSizing: 'border-box',
-      },
+      container: Object.assign(
+        {},
+        StyleConstants.cards.default,
+        {
+          display: 'flex',
+          position: 'relative',
+          padding: '0 24px',
+          marginTop: '2%',
+          boxSizing: 'border-box',
+        }
+      ),
     };
   }
 
