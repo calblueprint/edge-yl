@@ -31,7 +31,7 @@ class Header extends Component {
         paddingLeft: '24px',
         boxSizing: 'border-box',
       },
-      icons: {
+      icon: {
         position: 'relative',
         color: 'white',
         fontSize: '24px',
@@ -47,7 +47,7 @@ class Header extends Component {
             func={this.props.handleClick}>
             <i
               className={"fa fa-bars fa-x"}
-              style={this.styles.icons}>
+              style={this.styles.icon}>
             </i>
           </Clickable>
         </div>
