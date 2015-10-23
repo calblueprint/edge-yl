@@ -19,10 +19,10 @@ class Header extends Component {
         alignItems: 'center',
         position: 'relative',
         height: '48px',
-        backgroundColor: '#68B1DE',
+        backgroundColor: StyleConstants.colors.blue,
         boxShadow: '0 0 5px 0 rgba(0, 0, 0, 0.25)',
       },
-      leftSection: {
+      sidebar: {
         display: 'flex',
         alignItems: 'center',
         alignSelf: 'stretch',
@@ -31,19 +31,13 @@ class Header extends Component {
         paddingLeft: '24px',
         boxSizing: 'border-box',
       },
-      rightIcons: {
-        position: 'relative',
-        color: 'white',
-        fontSize: '24px',
-        padding: '20px',
-      },
     };
   }
 
   render() {
     return (
       <div style={this.styles.container}>
-        <div style={this.styles.leftSection}>
+        <div style={this.styles.sidebar}>
           <Clickable
             func={this.props.handleClick}>
             <i

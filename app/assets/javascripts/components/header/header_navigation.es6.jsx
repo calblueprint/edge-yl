@@ -23,7 +23,6 @@ class HeaderNavigation extends Component {
         position: 'relative',
         color: 'white',
         paddingRight: '16px',
-        fontColor: 'white',
         fontSize: '24px',
       },
     };

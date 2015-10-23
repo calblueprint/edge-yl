@@ -7,18 +7,17 @@ class HeaderSearch extends Component {
         flex: '1',
         height: '30px',
       },
-      leftSection: {
+      section: {
         display: 'flex',
-        width: '64px',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#207CCA',
+        width: '64px',
+        backgroundColor: StyleConstants.colors.navy,
         color: 'white',
       },
-      searchField: {
+      input: {
         flex: '1',
-        height: '100%',
-        padding:'8px 15px',
+        padding:'8px 16px',
         border: 'none',
       },
     };
@@ -27,7 +26,7 @@ class HeaderSearch extends Component {
   render() {
     return (
       <form style={this.styles.container}>
-        <div style={this.styles.leftSection}>
+        <div style={this.styles.section}>
           <i
             className={"fa fa-search fa-1x"}
             style={this.styles.icon}>
@@ -35,7 +34,7 @@ class HeaderSearch extends Component {
         </div>
         <input
           placeholder={'Search for a student, school, or recruiter'}
-          style={this.styles.searchField}>
+          style={this.styles.input}>
         </input>
       </form>
     );
