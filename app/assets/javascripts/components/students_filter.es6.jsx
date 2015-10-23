@@ -53,10 +53,11 @@ class StudentsFilter extends Component {
     };
   }
 
-  renderListItem(item) {
+  renderListItem(item, index) {
     return (
       <Clickable
         func={this.generateSelectHandler(item)}
+        key={index}
         styles={this.clickableStyles}>
         <div>{item}</div>
       </Clickable>
