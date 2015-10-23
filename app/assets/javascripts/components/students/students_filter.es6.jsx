@@ -42,7 +42,6 @@ class StudentsFilter extends Component {
     };
   }
 
-<<<<<<< HEAD
   handleExpand() {
     this.setState({ isExpanded: !this.state.isExpanded });
   }
@@ -53,10 +52,7 @@ class StudentsFilter extends Component {
     }.bind(this);
   }
 
-  renderListItem(item) {
-=======
   renderListItem(item, index) {
->>>>>>> master
     return (
       <Clickable
         func={this.generateSelectHandler(item)}
