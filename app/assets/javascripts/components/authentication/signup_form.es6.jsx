@@ -4,15 +4,12 @@ class SignupForm extends Component {
     return {
       container: {
         display: 'flex',
-        flexDirection: 'column',
-        position: 'relative',
+        flexFlow: 'column',
       },
       label: {
-        position: 'relative',
         marginBottom: '6px',
       },
       input: {
-        position: 'relative',
         padding: '8px',
         marginBottom: '24px',
       },

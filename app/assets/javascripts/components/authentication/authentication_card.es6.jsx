@@ -19,16 +19,15 @@ class AuthenticationCard extends Component {
         StyleConstants.cards.default,
         {
           display: 'flex',
-          flexDirection: 'column',
-          position: 'relative',
+          flexFlow: 'column',
           width: '372px',
           padding: '36px',
         }
       ),
       head: {
-        position: 'relative',
+        display: 'flex',
+        justifyContent: 'center',
         marginBottom: '24px',
-        textAlign: 'center',
       },
     };
   }

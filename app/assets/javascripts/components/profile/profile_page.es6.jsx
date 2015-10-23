@@ -8,18 +8,15 @@ class ProfilePage extends Component {
     return {
       container: {
         display: 'flex',
-        flexDirection: 'column',
-        position: 'relative',
+        flexFlow: 'column',
         height: '100vh',
       },
       body: {
         display: 'flex',
         flex: '1',
-        position: 'relative',
         paddingLeft: '196px',
       },
       placeholder: {
-        position: 'relative',
         width: '196px',
       },
     };

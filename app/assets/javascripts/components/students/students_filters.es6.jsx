@@ -7,7 +7,6 @@ class StudentsFilters extends Component {
         StyleConstants.cards.default,
         {
           display: 'flex',
-          position: 'relative',
           padding: '0 24px',
           marginTop: '2%',
           boxSizing: 'border-box',

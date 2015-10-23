@@ -6,20 +6,17 @@ class ProfileOptions extends Component {
         {},
         StyleConstants.cards.default,
         {
-          position: 'relative',
           padding: '24px',
           marginTop: '2%',
         }
       ),
       field: {
-        flex: '1',
-        position: 'relative',
         alignSelf: 'flex-start',
+        flex: '1',
         fontSize: '16px',
-      }, 
+      },
       row: {
         display: 'flex',
-        position: 'relative',
         paddingTop: '24px',
       },
     };
@@ -30,7 +27,6 @@ class ProfileOptions extends Component {
       default: {
         display: 'flex',
         alignSelf: 'flex-end',
-        position: 'relative',
         fontSize: '16px',
       },
     };
@@ -46,7 +42,7 @@ class ProfileOptions extends Component {
           <Clickable
             content={'Change'}
             route={RouteConstants.pages.profile}
-            styles={this.clickableStyles} />   
+            styles={this.clickableStyles} />
         </div>
         <div style= {this.styles.row}>
           <span style={this.styles.field}>
@@ -55,9 +51,9 @@ class ProfileOptions extends Component {
           <Clickable
             content={'Change'}
             route={RouteConstants.pages.profile}
-            styles={this.clickableStyles} />        
-        </div>     
-      </div>         
+            styles={this.clickableStyles} />
+        </div>
+      </div>
     );
   }
 }

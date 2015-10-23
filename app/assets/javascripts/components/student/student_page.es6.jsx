@@ -9,7 +9,6 @@ class StudentPage extends Component {
       container: {
         display: 'flex',
         flex: '1',
-        position: 'relative',
         paddingLeft: '196px',
       },
       placeholder: {
