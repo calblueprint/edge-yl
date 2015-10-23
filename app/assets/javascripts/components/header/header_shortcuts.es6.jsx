@@ -7,13 +7,11 @@ class HeaderShortcuts extends Component {
         justifyContent: 'flex-end',
         alignItems: 'center',
         alignSelf: 'stretch',
-        position: 'relative',
         width: '196px',
         paddingRight: '24px',
         boxSizing: 'border-box',
       },
       icon: {
-        position: 'relative',
         color: 'white',
         fontSize: '24px',
         padding: '20px',
