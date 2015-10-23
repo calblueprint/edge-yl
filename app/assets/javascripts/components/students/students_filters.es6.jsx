@@ -4,14 +4,14 @@ class StudentsFilters extends Component {
     return {
       container: Object.assign(
         {},
+        StyleConstants.cards.default,
         {
           display: 'flex',
           position: 'relative',
           padding: '0 24px',
           marginTop: '2%',
           boxSizing: 'border-box',
-        },
-        StyleConstants.cards.default
+        }
       ),
     };
   }

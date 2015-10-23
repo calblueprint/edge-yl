@@ -4,12 +4,12 @@ class ProfileOptions extends Component {
     return {
       container: Object.assign(
         {},
+        StyleConstants.cards.default,
         {
           position: 'relative',
           padding: '24px',
           marginTop: '2%',
-        },
-        StyleConstants.cards.default
+        }
       ),
       field: {
         flex: '1',

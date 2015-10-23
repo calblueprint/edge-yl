@@ -4,6 +4,7 @@ class ProfilePreview extends Component {
     return {
       container: Object.assign(
         {},
+        StyleConstants.cards.default,
         {
           display: 'flex',
           flexDirection: 'column',
@@ -11,8 +12,7 @@ class ProfilePreview extends Component {
           position: 'relative',
           padding: '24px 0px',
           marginTop: '2%',
-        },
-        StyleConstants.cards.default
+        }
       ),
 
       image: {
