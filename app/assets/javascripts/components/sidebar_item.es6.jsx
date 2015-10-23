@@ -36,9 +36,9 @@ class SidebarItem extends Component {
         flex: '1',
         position: 'relative',
         padding: '14px',
-        boxSizing: 'border-box',
         marginLeft: '14px',
         marginTop: '14px',
+        boxSizing: 'border-box',
       },
       hover: {
         backgroundColor: "#C1D6D8"
@@ -49,7 +49,7 @@ class SidebarItem extends Component {
   render() {
     return (
       <Clickable
-        styles={this.clickableStyles} 
+        styles={this.clickableStyles}
         route={this.props.route} >
         <i
           style={this.styles.icon}

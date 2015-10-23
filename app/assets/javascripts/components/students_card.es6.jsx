@@ -14,19 +14,19 @@ class StudentsCard extends Component {
 
   get styles() {
     return {
-      container: {
-        display: 'flex',
-        alignItems: 'center',
-        position: 'relative',
-        width: '49%',
-        backgroundColor: 'white',
-        border: '1px solid',
-        borderColor: '#e5e6e9 #dfe0e4 #d0d1d5',
-        borderRadius: '3px',
-        marginTop: '2%',
-        padding: '24px',
-        boxSizing: 'border-box',
-      },
+      container: Object.assign(
+        {},
+        {
+          display: 'flex',
+          alignItems: 'center',
+          position: 'relative',
+          width: '49%',
+          marginTop: '2%',
+          padding: '24px',
+          boxSizing: 'border-box',
+        },
+        StyleConstants.cards.default
+      ),
       image: {
         position: 'relative',
         width: '122px',
@@ -42,9 +42,9 @@ class StudentsCard extends Component {
   render() {
     return (
       <div style={this.styles.container}>
-        <img 
-          src='https://scontent.fsnc1-1.fna.fbcdn.net/hphotos-xfp1/t31.0-8/11856297_10200932572512494_2256826043885795533_o.jpg' 
-          style={this.styles.image} /> 
+        <img
+          src='https://scontent.fsnc1-1.fna.fbcdn.net/hphotos-xfp1/t31.0-8/11856297_10200932572512494_2256826043885795533_o.jpg'
+          style={this.styles.image} />
         <div style={this.styles.info}>
           {this.props.student.first_name}
           {this.props.student.last_name}<br />

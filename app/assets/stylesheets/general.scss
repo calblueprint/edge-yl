@@ -1,8 +1,7 @@
-$ash: #565A5C;
-$black: #343434;
-$blue: #68B1DE;
-$gray: #878B8D;
-$white: #FFFFFF;
+$ash: #565a5c;
+$blue: #68b1de;
+$gray: #878B8d;
+$tint: #eaf0f2;
 
 $font-family: 'Montserrat', sans-serif;
 
@@ -23,7 +22,7 @@ body {
   min-height: 100vh;
   padding: 0;
   margin: 0;
-  background-color: #eaf0f2;
+  background-color: $tint;
 }
 
 h1,
