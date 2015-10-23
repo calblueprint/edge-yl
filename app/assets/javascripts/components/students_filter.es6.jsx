@@ -36,7 +36,9 @@ class StudentsFilter extends Component {
         height: '22px',
         border: '1px solid',
         borderColor: '#e5e6e9 #dfe0e4 #d0d1d5',
+        backgroundColor: 'white',
         overflow: 'hidden',
+        zIndex: '100',
       },
       expanded: {
         height: '100px',
