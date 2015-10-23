@@ -1,6 +1,8 @@
 $ash: #565a5c;
 $blue: #68b1de;
 $gray: #878B8d;
+$navy: #28719e;
+$sky: #78c1ee;
 $tint: #eaf0f2;
 
 $font-family: 'Montserrat', sans-serif;
@@ -16,21 +18,36 @@ $font-size-smallest: 12px;
 $font-weight-large: 700;
 $font-weight-medium: 400;
 
-body {
+a,
+body,
+div,
+form,
+h1,
+h2,
+h3,
+hr,
+i,
+input,
+label,
+ol,
+p,
+span,
+textarea,
+ul {
   position: relative;
-  width: 100vw;
-  min-height: 100vh;
   padding: 0;
   margin: 0;
+}
+
+body {
+  width: 100vw;
+  min-height: 100vh;
   background-color: $tint;
 }
 
 h1,
 h2,
 h3 {
-  position: relative;
-  padding: 0;
-  margin: 0;
   color: $ash;
   font-weight: $font-weight-medium;
   font-family: $font-family;
@@ -63,9 +80,6 @@ label,
 li,
 input,
 span {
-  position: relative;
-  padding: 0;
-  margin: 0;
   color: $ash;
   font-size: $font-size-smallest;
   font-weight: $font-weight-medium;
@@ -89,17 +103,4 @@ input:focus,
 textarea:focus {
   border: 1px solid $blue;
   box-shadow: 0 0 3px $blue;
-}
-
-ol,
-ul {
-  position: relative;
-  padding: 0;
-  margin: 0;
-}
-
-pre {
-  display: block;
-  position: relative;
-  clear: both;
 }
