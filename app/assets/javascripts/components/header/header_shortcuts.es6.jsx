@@ -12,7 +12,7 @@ class HeaderShortcuts extends Component {
         boxSizing: 'border-box',
       },
       icon: {
-        color: 'white',
+        color: StyleConstants.colors.white,
         fontSize: '24px',
         padding: '20px',
       },

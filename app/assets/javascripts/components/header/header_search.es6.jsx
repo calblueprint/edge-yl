@@ -7,18 +7,21 @@ class HeaderSearch extends Component {
         flex: '1',
         height: '30px',
       },
+      icon: {
+        color: StyleConstants.colors.white,
+      },
+      input: {
+        flex: '1',
+        padding:'8px 16px',
+        border: 'none',
+      },
       section: {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
         width: '64px',
         backgroundColor: StyleConstants.colors.navy,
-        color: 'white',
-      },
-      input: {
-        flex: '1',
-        padding:'8px 16px',
-        border: 'none',
+        color: StyleConstants.colors.white,
       },
     };
   }

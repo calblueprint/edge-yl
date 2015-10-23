@@ -37,6 +37,7 @@ ul {
   position: relative;
   padding: 0;
   margin: 0;
+  color: $ash;
 }
 
 body {
@@ -48,26 +49,24 @@ body {
 h1,
 h2,
 h3 {
-  color: $ash;
   font-weight: $font-weight-medium;
   font-family: $font-family;
-  white-space: pre-wrap;
-  outline: none;
+  text-decoration: none;
 }
 
 h1 {
   font-size: $font-size-largest;
-  line-height: 64px;
+  line-height: $font-size-largest;
 }
 
 h2 {
   font-size: $font-size-larger;
-  line-height: $font-size-largest;
+  line-height: $font-size-larger;
 }
 
 h3 {
   font-size: $font-size-large;
-  line-height: $font-size-larger;
+  line-height: $font-size-large;
 }
 
 hr {
@@ -75,19 +74,16 @@ hr {
 }
 
 a,
-p,
+input,
 label,
 li,
-input,
+p,
 span {
   color: $ash;
   font-size: $font-size-smallest;
   font-weight: $font-weight-medium;
   font-family: $font-family;
   text-decoration: none;
-  box-sizing: border-box;
-  white-space: pre-wrap;
-  outline: none;
 }
 
 input,

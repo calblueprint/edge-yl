@@ -30,7 +30,7 @@ class Header extends Component {
         boxSizing: 'border-box',
       },
       icon: {
-        color: 'white',
+        color: StyleConstants.colors.white,
         fontSize: '24px',
       },
     };

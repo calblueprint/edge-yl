@@ -35,9 +35,10 @@ class FormButton extends Component {
       default: {
         padding: '6px 12px',
         backgroundColor: StyleConstants.colors.blue,
-        borderBottom: '2px solid #28719E',
+        borderBottom: '2px solid',
+        borderColor: StyleConstants.colors.navy,
         borderRadius: '2px',
-        color: 'white',
+        color: StyleConstants.colors.white,
         fontSize: '14px',
       },
       hover: {
