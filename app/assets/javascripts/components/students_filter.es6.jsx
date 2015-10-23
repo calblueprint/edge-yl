@@ -57,6 +57,7 @@ class StudentsFilter extends Component {
     return (
       <Clickable
         func={this.generateSelectHandler(item)}
+        key={this.props.filterList.indexOf(item)}
         styles={this.clickableStyles}>
         <div>{item}</div>
       </Clickable>
