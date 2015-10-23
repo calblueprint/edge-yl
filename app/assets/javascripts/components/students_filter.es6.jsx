@@ -25,6 +25,7 @@ class StudentsFilter extends Component {
         flex: '1',
         height: '22px',
         overflow: 'hidden',
+        zIndex: '100',
       },
       expanded: {
         height: '100px',
@@ -41,6 +42,7 @@ class StudentsFilter extends Component {
     };
   }
 
+<<<<<<< HEAD
   handleExpand() {
     this.setState({ isExpanded: !this.state.isExpanded });
   }
@@ -52,9 +54,13 @@ class StudentsFilter extends Component {
   }
 
   renderListItem(item) {
+=======
+  renderListItem(item, index) {
+>>>>>>> master
     return (
       <Clickable
         func={this.generateSelectHandler(item)}
+        key={index}
         styles={this.clickableStyles}>
         <div>{item}</div>
       </Clickable>
