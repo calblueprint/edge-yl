@@ -7,6 +7,8 @@ class StylesSingleton {
       ash: '#565a5c',
       blue: '#68b1de',
       gray: '#878B8d',
+      navy: '#28719e',
+      sky: '#78c1ee',
       tint: '#eaf0f2',
     };
   }
@@ -30,7 +32,7 @@ class StylesSingleton {
         position: 'relative',
         height: '100vh',
       },
-    }
+    };
   }
 }
 

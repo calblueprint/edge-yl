@@ -30,20 +30,21 @@ class FormButton extends Component {
   get clickableStyles() {
     return {
       click: {
-        backgroundColor: '#78C1EE',
+        backgroundColor: StyleConstants.colors.sky,
         borderBottom: '0px',
       },
       default: {
         position: 'relative',
         padding: '6px 12px',
         color: 'white',
-        backgroundColor: '#68B1DE',
-        borderBottom: '2px solid #28719E',
+        backgroundColor: StyleConstants.colors.blue,
+        borderBottom: '2px solid',
+        borderColor: StyleConstants.colors.navy,
         borderRadius: '2px',
         fontSize: '14px',
       },
       hover: {
-        backgroundColor: '#78C1EE',
+        backgroundColor: StyleConstants.colors.sky,
       },
     };
   }
