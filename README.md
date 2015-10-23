@@ -27,7 +27,7 @@ Fifth, start the server:
 
 Happy developing!
 
-### Setup
+### Development
 
 ##### CSS Style Guide
 
