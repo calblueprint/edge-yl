@@ -16,9 +16,8 @@ class StudentPreview extends Component {
     return {
       container: {
         display: 'flex',
-        flexDirection: 'column',
+        flexFlow: 'column',
         flex: '1',
-        position: 'relative',
         padding: '12px',
       },
     };

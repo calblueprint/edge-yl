@@ -5,18 +5,15 @@ class SidebarFooter extends Component {
       container: {
         display: 'flex',
         alignItems: 'center',
-        position: 'relative',
         padding: '14px',
         marginTop: '14px',
         marginLeft: '14px',
       },
       label: {
-        position: 'relative',
-        fontSize: '14px',
         paddingRight: '8px',
+        fontSize: '14px',
       },
       image: {
-        position: 'relative',
         width: '18px',
         height: '18px',
       },

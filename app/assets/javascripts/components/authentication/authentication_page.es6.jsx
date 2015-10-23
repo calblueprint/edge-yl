@@ -16,14 +16,12 @@ class AuthenticationPage extends Component {
     return {
       container: {
         display: 'flex',
-        flexDirection: 'column',
+        flexFlow: 'column',
         justifyContent: 'center',
         alignItems: 'center',
         flex: '1',
-        position: 'relative',
       },
       footer: {
-        position: 'relative',
         marginTop: '12px',
       },
     };

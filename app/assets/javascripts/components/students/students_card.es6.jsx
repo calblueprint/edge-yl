@@ -19,16 +19,14 @@ class StudentsCard extends Component {
         {
           display: 'flex',
           alignItems: 'center',
-          position: 'relative',
           width: '49%',
-          marginTop: '2%',
           padding: '24px',
+          marginTop: '2%',
           boxSizing: 'border-box',
         },
         StyleConstants.cards.default
       ),
       image: {
-        position: 'relative',
         width: '122px',
         height: '122px',
         borderRadius: '50%',

@@ -4,13 +4,12 @@ class SidebarGroup extends Component {
     return {
       container: {
         display: 'flex',
-        flexDirection: 'column',
-        position: 'relative',
+        flexFlow: 'column',
       },
       border: {
-        borderBottom: 'solid #D6D6D6 1px',
         marginTop: '14px',
         marginLeft: '14px',
+        borderBottom: 'solid #D6D6D6 1px',
       },
     };
   }

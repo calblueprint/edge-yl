@@ -22,7 +22,7 @@ class StudentCard extends Component {
         StyleConstants.cards.default,
         {
           display: 'flex',
-          flexDirection: 'column',
+          flexFlow: 'column',
           position: 'relative',
           width: '32.5%',
           height: '312px',

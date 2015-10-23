@@ -5,12 +5,11 @@ class HeaderNavigation extends Component {
       container: {
         display: 'flex',
         flex: '1',
-        padding: '0px 12px',
         alignItems: 'center',
         alignSelf: 'stretch',
+        padding: '0px 12px',
       },
       icon: {
-        position: 'relative',
         color: 'white',
         fontSize: '20px',
       },

@@ -9,18 +9,15 @@ class StudentsPage extends Component {
       container: {
         display: 'flex',
         flex: '1',
-        position: 'relative',
         paddingLeft: '196px',
       },
       placeholder: {
-        position: 'relative',
         width: '196px',
       },
       body: {
         display: 'flex',
-        flexDirection: 'column',
+        flexFlow: 'column',
         flex: '1',
-        position: 'relative',
         padding: '0px 12px',
       },
     };

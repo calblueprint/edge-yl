@@ -16,12 +16,11 @@ class StudentGrid extends Component {
     return {
       container: {
         display: 'flex',
-        flexWrap: 'wrap',
+        flexFlow: 'wrap',
         justifyContent: 'space-between',
         alignContent: 'flex-start',
         flex: '1',
-        position: 'relative',
-        padding: '0 12px',
+        padding: '0px 12px',
       },
     };
   }

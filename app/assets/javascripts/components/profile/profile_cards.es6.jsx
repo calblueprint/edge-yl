@@ -3,10 +3,9 @@ class ProfileCards extends Component {
   get styles() {
     return {
       container: {
-        display: 'flex', 
-        flexDirection: 'column',
+        display: 'flex',
+        flexFlow: 'column',
         flex: '1',
-        position: 'relative',
         padding: '0px 12px',
       },
     };
@@ -14,7 +13,7 @@ class ProfileCards extends Component {
 
   render() {
     return (
-      <div style = {this.styles.container}> 
+      <div style = {this.styles.container}>
         <ProfilePreview />
         <ProfileOptions />
       </div>

@@ -11,20 +11,16 @@ class SidebarItem extends Component {
   get styles() {
     return {
       container: {
-        position: 'relative',
         width: '100%',
         padding: '30px',
         boxSizing: 'border-box',
       },
       label: {
-        position: 'relative',
-        fontSize: '14px',
         paddingLeft: '12px',
+        fontSize: '14px',
       },
       icon: {
-        position: 'relative',
         width: '16px',
-        height: 'auto',
         color: '#565A5C',
       },
     };
@@ -34,7 +30,6 @@ class SidebarItem extends Component {
     return {
       default: {
         flex: '1',
-        position: 'relative',
         padding: '14px',
         marginLeft: '14px',
         marginTop: '14px',
