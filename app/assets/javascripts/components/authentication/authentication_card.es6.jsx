@@ -16,14 +16,14 @@ class AuthenticationCard extends Component {
     return {
       container: Object.assign(
         {},
+        StyleConstants.cards.default,
         {
           display: 'flex',
           flexDirection: 'column',
           position: 'relative',
           width: '372px',
           padding: '36px',
-        },
-        StyleConstants.cards.default
+        }
       ),
       head: {
         position: 'relative',
