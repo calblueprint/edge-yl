@@ -21,7 +21,6 @@ class StudentEdit extends Component {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        position: 'relative',
         height: '40px',
         borderBottom: 'solid #D6D6D6 1px',
       },

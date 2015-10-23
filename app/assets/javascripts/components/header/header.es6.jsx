@@ -15,24 +15,21 @@ class Header extends Component {
   get styles() {
     return {
       container: {
-        display:'flex',
+        display: 'flex',
         alignItems: 'center',
-        position: 'relative',
         height: '48px',
         backgroundColor: StyleConstants.colors.blue,
-        boxShadow: '0 0 5px 0 rgba(0, 0, 0, 0.25)',
+        boxShadow: '0px 0px 5px 0px rgba(0, 0, 0, 0.25)',
       },
       sidebar: {
         display: 'flex',
         alignItems: 'center',
         alignSelf: 'stretch',
-        position: 'relative',
         width: '196px',
         paddingLeft: '24px',
         boxSizing: 'border-box',
       },
       icon: {
-        position: 'relative',
         color: 'white',
         fontSize: '24px',
       },

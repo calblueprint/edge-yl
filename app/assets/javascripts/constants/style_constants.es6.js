@@ -28,7 +28,7 @@ class StylesSingleton {
     return {
       default: {
         display: 'flex',
-        flexDirection: 'column',
+        flexFlow: 'column',
         position: 'relative',
         height: '100vh',
       },

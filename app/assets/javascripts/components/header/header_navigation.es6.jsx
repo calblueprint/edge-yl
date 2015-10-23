@@ -5,12 +5,11 @@ class HeaderNavigation extends Component {
       container: {
         display: 'flex',
         flex: '1',
-        padding: '0 12px',
         alignItems: 'center',
         alignSelf: 'stretch',
+        padding: '0px 12px',
       },
       icon: {
-        position: 'relative',
         color: 'white',
         fontSize: '20px',
       },
@@ -20,9 +19,8 @@ class HeaderNavigation extends Component {
   get clickableStyles() {
     return {
       default: {
-        position: 'relative',
-        color: 'white',
         paddingRight: '16px',
+        color: 'white',
         fontSize: '24px',
       },
     };

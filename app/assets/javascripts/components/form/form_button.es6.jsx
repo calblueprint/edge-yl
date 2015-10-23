@@ -21,7 +21,6 @@ class FormButton extends Component {
       container: {
         display: 'flex',
         justifyContent: 'center',
-        position: 'relative',
         height: '32px',
       },
     }
@@ -34,13 +33,11 @@ class FormButton extends Component {
         borderBottom: '0px',
       },
       default: {
-        position: 'relative',
         padding: '6px 12px',
-        color: 'white',
         backgroundColor: StyleConstants.colors.blue,
-        borderBottom: '2px solid',
-        borderColor: StyleConstants.colors.navy,
+        borderBottom: '2px solid #28719E',
         borderRadius: '2px',
+        color: 'white',
         fontSize: '14px',
       },
       hover: {

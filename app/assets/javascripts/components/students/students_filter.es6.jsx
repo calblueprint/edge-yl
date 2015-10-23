@@ -20,7 +20,7 @@ class StudentsFilter extends Component {
     return {
       container: {
         display: 'flex',
-        flexDirection: 'column',
+        flexFlow: 'column',
         justifyContent: 'center',
         flex: '1',
         height: '22px',
