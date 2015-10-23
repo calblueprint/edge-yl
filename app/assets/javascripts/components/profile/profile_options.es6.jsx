@@ -45,7 +45,7 @@ class ProfileOptions extends Component {
           </span>
           <Clickable
             content={'Change'}
-            route={Routes.pages.profile}
+            route={RouteConstants.pages.profile}
             styles={this.clickableStyles} />   
         </div>
         <div style= {this.styles.row}>
@@ -54,7 +54,7 @@ class ProfileOptions extends Component {
           </span>
           <Clickable
             content={'Change'}
-            route={Routes.pages.profile}
+            route={RouteConstants.pages.profile}
             styles={this.clickableStyles} />        
         </div>     
       </div>         
