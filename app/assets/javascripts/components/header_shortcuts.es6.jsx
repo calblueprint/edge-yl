@@ -3,14 +3,14 @@ class HeaderShortcuts extends Component {
   get styles() {
     return {
       container: {
-          display: 'flex',
-          justifyContent: 'flex-end',
-          alignItems: 'center',
-          alignSelf: 'stretch',
-          position: 'relative',
-          width: '196px',
-          paddingRight: '24px',
-          boxSizing: 'border-box',
+        display: 'flex',
+        justifyContent: 'flex-end',
+        alignItems: 'center',
+        alignSelf: 'stretch',
+        position: 'relative',
+        width: '196px',
+        paddingRight: '24px',
+        boxSizing: 'border-box',
       },
       icon: {
         position: 'relative',
@@ -20,7 +20,7 @@ class HeaderShortcuts extends Component {
       },
     };
   }
-  
+
   render() {
     return (
       <div style={this.styles.container}>
