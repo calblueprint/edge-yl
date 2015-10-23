@@ -8,12 +8,6 @@ class StudentsPage extends Component {
     return {
       container: {
         display: 'flex',
-        flexDirection: 'column',
-        position: 'relative',
-        height: '100vh',
-      },
-      body: {
-        display: 'flex',
         flex: '1',
         position: 'relative',
         paddingLeft: '196px',
@@ -22,9 +16,9 @@ class StudentsPage extends Component {
         position: 'relative',
         width: '196px',
       },
-      // TODO(Warren): Refactor this style out - might happen
-      // when abstracting general Page component out of pages.
-      subbody: {
+      body: {
+        display: 'flex',
+        flexDirection: 'column',
         flex: '1',
         position: 'relative',
         padding: '0px 12px',
@@ -55,7 +49,7 @@ class StudentsPage extends Component {
         first_name: 'Jonie',
         last_name: 'Distefano',
         id: 2,
-        home_address: '123 Fake Street',        
+        home_address: '123 Fake Street',
         phone_number: '(510) 333-3333',
         school: 'School Two',
         school_address: 'School Twos address',
@@ -83,12 +77,12 @@ class StudentsPage extends Component {
 
   render() {
     return (
-      <div style={this.styles.container}>
+      <div style={StyleConstants.pages.default}>
         <Header
           handleClick={this.handleClick.bind(this)} />
-        <div style={this.styles.body}>
+        <div style={this.styles.container}>
           <Sidebar shouldShow={this.state.sidebar} />
-          <div style={this.styles.subbody}>
+          <div style={this.styles.body}>
             <StudentsFilters />
             <StudentsGrid students={this.students} />
           </div>

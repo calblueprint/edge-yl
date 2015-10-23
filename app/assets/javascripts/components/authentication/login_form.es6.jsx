@@ -1,4 +1,4 @@
-class SignupForm extends Component {
+class LoginForm extends Component {
 
   get styles() {
     return {
@@ -15,7 +15,6 @@ class SignupForm extends Component {
         position: 'relative',
         padding: '8px',
         marginBottom: '24px',
-        boxSizing: 'border-box',
       },
     };
   }
@@ -24,7 +23,7 @@ class SignupForm extends Component {
     return (
       <div style={this.styles.container}>
         <label style={this.styles.label}>
-          Email
+          {'Email'}
         </label>
         <input
           autoFocus={true}
@@ -32,15 +31,7 @@ class SignupForm extends Component {
           style={this.styles.input}>
         </input>
         <label style={this.styles.label}>
-          Password
-        </label>
-        <input
-          placeholder={'topsecretpassword'}
-          style={this.styles.input}
-          type={'password'}>
-        </input>
-        <label style={this.styles.label}>
-          Password Confirmation
+          {'Password'}
         </label>
         <input
           placeholder={'topsecretpassword'}
@@ -48,10 +39,9 @@ class SignupForm extends Component {
           type={'password'}>
         </input>
         <FormButton
-          content={'Sign up'}
-          route={RouteConstants.students} />
+          content={'Log in'}
+          route={RouteConstants.students.index} />
       </div>
     );
   }
 }
-

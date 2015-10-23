@@ -21,6 +21,17 @@ class StylesSingleton {
       },
     };
   }
+
+  get pages() {
+    return {
+      default: {
+        display: 'flex',
+        flexDirection: 'column',
+        position: 'relative',
+        height: '100vh',
+      },
+    }
+  }
 }
 
 var StyleConstants = new StylesSingleton();

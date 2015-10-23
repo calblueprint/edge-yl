@@ -8,12 +8,6 @@ class StudentPage extends Component {
     return {
       container: {
         display: 'flex',
-        flexDirection: 'column',
-        position: 'relative',
-        height: '100vh',
-      },
-      body: {
-        display: 'flex',
         flex: '1',
         position: 'relative',
         paddingLeft: '196px',
@@ -51,10 +45,10 @@ class StudentPage extends Component {
 
   render() {
     return (
-      <div style={this.styles.container}>
+      <div style={StyleConstants.pages.default}>
         <Header
           handleClick={this.handleClick.bind(this)} />
-        <div style={this.styles.body}>
+        <div style={this.styles.container}>
           <Sidebar shouldShow={this.state.sidebar} />
           <StudentGrid student={this.student} />
           <div style={this.styles.placeholder}></div>

@@ -5,9 +5,9 @@ class StudentsFilters extends Component {
       container: {
         display: 'flex',
         position: 'relative',
-        height: '74px',
-        padding: '24px',
+        padding: '0 24px',
         marginTop: '2%',
+        // TODO(Anthony): Refactor out this card style!
         backgroundColor: 'white',
         border: '1px solid',
         borderColor: '#e5e6e9 #dfe0e4 #d0d1d5',
