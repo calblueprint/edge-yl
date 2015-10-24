@@ -2,7 +2,7 @@ class StudentsCard extends Component {
 
   static get propTypes() {
     return {
-      student: React.PropTypes.array.isRequired,
+      student: React.PropTypes.object.isRequired,
     };
   }
 
