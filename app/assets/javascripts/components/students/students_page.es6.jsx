@@ -76,7 +76,7 @@ class StudentsPage extends Component {
     return (
       <div style={StyleConstants.pages.default}>
         <Header
-          handleClick={this.handleClick.bind(this)} />
+          toggleSidebar={this.handleClick.bind(this)} />
         <div style={this.styles.container}>
           <Sidebar shouldShow={this.state.sidebar} />
           <div style={this.styles.body}>

@@ -2,14 +2,14 @@ class Header extends Component {
 
   static get propTypes() {
     return {
-      handleClick: React.PropTypes.func.isRequired,
+      toggleSidebar: React.PropTypes.func,
       hasSidebar: React.PropTypes.bool.isRequired,
     };
   }
 
   static get defaultProps() {
     return {
-      handleClick: null,
+      toggleSidebar: null,
       hasSidebar: true,
     };
   }
@@ -41,7 +41,7 @@ class Header extends Component {
   showSidebarToggle() {
     return (
       <Clickable
-        func={this.props.handleClick}>
+        func={this.props.toggleSidebar}>
         <i
           className={"fa fa-bars fa-x"}
           style={this.styles.icon}>
