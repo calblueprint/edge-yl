@@ -38,7 +38,7 @@ class Header extends Component {
     };
   }
 
-  showSidebar() {
+  showSidebarToggle() {
     return (
       <Clickable
         func={this.props.handleClick}>
@@ -54,7 +54,7 @@ class Header extends Component {
     return (
       <div style={this.styles.container}>
         <div style={this.styles.sidebar}>
-          { this.props.hasSidebar ? this.showSidebar() : null }
+          { this.props.hasSidebar ? this.showSidebarToggle() : null }
         </div>
         <HeaderNavigation />
         <HeaderShortcuts />
