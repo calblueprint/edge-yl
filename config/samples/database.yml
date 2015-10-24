@@ -1,0 +1,37 @@
+# PostgreSQL Database
+#
+# Install the pg driver:
+#   gem install pg
+#
+# On Mac OS X with macports:
+#   gem install pg -- --with-pg-config=/opt/local/lib/postgresql84/bin/pg_config
+#
+# Configure Gemfile
+#   gem 'pg'
+#
+development:
+  adapter: postgresql
+  encoding: utf8
+  database: sample_edge-yl_development
+  pool: 5
+  username:
+  password:
+
+# Warning: The database defined as "test" will be erased and
+# re-generated from your development database when you run "rake".
+# Do not set this database to the same as development or production.
+test:
+  adapter: postgresql
+  encoding: utf8
+  database: sample_edge-yl_test
+  pool: 5
+  username:
+  password:
+
+production:
+  adapter: postgresql
+  encoding: utf8
+  database: sample_edge-yl_production
+  pool: 5
+  username:
+  password:
