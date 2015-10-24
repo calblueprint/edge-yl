@@ -25,6 +25,7 @@ class StudentsGrid extends Component {
   }
 
   renderCard(student) {
+    console.log(student);
     return (
       <StudentsCard
         key={student.id}
