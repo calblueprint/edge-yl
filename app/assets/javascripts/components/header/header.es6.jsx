@@ -3,12 +3,14 @@ class Header extends Component {
   static get propTypes() {
     return {
       handleClick: React.PropTypes.func.isRequired,
+      hasSidebar: React.PropTypes.bool.isRequired,
     };
   }
 
   static get defaultProps() {
     return {
       handleClick: null,
+      hasSidebar: true,
     };
   }
 
@@ -36,17 +38,23 @@ class Header extends Component {
     };
   }
 
+  showSidebar() {
+    return (
+      <Clickable
+        func={this.props.handleClick}>
+        <i
+          className={"fa fa-bars fa-x"}
+          style={this.styles.icon}>
+        </i>
+      </Clickable>
+    );
+  }
+
   render() {
     return (
       <div style={this.styles.container}>
         <div style={this.styles.sidebar}>
-          <Clickable
-            func={this.props.handleClick}>
-            <i
-              className={"fa fa-bars fa-x"}
-              style={this.styles.icon}>
-            </i>
-          </Clickable>
+          { this.props.hasSidebar ? this.showSidebar() : null }
         </div>
         <HeaderNavigation />
         <HeaderShortcuts />
