@@ -37,6 +37,9 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     addressable (2.3.8)
+    annotate (2.6.10)
+      activerecord (>= 3.2, <= 4.3)
+      rake (~> 10.4)
     arel (6.0.3)
     babel-source (5.8.26)
     babel-transpiler (0.7.0)
@@ -216,6 +219,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  annotate
   capybara (~> 2.4.4)
   factory_girl_rails (~> 4.5.0)
   faker
