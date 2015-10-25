@@ -37,11 +37,19 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     addressable (2.3.8)
+    annotate (2.6.10)
+      activerecord (>= 3.2, <= 4.3)
+      rake (~> 10.4)
     arel (6.0.3)
+    awesome_print (1.6.1)
     babel-source (5.8.26)
     babel-transpiler (0.7.0)
       babel-source (>= 4.0, < 6)
       execjs (~> 2.0)
+    better_errors (2.1.1)
+      coderay (>= 1.0.0)
+      erubis (>= 2.6.6)
+      rack (>= 0.9.0)
     builder (3.2.2)
     capybara (2.4.4)
       mime-types (>= 1.16)
@@ -121,6 +129,8 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    quiet_assets (1.1.0)
+      railties (>= 3.1, < 5.0)
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -216,6 +226,9 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  annotate
+  awesome_print
+  better_errors
   capybara (~> 2.4.4)
   factory_girl_rails (~> 4.5.0)
   faker
@@ -224,6 +237,7 @@ DEPENDENCIES
   jquery-rails
   launchy
   pg
+  quiet_assets
   rails (= 4.2.1)
   react-rails (~> 1.4.0)
   rspec-rails (~> 3.0)
