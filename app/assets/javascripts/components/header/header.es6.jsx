@@ -35,23 +35,22 @@ class Header extends Component {
         color: StyleConstants.colors.white,
         fontSize: '24px',
       },
-      hover: {
-        backgroundColor: StyleConstants.colors.highlight,
-      },
     };
   }
 
   get clickableStyles() {
     return {
       hover: {
-        backgroundColor: StyleConstants.colors.sky,
-      };
-    }
+        backgroundColor: StyleConstants.colors.highlight,
+      }
+    };
+  }
 
   renderToggler() {
     return (
       <Clickable
-        func={this.props.toggleSidebar}>
+        func={this.props.toggleSidebar}
+        styles={this.clickableStyles}>
         <i
           className={"fa fa-bars fa-x"}
           style={this.styles.icon}>
