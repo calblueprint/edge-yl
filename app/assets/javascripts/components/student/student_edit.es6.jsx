@@ -53,7 +53,7 @@ class StudentEdit extends Component {
       <div style={this.styles.container}>
         <span>{this.renderTitle()}</span>
         <i
-          className={"fa fa-pencil-square-o"}
+          className={'fa fa-pencil-square-o'}
           style={this.styles.icon} />
       </div>
     );

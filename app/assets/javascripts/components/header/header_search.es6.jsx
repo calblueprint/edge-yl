@@ -29,7 +29,7 @@ class HeaderSearch extends Component {
     return (
       <form style={this.styles.container}>
         <div style={this.styles.section}>
-          <i className={"fa fa-search fa-1x"} />
+          <i className={'fa fa-search fa-1x'} />
         </div>
         <input
           placeholder={'Search for a student, school, or recruiter'}

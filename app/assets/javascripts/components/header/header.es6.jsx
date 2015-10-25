@@ -55,7 +55,7 @@ class Header extends Component {
     return (
       <Clickable
         func={this.props.toggleSidebar}
-        icon={"fa fa-bars fa-x"}
+        icon={'fa fa-bars fa-x'}
         styles={this.clickableStyles} />
     );
   }
