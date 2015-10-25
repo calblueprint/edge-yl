@@ -24,6 +24,7 @@ class SidebarItem extends Component {
         padding: '12px',
         marginLeft: '14px',
         marginTop: '14px',
+        borderRadius: '1px',
         boxSizing: 'border-box',
       },
       hover: {

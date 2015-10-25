@@ -4,6 +4,7 @@ $gray: #878B8d;
 $navy: #28719e;
 $sky: #78c1ee;
 $tint: #eaf0f2;
+$white: #ffffff;
 
 $font-family: 'Montserrat', sans-serif;
 
@@ -74,13 +75,16 @@ hr {
   border: 1px solid $gray;
 }
 
+i {
+  color: $white;
+}
+
 a,
 input,
 label,
 li,
 p,
 span {
-  color: $ash;
   font-family: $font-family;
   font-size: $font-size-smallest;
   font-weight: $font-weight-medium;

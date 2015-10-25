@@ -37,7 +37,7 @@ class FormButton extends Component {
         backgroundColor: StyleConstants.colors.blue,
         borderBottom: '2px solid',
         borderColor: StyleConstants.colors.navy,
-        borderRadius: '2px',
+        borderRadius: '1px',
         color: StyleConstants.colors.white,
         fontSize: '14px',
       },
