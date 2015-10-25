@@ -20,6 +20,7 @@ class StudentsCard extends Component {
           display: 'flex',
           alignItems: 'center',
           width: '49%',
+          height: '24%',
           padding: '24px',
           marginTop: '2%',
           boxSizing: 'border-box',
