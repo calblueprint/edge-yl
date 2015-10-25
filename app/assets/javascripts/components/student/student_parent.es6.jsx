@@ -30,8 +30,14 @@ class StudentParent extends Component {
     var student = this.props.student;
     return (
       <div style={this.styles.container}>
-        <h2 style={this.styles.heading}>{'Parent 1'}</h2>
-        <h2 style={this.styles.heading}>{'Parent 2'}</h2>
+        <h2 style={this.styles.heading}>{'Parent 1 ' + student.parent1_name + ', ' + student.parent1_type}</h2>
+          {student.parent1_cell_number}
+          {student.parent1_home_number}
+          {student.parent1_address}
+        <h2 style={this.styles.heading}>{'Parent 2 ' + student.parent2_name + ', ' + student.parent2_type}</h2>
+          {student.parent1_cell_number}
+          {student.parent1_home_number}
+          {student.parent1_address}
       </div>
     );
   }
