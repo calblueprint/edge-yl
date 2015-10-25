@@ -25,6 +25,7 @@ gem 'react-rails', '~> 1.4.0'
 group :development, :test do
   gem 'awesome_print'
   gem 'better_errors'
+  gem 'faker'
   gem 'quiet_assets'
   gem 'factory_girl_rails', '~> 4.5.0'
   gem 'rspec-rails', '~> 3.0'
@@ -37,6 +38,5 @@ end
 group :test do
   gem 'capybara', '~> 2.4.4'
   gem 'guard-rspec'
-  gem 'faker'
   gem 'launchy'
 end
