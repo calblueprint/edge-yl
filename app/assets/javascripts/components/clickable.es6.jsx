@@ -90,25 +90,14 @@ class Clickable extends Component {
       this.state.mouse === 'click' && styles.click,
       this.state.mouse === 'hover' && styles.hover
     );
-    if (this.props.icon !== '') {
-      return (
-        <a
-          className={this.props.icon}
-          href={this.props.route}
-          ref={'container'}
-          style={style}>
-          {this.renderChildren()}
-        </a>
-      );
-    } else {
-      return (
-        <a
-          href={this.props.route}
-          ref={'container'}
-          style={style}>
-          {this.renderChildren()}
-        </a>
-      );
-    }
+    return (
+      <a
+        className={this.props.icon}
+        href={this.props.route}
+        ref={'container'}
+        style={style}>
+        {this.renderChildren()}
+      </a>
+    );
   }
 }
