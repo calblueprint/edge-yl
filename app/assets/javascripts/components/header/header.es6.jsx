@@ -42,7 +42,7 @@ class Header extends Component {
     return {
       hover: {
         backgroundColor: StyleConstants.colors.highlight,
-      }
+      },
     };
   }
 

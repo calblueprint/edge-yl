@@ -26,7 +26,7 @@ class HeaderShortcuts extends Component {
     return {
       hover: {
         backgroundColor: StyleConstants.colors.highlight,
-      }
+      },
     };
   }
 

@@ -25,7 +25,7 @@ class HeaderNavigation extends Component {
       },
       hover: {
         backgroundColor: StyleConstants.colors.highlight,
-      }
+      },
     };
   }
 
