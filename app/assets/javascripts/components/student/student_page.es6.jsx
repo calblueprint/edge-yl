@@ -34,6 +34,16 @@ class StudentPage extends Component {
       junior_crew_name: 'Edge Crew',
       dorm_room_number: 'Cory 301',
       roommate_name: 'Anthony Huang',
+      parent1_name: 'Amy Shen',
+      parent1_type: 'guardian',
+      parent1_cell_number: '888-888-8888',
+      parent1_home_number: '555-555-5555',
+      parent1_address: '2617 College Ave Berkeley CA 94704',
+      parent2_name: 'David Shen',
+      parent2_type: 'guardian',
+      parent2_cell_number: '888-888-8888',
+      parent2_home_number: '555-555-5555',
+      parent2_address: '2617 College Ave Berkeley CA 94704',
     };
   }
 
