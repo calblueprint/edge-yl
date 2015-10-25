@@ -46,6 +46,10 @@ GEM
     babel-transpiler (0.7.0)
       babel-source (>= 4.0, < 6)
       execjs (~> 2.0)
+    better_errors (2.1.1)
+      coderay (>= 1.0.0)
+      erubis (>= 2.6.6)
+      rack (>= 0.9.0)
     builder (3.2.2)
     capybara (2.4.4)
       mime-types (>= 1.16)
@@ -224,6 +228,7 @@ PLATFORMS
 DEPENDENCIES
   annotate
   awesome_print
+  better_errors
   capybara (~> 2.4.4)
   factory_girl_rails (~> 4.5.0)
   faker
