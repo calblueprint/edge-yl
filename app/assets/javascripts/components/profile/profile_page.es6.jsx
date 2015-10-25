@@ -22,7 +22,7 @@ class ProfilePage extends Component {
     };
   }
 
-  handleClick(event) {
+  toggleSidebar(event) {
     this.setState({ sidebar: !this.state.sidebar });
   }
 
@@ -30,7 +30,7 @@ class ProfilePage extends Component {
     return (
       <div style={this.styles.container}>
         <Header
-          toggleSidebar={this.handleClick.bind(this)} />
+          toggleSidebar={this.toggleSidebar.bind(this)} />
         <div style={this.styles.body}>
           <Sidebar shouldShow={this.state.sidebar} />
           <ProfileCards />
