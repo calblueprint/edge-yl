@@ -23,6 +23,9 @@ class HeaderNavigation extends Component {
         color: StyleConstants.colors.white,
         fontSize: '24px',
       },
+      hover: {
+        backgroundColor: StyleConstants.colors.highlight,
+      },
     };
   }
 

@@ -35,7 +35,7 @@ class StudentsPage extends Component {
     };
   }
 
-  handleClick(event) {
+  toggleSidebar(event) {
     this.setState({ sidebar: !this.state.sidebar });
   }
 
@@ -43,7 +43,7 @@ class StudentsPage extends Component {
     return (
       <div style={StyleConstants.pages.default}>
         <Header
-          toggleSidebar={this.handleClick.bind(this)} />
+          toggleSidebar={this.toggleSidebar.bind(this)} />
         <div style={this.styles.container}>
           <Sidebar shouldShow={this.state.sidebar} />
           <div style={this.styles.body}>

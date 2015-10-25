@@ -16,6 +16,17 @@ class HeaderShortcuts extends Component {
         fontSize: '24px',
         padding: '20px',
       },
+      hover: {
+        backgroundColor: StyleConstants.colors.highlight,
+      },
+    };
+  }
+
+  get clickableStyles() {
+    return {
+      hover: {
+        backgroundColor: StyleConstants.colors.highlight,
+      },
     };
   }
 
@@ -23,14 +34,16 @@ class HeaderShortcuts extends Component {
     return (
       <div style={this.styles.container}>
         <Clickable
-          route={RouteConstants.pages.mail}>
+          route={RouteConstants.pages.mail}
+          styles={this.clickableStyles}>
         <i
           className={"fa fa-envelope-o fa-x"}
           style={this.styles.icon}>
         </i>
         </Clickable>
         <Clickable
-          route={RouteConstants.pages.profile}>
+          route={RouteConstants.pages.profile}
+          styles={this.clickableStyles}>
           <i
             className={"fa fa-user fa-x"}
             style={this.styles.icon}>

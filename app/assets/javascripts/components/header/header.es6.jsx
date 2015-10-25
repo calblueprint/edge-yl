@@ -38,10 +38,19 @@ class Header extends Component {
     };
   }
 
-  showSidebarToggle() {
+  get clickableStyles() {
+    return {
+      hover: {
+        backgroundColor: StyleConstants.colors.highlight,
+      },
+    };
+  }
+
+  renderToggler() {
     return (
       <Clickable
-        func={this.props.toggleSidebar}>
+        func={this.props.toggleSidebar}
+        styles={this.clickableStyles}>
         <i
           className={"fa fa-bars fa-x"}
           style={this.styles.icon}>
@@ -54,7 +63,7 @@ class Header extends Component {
     return (
       <div style={this.styles.container}>
         <div style={this.styles.sidebar}>
-          { this.props.hasSidebar ? this.showSidebarToggle() : null }
+          { this.props.hasSidebar ? this.renderToggler() : null }
         </div>
         <HeaderNavigation />
         <HeaderShortcuts />
