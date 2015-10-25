@@ -11,7 +11,7 @@
   resources :students, only: [:index, :show]
   resources :schools, only: [:index, :show]
   resources :forms, only: [:show]
-  
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

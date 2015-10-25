@@ -24,6 +24,7 @@ gem 'react-rails', '~> 1.4.0'
 
 group :development, :test do
   gem 'awesome_print'
+  gem 'quiet_assets'
   gem 'factory_girl_rails', '~> 4.5.0'
   gem 'rspec-rails', '~> 3.0'
 end
