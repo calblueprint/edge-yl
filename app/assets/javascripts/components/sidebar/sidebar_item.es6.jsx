@@ -28,7 +28,7 @@ class SidebarItem extends Component {
         boxSizing: 'border-box',
       },
       hover: {
-        backgroundColor: StyleConstants.colors.highlight,
+        backgroundColor: StyleConstants.colors.turquoise,
       },
     };
   }

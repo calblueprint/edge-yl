@@ -22,7 +22,7 @@ class HeaderShortcuts extends Component {
       default: {
         padding: '8px',
         marginLeft: '8px',
-        color: StyleConstants.colors.transparent,
+        color: StyleConstants.colors.opaque,
         fontSize: '20px',
       },
       hover: {

@@ -18,7 +18,7 @@ class HeaderSearch extends Component {
         justifyContent: 'center',
         alignItems: 'center',
         width: '64px',
-        backgroundColor: StyleConstants.colors.navy,
+        backgroundColor: StyleConstants.colors.indigo,
         borderRadius: '1px',
         color: StyleConstants.colors.white,
       },

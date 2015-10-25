@@ -14,8 +14,8 @@ class SidebarFooter extends Component {
         fontSize: '14px',
       },
       image: {
-        width: '18px',
-        height: '18px',
+        width: '20px',
+        height: '20px',
       },
     };
   }
