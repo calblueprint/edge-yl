@@ -16,6 +16,9 @@ class HeaderShortcuts extends Component {
         fontSize: '24px',
         padding: '20px',
       },
+      hover: {
+        backgroundColor: StyleConstants.colors.highlight,
+      },
     };
   }
 

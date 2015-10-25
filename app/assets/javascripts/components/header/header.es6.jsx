@@ -33,7 +33,18 @@ class Header extends Component {
         color: StyleConstants.colors.white,
         fontSize: '24px',
       },
+      hover: {
+        backgroundColor: StyleConstants.colors.highlight,
+      },
     };
+  }
+
+  get clickableStyles() {
+    return {
+      hover: {
+        backgroundColor: StyleConstants.colors.sky,
+      };
+    }
   }
 
   render() {
@@ -41,6 +52,7 @@ class Header extends Component {
       <div style={this.styles.container}>
         <div style={this.styles.sidebar}>
           <Clickable
+            styles={this.clickableStyles}
             func={this.props.handleClick}>
             <i
               className={"fa fa-bars fa-x"}
