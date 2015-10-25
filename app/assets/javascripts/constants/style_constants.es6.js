@@ -11,6 +11,7 @@ class StylesSingleton {
       navy: '#28719e',
       sky: '#78c1ee',
       tint: '#eaf0f2',
+      transparent: 'rgba(255, 255, 255, 0.875)',
       white: '#ffffff',
     };
   }
