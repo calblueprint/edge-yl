@@ -4,6 +4,18 @@ class StudentPage extends Component {
     return { sidebar: true };
   }
 
+  static get propTypes() {
+    return {
+      student: React.PropTypes.object.isRequired,
+    };
+  }
+
+  static get defaultProps() {
+    return {
+      student: {},
+    };
+  }
+
   get styles() {
     return {
       container: {
@@ -14,26 +26,6 @@ class StudentPage extends Component {
       placeholder: {
         width: '196px',
       },
-    };
-  }
-
-  // TODO(Warren): Remove this temporary method after our api is ready.
-  get student() {
-    return {
-      age: 16,
-      birthday: '1/1/1999',
-      email: 'katelyn_marchan@gmail.com',
-      first_name: 'Katelyn',
-      last_name: 'Marchan',
-      id: 1,
-      phone_number: '(408) 436-7654',
-      school: 'School One',
-      status: 'Pending',
-      group_letter: 'Group A',
-      team_leader_name: 'Warren Shen',
-      junior_crew_name: 'Edge Crew',
-      dorm_room_number: 'Cory 301',
-      roommate_name: 'Anthony Huang',
     };
   }
 
@@ -48,7 +40,7 @@ class StudentPage extends Component {
           toggleSidebar={this.handleClick.bind(this)} />
         <div style={this.styles.container}>
           <Sidebar shouldShow={this.state.sidebar} />
-          <StudentGrid student={this.student} />
+          <StudentGrid {...this.props} />
           <div style={this.styles.placeholder}></div>
         </div>
       </div>
