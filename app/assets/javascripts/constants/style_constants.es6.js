@@ -8,6 +8,7 @@ class StylesSingleton {
       blue: '#68b1de',
       gray: '#878B8d',
       highlight: '#c1d6d8',
+      mist: '#d6d6d6',
       navy: '#28719e',
       sky: '#78c1ee',
       tint: '#eaf0f2',

@@ -5,7 +5,7 @@ class SidebarFooter extends Component {
       container: {
         display: 'flex',
         alignItems: 'center',
-        padding: '14px',
+        padding: '12px',
         marginTop: '14px',
         marginLeft: '14px',
       },

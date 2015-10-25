@@ -97,6 +97,7 @@ class Clickable extends Component {
           href={this.props.route}
           ref={'container'}
           style={style}>
+          {this.renderChildren()}
         </a>
       );
     } else {

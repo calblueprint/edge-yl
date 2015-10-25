@@ -9,7 +9,8 @@ class SidebarGroup extends Component {
       border: {
         marginTop: '14px',
         marginLeft: '14px',
-        borderBottom: 'solid #D6D6D6 1px',
+        borderBottom: '1px solid',
+        borderColor: StyleConstants.colors.mist,
       },
     };
   }

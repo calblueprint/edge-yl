@@ -8,7 +8,7 @@ class HeaderShortcuts extends Component {
         alignItems: 'center',
         alignSelf: 'stretch',
         width: '196px',
-        paddingRight: '24px',
+        paddingRight: '12px',
         boxSizing: 'border-box',
       },
     };
