@@ -9,10 +9,6 @@ class HeaderNavigation extends Component {
         alignSelf: 'stretch',
         padding: '0px 12px',
       },
-      icon: {
-        color: StyleConstants.colors.white,
-        fontSize: StyleConstants.fonts.medium,
-      },
     };
   }
 
@@ -22,9 +18,6 @@ class HeaderNavigation extends Component {
         marginRight: '16px',
         color: StyleConstants.colors.white,
         fontSize: StyleConstants.fonts.large,
-      },
-      hover: {
-        backgroundColor: StyleConstants.colors.highlight,
       },
     };
   }

@@ -14,14 +14,20 @@ class FormBody extends Component {
       container: Object.assign( 
         {},
         StyleConstants.cards.default,
-        {},
+        {
+          margin: '20px',
+        }
       ),
+      title: {
+        fontSize: StyleConstants.fonts.largest,
+      }
     };
   }
 
   render() {
     return(
-      <div>
+      <div style = {this.styles.container} >
+        <div style = {this.styles.title}> {'Form'} </div>
       </div>
     );
   }

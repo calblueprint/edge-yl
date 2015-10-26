@@ -11,14 +11,6 @@ class HeaderShortcuts extends Component {
         paddingRight: '12px',
         boxSizing: 'border-box',
       },
-      icon: {
-        color: StyleConstants.colors.white,
-        fontSize: StyleConstants.fonts.large,
-        padding: '20px',
-      },
-      hover: {
-        backgroundColor: StyleConstants.colors.highlight,
-      },
     };
   }
 
