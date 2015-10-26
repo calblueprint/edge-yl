@@ -36,8 +36,8 @@ class StylesSingleton {
         small: '16px',
         smaller: '14px',
         smallest: '12px', 
-      }
-    }
+      },
+    };
   }
   
   get pages() {

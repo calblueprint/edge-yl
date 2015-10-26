@@ -26,8 +26,8 @@ class FormBody extends Component {
 
   render() {
     return(
-      <div style = {this.styles.container} >
-        <div style = {this.styles.title}> {'Form'} </div>
+      <div style={this.styles.container} >
+        <div style={this.styles.title}>{'Form'}</div>
       </div>
     );
   }
