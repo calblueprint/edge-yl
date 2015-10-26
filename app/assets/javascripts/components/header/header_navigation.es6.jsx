@@ -9,6 +9,10 @@ class HeaderNavigation extends Component {
         alignSelf: 'stretch',
         padding: '0px 12px',
       },
+      icon: {
+       color: StyleConstants.colors.white,
+       fontSize: '20px',
+      },
     };
   }
 
