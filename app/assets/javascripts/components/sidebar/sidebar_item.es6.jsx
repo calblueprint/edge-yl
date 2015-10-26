@@ -16,7 +16,7 @@ class SidebarItem extends Component {
       },
       label: {
         paddingLeft: '12px',
-        fontSize: '14px',
+        fontSize: StyleConstants.fonts.smaller,
       },
       icon: {
         width: '16px',

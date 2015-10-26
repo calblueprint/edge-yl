@@ -11,7 +11,7 @@ class SidebarFooter extends Component {
       },
       label: {
         paddingRight: '8px',
-        fontSize: '14px',
+        fontSize: StyleConstants.fonts.smaller,
       },
       image: {
         width: '18px',
