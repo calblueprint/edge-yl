@@ -21,7 +21,7 @@ class HeaderNavigation extends Component {
       default: {
         paddingRight: '16px',
         color: StyleConstants.colors.white,
-        fontSize: '24px',
+        fontSize: StyleConstants.fonts.large,
       },
       hover: {
         backgroundColor: StyleConstants.colors.highlight,

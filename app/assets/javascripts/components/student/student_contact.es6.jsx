@@ -21,7 +21,7 @@ class StudentContact extends Component {
         padding: '12px',
       },
       heading: {
-        fontSize: '16px',
+        fontSize: StyleConstants.fonts.small,
       },
     };
   }
