@@ -8,24 +8,25 @@ class HeaderShortcuts extends Component {
         alignItems: 'center',
         alignSelf: 'stretch',
         width: '196px',
-        paddingRight: '24px',
+        paddingRight: '12px',
         boxSizing: 'border-box',
-      },
-      icon: {
-        color: StyleConstants.colors.white,
-        fontSize: '24px',
-        padding: '20px',
-      },
-      hover: {
-        backgroundColor: StyleConstants.colors.highlight,
       },
     };
   }
 
   get clickableStyles() {
     return {
+      click: {
+        color: StyleConstants.colors.white,
+      },
+      default: {
+        padding: '8px',
+        marginLeft: '8px',
+        color: StyleConstants.colors.opaque,
+        fontSize: '20px',
+      },
       hover: {
-        backgroundColor: StyleConstants.colors.highlight,
+        color: StyleConstants.colors.white,
       },
     };
   }
@@ -34,21 +35,13 @@ class HeaderShortcuts extends Component {
     return (
       <div style={this.styles.container}>
         <Clickable
+          icon={'fa fa-envelope fa-x'}
           route={RouteConstants.pages.mail}
-          styles={this.clickableStyles}>
-        <i
-          className={"fa fa-envelope-o fa-x"}
-          style={this.styles.icon}>
-        </i>
-        </Clickable>
+          styles={this.clickableStyles} />
         <Clickable
+          icon={'fa fa-user fa-x'}
           route={RouteConstants.pages.profile}
-          styles={this.clickableStyles}>
-          <i
-            className={"fa fa-user fa-x"}
-            style={this.styles.icon}>
-          </i>
-        </Clickable>
+          styles={this.clickableStyles} />
       </div>
     );
   }

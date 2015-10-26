@@ -27,10 +27,8 @@ class StudentPreview extends Component {
     var student = this.props.student;
     return (
       <div style={this.styles.container}>
-        <Clickable
-          content={student.first_name + ' ' + student.last_name}
-          route={RouteConstants.students}/>        
-        {student.birthday + ' ' + student.age + ' years old'}
+        {`${student.first_name} ${student.last_name}`}
+        {`${student.birthday } ${student.age} years old`}
       </div>
     );
   }

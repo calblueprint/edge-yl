@@ -7,20 +7,19 @@ class HeaderSearch extends Component {
         flex: '1',
         height: '30px',
       },
-      icon: {
-        color: StyleConstants.colors.white,
-      },
       input: {
         flex: '1',
-        padding:'8px 16px',
+        padding: '8px 16px',
         border: 'none',
+        borderRadius: '1px',
       },
       section: {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
         width: '64px',
-        backgroundColor: StyleConstants.colors.navy,
+        backgroundColor: StyleConstants.colors.indigo,
+        borderRadius: '1px',
         color: StyleConstants.colors.white,
       },
     };
@@ -30,10 +29,7 @@ class HeaderSearch extends Component {
     return (
       <form style={this.styles.container}>
         <div style={this.styles.section}>
-          <i
-            className={"fa fa-search fa-1x"}
-            style={this.styles.icon}>
-          </i>
+          <i className={'fa fa-search fa-1x'} />
         </div>
         <input
           placeholder={'Search for a student, school, or recruiter'}
