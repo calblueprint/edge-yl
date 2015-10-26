@@ -14,9 +14,21 @@ class FormSegment extends Component {
   get styles() {
     return { 
       container: {
+        width: '100%',
       },
       title: {
-        borderBottom: 'solid gray 3px',
+        fontSize: StyleConstants.fonts.sizes.large,
+      },
+      line: {
+        borderTop: 'solid gray 1px',
+        flexGrow: '1',
+        height: '1px',
+        marginLeft: '10px',
+      },
+      titleContainer: {
+        display: 'flex', 
+        flexDirection: 'row', 
+        alignItems: 'center',
       }
     };
   }
@@ -24,7 +36,10 @@ class FormSegment extends Component {
   render() { 
     return(
       <div style={this.styles.container}> 
-        <div style={this.styles.title}> {this.props.title} </div> 
+        <div style={this.styles.titleContainer}> 
+          <span style={this.styles.title}>{this.props.title}</span>
+          <span style={this.styles.line} /> 
+        </div>
         <FormTextbox />
       </div> 
     )

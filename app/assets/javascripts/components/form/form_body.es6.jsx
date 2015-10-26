@@ -17,10 +17,15 @@ class FormBody extends Component {
         StyleConstants.cards.default,
         {
           margin: '20px',
+          display: 'flex', 
+          flexDirection: 'column',
+          alignItems: 'center', 
+          padding: '15px',
         }
       ),
       title: {
         fontSize: StyleConstants.fonts.sizes.largest,
+        marginBottom: '40px',
       }
     };
   }
@@ -28,9 +33,9 @@ class FormBody extends Component {
   render() {
     return(
       <div style={this.styles.container} >
-        <div style={this.styles.title}>{'Form'}</div>
+        <span style={this.styles.title}>{'Form'}</span>
         <FormSegment
-          title={'Hi this is Title'} />
+          title={'Basic Information'} />
       </div>
     );
   }
