@@ -18,22 +18,20 @@ class StudentsFilter extends Component {
 
   get styles() {
       return {
-        container:
-          Object.assign(
-            {},
-            {
-              display: 'flex',
-              flexFlow: 'column',
-              justifyContent: 'center',
-              flex: '1',
-              height: '22px',
-              paddingLeft: '4px',
-              overflow: 'hidden',
-              zIndex: StyleConstants.zIndex.seven,
-            }
-          ),
-        expanded:
+        container: Object.assign(
+          {},
           {
+            display: 'flex',
+            flexFlow: 'column',
+            justifyContent: 'center',
+            flex: '1',
+            height: '22px',
+            paddingLeft: '4px',
+            overflow: 'hidden',
+            zIndex: StyleConstants.zIndex.seven,
+          }
+        ),
+        expanded: {
             height: '100px',
             overflow: 'scroll',
             backgroundColor: StyleConstants.colors.white,
