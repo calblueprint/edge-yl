@@ -36,6 +36,8 @@ class FormBody extends Component {
         <span style={this.styles.title}>{'Form'}</span>
         <FormSegment
           title={'Basic Information'} />
+        <FormSegment 
+          title={'Health Information'} />
       </div>
     );
   }

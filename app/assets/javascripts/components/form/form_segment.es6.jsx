@@ -29,6 +29,9 @@ class FormSegment extends Component {
         display: 'flex', 
         flexDirection: 'row', 
         alignItems: 'center',
+      },
+      infoContainer: {
+        padding: '16px',
       }
     };
   }
@@ -40,7 +43,14 @@ class FormSegment extends Component {
           <span style={this.styles.title}>{this.props.title}</span>
           <span style={this.styles.line} /> 
         </div>
-        <FormTextbox />
+        <div style={this.styles.infoContainer}>
+          <FormTextbox 
+            title={'First Name'}
+            placeHolder={'Emily'}/>
+          <FormTextbox 
+            title={'Last Name'}
+            placeHolder={'Wilson'}/>
+        </div>
       </div> 
     )
   }
