@@ -10,17 +10,9 @@ class SidebarItem extends Component {
 
   get styles() {
     return {
-      container: {
-        padding: '30px',
-        boxSizing: 'border-box',
-      },
       label: {
         paddingLeft: '12px',
         fontSize: StyleConstants.fonts.smaller,
-      },
-      icon: {
-        width: '16px',
-        color: StyleConstants.colors.ash,
       },
     };
   }
@@ -29,13 +21,14 @@ class SidebarItem extends Component {
     return {
       default: {
         flex: '1',
-        padding: '14px',
+        padding: '12px',
         marginLeft: '14px',
         marginTop: '14px',
+        borderRadius: '1px',
         boxSizing: 'border-box',
       },
       hover: {
-        backgroundColor: StyleConstants.colors.highlight,
+        backgroundColor: StyleConstants.colors.turquoise,
       },
     };
   }
@@ -43,12 +36,12 @@ class SidebarItem extends Component {
   render() {
     return (
       <Clickable
-        styles={this.clickableStyles}
-        route={this.props.route} >
-        <i
-          style={this.styles.icon}
-          className={this.props.icon} />
-        <span style={this.styles.label}>{this.props.label}</span>
+        icon={this.props.icon}
+        route={this.props.route}
+        styles={this.clickableStyles}>
+        <span style={this.styles.label}>
+          {this.props.label}
+        </span>
       </Clickable>
     );
   }

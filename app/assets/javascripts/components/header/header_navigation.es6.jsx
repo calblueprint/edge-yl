@@ -19,7 +19,7 @@ class HeaderNavigation extends Component {
   get clickableStyles() {
     return {
       default: {
-        paddingRight: '16px',
+        marginRight: '16px',
         color: StyleConstants.colors.white,
         fontSize: StyleConstants.fonts.large,
       },

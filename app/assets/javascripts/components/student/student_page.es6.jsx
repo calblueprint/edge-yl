@@ -1,9 +1,5 @@
 class StudentPage extends Component {
 
-  static get defaultState() {
-    return { sidebar: true };
-  }
-
   static get propTypes() {
     return {
       student: React.PropTypes.object.isRequired,
@@ -14,6 +10,10 @@ class StudentPage extends Component {
     return {
       student: {},
     };
+  }
+
+  static get defaultState() {
+    return { sidebar: true };
   }
 
   get styles() {

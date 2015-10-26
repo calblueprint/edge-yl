@@ -28,7 +28,7 @@ class Header extends Component {
         alignItems: 'center',
         alignSelf: 'stretch',
         width: '196px',
-        paddingLeft: '24px',
+        paddingLeft: '12px',
         boxSizing: 'border-box',
       },
       icon: {
@@ -40,8 +40,17 @@ class Header extends Component {
 
   get clickableStyles() {
     return {
+      click: {
+        color: StyleConstants.colors.white,
+      },
+      default: {
+        padding: '8px',
+        marginLeft: '8px',
+        color: StyleConstants.colors.opaque,
+        fontSize: '20px',
+      },
       hover: {
-        backgroundColor: StyleConstants.colors.highlight,
+        color: StyleConstants.colors.white,
       },
     };
   }
@@ -50,12 +59,8 @@ class Header extends Component {
     return (
       <Clickable
         func={this.props.toggleSidebar}
-        styles={this.clickableStyles}>
-        <i
-          className={"fa fa-bars fa-x"}
-          style={this.styles.icon}>
-        </i>
-      </Clickable>
+        icon={'fa fa-bars fa-x'}
+        styles={this.clickableStyles} />
     );
   }
 

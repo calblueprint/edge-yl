@@ -5,6 +5,7 @@ class Clickable extends Component {
       content: React.PropTypes.string,
       children: React.PropTypes.node,
       func: React.PropTypes.func,
+      icon: React.PropTypes.string,
       route: React.PropTypes.string,
       styles: React.PropTypes.shape({
         click: React.PropTypes.object,
@@ -19,6 +20,7 @@ class Clickable extends Component {
       content: '',
       children: null,
       func: null,
+      icon: '',
       route: '',
       styles: {
         click: {},
@@ -79,7 +81,7 @@ class Clickable extends Component {
       return this.props.content;
     }
   }
-  
+
   render() {
     var styles = this.props.styles;
     var style = Object.assign(
@@ -90,6 +92,7 @@ class Clickable extends Component {
     );
     return (
       <a
+        className={this.props.icon}
         href={this.props.route}
         ref={'container'}
         style={style}>

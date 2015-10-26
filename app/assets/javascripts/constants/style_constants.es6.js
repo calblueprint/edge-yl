@@ -5,12 +5,12 @@ class StylesSingleton {
   get colors() {
     return {
       ash: '#565a5c',
+      azure: '#78c1ee',
       blue: '#68b1de',
-      gray: '#878B8d',
-      highlight: '#c1d6d8',
-      navy: '#28719e',
-      sky: '#78c1ee',
-      tint: '#eaf0f2',
+      gray: '#d6d6d6',
+      indigo: '#28719e',
+      opaque: 'rgba(255, 255, 255, 0.875)',
+      turquoise: '#c1d6d8',
       white: '#ffffff',
     };
   }
@@ -21,7 +21,7 @@ class StylesSingleton {
         backgroundColor: this.colors.white,
         border: '1px solid',
         borderColor: '#e5e6e9 #dfe0e4 #d0d1d5',
-        borderRadius: '3px',
+        borderRadius: '1px',
       },
     };
   }

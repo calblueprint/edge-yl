@@ -5,7 +5,7 @@ class SidebarFooter extends Component {
       container: {
         display: 'flex',
         alignItems: 'center',
-        padding: '14px',
+        padding: '12px',
         marginTop: '14px',
         marginLeft: '14px',
       },
@@ -14,8 +14,8 @@ class SidebarFooter extends Component {
         fontSize: StyleConstants.fonts.smaller,
       },
       image: {
-        width: '18px',
-        height: '18px',
+        width: '20px',
+        height: '20px',
       },
     };
   }
