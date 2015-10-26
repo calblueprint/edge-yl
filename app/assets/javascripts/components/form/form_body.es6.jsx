@@ -1,8 +1,7 @@
 class FormBody extends Component { 
 
   static get propTypes() {
-    return {
-    };
+    return {};
   }
 
   static get defaultProps() {
