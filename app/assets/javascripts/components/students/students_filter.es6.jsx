@@ -29,7 +29,7 @@ class StudentsFilter extends Component {
               height: '22px',
               paddingLeft: '4px',
               overflow: 'hidden',
-              zIndex: StyleConstants.zIndex.dropdown,
+              zIndex: StyleConstants.zIndex.seven,
             }
           ),
         expanded:
@@ -86,7 +86,7 @@ class StudentsFilter extends Component {
           func={this.handleExpand.bind(this)}
           icon={'fa fa-angle-down'}
           styles={this.clickableStyles}>
-          <span> {this.state.selected || this.props.selected} </span>
+          <span>{this.state.selected || this.props.selected}</span>
         </Clickable>
         <div style={style}>
           {this.renderListItems()}

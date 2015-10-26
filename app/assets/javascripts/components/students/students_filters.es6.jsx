@@ -19,7 +19,7 @@ class StudentsFilters extends Component {
   render() {
     return (
       <div style={this.styles.container}>
-        <span> Student Filters </span>
+        <span>Student Filters</span>
         <StudentsFilter
           filterList={['Warren', 'Anthony', 'Sonia']}
           isExpanded={false}
