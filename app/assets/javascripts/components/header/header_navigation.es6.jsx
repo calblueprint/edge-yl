@@ -10,18 +10,18 @@ class HeaderNavigation extends Component {
         padding: '0px 12px',
       },
       icon: {
-       color: StyleConstants.colors.white,
-       fontSize: '20px',
+        color: StyleConstants.colors.white,
+        fontSize: '20px',
       },
     };
   }
+
+  get clickableStyles() {
+    return {
+     default: {
         marginRight: '16px',
         color: StyleConstants.colors.white,
         fontSize: StyleConstants.fonts.sizes.large,
-      },
-    };
-        color: StyleConstants.colors.white,
-        fontSize: StyleConstants.fonts.large,
       },
     };
   }
