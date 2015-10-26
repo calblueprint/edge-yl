@@ -27,10 +27,10 @@ class FormTextbox extends Component {
         fontSize: StyleConstants.fonts.sizes.smaller,
       },
       input: {
-        height: '30px',
-        width: '250px', 
-        padding: '4px',
         alignSelf: 'flex-end',
+        width: '250px',
+        height: '30px',
+        padding: '4px',
         fontSize: StyleConstants.fonts.sizes.smallest, 
       },
     }

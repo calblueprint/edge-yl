@@ -16,19 +16,19 @@ class FormSegment extends Component {
       container: {
         width: '100%',
       },
+      titleContainer: {
+        display: 'flex', 
+        flexFlow: 'row', 
+        alignItems: 'center',
+      },
       title: {
         fontSize: StyleConstants.fonts.sizes.large,
       },
       line: {
-        borderTop: 'solid gray 1px',
-        flexGrow: '1',
+        flex: '1',
         height: '1px',
         marginLeft: '10px',
-      },
-      titleContainer: {
-        display: 'flex', 
-        flexDirection: 'row', 
-        alignItems: 'center',
+        borderTop: 'solid gray 1px',
       },
       infoContainer: {
         padding: '16px',
@@ -52,6 +52,6 @@ class FormSegment extends Component {
             placeHolder={'Wilson'}/>
         </div>
       </div> 
-    )
+    );
   }
 }

@@ -9,24 +9,23 @@ class FormBody extends Component {
     return {};
   }
 
-//TODO(Sonia): Add more styling to container
   get styles() {
     return {
       container: Object.assign( 
         {},
         StyleConstants.cards.default,
         {
-          margin: '20px',
           display: 'flex', 
-          flexDirection: 'column',
-          alignItems: 'center', 
-          padding: '15px',
+          flexFlow: 'column',
+          alignItems: 'center',
+          padding: '30px',
+          margin: '20px',
         }
       ),
       title: {
+        margin: '30px 0px',
         fontSize: StyleConstants.fonts.sizes.largest,
-        marginBottom: '40px',
-      }
+      },
     };
   }
 
