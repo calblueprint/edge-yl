@@ -1,5 +1,6 @@
 class FormSegment extends Component { 
 
+//TODO(Sonia): Add a 'required' proptype
   static get PropTypes() { 
     return {
       title: React.PropTypes.string.isRequired,
@@ -7,8 +8,7 @@ class FormSegment extends Component {
   }
 
   static get defaultProps() {
-    return {
-    };
+    return {};
   }
 
   get styles() {

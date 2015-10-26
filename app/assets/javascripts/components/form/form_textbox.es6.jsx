@@ -8,9 +8,7 @@ class FormTextbox extends Component {
   }
 
   static get defaultProps() {
-    return {
-
-    };
+    return {};
   }
 
   get styles() {
