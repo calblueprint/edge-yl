@@ -9,7 +9,13 @@ class FormBody extends Component {
   }
 
   get styles() {
-    return {};
+    return {
+      container: Object.assign( 
+        {},
+        StyleConstants.cards.default,
+        {}
+      ),
+    };
   }
 
   render() {

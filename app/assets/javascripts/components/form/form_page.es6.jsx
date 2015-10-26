@@ -11,7 +11,6 @@ class FormPage extends Component {
   render() {
     return (
       <div>
-        <Header />
         <FormBody /> 
       </div>
     );

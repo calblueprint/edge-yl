@@ -15,6 +15,14 @@ class StylesSingleton {
     };
   }
 
+  get fonts() { 
+    return { 
+      sizes: {
+        
+      }
+    }
+  }
+
   get cards() {
     return {
       default: {
