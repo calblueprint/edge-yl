@@ -31,11 +31,11 @@ class Header extends Component {
         paddingLeft: '12px',
         boxSizing: 'border-box',
       },
-      icon: {
-        color: StyleConstants.colors.white,
-        fontSize: StyleConstants.fonts.sizes.large,
-      },
     };
+  }
+
+  get clickableStyles() {
+    return {
       click: {
         color: StyleConstants.colors.white,
       },
