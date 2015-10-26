@@ -19,6 +19,12 @@ class RoutesSingleton {
       },
     };
   }
+
+  get blueprint() { 
+    return { 
+      home: 'http://www.calblueprint.org/',
+    }
+  };
 }
 
 var RouteConstants = new RoutesSingleton();
