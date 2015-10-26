@@ -20,7 +20,7 @@ class FormBody extends Component {
         }
       ),
       title: {
-        fontSize: StyleConstants.fonts.largest,
+        fontSize: StyleConstants.fonts.sizes.largest,
       }
     };
   }
