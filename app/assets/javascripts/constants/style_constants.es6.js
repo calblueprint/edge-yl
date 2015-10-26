@@ -15,6 +15,17 @@ class StylesSingleton {
     };
   }
 
+  get cards() {
+    return {
+      default: {
+        backgroundColor: this.colors.white,
+        border: '1px solid',
+        borderColor: '#e5e6e9 #dfe0e4 #d0d1d5',
+        borderRadius: '3px',
+      },
+    };
+  }
+
   get fonts() { 
     return { 
       sizes: {
@@ -28,18 +39,7 @@ class StylesSingleton {
       }
     }
   }
-
-  get cards() {
-    return {
-      default: {
-        backgroundColor: this.colors.white,
-        border: '1px solid',
-        borderColor: '#e5e6e9 #dfe0e4 #d0d1d5',
-        borderRadius: '3px',
-      },
-    };
-  }
-
+  
   get pages() {
     return {
       default: {

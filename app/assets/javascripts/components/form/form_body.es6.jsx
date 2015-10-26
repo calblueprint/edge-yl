@@ -8,12 +8,13 @@ class FormBody extends Component {
     return {};
   }
 
+//TODO(Sonia): Add more styling to container
   get styles() {
     return {
       container: Object.assign( 
         {},
         StyleConstants.cards.default,
-        {}
+        {},
       ),
     };
   }
