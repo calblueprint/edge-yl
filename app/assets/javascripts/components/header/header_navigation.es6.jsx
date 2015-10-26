@@ -11,7 +11,7 @@ class HeaderNavigation extends Component {
       },
       icon: {
         color: StyleConstants.colors.white,
-        fontSize: '20px',
+        fontSize: StyleConstants.fonts.medium,
       },
     };
   }

@@ -33,7 +33,7 @@ class Header extends Component {
       },
       icon: {
         color: StyleConstants.colors.white,
-        fontSize: '24px',
+        fontSize: StyleConstants.fonts.large,
       },
     };
   }

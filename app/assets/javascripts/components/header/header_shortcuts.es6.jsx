@@ -13,7 +13,7 @@ class HeaderShortcuts extends Component {
       },
       icon: {
         color: StyleConstants.colors.white,
-        fontSize: '24px',
+        fontSize: StyleConstants.fonts.large,
         padding: '20px',
       },
       hover: {
