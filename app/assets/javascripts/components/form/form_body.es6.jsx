@@ -18,11 +18,11 @@ class FormBody extends Component {
           margin: '20px',
         }
       ),
+      ),
       title: {
-        fontSize: StyleConstants.fonts.largest,
+        fontSize: StyleConstants.fonts.sizes.largest,
       }
     };
-  }
 
   render() {
     return(

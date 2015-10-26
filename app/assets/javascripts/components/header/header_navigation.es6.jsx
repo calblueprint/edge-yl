@@ -15,11 +15,11 @@ class HeaderNavigation extends Component {
       },
     };
   }
-
-  get clickableStyles() {
-    return {
-      default: {
         marginRight: '16px',
+        color: StyleConstants.colors.white,
+        fontSize: StyleConstants.fonts.sizes.large,
+      },
+    };
         color: StyleConstants.colors.white,
         fontSize: StyleConstants.fonts.large,
       },

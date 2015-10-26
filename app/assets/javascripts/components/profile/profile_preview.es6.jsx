@@ -19,11 +19,11 @@ class ProfilePreview extends Component {
       },
       name: {
         paddingTop: '24px',
-        fontSize: StyleConstants.fonts.largest,
+        fontSize: StyleConstants.fonts.sizes.largest,
       },
       position: {
         paddingTop: '12px',
-        fontSize: StyleConstants.fonts.small,
+        fontSize: StyleConstants.fonts.sizes.small,
         fontStyle: 'italic',
       },
     };
