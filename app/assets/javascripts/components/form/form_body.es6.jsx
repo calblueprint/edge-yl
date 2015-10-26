@@ -1,7 +1,8 @@
 class FormBody extends Component { 
 
-  static get PropTypes() {
-    return {};
+  static get propTypes() {
+    return {
+    };
   }
 
   static get defaultProps() {
@@ -28,6 +29,8 @@ class FormBody extends Component {
     return(
       <div style={this.styles.container} >
         <div style={this.styles.title}>{'Form'}</div>
+        <FormSegment
+          title={'Hi this is Title'} />
       </div>
     );
   }
