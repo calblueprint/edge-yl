@@ -7,7 +7,8 @@ class StudentsFilters extends Component {
         StyleConstants.cards.default,
         {
           display: 'flex',
-          padding: '0 24px',
+          height: '22px',
+          paddingLeft: '4px',
           marginTop: '2%',
           boxSizing: 'border-box',
         }
@@ -18,6 +19,7 @@ class StudentsFilters extends Component {
   render() {
     return (
       <div style={this.styles.container}>
+        <span> Student Filters </span>
         <StudentsFilter
           filterList={['Warren', 'Anthony', 'Sonia']}
           isExpanded={false}
@@ -26,6 +28,10 @@ class StudentsFilters extends Component {
           filterList={['UnzUnz', 'Max', 'Cat']}
           isExpanded={false}
           selected={'Max'} />
+        <StudentsFilter
+          filterList={['Lion', 'Tiger', 'Bear']}
+          isExpanded={false}
+          selected={'Bear'} />
       </div>
     );
   }

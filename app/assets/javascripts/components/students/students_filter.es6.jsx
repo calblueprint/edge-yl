@@ -17,21 +17,28 @@ class StudentsFilter extends Component {
   }
 
   get styles() {
-    return {
-      container: {
-        display: 'flex',
-        flexFlow: 'column',
-        justifyContent: 'center',
-        flex: '1',
-        height: '22px',
-        overflow: 'hidden',
-        zIndex: '100',
-      },
-      expanded: {
-        height: '100px',
-        overflow: 'scroll',
-      },
-    };
+      return {
+        container:
+          Object.assign(
+            {},
+            {
+              display: 'flex',
+              flexFlow: 'column',
+              justifyContent: 'center',
+              flex: '1',
+              height: '22px',
+              paddingLeft: '4px',
+              overflow: 'hidden',
+              zIndex: StyleConstants.zIndex.dropdown,
+            }
+          ),
+        expanded:
+          {
+            height: '100px',
+            overflow: 'scroll',
+            backgroundColor: StyleConstants.colors.white,
+          },
+      };
   }
 
   get clickableStyles() {
@@ -79,7 +86,7 @@ class StudentsFilter extends Component {
           func={this.handleExpand.bind(this)}
           icon={'fa fa-angle-down'}
           styles={this.clickableStyles}>
-          <span>{this.state.selected || this.props.selected}</span>
+          <span> {this.state.selected || this.props.selected} </span>
         </Clickable>
         <div style={style}>
           {this.renderListItems()}

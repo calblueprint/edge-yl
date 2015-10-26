@@ -35,6 +35,14 @@ class StylesSingleton {
       },
     };
   }
+
+  get zIndex() {
+    return {
+      modal: 900,
+      overlay: 800,
+      dropdown: 700,
+    }
+  }
 }
 
 var StyleConstants = new StylesSingleton();
