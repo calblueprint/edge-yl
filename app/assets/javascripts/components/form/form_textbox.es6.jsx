@@ -12,14 +12,16 @@ class FormTextbox extends Component {
 
   get styles() {
     return { 
-      
+      label: {
+        paddingRight: '10px',
+      }
     }
   }
 
   render() {
     return (
       <div>
-        <label> {'Label'} </label>
+        <label style={this.styles.label}> {'Label'} </label>
         <input 
           placeholder={'dfksf'}>
         </input> 

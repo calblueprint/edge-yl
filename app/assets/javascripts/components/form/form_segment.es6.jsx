@@ -15,13 +15,16 @@ class FormSegment extends Component {
     return { 
       container: {
       },
+      title: {
+        borderBottom: 'solid gray 3px',
+      }
     };
   }
 
   render() { 
     return(
       <div style={this.styles.container}> 
-        <div> {this.props.title} </div> 
+        <div style={this.styles.title}> {this.props.title} </div> 
         <FormTextbox />
       </div> 
     )
