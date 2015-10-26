@@ -38,7 +38,7 @@ class SidebarFooter extends Component {
         <span style={this.styles.label}>{'Powered by'}</span>
         <Clickable
           styles={this.clickableStyles}
-          route='http://www.calblueprint.org/'>
+          route={RouteConstants.blueprint.home}>
           <img
             src='https://avatars3.githubusercontent.com/u/2729578?v=3&s=200'
             style={this.styles.image} />

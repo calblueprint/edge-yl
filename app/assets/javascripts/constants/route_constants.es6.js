@@ -2,6 +2,12 @@
 
 class RoutesSingleton {
 
+  get blueprint() { 
+    return { 
+      home: 'http://www.calblueprint.org/',
+    };
+  }
+
   get pages() {
     return {
       login: '/login',
