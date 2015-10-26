@@ -18,7 +18,7 @@ class FormBody extends Component {
           display: 'flex', 
           flexFlow: 'column',
           alignItems: 'center',
-          padding: '30px',
+          padding: '36px',
           margin: '20px',
         }
       ),

@@ -23,7 +23,6 @@ class FormTextbox extends Component {
         marginBottom: '20px',
       },
       label: {
-        paddingRight: '10px',
         fontSize: StyleConstants.fonts.sizes.smaller,
       },
       input: {
