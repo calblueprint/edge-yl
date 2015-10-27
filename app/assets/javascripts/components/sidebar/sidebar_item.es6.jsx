@@ -12,7 +12,7 @@ class SidebarItem extends Component {
     return {
       label: {
         paddingLeft: '12px',
-        fontSize: '14px',
+        fontSize: StyleConstants.fonts.sizes.smaller,
       },
     };
   }

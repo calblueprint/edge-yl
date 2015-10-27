@@ -8,13 +8,25 @@ class FormBody extends Component {
     return {};
   }
 
+//TODO(Sonia): Add more styling to container
   get styles() {
-    return {};
-  }
+    return {
+      container: Object.assign( 
+        {},
+        StyleConstants.cards.default,
+        {
+          margin: '20px',
+        }
+      ),
+      title: {
+        fontSize: StyleConstants.fonts.sizes.largest,
+      },
+    };
 
   render() {
     return(
-      <div>
+      <div style={this.styles.container}>
+        <div style={this.styles.title}>{'Form'}</div>
       </div>
     );
   }

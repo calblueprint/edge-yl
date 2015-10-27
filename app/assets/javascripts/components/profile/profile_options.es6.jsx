@@ -13,7 +13,7 @@ class ProfileOptions extends Component {
       field: {
         alignSelf: 'flex-start',
         flex: '1',
-        fontSize: '16px',
+        fontSize: StyleConstants.fonts.sizes.small,
       },
       row: {
         display: 'flex',
@@ -27,7 +27,7 @@ class ProfileOptions extends Component {
       default: {
         display: 'flex',
         alignSelf: 'flex-end',
-        fontSize: '16px',
+        fontSize: StyleConstants.fonts.sizes.small,
       },
     };
   }
