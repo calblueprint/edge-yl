@@ -40,9 +40,7 @@ class StudentsCard extends Component {
 
   get clickableStyles() {
     return {
-      default: {
-
-      },
+      default: {},
       hover: {
         textDecoration: 'underline',
       },

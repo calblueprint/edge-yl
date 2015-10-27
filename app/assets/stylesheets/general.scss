@@ -105,6 +105,10 @@ span {
   font-family: $font-family;
   font-size: $font-size-smallest;
   font-weight: $font-weight-medium;
+}
+
+a {
+  display: flex;
   text-decoration: none;
 }
 

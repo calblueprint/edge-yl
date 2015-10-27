@@ -21,7 +21,6 @@ class FormButton extends Component {
       container: {
         display: 'flex',
         justifyContent: 'center',
-        height: '32px',
       },
     };
   }
