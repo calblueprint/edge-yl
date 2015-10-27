@@ -8,7 +8,6 @@ class Clickable extends Component {
       icon: React.PropTypes.string,
       route: React.PropTypes.string,
       styles: React.PropTypes.shape({
-        click: React.PropTypes.object,
         default: React.PropTypes.object,
         hover: React.PropTypes.object,
       }),
@@ -20,6 +19,7 @@ class Clickable extends Component {
         'h5',
         'h6',
         'i',
+        'span'
       ]).isRequired,
     };
   }
@@ -32,7 +32,6 @@ class Clickable extends Component {
       icon: '',
       route: '',
       styles: {
-        click: {},
         default: {},
         hover: {},
       },
@@ -41,7 +40,7 @@ class Clickable extends Component {
   }
 
   static get defaultState() {
-    // Mouse state 'enum': 'click', 'default', 'hover'.
+    // Mouse state enum: 'default' or 'hover'.
     return {
       mouse: 'default',
     }
@@ -50,7 +49,6 @@ class Clickable extends Component {
   componentDidMount() {
     var node = React.findDOMNode(this.refs.container);
     node.addEventListener('click', this.handleClick.bind(this));
-    node.addEventListener('mousedown', this.handleMouseDown.bind(this));
     node.addEventListener('mouseenter', this.handleMouseEnter.bind(this));
     node.addEventListener('mouseleave', this.handleMouseLeave.bind(this));
     node.addEventListener('mouseup', this.handleMouseUp.bind(this));
@@ -64,10 +62,6 @@ class Clickable extends Component {
         this.props.func();
       }
     }
-  }
-
-  handleMouseDown(event) {
-    this.setState({ mouse: 'click' });
   }
 
   handleMouseEnter(event) {
@@ -120,7 +114,6 @@ class Clickable extends Component {
     var style = Object.assign(
       {},
       styles.default,
-      this.state.mouse === 'click' && styles.click,
       this.state.mouse === 'hover' && styles.hover
     );
     if (this.props.type === 'i') {

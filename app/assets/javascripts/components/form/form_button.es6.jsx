@@ -28,15 +28,9 @@ class FormButton extends Component {
 
   get clickableStyles() {
     return {
-      click: {
-        backgroundColor: StyleConstants.colors.azure,
-        borderBottom: '0px',
-      },
       default: {
         padding: '6px 12px',
         backgroundColor: StyleConstants.colors.blue,
-        borderBottom: '2px solid',
-        borderColor: StyleConstants.colors.indigo,
         borderRadius: '1px',
         color: StyleConstants.colors.white,
         fontSize: StyleConstants.fonts.sizes.smaller,

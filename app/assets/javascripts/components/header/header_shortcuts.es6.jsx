@@ -16,9 +16,6 @@ class HeaderShortcuts extends Component {
 
   get clickableStyles() {
     return {
-      click: {
-        color: StyleConstants.colors.white,
-      },
       default: {
         padding: '8px',
         marginLeft: '8px',
