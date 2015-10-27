@@ -1,4 +1,4 @@
-class FormSegment extends Component { 
+class FormSection extends Component { 
 
 //TODO(Sonia): Add a 'required' proptype
   static get PropTypes() { 
