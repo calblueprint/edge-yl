@@ -18,15 +18,14 @@ class FormBody extends Component {
           margin: '20px',
         }
       ),
-      ),
       title: {
         fontSize: StyleConstants.fonts.sizes.largest,
-      }
+      },
     };
 
   render() {
     return(
-      <div style={this.styles.container} >
+      <div style={this.styles.container}>
         <div style={this.styles.title}>{'Form'}</div>
       </div>
     );
