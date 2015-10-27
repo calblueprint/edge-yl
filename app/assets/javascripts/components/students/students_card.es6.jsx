@@ -39,17 +39,16 @@ class StudentsCard extends Component {
   }
 
   render() {
+    var student = this.props.student;
     return (
       <div style={this.styles.container}>
         <img
           src='https://scontent.fsnc1-1.fna.fbcdn.net/hphotos-xfp1/t31.0-8/11856297_10200932572512494_2256826043885795533_o.jpg'
           style={this.styles.image} />
         <div style={this.styles.info}>
-          {this.props.student.first_name}
-          {this.props.student.last_name}<br />
-          {this.props.student.birthday}, {this.props.student.age}<br />
-          {this.props.student.school}<br />
-          {this.props.student.status}<br />
+          <h3>{`${student.first_name} ${student.last_name}`}</h3>
+          <span>{`${student.email}`}</span>
+          <span>{`${student.home_address}`}</span>
         </div>
       </div>
     );
