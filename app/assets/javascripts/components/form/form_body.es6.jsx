@@ -1,6 +1,6 @@
 class FormBody extends Component {
 
-  static get PropTypes() {
+  static get propTypes() {
     return {};
   }
 
@@ -15,10 +15,16 @@ class FormBody extends Component {
         {},
         StyleConstants.cards.default,
         {
+          display: 'flex', 
+          flexFlow: 'column',
+          alignItems: 'center',
+          width: '712px',
+          padding: '36px',
           margin: '20px',
         }
       ),
       title: {
+        margin: '30px 0px',
         fontSize: StyleConstants.fonts.sizes.largest,
       },
     };
@@ -26,8 +32,12 @@ class FormBody extends Component {
 
   render() {
     return(
-      <div style={this.styles.container}>
-        <div style={this.styles.title}>{'Form'}</div>
+      <div style={this.styles.container} >
+        <span style={this.styles.title}>{'Form'}</span>
+        <FormSection
+          title={'Basic Information'} />
+        <FormSection
+          title={'Health Information'} />
       </div>
     );
   }
