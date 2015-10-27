@@ -23,7 +23,7 @@ class FormButton extends Component {
         justifyContent: 'center',
         height: '32px',
       },
-    }
+    };
   }
 
   get clickableStyles() {

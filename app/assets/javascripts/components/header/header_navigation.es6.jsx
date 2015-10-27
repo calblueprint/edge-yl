@@ -30,7 +30,7 @@ class HeaderNavigation extends Component {
       <div style={this.styles.container}>
         <Clickable
           content={'EDGE'}
-          route={RouteConstants.pages.login}
+          route={RouteConstants.students.index}
           styles={this.clickableStyles}
           type={'h2'} />
         <HeaderSearch />

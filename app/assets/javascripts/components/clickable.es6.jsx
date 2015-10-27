@@ -12,8 +12,15 @@ class Clickable extends Component {
         default: React.PropTypes.object,
         hover: React.PropTypes.object,
       }),
-      // TODO(Warren): Change below PropTypes to an enum.
-      type: React.PropTypes.string,
+      type: React.PropTypes.oneOf([
+        'h1',
+        'h2',
+        'h3',
+        'h4',
+        'h5',
+        'h6',
+        'i',
+      ]).isRequired,
     };
   }
 
