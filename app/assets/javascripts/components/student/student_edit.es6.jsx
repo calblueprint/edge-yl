@@ -3,8 +3,12 @@ class StudentEdit extends Component {
   static get propTypes() {
     return {
       student: React.PropTypes.object.isRequired,
-      // TODO(Warren): change this proptype to an enum.
-      type: React.PropTypes.string.isRequired,
+      type: React.PropTypes.oneOf([
+        'contact',
+        'conference',
+        'parent',
+        'preview',
+      ]).isRequired,
     };
   }
 
@@ -27,7 +31,7 @@ class StudentEdit extends Component {
       icon: {
         position: 'absolute',
         top: '0px',
-        right: '6px',
+        right: '8px',
         lineHeight: '40px',
       },
     };
@@ -43,15 +47,13 @@ class StudentEdit extends Component {
         return 'Parent Information';
       case 'conference':
         return 'Conference Information';
-      default:
-        return 'Student Preview';
     };
   }
 
   render() {
     return (
       <div style={this.styles.container}>
-        <span>{this.renderTitle()}</span>
+        <h5>{this.renderTitle()}</h5>
         <i
           className={'fa fa-pencil-square-o'}
           style={this.styles.icon} />

@@ -2,47 +2,49 @@ class StudentsFilter extends Component {
 
   static get propTypes() {
     return {
-      isExpanded: React.PropTypes.bool.isRequired,
-      filterList: React.PropTypes.arrayOf(React.PropTypes.string).isRequired,
-      selected: React.PropTypes.string,
+      options: React.PropTypes.arrayOf(React.PropTypes.string).isRequired,
     };
   }
 
   static get defaultProps() {
     return {
+      options: [],
+    };
+  }
+
+  static get defaultState() {
+    return {
       isExpanded: false,
-      filterList: [],
-      selected: 'None',
+      selectedOption: '',
     };
   }
 
   get styles() {
-      return {
-        container: Object.assign(
-          {},
-          {
-            display: 'flex',
-            flexFlow: 'column',
-            justifyContent: 'center',
-            flex: '1',
-            height: '22px',
-            paddingLeft: '4px',
-            overflow: 'hidden',
-            zIndex: StyleConstants.zIndex.seven,
-          }
-        ),
-        expanded: {
-            height: '100px',
-            overflow: 'scroll',
-            backgroundColor: StyleConstants.colors.white,
-          },
-      };
+    return {
+      container: {
+        display: 'flex',
+        flexFlow: 'column',
+        flex: '1',
+      },
+      list: Object.assign(
+        {},
+        StyleConstants.cards.default,
+        {
+          flex: '1',
+          position: 'absolute',
+          top: '30px',
+          left: '0px',
+          zIndex: StyleConstants.planes.two,
+          // TODO(Warren): Figure out a way to set width without hardcoded value.
+          width: '200px',
+        }
+      ),
+    };
   }
 
   get clickableStyles() {
     return {
       default: {
-        height: '22px',
       },
     };
   }
@@ -51,44 +53,47 @@ class StudentsFilter extends Component {
     this.setState({ isExpanded: !this.state.isExpanded });
   }
 
-  generateSelectHandler(item) {
+  generateHandler(item) {
     return function() {
-      this.setState({ selected: item });
+      this.setState({ selectedOption: item });
     }.bind(this);
   }
 
-  renderListItem(item, index) {
+  renderOption(item, index) {
     return (
       <Clickable
-        func={this.generateSelectHandler(item)}
+        content={item}
+        func={this.generateHandler(item)}
         key={index}
-        styles={this.clickableStyles}>
-        <div>{item}</div>
-      </Clickable>
+        styles={this.clickableStyles} />
     );
   }
 
-  renderListItems() {
-    return this.props.filterList.map(this.renderListItem.bind(this));
+  renderOptions() {
+    return this.props.options.map(this.renderOption.bind(this));
+  }
+
+  renderList() {
+    if (this.state.isExpanded) {
+      return (
+        <div style={this.styles.list}>
+          {this.renderOptions()}
+        </div>
+      );
+    }
   }
 
   render() {
-    var style = Object.assign(
-      {},
-      this.styles.container,
-      this.state.isExpanded && this.styles.expanded
-    );
     return (
-      <div style={style}>
+      <div style={this.styles.container}>
         <Clickable
           func={this.handleExpand.bind(this)}
           icon={'fa fa-angle-down'}
-          styles={this.clickableStyles}>
-          <span>{this.state.selected || this.props.selected}</span>
+          styles={this.clickableStyles}
+          type={'i'}>
+          <span>{this.state.selectedOption}</span>
         </Clickable>
-        <div style={style}>
-          {this.renderListItems()}
-        </div>
+        {this.renderList()}
       </div>
     );
   }

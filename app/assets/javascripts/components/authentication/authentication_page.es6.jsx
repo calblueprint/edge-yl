@@ -22,7 +22,20 @@ class AuthenticationPage extends Component {
         flex: '1',
       },
       footer: {
+        display: 'flex',
+        alignItems: 'flex-end',
         marginTop: '12px',
+      },
+      label: {
+        paddingRight: '4px',
+      },
+    };
+  }
+
+  get clickableStyles() {
+    return {
+      hover: {
+        textDecoration: 'underline',
       },
     };
   }
@@ -31,11 +44,15 @@ class AuthenticationPage extends Component {
     var bool = this.props.isLogin;
     var content = bool ? 'Sign up' : 'Log in';
     var label = bool ? 'Don\'t have an account?' : 'Already have an account?';
-    var href = bool ? '/signup' : 'login';
+    var route = bool ? RouteConstants.pages.signup : RouteConstants.pages.login;
     return (
       <div style={this.styles.footer}>
-        <span>{label + ' '}</span>
-        <a href={href}><u>{content}</u></a>
+        <h6 style={this.styles.label}>{label}</h6>
+        <Clickable
+          content={content}
+          styles={this.clickableStyles}
+          route={route}
+          type={'h5'} />
       </div>
     );
   }

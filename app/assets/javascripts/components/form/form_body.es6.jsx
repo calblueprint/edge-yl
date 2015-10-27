@@ -1,4 +1,4 @@
-class FormBody extends Component { 
+class FormBody extends Component {
 
   static get propTypes() {
     return {};
@@ -8,9 +8,13 @@ class FormBody extends Component {
     return {};
   }
 
+<<<<<<< HEAD
+=======
+  // TODO(Sonia): Add more styling to container
+>>>>>>> 99a7890abe64617f8c199ef8cd04377cebffb529
   get styles() {
     return {
-      container: Object.assign( 
+      container: Object.assign(
         {},
         StyleConstants.cards.default,
         {
@@ -26,7 +30,7 @@ class FormBody extends Component {
         margin: '30px 0px',
         fontSize: StyleConstants.fonts.sizes.largest,
       },
-    }
+    };
   }
 
   render() {

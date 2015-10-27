@@ -21,7 +21,6 @@ class HeaderNavigation extends Component {
      default: {
         marginRight: '16px',
         color: StyleConstants.colors.white,
-        fontSize: StyleConstants.fonts.sizes.large,
       },
     };
   }
@@ -31,8 +30,9 @@ class HeaderNavigation extends Component {
       <div style={this.styles.container}>
         <Clickable
           content={'EDGE'}
-          route={RouteConstants.pages.login}
-          styles={this.clickableStyles} />
+          route={RouteConstants.students.index}
+          styles={this.clickableStyles}
+          type={'h2'} />
         <HeaderSearch />
       </div>
     );

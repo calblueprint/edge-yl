@@ -3,8 +3,12 @@ class StudentCard extends Component {
   static get propTypes() {
     return {
       student: React.PropTypes.object.isRequired,
-      // TODO(Warren): change this proptype to an enum.
-      type: React.PropTypes.string.isRequired,
+      type: React.PropTypes.oneOf([
+        'contact',
+        'conference',
+        'parent',
+        'preview',
+      ]).isRequired,
     };
   }
 

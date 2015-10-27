@@ -26,8 +26,8 @@ class StylesSingleton {
     };
   }
 
-  get fonts() { 
-    return { 
+  get fonts() {
+    return {
       sizes: {
         largest: '36px',
         larger: '30px',
@@ -35,11 +35,11 @@ class StylesSingleton {
         medium: '18px',
         small: '16px',
         smaller: '14px',
-        smallest: '12px', 
+        smallest: '12px',
       },
     };
   }
-  
+
   get pages() {
     return {
       default: {
@@ -50,7 +50,7 @@ class StylesSingleton {
     };
   }
 
-  get zIndex() {
+  get planes() {
     return {
       one: 100,
       two: 200,
@@ -61,7 +61,7 @@ class StylesSingleton {
       seven: 700,
       eight: 800,
       nine: 900,
-    }
+    };
   }
 }
 
