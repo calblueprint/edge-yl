@@ -21,7 +21,7 @@ class StudentParent extends Component {
         padding: '12px',
       },
       heading: {
-        fontSize: StyleConstants.fonts.small,
+        fontSize: StyleConstants.fonts.sizes.small,
       },
     };
   }

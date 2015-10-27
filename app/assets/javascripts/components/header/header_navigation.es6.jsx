@@ -9,15 +9,19 @@ class HeaderNavigation extends Component {
         alignSelf: 'stretch',
         padding: '0px 12px',
       },
+      icon: {
+        color: StyleConstants.colors.white,
+        fontSize: '20px',
+      },
     };
   }
 
   get clickableStyles() {
     return {
-      default: {
+     default: {
         marginRight: '16px',
         color: StyleConstants.colors.white,
-        fontSize: StyleConstants.fonts.large,
+        fontSize: StyleConstants.fonts.sizes.large,
       },
     };
   }

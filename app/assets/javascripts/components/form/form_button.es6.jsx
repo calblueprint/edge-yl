@@ -39,7 +39,7 @@ class FormButton extends Component {
         borderColor: StyleConstants.colors.indigo,
         borderRadius: '1px',
         color: StyleConstants.colors.white,
-        fontSize: StyleConstants.fonts.smaller,
+        fontSize: StyleConstants.fonts.sizes.smaller,
       },
       hover: {
         backgroundColor: StyleConstants.colors.azure,

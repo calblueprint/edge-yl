@@ -26,10 +26,10 @@ class FormBody extends Component {
         fontSize: StyleConstants.fonts.sizes.largest,
       },
     };
-  }
 
   render() {
     return(
+
       <div style={this.styles.container} >
         <span style={this.styles.title}>{'Form'}</span>
         <FormSegment
