@@ -56,7 +56,8 @@ class Header extends Component {
       <Clickable
         func={this.props.toggleSidebar}
         icon={'fa fa-bars fa-x'}
-        styles={this.clickableStyles} />
+        styles={this.clickableStyles}
+        type={'i'} />
     );
   }
 
@@ -64,7 +65,7 @@ class Header extends Component {
     return (
       <div style={this.styles.container}>
         <div style={this.styles.sidebar}>
-          { this.props.hasSidebar ? this.renderToggler() : null }
+          {this.props.hasSidebar && this.renderToggler()}
         </div>
         <HeaderNavigation />
         <HeaderShortcuts />

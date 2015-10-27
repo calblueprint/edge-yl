@@ -37,11 +37,13 @@ class HeaderShortcuts extends Component {
         <Clickable
           icon={'fa fa-envelope fa-x'}
           route={RouteConstants.pages.mail}
-          styles={this.clickableStyles} />
+          styles={this.clickableStyles}
+          type={'i'} />
         <Clickable
           icon={'fa fa-user fa-x'}
           route={RouteConstants.pages.profile}
-          styles={this.clickableStyles} />
+          styles={this.clickableStyles}
+          type={'i'} />
       </div>
     );
   }

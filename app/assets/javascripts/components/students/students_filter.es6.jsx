@@ -60,11 +60,10 @@ class StudentsFilter extends Component {
   renderListItem(item, index) {
     return (
       <Clickable
+        content={item}
         func={this.generateSelectHandler(item)}
         key={index}
-        styles={this.clickableStyles}>
-        <div>{item}</div>
-      </Clickable>
+        styles={this.clickableStyles} />
     );
   }
 
@@ -83,7 +82,8 @@ class StudentsFilter extends Component {
         <Clickable
           func={this.handleExpand.bind(this)}
           icon={'fa fa-angle-down'}
-          styles={this.clickableStyles}>
+          styles={this.clickableStyles}
+          type={'i'}>
           <span>{this.state.selected || this.props.selected}</span>
         </Clickable>
         <div style={style}>

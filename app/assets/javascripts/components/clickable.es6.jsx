@@ -12,6 +12,8 @@ class Clickable extends Component {
         default: React.PropTypes.object,
         hover: React.PropTypes.object,
       }),
+      // TODO(Warren): Change below PropTypes to an enum.
+      type: React.PropTypes.string,
     };
   }
 
@@ -27,6 +29,7 @@ class Clickable extends Component {
         default: {},
         hover: {},
       },
+      type: 'span',
     };
   }
 
@@ -80,7 +83,26 @@ class Clickable extends Component {
     }
   }
 
-  renderContent() {
+  renderContent(style) {
+    var content = this.props.content;
+    var icon = this.props.icon;
+    if (content || icon) {
+      switch (this.props.type) {
+        case 'h2':
+          return <h2 style={style}>{content}</h2>;
+        case 'h3':
+          return <h3 style={style}>{content}</h3>;
+        case 'h4':
+          return <h4 style={style}>{content}</h4>;
+        case 'i':
+          return <i className={icon} />;
+        default:
+          return <span style={style}>{content}</span>;
+      }
+    }
+  }
+
+  render() {
     var styles = this.props.styles;
     var style = Object.assign(
       {},
@@ -88,24 +110,25 @@ class Clickable extends Component {
       this.state.mouse === 'click' && styles.click,
       this.state.mouse === 'hover' && styles.hover
     );
-    switch (this.props.type) {
-      case 'h3':
-        return <h3 style={style}>{this.props.content}</h3>;
-      case 'i':
-        return <i className={this.props.icon} />;
-      default:
-        return <span>{this.props.content}</span>;
+    if (this.props.type === 'i') {
+      return (
+        <a
+          href={this.props.route}
+          ref={'container'}
+          style={style}>
+          {this.renderContent(style)}
+          {this.renderChildren()}
+        </a>
+      );
+    } else {
+      return (
+        <a
+          href={this.props.route}
+          ref={'container'}>
+          {this.renderContent(style)}
+          {this.renderChildren()}
+        </a>
+      );
     }
-  }
-
-  render() {
-    return (
-      <a
-        href={this.props.route}
-        ref={'container'}>
-        {this.renderContent()}
-        {this.renderChildren()}
-      </a>
-    );
   }
 }
