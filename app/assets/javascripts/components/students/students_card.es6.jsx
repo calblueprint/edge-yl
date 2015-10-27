@@ -47,8 +47,8 @@ class StudentsCard extends Component {
           style={this.styles.image} />
         <div style={this.styles.info}>
           <h3>{`${student.first_name} ${student.last_name}`}</h3>
-          <span>{`${student.email}`}</span>
-          <span>{`${student.home_address}`}</span>
+          <h6>{`${student.email}`}</h6>
+          <h6>{`${student.home_address}`}</h6>
         </div>
       </div>
     );
