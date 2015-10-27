@@ -104,7 +104,7 @@ class Clickable extends Component {
           return <h6 style={style}>{content}</h6>;
         case 'i':
           return <i className={icon} />;
-        default:
+        case 'span':
           return <span style={style}>{content}</span>;
       }
     }

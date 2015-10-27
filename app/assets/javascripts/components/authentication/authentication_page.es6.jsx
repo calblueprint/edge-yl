@@ -34,7 +34,6 @@ class AuthenticationPage extends Component {
 
   get clickableStyles() {
     return {
-      default: {},
       hover: {
         textDecoration: 'underline',
       },
