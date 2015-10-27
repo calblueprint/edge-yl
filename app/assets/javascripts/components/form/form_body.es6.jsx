@@ -31,7 +31,6 @@ class FormBody extends Component {
 
   render() {
     return(
-
       <div style={this.styles.container} >
         <span style={this.styles.title}>{'Form'}</span>
         <FormSection

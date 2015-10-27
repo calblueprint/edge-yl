@@ -1,6 +1,6 @@
 class FormTextbox extends Component { 
 
-  static get PropTypes() { 
+  static get propTypes() { 
     return {
       title: React.PropTypes.string.isRequired,
       placeHolder: React.PropTypes.string, 
@@ -30,7 +30,7 @@ class FormTextbox extends Component {
         padding: '4px',
         fontSize: StyleConstants.fonts.sizes.smallest, 
       },
-    }
+    };
   }
 
   render() {

@@ -32,7 +32,7 @@ class FormSection extends Component {
       },
       infoContainer: {
         padding: '16px',
-      }
+      },
     };
   }
 
@@ -46,10 +46,10 @@ class FormSection extends Component {
         <div style={this.styles.infoContainer}>
           <FormTextbox 
             title={'First Name'}
-            placeHolder={'Emily'}/>
+            placeHolder={'Emily'} />
           <FormTextbox 
             title={'Last Name'}
-            placeHolder={'Wilson'}/>
+            placeHolder={'Wilson'} />
         </div>
       </div> 
     );
