@@ -16,6 +16,7 @@ class StudentsCard extends Component {
     return {
       container: Object.assign(
         {},
+        StyleConstants.cards.default,
         {
           display: 'flex',
           alignItems: 'center',
@@ -24,8 +25,7 @@ class StudentsCard extends Component {
           padding: '24px',
           marginTop: '2%',
           boxSizing: 'border-box',
-        },
-        StyleConstants.cards.default
+        }
       ),
       image: {
         width: '122px',
@@ -38,6 +38,17 @@ class StudentsCard extends Component {
     };
   }
 
+  get clickableStyles() {
+    return {
+      default: {
+
+      },
+      hover: {
+        textDecoration: 'underline',
+      },
+    };
+  }
+
   render() {
     var student = this.props.student;
     return (
@@ -46,7 +57,11 @@ class StudentsCard extends Component {
           src='https://scontent.fsnc1-1.fna.fbcdn.net/hphotos-xfp1/t31.0-8/11856297_10200932572512494_2256826043885795533_o.jpg'
           style={this.styles.image} />
         <div style={this.styles.info}>
-          <h3>{`${student.first_name} ${student.last_name}`}</h3>
+          <Clickable
+            content={`${student.first_name} ${student.last_name}`}
+            route={RouteConstants.students.show(student.id)}
+            styles={this.clickableStyles}
+            type={'h3'} />
           <h6>{`${student.email}`}</h6>
           <h6>{`${student.home_address}`}</h6>
         </div>

@@ -77,12 +77,10 @@ class Clickable extends Component {
   renderChildren() {
     if (this.props.children) {
       return this.props.children;
-    } else {
-      return this.props.content;
     }
   }
 
-  render() {
+  renderContent() {
     var styles = this.props.styles;
     var style = Object.assign(
       {},
@@ -90,12 +88,22 @@ class Clickable extends Component {
       this.state.mouse === 'click' && styles.click,
       this.state.mouse === 'hover' && styles.hover
     );
+    switch (this.props.type) {
+      case 'h3':
+        return <h3 style={style}>{this.props.content}</h3>;
+      case 'i':
+        return <i className={this.props.icon} />;
+      default:
+        return <span>{this.props.content}</span>;
+    }
+  }
+
+  render() {
     return (
       <a
-        className={this.props.icon}
         href={this.props.route}
-        ref={'container'}
-        style={style}>
+        ref={'container'}>
+        {this.renderContent()}
         {this.renderChildren()}
       </a>
     );
