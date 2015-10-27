@@ -17,6 +17,7 @@ class FormBody extends Component {
           display: 'flex', 
           flexFlow: 'column',
           alignItems: 'center',
+          width: '712px',
           padding: '36px',
           margin: '20px',
         }
@@ -25,7 +26,8 @@ class FormBody extends Component {
         margin: '30px 0px',
         fontSize: StyleConstants.fonts.sizes.largest,
       },
-    };
+    }
+  }
 
   render() {
     return(
