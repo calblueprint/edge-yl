@@ -8,14 +8,14 @@ class FormPage extends Component {
         {
           alignItems: 'center',
         }
-      )
+      ),
     };
   }
 
   render() {
     return (
       <div style={this.styles.container}>
-        <FormBody /> 
+        <FormBody />
       </div>
     );
   }

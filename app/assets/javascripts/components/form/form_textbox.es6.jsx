@@ -1,9 +1,9 @@
-class FormTextbox extends Component { 
+class FormTextbox extends Component {
 
-  static get propTypes() { 
+  static get propTypes() {
     return {
       title: React.PropTypes.string.isRequired,
-      placeHolder: React.PropTypes.string, 
+      placeHolder: React.PropTypes.string,
     };
   }
 
@@ -12,23 +12,20 @@ class FormTextbox extends Component {
   }
 
   get styles() {
-    return { 
+    return {
       container: {
         display: 'flex',
-        justifyContent: 'space-between',
         alignItems: 'center',
-        width: '400px',
         marginBottom: '20px',
       },
       label: {
+        paddingRight: '24px',
         fontSize: StyleConstants.fonts.sizes.smaller,
       },
       input: {
-        alignSelf: 'flex-end',
-        width: '250px',
-        height: '30px',
-        padding: '4px',
-        fontSize: StyleConstants.fonts.sizes.smallest, 
+        flex: '1',
+        padding: '8px',
+        fontSize: StyleConstants.fonts.sizes.smallest,
       },
     };
   }
@@ -37,10 +34,10 @@ class FormTextbox extends Component {
     return (
       <div style={this.styles.container}>
         <label style={this.styles.label}>{this.props.title}</label>
-        <input 
+        <input
           style={this.styles.input}
           placeholder={this.props.placeHolder}>
-        </input> 
+        </input>
       </div>
     )
   }
