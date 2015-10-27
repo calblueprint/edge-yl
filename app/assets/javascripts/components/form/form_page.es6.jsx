@@ -1,16 +1,20 @@
 class FormPage extends Component {
 
-  static get defaultState() {
-    return {};
-  }
-
   get styles() {
-    return {};
+    return {
+      container: Object.assign(
+        {},
+        StyleConstants.pages.default,
+        {
+          alignItems: 'center',
+        }
+      )
+    };
   }
 
   render() {
     return (
-      <div>
+      <div style={this.styles.container}>
         <FormBody /> 
       </div>
     );
