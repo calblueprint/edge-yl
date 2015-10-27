@@ -1,7 +1,7 @@
-class FormSection extends Component { 
+class FormSection extends Component {
 
-//TODO(Sonia): Add a 'required' proptype
-  static get propTypes() { 
+// TODO(Sonia): Add a 'required' proptype
+  static get propTypes() {
     return {
       title: React.PropTypes.string.isRequired,
     };
@@ -12,17 +12,19 @@ class FormSection extends Component {
   }
 
   get styles() {
-    return { 
+    return {
       container: {
-        width: '100%',
+        display: 'flex',
+        flexFlow: 'column',
+        flex: '1',
       },
-      titleContainer: {
-        display: 'flex', 
-        flexFlow: 'row', 
+      header: {
+        display: 'flex',
+        flexFlow: 'row',
         alignItems: 'center',
       },
       title: {
-        fontSize: StyleConstants.fonts.sizes.large,
+        fontSize: StyleConstants.fonts.sizes.medium,
       },
       line: {
         flex: '1',
@@ -30,28 +32,28 @@ class FormSection extends Component {
         marginLeft: '10px',
         borderTop: 'solid gray 1px',
       },
-      infoContainer: {
-        padding: '16px',
+      questions: {
+        padding: '24px',
       },
     };
   }
 
-  render() { 
+  render() {
     return(
-      <div style={this.styles.container}> 
-        <div style={this.styles.titleContainer}> 
+      <div style={this.styles.container}>
+        <div style={this.styles.header}>
           <span style={this.styles.title}>{this.props.title}</span>
-          <span style={this.styles.line} /> 
+          <span style={this.styles.line} />
         </div>
-        <div style={this.styles.infoContainer}>
-          <FormTextbox 
+        <div style={this.styles.questions}>
+          <FormTextbox
             title={'First Name'}
             placeHolder={'Emily'} />
-          <FormTextbox 
+          <FormTextbox
             title={'Last Name'}
             placeHolder={'Wilson'} />
         </div>
-      </div> 
+      </div>
     );
   }
 }
