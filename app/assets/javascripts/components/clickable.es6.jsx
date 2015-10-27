@@ -88,12 +88,18 @@ class Clickable extends Component {
     var icon = this.props.icon;
     if (content || icon) {
       switch (this.props.type) {
+        case 'h1':
+          return <h1 style={style}>{content}</h1>;
         case 'h2':
           return <h2 style={style}>{content}</h2>;
         case 'h3':
           return <h3 style={style}>{content}</h3>;
         case 'h4':
           return <h4 style={style}>{content}</h4>;
+        case 'h5':
+          return <h5 style={style}>{content}</h5>;
+        case 'h6':
+          return <h6 style={style}>{content}</h6>;
         case 'i':
           return <i className={icon} />;
         default:
