@@ -38,7 +38,8 @@ class SidebarItem extends Component {
       <Clickable
         icon={this.props.icon}
         route={this.props.route}
-        styles={this.clickableStyles}>
+        styles={this.clickableStyles}
+        type={'i'}>
         <span style={this.styles.label}>
           {this.props.label}
         </span>

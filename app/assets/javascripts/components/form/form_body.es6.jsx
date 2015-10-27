@@ -1,4 +1,4 @@
-class FormBody extends Component { 
+class FormBody extends Component {
 
   static get PropTypes() {
     return {};
@@ -8,10 +8,10 @@ class FormBody extends Component {
     return {};
   }
 
-//TODO(Sonia): Add more styling to container
+  // TODO(Sonia): Add more styling to container
   get styles() {
     return {
-      container: Object.assign( 
+      container: Object.assign(
         {},
         StyleConstants.cards.default,
         {
@@ -22,6 +22,7 @@ class FormBody extends Component {
         fontSize: StyleConstants.fonts.sizes.largest,
       },
     };
+  }
 
   render() {
     return(

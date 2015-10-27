@@ -27,6 +27,9 @@ form,
 h1,
 h2,
 h3,
+h4,
+h5,
+h6,
 hr,
 i,
 input,
@@ -51,29 +54,46 @@ body {
 
 h1,
 h2,
-h3 {
+h3,
+h4,
+h5,
+h6 {
   font-family: $font-family;
   font-weight: $font-weight-medium;
-  text-decoration: none;
 }
 
 h1 {
-  font-size: $font-size-largest;
+  font-size: $font-size-larger;
   line-height: $font-size-largest;
 }
 
 h2 {
-  font-size: $font-size-larger;
+  font-size: $font-size-large;
   line-height: $font-size-larger;
 }
 
 h3 {
-  font-size: $font-size-large;
+  font-size: $font-size-medium;
   line-height: $font-size-large;
 }
 
+h4 {
+  font-size: $font-size-small;
+  line-height: $font-size-medium;
+}
+
+h5 {
+  font-size: $font-size-smaller;
+  line-height: $font-size-small;
+}
+
+h6 {
+  font-size: $font-size-smallest;
+  line-height: $font-size-smaller;
+}
+
 i {
-  color: $white;
+  color: inherit;
 }
 
 a,
@@ -85,6 +105,10 @@ span {
   font-family: $font-family;
   font-size: $font-size-smallest;
   font-weight: $font-weight-medium;
+}
+
+a {
+  display: flex;
   text-decoration: none;
 }
 

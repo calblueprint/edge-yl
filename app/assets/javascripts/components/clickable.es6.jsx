@@ -8,10 +8,20 @@ class Clickable extends Component {
       icon: React.PropTypes.string,
       route: React.PropTypes.string,
       styles: React.PropTypes.shape({
-        click: React.PropTypes.object,
         default: React.PropTypes.object,
         hover: React.PropTypes.object,
       }),
+      type: React.PropTypes.oneOf([
+        'h1',
+        'h2',
+        'h3',
+        'h4',
+        'h5',
+        'h6',
+        'i',
+        'img',
+        'span'
+      ]).isRequired,
     };
   }
 
@@ -23,15 +33,15 @@ class Clickable extends Component {
       icon: '',
       route: '',
       styles: {
-        click: {},
         default: {},
         hover: {},
       },
+      type: 'span',
     };
   }
 
   static get defaultState() {
-    // Mouse state 'enum': 'click', 'default', 'hover'.
+    // Mouse state enum: 'default' or 'hover'.
     return {
       mouse: 'default',
     }
@@ -40,7 +50,6 @@ class Clickable extends Component {
   componentDidMount() {
     var node = React.findDOMNode(this.refs.container);
     node.addEventListener('click', this.handleClick.bind(this));
-    node.addEventListener('mousedown', this.handleMouseDown.bind(this));
     node.addEventListener('mouseenter', this.handleMouseEnter.bind(this));
     node.addEventListener('mouseleave', this.handleMouseLeave.bind(this));
     node.addEventListener('mouseup', this.handleMouseUp.bind(this));
@@ -54,10 +63,6 @@ class Clickable extends Component {
         this.props.func();
       }
     }
-  }
-
-  handleMouseDown(event) {
-    this.setState({ mouse: 'click' });
   }
 
   handleMouseEnter(event) {
@@ -77,8 +82,31 @@ class Clickable extends Component {
   renderChildren() {
     if (this.props.children) {
       return this.props.children;
-    } else {
-      return this.props.content;
+    }
+  }
+
+  renderContent(style) {
+    var content = this.props.content;
+    var icon = this.props.icon;
+    if (content || icon) {
+      switch (this.props.type) {
+        case 'h1':
+          return <h1 style={style}>{content}</h1>;
+        case 'h2':
+          return <h2 style={style}>{content}</h2>;
+        case 'h3':
+          return <h3 style={style}>{content}</h3>;
+        case 'h4':
+          return <h4 style={style}>{content}</h4>;
+        case 'h5':
+          return <h5 style={style}>{content}</h5>;
+        case 'h6':
+          return <h6 style={style}>{content}</h6>;
+        case 'i':
+          return <i className={icon} />;
+        case 'span':
+          return <span style={style}>{content}</span>;
+      }
     }
   }
 
@@ -87,17 +115,27 @@ class Clickable extends Component {
     var style = Object.assign(
       {},
       styles.default,
-      this.state.mouse === 'click' && styles.click,
       this.state.mouse === 'hover' && styles.hover
     );
-    return (
-      <a
-        className={this.props.icon}
-        href={this.props.route}
-        ref={'container'}
-        style={style}>
-        {this.renderChildren()}
-      </a>
-    );
+    if (this.props.type === 'i' || this.props.type === 'img') {
+      return (
+        <a
+          href={this.props.route}
+          ref={'container'}
+          style={style}>
+          {this.renderContent(style)}
+          {this.renderChildren()}
+        </a>
+      );
+    } else {
+      return (
+        <a
+          href={this.props.route}
+          ref={'container'}>
+          {this.renderContent(style)}
+          {this.renderChildren()}
+        </a>
+      );
+    }
   }
 }
