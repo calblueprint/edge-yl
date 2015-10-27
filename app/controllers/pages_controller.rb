@@ -2,12 +2,12 @@ class PagesController < ApplicationController
 
 	def login
     @is_login = true
-    render "authentication"
+    render 'authentication'
 	end
 
   def signup
     @is_login = false
-    render "authentication"
+    render 'authentication'
   end
 
   def mail
