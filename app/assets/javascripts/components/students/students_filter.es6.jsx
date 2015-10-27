@@ -20,26 +20,28 @@ class StudentsFilter extends Component {
     return {
       container: {
         display: 'flex',
-        alignItems: 'center',
+        flexFlow: 'column',
         flex: '1',
       },
-      expanded: {
-        height: '100px',
-        overflow: 'scroll',
-        backgroundColor: StyleConstants.colors.white,
-      },
-      list: {
-        position: 'absolute',
-        overflow: 'hidden',
-        zIndex: StyleConstants.planes.seven,
-      },
+      list: Object.assign(
+        {},
+        StyleConstants.cards.default,
+        {
+          flex: '1',
+          position: 'absolute',
+          top: '30px',
+          left: '0px',
+          zIndex: StyleConstants.planes.two,
+          // TODO(Warren): Figure out a way to set width without hardcoded value.
+          width: '200px',
+        }
+      ),
     };
   }
 
   get clickableStyles() {
     return {
       default: {
-        height: '22px',
       },
     };
   }
@@ -68,14 +70,19 @@ class StudentsFilter extends Component {
     return this.props.filterList.map(this.renderListItem.bind(this));
   }
 
+  renderList() {
+    if (this.state.isExpanded) {
+      return (
+        <div style={this.styles.list}>
+          {this.renderListItems()}
+        </div>
+      );
+    }
+  }
+
   render() {
-    var style = Object.assign(
-      {},
-      this.styles.container,
-      this.state.isExpanded && this.styles.expanded
-    );
     return (
-      <div style={style}>
+      <div style={this.styles.container}>
         <Clickable
           func={this.handleExpand.bind(this)}
           icon={'fa fa-angle-down'}
@@ -83,9 +90,7 @@ class StudentsFilter extends Component {
           type={'i'}>
           <span>{this.state.selected || this.props.selected}</span>
         </Clickable>
-        <div style={this.styles.list}>
-          {this.renderListItems()}
-        </div>
+        {this.renderList()}
       </div>
     );
   }
