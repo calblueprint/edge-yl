@@ -25,17 +25,11 @@ class StudentsFilters extends Component {
           <h5>{'Filters'}</h5>
         </div>
         <StudentsFilter
-          filterList={['Warren', 'Anthony', 'Sonia']}
-          isExpanded={false}
-          selected={'Anthony'} />
+          options={['Warren', 'Anthony', 'Sonia']} />
         <StudentsFilter
-          filterList={['UnzUnz', 'Max', 'Cat']}
-          isExpanded={false}
-          selected={'Max'} />
+          options={['UnzUnz', 'Max', 'Cat']} />
         <StudentsFilter
-          filterList={['Lion', 'Tiger', 'Bear']}
-          isExpanded={false}
-          selected={'Bear'} />
+          options={['Lion', 'Tiger', 'Bear']} />
       </div>
     );
   }

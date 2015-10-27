@@ -2,17 +2,20 @@ class StudentsFilter extends Component {
 
   static get propTypes() {
     return {
-      isExpanded: React.PropTypes.bool.isRequired,
-      filterList: React.PropTypes.arrayOf(React.PropTypes.string).isRequired,
-      selected: React.PropTypes.string,
+      options: React.PropTypes.arrayOf(React.PropTypes.string).isRequired,
     };
   }
 
   static get defaultProps() {
     return {
+      options: [],
+    };
+  }
+
+  static get defaultState() {
+    return {
       isExpanded: false,
-      filterList: [],
-      selected: 'None',
+      selectedOption: '',
     };
   }
 
@@ -50,31 +53,31 @@ class StudentsFilter extends Component {
     this.setState({ isExpanded: !this.state.isExpanded });
   }
 
-  generateSelectHandler(item) {
+  generateHandler(item) {
     return function() {
-      this.setState({ selected: item });
+      this.setState({ selectedOption: item });
     }.bind(this);
   }
 
-  renderListItem(item, index) {
+  renderOption(item, index) {
     return (
       <Clickable
         content={item}
-        func={this.generateSelectHandler(item)}
+        func={this.generateHandler(item)}
         key={index}
         styles={this.clickableStyles} />
     );
   }
 
-  renderListItems() {
-    return this.props.filterList.map(this.renderListItem.bind(this));
+  renderOptions() {
+    return this.props.options.map(this.renderOption.bind(this));
   }
 
   renderList() {
     if (this.state.isExpanded) {
       return (
         <div style={this.styles.list}>
-          {this.renderListItems()}
+          {this.renderOptions()}
         </div>
       );
     }
@@ -88,7 +91,7 @@ class StudentsFilter extends Component {
           icon={'fa fa-angle-down'}
           styles={this.clickableStyles}
           type={'i'}>
-          <span>{this.state.selected || this.props.selected}</span>
+          <span>{this.state.selectedOption}</span>
         </Clickable>
         {this.renderList()}
       </div>
