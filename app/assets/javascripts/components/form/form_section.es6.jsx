@@ -1,7 +1,7 @@
 class FormSection extends Component { 
 
 //TODO(Sonia): Add a 'required' proptype
-  static get PropTypes() { 
+  static get propTypes() { 
     return {
       title: React.PropTypes.string.isRequired,
     };
