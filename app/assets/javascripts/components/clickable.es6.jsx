@@ -19,6 +19,7 @@ class Clickable extends Component {
         'h5',
         'h6',
         'i',
+        'img',
         'span'
       ]).isRequired,
     };
@@ -116,7 +117,7 @@ class Clickable extends Component {
       styles.default,
       this.state.mouse === 'hover' && styles.hover
     );
-    if (this.props.type === 'i') {
+    if (this.props.type === 'i' || this.props.type === 'img') {
       return (
         <a
           href={this.props.route}
