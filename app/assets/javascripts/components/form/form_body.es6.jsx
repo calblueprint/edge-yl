@@ -8,10 +8,7 @@ class FormBody extends Component {
     return {};
   }
 
-<<<<<<< HEAD
-=======
   // TODO(Sonia): Add more styling to container
->>>>>>> 99a7890abe64617f8c199ef8cd04377cebffb529
   get styles() {
     return {
       container: Object.assign(
