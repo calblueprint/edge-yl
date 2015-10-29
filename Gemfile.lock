@@ -246,7 +246,7 @@ DEPENDENCIES
   better_errors
   capybara (~> 2.4.4)
   devise
-  factory_girl_rails (~> 4.5.0)
+  factory_girl_rails
   faker
   figaro
   guard-rspec
@@ -257,7 +257,7 @@ DEPENDENCIES
   quiet_assets
   rails (= 4.2.1)
   react-rails (~> 1.4.0)
-  rspec-rails (~> 3.0)
+  rspec-rails
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   turbolinks
