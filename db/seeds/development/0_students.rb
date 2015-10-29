@@ -8,5 +8,5 @@
     home_phone: Faker::PhoneNumber.phone_number,
     last_name: Faker::Name.last_name,
   )
-  puts "Created student: #{new_student.full_name}"
+  puts "Created student: #{new_student.first_name} #{new_student.last_name}"
 end
