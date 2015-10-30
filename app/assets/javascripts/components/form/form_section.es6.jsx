@@ -4,6 +4,7 @@ class FormSection extends Component {
   static get propTypes() {
     return {
       title: React.PropTypes.string.isRequired,
+      updateValue: React.PropTypes.func.isRequired,
     };
   }
 
@@ -48,10 +49,12 @@ class FormSection extends Component {
         <div style={this.styles.questions}>
           <FormField
             title={'First Name'}
-            placeholder={'Emily'} />
+            placeholder={'Emily'}
+            func={this.props.updateValue} />
           <FormField
             title={'Last Name'}
-            placeholder={'Wilson'} />
+            placeholder={'Wilson'} 
+            func={this.props.updateValue} />
         </div>
       </div>
     );

@@ -15,7 +15,7 @@ class FormField extends Component {
 
   handleChange(event) {
     var node = React.findDOMNode(this.refs.container);
-
+    this.props.updateValue(node, node.value);
     // this.props.updateValue
     console.log(node.value);
   }

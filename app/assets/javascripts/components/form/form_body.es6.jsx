@@ -15,6 +15,12 @@ class FormBody extends Component {
     return {};
   }
 
+  updateValue(key, value) {
+    fields = {};
+    fields[key] = value;
+    this.setState(key, value);
+  }
+
   get styles() {
     return {
       container: Object.assign(
@@ -60,9 +66,11 @@ class FormBody extends Component {
           <h1 style={this.styles.title}>{'Form'}</h1>
         </div>
         <FormSection
-          title={'Basic Information'} />
+          title={'Basic Information'} 
+          updateValue={this.updateValue} />
         <FormSection
-          title={'Health Information'} />
+          title={'Health Information'} 
+          updateValue={this.updateValue} />
         <Clickable
           content={'Create Student'}
           func={this.handleClick.bind(this)} />
