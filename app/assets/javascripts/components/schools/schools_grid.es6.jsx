@@ -2,13 +2,13 @@ class SchoolsGrid extends Component {
 
   static get propTypes() {
     return {
-      students: React.PropTypes.array.isRequired,
+      schools: React.PropTypes.array.isRequired,
     };
   }
 
   static get defaultProps() {
     return {
-      students: [],
+      schools: [],
     };
   }
 

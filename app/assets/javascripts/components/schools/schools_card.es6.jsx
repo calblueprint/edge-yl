@@ -47,7 +47,7 @@ static get propTypes() {
   }
 
   render() {
-    var student = this.props.student;
+    var school = this.props.school;
     return (
       <div style={this.styles.container}>
         <img
