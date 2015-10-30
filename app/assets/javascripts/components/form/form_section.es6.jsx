@@ -52,6 +52,9 @@ class FormSection extends Component {
           <FormField
             title={'Last Name'}
             placeHolder={'Wilson'} />
+          <FormParagraph
+            title={'Student Description'}
+            placeHolder={'This student is great'} />
         </div>
       </div>
     );
