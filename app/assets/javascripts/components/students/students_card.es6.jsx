@@ -48,7 +48,6 @@ class StudentsCard extends Component {
 
   render() {
     var student = this.props.student;
-    console.log(student);
     return (
       <div style={this.styles.container}>
         <img
@@ -60,8 +59,14 @@ class StudentsCard extends Component {
             route={RouteConstants.students.show(student.id)}
             styles={this.clickableStyles}
             type={'h3'} />
+          <h6>{`${student.birthday}`}</h6>
           <h6>{`${student.email}`}</h6>
           <h6>{`${student.home_address}`}</h6>
+          <Clickable
+            content={'Martin Luther King High School'}
+            route={RouteConstants.schools.show(1)}
+            styles={this.clickableStyles}
+            type={'h6'} />
         </div>
       </div>
     );
