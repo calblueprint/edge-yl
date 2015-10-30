@@ -29,6 +29,23 @@ class FormBody extends Component {
     };
   }
 
+  handleClick(event) {
+    Requester.post(
+      RouteConstants.students.create,
+      {
+        student: {
+          birthday: '12/25/2000',
+          cell_phone: '(510) 333-3333',
+          email: 'jonie_distefano@gmail.com',
+          first_name: 'Jonie',
+          home_address: '5150 Kingston Street',
+          home_phone: '(510) 333-3333',
+          last_name: 'Distefano',
+        },
+      }
+    );
+  }
+
   render() {
     return(
       <div style={this.styles.container}>
@@ -39,6 +56,9 @@ class FormBody extends Component {
           title={'Basic Information'} />
         <FormSection
           title={'Health Information'} />
+        <Clickable
+          content={'Create Student'}
+          func={this.handleClick.bind(this)} />
       </div>
     );
   }

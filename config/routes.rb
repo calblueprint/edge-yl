@@ -2,16 +2,17 @@
 
   root 'pages#login'
 
+  get 'login', to: 'pages#login'
   get 'mail', to: 'pages#mail'
   get 'profile', to: 'pages#profile'
+  get 'signup', to: 'pages#signup'
 
-  resources :students, only: [:index, :show]
+  resources :students, only: [:create, :index, :show]
   resources :schools, only: [:index, :show]
   resources :forms, only: [:show]
 
   devise_for :users, skip: [:sessions]
   as :user do
-    get 'login', to: 'pages#login'
     post 'login', to: 'devise/sessions#create'
     delete 'logout', to: 'devise/sessions#destroy'
   end
