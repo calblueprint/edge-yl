@@ -19,11 +19,11 @@ Configure `config/database.yml` with the appropriate database names (remove `sam
 
 Third, create the databases:
 
-    rake db:create:all
+    rake db:create
 
 Fourth, migrate the databases:
 
-    rake db:migrate:all
+    rake db:migrate
 
 Fifth, start the server:
 
