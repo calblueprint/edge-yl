@@ -50,11 +50,11 @@ class FormSection extends Component {
           <FormField
             title={'First Name'}
             placeholder={'Emily'}
-            func={this.props.updateValue} />
+            updateValue={this.props.updateValue} />
           <FormField
             title={'Last Name'}
             placeholder={'Wilson'} 
-            func={this.props.updateValue} />
+            updateValue={this.props.updateValue} />
         </div>
       </div>
     );

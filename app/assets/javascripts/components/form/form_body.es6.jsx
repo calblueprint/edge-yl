@@ -18,7 +18,8 @@ class FormBody extends Component {
   updateValue(key, value) {
     fields = {};
     fields[key] = value;
-    this.setState(key, value);
+    this.setState(fields);
+    console.log(this.state);
   }
 
   get styles() {
@@ -67,10 +68,10 @@ class FormBody extends Component {
         </div>
         <FormSection
           title={'Basic Information'} 
-          updateValue={this.updateValue} />
+          updateValue={this.updateValue.bind(this)} />
         <FormSection
           title={'Health Information'} 
-          updateValue={this.updateValue} />
+          updateValue={this.updateValue.bind(this)} />
         <Clickable
           content={'Create Student'}
           func={this.handleClick.bind(this)} />
