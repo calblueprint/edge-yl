@@ -46,10 +46,10 @@ class FormSection extends Component {
           <span style={this.styles.line} />
         </div>
         <div style={this.styles.questions}>
-          <FormTextbox
+          <FormField
             title={'First Name'}
             placeHolder={'Emily'} />
-          <FormTextbox
+          <FormField
             title={'Last Name'}
             placeHolder={'Wilson'} />
         </div>
