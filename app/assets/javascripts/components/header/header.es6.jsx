@@ -19,6 +19,11 @@ class Header extends Component {
       container: {
         display: 'flex',
         alignItems: 'center',
+        position: 'fixed',
+        top: '0px',
+        left: '0px',
+        zIndex: StyleConstants.planes.nine,
+        width: '100%',
         height: '48px',
         backgroundColor: StyleConstants.colors.blue,
         boxShadow: '0px 0px 5px 0px rgba(0, 0, 0, 0.25)',
