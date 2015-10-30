@@ -2,15 +2,18 @@
 
   root 'pages#login'
 
-  get 'login', to: 'pages#login'
-  get 'signup', to: 'pages#signup'
-
   get 'mail', to: 'pages#mail'
   get 'profile', to: 'pages#profile'
 
   resources :students, only: [:index, :show]
   resources :schools, only: [:index, :show]
   resources :forms, only: [:show]
+
+  devise_for :users, path: '', path_names: {
+    sign_in: 'login',
+    sign_out: 'signout',
+    sign_up: 'signup'
+  }
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
