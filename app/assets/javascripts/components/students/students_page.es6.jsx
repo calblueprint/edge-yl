@@ -24,9 +24,6 @@ class StudentsPage extends Component {
         paddingTop: '48px',
         paddingLeft: '196px',
       },
-      placeholder: {
-        width: '196px',
-      },
       body: {
         display: 'flex',
         flexFlow: 'column',
