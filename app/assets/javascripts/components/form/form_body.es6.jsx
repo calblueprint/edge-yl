@@ -1,5 +1,12 @@
 class FormBody extends Component {
 
+  static get defaultState() { 
+    return {
+      firstName: '',
+      lastName: '',
+    };
+  }
+
   static get propTypes() {
     return {};
   }

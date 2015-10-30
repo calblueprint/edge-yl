@@ -39,7 +39,7 @@ class FormSection extends Component {
   }
 
   render() {
-    return(
+    return (
       <div style={this.styles.container}>
         <div style={this.styles.header}>
           <span style={this.styles.title}>{this.props.title}</span>
@@ -48,10 +48,10 @@ class FormSection extends Component {
         <div style={this.styles.questions}>
           <FormField
             title={'First Name'}
-            placeHolder={'Emily'} />
+            placeholder={'Emily'} />
           <FormField
             title={'Last Name'}
-            placeHolder={'Wilson'} />
+            placeholder={'Wilson'} />
         </div>
       </div>
     );
