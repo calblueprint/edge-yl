@@ -17,6 +17,15 @@ class RoutesSingleton {
     };
   }
 
+  get schools() {
+    return {
+      index: '/schools',
+      show: function(id) {
+        return `/schools/${id}`;
+      },
+    };
+  }
+
   get students() {
     return {
       index: '/students',
