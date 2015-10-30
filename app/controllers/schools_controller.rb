@@ -8,7 +8,7 @@ class SchoolsController < ApplicationController
   def show
     @school = School.find params[:id]
     # TODO(Warren): Fix this - has to do with react-rails prerender.
-    # render component: 'SchoolPage', props: { school: @school }
+    render component: 'SchoolPage', props: { school: @school }, prerender: false
   end
 
 end

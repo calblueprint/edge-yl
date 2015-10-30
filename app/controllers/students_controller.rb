@@ -14,7 +14,8 @@ class StudentsController < ApplicationController
 
   def show
     @student = Student.find params[:id]
-    render component: 'StudentPage', props: { student: @student }, prerender: false
+    # TODO(Warren): Fix this - has to do with react-rails prerender.
+    # render component: 'StudentPage', props: { student: @student }
   end
 
   private

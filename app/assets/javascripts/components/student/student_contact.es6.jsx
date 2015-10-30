@@ -9,7 +9,6 @@ class StudentContact extends Component {
   static get defaultProps() {
     return {
       student: {},
-      school: {},
     };
   }
 
@@ -40,7 +39,7 @@ class StudentContact extends Component {
             {student.school_address}
           <Clickable
             content={`${student.school}}`}
-            route={RouteConstants.students.show(student.id)}
+            route={RouteConstants.schools.show(1)}
             styles={this.styles.heading}
             type={'h3'} />
         </div>
