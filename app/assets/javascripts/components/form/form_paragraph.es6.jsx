@@ -4,11 +4,23 @@ class FormParagraph extends Component {
     return {
       title: React.PropTypes.string.isRequired,
       placeHolder: React.PropTypes.string,
+      value: React.PropTypes.string,
     };
   }
 
   static get defaultProps() {
     return {};
+  }
+
+  handleChange(event) {
+   var node = React.findDOMNode(this.refs.container);
+
+   console.log(node.value);
+  }
+
+  componentDidMount() {
+    var node = React.findDOMNode(this.refs.container);
+    node.addEventListener('input', this.handleChange.bind(this));
   }
 
   get styles() {
@@ -36,6 +48,7 @@ class FormParagraph extends Component {
       <div style={this.styles.container}>
         <label style={this.styles.label}>{this.props.title}</label>
         <textarea
+          ref={'container'}
           rows={'8'}
           cols={'50'}
           style={this.styles.input}
