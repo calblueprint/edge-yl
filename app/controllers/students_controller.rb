@@ -9,10 +9,12 @@ class StudentsController < ApplicationController
 
   def index
     @students = Student.all
+    render component: 'StudentsPage', props: { students: @students }
   end
 
   def show
     @student = Student.find params[:id]
+    render component: 'StudentPage', props: { student: @student }, prerender: false
   end
 
   private
