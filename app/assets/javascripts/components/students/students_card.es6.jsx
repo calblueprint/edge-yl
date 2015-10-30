@@ -48,6 +48,7 @@ class StudentsCard extends Component {
 
   render() {
     var student = this.props.student;
+    console.log(student);
     return (
       <div style={this.styles.container}>
         <img
