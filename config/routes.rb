@@ -9,11 +9,12 @@
   resources :schools, only: [:index, :show]
   resources :forms, only: [:show]
 
-  devise_for :users, path: '', path_names: {
-    sign_in: 'login',
-    sign_out: 'signout',
-    sign_up: 'signup'
-  }
+  devise_for :users, skip: [:sessions]
+  as :user do
+    get 'login', to: 'pages#login'
+    post 'login', to: 'devise/sessions#create'
+    delete 'logout', to: 'devise/sessions#destroy'
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
