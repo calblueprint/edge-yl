@@ -8,7 +8,7 @@
   get 'mail', to: 'pages#mail'
   get 'profile', to: 'pages#profile'
 
-  resources :students, only: [:index, :show]
+  resources :students, only: [:create, :index, :show]
   resources :schools, only: [:index, :show]
   resources :forms, only: [:show]
 

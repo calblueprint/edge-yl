@@ -2,8 +2,8 @@
 
 class RoutesSingleton {
 
-  get blueprint() { 
-    return { 
+  get blueprint() {
+    return {
       home: 'http://www.calblueprint.org/',
     };
   }
@@ -19,6 +19,7 @@ class RoutesSingleton {
 
   get students() {
     return {
+      create: '/students',
       index: '/students',
       show: function(id) {
         return `/students/${id}`;

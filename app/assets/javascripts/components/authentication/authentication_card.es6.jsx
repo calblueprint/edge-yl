@@ -49,6 +49,7 @@ class AuthenticationCard extends Component {
       <div style={this.styles.container}>
         {this.renderHeader()}
         {this.renderForm()}
+        <Clickable func={Requester.post} content={'Test Post'} />
       </div>
     );
   }
