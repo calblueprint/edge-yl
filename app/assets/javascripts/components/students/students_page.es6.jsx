@@ -21,6 +21,7 @@ class StudentsPage extends Component {
       container: {
         display: 'flex',
         flex: '1',
+        paddingTop: '48px',
         paddingLeft: '196px',
       },
       placeholder: {
@@ -30,7 +31,9 @@ class StudentsPage extends Component {
         display: 'flex',
         flexFlow: 'column',
         flex: '1',
-        padding: '0px 12px',
+        paddingLeft: '12px',
+        paddingRight: '208px',
+        overflow: 'scroll',
       },
     };
   }
@@ -50,7 +53,6 @@ class StudentsPage extends Component {
             <StudentsFilters />
             <StudentsGrid {...this.props} />
           </div>
-          <div style={this.styles.placeholder}></div>
         </div>
       </div>
     );
