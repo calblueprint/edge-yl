@@ -25,7 +25,7 @@ class SidebarGroup extends Component {
         <SidebarItem
           label={'Schools'}
           icon={'fa fa-building-o fa-lg'}
-          route={RouteConstants.students.index}/>
+          route={RouteConstants.schools.index}/>
         <SidebarItem
           label={'Volunteers'}
           icon={'fa fa-male fa-lg'}

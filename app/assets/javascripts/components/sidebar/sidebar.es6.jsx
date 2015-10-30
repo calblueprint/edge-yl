@@ -36,7 +36,6 @@ class Sidebar extends Component {
     return (
       <div style={style}>
         <SidebarGroup />
-        <SidebarGroup />
         <SidebarFooter />
       </div>
     );

@@ -22,10 +22,10 @@ class RoutesSingleton {
       index: '/schools',
       show: function(id) {
         return `/schools/${id}`;
-      }
-    }
+      },
+    };
   }
-  
+
   get students() {
     return {
       index: '/students',
