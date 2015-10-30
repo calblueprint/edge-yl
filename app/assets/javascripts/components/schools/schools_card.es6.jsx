@@ -55,9 +55,11 @@ static get propTypes() {
           style={this.styles.image} />
         <div style={this.styles.info}>
           <Clickable
-            content={'Cats'}
+            content={`${school.name}`}
+            route={RouteConstants.schools.show(school.id)}
             styles={this.clickableStyles}
             type={'h3'} />
+          <h6>{`${school.address}`}</h6>
         </div>
       </div>
     );
