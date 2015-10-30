@@ -1,19 +1,15 @@
 class PagesController < ApplicationController
 
-	def login
-    @is_login = true
-    render "authentication"
-	end
-
-  def signup
-    @is_login = false
-    render "authentication"
+  def login
   end
 
   def mail
   end
 
   def profile
+  end
+
+  def signup
   end
 
 end

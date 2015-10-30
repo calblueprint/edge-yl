@@ -16,7 +16,7 @@ class Sidebar extends Component {
     return {
       container: {
         position: 'absolute',
-        top: '0px',
+        top: '48px',
         left: '0px',
         width: '172px',
         transition: 'left 0.375s ease-out',

@@ -3,27 +3,31 @@ EDGE Youth Leadership Web Application
 
 ### Setup
 
-First, make a file for your environment variables:
+First, copy over the `application.yml` file from `config/samples/application.yml` to `config/application.yml`:
 
-    touch config/initializers/_environment_variables.rb
+    cp config/samples/application.yml config/application.yml
 
-Note that this project uses Devise so you should set `Devise.secret_key` in `_environment_variables.rb`.
+Configure `config/application.yml` with the appropriate secret keys. You can generate a secret key with the command:
+
+    rake secret
 
 Second, copy over the `database.yml` file from `config/sample/database.yml` to `config/database.yml`:
 
-    cp config/sample/database.yml config/database.yml
+    cp config/samples/database.yml config/database.yml
 
-Third, create the database:
+Configure `config/database.yml` with the appropriate database names (remove `sample_` from the names at the very least).
 
-    rake db:create
+Third, create the databases:
 
-Fourth, migrate the database:
+    rake db:create:all
 
-    rake db:migrate
+Fourth, migrate the databases:
+
+    rake db:migrate:all
 
 Fifth, start the server:
 
-    rails server -p <port-number>
+    rails server
 
 Happy developing!
 

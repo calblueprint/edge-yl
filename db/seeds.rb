@@ -1,10 +1,10 @@
 def load_from_folder(folder)
-  Dir[File.join(Rails.root, "db", "seeds", folder, "*.rb")].sort.each do |seed|
+  Dir[File.join(Rails.root, 'db', 'seeds', folder, '*.rb')].sort.each do |seed|
     puts "Seeding #{seed}."
     load seed
   end
 end
 
 if Rails.env.development?
-  load_from_folder("development")
+  load_from_folder('development')
 end
