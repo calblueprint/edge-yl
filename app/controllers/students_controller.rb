@@ -9,10 +9,14 @@ class StudentsController < ApplicationController
 
   def index
     @students = Student.all
+    # TODO(Warren): Fix this - has to do with react-rails prerender.
+    # render component: 'StudentsPage', props: { students: @students }
   end
 
   def show
     @student = Student.find params[:id]
+    # TODO(Warren): Fix this - has to do with react-rails prerender.
+    # render component: 'StudentPage', props: { student: @student }
   end
 
   private

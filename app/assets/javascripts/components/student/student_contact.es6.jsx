@@ -37,6 +37,11 @@ class StudentContact extends Component {
           <h2 style={this.styles.heading}>{'School'}</h2>
             {student.school}
             {student.school_address}
+          <Clickable
+            content={`${student.school}}`}
+            route={RouteConstants.schools.show(1)}
+            styles={this.styles.heading}
+            type={'h3'} />
         </div>
     );
   }
