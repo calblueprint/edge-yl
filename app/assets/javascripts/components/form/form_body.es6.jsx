@@ -33,8 +33,7 @@ class FormBody extends Component {
     Requester.post(
       RouteConstants.students.create,
       {
-        students: {
-          age: 15,
+        student: {
           birthday: '12/25/2000',
           cell_phone: '(510) 333-3333',
           email: 'jonie_distefano@gmail.com',
