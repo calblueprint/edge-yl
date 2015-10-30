@@ -9,7 +9,8 @@ class StudentsController < ApplicationController
 
   def index
     @students = Student.all
-    render component: 'StudentsPage', props: { students: @students }
+    # TODO(Warren): Fix this - has to do with react-rails prerender.
+    # render component: 'StudentsPage', props: { students: @students }
   end
 
   def show
