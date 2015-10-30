@@ -1,4 +1,4 @@
-class FormTextbox extends Component {
+class FormField extends Component {
 
   static get propTypes() {
     return {
