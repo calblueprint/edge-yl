@@ -3,7 +3,7 @@ class FormParagraph extends Component {
   static get propTypes() {
     return {
       title: React.PropTypes.string.isRequired,
-      placeHolder: React.PropTypes.string,
+      placeholder: React.PropTypes.string,
       value: React.PropTypes.string,
     };
   }
@@ -13,13 +13,12 @@ class FormParagraph extends Component {
   }
 
   handleChange(event) {
-   var node = React.findDOMNode(this.refs.container);
-
-   console.log(node.value);
+    var node = ReactDOM.findDOMNode(this.refs.container);
+    // TODO(Max): Finish this method definition
   }
 
   componentDidMount() {
-    var node = React.findDOMNode(this.refs.container);
+    var node = ReactDOM.findDOMNode(this.refs.container);
     node.addEventListener('input', this.handleChange.bind(this));
   }
 
@@ -52,7 +51,7 @@ class FormParagraph extends Component {
           rows={'8'}
           cols={'50'}
           style={this.styles.input}
-          placeholder={this.props.placeHolder}>
+          placeholder={this.props.placeholder}>
         </textarea>
       </div>
     )

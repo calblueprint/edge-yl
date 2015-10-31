@@ -48,13 +48,13 @@ class FormSection extends Component {
         <div style={this.styles.questions}>
           <FormField
             title={'First Name'}
-            placeHolder={'Emily'} />
+            placeholder={'Emily'} />
           <FormField
             title={'Last Name'}
-            placeHolder={'Wilson'} />
+            placeholder={'Wilson'} />
           <FormParagraph
             title={'Student Description'}
-            placeHolder={'This student is great'} />
+            placeholder={'This student is great'} />
         </div>
       </div>
     );

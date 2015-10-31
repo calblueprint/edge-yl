@@ -3,7 +3,7 @@ class FormField extends Component {
   static get propTypes() {
     return {
       title: React.PropTypes.string.isRequired,
-      placeHolder: React.PropTypes.string,
+      placeholder: React.PropTypes.string,
     };
   }
 
@@ -36,7 +36,7 @@ class FormField extends Component {
         <label style={this.styles.label}>{this.props.title}</label>
         <input
           style={this.styles.input}
-          placeholder={this.props.placeHolder}>
+          placeholder={this.props.placeholder}>
         </input>
       </div>
     )
