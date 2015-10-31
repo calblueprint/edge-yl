@@ -1,9 +1,10 @@
-class FormField extends Component {
+class FormParagraph extends Component {
 
   static get propTypes() {
     return {
       title: React.PropTypes.string.isRequired,
       placeholder: React.PropTypes.string,
+      value: React.PropTypes.string,
     };
   }
 
@@ -11,15 +12,26 @@ class FormField extends Component {
     return {};
   }
 
+  handleChange(event) {
+    var node = ReactDOM.findDOMNode(this.refs.container);
+    // TODO(Max): Finish this method definition
+  }
+
+  componentDidMount() {
+    var node = ReactDOM.findDOMNode(this.refs.container);
+    node.addEventListener('input', this.handleChange.bind(this));
+  }
+
   get styles() {
     return {
       container: {
         display: 'flex',
-        alignItems: 'center',
+        flexFlow: 'column',
+        alignItems: 'left',
         marginBottom: '20px',
       },
       label: {
-        paddingRight: '24px',
+        paddingBottom: '10px',
         fontSize: StyleConstants.fonts.sizes.smaller,
       },
       input: {
@@ -34,10 +46,13 @@ class FormField extends Component {
     return (
       <div style={this.styles.container}>
         <label style={this.styles.label}>{this.props.title}</label>
-        <input
+        <textarea
+          ref={'container'}
+          rows={'8'}
+          cols={'50'}
           style={this.styles.input}
           placeholder={this.props.placeholder}>
-        </input>
+        </textarea>
       </div>
     )
   }
