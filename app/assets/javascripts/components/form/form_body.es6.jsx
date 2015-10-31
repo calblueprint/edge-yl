@@ -2,6 +2,7 @@ class FormBody extends Component {
 
   static get defaultState() { 
     return {
+      [section_one: [
       firstName: '',
       lastName: '',
     };
@@ -15,11 +16,8 @@ class FormBody extends Component {
     return {};
   }
 
-  updateValue(key, value) {
-    fields = {};
-    fields[key] = value;
-    this.setState(fields);
-    console.log(this.state);
+  //TODO(Sonia): Finish this method definition
+  updateValue(section, key, value) {
   }
 
   get styles() {

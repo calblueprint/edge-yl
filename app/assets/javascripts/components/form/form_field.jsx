@@ -14,12 +14,12 @@ class FormField extends Component {
   }
 
   handleChange(event) {
-    var node = React.findDOMNode(this.refs.container);
+    var node = ReactDOM.findDOMNode(this.refs.container);
     this.props.updateValue(node, node.value);
   }
 
   componentDidMount() {
-    var node = React.findDOMNode(this.refs.container);
+    var node = ReactDOM.findDOMNode(this.refs.container);
     node.addEventListener('input', this.handleChange.bind(this));
   }
 
