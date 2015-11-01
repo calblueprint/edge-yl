@@ -1,14 +1,14 @@
-class SchoolsPage extends Component {
+class SchoolPage extends Component {
 
   static get propTypes() {
     return {
-      schools: React.PropTypes.array.isRequired,
+      school: React.PropTypes.object.isRequired,
     };
   }
 
   static get defaultProps() {
     return {
-      schools: [],
+      school: {},
     };
   }
 
@@ -24,13 +24,8 @@ class SchoolsPage extends Component {
         paddingTop: '48px',
         paddingLeft: '196px',
       },
-      body: {
-        display: 'flex',
-        flexFlow: 'column',
-        flex: '1',
-        paddingLeft: '12px',
-        paddingRight: '208px',
-        overflow: 'scroll',
+      placeholder: {
+        width: '196px',
       },
     };
   }
@@ -46,9 +41,8 @@ class SchoolsPage extends Component {
           toggleSidebar={this.toggleSidebar.bind(this)} />
         <div style={this.styles.container}>
           <Sidebar shouldShow={this.state.sidebar} />
-          <div style={this.styles.body}>
-            <SchoolsGrid {...this.props} />
-          </div>
+          <SchoolGrid {...this.props} />
+          <div style={this.styles.placeholder}></div>
         </div>
       </div>
     );
