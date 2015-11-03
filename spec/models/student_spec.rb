@@ -23,4 +23,19 @@ RSpec.describe Student, type: :model do
     expect(factory).to be_valid
   end
 
+  it "is invalid without an email" do
+    factory = FactoryGirl.build(:student, email: nil)
+    expect(factory).to be_invalid
+  end
+
+  it "is invalid without a first_name" do
+    factory = FactoryGirl.build(:student, first_name: nil)
+    expect(factory).to be_invalid
+  end
+
+  it "is invalid without a last_name" do
+    factory = FactoryGirl.build(:student, last_name: nil)
+    expect(factory).to be_invalid
+  end
+
 end
