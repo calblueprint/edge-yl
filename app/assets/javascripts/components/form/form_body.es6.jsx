@@ -1,11 +1,23 @@
 class FormBody extends Component {
 
+  static get defaultState() { 
+    return {
+      [section_one: [
+      firstName: '',
+      lastName: '',
+    };
+  }
+
   static get propTypes() {
     return {};
   }
 
   static get defaultProps() {
     return {};
+  }
+
+  //TODO(Sonia): Finish this method definition
+  updateValue(section, key, value) {
   }
 
   get styles() {
@@ -53,9 +65,11 @@ class FormBody extends Component {
           <h1 style={this.styles.title}>{'Form'}</h1>
         </div>
         <FormSection
-          title={'Basic Information'} />
+          title={'Basic Information'} 
+          updateValue={this.updateValue.bind(this)} />
         <FormSection
-          title={'Health Information'} />
+          title={'Health Information'} 
+          updateValue={this.updateValue.bind(this)} />
         <Clickable
           content={'Create Student'}
           func={this.handleClick.bind(this)} />

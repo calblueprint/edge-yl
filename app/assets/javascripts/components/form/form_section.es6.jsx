@@ -4,6 +4,7 @@ class FormSection extends Component {
   static get propTypes() {
     return {
       title: React.PropTypes.string.isRequired,
+      updateValue: React.PropTypes.func.isRequired,
     };
   }
 
@@ -39,7 +40,7 @@ class FormSection extends Component {
   }
 
   render() {
-    return(
+    return (
       <div style={this.styles.container}>
         <div style={this.styles.header}>
           <span style={this.styles.title}>{this.props.title}</span>
