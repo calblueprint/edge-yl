@@ -14,7 +14,10 @@
 FactoryGirl.define do
 
   factory :school do
-
+    address         { "#{Faker::Address.street_address}, #{Faker::Address.city}" }
+    counselor_email { Faker::PhoneNumber.phone_number }
+    counselor_name  { Faker::Internet.email }
+    name            { "#{Faker::Name.first_name} High School" }
   end
 
 end
