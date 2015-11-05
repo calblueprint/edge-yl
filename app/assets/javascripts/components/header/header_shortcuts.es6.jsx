@@ -1,5 +1,9 @@
 class HeaderShortcuts extends Component {
 
+  static get defaultState() {
+    return { dropdown: false };
+  }
+
   get styles() {
     return {
       container: {
@@ -67,6 +71,20 @@ class HeaderShortcuts extends Component {
     ];
   }
 
+  handleClick(event) {
+    this.setState({ dropdown: !this.state.dropdown });
+  }
+
+  renderDropdown() {
+    if (this.state.dropdown) {
+      return (
+        <Dropdown
+          options={this.dropdownOptions}
+          styles={this.dropdownStyles} />
+      );
+    }
+  }
+
   render() {
     return (
       <div style={this.styles.container}>
@@ -77,12 +95,10 @@ class HeaderShortcuts extends Component {
           type={'i'} />
         <Clickable
           icon={'fa fa-user fa-x'}
-          route={RouteConstants.pages.profile}
+          func={this.handleClick.bind(this)}
           styles={this.clickableStyles}
           type={'i'} />
-        <Dropdown
-          options={this.dropdownOptions}
-          styles={this.dropdownStyles} />
+        {this.renderDropdown()}
       </div>
     );
   }
