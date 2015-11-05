@@ -9,8 +9,8 @@ class RequesterSingleton {
       // TODO(Warren): Complete this callback function.
       console.log(request.responseText);
     };
-    request.setRequestHeader('Content-Type', 'application/json');
     request.setRequestHeader('Accept', 'application/json');
+    request.setRequestHeader('Content-Type', 'application/json');
     request.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
     request.send(JSON.stringify(params));
   }
@@ -22,8 +22,8 @@ class RequesterSingleton {
       // TODO(Warren): Complete this callback function.
       console.log(request.responseText);
     };
-    request.setRequestHeader('Content-Type', 'application/json');
     request.setRequestHeader('Accept', 'application/json');
+    request.setRequestHeader('Content-Type', 'application/json');
     request.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
     request.send();
   }
