@@ -2,12 +2,6 @@
 
 class RoutesSingleton {
 
-  get blueprint() {
-    return {
-      home: 'http://www.calblueprint.org/',
-    };
-  }
-
   get pages() {
     return {
       login: '/login',
@@ -33,6 +27,14 @@ class RoutesSingleton {
       show: function(id) {
         return `/students/${id}`;
       },
+    };
+  }
+
+  get users() {
+    return {
+      login: '/users/login',
+      logout: '/users/logout',
+      signout: '/users/signout',
     };
   }
 }
