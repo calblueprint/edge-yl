@@ -4,18 +4,15 @@
 
   get 'login', to: 'pages#login'
   get 'mail', to: 'pages#mail'
-  get 'profile', to: 'pages#profile'
   get 'signup', to: 'pages#signup'
+
+  get 'profile', to: 'users#profile'
 
   resources :students, only: [:create, :index, :show]
   resources :schools, only: [:index, :show]
   resources :forms, only: [:show]
 
-  devise_for :users, skip: [:sessions]
-  as :user do
-    post 'login', to: 'devise/sessions#create'
-    delete 'logout', to: 'devise/sessions#destroy'
-  end
+  devise_for :users
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
