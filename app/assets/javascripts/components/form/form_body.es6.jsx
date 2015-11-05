@@ -1,11 +1,7 @@
 class FormBody extends Component {
 
-  static get defaultState() { 
-    return {
-      [section_one: [
-      firstName: '',
-      lastName: '',
-    };
+  static get defaultState() {
+    return {};
   }
 
   static get propTypes() {
@@ -65,10 +61,10 @@ class FormBody extends Component {
           <h1 style={this.styles.title}>{'Form'}</h1>
         </div>
         <FormSection
-          title={'Basic Information'} 
+          title={'Basic Information'}
           updateValue={this.updateValue.bind(this)} />
         <FormSection
-          title={'Health Information'} 
+          title={'Health Information'}
           updateValue={this.updateValue.bind(this)} />
         <Clickable
           content={'Create Student'}
