@@ -4,7 +4,10 @@ class Dropdown extends Component {
     return {
       options: React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
       styles: React.PropTypes.shape({
-        child: React.PropTypes.object,
+        child: React.PropTypes.shape({
+          default: React.PropTypes.object,
+          hover: React.PropTypes.object,
+        }),
         container: React.PropTypes.object,
       }),
     };
@@ -14,7 +17,10 @@ class Dropdown extends Component {
     return {
       options: [],
       styles: {
-        child: {},
+        child: {
+          default: {},
+          hover: {},
+        },
         container: {},
       },
     };
@@ -24,8 +30,9 @@ class Dropdown extends Component {
     return (
       <Clickable
         content={option.content}
+        func={option.func}
         key={index}
-        route={RouteConstants.pages.profile}
+        route={option.route}
         styles={this.props.styles.child} />
     );
   }

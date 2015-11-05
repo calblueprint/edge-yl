@@ -31,7 +31,13 @@ class HeaderShortcuts extends Component {
   get dropdownStyles() {
     return {
       child: {
-
+        default: {
+          flex: '1',
+          padding: '12px',
+        },
+        hover: {
+          backgroundColor: StyleConstants.colors.turquoise,
+        },
       },
       container: Object.assign(
         {},
@@ -41,8 +47,8 @@ class HeaderShortcuts extends Component {
           flexFlow: 'column',
           position: 'absolute',
           width: '128px',
-          top: '0px',
-          left: '0px',
+          top: '48px',
+          right: '0px',
         }
       ),
     }
@@ -52,13 +58,11 @@ class HeaderShortcuts extends Component {
     return [
       {
         content: 'Profile',
-        func: null,
-        route: '',
+        route: RouteConstants.pages.profile,
       },
       {
         content: 'Logout',
-        func: null,
-        route: '',
+        func: function() { console.log('logout clicked'); Requester.delete(RouteConstants.users.logout) },
       },
     ];
   }

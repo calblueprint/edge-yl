@@ -28,10 +28,6 @@ class LoginForm extends Component {
     );
   }
 
-  destroySession(event) {
-    Requester.delete(RouteConstants.users.logout);
-  }
-
   render() {
     return (
       <div style={this.styles.container}>
@@ -54,9 +50,6 @@ class LoginForm extends Component {
         <FormButton
           content={'Log in'}
           func={this.createSession.bind(this)} />
-        <FormButton
-          content={'Log out'}
-          func={this.destroySession.bind(this)} />
       </div>
     );
   }
