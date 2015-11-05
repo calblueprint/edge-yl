@@ -20,7 +20,7 @@ class LoginForm extends Component {
     Requester.post(
       RouteConstants.users.login,
       {
-        session: {
+        user: {
           email: 'admin@edgeyl.org',
           password: 'password',
         },
