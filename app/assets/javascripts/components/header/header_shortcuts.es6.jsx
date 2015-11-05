@@ -28,6 +28,41 @@ class HeaderShortcuts extends Component {
     };
   }
 
+  get dropdownStyles() {
+    return {
+      child: {
+
+      },
+      container: Object.assign(
+        {},
+        StyleConstants.cards.default,
+        {
+          display: 'flex',
+          flexFlow: 'column',
+          position: 'absolute',
+          width: '128px',
+          top: '0px',
+          left: '0px',
+        }
+      ),
+    }
+  }
+
+  get dropdownOptions() {
+    return [
+      {
+        content: 'Profile',
+        func: null,
+        route: '',
+      },
+      {
+        content: 'Logout',
+        func: null,
+        route: '',
+      },
+    ];
+  }
+
   render() {
     return (
       <div style={this.styles.container}>
@@ -41,6 +76,9 @@ class HeaderShortcuts extends Component {
           route={RouteConstants.pages.profile}
           styles={this.clickableStyles}
           type={'i'} />
+        <Dropdown
+          options={this.dropdownOptions}
+          styles={this.dropdownStyles} />
       </div>
     );
   }
