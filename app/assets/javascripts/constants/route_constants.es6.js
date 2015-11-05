@@ -38,8 +38,9 @@ class RoutesSingleton {
 
   get users() {
     return {
-      login: '/users/sign_in',
-      logout: '/users/sign_out',
+      login: '/users/login',
+      logout: '/users/logout',
+      signout: '/users/signout',
     };
   }
 }
