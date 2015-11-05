@@ -47,6 +47,14 @@ class Clickable extends Component {
     }
   }
 
+  get styles() {
+    return {
+      static: {
+        cursor: 'default',
+      },
+    };
+  }
+
   componentDidMount() {
     var node = ReactDOM.findDOMNode(this.refs.container);
     node.addEventListener('click', this.handleClick.bind(this));
@@ -56,12 +64,11 @@ class Clickable extends Component {
   }
 
   handleClick(event) {
-    if (this.props.route === '') {
+    var props = this.props;
+    if (props.route === '' && props.func !== null) {
       event.preventDefault();
       event.stopPropagation();
-      if (this.props.func !== null) {
-        this.props.func();
-      }
+      props.func();
     }
   }
 
@@ -111,13 +118,15 @@ class Clickable extends Component {
   }
 
   render() {
-    var styles = this.props.styles;
+    var props = this.props;
+    var styles = props.styles;
     var style = Object.assign(
       {},
       styles.default,
-      this.state.mouse === 'hover' && styles.hover
+      this.state.mouse === 'hover' && styles.hover,
+      props.route === '' && props.func === null && this.styles.static
     );
-    if (this.props.type === 'i' || this.props.type === 'img') {
+    if (props.type === 'i' || props.type === 'img') {
       return (
         <a
           href={this.props.route}
@@ -130,7 +139,7 @@ class Clickable extends Component {
     } else {
       return (
         <a
-          href={this.props.route}
+          href={props.route}
           ref={'container'}>
           {this.renderContent(style)}
           {this.renderChildren()}
