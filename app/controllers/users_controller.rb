@@ -5,8 +5,11 @@ class UsersController < ApplicationController
   end
 
   def profile
-    @current_user = current_user
-    puts current_user.first_name
+    if user_signed_in?
+      @current_user = current_user
+    else
+      redirect_to login_path
+    end
   end
 
 end
