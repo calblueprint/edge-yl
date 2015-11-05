@@ -35,6 +35,13 @@ class RoutesSingleton {
       },
     };
   }
+
+  get users() {
+    return {
+      login: '/users/sign_in',
+      logout: '/users/sign_out',
+    };
+  }
 }
 
 var RouteConstants = new RoutesSingleton();

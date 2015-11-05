@@ -16,6 +16,22 @@ class LoginForm extends Component {
     };
   }
 
+  createSession(event) {
+    Requester.post(
+      RouteConstants.users.login,
+      {
+        session: {
+          email: 'admin@edgeyl.org',
+          password: 'password',
+        },
+      }
+    );
+  }
+
+  destroySession(event) {
+    Requester.delete(RouteConstants.users.logout);
+  }
+
   render() {
     return (
       <div style={this.styles.container}>
@@ -37,7 +53,10 @@ class LoginForm extends Component {
         </input>
         <FormButton
           content={'Log in'}
-          route={RouteConstants.students.index} />
+          func={this.createSession.bind(this)} />
+        <FormButton
+          content={'Log out'}
+          func={this.destroySession.bind(this)} />
       </div>
     );
   }
