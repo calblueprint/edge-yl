@@ -11,7 +11,7 @@ new_admin.skip_confirmation!
 new_admin.save!
 puts "Created admin: #{new_admin.first_name} #{new_admin.last_name}"
 
-(1..3).each do |n|
+(1..3).each do |index|
   new_volunteer = User.new(
     birthday: Faker::Date.between(33.days.ago, Date.today),
     email: Faker::Internet.email,

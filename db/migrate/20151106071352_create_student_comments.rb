@@ -4,8 +4,8 @@ class CreateStudentComments < ActiveRecord::Migration
 
       t.text :content, null: false
 
-      t.belongs_to :student, index: true
-      t.belongs_to :user, index: true
+      t.references :student, index: true
+      t.references :user, index: true
 
       t.timestamps null: false
     end
