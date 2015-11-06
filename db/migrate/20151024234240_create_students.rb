@@ -10,6 +10,8 @@ class CreateStudents < ActiveRecord::Migration
       t.string :home_phone, null: false
       t.string :last_name, null: false
 
+      t.belongs_to :school_id, index: true
+
       t.timestamps null: false
     end
   end
