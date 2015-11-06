@@ -8,7 +8,7 @@ class AuthenticationPage extends Component {
 
   static get defaultProps() {
     return {
-      isLogin: true,
+      isLogin: false,
     };
   }
 
@@ -60,7 +60,7 @@ class AuthenticationPage extends Component {
   render() {
     return (
       <div style={StyleConstants.pages.default}>
-        <Header hasSidebar={false} />
+        <Header hasSidebar={false} {...this.props} />
         <div style={this.styles.container}>
           <AuthenticationCard {...this.props} />
           {this.renderFooter()}

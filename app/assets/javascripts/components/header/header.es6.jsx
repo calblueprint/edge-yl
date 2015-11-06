@@ -11,6 +11,7 @@ class Header extends Component {
     return {
       toggleSidebar: null,
       hasSidebar: true,
+      isLogin: false,
     };
   }
 
@@ -63,6 +64,12 @@ class Header extends Component {
     );
   }
 
+  renderShortcuts() {
+    return (
+      <HeaderShortcuts />
+    )
+  }
+
   render() {
     return (
       <div style={this.styles.container}>
@@ -70,7 +77,7 @@ class Header extends Component {
           {this.props.hasSidebar && this.renderToggler()}
         </div>
         <HeaderNavigation />
-        <HeaderShortcuts />
+        <HeaderShortcuts showShortcuts={this.props.hasSidebar} />
       </div>
     );
   }
