@@ -1,5 +1,17 @@
 class HeaderShortcuts extends Component {
 
+  static get propTypes() {
+    return {
+      showShortcuts: React.PropTypes.bool.isRequired,
+    };
+  }
+
+  static get defaultProps() {
+    return {
+      showShortcuts: true,
+    };
+  }
+
   static get defaultState() {
     return { dropdown: false };
   }
@@ -85,19 +97,27 @@ class HeaderShortcuts extends Component {
     }
   }
 
+  renderShortcuts() {
+    return [
+      <Clickable
+        key={1}
+        icon={'fa fa-envelope fa-x'}
+        route={RouteConstants.pages.mail}
+        styles={this.clickableStyles}
+        type={'i'} />,
+      <Clickable
+        key={2}
+        icon={'fa fa-user fa-x'}
+        func={this.handleClick.bind(this)}
+        styles={this.clickableStyles}
+        type={'i'} />,
+    ];
+  }
+
   render() {
     return (
       <div style={this.styles.container}>
-        <Clickable
-          icon={'fa fa-envelope fa-x'}
-          route={RouteConstants.pages.mail}
-          styles={this.clickableStyles}
-          type={'i'} />
-        <Clickable
-          icon={'fa fa-user fa-x'}
-          func={this.handleClick.bind(this)}
-          styles={this.clickableStyles}
-          type={'i'} />
+        {this.props.showShortcuts && this.renderShortcuts()}
         {this.renderDropdown()}
       </div>
     );
