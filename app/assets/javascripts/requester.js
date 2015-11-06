@@ -29,12 +29,17 @@ class RequesterSingleton {
     request.send(JSON.stringify(params));
   }
 
-  delete(route) {
+  delete(route, resolve, reject) {
     var request = new XMLHttpRequest();
     request.open('DELETE', route);
     request.onreadystatechange = function() {
-      // TODO(Warren): Complete this callback function.
-      console.log(request.responseText);
+      if (this.readyState === XMLHttpRequest.DONE) {
+        if (this.status === 204) {
+          if (resolve) {
+            resolve();
+          }
+        }
+      }
     };
     request.setRequestHeader('Accept', 'application/json');
     request.setRequestHeader('Content-Type', 'application/json');
