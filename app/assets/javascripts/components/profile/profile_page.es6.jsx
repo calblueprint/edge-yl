@@ -8,7 +8,7 @@ class ProfilePage extends Component {
 
   static get defaultProps() {
     return {
-      currentUser: '',
+      currentUser: {},
     }
   }
 

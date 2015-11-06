@@ -8,7 +8,7 @@ class ProfileCards extends Component {
 
   static get defaultProps() {
     return {
-      currentUser: '',
+      currentUser: {},
     }
   }
 

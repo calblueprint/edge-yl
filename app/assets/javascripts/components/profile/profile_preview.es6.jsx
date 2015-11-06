@@ -8,7 +8,7 @@ class ProfilePreview extends Component {
 
   static get defaultProps() {
     return {
-      currentUser: '',
+      currentUser: {},
     }
   }
 
