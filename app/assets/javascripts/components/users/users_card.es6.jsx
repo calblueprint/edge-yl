@@ -8,7 +8,7 @@ class UsersCard extends Component {
 
   static get defaultProps() {
     return {
-      user: null,
+      user: {},
     };
   }
 

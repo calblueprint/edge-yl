@@ -8,7 +8,7 @@ class StudentsCard extends Component {
 
   static get defaultProps() {
     return {
-      student: null,
+      student: {},
     };
   }
 
@@ -42,7 +42,7 @@ class StudentsCard extends Component {
     return {
       hover: {
         textDecoration: 'underline',
-        opacity: 0.875,
+        opacity: '0.875',
       },
     };
   }
