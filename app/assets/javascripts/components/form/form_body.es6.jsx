@@ -37,7 +37,7 @@ class FormBody extends Component {
     };
   }
 
-  handleClick(event) {
+  createStudent(event) {
     Requester.post(
       RouteConstants.students.create,
       {
@@ -68,7 +68,7 @@ class FormBody extends Component {
           updateValue={this.updateValue.bind(this)} />
         <Clickable
           content={'Create Student'}
-          func={this.handleClick.bind(this)} />
+          func={this.createStudent.bind(this)} />
       </div>
     );
   }
