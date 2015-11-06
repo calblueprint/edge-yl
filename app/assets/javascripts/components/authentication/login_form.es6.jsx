@@ -1,5 +1,12 @@
 class LoginForm extends Component {
 
+  static get defaultState() {
+    return {
+      email: '',
+      password: '',
+    };
+  }
+
   get styles() {
     return {
       container: {
@@ -21,11 +28,26 @@ class LoginForm extends Component {
       RouteConstants.users.login,
       {
         user: {
-          email: 'admin@edgeyl.org',
-          password: 'password',
+          email: this.state.email,
+          password: this.state.password,
         },
       }
     );
+  }
+
+  generateHandler(field) {
+    var state = {};
+    return function(event) {
+      state[field] = event.target.value;
+      this.setState(state);
+    }.bind(this);
+  }
+
+  componentDidMount() {
+    var email = ReactDOM.findDOMNode(this.refs.email);
+    email.addEventListener('input', this.generateHandler('email'));
+    var password = ReactDOM.findDOMNode(this.refs.password);
+    password.addEventListener('input', this.generateHandler('password'));
   }
 
   render() {
@@ -37,6 +59,7 @@ class LoginForm extends Component {
         <input
           autoFocus={true}
           placeholder={'example@email.com'}
+          ref={'email'}
           style={this.styles.input}>
         </input>
         <label style={this.styles.label}>
@@ -45,6 +68,7 @@ class LoginForm extends Component {
         <input
           placeholder={'topsecretpassword'}
           style={this.styles.input}
+          ref={'password'}
           type={'password'}>
         </input>
         <FormButton
