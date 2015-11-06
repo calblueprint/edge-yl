@@ -12,9 +12,11 @@
 #  last_name    :string           not null
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
+#  school_id    :integer          not null
 #
 
 class Student < ActiveRecord::Base
+  belongs_to :school
 
   validates :email, presence: true
   validates :first_name, presence: true
