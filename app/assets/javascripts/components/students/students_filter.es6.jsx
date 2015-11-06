@@ -19,14 +19,16 @@ class StudentsFilter extends Component {
     };
   }
 
-  get styles() {
+  get dropdownStyles() {
     return {
-      container: {
-        display: 'flex',
-        flexFlow: 'column',
-        flex: '1',
+      child: {
+        default: {
+          display: 'flex',
+          flexFlow: 'column',
+          flex: '1',
+        },
       },
-      list: Object.assign(
+      container: Object.assign(
         {},
         StyleConstants.cards.default,
         {
@@ -42,11 +44,15 @@ class StudentsFilter extends Component {
     };
   }
 
-  get clickableStyles() {
+  get styles() {
     return {
-      default: {
-      },
-    };
+      container: {
+        display: 'flex',
+        flexFlow: 'column',
+        flex: '1',
+        zIndex: StyleConstants.planes.two,
+      }
+    }
   }
 
   handleExpand() {
@@ -59,26 +65,23 @@ class StudentsFilter extends Component {
     }.bind(this);
   }
 
-  renderOption(item, index) {
-    return (
-      <Clickable
-        content={item}
-        func={this.generateHandler(item)}
-        key={index}
-        styles={this.clickableStyles} />
-    );
+  renderDropdownOption(item, index) {
+    return {
+      content: item,
+      func: this.generateHandler(item),
+    }
   }
 
-  renderOptions() {
-    return this.props.options.map(this.renderOption.bind(this));
+  get dropdownOptions() {
+    return this.props.options.map(this.renderDropdownOption.bind(this));
   }
 
-  renderList() {
+  renderDropdown() {
     if (this.state.isExpanded) {
       return (
-        <div style={this.styles.list}>
-          {this.renderOptions()}
-        </div>
+        <Dropdown
+          options={this.dropdownOptions}
+          styles={this.dropdownStyles} />
       );
     }
   }
@@ -89,11 +92,10 @@ class StudentsFilter extends Component {
         <Clickable
           func={this.handleExpand.bind(this)}
           icon={'fa fa-angle-down'}
-          styles={this.clickableStyles}
           type={'i'}>
           <span>{this.state.selectedOption}</span>
         </Clickable>
-        {this.renderList()}
+        {this.renderDropdown()}
       </div>
     );
   }
