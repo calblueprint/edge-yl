@@ -26,8 +26,8 @@ class ProfileCards extends Component {
   render() {
     return (
       <div style = {this.styles.container}>
-        <ProfilePreview currentUser={this.props.currentUser} />
-        <ProfileOptions currentUser={this.props.currentUser} />
+        <ProfilePreview {...this.props} />
+        <ProfileOptions {...this.props} />
       </div>
     );
   }
