@@ -27,9 +27,6 @@ class HeaderShortcuts extends Component {
         paddingRight: '12px',
         boxSizing: 'border-box',
       },
-      content: {
-        display: 'flex',
-      }
     };
   }
 
