@@ -2,30 +2,50 @@
 
 class RequesterSingleton {
 
-  post(route, params) {
-    var request = new XMLHttpRequest();
-    request.open('POST', route);
+  delete(route, resolve, reject) {
+    var request = this.initialize('DELETE', route);
     request.onreadystatechange = function() {
-      // TODO(Warren): Complete this callback function.
-      console.log(request.responseText);
+      if (this.readyState === XMLHttpRequest.DONE) {
+        if (this.status === 204) {
+          if (resolve) {
+            resolve();
+          }
+        }
+      }
     };
-    request.setRequestHeader('Accept', 'application/json');
-    request.setRequestHeader('Content-Type', 'application/json');
-    request.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
-    request.send(JSON.stringify(params));
+    request.send();
   }
 
-  delete(route) {
+  initialize(type, route) {
     var request = new XMLHttpRequest();
-    request.open('DELETE', route);
-    request.onreadystatechange = function() {
-      // TODO(Warren): Complete this callback function.
-      console.log(request.responseText);
-    };
+    request.open(type, route);
     request.setRequestHeader('Accept', 'application/json');
     request.setRequestHeader('Content-Type', 'application/json');
     request.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
-    request.send();
+    return request;
+  }
+
+  post(route, params, resolve, reject) {
+    var request = this.initialize('POST', route);
+    request.onreadystatechange = function() {
+      if (this.readyState === XMLHttpRequest.DONE) {
+        switch (this.status) {
+          // case 200:
+          //   return console.log('GET resolved!');
+          case 201:
+            if (resolve) {
+              resolve(JSON.parse(this.response));
+            }
+            return console.log('POST resolved!');
+          case 401:
+            if (reject) {
+              reject(this.response);
+            }
+            return console.log('POST rejected!');
+        }
+      }
+    };
+    request.send(JSON.stringify(params));
   }
 }
 
