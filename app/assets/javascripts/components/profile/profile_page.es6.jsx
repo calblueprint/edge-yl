@@ -1,5 +1,17 @@
 class ProfilePage extends Component {
 
+  static get propTypes() {
+    return {
+      currentUser: React.PropTypes.object.isRequired,
+    }
+  }
+
+  static get defaultProps() {
+    return {
+      currentUser: '',
+    }
+  }
+
   static get defaultState() {
     return { sidebar: true };
   }
@@ -33,7 +45,7 @@ class ProfilePage extends Component {
           toggleSidebar={this.toggleSidebar.bind(this)} />
         <div style={this.styles.body}>
           <Sidebar shouldShow={this.state.sidebar} />
-          <ProfileCards />
+          <ProfileCards currentUser={this.props.currentUser} />
           <div style={this.styles.placeholder}></div>
         </div>
       </div>
