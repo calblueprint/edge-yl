@@ -10,11 +10,13 @@
 #  home_address :string           not null
 #  home_phone   :string           not null
 #  last_name    :string           not null
+#  school_id_id :integer
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #
 
 class Student < ActiveRecord::Base
+  belongs_to :school
 
   has_many :student_comments, dependent: :destroy
 

@@ -26,9 +26,9 @@ ActiveRecord::Schema.define(version: 20151106071352) do
   end
 
   create_table "student_comments", force: :cascade do |t|
+    t.text     "content",    null: false
     t.integer  "student_id"
     t.integer  "user_id"
-    t.text     "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -44,9 +44,12 @@ ActiveRecord::Schema.define(version: 20151106071352) do
     t.string   "home_address", null: false
     t.string   "home_phone",   null: false
     t.string   "last_name",    null: false
+    t.integer  "school_id_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
+
+  add_index "students", ["school_id_id"], name: "index_students_on_school_id_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                                  null: false
