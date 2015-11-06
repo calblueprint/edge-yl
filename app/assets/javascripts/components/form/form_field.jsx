@@ -13,16 +13,6 @@ class FormField extends Component {
     return {};
   }
 
-  handleChange(event) {
-    var node = ReactDOM.findDOMNode(this.refs.container);
-    this.props.updateValue(node, node.value);
-  }
-
-  componentDidMount() {
-    var node = ReactDOM.findDOMNode(this.refs.container);
-    node.addEventListener('input', this.handleChange.bind(this));
-  }
-
   get styles() {
     return {
       container: {
@@ -40,6 +30,16 @@ class FormField extends Component {
         fontSize: StyleConstants.fonts.sizes.smallest,
       },
     };
+  }
+
+  handleChange(event) {
+    var node = ReactDOM.findDOMNode(this.refs.container);
+    this.props.updateValue(node, node.value);
+  }
+
+  componentDidMount() {
+    var node = ReactDOM.findDOMNode(this.refs.container);
+    node.addEventListener('input', this.handleChange.bind(this));
   }
 
   render() {
