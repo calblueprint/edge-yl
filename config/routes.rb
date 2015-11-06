@@ -8,9 +8,10 @@
 
   get 'profile', to: 'users#profile'
 
+  resources :forms, only: [:show]
   resources :students, only: [:create, :index, :show]
   resources :schools, only: [:index, :show]
-  resources :forms, only: [:show]
+  resources :users, only: [:index]
 
   devise_for :users, controllers: {
     registrations: 'registrations',

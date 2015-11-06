@@ -1,5 +1,17 @@
 class ProfileCards extends Component {
 
+  static get propTypes() {
+    return {
+      currentUser: React.PropTypes.object.isRequired,
+    }
+  }
+
+  static get defaultProps() {
+    return {
+      currentUser: {},
+    }
+  }
+
   get styles() {
     return {
       container: {
@@ -14,8 +26,8 @@ class ProfileCards extends Component {
   render() {
     return (
       <div style = {this.styles.container}>
-        <ProfilePreview />
-        <ProfileOptions />
+        <ProfilePreview {...this.props} />
+        <ProfileOptions {...this.props} />
       </div>
     );
   }

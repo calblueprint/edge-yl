@@ -1,5 +1,17 @@
 class ProfileOptions extends Component {
 
+  static get propTypes() {
+    return {
+      currentUser: React.PropTypes.object.isRequired,
+    }
+  }
+
+  static get defaultProps() {
+    return {
+      currentUser: {},
+    }
+  }
+
   get styles() {
     return {
       container: Object.assign(
@@ -33,11 +45,12 @@ class ProfileOptions extends Component {
   }
 
   render() {
+    var currentUser = this.props.currentUser;
     return (
       <div style={this.styles.container}>
         <div style= {this.styles.row}>
           <span style={this.styles.field}>
-            {'Email: soniayangsux@edgeyl.org'}
+            {'Email: ' + currentUser.email}
           </span>
           <Clickable
             content={'Change'}
