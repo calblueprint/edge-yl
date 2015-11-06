@@ -2,14 +2,36 @@
 
 class RequesterSingleton {
 
-  post(route, params, resolve, reject) {
+  delete(route, resolve, reject) {
+    var request = this.initialize('DELETE', route);
+    request.onreadystatechange = function() {
+      if (this.readyState === XMLHttpRequest.DONE) {
+        if (this.status === 204) {
+          if (resolve) {
+            resolve();
+          }
+        }
+      }
+    };
+    request.send();
+  }
+
+  initialize(type, route) {
     var request = new XMLHttpRequest();
-    request.open('POST', route);
+    request.open(type, route);
+    request.setRequestHeader('Accept', 'application/json');
+    request.setRequestHeader('Content-Type', 'application/json');
+    request.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
+    return request;
+  }
+
+  post(route, params, resolve, reject) {
+    var request = this.initialize('POST', route);
     request.onreadystatechange = function() {
       if (this.readyState === XMLHttpRequest.DONE) {
         switch (this.status) {
-          case 200:
-            return console.log('GET resolved!');
+          // case 200:
+          //   return console.log('GET resolved!');
           case 201:
             if (resolve) {
               resolve(JSON.parse(this.response));
@@ -23,28 +45,7 @@ class RequesterSingleton {
         }
       }
     };
-    request.setRequestHeader('Accept', 'application/json');
-    request.setRequestHeader('Content-Type', 'application/json');
-    request.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
     request.send(JSON.stringify(params));
-  }
-
-  delete(route, resolve, reject) {
-    var request = new XMLHttpRequest();
-    request.open('DELETE', route);
-    request.onreadystatechange = function() {
-      if (this.readyState === XMLHttpRequest.DONE) {
-        if (this.status === 204) {
-          if (resolve) {
-            resolve();
-          }
-        }
-      }
-    };
-    request.setRequestHeader('Accept', 'application/json');
-    request.setRequestHeader('Content-Type', 'application/json');
-    request.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
-    request.send();
   }
 }
 
