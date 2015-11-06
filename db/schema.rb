@@ -25,6 +25,17 @@ ActiveRecord::Schema.define(version: 20151106075351) do
     t.datetime "updated_at",      null: false
   end
 
+  create_table "student_comments", force: :cascade do |t|
+    t.integer  "student_id"
+    t.integer  "user_id"
+    t.text     "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "student_comments", ["student_id"], name: "index_student_comments_on_student_id", using: :btree
+  add_index "student_comments", ["user_id"], name: "index_student_comments_on_user_id", using: :btree
+
   create_table "students", force: :cascade do |t|
     t.date     "birthday",     null: false
     t.string   "cell_phone",   null: false

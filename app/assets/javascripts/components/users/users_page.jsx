@@ -1,15 +1,15 @@
-class ProfilePage extends Component {
+class UsersPage extends Component {
 
   static get propTypes() {
     return {
-      currentUser: React.PropTypes.object.isRequired,
-    }
+      students: React.PropTypes.array.isRequired,
+    };
   }
 
   static get defaultProps() {
     return {
-      currentUser: {},
-    }
+      students: [],
+    };
   }
 
   static get defaultState() {
@@ -20,16 +20,17 @@ class ProfilePage extends Component {
     return {
       container: {
         display: 'flex',
-        flexFlow: 'column',
-        height: '100vh',
+        flex: '1',
+        paddingTop: '48px',
+        paddingLeft: '196px',
       },
       body: {
         display: 'flex',
+        flexFlow: 'column',
         flex: '1',
-        paddingLeft: '196px',
-      },
-      placeholder: {
-        width: '196px',
+        paddingLeft: '12px',
+        paddingRight: '208px',
+        overflow: 'scroll',
       },
     };
   }
@@ -40,16 +41,16 @@ class ProfilePage extends Component {
 
   render() {
     return (
-      <div style={this.styles.container}>
+      <div style={StyleConstants.pages.default}>
         <Header
           toggleSidebar={this.toggleSidebar.bind(this)} />
-        <div style={this.styles.body}>
+        <div style={this.styles.container}>
           <Sidebar shouldShow={this.state.sidebar} />
-          <ProfileCards currentUser={this.props.currentUser} />
-          <div style={this.styles.placeholder}></div>
+          <div style={this.styles.body}>
+            <UsersGrid {...this.props} />
+          </div>
         </div>
       </div>
     );
   }
 }
-

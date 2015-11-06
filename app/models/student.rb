@@ -18,6 +18,8 @@
 class Student < ActiveRecord::Base
   belongs_to :school
 
+  has_many :student_comments, dependent: :destroy
+
   validates :email, presence: true
   validates :first_name, presence: true
   validates :last_name, presence: true
