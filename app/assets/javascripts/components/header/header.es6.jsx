@@ -70,7 +70,7 @@ class Header extends Component {
           {this.props.hasSidebar && this.renderToggler()}
         </div>
         <HeaderNavigation />
-        <HeaderShortcuts />
+        <HeaderShortcuts showShortcuts={this.props.hasSidebar} />
       </div>
     );
   }
