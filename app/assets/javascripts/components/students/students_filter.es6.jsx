@@ -65,14 +65,14 @@ class StudentsFilter extends Component {
     }.bind(this);
   }
 
-  renderDropdownOption(item, index) {
+  generateDropdownOption(item, index) {
     return {
       content: item,
       func: this.generateHandler(item),
     }
   }
 
-  get dropdownOptions() {
+  generateDropdownOptions() {
     return this.props.options.map(this.renderDropdownOption.bind(this));
   }
 
