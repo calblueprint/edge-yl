@@ -8,7 +8,7 @@ class AuthenticationPage extends Component {
 
   static get defaultProps() {
     return {
-      isLogin: false,
+      isLogin: true,
     };
   }
 
