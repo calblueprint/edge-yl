@@ -11,7 +11,6 @@ class Header extends Component {
     return {
       toggleSidebar: null,
       hasSidebar: true,
-      isLogin: false,
     };
   }
 
@@ -62,12 +61,6 @@ class Header extends Component {
         styles={this.clickableStyles}
         type={'i'} />
     );
-  }
-
-  renderShortcuts() {
-    return (
-      <HeaderShortcuts />
-    )
   }
 
   render() {
