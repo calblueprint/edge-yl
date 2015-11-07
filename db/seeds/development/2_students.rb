@@ -1,4 +1,4 @@
-(1..25).each do |n|
+(1..25).each do |index|
   new_student = Student.create(
     birthday: Faker::Date.between(33.days.ago, Date.today),
     cell_phone: Faker::PhoneNumber.phone_number,
@@ -7,6 +7,7 @@
     home_address: "#{Faker::Address.street_address}, #{Faker::Address.city}",
     home_phone: Faker::PhoneNumber.phone_number,
     last_name: Faker::Name.last_name,
+    school_id: index,
   )
   puts "Created student: #{new_student.first_name} #{new_student.last_name}"
 end
