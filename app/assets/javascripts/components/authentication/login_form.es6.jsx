@@ -31,7 +31,9 @@ class LoginForm extends Component {
           email: this.state.email,
           password: this.state.password,
         },
-      }
+      },
+      function(response) { window.location = RouteConstants.students.index },
+      function(response) { console.log(response) }
     );
   }
 

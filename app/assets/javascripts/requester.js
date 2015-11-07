@@ -30,8 +30,6 @@ class RequesterSingleton {
     request.onreadystatechange = function() {
       if (this.readyState === XMLHttpRequest.DONE) {
         switch (this.status) {
-          // case 200:
-          //   return console.log('GET resolved!');
           case 201:
             if (resolve) {
               resolve(JSON.parse(this.response));
