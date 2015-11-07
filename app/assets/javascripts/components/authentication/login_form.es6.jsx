@@ -3,6 +3,7 @@ class LoginForm extends Component {
   static get defaultState() {
     return {
       email: '',
+      errors: false,
       password: '',
     };
   }
