@@ -18,7 +18,7 @@ class SignupForm extends Component {
 
   createUser(event) {
     var params = {
-      user: {
+      registration: {
         email: 'warrenshen@berkeley.edu',
         birthday: '2015-1-1',
         first_name: 'Warren',
@@ -27,9 +27,9 @@ class SignupForm extends Component {
         password_confirmation: 'password',
       },
     };
-    // var resolve = (response) => { window.location = RouteConstants.students.index };
-    // var reject = (response) => { this.setState({ errors: true }) };
-    Requester.post(RouteConstants.users.create, params);
+    var resolve = (response) => { console.log('Sign up success'); window.location = RouteConstants.students.index };
+    var reject = (response) => { console.log(response) };
+    Requester.post(RouteConstants.users.create, params, resolve, reject);
   }
 
   render() {

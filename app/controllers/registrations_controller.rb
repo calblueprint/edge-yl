@@ -2,19 +2,21 @@ class RegistrationsController < Devise::RegistrationsController
   respond_to :json
 
   def create
-    user = User.new user_params
-    if user.save!
+    user = User.new registration_params
+    # TODO(Warren): Don't skip confirmation in production.
+    user.skip_confirmation!
+    if user.save
       sign_in(user)
       render json: user, status: 201
     else
-      error_response(user)
+      error_response(user, status: 401)
     end
   end
 
   private
 
-  def user_params
-    params.require(:user).permit(
+  def registration_params
+    params.require(:registration).permit(
       :email,
       :birthday,
       :first_name,
