@@ -17,12 +17,16 @@ class StudentComments extends Component {
       container: {
         display: 'flex',
         flexFlow: 'column',
-        flex: '1',
+        position: 'absolute',
+        top: '48px',
+        right: '0px',
+        width: '196px',
       },
       title: {
+        marginLeft: '12px',
         marginTop: '12px',
         fontSize: StyleConstants.fonts.sizes.smaller,
-      }
+      },
     };
   }
 
@@ -33,14 +37,11 @@ class StudentComments extends Component {
   }
 
   renderStudentComments() {
-    return this.props.comments.map(this.renderStudentComment.bind(this))
+    return this.props.comments.map(this.renderStudentComment.bind(this));
   }
 
   render() {
-    var style = Object.assign(
-      {},
-      this.styles.container
-    );
+    var style = this.styles.container;
     return (
       <div style={style}>
         <span style={this.styles.title}> Student Comments </span>

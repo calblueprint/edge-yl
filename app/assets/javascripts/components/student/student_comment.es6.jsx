@@ -1,12 +1,12 @@
 class StudentComment extends Component {
 
-  static get PropTypes() {
+  static get propTypes() {
     return {
       comment: React.PropTypes.object.isRequired,
     };
   }
 
-  static get DefaultProps() {
+  static get defaultProps() {
     return {
       comment: {},
     };
@@ -28,18 +28,12 @@ class StudentComment extends Component {
     };
   }
 
-  renderComment() {
-    return (
-      `${this.props.comment.content} - ${this.props.comment.user}`
-    );
-  }
-
   render() {
     return (
       <Clickable
         styles={this.clickableStyles}
-        content={this.renderComment()}
+        content={`${this.props.comment.content} - ${this.props.comment.user}`}
         type={'span'} />
-    )
+    );
   }
 }
