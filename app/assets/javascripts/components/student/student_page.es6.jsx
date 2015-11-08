@@ -37,6 +37,7 @@ class StudentPage extends Component {
 
   render() {
     student = JSON.parse(this.props.student);
+    console.log(this.props.student);
     return (
       <div style={StyleConstants.pages.default}>
         <Header

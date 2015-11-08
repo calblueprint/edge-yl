@@ -11,8 +11,8 @@ class StudentsController < ApplicationController
   end
 
   def show
-    student = Student.includes(:school).find params[:id]
-    @student = student.to_json serializer: BaseStudentSerializer
+    student = Student.find params[:id]
+    render json: student, serializer: BaseStudentSerializer
   end
 
   private
