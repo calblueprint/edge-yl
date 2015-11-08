@@ -78,7 +78,7 @@ class HeaderShortcuts extends Component {
       },
       {
         content: 'Logout',
-        func: function() { console.log('logout clicked'); Requester.delete(RouteConstants.users.logout) },
+        func: () => { Requester.delete(RouteConstants.users.logout) },
       },
     ];
   }

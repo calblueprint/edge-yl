@@ -3,6 +3,7 @@ class LoginForm extends Component {
   static get defaultState() {
     return {
       email: '',
+      errors: false,
       password: '',
     };
   }
@@ -24,15 +25,15 @@ class LoginForm extends Component {
   }
 
   createSession(event) {
-    Requester.post(
-      RouteConstants.users.login,
-      {
-        user: {
-          email: this.state.email,
-          password: this.state.password,
-        },
-      }
-    );
+    var params = {
+      user: {
+        email: this.state.email,
+        password: this.state.password,
+      },
+    };
+    var resolve = (response) => { window.location = RouteConstants.students.index };
+    var reject = (response) => { this.setState({ errors: true }) };
+    Requester.post(RouteConstants.users.login, params, resolve, reject);
   }
 
   generateHandler(field) {
@@ -51,6 +52,7 @@ class LoginForm extends Component {
   }
 
   render() {
+    console.log(this.state.errors);
     return (
       <div style={this.styles.container}>
         <label style={this.styles.label}>
