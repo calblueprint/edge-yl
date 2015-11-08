@@ -26,7 +26,7 @@ class LoginForm extends Component {
       },
       error: {
         marginBottom: '24px',
-        color: '#FF0000',
+        color: StyleConstants.colors.red,
       },
     };
   }
@@ -51,12 +51,12 @@ class LoginForm extends Component {
     }.bind(this);
   }
 
-  renderErrorMessage() {
+  renderMessage() {
     return (
       <span style={this.styles.error}>
-        Invalid email/password
+        {'Invalid email/password'}
       </span>
-    )
+    );
   }
 
   componentDidMount() {
@@ -88,7 +88,7 @@ class LoginForm extends Component {
           ref={'password'}
           type={'password'}>
         </input>
-        {this.state.errors && this.renderErrorMessage()}
+        {this.state.errors && this.renderMessage()}
         <FormButton
           content={'Log in'}
           func={this.createSession.bind(this)} />
