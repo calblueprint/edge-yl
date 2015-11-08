@@ -26,7 +26,6 @@ class StudentGrid extends Component {
   }
 
   render() {
-    console.log(this.props.student);
     return (
       <div style={this.styles.container}>
         <StudentCard
