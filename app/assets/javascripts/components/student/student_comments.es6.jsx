@@ -19,17 +19,21 @@ class StudentComments extends Component {
         flexFlow: 'column',
         flex: '1',
       },
+      title: {
+        marginTop: '12px',
+        fontSize: StyleConstants.fonts.sizes.smaller,
+      }
     };
   }
 
-  renderStudentComment(index, comment) {
+  renderStudentComment(comment, index) {
     return (
       <StudentComment comment={comment} />
     );
   }
 
   renderStudentComments() {
-    return this.props.comments.map(this.renderStudentComment.bind(this));
+    return this.props.comments.map(this.renderStudentComment.bind(this))
   }
 
   render() {
@@ -39,6 +43,7 @@ class StudentComments extends Component {
     );
     return (
       <div style={style}>
+        <span style={this.styles.title}> Student Comments </span>
         {this.renderStudentComments()}
       </div>
     );
