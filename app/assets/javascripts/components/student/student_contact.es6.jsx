@@ -28,7 +28,6 @@ class StudentContact extends Component {
 
   render() {
     var student = this.props.student;
-    console.log(this.props.student);
     return (
         <div style={this.styles.container}>
           <h2 style={this.styles.heading}>{'Contact'}</h2>
