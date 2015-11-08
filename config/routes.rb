@@ -24,7 +24,7 @@
 
   namespace :api do
     resources :students, only: [:create, :index, :show]
-    resources :schools, only: [:index, :show]
+    resources :schools, only: [:create, :index, :show]
   end
 
 end
