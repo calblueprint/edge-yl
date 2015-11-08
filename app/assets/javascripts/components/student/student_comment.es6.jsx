@@ -30,15 +30,16 @@ class StudentComment extends Component {
 
   renderComment() {
     return (
-      <p> {this.props.comment.content} - {this.props.comment.user} </p>
-      );
+      `${this.props.comment.content} - ${this.props.comment.user}`
+    );
   }
 
   render() {
     return (
       <Clickable
         styles={this.clickableStyles}
-        content={this.renderComment()} />
+        content={this.renderComment()}
+        type={'span'} />
     )
   }
 }
