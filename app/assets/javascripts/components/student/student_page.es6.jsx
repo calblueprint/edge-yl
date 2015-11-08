@@ -36,17 +36,15 @@ class StudentPage extends Component {
   }
 
   render() {
-    student = JSON.parse(this.props.student);
-    console.log(this.props.student);
     return (
       <div style={StyleConstants.pages.default}>
         <Header
           toggleSidebar={this.toggleSidebar.bind(this)} />
         <div style={this.styles.container}>
           <Sidebar shouldShow={this.state.sidebar} />
-          <StudentGrid student={student} />
+          <StudentGrid {...this.props} />
           <StudentComments
-            comments={[{user: "Max Wolffe", content: "Cats and Dogs and Mice"},]} />
+            comments={[{user: "Max Wolffe", content: "Cats"},]} />
         </div>
       </div>
     );

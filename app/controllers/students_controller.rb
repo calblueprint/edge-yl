@@ -12,10 +12,14 @@ class StudentsController < ApplicationController
 
   def show
     student = Student.find params[:id]
-    render json: student, serializer: BaseStudentSerializer
+    @student = serialize_student(student)
   end
 
   private
+
+  def serialize_student(student)
+    ActiveModel::BaseStudentSerializer.new(student).serializable_hash
+  end
 
   def student_params
     params.require(:student).permit(

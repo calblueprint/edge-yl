@@ -35,8 +35,8 @@ class StudentContact extends Component {
             {student.home_address}
             {student.email}
           <h2 style={this.styles.heading}>{'School'}</h2>
-            {student.school}
-            {student.school_address}
+            {student.school.name}
+            {student.school.address}
           <Clickable
             content={`${student.school}}`}
             route={RouteConstants.schools.show(1)}
