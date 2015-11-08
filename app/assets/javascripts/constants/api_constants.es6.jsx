@@ -24,7 +24,7 @@ class ApiSingleton {
 
   get users() {
     return {
-      create: '/api/users',
+      create: '/api/users/signup',
       login: '/api/users/login',
       logout: '/api/users/logout',
       signout: '/api/users/signout',

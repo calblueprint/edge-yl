@@ -29,7 +29,7 @@ class SignupForm extends Component {
     };
     var resolve = (response) => { window.location = RouteConstants.students.index };
     var reject = (response) => { console.log(response) };
-    Requester.post(RouteConstants.users.create, params, resolve, reject);
+    Requester.post(ApiConstants.users.create, params, resolve, reject);
   }
 
   render() {
