@@ -28,6 +28,7 @@ class ProfilePreview extends Component {
       image: {
         width: '312px',
         borderRadius: '50%',
+        marginTop: '4%',
       },
       name: {
         paddingTop: '24px',
