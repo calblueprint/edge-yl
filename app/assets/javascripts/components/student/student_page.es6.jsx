@@ -45,7 +45,7 @@ class StudentPage extends Component {
           <Sidebar shouldShow={this.state.sidebar} />
           <StudentGrid student={student} />
           <StudentComments
-            comments={[{user: "Max Wolffe", content: "Cats and Dogs and Mice"},]} />
+            comments={student.student_comments} />
         </div>
       </div>
     );
