@@ -14,12 +14,6 @@
   resources :users, only: [:index]
 
   namespace :api do
-    # devise_for :users, path_names: {
-    #   sign_in: 'login',
-    #   sign_out: 'logout',
-    #   sign_up: 'signup',
-    # }
-
     devise_scope :user do
       post '/users/signup', to: 'registrations#create'
 
