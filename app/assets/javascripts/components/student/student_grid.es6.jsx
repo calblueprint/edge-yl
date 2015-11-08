@@ -30,16 +30,20 @@ class StudentGrid extends Component {
       <div style={this.styles.container}>
         <StudentCard
           student={this.props.student}
-          type={'preview'} />
+          type={'preview'}
+          renderOverlay={this.props.renderOverlay} />
         <StudentCard
           student={this.props.student}
-          type={'contact'} />
+          type={'contact'}
+          renderOverlay={this.props.renderOverlay} />
         <StudentCard
           student={this.props.student}
-          type={'parent'} />
+          type={'parent'}
+          renderOverlay={this.props.renderOverlay}/>
         <StudentCard
           student={this.props.student}
-          type={'conference'} />
+          type={'conference'}
+          renderOverlay={this.props.renderOverlay}/>
       </div>
     );
   }

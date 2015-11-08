@@ -22,7 +22,7 @@ class Header extends Component {
         position: 'fixed',
         top: '0px',
         left: '0px',
-        zIndex: StyleConstants.planes.nine,
+        zIndex: StyleConstants.planes.eight,
         width: '100%',
         height: '48px',
         backgroundColor: StyleConstants.colors.blue,

@@ -33,6 +33,7 @@ class StudentEdit extends Component {
         top: '0px',
         right: '8px',
         lineHeight: '40px',
+        cursor: 'pointer',
       },
     };
   }
@@ -50,13 +51,18 @@ class StudentEdit extends Component {
     };
   }
 
+  editCard() {
+    this.props.renderOverlay()
+  }
+
   render() {
     return (
       <div style={this.styles.container}>
         <h5>{this.renderTitle()}</h5>
         <i
           className={'fa fa-pencil-square-o'}
-          style={this.styles.icon} />
+          style={this.styles.icon}
+          onClick={this.editCard.bind(this)} />
       </div>
     );
   }
