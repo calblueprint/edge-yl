@@ -7,7 +7,6 @@ class RequesterSingleton {
     request.onreadystatechange = function() {
       if (this.readyState === XMLHttpRequest.DONE) {
         if (this.status === 204) {
-          console.log('hello');
           if (resolve) {
             resolve();
           }
