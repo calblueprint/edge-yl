@@ -2,17 +2,18 @@ class StudentsController < ApplicationController
 
   def create
     student = Student.new student_params
-    respond_to do |format|
-      format.json { render json: student }
-    end
+    render json: student
   end
 
   def index
-    @students = Student.all
+    students = Student.all
+    @students = students.to_json(include: :school)
   end
 
   def show
-    @student = Student.find params[:id]
+    student = Student.includes(:school).find params[:id]
+    # TODO(Warren): Do this instead with serializers.
+    @student = student.to_json(include: :student_comments)
   end
 
   private

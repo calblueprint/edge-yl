@@ -8,7 +8,7 @@ new_admin = User.new(
   is_admin: true,
 )
 new_admin.skip_confirmation!
-new_admin.save!
+new_admin.save
 puts "Created admin: #{new_admin.first_name} #{new_admin.last_name}"
 
 (1..3).each do |index|
@@ -21,6 +21,6 @@ puts "Created admin: #{new_admin.first_name} #{new_admin.last_name}"
     password_confirmation: 'password',
   )
   new_volunteer.skip_confirmation!
-  new_volunteer.save!
+  new_volunteer.save
   puts "Created volunteer: #{new_volunteer.first_name} #{new_volunteer.last_name}"
 end
