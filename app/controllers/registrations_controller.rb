@@ -3,7 +3,7 @@ class RegistrationsController < Devise::RegistrationsController
 
   def create
     user = User.new user_params
-    if user.save
+    if user.save!
       sign_in(user)
       render json: user, status: 201
     else
