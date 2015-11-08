@@ -22,7 +22,7 @@ class RequesterSingleton {
       if (this.readyState === XMLHttpRequest.DONE) {
         if (this.status === 200) {
           if (resolve) {
-            resolve();
+            resolve(this.response);
           }
         }
       }

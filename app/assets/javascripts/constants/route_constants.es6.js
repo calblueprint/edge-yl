@@ -30,6 +30,16 @@ class RoutesSingleton {
     };
   }
 
+  get api_students() {
+    return {
+      create: '/api/students',
+      index: '/api/students',
+      show: function(id) {
+        return `/api/students/${id}`;
+      },
+    };
+  }
+
   get users() {
     return {
       create: '/users',

@@ -1,10 +1,7 @@
 class StudentsPage extends Component {
 
   static get defaultState() {
-    return {
-      sidebar: true,
-      students: []
-    };
+    return { sidebar: true };
   }
 
   get styles() {
@@ -28,9 +25,9 @@ class StudentsPage extends Component {
 
   componentDidMount() {
     resolve = (response) => {
-      console.log(response);
+      this.setState({ students: JSON.parse(response).students })
     };
-    Requester.get(RouteConstants.students.index, resolve);
+    Requester.get(RouteConstants.api_students.index, resolve);
   }
 
   toggleSidebar(event) {
@@ -38,6 +35,7 @@ class StudentsPage extends Component {
   }
 
   render() {
+    console.log(this.state.students);
     return (
       <div style={StyleConstants.pages.default}>
         <Header
@@ -46,7 +44,7 @@ class StudentsPage extends Component {
           <Sidebar shouldShow={this.state.sidebar} />
           <div style={this.styles.body}>
             <StudentsFilters />
-            <StudentsGrid {...this.props} />
+            <StudentsGrid students={this.state.students} />
           </div>
         </div>
       </div>
