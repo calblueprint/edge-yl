@@ -50,6 +50,24 @@ class ProfileOptions extends Component {
       <div style={this.styles.container}>
         <div style= {this.styles.row}>
           <span style={this.styles.field}>
+            {`${currentUser.first_name} ${currentUser.last_name}`}
+          </span>
+          <Clickable
+            content={'Change'}
+            route={RouteConstants.pages.profile}
+            styles={this.clickableStyles} />
+        </div>
+        <div style= {this.styles.row}>
+          <span style={this.styles.field}>
+            {'Birthday: ' + currentUser.birthday}
+          </span>
+          <Clickable
+            content={'Change'}
+            route={RouteConstants.pages.profile}
+            styles={this.clickableStyles} />
+        </div>
+        <div style= {this.styles.row}>
+          <span style={this.styles.field}>
             {'Email: ' + currentUser.email}
           </span>
           <Clickable

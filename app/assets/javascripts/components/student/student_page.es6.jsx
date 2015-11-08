@@ -57,7 +57,7 @@ class StudentPage extends Component {
           <StudentGrid student={student}
             renderOverlay={this.renderOverlay.bind(this)} />
           <StudentComments
-            comments={[{user: "Max Wolffe", content: "Cats and Dogs and Mice"},]} />
+            comments={student.student_comments} />
         </div>
       </div>
     );
