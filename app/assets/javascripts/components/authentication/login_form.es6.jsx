@@ -13,17 +13,21 @@ class LoginForm extends Component {
       container: {
         display: 'flex',
         flexFlow: 'column',
+        alignItems: 'center',
       },
       label: {
         marginBottom: '6px',
+        alignSelf: 'stretch',
       },
       input: {
         padding: '8px',
         marginBottom: '24px',
+        alignSelf: 'stretch',
       },
       error: {
-        position: 'absolute',
-      }
+        marginBottom: '24px',
+        color: '#FF0000',
+      },
     };
   }
 
@@ -84,10 +88,10 @@ class LoginForm extends Component {
           ref={'password'}
           type={'password'}>
         </input>
+        {this.state.errors && this.renderErrorMessage()}
         <FormButton
           content={'Log in'}
           func={this.createSession.bind(this)} />
-        {this.state.errors && this.renderErrorMessage()}
       </div>
     );
   }
