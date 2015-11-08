@@ -7,13 +7,12 @@ class StudentsController < ApplicationController
 
   def index
     students = Student.all
-    @students = students.to_json(include: :school)
+    @students = students.to_json
   end
 
   def show
     student = Student.includes(:school).find params[:id]
-    # TODO(Warren): Do this instead with serializers.
-    @student = student.to_json(include: :student_comments)
+    @student = student.to_json serializer: BaseStudentSerializer
   end
 
   private

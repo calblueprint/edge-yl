@@ -5,6 +5,7 @@ ruby '2.2.1'
 gem 'rails', '4.2.1'
 
 # Core
+gem 'active_model_serializers', '~> 0.9.2'
 gem 'devise'
 gem 'figaro'
 gem 'pg'
@@ -17,7 +18,6 @@ gem 'sass-rails', '~> 5.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'turbolinks'
 gem 'uglifier', '>= 1.3.0'
-
 
 group :development, :test do
   gem 'awesome_print'
