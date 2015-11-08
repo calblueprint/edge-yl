@@ -28,7 +28,7 @@ class StudentComments extends Component {
 
   renderStudentComment(comment, index) {
     return (
-      <StudentComment comment={comment} />
+      <StudentComment comment={comment} key={index} />
     );
   }
 

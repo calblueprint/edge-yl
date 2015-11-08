@@ -42,7 +42,7 @@ class StudentPage extends Component {
         <div style={this.styles.container}>
           <Sidebar shouldShow={this.state.sidebar} />
           <StudentGrid {...this.props} />
-          <StudentComments comments={['cats','dogs','mice']}/>
+          <StudentComments comments={[{user: "Max Wolffe", content: "Cats and Dogs and Mice"},]}/>
         </div>
       </div>
     );

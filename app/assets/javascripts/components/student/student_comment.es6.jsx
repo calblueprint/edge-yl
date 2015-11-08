@@ -18,9 +18,9 @@ class StudentComment extends Component {
         flex: '1',
         padding: '12px',
         marginTop: '12px',
+        marginRight: '12px',
         borderRadius: '1px',
         boxSizing: 'border-box',
-        backgroundColor: 'red',
       },
       hover: {
         backgroundColor: StyleConstants.colors.turquoise,
@@ -30,9 +30,8 @@ class StudentComment extends Component {
 
   renderComment() {
     return (
-      <span>
-        {this.props.comment}
-      </span>);
+      <p> {this.props.comment.content} - {this.props.comment.user} </p>
+      );
   }
 
   render() {
