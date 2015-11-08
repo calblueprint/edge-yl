@@ -22,8 +22,7 @@ class LoginForm extends Component {
         marginBottom: '24px',
       },
       error: {
-        display: 'flex',
-        justifyContent: 'center',
+        position: 'absolute',
       }
     };
   }
