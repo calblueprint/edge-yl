@@ -50,7 +50,7 @@ class ProfileOptions extends Component {
       <div style={this.styles.container}>
         <div style= {this.styles.row}>
           <span style={this.styles.field}>
-            {'Name: ' + currentUser.first_name + ' ' +currentUser.last_name}
+            {`${currentUser.first_name} ${currentUser.last_name}`}
           </span>
           <Clickable
             content={'Change'}
