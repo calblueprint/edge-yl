@@ -45,10 +45,10 @@ class LoginForm extends Component {
 
   generateHandler(field) {
     var state = {};
-    return function(event) {
+    return (event) => {
       state[field] = event.target.value;
       this.setState(state);
-    }.bind(this);
+    };
   }
 
   renderMessage() {

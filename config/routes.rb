@@ -13,19 +13,20 @@
   resources :schools, only: [:index, :show]
   resources :users, only: [:index]
 
+  devise_for :users, only: []
+  devise_scope :user do
+    post '/api/users/signup', to: 'api/registrations#create'
+
+    post   '/api/users/login', to: 'api/sessions#create'
+    delete '/api/users/logout', to: 'api/sessions#destroy'
+
+    post '/api/users/confirmations', to: 'api/confirmations#create'
+
+    post  '/api/users/password', to: 'api/passwords#create'
+    patch '/api/users/password', to: 'api/passwords#update'
+  end
+
   namespace :api do
-    devise_scope :user do
-      post '/users/signup', to: 'registrations#create'
-
-      post   '/users/login', to: 'sessions#create'
-      delete '/users/logout', to: 'sessions#destroy'
-
-      post '/users/confirmations', to: 'confirmations#create'
-
-      post  '/users/password', to: 'passwords#create'
-      patch '/users/password', to: 'passwords#update'
-    end
-
     resources :students, only: [:create, :index, :show]
     resources :schools, only: [:create, :index, :show]
   end
