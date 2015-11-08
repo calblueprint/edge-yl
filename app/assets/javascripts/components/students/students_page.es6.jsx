@@ -1,7 +1,10 @@
 class StudentsPage extends Component {
 
   static get defaultState() {
-    return { sidebar: true };
+    return {
+      sidebar: true,
+      students: [],
+    };
   }
 
   get styles() {
@@ -35,7 +38,6 @@ class StudentsPage extends Component {
   }
 
   render() {
-    console.log(this.state.students);
     return (
       <div style={StyleConstants.pages.default}>
         <Header

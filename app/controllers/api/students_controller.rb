@@ -10,6 +10,11 @@ class Api::StudentsController < Api::BaseController
     render json: students, each_serializer: BaseStudentSerializer
   end
 
+  def show
+    student = Student.find params[:id]
+    render json: student, each_serializer: BaseStudentSerializer
+  end
+
   private
 
   def student_params

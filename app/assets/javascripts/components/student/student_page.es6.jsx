@@ -2,18 +2,23 @@ class StudentPage extends Component {
 
   static get propTypes() {
     return {
-      student: React.PropTypes.object.isRequired,
+      id: React.PropTypes.number.isRequired,
     };
   }
 
   static get defaultProps() {
     return {
-      student: {},
+      id: 1,
     };
   }
 
   static get defaultState() {
-    return { sidebar: true };
+    return {
+      sidebar: true,
+      student: {
+        school: {},
+      },
+    };
   }
 
   get styles() {
@@ -31,6 +36,14 @@ class StudentPage extends Component {
     };
   }
 
+  componentDidMount() {
+    resolve = (response) => {
+      console.log(response);
+      this.setState({ student: JSON.parse(response) })
+    };
+    Requester.get(RouteConstants.api_students.show(this.props.id), resolve);
+  }
+
   toggleSidebar(event) {
     this.setState({ sidebar: !this.state.sidebar });
   }
@@ -42,7 +55,7 @@ class StudentPage extends Component {
           toggleSidebar={this.toggleSidebar.bind(this)} />
         <div style={this.styles.container}>
           <Sidebar shouldShow={this.state.sidebar} />
-          <StudentGrid {...this.props} />
+          <StudentGrid student={this.state.student} />
           <StudentComments
             comments={[{user: "Max Wolffe", content: "Cats"},]} />
         </div>
