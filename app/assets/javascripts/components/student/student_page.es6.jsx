@@ -42,7 +42,7 @@ class StudentPage extends Component {
         <div style={this.styles.container}>
           <Sidebar shouldShow={this.state.sidebar} />
           <StudentGrid {...this.props} />
-          <div style={this.styles.placeholder}></div>
+          <StudentComments />
         </div>
       </div>
     );

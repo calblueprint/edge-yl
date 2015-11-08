@@ -19,7 +19,7 @@ class StudentGrid extends Component {
         flexFlow: 'wrap',
         justifyContent: 'space-between',
         alignContent: 'flex-start',
-        flex: '1',
+        flex: '5',
         padding: '0px 12px',
       },
     };
