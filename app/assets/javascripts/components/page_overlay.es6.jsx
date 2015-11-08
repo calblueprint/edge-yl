@@ -1,28 +1,54 @@
-class Sidebar extends Component {
+class PageOverlay extends Component {
 
   static get propTypes() {
     return {
-      shouldShow: React.PropTypes.bool.isRequired,
+      showOverlay: React.PropTypes.bool.isRequired,
     };
   }
 
   static get defaultProps() {
     return {
-      shouldShow: true,
+      showOverlay: true,
     };
   }
 
   get styles() {
     return {
-      container: {
-        position: 'absolute',
-        top: '48px',
-        left: '0px',
-        width: '172px',
-        transition: 'left 0.375s ease-out',
+      overlay: {
+        display: 'flex',
+        position: 'fixed',
+        height: '100vh',
+        width: '100vw',
+        flexFlow: 'row',
+        alignItems: 'center',
+        zIndex: StyleConstants.planes.nine,
+        backgroundColor: 'rgba(0, 0, 0, 0.6)',
       },
-      notShow: {
-        left: '-172px',
+      editBox: {
+        width: '256px',
+        height: '256px',
+        margin: '0 auto',
+        zIndex: StyleConstants.planes.nine,
+        backgroundColor: 'white',
+      },
+      hideOverlay: {
+        display: 'none',
+      },
+    };
+  }
+
+  get clickableStyles() {
+    return {
+      default: {
+        position: 'fixed',
+        top: '0px',
+        right: '0px',
+        margin: '12px',
+        zIndex: StyleConstants.planes.nine,
+        color: StyleConstants.colors.white,
+      },
+      hover: {
+        color: 'rgba(255, 255, 255, 0.6)',
       },
     };
   }
@@ -30,13 +56,18 @@ class Sidebar extends Component {
   render() {
     var style = Object.assign(
       {},
-      this.styles.container,
-      !this.props.shouldShow && this.styles.notShow
+      this.styles.overlay,
+      !this.props.showOverlay && this.styles.hideOverlay
     );
     return (
       <div style={style}>
-        <SidebarGroup />
-        <SidebarFooter />
+        <Clickable
+          func={this.props.closeOverlay}
+          icon={'fa fa-times fa-2x'}
+          styles={this.clickableStyles}
+          type={'i'} />
+        <div style={this.styles.editBox}>
+        </div>
       </div>
     );
   }

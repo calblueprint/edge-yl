@@ -14,6 +14,7 @@ class Sidebar extends Component {
 
   get styles() {
     return {
+
       container: {
         position: 'absolute',
         top: '48px',
