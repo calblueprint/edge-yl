@@ -2,19 +2,19 @@ class PageOverlay extends Component {
 
   static get propTypes() {
     return {
-      showOverlay: React.PropTypes.bool.isRequired,
+      shouldShow: React.PropTypes.bool.isRequired,
     };
   }
 
   static get defaultProps() {
     return {
-      showOverlay: true,
+      shouldShow: true,
     };
   }
 
   get styles() {
     return {
-      overlay: {
+      container: {
         display: 'flex',
         flexFlow: 'row',
         alignItems: 'center',
@@ -24,14 +24,14 @@ class PageOverlay extends Component {
         height: '100vh',
         backgroundColor: 'rgba(0, 0, 0, 0.6)',
       },
-      editBox: {
+      card: {
         zIndex: StyleConstants.planes.nine,
         width: '256px',
         height: '256px',
         margin: '0 auto',
         backgroundColor: 'white',
       },
-      hideOverlay: {
+      hidden: {
         display: 'none',
       },
     };
@@ -56,17 +56,17 @@ class PageOverlay extends Component {
   render() {
     var style = Object.assign(
       {},
-      this.styles.overlay,
-      !this.props.showOverlay && this.styles.hideOverlay
+      this.styles.container,
+      !this.props.shouldShow && this.styles.hidden
     );
     return (
       <div style={style}>
         <Clickable
-          func={this.props.closeOverlay}
+          func={this.props.closecontainer}
           icon={'fa fa-times fa-2x'}
           styles={this.clickableStyles}
           type={'i'} />
-        <div style={this.styles.editBox}>
+        <div style={this.styles.card}>
         </div>
       </div>
     );
