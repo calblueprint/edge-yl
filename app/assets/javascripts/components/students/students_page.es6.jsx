@@ -28,7 +28,7 @@ class StudentsPage extends Component {
 
   componentDidMount() {
     resolve = (response) => {
-      this.setState({ students: JSON.parse(response).students })
+      this.setState({ students: JSON.parse(response) })
     };
     Requester.get(RouteConstants.api_students.index, resolve);
   }

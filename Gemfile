@@ -5,7 +5,7 @@ ruby '2.2.1'
 gem 'rails', '4.2.1'
 
 # Core
-gem 'active_model_serializers', '~> 0.9.2'
+gem 'active_model_serializers', '~> 0.10.0.rc1'
 gem 'devise'
 gem 'figaro'
 gem 'pg'
