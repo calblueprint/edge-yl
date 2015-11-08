@@ -40,6 +40,7 @@ class StudentsPage extends Component {
   }
 
   render() {
+    students = JSON.parse(this.props.students);
     return (
       <div style={StyleConstants.pages.default}>
         <Header
@@ -48,7 +49,7 @@ class StudentsPage extends Component {
           <Sidebar shouldShow={this.state.sidebar} />
           <div style={this.styles.body}>
             <StudentsFilters />
-            <StudentsGrid {...this.props} />
+            <StudentsGrid students={students} />
           </div>
         </div>
       </div>
