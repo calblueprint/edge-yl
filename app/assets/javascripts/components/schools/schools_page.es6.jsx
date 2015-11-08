@@ -30,7 +30,7 @@ class SchoolsPage extends Component {
     resolve = (response) => {
       this.setState({ schools: JSON.parse(response) })
     };
-    Requester.get(RouteConstants.api_schools.index, resolve);
+    Requester.get(ApiConstants.schools.index, resolve);
   }
 
   toggleSidebar(event) {

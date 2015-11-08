@@ -38,10 +38,9 @@ class StudentPage extends Component {
 
   componentDidMount() {
     resolve = (response) => {
-      console.log(response);
       this.setState({ student: JSON.parse(response) })
     };
-    Requester.get(RouteConstants.api_students.show(this.props.id), resolve);
+    Requester.get(ApiConstants.students.show(this.props.id), resolve);
   }
 
   toggleSidebar(event) {

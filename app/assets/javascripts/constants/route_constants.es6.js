@@ -22,20 +22,9 @@ class RoutesSingleton {
 
   get students() {
     return {
-      create: '/students',
       index: '/students',
       show: function(id) {
         return `/students/${id}`;
-      },
-    };
-  }
-
-  get api_students() {
-    return {
-      create: '/api/students',
-      index: '/api/students',
-      show: function(id) {
-        return `/api/students/${id}`;
       },
     };
   }
