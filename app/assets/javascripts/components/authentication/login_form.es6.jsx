@@ -52,7 +52,6 @@ class LoginForm extends Component {
   }
 
   render() {
-    console.log(this.state.errors);
     return (
       <div style={this.styles.container}>
         <label style={this.styles.label}>

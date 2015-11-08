@@ -6,10 +6,10 @@ class RegistrationsController < Devise::RegistrationsController
     # TODO(Warren): Don't skip confirmation in production.
     user.skip_confirmation!
     if user.save
-      sign_in(user)
+      sign_in user
       render json: user, status: 201
     else
-      error_response(user, status: 401)
+      error_response object: user, status: 401
     end
   end
 
