@@ -1,4 +1,4 @@
-class RegistrationsController < Devise::RegistrationsController
+class Api::RegistrationsController < Devise::RegistrationsController
 
   respond_to :json
 

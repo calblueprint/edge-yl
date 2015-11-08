@@ -21,6 +21,15 @@ class ApiSingleton {
       },
     };
   }
+
+  get users() {
+    return {
+      create: '/api/users',
+      login: '/api/users/login',
+      logout: '/api/users/logout',
+      signout: '/api/users/signout',
+    };
+  }
 }
 
 var ApiConstants = new ApiSingleton();

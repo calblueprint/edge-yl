@@ -80,7 +80,7 @@ class HeaderShortcuts extends Component {
         content: 'Logout',
         func: () => {
           Requester.delete(
-            RouteConstants.users.logout,
+            ApiConstants.users.logout,
             (response) => { window.location = RouteConstants.pages.login}
           );
         },
