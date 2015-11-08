@@ -62,7 +62,7 @@ class PageOverlay extends Component {
     return (
       <div style={style}>
         <Clickable
-          func={this.props.closecontainer}
+          func={this.props.closeOverlay}
           icon={'fa fa-times fa-2x'}
           styles={this.clickableStyles}
           type={'i'} />

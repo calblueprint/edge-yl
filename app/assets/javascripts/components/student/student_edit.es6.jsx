@@ -38,6 +38,18 @@ class StudentEdit extends Component {
     };
   }
 
+  get clickableStyles() {
+    return {
+      default: {
+        position: 'absolute',
+        top: '0px',
+        right: '8px',
+        lineHeight: '40px',
+        cursor: 'pointer',
+      }
+    }
+  }
+
   renderTitle() {
     switch (this.props.type) {
       case 'preview':
@@ -59,10 +71,11 @@ class StudentEdit extends Component {
     return (
       <div style={this.styles.container}>
         <h5>{this.renderTitle()}</h5>
-        <i
-          className={'fa fa-pencil-square-o'}
-          style={this.styles.icon}
-          onClick={this.editCard.bind(this)} />
+        <Clickable
+          func={this.editCard.bind(this)}
+          icon={'fa fa-pencil-square-o'}
+          styles={this.clickableStyles}
+          type={'i'} />
       </div>
     );
   }

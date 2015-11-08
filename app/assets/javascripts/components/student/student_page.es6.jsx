@@ -48,7 +48,7 @@ class StudentPage extends Component {
     return (
       <div style={StyleConstants.pages.default}>
         <PageOverlay
-          showOverlay={this.state.overlay}
+          shouldShow={this.state.overlay}
           closeOverlay={this.closeOverlay.bind(this)} />
         <Header
           toggleSidebar={this.toggleSidebar.bind(this)} />
