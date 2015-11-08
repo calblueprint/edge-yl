@@ -21,6 +21,10 @@ class LoginForm extends Component {
         padding: '8px',
         marginBottom: '24px',
       },
+      error: {
+        display: 'flex',
+        justifyContent: 'center',
+      }
     };
   }
 
@@ -46,8 +50,8 @@ class LoginForm extends Component {
 
   renderErrorMessage() {
     return (
-      <span>
-        Invalid email/password.
+      <span style={this.styles.error}>
+        Invalid email/password
       </span>
     )
   }
