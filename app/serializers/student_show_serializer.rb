@@ -1,4 +1,4 @@
-class StudentShowSerializer < BaseSerializer
+class StudentShowSerializer < StudentIndexSerializer
 
   has_many :student_comments
 
