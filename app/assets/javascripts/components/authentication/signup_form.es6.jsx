@@ -16,6 +16,22 @@ class SignupForm extends Component {
     };
   }
 
+  createUser(event) {
+    var params = {
+      user: {
+        email: 'warrenshen@berkeley.edu',
+        birthday: '2015-1-1',
+        first_name: 'Warren',
+        last_name: 'Shen',
+        password: 'password',
+        password_confirmation: 'password',
+      },
+    };
+    // var resolve = (response) => { window.location = RouteConstants.students.index };
+    // var reject = (response) => { this.setState({ errors: true }) };
+    Requester.post(RouteConstants.users.create, params);
+  }
+
   render() {
     return (
       <div style={this.styles.container}>
@@ -45,7 +61,7 @@ class SignupForm extends Component {
         </input>
         <FormButton
           content={'Sign up'}
-          route={RouteConstants.students.index} />
+          func={this.createUser.bind(this)} />
       </div>
     );
   }

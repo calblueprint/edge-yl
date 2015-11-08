@@ -11,4 +11,15 @@ class RegistrationsController < Devise::RegistrationsController
     end
   end
 
+  private
+
+  def user_params
+    params.require(:user).permit(
+      :email,
+      :birthday,
+      :first_name,
+      :last_name,
+    )
+  end
+
 end
