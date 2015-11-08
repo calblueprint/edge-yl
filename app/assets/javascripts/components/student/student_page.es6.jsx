@@ -23,6 +23,7 @@ class StudentPage extends Component {
         flex: '1',
         paddingTop: '48px',
         paddingLeft: '196px',
+        paddingRight: '196px',
       },
       placeholder: {
         width: '196px',
@@ -42,7 +43,8 @@ class StudentPage extends Component {
         <div style={this.styles.container}>
           <Sidebar shouldShow={this.state.sidebar} />
           <StudentGrid {...this.props} />
-          <div style={this.styles.placeholder}></div>
+          <StudentComments
+            comments={[{user: "Max Wolffe", content: "Cats and Dogs and Mice"},]} />
         </div>
       </div>
     );
