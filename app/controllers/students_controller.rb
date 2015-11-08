@@ -7,7 +7,9 @@ class StudentsController < ApplicationController
 
   def index
     students = Student.all
-    @students = students.to_json
+    @students = students.map { |student|
+      serialize_student(student)
+    }
   end
 
   def show
@@ -20,6 +22,9 @@ class StudentsController < ApplicationController
   def serialize_student(student)
     ActiveModel::BaseStudentSerializer.new(student).serializable_hash
   end
+
+  def serialize_students(students)
+    ActiveModel::
 
   def student_params
     params.require(:student).permit(

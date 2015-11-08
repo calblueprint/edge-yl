@@ -1,19 +1,10 @@
 class StudentsPage extends Component {
 
-  static get propTypes() {
-    return {
-      students: React.PropTypes.array.isRequired,
-    };
-  }
-
-  static get defaultProps() {
-    return {
-      students: [],
-    };
-  }
-
   static get defaultState() {
-    return { sidebar: true };
+    return {
+      sidebar: true,
+      students: []
+    };
   }
 
   get styles() {
@@ -35,12 +26,18 @@ class StudentsPage extends Component {
     };
   }
 
+  componentDidMount() {
+    resolve = (response) => {
+      console.log(response);
+    };
+    Requester.get(RouteConstants.students.index, resolve);
+  }
+
   toggleSidebar(event) {
     this.setState({ sidebar: !this.state.sidebar });
   }
 
   render() {
-    students = JSON.parse(this.props.students);
     return (
       <div style={StyleConstants.pages.default}>
         <Header
@@ -49,7 +46,7 @@ class StudentsPage extends Component {
           <Sidebar shouldShow={this.state.sidebar} />
           <div style={this.styles.body}>
             <StudentsFilters />
-            <StudentsGrid students={students} />
+            <StudentsGrid {...this.props} />
           </div>
         </div>
       </div>

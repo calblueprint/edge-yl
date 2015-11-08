@@ -16,6 +16,20 @@ class RequesterSingleton {
     request.send();
   }
 
+  get(route, resolve, reject) {
+    var request = this.initialize('GET', route);
+    request.onreadystatechange = function() {
+      if (this.readyState === XMLHttpRequest.DONE) {
+        if (this.status === 200) {
+          if (resolve) {
+            resolve();
+          }
+        }
+      }
+    };
+    request.send();
+  }
+
   initialize(type, route) {
     var request = new XMLHttpRequest();
     request.open(type, route);
