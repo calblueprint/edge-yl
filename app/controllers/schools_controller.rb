@@ -23,6 +23,5 @@ class SchoolsController < ApplicationController
       :name,
     )
   end
-  
-end
 
+end
