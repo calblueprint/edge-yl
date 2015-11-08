@@ -33,7 +33,6 @@ class StudentEdit extends Component {
         top: '0px',
         right: '8px',
         lineHeight: '40px',
-        cursor: 'pointer',
       },
     };
   }
@@ -45,7 +44,6 @@ class StudentEdit extends Component {
         top: '0px',
         right: '8px',
         lineHeight: '40px',
-        cursor: 'pointer',
       }
     }
   }
