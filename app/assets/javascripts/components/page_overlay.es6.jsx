@@ -16,19 +16,19 @@ class PageOverlay extends Component {
     return {
       overlay: {
         display: 'flex',
-        position: 'fixed',
-        height: '100vh',
-        width: '100vw',
         flexFlow: 'row',
         alignItems: 'center',
+        position: 'fixed',
         zIndex: StyleConstants.planes.nine,
+        width: '100vw',
+        height: '100vh',
         backgroundColor: 'rgba(0, 0, 0, 0.6)',
       },
       editBox: {
+        zIndex: StyleConstants.planes.nine,
         width: '256px',
         height: '256px',
         margin: '0 auto',
-        zIndex: StyleConstants.planes.nine,
         backgroundColor: 'white',
       },
       hideOverlay: {
@@ -43,8 +43,8 @@ class PageOverlay extends Component {
         position: 'fixed',
         top: '0px',
         right: '0px',
-        margin: '12px',
         zIndex: StyleConstants.planes.nine,
+        margin: '12px',
         color: StyleConstants.colors.white,
       },
       hover: {
