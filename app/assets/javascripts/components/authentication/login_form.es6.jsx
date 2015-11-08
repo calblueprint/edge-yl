@@ -44,6 +44,14 @@ class LoginForm extends Component {
     }.bind(this);
   }
 
+  renderErrorMessage() {
+    return (
+      <span>
+        Invalid email/password.
+      </span>
+    )
+  }
+
   componentDidMount() {
     var email = ReactDOM.findDOMNode(this.refs.email);
     email.addEventListener('input', this.generateHandler('email'));
@@ -76,6 +84,7 @@ class LoginForm extends Component {
         <FormButton
           content={'Log in'}
           func={this.createSession.bind(this)} />
+        {this.state.errors && this.renderErrorMessage()}
       </div>
     );
   }
