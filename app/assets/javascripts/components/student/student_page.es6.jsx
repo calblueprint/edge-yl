@@ -44,6 +44,7 @@ class StudentPage extends Component {
   }
 
   render() {
+    student = JSON.parse(this.props.student);
     return (
       <div style={StyleConstants.pages.default}>
         <PageOverlay
@@ -53,7 +54,7 @@ class StudentPage extends Component {
           toggleSidebar={this.toggleSidebar.bind(this)} />
         <div style={this.styles.container}>
           <Sidebar shouldShow={this.state.sidebar} />
-          <StudentGrid {...this.props}
+          <StudentGrid student={student}
             renderOverlay={this.renderOverlay.bind(this)} />
           <StudentComments
             comments={[{user: "Max Wolffe", content: "Cats and Dogs and Mice"},]} />

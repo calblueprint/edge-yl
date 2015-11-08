@@ -32,6 +32,7 @@ class RoutesSingleton {
 
   get users() {
     return {
+      create: '/users',
       index: '/users',
       login: '/users/login',
       logout: '/users/logout',
