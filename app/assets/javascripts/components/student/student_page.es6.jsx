@@ -37,9 +37,7 @@ class StudentPage extends Component {
   }
 
   componentDidMount() {
-    resolve = (response) => {
-      this.setState({ student: JSON.parse(response) })
-    };
+    resolve = (response) => { this.setState({ student: response }) };
     Requester.get(ApiConstants.students.show(this.props.id), resolve);
   }
 

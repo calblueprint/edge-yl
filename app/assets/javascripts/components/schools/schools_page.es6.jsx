@@ -27,9 +27,7 @@ class SchoolsPage extends Component {
   }
 
   componentDidMount() {
-    resolve = (response) => {
-      this.setState({ schools: JSON.parse(response) })
-    };
+    resolve = (response) => { this.setState({ schools: response }) };
     Requester.get(ApiConstants.schools.index, resolve);
   }
 
