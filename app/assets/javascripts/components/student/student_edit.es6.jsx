@@ -44,8 +44,8 @@ class StudentEdit extends Component {
         top: '0px',
         right: '8px',
         lineHeight: '40px',
-      }
-    }
+      },
+    };
   }
 
   renderTitle() {
@@ -61,16 +61,12 @@ class StudentEdit extends Component {
     };
   }
 
-  editCard() {
-    this.props.renderOverlay()
-  }
-
   render() {
     return (
       <div style={this.styles.container}>
         <h5>{this.renderTitle()}</h5>
         <Clickable
-          func={this.editCard.bind(this)}
+          func={(event) => this.props.renderOverlay()}
           icon={'fa fa-pencil-square-o'}
           styles={this.clickableStyles}
           type={'i'} />
