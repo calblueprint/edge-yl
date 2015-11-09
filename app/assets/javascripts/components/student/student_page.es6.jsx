@@ -15,6 +15,7 @@ class StudentPage extends Component {
   static get defaultState() {
     return {
       sidebar: true,
+      overlay: false,
       student: {
         school: {},
       },
@@ -30,9 +31,6 @@ class StudentPage extends Component {
         paddingLeft: '196px',
         paddingRight: '196px',
       },
-      placeholder: {
-        width: '196px',
-      },
     };
   }
 
@@ -45,14 +43,26 @@ class StudentPage extends Component {
     this.setState({ sidebar: !this.state.sidebar });
   }
 
+  renderOverlay(event) {
+    this.setState({ overlay: true });
+  }
+
+  closeOverlay(event) {
+    this.setState({ overlay: false });
+  }
+
   render() {
     return (
       <div style={StyleConstants.pages.default}>
+        <PageOverlay
+          shouldShow={this.state.overlay}
+          closeOverlay={this.closeOverlay.bind(this)} />
         <Header
           toggleSidebar={this.toggleSidebar.bind(this)} />
         <div style={this.styles.container}>
           <Sidebar shouldShow={this.state.sidebar} />
-          <StudentGrid student={this.state.student} />
+          <StudentGrid student={this.state.student}
+            renderOverlay={this.renderOverlay.bind(this)} />
           <StudentComments
             comments={this.state.student.student_comments} />
         </div>
