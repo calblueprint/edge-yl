@@ -16,6 +16,20 @@ class RequesterSingleton {
     request.send();
   }
 
+  get(route, resolve, reject) {
+    var request = this.initialize('GET', route);
+    request.onreadystatechange = function() {
+      if (this.readyState === XMLHttpRequest.DONE) {
+        if (this.status === 200) {
+          if (resolve) {
+            resolve(JSON.parse(this.response));
+          }
+        }
+      }
+    };
+    request.send();
+  }
+
   initialize(type, route) {
     var request = new XMLHttpRequest();
     request.open(type, route);
@@ -29,17 +43,14 @@ class RequesterSingleton {
     var request = this.initialize('POST', route);
     request.onreadystatechange = function() {
       if (this.readyState === XMLHttpRequest.DONE) {
-        switch (this.status) {
-          case 201:
-            if (resolve) {
-              resolve(JSON.parse(this.response));
-            }
-            return console.log('POST resolved!');
-          case 401:
-            if (reject) {
-              reject(this.response);
-            }
-            return console.log('POST rejected!');
+        if (this.status === 201) {
+          if (resolve) {
+            resolve(JSON.parse(this.response));
+          }
+        } else if (this.status === 401) {
+          if (reject) {
+            reject(this.response);
+          }
         }
       }
     };

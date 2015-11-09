@@ -29,17 +29,17 @@ class StudentGrid extends Component {
     return (
       <div style={this.styles.container}>
         <StudentCard
-          student={this.props.student}
-          type={'preview'} />
+          type={'preview'}
+          {...this.props} />
         <StudentCard
-          student={this.props.student}
-          type={'contact'} />
+          type={'contact'}
+          {...this.props} />
         <StudentCard
-          student={this.props.student}
-          type={'parent'} />
+          type={'parent'}
+          {...this.props} />
         <StudentCard
-          student={this.props.student}
-          type={'conference'} />
+          type={'conference'}
+          {...this.props} />
       </div>
     );
   }
