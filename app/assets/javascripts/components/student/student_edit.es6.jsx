@@ -28,12 +28,6 @@ class StudentEdit extends Component {
         height: '40px',
         borderBottom: 'solid #D6D6D6 1px',
       },
-      icon: {
-        position: 'absolute',
-        top: '0px',
-        right: '8px',
-        lineHeight: '40px',
-      },
     };
   }
 
