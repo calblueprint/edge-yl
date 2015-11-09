@@ -58,6 +58,16 @@ class SignupForm extends Component {
     var passwordConfirmation = ReactDOM.findDOMNode(this.refs.email); 
     passwordConfirmation.addEventListener('input', this.generateHandler('password_confirmation')); 
   }
+
+  renderMessage() {
+    return (
+      <span style={this.styles.error}>
+        {'Invalid email/password'}
+      </span>
+    );
+  }
+
+  // TODO: Make Birthday into dropdown 
   render() {
     return (
       <div style={this.styles.container}>
@@ -85,6 +95,28 @@ class SignupForm extends Component {
           style={this.styles.input}
           type={'password'}>
         </input>
+        <label style={this.styles.label}>
+          {'First Name'}
+        </label>
+        <input
+          placeholder={'Emily'}
+          style={this.styles.input}>
+        </input>
+        <label style={this.styles.label}>
+          {'Last Name'}
+        </label>
+        <input
+          placeholder={'Wilson'}
+          style={this.styles.input}>
+        </input>
+        <label style={this.styles.label}>
+          {'Birthday'}
+        </label>
+        <input
+          placeholder={'01/22/95'}
+          style={this.styles.input}>
+        </input>
+        {this.state.errors && this.renderMessage()}
         <FormButton
           content={'Sign up'}
           func={this.createUser.bind(this)} />
