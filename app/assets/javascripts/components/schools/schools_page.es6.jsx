@@ -1,19 +1,10 @@
 class SchoolsPage extends Component {
 
-  static get propTypes() {
+  static get defaultState() {
     return {
-      schools: React.PropTypes.array.isRequired,
-    };
-  }
-
-  static get defaultProps() {
-    return {
+      sidebar: true,
       schools: [],
     };
-  }
-
-  static get defaultState() {
-    return { sidebar: true };
   }
 
   get styles() {
@@ -35,6 +26,11 @@ class SchoolsPage extends Component {
     };
   }
 
+  componentDidMount() {
+    resolve = (response) => { this.setState({ schools: response }) };
+    Requester.get(ApiConstants.schools.index, resolve);
+  }
+
   toggleSidebar(event) {
     this.setState({ sidebar: !this.state.sidebar });
   }
@@ -47,7 +43,7 @@ class SchoolsPage extends Component {
         <div style={this.styles.container}>
           <Sidebar shouldShow={this.state.sidebar} />
           <div style={this.styles.body}>
-            <SchoolsGrid {...this.props} />
+            <SchoolsGrid schools={this.state.schools} />
           </div>
         </div>
       </div>

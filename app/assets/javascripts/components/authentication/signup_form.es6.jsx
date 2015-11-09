@@ -27,9 +27,9 @@ class SignupForm extends Component {
         password_confirmation: 'password',
       },
     };
-    var resolve = (response) => { console.log('Sign up success'); window.location = RouteConstants.students.index };
+    var resolve = (response) => { window.location = RouteConstants.students.index };
     var reject = (response) => { console.log(response) };
-    Requester.post(RouteConstants.users.create, params, resolve, reject);
+    Requester.post(ApiConstants.users.create, params, resolve, reject);
   }
 
   render() {
