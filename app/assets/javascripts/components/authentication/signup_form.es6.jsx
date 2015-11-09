@@ -3,13 +3,13 @@ class SignupForm extends Component {
   static get defaultState() {
     return {
       email: '',
+      errors: false, 
       birthday: '',
       first_name: '',
       last_name: '', 
       password: '',
       password_confirmation: '',
-      errors: false, 
-    }
+    };
   }
 
   get styles() {
@@ -39,17 +39,17 @@ class SignupForm extends Component {
         password_confirmation: this.state.password_confirmation,
       },
     };
-    var resolve = (response) => { console.log('Sign up success'); window.location = RouteConstants.students.index };
-    var reject = (response) => { console.log(response); this.setState({errors: true}) };
+    var resolve = (response) => { window.location = RouteConstants.students.index };
+    var reject = (response) => { this.setState({errors: true}) };
     Requester.post(RouteConstants.users.create, params, resolve, reject);
   }
 
   generateHandler(field) {
     var state = {};
-    return function(event) {
+    return(event) => {
       state[field] = event.target.value;
       this.setState(state);
-    }.bind(this);
+    };
   }
 
   renderMessage() {
