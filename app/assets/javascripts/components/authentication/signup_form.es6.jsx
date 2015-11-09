@@ -11,7 +11,7 @@ class SignupForm extends Component {
       errors: false, 
     }
   }
-   
+
   get styles() {
     return {
       container: {
@@ -44,6 +44,20 @@ class SignupForm extends Component {
     Requester.post(RouteConstants.users.create, params, resolve, reject);
   }
 
+  componentDidMount() {
+    var email = ReactDOM.findDOMNode(this.refs.email); 
+    email.addEventListener('input', this.generateHandler('email'));
+    var birthday = ReactDOM.findDOMNode(this.refs.email); 
+    birthday.addEventListener('input', this.generateHandler('birthday'));
+    var firstName = ReactDOM.findDOMNode(this.refs.email); 
+    firstName.addEventListener('input', this.generateHandler('first_name'));
+    var lastName = ReactDOM.findDOMNode(this.refs.email); 
+    lastName.addEventListener('input', this.generateHandler('last_name'));
+    var password = ReactDOM.findDOMNode(this.refs.email); 
+    password.addEventListener('input', this.generateHandler('password'));
+    var passwordConfirmation = ReactDOM.findDOMNode(this.refs.email); 
+    passwordConfirmation.addEventListener('input', this.generateHandler('password_confirmation')); 
+  }
   render() {
     return (
       <div style={this.styles.container}>
