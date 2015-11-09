@@ -32,7 +32,7 @@ class StudentComment extends Component {
     return (
       <Clickable
         styles={this.clickableStyles}
-        content={`${this.props.comment.content} - Max Wolffe`}
+        content={`${this.props.comment.content} - ${this.props.comment.user}`}
         // TODO: Max - Populate this with actual user name.
         type={'span'} />
     );
