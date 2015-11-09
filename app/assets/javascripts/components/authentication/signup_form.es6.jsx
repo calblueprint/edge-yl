@@ -1,5 +1,17 @@
 class SignupForm extends Component {
 
+  static get defaultState() {
+    return {
+      email: '',
+      birthday: '',
+      first_name: '',
+      last_name: '', 
+      password: '',
+      password_confirmation: '',
+      errors: false, 
+    }
+  }
+   
   get styles() {
     return {
       container: {
