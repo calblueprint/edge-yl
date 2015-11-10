@@ -66,9 +66,8 @@ class FormBody extends Component {
         <FormSection
           title={'Health Information'}
           updateValue={this.updateValue.bind(this)} />
-        <Clickable
-          content={'Create Student'}
-          func={this.createStudent.bind(this)} />
+        <FormButton
+          content={'Submit'} /> 
       </div>
     );
   }
