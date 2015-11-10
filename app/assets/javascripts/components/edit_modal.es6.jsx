@@ -29,7 +29,7 @@ class EditModal extends Component {
           justifyContent: 'center',
           zIndex: StyleConstants.planes.nine,
           width: '32.5%',
-          height: '312px',
+          // height: '312px',
         }
       ),
     };

@@ -16,7 +16,7 @@ class StudentPage extends Component {
     return {
       sidebar: true,
       overlay: false,
-      type: '',
+      type: 'preview',
       student: {
         school: {},
       },
