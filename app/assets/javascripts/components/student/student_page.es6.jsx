@@ -44,9 +44,9 @@ class StudentPage extends Component {
     this.setState({ sidebar: !this.state.sidebar });
   }
 
-  renderOverlay(card_type) {
+  renderOverlay(type) {
     this.setState({ overlay: true,
-                    type: card_type });
+                    type: type });
   }
 
   closeOverlay(event) {

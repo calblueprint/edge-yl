@@ -62,7 +62,8 @@ class PageOverlay extends Component {
           icon={'fa fa-times fa-2x'}
           styles={this.clickableStyles}
           type={'i'} />
-        <EditModal student={this.props.student}
+        <EditModal
+          student={this.props.student}
           type={this.props.type} />
       </div>
     );
