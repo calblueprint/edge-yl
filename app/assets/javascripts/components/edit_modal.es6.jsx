@@ -22,13 +22,14 @@ class EditModal extends Component {
     return {
       container: Object.assign(
         {},
-        StyleConstants.cards.defaults,
+        StyleConstants.cards.default,
         {
           display: 'flex',
-          flexFlow: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          zIndex: StyleConstants.planes.nine,
           width: '32.5%',
           height: '312px',
-          marginTop: '1%',
         }
       ),
     };

@@ -20,18 +20,12 @@ class PageOverlay extends Component {
         display: 'flex',
         flexFlow: 'row',
         alignItems: 'center',
+        justifyContent: 'center',
         position: 'fixed',
         zIndex: StyleConstants.planes.nine,
         width: '100vw',
         height: '100vh',
         backgroundColor: 'rgba(0, 0, 0, 0.6)',
-      },
-      card: {
-        zIndex: StyleConstants.planes.nine,
-        width: '256px',
-        height: '256px',
-        margin: '0 auto',
-        backgroundColor: 'white',
       },
       hidden: {
         display: 'none',
@@ -68,7 +62,8 @@ class PageOverlay extends Component {
           icon={'fa fa-times fa-2x'}
           styles={this.clickableStyles}
           type={'i'} />
-        <EditModal type={this.props.type} />
+        <EditModal student={this.props.student}
+          type={this.props.type} />
       </div>
     );
   }
