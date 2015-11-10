@@ -60,7 +60,7 @@ class StudentEdit extends Component {
       <div style={this.styles.container}>
         <h5>{this.renderTitle()}</h5>
         <Clickable
-          func={(event) => this.props.renderOverlay()}
+          func={(event) => this.props.renderOverlay(this.props.type)}
           icon={'fa fa-pencil-square-o'}
           styles={this.clickableStyles}
           type={'i'} />

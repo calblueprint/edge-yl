@@ -16,6 +16,7 @@ class StudentPage extends Component {
     return {
       sidebar: true,
       overlay: false,
+      type: '',
       student: {
         school: {},
       },
@@ -43,8 +44,9 @@ class StudentPage extends Component {
     this.setState({ sidebar: !this.state.sidebar });
   }
 
-  renderOverlay(event) {
-    this.setState({ overlay: true });
+  renderOverlay(card_type) {
+    this.setState({ overlay: true,
+                    type: card_type });
   }
 
   closeOverlay(event) {
@@ -56,7 +58,9 @@ class StudentPage extends Component {
       <div style={StyleConstants.pages.default}>
         <PageOverlay
           shouldShow={this.state.overlay}
-          closeOverlay={this.closeOverlay.bind(this)} />
+          closeOverlay={this.closeOverlay.bind(this)}
+          student={this.state.student}
+          type={this.state.type} />
         <Header
           toggleSidebar={this.toggleSidebar.bind(this)} />
         <div style={this.styles.container}>

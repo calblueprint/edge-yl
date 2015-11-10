@@ -3,12 +3,14 @@ class PageOverlay extends Component {
   static get propTypes() {
     return {
       shouldShow: React.PropTypes.bool.isRequired,
+      student: React.PropTypes.object.isRequired,
     };
   }
 
   static get defaultProps() {
     return {
       shouldShow: true,
+      student: {},
     };
   }
 
@@ -66,8 +68,7 @@ class PageOverlay extends Component {
           icon={'fa fa-times fa-2x'}
           styles={this.clickableStyles}
           type={'i'} />
-        <div style={this.styles.card}>
-        </div>
+        <EditModal type={this.props.type} />
       </div>
     );
   }
