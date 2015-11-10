@@ -38,6 +38,32 @@ class FormSection extends Component {
       },
     };
   }
+  
+  get dropdownStyles() {
+    return {
+      child: {
+        default: {
+          flex: '1',
+          padding: '12px',
+        },
+        hover: {
+          backgroundColor: StyleConstants.colors.turquoise,
+        },
+      },
+      container: Object.assign(
+        {},
+        StyleConstants.cards.default,
+        {
+          display: 'flex',
+          flexFlow: 'column',
+          position: 'absolute',
+          width: '128px',
+          top: '48px',
+          right: '0px',
+        }
+      ),
+    };
+  }
 
   render() {
     return (
@@ -56,6 +82,10 @@ class FormSection extends Component {
           <FormParagraph
             title={'Student Description'}
             placeholder={'This student is great'} />
+          <Dropdown 
+            options={[{content:'hi'}, {content:'lol'}]}
+            styles={this.dropdownStyles}
+          />
         </div>
       </div>
     );
