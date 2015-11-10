@@ -33,7 +33,7 @@ class StudentComment extends Component {
       <Clickable
         styles={this.clickableStyles}
         content={`${this.props.comment.content} - ${this.props.comment.user}`}
-        // TODO: Max - Populate this with actual user name.
+        // TODO: Max - Populate this with actual user name. Currently undefined.
         type={'span'} />
     );
   }
