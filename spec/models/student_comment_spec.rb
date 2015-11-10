@@ -3,16 +3,15 @@
 # Table name: student_comments
 #
 #  id         :integer          not null, primary key
-#  content    :text             not null
 #  student_id :integer
 #  user_id    :integer
+#  content    :text
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
-class StudentComment < ActiveRecord::Base
+require 'rails_helper'
 
-    belongs_to :student
-    belongs_to :user
-
+RSpec.describe StudentComment, type: :model do
+  pending "add some examples to (or delete) #{__FILE__}"
 end

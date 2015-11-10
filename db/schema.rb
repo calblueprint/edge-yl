@@ -16,6 +16,17 @@ ActiveRecord::Schema.define(version: 20151106071352) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "comments", force: :cascade do |t|
+    t.text     "content",    null: false
+    t.integer  "student_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "comments", ["student_id"], name: "index_comments_on_student_id", using: :btree
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
+
   create_table "schools", force: :cascade do |t|
     t.string   "address",         null: false
     t.string   "counselor_email", null: false
@@ -24,17 +35,6 @@ ActiveRecord::Schema.define(version: 20151106071352) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end
-
-  create_table "student_comments", force: :cascade do |t|
-    t.text     "content",    null: false
-    t.integer  "student_id"
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "student_comments", ["student_id"], name: "index_student_comments_on_student_id", using: :btree
-  add_index "student_comments", ["user_id"], name: "index_student_comments_on_user_id", using: :btree
 
   create_table "students", force: :cascade do |t|
     t.date     "birthday",     null: false
