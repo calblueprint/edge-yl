@@ -31,6 +31,6 @@ class User < ActiveRecord::Base
   devise :confirmable, :database_authenticatable, :recoverable,
          :registerable, :rememberable, :trackable, :validatable
 
-  has_many :student_comments, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
 end

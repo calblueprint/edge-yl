@@ -1,6 +1,6 @@
 class CreateStudentComments < ActiveRecord::Migration
   def change
-    create_table :student_comments do |t|
+    create_table :comments do |t|
 
       t.text :content, null: false
 
