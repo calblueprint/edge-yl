@@ -3,10 +3,10 @@ class SignupForm extends Component {
   static get defaultState() {
     return {
       email: '',
-      errors: false, 
+      errors: false,
       birthday: '',
       first_name: '',
-      last_name: '', 
+      last_name: '',
       password: '',
       password_confirmation: '',
     };
@@ -41,7 +41,7 @@ class SignupForm extends Component {
     };
     var resolve = (response) => { window.location = RouteConstants.students.index };
     var reject = (response) => { this.setState({errors: true}) };
-    Requester.post(RouteConstants.users.create, params, resolve, reject);
+    Requester.post(ApiConstants.users.create, params, resolve, reject);
   }
 
   generateHandler(field) {
@@ -59,23 +59,23 @@ class SignupForm extends Component {
       </span>
     );
   }
- 
+
   componentDidMount() {
-    var email = ReactDOM.findDOMNode(this.refs.email); 
+    var email = ReactDOM.findDOMNode(this.refs.email);
     email.addEventListener('input', this.generateHandler('email'));
-    var birthday = ReactDOM.findDOMNode(this.refs.birthday); 
+    var birthday = ReactDOM.findDOMNode(this.refs.birthday);
     birthday.addEventListener('input', this.generateHandler('birthday'));
-    var firstName = ReactDOM.findDOMNode(this.refs.firstName); 
+    var firstName = ReactDOM.findDOMNode(this.refs.firstName);
     firstName.addEventListener('input', this.generateHandler('first_name'));
-    var lastName = ReactDOM.findDOMNode(this.refs.lastName); 
+    var lastName = ReactDOM.findDOMNode(this.refs.lastName);
     lastName.addEventListener('input', this.generateHandler('last_name'));
-    var password = ReactDOM.findDOMNode(this.refs.password); 
+    var password = ReactDOM.findDOMNode(this.refs.password);
     password.addEventListener('input', this.generateHandler('password'));
-    var passwordConfirmation = ReactDOM.findDOMNode(this.refs.passwordConfirmation); 
-    passwordConfirmation.addEventListener('input', this.generateHandler('password_confirmation')); 
+    var passwordConfirmation = ReactDOM.findDOMNode(this.refs.passwordConfirmation);
+    passwordConfirmation.addEventListener('input', this.generateHandler('password_confirmation'));
   }
 
-  // TODO: Make Birthday into dropdown 
+  // TODO: Make Birthday into dropdown
   render() {
     return (
       <div style={this.styles.container}>
