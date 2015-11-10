@@ -1,14 +1,12 @@
 class Api::Students::CommentsController < Api::BaseController
     # TODO (warren) Check if we should extend ApiBaseController
 
-    def create
-    end
+    respond_to :json
 
     def index
+        student = Student.find params[:student_id]
+        comments = student.student_comments
+        render json: comments
     end
-
-    def update
-    end
-
 
 end
