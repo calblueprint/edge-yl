@@ -35,13 +35,12 @@ class StudentContact extends Component {
             {student.home_address}
             {student.email}
           <h2 style={this.styles.heading}>{'School'}</h2>
-          <h4>{student.school.name}</h4>
-          <h4>{student.school.address}</h4>
           <Clickable
-            content={`${student.school}}`}
-            route={RouteConstants.schools.show(1)}
+            content={`${student.school.name}`}
+            route={RouteConstants.schools.show(student.school.id)}
             styles={this.styles.heading}
             type={'h3'} />
+          <h4>{student.school.address}</h4>
         </div>
     );
   }
