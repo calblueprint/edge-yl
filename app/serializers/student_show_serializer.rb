@@ -1,5 +1,5 @@
 class StudentShowSerializer < StudentIndexSerializer
 
-  has_many :student_comments, serializer: StudentCommentIndexSerializer
+  has_many :comments, serializer: StudentCommentIndexSerializer
 
 end
