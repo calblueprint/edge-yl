@@ -1,15 +1,16 @@
 class EditModal extends Component {
-    static get propTypes() {
-      return {
-        student: React.PropTypes.object.isRequired,
-        type: React.PropTypes.oneOf([
-          'contact',
-          'conference',
-          'parent',
-          'preview',
-        ]).isRequired,
-      };
-    }
+
+  static get propTypes() {
+    return {
+      student: React.PropTypes.object.isRequired,
+      type: React.PropTypes.oneOf([
+        'contact',
+        'conference',
+        'parent',
+        'preview',
+      ]).isRequired,
+    };
+  }
 
   static get defaultProps() {
     return {
@@ -29,7 +30,6 @@ class EditModal extends Component {
           justifyContent: 'center',
           zIndex: StyleConstants.planes.nine,
           width: '32.5%',
-          // height: '312px',
         }
       ),
     };
