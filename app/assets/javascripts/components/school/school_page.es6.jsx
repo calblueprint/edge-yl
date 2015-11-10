@@ -1,5 +1,7 @@
 class SchoolPage extends Component {
 
+  // TODO(Anonymous): Configure this component to request school JSON
+  // and update component state in resolve promise callback.
   static get propTypes() {
     return {
       school: React.PropTypes.object.isRequired,

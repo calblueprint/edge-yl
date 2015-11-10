@@ -16,6 +16,7 @@
 #
 
 class Student < ActiveRecord::Base
+
   belongs_to :school
 
   has_many :student_comments, dependent: :destroy

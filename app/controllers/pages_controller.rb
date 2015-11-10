@@ -15,7 +15,7 @@ class PagesController < ApplicationController
   def signup
     if user_signed_in?
       redirect_to students_path
-    end    
+    end
   end
 
 end

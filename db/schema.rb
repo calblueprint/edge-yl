@@ -44,9 +44,12 @@ ActiveRecord::Schema.define(version: 20151106071352) do
     t.string   "home_address", null: false
     t.string   "home_phone",   null: false
     t.string   "last_name",    null: false
+    t.integer  "school_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
+
+  add_index "students", ["school_id"], name: "index_students_on_school_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false
