@@ -18,14 +18,15 @@ class PageOverlay extends Component {
     return {
       container: {
         display: 'flex',
-        flexFlow: 'row',
         alignItems: 'center',
         justifyContent: 'center',
         position: 'fixed',
+        top: '0px',
+        left: '0px',
         zIndex: StyleConstants.planes.nine,
         width: '100vw',
         height: '100vh',
-        backgroundColor: 'rgba(0, 0, 0, 0.6)',
+        backgroundColor: StyleConstants.colors.opaque,
       },
       hidden: {
         display: 'none',
@@ -40,11 +41,11 @@ class PageOverlay extends Component {
         top: '0px',
         right: '0px',
         zIndex: StyleConstants.planes.nine,
-        margin: '12px',
-        color: StyleConstants.colors.white,
+        padding: '12px',
+        color: StyleConstants.colors.blue,
       },
       hover: {
-        color: 'rgba(255, 255, 255, 0.6)',
+        color: StyleConstants.colors.indigo,
       },
     };
   }

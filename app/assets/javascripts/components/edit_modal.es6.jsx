@@ -26,10 +26,8 @@ class EditModal extends Component {
         StyleConstants.cards.default,
         {
           display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
+          flexFlow: 'column',
           zIndex: StyleConstants.planes.nine,
-          width: '32.5%',
         }
       ),
     };

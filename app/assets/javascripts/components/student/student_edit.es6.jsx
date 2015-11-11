@@ -62,7 +62,7 @@ class StudentEdit extends Component {
         <h5>{this.renderTitle()}</h5>
         <Clickable
           func={(event) => this.props.renderOverlay(this.props.type)}
-          icon={'fa fa-pencil-square-o'}
+          icon={'fa fa-pencil-square-o fa-lg'}
           styles={this.clickableStyles}
           type={'i'} />
       </div>
