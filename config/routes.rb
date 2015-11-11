@@ -27,12 +27,12 @@
   end
 
   namespace :api do
+    resources :schools, only: [:create, :index, :show]
     resources :students, only: [:create, :index, :show] do
       scope module: :students do
         resources :comments, only: [:index]
       end
     end
-    resources :schools, only: [:create, :index, :show]
   end
 
 end
