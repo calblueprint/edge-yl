@@ -16,7 +16,6 @@
 #  confirmation_token     :string
 #  confirmed_at           :datetime
 #  confirmation_sent_at   :datetime
-#  birthday               :date             not null
 #  first_name             :string           not null
 #  last_name              :string           not null
 #  is_admin               :boolean          default(FALSE), not null

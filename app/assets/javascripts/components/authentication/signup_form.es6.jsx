@@ -3,10 +3,9 @@ class SignupForm extends Component {
   static get defaultState() {
     return {
       email: '',
-      errors: false, 
-      birthday: '',
+      errors: false,
       first_name: '',
-      last_name: '', 
+      last_name: '',
       password: '',
       password_confirmation: '',
     };
@@ -17,6 +16,10 @@ class SignupForm extends Component {
       container: {
         display: 'flex',
         flexFlow: 'column',
+      },
+      error: {
+        marginBottom: '24px',
+        color: StyleConstants.colors.red,
       },
       label: {
         marginBottom: '6px',
@@ -41,7 +44,7 @@ class SignupForm extends Component {
     };
     var resolve = (response) => { window.location = RouteConstants.students.index };
     var reject = (response) => { this.setState({errors: true}) };
-    Requester.post(RouteConstants.users.create, params, resolve, reject);
+    Requester.post(ApiConstants.users.create, params, resolve, reject);
   }
 
   generateHandler(field) {
@@ -59,26 +62,39 @@ class SignupForm extends Component {
       </span>
     );
   }
- 
+
   componentDidMount() {
-    var email = ReactDOM.findDOMNode(this.refs.email); 
-    email.addEventListener('input', this.generateHandler('email'));
-    var birthday = ReactDOM.findDOMNode(this.refs.birthday); 
-    birthday.addEventListener('input', this.generateHandler('birthday'));
-    var firstName = ReactDOM.findDOMNode(this.refs.firstName); 
+    var firstName = ReactDOM.findDOMNode(this.refs.firstName);
     firstName.addEventListener('input', this.generateHandler('first_name'));
-    var lastName = ReactDOM.findDOMNode(this.refs.lastName); 
+    var lastName = ReactDOM.findDOMNode(this.refs.lastName);
     lastName.addEventListener('input', this.generateHandler('last_name'));
-    var password = ReactDOM.findDOMNode(this.refs.password); 
+    var email = ReactDOM.findDOMNode(this.refs.email);
+    email.addEventListener('input', this.generateHandler('email'));
+    var password = ReactDOM.findDOMNode(this.refs.password);
     password.addEventListener('input', this.generateHandler('password'));
-    var passwordConfirmation = ReactDOM.findDOMNode(this.refs.passwordConfirmation); 
-    passwordConfirmation.addEventListener('input', this.generateHandler('password_confirmation')); 
+    var passwordConfirmation = ReactDOM.findDOMNode(this.refs.passwordConfirmation);
+    passwordConfirmation.addEventListener('input', this.generateHandler('password_confirmation'));
   }
 
-  // TODO: Make Birthday into dropdown 
   render() {
     return (
       <div style={this.styles.container}>
+        <label style={this.styles.label}>
+          {'First Name'}
+        </label>
+        <input
+          placeholder={'Emily'}
+          ref={'firstName'}
+          style={this.styles.input}>
+        </input>
+        <label style={this.styles.label}>
+          {'Last Name'}
+        </label>
+        <input
+          placeholder={'Wilson'}
+          ref={'lastName'}
+          style={this.styles.input}>
+        </input>
         <label style={this.styles.label}>
           {'Email'}
         </label>
@@ -105,30 +121,6 @@ class SignupForm extends Component {
           style={this.styles.input}
           ref={'passwordConfirmation'}
           type={'password'}>
-        </input>
-        <label style={this.styles.label}>
-          {'First Name'}
-        </label>
-        <input
-          placeholder={'Emily'}
-          ref={'firstName'}
-          style={this.styles.input}>
-        </input>
-        <label style={this.styles.label}>
-          {'Last Name'}
-        </label>
-        <input
-          placeholder={'Wilson'}
-          ref={'lastName'}
-          style={this.styles.input}>
-        </input>
-        <label style={this.styles.label}>
-          {'Birthday'}
-        </label>
-        <input
-          placeholder={'01/22/95'}
-          ref={'birthday'}
-          style={this.styles.input}>
         </input>
         {this.state.errors && this.renderMessage()}
         <FormButton
