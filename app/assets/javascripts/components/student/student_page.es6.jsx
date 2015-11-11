@@ -14,12 +14,10 @@ class StudentPage extends Component {
 
   static get defaultState() {
     return {
-      sidebar: true,
       overlay: false,
+      sidebar: true,
+      student: { school: {} },
       type: 'preview',
-      student: {
-        school: {},
-      },
     };
   }
 
@@ -36,27 +34,27 @@ class StudentPage extends Component {
   }
 
   componentDidMount() {
-    resolve = (response) => { this.setState({ student: response }) };
+    resolve = (response) => this.setState({ student: response });
     Requester.get(ApiConstants.students.show(this.props.id), resolve);
   }
 
-  toggleSidebar(event) {
-    this.setState({ sidebar: !this.state.sidebar });
+  hideOverlay(event) {
+    this.setState({ overlay: false });
   }
 
   showOverlay(type) {
     this.setState({ overlay: true, type: type });
   }
 
-  closeOverlay(event) {
-    this.setState({ overlay: false });
+  toggleSidebar(event) {
+    this.setState({ sidebar: !this.state.sidebar });
   }
 
   renderOverlay() {
     if (this.state.overlay) {
       return (
         <PageOverlay
-          closeOverlay={this.closeOverlay.bind(this)}
+          hideOverlay={() => this.hideOverlay()}
           student={this.state.student}
           type={this.state.type} />
       );

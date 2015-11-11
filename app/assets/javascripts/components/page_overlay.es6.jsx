@@ -2,12 +2,14 @@ class PageOverlay extends Component {
 
   static get propTypes() {
     return {
+      hideOverlay: React.PropTypes.func.isRequired,
       student: React.PropTypes.object.isRequired,
     };
   }
 
   static get defaultProps() {
     return {
+      hideOverlay: null,
       student: {},
     };
   }
@@ -16,8 +18,8 @@ class PageOverlay extends Component {
     return {
       container: {
         display: 'flex',
-        alignItems: 'center',
         justifyContent: 'center',
+        alignItems: 'center',
         position: 'fixed',
         top: '0px',
         left: '0px',
@@ -36,7 +38,7 @@ class PageOverlay extends Component {
         top: '0px',
         right: '0px',
         zIndex: StyleConstants.planes.nine,
-        padding: '12px',
+        padding: '8px',
         color: StyleConstants.colors.blue,
       },
       hover: {
@@ -49,7 +51,7 @@ class PageOverlay extends Component {
     return (
       <div style={this.styles.container}>
         <Clickable
-          func={this.props.closeOverlay}
+          func={this.props.hideOverlay}
           icon={'fa fa-times fa-2x'}
           styles={this.clickableStyles}
           type={'i'} />

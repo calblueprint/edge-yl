@@ -43,7 +43,6 @@ class FormField extends Component {
   }
 
   render() {
-    console.log(this.props.value);
     return (
       <div style={this.styles.container}>
         <label style={this.styles.label}>{this.props.title}</label>
