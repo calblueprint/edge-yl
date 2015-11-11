@@ -4,7 +4,6 @@ class SignupForm extends Component {
     return {
       email: '',
       errors: false,
-      birthday: '',
       first_name: '',
       last_name: '',
       password: '',
