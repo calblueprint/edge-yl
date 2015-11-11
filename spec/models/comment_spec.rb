@@ -3,9 +3,9 @@
 # Table name: comments
 #
 #  id         :integer          not null, primary key
+#  content    :text             not null
 #  student_id :integer
 #  user_id    :integer
-#  content    :text
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
