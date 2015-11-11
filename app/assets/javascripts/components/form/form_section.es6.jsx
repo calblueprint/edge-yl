@@ -82,9 +82,9 @@ class FormSection extends Component {
           <FormParagraph
             title={'Student Description'}
             placeholder={'This student is great'} />
-          <Dropdown 
+          <FormDropdown 
             options={[{content:'hi'}, {content:'lol'}]}
-            styles={this.dropdownStyles}
+            title={'Birthday'}
           />
         </div>
       </div>
