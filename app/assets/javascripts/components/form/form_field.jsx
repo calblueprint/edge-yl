@@ -33,8 +33,7 @@ class FormField extends Component {
   }
 
   handleChange(event) {
-    var node = ReactDOM.findDOMNode(this.refs.container);
-    this.props.updateValue(node, node.value);
+    this.props.updateValue(event);
   }
 
   componentDidMount() {

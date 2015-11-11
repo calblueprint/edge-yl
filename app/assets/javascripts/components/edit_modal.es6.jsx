@@ -25,24 +25,9 @@ class EditModal extends Component {
         {},
         StyleConstants.cards.default,
         {
-          display: 'flex',
-          flexFlow: 'column',
           zIndex: StyleConstants.planes.nine,
         }
       ),
-    };
-  }
-
-  renderTitle() {
-    switch (this.props.type) {
-      case 'preview':
-        return 'Student Preview';
-      case 'contact':
-        return 'Student Information';
-      case 'parent':
-        return 'Parent Information';
-      case 'conference':
-        return 'Conference Information';
     };
   }
 
@@ -56,10 +41,6 @@ class EditModal extends Component {
   render() {
     return (
       <div style={this.styles.container}>
-        <CardHeader
-          action={null}
-          content={this.renderTitle()}
-          icon={'fa fa-save fa-lg'} />
         {this.renderBody()}
       </div>
     );

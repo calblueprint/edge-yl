@@ -66,11 +66,12 @@ class StudentPage extends Component {
       <div style={StyleConstants.pages.default}>
         {this.renderOverlay()}
         <Header
-          toggleSidebar={this.toggleSidebar.bind(this)} />
+          toggleSidebar={() => this.toggleSidebar()} />
         <div style={this.styles.container}>
           <Sidebar shouldShow={this.state.sidebar} />
-          <StudentGrid student={this.state.student}
-            showOverlay={() => this.showOverlay()} />
+          <StudentGrid
+            showOverlay={(type) => this.showOverlay(type)}
+            student={this.state.student} />
           <StudentComments
             comments={this.state.student.comments} />
         </div>
