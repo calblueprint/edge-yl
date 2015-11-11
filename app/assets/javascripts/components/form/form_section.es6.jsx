@@ -39,32 +39,6 @@ class FormSection extends Component {
     };
   }
   
-  get dropdownStyles() {
-    return {
-      child: {
-        default: {
-          flex: '1',
-          padding: '12px',
-        },
-        hover: {
-          backgroundColor: StyleConstants.colors.turquoise,
-        },
-      },
-      container: Object.assign(
-        {},
-        StyleConstants.cards.default,
-        {
-          display: 'flex',
-          flexFlow: 'column',
-          position: 'absolute',
-          width: '128px',
-          top: '48px',
-          right: '0px',
-        }
-      ),
-    };
-  }
-
   render() {
     return (
       <div style={this.styles.container}>

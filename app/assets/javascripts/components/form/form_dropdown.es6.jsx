@@ -19,15 +19,17 @@ class FormDropdown extends Component {
 		console.log('options' + this.props.options);
 		if (this.state.dropdown) {
 			console.log('hi');
+
+			console.log(this.styles.dropdown);
 			return (
 				<Dropdown
-					style={this.props.dropdown}
+					styles={this.dropdownStyles}
 					options={this.props.options} />
 			);
 		}
 		else { 
 			return (
-				<div style = {this.props.dropdown}> {this.props.options[0].content} </div>
+				<span style = {this.styles.dropdown}> {this.props.options[0].content} </span>
 			);
 		}
 	}
@@ -41,7 +43,34 @@ class FormDropdown extends Component {
 				longestLength = options[i].content.length
 			}
 		}
+		console.log(longestLength);
 		return longestLength; 
+	}
+
+	get dropdownStyles() {
+		return {
+			child: {
+				default: {
+					flex: '1',
+					padding: '12px', 
+				},
+				hover: {
+					backgroundColor: StyleConstants.colors.turquoise,
+				},
+			},
+			container: Object.assign(
+				{},
+				StyleConstants.cards.default,
+				{
+					display: 'flex',
+					flexFlow: 'column',
+					position: 'absolute',
+					width: '128px',
+					top: '48px',
+					right: '0px',
+				}
+			),
+		};
 	}
 
 	get styles() {
@@ -51,7 +80,6 @@ class FormDropdown extends Component {
 				flexFlow: 'row',
 			},
 			dropdown: {
-				flex: '1',
 				width: (this.dropdownWidth * 8) + 'px',
 
 			},
