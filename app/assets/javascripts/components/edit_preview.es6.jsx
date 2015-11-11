@@ -1,5 +1,14 @@
 class EditPreview extends Component {
 
+  static get defaultState() {
+    return {
+      first_name: '',
+      last_name: '',
+      birthday: '',
+      age: '',
+    };
+  }
+
   static get propTypes() {
     return {
       student: React.PropTypes.object.isRequired,
@@ -30,7 +39,6 @@ class EditPreview extends Component {
       },
     };
   }
-
   render() {
     var student = this.props.student;
     return (
@@ -40,16 +48,20 @@ class EditPreview extends Component {
           style={this.styles.image} />
         <FormField
           title={'First Name'}
-          placeholder={student.first_name} />
+          placeholder={student.first_name}
+          value={this.state.firstName} />
         <FormField
           title={'Last Name'}
-          placeholder={student.last_name} />
+          placeholder={student.last_name}
+          value={this.state.lastName} />
         <FormField
           title={'Birthday'}
-          placeholder={student.birthday} />
+          placeholder={student.birthday}
+          value={this.state.birthday} />
         <FormField
           title={'Age'}
-          placeholder={student.age} />
+          placeholder={student.age}
+          value={this.state.age} />
         <FormButton content={'Cancel'} />
         <FormButton content={'Save'} />
       </div>

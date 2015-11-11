@@ -34,6 +34,7 @@ class StudentEdit extends Component {
   get clickableStyles() {
     return {
       default: {
+        display: 'inline',
         position: 'absolute',
         top: '0px',
         right: '8px',
