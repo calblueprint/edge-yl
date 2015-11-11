@@ -53,14 +53,20 @@ class StudentPage extends Component {
     this.setState({ overlay: false });
   }
 
+  renderOverlay() {
+    return (
+      <PageOverlay
+        shouldShow={this.state.overlay}
+        closeOverlay={this.closeOverlay.bind(this)}
+        student={this.state.student}
+        type={this.state.type} />
+    );
+  }
+
   render() {
     return (
       <div style={StyleConstants.pages.default}>
-        <PageOverlay
-          shouldShow={this.state.overlay}
-          closeOverlay={this.closeOverlay.bind(this)}
-          student={this.state.student}
-          type={this.state.type} />
+        {this.state.overlay && this.renderOverlay()}
         <Header
           toggleSidebar={this.toggleSidebar.bind(this)} />
         <div style={this.styles.container}>

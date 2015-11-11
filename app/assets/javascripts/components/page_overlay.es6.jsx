@@ -2,14 +2,12 @@ class PageOverlay extends Component {
 
   static get propTypes() {
     return {
-      shouldShow: React.PropTypes.bool.isRequired,
       student: React.PropTypes.object.isRequired,
     };
   }
 
   static get defaultProps() {
     return {
-      shouldShow: true,
       student: {},
     };
   }
@@ -27,9 +25,6 @@ class PageOverlay extends Component {
         width: '100vw',
         height: '100vh',
         backgroundColor: StyleConstants.colors.opaque,
-      },
-      hidden: {
-        display: 'none',
       },
     };
   }
@@ -51,13 +46,8 @@ class PageOverlay extends Component {
   }
 
   render() {
-    var style = Object.assign(
-      {},
-      this.styles.container,
-      !this.props.shouldShow && this.styles.hidden
-    );
     return (
-      <div style={style}>
+      <div style={this.styles.container}>
         <Clickable
           func={this.props.closeOverlay}
           icon={'fa fa-times fa-2x'}

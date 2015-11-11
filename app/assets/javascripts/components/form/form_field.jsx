@@ -43,13 +43,15 @@ class FormField extends Component {
   }
 
   render() {
+    console.log(this.props.value);
     return (
       <div style={this.styles.container}>
         <label style={this.styles.label}>{this.props.title}</label>
         <input
           ref={'container'}
           style={this.styles.input}
-          placeholder={this.props.placeholder}>
+          placeholder={this.props.placeholder}
+          value={this.props.value}>
         </input>
       </div>
     )

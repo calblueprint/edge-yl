@@ -2,10 +2,9 @@ class EditPreview extends Component {
 
   static get defaultState() {
     return {
-      first_name: '',
-      last_name: '',
       birthday: '',
-      age: '',
+      firstName: '',
+      lastName: '',
     };
   }
 
@@ -52,8 +51,18 @@ class EditPreview extends Component {
     };
   }
 
+  componentDidMount() {
+    var student = this.props.student;
+    this.setState({
+      birthday: student.birthday,
+      firstName: student.first_name,
+      lastName: student.last_name,
+    });
+  }
+
   render() {
     var student = this.props.student;
+    console.log(this.state);
     return (
       <div style={this.styles.container}>
         <div style={this.styles.head}>
