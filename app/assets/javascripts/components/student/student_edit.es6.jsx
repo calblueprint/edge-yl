@@ -2,6 +2,7 @@ class StudentEdit extends Component {
 
   static get propTypes() {
     return {
+      showOverlay: React.PropTypes.func.isRequired,
       student: React.PropTypes.object.isRequired,
       type: React.PropTypes.oneOf([
         'contact',
@@ -14,6 +15,7 @@ class StudentEdit extends Component {
 
   static get defaultProps() {
     return {
+      showOverlay: null,
       student: {},
       type: 'preview',
     };
@@ -61,7 +63,7 @@ class StudentEdit extends Component {
       <div style={this.styles.container}>
         <h5>{this.renderTitle()}</h5>
         <Clickable
-          func={(event) => this.props.renderOverlay(this.props.type)}
+          func={(event) => this.props.showOverlay(this.props.type)}
           icon={'fa fa-pencil-square-o fa-lg'}
           styles={this.clickableStyles}
           type={'i'} />

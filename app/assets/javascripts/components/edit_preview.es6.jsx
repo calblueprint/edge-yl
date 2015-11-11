@@ -62,7 +62,6 @@ class EditPreview extends Component {
 
   render() {
     var student = this.props.student;
-    console.log(this.state);
     return (
       <div style={this.styles.container}>
         <div style={this.styles.head}>

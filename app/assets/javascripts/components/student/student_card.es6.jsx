@@ -2,6 +2,7 @@ class StudentCard extends Component {
 
   static get propTypes() {
     return {
+      showOverlay: React.PropTypes.func.isRequired,
       student: React.PropTypes.object.isRequired,
       type: React.PropTypes.oneOf([
         'contact',
@@ -14,6 +15,7 @@ class StudentCard extends Component {
 
   static get defaultProps() {
     return {
+      showOverlay: null,
       student: {},
       type: 'preview',
     };

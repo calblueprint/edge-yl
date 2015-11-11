@@ -44,9 +44,8 @@ class StudentPage extends Component {
     this.setState({ sidebar: !this.state.sidebar });
   }
 
-  renderOverlay(type) {
-    this.setState({ overlay: true,
-                    type: type });
+  showOverlay(type) {
+    this.setState({ overlay: true, type: type });
   }
 
   closeOverlay(event) {
@@ -54,25 +53,26 @@ class StudentPage extends Component {
   }
 
   renderOverlay() {
-    return (
-      <PageOverlay
-        shouldShow={this.state.overlay}
-        closeOverlay={this.closeOverlay.bind(this)}
-        student={this.state.student}
-        type={this.state.type} />
-    );
+    if (this.state.overlay) {
+      return (
+        <PageOverlay
+          closeOverlay={this.closeOverlay.bind(this)}
+          student={this.state.student}
+          type={this.state.type} />
+      );
+    }
   }
 
   render() {
     return (
       <div style={StyleConstants.pages.default}>
-        {this.state.overlay && this.renderOverlay()}
+        {this.renderOverlay()}
         <Header
           toggleSidebar={this.toggleSidebar.bind(this)} />
         <div style={this.styles.container}>
           <Sidebar shouldShow={this.state.sidebar} />
           <StudentGrid student={this.state.student}
-            renderOverlay={this.renderOverlay.bind(this)} />
+            showOverlay={() => this.showOverlay()} />
           <StudentComments
             comments={this.state.student.comments} />
         </div>
