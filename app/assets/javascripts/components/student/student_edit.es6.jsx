@@ -28,7 +28,12 @@ class StudentEdit extends Component {
         height: '40px',
         borderBottom: 'solid #D6D6D6 1px',
       },
-      icon: {
+    };
+  }
+
+  get clickableStyles() {
+    return {
+      default: {
         position: 'absolute',
         top: '0px',
         right: '8px',
@@ -54,9 +59,11 @@ class StudentEdit extends Component {
     return (
       <div style={this.styles.container}>
         <h5>{this.renderTitle()}</h5>
-        <i
-          className={'fa fa-pencil-square-o'}
-          style={this.styles.icon} />
+        <Clickable
+          func={(event) => this.props.renderOverlay()}
+          icon={'fa fa-pencil-square-o'}
+          styles={this.clickableStyles}
+          type={'i'} />
       </div>
     );
   }

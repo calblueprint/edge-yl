@@ -1,16 +1,17 @@
 # == Schema Information
 #
-# Table name: student_comments
+# Table name: comments
 #
 #  id         :integer          not null, primary key
-#  content    :text             not null
 #  student_id :integer
 #  user_id    :integer
+#  content    :text
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
-class StudentComment < ActiveRecord::Base
-    belongs_to :user
-    belongs_to :student
+require 'rails_helper'
+
+RSpec.describe Comment, type: :model do
+  pending "add some examples to (or delete) #{__FILE__}"
 end

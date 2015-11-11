@@ -2,18 +2,24 @@ class StudentPage extends Component {
 
   static get propTypes() {
     return {
-      student: React.PropTypes.object.isRequired,
+      id: React.PropTypes.number.isRequired,
     };
   }
 
   static get defaultProps() {
     return {
-      student: {},
+      id: 1,
     };
   }
 
   static get defaultState() {
-    return { sidebar: true };
+    return {
+      sidebar: true,
+      overlay: false,
+      student: {
+        school: {},
+      },
+    };
   }
 
   get styles() {
@@ -23,26 +29,42 @@ class StudentPage extends Component {
         flex: '1',
         paddingTop: '48px',
         paddingLeft: '196px',
-      },
-      placeholder: {
-        width: '196px',
+        paddingRight: '196px',
       },
     };
+  }
+
+  componentDidMount() {
+    resolve = (response) => { this.setState({ student: response }) };
+    Requester.get(ApiConstants.students.show(this.props.id), resolve);
   }
 
   toggleSidebar(event) {
     this.setState({ sidebar: !this.state.sidebar });
   }
 
+  renderOverlay(event) {
+    this.setState({ overlay: true });
+  }
+
+  closeOverlay(event) {
+    this.setState({ overlay: false });
+  }
+
   render() {
     return (
       <div style={StyleConstants.pages.default}>
+        <PageOverlay
+          shouldShow={this.state.overlay}
+          closeOverlay={this.closeOverlay.bind(this)} />
         <Header
           toggleSidebar={this.toggleSidebar.bind(this)} />
         <div style={this.styles.container}>
           <Sidebar shouldShow={this.state.sidebar} />
-          <StudentGrid {...this.props} />
-          <div style={this.styles.placeholder}></div>
+          <StudentGrid student={this.state.student}
+            renderOverlay={this.renderOverlay.bind(this)} />
+          <StudentComments
+            comments={this.state.student.comments} />
         </div>
       </div>
     );

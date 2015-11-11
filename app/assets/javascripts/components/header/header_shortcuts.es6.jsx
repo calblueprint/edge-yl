@@ -67,7 +67,7 @@ class HeaderShortcuts extends Component {
           right: '0px',
         }
       ),
-    }
+    };
   }
 
   get dropdownOptions() {
@@ -78,7 +78,12 @@ class HeaderShortcuts extends Component {
       },
       {
         content: 'Logout',
-        func: () => { Requester.delete(RouteConstants.users.logout) },
+        func: () => {
+          Requester.delete(
+            ApiConstants.users.logout,
+            (response) => { window.location = RouteConstants.pages.login }
+          );
+        },
       },
     ];
   }

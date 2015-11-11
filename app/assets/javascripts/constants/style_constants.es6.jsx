@@ -10,6 +10,7 @@ class StylesSingleton {
       gray: '#d6d6d6',
       indigo: '#28719e',
       opaque: 'rgba(255, 255, 255, 0.875)',
+      red: '#ff0000',
       turquoise: '#c1d6d8',
       white: '#ffffff',
     };

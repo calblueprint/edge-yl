@@ -13,13 +13,20 @@ class LoginForm extends Component {
       container: {
         display: 'flex',
         flexFlow: 'column',
+        alignItems: 'center',
       },
       label: {
         marginBottom: '6px',
+        alignSelf: 'stretch',
       },
       input: {
         padding: '8px',
         marginBottom: '24px',
+        alignSelf: 'stretch',
+      },
+      error: {
+        marginBottom: '24px',
+        color: StyleConstants.colors.red,
       },
     };
   }
@@ -33,15 +40,23 @@ class LoginForm extends Component {
     };
     var resolve = (response) => { window.location = RouteConstants.students.index };
     var reject = (response) => { this.setState({ errors: true }) };
-    Requester.post(RouteConstants.users.login, params, resolve, reject);
+    Requester.post(ApiConstants.users.login, params, resolve, reject);
   }
 
   generateHandler(field) {
     var state = {};
-    return function(event) {
+    return (event) => {
       state[field] = event.target.value;
       this.setState(state);
-    }.bind(this);
+    };
+  }
+
+  renderMessage() {
+    return (
+      <span style={this.styles.error}>
+        {'Invalid email/password'}
+      </span>
+    );
   }
 
   componentDidMount() {
@@ -52,7 +67,6 @@ class LoginForm extends Component {
   }
 
   render() {
-    console.log(this.state.errors);
     return (
       <div style={this.styles.container}>
         <label style={this.styles.label}>
@@ -73,6 +87,7 @@ class LoginForm extends Component {
           ref={'password'}
           type={'password'}>
         </input>
+        {this.state.errors && this.renderMessage()}
         <FormButton
           content={'Log in'}
           func={this.createSession.bind(this)} />

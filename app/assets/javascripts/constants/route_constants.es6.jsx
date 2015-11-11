@@ -22,7 +22,6 @@ class RoutesSingleton {
 
   get students() {
     return {
-      create: '/students',
       index: '/students',
       show: function(id) {
         return `/students/${id}`;
@@ -33,9 +32,6 @@ class RoutesSingleton {
   get users() {
     return {
       index: '/users',
-      login: '/users/login',
-      logout: '/users/logout',
-      signout: '/users/signout',
     };
   }
 }
