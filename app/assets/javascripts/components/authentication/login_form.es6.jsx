@@ -15,6 +15,10 @@ class LoginForm extends Component {
         flexFlow: 'column',
         alignItems: 'center',
       },
+      error: {
+        marginBottom: '24px',
+        color: StyleConstants.colors.red,
+      },
       label: {
         marginBottom: '6px',
         alignSelf: 'stretch',
@@ -23,10 +27,6 @@ class LoginForm extends Component {
         padding: '8px',
         marginBottom: '24px',
         alignSelf: 'stretch',
-      },
-      error: {
-        marginBottom: '24px',
-        color: StyleConstants.colors.red,
       },
     };
   }
