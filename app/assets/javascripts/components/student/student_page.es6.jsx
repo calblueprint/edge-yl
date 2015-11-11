@@ -68,7 +68,7 @@ class StudentPage extends Component {
           <StudentGrid student={this.state.student}
             renderOverlay={this.renderOverlay.bind(this)} />
           <StudentComments
-            comments={this.state.student.student_comments} />
+            comments={this.state.student.comments} />
         </div>
       </div>
     );
