@@ -19,10 +19,13 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'turbolinks'
 gem 'uglifier', '>= 1.3.0'
 
+group :development, :staging, :test do
+  gem 'faker'
+end
+
 group :development, :test do
   gem 'awesome_print'
   gem 'better_errors'
-  gem 'faker'
   gem 'quiet_assets'
   gem 'factory_girl_rails'
   gem 'rspec-rails'
