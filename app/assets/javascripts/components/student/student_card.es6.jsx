@@ -37,6 +37,19 @@ class StudentCard extends Component {
     };
   }
 
+  renderTitle() {
+    switch (this.props.type) {
+      case 'preview':
+        return 'Student Preview';
+      case 'contact':
+        return 'Student Information';
+      case 'parent':
+        return 'Parent Information';
+      case 'conference':
+        return 'Conference Information';
+    };
+  }
+
   renderBody() {
     switch (this.props.type) {
       case 'preview':
@@ -55,7 +68,10 @@ class StudentCard extends Component {
   render() {
     return (
       <div style={this.styles.container}>
-        <StudentEdit {...this.props} />
+        <CardHeader
+          action={this.props.showOverlay}
+          content={this.renderTitle()}
+          icon={'fa fa-pencil-square-o fa-lg'} />
         {this.renderBody()}
       </div>
     );

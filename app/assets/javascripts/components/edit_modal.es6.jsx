@@ -33,6 +33,19 @@ class EditModal extends Component {
     };
   }
 
+  renderTitle() {
+    switch (this.props.type) {
+      case 'preview':
+        return 'Student Preview';
+      case 'contact':
+        return 'Student Information';
+      case 'parent':
+        return 'Parent Information';
+      case 'conference':
+        return 'Conference Information';
+    };
+  }
+
   renderBody() {
     switch (this.props.type) {
       default:
@@ -43,6 +56,10 @@ class EditModal extends Component {
   render() {
     return (
       <div style={this.styles.container}>
+        <CardHeader
+          action={null}
+          content={this.renderTitle()}
+          icon={'fa fa-save fa-lg'} />
         {this.renderBody()}
       </div>
     );
