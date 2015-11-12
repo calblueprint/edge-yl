@@ -13,20 +13,21 @@ class LoginForm extends Component {
       container: {
         display: 'flex',
         flexFlow: 'column',
-        alignItems: 'center',
       },
       error: {
+        flex: 1,
         marginBottom: '24px',
         color: StyleConstants.colors.red,
+        textAlign: 'center',
       },
       label: {
+        flex: 1,
         marginBottom: '6px',
-        alignSelf: 'stretch',
       },
       input: {
+        flex: 1,
         padding: '8px',
         marginBottom: '24px',
-        alignSelf: 'stretch',
       },
     };
   }
