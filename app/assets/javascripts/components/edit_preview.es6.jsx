@@ -37,7 +37,7 @@ class EditPreview extends Component {
     };
   }
 
-  componentDidMount() {
+  componentWillMount() {
     this.setState({
       birthday: this.props.student.birthday,
       firstName: this.props.student.first_name,
@@ -46,7 +46,7 @@ class EditPreview extends Component {
   }
 
   updateStudent() {
-    console.log('hello');
+    console.log('Should send a request up here!');
   }
 
   generateHandler(field) {
