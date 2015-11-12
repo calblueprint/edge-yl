@@ -3,12 +3,14 @@ class StudentComments extends Component {
   static get propTypes() {
     return {
       id: React.PropTypes.number.isRequired,
+      showOverlay: React.PropTypes.func.isRequired,
     };
   }
 
   static get defaultProps() {
     return {
       id: null,
+      showOverlay: null,
     };
   }
 
@@ -36,6 +38,10 @@ class StudentComments extends Component {
     };
   }
 
+  showCreateOverlay() {
+    this.props.showOverlay('create_comment');
+  }
+
   renderStudentComment(comment, index) {
     return (
       <StudentComment comment={comment} key={index} />
@@ -44,6 +50,11 @@ class StudentComments extends Component {
 
   renderStudentComments() {
     return this.state.comments.map(this.renderStudentComment.bind(this));
+  }
+
+  createCommentRequest(params) {
+    resolve = (response) => this.setState({ comments: response });
+    Requester.post(ApiConstants.students.comments.create(this.props.id), params, resolve);
   }
 
   componentDidMount() {
@@ -57,6 +68,7 @@ class StudentComments extends Component {
       <div style={style}>
         <span style={this.styles.title}> Student Comments </span>
         {this.renderStudentComments()}
+        <Clickable func={this.showCreateOverlay.bind(this)}>Add Comment</Clickable>
       </div>
     );
   }

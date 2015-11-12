@@ -8,6 +8,7 @@ class EditModal extends Component {
         'conference',
         'parent',
         'preview',
+        'create_comment',
       ]).isRequired,
     };
   }
@@ -33,6 +34,8 @@ class EditModal extends Component {
 
   renderBody() {
     switch (this.props.type) {
+      case 'create_comment':
+        return <CreateComment {...this.props} />
       default:
         return <EditPreview {...this.props} />;
     };
