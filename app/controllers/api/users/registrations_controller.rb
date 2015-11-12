@@ -3,8 +3,8 @@ class Api::Users::RegistrationsController < Devise::RegistrationsController
   respond_to :json
 
   def create
-    user = User.new registration_params
     # TODO(Warren): Don't skip confirmation in production.
+    user = User.new registration_params
     user.skip_confirmation!
     if user.save
       sign_in user
