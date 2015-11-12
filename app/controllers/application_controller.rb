@@ -6,6 +6,10 @@ class ApplicationController < ActionController::Base
     render json: { message: response_message(object, message) }, status: status
   end
 
+  def unprocessable_response(object)
+    error_response object: object, status: 422
+  end
+
   def unauthorized_response
     error_response message: 'Unauthorized', status: 403
   end
