@@ -1,4 +1,4 @@
-class FormsController < ApplicationController
+class FormsController < BaseController
 
   def show
   end
