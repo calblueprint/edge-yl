@@ -15,6 +15,10 @@ class Api::StudentsController < Api::BaseController
     render json: student, serializer: StudentShowSerializer
   end
 
+  def update
+    # TODO(Unzi): Fill this action up!
+  end
+
   private
 
   def student_params
