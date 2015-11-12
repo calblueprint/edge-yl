@@ -4,7 +4,12 @@ class FormDropdown extends Component {
 		return {
 			options: React.PropTypes.array.isRequired,
 			title: React.PropTypes.string.isRequired,
+
 		};
+	}
+
+	static get defaultState() {
+		return { value: this.props.options[0].content }
 	}
 
 	static get defaultState() { 
@@ -29,7 +34,7 @@ class FormDropdown extends Component {
 		}
 		else { 
 			return (
-				<span style = {this.styles.dropdown}> {this.props.options[0].content} </span>
+				<span style = {this.styles.selected}> {this.state.value} </span>
 			);
 		}
 	}
@@ -47,31 +52,28 @@ class FormDropdown extends Component {
 		return longestLength; 
 	}
 
-	get dropdownStyles() {
-		return {
-			child: {
-				default: {
-					flex: '1',
-					padding: '12px', 
-				},
-				hover: {
-					backgroundColor: StyleConstants.colors.turquoise,
-				},
-			},
-			container: Object.assign(
-				{},
-				StyleConstants.cards.default,
-				{
-					display: 'flex',
-					flexFlow: 'column',
-					position: 'absolute',
-					width: '128px',
-					top: '48px',
-					right: '0px',
-				}
-			),
-		};
-	}
+  get dropdownStyles() {
+    return {
+      child: {
+        default: {
+          flex: '1',
+          padding: '12px',
+        },
+        hover: {
+          backgroundColor: StyleConstants.colors.turquoise,
+        },
+      },
+      container: Object.assign(
+        {},
+        StyleConstants.cards.default,
+        {
+          display: 'flex',
+          flexFlow: 'column',      
+          width: '128px',
+        }
+      ),
+    };
+  }
 
 	get styles() {
 		return {
@@ -79,10 +81,9 @@ class FormDropdown extends Component {
 				display: 'flex', 
 				flexFlow: 'row',
 			},
-			dropdown: {
-				width: (this.dropdownWidth * 8) + 'px',
-
-			},
+			selected: {
+				width: '128px',
+			}
 		};
 	}
 
