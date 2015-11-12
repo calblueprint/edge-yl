@@ -57,7 +57,7 @@ class FormSection extends Component {
             title={'Student Description'}
             placeholder={'This student is great'} />
           <FormDropdown 
-            options={[{content:'hi'}, {content:'lol'}]}
+            options={['hi','lol']}
             title={'Birthday'}
           />
         </div>

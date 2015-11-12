@@ -2,7 +2,7 @@ class FormDropdown extends Component {
 
   static get propTypes() {
     return {
-      options: React.PropTypes.array.isRequired,
+      options: React.PropTypes.arrayOf(React.PropTypes.string).isRequired,
       title: React.PropTypes.string.isRequired,
     };
   }
@@ -12,41 +12,6 @@ class FormDropdown extends Component {
       dropdown: false,
       value: 'Select one', 
     };
-  }
-  
-  handleClick(event) {
-    this.setState({ dropdown: !this.state.dropdown });
-  }
-
-
-  itemSelected(content) {
-    console.log('content'+ content);
-    this.setState({value: content, dropdown: false}); 
-
-  }
-
-  get dropdownOptions() { 
-    for (var i = 0; i<this.props.options.length; i++) {
-      console.log(i);
-      content = this.props.options[i].content
-      console.log(content);
-
-      this.props.options[i].func = () => {this.itemSelected(content)};
-      console.log(this.props.options[i]);
-    }
-
-    return this.props.options;
-  }
-
-  renderDropdown() {
-    if (this.state.dropdown) {
-      return (
-        <Dropdown
-          styles={this.dropdownStyles}
-          options={this.dropdownOptions} 
-          />
-      );
-    }
   }
 
   get dropdownStyles() {
@@ -62,7 +27,10 @@ class FormDropdown extends Component {
       },
       container: Object.assign(
         {},
-        {
+        StyleConstants.cards.default,
+        {  
+          position:'absolute',
+          zIndex: StyleConstants.planes.two,
           display: 'flex',
           flexFlow: 'column',      
           width: '128px',
@@ -111,6 +79,38 @@ class FormDropdown extends Component {
         flexFlow: 'column',
       },
     };
+  }
+  
+  handleClick(event) {
+    this.setState({ dropdown: !this.state.dropdown });
+  }
+
+  generateHandler(item) {
+    return function() {
+      this.setState({ value: item, dropdown: false});
+    }.bind(this);
+  }
+
+  generateDropdownOption(item) {
+    return {
+      content: item,
+      func: this.generateHandler(item),
+    };
+  }
+
+  generateDropdownOptions() { 
+    console.log(this.props.options);
+    return this.props.options.map(this.generateDropdownOption.bind(this));
+  }
+
+  renderDropdown() {
+    if (this.state.dropdown) {
+      return (
+        <Dropdown
+          styles={this.dropdownStyles}
+          options={this.generateDropdownOptions()} />
+      );
+    }
   }
 
   render() {
