@@ -20,7 +20,7 @@ class StudentContact extends Component {
         flex: '1',
         padding: '12px',
       },
-      heading: {
+      content: {
         fontSize: StyleConstants.fonts.sizes.small,
       },
     };
@@ -30,17 +30,18 @@ class StudentContact extends Component {
     var student = this.props.student;
     return (
         <div style={this.styles.container}>
-          <h2 style={this.styles.heading}>{'Contact'}</h2>
-            {student.cell_phone}
-            {student.home_phone}
-            {student.email}
-            {student.home_address}
-          <h2 style={this.styles.heading}>{'School'}</h2>
+          <h4>{'Contact'}</h4>
+            <h6>{student.cell_phone}</h6>
+            <h6>{student.home_phone}</h6>
+            <h6>{student.email}</h6>
+            <h6>{student.home_address}</h6>
+          <br/>
+          <h4>{'School'}</h4>
           <Clickable
             content={`${student.school.name}`}
             route={RouteConstants.schools.show(student.school.id)}
-            styles={this.styles.heading} />
-          {student.school.address}
+            type={'h6'} />
+          <h6>{student.school.address}</h6>
         </div>
     );
   }
