@@ -4,6 +4,5 @@ class StudentIndexSerializer < BaseSerializer
              :first_name, :last_name, :home_address
 
   has_one :school, serializer: SchoolIndexSerializer
-  has_many :comments, serializer: CommentIndexSerializer
 
 end

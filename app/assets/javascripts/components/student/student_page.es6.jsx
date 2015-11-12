@@ -73,7 +73,7 @@ class StudentPage extends Component {
             showOverlay={(type) => this.showOverlay(type)}
             student={this.state.student} />
           <StudentComments
-            comments={this.state.student.comments} />
+            id={this.props.id} />
         </div>
       </div>
     );

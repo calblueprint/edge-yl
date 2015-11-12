@@ -2,11 +2,17 @@ class StudentComments extends Component {
 
   static get propTypes() {
     return {
-      comments: React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
+      id: React.PropTypes.number.isRequired,
     };
   }
 
   static get defaultProps() {
+    return {
+      id: null,
+    };
+  }
+
+    static get defaultState() {
     return {
       comments: [],
     };
@@ -37,7 +43,12 @@ class StudentComments extends Component {
   }
 
   renderStudentComments() {
-    return this.props.comments.map(this.renderStudentComment.bind(this));
+    return this.state.comments.map(this.renderStudentComment.bind(this));
+  }
+
+  componentDidMount() {
+    resolve = (response) => this.setState({ comments: response });
+    Requester.get(ApiConstants.students.comments.index(this.props.id), resolve);
   }
 
   render() {
