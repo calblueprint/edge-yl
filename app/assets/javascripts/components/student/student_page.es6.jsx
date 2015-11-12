@@ -14,12 +14,10 @@ class StudentPage extends Component {
 
   static get defaultState() {
     return {
-      sidebar: true,
       overlay: false,
+      sidebar: true,
+      student: { school: {} },
       type: 'preview',
-      student: {
-        school: {},
-      },
     };
   }
 
@@ -36,37 +34,44 @@ class StudentPage extends Component {
   }
 
   componentDidMount() {
-    resolve = (response) => { this.setState({ student: response }) };
+    resolve = (response) => this.setState({ student: response });
     Requester.get(ApiConstants.students.show(this.props.id), resolve);
+  }
+
+  hideOverlay(event) {
+    this.setState({ overlay: false });
+  }
+
+  showOverlay(type) {
+    this.setState({ overlay: true, type: type });
   }
 
   toggleSidebar(event) {
     this.setState({ sidebar: !this.state.sidebar });
   }
 
-  renderOverlay(type) {
-    this.setState({ overlay: true,
-                    type: type });
-  }
-
-  closeOverlay(event) {
-    this.setState({ overlay: false });
+  renderOverlay() {
+    if (this.state.overlay) {
+      return (
+        <PageOverlay
+          hideOverlay={() => this.hideOverlay()}
+          student={this.state.student}
+          type={this.state.type} />
+      );
+    }
   }
 
   render() {
     return (
       <div style={StyleConstants.pages.default}>
-        <PageOverlay
-          shouldShow={this.state.overlay}
-          closeOverlay={this.closeOverlay.bind(this)}
-          student={this.state.student}
-          type={this.state.type} />
+        {this.renderOverlay()}
         <Header
-          toggleSidebar={this.toggleSidebar.bind(this)} />
+          toggleSidebar={() => this.toggleSidebar()} />
         <div style={this.styles.container}>
           <Sidebar shouldShow={this.state.sidebar} />
-          <StudentGrid student={this.state.student}
-            renderOverlay={this.renderOverlay.bind(this)} />
+          <StudentGrid
+            showOverlay={(type) => this.showOverlay(type)}
+            student={this.state.student} />
           <StudentComments
             comments={this.state.student.comments} />
         </div>
