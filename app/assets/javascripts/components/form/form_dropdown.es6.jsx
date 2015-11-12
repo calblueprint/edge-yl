@@ -8,12 +8,11 @@ class FormDropdown extends Component {
 		};
 	}
 
-	static get defaultState() {
-		return { value: this.props.options[0].content }
-	}
-
 	static get defaultState() { 
-		return { dropdown: false };
+		return { 
+			dropdown: false,
+			value: 'Select one', 
+		};
 	}
 	
 	handleClick(event) {
@@ -32,24 +31,6 @@ class FormDropdown extends Component {
 					options={this.props.options} />
 			);
 		}
-		else { 
-			return (
-				<span style = {this.styles.selected}> {this.state.value} </span>
-			);
-		}
-	}
-
-	get dropdownWidth() { 
-		var options = this.props.options
-		var longestLength = 0;
-		for (var i = 0; i<options.length; i++) {
-
-			if (options[i].content.length > longestLength) {
-				longestLength = options[i].content.length
-			}
-		}
-		console.log(longestLength);
-		return longestLength; 
 	}
 
   get dropdownStyles() {
@@ -57,7 +38,7 @@ class FormDropdown extends Component {
       child: {
         default: {
           flex: '1',
-          padding: '12px',
+          padding: '4px',
         },
         hover: {
           backgroundColor: StyleConstants.colors.turquoise,
@@ -65,7 +46,7 @@ class FormDropdown extends Component {
       },
       container: Object.assign(
         {},
-        StyleConstants.cards.default,
+        
         {
           display: 'flex',
           flexFlow: 'column',      
@@ -75,14 +56,43 @@ class FormDropdown extends Component {
     };
   }
 
+  get clickableStyles() { 
+  	return {
+  		default: {
+  			padding: '0px 2px',
+  		},
+  		hover: {
+
+  		},
+  	};
+  }
 	get styles() {
 		return {
 			container: {
 				display: 'flex', 
 				flexFlow: 'row',
 			},
+			label: {
+				paddingRight: '24px',
+				paddingTop: '4px',
+				fontSize: StyleConstants.fonts.sizes.smaller,
+			},
 			selected: {
-				width: '128px',
+				width: '130px',
+				color: StyleConstants.colors.gray,
+			},
+			dropdownContainer: {
+				display: 'flex',
+				flexFlow: 'row',
+				padding: '4px',
+				border: '1px solid' + StyleConstants.colors.gray,
+			},
+			icon: {
+				padding: '0px 2px',
+			},
+			dropdown: {
+				display: 'flex',
+				flexFlow: 'column',
 			}
 		};
 	}
@@ -91,12 +101,18 @@ class FormDropdown extends Component {
 		return (
 			<div style = {this.styles.container}>
 				<label style={this.styles.label}>{this.props.title}</label>
-					{this.renderDropdown()}
-					<Clickable
-						icon={'fa fa-envelope fa-x'}
-						func={this.handleClick.bind(this)}
-						type={'i'}
-					/>
+					<div style={this.styles.dropdownContainer}> 
+						<div style = {this.styles.dropdown}> 
+							<span style = {this.styles.selected} > {this.state.value} </span>
+							{this.renderDropdown()}
+						</div>
+						<Clickable
+							icon={'fa fa-angle-down'}
+							func={this.handleClick.bind(this)}
+							type={'i'}
+							styles={this.clickableStyles}
+						/>
+					</div>
 			</div>	
 		);
 	}
