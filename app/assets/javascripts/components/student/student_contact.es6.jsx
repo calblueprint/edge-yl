@@ -22,6 +22,7 @@ class StudentContact extends Component {
       },
       heading: {
         fontSize: StyleConstants.fonts.sizes.small,
+
       },
     };
   }
@@ -31,16 +32,16 @@ class StudentContact extends Component {
     return (
         <div style={this.styles.container}>
           <h2 style={this.styles.heading}>{'Contact'}</h2>
-            {student.phone_number}
-            {student.home_address}
+            {student.cell_phone}
+            {student.home_phone}
             {student.email}
+            {student.home_address}
           <h2 style={this.styles.heading}>{'School'}</h2>
           <Clickable
             content={`${student.school.name}`}
             route={RouteConstants.schools.show(student.school.id)}
-            styles={this.styles.heading}
-            type={'h3'} />
-          <h4>{student.school.address}</h4>
+            styles={this.styles.heading} />
+          {student.school.address}
         </div>
     );
   }
