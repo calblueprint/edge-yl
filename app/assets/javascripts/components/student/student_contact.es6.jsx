@@ -22,7 +22,6 @@ class StudentContact extends Component {
       },
       heading: {
         fontSize: StyleConstants.fonts.sizes.small,
-
       },
     };
   }
