@@ -2,14 +2,14 @@ class PageOverlay extends Component {
 
   static get propTypes() {
     return {
-      shouldShow: React.PropTypes.bool.isRequired,
+      hideOverlay: React.PropTypes.func.isRequired,
       student: React.PropTypes.object.isRequired,
     };
   }
 
   static get defaultProps() {
     return {
-      shouldShow: true,
+      hideOverlay: null,
       student: {},
     };
   }
@@ -18,17 +18,15 @@ class PageOverlay extends Component {
     return {
       container: {
         display: 'flex',
-        flexFlow: 'row',
-        alignItems: 'center',
         justifyContent: 'center',
+        alignItems: 'center',
         position: 'fixed',
+        top: '0px',
+        left: '0px',
         zIndex: StyleConstants.planes.nine,
         width: '100vw',
         height: '100vh',
-        backgroundColor: 'rgba(0, 0, 0, 0.6)',
-      },
-      hidden: {
-        display: 'none',
+        backgroundColor: StyleConstants.colors.opaque,
       },
     };
   }
@@ -40,25 +38,20 @@ class PageOverlay extends Component {
         top: '0px',
         right: '0px',
         zIndex: StyleConstants.planes.nine,
-        margin: '12px',
-        color: StyleConstants.colors.white,
+        padding: '8px',
+        color: StyleConstants.colors.blue,
       },
       hover: {
-        color: 'rgba(255, 255, 255, 0.6)',
+        color: StyleConstants.colors.indigo,
       },
     };
   }
 
   render() {
-    var style = Object.assign(
-      {},
-      this.styles.container,
-      !this.props.shouldShow && this.styles.hidden
-    );
     return (
-      <div style={style}>
+      <div style={this.styles.container}>
         <Clickable
-          func={this.props.closeOverlay}
+          func={this.props.hideOverlay}
           icon={'fa fa-times fa-2x'}
           styles={this.clickableStyles}
           type={'i'} />
