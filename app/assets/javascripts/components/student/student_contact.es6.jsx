@@ -20,9 +20,6 @@ class StudentContact extends Component {
         flex: '1',
         padding: '12px',
       },
-      content: {
-        fontSize: StyleConstants.fonts.sizes.small,
-      },
     };
   }
 
