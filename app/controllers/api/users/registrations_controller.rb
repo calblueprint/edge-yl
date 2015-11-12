@@ -10,7 +10,7 @@ class Api::Users::RegistrationsController < Devise::RegistrationsController
       sign_in user
       render json: user, status: 201
     else
-      error_response object: user, status: 401
+      unprocessable_response user
     end
   end
 
