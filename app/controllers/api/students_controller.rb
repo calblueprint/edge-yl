@@ -16,7 +16,12 @@ class Api::StudentsController < Api::BaseController
   end
 
   def update
-    # TODO(Unzi): Fill this action up!
+    student = Student.find(params[:id])
+    if student.update_attributes(student_params)
+      render json: student, serializer: StudentIndexSerializer, status: 201
+    else
+      unprocessable_response student
+    end
   end
 
   private
