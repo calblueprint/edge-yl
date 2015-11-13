@@ -19,6 +19,9 @@ class ApiSingleton {
       show: function(id) {
         return `/api/students/${id}`;
       },
+      update: function(id) {
+        return `/api/students/${id}`;
+      },
     };
   }
 
