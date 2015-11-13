@@ -57,7 +57,7 @@ class RequesterSingleton {
     request.send(JSON.stringify(params));
   }
 
-  update(route, params, resolve, reject) {
+  update(route, params, resolve) {
     var request = this.initialize('PATCH', route);
     request.onreadystatechange = function() {
       if (this.readyState === XMLHttpRequest.DONE) {

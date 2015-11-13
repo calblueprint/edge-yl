@@ -74,7 +74,8 @@ class PageOverlay extends Component {
           type={'i'} />
         <EditModal
           student={this.props.student}
-          type={this.props.type} />
+          type={this.props.type}
+          hideOverlay={this.props.hideOverlay} />
       </div>
     );
   }
