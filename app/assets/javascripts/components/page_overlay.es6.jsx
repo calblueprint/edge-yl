@@ -4,6 +4,7 @@ class PageOverlay extends Component {
     return {
       hideOverlay: React.PropTypes.func.isRequired,
       student: React.PropTypes.object.isRequired,
+      callback: React.PropTypes.func.isRequired,
     };
   }
 
@@ -11,6 +12,7 @@ class PageOverlay extends Component {
     return {
       hideOverlay: null,
       student: {},
+      callback: null,
     };
   }
 
@@ -57,7 +59,8 @@ class PageOverlay extends Component {
           type={'i'} />
         <EditModal
           student={this.props.student}
-          type={this.props.type} />
+          type={this.props.type}
+          callback={this.props.callback} />
       </div>
     );
   }

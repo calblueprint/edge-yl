@@ -18,6 +18,7 @@ class StudentPage extends Component {
       sidebar: true,
       student: { school: {} },
       type: 'preview',
+      callback: null,
     };
   }
 
@@ -42,8 +43,8 @@ class StudentPage extends Component {
     this.setState({ overlay: false });
   }
 
-  showOverlay(type) {
-    this.setState({ overlay: true, type: type });
+  showOverlay(type, callback) {
+    this.setState({ overlay: true, type: type, callback: callback });
   }
 
   toggleSidebar(event) {
@@ -56,6 +57,8 @@ class StudentPage extends Component {
         <PageOverlay
           hideOverlay={() => this.hideOverlay()}
           student={this.state.student}
+          type={this.state.type}
+          callback={this.state.callback}
           {...this.props} />
       );
     }
@@ -73,7 +76,7 @@ class StudentPage extends Component {
             showOverlay={(type) => this.showOverlay(type)}
             student={this.state.student} />
           <StudentComments
-            showOverlay={(type) => this.showOverlay(type)}
+            showOverlay={(type, callback) => this.showOverlay(type, callback)}
             id={this.props.id} />
         </div>
       </div>

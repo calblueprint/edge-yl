@@ -38,23 +38,22 @@ class StudentComments extends Component {
     };
   }
 
-  showCreateOverlay() {
-    this.props.showOverlay('create_comment');
-  }
-
   renderStudentComment(comment, index) {
     return (
       <StudentComment comment={comment} key={index} />
     );
   }
 
+  showCreateOverlay() {
+    this.props.showOverlay('create_comment', (comment) => addToComments(comment));
+  }
+
   renderStudentComments() {
     return this.state.comments.map((comment, index) => this.renderStudentComment(comment, index));
   }
 
-  createCommentRequest(params) {
-    resolve = (response) => this.setState({ comments: response });
-    Requester.post(ApiConstants.students.comments.create(this.props.id), params, resolve);
+  addToComments(comment) {
+    this.setState({ comments: this.state.comments.push(comment) });
   }
 
   componentDidMount() {
@@ -68,7 +67,7 @@ class StudentComments extends Component {
       <div style={style}>
         <span style={this.styles.title}> Student Comments </span>
         {this.renderStudentComments()}
-        <Clickable func={this.showCreateOverlay.bind(this)}>Add Comment</Clickable>
+        <Clickable func={() => this.showCreateOverlay()}>Add Comment</Clickable>
       </div>
     );
   }
