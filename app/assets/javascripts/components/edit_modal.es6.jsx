@@ -27,6 +27,9 @@ class EditModal extends Component {
         justifyContent: 'center',
         alignItems: 'center',
       },
+      title: {
+        marginBottom: '6px',
+      },
     };
   }
 
@@ -40,7 +43,7 @@ class EditModal extends Component {
   render() {
     return (
       <div style={this.styles.container}>
-        <h2>{'Edit'}</h2>
+        <h2 style={this.styles.title}>{'Edit'}</h2>
         {this.renderBody()}
       </div>
     );
