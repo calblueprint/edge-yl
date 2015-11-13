@@ -19,3 +19,5 @@
 //= require components
 
 //= require_tree .
+
+var alt = new Alt();
