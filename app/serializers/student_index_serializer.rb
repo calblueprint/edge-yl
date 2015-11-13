@@ -1,8 +1,5 @@
-class StudentIndexSerializer < BaseSerializer
+class StudentIndexSerializer < StudentBaseSerializer
 
-  attributes :id, :birthday, :cell_phone, :email,
-             :first_name, :last_name, :home_address
-
-  has_one :school, serializer: SchoolIndexSerializer
+  has_one :school, serializer: SchoolBaseSerializer
 
 end

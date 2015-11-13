@@ -5,7 +5,7 @@ class Api::Students::CommentsController < Api::BaseController
     if comment.save
       render json: comment, serializer: CommentIndexSerializer, status: 201
     else
-      error_response object: comment, status: 401
+      unprocessable_response comment
     end
   end
 

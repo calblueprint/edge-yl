@@ -59,6 +59,7 @@ Happy developing!
     fontSize,
     fontWeight,
     lineHeight,
+    textAlign,
     textDecoration,
     outline,
     boxShadow,

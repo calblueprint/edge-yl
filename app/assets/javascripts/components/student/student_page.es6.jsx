@@ -39,8 +39,12 @@ class StudentPage extends Component {
     Requester.get(ApiConstants.students.show(this.props.id), resolve);
   }
 
-  hideOverlay(event) {
-    this.setState({ overlay: false });
+  hideOverlay(response) {
+    if (response) {
+      this.setState({ overlay: false, student: response });
+    } else {
+      this.setState({ overlay: false });
+    }
   }
 
   showOverlay(type, callback) {
@@ -55,7 +59,7 @@ class StudentPage extends Component {
     if (this.state.overlay) {
       return (
         <PageOverlay
-          hideOverlay={() => this.hideOverlay()}
+          hideOverlay={(response) => this.hideOverlay(response)}
           student={this.state.student}
           type={this.state.type}
           callback={(this.state.callback == null) ? () => null : this.state.callback }

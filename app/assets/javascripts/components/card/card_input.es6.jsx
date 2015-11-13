@@ -45,10 +45,10 @@ class CardInput extends Component {
     return (
       <div style={this.styles.container}>
         <input
+          defaultValue={this.props.value}
           ref={'input'}
           style={this.styles.input}
-          placeholder={this.props.placeholder}
-          value={this.props.value}>
+          placeholder={this.props.placeholder}>
         </input>
       </div>
     );
