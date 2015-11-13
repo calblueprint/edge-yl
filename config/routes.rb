@@ -33,6 +33,7 @@
         resources :comments, only: [:create, :index]
       end
     end
+    resources :users, only: [:update]
   end
 
 end

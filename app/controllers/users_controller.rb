@@ -11,5 +11,4 @@ class UsersController < BaseController
       redirect_to login_path
     end
   end
-
 end
