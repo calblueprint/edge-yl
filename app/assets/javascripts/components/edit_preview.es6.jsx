@@ -14,12 +14,16 @@ class EditPreview extends Component {
 
   get styles() {
     return {
-      container: {
-        display: 'flex',
-        flexFlow: 'column',
-        justifyContent: 'center',
-        width: '356px',
-      },
+      container: Object.assign(
+        {},
+        StyleConstants.cards.default,
+        {
+          display: 'flex',
+          flexFlow: 'column',
+          justifyContent: 'center',
+          width: '356px',
+        }
+      ),
       form: {
         display: 'flex',
         flexFlow: 'column',

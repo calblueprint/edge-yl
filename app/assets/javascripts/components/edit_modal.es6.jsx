@@ -21,13 +21,12 @@ class EditModal extends Component {
 
   get styles() {
     return {
-      container: Object.assign(
-        {},
-        StyleConstants.cards.default,
-        {
-          zIndex: StyleConstants.planes.nine,
-        }
-      ),
+      container: {
+        display: 'flex',
+        flexFlow: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+      },
     };
   }
 
@@ -41,6 +40,7 @@ class EditModal extends Component {
   render() {
     return (
       <div style={this.styles.container}>
+        <h2>{'Edit'}</h2>
         {this.renderBody()}
       </div>
     );
