@@ -1,5 +1,10 @@
 class PageOverlay extends Component {
 
+  constructor(props) {
+    super(props);
+    this._node = null;
+  }
+
   static get propTypes() {
     return {
       hideOverlay: React.PropTypes.func.isRequired,
@@ -49,18 +54,19 @@ class PageOverlay extends Component {
 
   componentDidMount() {
     var node = ReactDOM.findDOMNode(this.refs.container);
+    this._node = node;
     node.addEventListener('click', (node) => this.handleClick(node));
   }
 
   handleClick(node) {
-    if (node.target == ReactDOM.findDOMNode(this.refs.container)) {
+    if (node.target == this._node) {
       this.props.hideOverlay();
     }
   }
 
   render() {
     return (
-      <div style={this.styles.container} ref={'container'} >
+      <div style={this.styles.container} ref={'container'}>
         <Clickable
           func={this.props.hideOverlay}
           icon={'fa fa-times fa-2x'}
