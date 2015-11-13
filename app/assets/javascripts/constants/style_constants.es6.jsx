@@ -7,6 +7,7 @@ class StylesSingleton {
       ash: '#565a5c',
       azure: '#78c1ee',
       blue: '#68b1de',
+      fog: 'rgba(255, 255, 255, 0.95)',
       gray: '#d6d6d6',
       indigo: '#28719e',
       opaque: 'rgba(255, 255, 255, 0.875)',
