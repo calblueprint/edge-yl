@@ -45,7 +45,7 @@ class StudentComments extends Component {
   }
 
   showCreateOverlay() {
-    this.props.showOverlay('create_comment', (comment) => addToComments(comment));
+    this.props.showOverlay('create_comment', (comment) => this.addToComments(comment));
   }
 
   renderStudentComments() {
@@ -53,7 +53,10 @@ class StudentComments extends Component {
   }
 
   addToComments(comment) {
-    this.setState({ comments: this.state.comments.push(comment) });
+    console.log(comment)
+    var state = this.state;
+    state.comments.push(comment);
+    this.setState( state );
   }
 
   componentDidMount() {
