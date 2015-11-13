@@ -24,14 +24,13 @@ class PageOverlay extends Component {
       container: {
         display: 'flex',
         justifyContent: 'center',
-        alignItems: 'center',
         position: 'fixed',
         top: '0px',
         left: '0px',
         zIndex: StyleConstants.planes.nine,
         width: '100vw',
         height: '100vh',
-        backgroundColor: StyleConstants.colors.opaque,
+        backgroundColor: StyleConstants.colors.fog,
       },
     };
   }
