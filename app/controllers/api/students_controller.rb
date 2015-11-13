@@ -12,7 +12,7 @@ class Api::StudentsController < Api::BaseController
 
   def show
     student = Student.includes(:school).find params[:id]
-    render json: student, serializer: StudentShowSerializers
+    render json: student, serializer: StudentShowSerializer
   end
 
   def update
