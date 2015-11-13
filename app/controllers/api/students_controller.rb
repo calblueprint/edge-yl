@@ -6,7 +6,7 @@ class Api::StudentsController < Api::BaseController
   end
 
   def index
-    students = Student.page params[:page]
+    students = Student.includes(:comments, :school).page params[:page]
     render json: students, each_serializer: StudentIndexSerializer
   end
 
