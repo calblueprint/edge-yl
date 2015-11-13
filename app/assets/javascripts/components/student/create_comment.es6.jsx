@@ -16,7 +16,7 @@ class CreateComment extends Component {
 
   static get defaultState() {
     return {
-      comment: '',
+      comment: null,
     };
   }
 
