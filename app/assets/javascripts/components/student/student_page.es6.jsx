@@ -56,7 +56,7 @@ class StudentPage extends Component {
         <PageOverlay
           hideOverlay={() => this.hideOverlay()}
           student={this.state.student}
-          type={this.state.type} />
+          {...this.props} />
       );
     }
   }

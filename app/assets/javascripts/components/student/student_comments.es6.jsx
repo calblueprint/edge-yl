@@ -14,7 +14,7 @@ class StudentComments extends Component {
     };
   }
 
-    static get defaultState() {
+  static get defaultState() {
     return {
       comments: [],
     };
@@ -49,7 +49,7 @@ class StudentComments extends Component {
   }
 
   renderStudentComments() {
-    return this.state.comments.map(this.renderStudentComment.bind(this));
+    return this.state.comments.map((comment, index) => this.renderStudentComment(comment, index));
   }
 
   createCommentRequest(params) {
