@@ -15,7 +15,9 @@ class ApiSingleton {
   get students() {
     return {
       create: '/api/students',
-      index: '/api/students',
+      index: function(page) {
+        return `/api/students?page=${page}`;
+      },
       show: function(id) {
         return `/api/students/${id}`;
       },

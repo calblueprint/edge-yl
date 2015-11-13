@@ -1,6 +1,3 @@
-class SchoolIndexSerializer < BaseSerializer
-
-  attributes :id, :address, :counselor_email,
-             :counselor_name, :name
+class SchoolIndexSerializer < SchoolBaseSerializer
 
 end

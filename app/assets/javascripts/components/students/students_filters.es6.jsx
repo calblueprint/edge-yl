@@ -8,7 +8,7 @@ class StudentsFilters extends Component {
         {
           display: 'flex',
           padding: '12px',
-          marginTop: '2%',
+          marginTop: '12px',
         }
       ),
       title: {
