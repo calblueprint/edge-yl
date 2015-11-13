@@ -47,9 +47,20 @@ class PageOverlay extends Component {
     };
   }
 
+  componentDidMount() {
+    var node = ReactDOM.findDOMNode(this.refs.container);
+    node.addEventListener('click', (node) => this.handleClick(node));
+  }
+
+  handleClick(node) {
+    if (node.target == ReactDOM.findDOMNode(this.refs.container)) {
+      this.props.hideOverlay();
+    }
+  }
+
   render() {
     return (
-      <div style={this.styles.container}>
+      <div style={this.styles.container} ref={'container'} >
         <Clickable
           func={this.props.hideOverlay}
           icon={'fa fa-times fa-2x'}
