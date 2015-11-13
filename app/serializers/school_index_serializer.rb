@@ -1,3 +1,3 @@
-class SchoolIndexSerializer < BaseSerializer
+class SchoolIndexSerializer < SchoolBaseSerializer
 
 end

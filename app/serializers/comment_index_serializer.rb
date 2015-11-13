@@ -1,6 +1,4 @@
-class CommentIndexSerializer < BaseSerializer
-
-  attributes :id, :content, :updated_at
+class CommentIndexSerializer < CommentBaseSerializer
 
   belongs_to :user, serializer: UserBaseSerializer
 

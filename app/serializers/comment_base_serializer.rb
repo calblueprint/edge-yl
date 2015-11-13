@@ -1,6 +1,6 @@
 class CommentBaseSerializer < BaseSerializer
 
-  attributes :id, :created_at, :first_name, :is_admin, :last_name
+  attributes :id, :content, :updated_at
 
 end
 

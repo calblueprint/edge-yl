@@ -12,12 +12,12 @@ class Api::StudentsController < Api::BaseController
 
   def show
     student = Student.includes(:school).find params[:id]
-    render json: student, serializer: StudentShowSerializer
+    render json: student, serializer: StudentShowSerializers
   end
 
   def update
-    student = Student.find(params[:id])
-    if student.update_attributes(student_params)
+    student = Student.find params[:id]
+    if student.update_attributes student_params
       render json: student, serializer: StudentIndexSerializer, status: 201
     else
       unprocessable_response student
