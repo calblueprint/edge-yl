@@ -28,7 +28,7 @@ class StudentsPage extends Component {
 
   componentDidMount() {
     resolve = (response) => { this.setState({ students: response }) };
-    Requester.get(ApiConstants.students.index, resolve);
+    Requester.get(ApiConstants.students.index(1), resolve);
   }
 
   toggleSidebar(event) {

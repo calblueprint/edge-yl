@@ -23,7 +23,7 @@ class StudentsCard extends Component {
           width: '49%',
           height: '24%',
           padding: '24px',
-          marginTop: '2%',
+          marginTop: '12px',
           boxSizing: 'border-box',
         }
       ),
