@@ -38,14 +38,14 @@ class StudentComments extends Component {
     };
   }
 
+  showCreateOverlay() {
+    this.props.showOverlay('create_comment', (comment) => this.addToComments(comment));
+  }
+
   renderStudentComment(comment, index) {
     return (
       <StudentComment comment={comment} key={index} />
     );
-  }
-
-  showCreateOverlay() {
-    this.props.showOverlay('create_comment', (comment) => this.addToComments(comment));
   }
 
   renderStudentComments() {
@@ -53,7 +53,6 @@ class StudentComments extends Component {
   }
 
   addToComments(comment) {
-    console.log(comment)
     var state = this.state;
     state.comments.push(comment);
     this.setState( state );
@@ -64,13 +63,32 @@ class StudentComments extends Component {
     Requester.get(ApiConstants.students.comments.index(this.props.id), resolve);
   }
 
+  get clickableStyles() {
+    return {
+      default: {
+        flex: '1',
+        padding: '12px',
+        marginTop: '12px',
+        borderRadius: '1px',
+        boxSizing: 'border-box',
+      },
+      hover: {
+        backgroundColor: StyleConstants.colors.turquoise,
+      }
+    };
+  }
+
   render() {
     var style = this.styles.container;
     return (
       <div style={style}>
         <span style={this.styles.title}> Student Comments </span>
         {this.renderStudentComments()}
-        <Clickable func={() => this.showCreateOverlay()}>Add Comment</Clickable>
+        <Clickable
+          content={"Add Comment"}
+          func={() => this.showCreateOverlay()}
+          styles={this.clickableStyles}
+          type={'h3'} />
       </div>
     );
   }
