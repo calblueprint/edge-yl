@@ -50,7 +50,13 @@ class EditPreview extends Component {
   }
 
   updateStudent() {
-    console.log('Should send a request up here!');
+    var params = {
+      birthday: this.state.birthday,
+      first_name: this.state.firstName,
+      last_name: this.state.lastName
+    };
+    resolve = (response) => this.props.hideOverlay(response);
+    Requester.update(ApiConstants.students.update(this.props.student.id), params, resolve);
   }
 
   generateHandler(field) {

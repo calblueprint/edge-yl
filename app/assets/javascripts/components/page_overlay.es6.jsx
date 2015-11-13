@@ -72,6 +72,7 @@ class PageOverlay extends Component {
           styles={this.clickableStyles}
           type={'i'} />
         <EditModal
+          hideOverlay={this.props.hideOverlay}
           student={this.props.student}
           type={this.props.type} />
       </div>
