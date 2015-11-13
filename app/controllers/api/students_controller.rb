@@ -6,7 +6,7 @@ class Api::StudentsController < Api::BaseController
   end
 
   def index
-    students = Student.all
+    students = Student.page(1).per(10)
     render json: students, each_serializer: StudentIndexSerializer
   end
 
