@@ -5,10 +5,6 @@ Rails.application.configure do
   config.react.variant = :production
   config.react.addons = true
 
-  config.react.jsx_transform_options = {
-    harmony: true,
-  }
-
   # Code is not reloaded between requests.
   config.cache_classes = true
 
