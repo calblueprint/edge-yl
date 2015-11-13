@@ -72,7 +72,7 @@ class StudentsCard extends Component {
             content={student.school.name}
             route={RouteConstants.schools.show(student.school.id)}
             styles={this.clickableStyles}
-            type={'h6'} />
+            type={'h5'} />
         </div>
       </div>
     );
