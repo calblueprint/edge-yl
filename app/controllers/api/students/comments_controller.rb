@@ -1,7 +1,6 @@
 class Api::Students::CommentsController < Api::BaseController
 
   def create
-    puts params
     comment = Comment.new comment_params
     if comment.save
       render json: comment, serializer: CommentIndexSerializer, status: 201
