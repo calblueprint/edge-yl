@@ -59,6 +59,10 @@ class FormSection extends Component {
           <FormDropdown 
             options={['hi','lol']}
             title={'Birthday'}
+          /> 
+          <FormDropdown 
+            options={['Nevada','California']}
+            title={'State'}
           />
         </div>
       </div>

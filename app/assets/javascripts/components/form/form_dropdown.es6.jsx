@@ -33,7 +33,9 @@ class FormDropdown extends Component {
           zIndex: StyleConstants.planes.two,
           display: 'flex',
           flexFlow: 'column',      
-          width: '128px',
+          width: '136px',
+          top: '19px',
+          left: '-5px',
         }
       ),
     };
@@ -54,6 +56,9 @@ class FormDropdown extends Component {
       container: {
         display: 'flex', 
         flexFlow: 'row',
+        justifyContent: 'space-between',
+        width: '250px',
+        marginBottom: '20px',
       },
       label: {
         paddingRight: '24px',
