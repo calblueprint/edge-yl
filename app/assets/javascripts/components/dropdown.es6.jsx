@@ -25,7 +25,7 @@ class Dropdown extends Component {
       },
     };
   }
-c
+
   renderOption(option, index) {
     return (
       <Clickable
