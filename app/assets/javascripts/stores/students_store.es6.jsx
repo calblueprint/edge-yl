@@ -5,8 +5,8 @@
       this.sidebar = true;
       this.students = [];
       this.bindListeners({
-        handleUpdateStudents: StudentsActions.UPDATE_STUDENTS,
         handleToggleSidebar: StudentsActions.TOGGLE_SIDEBAR,
+        handleUpdateStudents: StudentsActions.UPDATE_STUDENTS,
       });
     }
 

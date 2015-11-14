@@ -1,5 +1,10 @@
 class StudentPage extends Component {
 
+  constructor(props) {
+    super(props);
+    this._listener = null;
+  }
+
   static get propTypes() {
     return {
       id: React.PropTypes.number.isRequired,
@@ -15,8 +20,6 @@ class StudentPage extends Component {
   static get defaultState() {
     return {
       overlay: false,
-      sidebar: true,
-      student: { school: {} },
       type: 'preview',
       callback: () => null,
     };
@@ -34,9 +37,17 @@ class StudentPage extends Component {
     };
   }
 
+  componentWillMount() {
+    this.setState(StudentStore.getState());
+  }
+
   componentDidMount() {
-    resolve = (response) => this.setState({ student: response });
-    Requester.get(ApiConstants.students.show(this.props.id), resolve);
+    this._listener = StudentStore.listen((state) => this.setState(state));
+    StudentActions.fetchStudent(this.props.id);
+  }
+
+  componentWillUnmount() {
+    StudentStore.unlisten(this._listener);
   }
 
   hideOverlay(response) {
@@ -52,7 +63,7 @@ class StudentPage extends Component {
   }
 
   toggleSidebar(event) {
-    this.setState({ sidebar: !this.state.sidebar });
+    StudentsActions.toggleSidebar(!this.state.sidebar);
   }
 
   renderOverlay() {
