@@ -32,7 +32,7 @@ class StudentsPage extends Component {
     return (
       <div style={StyleConstants.pages.default}>
         <Header
-          toggleSidebar={this.toggleSidebar.bind(this)} />
+          toggleSidebar={() => this.toggleSidebar())} />
         <div style={this.styles.container}>
           <Sidebar shouldShow={this.state.sidebar} />
           <div style={this.styles.body}>

@@ -131,7 +131,7 @@ class SignupForm extends Component {
         {this.renderError()}
         <FormButton
           content={'Sign up'}
-          func={this.createUser.bind(this)} />
+          func={(event) => this.createUser(event)} />
       </div>
     );
   }
