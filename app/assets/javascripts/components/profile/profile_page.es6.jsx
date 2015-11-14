@@ -42,7 +42,7 @@ class ProfilePage extends Component {
     return (
       <div style={this.styles.container}>
         <Header
-          toggleSidebar={this.toggleSidebar.bind(this)} />
+          toggleSidebar={() => this.toggleSidebar()} />
         <div style={this.styles.body}>
           <Sidebar shouldShow={this.state.sidebar} />
           <ProfileCards currentUser={this.props.currentUser} />
