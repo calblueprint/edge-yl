@@ -1,12 +1,5 @@
 class StudentsPage extends Component {
 
-  static get defaultState() {
-    return {
-      sidebar: true,
-      students: [],
-    };
-  }
-
   get styles() {
     return {
       container: {
@@ -27,8 +20,8 @@ class StudentsPage extends Component {
   }
 
   componentDidMount() {
-    resolve = (response) => { this.setState({ students: response }) };
-    Requester.get(ApiConstants.students.index(1), resolve);
+    StudentsStore.listen((state) => this.setState(state));
+    StudentsActions.fetchStudents();
   }
 
   toggleSidebar(event) {

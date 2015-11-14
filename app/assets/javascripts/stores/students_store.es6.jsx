@@ -2,16 +2,16 @@
   class StudentsStore {
 
     constructor() {
+      this.sidebar = true;
       this.students = [];
-      // this.bindListeners({
-      //   handleUpdateName: NameActions.UPDATE_NAME
-      // });
+      this.bindListeners({
+        handleUpdateStudents: StudentsActions.UPDATE_STUDENTS,
+      });
     }
 
-    // handleUpdateName(name) {
-    //   this.name = name;
-    // }
+    handleUpdateStudents(students) {
+      this.students = students;
+    }
   }
-
-  this.StudentsStore = alt.createStore(StudentsStore, 'StudentsStore');
+  this.StudentsStore = alt.createStore(StudentsStore);
 })();
