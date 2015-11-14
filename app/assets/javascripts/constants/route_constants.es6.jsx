@@ -22,7 +22,9 @@ class RoutesSingleton {
 
   get students() {
     return {
-      index: '/students',
+      index: function(page) {
+        return `/students?page=${page}`;
+      },
       show: function(id) {
         return `/students/${id}`;
       },

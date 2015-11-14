@@ -47,6 +47,10 @@ class StudentsPage extends Component {
     this.setState({ sidebar: !this.state.sidebar });
   }
 
+  changePage() {
+    window.location = RouteConstants.students.index(this.props.page + 1);
+  }
+
   render() {
     return (
       <div style={StyleConstants.pages.default}>
@@ -57,6 +61,14 @@ class StudentsPage extends Component {
           <div style={this.styles.body}>
             <StudentsFilters />
             <StudentsGrid students={this.state.students} />
+            <div>
+              <Clickable
+                content={'Previous'}
+                func={() => this.changePage()} />
+              <Clickable
+                content={'Next'}
+                func={() => this.changePage()} />
+            </div>
           </div>
         </div>
       </div>
