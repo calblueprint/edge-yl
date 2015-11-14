@@ -9,6 +9,10 @@
       });
     }
 
+    handletoggleSidebar() {
+      this.sidebar = !this.sidebar;
+    }
+
     handleUpdateStudents(students) {
       this.students = students;
     }

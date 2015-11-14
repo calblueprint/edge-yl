@@ -6,6 +6,10 @@
       Requester.get(ApiConstants.students.index(1), resolve);
     }
 
+    toggleSidebar() {
+
+    }
+
     updateStudents(students) {
       return students;
     }
