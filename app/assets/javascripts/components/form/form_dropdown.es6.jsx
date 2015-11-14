@@ -29,13 +29,13 @@ class FormDropdown extends Component {
         {},
         StyleConstants.cards.default,
         {  
-          position:'absolute',
-          zIndex: StyleConstants.planes.two,
           display: 'flex',
-          flexFlow: 'column',      
-          width: '136px',
+          flexFlow: 'column',    
+          position:'absolute',
+          zIndex: StyleConstants.planes.two,  
           top: '19px',
           left: '-5px',
+          width: '136px',
         }
       ),
     };
@@ -104,7 +104,6 @@ class FormDropdown extends Component {
   }
 
   generateDropdownOptions() { 
-    console.log(this.props.options);
     return this.props.options.map(this.generateDropdownOption.bind(this));
   }
 
