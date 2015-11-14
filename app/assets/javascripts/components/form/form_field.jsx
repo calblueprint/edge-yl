@@ -38,7 +38,7 @@ class FormField extends Component {
 
   componentDidMount() {
     var node = ReactDOM.findDOMNode(this.refs.container);
-    node.addEventListener('input', this.handleChange.bind(this));
+    node.addEventListener('input', (event) => this.handleChange(event));
   }
 
   render() {

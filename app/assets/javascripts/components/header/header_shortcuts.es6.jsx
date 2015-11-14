@@ -113,7 +113,7 @@ class HeaderShortcuts extends Component {
       <Clickable
         key={2}
         icon={'fa fa-user fa-x'}
-        func={this.handleClick.bind(this)}
+        func={() => this.handleClick()}
         styles={this.clickableStyles}
         type={'i'} />,
     ];
