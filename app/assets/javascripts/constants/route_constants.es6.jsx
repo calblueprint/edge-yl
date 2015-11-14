@@ -22,7 +22,11 @@
     get students() {
       return {
         index: function(page) {
-          return `/students?page=${page}`;
+          if (page) {
+            return `/students?page=${page}`;
+          } else {
+            return '/students';
+          }
         },
         show: function(id) {
           return `/students/${id}`;
