@@ -59,8 +59,8 @@ class Clickable extends Component {
     var node = ReactDOM.findDOMNode(this.refs.container);
     node.addEventListener('click', (event) => this.handleClick(event));
     node.addEventListener('mouseenter', (event) => this.handleMouseEnter(event));
-    node.addEventListener('mouseleave', (event) => this.handleMouseLeave(event)));
-    node.addEventListener('mouseup', (event) => this.handleMouseUp(event)));
+    node.addEventListener('mouseleave', (event) => this.handleMouseLeave(event));
+    node.addEventListener('mouseup', (event) => this.handleMouseUp(event));
   }
 
   handleClick(event) {
@@ -68,7 +68,7 @@ class Clickable extends Component {
     if (props.route === '' && props.func !== null) {
       event.preventDefault();
       event.stopPropagation();
-      props.func();
+      props.func(event);
     }
   }
 

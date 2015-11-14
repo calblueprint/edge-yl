@@ -65,7 +65,7 @@ class FormBody extends Component {
           updateValue={() => this.updateValue()} />
         <FormSection
           title={'Health Information'}
-          updateValue={() => this.updateValue())} />
+          updateValue={() => this.updateValue()} />
         <FormFooter />
       </div>
     );

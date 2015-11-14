@@ -12,13 +12,6 @@ class StudentsPage extends Component {
     };
   }
 
-  static get defaultState() {
-    return {
-      sidebar: true,
-      students: [],
-    };
-  }
-
   get styles() {
     return {
       container: {
@@ -47,16 +40,12 @@ class StudentsPage extends Component {
   }
 
   componentDidMount() {
-    resolve = (response) => { this.setState({ students: response }) };
-    Requester.get(ApiConstants.students.index(this.props.page), resolve);
+    StudentsStore.listen((state) => this.setState(state));
+    StudentsActions.fetchStudents(this.props.page);
   }
 
   toggleSidebar(event) {
-    this.setState({ sidebar: !this.state.sidebar });
-  }
-
-  changePage() {
-    window.location = RouteConstants.students.index(this.props.page + 1);
+    StudentsActions.toggleSidebar(!this.state.sidebar);
   }
 
   renderNavigator() {
@@ -80,8 +69,7 @@ class StudentsPage extends Component {
   render() {
     return (
       <div style={StyleConstants.pages.default}>
-        <Header
-          toggleSidebar={() => this.toggleSidebar())} />
+        <Header toggleSidebar={(event) => this.toggleSidebar(event)} />
         <div style={this.styles.container}>
           <Sidebar shouldShow={this.state.sidebar} />
           <div style={this.styles.body}>
