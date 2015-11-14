@@ -1,9 +1,9 @@
 (() => {
   class StudentsActions {
 
-    fetchStudents() {
+    fetchStudents(page) {
       resolve = (response) => this.updateStudents(response);
-      Requester.get(ApiConstants.students.index(1), resolve);
+      Requester.get(ApiConstants.students.index(page), resolve);
       return true;
     }
 
