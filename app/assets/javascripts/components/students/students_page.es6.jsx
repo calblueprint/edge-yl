@@ -25,13 +25,13 @@ class StudentsPage extends Component {
   }
 
   toggleSidebar(event) {
-    StudentsActions.toggleSidebar();
+    StudentsActions.toggleSidebar(!this.state.sidebar);
   }
 
   render() {
     return (
       <div style={StyleConstants.pages.default}>
-        <Header toggleSidebar={() => this.toggleSidebar()} />
+        <Header toggleSidebar={(event) => this.toggleSidebar(event)} />
         <div style={this.styles.container}>
           <Sidebar shouldShow={this.state.sidebar} />
           <div style={this.styles.body}>

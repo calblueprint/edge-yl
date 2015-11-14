@@ -54,20 +54,22 @@ class Header extends Component {
   }
 
   renderToggler() {
-    return (
-      <Clickable
-        func={this.props.toggleSidebar}
-        icon={'fa fa-bars fa-x'}
-        styles={this.clickableStyles}
-        type={'i'} />
-    );
+    if (this.props.hasSidebar) {
+      return (
+        <Clickable
+          func={this.props.toggleSidebar}
+          icon={'fa fa-bars fa-x'}
+          styles={this.clickableStyles}
+          type={'i'} />
+      );
+    }
   }
 
   render() {
     return (
       <div style={this.styles.container}>
         <div style={this.styles.sidebar}>
-          {this.props.hasSidebar && this.renderToggler()}
+          {this.renderToggler()}
         </div>
         <HeaderNavigation />
         <HeaderShortcuts showShortcuts={this.props.hasSidebar} />
