@@ -8,7 +8,6 @@
     }
 
     toggleSidebar(sidebar) {
-      console.log('hi');
       return sidebar;
     }
 
