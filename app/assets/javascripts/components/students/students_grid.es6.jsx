@@ -19,7 +19,6 @@ class StudentsGrid extends Component {
         flexFlow: 'wrap',
         justifyContent: 'space-between',
         alignContent: 'flex-start',
-        flex: '1',
       },
     };
   }
