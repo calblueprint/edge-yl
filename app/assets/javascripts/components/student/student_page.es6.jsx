@@ -20,8 +20,6 @@ class StudentPage extends Component {
   static get defaultState() {
     return {
       overlay: false,
-      sidebar: true,
-      student: { school: {} },
       type: 'preview',
       callback: () => null,
     };
@@ -39,9 +37,13 @@ class StudentPage extends Component {
     };
   }
 
+  componentWillMount() {
+    this.setState(StudentStore.getState());
+  }
+
   componentDidMount() {
-    this._listener = StudentsStore.listen((state) => this.setState(state));
-    StudentsActions.fetchStudents(this.props.id);
+    this._listener = StudentStore.listen((state) => this.setState(state));
+    StudentActions.fetchStudent(this.props.id);
   }
 
   componentWillUnmount() {

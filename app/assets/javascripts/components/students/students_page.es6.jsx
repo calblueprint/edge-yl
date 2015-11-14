@@ -1,5 +1,10 @@
 class StudentsPage extends Component {
 
+  constructor(props) {
+    super(props);
+    this._listener = null;
+  }
+
   static get propTypes() {
     return {
       page: React.PropTypes.number.isRequired,
@@ -39,9 +44,17 @@ class StudentsPage extends Component {
     };
   }
 
+  componentWillMount() {
+    this.setState(StudentsStore.getState());
+  }
+
   componentDidMount() {
-    StudentsStore.listen((state) => this.setState(state));
+    this._listener = StudentsStore.listen((state) => this.setState(state));
     StudentsActions.fetchStudents(this.props.page);
+  }
+
+  componentWillUnmount() {
+    StudentsStore.unlisten(this._listener);
   }
 
   toggleSidebar(event) {

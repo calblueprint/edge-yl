@@ -15,5 +15,5 @@
       return student;
     }
   }
-  this.StudentAction = alt.createActions(StudentAction);
+  this.StudentActions = alt.createActions(StudentActions);
 })();
