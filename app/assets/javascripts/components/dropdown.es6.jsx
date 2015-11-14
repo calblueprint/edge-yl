@@ -38,7 +38,7 @@ class Dropdown extends Component {
   }
 
   renderOptions() {
-    return this.props.options.map(this.renderOption.bind(this));
+    return this.props.options.map((option, index) => this.renderOption(option, index)));
   }
 
   render() {

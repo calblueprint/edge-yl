@@ -14,6 +14,14 @@ class ApiSingleton {
 
   get students() {
     return {
+      comments: {
+        create: function(id) {
+          return `/api/students/${id}/comments`;
+        },
+        index: function(id) {
+          return `/api/students/${id}/comments`;
+        },
+      },
       create: '/api/students',
       index: function(page) {
         return `/api/students?page=${page}`;

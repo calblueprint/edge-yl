@@ -34,7 +34,7 @@ class StudentsGrid extends Component {
   }
 
   renderCards() {
-    return this.props.students.map(this.renderCard.bind(this));
+    return this.props.students.map((student) => this.renderCard(student));
   }
 
   render() {
