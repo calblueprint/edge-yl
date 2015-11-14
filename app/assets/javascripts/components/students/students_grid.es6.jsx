@@ -20,6 +20,7 @@ class StudentsGrid extends Component {
         justifyContent: 'space-between',
         alignContent: 'flex-start',
         flex: '1',
+        paddingBottom: '128px',
       },
     };
   }

@@ -8,7 +8,9 @@ class EditModal extends Component {
         'conference',
         'parent',
         'preview',
+        'create_comment',
       ]).isRequired,
+      callback: React.PropTypes.func.isRequired,
     };
   }
 
@@ -21,22 +23,22 @@ class EditModal extends Component {
 
   get styles() {
     return {
-      container: Object.assign(
-        {},
-        StyleConstants.cards.default,
-        {
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          zIndex: StyleConstants.planes.nine,
-          width: '32.5%',
-        }
-      ),
+      container: {
+        display: 'flex',
+        flexFlow: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+      },
+      title: {
+        marginBottom: '6px',
+      },
     };
   }
 
   renderBody() {
     switch (this.props.type) {
+      case "create_comment":
+        return <CreateComment {...this.props} />;
       default:
         return <EditPreview {...this.props} />;
     };
@@ -45,6 +47,7 @@ class EditModal extends Component {
   render() {
     return (
       <div style={this.styles.container}>
+        <h2 style={this.styles.title}>{'Edit'}</h2>
         {this.renderBody()}
       </div>
     );

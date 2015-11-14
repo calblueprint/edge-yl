@@ -3,7 +3,7 @@ class LoginForm extends Component {
   static get defaultState() {
     return {
       email: '',
-      errors: false,
+      error: '',
       password: '',
     };
   }
@@ -13,20 +13,21 @@ class LoginForm extends Component {
       container: {
         display: 'flex',
         flexFlow: 'column',
-        alignItems: 'center',
       },
       error: {
+        flex: 1,
         marginBottom: '24px',
         color: StyleConstants.colors.red,
+        textAlign: 'center',
       },
       label: {
+        flex: 1,
         marginBottom: '6px',
-        alignSelf: 'stretch',
       },
       input: {
+        flex: 1,
         padding: '8px',
         marginBottom: '24px',
-        alignSelf: 'stretch',
       },
     };
   }
@@ -39,7 +40,7 @@ class LoginForm extends Component {
       },
     };
     var resolve = (response) => { window.location = RouteConstants.students.index };
-    var reject = (response) => { this.setState({ errors: true }) };
+    var reject = (response) => { this.setState({ error: response.message }) };
     Requester.post(ApiConstants.users.login, params, resolve, reject);
   }
 
@@ -51,19 +52,21 @@ class LoginForm extends Component {
     };
   }
 
-  renderMessage() {
-    return (
-      <span style={this.styles.error}>
-        {'Invalid email/password'}
-      </span>
-    );
-  }
-
   componentDidMount() {
     var email = ReactDOM.findDOMNode(this.refs.email);
     email.addEventListener('input', this.generateHandler('email'));
     var password = ReactDOM.findDOMNode(this.refs.password);
     password.addEventListener('input', this.generateHandler('password'));
+  }
+
+  renderError() {
+    if (this.state.error) {
+      return (
+        <span style={this.styles.error}>
+          {this.state.error}
+        </span>
+      );
+    }
   }
 
   render() {
@@ -87,7 +90,7 @@ class LoginForm extends Component {
           ref={'password'}
           type={'password'}>
         </input>
-        {this.state.errors && this.renderMessage()}
+        {this.renderError()}
         <FormButton
           content={'Log in'}
           func={this.createSession.bind(this)} />

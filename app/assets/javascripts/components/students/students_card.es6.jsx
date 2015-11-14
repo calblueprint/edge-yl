@@ -23,7 +23,7 @@ class StudentsCard extends Component {
           width: '49%',
           height: '24%',
           padding: '24px',
-          marginTop: '2%',
+          marginTop: '12px',
           boxSizing: 'border-box',
         }
       ),
@@ -72,7 +72,7 @@ class StudentsCard extends Component {
             content={student.school.name}
             route={RouteConstants.schools.show(student.school.id)}
             styles={this.clickableStyles}
-            type={'h6'} />
+            type={'h5'} />
         </div>
       </div>
     );

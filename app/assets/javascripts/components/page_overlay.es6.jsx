@@ -1,16 +1,23 @@
 class PageOverlay extends Component {
 
+  constructor(props) {
+    super(props);
+    this._node = null;
+  }
+
   static get propTypes() {
     return {
-      shouldShow: React.PropTypes.bool.isRequired,
+      hideOverlay: React.PropTypes.func.isRequired,
       student: React.PropTypes.object.isRequired,
+      callback: React.PropTypes.func.isRequired,
     };
   }
 
   static get defaultProps() {
     return {
-      shouldShow: true,
+      hideOverlay: null,
       student: {},
+      callback: null,
     };
   }
 
@@ -18,17 +25,14 @@ class PageOverlay extends Component {
     return {
       container: {
         display: 'flex',
-        flexFlow: 'row',
-        alignItems: 'center',
         justifyContent: 'center',
         position: 'fixed',
+        top: '0px',
+        left: '0px',
         zIndex: StyleConstants.planes.nine,
         width: '100vw',
         height: '100vh',
-        backgroundColor: 'rgba(0, 0, 0, 0.6)',
-      },
-      hidden: {
-        display: 'none',
+        backgroundColor: StyleConstants.colors.fog,
       },
     };
   }
@@ -40,31 +44,40 @@ class PageOverlay extends Component {
         top: '0px',
         right: '0px',
         zIndex: StyleConstants.planes.nine,
-        margin: '12px',
-        color: StyleConstants.colors.white,
+        padding: '8px',
+        color: StyleConstants.colors.blue,
       },
       hover: {
-        color: 'rgba(255, 255, 255, 0.6)',
+        color: StyleConstants.colors.indigo,
       },
     };
   }
 
+  componentDidMount() {
+    var node = ReactDOM.findDOMNode(this.refs.container);
+    this._node = node;
+    node.addEventListener('click', (node) => this.handleClick(node));
+  }
+
+  handleClick(node) {
+    if (node.target == this._node) {
+      this.props.hideOverlay();
+    }
+  }
+
   render() {
-    var style = Object.assign(
-      {},
-      this.styles.container,
-      !this.props.shouldShow && this.styles.hidden
-    );
     return (
-      <div style={style}>
+      <div style={this.styles.container} ref={'container'}>
         <Clickable
-          func={this.props.closeOverlay}
+          func={this.props.hideOverlay}
           icon={'fa fa-times fa-2x'}
           styles={this.clickableStyles}
           type={'i'} />
         <EditModal
+          hideOverlay={this.props.hideOverlay}
           student={this.props.student}
-          type={this.props.type} />
+          type={this.props.type}
+          callback={this.props.callback} />
       </div>
     );
   }

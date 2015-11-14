@@ -14,12 +14,11 @@ class StudentPage extends Component {
 
   static get defaultState() {
     return {
-      sidebar: true,
       overlay: false,
+      sidebar: true,
+      student: { school: {} },
       type: 'preview',
-      student: {
-        school: {},
-      },
+      callback: () => null,
     };
   }
 
@@ -36,39 +35,53 @@ class StudentPage extends Component {
   }
 
   componentDidMount() {
-    resolve = (response) => { this.setState({ student: response }) };
+    resolve = (response) => this.setState({ student: response });
     Requester.get(ApiConstants.students.show(this.props.id), resolve);
+  }
+
+  hideOverlay(response) {
+    if (response) {
+      this.setState({ overlay: false, student: response });
+    } else {
+      this.setState({ overlay: false });
+    }
+  }
+
+  showOverlay(type, callback) {
+    this.setState({ overlay: true, type: type, callback: callback});
   }
 
   toggleSidebar(event) {
     this.setState({ sidebar: !this.state.sidebar });
   }
 
-  renderOverlay(type) {
-    this.setState({ overlay: true,
-                    type: type });
-  }
-
-  closeOverlay(event) {
-    this.setState({ overlay: false });
+  renderOverlay() {
+    if (this.state.overlay) {
+      return (
+        <PageOverlay
+          hideOverlay={(response) => this.hideOverlay(response)}
+          student={this.state.student}
+          type={this.state.type}
+          callback={(this.state.callback == null) ? () => null : this.state.callback }
+          {...this.props} />
+      );
+    }
   }
 
   render() {
     return (
       <div style={StyleConstants.pages.default}>
-        <PageOverlay
-          shouldShow={this.state.overlay}
-          closeOverlay={this.closeOverlay.bind(this)}
-          student={this.state.student}
-          type={this.state.type} />
+        {this.renderOverlay()}
         <Header
-          toggleSidebar={this.toggleSidebar.bind(this)} />
+          toggleSidebar={() => this.toggleSidebar()} />
         <div style={this.styles.container}>
           <Sidebar shouldShow={this.state.sidebar} />
-          <StudentGrid student={this.state.student}
-            renderOverlay={this.renderOverlay.bind(this)} />
+          <StudentGrid
+            showOverlay={(type, callback) => this.showOverlay(type, callback)}
+            student={this.state.student} />
           <StudentComments
-            comments={this.state.student.comments} />
+            showOverlay={(type, callback) => this.showOverlay(type, callback)}
+            id={this.props.id} />
         </div>
       </div>
     );

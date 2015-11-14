@@ -18,7 +18,7 @@ class FormField extends Component {
       container: {
         display: 'flex',
         alignItems: 'center',
-        marginBottom: '20px',
+        marginBottom: '18px',
       },
       label: {
         paddingRight: '24px',
@@ -33,8 +33,7 @@ class FormField extends Component {
   }
 
   handleChange(event) {
-    var node = ReactDOM.findDOMNode(this.refs.container);
-    this.props.updateValue(node, node.value);
+    this.props.updateValue(event);
   }
 
   componentDidMount() {
@@ -49,9 +48,10 @@ class FormField extends Component {
         <input
           ref={'container'}
           style={this.styles.input}
-          placeholder={this.props.placeholder}>
+          placeholder={this.props.placeholder}
+          value={this.props.value}>
         </input>
       </div>
-    )
+    );
   }
 }

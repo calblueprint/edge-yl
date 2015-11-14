@@ -29,7 +29,7 @@ class SidebarGroup extends Component {
         <SidebarItem
           label={'Volunteers'}
           icon={'fa fa-male fa-lg'}
-          route={RouteConstants.students.index}/>
+          route={RouteConstants.users.index}/>
         <div style={this.styles.border} />
       </div>
     );

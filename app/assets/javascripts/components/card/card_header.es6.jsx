@@ -1,21 +1,18 @@
-class StudentEdit extends Component {
+class CardHeader extends Component {
 
   static get propTypes() {
     return {
-      student: React.PropTypes.object.isRequired,
-      type: React.PropTypes.oneOf([
-        'contact',
-        'conference',
-        'parent',
-        'preview',
-      ]).isRequired,
+      action: React.PropTypes.func.isRequired,
+      content: React.PropTypes.string.isRequired,
+      icon: React.PropTypes.string.isRequired,
     };
   }
 
   static get defaultProps() {
     return {
-      student: {},
-      type: 'preview',
+      action: null,
+      content: 'Student Preview',
+      icon: 'fa fa-pencil-square-o fa-lg',
     };
   }
 
@@ -43,26 +40,13 @@ class StudentEdit extends Component {
     };
   }
 
-  renderTitle() {
-    switch (this.props.type) {
-      case 'preview':
-        return 'Student Preview';
-      case 'contact':
-        return 'Student Information';
-      case 'parent':
-        return 'Parent Information';
-      case 'conference':
-        return 'Conference Information';
-    };
-  }
-
   render() {
     return (
       <div style={this.styles.container}>
-        <h5>{this.renderTitle()}</h5>
+        <h5>{this.props.content}</h5>
         <Clickable
-          func={(event) => this.props.renderOverlay(this.props.type)}
-          icon={'fa fa-pencil-square-o'}
+          func={this.props.action}
+          icon={this.props.icon}
           styles={this.clickableStyles}
           type={'i'} />
       </div>

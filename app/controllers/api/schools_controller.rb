@@ -2,7 +2,7 @@ class Api::SchoolsController < Api::BaseController
 
   def create
     school = School.new school_params
-    render json: student, serializer: SchoolIndexSerializer
+    render json: student, serializer: SchoolBaseSerializer
   end
 
   def index
@@ -12,6 +12,7 @@ class Api::SchoolsController < Api::BaseController
 
   def show
     school = School.find params[:id]
+    # TODO(Warren): When necessary, serializer with a SchoolShowSerializer.
     render json: school, serializer: SchoolIndexSerializer
   end
 
