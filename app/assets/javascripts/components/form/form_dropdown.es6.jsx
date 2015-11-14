@@ -57,12 +57,11 @@ class FormDropdown extends Component {
         display: 'flex', 
         flexFlow: 'row',
         justifyContent: 'space-between',
+        alignItems: 'center',
         width: '250px',
         marginBottom: '20px',
       },
       label: {
-        paddingRight: '24px',
-        paddingTop: '4px',
         fontSize: StyleConstants.fonts.sizes.smaller,
       },
       selected: {
