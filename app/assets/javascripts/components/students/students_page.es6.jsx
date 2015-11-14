@@ -1,5 +1,17 @@
 class StudentsPage extends Component {
 
+  static get propTypes() {
+    return {
+      page: React.PropTypes.number.isRequired,
+    };
+  }
+
+  static get defaultProps() {
+    return {
+      page: 1,
+    };
+  }
+
   static get defaultState() {
     return {
       sidebar: true,
@@ -28,7 +40,7 @@ class StudentsPage extends Component {
 
   componentDidMount() {
     resolve = (response) => { this.setState({ students: response }) };
-    Requester.get(ApiConstants.students.index(1), resolve);
+    Requester.get(ApiConstants.students.index(this.props.page), resolve);
   }
 
   toggleSidebar(event) {
