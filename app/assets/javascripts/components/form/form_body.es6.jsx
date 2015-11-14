@@ -62,10 +62,10 @@ class FormBody extends Component {
         </div>
         <FormSection
           title={'Basic Information'}
-          updateValue={this.updateValue.bind(this)} />
+          updateValue={() => this.updateValue()} />
         <FormSection
           title={'Health Information'}
-          updateValue={this.updateValue.bind(this)} />
+          updateValue={() => this.updateValue())} />
         <FormFooter />
       </div>
     );
