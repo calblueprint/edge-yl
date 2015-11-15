@@ -7,12 +7,14 @@ class StudentsPage extends Component {
 
   static get propTypes() {
     return {
+      limit: React.PropTypes.number.isRequired,
       page: React.PropTypes.number.isRequired,
     };
   }
 
   static get defaultProps() {
     return {
+      limit: 1,
       page: 1,
     };
   }
@@ -61,20 +63,37 @@ class StudentsPage extends Component {
     StudentsActions.toggleSidebar(!this.state.sidebar);
   }
 
-  renderNavigator() {
-    var generator = RouteConstants.students.index;
-    var page = this.props.page;
-    return (
-      <div style={this.styles.section}>
-        <Clickable
-          content={'Previous'}
-          func={() => window.location = generator(this.props.page - 1)}
-          type={'h6'} />
-        <h6 style={this.styles.label}>{'Displaying 10 out of 25 students'}</h6>
+  renderNext() {
+    var props = this.props;
+    if (props.page < props.limit) {
+      return (
         <Clickable
           content={'Next'}
-          func={() => window.location = generator(this.props.page + 1)}
+          func={() => window.location = RouteConstants.students.index(props.page + 1)}
           type={'h6'} />
+      );
+    }
+  }
+
+  renderPrevious() {
+    var props = this.props;
+    if (props.page > 1) {
+      return (
+        <Clickable
+          content={'Previous'}
+          func={() => window.location = RouteConstants.students.index(props.page - 1)}
+          type={'h6'} />
+      );
+    }
+  }
+
+  renderNavigator() {
+    console.log(this.props.page);
+    return (
+      <div style={this.styles.section}>
+        {this.renderPrevious()}
+        <h6 style={this.styles.label}>{'Displaying 10 out of 25 students'}</h6>
+        {this.renderNext()}
       </div>
     );
   }
