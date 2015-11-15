@@ -7,15 +7,21 @@ class StudentsPage extends Component {
 
   static get propTypes() {
     return {
-      limit: React.PropTypes.number.isRequired,
-      page: React.PropTypes.number.isRequired,
+      pagination: React.PropTypes.shape({
+        current: React.PropTypes.number.isRequired,
+        limit: React.PropTypes.number.isRequired,
+        per: React.PropTypes.number.isRequired,
+      }).isRequired,
     };
   }
 
   static get defaultProps() {
     return {
-      limit: 1,
-      page: 1,
+      pagination: {
+        current: 1,
+        limit: 1,
+        per: 10,
+      },
     };
   }
 

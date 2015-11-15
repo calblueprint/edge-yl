@@ -2,16 +2,22 @@ class PageNavigator extends Component {
 
   static get propTypes() {
     return {
-      limit: React.PropTypes.number.isRequired,
-      page: React.PropTypes.number.isRequired,
+      pagination: React.PropTypes.shape({
+        current: React.PropTypes.number.isRequired,
+        limit: React.PropTypes.number.isRequired,
+        per: React.PropTypes.number.isRequired,
+      }).isRequired,
       route: React.PropTypes.func.isRequired,
     };
   }
 
   static get defaultProps() {
     return {
-      limit: 1,
-      page: 1,
+      pagination: {
+        current: 1,
+        limit: 1,
+        per: 10,
+      },
       route: null,
     };
   }
@@ -23,8 +29,14 @@ class PageNavigator extends Component {
         justifyContent: 'flex-end',
         padding: '24px 0',
       },
-      label: {
-        padding: '0px 12px',
+      left: {
+        paddingLeft: '6px',
+      },
+      right: {
+        paddingRight: '6px',
+      },
+      section: {
+        display: 'flex',
       },
     };
   }
@@ -38,37 +50,46 @@ class PageNavigator extends Component {
   }
 
   renderPrevious() {
-    var props = this.props;
-    if (props.page > 1) {
+    var pagination = this.props.pagination;
+    var style = Object.assign({}, this.styles.section, this.styles.right);
+    if (pagination.current > 1) {
       return (
-        <Clickable
-          content={'Previous'}
-          func={() => window.location = props.route(props.page - 1)}
-          styles={this.clickableStyles}
-          type={'h6'} />
+        <div style={style}>
+          <Clickable
+            content={'Previous'}
+            func={() => window.location = this.props.route(pagination.current - 1)}
+            styles={this.clickableStyles}
+            type={'h6'} />
+          <h6 style={this.styles.left}>{'|'}</h6>
+        </div>
       );
     }
   }
 
   renderNext() {
-    var props = this.props;
-    if (props.page < props.limit) {
+    var pagination = this.props.pagination;
+    var style = Object.assign({}, this.styles.section, this.styles.left);
+    if (pagination.current < pagination.limit) {
       return (
-        <Clickable
-          content={'Next'}
-          func={() => window.location = props.route(props.page + 1)}
-          styles={this.clickableStyles}
-          type={'h6'} />
+        <div style={style}>
+          <h6 style={this.styles.right}>{'|'}</h6>
+          <Clickable
+            content={'Next'}
+            func={() => window.location = this.props.route(pagination.current + 1)}
+            styles={this.clickableStyles}
+            type={'h6'} />
+        </div>
       );
     }
   }
 
   render() {
+    var pagination = this.props.pagination;
     return (
       <div style={this.styles.container}>
         {this.renderPrevious()}
-        <h6 style={this.styles.label}>
-          {'Displaying 10 out of 25 students'}
+        <h6>
+          {`Displaying page ${pagination.current} of ${pagination.limit} total`}
         </h6>
         {this.renderNext()}
       </div>
