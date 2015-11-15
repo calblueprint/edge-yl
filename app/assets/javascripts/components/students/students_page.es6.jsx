@@ -35,14 +35,6 @@ class StudentsPage extends Component {
         paddingRight: '208px',
         overflow: 'scroll',
       },
-      section: {
-        display: 'flex',
-        justifyContent: 'flex-end',
-        padding: '24px 0',
-      },
-      label: {
-        padding: '0px 12px',
-      },
     };
   }
 
@@ -63,41 +55,6 @@ class StudentsPage extends Component {
     StudentsActions.toggleSidebar(!this.state.sidebar);
   }
 
-  renderNext() {
-    var props = this.props;
-    if (props.page < props.limit) {
-      return (
-        <Clickable
-          content={'Next'}
-          func={() => window.location = RouteConstants.students.index(props.page + 1)}
-          type={'h6'} />
-      );
-    }
-  }
-
-  renderPrevious() {
-    var props = this.props;
-    if (props.page > 1) {
-      return (
-        <Clickable
-          content={'Previous'}
-          func={() => window.location = RouteConstants.students.index(props.page - 1)}
-          type={'h6'} />
-      );
-    }
-  }
-
-  renderNavigator() {
-    console.log(this.props.page);
-    return (
-      <div style={this.styles.section}>
-        {this.renderPrevious()}
-        <h6 style={this.styles.label}>{'Displaying 10 out of 25 students'}</h6>
-        {this.renderNext()}
-      </div>
-    );
-  }
-
   render() {
     return (
       <div style={StyleConstants.pages.default}>
@@ -107,7 +64,9 @@ class StudentsPage extends Component {
           <div style={this.styles.body}>
             <StudentsFilters />
             <StudentsGrid students={this.state.students} />
-            {this.renderNavigator()}
+            <PageNavigator
+              route={RouteConstants.students.index}
+              {...this.props} />
           </div>
         </div>
       </div>
