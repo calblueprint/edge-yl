@@ -116,7 +116,7 @@ class FormDropdown extends Component {
         <Dropdown
           styles={this.dropdownStyles}
           options={this.generateDropdownOptions()} 
-          func={() => this.hideDropdown()}/>
+          blur={() => this.hideDropdown()}/>
       );
     }
   }

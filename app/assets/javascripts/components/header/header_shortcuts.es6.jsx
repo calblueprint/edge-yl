@@ -89,7 +89,6 @@ class HeaderShortcuts extends Component {
   }
 
   hideDropdown() {
-    console.log('hi');
     this.setState({ dropdown: false });
   }
 
@@ -103,7 +102,7 @@ class HeaderShortcuts extends Component {
         <Dropdown
           options={this.dropdownOptions}
           styles={this.dropdownStyles} 
-          func={() => this.hideDropdown()}/>
+          blur={() => this.hideDropdown()}/>
       );
     }
   }
