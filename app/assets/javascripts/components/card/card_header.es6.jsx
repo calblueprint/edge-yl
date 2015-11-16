@@ -1,5 +1,8 @@
 class CardHeader extends Component {
 
+  // --------------------------------------------------
+  // Props
+  // --------------------------------------------------
   static get propTypes() {
     return {
       action: React.PropTypes.func.isRequired,
@@ -16,6 +19,9 @@ class CardHeader extends Component {
     };
   }
 
+  // --------------------------------------------------
+  // Styles
+  // --------------------------------------------------
   get styles() {
     return {
       container: {
@@ -40,6 +46,9 @@ class CardHeader extends Component {
     };
   }
 
+  // --------------------------------------------------
+  // Render
+  // --------------------------------------------------
   render() {
     return (
       <div style={this.styles.container}>
