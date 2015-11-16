@@ -72,8 +72,8 @@ class Dropdown extends Component {
         {this.renderOptions()}
         <input
           autoFocus={true}
-          style = {this.styles.input}
-          ref={'input'} />
+          ref={'input'}
+          style = {this.styles.input} />
       </div>
     );
   }

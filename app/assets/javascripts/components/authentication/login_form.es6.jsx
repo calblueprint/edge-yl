@@ -101,8 +101,8 @@ class LoginForm extends Component {
         </label>
         <input
           placeholder={'topsecretpassword'}
-          style={this.styles.input}
           ref={'password'}
+          style={this.styles.input}
           type={'password'}>
         </input>
         {this.renderError()}

@@ -85,7 +85,7 @@ class PageOverlay extends Component {
   // --------------------------------------------------
   render() {
     return (
-      <div style={this.styles.container} ref={'container'}>
+      <div ref={'container'} style={this.styles.container}>
         <Clickable
           func={this.props.hideOverlay}
           icon={'fa fa-times fa-2x'}

@@ -127,8 +127,8 @@ class SignupForm extends Component {
         </label>
         <input
           placeholder={'topsecretpassword'}
-          style={this.styles.input}
           ref={'password'}
+          style={this.styles.input}
           type={'password'}>
         </input>
         <label style={this.styles.label}>
@@ -136,8 +136,8 @@ class SignupForm extends Component {
         </label>
         <input
           placeholder={'topsecretpassword'}
-          style={this.styles.input}
           ref={'passwordConfirmation'}
+          style={this.styles.input}
           type={'password'}>
         </input>
         {this.renderError()}
