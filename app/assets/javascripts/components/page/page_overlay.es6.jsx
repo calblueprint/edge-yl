@@ -68,14 +68,14 @@ class PageOverlay extends Component {
   componentDidMount() {
     var node = ReactDOM.findDOMNode(this.refs.container);
     this._node = node;
-    node.addEventListener('click', (node) => this.handleClick(node));
+    node.addEventListener('click', (event) => this.handleClick(node));
   }
 
   // --------------------------------------------------
   // Handlers
   // --------------------------------------------------
-  handleClick(node) {
-    if (node.target === this._node) {
+  handleClick(event) {
+    if (event.target === this._node) {
       this.props.hideOverlay();
     }
   }

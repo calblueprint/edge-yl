@@ -80,6 +80,7 @@ class Clickable extends Component {
     if (props.route === '' && props.func !== null) {
       event.preventDefault();
       event.stopPropagation();
+      console.log('hello');
       props.func(event);
     }
   }
