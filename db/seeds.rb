@@ -5,6 +5,6 @@ def load_from_folder(folder)
   end
 end
 
-if Rails.env.development?
+if Rails.env.development? || Rails.env.staging?
   load_from_folder('development')
 end

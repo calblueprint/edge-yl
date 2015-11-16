@@ -23,7 +23,7 @@ class StudentsCard extends Component {
           width: '49%',
           height: '24%',
           padding: '24px',
-          marginTop: '2%',
+          marginTop: '12px',
           boxSizing: 'border-box',
         }
       ),
@@ -55,7 +55,7 @@ class StudentsCard extends Component {
           styles={this.clickableStyles}
           route={RouteConstants.students.show(student.id)}
           type={'img'}>
-          <img 
+          <img
             src='https://scontent.fsnc1-1.fna.fbcdn.net/hphotos-xfp1/t31.0-8/11856297_10200932572512494_2256826043885795533_o.jpg'
             style={this.styles.image} />
         </Clickable>
@@ -69,10 +69,10 @@ class StudentsCard extends Component {
           <h6>{`${student.email}`}</h6>
           <h6>{`${student.home_address}`}</h6>
           <Clickable
-            content={'Martin Luther King High School'}
-            route={RouteConstants.schools.show(1)}
+            content={student.school.name}
+            route={RouteConstants.schools.show(student.school.id)}
             styles={this.clickableStyles}
-            type={'h6'} />
+            type={'h5'} />
         </div>
       </div>
     );

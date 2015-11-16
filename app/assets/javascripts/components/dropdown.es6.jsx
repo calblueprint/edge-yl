@@ -28,8 +28,10 @@ class Dropdown extends Component {
   }
 
   componentDidMount() {
+    console.log('wl');
     var input = ReactDOM.findDOMNode(this.refs.input);
-    input.addEventListener('blur', this.props.func);
+    console.log(this.props.func);
+    input.addEventListener('blur', (event) => this.props.func(event));
   }
 
   renderOption(option, index) {
@@ -54,7 +56,7 @@ class Dropdown extends Component {
   }
 
   renderOptions() {
-    return this.props.options.map(this.renderOption.bind(this));
+    return this.props.options.map((option, index) => this.renderOption(option, index));
   }
 
   render() {
@@ -62,6 +64,7 @@ class Dropdown extends Component {
       <div style={this.props.styles.container}>
         {this.renderOptions()}
         <input 
+          autoFocus={true}
           style = {this.styles.input}
           ref={'input'} /> 
       </div>

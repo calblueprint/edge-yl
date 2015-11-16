@@ -33,7 +33,7 @@ class UsersGrid extends Component {
   }
 
   renderCards() {
-    return this.props.users.map(this.renderCard.bind(this));
+    return this.props.users.map((user) => this.renderCard(user));
   }
 
   render() {

@@ -16,7 +16,6 @@
 #  confirmation_token     :string
 #  confirmed_at           :datetime
 #  confirmation_sent_at   :datetime
-#  birthday               :date             not null
 #  first_name             :string           not null
 #  last_name              :string           not null
 #  is_admin               :boolean          default(FALSE), not null
@@ -31,6 +30,10 @@ class User < ActiveRecord::Base
   devise :confirmable, :database_authenticatable, :recoverable,
          :registerable, :rememberable, :trackable, :validatable
 
-  has_many :student_comments, dependent: :destroy
+  has_many :comments, dependent: :destroy
+
+  validates :email, presence: true
+  validates :first_name, presence: true
+  validates :last_name, presence: true
 
 end

@@ -65,22 +65,22 @@ class StudentsFilter extends Component {
     }.bind(this);
   }
 
-  generateDropdownOption(item, index) {
+  generateDropdownOption(item) {
     return {
       content: item,
       func: this.generateHandler(item),
-    }
+    };
   }
 
   generateDropdownOptions() {
-    return this.props.options.map(this.renderDropdownOption.bind(this));
+    return this.props.options.map(this.generateDropdownOption.bind(this));
   }
 
   renderDropdown() {
     if (this.state.isExpanded) {
       return (
         <Dropdown
-          options={this.dropdownOptions}
+          options={this.generateDropdownOptions()}
           styles={this.dropdownStyles} />
       );
     }

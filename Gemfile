@@ -8,6 +8,7 @@ gem 'rails', '4.2.1'
 gem 'active_model_serializers', '~> 0.10.0.rc1'
 gem 'devise'
 gem 'figaro'
+gem 'kaminari'
 gem 'pg'
 gem 'react-rails', '~> 1.4.0'
 
@@ -19,10 +20,13 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'turbolinks'
 gem 'uglifier', '>= 1.3.0'
 
+group :development, :staging, :test do
+  gem 'faker'
+end
+
 group :development, :test do
   gem 'awesome_print'
   gem 'better_errors'
-  gem 'faker'
   gem 'quiet_assets'
   gem 'factory_girl_rails'
   gem 'rspec-rails'
@@ -37,4 +41,8 @@ group :test do
   gem 'capybara', '~> 2.4.4'
   gem 'guard-rspec'
   gem 'launchy'
+end
+
+group :production do
+  gem 'rails_12factor'
 end

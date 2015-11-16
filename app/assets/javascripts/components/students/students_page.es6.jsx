@@ -1,9 +1,19 @@
 class StudentsPage extends Component {
 
-  static get defaultState() {
+  constructor(props) {
+    super(props);
+    this._listener = null;
+  }
+
+  static get propTypes() {
     return {
-      sidebar: true,
-      students: [],
+      page: React.PropTypes.number.isRequired,
+    };
+  }
+
+  static get defaultProps() {
+    return {
+      page: 1,
     };
   }
 
@@ -23,28 +33,62 @@ class StudentsPage extends Component {
         paddingRight: '208px',
         overflow: 'scroll',
       },
+      section: {
+        display: 'flex',
+        justifyContent: 'flex-end',
+        padding: '24px 0',
+      },
+      label: {
+        padding: '0px 12px',
+      },
     };
   }
 
+  componentWillMount() {
+    this.setState(StudentsStore.getState());
+  }
+
   componentDidMount() {
-    resolve = (response) => { this.setState({ students: response }) };
-    Requester.get(ApiConstants.students.index, resolve);
+    this._listener = StudentsStore.listen((state) => this.setState(state));
+    StudentsActions.fetchStudents(this.props.page);
+  }
+
+  componentWillUnmount() {
+    StudentsStore.unlisten(this._listener);
   }
 
   toggleSidebar(event) {
-    this.setState({ sidebar: !this.state.sidebar });
+    StudentsActions.toggleSidebar(!this.state.sidebar);
+  }
+
+  renderNavigator() {
+    var generator = RouteConstants.students.index;
+    var page = this.props.page;
+    return (
+      <div style={this.styles.section}>
+        <Clickable
+          content={'Previous'}
+          func={() => window.location = generator(this.props.page - 1)}
+          type={'h6'} />
+        <h6 style={this.styles.label}>{'Displaying 10 out of 25 students'}</h6>
+        <Clickable
+          content={'Next'}
+          func={() => window.location = generator(this.props.page + 1)}
+          type={'h6'} />
+      </div>
+    );
   }
 
   render() {
     return (
       <div style={StyleConstants.pages.default}>
-        <Header
-          toggleSidebar={this.toggleSidebar.bind(this)} />
+        <Header toggleSidebar={(event) => this.toggleSidebar(event)} />
         <div style={this.styles.container}>
           <Sidebar shouldShow={this.state.sidebar} />
           <div style={this.styles.body}>
             <StudentsFilters />
             <StudentsGrid students={this.state.students} />
+            {this.renderNavigator()}
           </div>
         </div>
       </div>

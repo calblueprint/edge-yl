@@ -1,5 +1,4 @@
 new_admin = User.new(
-  birthday: Faker::Date.between(33.days.ago, Date.today),
   email: 'admin@edgeyl.org',
   first_name: Faker::Name.first_name,
   last_name: Faker::Name.last_name,
@@ -13,7 +12,6 @@ puts "Created admin: #{new_admin.first_name} #{new_admin.last_name}"
 
 (1..3).each do |index|
   new_volunteer = User.new(
-    birthday: Faker::Date.between(33.days.ago, Date.today),
     email: Faker::Internet.email,
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,

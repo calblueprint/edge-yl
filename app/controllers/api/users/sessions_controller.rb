@@ -1,9 +1,8 @@
-class Api::SessionsController < Devise::SessionsController
+class Api::Users::SessionsController < Devise::SessionsController
 
   respond_to :json
 
   def create
-    puts user_signed_in?
     user = User.find_by_email params[:user][:email]
     return invalid_login if user.nil?
     if user.valid_password? params[:user][:password]

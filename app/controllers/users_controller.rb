@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class UsersController < BaseController
 
   def index
     @users = User.all
@@ -11,5 +11,4 @@ class UsersController < ApplicationController
       redirect_to login_path
     end
   end
-
 end

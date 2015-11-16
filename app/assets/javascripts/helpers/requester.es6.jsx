@@ -47,9 +47,23 @@ class RequesterSingleton {
           if (resolve) {
             resolve(JSON.parse(this.response));
           }
-        } else if (this.status === 401) {
+        } else if (this.status === 401 || this.status === 422) {
           if (reject) {
-            reject(this.response);
+            reject(JSON.parse(this.response));
+          }
+        }
+      }
+    };
+    request.send(JSON.stringify(params));
+  }
+
+  update(route, params, resolve) {
+    var request = this.initialize('PATCH', route);
+    request.onreadystatechange = function() {
+      if (this.readyState === XMLHttpRequest.DONE) {
+        if (this.status === 201) {
+          if (resolve) {
+            resolve(JSON.parse(this.response));
           }
         }
       }

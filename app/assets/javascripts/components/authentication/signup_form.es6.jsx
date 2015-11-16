@@ -3,10 +3,9 @@ class SignupForm extends Component {
   static get defaultState() {
     return {
       email: '',
-      errors: false, 
-      birthday: '',
+      error: '',
       first_name: '',
-      last_name: '', 
+      last_name: '',
       password: '',
       password_confirmation: '',
     };
@@ -18,10 +17,18 @@ class SignupForm extends Component {
         display: 'flex',
         flexFlow: 'column',
       },
+      error: {
+        flex: 1,
+        marginBottom: '24px',
+        color: StyleConstants.colors.red,
+        textAlign: 'center',
+      },
       label: {
+        flex: 1,
         marginBottom: '6px',
       },
       input: {
+        flex: 1,
         padding: '8px',
         marginBottom: '24px',
       },
@@ -40,8 +47,8 @@ class SignupForm extends Component {
       },
     };
     var resolve = (response) => { window.location = RouteConstants.students.index };
-    var reject = (response) => { this.setState({errors: true}) };
-    Requester.post(RouteConstants.users.create, params, resolve, reject);
+    var reject = (response) => { this.setState({error: response.message}) };
+    Requester.post(ApiConstants.users.create, params, resolve, reject);
   }
 
   generateHandler(field) {
@@ -52,33 +59,48 @@ class SignupForm extends Component {
     };
   }
 
-  renderMessage() {
-    return (
-      <span style={this.styles.error}>
-        {'Invalid input'}
-      </span>
-    );
-  }
- 
   componentDidMount() {
-    var email = ReactDOM.findDOMNode(this.refs.email); 
-    email.addEventListener('input', this.generateHandler('email'));
-    var birthday = ReactDOM.findDOMNode(this.refs.birthday); 
-    birthday.addEventListener('input', this.generateHandler('birthday'));
-    var firstName = ReactDOM.findDOMNode(this.refs.firstName); 
+    var firstName = ReactDOM.findDOMNode(this.refs.firstName);
     firstName.addEventListener('input', this.generateHandler('first_name'));
-    var lastName = ReactDOM.findDOMNode(this.refs.lastName); 
+    var lastName = ReactDOM.findDOMNode(this.refs.lastName);
     lastName.addEventListener('input', this.generateHandler('last_name'));
-    var password = ReactDOM.findDOMNode(this.refs.password); 
+    var email = ReactDOM.findDOMNode(this.refs.email);
+    email.addEventListener('input', this.generateHandler('email'));
+    var password = ReactDOM.findDOMNode(this.refs.password);
     password.addEventListener('input', this.generateHandler('password'));
-    var passwordConfirmation = ReactDOM.findDOMNode(this.refs.passwordConfirmation); 
-    passwordConfirmation.addEventListener('input', this.generateHandler('password_confirmation')); 
+    var passwordConfirmation = ReactDOM.findDOMNode(this.refs.passwordConfirmation);
+    passwordConfirmation.addEventListener('input', this.generateHandler('password_confirmation'));
   }
 
-  // TODO: Make Birthday into dropdown 
+  renderError() {
+    if (this.state.error) {
+      return (
+        <span style={this.styles.error}>
+          {this.state.error}
+        </span>
+      );
+    }
+  }
+
   render() {
     return (
       <div style={this.styles.container}>
+        <label style={this.styles.label}>
+          {'First Name'}
+        </label>
+        <input
+          placeholder={'Emily'}
+          ref={'firstName'}
+          style={this.styles.input}>
+        </input>
+        <label style={this.styles.label}>
+          {'Last Name'}
+        </label>
+        <input
+          placeholder={'Wilson'}
+          ref={'lastName'}
+          style={this.styles.input}>
+        </input>
         <label style={this.styles.label}>
           {'Email'}
         </label>
@@ -106,34 +128,10 @@ class SignupForm extends Component {
           ref={'passwordConfirmation'}
           type={'password'}>
         </input>
-        <label style={this.styles.label}>
-          {'First Name'}
-        </label>
-        <input
-          placeholder={'Emily'}
-          ref={'firstName'}
-          style={this.styles.input}>
-        </input>
-        <label style={this.styles.label}>
-          {'Last Name'}
-        </label>
-        <input
-          placeholder={'Wilson'}
-          ref={'lastName'}
-          style={this.styles.input}>
-        </input>
-        <label style={this.styles.label}>
-          {'Birthday'}
-        </label>
-        <input
-          placeholder={'01/22/95'}
-          ref={'birthday'}
-          style={this.styles.input}>
-        </input>
-        {this.state.errors && this.renderMessage()}
+        {this.renderError()}
         <FormButton
           content={'Sign up'}
-          func={this.createUser.bind(this)} />
+          func={(event) => this.createUser(event)} />
       </div>
     );
   }

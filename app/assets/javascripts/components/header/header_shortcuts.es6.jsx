@@ -88,6 +88,11 @@ class HeaderShortcuts extends Component {
     ];
   }
 
+  hideDropdown() {
+    console.log('hi');
+    this.setState({ dropdown: false });
+  }
+
   handleClick(event) {
     this.setState({ dropdown: !this.state.dropdown });
   }
@@ -97,7 +102,8 @@ class HeaderShortcuts extends Component {
       return (
         <Dropdown
           options={this.dropdownOptions}
-          styles={this.dropdownStyles} />
+          styles={this.dropdownStyles} 
+          func={() => this.hideDropdown()}/>
       );
     }
   }
@@ -113,7 +119,7 @@ class HeaderShortcuts extends Component {
       <Clickable
         key={2}
         icon={'fa fa-user fa-x'}
-        func={this.handleClick.bind(this)}
+        func={() => this.handleClick()}
         styles={this.clickableStyles}
         type={'i'} />,
     ];

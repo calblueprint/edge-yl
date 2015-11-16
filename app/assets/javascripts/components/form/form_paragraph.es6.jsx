@@ -19,7 +19,7 @@ class FormParagraph extends Component {
 
   componentDidMount() {
     var node = ReactDOM.findDOMNode(this.refs.container);
-    node.addEventListener('input', this.handleChange.bind(this));
+    node.addEventListener('input', (event) => this.handleChange(event));
   }
 
   get styles() {
