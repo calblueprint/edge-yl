@@ -54,7 +54,7 @@ class StudentsPage extends Component {
   }
 
   // --------------------------------------------------
-  // Lifecylce
+  // Lifecycle
   // --------------------------------------------------
   componentWillMount() {
     this.setState(StudentsStore.getState());

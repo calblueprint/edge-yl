@@ -38,7 +38,7 @@ class FormSection extends Component {
       },
     };
   }
-
+  
   render() {
     return (
       <div style={this.styles.container}>
@@ -56,6 +56,14 @@ class FormSection extends Component {
           <FormParagraph
             title={'Student Description'}
             placeholder={'This student is great'} />
+          <FormDropdown 
+            options={['hi','lol']}
+            title={'Birthday'}
+          /> 
+          <FormDropdown 
+            options={['Nevada','California']}
+            title={'State'}
+          />
         </div>
       </div>
     );

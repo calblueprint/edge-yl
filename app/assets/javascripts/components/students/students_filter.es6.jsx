@@ -78,15 +78,15 @@ class StudentsFilter extends Component {
     return () => this.setState({ selectedOption: item });
   }
 
-  generateDropdownOption(item, index) {
+  generateDropdownOption(item) {
     return {
       content: item,
       func: this.generateHandler(item),
-    }
+    };
   }
 
   generateDropdownOptions() {
-    return this.props.options.map(this.renderDropdownOption.bind(this));
+    return this.props.options.map(this.generateDropdownOption.bind(this));
   }
 
   // --------------------------------------------------
