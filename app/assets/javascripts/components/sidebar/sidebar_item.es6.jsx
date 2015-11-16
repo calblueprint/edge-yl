@@ -1,5 +1,8 @@
 class SidebarItem extends Component {
 
+  // --------------------------------------------------
+  // Props
+  // --------------------------------------------------
   static get propTypes() {
     return {
       label: React.PropTypes.string.isRequired,
@@ -8,6 +11,9 @@ class SidebarItem extends Component {
     };
   }
 
+  // --------------------------------------------------
+  // Styles
+  // --------------------------------------------------
   get styles() {
     return {
       label: {
@@ -33,6 +39,9 @@ class SidebarItem extends Component {
     };
   }
 
+  // --------------------------------------------------
+  // Render
+  // --------------------------------------------------
   render() {
     return (
       <Clickable

@@ -1,5 +1,8 @@
 class Sidebar extends Component {
 
+  // --------------------------------------------------
+  // Props
+  // --------------------------------------------------
   static get propTypes() {
     return {
       shouldShow: React.PropTypes.bool.isRequired,
@@ -12,6 +15,9 @@ class Sidebar extends Component {
     };
   }
 
+  // --------------------------------------------------
+  // Styles
+  // --------------------------------------------------
   get styles() {
     return {
       container: {
@@ -27,6 +33,9 @@ class Sidebar extends Component {
     };
   }
 
+  // --------------------------------------------------
+  // Render
+  // --------------------------------------------------
   render() {
     var style = Object.assign(
       {},
