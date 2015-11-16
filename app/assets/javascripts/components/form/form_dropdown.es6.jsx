@@ -107,7 +107,7 @@ class FormDropdown extends Component {
   }
 
   hideDropdown() {
-		this.setState({ dropdown: false });
+    this.setState({ dropdown: false });
   }
 
   renderDropdown() {
