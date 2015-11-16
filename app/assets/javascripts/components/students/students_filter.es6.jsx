@@ -1,5 +1,8 @@
 class StudentsFilter extends Component {
 
+  // --------------------------------------------------
+  // Props
+  // --------------------------------------------------
   static get propTypes() {
     return {
       options: React.PropTypes.arrayOf(React.PropTypes.string).isRequired,
@@ -12,11 +15,28 @@ class StudentsFilter extends Component {
     };
   }
 
+  // --------------------------------------------------
+  // State
+  // --------------------------------------------------
   static get defaultState() {
     return {
       isExpanded: false,
       selectedOption: '',
     };
+  }
+
+  // --------------------------------------------------
+  // Styles
+  // --------------------------------------------------
+  get styles() {
+    return {
+      container: {
+        display: 'flex',
+        flexFlow: 'column',
+        flex: '1',
+        zIndex: StyleConstants.planes.two,
+      }
+    }
   }
 
   get dropdownStyles() {
@@ -44,25 +64,18 @@ class StudentsFilter extends Component {
     };
   }
 
-  get styles() {
-    return {
-      container: {
-        display: 'flex',
-        flexFlow: 'column',
-        flex: '1',
-        zIndex: StyleConstants.planes.two,
-      }
-    }
-  }
-
+  // --------------------------------------------------
+  // Handlers
+  // --------------------------------------------------
   handleExpand() {
     this.setState({ isExpanded: !this.state.isExpanded });
   }
 
+  // --------------------------------------------------
+  // Helpers
+  // --------------------------------------------------
   generateHandler(item) {
-    return function() {
-      this.setState({ selectedOption: item });
-    }.bind(this);
+    return () => this.setState({ selectedOption: item });
   }
 
   generateDropdownOption(item, index) {
@@ -76,11 +89,14 @@ class StudentsFilter extends Component {
     return this.props.options.map(this.renderDropdownOption.bind(this));
   }
 
+  // --------------------------------------------------
+  // Render
+  // --------------------------------------------------
   renderDropdown() {
     if (this.state.isExpanded) {
       return (
         <Dropdown
-          options={this.dropdownOptions}
+          options={this.generateDropdownOptions()}
           styles={this.dropdownStyles} />
       );
     }
