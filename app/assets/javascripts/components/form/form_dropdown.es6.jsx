@@ -18,7 +18,7 @@ class FormDropdown extends Component {
     return {
       child: {
         default: {
-          flex: '1',
+          flex: '1', 
           padding: '4px',
         },
         hover: {
@@ -106,12 +106,17 @@ class FormDropdown extends Component {
     return this.props.options.map(this.generateDropdownOption.bind(this));
   }
 
+  hideDropdown() {
+    this.setState({ dropdown: false });
+  }
+
   renderDropdown() {
     if (this.state.dropdown) {
       return (
         <Dropdown
           styles={this.dropdownStyles}
-          options={this.generateDropdownOptions()} />
+          options={this.generateDropdownOptions()} 
+          blur={() => this.hideDropdown()}/>
       );
     }
   }

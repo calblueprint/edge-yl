@@ -88,6 +88,10 @@ class HeaderShortcuts extends Component {
     ];
   }
 
+  hideDropdown() {
+    this.setState({ dropdown: false });
+  }
+
   handleClick(event) {
     this.setState({ dropdown: !this.state.dropdown });
   }
@@ -97,7 +101,8 @@ class HeaderShortcuts extends Component {
       return (
         <Dropdown
           options={this.dropdownOptions}
-          styles={this.dropdownStyles} />
+          styles={this.dropdownStyles} 
+          blur={() => this.hideDropdown()}/>
       );
     }
   }

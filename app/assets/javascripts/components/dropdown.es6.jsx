@@ -10,6 +10,7 @@ class Dropdown extends Component {
         }),
         container: React.PropTypes.object,
       }),
+      blur: React.PropTypes.func,
     };
   }
 
@@ -26,6 +27,11 @@ class Dropdown extends Component {
     };
   }
 
+  componentDidMount() {
+    var input = ReactDOM.findDOMNode(this.refs.input);
+    input.addEventListener('blur', (event) => this.props.blur(event));
+  }
+
   renderOption(option, index) {
     return (
       <Clickable
@@ -37,6 +43,16 @@ class Dropdown extends Component {
     );
   }
 
+  get styles() { 
+    return {
+      input: {
+        width: '0px',
+        height: '0px',
+        border: '0px',
+      },
+    };
+  }
+
   renderOptions() {
     return this.props.options.map((option, index) => this.renderOption(option, index));
   }
@@ -45,6 +61,10 @@ class Dropdown extends Component {
     return (
       <div style={this.props.styles.container}>
         {this.renderOptions()}
+        <input 
+          autoFocus={true}
+          style = {this.styles.input}
+          ref={'input'} /> 
       </div>
     );
   }
