@@ -1,5 +1,8 @@
 class Dropdown extends Component {
 
+  // --------------------------------------------------
+  // Props
+  // --------------------------------------------------
   static get propTypes() {
     return {
       options: React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
@@ -26,6 +29,9 @@ class Dropdown extends Component {
     };
   }
 
+  // --------------------------------------------------
+  // Render
+  // --------------------------------------------------
   renderOption(option, index) {
     return (
       <Clickable

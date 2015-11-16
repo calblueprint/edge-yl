@@ -1,5 +1,8 @@
 class Clickable extends Component {
 
+  // --------------------------------------------------
+  // Props
+  // --------------------------------------------------
   static get propTypes() {
     return {
       content: React.PropTypes.string,
@@ -40,6 +43,9 @@ class Clickable extends Component {
     };
   }
 
+  // --------------------------------------------------
+  // State
+  // --------------------------------------------------
   static get defaultState() {
     // Mouse state enum: 'default' or 'hover'.
     return {
@@ -47,6 +53,9 @@ class Clickable extends Component {
     }
   }
 
+  // --------------------------------------------------
+  // Styles
+  // --------------------------------------------------
   get styles() {
     return {
       static: {
@@ -55,6 +64,9 @@ class Clickable extends Component {
     };
   }
 
+  // --------------------------------------------------
+  // Lifecycle
+  // --------------------------------------------------
   componentDidMount() {
     var node = ReactDOM.findDOMNode(this.refs.container);
     node.addEventListener('click', (event) => this.handleClick(event));
@@ -72,6 +84,9 @@ class Clickable extends Component {
     }
   }
 
+  // --------------------------------------------------
+  // Handlers
+  // --------------------------------------------------
   handleMouseEnter(event) {
     this.setState({ mouse: 'hover' });
   }
@@ -86,6 +101,9 @@ class Clickable extends Component {
     }
   }
 
+  // --------------------------------------------------
+  // Render
+  // --------------------------------------------------
   renderChildren() {
     if (this.props.children) {
       return this.props.children;
