@@ -7,13 +7,21 @@ class StudentsPage extends Component {
 
   static get propTypes() {
     return {
-      page: React.PropTypes.number.isRequired,
+      pagination: React.PropTypes.shape({
+        current: React.PropTypes.number.isRequired,
+        limit: React.PropTypes.number.isRequired,
+        per: React.PropTypes.number.isRequired,
+      }).isRequired,
     };
   }
 
   static get defaultProps() {
     return {
-      page: 1,
+      pagination: {
+        current: 1,
+        limit: 1,
+        per: 10,
+      },
     };
   }
 
@@ -32,14 +40,6 @@ class StudentsPage extends Component {
         paddingLeft: '12px',
         paddingRight: '208px',
         overflow: 'scroll',
-      },
-      section: {
-        display: 'flex',
-        justifyContent: 'flex-end',
-        padding: '24px 0',
-      },
-      label: {
-        padding: '0px 12px',
       },
     };
   }
@@ -61,24 +61,6 @@ class StudentsPage extends Component {
     StudentsActions.toggleSidebar(!this.state.sidebar);
   }
 
-  renderNavigator() {
-    var generator = RouteConstants.students.index;
-    var page = this.props.page;
-    return (
-      <div style={this.styles.section}>
-        <Clickable
-          content={'Previous'}
-          func={() => window.location = generator(this.props.page - 1)}
-          type={'h6'} />
-        <h6 style={this.styles.label}>{'Displaying 10 out of 25 students'}</h6>
-        <Clickable
-          content={'Next'}
-          func={() => window.location = generator(this.props.page + 1)}
-          type={'h6'} />
-      </div>
-    );
-  }
-
   render() {
     return (
       <div style={StyleConstants.pages.default}>
@@ -88,7 +70,9 @@ class StudentsPage extends Component {
           <div style={this.styles.body}>
             <StudentsFilters />
             <StudentsGrid students={this.state.students} />
-            {this.renderNavigator()}
+            <PageNavigator
+              route={RouteConstants.students.index}
+              {...this.props} />
           </div>
         </div>
       </div>
