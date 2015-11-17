@@ -1,13 +1,16 @@
 class SignupForm extends Component {
 
+  // --------------------------------------------------
+  // State
+  // --------------------------------------------------
   static get defaultState() {
     return {
       email: '',
       error: '',
-      first_name: '',
-      last_name: '',
+      firstName: '',
+      lastName: '',
       password: '',
-      password_confirmation: '',
+      passwordConfirmation: '',
     };
   }
 
@@ -23,27 +26,46 @@ class SignupForm extends Component {
         color: StyleConstants.colors.red,
         textAlign: 'center',
       },
-      label: {
-        flex: 1,
-        marginBottom: '6px',
-      },
       input: {
         flex: 1,
         padding: '8px',
         marginBottom: '24px',
       },
+      label: {
+        flex: 1,
+        marginBottom: '6px',
+      },
     };
   }
 
+  // --------------------------------------------------
+  // Lifecycle
+  // --------------------------------------------------
+  componentDidMount() {
+    var firstName = ReactDOM.findDOMNode(this.refs.firstName);
+    firstName.addEventListener('input', this.generateHandler('firstName'));
+    var lastName = ReactDOM.findDOMNode(this.refs.lastName);
+    lastName.addEventListener('input', this.generateHandler('lastName'));
+    var email = ReactDOM.findDOMNode(this.refs.email);
+    email.addEventListener('input', this.generateHandler('email'));
+    var password = ReactDOM.findDOMNode(this.refs.password);
+    password.addEventListener('input', this.generateHandler('password'));
+    var passwordConfirmation = ReactDOM.findDOMNode(this.refs.passwordConfirmation);
+    passwordConfirmation.addEventListener('input', this.generateHandler('passwordConfirmation'));
+  }
+
+  // --------------------------------------------------
+  // Helpers
+  // --------------------------------------------------
   createUser(event) {
     var params = {
       registration: {
         email: this.state.email,
         birthday: this.state.birthday,
-        first_name: this.state.first_name,
-        last_name: this.state.last_name,
+        first_name: this.state.firstName,
+        last_name: this.state.lastName,
         password: this.state.password,
-        password_confirmation: this.state.password_confirmation,
+        password_confirmation: this.state.passwordConfirmation,
       },
     };
     var resolve = (response) => { window.location = RouteConstants.students.index };
@@ -59,19 +81,9 @@ class SignupForm extends Component {
     };
   }
 
-  componentDidMount() {
-    var firstName = ReactDOM.findDOMNode(this.refs.firstName);
-    firstName.addEventListener('input', this.generateHandler('first_name'));
-    var lastName = ReactDOM.findDOMNode(this.refs.lastName);
-    lastName.addEventListener('input', this.generateHandler('last_name'));
-    var email = ReactDOM.findDOMNode(this.refs.email);
-    email.addEventListener('input', this.generateHandler('email'));
-    var password = ReactDOM.findDOMNode(this.refs.password);
-    password.addEventListener('input', this.generateHandler('password'));
-    var passwordConfirmation = ReactDOM.findDOMNode(this.refs.passwordConfirmation);
-    passwordConfirmation.addEventListener('input', this.generateHandler('password_confirmation'));
-  }
-
+  // --------------------------------------------------
+  // Render
+  // --------------------------------------------------
   renderError() {
     if (this.state.error) {
       return (
@@ -115,8 +127,8 @@ class SignupForm extends Component {
         </label>
         <input
           placeholder={'topsecretpassword'}
-          style={this.styles.input}
           ref={'password'}
+          style={this.styles.input}
           type={'password'}>
         </input>
         <label style={this.styles.label}>
@@ -124,8 +136,8 @@ class SignupForm extends Component {
         </label>
         <input
           placeholder={'topsecretpassword'}
-          style={this.styles.input}
           ref={'passwordConfirmation'}
+          style={this.styles.input}
           type={'password'}>
         </input>
         {this.renderError()}

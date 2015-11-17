@@ -1,10 +1,16 @@
 class StudentPage extends Component {
 
+  // --------------------------------------------------
+  // Setup
+  // --------------------------------------------------
   constructor(props) {
     super(props);
     this._listener = null;
   }
 
+  // --------------------------------------------------
+  // Props
+  // --------------------------------------------------
   static get propTypes() {
     return {
       id: React.PropTypes.number.isRequired,
@@ -17,6 +23,9 @@ class StudentPage extends Component {
     };
   }
 
+  // --------------------------------------------------
+  // State
+  // --------------------------------------------------
   static get defaultState() {
     return {
       overlay: false,
@@ -25,6 +34,9 @@ class StudentPage extends Component {
     };
   }
 
+  // --------------------------------------------------
+  // Styles
+  // --------------------------------------------------
   get styles() {
     return {
       container: {
@@ -37,6 +49,9 @@ class StudentPage extends Component {
     };
   }
 
+  // --------------------------------------------------
+  // Lifecycle
+  // --------------------------------------------------
   componentWillMount() {
     this.setState(StudentStore.getState());
   }
@@ -50,6 +65,9 @@ class StudentPage extends Component {
     StudentStore.unlisten(this._listener);
   }
 
+  // --------------------------------------------------
+  // Handlers
+  // --------------------------------------------------
   hideOverlay(response) {
     if (response) {
       this.setState({ overlay: false, student: response });
@@ -66,6 +84,9 @@ class StudentPage extends Component {
     StudentsActions.toggleSidebar(!this.state.sidebar);
   }
 
+  // --------------------------------------------------
+  // Render
+  // --------------------------------------------------
   renderOverlay() {
     if (this.state.overlay) {
       return (

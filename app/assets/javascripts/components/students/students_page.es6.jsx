@@ -1,10 +1,16 @@
 class StudentsPage extends Component {
 
+  // --------------------------------------------------
+  // Setup
+  // --------------------------------------------------
   constructor(props) {
     super(props);
     this._listener = null;
   }
 
+  // --------------------------------------------------
+  // Props
+  // --------------------------------------------------
   static get propTypes() {
     return {
       pagination: React.PropTypes.shape({
@@ -25,6 +31,9 @@ class StudentsPage extends Component {
     };
   }
 
+  // --------------------------------------------------
+  // Styles
+  // --------------------------------------------------
   get styles() {
     return {
       container: {
@@ -44,6 +53,9 @@ class StudentsPage extends Component {
     };
   }
 
+  // --------------------------------------------------
+  // Lifecycle
+  // --------------------------------------------------
   componentWillMount() {
     this.setState(StudentsStore.getState());
   }
@@ -57,10 +69,16 @@ class StudentsPage extends Component {
     StudentsStore.unlisten(this._listener);
   }
 
+  // --------------------------------------------------
+  // Helpers
+  // --------------------------------------------------
   toggleSidebar(event) {
     StudentsActions.toggleSidebar(!this.state.sidebar);
   }
 
+  // --------------------------------------------------
+  // Render
+  // --------------------------------------------------
   render() {
     return (
       <div style={StyleConstants.pages.default}>

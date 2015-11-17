@@ -1,5 +1,8 @@
 class SidebarFooter extends Component {
 
+  // --------------------------------------------------
+  // Styles
+  // --------------------------------------------------
   get styles() {
     return {
       container: {
@@ -32,6 +35,9 @@ class SidebarFooter extends Component {
     };
   }
 
+  // --------------------------------------------------
+  // Render
+  // --------------------------------------------------
   render() {
     return (
       <div style={this.styles.container}>
@@ -40,7 +46,7 @@ class SidebarFooter extends Component {
           styles={this.clickableStyles}
           type={'img'}>
           <img
-            src='https://avatars3.githubusercontent.com/u/2729578?v=3&s=200'
+            src={'https://avatars3.githubusercontent.com/u/2729578?v=3&s=200'}
             style={this.styles.image} />
         </Clickable>
       </div>

@@ -1,5 +1,8 @@
 class Header extends Component {
 
+  // --------------------------------------------------
+  // Props
+  // --------------------------------------------------
   static get propTypes() {
     return {
       toggleSidebar: React.PropTypes.func,
@@ -14,6 +17,9 @@ class Header extends Component {
     };
   }
 
+  // --------------------------------------------------
+  // Styles
+  // --------------------------------------------------
   get styles() {
     return {
       container: {
@@ -53,6 +59,9 @@ class Header extends Component {
     };
   }
 
+  // --------------------------------------------------
+  // Render
+  // --------------------------------------------------
   renderToggler() {
     if (this.props.hasSidebar) {
       return (

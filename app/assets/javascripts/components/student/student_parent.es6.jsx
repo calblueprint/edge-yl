@@ -1,5 +1,8 @@
 class StudentParent extends Component {
 
+  // --------------------------------------------------
+  // Props
+  // --------------------------------------------------
   static get propTypes() {
     return {
       student: React.PropTypes.object.isRequired,
@@ -12,6 +15,9 @@ class StudentParent extends Component {
     };
   }
 
+  // --------------------------------------------------
+  // State
+  // --------------------------------------------------
   get styles() {
     return {
       container: {
@@ -26,6 +32,9 @@ class StudentParent extends Component {
     };
   }
 
+  // --------------------------------------------------
+  // Render
+  // --------------------------------------------------
   render() {
     var student = this.props.student;
     return (

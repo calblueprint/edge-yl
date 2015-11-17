@@ -1,5 +1,8 @@
 class CardInput extends Component {
 
+  // --------------------------------------------------
+  // Props
+  // --------------------------------------------------
   static get propTypes() {
     return {
       action: React.PropTypes.func.isRequired,
@@ -16,6 +19,9 @@ class CardInput extends Component {
     };
   }
 
+  // --------------------------------------------------
+  // Styles
+  // --------------------------------------------------
   get styles() {
     return {
       container: {
@@ -32,15 +38,17 @@ class CardInput extends Component {
     };
   }
 
+  // --------------------------------------------------
+  // Lifecycle
+  // --------------------------------------------------
   componentDidMount() {
     var node = ReactDOM.findDOMNode(this.refs.input);
-    node.addEventListener('input', (event) => this.handleInput(event));
+    node.addEventListener('input', (event) => this.props.action(event));
   }
 
-  handleInput(event) {
-    this.props.action(event);
-  }
-
+  // --------------------------------------------------
+  // Render
+  // --------------------------------------------------
   render() {
     return (
       <div style={this.styles.container}>

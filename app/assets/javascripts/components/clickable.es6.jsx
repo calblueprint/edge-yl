@@ -1,5 +1,8 @@
 class Clickable extends Component {
 
+  // --------------------------------------------------
+  // Props
+  // --------------------------------------------------
   static get propTypes() {
     return {
       content: React.PropTypes.string,
@@ -40,6 +43,9 @@ class Clickable extends Component {
     };
   }
 
+  // --------------------------------------------------
+  // State
+  // --------------------------------------------------
   static get defaultState() {
     // Mouse state enum: 'default' or 'hover'.
     return {
@@ -47,6 +53,9 @@ class Clickable extends Component {
     }
   }
 
+  // --------------------------------------------------
+  // Styles
+  // --------------------------------------------------
   get styles() {
     return {
       static: {
@@ -55,6 +64,9 @@ class Clickable extends Component {
     };
   }
 
+  // --------------------------------------------------
+  // Lifecycle
+  // --------------------------------------------------
   componentDidMount() {
     var node = ReactDOM.findDOMNode(this.refs.container);
     node.addEventListener('click', (event) => this.handleClick(event));
@@ -63,6 +75,9 @@ class Clickable extends Component {
     node.addEventListener('mouseup', (event) => this.handleMouseUp(event));
   }
 
+  // --------------------------------------------------
+  // Handlers
+  // --------------------------------------------------
   handleClick(event) {
     var props = this.props;
     if (props.route === '' && props.func !== null) {
@@ -76,9 +91,6 @@ class Clickable extends Component {
     this.setState({ mouse: 'hover' });
   }
 
-  handleMouseUp(event) {
-    this.setState({ mouse: 'hover' });
-  }
 
   handleMouseLeave(event) {
     if (this.state.mouse !== 'default') {
@@ -86,6 +98,13 @@ class Clickable extends Component {
     }
   }
 
+  handleMouseUp(event) {
+    this.setState({ mouse: 'hover' });
+  }
+
+  // --------------------------------------------------
+  // Render
+  // --------------------------------------------------
   renderChildren() {
     if (this.props.children) {
       return this.props.children;

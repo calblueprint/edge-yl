@@ -1,5 +1,8 @@
 class PageNavigator extends Component {
 
+  // --------------------------------------------------
+  // Props
+  // --------------------------------------------------
   static get propTypes() {
     return {
       pagination: React.PropTypes.shape({
@@ -22,6 +25,9 @@ class PageNavigator extends Component {
     };
   }
 
+  // --------------------------------------------------
+  // Styles
+  // --------------------------------------------------
   get styles() {
     return {
       container: {
@@ -49,23 +55,9 @@ class PageNavigator extends Component {
     };
   }
 
-  renderPrevious() {
-    var pagination = this.props.pagination;
-    var style = Object.assign({}, this.styles.section, this.styles.right);
-    if (pagination.current > 1) {
-      return (
-        <div style={style}>
-          <Clickable
-            content={'Previous'}
-            func={() => window.location = this.props.route(pagination.current - 1)}
-            styles={this.clickableStyles}
-            type={'h6'} />
-          <h6 style={this.styles.left}>{'|'}</h6>
-        </div>
-      );
-    }
-  }
-
+  // --------------------------------------------------
+  // Render
+  // --------------------------------------------------
   renderNext() {
     var pagination = this.props.pagination;
     var style = Object.assign({}, this.styles.section, this.styles.left);
@@ -78,6 +70,23 @@ class PageNavigator extends Component {
             func={() => window.location = this.props.route(pagination.current + 1)}
             styles={this.clickableStyles}
             type={'h6'} />
+        </div>
+      );
+    }
+  }
+
+  renderPrevious() {
+    var pagination = this.props.pagination;
+    var style = Object.assign({}, this.styles.section, this.styles.right);
+    if (pagination.current > 1) {
+      return (
+        <div style={style}>
+          <Clickable
+            content={'Previous'}
+            func={() => window.location = this.props.route(pagination.current - 1)}
+            styles={this.clickableStyles}
+            type={'h6'} />
+          <h6 style={this.styles.left}>{'|'}</h6>
         </div>
       );
     }

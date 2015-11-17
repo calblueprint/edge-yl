@@ -1,5 +1,8 @@
-class AuthenticationCard extends Component {
+class AuthenticationModal extends Component {
 
+  // --------------------------------------------------
+  // Props
+  // --------------------------------------------------
   static get propTypes() {
     return {
       isLogin: React.PropTypes.bool.isRequired,
@@ -12,6 +15,9 @@ class AuthenticationCard extends Component {
     };
   }
 
+  // --------------------------------------------------
+  // Styles
+  // --------------------------------------------------
   get styles() {
     return {
       container: Object.assign(
@@ -32,6 +38,9 @@ class AuthenticationCard extends Component {
     };
   }
 
+  // --------------------------------------------------
+  // Render
+  // --------------------------------------------------
   renderForm() {
     return this.props.isLogin ? <LoginForm /> : <SignupForm />;
   }

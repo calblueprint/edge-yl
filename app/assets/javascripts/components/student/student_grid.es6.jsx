@@ -1,5 +1,8 @@
 class StudentGrid extends Component {
 
+  // --------------------------------------------------
+  // Props
+  // --------------------------------------------------
   static get propTypes() {
     return {
       showOverlay: React.PropTypes.func.isRequired,
@@ -14,6 +17,9 @@ class StudentGrid extends Component {
     };
   }
 
+  // --------------------------------------------------
+  // Styles
+  // --------------------------------------------------
   get styles() {
     return {
       container: {
@@ -27,6 +33,9 @@ class StudentGrid extends Component {
     };
   }
 
+  // --------------------------------------------------
+  // Render
+  // --------------------------------------------------
   render() {
     return (
       <div style={this.styles.container}>

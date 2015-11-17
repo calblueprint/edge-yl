@@ -1,5 +1,8 @@
 class SidebarGroup extends Component {
 
+  // --------------------------------------------------
+  // Styles
+  // --------------------------------------------------
   get styles() {
     return {
       container: {
@@ -15,6 +18,9 @@ class SidebarGroup extends Component {
     };
   }
 
+  // --------------------------------------------------
+  // Render
+  // --------------------------------------------------
   render() {
     return (
       <div style={this.styles.container}>

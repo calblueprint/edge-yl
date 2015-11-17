@@ -1,5 +1,8 @@
 class HeaderNavigation extends Component {
 
+  // --------------------------------------------------
+  // Styles
+  // --------------------------------------------------
   get styles() {
     return {
       container: {
@@ -25,6 +28,9 @@ class HeaderNavigation extends Component {
     };
   }
 
+  // --------------------------------------------------
+  // Render
+  // --------------------------------------------------
   render() {
     return (
       <div style={this.styles.container}>

@@ -1,5 +1,8 @@
 class HeaderShortcuts extends Component {
 
+  // --------------------------------------------------
+  // Props
+  // --------------------------------------------------
   static get propTypes() {
     return {
       showShortcuts: React.PropTypes.bool.isRequired,
@@ -12,10 +15,16 @@ class HeaderShortcuts extends Component {
     };
   }
 
+  // --------------------------------------------------
+  // State
+  // --------------------------------------------------
   static get defaultState() {
     return { dropdown: false };
   }
 
+  // --------------------------------------------------
+  // Styles
+  // --------------------------------------------------
   get styles() {
     return {
       container: {
@@ -70,25 +79,10 @@ class HeaderShortcuts extends Component {
     };
   }
 
-  get dropdownOptions() {
-    return [
-      {
-        content: 'Profile',
-        route: RouteConstants.pages.profile,
-      },
-      {
-        content: 'Logout',
-        func: () => {
-          Requester.delete(
-            ApiConstants.users.logout,
-            (response) => { window.location = RouteConstants.pages.login }
-          );
-        },
-      },
-    ];
-  }
-
-  hideDropdown() {
+  // --------------------------------------------------
+  // Handlers
+  // --------------------------------------------------
+  handleBlur(event) {
     this.setState({ dropdown: false });
   }
 
@@ -96,38 +90,58 @@ class HeaderShortcuts extends Component {
     this.setState({ dropdown: !this.state.dropdown });
   }
 
+  // --------------------------------------------------
+  // Render
+  // --------------------------------------------------
   renderDropdown() {
     if (this.state.dropdown) {
+      var options = [
+        {
+          content: 'Profile',
+          route: RouteConstants.pages.profile,
+        },
+        {
+          content: 'Logout',
+          func: () => {
+            Requester.delete(
+              ApiConstants.users.logout,
+              (response) => { window.location = RouteConstants.pages.login }
+            );
+          },
+        },
+      ];
       return (
         <Dropdown
-          options={this.dropdownOptions}
-          styles={this.dropdownStyles} 
-          blur={() => this.hideDropdown()}/>
+          options={options}
+          styles={this.dropdownStyles}
+          blur={(event) => this.handleBlur(event)} />
       );
     }
   }
 
   renderShortcuts() {
-    return [
-      <Clickable
-        key={1}
-        icon={'fa fa-envelope fa-x'}
-        route={RouteConstants.pages.mail}
-        styles={this.clickableStyles}
-        type={'i'} />,
-      <Clickable
-        key={2}
-        icon={'fa fa-user fa-x'}
-        func={() => this.handleClick()}
-        styles={this.clickableStyles}
-        type={'i'} />,
-    ];
+    if (this.props.showShortcuts) {
+      return [
+        <Clickable
+          key={1}
+          icon={'fa fa-envelope fa-x'}
+          route={RouteConstants.pages.mail}
+          styles={this.clickableStyles}
+          type={'i'} />,
+        <Clickable
+          key={2}
+          icon={'fa fa-user fa-x'}
+          func={(event) => this.handleClick(event)}
+          styles={this.clickableStyles}
+          type={'i'} />,
+      ];
+    }
   }
 
   render() {
     return (
       <div style={this.styles.container}>
-        {this.props.showShortcuts && this.renderShortcuts()}
+        {this.renderShortcuts()}
         {this.renderDropdown()}
       </div>
     );

@@ -1,5 +1,8 @@
 class AuthenticationPage extends Component {
 
+  // --------------------------------------------------
+  // Props
+  // --------------------------------------------------
   static get propTypes() {
     return {
       isLogin: React.PropTypes.bool.isRequired,
@@ -12,6 +15,9 @@ class AuthenticationPage extends Component {
     };
   }
 
+  // --------------------------------------------------
+  // Styles
+  // --------------------------------------------------
   get styles() {
     return {
       container: {
@@ -40,6 +46,9 @@ class AuthenticationPage extends Component {
     };
   }
 
+  // --------------------------------------------------
+  // Render
+  // --------------------------------------------------
   renderFooter() {
     var bool = this.props.isLogin;
     var content = bool ? 'Sign up' : 'Log in';
@@ -62,7 +71,7 @@ class AuthenticationPage extends Component {
       <div style={StyleConstants.pages.default}>
         <Header hasSidebar={false} />
         <div style={this.styles.container}>
-          <AuthenticationCard {...this.props} />
+          <AuthenticationModal {...this.props} />
           {this.renderFooter()}
         </div>
       </div>

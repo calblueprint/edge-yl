@@ -1,5 +1,8 @@
 class StudentConference extends Component {
 
+  // --------------------------------------------------
+  // Props
+  // --------------------------------------------------
   static get propTypes() {
     return {
       student: React.PropTypes.object.isRequired,
@@ -12,6 +15,9 @@ class StudentConference extends Component {
     };
   }
 
+  // --------------------------------------------------
+  // Styles
+  // --------------------------------------------------
   get styles() {
     return {
       container: {
@@ -20,23 +26,23 @@ class StudentConference extends Component {
         flex: '1',
         padding: '12px',
       },
-      heading: {
-        fontSize: StyleConstants.fonts.sizes.small,
-      },
     };
   }
 
+  // --------------------------------------------------
+  // Render
+  // --------------------------------------------------
   render() {
     var student = this.props.student;
     return (
       <div style={this.styles.container}>
-        <h2 style={this.styles.heading}>{'Status'}</h2>
+        <h4>{'Status'}</h4>
           {student.status}
-        <h2 style={this.styles.heading}>{'Group'}</h2>
+        <h4>{'Group'}</h4>
           {student.group_letter}
           {student.team_leader_name}
           {student.junior_crew_name}
-        <h2 style={this.styles.heading}>{'Rooming'}</h2>
+        <h4>{'Rooming'}</h4>
           {student.dorm_room_number}
           {student.roommate_name}
       </div>

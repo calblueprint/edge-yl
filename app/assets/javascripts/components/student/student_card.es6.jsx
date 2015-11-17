@@ -1,5 +1,8 @@
 class StudentCard extends Component {
 
+  // --------------------------------------------------
+  // Props
+  // --------------------------------------------------
   static get propTypes() {
     return {
       showOverlay: React.PropTypes.func.isRequired,
@@ -21,6 +24,9 @@ class StudentCard extends Component {
     };
   }
 
+  // --------------------------------------------------
+  // Styles
+  // --------------------------------------------------
   get styles() {
     return {
       container: Object.assign(
@@ -37,19 +43,9 @@ class StudentCard extends Component {
     };
   }
 
-  renderTitle() {
-    switch (this.props.type) {
-      case 'preview':
-        return 'Student Preview';
-      case 'contact':
-        return 'Student Information';
-      case 'parent':
-        return 'Parent Information';
-      case 'conference':
-        return 'Conference Information';
-    };
-  }
-
+  // --------------------------------------------------
+  // Render
+  // --------------------------------------------------
   renderBody() {
     switch (this.props.type) {
       case 'preview':
@@ -62,6 +58,19 @@ class StudentCard extends Component {
         return <StudentParent {...this.props} />;
       default:
         return <StudentPreview {...this.props} />;
+    };
+  }
+
+  renderTitle() {
+    switch (this.props.type) {
+      case 'preview':
+        return 'Student Preview';
+      case 'contact':
+        return 'Student Information';
+      case 'parent':
+        return 'Parent Information';
+      case 'conference':
+        return 'Conference Information';
     };
   }
 

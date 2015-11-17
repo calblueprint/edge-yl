@@ -1,5 +1,8 @@
 class StudentContact extends Component {
 
+  // --------------------------------------------------
+  // Props
+  // --------------------------------------------------
   static get propTypes() {
     return {
       student: React.PropTypes.object.isRequired,
@@ -12,6 +15,9 @@ class StudentContact extends Component {
     };
   }
 
+  // --------------------------------------------------
+  // Styles
+  // --------------------------------------------------
   get styles() {
     return {
       container: {
@@ -23,6 +29,9 @@ class StudentContact extends Component {
     };
   }
 
+  // --------------------------------------------------
+  // Render
+  // --------------------------------------------------
   render() {
     var student = this.props.student;
     return (

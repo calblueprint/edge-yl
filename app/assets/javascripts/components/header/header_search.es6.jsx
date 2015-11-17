@@ -1,5 +1,8 @@
 class HeaderSearch extends Component {
 
+  // --------------------------------------------------
+  // Styles
+  // --------------------------------------------------
   get styles() {
     return {
       container: {
@@ -25,6 +28,9 @@ class HeaderSearch extends Component {
     };
   }
 
+  // --------------------------------------------------
+  // Render
+  // --------------------------------------------------
   render() {
     return (
       <form style={this.styles.container}>

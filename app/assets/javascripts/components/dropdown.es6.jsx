@@ -1,5 +1,8 @@
 class Dropdown extends Component {
 
+  // --------------------------------------------------
+  // Props
+  // --------------------------------------------------
   static get propTypes() {
     return {
       options: React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
@@ -27,11 +30,17 @@ class Dropdown extends Component {
     };
   }
 
+  // --------------------------------------------------
+  // Lifecycle
+  // --------------------------------------------------
   componentDidMount() {
     var input = ReactDOM.findDOMNode(this.refs.input);
     input.addEventListener('blur', (event) => this.props.blur(event));
   }
 
+  // --------------------------------------------------
+  // Render
+  // --------------------------------------------------
   renderOption(option, index) {
     return (
       <Clickable
@@ -43,7 +52,7 @@ class Dropdown extends Component {
     );
   }
 
-  get styles() { 
+  get styles() {
     return {
       input: {
         width: '0px',
@@ -61,10 +70,10 @@ class Dropdown extends Component {
     return (
       <div style={this.props.styles.container}>
         {this.renderOptions()}
-        <input 
+        <input
           autoFocus={true}
-          style = {this.styles.input}
-          ref={'input'} /> 
+          ref={'input'}
+          style = {this.styles.input} />
       </div>
     );
   }

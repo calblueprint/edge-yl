@@ -1,5 +1,8 @@
 class LoginForm extends Component {
 
+  // --------------------------------------------------
+  // State
+  // --------------------------------------------------
   static get defaultState() {
     return {
       email: '',
@@ -8,6 +11,9 @@ class LoginForm extends Component {
     };
   }
 
+  // --------------------------------------------------
+  // Styles
+  // --------------------------------------------------
   get styles() {
     return {
       container: {
@@ -20,18 +26,31 @@ class LoginForm extends Component {
         color: StyleConstants.colors.red,
         textAlign: 'center',
       },
-      label: {
-        flex: 1,
-        marginBottom: '6px',
-      },
       input: {
         flex: 1,
         padding: '8px',
         marginBottom: '24px',
       },
+      label: {
+        flex: 1,
+        marginBottom: '6px',
+      },
     };
   }
 
+  // --------------------------------------------------
+  // Lifecycle
+  // --------------------------------------------------
+  componentDidMount() {
+    var email = ReactDOM.findDOMNode(this.refs.email);
+    email.addEventListener('input', this.generateHandler('email'));
+    var password = ReactDOM.findDOMNode(this.refs.password);
+    password.addEventListener('input', this.generateHandler('password'));
+  }
+
+  // --------------------------------------------------
+  // Helpers
+  // --------------------------------------------------
   createSession(event) {
     var params = {
       user: {
@@ -52,13 +71,9 @@ class LoginForm extends Component {
     };
   }
 
-  componentDidMount() {
-    var email = ReactDOM.findDOMNode(this.refs.email);
-    email.addEventListener('input', this.generateHandler('email'));
-    var password = ReactDOM.findDOMNode(this.refs.password);
-    password.addEventListener('input', this.generateHandler('password'));
-  }
-
+  // --------------------------------------------------
+  // Render
+  // --------------------------------------------------
   renderError() {
     if (this.state.error) {
       return (
@@ -86,8 +101,8 @@ class LoginForm extends Component {
         </label>
         <input
           placeholder={'topsecretpassword'}
-          style={this.styles.input}
           ref={'password'}
+          style={this.styles.input}
           type={'password'}>
         </input>
         {this.renderError()}
