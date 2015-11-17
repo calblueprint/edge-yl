@@ -39,6 +39,16 @@ class LoginForm extends Component {
   }
 
   // --------------------------------------------------
+  // Lifecycle
+  // --------------------------------------------------
+  componentDidMount() {
+    var email = ReactDOM.findDOMNode(this.refs.email);
+    email.addEventListener('input', this.generateHandler('email'));
+    var password = ReactDOM.findDOMNode(this.refs.password);
+    password.addEventListener('input', this.generateHandler('password'));
+  }
+
+  // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
   createSession(event) {
@@ -59,16 +69,6 @@ class LoginForm extends Component {
       state[field] = event.target.value;
       this.setState(state);
     };
-  }
-
-  // --------------------------------------------------
-  // Lifecycle
-  // --------------------------------------------------
-  componentDidMount() {
-    var email = ReactDOM.findDOMNode(this.refs.email);
-    email.addEventListener('input', this.generateHandler('email'));
-    var password = ReactDOM.findDOMNode(this.refs.password);
-    password.addEventListener('input', this.generateHandler('password'));
   }
 
   // --------------------------------------------------

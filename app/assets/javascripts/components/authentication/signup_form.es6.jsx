@@ -39,6 +39,22 @@ class SignupForm extends Component {
   }
 
   // --------------------------------------------------
+  // Lifecycle
+  // --------------------------------------------------
+  componentDidMount() {
+    var firstName = ReactDOM.findDOMNode(this.refs.firstName);
+    firstName.addEventListener('input', this.generateHandler('firstName'));
+    var lastName = ReactDOM.findDOMNode(this.refs.lastName);
+    lastName.addEventListener('input', this.generateHandler('lastName'));
+    var email = ReactDOM.findDOMNode(this.refs.email);
+    email.addEventListener('input', this.generateHandler('email'));
+    var password = ReactDOM.findDOMNode(this.refs.password);
+    password.addEventListener('input', this.generateHandler('password'));
+    var passwordConfirmation = ReactDOM.findDOMNode(this.refs.passwordConfirmation);
+    passwordConfirmation.addEventListener('input', this.generateHandler('passwordConfirmation'));
+  }
+
+  // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
   createUser(event) {
@@ -63,22 +79,6 @@ class SignupForm extends Component {
       state[field] = event.target.value;
       this.setState(state);
     };
-  }
-
-  // --------------------------------------------------
-  // Lifecycle
-  // --------------------------------------------------
-  componentDidMount() {
-    var firstName = ReactDOM.findDOMNode(this.refs.firstName);
-    firstName.addEventListener('input', this.generateHandler('firstName'));
-    var lastName = ReactDOM.findDOMNode(this.refs.lastName);
-    lastName.addEventListener('input', this.generateHandler('lastName'));
-    var email = ReactDOM.findDOMNode(this.refs.email);
-    email.addEventListener('input', this.generateHandler('email'));
-    var password = ReactDOM.findDOMNode(this.refs.password);
-    password.addEventListener('input', this.generateHandler('password'));
-    var passwordConfirmation = ReactDOM.findDOMNode(this.refs.passwordConfirmation);
-    passwordConfirmation.addEventListener('input', this.generateHandler('passwordConfirmation'));
   }
 
   // --------------------------------------------------

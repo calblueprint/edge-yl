@@ -33,6 +33,17 @@ Happy developing!
 
 ### Development
 
+##### Component Style Guide
+
+    Setup,
+    Props,
+    State,
+    Styles,
+    Lifecycle,
+    Handlers,
+    Helpers,
+    Render,
+
 ##### CSS Style Guide
 
     display,
