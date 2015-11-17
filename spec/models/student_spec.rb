@@ -39,4 +39,13 @@ RSpec.describe Student, type: :model do
     expect(factory).to be_invalid
   end
 
+  it "is invalid without a cell_phone" do
+    factory = FactoryGirl.build(:student, cell_phone: nil)
+    expect(factory).to be_invalid
+  end
+
+  it "is invalid without a home_address" do
+    factory = FactoryGirl.build(:student, home_address: nil)
+    expect(factory).to be_invalid
+  end
 end
