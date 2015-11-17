@@ -48,5 +48,4 @@ RSpec.describe Student, type: :model do
     factory = FactoryGirl.build(:student, last_name: nil)
     expect(factory).to be_invalid
   end
-  
 end
