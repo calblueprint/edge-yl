@@ -15,4 +15,10 @@ class School < ActiveRecord::Base
 
   has_many :students
 
+  validates :address, presence: true
+  validates :counselor_email, presence: true
+  validates :counselor_name, presence: true
+  validates :name, presence: true
+
 end
+
