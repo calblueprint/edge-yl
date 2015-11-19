@@ -131,7 +131,7 @@ class HeaderShortcuts extends Component {
         <Clickable
           key={2}
           icon={'fa fa-user fa-x'}
-          func={(event) => this.handleClick(event)}
+          action={(event) => this.handleClick(event)}
           styles={this.clickableStyles}
           type={'i'} />,
       ];

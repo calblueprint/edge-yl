@@ -7,7 +7,7 @@ class Clickable extends Component {
     return {
       content: React.PropTypes.string,
       children: React.PropTypes.node,
-      func: React.PropTypes.func,
+      action: React.PropTypes.func,
       icon: React.PropTypes.string,
       route: React.PropTypes.string,
       styles: React.PropTypes.shape({
@@ -32,7 +32,7 @@ class Clickable extends Component {
     return {
       content: '',
       children: null,
-      func: null,
+      action: null,
       icon: '',
       route: '',
       styles: {
@@ -83,7 +83,7 @@ class Clickable extends Component {
     if (props.route === '' && props.func !== null) {
       event.preventDefault();
       event.stopPropagation();
-      props.func(event);
+      props.action(event);
     }
   }
 
