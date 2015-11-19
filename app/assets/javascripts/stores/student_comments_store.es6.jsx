@@ -2,7 +2,7 @@
   class StudentCommentsStore {
 
     constructor() {
-      this.comments =[];
+      this.comments = [];
       this.bindListeners({
         handleUpdateStudentComments: StudentCommentsActions.UPDATE_STUDENT_COMMENTS,
       });
@@ -12,5 +12,5 @@
       this.comments = comments;
     }
   }
-  this.StudentCommentsStore = alt.createStore(StudentCommmentsStore);
+  this.StudentCommentsStore = alt.createStore(StudentCommentsStore);
 })();

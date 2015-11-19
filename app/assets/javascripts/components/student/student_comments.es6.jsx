@@ -63,9 +63,17 @@ class StudentComments extends Component {
     this.setState( state );
   }
 
+  componentWillMount() {
+    this.setState(StudentCommentsStore.getState());
+  }
+
   componentDidMount() {
-    resolve = (response) => this.setState({ comments: response });
-    Requester.get(ApiConstants.students.comments.index(this.props.id), resolve);
+    this._listener = StudentCommentsStore.listen((state) => this.setState(state));
+    StudentCommentsActions.fetchStudentComments(this.props.id);
+  }
+
+  componentWillUnmount() {
+    StudentCommentsStore.unlisten(this._listener);
   }
 
   get clickableStyles() {
