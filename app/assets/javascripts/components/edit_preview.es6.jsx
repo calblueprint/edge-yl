@@ -55,7 +55,7 @@ class EditPreview extends Component {
       first_name: this.state.firstName,
       last_name: this.state.lastName
     };
-    StudentActions.changeStudent(this.props.student.id, params);
+    StudentActions.updateStudent(this.props.student.id, params);
   }
 
   generateHandler(field) {

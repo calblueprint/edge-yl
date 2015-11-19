@@ -82,9 +82,7 @@ class StudentPage extends Component {
         <div style={this.styles.container}>
           <Sidebar shouldShow={this.state.sidebar} />
           <StudentGrid student={this.state.student} />
-          <StudentComments
-            showOverlay={(type, callback) => this.showOverlay(type, callback)}
-            id={this.props.id} />
+          <StudentComments id={this.props.id} />
         </div>
       </div>
     );

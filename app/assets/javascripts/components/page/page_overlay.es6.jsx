@@ -72,7 +72,7 @@ class PageOverlay extends Component {
   // --------------------------------------------------
   handleClick(event) {
     if (event.target === this._node) {
-      StudentActions.updateOverlay(false);
+      StudentActions.storeOverlay(false);
     }
   }
 
@@ -83,7 +83,7 @@ class PageOverlay extends Component {
     return (
       <div ref={'container'} style={this.styles.container}>
         <Clickable
-          func={(event) => StudentActions.updateOverlay(false)}
+          func={(event) => StudentActions.storeOverlay(false)}
           icon={'fa fa-times fa-2x'}
           styles={this.clickableStyles}
           type={'i'} />

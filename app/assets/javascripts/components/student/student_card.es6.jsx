@@ -76,7 +76,7 @@ class StudentCard extends Component {
     return (
       <div style={this.styles.container}>
         <CardHeader
-          action={(event) => StudentActions.updateOverlay(true, this.props.type)}
+          action={(event) => StudentActions.storeOverlay(true, this.props.type)}
           content={this.renderTitle()}
           icon={'fa fa-pencil-square-o fa-lg'} />
         {this.renderBody()}
