@@ -123,7 +123,7 @@ class StudentsFilter extends Component {
   render() {
     return (
       <div style={this.styles.container}>
-          <span style = {this.styles.selected}> {this.state.selectedOption} </span>
+          <span style={this.styles.selected}> {this.state.selectedOption} </span>
           <Clickable
             action={this.handleExpand.bind(this)}
             icon={'fa fa-angle-down'}
