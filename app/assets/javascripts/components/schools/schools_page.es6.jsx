@@ -11,7 +11,6 @@ class SchoolsPage extends Component {
   // --------------------------------------------------
   // Styles
   // --------------------------------------------------
-
   get styles() {
     return {
       container: {
