@@ -54,7 +54,7 @@ class CardHeader extends Component {
       <div style={this.styles.container}>
         <h5>{this.props.content}</h5>
         <Clickable
-          func={this.props.action}
+          action={this.props.action}
           icon={this.props.icon}
           styles={this.clickableStyles}
           type={'i'} />
