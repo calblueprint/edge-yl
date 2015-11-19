@@ -36,7 +36,6 @@ class StudentsFilter extends Component {
         margin: '0px 8px',
         justifyContent: 'space-between',
         alignItems: 'center',
-        //flex: '1',
         width: '200px',
         zIndex: StyleConstants.planes.two,
       },
@@ -49,12 +48,8 @@ class StudentsFilter extends Component {
   get clickableStyles() {
     return {
         default: {
-          //padding: '6px 12px',
           alignSelf: 'flex-end',
-          //backgroundColor: StyleConstants.colors.blue,
           borderRadius: '1px',
-          //color: StyleConstants.colors.white,
-          fontSize: StyleConstants.fonts.sizes.smaller,
       },
     }
   }
@@ -64,7 +59,6 @@ class StudentsFilter extends Component {
       child: {
         default: {
           display: 'flex',
-         // flexFlow: 'column',
           flex: '1',
           padding: '4px',
         },
@@ -95,10 +89,6 @@ class StudentsFilter extends Component {
     this.setState({ isExpanded: !this.state.isExpanded });
   }
 
-  handleBlur() {
-    //this.setState({ isExpanded: false });
-  }
-
   // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
@@ -125,8 +115,7 @@ class StudentsFilter extends Component {
       return (
         <Dropdown
           options={this.generateDropdownOptions()}
-          styles={this.dropdownStyles}
-          blur={() => this.handleBlur()}/>
+          styles={this.dropdownStyles} />
       );
     }
   }

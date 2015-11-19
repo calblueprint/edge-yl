@@ -17,7 +17,6 @@ class StudentsFilters extends Component {
       ),
       title: {
         padding: '0px 16px',
-        //flex: '1',
       },
     };
   }
