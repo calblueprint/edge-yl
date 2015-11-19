@@ -126,8 +126,8 @@ class FormDropdown extends Component {
       <div style = {this.styles.container}>
         <label style={this.styles.label}>{this.props.title}</label>
           <div style={this.styles.dropdownContainer}>
-            <div style = {this.styles.dropdown}>
-              <span style = {this.styles.selected}> {this.state.value} </span>
+            <div style={this.styles.dropdown}>
+              <span style={this.styles.selected}> {this.state.value} </span>
               {this.renderDropdown()}
             </div>
             <Clickable
