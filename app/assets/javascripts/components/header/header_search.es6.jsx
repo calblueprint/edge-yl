@@ -1,6 +1,13 @@
 class HeaderSearch extends Component {
 
   // --------------------------------------------------
+  // State
+  // --------------------------------------------------
+  static get defaultState() {
+    return { query: '' };
+  }
+
+  // --------------------------------------------------
   // Styles
   // --------------------------------------------------
   get styles() {
@@ -26,6 +33,13 @@ class HeaderSearch extends Component {
         color: StyleConstants.colors.white,
       },
     };
+  }
+
+  // --------------------------------------------------
+  // Handlers
+  // --------------------------------------------------
+  handleClick(event) {
+    this.setState({ query: this.state.input });
   }
 
   // --------------------------------------------------

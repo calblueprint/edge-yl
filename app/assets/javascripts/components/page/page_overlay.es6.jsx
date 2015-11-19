@@ -83,7 +83,7 @@ class PageOverlay extends Component {
     return (
       <div ref={'container'} style={this.styles.container}>
         <Clickable
-          func={(event) => StudentActions.storeOverlay(false)}
+          action={(event) => StudentActions.storeOverlay(false)}
           icon={'fa fa-times fa-2x'}
           styles={this.clickableStyles}
           type={'i'} />
