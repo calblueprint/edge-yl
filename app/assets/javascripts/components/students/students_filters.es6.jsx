@@ -10,13 +10,14 @@ class StudentsFilters extends Component {
         StyleConstants.cards.default,
         {
           display: 'flex',
-          padding: '12px',
+          padding: '10px',
           marginTop: '12px',
+          alignItems: 'center',
         }
       ),
       title: {
-        flex: '1',
-        alignItems: 'center',
+        padding: '0px 16px',
+        //flex: '1',
       },
     };
   }

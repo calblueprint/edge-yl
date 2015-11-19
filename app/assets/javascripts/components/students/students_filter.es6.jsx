@@ -21,7 +21,7 @@ class StudentsFilter extends Component {
   static get defaultState() {
     return {
       isExpanded: false,
-      selectedOption: '',
+      selectedOption: 'Select one',
     };
   }
 
@@ -32,10 +32,30 @@ class StudentsFilter extends Component {
     return {
       container: {
         display: 'flex',
-        flexFlow: 'column',
-        flex: '1',
+        flexFlow: 'row',
+        margin: '0px 8px',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        //flex: '1',
+        width: '200px',
         zIndex: StyleConstants.planes.two,
-      }
+      },
+      selected: {
+        paddingLeft: '4px',
+      },
+    }
+  }
+
+  get clickableStyles() {
+    return {
+        default: {
+          //padding: '6px 12px',
+          alignSelf: 'flex-end',
+          //backgroundColor: StyleConstants.colors.blue,
+          borderRadius: '1px',
+          //color: StyleConstants.colors.white,
+          fontSize: StyleConstants.fonts.sizes.smaller,
+      },
     }
   }
 
@@ -44,8 +64,12 @@ class StudentsFilter extends Component {
       child: {
         default: {
           display: 'flex',
-          flexFlow: 'column',
+         // flexFlow: 'column',
           flex: '1',
+          padding: '4px',
+        },
+        hover: {
+          backgroundColor: StyleConstants.colors.turquoise,
         },
       },
       container: Object.assign(
@@ -54,7 +78,7 @@ class StudentsFilter extends Component {
         {
           flex: '1',
           position: 'absolute',
-          top: '30px',
+          top: '26px',
           left: '0px',
           zIndex: StyleConstants.planes.two,
           // TODO(Warren): Figure out a way to set width without hardcoded value.
@@ -69,6 +93,10 @@ class StudentsFilter extends Component {
   // --------------------------------------------------
   handleExpand() {
     this.setState({ isExpanded: !this.state.isExpanded });
+  }
+
+  handleBlur() {
+    //this.setState({ isExpanded: false });
   }
 
   // --------------------------------------------------
@@ -97,7 +125,8 @@ class StudentsFilter extends Component {
       return (
         <Dropdown
           options={this.generateDropdownOptions()}
-          styles={this.dropdownStyles} />
+          styles={this.dropdownStyles}
+          blur={() => this.handleBlur()}/>
       );
     }
   }
@@ -105,11 +134,12 @@ class StudentsFilter extends Component {
   render() {
     return (
       <div style={this.styles.container}>
-        <Clickable
-          func={this.handleExpand.bind(this)}
-          icon={'fa fa-angle-down'}
-          type={'i'}>
-          <span>{this.state.selectedOption}</span>
+          <span style = {this.styles.selected}> {this.state.selectedOption} </span>
+          <Clickable
+            func={this.handleExpand.bind(this)}
+            icon={'fa fa-angle-down'}
+            type={'i'}
+            styles={this.clickableStyles}>
         </Clickable>
         {this.renderDropdown()}
       </div>
