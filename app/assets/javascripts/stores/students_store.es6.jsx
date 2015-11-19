@@ -11,6 +11,7 @@
     }
 
     handleToggleSidebar(sidebar) {
+      console.log("handle my toggle");
       this.sidebar = sidebar;
     }
 

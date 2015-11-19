@@ -47,10 +47,7 @@ class CreateComment extends Component {
         'student_id': this.props.student.id,
       },
     };
-    Requester.post(
-      ApiConstants.students.comments.create(this.props.student.id),
-      params,
-      (response) => this.props.callback(response));
+    StudentCommentsActions.createStudentComment(params);
   }
 
   generateHandler(field) {

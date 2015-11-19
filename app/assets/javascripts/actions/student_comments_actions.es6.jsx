@@ -11,12 +11,14 @@
       return comments;
     }
 
-    createStudentComments(request_params, student_id) {
-      resolve = (response) => {
-        comments = StudentCommentsStore.comments
-        this.updateStudentComments(comments.push(response));
-      }
-      ApiConstants.students.comments.create(student_id, params,resolve);
+    createStudentComment(params) {
+      student_id = params.comment.student_id;
+      resolve = (response) => addStudentComment(response);
+      Requester.post(ApiConstants.students.comments.create(student_id), params, resolve);
+    }
+
+    addStudentComment(comment) {
+      return comment;
     }
   }
   this.StudentCommentsActions = alt.createActions(StudentCommentsActions);
