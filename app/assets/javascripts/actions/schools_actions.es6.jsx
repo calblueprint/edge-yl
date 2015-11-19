@@ -1,9 +1,15 @@
 (() => {
   class SchoolsActions {
 
-    fetchSchools(page) {
-      resolve = (response) => this.updateSchools(response);
-      Requester.get(ApiConstants.schools.index(page), resolve);
+    constructor() {
+      this.generateActions(
+        'storeSchools'
+      );
+    }
+
+    fetchSchools() {
+      resolve = (response) => this.storeSchools(response);
+      Requester.get(ApiConstants.schools.index, resolve);
       return true;
     }
 
@@ -11,7 +17,7 @@
       return sidebar;
     }
 
-    updateSchools(schools) {
+    storeSchools(schools) {
       return schools;
     }
   }

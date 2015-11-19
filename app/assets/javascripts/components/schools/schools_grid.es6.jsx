@@ -33,7 +33,7 @@ class SchoolsGrid extends Component {
   }
 
   renderCards() {
-    return this.props.schools.map((school) => renderCard(school));
+    return this.props.schools.map((school) => this.renderCard(school));
   }
 
   render() {

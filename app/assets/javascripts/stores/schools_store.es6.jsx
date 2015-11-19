@@ -6,7 +6,7 @@
       this.schools = [];
       this.bindListeners({
         handleToggleSidebar: SchoolsActions.TOGGLE_SIDEBAR,
-        handleUpdateSchools: SchoolsActions.UPDATE_SCHOOLS,
+        handleStoreSchools: SchoolsActions.STORE_SCHOOLS,
       });
     }
 
@@ -14,7 +14,7 @@
       this.sidebar = sidebar;
     }
 
-    handleUpdateSchools(schools) {
+    handleStoreSchools(schools) {
       this.schools = schools;
     }
   }
