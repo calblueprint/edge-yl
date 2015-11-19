@@ -48,10 +48,10 @@ class StudentsFilter extends Component {
   get clickableStyles() {
     return {
         default: {
-          alignSelf: 'flex-end',
-          borderRadius: '1px',
+        alignSelf: 'flex-end',
+        borderRadius: '1px',
       },
-    }
+    };
   }
 
   get dropdownStyles() {
