@@ -13,26 +13,16 @@ class SchoolPage extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      school: React.PropTypes.object.isRequired,
+      id: React.PropTypes.number.isRequired,
     };
   }
 
   static get defaultProps() {
     return {
-      school: {},
+      id: 1,
     };
   }
 
-  // --------------------------------------------------
-  // State
-  // --------------------------------------------------
-  static get defaultState() {
-    return {
-      overlay: false,
-      type: 'preview',
-      callback: () => null,
-    };
-  }
   // --------------------------------------------------
   // Styles
   // --------------------------------------------------
