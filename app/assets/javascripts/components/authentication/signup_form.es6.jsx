@@ -68,7 +68,7 @@ class SignupForm extends Component {
         password_confirmation: this.state.passwordConfirmation,
       },
     };
-    var resolve = (response) => { window.location = RouteConstants.students.index };
+    var resolve = (response) => { window.location = RouteConstants.students.index() };
     var reject = (response) => { this.setState({error: response.message}) };
     Requester.post(ApiConstants.users.create, params, resolve, reject);
   }
