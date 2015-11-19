@@ -10,7 +10,6 @@ class EditModal extends Component {
         'preview',
         'create_comment',
       ]).isRequired,
-      callback: React.PropTypes.func.isRequired,
     };
   }
 

@@ -13,17 +13,13 @@ class PageOverlay extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      hideOverlay: React.PropTypes.func.isRequired,
       student: React.PropTypes.object.isRequired,
-      callback: React.PropTypes.func.isRequired,
     };
   }
 
   static get defaultProps() {
     return {
-      hideOverlay: null,
       student: {},
-      callback: null,
     };
   }
 
@@ -76,7 +72,7 @@ class PageOverlay extends Component {
   // --------------------------------------------------
   handleClick(event) {
     if (event.target === this._node) {
-      this.props.hideOverlay();
+      StudentActions.updateOverlay(false);
     }
   }
 
@@ -87,15 +83,11 @@ class PageOverlay extends Component {
     return (
       <div ref={'container'} style={this.styles.container}>
         <Clickable
-          func={this.props.hideOverlay}
+          func={(event) => StudentActions.updateOverlay(false)}
           icon={'fa fa-times fa-2x'}
           styles={this.clickableStyles}
           type={'i'} />
-        <EditModal
-          hideOverlay={this.props.hideOverlay}
-          student={this.props.student}
-          type={this.props.type}
-          callback={this.props.callback} />
+        <EditModal student={this.props.student} />
       </div>
     );
   }

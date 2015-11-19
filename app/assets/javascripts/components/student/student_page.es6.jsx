@@ -57,14 +57,6 @@ class StudentPage extends Component {
   // --------------------------------------------------
   // Handlers
   // --------------------------------------------------
-  hideOverlay(response) {
-    if (response) {
-      this.setState({ overlay: false, student: response });
-    } else {
-      this.setState({ overlay: false });
-    }
-  }
-
   toggleSidebar(event) {
     StudentsActions.toggleSidebar(!this.state.sidebar);
   }
@@ -76,11 +68,8 @@ class StudentPage extends Component {
     if (this.state.overlay.active) {
       return (
         <PageOverlay
-          hideOverlay={(response) => this.hideOverlay(response)}
-          student={this.state.student}
-          type={this.state.type}
-          callback={(this.state.callback == null) ? () => null : this.state.callback }
-          {...this.props} />
+          overlay={this.state.overlay}
+          student={this.state.student} />
       );
     }
   }

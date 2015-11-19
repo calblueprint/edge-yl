@@ -22,7 +22,12 @@
     }
 
     handleUpdateStudent(student) {
+      this.overlay.active = false;
       this.student = student;
+    }
+
+    handleUpdateOverlay(overlay) {
+      this.overlay = overlay;
     }
   }
   this.StudentStore = alt.createStore(StudentStore);

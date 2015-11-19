@@ -17,6 +17,12 @@
       return sidebar;
     }
 
+    changeStudent(id, params) {
+      resolve = (response) => this.updateStudent(response);
+      Requester.update(ApiConstants.students.update(id), params, resolve);
+      return true;
+    }
+
     updateOverlay(active, type) {
       return {
         active: active,
