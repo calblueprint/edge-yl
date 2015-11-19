@@ -45,7 +45,7 @@ class Dropdown extends Component {
     return (
       <Clickable
         content={option.content}
-        func={option.func}
+        action={option.func}
         key={index}
         route={option.route}
         styles={this.props.styles.child} />

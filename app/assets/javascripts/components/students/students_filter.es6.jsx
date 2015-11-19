@@ -125,11 +125,10 @@ class StudentsFilter extends Component {
       <div style={this.styles.container}>
           <span style = {this.styles.selected}> {this.state.selectedOption} </span>
           <Clickable
-            func={this.handleExpand.bind(this)}
+            action={this.handleExpand.bind(this)}
             icon={'fa fa-angle-down'}
             type={'i'}
-            styles={this.clickableStyles}>
-        </Clickable>
+            styles={this.clickableStyles} />
         {this.renderDropdown()}
       </div>
     );

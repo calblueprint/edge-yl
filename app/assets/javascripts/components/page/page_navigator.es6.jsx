@@ -67,7 +67,7 @@ class PageNavigator extends Component {
           <h6 style={this.styles.right}>{'|'}</h6>
           <Clickable
             content={'Next'}
-            func={() => window.location = this.props.route(pagination.current + 1)}
+            action={() => window.location = this.props.route(pagination.current + 1)}
             styles={this.clickableStyles}
             type={'h6'} />
         </div>
@@ -83,7 +83,7 @@ class PageNavigator extends Component {
         <div style={style}>
           <Clickable
             content={'Previous'}
-            func={() => window.location = this.props.route(pagination.current - 1)}
+            action={() => window.location = this.props.route(pagination.current - 1)}
             styles={this.clickableStyles}
             type={'h6'} />
           <h6 style={this.styles.left}>{'|'}</h6>
