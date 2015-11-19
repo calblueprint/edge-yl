@@ -132,7 +132,7 @@ class FormDropdown extends Component {
             </div>
             <Clickable
               icon={'fa fa-angle-down'}
-              action={this.handleClick.bind(this)}
+              action={(event) => handleClick(event)}
               type={'i'}
               styles={this.clickableStyles}
             />
