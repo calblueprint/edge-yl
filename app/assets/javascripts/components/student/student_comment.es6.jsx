@@ -1,5 +1,8 @@
 class StudentComment extends Component {
 
+  // --------------------------------------------------
+  // Props
+  // --------------------------------------------------
   static get propTypes() {
     return {
       comment: React.PropTypes.object.isRequired,
@@ -12,6 +15,9 @@ class StudentComment extends Component {
     };
   }
 
+  // --------------------------------------------------
+  // Styles
+  // --------------------------------------------------
   get clickableStyles() {
     return {
       default: {
@@ -28,6 +34,9 @@ class StudentComment extends Component {
     };
   }
 
+  // --------------------------------------------------
+  // Render
+  // --------------------------------------------------
   render() {
     return (
       <Clickable

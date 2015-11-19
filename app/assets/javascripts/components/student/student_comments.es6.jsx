@@ -1,10 +1,16 @@
 class StudentComments extends Component {
 
+  // --------------------------------------------------
+  // Setup
+  // --------------------------------------------------
   constructor(props) {
     super(props);
     this._listener = null;
   }
 
+  // --------------------------------------------------
+  // Props
+  // --------------------------------------------------
   static get propTypes() {
     return {
       id: React.PropTypes.number.isRequired,
@@ -19,12 +25,18 @@ class StudentComments extends Component {
     };
   }
 
+  // --------------------------------------------------
+  // State
+  // --------------------------------------------------
   static get defaultState() {
     return {
       comments: [],
     };
   }
 
+  // --------------------------------------------------
+  // Styles
+  // --------------------------------------------------
   get styles() {
     return {
       container: {
@@ -43,39 +55,6 @@ class StudentComments extends Component {
     };
   }
 
-  showCreateOverlay() {
-    this.props.showOverlay('create_comment', (comment) => this.addToComments(comment));
-  }
-
-  renderStudentComment(comment, index) {
-    return (
-      <StudentComment comment={comment} key={index} />
-    );
-  }
-
-  renderStudentComments() {
-    return this.state.comments.map((comment, index) => this.renderStudentComment(comment, index));
-  }
-
-  addToComments(comment) {
-    var state = this.state;
-    state.comments.push(comment);
-    this.setState( state );
-  }
-
-  componentWillMount() {
-    this.setState(StudentCommentsStore.getState());
-  }
-
-  componentDidMount() {
-    this._listener = StudentCommentsStore.listen((state) => this.setState(state));
-    StudentCommentsActions.fetchStudentComments(this.props.id);
-  }
-
-  componentWillUnmount() {
-    StudentCommentsStore.unlisten(this._listener);
-  }
-
   get clickableStyles() {
     return {
       default: {
@@ -89,6 +68,49 @@ class StudentComments extends Component {
         backgroundColor: StyleConstants.colors.turquoise,
       }
     };
+  }
+
+
+  // --------------------------------------------------
+  // Lifecycle
+  // --------------------------------------------------
+  componentWillMount() {
+    this.setState(StudentCommentsStore.getState());
+  }
+
+  componentDidMount() {
+    this._listener = StudentCommentsStore.listen((state) => this.setState(state));
+    StudentCommentsActions.fetchStudentComments(this.props.id);
+  }
+
+  componentWillUnmount() {
+    StudentCommentsStore.unlisten(this._listener);
+  }
+
+  // --------------------------------------------------
+  // Helpers
+  // --------------------------------------------------
+  showCreateOverlay() {
+    this.props.showOverlay('create_comment', (comment) => this.addToComments(comment));
+  }
+
+  addToComments(comment) {
+    var state = this.state;
+    state.comments.push(comment);
+    this.setState( state );
+  }
+
+  // --------------------------------------------------
+  // Render
+  // --------------------------------------------------
+  renderStudentComment(comment, index) {
+    return (
+      <StudentComment comment={comment} key={index} />
+    );
+  }
+
+  renderStudentComments() {
+    return this.state.comments.map((comment, index) => this.renderStudentComment(comment, index));
   }
 
   render() {

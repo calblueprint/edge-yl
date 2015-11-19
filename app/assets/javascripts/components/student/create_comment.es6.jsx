@@ -1,5 +1,8 @@
 class CreateComment extends Component {
 
+  // --------------------------------------------------
+  // Props
+  // --------------------------------------------------
   static get propTypes() {
     return {
       student: React.PropTypes.object.isRequired,
@@ -14,12 +17,18 @@ class CreateComment extends Component {
     };
   }
 
+  // --------------------------------------------------
+  // State
+  // --------------------------------------------------
   static get defaultState() {
     return {
       comment: null,
     };
   }
 
+  // --------------------------------------------------
+  // Styles
+  // --------------------------------------------------
   get styles() {
     return {
       container: {
@@ -39,6 +48,9 @@ class CreateComment extends Component {
     };
   }
 
+  // --------------------------------------------------
+  // Helpers
+  // --------------------------------------------------
   createCommentRequest() {
     var params = {
       'comment' : {
@@ -58,6 +70,9 @@ class CreateComment extends Component {
     };
   }
 
+  // --------------------------------------------------
+  // Render
+  // --------------------------------------------------
   render() {
     var student = this.props.student;
     return (
