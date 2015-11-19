@@ -107,8 +107,8 @@ class LoginForm extends Component {
         </input>
         {this.renderError()}
         <FormButton
-          content={'Log in'}
-          func={(event) => this.createSession(event)} />
+          action={(event) => this.createSession(event)}
+          content={'Log in'} />
       </div>
     );
   }
