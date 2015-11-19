@@ -1,5 +1,10 @@
 class StudentComments extends Component {
 
+  constructor(props) {
+    super(props);
+    this._listener = null;
+  }
+
   static get propTypes() {
     return {
       id: React.PropTypes.number.isRequired,
