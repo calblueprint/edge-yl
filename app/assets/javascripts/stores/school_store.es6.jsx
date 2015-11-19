@@ -3,12 +3,12 @@
 
     constructor() {
       this.sidebar = true;
-      this.School = {
+      this.school = {
         school: {},
       };
       this.bindListeners({
-        handleToggleSidebar: SchoolActions.TOGGLE_SIDEBAR,
-        handleStoreSchool: SchoolActions.STORE_School,
+        handleToggleSidebar: schoolActions.TOGGLE_SIDEBAR,
+        handleStoreSchool: schoolActions.STORE_SCHOOL,
       });
     }
 
@@ -16,8 +16,8 @@
       this.sidebar = sidebar;
     }
 
-    handleStoreSchool(School) {
-      this.School = School;
+    handleStoreSchool(school) {
+      this.school = school;
     }
   }
   this.SchoolStore = alt.createStore(SchoolStore);
