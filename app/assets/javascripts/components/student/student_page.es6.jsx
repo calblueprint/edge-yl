@@ -92,7 +92,7 @@ class StudentPage extends Component {
       return (
         <PageOverlay
           hideOverlay={(response) => this.hideOverlay(response)}
-          student={this.state.student}
+          school={this.state.school}
           type={this.state.type}
           callback={(this.state.callback == null) ? () => null : this.state.callback }
           {...this.props} />
