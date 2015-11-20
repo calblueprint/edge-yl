@@ -15,11 +15,6 @@ require 'rails_helper'
 
 RSpec.describe School, type: :model do
 
-  it 'has a valid factory' do
-    factory = FactoryGirl.build(:school)
-    expect(factory).to be_valid
-  end
-
   it "is invalid without an address" do
     factory = FactoryGirl.build(:school, address: nil)
     expect(factory).to be_invalid
