@@ -3,7 +3,8 @@
 
     constructor() {
       this.generateActions(
-        'storeSchools', 'toggleSidebar'
+        'storeSchools',
+        'toggleSidebar'
       );
     }
 
