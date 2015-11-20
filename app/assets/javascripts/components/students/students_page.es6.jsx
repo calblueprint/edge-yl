@@ -13,21 +13,13 @@ class StudentsPage extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      pagination: React.PropTypes.shape({
-        current: React.PropTypes.number.isRequired,
-        limit: React.PropTypes.number.isRequired,
-        per: React.PropTypes.number.isRequired,
-      }).isRequired,
+      page: React.PropTypes.number.isRequired,
     };
   }
 
   static get defaultProps() {
     return {
-      pagination: {
-        current: 1,
-        limit: 1,
-        per: 10,
-      },
+      page: 1,
     };
   }
 
@@ -83,7 +75,7 @@ class StudentsPage extends Component {
             <StudentsGrid students={this.state.students} />
             <PageNavigator
               route={RouteConstants.students.index}
-              {...this.props} />
+              pagination={this.state.pagination} />
           </div>
         </div>
       </div>
