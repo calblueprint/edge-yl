@@ -18,7 +18,6 @@
     handleStoreStudentComments(comments) {
       this.comments = comments;
     }
-
   }
   this.StudentCommentsStore = alt.createStore(StudentCommentsStore);
 })();
