@@ -56,8 +56,6 @@ class EditContact extends Component {
       email: this.props.student.email,
       homeAddress: this.props.student.home_address,
       homePhone: this.props.student.home_phone,
-      schoolAddress: this.props.student.school.address,
-      schoolName: this.props.student.school.name,
     });
   }
 
@@ -70,8 +68,6 @@ class EditContact extends Component {
       email: this.state.email,
       home_address: this.state.homeAddress,
       home_phone: this.state.homePhone,
-      school_address: this.state.schoolAddress,
-      school_name: this.state.schoolName,
     };
     StudentActions.updateStudent(this.props.student.id, params);
   }
@@ -112,14 +108,6 @@ class EditContact extends Component {
             action={this.generateHandler('homeAddress')}
             placeholder={'Home address'}
             value={this.state.homeAddress} />
-          <CardInput
-            action={this.generateHandler('schoolName')}
-            placeholder={'School name'}
-            value={this.state.schoolName} />
-          <CardInput
-            action={this.generateHandler('schoolAddress')}
-            placeholder={'School Address'}
-            value={this.state.schoolAddress} />
         </div>
       </div>
     );
