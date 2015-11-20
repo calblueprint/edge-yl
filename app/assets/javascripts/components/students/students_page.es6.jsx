@@ -70,19 +70,12 @@ class StudentsPage extends Component {
   }
 
   // --------------------------------------------------
-  // Helpers
-  // --------------------------------------------------
-  toggleSidebar(event) {
-    StudentsActions.toggleSidebar(!this.state.sidebar);
-  }
-
-  // --------------------------------------------------
   // Render
   // --------------------------------------------------
   render() {
     return (
       <div style={StyleConstants.pages.default}>
-        <Header toggleSidebar={(event) => this.toggleSidebar(event)} />
+        <Header toggleSidebar={(event) => StudentsActions.toggleSidebar()} />
         <div style={this.styles.container}>
           <Sidebar shouldShow={this.state.sidebar} />
           <div style={this.styles.body}>
