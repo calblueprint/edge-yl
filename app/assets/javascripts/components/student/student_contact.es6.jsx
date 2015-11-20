@@ -37,10 +37,10 @@ class StudentContact extends Component {
     return (
         <div style={this.styles.container}>
           <h4>{'Contact'}</h4>
-            <h6>{student.cell_phone}</h6>
-            <h6>{student.home_phone}</h6>
-            <h6>{student.email}</h6>
-            <h6>{student.home_address}</h6>
+          <h6>{student.cell_phone}</h6>
+          <h6>{student.home_phone}</h6>
+          <h6>{student.email}</h6>
+          <h6>{student.home_address}</h6>
           <br/>
           <h4>{'School'}</h4>
           <Clickable
