@@ -83,10 +83,6 @@ class SchoolPage extends Component {
     if (this.state.overlay) {
       return (
         <PageOverlay
-          hideOverlay={(response) => this.hideOverlay(response)}
-          student={this.state.student}
-          type={this.state.type}
-          callback={(this.state.callback == null) ? () => null : this.state.callback }
           {...this.props} />
       );
     }
@@ -95,8 +91,7 @@ class SchoolPage extends Component {
   render() {
     return (
       <div style={StyleConstants.pages.default}>
-        <Header
-          toggleSidebar={() => this.toggleSidebar()} />
+        <Header toggleSidebar={() => this.toggleSidebar()} />
         <div style={this.styles.container}>
           <Sidebar shouldShow={this.state.sidebar} />
           <SchoolGrid {...this.props} />
