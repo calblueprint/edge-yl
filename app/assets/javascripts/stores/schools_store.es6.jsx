@@ -10,12 +10,13 @@
       });
     }
 
-    handleToggleSidebar(sidebar) {
-      this.sidebar = sidebar;
+    handleToggleSidebar() {
+      this.sidebar = !this.sidebar;
     }
 
-    handleStoreSchools(schools) {
-      this.schools = schools;
+    handleStoreSchools(response) {
+      this.pagination = response.meta.pagination;
+      this.schools = response.schools;
     }
   }
   this.SchoolsStore = alt.createStore(SchoolsStore);
