@@ -68,7 +68,7 @@ class SignupForm extends Component {
         password_confirmation: this.state.passwordConfirmation,
       },
     };
-    var resolve = (response) => { window.location = RouteConstants.students.index };
+    var resolve = (response) => { window.location = RouteConstants.students.index() };
     var reject = (response) => { this.setState({error: response.message}) };
     Requester.post(ApiConstants.users.create, params, resolve, reject);
   }
@@ -101,6 +101,7 @@ class SignupForm extends Component {
           {'First Name'}
         </label>
         <input
+          autoFocus={true}
           placeholder={'Emily'}
           ref={'firstName'}
           style={this.styles.input}>
@@ -117,7 +118,6 @@ class SignupForm extends Component {
           {'Email'}
         </label>
         <input
-          autoFocus={true}
           placeholder={'example@email.com'}
           ref={'email'}
           style={this.styles.input}>
@@ -142,8 +142,8 @@ class SignupForm extends Component {
         </input>
         {this.renderError()}
         <FormButton
-          content={'Sign up'}
-          func={(event) => this.createUser(event)} />
+          action={(event) => this.createUser(event)}
+          content={'Sign up'} />
       </div>
     );
   }

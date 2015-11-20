@@ -24,17 +24,6 @@ class StudentPage extends Component {
   }
 
   // --------------------------------------------------
-  // State
-  // --------------------------------------------------
-  static get defaultState() {
-    return {
-      overlay: false,
-      type: 'preview',
-      callback: () => null,
-    };
-  }
-
-  // --------------------------------------------------
   // Styles
   // --------------------------------------------------
   get styles() {
@@ -68,18 +57,6 @@ class StudentPage extends Component {
   // --------------------------------------------------
   // Handlers
   // --------------------------------------------------
-  hideOverlay(response) {
-    if (response) {
-      this.setState({ overlay: false, student: response });
-    } else {
-      this.setState({ overlay: false });
-    }
-  }
-
-  showOverlay(type, callback) {
-    this.setState({ overlay: true, type: type, callback: callback});
-  }
-
   toggleSidebar(event) {
     StudentsActions.toggleSidebar(!this.state.sidebar);
   }
@@ -88,11 +65,11 @@ class StudentPage extends Component {
   // Render
   // --------------------------------------------------
   renderOverlay() {
-    if (this.state.overlay) {
+    if (this.state.overlay.active) {
       return (
         <PageOverlay
-          school={this.state.school}
-          {...this.props} />
+          overlay={this.state.overlay}
+          student={this.state.student} />
       );
     }
   }
@@ -101,16 +78,11 @@ class StudentPage extends Component {
     return (
       <div style={StyleConstants.pages.default}>
         {this.renderOverlay()}
-        <Header
-          toggleSidebar={() => this.toggleSidebar()} />
+        <Header toggleSidebar={() => this.toggleSidebar()} />
         <div style={this.styles.container}>
           <Sidebar shouldShow={this.state.sidebar} />
-          <StudentGrid
-            showOverlay={(type, callback) => this.showOverlay(type, callback)}
-            student={this.state.student} />
-          <StudentComments
-            showOverlay={(type, callback) => this.showOverlay(type, callback)}
-            id={this.props.id} />
+          <StudentGrid student={this.state.student} />
+          <StudentComments id={this.props.id} />
         </div>
       </div>
     );

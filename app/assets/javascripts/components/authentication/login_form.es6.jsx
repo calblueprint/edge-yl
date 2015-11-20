@@ -58,7 +58,7 @@ class LoginForm extends Component {
         password: this.state.password,
       },
     };
-    var resolve = (response) => { window.location = RouteConstants.students.index };
+    var resolve = (response) => { window.location = RouteConstants.students.index() };
     var reject = (response) => { this.setState({ error: response.message }) };
     Requester.post(ApiConstants.users.login, params, resolve, reject);
   }
@@ -107,8 +107,8 @@ class LoginForm extends Component {
         </input>
         {this.renderError()}
         <FormButton
-          content={'Log in'}
-          func={(event) => this.createSession(event)} />
+          action={(event) => this.createSession(event)}
+          content={'Log in'} />
       </div>
     );
   }

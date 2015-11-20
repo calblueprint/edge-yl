@@ -5,13 +5,13 @@ class AuthenticationModal extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      isLogin: React.PropTypes.bool.isRequired,
+      type: React.PropTypes.oneOf(['login', 'signup']).isRequired,
     };
   }
 
   static get defaultProps() {
     return {
-      isLogin: true,
+      type: 'login',
     };
   }
 
@@ -42,13 +42,13 @@ class AuthenticationModal extends Component {
   // Render
   // --------------------------------------------------
   renderForm() {
-    return this.props.isLogin ? <LoginForm /> : <SignupForm />;
+    return this.props.type === 'login' ? <LoginForm /> : <SignupForm />;
   }
 
   renderHeader() {
     return (
       <div style={this.styles.head}>
-        <h2>{this.props.isLogin ? 'Login' : 'Signup'}</h2>
+        <h2>{this.props.type === 'login' ? 'Login' : 'Signup'}</h2>
       </div>
     );
   }

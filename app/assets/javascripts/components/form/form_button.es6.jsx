@@ -2,7 +2,7 @@ class FormButton extends Component {
 
   static get propTypes() {
     return {
-      func: React.PropTypes.func,
+      action: React.PropTypes.func,
       content: React.PropTypes.string.isRequired,
       route: React.PropTypes.string,
     };
@@ -10,7 +10,7 @@ class FormButton extends Component {
 
   static get defaultProps() {
     return {
-      func: null,
+      action: null,
       content: '',
       route: '',
     };

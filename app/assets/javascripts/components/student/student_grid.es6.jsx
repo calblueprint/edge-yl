@@ -5,14 +5,12 @@ class StudentGrid extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      showOverlay: React.PropTypes.func.isRequired,
       student: React.PropTypes.object.isRequired,
     };
   }
 
   static get defaultProps() {
     return {
-      showOverlay: null,
       student: {},
     };
   }
