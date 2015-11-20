@@ -6,7 +6,7 @@
         create: '/api/schools',
         index: '/api/schools',
         show: function(id) {
-          return `/schools/${id}`;
+          return `/api/schools/${id}`;
         },
       };
     }

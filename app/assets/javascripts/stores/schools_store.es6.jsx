@@ -2,8 +2,8 @@
   class SchoolsStore {
 
     constructor() {
-      this.sidebar = true;
       this.schools = [];
+      this.sidebar = true;
       this.bindListeners({
         handleToggleSidebar: SchoolsActions.TOGGLE_SIDEBAR,
         handleStoreSchools: SchoolsActions.STORE_SCHOOLS,
