@@ -13,7 +13,7 @@ class Dropdown extends Component {
         }),
         container: React.PropTypes.object,
       }),
-      blur: React.PropTypes.func,
+    blur: React.PropTypes.func,
     };
   }
 
@@ -35,7 +35,7 @@ class Dropdown extends Component {
   // --------------------------------------------------
   componentDidMount() {
     var input = ReactDOM.findDOMNode(this.refs.input);
-    input.addEventListener('blur', (event) => this.props.blur(event));
+    // input.addEventListener('blur', (event) => this.props.blur(event));
   }
 
   // --------------------------------------------------
@@ -45,7 +45,7 @@ class Dropdown extends Component {
     return (
       <Clickable
         content={option.content}
-        func={option.func}
+        action={option.func}
         key={index}
         route={option.route}
         styles={this.props.styles.child} />

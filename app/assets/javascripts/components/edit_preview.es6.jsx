@@ -55,8 +55,7 @@ class EditPreview extends Component {
       first_name: this.state.firstName,
       last_name: this.state.lastName
     };
-    resolve = (response) => this.props.hideOverlay(response);
-    Requester.update(ApiConstants.students.update(this.props.student.id), params, resolve);
+    StudentActions.updateStudent(this.props.student.id, params);
   }
 
   generateHandler(field) {

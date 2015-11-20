@@ -1,12 +1,16 @@
 class SchoolsPage extends Component {
 
-  static get defaultState() {
-    return {
-      sidebar: true,
-      schools: [],
-    };
+  // --------------------------------------------------
+  // Setup
+  // --------------------------------------------------
+  constructor(props) {
+    super(props);
+    this._listener = null;
   }
 
+  // --------------------------------------------------
+  // Styles
+  // --------------------------------------------------
   get styles() {
     return {
       container: {
@@ -26,15 +30,33 @@ class SchoolsPage extends Component {
     };
   }
 
+  // --------------------------------------------------
+  // Lifecycle
+  // --------------------------------------------------
+
+  componentWillMount() {
+    this.setState(SchoolsStore.getState());
+  }
+
   componentDidMount() {
-    resolve = (response) => { this.setState({ schools: response }) };
-    Requester.get(ApiConstants.schools.index, resolve);
+    this._listener = SchoolsStore.listen((state) => this.setState(state));
+    SchoolsActions.fetchSchools();
   }
 
+  componentWillUnmount() {
+    SchoolsStore.unlisten(this._listener);
+  }
+
+  // --------------------------------------------------
+  // Helpers
+  // --------------------------------------------------
   toggleSidebar(event) {
-    this.setState({ sidebar: !this.state.sidebar });
+    SchoolsActions.toggleSidebar(!this.state.sidebar);
   }
 
+  // --------------------------------------------------
+  // Render
+  // --------------------------------------------------
   render() {
     return (
       <div style={StyleConstants.pages.default}>

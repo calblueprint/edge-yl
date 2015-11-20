@@ -5,7 +5,6 @@ class StudentCard extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      showOverlay: React.PropTypes.func.isRequired,
       student: React.PropTypes.object.isRequired,
       type: React.PropTypes.oneOf([
         'contact',
@@ -18,7 +17,6 @@ class StudentCard extends Component {
 
   static get defaultProps() {
     return {
-      showOverlay: null,
       student: {},
       type: 'preview',
     };
@@ -78,7 +76,7 @@ class StudentCard extends Component {
     return (
       <div style={this.styles.container}>
         <CardHeader
-          action={this.props.showOverlay}
+          action={(event) => StudentActions.storeOverlay(true, this.props.type)}
           content={this.renderTitle()}
           icon={'fa fa-pencil-square-o fa-lg'} />
         {this.renderBody()}

@@ -1,4 +1,4 @@
-class FormDropdown extends Component { 
+class FormDropdown extends Component {
 
   static get propTypes() {
     return {
@@ -7,10 +7,10 @@ class FormDropdown extends Component {
     };
   }
 
-  static get defaultState() { 
-    return { 
+  static get defaultState() {
+    return {
       dropdown: false,
-      value: 'Select one', 
+      value: 'Select one',
     };
   }
 
@@ -18,7 +18,7 @@ class FormDropdown extends Component {
     return {
       child: {
         default: {
-          flex: '1', 
+          flex: '1',
           padding: '4px',
         },
         hover: {
@@ -28,11 +28,11 @@ class FormDropdown extends Component {
       container: Object.assign(
         {},
         StyleConstants.cards.default,
-        {  
+        {
           display: 'flex',
-          flexFlow: 'column',    
+          flexFlow: 'column',
           position:'absolute',
-          zIndex: StyleConstants.planes.two,  
+          zIndex: StyleConstants.planes.two,
           top: '19px',
           left: '-5px',
           width: '136px',
@@ -41,7 +41,7 @@ class FormDropdown extends Component {
     };
   }
 
-  get clickableStyles() { 
+  get clickableStyles() {
     return {
       default: {
         padding: '0px 2px',
@@ -54,7 +54,7 @@ class FormDropdown extends Component {
   get styles() {
     return {
       container: {
-        display: 'flex', 
+        display: 'flex',
         flexFlow: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
@@ -84,7 +84,7 @@ class FormDropdown extends Component {
       },
     };
   }
-  
+
   handleClick(event) {
     this.setState({ dropdown: !this.state.dropdown });
   }
@@ -102,7 +102,7 @@ class FormDropdown extends Component {
     };
   }
 
-  generateDropdownOptions() { 
+  generateDropdownOptions() {
     return this.props.options.map(this.generateDropdownOption.bind(this));
   }
 
@@ -115,7 +115,7 @@ class FormDropdown extends Component {
       return (
         <Dropdown
           styles={this.dropdownStyles}
-          options={this.generateDropdownOptions()} 
+          options={this.generateDropdownOptions()}
           blur={() => this.hideDropdown()}/>
       );
     }
@@ -125,19 +125,19 @@ class FormDropdown extends Component {
     return (
       <div style = {this.styles.container}>
         <label style={this.styles.label}>{this.props.title}</label>
-          <div style={this.styles.dropdownContainer}> 
-            <div style = {this.styles.dropdown}> 
-              <span style = {this.styles.selected}> {this.state.value} </span>
+          <div style={this.styles.dropdownContainer}>
+            <div style={this.styles.dropdown}>
+              <span style={this.styles.selected}> {this.state.value} </span>
               {this.renderDropdown()}
             </div>
             <Clickable
               icon={'fa fa-angle-down'}
-              func={this.handleClick.bind(this)}
+              action={(event) => handleClick(event)}
               type={'i'}
               styles={this.clickableStyles}
             />
           </div>
-      </div>  
+      </div>
     );
   }
 }

@@ -5,13 +5,13 @@ class AuthenticationPage extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      isLogin: React.PropTypes.bool.isRequired,
+      type: React.PropTypes.oneOf(['login', 'signup']).isRequired,
     };
   }
 
   static get defaultProps() {
     return {
-      isLogin: true,
+      type: 'login',
     };
   }
 
@@ -50,7 +50,7 @@ class AuthenticationPage extends Component {
   // Render
   // --------------------------------------------------
   renderFooter() {
-    var bool = this.props.isLogin;
+    var bool = this.props.type === 'login';
     var content = bool ? 'Sign up' : 'Log in';
     var label = bool ? 'Don\'t have an account?' : 'Already have an account?';
     var route = bool ? RouteConstants.pages.signup : RouteConstants.pages.login;
