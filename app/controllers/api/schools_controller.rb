@@ -7,7 +7,11 @@ class Api::SchoolsController < Api::BaseController
 
   def index
     schools = School.all
-    render json: schools, each_serializer: SchoolIndexSerializer
+    # TODO(Warren): Pagination!
+    students = School.page params[:page]
+    render json: students,
+                 serializer: PaginatedSerializer,
+                 each_serializer: SchoolIndexSerializer
   end
 
   def show
