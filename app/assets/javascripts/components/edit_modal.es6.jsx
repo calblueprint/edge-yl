@@ -19,7 +19,7 @@ class EditModal extends Component {
         'conference',
         'parent',
         'preview',
-        'create_comment',
+        'createComment',
       ]).isRequired,
     };
   }
@@ -84,7 +84,7 @@ class EditModal extends Component {
         return <EditPreview {...this.props} />;
       case 'contact':
         return <EditContact {...this.props} />
-      case 'create_comment':
+      case 'createComment':
         return <CreateComment {...this.props} />;
     };
   }

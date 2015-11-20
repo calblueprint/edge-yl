@@ -1,25 +1,40 @@
 class StudentComments extends Component {
 
+  // --------------------------------------------------
+  // Setup
+  // --------------------------------------------------
+  constructor(props) {
+    super(props);
+    this._listener = null;
+  }
+
+  // --------------------------------------------------
+  // Props
+  // --------------------------------------------------
   static get propTypes() {
     return {
       id: React.PropTypes.number.isRequired,
-      showOverlay: React.PropTypes.func.isRequired,
     };
   }
 
   static get defaultProps() {
     return {
       id: null,
-      showOverlay: null,
     };
   }
 
+  // --------------------------------------------------
+  // State
+  // --------------------------------------------------
   static get defaultState() {
     return {
       comments: [],
     };
   }
 
+  // --------------------------------------------------
+  // Styles
+  // --------------------------------------------------
   get styles() {
     return {
       container: {
@@ -38,31 +53,6 @@ class StudentComments extends Component {
     };
   }
 
-  showCreateOverlay() {
-    this.props.showOverlay('create_comment', (comment) => this.addToComments(comment));
-  }
-
-  renderStudentComment(comment, index) {
-    return (
-      <StudentComment comment={comment} key={index} />
-    );
-  }
-
-  renderStudentComments() {
-    return this.state.comments.map((comment, index) => this.renderStudentComment(comment, index));
-  }
-
-  addToComments(comment) {
-    var state = this.state;
-    state.comments.push(comment);
-    this.setState( state );
-  }
-
-  componentDidMount() {
-    resolve = (response) => this.setState({ comments: response });
-    Requester.get(ApiConstants.students.comments.index(this.props.id), resolve);
-  }
-
   get clickableStyles() {
     return {
       default: {
@@ -78,6 +68,38 @@ class StudentComments extends Component {
     };
   }
 
+
+  // --------------------------------------------------
+  // Lifecycle
+  // --------------------------------------------------
+  componentWillMount() {
+    this.setState(StudentCommentsStore.getState());
+  }
+
+  componentDidMount() {
+    this._listener = StudentCommentsStore.listen((state) => this.setState(state));
+    StudentCommentsActions.fetchStudentComments(this.props.id);
+  }
+
+  componentWillUnmount() {
+    StudentCommentsStore.unlisten(this._listener);
+  }
+
+  // --------------------------------------------------
+  // Render
+  // --------------------------------------------------
+  renderStudentComment(comment, index) {
+    return (
+      <StudentComment
+        comment={comment}
+        key={index} />
+    );
+  }
+
+  renderStudentComments() {
+    return this.state.comments.map((comment, index) => this.renderStudentComment(comment, index));
+  }
+
   render() {
     var style = this.styles.container;
     return (
@@ -86,7 +108,7 @@ class StudentComments extends Component {
         {this.renderStudentComments()}
         <Clickable
           content={"Add Comment"}
-          action={() => this.showCreateOverlay()}
+          action={() => StudentActions.storeOverlay(true, 'createComment')}
           styles={this.clickableStyles}
           type={'h3'} />
       </div>

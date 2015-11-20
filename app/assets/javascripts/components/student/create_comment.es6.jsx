@@ -1,25 +1,32 @@
 class CreateComment extends Component {
 
+  // --------------------------------------------------
+  // Props
+  // --------------------------------------------------
   static get propTypes() {
     return {
       student: React.PropTypes.object.isRequired,
-      callback: React.PropTypes.func.isRequired,
     };
   }
 
   static get defaultProps() {
     return {
       student: {},
-      callback: null,
     };
   }
 
+  // --------------------------------------------------
+  // State
+  // --------------------------------------------------
   static get defaultState() {
     return {
       comment: null,
     };
   }
 
+  // --------------------------------------------------
+  // Styles
+  // --------------------------------------------------
   get styles() {
     return {
       container: {
@@ -39,18 +46,17 @@ class CreateComment extends Component {
     };
   }
 
+  // --------------------------------------------------
+  // Helpers
+  // --------------------------------------------------
   createCommentRequest() {
     var params = {
       'comment' : {
         'content': this.state.content,
         'user_id' : 1, // TODO (max): fix this to be the current user id
-        'student_id': this.props.student.id,
       },
     };
-    Requester.post(
-      ApiConstants.students.comments.create(this.props.student.id),
-      params,
-      (response) => this.props.callback(response));
+    StudentCommentsActions.createStudentComment(this.props.student.id, params);
   }
 
   generateHandler(field) {
@@ -61,6 +67,9 @@ class CreateComment extends Component {
     };
   }
 
+  // --------------------------------------------------
+  // Render
+  // --------------------------------------------------
   render() {
     var student = this.props.student;
     return (
@@ -73,7 +82,7 @@ class CreateComment extends Component {
           <CardInput
             action={this.generateHandler('content')}
             placeholder={'Your Comment Here...'}
-            value={this.state.comment} />
+            value={''} />
         </div>
       </div>
     );
