@@ -14,9 +14,9 @@ class PageOverlay extends Component {
   static get propTypes() {
     return {
       overlay: React.PropTypes.shape({
-          active: React.PropTypes.bool,
-          type: React.PropTypes.string,
-        }).isRequired,
+        active: React.PropTypes.bool,
+        type: React.PropTypes.string,
+      }).isRequired,
       student: React.PropTypes.object.isRequired,
     };
   }

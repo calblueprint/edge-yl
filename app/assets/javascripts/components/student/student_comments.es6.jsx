@@ -5,7 +5,7 @@ class StudentComments extends Component {
   // --------------------------------------------------
   constructor(props) {
     super(props);
-    this._listener = null;
+    this._listener = (state) => this.setState(state);
   }
 
   // --------------------------------------------------
@@ -77,7 +77,7 @@ class StudentComments extends Component {
   }
 
   componentDidMount() {
-    this._listener = StudentCommentsStore.listen((state) => this.setState(state));
+    StudentCommentsStore.listen(this._listener);
     StudentCommentsActions.fetchStudentComments(this.props.id);
   }
 

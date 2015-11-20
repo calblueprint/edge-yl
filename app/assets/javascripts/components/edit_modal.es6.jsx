@@ -51,19 +51,10 @@ class EditModal extends Component {
   // --------------------------------------------------
   // Lifecycle
   // --------------------------------------------------
-  componentWillMount() {
-    this.setState(StudentStore.getState());
-  }
-
   componentDidMount() {
-    this._listener = StudentStore.listen((state) => this.setState(state));
     var node = ReactDOM.findDOMNode(this.refs.container);
     this._node = node;
     node.addEventListener('click', (event) => this.handleClick(event));
-  }
-
-  componentWillUnmount() {
-    StudentStore.unlisten(this._listener);
   }
 
   // --------------------------------------------------

@@ -5,7 +5,7 @@ class StudentsPage extends Component {
   // --------------------------------------------------
   constructor(props) {
     super(props);
-    this._listener = null;
+    this._listener = (state) => this.setState(state);
   }
 
   // --------------------------------------------------
@@ -53,7 +53,7 @@ class StudentsPage extends Component {
   }
 
   componentDidMount() {
-    this._listener = StudentsStore.listen((state) => this.setState(state));
+    StudentsStore.listen(this._listener);
     StudentsActions.fetchStudents(this.props.page);
   }
 
