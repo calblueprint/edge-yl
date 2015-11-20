@@ -3,7 +3,8 @@
 
     constructor() {
       this.generateActions(
-        'storeStudent'
+        'storeStudent',
+        'toggleSidebar'
       );
     }
 
@@ -18,10 +19,6 @@
         active: active,
         type: type,
       };
-    }
-
-    toggleSidebar(sidebar) {
-      return sidebar;
     }
 
     updateStudent(id, params) {

@@ -55,13 +55,6 @@ class StudentPage extends Component {
   }
 
   // --------------------------------------------------
-  // Handlers
-  // --------------------------------------------------
-  toggleSidebar(event) {
-    StudentsActions.toggleSidebar(!this.state.sidebar);
-  }
-
-  // --------------------------------------------------
   // Render
   // --------------------------------------------------
   renderOverlay() {
@@ -78,7 +71,7 @@ class StudentPage extends Component {
     return (
       <div style={StyleConstants.pages.default}>
         {this.renderOverlay()}
-        <Header toggleSidebar={() => this.toggleSidebar()} />
+        <Header toggleSidebar={(event) => StudentActions.toggleSidebar()} />
         <div style={this.styles.container}>
           <Sidebar shouldShow={this.state.sidebar} />
           <StudentGrid student={this.state.student} />
