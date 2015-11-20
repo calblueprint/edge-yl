@@ -86,18 +86,13 @@ class StudentComments extends Component {
   }
 
   // --------------------------------------------------
-  // Helpers
-  // --------------------------------------------------
-  showCreateOverlay() {
-    StudentActions.storeOverlay(true, 'create_comment');
-  }
-
-  // --------------------------------------------------
   // Render
   // --------------------------------------------------
   renderStudentComment(comment, index) {
     return (
-      <StudentComment comment={comment} key={index} />
+      <StudentComment
+        comment={comment}
+        key={index} />
     );
   }
 
@@ -113,7 +108,7 @@ class StudentComments extends Component {
         {this.renderStudentComments()}
         <Clickable
           content={"Add Comment"}
-          action={() => this.showCreateOverlay()}
+          action={() => StudentActions.storeOverlay(true, 'createComment')}
           styles={this.clickableStyles}
           type={'h3'} />
       </div>

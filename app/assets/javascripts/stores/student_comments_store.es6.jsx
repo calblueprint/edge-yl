@@ -4,18 +4,18 @@
     constructor() {
       this.comments = [];
       this.bindListeners({
-        handleUpdateStudentComments: StudentCommentsActions.UPDATE_STUDENT_COMMENTS,
-        handleAddStudentComment: StudentCommentsActions.ADD_STUDENT_COMMENT
+        handleStoreStudentComment: StudentCommentsActions.STORE_STUDENT_COMMENT,
+        handleStoreStudentComments: StudentCommentsActions.STORE_STUDENT_COMMENTS,
       });
     }
 
-    handleUpdateStudentComments(comments) {
+    handleStoreStudentComment(comment) {
+      var comments = this.comments;
+      comments.push(comment);
       this.comments = comments;
     }
 
-    handleAddStudentComment(comment) {
-      var comments = this.comments;
-      comments.push(comment);
+    handleStoreStudentComments(comments) {
       this.comments = comments;
     }
 
