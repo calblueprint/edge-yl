@@ -18,7 +18,7 @@
     }
 
     handleToggleSidebar() {
-      this.sidebar = !sidebar;
+      this.sidebar = !this.sidebar;
     }
 
     handleStoreStudent(student) {

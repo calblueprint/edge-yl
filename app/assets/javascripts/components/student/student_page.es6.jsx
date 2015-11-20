@@ -71,7 +71,7 @@ class StudentPage extends Component {
     return (
       <div style={StyleConstants.pages.default}>
         {this.renderOverlay()}
-        <Header toggleSidebar={(event) => StudentsActions.toggleSidebar()} />
+        <Header toggleSidebar={(event) => StudentActions.toggleSidebar()} />
         <div style={this.styles.container}>
           <Sidebar shouldShow={this.state.sidebar} />
           <StudentGrid student={this.state.student} />
