@@ -23,6 +23,10 @@ class PageOverlay extends Component {
 
   static get defaultProps() {
     return {
+      overlay: {
+        active: false,
+        type: 'preview',
+      },
       student: {},
     };
   }
@@ -96,8 +100,8 @@ class PageOverlay extends Component {
           styles={this.clickableStyles}
           type={'i'} />
         <EditModal
-          student={this.props.student}
-          type={this.props.overlay.type} />
+          overlay={this.props.overlay}
+          student={this.props.student} />
       </div>
     );
   }
