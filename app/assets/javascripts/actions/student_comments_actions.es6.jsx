@@ -3,9 +3,9 @@
 
     constructor() {
       this.generateActions(
-          'storeStudentComments',
-          'storeStudentComment'
-        );
+        'storeStudentComments',
+        'storeStudentComment'
+      );
     }
 
     fetchStudentComments(id) {
