@@ -56,8 +56,8 @@ class EditContact extends Component {
       email: this.props.student.email,
       homeAddress: this.props.student.home_address,
       homePhone: this.props.student.home_phone,
-      schoolAddress: this.props.student.school.school_address,
-      schoolName: this.props.student.school.school_name,
+      schoolAddress: this.props.student.school.address,
+      schoolName: this.props.student.school.name,
     });
   }
 
