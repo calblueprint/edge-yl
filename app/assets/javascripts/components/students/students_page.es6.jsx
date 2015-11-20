@@ -81,9 +81,7 @@ class StudentsPage extends Component {
           <div style={this.styles.body}>
             <StudentsFilters />
             <StudentsGrid students={this.state.students} />
-            <PageNavigator
-              route={RouteConstants.students.index}
-              {...this.props} />
+
           </div>
         </div>
       </div>

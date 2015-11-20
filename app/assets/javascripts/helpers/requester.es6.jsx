@@ -22,6 +22,7 @@ class RequesterSingleton {
       if (this.readyState === XMLHttpRequest.DONE) {
         if (this.status === 200) {
           if (resolve) {
+            console.log(JSON.parse(this.response));
             resolve(JSON.parse(this.response));
           }
         }

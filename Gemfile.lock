@@ -267,7 +267,7 @@ DEPENDENCIES
   guard-rspec
   jbuilder (~> 2.0)
   jquery-rails
-  kaminari
+  kaminari (~> 0.16.2)
   launchy
   letter_opener
   pg

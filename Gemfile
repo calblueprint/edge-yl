@@ -8,7 +8,7 @@ gem 'rails', '4.2.1'
 gem 'active_model_serializers', '~> 0.10.0.rc1'
 gem 'devise'
 gem 'figaro'
-gem 'kaminari'
+gem 'kaminari', '~> 0.16.2'
 gem 'pg'
 gem 'react-rails', '~> 1.4.0'
 
