@@ -51,10 +51,19 @@ class EditModal extends Component {
   // --------------------------------------------------
   // Lifecycle
   // --------------------------------------------------
+  componentWillMount() {
+    this.setState(StudentStore.getState());
+  }
+
   componentDidMount() {
+    this._listener = StudentStore.listen((state) => this.setState(state));
     var node = ReactDOM.findDOMNode(this.refs.container);
     this._node = node;
     node.addEventListener('click', (event) => this.handleClick(event));
+  }
+
+  componentWillUnmount() {
+    StudentStore.unlisten(this._listener);
   }
 
   // --------------------------------------------------
@@ -70,11 +79,13 @@ class EditModal extends Component {
   // Render
   // --------------------------------------------------
   renderBody() {
-    switch (this.props.type) {
-      case "createComment":
-        return <CreateComment {...this.props} />;
-      default:
+    switch (this.state.overlay.type) {
+      case 'preview':
         return <EditPreview {...this.props} />;
+      case 'contact':
+        return <EditContact {...this.props} />
+      case 'createComment':
+        return <CreateComment {...this.props} />;
     };
   }
 
