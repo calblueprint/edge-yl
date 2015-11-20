@@ -17,17 +17,17 @@
       });
     }
 
-    handleToggleSidebar() {
-      this.sidebar = !this.sidebar;
-    }
-
-    handleStoreStudent(student) {
-      this.overlay.active = false;
-      this.student = student;
-    }
-
     handleStoreOverlay(overlay) {
       this.overlay = overlay;
+    }
+
+    handleStoreStudent(response) {
+      this.overlay.active = false;
+      this.student = response.student;
+    }
+
+    handleToggleSidebar() {
+      this.sidebar = !this.sidebar;
     }
   }
   this.StudentStore = alt.createStore(StudentStore);
