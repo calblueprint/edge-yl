@@ -1,5 +1,16 @@
 class EditModal extends Component {
 
+  // --------------------------------------------------
+  // Setup
+  // --------------------------------------------------
+  constructor(props) {
+    super(props);
+    this._node = null;
+  }
+
+  // --------------------------------------------------
+  // Props
+  // --------------------------------------------------
   static get propTypes() {
     return {
       student: React.PropTypes.object.isRequired,
@@ -20,6 +31,9 @@ class EditModal extends Component {
     };
   }
 
+  // --------------------------------------------------
+  // Styles
+  // --------------------------------------------------
   get styles() {
     return {
       container: {
@@ -34,6 +48,27 @@ class EditModal extends Component {
     };
   }
 
+  // --------------------------------------------------
+  // Lifecycle
+  // --------------------------------------------------
+  componentDidMount() {
+    var node = ReactDOM.findDOMNode(this.refs.container);
+    this._node = node;
+    node.addEventListener('click', (event) => this.handleClick(event));
+  }
+
+  // --------------------------------------------------
+  // Handlers
+  // --------------------------------------------------
+  handleClick(event) {
+    if (event.target === this._node) {
+      StudentActions.storeOverlay(false);
+    }
+  }
+
+  // --------------------------------------------------
+  // Render
+  // --------------------------------------------------
   renderBody() {
     switch (this.props.type) {
       case "create_comment":
@@ -45,7 +80,7 @@ class EditModal extends Component {
 
   render() {
     return (
-      <div style={this.styles.container}>
+      <div ref={'container'} style={this.styles.container}>
         <h2 style={this.styles.title}>{'Edit'}</h2>
         {this.renderBody()}
       </div>
