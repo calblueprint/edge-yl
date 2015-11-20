@@ -1,5 +1,10 @@
 class EditModal extends Component {
 
+  constructor(props) {
+    super(props);
+    this._node = null;
+  }
+
   static get propTypes() {
     return {
       student: React.PropTypes.object.isRequired,
@@ -34,6 +39,18 @@ class EditModal extends Component {
     };
   }
 
+  componentDidMount() {
+    var node = ReactDOM.findDOMNode(this.refs.container);
+    this._node = node;
+    node.addEventListener('click', (event) => this.handleClick(event));
+  }
+
+  handleClick(event) {
+    if (event.target === this._node) {
+      StudentActions.storeOverlay(false);
+    }
+  }
+
   renderBody() {
     switch (this.props.type) {
       case "create_comment":
@@ -45,7 +62,7 @@ class EditModal extends Component {
 
   render() {
     return (
-      <div style={this.styles.container}>
+      <div ref={'container'} style={this.styles.container}>
         <h2 style={this.styles.title}>{'Edit'}</h2>
         {this.renderBody()}
       </div>
