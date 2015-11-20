@@ -24,8 +24,6 @@
       return sidebar;
     }
 
-
-
     updateStudent(id, params) {
       resolve = (response) => this.storeStudent(response);
       Requester.update(ApiConstants.students.update(id), params, resolve);
