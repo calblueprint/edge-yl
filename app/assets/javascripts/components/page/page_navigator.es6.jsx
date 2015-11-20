@@ -8,7 +8,6 @@ class PageNavigator extends Component {
       pagination: React.PropTypes.shape({
         current: React.PropTypes.number.isRequired,
         limit: React.PropTypes.number.isRequired,
-        per: React.PropTypes.number.isRequired,
       }).isRequired,
       route: React.PropTypes.func.isRequired,
     };
@@ -19,7 +18,6 @@ class PageNavigator extends Component {
       pagination: {
         current: 1,
         limit: 1,
-        per: 10,
       },
       route: null,
     };
