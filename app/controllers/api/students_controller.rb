@@ -6,8 +6,11 @@ class Api::StudentsController < Api::BaseController
   end
 
   def index
+    puts params[:page]
     students = Student.includes(:school).page params[:page]
-    render json: students, each_serializer: StudentIndexSerializer
+    render json: students,
+                 serializer: PaginatedSerializer,
+                 each_serializer: StudentIndexSerializer
   end
 
   def show

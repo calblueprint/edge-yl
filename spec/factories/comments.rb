@@ -9,12 +9,11 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
+FactoryGirl.define do
 
-class Comment < ActiveRecord::Base
-
-  belongs_to :student
-  belongs_to :user
-
-  validates :content, presence: true
+  factory :comment do
+    content { Faker::Lorem.sentence }
+    student
+  end
 
 end
