@@ -5,6 +5,7 @@ class PageOverlay extends Component {
   // --------------------------------------------------
   constructor(props) {
     super(props);
+    console.log(props)
     this._node = null;
   }
 
@@ -13,6 +14,10 @@ class PageOverlay extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
+      overlay: React.PropTypes.shape({
+          active: React.PropTypes.bool,
+          type: React.PropTypes.string,
+        }).isRequired,
       student: React.PropTypes.object.isRequired,
     };
   }
@@ -61,6 +66,10 @@ class PageOverlay extends Component {
   // --------------------------------------------------
   // Lifecycle
   // --------------------------------------------------
+  componentWillMount() {
+    this.setState(StudentCommentsStore.getState());
+  }
+
   componentDidMount() {
     var node = ReactDOM.findDOMNode(this.refs.container);
     this._node = node;
@@ -87,7 +96,9 @@ class PageOverlay extends Component {
           icon={'fa fa-times fa-2x'}
           styles={this.clickableStyles}
           type={'i'} />
-        <EditModal student={this.props.student} />
+        <EditModal
+          student={this.props.student}
+          type={this.props.overlay.type} />
       </div>
     );
   }

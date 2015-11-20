@@ -14,14 +14,12 @@ class StudentComments extends Component {
   static get propTypes() {
     return {
       id: React.PropTypes.number.isRequired,
-      showOverlay: React.PropTypes.func.isRequired,
     };
   }
 
   static get defaultProps() {
     return {
       id: null,
-      showOverlay: null,
     };
   }
 
@@ -91,7 +89,7 @@ class StudentComments extends Component {
   // Helpers
   // --------------------------------------------------
   showCreateOverlay() {
-    this.props.showOverlay('create_comment', (comment) => this.addToComments(comment));
+    StudentActions.storeOverlay(true, 'create_comment');
   }
 
   addToComments(comment) {
@@ -110,7 +108,6 @@ class StudentComments extends Component {
   }
 
   renderStudentComments() {
-    console.log(this.comments);
     return this.state.comments.map((comment, index) => this.renderStudentComment(comment, index));
   }
 

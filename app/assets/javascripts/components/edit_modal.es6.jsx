@@ -1,5 +1,18 @@
 class EditModal extends Component {
 
+
+  // --------------------------------------------------
+  // Setup
+  // --------------------------------------------------
+  constructor(props) {
+    super(props);
+    console.log(props)
+    this._node = null;
+  }
+
+  // --------------------------------------------------
+  // Props
+  // --------------------------------------------------
   static get propTypes() {
     return {
       student: React.PropTypes.object.isRequired,
@@ -20,6 +33,9 @@ class EditModal extends Component {
     };
   }
 
+  // --------------------------------------------------
+  // Styles
+  // --------------------------------------------------
   get styles() {
     return {
       container: {
@@ -34,6 +50,9 @@ class EditModal extends Component {
     };
   }
 
+  // --------------------------------------------------
+  // Render
+  // --------------------------------------------------
   renderBody() {
     switch (this.props.type) {
       case "create_comment":
