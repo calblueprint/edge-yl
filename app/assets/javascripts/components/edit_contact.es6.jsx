@@ -1,5 +1,8 @@
 class EditContact extends Component {
 
+  // --------------------------------------------------
+  // Props
+  // --------------------------------------------------
   static get propTypes() {
     return {
       student: React.PropTypes.object.isRequired,
@@ -12,6 +15,9 @@ class EditContact extends Component {
     };
   }
 
+  // --------------------------------------------------
+  // Styles
+  // --------------------------------------------------
   get styles() {
     return {
       container: Object.assign(
@@ -41,6 +47,9 @@ class EditContact extends Component {
     };
   }
 
+  // --------------------------------------------------
+  // Lifecycle
+  // --------------------------------------------------
   componentWillMount() {
     this.setState({
       cellPhone: this.props.student.cell_phone,
@@ -52,6 +61,9 @@ class EditContact extends Component {
     });
   }
 
+  // --------------------------------------------------
+  // Handlers
+  // --------------------------------------------------
   updateStudent() {
     var params = {
       cell_phone: this.state.cellPhone,
@@ -72,6 +84,9 @@ class EditContact extends Component {
     };
   }
 
+  // --------------------------------------------------
+  // Render
+  // --------------------------------------------------
   render() {
     var student = this.props.student;
     return (

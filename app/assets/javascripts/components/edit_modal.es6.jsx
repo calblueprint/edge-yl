@@ -34,12 +34,26 @@ class EditModal extends Component {
     };
   }
 
+  componentWillMount() {
+    this.setState(StudentStore.getState());
+  }
+
+  componentDidMount() {
+    this._listener = StudentStore.listen((state) => this.setState(state));
+  }
+
+  componentWillUnmount() {
+    StudentStore.unlisten(this._listener);
+  }
+
   renderBody() {
-    switch (this.props.type) {
-      case "create_comment":
-        return <CreateComment {...this.props} />;
-      default:
+    switch (this.state.overlay.type) {
+      case 'preview':
         return <EditPreview {...this.props} />;
+      case 'contact':
+        return <EditContact {...this.props} />
+      case 'create_comment':
+        return <CreateComment {...this.props} />;
     };
   }
 
