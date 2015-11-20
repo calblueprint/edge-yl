@@ -14,15 +14,19 @@ class PageOverlay extends Component {
   static get propTypes() {
     return {
       overlay: React.PropTypes.shape({
-          active: React.PropTypes.bool,
-          type: React.PropTypes.string,
-        }).isRequired,
+        active: React.PropTypes.bool,
+        type: React.PropTypes.string,
+      }).isRequired,
       student: React.PropTypes.object.isRequired,
     };
   }
 
   static get defaultProps() {
     return {
+      overlay: {
+        active: false,
+        type: 'preview',
+      },
       student: {},
     };
   }
@@ -96,8 +100,8 @@ class PageOverlay extends Component {
           styles={this.clickableStyles}
           type={'i'} />
         <EditModal
-          student={this.props.student}
-          type={this.props.overlay.type} />
+          overlay={this.props.overlay}
+          student={this.props.student} />
       </div>
     );
   }

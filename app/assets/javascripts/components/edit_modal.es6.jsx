@@ -13,21 +13,21 @@ class EditModal extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
+      overlay: React.PropTypes.shape({
+        active: React.PropTypes.bool,
+        type: React.PropTypes.string,
+      }).isRequired,
       student: React.PropTypes.object.isRequired,
-      type: React.PropTypes.oneOf([
-        'contact',
-        'conference',
-        'parent',
-        'preview',
-        'createComment',
-      ]).isRequired,
     };
   }
 
   static get defaultProps() {
     return {
+      overlay: {
+        active: false,
+        type: 'preview',
+      },
       student: {},
-      type: 'preview',
     };
   }
 
@@ -51,19 +51,10 @@ class EditModal extends Component {
   // --------------------------------------------------
   // Lifecycle
   // --------------------------------------------------
-  componentWillMount() {
-    this.setState(StudentStore.getState());
-  }
-
   componentDidMount() {
-    this._listener = StudentStore.listen((state) => this.setState(state));
     var node = ReactDOM.findDOMNode(this.refs.container);
     this._node = node;
     node.addEventListener('click', (event) => this.handleClick(event));
-  }
-
-  componentWillUnmount() {
-    StudentStore.unlisten(this._listener);
   }
 
   // --------------------------------------------------
@@ -79,7 +70,7 @@ class EditModal extends Component {
   // Render
   // --------------------------------------------------
   renderBody() {
-    switch (this.state.overlay.type) {
+    switch (this.props.overlay.type) {
       case 'preview':
         return <EditPreview {...this.props} />;
       case 'contact':

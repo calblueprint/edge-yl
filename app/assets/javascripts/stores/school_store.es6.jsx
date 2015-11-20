@@ -12,12 +12,12 @@
       });
     }
 
-    handleToggleSidebar(sidebar) {
-      this.sidebar = sidebar;
+    handleStoreSchool(response) {
+      this.school = response.school;
     }
 
-    handleStoreSchool(school) {
-      this.school = school;
+    handleToggleSidebar(sidebar) {
+      this.sidebar = sidebar;
     }
   }
   this.SchoolStore = alt.createStore(SchoolStore);

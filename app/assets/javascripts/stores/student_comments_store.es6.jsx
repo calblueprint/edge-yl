@@ -15,8 +15,8 @@
       this.comments = comments;
     }
 
-    handleStoreStudentComments(comments) {
-      this.comments = comments;
+    handleStoreStudentComments(response) {
+      this.comments = response.comments;
     }
   }
   this.StudentCommentsStore = alt.createStore(StudentCommentsStore);
