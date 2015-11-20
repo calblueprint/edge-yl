@@ -19,11 +19,6 @@ require 'rails_helper'
 
 RSpec.describe Student, type: :model do
 
-  it 'has a valid factory' do
-    factory = FactoryGirl.build(:student)
-    expect(factory).to be_valid
-  end
-
   it "is invalid without a cell_phone" do
     factory = FactoryGirl.build(:student, cell_phone: nil)
     expect(factory).to be_invalid
