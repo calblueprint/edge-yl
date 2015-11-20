@@ -17,8 +17,8 @@
       });
     }
 
-    handleToggleSidebar(sidebar) {
-      this.sidebar = sidebar;
+    handleToggleSidebar() {
+      this.sidebar = !sidebar;
     }
 
     handleStoreStudent(student) {
