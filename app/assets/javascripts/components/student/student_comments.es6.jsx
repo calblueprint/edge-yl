@@ -110,6 +110,7 @@ class StudentComments extends Component {
   }
 
   renderStudentComments() {
+    console.log(this.comments);
     return this.state.comments.map((comment, index) => this.renderStudentComment(comment, index));
   }
 

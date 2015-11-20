@@ -56,10 +56,9 @@ class CreateComment extends Component {
       'comment' : {
         'content': this.state.content,
         'user_id' : 1, // TODO (max): fix this to be the current user id
-        'student_id': this.props.student.id,
       },
     };
-    StudentCommentsActions.createStudentComment(params);
+    StudentCommentsActions.createStudentComment(this.props.student.id, params);
   }
 
   generateHandler(field) {

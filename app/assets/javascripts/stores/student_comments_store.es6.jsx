@@ -14,7 +14,9 @@
     }
 
     handleAddStudentComment(comment) {
-      this.comments.push(comment);
+      var comments = this.comments;
+      comments.push(comment);
+      this.comments = comments;
     }
 
   }
