@@ -92,12 +92,6 @@ class StudentComments extends Component {
     StudentActions.storeOverlay(true, 'create_comment');
   }
 
-  addToComments(comment) {
-    var state = this.state;
-    state.comments.push(comment);
-    this.setState( state );
-  }
-
   // --------------------------------------------------
   // Render
   // --------------------------------------------------

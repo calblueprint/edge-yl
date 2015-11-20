@@ -6,14 +6,12 @@ class CreateComment extends Component {
   static get propTypes() {
     return {
       student: React.PropTypes.object.isRequired,
-      callback: React.PropTypes.func.isRequired,
     };
   }
 
   static get defaultProps() {
     return {
       student: {},
-      callback: null,
     };
   }
 
@@ -84,7 +82,7 @@ class CreateComment extends Component {
           <CardInput
             action={this.generateHandler('content')}
             placeholder={'Your Comment Here...'}
-            value={this.state.comment} />
+            value={''} />
         </div>
       </div>
     );
