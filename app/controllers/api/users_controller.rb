@@ -5,7 +5,7 @@ class Api::UsersController < Api::BaseController
     if user.update_attributes user_params
       render json: user, serializer: UserIndexSerializer, status: 201
     else
-      unprocessable_response: user
+      unprocessable_response user
     end
   end
 
