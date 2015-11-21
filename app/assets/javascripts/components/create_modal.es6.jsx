@@ -14,9 +14,9 @@ class CreateModal extends Component {
   static get propTypes() {
     return {
       overlay: React.PropTypes.shape({
-        active: React.PropTypes.bool,
-        target: React.PropTypes.string,
-        type: React.PropTypes.string,
+        active: React.PropTypes.bool.isRequired,
+        target: React.PropTypes.string.isRequired,
+        type: React.PropTypes.string.isRequired,
       }).isRequired,
       student: React.PropTypes.object.isRequired,
     };
@@ -26,8 +26,8 @@ class CreateModal extends Component {
     return {
       overlay: {
         active: false,
-        target: 'comment',
-        type: 'create',
+        target: TypeConstants.overlay.target.comment,
+        type: TypeConstants.overlay.type.create,
       },
       student: {},
     };

@@ -26,8 +26,8 @@ class PageOverlay extends Component {
     return {
       overlay: {
         active: false,
-        target: 'edit',
-        type: 'preview',
+        target: TypeConstants.overlay.type.edit,
+        type: TypeConstants.overlay.target.preview,
       },
       student: {},
     };
@@ -94,7 +94,7 @@ class PageOverlay extends Component {
 //  Render
 //  --------------------------------------------------
   renderModal() {
-    if (this.props.overlay.type === 'edit') {
+    if (this.props.overlay.type === TypeConstants.overlay.type.edit) {
       return (
         <EditModal
           overlay={this.props.overlay}
