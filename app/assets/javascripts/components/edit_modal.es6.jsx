@@ -77,7 +77,7 @@ class EditModal extends Component {
         return <EditPreview {...this.props} />;
       case 'contact':
         return <EditContact {...this.props} />
-    };
+    }
   }
 
   render() {
