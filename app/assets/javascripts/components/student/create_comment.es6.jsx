@@ -75,7 +75,10 @@ class CreateComment extends Component {
     return (
       <div style={this.styles.container}>
         <CardHeader
-          action={(event) => this.createCommentRequest()}
+          action={(event) => {
+            StudentActions.storeOverlay(false);
+            this.createCommentRequest();
+          }}
           content={'Add a Comment'}
           icon={'fa fa-save fa-lg'} />
         <div style={this.styles.form}>
