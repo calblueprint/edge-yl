@@ -1,21 +1,16 @@
 class UsersPage extends Component {
 
-  static get propTypes() {
-    return {
-      students: React.PropTypes.array.isRequired,
-    };
+  // --------------------------------------------------
+  // Setup
+  // --------------------------------------------------
+  constructor(props) {
+    super(props);
+    this._listener = null;
   }
 
-  static get defaultProps() {
-    return {
-      students: [],
-    };
-  }
-
-  static get defaultState() {
-    return { sidebar: true };
-  }
-
+  // --------------------------------------------------
+  // Styles
+  // --------------------------------------------------
   get styles() {
     return {
       container: {
@@ -35,10 +30,33 @@ class UsersPage extends Component {
     };
   }
 
-  toggleSidebar(event) {
-    this.setState({ sidebar: !this.state.sidebar });
+  // --------------------------------------------------
+  // Lifecycle
+  // --------------------------------------------------
+
+  componentWillMount() {
+    this.setState(UsersStore.getState());
   }
 
+  componentDidMount() {
+    this._listener = UsersStore.listen((state) => this.setState(state));
+    UsersActions.fetchUsers();
+  }
+
+  componentWillUnmount() {
+    UsersStore.unlisten(this._listener);
+  }
+
+  // --------------------------------------------------
+  // Helpers
+  // --------------------------------------------------
+  toggleSidebar(event) {
+    UsersActions.toggleSidebar(!this.state.sidebar);
+  }
+
+  // --------------------------------------------------
+  // Render
+  // --------------------------------------------------
   render() {
     return (
       <div style={StyleConstants.pages.default}>
