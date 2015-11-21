@@ -1,6 +1,14 @@
 class HeaderSearch extends Component {
 
   // --------------------------------------------------
+  // Setup
+  // --------------------------------------------------
+  constructor(props) {
+    super(props);
+    this._listener = (state) => this.setState(state);
+  }
+
+  // --------------------------------------------------
   // State
   // --------------------------------------------------
   static get defaultState() {
@@ -40,6 +48,21 @@ class HeaderSearch extends Component {
   // --------------------------------------------------
   handleClick(event) {
     this.setState({ query: this.state.input });
+  }
+
+  // --------------------------------------------------
+  // Lifecycle
+  // --------------------------------------------------
+  componentWillMount() {
+    this.setState(HeaderStore.getState());
+  }
+
+  componentDidMount() {
+    HeaderStore.listen(this._listener);
+  }
+
+  componentWillUnmount() {
+    HeaderStore.unlisten(this._listener);
   }
 
   // --------------------------------------------------
