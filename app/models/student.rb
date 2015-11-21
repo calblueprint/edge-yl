@@ -21,6 +21,9 @@ class Student < ActiveRecord::Base
 
   has_many :comments, dependent: :destroy
 
+  has_one :student_conference
+  has_one :conference, through: :student_conference
+
   validates :cell_phone, presence: true
   validates :email, presence: true
   validates :first_name, presence: true
@@ -30,4 +33,5 @@ class Student < ActiveRecord::Base
   def full_name
     '#{first_name} #{last_name}'
   end
+
 end

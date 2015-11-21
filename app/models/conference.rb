@@ -11,4 +11,8 @@
 #
 
 class Conference < ActiveRecord::Base
+
+  has_many :student_conferences
+  has_many :students, through: :student_conferences
+
 end

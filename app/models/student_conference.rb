@@ -11,4 +11,8 @@
 #
 
 class StudentConference < ActiveRecord::Base
+
+  belongs_to :conference
+  belongs_to :school
+
 end
