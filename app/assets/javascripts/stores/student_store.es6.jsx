@@ -9,6 +9,7 @@
       this.sidebar = true;
       this.student = {
         school: {},
+        student_conference: {},
       };
       this.bindListeners({
         handleStoreOverlay: StudentActions.STORE_OVERLAY,

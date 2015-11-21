@@ -41,7 +41,7 @@ class StudentContact extends Component {
           <h6>{student.home_phone}</h6>
           <h6>{student.email}</h6>
           <h6>{student.home_address}</h6>
-          <br/>
+          <br />
           <h4>{'School'}</h4>
           <Clickable
             content={student.school.name}
