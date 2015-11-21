@@ -4,6 +4,7 @@
     constructor() {
       this.overlay = {
         active: false,
+        target: '',
         type: '',
       };
       this.sidebar = true;
