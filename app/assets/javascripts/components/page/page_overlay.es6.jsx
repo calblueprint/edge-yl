@@ -15,6 +15,7 @@ class PageOverlay extends Component {
     return {
       overlay: React.PropTypes.shape({
         active: React.PropTypes.bool,
+        target: React.PropTypes.string,
         type: React.PropTypes.string,
       }).isRequired,
       student: React.PropTypes.object.isRequired,
@@ -25,6 +26,7 @@ class PageOverlay extends Component {
     return {
       overlay: {
         active: false,
+        target: 'edit',
         type: 'preview',
       },
       student: {},
@@ -91,6 +93,19 @@ class PageOverlay extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
+  // renderModal() {
+  //   return (
+  //     this.props.type === 'edit' ? (
+  //       <EditModal
+  //         overlay={this.props.overlay}
+  //         student={this.props.student} /> :
+  //       <CreateModal
+  //         overlay{this.props.overlay}
+  //         student={this.props.student} />
+  //     );
+  //   );
+  // }
+
   render() {
     return (
       <div ref={'container'} style={this.styles.container}>
@@ -99,6 +114,7 @@ class PageOverlay extends Component {
           icon={'fa fa-times fa-2x'}
           styles={this.clickableStyles}
           type={'i'} />
+
         <EditModal
           overlay={this.props.overlay}
           student={this.props.student} />

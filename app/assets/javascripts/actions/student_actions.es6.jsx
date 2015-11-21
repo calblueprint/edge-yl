@@ -14,10 +14,11 @@
       return true;
     }
 
-    storeOverlay(active, type) {
+    storeOverlay(active, type, target) {
       return {
         active: active,
         type: type,
+        target: target,
       };
     }
 
