@@ -10,9 +10,8 @@
       });
     }
 
-    handleStoreUsers(users) {
-      console.log(users);
-      this.users = users;
+    handleStoreUsers(response) {
+      this.users = response.users;
     }
     
     handleToggleSidebar() {

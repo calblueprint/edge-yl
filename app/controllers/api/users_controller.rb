@@ -1,7 +1,7 @@
 class Api::UsersController < Api::BaseController
 
   def index
-    users = User.includes(:user).page params[:page]
+    users = User.page params[:page]
     render json: users,
                  serializer: PaginatedSerializer,
                  each_serializer: UserIndexSerializer
@@ -12,7 +12,7 @@ class Api::UsersController < Api::BaseController
     if user.update_attributes user_params
       render json: user, serializer: UserIndexSerializer, status: 201
     else
-      unprocessable_response: user
+      unprocessable_response user
     end
   end
 
