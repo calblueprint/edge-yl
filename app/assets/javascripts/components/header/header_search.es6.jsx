@@ -14,6 +14,7 @@ class HeaderSearch extends Component {
     return {
       container: {
         display: 'flex',
+        flexFlow: 'column',
         flex: '1',
         height: '30px',
       },
@@ -23,7 +24,7 @@ class HeaderSearch extends Component {
         border: 'none',
         borderRadius: '1px',
       },
-      section: {
+      logo: {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
@@ -32,6 +33,36 @@ class HeaderSearch extends Component {
         borderRadius: '1px',
         color: StyleConstants.colors.white,
       },
+      section: {
+        display: 'flex',
+        flex: '1',
+      },
+    };
+  }
+
+  get dropdownStyles() {
+    return {
+      child: {
+        default: {
+          flex: '1',
+          padding: '4px',
+        },
+        hover: {
+          backgroundColor: StyleConstants.colors.turquoise,
+        },
+      },
+      container: Object.assign(
+        {},
+        StyleConstants.cards.default,
+        {
+          display: 'flex',
+          flexFlow: 'column',
+          position:'absolute',
+          zIndex: StyleConstants.planes.two,
+          top: '19px',
+          left: '0px',
+        }
+      ),
     };
   }
 
@@ -45,17 +76,32 @@ class HeaderSearch extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
+  renderResults() {
+    var results = [
+      { content: 'Result 1' },
+      { content: 'Result 2' },
+    ];
+    return (
+      <Dropdown
+        options={results}
+        style={this.dropdownStyles} />
+    );
+  }
+
   render() {
     return (
-      <form style={this.styles.container}>
+      <div style={this.styles.container}>
         <div style={this.styles.section}>
-          <i className={'fa fa-search fa-1x'} />
+          <div style={this.styles.logo}>
+            <i className={'fa fa-search fa-1x'} />
+          </div>
+          <input
+            placeholder={'Search for a student, school, or recruiter'}
+            style={this.styles.input}>
+          </input>
         </div>
-        <input
-          placeholder={'Search for a student, school, or recruiter'}
-          style={this.styles.input}>
-        </input>
-      </form>
+        {this.renderResults()}
+      </div>
     );
   }
 }
