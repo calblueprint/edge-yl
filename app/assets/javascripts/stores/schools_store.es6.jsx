@@ -2,6 +2,10 @@
   class SchoolsStore {
 
     constructor() {
+      this.pagination = {
+        current: 1,
+        limit: 1,
+      };
       this.schools = [];
       this.sidebar = true;
       this.bindListeners({

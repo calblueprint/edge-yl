@@ -48,7 +48,6 @@ class SchoolsPage extends Component {
   // --------------------------------------------------
   // Lifecycle
   // --------------------------------------------------
-
   componentWillMount() {
     this.setState(SchoolsStore.getState());
   }
@@ -73,6 +72,9 @@ class SchoolsPage extends Component {
           <Sidebar shouldShow={this.state.sidebar} />
           <div style={this.styles.body}>
             <SchoolsGrid schools={this.state.schools} />
+            <PageNavigator
+              route={RouteConstants.schools.index}
+              pagination={this.state.pagination} />
           </div>
         </div>
       </div>
