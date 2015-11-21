@@ -12,6 +12,8 @@
 #
 
 class School < ActiveRecord::Base
+  include PgSearch
+  multisearchable :against => [:name, :address, :counselor_name]
 
   has_many :students
 
