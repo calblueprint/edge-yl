@@ -40,13 +40,15 @@ class StudentComments extends Component {
       container: {
         display: 'flex',
         flexFlow: 'column',
+        alignItems: 'flex-end',
         position: 'absolute',
         top: '48px',
         right: '0px',
         width: '172px',
+        paddingRight: '16px',
       },
       title: {
-        marginLeft: '16px',
+        paddingTop: '12px',
         marginTop: '16px',
       },
     };
