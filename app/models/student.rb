@@ -17,12 +17,7 @@
 
 class Student < ActiveRecord::Base
   include PgSearch
-  multisearchable :against => [:email, :first_name, :last_name],
-                  :using =>  {
-                    :tsearch => { :any_word => true, :prefix => true },
-                    :dmetaphone => { :any_word => true },
-                    :trigram => { :any_word => true }
-                  }
+  multisearchable against: [:email, :first_name, :last_name],
 
   belongs_to :school
 
