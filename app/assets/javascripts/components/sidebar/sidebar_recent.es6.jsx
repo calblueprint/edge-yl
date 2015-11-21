@@ -45,7 +45,7 @@ class SidebarRecent extends Component {
   render() {
     return (
       <Clickable
-        content
+        content >
       </Clickable>
     );
   }
