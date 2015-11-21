@@ -8,7 +8,7 @@ new_admin = User.new(
 )
 new_admin.skip_confirmation!
 new_admin.save
-puts "Created admin: #{new_admin.first_name} #{new_admin.last_name}"
+puts "Created admin: #{new_admin.full_name}"
 
 (1..3).each do |index|
   new_volunteer = User.new(
@@ -20,5 +20,5 @@ puts "Created admin: #{new_admin.first_name} #{new_admin.last_name}"
   )
   new_volunteer.skip_confirmation!
   new_volunteer.save
-  puts "Created volunteer: #{new_volunteer.first_name} #{new_volunteer.last_name}"
+  puts "Created volunteer: #{new_volunteer.full_name}"
 end
