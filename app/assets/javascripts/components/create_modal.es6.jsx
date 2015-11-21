@@ -1,4 +1,4 @@
-class EditModal extends Component {
+class CreateModal extends Component {
 
   // --------------------------------------------------
   // Setup
@@ -26,8 +26,8 @@ class EditModal extends Component {
     return {
       overlay: {
         active: false,
-        target: TypeConstants.overlay.target.preview,
-        type: TypeConstants.overlay.type.edit,
+        target: TypeConstants.overlay.target.comment,
+        type: TypeConstants.overlay.type.create,
       },
       student: {},
     };
@@ -73,17 +73,15 @@ class EditModal extends Component {
   // --------------------------------------------------
   renderBody() {
     switch (this.props.overlay.target) {
-      case 'preview':
-        return <EditPreview {...this.props} />;
-      case 'contact':
-        return <EditContact {...this.props} />
+      case 'comment':
+        return <CreateComment {...this.props} />;
     }
   }
 
   render() {
     return (
       <div ref={'container'} style={this.styles.container}>
-        <h2 style={this.styles.title}>{'Edit'}</h2>
+        <h2 style={this.styles.title}>{'Create'}</h2>
         {this.renderBody()}
       </div>
     );

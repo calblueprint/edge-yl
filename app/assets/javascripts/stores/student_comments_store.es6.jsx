@@ -9,9 +9,9 @@
       });
     }
 
-    handleStoreStudentComment(comment) {
+    handleStoreStudentComment(response) {
       var comments = this.comments;
-      comments.push(comment);
+      comments.push(response.comment);
       this.comments = comments;
     }
 
