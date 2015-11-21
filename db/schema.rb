@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 20151121045603) do
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "conferences", force: :cascade do |t|
-    t.date     "end_data",   null: false
+    t.date     "end_date",   null: false
     t.string   "location",   null: false
     t.date     "start_date", null: false
     t.datetime "created_at", null: false
