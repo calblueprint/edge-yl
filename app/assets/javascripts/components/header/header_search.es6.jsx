@@ -28,7 +28,7 @@ class HeaderSearch extends Component {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        width: '64px',
+        width: '48px',
         backgroundColor: StyleConstants.colors.indigo,
         borderRadius: '1px',
         color: StyleConstants.colors.white,
@@ -45,7 +45,7 @@ class HeaderSearch extends Component {
       child: {
         default: {
           flex: '1',
-          padding: '4px',
+          padding: '12px',
         },
         hover: {
           backgroundColor: StyleConstants.colors.turquoise,
@@ -57,10 +57,10 @@ class HeaderSearch extends Component {
         {
           display: 'flex',
           flexFlow: 'column',
-          position:'absolute',
           zIndex: StyleConstants.planes.two,
-          top: '19px',
-          left: '0px',
+          top: '4px',
+          left: '48px',
+          width: '684px',
         }
       ),
     };
@@ -84,7 +84,7 @@ class HeaderSearch extends Component {
     return (
       <Dropdown
         options={results}
-        style={this.dropdownStyles} />
+        styles={this.dropdownStyles} />
     );
   }
 
