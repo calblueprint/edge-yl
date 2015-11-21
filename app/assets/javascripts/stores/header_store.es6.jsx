@@ -4,13 +4,13 @@
     constructor() {
       this.query = '';
       this.bindListeners({
-        storeQuery: SchoolActions.STORE_QUERY,
+        storeQuery: HeaderActions.STORE_QUERY,
       });
     }
 
-    storeQuery(response) {
-      this.query = response.query;
+    storeQuery(query) {
+      this.query = query;
     }
   }
-  this.SchoolStore = alt.createStore(HeaderStore);
+  this.HeaderStore = alt.createStore(HeaderStore);
 })();
