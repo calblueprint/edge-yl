@@ -18,18 +18,18 @@ class StudentComment extends Component {
   // --------------------------------------------------
   // Styles
   // --------------------------------------------------
-  get clickableStyles() {
+  get styles() {
     return {
-      default: {
-        flex: '1',
-        padding: '12px',
-        marginTop: '12px',
-        marginRight: '12px',
-        borderRadius: '1px',
-        boxSizing: 'border-box',
+      content: {
+        textAlign: 'right',
       },
-      hover: {
-        backgroundColor: StyleConstants.colors.turquoise,
+      container: {
+        display: 'flex',
+        flexFlow: 'column',
+        alignItems: 'flex-end',
+        paddingTop: '12px',
+        marginTop: '16px',
+        borderRadius: '1px',
       },
     };
   }
@@ -38,12 +38,18 @@ class StudentComment extends Component {
   // Render
   // --------------------------------------------------
   render() {
+    var comment = this.props.comment;
+    var user = comment.user;
     return (
-      <Clickable
-        styles={this.clickableStyles}
-        content={`${this.props.comment.content} - ${this.props.comment.user.first_name}
-          ${this.props.comment.user.last_name}`}
-        type={'span'} />
+      <div style={this.styles.container}>
+        <h6 style={this.styles.content}>{comment.content}</h6>
+        <h6 style={this.styles.content}>
+          {`- ${user.first_name} ${user.last_name}`}
+        </h6>
+        <h6 style={this.styles.content}>
+          {comment.updated_at}
+        </h6>
+      </div>
     );
   }
 }

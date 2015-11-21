@@ -11,6 +11,7 @@ class Clickable extends Component {
       icon: React.PropTypes.string,
       route: React.PropTypes.string,
       styles: React.PropTypes.shape({
+        child: React.PropTypes.object,
         default: React.PropTypes.object,
         hover: React.PropTypes.object,
       }),
@@ -36,6 +37,7 @@ class Clickable extends Component {
       icon: '',
       route: '',
       styles: {
+        child: {},
         default: {},
         hover: {},
       },
@@ -129,7 +131,7 @@ class Clickable extends Component {
         case 'h6':
           return <h6 style={style}>{content}</h6>;
         case 'i':
-          return <i className={icon} />;
+          return <i className={icon} style={style} />;
         case 'span':
           return <span style={style}>{content}</span>;
       }
@@ -151,7 +153,7 @@ class Clickable extends Component {
           href={this.props.route}
           ref={'container'}
           style={style}>
-          {this.renderContent(style)}
+          {this.renderContent(styles.child)}
           {this.renderChildren()}
         </a>
       );

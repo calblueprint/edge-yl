@@ -69,7 +69,7 @@ class StudentsPage extends Component {
       <div style={StyleConstants.pages.default}>
         <Header toggleSidebar={(event) => StudentsActions.toggleSidebar()} />
         <div style={this.styles.container}>
-          <Sidebar shouldShow={this.state.sidebar} />
+          <Sidebar hidden={this.state.sidebar} />
           <div style={this.styles.body}>
             <StudentsFilters />
             <StudentsGrid students={this.state.students} />

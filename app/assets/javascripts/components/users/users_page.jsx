@@ -55,7 +55,7 @@ class UsersPage extends Component {
       <div style={StyleConstants.pages.default}>
         <Header toggleSidebar={() => UsersActions.toggleSidebar()} />
         <div style={this.styles.container}>
-          <Sidebar shouldShow={this.state.sidebar} />
+          <Sidebar hidden={this.state.sidebar} />
           <div style={this.styles.body}>
             <UsersGrid {...this.props} />
           </div>
