@@ -17,7 +17,7 @@
 
 class Student < ActiveRecord::Base
   include PgSearch
-  multisearchable against: [:email, :first_name, :last_name],
+  multisearchable against: [:email, :first_name, :last_name]
 
   belongs_to :school
 

@@ -9,7 +9,7 @@
 
     storeQuery(query) {
         var resolve = (response) => this.storeResults(response);
-        //Requester.get()
+        //TODO make a request - Requester.get()
         return query;
     }
   }

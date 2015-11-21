@@ -94,7 +94,6 @@ class HeaderSearch extends Component {
   // Render
   // --------------------------------------------------
   render() {
-    console.log(this.state);
     return (
       <form style={this.styles.container}>
         <Clickable
