@@ -9,6 +9,21 @@ class SchoolsPage extends Component {
   }
 
   // --------------------------------------------------
+  // Props
+  // --------------------------------------------------
+  static get propTypes() {
+    return {
+      page: React.PropTypes.number.isRequired,
+    };
+  }
+
+  static get defaultProps() {
+    return {
+      page: 1,
+    };
+  }
+
+  // --------------------------------------------------
   // Styles
   // --------------------------------------------------
   get styles() {
@@ -40,7 +55,7 @@ class SchoolsPage extends Component {
 
   componentDidMount() {
     SchoolsStore.listen(this._listener);
-    SchoolsActions.fetchSchools();
+    SchoolsActions.fetchSchools(this.props.page);
   }
 
   componentWillUnmount() {

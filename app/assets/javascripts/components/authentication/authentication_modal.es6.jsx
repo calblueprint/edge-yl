@@ -30,7 +30,7 @@ class AuthenticationModal extends Component {
           padding: '36px',
         }
       ),
-      head: {
+      header: {
         display: 'flex',
         justifyContent: 'center',
         marginBottom: '24px',
@@ -47,7 +47,7 @@ class AuthenticationModal extends Component {
 
   renderHeader() {
     return (
-      <div style={this.styles.head}>
+      <div style={this.styles.header}>
         <h2>{this.props.type === 'login' ? 'Login' : 'Signup'}</h2>
       </div>
     );

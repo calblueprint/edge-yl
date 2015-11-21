@@ -4,7 +4,9 @@
     get schools() {
       return {
         create: '/api/schools',
-        index: '/api/schools',
+        index: function(page) {
+          return `/api/schools?page=${page}`;
+        },
         show: function(id) {
           return `/api/schools/${id}`;
         },

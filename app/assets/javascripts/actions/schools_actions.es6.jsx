@@ -8,9 +8,9 @@
       );
     }
 
-    fetchSchools() {
+    fetchSchools(page) {
       resolve = (response) => this.storeSchools(response);
-      Requester.get(ApiConstants.schools.index, resolve);
+      Requester.get(ApiConstants.schools.index(page), resolve);
       return true;
     }
   }
