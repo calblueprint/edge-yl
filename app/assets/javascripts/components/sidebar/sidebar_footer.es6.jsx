@@ -9,7 +9,7 @@ class SidebarFooter extends Component {
         display: 'flex',
         alignItems: 'center',
         padding: '12px',
-        marginTop: '16x',
+        marginTop: '16px',
       },
       image: {
         width: '20px',
