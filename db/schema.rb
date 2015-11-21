@@ -11,12 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151121052736) do
+ActiveRecord::Schema.define(version: 20151121055834) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "pg_trgm"
   enable_extension "fuzzystrmatch"
+  enable_extension "unaccent"
 
   create_table "comments", force: :cascade do |t|
     t.text     "content",    null: false
