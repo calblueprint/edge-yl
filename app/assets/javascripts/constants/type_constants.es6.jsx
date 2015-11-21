@@ -12,7 +12,7 @@
         },
         type: {
           create: 'create',
-          edit: 'edit'
+          edit: 'edit',
         },
       };
     }

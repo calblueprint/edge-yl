@@ -100,12 +100,13 @@ class PageOverlay extends Component {
           overlay={this.props.overlay}
           student={this.props.student} />
       );
+    } else {
+      return (
+        <CreateModal
+          overlay={this.props.overlay}
+          student={this.props.student} />
+      );
     }
-    return (
-      <CreateModal
-        overlay={this.props.overlay}
-        student={this.props.student} />
-    );
   }
 
   render() {
