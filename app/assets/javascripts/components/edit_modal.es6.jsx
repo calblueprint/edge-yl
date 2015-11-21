@@ -26,8 +26,8 @@ class EditModal extends Component {
     return {
       overlay: {
         active: false,
-        target: '',
-        type: '',
+        target: 'preview',
+        type: 'edit',
       },
       student: {},
     };
@@ -77,8 +77,6 @@ class EditModal extends Component {
         return <EditPreview {...this.props} />;
       case 'contact':
         return <EditContact {...this.props} />
-      // case 'createComment':
-      //   return <CreateComment {...this.props} />;
     };
   }
 

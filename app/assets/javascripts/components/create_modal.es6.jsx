@@ -26,8 +26,8 @@ class CreateModal extends Component {
     return {
       overlay: {
         active: false,
-        target: 'preview',
-        type: 'edit',
+        target: 'comment',
+        type: 'create',
       },
       student: {},
     };
