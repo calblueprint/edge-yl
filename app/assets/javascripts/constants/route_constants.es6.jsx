@@ -12,7 +12,13 @@
 
     get schools() {
       return {
-        index: '/schools',
+        index: function(page) {
+          if (page) {
+            return `/schools?page=${page}`;
+          } else {
+            return '/schools';
+          }
+        },
         show: function(id) {
           return `/schools/${id}`;
         },
