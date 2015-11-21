@@ -46,6 +46,7 @@ class Sidebar extends Component {
       <div style={style}>
         <SidebarGroup />
         <SidebarFooter />
+
       </div>
     );
   }

@@ -5,7 +5,7 @@ class UsersPage extends Component {
   // --------------------------------------------------
   constructor(props) {
     super(props);
-    this._listener = null;
+    this._listener = (state) => this.setState(state);
   }
 
   // --------------------------------------------------
@@ -39,7 +39,7 @@ class UsersPage extends Component {
   }
 
   componentDidMount() {
-    this._listener = UsersStore.listen((state) => this.setState(state));
+    UsersStore.listen(this._listener);
     UsersActions.fetchUsers();
   }
 
@@ -48,20 +48,12 @@ class UsersPage extends Component {
   }
 
   // --------------------------------------------------
-  // Helpers
-  // --------------------------------------------------
-  toggleSidebar(event) {
-    UsersActions.toggleSidebar(!this.state.sidebar);
-  }
-
-  // --------------------------------------------------
   // Render
   // --------------------------------------------------
   render() {
     return (
       <div style={StyleConstants.pages.default}>
-        <Header
-          toggleSidebar={() => this.toggleSidebar()} />
+        <Header toggleSidebar={() => UsersActions.toggleSidebar()} />
         <div style={this.styles.container}>
           <Sidebar shouldShow={this.state.sidebar} />
           <div style={this.styles.body}>

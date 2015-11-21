@@ -10,14 +10,14 @@
       });
     }
 
-    handleToggleSidebar() {
-      this.sidebar = !this.sidebar;
-    }
-
     handleStoreUsers(users) {
+      console.log(users);
       this.users = users;
     }
     
+    handleToggleSidebar() {
+      this.sidebar = !this.sidebar;
+    }
   }
   this.UsersStore = alt.createStore(UsersStore);
 })();
