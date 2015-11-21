@@ -1,5 +1,5 @@
-class UserIndexSerializer < BaseSerializer
+class UserIndexSerializer < UserBaseSerializer
 
-  has_many :comments
+  has_many :comments, serializer: CommentBaseSerializer
 
 end

@@ -1,7 +1,7 @@
 class UsersController < BaseController
 
   def index
-    @users = User.all
+      @page = params[:page] ? params[:page].to_i : 1
   end
 
   def profile

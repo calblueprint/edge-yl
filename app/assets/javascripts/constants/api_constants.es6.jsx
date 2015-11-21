@@ -39,6 +39,7 @@
     get users() {
       return {
         create: '/api/users/signup',
+        index: '/api/users',
         login: '/api/users/login',
         logout: '/api/users/logout',
         signout: '/api/users/signout',
