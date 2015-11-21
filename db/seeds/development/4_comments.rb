@@ -6,9 +6,8 @@ def generate_comment(student_id)
   )
 end
 
-(1..25).each do |index|
-  student = Student.find(index)
-  generate_comment(index)
-  generate_comment(index)
+Student.all.each do |student|
+  generate_comment(student.id)
+  generate_comment(student.id)
   puts "Created comments for #{student.first_name} #{student.last_name}."
 end

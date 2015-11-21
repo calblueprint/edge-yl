@@ -1,5 +1,5 @@
 class StudentIndexSerializer < StudentBaseSerializer
 
-  has_one :school, serializer: SchoolBaseSerializer
+  belongs_to :school, serializer: SchoolBaseSerializer
 
 end

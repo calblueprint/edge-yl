@@ -60,10 +60,6 @@ class PageOverlay extends Component {
         right: '0px',
         zIndex: StyleConstants.planes.nine,
         padding: '8px',
-        color: StyleConstants.colors.blue,
-      },
-      hover: {
-        color: StyleConstants.colors.indigo,
       },
     };
   }

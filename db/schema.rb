@@ -30,6 +30,14 @@ ActiveRecord::Schema.define(version: 20151121055834) do
   add_index "comments", ["student_id"], name: "index_comments_on_student_id", using: :btree
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
+  create_table "conferences", force: :cascade do |t|
+    t.date     "end_date",   null: false
+    t.string   "location",   null: false
+    t.date     "start_date", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "pg_search_documents", force: :cascade do |t|
     t.text     "content"
     t.integer  "searchable_id"
@@ -48,6 +56,17 @@ ActiveRecord::Schema.define(version: 20151121055834) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end
+
+  create_table "student_conferences", force: :cascade do |t|
+    t.integer  "status",        null: false
+    t.integer  "conference_id"
+    t.integer  "student_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "student_conferences", ["conference_id"], name: "index_student_conferences_on_conference_id", using: :btree
+  add_index "student_conferences", ["student_id"], name: "index_student_conferences_on_student_id", using: :btree
 
   create_table "students", force: :cascade do |t|
     t.date     "birthday",     null: false
