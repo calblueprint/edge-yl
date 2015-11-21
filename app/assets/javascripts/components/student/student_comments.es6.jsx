@@ -108,7 +108,7 @@ class StudentComments extends Component {
         {this.renderStudentComments()}
         <Clickable
           content={"Add Comment"}
-          action={() => StudentActions.storeOverlay(true, 'createComment')}
+          action={() => StudentActions.storeOverlay(true, 'create', 'comment')}
           styles={this.clickableStyles}
           type={'h3'} />
       </div>

@@ -17,8 +17,8 @@
     storeOverlay(active, type, target) {
       return {
         active: active,
-        type: type,
         target: target,
+        type: type,
       };
     }
 

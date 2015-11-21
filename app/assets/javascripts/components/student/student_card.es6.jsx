@@ -7,13 +7,14 @@ class StudentCard extends Component {
     return {
       student: React.PropTypes.object.isRequired,
       target: React.PropTypes.oneOf([
+        'comment',
         'contact',
         'conference',
         'parent',
         'preview',
       ]).isRequired,
       type: React.PropTypes.oneOf([
-        'createComment',
+        'create',
         'edit',
       ]).isRequired,
     };
