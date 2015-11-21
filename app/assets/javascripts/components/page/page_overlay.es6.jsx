@@ -90,21 +90,23 @@ class PageOverlay extends Component {
     }
   }
 
-  // --------------------------------------------------
-  // Render
-  // --------------------------------------------------
-  // renderModal() {
-  //   return (
-  //     this.props.type === 'edit' ? (
-  //       <EditModal
-  //         overlay={this.props.overlay}
-  //         student={this.props.student} /> :
-  //       <CreateModal
-  //         overlay{this.props.overlay}
-  //         student={this.props.student} />
-  //     );
-  //   );
-  // }
+//  --------------------------------------------------
+//  Render
+//  --------------------------------------------------
+  renderModal() {
+    if (this.props.overlay.type === 'edit') {
+      return (
+        <EditModal
+          overlay={this.props.overlay}
+          student={this.props.student} />
+      );
+    }
+    return (
+      <CreateModal
+        overlay={this.props.overlay}
+        student={this.props.student} />
+    );
+  }
 
   render() {
     return (
@@ -114,10 +116,7 @@ class PageOverlay extends Component {
           icon={'fa fa-times fa-2x'}
           styles={this.clickableStyles}
           type={'i'} />
-
-        <EditModal
-          overlay={this.props.overlay}
-          student={this.props.student} />
+        {this.renderModal()}
       </div>
     );
   }

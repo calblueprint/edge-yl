@@ -26,8 +26,8 @@ class EditModal extends Component {
     return {
       overlay: {
         active: false,
-        type: 'edit',
-        target: 'preview',
+        type: '',
+        target: '',
       },
       student: {},
     };
@@ -72,6 +72,7 @@ class EditModal extends Component {
   // Render
   // --------------------------------------------------
   renderBody() {
+    console.log(this.props.overlay.target)
     switch (this.props.overlay.target) {
       case 'preview':
         return <EditPreview {...this.props} />;

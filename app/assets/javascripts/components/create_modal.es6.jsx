@@ -86,4 +86,4 @@ class CreateModal extends Component {
       </div>
     );
   }
-
+}
