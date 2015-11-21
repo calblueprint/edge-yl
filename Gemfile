@@ -10,6 +10,7 @@ gem 'devise'
 gem 'figaro'
 gem 'kaminari', '~> 0.16.2'
 gem 'pg'
+gem 'pg_search'
 gem 'react-rails', '~> 1.4.0'
 
 # Client
