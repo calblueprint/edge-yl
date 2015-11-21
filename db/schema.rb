@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151106071352) do
+ActiveRecord::Schema.define(version: 20151121045603) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,14 @@ ActiveRecord::Schema.define(version: 20151106071352) do
   add_index "comments", ["student_id"], name: "index_comments_on_student_id", using: :btree
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
+  create_table "conferences", force: :cascade do |t|
+    t.date     "end_data",   null: false
+    t.string   "location",   null: false
+    t.date     "start_date", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "schools", force: :cascade do |t|
     t.string   "address",         null: false
     t.string   "counselor_email", null: false
@@ -35,6 +43,17 @@ ActiveRecord::Schema.define(version: 20151106071352) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end
+
+  create_table "student_conferences", force: :cascade do |t|
+    t.integer  "status",        null: false
+    t.integer  "conference_id"
+    t.integer  "student_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "student_conferences", ["conference_id"], name: "index_student_conferences_on_conference_id", using: :btree
+  add_index "student_conferences", ["student_id"], name: "index_student_conferences_on_student_id", using: :btree
 
   create_table "students", force: :cascade do |t|
     t.date     "birthday",     null: false
