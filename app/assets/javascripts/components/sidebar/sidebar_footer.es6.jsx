@@ -9,12 +9,7 @@ class SidebarFooter extends Component {
         display: 'flex',
         alignItems: 'center',
         padding: '12px',
-        marginTop: '14px',
-        marginLeft: '14px',
-      },
-      label: {
-        paddingRight: '8px',
-        fontSize: StyleConstants.fonts.sizes.smaller,
+        marginTop: '16x',
       },
       image: {
         width: '20px',
@@ -26,6 +21,7 @@ class SidebarFooter extends Component {
   get clickableStyles() {
     return {
       default: {
+        marginLeft: '8px',
         lineHeight: '0px',
         transition: 'transform 0.75s ease-out',
       },
@@ -41,7 +37,7 @@ class SidebarFooter extends Component {
   render() {
     return (
       <div style={this.styles.container}>
-        <span style={this.styles.label}>{'Powered by'}</span>
+        <h5>{'Powered by'}</h5>
         <Clickable
           styles={this.clickableStyles}
           type={'img'}>

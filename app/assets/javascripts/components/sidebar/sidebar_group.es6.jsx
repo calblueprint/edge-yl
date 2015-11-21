@@ -11,7 +11,6 @@ class SidebarGroup extends Component {
       },
       border: {
         marginTop: '16px',
-        marginLeft: '16px',
         borderBottom: '1px solid',
         borderColor: StyleConstants.colors.gray,
       },
