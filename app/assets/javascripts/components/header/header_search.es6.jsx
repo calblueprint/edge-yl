@@ -1,10 +1,20 @@
 class HeaderSearch extends Component {
 
   // --------------------------------------------------
+  // Setup
+  // --------------------------------------------------
+  constructor(props) {
+    super(props);
+    this._listener = (state) => this.setState(state);
+  }
+
+  // --------------------------------------------------
   // State
   // --------------------------------------------------
   static get defaultState() {
-    return { query: '' };
+    return {
+      query: '',
+    };
   }
 
   // --------------------------------------------------
@@ -35,11 +45,49 @@ class HeaderSearch extends Component {
     };
   }
 
+  get clickableStyles() {
+    return {
+      default: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '64px',
+        backgroundColor: StyleConstants.colors.indigo,
+        borderRadius: '1px',
+        color: StyleConstants.colors.white,
+      },
+      hover: {
+        backgroundColor: StyleConstants.colors.white,
+      },
+    };
+  }
+
   // --------------------------------------------------
   // Handlers
   // --------------------------------------------------
   handleClick(event) {
-    this.setState({ query: this.state.input });
+
+  }
+
+  handleInput(event) {
+    HeaderActions.storeQuery(event.target.value);
+  }
+
+  // --------------------------------------------------
+  // Lifecycle
+  // --------------------------------------------------
+  componentWillMount() {
+    this.setState(HeaderStore.getState());
+  }
+
+  componentDidMount() {
+    HeaderStore.listen(this._listener);
+    var search = ReactDOM.findDOMNode(this.refs.search);
+    search.addEventListener('input', (event) => this.handleInput(event));
+  }
+
+  componentWillUnmount() {
+    HeaderStore.unlisten(this._listener);
   }
 
   // --------------------------------------------------
@@ -48,11 +96,14 @@ class HeaderSearch extends Component {
   render() {
     return (
       <form style={this.styles.container}>
-        <div style={this.styles.section}>
-          <i className={'fa fa-search fa-1x'} />
-        </div>
+        <Clickable
+          action={(event) => this.handleClick(event)}
+          icon={'fa fa-search fa-1x'}
+          styles={this.clickableStyles}
+          type={'i'} />
         <input
           placeholder={'Search for a student, school, or recruiter'}
+          ref={'search'}
           style={this.styles.input}>
         </input>
       </form>
