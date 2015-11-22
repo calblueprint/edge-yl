@@ -34,11 +34,15 @@ class StudentsCard extends Component {
         }
       ),
       image: {
-        width: '122px',
-        height: '122px',
+        width: '136px',
+        height: '136px',
         borderRadius: '50%',
       },
-      info: {
+      section: {
+        display: 'flex',
+        flexFlow: 'column',
+        justifyContent: 'center',
+        alignSelf: 'stretch',
         paddingLeft: '24px',
       },
     };
@@ -68,7 +72,7 @@ class StudentsCard extends Component {
             src='https://scontent.fsnc1-1.fna.fbcdn.net/hphotos-xfp1/t31.0-8/11856297_10200932572512494_2256826043885795533_o.jpg'
             style={this.styles.image} />
         </Clickable>
-        <div style={this.styles.info}>
+        <div style={this.styles.section}>
           <Clickable
             content={`${student.first_name} ${student.last_name}`}
             route={RouteConstants.students.show(student.id)}
