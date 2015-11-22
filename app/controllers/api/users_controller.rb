@@ -1,5 +1,12 @@
 class Api::UsersController < Api::BaseController
 
+  def index
+    users = User.page params[:page]
+    render json: users,
+                 serializer: PaginatedSerializer,
+                 each_serializer: UserIndexSerializer
+  end
+
   def update
     user = User.find params[:id]
     if user.update_attributes user_params

@@ -1,21 +1,16 @@
 class UsersPage extends Component {
 
-  static get propTypes() {
-    return {
-      students: React.PropTypes.array.isRequired,
-    };
+  // --------------------------------------------------
+  // Setup
+  // --------------------------------------------------
+  constructor(props) {
+    super(props);
+    this._listener = (state) => this.setState(state);
   }
 
-  static get defaultProps() {
-    return {
-      students: [],
-    };
-  }
-
-  static get defaultState() {
-    return { sidebar: true };
-  }
-
+  // --------------------------------------------------
+  // Styles
+  // --------------------------------------------------
   get styles() {
     return {
       container: {
@@ -35,15 +30,30 @@ class UsersPage extends Component {
     };
   }
 
-  toggleSidebar(event) {
-    this.setState({ sidebar: !this.state.sidebar });
+  // --------------------------------------------------
+  // Lifecycle
+  // --------------------------------------------------
+
+  componentWillMount() {
+    this.setState(UsersStore.getState());
   }
 
+  componentDidMount() {
+    UsersStore.listen(this._listener);
+    UsersActions.fetchUsers();
+  }
+
+  componentWillUnmount() {
+    UsersStore.unlisten(this._listener);
+  }
+
+  // --------------------------------------------------
+  // Render
+  // --------------------------------------------------
   render() {
     return (
       <div style={StyleConstants.pages.default}>
-        <Header
-          toggleSidebar={() => this.toggleSidebar()} />
+        <Header toggleSidebar={() => UsersActions.toggleSidebar()} />
         <div style={this.styles.container}>
           <Sidebar hidden={this.state.sidebar} />
           <div style={this.styles.body}>

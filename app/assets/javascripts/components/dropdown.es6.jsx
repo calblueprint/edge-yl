@@ -13,7 +13,7 @@ class Dropdown extends Component {
         }),
         container: React.PropTypes.object,
       }),
-    blur: React.PropTypes.func,
+      blur: React.PropTypes.func,
     };
   }
 
