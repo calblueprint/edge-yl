@@ -62,7 +62,6 @@ class StudentsCard extends Component {
   // --------------------------------------------------
   render() {
     var student = this.props.student;
-    console.log(this.styles.section);
     return (
       <div style={this.styles.container}>
         <Clickable

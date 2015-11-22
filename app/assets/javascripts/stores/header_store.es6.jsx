@@ -2,14 +2,21 @@
   class HeaderStore {
 
     constructor() {
-      this.query = '';
+      this.search = {
+        active: false,
+        query: '',
+      };
       this.bindListeners({
-        storeQuery: HeaderActions.STORE_QUERY,
+        storeSearch: HeaderActions.STORE_SEARCH,
       });
     }
 
-    storeQuery(query) {
-      this.query = query;
+    storeSearch(search) {
+      console.log(search);
+      if (search.query === undefined) {
+        search.query = this.search.query;
+      }
+      this.search = search;
     }
   }
   this.HeaderStore = alt.createStore(HeaderStore);

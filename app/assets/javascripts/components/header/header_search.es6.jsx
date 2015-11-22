@@ -9,15 +9,6 @@ class HeaderSearch extends Component {
   }
 
   // --------------------------------------------------
-  // State
-  // --------------------------------------------------
-  static get defaultState() {
-    return {
-      query: '',
-    };
-  }
-
-  // --------------------------------------------------
   // Styles
   // --------------------------------------------------
   get styles() {
@@ -50,6 +41,23 @@ class HeaderSearch extends Component {
     };
   }
 
+  get clickableStyles() {
+    return {
+      default: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '64px',
+        backgroundColor: StyleConstants.colors.indigo,
+        borderRadius: '1px',
+        color: StyleConstants.colors.white,
+      },
+      hover: {
+        backgroundColor: StyleConstants.colors.white,
+      },
+    };
+  }
+
   get dropdownStyles() {
     return {
       child: {
@@ -76,32 +84,20 @@ class HeaderSearch extends Component {
     };
   }
 
-  get clickableStyles() {
-    return {
-      default: {
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        width: '64px',
-        backgroundColor: StyleConstants.colors.indigo,
-        borderRadius: '1px',
-        color: StyleConstants.colors.white,
-      },
-      hover: {
-        backgroundColor: StyleConstants.colors.white,
-      },
-    };
-  }
-
   // --------------------------------------------------
   // Handlers
   // --------------------------------------------------
-  handleClick(event) {
+  handleBlur(event) {
+    console.log('hello');
+    HeaderActions.storeSearch(false);
+  }
 
+  handleFocus(event) {
+    HeaderActions.storeSearch(true);
   }
 
   handleInput(event) {
-    HeaderActions.storeQuery(event.target.value);
+    HeaderActions.storeSearch(true, event.target.value);
   }
 
   // --------------------------------------------------
@@ -114,6 +110,8 @@ class HeaderSearch extends Component {
   componentDidMount() {
     HeaderStore.listen(this._listener);
     var input = ReactDOM.findDOMNode(this.refs.input);
+    input.addEventListener('blur', (event) => this.handleBlur(event));
+    // input.addEventListener('focus', (event) => this.handleFocus(event));
     input.addEventListener('input', (event) => this.handleInput(event));
   }
 
@@ -129,11 +127,13 @@ class HeaderSearch extends Component {
       { content: 'Result 1' },
       { content: 'Result 2' },
     ];
-    return (
-      <Dropdown
-        options={results}
-        styles={this.dropdownStyles} />
-    );
+    if (this.state.search.active) {
+      return (
+        <Dropdown
+          options={results}
+          styles={this.dropdownStyles} />
+      );
+    }
   }
 
   render() {
@@ -146,7 +146,8 @@ class HeaderSearch extends Component {
           <input
             placeholder={'Search for a school or student'}
             ref={'input'}
-            style={this.styles.input}>
+            style={this.styles.input}
+            value={this.state.search.query}>
           </input>
         </div>
         {this.renderResults()}
