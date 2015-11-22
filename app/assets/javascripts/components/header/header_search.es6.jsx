@@ -24,6 +24,7 @@ class HeaderSearch extends Component {
     return {
       container: {
         display: 'flex',
+        flexFlow: 'column',
         flex: '1',
         height: '30px',
       },
@@ -33,15 +34,45 @@ class HeaderSearch extends Component {
         border: 'none',
         borderRadius: '1px',
       },
-      section: {
+      logo: {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        width: '64px',
+        width: '48px',
         backgroundColor: StyleConstants.colors.indigo,
         borderRadius: '1px',
         color: StyleConstants.colors.white,
       },
+      section: {
+        display: 'flex',
+        flex: '1',
+      },
+    };
+  }
+
+  get dropdownStyles() {
+    return {
+      child: {
+        default: {
+          flex: '1',
+          padding: '12px',
+        },
+        hover: {
+          backgroundColor: StyleConstants.colors.turquoise,
+        },
+      },
+      container: Object.assign(
+        {},
+        StyleConstants.cards.default,
+        {
+          display: 'flex',
+          flexFlow: 'column',
+          zIndex: StyleConstants.planes.two,
+          top: '4px',
+          left: '48px',
+          width: '684px',
+        }
+      ),
     };
   }
 
@@ -82,8 +113,8 @@ class HeaderSearch extends Component {
 
   componentDidMount() {
     HeaderStore.listen(this._listener);
-    var search = ReactDOM.findDOMNode(this.refs.search);
-    search.addEventListener('input', (event) => this.handleInput(event));
+    var input = ReactDOM.findDOMNode(this.refs.input);
+    input.addEventListener('input', (event) => this.handleInput(event));
   }
 
   componentWillUnmount() {
@@ -93,20 +124,33 @@ class HeaderSearch extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
+  renderResults() {
+    var results = [
+      { content: 'Result 1' },
+      { content: 'Result 2' },
+    ];
+    return (
+      <Dropdown
+        options={results}
+        styles={this.dropdownStyles} />
+    );
+  }
+
   render() {
     return (
-      <form style={this.styles.container}>
-        <Clickable
-          action={(event) => this.handleClick(event)}
-          icon={'fa fa-search fa-1x'}
-          styles={this.clickableStyles}
-          type={'i'} />
-        <input
-          placeholder={'Search for a student, school, or recruiter'}
-          ref={'search'}
-          style={this.styles.input}>
-        </input>
-      </form>
+      <div style={this.styles.container}>
+        <div style={this.styles.section}>
+          <div style={this.styles.logo}>
+            <i className={'fa fa-search fa-1x'} />
+          </div>
+          <input
+            placeholder={'Search for a school or student'}
+            ref={'input'}
+            style={this.styles.input}>
+          </input>
+        </div>
+        {this.renderResults()}
+      </div>
     );
   }
 }
