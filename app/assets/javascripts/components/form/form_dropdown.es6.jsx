@@ -97,8 +97,8 @@ class FormDropdown extends Component {
 
   generateDropdownOption(item) {
     return {
+      action: this.generateHandler(item),
       content: item,
-      func: this.generateHandler(item),
     };
   }
 

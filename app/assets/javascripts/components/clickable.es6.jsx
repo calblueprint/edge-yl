@@ -84,15 +84,15 @@ class Clickable extends Component {
   handleClick(event) {
     event.stopPropagation();
     var props = this.props;
-    if (props.route === '' && props.func !== null) {
+    if (props.route === '' && props.action !== null) {
       event.preventDefault();
-      props.func(event);
+      props.action(event);
     }
   }
 
   handleMouseDown(event) {
     var props = this.props;
-    if (props.route !== '' || props.func !== null) {
+    if (props.route !== '' || props.action !== null) {
       event.preventDefault();
     }
     this.setState({ mouse: 'hover' });
@@ -154,7 +154,7 @@ class Clickable extends Component {
       {},
       styles.default,
       this.state.mouse === 'hover' && styles.hover,
-      props.route === '' && props.func === null && this.styles.static
+      props.route === '' && props.action === null && this.styles.static
     );
     if (props.type === 'i' || props.type === 'img') {
       return (

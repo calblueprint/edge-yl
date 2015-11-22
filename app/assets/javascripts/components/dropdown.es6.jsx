@@ -5,7 +5,11 @@ class Dropdown extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      options: React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
+      options: React.PropTypes.arrayOf(React.PropTypes.shape({
+        action: React.PropTypes.func,
+        content: React.PropTypes.string,
+        route: React.PropTypes.string,
+      })).isRequired,
       styles: React.PropTypes.shape({
         child: React.PropTypes.shape({
           default: React.PropTypes.object,
@@ -75,8 +79,8 @@ class Dropdown extends Component {
     }
     return (
       <Clickable
+        action={option.action}
         content={option.content}
-        action={option.func}
         key={index}
         route={option.route}
         styles={styles} />
