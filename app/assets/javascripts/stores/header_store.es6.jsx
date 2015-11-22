@@ -22,6 +22,8 @@
     storeSearch(search) {
       if (search.query === undefined) {
         search.query = this.search.query;
+      } else if (search.query === '') {
+        search.active = false;
       }
       this.search = search;
     }

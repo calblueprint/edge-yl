@@ -1,14 +1,6 @@
 class HeaderSearch extends Component {
 
   // --------------------------------------------------
-  // Setup
-  // --------------------------------------------------
-  constructor(props) {
-    super(props);
-    this._listener = (state) => this.setState(state);
-  }
-
-  // --------------------------------------------------
   // Styles
   // --------------------------------------------------
   get styles() {
@@ -78,7 +70,10 @@ class HeaderSearch extends Component {
           zIndex: StyleConstants.planes.two,
           top: '4px',
           left: '0px',
-        }
+        },
+        (!this.props.search.active ||
+         !this.props.results.length) &&
+         { display: 'none' }
       ),
     };
   }
@@ -101,35 +96,16 @@ class HeaderSearch extends Component {
   // --------------------------------------------------
   // Lifecycle
   // --------------------------------------------------
-  componentWillMount() {
-    this.setState(HeaderStore.getState());
-  }
-
   componentDidMount() {
-    HeaderStore.listen(this._listener);
     var input = ReactDOM.findDOMNode(this.refs.input);
-    // input.addEventListener('blur', (event) => this.handleBlur(event));
-    // input.addEventListener('focus', (event) => this.handleFocus(event));
+    input.addEventListener('blur', (event) => this.handleBlur(event));
+    input.addEventListener('focus', (event) => this.handleFocus(event));
     input.addEventListener('input', (event) => this.handleInput(event));
-  }
-
-  componentWillUnmount() {
-    HeaderStore.unlisten(this._listener);
   }
 
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
-  renderResults() {
-    if (this.state.search.active) {
-      return (
-        <Dropdown
-          options={this.state.results}
-          styles={this.dropdownStyles} />
-      );
-    }
-  }
-
   render() {
     return (
       <div style={this.styles.container}>
@@ -141,10 +117,12 @@ class HeaderSearch extends Component {
             placeholder={'Search for a school or student'}
             ref={'input'}
             style={this.styles.input}
-            value={this.state.search.query}>
+            value={this.props.search.query}>
           </input>
         </div>
-        {this.renderResults()}
+        <Dropdown
+          options={this.props.results}
+          styles={this.dropdownStyles} />
       </div>
     );
   }
