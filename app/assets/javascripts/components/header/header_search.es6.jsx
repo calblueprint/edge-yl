@@ -77,8 +77,7 @@ class HeaderSearch extends Component {
           flexFlow: 'column',
           zIndex: StyleConstants.planes.two,
           top: '4px',
-          left: '48px',
-          width: '684px',
+          left: '0px',
         }
       ),
     };
@@ -88,7 +87,6 @@ class HeaderSearch extends Component {
   // Handlers
   // --------------------------------------------------
   handleBlur(event) {
-    // console.log('hello');
     HeaderActions.storeSearch(false);
   }
 
@@ -123,7 +121,6 @@ class HeaderSearch extends Component {
   // Render
   // --------------------------------------------------
   renderResults() {
-    console.log(this.state.results);
     if (this.state.search.active) {
       return (
         <Dropdown
