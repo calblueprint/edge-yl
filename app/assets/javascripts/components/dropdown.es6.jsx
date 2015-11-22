@@ -31,6 +31,19 @@ class Dropdown extends Component {
   }
 
   // --------------------------------------------------
+  // Styles
+  // --------------------------------------------------
+  get styles() {
+    return {
+      input: {
+        width: '0px',
+        height: '0px',
+        border: '0px',
+      },
+    };
+  }
+
+  // --------------------------------------------------
   // Lifecycle
   // --------------------------------------------------
   componentDidMount() {
@@ -42,24 +55,25 @@ class Dropdown extends Component {
   // Render
   // --------------------------------------------------
   renderOption(option, index) {
+    var styles = Object.assign({}, this.props.styles.child);
+    if (index > 0) {
+      styles.default = Object.assign(
+        {},
+        styles.default,
+        {
+          borderTop: '1px solid',
+          borderColor: StyleConstants.colors.gray
+        }
+      );
+    }
     return (
       <Clickable
         content={option.content}
         action={option.func}
         key={index}
         route={option.route}
-        styles={this.props.styles.child} />
+        styles={styles} />
     );
-  }
-
-  get styles() {
-    return {
-      input: {
-        width: '0px',
-        height: '0px',
-        border: '0px',
-      },
-    };
   }
 
   renderOptions() {
