@@ -13,8 +13,7 @@
 
 class School < ActiveRecord::Base
   include PgSearch
-  multisearchable :against => [:name],
-                  :using => [:trigram]
+  multisearchable against: [:name]
 
   has_many :students
 

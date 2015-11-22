@@ -1,4 +1,4 @@
-class SidebarItem extends Component {
+class SidebarRecent extends Component {
 
   // --------------------------------------------------
   // Props
@@ -14,15 +14,22 @@ class SidebarItem extends Component {
   // --------------------------------------------------
   // Styles
   // --------------------------------------------------
+  get styles() {
+    return {
+      label: {
+        paddingLeft: '12px',
+        fontSize: StyleConstants.fonts.sizes.smaller,
+      },
+    };
+  }
+
   get clickableStyles() {
     return {
-      child: {
-        paddingRight: '12px',
-      },
       default: {
         flex: '1',
         padding: '12px',
-        marginTop: '16px',
+        marginLeft: '14px',
+        marginTop: '14px',
         borderRadius: '1px',
         boxSizing: 'border-box',
       },
@@ -38,11 +45,7 @@ class SidebarItem extends Component {
   render() {
     return (
       <Clickable
-        icon={this.props.icon}
-        route={this.props.route}
-        styles={this.clickableStyles}
-        type={'i'}>
-        <h5>{this.props.label}</h5>
+        content >
       </Clickable>
     );
   }

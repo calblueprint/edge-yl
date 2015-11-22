@@ -1,4 +1,4 @@
 PgSearch.multisearch_options = {
-  :using => [:tsearch, :trigram, :dmetaphone],
-  :ignoring => :accents
+  using: { tsearch: { prefix: true, dictionary: "english" } },
+  ignoring: :accents
 }

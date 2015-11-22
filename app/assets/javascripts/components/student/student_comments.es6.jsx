@@ -40,15 +40,16 @@ class StudentComments extends Component {
       container: {
         display: 'flex',
         flexFlow: 'column',
+        alignItems: 'flex-end',
         position: 'absolute',
         top: '48px',
         right: '0px',
-        width: '196px',
+        width: '172px',
+        paddingRight: '16px',
       },
       title: {
-        marginLeft: '12px',
-        marginTop: '12px',
-        fontSize: StyleConstants.fonts.sizes.smaller,
+        paddingTop: '12px',
+        marginTop: '16px',
       },
     };
   }
@@ -101,10 +102,9 @@ class StudentComments extends Component {
   }
 
   render() {
-    var style = this.styles.container;
     return (
-      <div style={style}>
-        <span style={this.styles.title}> Student Comments </span>
+      <div style={this.styles.container}>
+        <h5 style={this.styles.title}>{'Student Comments'}</h5>
         {this.renderStudentComments()}
         <Clickable
           content={"Add Comment"}

@@ -1,10 +1,20 @@
 class HeaderSearch extends Component {
 
   // --------------------------------------------------
+  // Setup
+  // --------------------------------------------------
+  constructor(props) {
+    super(props);
+    this._listener = (state) => this.setState(state);
+  }
+
+  // --------------------------------------------------
   // State
   // --------------------------------------------------
   static get defaultState() {
-    return { query: '' };
+    return {
+      query: '',
+    };
   }
 
   // --------------------------------------------------
@@ -66,11 +76,49 @@ class HeaderSearch extends Component {
     };
   }
 
+  get clickableStyles() {
+    return {
+      default: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '64px',
+        backgroundColor: StyleConstants.colors.indigo,
+        borderRadius: '1px',
+        color: StyleConstants.colors.white,
+      },
+      hover: {
+        backgroundColor: StyleConstants.colors.white,
+      },
+    };
+  }
+
   // --------------------------------------------------
   // Handlers
   // --------------------------------------------------
   handleClick(event) {
-    this.setState({ query: this.state.input });
+
+  }
+
+  handleInput(event) {
+    HeaderActions.storeQuery(event.target.value);
+  }
+
+  // --------------------------------------------------
+  // Lifecycle
+  // --------------------------------------------------
+  componentWillMount() {
+    this.setState(HeaderStore.getState());
+  }
+
+  componentDidMount() {
+    HeaderStore.listen(this._listener);
+    var input = ReactDOM.findDOMNode(this.refs.input);
+    input.addEventListener('input', (event) => this.handleInput(event));
+  }
+
+  componentWillUnmount() {
+    HeaderStore.unlisten(this._listener);
   }
 
   // --------------------------------------------------
@@ -96,7 +144,8 @@ class HeaderSearch extends Component {
             <i className={'fa fa-search fa-1x'} />
           </div>
           <input
-            placeholder={'Search for a student, school, or recruiter'}
+            placeholder={'Search for a school or student'}
+            ref={'input'}
             style={this.styles.input}>
           </input>
         </div>
