@@ -124,14 +124,10 @@ class HeaderSearch extends Component {
   // --------------------------------------------------
   renderResults() {
     console.log(this.state.results);
-    var results = [
-      { content: 'Result 1' },
-      { content: 'Result 2' },
-    ];
     if (this.state.search.active) {
       return (
         <Dropdown
-          options={results}
+          options={this.state.results}
           styles={this.dropdownStyles} />
       );
     }
