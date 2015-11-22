@@ -1,14 +1,6 @@
 class HeaderSearch extends Component {
 
   // --------------------------------------------------
-  // Setup
-  // --------------------------------------------------
-  constructor(props) {
-    super(props);
-    this._listener = (state) => this.setState(state);
-  }
-
-  // --------------------------------------------------
   // Styles
   // --------------------------------------------------
   get styles() {
@@ -21,9 +13,11 @@ class HeaderSearch extends Component {
       },
       input: {
         flex: '1',
+        height: '30px',
         padding: '8px 16px',
         border: 'none',
         borderRadius: '1px',
+        boxSizing: 'border-box',
       },
       logo: {
         display: 'flex',
@@ -77,9 +71,11 @@ class HeaderSearch extends Component {
           flexFlow: 'column',
           zIndex: StyleConstants.planes.two,
           top: '4px',
-          left: '48px',
-          width: '684px',
-        }
+          left: '0px',
+        },
+        (!this.props.search.active ||
+         !this.props.results.length) &&
+         { display: 'none' }
       ),
     };
   }
@@ -88,7 +84,6 @@ class HeaderSearch extends Component {
   // Handlers
   // --------------------------------------------------
   handleBlur(event) {
-    // console.log('hello');
     HeaderActions.storeSearch(false);
   }
 
@@ -103,39 +98,16 @@ class HeaderSearch extends Component {
   // --------------------------------------------------
   // Lifecycle
   // --------------------------------------------------
-  componentWillMount() {
-    this.setState(HeaderStore.getState());
-  }
-
   componentDidMount() {
-    HeaderStore.listen(this._listener);
     var input = ReactDOM.findDOMNode(this.refs.input);
-    // input.addEventListener('blur', (event) => this.handleBlur(event));
-    // input.addEventListener('focus', (event) => this.handleFocus(event));
-    // input.addEventListener('input', (event) => this.handleInput(event));
-  }
-
-  componentWillUnmount() {
-    HeaderStore.unlisten(this._listener);
+    input.addEventListener('blur', (event) => this.handleBlur(event));
+    input.addEventListener('focus', (event) => this.handleFocus(event));
+    input.addEventListener('input', (event) => this.handleInput(event));
   }
 
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
-  renderResults() {
-    var results = [
-      { content: 'Result 1' },
-      { content: 'Result 2' },
-    ];
-    if (this.state.search.active) {
-      return (
-        <Dropdown
-          options={results}
-          styles={this.dropdownStyles} />
-      );
-    }
-  }
-
   render() {
     return (
       <div style={this.styles.container}>
@@ -147,10 +119,12 @@ class HeaderSearch extends Component {
             placeholder={'Search for a school or student'}
             ref={'input'}
             style={this.styles.input}
-            value={this.state.search.query}>
+            value={this.props.search.query}>
           </input>
         </div>
-        {this.renderResults()}
+        <Dropdown
+          options={this.props.results}
+          styles={this.dropdownStyles} />
       </div>
     );
   }

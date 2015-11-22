@@ -39,7 +39,9 @@ class HeaderNavigation extends Component {
           route={RouteConstants.students.index()}
           styles={this.clickableStyles}
           type={'h2'} />
-        <HeaderSearch />
+        <HeaderSearch
+          results={this.props.results}
+          search={this.props.search} />
       </div>
     );
   }

@@ -1,4 +1,4 @@
-(1..25).each do |index|
+(1..50).each do |index|
   new_school = School.create(
     address: "#{Faker::Address.street_address}, #{Faker::Address.city}",
     counselor_email: Faker::Internet.email,

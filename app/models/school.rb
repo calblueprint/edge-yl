@@ -12,6 +12,7 @@
 #
 
 class School < ActiveRecord::Base
+
   include PgSearch
   multisearchable against: [:name]
 

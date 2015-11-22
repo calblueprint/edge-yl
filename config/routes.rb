@@ -27,7 +27,7 @@
   end
 
   namespace :api do
-    get '/searchables/query', to: 'searchables#query'
+    get '/searchables/search', to: 'searchables#search'
 
     resources :schools, only: [:create, :index, :show]
     resources :students, only: [:create, :index, :show, :update] do

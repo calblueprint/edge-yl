@@ -8,8 +8,10 @@
     }
 
     storeSearch(active, query) {
-      var resolve = (response) => this.storeResults(response);
-      //TODO make a request - Requester.get()
+      if (query) {
+        var resolve = (response) => this.storeResults(response);
+        Requester.get(ApiConstants.searchables.search(query), resolve);
+      }
       return { active: active, query: query };
     }
   }

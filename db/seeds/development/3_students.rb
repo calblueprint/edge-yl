@@ -1,4 +1,4 @@
-(1..25).each do |index|
+(1..50).each do |index|
   new_student = Student.create(
     birthday: Faker::Date.between(33.days.ago, Date.today),
     cell_phone: Faker::PhoneNumber.phone_number,

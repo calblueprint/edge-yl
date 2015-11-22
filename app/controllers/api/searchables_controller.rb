@@ -1,8 +1,10 @@
-class Api::SearchablesController < ApplicationController
+class Api::SearchablesController < Api::BaseController
 
-  def query
-    query = params[:query]
-    results = PgSearch.multisearch(query)
-    render json: results
+  def search
+    searchables = PgSearch.multisearch(params[:query]).page(1)
+    render json: searchables,
+                 serializer: PaginatedSerializer,
+                 each_serializer: SearchableBaseSerializer
   end
+
 end
