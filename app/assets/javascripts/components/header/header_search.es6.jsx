@@ -57,10 +57,13 @@ class HeaderSearch extends Component {
       child: {
         default: {
           flex: '1',
-          padding: '12px',
+          padding: '12px 0px',
+          paddingLeft: '0px',
+          margin: '0px 12px',
+          transition: 'padding 0.25s ease-out',
         },
         hover: {
-          backgroundColor: StyleConstants.colors.turquoise,
+          paddingLeft: '8px',
         },
       },
       container: Object.assign(

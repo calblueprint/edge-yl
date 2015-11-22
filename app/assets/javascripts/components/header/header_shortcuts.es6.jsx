@@ -61,10 +61,10 @@ class HeaderShortcuts extends Component {
           padding: '12px 0px',
           paddingLeft: '0px',
           margin: '0px 12px',
-          transition: 'padding 0.2s ease-out',
+          transition: 'padding 0.25s ease-out',
         },
         hover: {
-          paddingLeft: '6px',
+          paddingLeft: '8px',
         },
       },
       container: Object.assign(
