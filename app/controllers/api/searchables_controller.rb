@@ -1,8 +1,9 @@
-class Api::SearchablesController < ApplicationController
+class Api::SearchablesController < Api::BaseController
 
-  def query
+  def search
     query = params[:query]
     results = PgSearch.multisearch(query)
     render json: results
   end
+
 end

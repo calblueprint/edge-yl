@@ -112,7 +112,7 @@ class HeaderSearch extends Component {
     var input = ReactDOM.findDOMNode(this.refs.input);
     // input.addEventListener('blur', (event) => this.handleBlur(event));
     // input.addEventListener('focus', (event) => this.handleFocus(event));
-    // input.addEventListener('input', (event) => this.handleInput(event));
+    input.addEventListener('input', (event) => this.handleInput(event));
   }
 
   componentWillUnmount() {
@@ -123,6 +123,7 @@ class HeaderSearch extends Component {
   // Render
   // --------------------------------------------------
   renderResults() {
+    console.log(this.state.results);
     var results = [
       { content: 'Result 1' },
       { content: 'Result 2' },

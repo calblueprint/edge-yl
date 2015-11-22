@@ -13,6 +13,14 @@
       };
     }
 
+    get searchables() {
+      return {
+        search: function(query) {
+          return `/api/searchables/search?query=${query}`;
+        },
+      }
+    }
+
     get students() {
       return {
         comments: {
