@@ -13,9 +13,11 @@ class HeaderSearch extends Component {
       },
       input: {
         flex: '1',
+        height: '30px',
         padding: '8px 16px',
         border: 'none',
         borderRadius: '1px',
+        boxSizing: 'border-box',
       },
       logo: {
         display: 'flex',
