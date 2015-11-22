@@ -88,7 +88,7 @@ class HeaderSearch extends Component {
   // Handlers
   // --------------------------------------------------
   handleBlur(event) {
-    console.log('hello');
+    // console.log('hello');
     HeaderActions.storeSearch(false);
   }
 
@@ -110,9 +110,9 @@ class HeaderSearch extends Component {
   componentDidMount() {
     HeaderStore.listen(this._listener);
     var input = ReactDOM.findDOMNode(this.refs.input);
-    input.addEventListener('blur', (event) => this.handleBlur(event));
+    // input.addEventListener('blur', (event) => this.handleBlur(event));
     // input.addEventListener('focus', (event) => this.handleFocus(event));
-    input.addEventListener('input', (event) => this.handleInput(event));
+    // input.addEventListener('input', (event) => this.handleInput(event));
   }
 
   componentWillUnmount() {
