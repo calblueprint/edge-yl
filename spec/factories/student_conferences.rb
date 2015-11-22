@@ -11,8 +11,12 @@
 #
 
 FactoryGirl.define do
+
   factory :student_conference do
-    
+    status     { 1 + rand(2) }
+
+    conference
+    student
   end
 
 end

@@ -12,10 +12,9 @@
 
 class StudentConference < ActiveRecord::Base
 
-  # TODO(Warren): Figure out enum possibilites.
-  enum status: [:attending, :pending]
+  enum status: [:selected, :registered, :dropped]
 
   belongs_to :conference
-  belongs_to :school
+  belongs_to :student
 
 end
