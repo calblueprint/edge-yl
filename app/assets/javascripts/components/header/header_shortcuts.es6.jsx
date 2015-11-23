@@ -104,13 +104,13 @@ class HeaderShortcuts extends Component {
           route: RouteConstants.pages.profile,
         },
         {
-          content: 'Logout',
-          func: () => {
+          action: () => {
             Requester.delete(
               ApiConstants.users.logout,
               (response) => { window.location = RouteConstants.pages.login }
             );
           },
+          content: 'Logout',
         },
       ];
       return (

@@ -5,7 +5,12 @@ class Dropdown extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      options: React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
+      blur: React.PropTypes.func,
+      options: React.PropTypes.arrayOf(React.PropTypes.shape({
+        action: React.PropTypes.func,
+        content: React.PropTypes.string,
+        route: React.PropTypes.string,
+      })).isRequired,
       styles: React.PropTypes.shape({
         child: React.PropTypes.shape({
           default: React.PropTypes.object,
@@ -13,12 +18,12 @@ class Dropdown extends Component {
         }),
         container: React.PropTypes.object,
       }),
-      blur: React.PropTypes.func,
     };
   }
 
   static get defaultProps() {
     return {
+      blur: null,
       options: [],
       styles: {
         child: {
@@ -48,7 +53,14 @@ class Dropdown extends Component {
   // --------------------------------------------------
   componentDidMount() {
     var input = ReactDOM.findDOMNode(this.refs.input);
-    // input.addEventListener('blur', (event) => this.props.blur(event));
+    input.addEventListener('blur', (event) => this.handleBlur(event));
+  }
+
+  // --------------------------------------------------
+  // Handlers
+  // --------------------------------------------------
+  handleBlur(event) {
+    this.props.blur(event);
   }
 
   // --------------------------------------------------
@@ -68,8 +80,8 @@ class Dropdown extends Component {
     }
     return (
       <Clickable
+        action={option.action}
         content={option.content}
-        action={option.func}
         key={index}
         route={option.route}
         styles={styles} />

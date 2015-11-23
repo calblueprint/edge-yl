@@ -72,6 +72,7 @@ class Clickable extends Component {
   componentDidMount() {
     var node = ReactDOM.findDOMNode(this.refs.container);
     node.addEventListener('click', (event) => this.handleClick(event));
+    node.addEventListener('mousedown', (event) => this.handleMouseDown(event));
     node.addEventListener('mouseenter', (event) => this.handleMouseEnter(event));
     node.addEventListener('mouseleave', (event) => this.handleMouseLeave(event));
     node.addEventListener('mouseup', (event) => this.handleMouseUp(event));
@@ -81,12 +82,20 @@ class Clickable extends Component {
   // Handlers
   // --------------------------------------------------
   handleClick(event) {
+    event.stopPropagation();
     var props = this.props;
-    if (props.route === '' && props.func !== null) {
+    if (props.route === '' && props.action !== null) {
       event.preventDefault();
-      event.stopPropagation();
       props.action(event);
     }
+  }
+
+  handleMouseDown(event) {
+    var props = this.props;
+    if (props.route !== '' || props.action !== null) {
+      event.preventDefault();
+    }
+    this.setState({ mouse: 'hover' });
   }
 
   handleMouseEnter(event) {
@@ -145,7 +154,7 @@ class Clickable extends Component {
       {},
       styles.default,
       this.state.mouse === 'hover' && styles.hover,
-      props.route === '' && props.func === null && this.styles.static
+      props.route === '' && props.action === null && this.styles.static
     );
     if (props.type === 'i' || props.type === 'img') {
       return (
