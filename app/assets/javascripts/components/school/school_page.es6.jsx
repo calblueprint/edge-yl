@@ -5,7 +5,7 @@ class SchoolPage extends Component {
   // --------------------------------------------------
   constructor(props) {
     super(props);
-    this._listener = null;
+    this._listener = (state) => this.setState(state);
   }
 
   // --------------------------------------------------
