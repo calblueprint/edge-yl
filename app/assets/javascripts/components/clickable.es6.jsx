@@ -16,6 +16,7 @@ class Clickable extends Component {
         hover: React.PropTypes.object,
       }),
       type: React.PropTypes.oneOf([
+        'div',
         'h1',
         'h2',
         'h3',
@@ -24,7 +25,7 @@ class Clickable extends Component {
         'h6',
         'i',
         'img',
-        'span'
+        'span',
       ]).isRequired,
     };
   }
@@ -163,6 +164,15 @@ class Clickable extends Component {
           ref={'container'}
           style={style}>
           {this.renderContent(styles.child)}
+          {this.renderChildren()}
+        </a>
+      );
+    } else if (props.type === 'div') {
+      return (
+        <a
+          href={props.route}
+          ref={'container'}
+          style={style}>
           {this.renderChildren()}
         </a>
       );
