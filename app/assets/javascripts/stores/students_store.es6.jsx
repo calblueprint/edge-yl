@@ -2,6 +2,10 @@
   class StudentsStore {
 
     constructor() {
+      this.filters = [
+        ['Female', 'Male', 'Other'],
+        ['One', 'Two', 'Three'],
+      ];
       this.pagination = {
         current: 1,
         limit: 1,
@@ -12,9 +16,6 @@
         handleToggleSidebar: StudentsActions.TOGGLE_SIDEBAR,
         handleUpdateStudents: StudentsActions.UPDATE_STUDENTS,
       });
-      this.filters = [
-        ['Female', 'Male', 'Other'],
-        ['One', 'Two', 'Three']]
     }
 
     handleToggleSidebar() {
