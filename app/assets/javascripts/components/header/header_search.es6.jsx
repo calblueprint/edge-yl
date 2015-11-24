@@ -37,6 +37,19 @@ class HeaderSearch extends Component {
         display: 'flex',
         flex: '1',
       },
+      underlay: Object.assign(
+        {},
+        {
+          position: 'fixed',
+          top: '0px',
+          left: '0px',
+          zIndex: StyleConstants.planes.eight,
+          width: '100vw',
+          height: '100vh',
+          backgroundColor: StyleConstants.colors.fog,
+        },
+        !this.props.search.active && { display: 'none' }
+      ),
     };
   }
 
@@ -77,7 +90,7 @@ class HeaderSearch extends Component {
         {
           display: 'flex',
           flexFlow: 'column',
-          zIndex: StyleConstants.planes.two,
+          zIndex: StyleConstants.planes.nine,
           top: '4px',
           left: '0px',
         },
@@ -160,6 +173,7 @@ class HeaderSearch extends Component {
         <Dropdown
           options={this.generateResults()}
           styles={this.dropdownStyles} />
+        <PageUnderlay active={this.props.search.active} />
       </div>
     );
   }
