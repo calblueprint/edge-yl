@@ -20,17 +20,43 @@ class SchoolCard extends Component {
         {
           display: 'flex',
           flexFlow: 'column',
-          width: '32.5%',
-          height: '312px',
+          width: '50%',
+          height: '512px',
           marginTop: '1%',
         }
       ),
+      image: {
+        width: '250px',
+        height: '250px',
+        borderRadius: '50%',
+        margin: '20px 0px',
+      },
+      body: {
+        display: 'flex',
+        flexFlow: 'column',
+        alignItems: 'center',
+        justifyContent: 'space-around',
+        padding: '12px',
+        flex: '1',
+      },
     };
   }
 
   render() {
+    var school = this.props.school;
     return (
       <div style={this.styles.container}>
+        <CardHeader
+          content={school.name}
+          icon={'fa fa-pencil-square-o fa-lg'} />
+        <div style={this.styles.body}>
+          <img
+            src='http://www.wlac.edu/WLAC/media/images/highschool/highschool-index.jpg'
+            style={this.styles.image} />
+          <h3>{`School Address: ${school.address}`}</h3>
+          <h3>{`Counselor Name: ${school.counselor_name}`}</h3>
+          <h3>{`Counselor Email: ${school.counselor_email}`}</h3>
+      </div>
       </div>
     );
   }
