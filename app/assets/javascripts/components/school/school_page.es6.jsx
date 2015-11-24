@@ -1,12 +1,11 @@
 class SchoolPage extends Component {
-class SchoolPage extends Component {
 
   // --------------------------------------------------
   // Setup
   // --------------------------------------------------
   constructor(props) {
     super(props);
-    this._listener = null;
+    this._listener = (state) => this.setState(state);
   }
 
   // --------------------------------------------------
@@ -50,7 +49,7 @@ class SchoolPage extends Component {
   }
 
   componentDidMount() {
-    this._listener = SchoolStore.listen((state) => this.setState(state));
+    SchoolStore.listen(this._listener);
     SchoolActions.fetchSchool(this.props.id);
   }
 
@@ -94,8 +93,8 @@ class SchoolPage extends Component {
       <div style={StyleConstants.pages.default}>
         <Header toggleSidebar={() => this.toggleSidebar()} />
         <div style={this.styles.container}>
-          <Sidebar shouldShow={this.state.sidebar} />
-          <SchoolGrid school={this.state.school} />
+          <Sidebar hidden={this.state.sidebar} />
+          <SchoolGrid {...this.props} />
           <div style={this.styles.placeholder}></div>
         </div>
       </div>
