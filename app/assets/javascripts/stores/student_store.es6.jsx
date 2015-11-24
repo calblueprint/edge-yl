@@ -2,6 +2,7 @@
   class StudentStore {
 
     constructor() {
+      this.comments = [];
       this.overlay = {
         active: false,
         target: '',
@@ -13,10 +14,23 @@
         student_conference: {},
       };
       this.bindListeners({
+        handleStoreComment: StudentActions.STORE_COMMENT,
+        handleStoreComments: StudentActions.STORE_COMMENTS,
         handleStoreOverlay: StudentActions.STORE_OVERLAY,
         handleStoreStudent: StudentActions.STORE_STUDENT,
         handleToggleSidebar: StudentActions.TOGGLE_SIDEBAR,
       });
+    }
+
+    handleStoreComment(response) {
+      // TODO(Warren): Check if this can be refactored cleverly.
+      var comments = this.comments;
+      comments.push(response.comment);
+      this.comments = comments;
+    }
+
+    handleStoreComments(response) {
+      this.comments = response.comments;
     }
 
     handleStoreOverlay(overlay) {

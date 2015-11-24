@@ -2,7 +2,7 @@
   class StudentCommentsStore {
 
     constructor() {
-      this.comments = [];
+
       this.bindListeners({
         handleStoreStudentComment: StudentCommentsActions.STORE_STUDENT_COMMENT,
         handleStoreStudentComments: StudentCommentsActions.STORE_STUDENT_COMMENTS,

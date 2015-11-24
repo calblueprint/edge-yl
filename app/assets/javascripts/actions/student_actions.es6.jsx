@@ -3,9 +3,23 @@
 
     constructor() {
       this.generateActions(
+        'storeComment',
+        'storeComments',
         'storeStudent',
-        'toggleSidebar'
+        'toggleSidebar',
       );
+    }
+
+    createComment(id, params) {
+      resolve = (response) => this.storeComment(response);
+      Requester.post(ApiConstants.students.comments.create(id), params, resolve);
+      return true;
+    }
+
+    fetchComments(id) {
+      resolve = (response) => this.storeComments(response);
+      Requester.get(ApiConstants.students.comments.index(id), resolve);
+      return true;
     }
 
     fetchStudent(id) {
