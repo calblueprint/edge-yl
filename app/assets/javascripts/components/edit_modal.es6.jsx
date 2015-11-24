@@ -74,9 +74,9 @@ class EditModal extends Component {
   renderBody() {
     switch (this.props.overlay.target) {
       case 'preview':
-        return <EditPreview {...this.props} />;
+        return <EditPreview student={this.props.student} />;
       case 'contact':
-        return <EditContact {...this.props} />
+        return <EditContact student={this.props.student} />
     }
   }
 

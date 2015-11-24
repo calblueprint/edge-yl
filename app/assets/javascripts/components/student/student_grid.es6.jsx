@@ -40,19 +40,19 @@ class StudentGrid extends Component {
         <StudentCard
           target={TypeConstants.overlay.target.preview}
           type={TypeConstants.overlay.type.edit}
-          {...this.props} />
+          student={this.props.student} />
         <StudentCard
           target={TypeConstants.overlay.target.contact}
           type={TypeConstants.overlay.type.edit}
-          {...this.props} />
+          student={this.props.student} />
         <StudentCard
           target={TypeConstants.overlay.target.parent}
           type={TypeConstants.overlay.type.edit}
-          {...this.props} />
+          student={this.props.student} />
         <StudentCard
           target={TypeConstants.overlay.target.conference}
           type={TypeConstants.overlay.type.edit}
-          {...this.props} />
+          student={this.props.student} />
       </div>
     );
   }

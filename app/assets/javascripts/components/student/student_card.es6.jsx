@@ -53,15 +53,15 @@ class StudentCard extends Component {
   renderBody() {
     switch (this.props.target) {
       case 'preview':
-        return <StudentPreview {...this.props} />;
+        return <StudentPreview student={this.props.student} />;
       case 'contact':
-        return <StudentContact {...this.props} />;
+        return <StudentContact student={this.props.student} />;
       case 'conference':
-        return <StudentConference {...this.props} />;
+        return <StudentConference student={this.props.student} />;
       case 'parent':
-        return <StudentParent {...this.props} />;
+        return <StudentParent student={this.props.student} />;
       default:
-        return <StudentPreview {...this.props} />;
+        return <StudentPreview student={this.props.student} />;
     };
   }
 

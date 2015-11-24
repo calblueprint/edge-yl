@@ -83,7 +83,8 @@ class SchoolPage extends Component {
     if (this.state.overlay) {
       return (
         <PageOverlay
-          {...this.props} />
+          overlay={this.state.overlay}
+          school={this.state.school} />
       );
     }
   }
@@ -94,7 +95,7 @@ class SchoolPage extends Component {
         <Header toggleSidebar={() => this.toggleSidebar()} />
         <div style={this.styles.container}>
           <Sidebar hidden={this.state.sidebar} />
-          <SchoolGrid {...this.props} />
+          <SchoolGrid school={this.state.school} />
           <div style={this.styles.placeholder}></div>
         </div>
       </div>
