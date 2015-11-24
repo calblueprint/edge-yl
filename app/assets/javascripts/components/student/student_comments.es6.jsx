@@ -66,23 +66,23 @@ class StudentComments extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
-  renderStudentComment(comment, index) {
+  renderComment(comment) {
     return (
       <StudentComment
         comment={comment}
-        key={index} />
+        key={comment.id} />
     );
   }
 
-  renderStudentComments() {
-    return this.props.comments.map((comment, index) => this.renderStudentComment(comment, index));
+  renderComments() {
+    return this.props.comments.map((comment) => this.renderComment(comment));
   }
 
   render() {
     return (
       <div style={this.styles.container}>
         <h5 style={this.styles.title}>{'Student Comments'}</h5>
-        {this.renderStudentComments()}
+        {this.renderComments()}
         <Clickable
           content={"Add Comment"}
           action={(event) => this.handleClick(event)}

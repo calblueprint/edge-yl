@@ -23,10 +23,8 @@
     }
 
     handleStoreComment(response) {
-      // TODO(Warren): Check if this can be refactored cleverly.
-      var comments = this.comments;
-      comments.push(response.comment);
-      this.comments = comments;
+      this.comments.push(response.comment);
+      this.overlay.active = false;
     }
 
     handleStoreComments(response) {
@@ -38,8 +36,8 @@
     }
 
     handleStoreStudent(response) {
-      this.overlay.active = false;
       this.student = response.student;
+      this.overlay.active = false;
     }
 
     handleToggleSidebar() {

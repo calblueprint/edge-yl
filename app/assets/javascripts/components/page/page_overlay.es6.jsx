@@ -67,10 +67,6 @@ class PageOverlay extends Component {
   // --------------------------------------------------
   // Lifecycle
   // --------------------------------------------------
-  componentWillMount() {
-    this.setState(StudentCommentsStore.getState());
-  }
-
   componentDidMount() {
     var node = ReactDOM.findDOMNode(this.refs.container);
     this._node = node;
