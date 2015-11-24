@@ -17,7 +17,7 @@ class SchoolGrid extends Component {
       container: {
         display: 'flex',
         flexFlow: 'wrap',
-        justifyContent: 'space-between',
+        justifyContent: 'space-around',
         alignContent: 'flex-start',
         flex: '1',
         padding: '0px 12px',
