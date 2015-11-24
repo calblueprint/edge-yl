@@ -1,4 +1,4 @@
-class SidebarRecent extends Component {
+class SidebarRecents extends Component {
 
   // --------------------------------------------------
   // Props
@@ -35,8 +35,7 @@ class SidebarRecent extends Component {
       default: {
         flex: '1',
         padding: '12px',
-        marginLeft: '14px',
-        marginTop: '14px',
+        marginTop: '16px',
         borderRadius: '1px',
         boxSizing: 'border-box',
       },

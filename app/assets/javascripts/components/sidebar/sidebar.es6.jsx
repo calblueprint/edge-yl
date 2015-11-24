@@ -49,7 +49,7 @@ class Sidebar extends Component {
     return (
       <div style={style}>
         <SidebarGroup />
-        <SidebarRecent />
+        <SidebarRecents />
         <SidebarFooter />
       </div>
     );
