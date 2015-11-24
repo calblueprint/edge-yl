@@ -77,7 +77,7 @@ class HeaderSearch extends Component {
         {
           display: 'flex',
           flexFlow: 'column',
-          zIndex: StyleConstants.planes.two,
+          zIndex: StyleConstants.planes.nine,
           top: '4px',
           left: '0px',
         },
@@ -160,6 +160,7 @@ class HeaderSearch extends Component {
         <Dropdown
           options={this.generateResults()}
           styles={this.dropdownStyles} />
+        <PageUnderlay active={this.props.search.active} />
       </div>
     );
   }
