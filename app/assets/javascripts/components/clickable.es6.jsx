@@ -6,8 +6,8 @@ class Clickable extends Component {
   static get propTypes() {
     return {
       action: React.PropTypes.func,
-      content: React.PropTypes.string,
       children: React.PropTypes.node,
+      content: React.PropTypes.string,
       icon: React.PropTypes.string,
       route: React.PropTypes.string,
       styles: React.PropTypes.shape({
@@ -32,8 +32,8 @@ class Clickable extends Component {
   static get defaultProps() {
     return {
       action: null,
-      content: '',
       children: null,
+      content: '',
       icon: '',
       route: '',
       styles: {
