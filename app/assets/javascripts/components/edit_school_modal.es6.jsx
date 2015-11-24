@@ -1,4 +1,4 @@
-class PageOverlay extends Component {
+class EditSchoolModal extends Component {
 
   // --------------------------------------------------
   // Setup
@@ -18,7 +18,7 @@ class PageOverlay extends Component {
         target: React.PropTypes.string.isRequired,
         type: React.PropTypes.string.isRequired,
       }).isRequired,
-      student: React.PropTypes.object.isRequired,
+      school: React.PropTypes.object.isRequired,
     };
   }
 
@@ -26,10 +26,10 @@ class PageOverlay extends Component {
     return {
       overlay: {
         active: false,
-        target: TypeConstants.overlay.type.edit,
-        type: TypeConstants.overlay.target.preview,
+        target: TypeConstants.overlay.target.preview,
+        type: TypeConstants.overlay.type.edit,
       },
-      student: {},
+      school: {},
     };
   }
 
@@ -40,26 +40,12 @@ class PageOverlay extends Component {
     return {
       container: {
         display: 'flex',
+        flexFlow: 'column',
         justifyContent: 'center',
-        position: 'fixed',
-        top: '0px',
-        left: '0px',
-        zIndex: StyleConstants.planes.nine,
-        width: '100vw',
-        height: '100vh',
-        backgroundColor: StyleConstants.colors.fog,
+        alignItems: 'center',
       },
-    };
-  }
-
-  get clickableStyles() {
-    return {
-      default: {
-        position: 'fixed',
-        top: '0px',
-        right: '0px',
-        zIndex: StyleConstants.planes.nine,
-        padding: '8px',
+      title: {
+        marginBottom: '6px',
       },
     };
   }
@@ -78,38 +64,22 @@ class PageOverlay extends Component {
   // --------------------------------------------------
   handleClick(event) {
     if (event.target === this._node) {
-      StudentActions.storeOverlay(false);
+      SchoolActions.storeOverlay(false);
     }
   }
 
-//  --------------------------------------------------
-//  Render
-//  --------------------------------------------------
-  renderModal() {
-    if (this.props.overlay.type === TypeConstants.overlay.type.edit) {
-      return (
-        <EditModal
-          overlay={this.props.overlay}
-          student={this.props.student} />
-      );
-    } else {
-      return (
-        <CreateModal
-          overlay={this.props.overlay}
-          student={this.props.student} />
-      );
-    }
+  // --------------------------------------------------
+  // Render
+  // --------------------------------------------------
+  renderBody() {
+    return <EditSchool school={this.props.school} />;
   }
 
   render() {
     return (
       <div ref={'container'} style={this.styles.container}>
-        <Clickable
-          action={(event) => StudentActions.storeOverlay(false)}
-          icon={'fa fa-times fa-2x'}
-          styles={this.clickableStyles}
-          type={'i'} />
-        {this.renderModal()}
+        <h2 style={this.styles.title}>{'Edit'}</h2>
+        {this.renderBody()}
       </div>
     );
   }

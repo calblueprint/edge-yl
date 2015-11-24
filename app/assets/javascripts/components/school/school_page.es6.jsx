@@ -82,7 +82,7 @@ class SchoolPage extends Component {
   renderOverlay() {
     if (this.state.overlay) {
       return (
-        <PageOverlay
+        <SchoolPageOverlay
           overlay={this.state.overlay}
           school={this.state.school} />
       );

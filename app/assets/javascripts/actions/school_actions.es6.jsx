@@ -3,7 +3,8 @@
 
     constructor() {
       this.generateActions(
-        'storeSchool'
+        'storeSchool',
+        'toggleSidebar'
       );
     }
 
@@ -13,9 +14,19 @@
       return true;
     }
 
-    toggleSidebar(sidebar) {
-      return sidebar;
+    storeOverlay(active, type) {
+      return {
+        active: active,
+        type: type,
+      };
+    }
+
+    updateSchool(id, params) {
+      resolve = (response) => this.storeSchool(response);
+      Requester.update(ApiConstants.school.update(id), params, resolve);
+      return true;
     }
   }
   this.SchoolActions = alt.createActions(SchoolActions);
 })();
+

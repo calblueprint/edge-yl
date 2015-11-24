@@ -1,4 +1,4 @@
-class PageOverlay extends Component {
+class SchoolPageOverlay extends Component {
 
   // --------------------------------------------------
   // Setup
@@ -18,7 +18,7 @@ class PageOverlay extends Component {
         target: React.PropTypes.string.isRequired,
         type: React.PropTypes.string.isRequired,
       }).isRequired,
-      student: React.PropTypes.object.isRequired,
+      school: React.PropTypes.object.isRequired,
     };
   }
 
@@ -29,7 +29,7 @@ class PageOverlay extends Component {
         target: TypeConstants.overlay.type.edit,
         type: TypeConstants.overlay.target.preview,
       },
-      student: {},
+      school: {},
     };
   }
 
@@ -78,7 +78,7 @@ class PageOverlay extends Component {
   // --------------------------------------------------
   handleClick(event) {
     if (event.target === this._node) {
-      StudentActions.storeOverlay(false);
+      SchoolActions.storeOverlay(false);
     }
   }
 
@@ -86,26 +86,18 @@ class PageOverlay extends Component {
 //  Render
 //  --------------------------------------------------
   renderModal() {
-    if (this.props.overlay.type === TypeConstants.overlay.type.edit) {
-      return (
-        <EditModal
-          overlay={this.props.overlay}
-          student={this.props.student} />
-      );
-    } else {
-      return (
-        <CreateModal
-          overlay={this.props.overlay}
-          student={this.props.student} />
-      );
-    }
+    return (
+      <EditSchoolModal
+        overlay={this.props.overlay}
+        school={this.props.school} />
+    );
   }
 
   render() {
     return (
       <div ref={'container'} style={this.styles.container}>
         <Clickable
-          action={(event) => StudentActions.storeOverlay(false)}
+          action={(event) => SchoolActions.storeOverlay(false)}
           icon={'fa fa-times fa-2x'}
           styles={this.clickableStyles}
           type={'i'} />
