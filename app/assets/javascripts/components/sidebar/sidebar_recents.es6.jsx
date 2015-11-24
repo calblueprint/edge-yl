@@ -1,4 +1,4 @@
-class SidebarRecent extends Component {
+class SidebarRecents extends Component {
 
   // --------------------------------------------------
   // Props
@@ -14,11 +14,17 @@ class SidebarRecent extends Component {
   // --------------------------------------------------
   // Styles
   // --------------------------------------------------
+
   get styles() {
     return {
-      label: {
-        paddingLeft: '12px',
-        fontSize: StyleConstants.fonts.sizes.smaller,
+      container: {
+        display: 'flex',
+        flexFlow: 'column',
+      },
+      border: {
+        marginTop: '16px',
+        borderBottom: '1px solid',
+        borderColor: StyleConstants.colors.gray,
       },
     };
   }
@@ -28,8 +34,7 @@ class SidebarRecent extends Component {
       default: {
         flex: '1',
         padding: '12px',
-        marginLeft: '14px',
-        marginTop: '14px',
+        marginTop: '16px',
         borderRadius: '1px',
         boxSizing: 'border-box',
       },
@@ -44,9 +49,17 @@ class SidebarRecent extends Component {
   // --------------------------------------------------
   render() {
     return (
-      <Clickable
-        content >
-      </Clickable>
+      <div style={this.styles.container}>
+        <Clickable
+          content = {'Previous Student'}
+          styles={this.clickableStyles}
+          route = {RouteConstants.students.show(1)}/>   
+        <Clickable
+          content = {'Previous School'}
+          styles={this.clickableStyles}
+          route = {RouteConstants.schools.show(1)}/>             
+        <div style={this.styles.border} />
+      </div>
     );
   }
 }
