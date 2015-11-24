@@ -2,6 +2,10 @@
   class StudentsStore {
 
     constructor() {
+      this.filters = [
+        ['Female', 'Male', 'Other'],
+        ['One', 'Two', 'Three'],
+      ];
       this.pagination = {
         current: 1,
         limit: 1,

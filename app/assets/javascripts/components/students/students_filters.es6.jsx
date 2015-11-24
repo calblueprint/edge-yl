@@ -1,6 +1,21 @@
 class StudentsFilters extends Component {
 
   // --------------------------------------------------
+  // Props
+  // --------------------------------------------------
+  static get propTypes() {
+    return {
+      filters: React.PropTypes.arrayOf(React.PropTypes.array).isRequired,
+    };
+  }
+
+  static get defaultProps() {
+    return {
+      filters: [],
+    };
+  }
+
+  // --------------------------------------------------
   // Styles
   // --------------------------------------------------
   get styles() {
@@ -24,18 +39,25 @@ class StudentsFilters extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
+  renderFilter(options, index) {
+    return (
+      <StudentsFilter
+        key={index}
+        options={options} />
+    );
+  }
+
+  renderFilters() {
+    return this.props.filters.map((options, index) => this.renderFilter(options, index));
+  }
+
   render() {
     return (
       <div style={this.styles.container}>
         <div style={this.styles.title}>
           <h5>{'Filters'}</h5>
         </div>
-        <StudentsFilter
-          options={['Warren', 'Anthony', 'Sonia']} />
-        <StudentsFilter
-          options={['UnzUnz', 'Max', 'Cat']} />
-        <StudentsFilter
-          options={['Lion', 'Tiger', 'Bear']} />
+        {this.renderFilters()}
       </div>
     );
   }

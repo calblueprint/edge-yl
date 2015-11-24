@@ -71,7 +71,7 @@ class StudentsPage extends Component {
         <div style={this.styles.container}>
           <Sidebar hidden={this.state.sidebar} />
           <div style={this.styles.body}>
-            <StudentsFilters />
+            <StudentsFilters filters={this.state.filters} />
             <StudentsGrid students={this.state.students} />
             <PageNavigator
               route={RouteConstants.students.index}
