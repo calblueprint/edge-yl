@@ -1,11 +1,18 @@
 class StudentsFilters extends Component {
 
   // --------------------------------------------------
-  // Setup
+  // Props
   // --------------------------------------------------
-  constructor(props) {
-    super(props);
-    this._listener = (state) => this.setState(state);
+  static get propTypes() {
+    return {
+      filters: React.PropTypes.arrayOf(React.PropTypes.array).isRequired,
+    };
+  }
+
+  static get defaultProps() {
+    return {
+      filters: [],
+    };
   }
 
   // --------------------------------------------------
@@ -30,32 +37,18 @@ class StudentsFilters extends Component {
   }
 
   // --------------------------------------------------
-  // Lifecycle
-  // --------------------------------------------------
-  componentWillMount() {
-    this.setState(StudentsStore.getState());
-  }
-
-  componentDidMount() {
-    StudentsStore.listen(this._listener);
-  }
-
-  componentWillUnmount() {
-    StudentsStore.unlisten(this._listener);
-  }
-
-  // --------------------------------------------------
   // Render
   // --------------------------------------------------
-  renderFilter(options) {
+  renderFilter(options, index) {
     return (
       <StudentsFilter
+        key={index}
         options={options} />
     );
   }
 
   renderFilters() {
-    return this.state.filters.map((options) => this.renderFilter(options));
+    return this.props.filters.map((options, index) => this.renderFilter(options, index));
   }
 
   render() {
