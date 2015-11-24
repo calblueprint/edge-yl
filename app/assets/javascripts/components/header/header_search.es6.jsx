@@ -117,16 +117,22 @@ class HeaderSearch extends Component {
   // Helpers
   // --------------------------------------------------
   generateResult(result, index) {
+    var route;
+    var type = result.searchable_type;
     var node = (
       <div style={this.styles.option}>
-        <h6>{result.searchable_type}</h6>
+        <h6>{type}</h6>
         <h6>{result.content}</h6>
       </div>
     );
-    // console.log(result.route);
+    if (type === 'School') {
+      route = RouteConstants.schools.show(result.searchable_id);
+    } else {
+      route = RouteConstants.students.show(result.searchable_id);
+    }
     return {
       children: node,
-      route: result.route,
+      route: route,
     };
   }
 
