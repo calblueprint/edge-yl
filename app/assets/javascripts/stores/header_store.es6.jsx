@@ -14,9 +14,15 @@
     }
 
     storeResults(response) {
-      // TODO(Warren): Once searchables are sent down with serializers,
-      // we'll need to change this to handle the root key of the JSON.
-      this.results = response['pg_search/documents'];
+      var results = response['pg_search/documents'];
+      results.map((result) => {
+        if (result.searchable_type === 'school') {
+          result.route = RouteConstants.schools.show(result.searchable_id);
+        } else {
+          result.route = RouteConstants.students.show(result.searchable_id);
+        }
+      });
+      this.results = results;
     }
 
     storeSearch(search) {
