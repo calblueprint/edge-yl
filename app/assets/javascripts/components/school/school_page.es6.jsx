@@ -1,5 +1,4 @@
 class SchoolPage extends Component {
-class SchoolPage extends Component {
 
   // --------------------------------------------------
   // Setup
