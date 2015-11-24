@@ -6,7 +6,7 @@
         'storeComment',
         'storeComments',
         'storeStudent',
-        'toggleSidebar',
+        'toggleSidebar'
       );
     }
 
