@@ -71,7 +71,7 @@ class AuthenticationPage extends Component {
       <div style={StyleConstants.pages.default}>
         <Header hasSidebar={false} />
         <div style={this.styles.container}>
-          <AuthenticationModal {...this.props} />
+          <AuthenticationModal type={this.props.type} />
           {this.renderFooter()}
         </div>
       </div>

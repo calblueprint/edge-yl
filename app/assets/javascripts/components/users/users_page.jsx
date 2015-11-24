@@ -57,7 +57,7 @@ class UsersPage extends Component {
         <div style={this.styles.container}>
           <Sidebar hidden={this.state.sidebar} />
           <div style={this.styles.body}>
-            <UsersGrid {...this.props} />
+            <UsersGrid users={this.state.users} />
           </div>
         </div>
       </div>
