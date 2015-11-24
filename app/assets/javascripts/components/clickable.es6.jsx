@@ -6,8 +6,8 @@ class Clickable extends Component {
   static get propTypes() {
     return {
       action: React.PropTypes.func,
-      content: React.PropTypes.string,
       children: React.PropTypes.node,
+      content: React.PropTypes.string,
       icon: React.PropTypes.string,
       route: React.PropTypes.string,
       styles: React.PropTypes.shape({
@@ -16,6 +16,7 @@ class Clickable extends Component {
         hover: React.PropTypes.object,
       }),
       type: React.PropTypes.oneOf([
+        'div',
         'h1',
         'h2',
         'h3',
@@ -24,7 +25,7 @@ class Clickable extends Component {
         'h6',
         'i',
         'img',
-        'span'
+        'span',
       ]).isRequired,
     };
   }
@@ -32,8 +33,8 @@ class Clickable extends Component {
   static get defaultProps() {
     return {
       action: null,
-      content: '',
       children: null,
+      content: '',
       icon: '',
       route: '',
       styles: {
@@ -163,6 +164,15 @@ class Clickable extends Component {
           ref={'container'}
           style={style}>
           {this.renderContent(styles.child)}
+          {this.renderChildren()}
+        </a>
+      );
+    } else if (props.type === 'div') {
+      return (
+        <a
+          href={props.route}
+          ref={'container'}
+          style={style}>
           {this.renderChildren()}
         </a>
       );

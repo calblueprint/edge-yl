@@ -14,8 +14,6 @@
     }
 
     storeResults(response) {
-      // TODO(Warren): Once searchables are sent down with serializers,
-      // we'll need to change this to handle the root key of the JSON.
       this.results = response['pg_search/documents'];
     }
 

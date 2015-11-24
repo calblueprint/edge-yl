@@ -8,6 +8,7 @@ class Dropdown extends Component {
       blur: React.PropTypes.func,
       options: React.PropTypes.arrayOf(React.PropTypes.shape({
         action: React.PropTypes.func,
+        children: React.PropTypes.node,
         content: React.PropTypes.string,
         route: React.PropTypes.string,
       })).isRequired,
@@ -78,14 +79,28 @@ class Dropdown extends Component {
         }
       );
     }
-    return (
-      <Clickable
-        action={option.action}
-        content={option.content}
-        key={index}
-        route={option.route}
-        styles={styles} />
-    );
+    if (option.children) {
+      return (
+        <Clickable
+          action={option.action}
+          key={index}
+          route={option.route}
+          styles={styles}
+          type={'div'}>
+          {option.children}
+        </Clickable>
+      );
+    } else {
+      return (
+        <Clickable
+          action={option.action}
+          content={option.content}
+          key={index}
+          route={option.route}
+          styles={styles}
+          type={'span'} />
+      );
+    }
   }
 
   renderOptions() {

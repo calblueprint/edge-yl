@@ -1,17 +1,6 @@
 class SidebarRecents extends Component {
 
   // --------------------------------------------------
-  // Props
-  // --------------------------------------------------
-  static get propTypes() {
-    return {
-      label: React.PropTypes.string.isRequired,
-      icon: React.PropTypes.string.isRequired,
-      route: React.PropTypes.string.isRequired,
-    };
-  }
-
-  // --------------------------------------------------
   // Styles
   // --------------------------------------------------
 
@@ -21,25 +10,10 @@ class SidebarRecents extends Component {
         display: 'flex',
         flexFlow: 'column',
       },
-      border: {
+      divider: {
         marginTop: '16px',
         borderBottom: '1px solid',
         borderColor: StyleConstants.colors.gray,
-      },
-    };
-  }
-
-  get clickableStyles() {
-    return {
-      default: {
-        flex: '1',
-        padding: '12px',
-        marginTop: '16px',
-        borderRadius: '1px',
-        boxSizing: 'border-box',
-      },
-      hover: {
-        backgroundColor: StyleConstants.colors.turquoise,
       },
     };
   }
@@ -50,15 +24,15 @@ class SidebarRecents extends Component {
   render() {
     return (
       <div style={this.styles.container}>
-        <Clickable
-          content = {'Previous Student'}
-          styles={this.clickableStyles}
-          route = {RouteConstants.students.show(1)}/>   
-        <Clickable
-          content = {'Previous School'}
-          styles={this.clickableStyles}
-          route = {RouteConstants.schools.show(1)}/>             
-        <div style={this.styles.border} />
+        <SidebarItem
+          label={'Recent Student'}
+          icon={'fa fa-pencil fa-lg'}
+          route={RouteConstants.students.show(1)} />
+        <SidebarItem
+          label={'Recent School'}
+          icon={'fa fa-building-o fa-lg'}
+          route={RouteConstants.schools.show(1)} />
+        <div style={this.styles.divider} />
       </div>
     );
   }

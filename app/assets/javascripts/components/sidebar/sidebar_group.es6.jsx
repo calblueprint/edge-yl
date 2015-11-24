@@ -9,7 +9,7 @@ class SidebarGroup extends Component {
         display: 'flex',
         flexFlow: 'column',
       },
-      border: {
+      divider: {
         marginTop: '16px',
         borderBottom: '1px solid',
         borderColor: StyleConstants.colors.gray,
@@ -35,7 +35,7 @@ class SidebarGroup extends Component {
           label={'Volunteers'}
           icon={'fa fa-male fa-lg'}
           route={RouteConstants.users.index}/>
-        <div style={this.styles.border} />
+        <div style={this.styles.divider} />
       </div>
     );
   }
