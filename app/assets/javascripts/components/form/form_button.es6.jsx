@@ -44,10 +44,10 @@ class FormButton extends Component {
     return (
       <div style={this.styles.container}>
         <Clickable
-          styles={this.clickableStyles}
           action={this.props.action}
           content={this.props.content}
-          route={this.props.route} />
+          route={this.props.route}
+          styles={this.clickableStyles} />
       </div>
     );
   }
