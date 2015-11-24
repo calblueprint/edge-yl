@@ -1,6 +1,14 @@
 class StudentsFilters extends Component {
 
   // --------------------------------------------------
+  // Setup
+  // --------------------------------------------------
+  constructor(props) {
+    super(props);
+    this._listener = (state) => this.setState(state);
+  }
+
+  // --------------------------------------------------
   // Styles
   // --------------------------------------------------
   get styles() {
@@ -22,20 +30,41 @@ class StudentsFilters extends Component {
   }
 
   // --------------------------------------------------
+  // Lifecycle
+  // --------------------------------------------------
+  componentWillMount() {
+    this.setState(StudentsStore.getState());
+  }
+
+  componentDidMount() {
+    StudentsStore.listen(this._listener);
+  }
+
+  componentWillUnmount() {
+    StudentsStore.unlisten(this._listener);
+  }
+
+  // --------------------------------------------------
   // Render
   // --------------------------------------------------
+  renderFilter(options) {
+    return (
+      <StudentsFilter
+        options={options} />
+    );
+  }
+
+  renderFilters() {
+    return this.state.filters.map((options) => this.renderFilter(options));
+  }
+
   render() {
     return (
       <div style={this.styles.container}>
         <div style={this.styles.title}>
           <h5>{'Filters'}</h5>
         </div>
-        <StudentsFilter
-          options={['Warren', 'Anthony', 'Sonia']} />
-        <StudentsFilter
-          options={['UnzUnz', 'Max', 'Cat']} />
-        <StudentsFilter
-          options={['Lion', 'Tiger', 'Bear']} />
+        {this.renderFilters()}
       </div>
     );
   }

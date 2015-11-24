@@ -12,6 +12,9 @@
         handleToggleSidebar: StudentsActions.TOGGLE_SIDEBAR,
         handleUpdateStudents: StudentsActions.UPDATE_STUDENTS,
       });
+      this.filters = [
+        ['Female', 'Male', 'Other'],
+        ['One', 'Two', 'Three']]
     }
 
     handleToggleSidebar() {
