@@ -31,7 +31,7 @@ class SchoolCard extends Component {
         borderRadius: '50%',
         margin: '20px 0px',
       },
-      body: {
+      section: {
         display: 'flex',
         flexFlow: 'column',
         alignItems: 'center',
@@ -49,7 +49,7 @@ class SchoolCard extends Component {
         <CardHeader
           content={school.name}
           icon={'fa fa-pencil-square-o fa-lg'} />
-        <div style={this.styles.body}>
+        <div style={this.styles.section}>
           <img
             src='http://www.wlac.edu/WLAC/media/images/highschool/highschool-index.jpg'
             style={this.styles.image} />

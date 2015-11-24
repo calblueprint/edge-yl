@@ -49,7 +49,7 @@ class SchoolPage extends Component {
   }
 
   componentDidMount() {
-    this._listener = SchoolStore.listen((state) => this.setState(state));
+    SchoolStore.listen(this._listener);
     SchoolActions.fetchSchool(this.props.id);
   }
 
