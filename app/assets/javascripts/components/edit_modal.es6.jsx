@@ -14,8 +14,9 @@ class EditModal extends Component {
   static get propTypes() {
     return {
       overlay: React.PropTypes.shape({
-        active: React.PropTypes.bool,
-        type: React.PropTypes.string,
+        active: React.PropTypes.bool.isRequired,
+        target: React.PropTypes.string.isRequired,
+        type: React.PropTypes.string.isRequired,
       }).isRequired,
       student: React.PropTypes.object.isRequired,
     };
@@ -25,7 +26,8 @@ class EditModal extends Component {
     return {
       overlay: {
         active: false,
-        type: 'preview',
+        target: TypeConstants.overlay.target.preview,
+        type: TypeConstants.overlay.type.edit,
       },
       student: {},
     };
@@ -70,14 +72,12 @@ class EditModal extends Component {
   // Render
   // --------------------------------------------------
   renderBody() {
-    switch (this.props.overlay.type) {
+    switch (this.props.overlay.target) {
       case 'preview':
         return <EditPreview {...this.props} />;
       case 'contact':
         return <EditContact {...this.props} />
-      case 'createComment':
-        return <CreateComment {...this.props} />;
-    };
+    }
   }
 
   render() {

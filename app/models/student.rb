@@ -17,9 +17,15 @@
 
 class Student < ActiveRecord::Base
 
+  include PgSearch
+  multisearchable against: [:first_name, :last_name, :email]
+
   belongs_to :school
 
   has_many :comments, dependent: :destroy
+
+  has_one :student_conference
+  has_one :conference, through: :student_conference
 
   validates :cell_phone, presence: true
   validates :email, presence: true
@@ -28,6 +34,7 @@ class Student < ActiveRecord::Base
   validates :last_name, presence: true
 
   def full_name
-    '#{first_name} #{last_name}'
+    "#{first_name} #{last_name}"
   end
+
 end

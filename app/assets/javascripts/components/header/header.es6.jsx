@@ -1,6 +1,14 @@
 class Header extends Component {
 
   // --------------------------------------------------
+  // Setup
+  // --------------------------------------------------
+  constructor(props) {
+    super(props);
+    this._listener = (state) => this.setState(state);
+  }
+
+  // --------------------------------------------------
   // Props
   // --------------------------------------------------
   static get propTypes() {
@@ -60,6 +68,21 @@ class Header extends Component {
   }
 
   // --------------------------------------------------
+  // Lifecycle
+  // --------------------------------------------------
+  componentWillMount() {
+    this.setState(HeaderStore.getState());
+  }
+
+  componentDidMount() {
+    HeaderStore.listen(this._listener);
+  }
+
+  componentWillUnmount() {
+    HeaderStore.unlisten(this._listener);
+  }
+
+  // --------------------------------------------------
   // Render
   // --------------------------------------------------
   renderToggler() {
@@ -80,7 +103,9 @@ class Header extends Component {
         <div style={this.styles.sidebar}>
           {this.renderToggler()}
         </div>
-        <HeaderNavigation />
+        <HeaderNavigation
+          results={this.state.results}
+          search={this.state.search} />
         <HeaderShortcuts showShortcuts={this.props.hasSidebar} />
       </div>
     );

@@ -14,22 +14,15 @@ class SidebarItem extends Component {
   // --------------------------------------------------
   // Styles
   // --------------------------------------------------
-  get styles() {
-    return {
-      label: {
-        paddingLeft: '12px',
-        fontSize: StyleConstants.fonts.sizes.smaller,
-      },
-    };
-  }
-
   get clickableStyles() {
     return {
+      child: {
+        paddingRight: '12px',
+      },
       default: {
         flex: '1',
         padding: '12px',
-        marginLeft: '14px',
-        marginTop: '14px',
+        marginTop: '16px',
         borderRadius: '1px',
         boxSizing: 'border-box',
       },
@@ -49,9 +42,7 @@ class SidebarItem extends Component {
         route={this.props.route}
         styles={this.clickableStyles}
         type={'i'}>
-        <span style={this.styles.label}>
-          {this.props.label}
-        </span>
+        <h5>{this.props.label}</h5>
       </Clickable>
     );
   }

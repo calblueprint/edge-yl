@@ -41,7 +41,7 @@ class StudentParent extends Component {
         <h6>{student.parent1_cell_number}</h6>
         <h6>{student.parent1_home_number}</h6>
         <h6>{student.parent1_address}</h6>
-        <br/>
+        <br />
         <h4>{'Parent 2'}</h4>
         <h6>{`${student.parent2_name}, ${student.parent2_type}`}</h6>
         <h6>{student.parent1_cell_number}</h6>

@@ -11,6 +11,7 @@ class Clickable extends Component {
       icon: React.PropTypes.string,
       route: React.PropTypes.string,
       styles: React.PropTypes.shape({
+        child: React.PropTypes.object,
         default: React.PropTypes.object,
         hover: React.PropTypes.object,
       }),
@@ -36,6 +37,7 @@ class Clickable extends Component {
       icon: '',
       route: '',
       styles: {
+        child: {},
         default: {},
         hover: {},
       },
@@ -70,6 +72,7 @@ class Clickable extends Component {
   componentDidMount() {
     var node = ReactDOM.findDOMNode(this.refs.container);
     node.addEventListener('click', (event) => this.handleClick(event));
+    node.addEventListener('mousedown', (event) => this.handleMouseDown(event));
     node.addEventListener('mouseenter', (event) => this.handleMouseEnter(event));
     node.addEventListener('mouseleave', (event) => this.handleMouseLeave(event));
     node.addEventListener('mouseup', (event) => this.handleMouseUp(event));
@@ -79,12 +82,20 @@ class Clickable extends Component {
   // Handlers
   // --------------------------------------------------
   handleClick(event) {
+    event.stopPropagation();
     var props = this.props;
-    if (props.route === '' && props.func !== null) {
+    if (props.route === '' && props.action !== null) {
       event.preventDefault();
-      event.stopPropagation();
       props.action(event);
     }
+  }
+
+  handleMouseDown(event) {
+    var props = this.props;
+    if (props.route !== '' || props.action !== null) {
+      event.preventDefault();
+    }
+    this.setState({ mouse: 'hover' });
   }
 
   handleMouseEnter(event) {
@@ -129,7 +140,7 @@ class Clickable extends Component {
         case 'h6':
           return <h6 style={style}>{content}</h6>;
         case 'i':
-          return <i className={icon} />;
+          return <i className={icon} style={style} />;
         case 'span':
           return <span style={style}>{content}</span>;
       }
@@ -143,7 +154,7 @@ class Clickable extends Component {
       {},
       styles.default,
       this.state.mouse === 'hover' && styles.hover,
-      props.route === '' && props.func === null && this.styles.static
+      props.route === '' && props.action === null && this.styles.static
     );
     if (props.type === 'i' || props.type === 'img') {
       return (
@@ -151,7 +162,7 @@ class Clickable extends Component {
           href={this.props.route}
           ref={'container'}
           style={style}>
-          {this.renderContent(style)}
+          {this.renderContent(styles.child)}
           {this.renderChildren()}
         </a>
       );

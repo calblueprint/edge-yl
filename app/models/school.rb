@@ -13,6 +13,9 @@
 
 class School < ActiveRecord::Base
 
+  include PgSearch
+  multisearchable against: [:name]
+
   has_many :students
 
   validates :address, presence: true

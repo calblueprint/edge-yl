@@ -11,10 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151106071352) do
+ActiveRecord::Schema.define(version: 20151121055834) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "pg_trgm"
+  enable_extension "fuzzystrmatch"
+  enable_extension "unaccent"
 
   create_table "comments", force: :cascade do |t|
     t.text     "content",    null: false
@@ -27,6 +30,24 @@ ActiveRecord::Schema.define(version: 20151106071352) do
   add_index "comments", ["student_id"], name: "index_comments_on_student_id", using: :btree
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
+  create_table "conferences", force: :cascade do |t|
+    t.date     "end_date",   null: false
+    t.string   "location",   null: false
+    t.date     "start_date", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "pg_search_documents", force: :cascade do |t|
+    t.text     "content"
+    t.integer  "searchable_id"
+    t.string   "searchable_type"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "pg_search_documents", ["searchable_type", "searchable_id"], name: "index_pg_search_documents_on_searchable_type_and_searchable_id", using: :btree
+
   create_table "schools", force: :cascade do |t|
     t.string   "address",         null: false
     t.string   "counselor_email", null: false
@@ -35,6 +56,17 @@ ActiveRecord::Schema.define(version: 20151106071352) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end
+
+  create_table "student_conferences", force: :cascade do |t|
+    t.integer  "status",        null: false
+    t.integer  "conference_id"
+    t.integer  "student_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "student_conferences", ["conference_id"], name: "index_student_conferences_on_conference_id", using: :btree
+  add_index "student_conferences", ["student_id"], name: "index_student_conferences_on_student_id", using: :btree
 
   create_table "students", force: :cascade do |t|
     t.date     "birthday",     null: false

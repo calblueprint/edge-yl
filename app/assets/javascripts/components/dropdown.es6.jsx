@@ -5,7 +5,12 @@ class Dropdown extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      options: React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
+      blur: React.PropTypes.func,
+      options: React.PropTypes.arrayOf(React.PropTypes.shape({
+        action: React.PropTypes.func,
+        content: React.PropTypes.string,
+        route: React.PropTypes.string,
+      })).isRequired,
       styles: React.PropTypes.shape({
         child: React.PropTypes.shape({
           default: React.PropTypes.object,
@@ -13,12 +18,12 @@ class Dropdown extends Component {
         }),
         container: React.PropTypes.object,
       }),
-    blur: React.PropTypes.func,
     };
   }
 
   static get defaultProps() {
     return {
+      blur: null,
       options: [],
       styles: {
         child: {
@@ -31,27 +36,8 @@ class Dropdown extends Component {
   }
 
   // --------------------------------------------------
-  // Lifecycle
+  // Styles
   // --------------------------------------------------
-  componentDidMount() {
-    var input = ReactDOM.findDOMNode(this.refs.input);
-    // input.addEventListener('blur', (event) => this.props.blur(event));
-  }
-
-  // --------------------------------------------------
-  // Render
-  // --------------------------------------------------
-  renderOption(option, index) {
-    return (
-      <Clickable
-        content={option.content}
-        action={option.func}
-        key={index}
-        route={option.route}
-        styles={this.props.styles.child} />
-    );
-  }
-
   get styles() {
     return {
       input: {
@@ -60,6 +46,46 @@ class Dropdown extends Component {
         border: '0px',
       },
     };
+  }
+
+  // --------------------------------------------------
+  // Lifecycle
+  // --------------------------------------------------
+  componentDidMount() {
+    var input = ReactDOM.findDOMNode(this.refs.input);
+    input.addEventListener('blur', (event) => this.handleBlur(event));
+  }
+
+  // --------------------------------------------------
+  // Handlers
+  // --------------------------------------------------
+  handleBlur(event) {
+    this.props.blur(event);
+  }
+
+  // --------------------------------------------------
+  // Render
+  // --------------------------------------------------
+  renderOption(option, index) {
+    var styles = Object.assign({}, this.props.styles.child);
+    if (index > 0) {
+      styles.default = Object.assign(
+        {},
+        styles.default,
+        {
+          borderTop: '1px solid',
+          borderColor: StyleConstants.colors.gray
+        }
+      );
+    }
+    return (
+      <Clickable
+        action={option.action}
+        content={option.content}
+        key={index}
+        route={option.route}
+        styles={styles} />
+    );
   }
 
   renderOptions() {

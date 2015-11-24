@@ -6,11 +6,16 @@ class StudentCard extends Component {
   static get propTypes() {
     return {
       student: React.PropTypes.object.isRequired,
-      type: React.PropTypes.oneOf([
+      target: React.PropTypes.oneOf([
+        'comment',
         'contact',
         'conference',
         'parent',
         'preview',
+      ]).isRequired,
+      type: React.PropTypes.oneOf([
+        'create',
+        'edit',
       ]).isRequired,
     };
   }
@@ -18,7 +23,8 @@ class StudentCard extends Component {
   static get defaultProps() {
     return {
       student: {},
-      type: 'preview',
+      target: TypeConstants.overlay.target.preview,
+      type: TypeConstants.overlay.type.edit,
     };
   }
 
@@ -45,7 +51,7 @@ class StudentCard extends Component {
   // Render
   // --------------------------------------------------
   renderBody() {
-    switch (this.props.type) {
+    switch (this.props.target) {
       case 'preview':
         return <StudentPreview {...this.props} />;
       case 'contact':
@@ -60,7 +66,7 @@ class StudentCard extends Component {
   }
 
   renderTitle() {
-    switch (this.props.type) {
+    switch (this.props.target) {
       case 'preview':
         return 'Student Preview';
       case 'contact':
@@ -76,7 +82,7 @@ class StudentCard extends Component {
     return (
       <div style={this.styles.container}>
         <CardHeader
-          action={(event) => StudentActions.storeOverlay(true, this.props.type)}
+          action={(event) => StudentActions.storeOverlay(true, TypeConstants.overlay.type.edit, this.props.target)}
           content={this.renderTitle()}
           icon={'fa fa-pencil-square-o fa-lg'} />
         {this.renderBody()}

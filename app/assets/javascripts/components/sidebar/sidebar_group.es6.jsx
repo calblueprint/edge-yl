@@ -10,8 +10,7 @@ class SidebarGroup extends Component {
         flexFlow: 'column',
       },
       border: {
-        marginTop: '14px',
-        marginLeft: '14px',
+        marginTop: '16px',
         borderBottom: '1px solid',
         borderColor: StyleConstants.colors.gray,
       },

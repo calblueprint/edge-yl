@@ -33,18 +33,20 @@ class StudentConference extends Component {
   // Render
   // --------------------------------------------------
   render() {
-    var student = this.props.student;
+    var studentConference = this.props.student.student_conference;
     return (
       <div style={this.styles.container}>
         <h4>{'Status'}</h4>
-          {student.status}
+        <h6>{studentConference.status}</h6>
+        <br />
         <h4>{'Group'}</h4>
-          {student.group_letter}
-          {student.team_leader_name}
-          {student.junior_crew_name}
+        <h6>{studentConference.group_letter}</h6>
+        <h6>{studentConference.team_leader_name}</h6>
+        <h6>{studentConference.junior_crew_name}</h6>
+        <br />
         <h4>{'Rooming'}</h4>
-          {student.dorm_room_number}
-          {student.roommate_name}
+        <h6>{studentConference.dorm_room_number}</h6>
+        <h6>{studentConference.roommate_name}</h6>
       </div>
     );
   }
