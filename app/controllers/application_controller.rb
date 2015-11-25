@@ -2,8 +2,10 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery with: :null_session
 
-  def create_visit(category=nil, target=nil)
-    Visit.create category: category, target: target, user_id: current_user.id
+  def create_visit(id: nil, type: nil)
+    Visit.create visitable_id: id,
+                 visitable_type: type,
+                 user_id: current_user.id
   end
 
   def error_response(object: nil, message: nil, status: nil)

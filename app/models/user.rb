@@ -31,13 +31,14 @@ class User < ActiveRecord::Base
          :registerable, :rememberable, :trackable, :validatable
 
   has_many :comments, dependent: :destroy
+  has_many :responsibilities, dependent: :destroy
   has_many :visits, dependent: :destroy
 
   validates :email, presence: true
   validates :first_name, presence: true
   validates :last_name, presence: true
 
-  def full_name
+  def name
     "#{first_name} #{last_name}"
   end
 
