@@ -6,7 +6,7 @@ class SchoolsController < BaseController
 
   def show
     @id = params[:id].to_i
-    create_visit('school', @id)
+    create_visit(:school, @id)
   end
 
 end
