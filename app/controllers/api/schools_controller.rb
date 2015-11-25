@@ -16,8 +16,16 @@ class Api::SchoolsController < Api::BaseController
 
   def show
     school = School.find params[:id]
-    # TODO(Warren): When necessary, serialize with a SchoolShowSerializer.
-    render json: school, serializer: SchoolIndexSerializer
+    render json: school, serializer: SchoolShowSerializer
+  end
+
+  def update
+    school = School.find params[:id]
+    if school.update_attributes school_params
+      render json: school, serializer: SchoolShowSerializer, status: 201
+    else
+      unprocessable_response school
+    end
   end
 
   private
