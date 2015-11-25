@@ -7,11 +7,9 @@
       );
     }
 
-    fetchProfile(profile) {
-      if (profile.empty) {
-        resolve = (response) => this.storeProfile(response);
-        Requester.get(ApiConstants.users.profile, resolve);
-      }
+    fetchProfile() {
+      resolve = (response) => this.storeProfile(response);
+      Requester.get(ApiConstants.users.profile, resolve);
       return true;
     }
   }

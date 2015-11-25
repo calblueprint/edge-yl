@@ -11,7 +11,7 @@ class Api::UsersController < Api::BaseController
     if user_signed_in?
       render json: current_user, serializer: UserBaseSerializer
     else
-      unauthorized_reponse
+      unauthorized_response
     end
   end
 
