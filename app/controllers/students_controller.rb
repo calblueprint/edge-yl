@@ -6,6 +6,7 @@ class StudentsController < BaseController
 
   def show
     @id = params[:id].to_i
+    create_visit('student', @id)
   end
 
 end
