@@ -4,6 +4,9 @@ class CreateResponsibilities < ActiveRecord::Migration
 
       t.integer :status, null: false
 
+      t.references :student, index: true
+      t.references :user, index: true
+
       t.timestamps null: false
     end
   end
