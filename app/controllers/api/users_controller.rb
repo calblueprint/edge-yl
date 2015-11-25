@@ -7,7 +7,7 @@ class Api::UsersController < Api::BaseController
                  each_serializer: UserIndexSerializer
   end
 
-  def me
+  def profile
     if user_signed_in?
       render json: current_user, serializer: UserBaseSerializer
     else

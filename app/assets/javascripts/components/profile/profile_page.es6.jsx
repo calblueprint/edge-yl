@@ -33,16 +33,16 @@ class ProfilePage extends Component {
   // Lifecycle
   // --------------------------------------------------
   componentWillMount() {
-    this.setState(MeStore.getState());
+    this.setState(ProfileStore.getState());
   }
 
   componentDidMount() {
-    MeStore.listen(this._listener);
-    MeActions.fetchMe(this.state.me);
+    ProfileStore.listen(this._listener);
+    ProfileActions.fetchProfile(this.state.me);
   }
 
   componentWillUnmount() {
-    MeStore.unlisten(this._listener);
+    ProfileStore.unlisten(this._listener);
   }
 
   // --------------------------------------------------
@@ -54,7 +54,7 @@ class ProfilePage extends Component {
         <Header />
         <div style={this.styles.section}>
           <Sidebar hidden={this.state.sidebar} />
-          <ProfileCards profile={this.state.me} />
+          <ProfileCards profile={this.state.profile} />
           <div style={this.styles.placeholder}></div>
         </div>
       </div>
