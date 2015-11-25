@@ -85,6 +85,10 @@ class StudentsFilter extends Component {
   // --------------------------------------------------
   // Handlers
   // --------------------------------------------------
+  handleBlur(event) {
+    this.setState({ isExpanded: false });
+  }
+
   handleExpand() {
     this.setState({ isExpanded: !this.state.isExpanded });
   }
@@ -93,7 +97,7 @@ class StudentsFilter extends Component {
   // Helpers
   // --------------------------------------------------
   generateHandler(item) {
-    return () => this.setState({ selectedOption: item });
+    return () => this.setState({ selectedOption: item, isExpanded: false});
   }
 
   generateDropdownOption(item) {
@@ -115,7 +119,8 @@ class StudentsFilter extends Component {
       return (
         <Dropdown
           options={this.generateDropdownOptions()}
-          styles={this.dropdownStyles} />
+          styles={this.dropdownStyles}
+          blur={(event) => this.handleBlur(event)} />
       );
     }
   }
