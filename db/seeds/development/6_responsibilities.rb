@@ -1,6 +1,6 @@
 def generate_responsibility(student_id)
   new_responsibility = Responsibility.create(
-    status: 1 + rand(2),
+    status: rand(2),
     student_id: student_id,
     user_id: 1 + rand(4),
   )
