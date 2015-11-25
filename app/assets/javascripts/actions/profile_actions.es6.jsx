@@ -7,9 +7,9 @@
       );
     }
 
-    fetchMe(profile) {
+    fetchProfile(profile) {
       if (profile.empty) {
-        resolve = (response) => this.storeMe(response);
+        resolve = (response) => this.storeProfile(response);
         Requester.get(ApiConstants.users.profile, resolve);
       }
       return true;

@@ -38,7 +38,7 @@ class ProfilePage extends Component {
 
   componentDidMount() {
     ProfileStore.listen(this._listener);
-    ProfileActions.fetchProfile(this.state.me);
+    ProfileActions.fetchProfile(this.state.profile);
   }
 
   componentWillUnmount() {
