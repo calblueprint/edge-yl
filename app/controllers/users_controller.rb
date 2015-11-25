@@ -1,15 +1,10 @@
 class UsersController < BaseController
 
   def index
-      @page = params[:page] ? params[:page].to_i : 1
+    @page = params[:page] ? params[:page].to_i : 1
   end
 
   def profile
-    if user_signed_in?
-      @current_user = current_user
-    else
-      redirect_to login_path
-    end
   end
 
 end

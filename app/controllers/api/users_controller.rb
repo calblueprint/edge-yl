@@ -7,6 +7,14 @@ class Api::UsersController < Api::BaseController
                  each_serializer: UserIndexSerializer
   end
 
+  def profile
+    if user_signed_in?
+      render json: current_user, serializer: UserBaseSerializer
+    else
+      unauthorized_response
+    end
+  end
+
   def update
     user = User.find params[:id]
     if user.update_attributes user_params

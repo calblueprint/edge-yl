@@ -1,32 +1,15 @@
 class StudentComments extends Component {
 
   // --------------------------------------------------
-  // Setup
-  // --------------------------------------------------
-  constructor(props) {
-    super(props);
-    this._listener = (state) => this.setState(state);
-  }
-
-  // --------------------------------------------------
   // Props
   // --------------------------------------------------
   static get propTypes() {
     return {
-      id: React.PropTypes.number.isRequired,
+      comments: React.PropTypes.array.isRequired,
     };
   }
 
   static get defaultProps() {
-    return {
-      id: null,
-    };
-  }
-
-  // --------------------------------------------------
-  // State
-  // --------------------------------------------------
-  static get defaultState() {
     return {
       comments: [],
     };
@@ -69,46 +52,40 @@ class StudentComments extends Component {
     };
   }
 
-
   // --------------------------------------------------
-  // Lifecycle
+  // Handlers
   // --------------------------------------------------
-  componentWillMount() {
-    this.setState(StudentCommentsStore.getState());
-  }
-
-  componentDidMount() {
-    StudentCommentsStore.listen(this._listener);
-    StudentCommentsActions.fetchStudentComments(this.props.id);
-  }
-
-  componentWillUnmount() {
-    StudentCommentsStore.unlisten(this._listener);
+  handleClick(event) {
+    StudentActions.storeOverlay(
+      true,
+      TypeConstants.overlay.type.create,
+      TypeConstants.overlay.target.comment
+    );
   }
 
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
-  renderStudentComment(comment, index) {
+  renderComment(comment) {
     return (
       <StudentComment
         comment={comment}
-        key={index} />
+        key={comment.id} />
     );
   }
 
-  renderStudentComments() {
-    return this.state.comments.map((comment, index) => this.renderStudentComment(comment, index));
+  renderComments() {
+    return this.props.comments.map((comment) => this.renderComment(comment));
   }
 
   render() {
     return (
       <div style={this.styles.container}>
         <h5 style={this.styles.title}>{'Student Comments'}</h5>
-        {this.renderStudentComments()}
+        {this.renderComments()}
         <Clickable
           content={"Add Comment"}
-          action={() => StudentActions.storeOverlay(true, TypeConstants.overlay.type.create, TypeConstants.overlay.target.comment)}
+          action={(event) => this.handleClick(event)}
           styles={this.clickableStyles}
           type={'h3'} />
       </div>

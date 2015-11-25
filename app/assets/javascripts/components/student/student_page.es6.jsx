@@ -42,11 +42,15 @@ class StudentPage extends Component {
   // Lifecycle
   // --------------------------------------------------
   componentWillMount() {
+    this.setState(ProfileStore.getState());
     this.setState(StudentStore.getState());
   }
 
   componentDidMount() {
+    ProfileStore.listen(this._listener);
     StudentStore.listen(this._listener);
+    ProfileActions.fetchProfile();
+    StudentActions.fetchComments(this.props.id);
     StudentActions.fetchStudent(this.props.id);
   }
 
@@ -62,6 +66,7 @@ class StudentPage extends Component {
       return (
         <PageOverlay
           overlay={this.state.overlay}
+          profile={this.state.profile}
           student={this.state.student} />
       );
     }
@@ -75,7 +80,7 @@ class StudentPage extends Component {
         <div style={this.styles.container}>
           <Sidebar hidden={this.state.sidebar} />
           <StudentGrid student={this.state.student} />
-          <StudentComments id={this.props.id} />
+          <StudentComments comments={this.state.comments} />
         </div>
       </div>
     );

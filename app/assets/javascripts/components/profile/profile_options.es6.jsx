@@ -2,13 +2,13 @@ class ProfileOptions extends Component {
 
   static get propTypes() {
     return {
-      currentUser: React.PropTypes.object.isRequired,
+      profile: React.PropTypes.object.isRequired,
     }
   }
 
   static get defaultProps() {
     return {
-      currentUser: {},
+      profile: {},
     }
   }
 
@@ -45,12 +45,12 @@ class ProfileOptions extends Component {
   }
 
   render() {
-    var currentUser = this.props.currentUser;
+    var profile = this.props.profile;
     return (
       <div style={this.styles.container}>
         <div style= {this.styles.row}>
           <span style={this.styles.field}>
-            {`${currentUser.first_name} ${currentUser.last_name}`}
+            {`Name: ${profile.first_name} ${profile.last_name}`}
           </span>
           <Clickable
             content={'Change'}
@@ -59,7 +59,7 @@ class ProfileOptions extends Component {
         </div>
         <div style= {this.styles.row}>
           <span style={this.styles.field}>
-            {'Birthday: ' + currentUser.birthday}
+            {'Birthday: ' + profile.birthday}
           </span>
           <Clickable
             content={'Change'}
@@ -68,7 +68,7 @@ class ProfileOptions extends Component {
         </div>
         <div style= {this.styles.row}>
           <span style={this.styles.field}>
-            {'Email: ' + currentUser.email}
+            {'Email: ' + profile.email}
           </span>
           <Clickable
             content={'Change'}

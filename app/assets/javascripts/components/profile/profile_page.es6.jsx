@@ -1,21 +1,16 @@
 class ProfilePage extends Component {
 
-  static get propTypes() {
-    return {
-      currentUser: React.PropTypes.object.isRequired,
-    }
+  // --------------------------------------------------
+  // Setup
+  // --------------------------------------------------
+  constructor(props) {
+    super(props);
+    this._listener = (state) => this.setState(state);
   }
 
-  static get defaultProps() {
-    return {
-      currentUser: {},
-    }
-  }
-
-  static get defaultState() {
-    return { sidebar: true };
-  }
-
+  // --------------------------------------------------
+  // Styles
+  // --------------------------------------------------
   get styles() {
     return {
       container: {
@@ -23,29 +18,43 @@ class ProfilePage extends Component {
         flexFlow: 'column',
         height: '100vh',
       },
-      body: {
+      placeholder: {
+        width: '196px',
+      },
+      section: {
         display: 'flex',
         flex: '1',
         paddingLeft: '196px',
       },
-      placeholder: {
-        width: '196px',
-      },
     };
   }
 
-  toggleSidebar(event) {
-    this.setState({ sidebar: !this.state.sidebar });
+  // --------------------------------------------------
+  // Lifecycle
+  // --------------------------------------------------
+  componentWillMount() {
+    this.setState(ProfileStore.getState());
   }
 
+  componentDidMount() {
+    ProfileStore.listen(this._listener);
+    ProfileActions.fetchProfile();
+  }
+
+  componentWillUnmount() {
+    ProfileStore.unlisten(this._listener);
+  }
+
+  // --------------------------------------------------
+  // Render
+  // --------------------------------------------------
   render() {
     return (
       <div style={this.styles.container}>
-        <Header
-          toggleSidebar={() => this.toggleSidebar()} />
-        <div style={this.styles.body}>
+        <Header />
+        <div style={this.styles.section}>
           <Sidebar hidden={this.state.sidebar} />
-          <ProfileCards currentUser={this.props.currentUser} />
+          <ProfileCards profile={this.state.profile} />
           <div style={this.styles.placeholder}></div>
         </div>
       </div>
