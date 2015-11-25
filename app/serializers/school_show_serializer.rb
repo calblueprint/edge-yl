@@ -1,0 +1,3 @@
+class SchoolShowSerializer < SchoolIndexSerializer
+
+end

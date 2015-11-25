@@ -49,10 +49,15 @@ ActiveRecord::Schema.define(version: 20151125043449) do
   add_index "pg_search_documents", ["searchable_type", "searchable_id"], name: "index_pg_search_documents_on_searchable_type_and_searchable_id", using: :btree
 
   create_table "responsibilities", force: :cascade do |t|
-    t.string   "status",     null: false
+    t.integer  "status",     null: false
+    t.integer  "student_id"
+    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_index "responsibilities", ["student_id"], name: "index_responsibilities_on_student_id", using: :btree
+  add_index "responsibilities", ["user_id"], name: "index_responsibilities_on_user_id", using: :btree
 
   create_table "schools", force: :cascade do |t|
     t.string   "address",         null: false

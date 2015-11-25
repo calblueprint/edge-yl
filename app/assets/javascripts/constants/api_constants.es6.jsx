@@ -10,6 +10,9 @@
         show: function(id) {
           return `/api/schools/${id}`;
         },
+        update: function(id) {
+          return `/api/schools/${id}`;
+        },
       };
     }
 
