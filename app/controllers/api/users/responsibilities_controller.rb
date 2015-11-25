@@ -1,8 +1,9 @@
-class Responsibilities < Api::BaseController
+class ResponsibilitiesController < Api::BaseController
 
   def create
     responsibility = Responsibility.new responsibility_params
-    render json: responsibility, ResponsibilityIndexSerializer
+    render json: responsibility, ResponsibilityBaseSerializer
+  end
 
   private
 

@@ -1,4 +1,4 @@
-def generate_responsibility()
+def generate_responsibility
   new_responsibility = Responsibility.create(
     status: "completed",
   )
