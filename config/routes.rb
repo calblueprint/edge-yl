@@ -29,7 +29,7 @@
   namespace :api do
     get '/searchables/search', to: 'searchables#search'
 
-    resources :schools, only: [:create, :index, :show]
+    resources :schools, only: [:create, :index, :show, :update]
     resources :students, only: [:create, :index, :show, :update] do
       scope module: :students do
         resources :comments, only: [:create, :index]

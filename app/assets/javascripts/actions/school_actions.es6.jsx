@@ -14,16 +14,17 @@
       return true;
     }
 
-    storeOverlay(active, type) {
+    storeOverlay(active, type, target) {
       return {
         active: active,
+        target: target,
         type: type,
       };
     }
 
     updateSchool(id, params) {
       resolve = (response) => this.storeSchool(response);
-      Requester.update(ApiConstants.school.update(id), params, resolve);
+      Requester.update(ApiConstants.schools.update(id), params, resolve);
       return true;
     }
   }

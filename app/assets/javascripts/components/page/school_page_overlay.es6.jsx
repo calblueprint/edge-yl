@@ -26,8 +26,8 @@ class SchoolPageOverlay extends Component {
     return {
       overlay: {
         active: false,
-        target: TypeConstants.overlay.type.edit,
-        type: TypeConstants.overlay.target.preview,
+        target: TypeConstants.overlay.type.preview,
+        type: TypeConstants.overlay.target.edit,
       },
       school: {},
     };
@@ -68,6 +68,7 @@ class SchoolPageOverlay extends Component {
   // Lifecycle
   // --------------------------------------------------
   componentDidMount() {
+    console.log('ok');
     var node = ReactDOM.findDOMNode(this.refs.container);
     this._node = node;
     node.addEventListener('click', (event) => this.handleClick(event));

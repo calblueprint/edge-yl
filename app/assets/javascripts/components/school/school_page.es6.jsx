@@ -57,30 +57,30 @@ class SchoolPage extends Component {
     SchoolStore.unlisten(this._listener);
   }
 
-  // --------------------------------------------------
-  // Handlers
-  // --------------------------------------------------
-  hideOverlay(response) {
-    if (response) {
-      this.setState({ overlay: false, school: response });
-    } else {
-      this.setState({ overlay: false });
-    }
-  }
+  // // --------------------------------------------------
+  // // Handlers
+  // // --------------------------------------------------
+  // hideOverlay(response) {
+  //   if (response) {
+  //     this.setState({ overlay: false, school: response });
+  //   } else {
+  //     this.setState({ overlay: false });
+  //   }
+  // }
 
-  showOverlay(type, callback) {
-    this.setState({ overlay: true, type: type, callback: callback});
-  }
+  // showOverlay(type, callback) {
+  //   this.setState({ overlay: true, type: type, callback: callback});
+  // }
 
-  toggleSidebar(event) {
-    SchoolActions.toggleSidebar(!this.state.sidebar);
-  }
+  // toggleSidebar(event) {
+  //   SchoolActions.toggleSidebar(!this.state.sidebar);
+  // }
 
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
   renderOverlay() {
-    if (this.state.overlay) {
+  if (this.state.overlay) {
       return (
         <SchoolPageOverlay
           overlay={this.state.overlay}
@@ -92,6 +92,7 @@ class SchoolPage extends Component {
   render() {
     return (
       <div style={StyleConstants.pages.default}>
+        {this.renderOverlay()}
         <Header toggleSidebar={() => this.toggleSidebar()} />
         <div style={this.styles.container}>
           <Sidebar hidden={this.state.sidebar} />
