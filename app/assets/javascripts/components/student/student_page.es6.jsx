@@ -61,6 +61,7 @@ class StudentPage extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
+
   renderOverlay() {
     if (this.state.overlay.active) {
       return (
@@ -78,7 +79,9 @@ class StudentPage extends Component {
         {this.renderOverlay()}
         <Header toggleSidebar={(event) => StudentActions.toggleSidebar()} />
         <div style={this.styles.container}>
-          <Sidebar hidden={this.state.sidebar} />
+          <Sidebar
+            hidden={this.state.sidebar}
+            profile={this.state.profile} />          
           <StudentGrid student={this.state.student} />
           <StudentComments comments={this.state.comments} />
         </div>
