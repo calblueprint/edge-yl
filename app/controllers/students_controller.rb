@@ -6,7 +6,7 @@ class StudentsController < BaseController
 
   def show
     @id = params[:id].to_i
-    current_user.create_visit(@id, :Student)
+    current_user.create_visit(@id, 'Student')
   end
 
 end
