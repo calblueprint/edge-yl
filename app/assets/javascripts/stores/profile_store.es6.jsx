@@ -2,7 +2,7 @@
   class ProfileStore {
 
     constructor() {
-      this.profile = {};
+      this.profile = { visits: [] };
       this.bindListeners({
         handleStoreProfile: ProfileActions.STORE_PROFILE,
       });

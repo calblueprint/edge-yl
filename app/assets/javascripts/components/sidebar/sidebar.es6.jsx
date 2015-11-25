@@ -6,12 +6,14 @@ class Sidebar extends Component {
   static get propTypes() {
     return {
       hidden: React.PropTypes.bool.isRequired,
+      profile: React.PropTypes.object.isRequired,
     };
   }
 
   static get defaultProps() {
     return {
       hidden: true,
+      profile: {},
     };
   }
 
@@ -48,8 +50,8 @@ class Sidebar extends Component {
     );
     return (
       <div style={style}>
-        <SidebarGroup />
-        <SidebarRecents />
+        <SidebarCategories />
+        <SidebarRecents profile={this.props.profile} />
         <SidebarFooter />
       </div>
     );

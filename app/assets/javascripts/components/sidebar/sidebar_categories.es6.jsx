@@ -1,4 +1,20 @@
-class SidebarGroup extends Component {
+class SidebarCategories extends Component {
+
+  // --------------------------------------------------
+  // Props
+  // --------------------------------------------------
+  static get propTypes() {
+    return {
+      hidden: React.PropTypes.bool.isRequired,
+    };
+  }
+
+
+  static get defaultProps() {
+    return {
+      hidden: true,
+    };
+  }
 
   // --------------------------------------------------
   // Styles
