@@ -9,6 +9,12 @@ class SidebarRecents extends Component {
     };
   }
 
+  static get defaultProps() {
+    return {
+      profile: {},
+    };
+  }
+
   // --------------------------------------------------
   // Styles
   // --------------------------------------------------
@@ -30,21 +36,21 @@ class SidebarRecents extends Component {
   // Render
   // --------------------------------------------------
   renderItem(visit, index) {
-    if (visit.student) {
+    if (visit.visitable_type === 'Student') {
       return (
         <SidebarItem
           key={index}
-          label={'Recent Student'}
+          label={visit.visitable_name}
           icon={'fa fa-pencil fa-lg'}
-          route={RouteConstants.students.show(1)} />
+          route={RouteConstants.students.show(visit.visitable_id)} />
       );
     } else {
       return (
         <SidebarItem
           key={index}
-          label={'Recent School'}
+          label={visit.visitable_name}
           icon={'fa fa-building-o fa-lg'}
-          route={RouteConstants.schools.show(1)} />
+          route={RouteConstants.schools.show(visit.visitable_id)} />
       );
     }
   }
