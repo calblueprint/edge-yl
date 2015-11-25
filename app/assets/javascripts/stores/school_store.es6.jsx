@@ -7,8 +7,8 @@
         school: {},
       };
       this.bindListeners({
-        handleToggleSidebar: SchoolActions.TOGGLE_SIDEBAR,
         handleStoreSchool: SchoolActions.STORE_SCHOOL,
+        handleToggleSidebar: SchoolActions.TOGGLE_SIDEBAR,
       });
     }
 
