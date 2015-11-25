@@ -31,6 +31,12 @@ class Student < ActiveRecord::Base
   validates :cell_phone, presence: true
   validates :email, presence: true
   validates :first_name, presence: true
+  validates :guardian_one_name, presence: true
+  validates :guardian_one_phone, presence: true
+  validates :guardian_one_email, presence: true
+  validates :guardian_two_name, presence: true
+  validates :guardian_two_phone, presence: true
+  validates :guardian_two_email, presence: true
   validates :home_address, presence: true
   validates :last_name, presence: true
 
