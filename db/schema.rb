@@ -80,16 +80,22 @@ ActiveRecord::Schema.define(version: 20151125043449) do
   add_index "student_conferences", ["student_id"], name: "index_student_conferences_on_student_id", using: :btree
 
   create_table "students", force: :cascade do |t|
-    t.date     "birthday",     null: false
-    t.string   "cell_phone",   null: false
-    t.string   "email",        null: false
-    t.string   "first_name",   null: false
-    t.string   "home_address", null: false
-    t.string   "home_phone",   null: false
-    t.string   "last_name",    null: false
+    t.date     "birthday",           null: false
+    t.string   "cell_phone",         null: false
+    t.string   "email",              null: false
+    t.string   "first_name",         null: false
+    t.string   "guardian_one_name",  null: false
+    t.string   "guardian_one_phone", null: false
+    t.string   "guardian_one_email", null: false
+    t.string   "guardian_two_name",  null: false
+    t.string   "guardian_two_phone", null: false
+    t.string   "guardian_two_email", null: false
+    t.string   "home_address",       null: false
+    t.string   "home_phone",         null: false
+    t.string   "last_name",          null: false
     t.integer  "school_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
   end
 
   add_index "students", ["school_id"], name: "index_students_on_school_id", using: :btree
