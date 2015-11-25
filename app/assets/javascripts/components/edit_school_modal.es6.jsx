@@ -54,7 +54,6 @@ class EditSchoolModal extends Component {
   // Lifecycle
   // --------------------------------------------------
   componentDidMount() {
-    console.log('sdkf');
     var node = ReactDOM.findDOMNode(this.refs.container);
     this._node = node;
     node.addEventListener('click', (event) => this.handleClick(event));

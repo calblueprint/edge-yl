@@ -42,7 +42,6 @@ class EditSchool extends Component {
   }
 
   componentWillMount() {
-    console.log('hol');
     this.setState({
       address: this.props.school.address,
       counselor_name: this.props.school.counselor_name,
@@ -51,7 +50,6 @@ class EditSchool extends Component {
   }
 
   updateSchool() {
-    console.log('update school');
     var params = {
       address: this.state.address,
       counselor_name: this.state.counselor_name,

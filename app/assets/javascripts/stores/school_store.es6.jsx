@@ -23,7 +23,6 @@
     }
 
     handleStoreSchool(response) {
-      console.log('handlestoreschool');
       this.overlay.active = false;
       this.school = response.school;
     }

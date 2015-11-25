@@ -68,7 +68,6 @@ class SchoolPageOverlay extends Component {
   // Lifecycle
   // --------------------------------------------------
   componentDidMount() {
-    console.log('ok');
     var node = ReactDOM.findDOMNode(this.refs.container);
     this._node = node;
     node.addEventListener('click', (event) => this.handleClick(event));

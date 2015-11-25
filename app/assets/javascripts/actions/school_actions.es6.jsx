@@ -9,7 +9,6 @@
     }
 
     fetchSchool(id) {
-      console.log('inside fetchschool');
       resolve = (response) => this.storeSchool(response);
       Requester.get(ApiConstants.schools.show(id), resolve);
       return true;
