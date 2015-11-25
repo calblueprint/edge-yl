@@ -9,7 +9,7 @@ class Api::UsersController < Api::BaseController
 
   def me
     if user_signed_in?
-      render json: current_user, serializer: UserBaseSerializer, status: 201
+      render json: current_user, serializer: UserBaseSerializer
     else
       unauthorized_reponse
     end

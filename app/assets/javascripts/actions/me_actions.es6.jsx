@@ -8,9 +8,9 @@
     }
 
     fetchMe(me) {
-      if (!me) {
+      if (me.empty) {
         resolve = (response) => this.storeMe(response);
-        Requester.get(ApiConstants.users.me);
+        Requester.get(ApiConstants.users.me, resolve);
       }
       return true;
     }

@@ -2,7 +2,7 @@
   class MeStore {
 
     constructor() {
-      this.me = null;
+      this.me = { empty: true };
       this.bindListeners({
         handleStoreMe: MeActions.STORE_ME,
       });

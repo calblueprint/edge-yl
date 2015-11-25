@@ -50,6 +50,7 @@
         index: '/api/users',
         login: '/api/users/login',
         logout: '/api/users/logout',
+        me: '/api/users/me',
         signout: '/api/users/signout',
       };
     }
