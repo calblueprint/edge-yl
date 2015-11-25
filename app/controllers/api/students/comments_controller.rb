@@ -11,8 +11,7 @@ class Api::Students::CommentsController < Api::BaseController
   end
 
   def index
-    student = Student.find params[:student_id]
-    comments = student.comments
+    comments = Comment.includes(:user).where(student_id: params[:student_id])
     render json: comments, each_serializer: CommentIndexSerializer
   end
 
