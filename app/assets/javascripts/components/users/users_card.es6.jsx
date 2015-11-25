@@ -51,6 +51,11 @@ class UsersCard extends Component {
     return (
       <div style={this.styles.container}>
         <div style={this.styles.info}>
+          <Clickable
+            content={`${user.first_name} ${user.last_name}`}
+            route={RouteConstants.users.show(user.id)}
+            styles={this.clickableStyles}
+            type={'h3'} />
           <h6>{`${user.first_name} ${user.last_name}`}</h6>
           <h6>{`${user.birthday}`}</h6>
           <h6>{`${user.email}`}</h6>
