@@ -17,6 +17,7 @@ class School < ActiveRecord::Base
   multisearchable against: [:name]
 
   has_many :students
+  has_many :visits, dependent: :destroy, as: :visitable
 
   validates :address, presence: true
   validates :counselor_email, presence: true

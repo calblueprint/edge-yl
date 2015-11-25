@@ -23,6 +23,7 @@ class Student < ActiveRecord::Base
   belongs_to :school
 
   has_many :comments, dependent: :destroy
+  has_many :visits, dependent: :destroy, as: :visitable
 
   has_one :student_conference
   has_one :conference, through: :student_conference
