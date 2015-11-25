@@ -5,5 +5,5 @@ Student.all.each do |student|
     conference_id: conference.id,
     student_id: student.id,
   )
-  puts "Created student-conference for #{student.full_name}."
+  puts "Created student-conference for #{student.name}."
 end

@@ -23,6 +23,7 @@ class Student < ActiveRecord::Base
   belongs_to :school
 
   has_many :comments, dependent: :destroy
+  has_many :visits, dependent: :destroy, as: :visitable
 
   has_one :student_conference
   has_one :conference, through: :student_conference
@@ -33,7 +34,7 @@ class Student < ActiveRecord::Base
   validates :home_address, presence: true
   validates :last_name, presence: true
 
-  def full_name
+  def name
     "#{first_name} #{last_name}"
   end
 
