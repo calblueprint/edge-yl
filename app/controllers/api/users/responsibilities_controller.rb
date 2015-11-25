@@ -2,7 +2,11 @@ class ResponsibilitiesController < Api::BaseController
 
   def create
     responsibility = Responsibility.new responsibility_params
-    render json: responsibility, ResponsibilityBaseSerializer
+    if responsibility.save
+      render json: responsibility, serializer: ResponsibilityBaseSerializer
+    else
+      unprocessable_response responsibility
+    end
   end
 
   private

@@ -1,3 +1,13 @@
+# == Schema Information
+#
+# Table name: responsibilities
+#
+#  id         :integer          not null, primary key
+#  status     :string           not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 require 'rails_helper'
 
 RSpec.describe Responsibility, type: :model do
