@@ -13,8 +13,8 @@
       };
       this.bindListeners({
         handleStoreOverlay: SchoolActions.STORE_OVERLAY,
-        handleToggleSidebar: SchoolActions.TOGGLE_SIDEBAR,
         handleStoreSchool: SchoolActions.STORE_SCHOOL,
+        handleToggleSidebar: SchoolActions.TOGGLE_SIDEBAR,
       });
     }
 
@@ -23,6 +23,7 @@
     }
 
     handleStoreSchool(response) {
+      console.log('handlestoreschool');
       this.overlay.active = false;
       this.school = response.school;
     }

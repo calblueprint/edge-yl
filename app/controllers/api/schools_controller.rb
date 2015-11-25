@@ -16,7 +16,6 @@ class Api::SchoolsController < Api::BaseController
 
   def show
     school = School.find params[:id]
-    # TODO(Warren): When necessary, serialize with a SchoolShowSerializer.
     render json: school, serializer: SchoolShowSerializer
   end
 

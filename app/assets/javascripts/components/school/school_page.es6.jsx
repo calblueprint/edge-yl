@@ -57,30 +57,11 @@ class SchoolPage extends Component {
     SchoolStore.unlisten(this._listener);
   }
 
-  // // --------------------------------------------------
-  // // Handlers
-  // // --------------------------------------------------
-  // hideOverlay(response) {
-  //   if (response) {
-  //     this.setState({ overlay: false, school: response });
-  //   } else {
-  //     this.setState({ overlay: false });
-  //   }
-  // }
-
-  // showOverlay(type, callback) {
-  //   this.setState({ overlay: true, type: type, callback: callback});
-  // }
-
-  // toggleSidebar(event) {
-  //   SchoolActions.toggleSidebar(!this.state.sidebar);
-  // }
-
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
   renderOverlay() {
-  if (this.state.overlay) {
+  if (this.state.overlay.active) {
       return (
         <SchoolPageOverlay
           overlay={this.state.overlay}
