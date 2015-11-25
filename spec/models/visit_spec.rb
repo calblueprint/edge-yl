@@ -1,17 +1,17 @@
 # == Schema Information
 #
-# Table name: conferences
+# Table name: visits
 #
 #  id         :integer          not null, primary key
-#  end_date   :date             not null
-#  location   :string           not null
-#  start_date :date             not null
+#  category   :integer
+#  target     :integer
+#  user_id    :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
 require 'rails_helper'
 
-RSpec.describe Conference, type: :model do
-
+RSpec.describe Visit, type: :model do
+  pending "add some examples to (or delete) #{__FILE__}"
 end
