@@ -42,4 +42,8 @@ class User < ActiveRecord::Base
     "#{first_name} #{last_name}"
   end
 
+  def create_visit(visitable_id, visitable_type)
+    visits.create visitable_id: visitable_id, visitable_type: visitable_type
+  end
+
 end
