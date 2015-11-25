@@ -47,6 +47,7 @@ class StudentPage extends Component {
 
   componentDidMount() {
     StudentStore.listen(this._listener);
+    StudentActions.fetchComments(this.props.id);
     StudentActions.fetchStudent(this.props.id);
   }
 
@@ -75,7 +76,7 @@ class StudentPage extends Component {
         <div style={this.styles.container}>
           <Sidebar hidden={this.state.sidebar} />
           <StudentGrid student={this.state.student} />
-          <StudentComments id={this.props.id} />
+          <StudentComments comments={this.state.comments} />
         </div>
       </div>
     );

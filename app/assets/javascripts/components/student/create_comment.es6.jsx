@@ -49,14 +49,14 @@ class CreateComment extends Component {
   // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
-  createCommentRequest() {
+  createComment() {
     var params = {
       'comment' : {
         'content': this.state.content,
         'user_id' : 1, // TODO (max): fix this to be the current user id
       },
     };
-    StudentCommentsActions.createStudentComment(this.props.student.id, params);
+    StudentActions.createComment(this.props.student.id, params);
   }
 
   generateHandler(field) {
@@ -75,10 +75,7 @@ class CreateComment extends Component {
     return (
       <div style={this.styles.container}>
         <CardHeader
-          action={(event) => {
-            StudentActions.storeOverlay(false);
-            this.createCommentRequest();
-          }}
+          action={(event) => this.createComment()}
           content={'Add a Comment'}
           icon={'fa fa-save fa-lg'} />
         <div style={this.styles.form}>

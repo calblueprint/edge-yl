@@ -2,6 +2,7 @@
   class StudentStore {
 
     constructor() {
+      this.comments = [];
       this.overlay = {
         active: false,
         target: '',
@@ -13,10 +14,21 @@
         student_conference: {},
       };
       this.bindListeners({
+        handleStoreComment: StudentActions.STORE_COMMENT,
+        handleStoreComments: StudentActions.STORE_COMMENTS,
         handleStoreOverlay: StudentActions.STORE_OVERLAY,
         handleStoreStudent: StudentActions.STORE_STUDENT,
         handleToggleSidebar: StudentActions.TOGGLE_SIDEBAR,
       });
+    }
+
+    handleStoreComment(response) {
+      this.comments.push(response.comment);
+      this.overlay.active = false;
+    }
+
+    handleStoreComments(response) {
+      this.comments = response.comments;
     }
 
     handleStoreOverlay(overlay) {
@@ -24,8 +36,8 @@
     }
 
     handleStoreStudent(response) {
-      this.overlay.active = false;
       this.student = response.student;
+      this.overlay.active = false;
     }
 
     handleToggleSidebar() {
