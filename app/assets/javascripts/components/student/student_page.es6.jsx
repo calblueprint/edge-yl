@@ -73,7 +73,6 @@ class StudentPage extends Component {
   }
 
   render() {
-    console.log(this.state.profile.visits);
     return (
       <div style={StyleConstants.pages.default}>
         {this.renderOverlay()}
