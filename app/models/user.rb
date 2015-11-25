@@ -31,6 +31,7 @@ class User < ActiveRecord::Base
          :registerable, :rememberable, :trackable, :validatable
 
   has_many :comments, dependent: :destroy
+  has_many :responsibilities, dependent: :destroy
   has_many :visits, dependent: :destroy
 
   validates :email, presence: true
