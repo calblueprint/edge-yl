@@ -18,6 +18,7 @@ class CreateModal extends Component {
         target: React.PropTypes.string.isRequired,
         type: React.PropTypes.string.isRequired,
       }).isRequired,
+      profile: React.PropTypes.object.isRequired,
       student: React.PropTypes.object.isRequired,
     };
   }
@@ -29,6 +30,7 @@ class CreateModal extends Component {
         target: TypeConstants.overlay.target.comment,
         type: TypeConstants.overlay.type.create,
       },
+      profile: {},
       student: {},
     };
   }
@@ -74,7 +76,11 @@ class CreateModal extends Component {
   renderBody() {
     switch (this.props.overlay.target) {
       case 'comment':
-        return <CreateComment student={this.props.student} />;
+        return (
+          <CreateComment
+            profile={this.props.profile}
+            student={this.props.student} />
+        );
     }
   }
 

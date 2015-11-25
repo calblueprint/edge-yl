@@ -5,12 +5,14 @@ class CreateComment extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
+      profile: React.PropTypes.object.isRequired,
       student: React.PropTypes.object.isRequired,
     };
   }
 
   static get defaultProps() {
     return {
+      profile: {},
       student: {},
     };
   }
@@ -53,7 +55,7 @@ class CreateComment extends Component {
     var params = {
       'comment' : {
         'content': this.state.content,
-        'user_id' : 1, // TODO (max): fix this to be the current user id
+        'user_id': this.props.profile.id,
       },
     };
     StudentActions.createComment(this.props.student.id, params);

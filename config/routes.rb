@@ -29,6 +29,8 @@
   namespace :api do
     get '/searchables/search', to: 'searchables#search'
 
+    get '/users/profile', to: 'users#profile'
+
     resources :schools, only: [:create, :index, :show]
     resources :students, only: [:create, :index, :show, :update] do
       scope module: :students do

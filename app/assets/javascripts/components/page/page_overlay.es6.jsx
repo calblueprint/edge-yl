@@ -18,6 +18,7 @@ class PageOverlay extends Component {
         target: React.PropTypes.string.isRequired,
         type: React.PropTypes.string.isRequired,
       }).isRequired,
+      profile: React.PropTypes.object.isRequired,
       student: React.PropTypes.object.isRequired,
     };
   }
@@ -29,6 +30,7 @@ class PageOverlay extends Component {
         target: TypeConstants.overlay.type.edit,
         type: TypeConstants.overlay.target.preview,
       },
+      profile: {},
       student: {},
     };
   }
@@ -96,6 +98,7 @@ class PageOverlay extends Component {
       return (
         <CreateModal
           overlay={this.props.overlay}
+          profile={this.props.profile}
           student={this.props.student} />
       );
     }
