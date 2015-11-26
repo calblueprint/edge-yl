@@ -1,6 +1,12 @@
 (() => {
   class TypeConstants {
 
+    get icons() {
+      return {
+
+      };
+    }
+
     get overlay() {
       return {
         target: {

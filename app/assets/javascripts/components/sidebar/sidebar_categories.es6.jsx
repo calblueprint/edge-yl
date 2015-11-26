@@ -25,11 +25,11 @@ class SidebarCategories extends Component {
       <div style={this.styles.container}>
         <SidebarItem
           label={'Students'}
-          icon={'fa fa-pencil fa-lg'}
+          icon={'fa fa-graduation-cap fa-lg'}
           route={RouteConstants.students.index()}/>
         <SidebarItem
           label={'Schools'}
-          icon={'fa fa-building-o fa-lg'}
+          icon={'fa fa-university fa-lg'}
           route={RouteConstants.schools.index()}/>
         <SidebarItem
           label={'Volunteers'}
