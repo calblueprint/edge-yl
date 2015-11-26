@@ -53,7 +53,9 @@ class ProfilePage extends Component {
       <div style={this.styles.container}>
         <Header />
         <div style={this.styles.section}>
-          <Sidebar hidden={this.state.sidebar} />
+          <Sidebar
+            hidden={this.state.sidebar}
+            profile={this.state.profile} />
           <ProfileCards profile={this.state.profile} />
           <div style={this.styles.placeholder}></div>
         </div>
