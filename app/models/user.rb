@@ -42,7 +42,7 @@ class User < ActiveRecord::Base
     "#{first_name} #{last_name}"
   end
 
-  def create_visit(visitable_id, visitable_type)
+  def create_visit(visitable_type, visitable_id)
     last_visit = visits.first
     if last_visit.nil? ||
        last_visit.visitable_type != visitable_type ||
