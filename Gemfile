@@ -14,6 +14,7 @@ gem 'pg_search'
 gem 'react-rails', '~> 1.4.0'
 
 # Client
+gem 'font-awesome-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'jquery-rails'
 gem 'sass-rails', '~> 5.0'
