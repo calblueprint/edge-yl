@@ -19,7 +19,6 @@
     }
 
     handleStoreStudents(response) {
-      console.log(response);
       this.pagination = response.meta.pagination;
       this.students = response.students;
     }
