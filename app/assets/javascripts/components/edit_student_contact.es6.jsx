@@ -1,4 +1,4 @@
-class EditContact extends Component {
+class EditStudentContact extends Component {
 
   // --------------------------------------------------
   // Props
@@ -60,8 +60,16 @@ class EditContact extends Component {
   }
 
   // --------------------------------------------------
-  // Handlers
+  // Helpers
   // --------------------------------------------------
+  generateHandler(field) {
+    var state = {};
+    return(event) => {
+      state[field] = event.target.value;
+      this.setState(state);
+    };
+  }
+
   updateStudent() {
     var params = {
       cell_phone: this.state.cellPhone,
@@ -70,14 +78,6 @@ class EditContact extends Component {
       home_phone: this.state.homePhone,
     };
     StudentActions.updateStudent(this.props.student.id, params);
-  }
-
-  generateHandler(field) {
-    var state = {};
-    return(event) => {
-      state[field] = event.target.value;
-      this.setState(state);
-    };
   }
 
   // --------------------------------------------------
