@@ -79,7 +79,7 @@ class CreateComment extends Component {
         <CardHeader
           action={(event) => this.createComment()}
           content={'Add a Comment'}
-          icon={'fa fa-save fa-lg'} />
+          icon={TypeConstants.icons.save} />
         <div style={this.styles.form}>
           <CardInput
             action={this.generateHandler('content')}

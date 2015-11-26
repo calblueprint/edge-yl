@@ -73,7 +73,7 @@ class EditPreview extends Component {
         <CardHeader
           action={(event) => this.updateStudent()}
           content={'Student Preview'}
-          icon={'fa fa-save fa-lg'} />
+          icon={TypeConstants.icons.save} />
         <div style={this.styles.form}>
           <img
             src='https://scontent.fsnc1-1.fna.fbcdn.net/hphotos-xfp1/t31.0-8/11856297_10200932572512494_2256826043885795533_o.jpg'

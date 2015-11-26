@@ -25,15 +25,15 @@ class SidebarCategories extends Component {
       <div style={this.styles.container}>
         <SidebarItem
           label={'Students'}
-          icon={'fa fa-graduation-cap fa-lg'}
+          icon={TypeConstants.icons.student}
           route={RouteConstants.students.index()}/>
         <SidebarItem
           label={'Schools'}
-          icon={'fa fa-university fa-lg'}
+          icon={TypeConstants.icons.school}
           route={RouteConstants.schools.index()}/>
         <SidebarItem
           label={'Volunteers'}
-          icon={'fa fa-male fa-lg'}
+          icon={TypeConstants.icons.volunteer}
           route={RouteConstants.users.index}/>
         <div style={this.styles.divider} />
       </div>

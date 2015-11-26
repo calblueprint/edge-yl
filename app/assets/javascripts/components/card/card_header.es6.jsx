@@ -15,7 +15,7 @@ class CardHeader extends Component {
     return {
       action: null,
       content: 'Student Preview',
-      icon: 'fa fa-pencil-square-o fa-lg',
+      icon: TypeConstants.icons.students,
     };
   }
 

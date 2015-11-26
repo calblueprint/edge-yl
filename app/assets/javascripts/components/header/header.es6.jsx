@@ -90,7 +90,7 @@ class Header extends Component {
       return (
         <Clickable
           action={this.props.toggleSidebar}
-          icon={'fa fa-bars fa-x'}
+          icon={TypeConstants.icons.bars}
           styles={this.clickableStyles}
           type={'i'} />
       );

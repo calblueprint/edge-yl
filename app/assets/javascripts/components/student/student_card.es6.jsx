@@ -84,7 +84,7 @@ class StudentCard extends Component {
         <CardHeader
           action={(event) => StudentActions.storeOverlay(true, TypeConstants.overlay.type.edit, this.props.target)}
           content={this.renderTitle()}
-          icon={'fa fa-pencil-square-o fa-lg'} />
+          icon={TypeConstants.icons.edit} />
         {this.renderBody()}
       </div>
     );
