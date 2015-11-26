@@ -5,13 +5,13 @@ class SidebarRecents extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      profile: React.PropTypes.object.isRequired,
+      visits: React.PropTypes.array.isRequired,
     };
   }
 
   static get defaultProps() {
     return {
-      profile: {},
+      visits: [],
     };
   }
 
@@ -56,10 +56,7 @@ class SidebarRecents extends Component {
   }
 
   renderItems() {
-    var visits = this.props.profile.visits;
-    if (visits) {
-      return visits.map((visit, index) => this.renderItem(visit, index));
-    }
+    return this.props.visits.map((visit, index) => this.renderItem(visit, index));
   }
 
   render() {

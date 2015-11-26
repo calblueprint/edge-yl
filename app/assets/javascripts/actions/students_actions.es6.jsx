@@ -3,13 +3,13 @@
 
     constructor() {
       this.generateActions(
-        'toggleSidebar',
-        'updateStudents'
+        'storeStudents',
+        'toggleSidebar'
       );
     }
 
     fetchStudents(page) {
-      resolve = (response) => this.updateStudents(response);
+      resolve = (response) => this.storeStudents(response);
       Requester.get(ApiConstants.students.index(page), resolve);
       return true;
     }

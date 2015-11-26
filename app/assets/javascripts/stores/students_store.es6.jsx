@@ -13,18 +13,18 @@
       this.sidebar = true;
       this.students = [];
       this.bindListeners({
+        handleStoreStudents: StudentsActions.STORE_STUDENTS,
         handleToggleSidebar: StudentsActions.TOGGLE_SIDEBAR,
-        handleUpdateStudents: StudentsActions.UPDATE_STUDENTS,
       });
+    }
+
+    handleStoreStudents(response) {
+      this.pagination = response.meta.pagination;
+      this.students = response.students;
     }
 
     handleToggleSidebar() {
       this.sidebar = !this.sidebar;
-    }
-
-    handleUpdateStudents(response) {
-      this.pagination = response.meta.pagination;
-      this.students = response.students;
     }
   }
   this.StudentsStore = alt.createStore(StudentsStore);
