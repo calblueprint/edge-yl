@@ -49,15 +49,19 @@ class SchoolsPage extends Component {
   // Lifecycle
   // --------------------------------------------------
   componentWillMount() {
+    this.setState(ProfileStore.getState());
     this.setState(SchoolsStore.getState());
   }
 
   componentDidMount() {
+    ProfileStore.listen(this._listener);
     SchoolsStore.listen(this._listener);
+    ProfileActions.fetchProfile();
     SchoolsActions.fetchSchools(this.props.page);
   }
 
   componentWillUnmount() {
+    ProfileStore.unlisten(this._listener);
     SchoolsStore.unlisten(this._listener);
   }
 
@@ -69,7 +73,9 @@ class SchoolsPage extends Component {
       <div style={StyleConstants.pages.default}>
         <Header toggleSidebar={() => SchoolsActions.toggleSidebar()} />
         <div style={this.styles.container}>
-          <Sidebar hidden={this.state.sidebar} />
+          <Sidebar
+            hidden={this.state.sidebar}
+            profile={this.state.profile} />
           <div style={this.styles.body}>
             <SchoolsGrid schools={this.state.schools} />
             <PageNavigator
