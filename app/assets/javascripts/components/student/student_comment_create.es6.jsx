@@ -22,7 +22,7 @@ class StudentCommentCreate extends Component {
   // --------------------------------------------------
   static get defaultState() {
     return {
-      comment: null,
+      content: '',
     };
   }
 
@@ -31,12 +31,16 @@ class StudentCommentCreate extends Component {
   // --------------------------------------------------
   get styles() {
     return {
-      container: {
-        display: 'flex',
-        flexFlow: 'column',
-        justifyContent: 'center',
-        width: '356px',
-      },
+      container: Object.assign(
+        {},
+        StyleConstants.cards.default,
+        {
+          display: 'flex',
+          flexFlow: 'column',
+          justifyContent: 'center',
+          width: '356px',
+        }
+      ),
       form: {
         display: 'flex',
         flexFlow: 'column',
@@ -83,7 +87,7 @@ class StudentCommentCreate extends Component {
         <div style={this.styles.form}>
           <CardInput
             action={this.generateHandler('content')}
-            placeholder={'Your Comment Here...'}
+            placeholder={'Your comment here...'}
             value={''} />
         </div>
       </div>
