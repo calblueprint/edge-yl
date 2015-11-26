@@ -1,4 +1,4 @@
-class CreateComment extends Component {
+class StudentCommentCreate extends Component {
 
   // --------------------------------------------------
   // Props
