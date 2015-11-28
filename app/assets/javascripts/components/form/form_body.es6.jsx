@@ -70,6 +70,15 @@ class FormBody extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
+  renderSection(section, index) {
+    return (
+      <FormSection
+        key={index}
+        section={section}
+        updateValue={null} />
+    );
+  }
+
   renderSections() {
     return this.state.sections.map((section, index) => this.renderSection(section, index));
   }
