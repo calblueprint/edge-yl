@@ -95,7 +95,12 @@ h6 {
 }
 
 i {
+  width: $font-size-medium;
   color: inherit;
+  font: normal normal normal 14px/1 'FontAwesome';
+  font-size: $font-size-small;
+  line-height: $font-size-medium;
+  text-align: center;
 }
 
 a,

@@ -109,7 +109,7 @@ class PageOverlay extends Component {
       <div ref={'container'} style={this.styles.container}>
         <Clickable
           action={(event) => StudentActions.storeOverlay(false)}
-          icon={'fa fa-times fa-2x'}
+          icon={TypeConstants.icons.close}
           styles={this.clickableStyles}
           type={'i'} />
         {this.renderModal()}
