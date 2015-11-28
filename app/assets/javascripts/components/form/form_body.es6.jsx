@@ -1,6 +1,14 @@
 class FormBody extends Component {
 
   // --------------------------------------------------
+  // Setup
+  // --------------------------------------------------
+  constructor(props) {
+    super(props);
+    this._listener = (state) => this.setState(state);
+  }
+
+  // --------------------------------------------------
   // Styles
   // --------------------------------------------------
   get styles() {
@@ -22,6 +30,21 @@ class FormBody extends Component {
         marginBottom: '24px',
       },
     };
+  }
+
+  // --------------------------------------------------
+  // Lifecycle
+  // --------------------------------------------------
+  componentWillMount() {
+    this.setState(FormStore.getState());
+  }
+
+  componentDidMount() {
+    FormStore.listen(this._listener);
+  }
+
+  componentWillUnmount() {
+    FormStore.unlisten(this._listener);
   }
 
   // --------------------------------------------------
@@ -47,12 +70,17 @@ class FormBody extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
+  renderSections() {
+    return this.state.sections.map((section, index) => this.renderSection(section, index));
+  }
+
   render() {
     return(
       <div style={this.styles.container}>
         <div style={this.styles.header}>
           <h1 style={this.styles.title}>{'Form'}</h1>
         </div>
+        {this.renderSections()}
         <FormSection
           title={'Basic Information'}
           updateValue={() => this.updateValue()} />
