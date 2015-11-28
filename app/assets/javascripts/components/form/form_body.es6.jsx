@@ -48,26 +48,6 @@ class FormBody extends Component {
   }
 
   // --------------------------------------------------
-  // Helpers
-  // --------------------------------------------------
-  createStudent(event) {
-    Requester.post(
-      RouteConstants.students.create,
-      {
-        student: {
-          birthday: '12/25/2000',
-          cell_phone: '(510) 333-3333',
-          email: 'jonie_distefano@gmail.com',
-          first_name: 'Jonie',
-          home_address: '5150 Kingston Street',
-          home_phone: '(510) 333-3333',
-          last_name: 'Distefano',
-        },
-      }
-    );
-  }
-
-  // --------------------------------------------------
   // Render
   // --------------------------------------------------
   renderSection(section, index) {
@@ -89,13 +69,9 @@ class FormBody extends Component {
           <h1 style={this.styles.title}>{'Form'}</h1>
         </div>
         {this.renderSections()}
-        <FormSection
-          title={'Basic Information'}
-          updateValue={() => this.updateValue()} />
-        <FormSection
-          title={'Health Information'}
-          updateValue={() => this.updateValue()} />
-        <FormFooter />
+        <FormButton
+          action={(event) => FormActions.createObject(this.state.sections)}
+          content={'Submit'} />
       </div>
     );
   }

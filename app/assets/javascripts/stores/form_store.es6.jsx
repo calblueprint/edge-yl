@@ -9,6 +9,7 @@
           questions: [
             {
               id: 1,
+              key: 'first_name',
               label: 'First Name',
               placeholder: 'Kira',
               type: 'field',
@@ -16,8 +17,17 @@
             },
             {
               id: 2,
+              key: 'last_name',
               label: 'Last Name',
               placeholder: 'Klapper',
+              type: 'field',
+              value: '',
+            },
+            {
+              id: 3,
+              key: 'email',
+              label: 'Email',
+              placeholder: 'kiraklapper@dmail.com',
               type: 'field',
               value: '',
             },
