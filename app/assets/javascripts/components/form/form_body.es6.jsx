@@ -1,21 +1,8 @@
 class FormBody extends Component {
 
-  static get defaultState() {
-    return {};
-  }
-
-  static get propTypes() {
-    return {};
-  }
-
-  static get defaultProps() {
-    return {};
-  }
-
-  //TODO(Sonia): Finish this method definition
-  updateValue(section, key, value) {
-  }
-
+  // --------------------------------------------------
+  // Styles
+  // --------------------------------------------------
   get styles() {
     return {
       container: Object.assign(
@@ -37,6 +24,9 @@ class FormBody extends Component {
     };
   }
 
+  // --------------------------------------------------
+  // Helpers
+  // --------------------------------------------------
   createStudent(event) {
     Requester.post(
       RouteConstants.students.create,
@@ -54,6 +44,9 @@ class FormBody extends Component {
     );
   }
 
+  // --------------------------------------------------
+  // Render
+  // --------------------------------------------------
   render() {
     return(
       <div style={this.styles.container}>

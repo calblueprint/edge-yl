@@ -1,6 +1,9 @@
 class FormSection extends Component {
 
-// TODO(Sonia): Add a 'required' proptype
+  // --------------------------------------------------
+  // Props
+  // --------------------------------------------------
+  // TODO(Sonia): Add a 'required' proptype
   static get propTypes() {
     return {
       title: React.PropTypes.string.isRequired,
@@ -12,6 +15,9 @@ class FormSection extends Component {
     return {};
   }
 
+  // --------------------------------------------------
+  // Styles
+  // --------------------------------------------------
   get styles() {
     return {
       container: {
@@ -38,7 +44,10 @@ class FormSection extends Component {
       },
     };
   }
-  
+
+  // --------------------------------------------------
+  // Render
+  // --------------------------------------------------
   render() {
     return (
       <div style={this.styles.container}>
@@ -56,11 +65,11 @@ class FormSection extends Component {
           <FormParagraph
             title={'Student Description'}
             placeholder={'This student is great'} />
-          <FormDropdown 
+          <FormDropdown
             options={['hi','lol']}
             title={'Birthday'}
-          /> 
-          <FormDropdown 
+          />
+          <FormDropdown
             options={['Nevada','California']}
             title={'State'}
           />
