@@ -74,8 +74,7 @@ class FormBody extends Component {
     return (
       <FormSection
         key={index}
-        section={section}
-        updateValue={null} />
+        section={section} />
     );
   }
 

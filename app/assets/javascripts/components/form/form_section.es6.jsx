@@ -7,7 +7,6 @@ class FormSection extends Component {
   static get propTypes() {
     return {
       section: React.PropTypes.object.isRequired,
-      updateValue: React.PropTypes.func.isRequired,
     };
   }
 
@@ -51,8 +50,7 @@ class FormSection extends Component {
     return (
       <FormField
         key={index}
-        placeholder={null}
-        title={question.label} />
+        question={question} />
     );
   }
 
