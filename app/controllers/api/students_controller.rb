@@ -2,7 +2,11 @@ class Api::StudentsController < Api::BaseController
 
   def create
     student = Student.new student_params
-    render json: student, serializer: StudentBaseSerializer
+    if student.save
+      render json: student, serializer: StudentBaseSerializer, status: 201
+    else
+      unprocessable_response student
+    end
   end
 
   def index
