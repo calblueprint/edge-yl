@@ -127,13 +127,13 @@ class HeaderShortcuts extends Component {
       return [
         <Clickable
           key={1}
-          icon={'fa fa-envelope fa-x'}
+          icon={TypeConstants.icons.mail}
           route={RouteConstants.pages.mail}
           styles={this.clickableStyles}
           type={'i'} />,
         <Clickable
           key={2}
-          icon={'fa fa-user fa-x'}
+          icon={TypeConstants.icons.profile}
           action={(event) => this.handleClick(event)}
           styles={this.clickableStyles}
           type={'i'} />,

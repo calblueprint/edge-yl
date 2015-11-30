@@ -148,7 +148,7 @@ class HeaderSearch extends Component {
       <div style={this.styles.container}>
         <div style={this.styles.section}>
           <div style={this.styles.logo}>
-            <i className={'fa fa-search fa-1x'} />
+            <i className={TypeConstants.icons.search} />
           </div>
           <input
             placeholder={'Search for a school or student'}

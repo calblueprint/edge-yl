@@ -1,9 +1,23 @@
 class SidebarRecents extends Component {
 
   // --------------------------------------------------
+  // Props
+  // --------------------------------------------------
+  static get propTypes() {
+    return {
+      visits: React.PropTypes.array.isRequired,
+    };
+  }
+
+  static get defaultProps() {
+    return {
+      visits: [],
+    };
+  }
+
+  // --------------------------------------------------
   // Styles
   // --------------------------------------------------
-
   get styles() {
     return {
       container: {
@@ -21,17 +35,34 @@ class SidebarRecents extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
+  renderItem(visit, index) {
+    if (visit.visitable_type === 'Student') {
+      return (
+        <SidebarItem
+          key={index}
+          label={visit.visitable_name}
+          icon={TypeConstants.icons.student}
+          route={RouteConstants.students.show(visit.visitable_id)} />
+      );
+    } else {
+      return (
+        <SidebarItem
+          key={index}
+          label={visit.visitable_name}
+          icon={TypeConstants.icons.school}
+          route={RouteConstants.schools.show(visit.visitable_id)} />
+      );
+    }
+  }
+
+  renderItems() {
+    return this.props.visits.map((visit, index) => this.renderItem(visit, index));
+  }
+
   render() {
     return (
       <div style={this.styles.container}>
-        <SidebarItem
-          label={'Recent Student'}
-          icon={'fa fa-pencil fa-lg'}
-          route={RouteConstants.students.show(1)} />
-        <SidebarItem
-          label={'Recent School'}
-          icon={'fa fa-building-o fa-lg'}
-          route={RouteConstants.schools.show(1)} />
+        {this.renderItems()}
         <div style={this.styles.divider} />
       </div>
     );

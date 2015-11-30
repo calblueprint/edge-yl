@@ -90,7 +90,7 @@ class EditContact extends Component {
         <CardHeader
           action={(event) => this.updateStudent()}
           content={'Student Information'}
-          icon={'fa fa-save fa-lg'} />
+          icon={TypeConstants.icons.save} />
         <div style={this.styles.form}>
           <CardInput
             action={this.generateHandler('cellPhone')}

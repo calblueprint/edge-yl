@@ -49,7 +49,7 @@ class SchoolCard extends Component {
         <CardHeader
           action={(event) => SchoolActions.storeOverlay(true, TypeConstants.overlay.type.edit)}
           content={school.name}
-          icon={'fa fa-pencil-square-o fa-lg'} />
+          icon={TypeConstants.icons.edit} />
         <div style={this.styles.section}>
           <img
             src='http://www.wlac.edu/WLAC/media/images/highschool/highschool-index.jpg'

@@ -2,15 +2,14 @@ class FormField extends Component {
 
   static get propTypes() {
     return {
-      title: React.PropTypes.string.isRequired,
-      placeholder: React.PropTypes.string.isRequired,
-      updateValue: React.PropTypes.func.isRequired,
-      value: React.PropTypes.string.isRequired,
+      question: React.PropTypes.object.isRequired,
     };
   }
 
   static get defaultProps() {
-    return {};
+    return {
+      question: {},
+    };
   }
 
   get styles() {
@@ -20,20 +19,18 @@ class FormField extends Component {
         alignItems: 'center',
         marginBottom: '18px',
       },
-      label: {
-        paddingRight: '24px',
-        fontSize: StyleConstants.fonts.sizes.smaller,
-      },
       input: {
         flex: '1',
         padding: '8px',
+        marginLeft: '24px',
         fontSize: StyleConstants.fonts.sizes.smallest,
       },
     };
   }
 
   handleChange(event) {
-    this.props.updateValue(event);
+    var question = this.props.question;
+    FormActions.storeResponse(1, question.id, event.target.value);
   }
 
   componentDidMount() {
@@ -42,15 +39,15 @@ class FormField extends Component {
   }
 
   render() {
+    var question = this.props.question;
     return (
       <div style={this.styles.container}>
-        <label style={this.styles.label}>{this.props.title}</label>
+        <h5>{question.label}</h5>
         <input
           ref={'container'}
           style={this.styles.input}
-          placeholder={this.props.placeholder}
-          value={this.props.value}>
-        </input>
+          placeholder={question.placeholder}
+          value={question.value} />
       </div>
     );
   }
