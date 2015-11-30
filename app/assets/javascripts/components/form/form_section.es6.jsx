@@ -1,17 +1,24 @@
 class FormSection extends Component {
 
-// TODO(Sonia): Add a 'required' proptype
+  // --------------------------------------------------
+  // Props
+  // --------------------------------------------------
+  // TODO(Sonia): Add a 'required' proptype
   static get propTypes() {
     return {
-      title: React.PropTypes.string.isRequired,
-      updateValue: React.PropTypes.func.isRequired,
+      section: React.PropTypes.object.isRequired,
     };
   }
 
   static get defaultProps() {
-    return {};
+    return {
+      section: {},
+    };
   }
 
+  // --------------------------------------------------
+  // Styles
+  // --------------------------------------------------
   get styles() {
     return {
       container: {
@@ -24,9 +31,6 @@ class FormSection extends Component {
         flexFlow: 'row',
         alignItems: 'center',
       },
-      title: {
-        fontSize: StyleConstants.fonts.sizes.medium,
-      },
       line: {
         flex: '1',
         height: '1px',
@@ -38,32 +42,34 @@ class FormSection extends Component {
       },
     };
   }
-  
+
+  // --------------------------------------------------
+  // Render
+  // --------------------------------------------------
+  renderQuestion(question, index) {
+    return (
+      <FormField
+        key={index}
+        question={question} />
+    );
+  }
+
+  renderQuestions() {
+    var questions = this.props.section.questions;
+    if (questions) {
+      return questions.map((question, index) => this.renderQuestion(question, index));
+    }
+  }
+
   render() {
     return (
       <div style={this.styles.container}>
         <div style={this.styles.header}>
-          <span style={this.styles.title}>{this.props.title}</span>
+          <h4>{this.props.section.title}</h4>
           <span style={this.styles.line} />
         </div>
         <div style={this.styles.questions}>
-          <FormField
-            title={'First Name'}
-            placeholder={'Emily'} />
-          <FormField
-            title={'Last Name'}
-            placeholder={'Wilson'} />
-          <FormParagraph
-            title={'Student Description'}
-            placeholder={'This student is great'} />
-          <FormDropdown 
-            options={['hi','lol']}
-            title={'Birthday'}
-          /> 
-          <FormDropdown 
-            options={['Nevada','California']}
-            title={'State'}
-          />
+          {this.renderQuestions()}
         </div>
       </div>
     );
