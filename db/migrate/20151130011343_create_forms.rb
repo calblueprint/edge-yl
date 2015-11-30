@@ -3,6 +3,7 @@ class CreateForms < ActiveRecord::Migration
     create_table :forms do |t|
 
       t.integer :target, null: false
+      t.string :title, null: false
 
       t.timestamps null: false
     end
