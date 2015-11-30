@@ -25,6 +25,15 @@ class SchoolPageOverlay extends Overlay {
     };
   }
 
+  // --------------------------------------------------
+  // Handlers
+  // --------------------------------------------------
+  handleClick(event) {
+    if (event.target === this._node) {
+      SchoolActions.storeOverlay(false);
+    }
+  }
+
 //  --------------------------------------------------
 //  Render
 //  --------------------------------------------------

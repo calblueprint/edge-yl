@@ -50,13 +50,6 @@ class Overlay extends Component {
   }
 
 
-  // --------------------------------------------------
-  // Handlers
-  // --------------------------------------------------
-  handleClick(event) {
-    if (event.target === this._node) {
-      SchoolActions.storeOverlay(false);
-    }
-  }
+
 
 }

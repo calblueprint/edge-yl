@@ -27,6 +27,15 @@ class PageOverlay extends Overlay {
     };
   }
 
+  // --------------------------------------------------
+  // Handlers
+  // --------------------------------------------------
+  handleClick(event) {
+    if (event.target === this._node) {
+      StudentActions.storeOverlay(false);
+    }
+  }
+
 //  --------------------------------------------------
 //  Render
 //  --------------------------------------------------
