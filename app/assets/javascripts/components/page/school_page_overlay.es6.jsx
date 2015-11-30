@@ -40,7 +40,7 @@ class SchoolPageOverlay extends PageOverlay {
   renderModal() {
 
     return (
-      <EditSchoolModal
+      <SchoolEditModal
         overlay={this.props.overlay}
         school={this.props.school} />
     );

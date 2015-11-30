@@ -42,7 +42,7 @@ class StudentPageOverlay extends PageOverlay {
   renderModal() {
     if (this.props.overlay.type === TypeConstants.overlay.type.edit) {
       return (
-        <EditModal
+        <StudentEditModal
           overlay={this.props.overlay}
           student={this.props.student} />
       );
