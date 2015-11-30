@@ -50,7 +50,6 @@ class UserPage extends Component {
     ProfileStore.listen(this._listener);
     UserStore.listen(this._listener);
     ProfileActions.fetchProfile();
-    UserActions.fetchComments(this.props.id);
     UserActions.fetchUser(this.props.id);
   }
 
