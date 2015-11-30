@@ -66,7 +66,7 @@ class StudentPage extends Component {
   renderOverlay() {
     if (this.state.overlay.active) {
       return (
-        <PageOverlay
+        <StudentPageOverlay
           overlay={this.state.overlay}
           profile={this.state.profile}
           student={this.state.student} />

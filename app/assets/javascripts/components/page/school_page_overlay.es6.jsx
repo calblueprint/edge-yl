@@ -18,8 +18,8 @@ class SchoolPageOverlay extends Overlay {
     return {
       overlay: {
         active: false,
-        target: TypeConstants.overlay.type.preview,
-        type: TypeConstants.overlay.target.edit,
+        target: TypeConstants.overlay.target.preview,
+        type: TypeConstants.overlay.type.edit,
       },
       school: {},
     };
@@ -38,6 +38,7 @@ class SchoolPageOverlay extends Overlay {
 //  Render
 //  --------------------------------------------------
   renderModal() {
+
     return (
       <EditSchoolModal
         overlay={this.props.overlay}

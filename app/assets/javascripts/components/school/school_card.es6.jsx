@@ -47,7 +47,7 @@ class SchoolCard extends Component {
     return (
       <div style={this.styles.container}>
         <CardHeader
-          action={(event) => SchoolActions.storeOverlay(true, TypeConstants.overlay.type.edit)}
+          action={(event) => SchoolActions.storeOverlay(true, TypeConstants.overlay.type.edit, TypeConstants.overlay.target.preview)}
           content={school.name}
           icon={TypeConstants.icons.edit} />
         <div style={this.styles.section}>

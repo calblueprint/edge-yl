@@ -1,4 +1,4 @@
-class PageOverlay extends Overlay {
+class StudentPageOverlay extends Overlay {
 
   // --------------------------------------------------
   // Props
@@ -19,8 +19,8 @@ class PageOverlay extends Overlay {
     return {
       overlay: {
         active: false,
-        target: TypeConstants.overlay.type.edit,
-        type: TypeConstants.overlay.target.preview,
+        target: TypeConstants.overlay.target.preview,
+        type: TypeConstants.overlay.type.edit,
       },
       profile: {},
       student: {},
