@@ -1,12 +1,4 @@
-class PageOverlay extends Component {
-
-  // --------------------------------------------------
-  // Setup
-  // --------------------------------------------------
-  constructor(props) {
-    super(props);
-    this._node = null;
-  }
+class StudentPageOverlay extends PageOverlay {
 
   // --------------------------------------------------
   // Props
@@ -27,52 +19,12 @@ class PageOverlay extends Component {
     return {
       overlay: {
         active: false,
-        target: TypeConstants.overlay.type.edit,
-        type: TypeConstants.overlay.target.preview,
+        target: TypeConstants.overlay.target.preview,
+        type: TypeConstants.overlay.type.edit,
       },
       profile: {},
       student: {},
     };
-  }
-
-  // --------------------------------------------------
-  // Styles
-  // --------------------------------------------------
-  get styles() {
-    return {
-      container: {
-        display: 'flex',
-        justifyContent: 'center',
-        position: 'fixed',
-        top: '0px',
-        left: '0px',
-        zIndex: StyleConstants.planes.nine,
-        width: '100vw',
-        height: '100vh',
-        backgroundColor: StyleConstants.colors.fog,
-      },
-    };
-  }
-
-  get clickableStyles() {
-    return {
-      default: {
-        position: 'fixed',
-        top: '0px',
-        right: '0px',
-        zIndex: StyleConstants.planes.nine,
-        padding: '8px',
-      },
-    };
-  }
-
-  // --------------------------------------------------
-  // Lifecycle
-  // --------------------------------------------------
-  componentDidMount() {
-    var node = ReactDOM.findDOMNode(this.refs.container);
-    this._node = node;
-    node.addEventListener('click', (event) => this.handleClick(event));
   }
 
   // --------------------------------------------------
@@ -84,9 +36,9 @@ class PageOverlay extends Component {
     }
   }
 
-//  --------------------------------------------------
-//  Render
-//  --------------------------------------------------
+  //  --------------------------------------------------
+  //  Render
+  //  --------------------------------------------------
   renderModal() {
     if (this.props.overlay.type === TypeConstants.overlay.type.edit) {
       return (
