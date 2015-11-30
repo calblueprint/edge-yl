@@ -15,7 +15,7 @@
         handleStoreComment: UserActions.STORE_COMMENT,
         handleStoreComments: UserActions.STORE_COMMENTS,
         handleStoreOverlay: UserActions.STORE_OVERLAY,
-        handleStoreUser: UserActions.STORE_STUDENT,
+        handleStoreUser: UserActions.STORE_USER,
         handleToggleSidebar: UserActions.TOGGLE_SIDEBAR,
       });
     }
@@ -33,8 +33,8 @@
       this.overlay = overlay;
     }
 
-    handleStoreStudent(response) {
-      this.student = response.student;
+    handleStoreUser(response) {
+      this.user = response.user;
       this.overlay.active = false;
     }
 

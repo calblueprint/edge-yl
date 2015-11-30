@@ -37,7 +37,7 @@
         resources :comments, only: [:create, :index]
       end
     end
-    resources :users, only: [:index, :update]
+    resources :users, only: [:index, :show, :update]
   end
 
 end

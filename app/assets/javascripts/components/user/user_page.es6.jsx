@@ -43,19 +43,19 @@ class UserPage extends Component {
   // --------------------------------------------------
   componentWillMount() {
     this.setState(ProfileStore.getState());
-    this.setState(StudentStore.getState());
+    this.setState(UserStore.getState());
   }
 
   componentDidMount() {
     ProfileStore.listen(this._listener);
-    StudentStore.listen(this._listener);
+    UserStore.listen(this._listener);
     ProfileActions.fetchProfile();
-    StudentActions.fetchComments(this.props.id);
-    StudentActions.fetchStudent(this.props.id);
+    UserActions.fetchComments(this.props.id);
+    UserActions.fetchUser(this.props.id);
   }
 
   componentWillUnmount() {
-    StudentStore.unlisten(this._listener);
+    UserStore.unlisten(this._listener);
   }
 
   // --------------------------------------------------
@@ -67,7 +67,7 @@ class UserPage extends Component {
         <PageOverlay
           overlay={this.state.overlay}
           profile={this.state.profile}
-          student={this.state.student} />
+          user={this.state.user} />
       );
     }
   }
@@ -75,7 +75,7 @@ class UserPage extends Component {
   render() {
     return (
       <div style={StyleConstants.pages.default}>
-        <Header toggleSidebar={(event) => StudentActions.toggleSidebar()} />
+        <Header toggleSidebar={(event) => UserActions.toggleSidebar()} />
         <div style={this.styles.container}>
           <Sidebar
             hidden={this.state.sidebar}

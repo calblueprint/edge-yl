@@ -8,10 +8,8 @@ class UserCard extends Component {
       user: React.PropTypes.object.isRequired,
       target: React.PropTypes.oneOf([
         'comment',
-        'contact',
-        'conference',
-        'parent',
-        'preview',
+        'outreach',
+        'responsibilities',
       ]).isRequired,
       type: React.PropTypes.oneOf([
         'create',
@@ -22,7 +20,7 @@ class UserCard extends Component {
 
   static get defaultProps() {
     return {
-      student: {},
+      user: {},
       target: TypeConstants.overlay.target.preview,
       type: TypeConstants.overlay.type.edit,
     };
@@ -52,29 +50,19 @@ class UserCard extends Component {
   // --------------------------------------------------
   renderBody() {
     switch (this.props.target) {
-      case 'preview':
-        return <StudentPreview student={this.props.student} />;
-      case 'contact':
-        return <StudentContact student={this.props.student} />;
-      case 'conference':
-        return <StudentConference student={this.props.student} />;
-      case 'parent':
-        return <StudentParent student={this.props.student} />;
-      default:
-        return <StudentPreview student={this.props.student} />;
+      case 'outreach':
+        return <StudentOutreach user={this.props.user} />;
+      case 'responsibilities':
+        return <ResponsibilitiesCard user={this.props.user} />;
     };
   }
 
   renderTitle() {
     switch (this.props.target) {
-      case 'preview':
-        return 'Student Preview';
-      case 'contact':
-        return 'Student Information';
-      case 'parent':
-        return 'Parent Information';
-      case 'conference':
-        return 'Conference Information';
+      case 'outreach':
+        return 'Student Outreach';
+      case 'responsibilities':
+        return 'Responsibilities';
     };
   }
 
@@ -82,7 +70,7 @@ class UserCard extends Component {
     return (
       <div style={this.styles.container}>
         <CardHeader
-          action={(event) => StudentActions.storeOverlay(true, TypeConstants.overlay.type.edit, this.props.target)}
+          action={(event) => UserActions.storeOverlay(true, TypeConstants.overlay.type.edit, this.props.target)}
           content={this.renderTitle()}
           icon={TypeConstants.icons.edit} />
         {this.renderBody()}

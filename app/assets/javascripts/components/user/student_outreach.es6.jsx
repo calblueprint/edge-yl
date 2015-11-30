@@ -1,4 +1,4 @@
-class UserGrid extends Component {
+class StudentOutreach extends Component {
 
   // --------------------------------------------------
   // Props
@@ -22,11 +22,17 @@ class UserGrid extends Component {
     return {
       container: {
         display: 'flex',
-        flexFlow: 'wrap',
-        justifyContent: 'space-between',
-        alignContent: 'flex-start',
+        flexFlow: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
         flex: '1',
-        padding: '0px 12px',
+        padding: '12px',
+      },
+      image: {
+        width: '152px',
+        height: '152px',
+        marginBottom: '12px',
+        borderRadius: '50%',
       },
     };
   }
@@ -35,16 +41,9 @@ class UserGrid extends Component {
   // Render
   // --------------------------------------------------
   render() {
+    var user = this.props.user;
     return (
       <div style={this.styles.container}>
-        <UserCard
-          target={TypeConstants.overlay.target.responsibilities}
-          type={TypeConstants.overlay.type.edit}
-          user={this.props.user} />
-        <UserCard
-          target={TypeConstants.overlay.target.outreach}
-          type={TypeConstants.overlay.type.edit}
-          user={this.props.user} />
       </div>
     );
   }
