@@ -22,8 +22,10 @@
           comment: 'comment',
           contact: 'contact',
           conference: 'conference',
+          outreach: 'outreach',
           parent: 'parent',
           preview: 'preview',
+          responsibilities: 'responsibilities',
         },
         type: {
           create: 'create',

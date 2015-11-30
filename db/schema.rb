@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151130011830) do
+ActiveRecord::Schema.define(version: 20151130013648) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,15 @@ ActiveRecord::Schema.define(version: 20151130011830) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "groups", force: :cascade do |t|
+    t.string   "name",          null: false
+    t.integer  "conference_id", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "groups", ["conference_id"], name: "index_groups_on_conference_id", using: :btree
 
   create_table "pg_search_documents", force: :cascade do |t|
     t.text     "content"
@@ -121,11 +130,13 @@ ActiveRecord::Schema.define(version: 20151130011830) do
     t.string   "home_address",       null: false
     t.string   "home_phone",         null: false
     t.string   "last_name",          null: false
+    t.integer  "group_id"
     t.integer  "school_id"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
   end
 
+  add_index "students", ["group_id"], name: "index_students_on_group_id", using: :btree
   add_index "students", ["school_id"], name: "index_students_on_school_id", using: :btree
 
   create_table "users", force: :cascade do |t|

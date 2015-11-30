@@ -1,5 +1,8 @@
-class EditPreview extends Component {
+class StudentPreviewEdit extends Component {
 
+  // --------------------------------------------------
+  // Props
+  // --------------------------------------------------
   static get propTypes() {
     return {
       student: React.PropTypes.object.isRequired,
@@ -12,6 +15,9 @@ class EditPreview extends Component {
     };
   }
 
+  // --------------------------------------------------
+  // Styles
+  // --------------------------------------------------
   get styles() {
     return {
       container: Object.assign(
@@ -41,12 +47,26 @@ class EditPreview extends Component {
     };
   }
 
+  // --------------------------------------------------
+  // Lifecycle
+  // --------------------------------------------------
   componentWillMount() {
     this.setState({
       birthday: this.props.student.birthday,
       firstName: this.props.student.first_name,
       lastName: this.props.student.last_name,
     });
+  }
+
+  // --------------------------------------------------
+  // Helpers
+  // --------------------------------------------------
+  generateHandler(field) {
+    var state = {};
+    return(event) => {
+      state[field] = event.target.value;
+      this.setState(state);
+    };
   }
 
   updateStudent() {
@@ -58,14 +78,9 @@ class EditPreview extends Component {
     StudentActions.updateStudent(this.props.student.id, params);
   }
 
-  generateHandler(field) {
-    var state = {};
-    return(event) => {
-      state[field] = event.target.value;
-      this.setState(state);
-    };
-  }
-
+  // --------------------------------------------------
+  // Render
+  // --------------------------------------------------
   render() {
     var student = this.props.student;
     return (
