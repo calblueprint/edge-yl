@@ -77,7 +77,10 @@ class UserPage extends Component {
       <div style={StyleConstants.pages.default}>
         <Header toggleSidebar={(event) => StudentActions.toggleSidebar()} />
         <div style={this.styles.container}>
-          <Sidebar hidden={this.state.sidebar} />
+          <Sidebar
+            hidden={this.state.sidebar}
+            profile={this.state.profile} />
+          <UserGrid user={this.state.user} />
         </div>
       </div>
     );

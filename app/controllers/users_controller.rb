@@ -6,7 +6,6 @@ class UsersController < BaseController
 
   def show
     @id = params[:id].to_i
-    create_visit id: @id, type: :User
   end
 
   def profile
