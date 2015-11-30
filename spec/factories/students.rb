@@ -17,6 +17,7 @@
 #  home_phone         :string           not null
 #  last_name          :string           not null
 #  school_id          :integer
+#  group_id           :integer
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
 #

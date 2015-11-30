@@ -17,6 +17,7 @@
 #  home_phone         :string           not null
 #  last_name          :string           not null
 #  school_id          :integer
+#  group_id           :integer
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
 #
@@ -26,6 +27,7 @@ class Student < ActiveRecord::Base
   include PgSearch
   multisearchable against: [:first_name, :last_name, :email]
 
+  belongs_to :group
   belongs_to :school
 
   has_many :comments, dependent: :destroy
