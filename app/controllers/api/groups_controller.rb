@@ -4,6 +4,8 @@ class Api::GroupsController < Api::BaseController
     group = Group.new group_params
     if group.save
       render json: group, serializer: GroupBaseSerializer
+    else
+      unprocessable_response group
     end
   end
 
