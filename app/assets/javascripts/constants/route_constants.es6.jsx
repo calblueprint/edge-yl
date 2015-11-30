@@ -7,7 +7,7 @@
         show: function(id) {
           return `/conferences/${id}`;
         },
-      }
+      };
     }
 
     get pages() {
