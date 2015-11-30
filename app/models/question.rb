@@ -14,6 +14,8 @@
 
 class Question < ActiveRecord::Base
 
+  enum style: [:dropdown, :input, :textarea]
+
   belongs_to :section
 
 end
