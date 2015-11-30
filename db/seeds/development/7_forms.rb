@@ -1,6 +1,6 @@
 form_params = {
   target: Form.targets[:student],
-  title: 'New Student',
+  title: 'Student Form',
 }
 new_form = Form.create(form_params) do |form|
   section_params = {
