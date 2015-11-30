@@ -55,6 +55,7 @@ class UserPage extends Component {
 
   componentWillUnmount() {
     UserStore.unlisten(this._listener);
+    ProfileStore.unlisten(this._listner);
   }
 
   // --------------------------------------------------

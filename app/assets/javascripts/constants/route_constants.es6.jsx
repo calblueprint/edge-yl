@@ -45,7 +45,7 @@
         index: '/users',
         show: function(id) {
           return `/users/${id}`;
-        }
+        },
       };
     }
   }

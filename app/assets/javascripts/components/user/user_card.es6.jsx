@@ -21,7 +21,7 @@ class UserCard extends Component {
   static get defaultProps() {
     return {
       user: {},
-      target: TypeConstants.overlay.target.preview,
+      target: TypeConstants.overlay.target.outreach,
       type: TypeConstants.overlay.type.edit,
     };
   }
