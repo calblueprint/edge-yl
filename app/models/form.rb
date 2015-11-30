@@ -10,7 +10,7 @@
 
 class Form < ActiveRecord::Base
 
-  has_many :sections
+  has_many :sections, dependent: :destroy
   has_many :questions, through: :sections
 
 end
