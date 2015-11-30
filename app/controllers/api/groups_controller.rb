@@ -8,8 +8,7 @@ class Api::GroupsController < Api::BaseController
   end
 
   def index
-    groups = Group.all
-    render json: groups, each_serializer: GroupIndexSerializer
+    render json: Group.all, each_serializer: GroupIndexSerializer
   end
 
   def show
