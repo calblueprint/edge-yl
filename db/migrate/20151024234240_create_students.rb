@@ -17,7 +17,7 @@ class CreateStudents < ActiveRecord::Migration
       t.string :last_name, null: false
 
       t.references :school, index: true
-      t.references :conference, index: true
+      t.references :group, index: true
 
       t.timestamps null: false
     end

@@ -103,12 +103,12 @@ ActiveRecord::Schema.define(version: 20151130013648) do
     t.string   "home_phone",         null: false
     t.string   "last_name",          null: false
     t.integer  "school_id"
-    t.integer  "conference_id"
+    t.integer  "group_id"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
   end
 
-  add_index "students", ["conference_id"], name: "index_students_on_conference_id", using: :btree
+  add_index "students", ["group_id"], name: "index_students_on_group_id", using: :btree
   add_index "students", ["school_id"], name: "index_students_on_school_id", using: :btree
 
   create_table "users", force: :cascade do |t|
