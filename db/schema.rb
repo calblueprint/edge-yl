@@ -58,8 +58,8 @@ ActiveRecord::Schema.define(version: 20151130011830) do
   create_table "questions", force: :cascade do |t|
     t.string   "key",         null: false
     t.string   "placeholder", null: false
+    t.integer  "style",       null: false
     t.string   "title",       null: false
-    t.integer  "type",        null: false
     t.integer  "section_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false

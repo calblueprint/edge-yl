@@ -4,8 +4,8 @@ class CreateQuestions < ActiveRecord::Migration
 
       t.string :key, null: false
       t.string :placeholder, null: false
+      t.integer :style, null: false
       t.string :title, null: false
-      t.integer :type, null: false
 
       t.references :section, index: true
 

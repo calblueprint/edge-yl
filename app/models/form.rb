@@ -4,6 +4,7 @@
 #
 #  id         :integer          not null, primary key
 #  target     :integer          not null
+#  title      :string           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
