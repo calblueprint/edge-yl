@@ -15,6 +15,12 @@ class Api::UsersController < Api::BaseController
     end
   end
 
+  def show
+    user = User.find params[:id]
+    current_user.create_visit('User', params[:id].to_i)
+    render json: user, serializer: UserShowSerializer
+  end
+
   def update
     user = User.find params[:id]
     if user.update_attributes user_params

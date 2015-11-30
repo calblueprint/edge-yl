@@ -54,6 +54,9 @@
         login: '/api/users/login',
         logout: '/api/users/logout',
         profile: '/api/users/profile',
+        show: function(id) {
+          return `/api/users/${id}`;
+        },
         signout: '/api/users/signout',
       };
     }
