@@ -38,7 +38,6 @@ class SchoolPageOverlay extends PageOverlay {
   //  Render
   //  --------------------------------------------------
   renderModal() {
-
     return (
       <SchoolEditModal
         overlay={this.props.overlay}

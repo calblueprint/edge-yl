@@ -34,6 +34,9 @@ class EditModal extends Component {
     node.addEventListener('click', (event) => this.handleClick(event));
   }
 
+  // --------------------------------------------------
+  // Render
+  // --------------------------------------------------
   render() {
     return (
       <div ref={'container'} style={this.styles.container}>
