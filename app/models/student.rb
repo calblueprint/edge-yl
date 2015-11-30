@@ -27,6 +27,7 @@ class Student < ActiveRecord::Base
   multisearchable against: [:first_name, :last_name, :email]
 
   belongs_to :school
+  belongs_to :group
 
   has_many :comments, dependent: :destroy
   has_many :visits, dependent: :destroy, as: :visitable
