@@ -9,7 +9,7 @@ end
 
 (1..5).each do
   generate_group(1)
-  puts "Created group for Conference 1"
+  puts 'Created group for Conference 1.'
 end
 
 Student.all.each do |student|

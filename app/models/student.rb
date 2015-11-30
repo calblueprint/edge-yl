@@ -27,8 +27,8 @@ class Student < ActiveRecord::Base
   include PgSearch
   multisearchable against: [:first_name, :last_name, :email]
 
-  belongs_to :school
   belongs_to :group
+  belongs_to :school
 
   has_many :comments, dependent: :destroy
   has_many :visits, dependent: :destroy, as: :visitable
