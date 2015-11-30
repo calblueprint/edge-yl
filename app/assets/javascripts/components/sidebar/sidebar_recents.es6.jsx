@@ -41,7 +41,7 @@ class SidebarRecents extends Component {
         <SidebarItem
           key={index}
           label={visit.visitable_name}
-          icon={'fa fa-pencil fa-lg'}
+          icon={TypeConstants.icons.student}
           route={RouteConstants.students.show(visit.visitable_id)} />
       );
     } else {
@@ -49,7 +49,7 @@ class SidebarRecents extends Component {
         <SidebarItem
           key={index}
           label={visit.visitable_name}
-          icon={'fa fa-building-o fa-lg'}
+          icon={TypeConstants.icons.school}
           route={RouteConstants.schools.show(visit.visitable_id)} />
       );
     }
