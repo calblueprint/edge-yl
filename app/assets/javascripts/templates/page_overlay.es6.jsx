@@ -47,4 +47,11 @@ class PageOverlay extends Component {
     this._node = node;
     node.addEventListener('click', (event) => this.handleClick(event));
   }
+
+  // --------------------------------------------------
+  // Render
+  // --------------------------------------------------
+  render() {
+    return <div></div>;
+  }
 }
