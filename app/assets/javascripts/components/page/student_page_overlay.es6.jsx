@@ -36,9 +36,9 @@ class StudentPageOverlay extends Overlay {
     }
   }
 
-//  --------------------------------------------------
-//  Render
-//  --------------------------------------------------
+  //  --------------------------------------------------
+  //  Render
+  //  --------------------------------------------------
   renderModal() {
     if (this.props.overlay.type === TypeConstants.overlay.type.edit) {
       return (

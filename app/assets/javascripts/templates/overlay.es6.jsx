@@ -27,7 +27,7 @@ class Overlay extends Component {
     };
   }
 
-    get clickableStyles() {
+  get clickableStyles() {
     return {
       default: {
         position: 'fixed',
@@ -48,8 +48,4 @@ class Overlay extends Component {
     this._node = node;
     node.addEventListener('click', (event) => this.handleClick(event));
   }
-
-
-
-
 }

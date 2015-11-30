@@ -62,7 +62,6 @@ class StudentPage extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
-
   renderOverlay() {
     if (this.state.overlay.active) {
       return (
