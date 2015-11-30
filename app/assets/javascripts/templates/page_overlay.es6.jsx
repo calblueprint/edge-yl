@@ -1,4 +1,4 @@
-class Overlay extends Component {
+class PageOverlay extends Component {
 
   // --------------------------------------------------
   // Setup

@@ -1,4 +1,4 @@
-class StudentPageOverlay extends Overlay {
+class StudentPageOverlay extends PageOverlay {
 
   // --------------------------------------------------
   // Props
