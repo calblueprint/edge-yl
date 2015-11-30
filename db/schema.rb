@@ -39,8 +39,8 @@ ActiveRecord::Schema.define(version: 20151130013648) do
   end
 
   create_table "groups", force: :cascade do |t|
-    t.string   "name"
-    t.integer  "conference_id"
+    t.string   "name",          null: false
+    t.integer  "conference_id", null: false
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
   end
@@ -102,8 +102,8 @@ ActiveRecord::Schema.define(version: 20151130013648) do
     t.string   "home_address",       null: false
     t.string   "home_phone",         null: false
     t.string   "last_name",          null: false
-    t.integer  "school_id"
     t.integer  "group_id"
+    t.integer  "school_id"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
   end

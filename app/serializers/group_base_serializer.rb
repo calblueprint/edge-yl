@@ -1,4 +1,4 @@
-class GroupBaseSerialzier < BaseSerializer
+class GroupBaseSerializer < BaseSerializer
 
   attributes :id, :name
 

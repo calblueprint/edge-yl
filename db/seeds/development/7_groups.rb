@@ -1,18 +1,20 @@
 @alphabet = ("a".."z").to_a
 
-def generate_group(conference_id)
+def generate_group(conference)
   new_group = Group.create(
     name: @alphabet.shift,
-    conference_id: conference_id,
+    conference: conference,
   )
 end
 
 (1..5).each do
-  generate_group(1)
+  generate_group(Conference.first)
   puts 'Created group for Conference 1.'
 end
 
 Student.all.each do |student|
-  student.group = Group.find(rand(1..5))
-  puts "Assigned group to #{student.first_name} #{student.last_name}."
+  group = Group.find(rand(1..5))
+  student.group = group
+  student.save
+  puts "Assigned #{student.first_name} #{student.last_name} to group #{group.name}."
 end
