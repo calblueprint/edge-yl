@@ -5,7 +5,13 @@ class SidebarRecents extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      profile: React.PropTypes.object.isRequired,
+      visits: React.PropTypes.array.isRequired,
+    };
+  }
+
+  static get defaultProps() {
+    return {
+      visits: [],
     };
   }
 
@@ -30,30 +36,27 @@ class SidebarRecents extends Component {
   // Render
   // --------------------------------------------------
   renderItem(visit, index) {
-    if (visit.student) {
+    if (visit.visitable_type === 'Student') {
       return (
         <SidebarItem
           key={index}
-          label={'Recent Student'}
-          icon={'fa fa-pencil fa-lg'}
-          route={RouteConstants.students.show(1)} />
+          label={visit.visitable_name}
+          icon={TypeConstants.icons.student}
+          route={RouteConstants.students.show(visit.visitable_id)} />
       );
     } else {
       return (
         <SidebarItem
           key={index}
-          label={'Recent School'}
-          icon={'fa fa-building-o fa-lg'}
-          route={RouteConstants.schools.show(1)} />
+          label={visit.visitable_name}
+          icon={TypeConstants.icons.school}
+          route={RouteConstants.schools.show(visit.visitable_id)} />
       );
     }
   }
 
   renderItems() {
-    var visits = this.props.profile.visits;
-    if (visits) {
-      return visits.map((visit, index) => this.renderItem(visit, index));
-    }
+    return this.props.visits.map((visit, index) => this.renderItem(visit, index));
   }
 
   render() {

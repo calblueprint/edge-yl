@@ -6,7 +6,6 @@ class SchoolsController < BaseController
 
   def show
     @id = params[:id].to_i
-    create_visit id: @id, type: :School
   end
 
 end

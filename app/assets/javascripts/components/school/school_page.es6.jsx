@@ -45,15 +45,19 @@ class SchoolPage extends Component {
   // Lifecycle
   // --------------------------------------------------
   componentWillMount() {
+    this.setState(ProfileStore.getState());
     this.setState(SchoolStore.getState());
   }
 
   componentDidMount() {
+    ProfileStore.listen(this._listener);
     SchoolStore.listen(this._listener);
+    ProfileActions.fetchProfile();
     SchoolActions.fetchSchool(this.props.id);
   }
 
   componentWillUnmount() {
+    ProfileStore.unlisten(this._listener);
     SchoolStore.unlisten(this._listener);
   }
 
@@ -76,7 +80,9 @@ class SchoolPage extends Component {
         {this.renderOverlay()}
         <Header toggleSidebar={() => this.toggleSidebar()} />
         <div style={this.styles.container}>
-          <Sidebar hidden={this.state.sidebar} />
+          <Sidebar
+            hidden={this.state.sidebar}
+            profile={this.state.profile} />
           <SchoolGrid school={this.state.school} />
           <div style={this.styles.placeholder}></div>
         </div>

@@ -1,17 +1,28 @@
-class EditContact extends Component {
+class StudentCommentCreate extends Component {
 
   // --------------------------------------------------
   // Props
   // --------------------------------------------------
   static get propTypes() {
     return {
+      profile: React.PropTypes.object.isRequired,
       student: React.PropTypes.object.isRequired,
     };
   }
 
   static get defaultProps() {
     return {
+      profile: {},
       student: {},
+    };
+  }
+
+  // --------------------------------------------------
+  // State
+  // --------------------------------------------------
+  static get defaultState() {
+    return {
+      content: '',
     };
   }
 
@@ -38,38 +49,20 @@ class EditContact extends Component {
         padding: '12px',
         marginBottom: '18px',
       },
-      image: {
-        width: '152px',
-        height: '152px',
-        marginTop: '18px',
-        borderRadius: '50%',
+    };
+  }
+
+  // --------------------------------------------------
+  // Helpers
+  // --------------------------------------------------
+  createComment() {
+    var params = {
+      'comment' : {
+        'content': this.state.content,
+        'user_id': this.props.profile.id,
       },
     };
-  }
-
-  // --------------------------------------------------
-  // Lifecycle
-  // --------------------------------------------------
-  componentWillMount() {
-    this.setState({
-      cellPhone: this.props.student.cell_phone,
-      email: this.props.student.email,
-      homeAddress: this.props.student.home_address,
-      homePhone: this.props.student.home_phone,
-    });
-  }
-
-  // --------------------------------------------------
-  // Handlers
-  // --------------------------------------------------
-  updateStudent() {
-    var params = {
-      cell_phone: this.state.cellPhone,
-      email: this.state.email,
-      home_address: this.state.homeAddress,
-      home_phone: this.state.homePhone,
-    };
-    StudentActions.updateStudent(this.props.student.id, params);
+    StudentActions.createComment(this.props.student.id, params);
   }
 
   generateHandler(field) {
@@ -88,26 +81,14 @@ class EditContact extends Component {
     return (
       <div style={this.styles.container}>
         <CardHeader
-          action={(event) => this.updateStudent()}
-          content={'Student Information'}
-          icon={'fa fa-save fa-lg'} />
+          action={(event) => this.createComment()}
+          content={'Add a Comment'}
+          icon={TypeConstants.icons.save} />
         <div style={this.styles.form}>
           <CardInput
-            action={this.generateHandler('cellPhone')}
-            placeholder={'Cell phone'}
-            value={this.state.cellPhone} />
-          <CardInput
-            action={this.generateHandler('homePhone')}
-            placeholder={'Home phone'}
-            value={this.state.homePhone} />
-          <CardInput
-            action={this.generateHandler('email')}
-            placeholder={'Email'}
-            value={this.state.email} />
-          <CardInput
-            action={this.generateHandler('homeAddress')}
-            placeholder={'Home address'}
-            value={this.state.homeAddress} />
+            action={this.generateHandler('content')}
+            placeholder={'Your comment here...'}
+            value={''} />
         </div>
       </div>
     );

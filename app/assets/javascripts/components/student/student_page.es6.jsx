@@ -55,17 +55,17 @@ class StudentPage extends Component {
   }
 
   componentWillUnmount() {
+    ProfileStore.unlisten(this._listener);
     StudentStore.unlisten(this._listener);
   }
 
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
-
   renderOverlay() {
     if (this.state.overlay.active) {
       return (
-        <PageOverlay
+        <StudentPageOverlay
           overlay={this.state.overlay}
           profile={this.state.profile}
           student={this.state.student} />
@@ -81,7 +81,7 @@ class StudentPage extends Component {
         <div style={this.styles.container}>
           <Sidebar
             hidden={this.state.sidebar}
-            profile={this.state.profile} />          
+            profile={this.state.profile} />
           <StudentGrid student={this.state.student} />
           <StudentComments comments={this.state.comments} />
         </div>

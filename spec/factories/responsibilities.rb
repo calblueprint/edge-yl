@@ -3,7 +3,9 @@
 # Table name: responsibilities
 #
 #  id         :integer          not null, primary key
-#  status     :string           not null
+#  status     :integer          not null
+#  student_id :integer
+#  user_id    :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #

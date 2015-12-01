@@ -1,5 +1,8 @@
-class EditPreview extends Component {
+class StudentPreviewEdit extends Component {
 
+  // --------------------------------------------------
+  // Props
+  // --------------------------------------------------
   static get propTypes() {
     return {
       student: React.PropTypes.object.isRequired,
@@ -12,6 +15,9 @@ class EditPreview extends Component {
     };
   }
 
+  // --------------------------------------------------
+  // Styles
+  // --------------------------------------------------
   get styles() {
     return {
       container: Object.assign(
@@ -41,12 +47,26 @@ class EditPreview extends Component {
     };
   }
 
+  // --------------------------------------------------
+  // Lifecycle
+  // --------------------------------------------------
   componentWillMount() {
     this.setState({
       birthday: this.props.student.birthday,
       firstName: this.props.student.first_name,
       lastName: this.props.student.last_name,
     });
+  }
+
+  // --------------------------------------------------
+  // Helpers
+  // --------------------------------------------------
+  generateHandler(field) {
+    var state = {};
+    return(event) => {
+      state[field] = event.target.value;
+      this.setState(state);
+    };
   }
 
   updateStudent() {
@@ -58,14 +78,9 @@ class EditPreview extends Component {
     StudentActions.updateStudent(this.props.student.id, params);
   }
 
-  generateHandler(field) {
-    var state = {};
-    return(event) => {
-      state[field] = event.target.value;
-      this.setState(state);
-    };
-  }
-
+  // --------------------------------------------------
+  // Render
+  // --------------------------------------------------
   render() {
     var student = this.props.student;
     return (
@@ -73,7 +88,7 @@ class EditPreview extends Component {
         <CardHeader
           action={(event) => this.updateStudent()}
           content={'Student Preview'}
-          icon={'fa fa-save fa-lg'} />
+          icon={TypeConstants.icons.save} />
         <div style={this.styles.form}>
           <img
             src='https://scontent.fsnc1-1.fna.fbcdn.net/hphotos-xfp1/t31.0-8/11856297_10200932572512494_2256826043885795533_o.jpg'

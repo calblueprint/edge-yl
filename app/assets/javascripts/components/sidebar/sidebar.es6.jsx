@@ -41,6 +41,12 @@ class Sidebar extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
+  renderRecents() {
+    var visits = this.props.profile.visits;
+    if (visits && visits.length) {
+      return <SidebarRecents visits={visits} />;
+    }
+  }
   render() {
     // TODO(Warren): Fix when sidebar shows and hides.
     var style = Object.assign(
@@ -51,7 +57,7 @@ class Sidebar extends Component {
     return (
       <div style={style}>
         <SidebarCategories />
-        <SidebarRecents profile={this.props.profile} />
+        {this.renderRecents()}
         <SidebarFooter />
       </div>
     );
