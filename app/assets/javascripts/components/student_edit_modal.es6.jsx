@@ -1,4 +1,4 @@
-class SchoolPageOverlay extends PageOverlay {
+class StudentEditModal extends EditModal {
 
   // --------------------------------------------------
   // Props
@@ -10,7 +10,7 @@ class SchoolPageOverlay extends PageOverlay {
         target: React.PropTypes.string.isRequired,
         type: React.PropTypes.string.isRequired,
       }).isRequired,
-      school: React.PropTypes.object.isRequired,
+      student: React.PropTypes.object.isRequired,
     };
   }
 
@@ -21,7 +21,7 @@ class SchoolPageOverlay extends PageOverlay {
         target: TypeConstants.overlay.target.preview,
         type: TypeConstants.overlay.type.edit,
       },
-      school: {},
+      student: {},
     };
   }
 
@@ -30,31 +30,19 @@ class SchoolPageOverlay extends PageOverlay {
   // --------------------------------------------------
   handleClick(event) {
     if (event.target === this._node) {
-      SchoolActions.storeOverlay(false);
+      StudentActions.storeOverlay(false);
     }
   }
 
-  //  --------------------------------------------------
-  //  Render
-  //  --------------------------------------------------
-  renderModal() {
-    return (
-      <SchoolEditModal
-        overlay={this.props.overlay}
-        school={this.props.school} />
-    );
-  }
-
-  render() {
-    return (
-      <div ref={'container'} style={this.styles.container}>
-        <Clickable
-          action={(event) => SchoolActions.storeOverlay(false)}
-          icon={'fa fa-times fa-2x'}
-          styles={this.clickableStyles}
-          type={'i'} />
-        {this.renderModal()}
-      </div>
-    );
+  // --------------------------------------------------
+  // Render
+  // --------------------------------------------------
+  renderBody() {
+    switch (this.props.overlay.target) {
+      case 'preview':
+        return <StudentPreviewEdit student={this.props.student} />;
+      case 'contact':
+        return <StudentContactEdit student={this.props.student} />;
+    }
   }
 }
