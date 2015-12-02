@@ -1,5 +1,5 @@
 class ResponsibilityIndexSerializer < ResponsibilityBaseSerializer
 
-  belongs_to :user, serializer: UserBaseSerializer
+  has_one :user, serializer: UserBaseSerializer
 
 end

@@ -10,20 +10,20 @@ class Api::StudentsController < Api::BaseController
   end
 
   def index
-    students = Student.includes(:school).page params[:page]
+    students = Student.includes(:group, :school).page params[:page]
     render json: students,
                  serializer: PaginatedSerializer,
                  each_serializer: StudentIndexSerializer
   end
 
   def show
-    student = Student.find params[:id]
+    student = Student.includes(comments: :user).find params[:id]
     current_user.create_visit('Student', params[:id].to_i)
     render json: student, serializer: StudentShowSerializer
   end
 
   def update
-    student = Student.find params[:id]
+    student = Student.includes(comments: :user).find params[:id]
     if student.update_attributes student_params
       render json: student, serializer: StudentShowSerializer, status: 201
     else
