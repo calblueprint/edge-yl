@@ -53,7 +53,7 @@ class SignupForm extends Component {
     var passwordConfirmation = ReactDOM.findDOMNode(this.refs.passwordConfirmation);
     passwordConfirmation.addEventListener('input', this.generateHandler('passwordConfirmation'));
     var node = ReactDOM.findDOMNode(this.refs.container);
-    node.addEventListener('keydown', (event) => this.handleKeyPress(event));
+    node.addEventListener('keydown', (event) => this.handleKeyDown(event));
   }
 
   // --------------------------------------------------
