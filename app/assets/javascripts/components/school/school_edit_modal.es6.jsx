@@ -38,6 +38,6 @@ class SchoolEditModal extends EditModal {
   // Render
   // --------------------------------------------------
   renderBody() {
-    return <EditSchool school={this.props.school} />;
+    return <SchoolPreviewEdit school={this.props.school} />;
   }
 }
