@@ -4,6 +4,8 @@ class StudentShowSerializer < StudentIndexSerializer
              :guardian_one_phone, :guardian_one_email, :guardian_two_name,
              :guardian_two_phone, :guardian_two_email
 
+  has_many :comments, serializer: CommentIndexSerializer
+
   has_one :student_conference, serializer: StudentConferenceBaseSerializer
 
 end
