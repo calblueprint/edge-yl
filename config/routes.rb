@@ -36,7 +36,7 @@
     resources :schools, only: [:create, :index, :show, :update]
     resources :students, only: [:create, :index, :show, :update] do
       scope module: :students do
-        resources :comments, only: [:create, :index]
+        resources :comments, only: [:create]
       end
     end
     resources :users, only: [:index, :show, :update]
