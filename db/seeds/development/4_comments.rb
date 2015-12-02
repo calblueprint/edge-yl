@@ -1,13 +1,13 @@
-def generate_comment(student_id)
+def generate_comment(student)
   new_comment = Comment.create(
     content: "#{Faker::Lorem.sentence}",
+    student: student,
     user_id: 1 + rand(4),
-    student_id: student_id,
   )
 end
 
 Student.all.each do |student|
-  generate_comment(student.id)
-  generate_comment(student.id)
+  generate_comment(student)
+  generate_comment(student)
   puts "Created comments for #{student.name}."
 end

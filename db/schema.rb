@@ -38,6 +38,13 @@ ActiveRecord::Schema.define(version: 20151130013648) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "forms", force: :cascade do |t|
+    t.integer  "target",     null: false
+    t.string   "title",      null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "groups", force: :cascade do |t|
     t.string   "name",          null: false
     t.integer  "conference_id", null: false
@@ -56,6 +63,18 @@ ActiveRecord::Schema.define(version: 20151130013648) do
   end
 
   add_index "pg_search_documents", ["searchable_type", "searchable_id"], name: "index_pg_search_documents_on_searchable_type_and_searchable_id", using: :btree
+
+  create_table "questions", force: :cascade do |t|
+    t.string   "key",         null: false
+    t.string   "placeholder", null: false
+    t.integer  "style",       null: false
+    t.string   "title",       null: false
+    t.integer  "section_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "questions", ["section_id"], name: "index_questions_on_section_id", using: :btree
 
   create_table "responsibilities", force: :cascade do |t|
     t.integer  "status",     null: false
@@ -76,6 +95,15 @@ ActiveRecord::Schema.define(version: 20151130013648) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end
+
+  create_table "sections", force: :cascade do |t|
+    t.string   "title",      null: false
+    t.integer  "form_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "sections", ["form_id"], name: "index_sections_on_form_id", using: :btree
 
   create_table "student_conferences", force: :cascade do |t|
     t.integer  "status",        null: false

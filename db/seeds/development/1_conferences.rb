@@ -3,4 +3,4 @@ new_conference = Conference.create(
   location: 'University of California, Berkeley',
   start_date: Faker::Date.forward(2),
 )
-puts "Create conference: #{new_conference.start_date} - #{new_conference.end_date}"
+puts "Created conference: #{new_conference.start_date} - #{new_conference.end_date}"
