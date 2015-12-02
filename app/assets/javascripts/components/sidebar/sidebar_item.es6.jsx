@@ -22,7 +22,7 @@ class SidebarItem extends Component {
       default: {
         flex: '1',
         padding: '12px',
-        marginTop: '16px',
+        marginTop: '12px',
         borderRadius: '1px',
         boxSizing: 'border-box',
       },

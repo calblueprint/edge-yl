@@ -23,12 +23,15 @@ class SidebarRecents extends Component {
       container: {
         display: 'flex',
         flexFlow: 'column',
-        paddingTop: '12px',
       },
       divider: {
         marginTop: '16px',
         borderBottom: '1px solid',
         borderColor: StyleConstants.colors.gray,
+      },
+      title: {
+        padding: '0 12px',
+        marginTop: '24px',
       },
     };
   }
@@ -65,7 +68,7 @@ class SidebarRecents extends Component {
   render() {
     return (
       <div style={this.styles.container}>
-        <h3>{'Recent'}</h3>
+        <h3 style={this.styles.title}>{'Recents'}</h3>
         {this.renderItems()}
         <div style={this.styles.divider} />
       </div>
