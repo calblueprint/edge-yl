@@ -1,9 +1,9 @@
 conference = Conference.first
 Student.all.each do |student|
   new_student_conference = StudentConference.create(
+    conference: conference,
     status: rand(3),
-    conference_id: conference.id,
-    student_id: student.id,
+    student: student,
   )
   puts "Created student-conference for #{student.name}."
 end

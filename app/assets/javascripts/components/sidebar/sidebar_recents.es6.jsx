@@ -37,23 +37,25 @@ class SidebarRecents extends Component {
   // Render
   // --------------------------------------------------
   renderItem(visit, index) {
+    var icon;
+    var route;
     if (visit.visitable_type === 'Student') {
-      return (
-        <SidebarItem
-          key={index}
-          label={visit.visitable_name}
-          icon={TypeConstants.icons.student}
-          route={RouteConstants.students.show(visit.visitable_id)} />
-      );
+      icon = TypeConstants.icons.student;
+      route = RouteConstants.students.show(visit.visitable_id);
+    } else if (visit.visitable_type === 'School') {
+      icon = TypeConstants.icons.school;
+      route = RouteConstants.schools.show(visit.visitable_id);
     } else {
-      return (
-        <SidebarItem
-          key={index}
-          label={visit.visitable_name}
-          icon={TypeConstants.icons.school}
-          route={RouteConstants.schools.show(visit.visitable_id)} />
-      );
+      icon = TypeConstants.icons.volunteer;
+      route = RouteConstants.users.show(visit.visitable_id);
     }
+    return (
+      <SidebarItem
+        key={index}
+        label={visit.visitable_name}
+        icon={icon}
+        route={route} />
+    );
   }
 
   renderItems() {
