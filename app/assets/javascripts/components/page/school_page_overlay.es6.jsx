@@ -1,12 +1,4 @@
-class SchoolPageOverlay extends Component {
-
-  // --------------------------------------------------
-  // Setup
-  // --------------------------------------------------
-  constructor(props) {
-    super(props);
-    this._node = null;
-  }
+class SchoolPageOverlay extends PageOverlay {
 
   // --------------------------------------------------
   // Props
@@ -26,51 +18,11 @@ class SchoolPageOverlay extends Component {
     return {
       overlay: {
         active: false,
-        target: TypeConstants.overlay.type.preview,
-        type: TypeConstants.overlay.target.edit,
+        target: TypeConstants.overlay.target.preview,
+        type: TypeConstants.overlay.type.edit,
       },
       school: {},
     };
-  }
-
-  // --------------------------------------------------
-  // Styles
-  // --------------------------------------------------
-  get styles() {
-    return {
-      container: {
-        display: 'flex',
-        justifyContent: 'center',
-        position: 'fixed',
-        top: '0px',
-        left: '0px',
-        zIndex: StyleConstants.planes.nine,
-        width: '100vw',
-        height: '100vh',
-        backgroundColor: StyleConstants.colors.fog,
-      },
-    };
-  }
-
-  get clickableStyles() {
-    return {
-      default: {
-        position: 'fixed',
-        top: '0px',
-        right: '0px',
-        zIndex: StyleConstants.planes.nine,
-        padding: '8px',
-      },
-    };
-  }
-
-  // --------------------------------------------------
-  // Lifecycle
-  // --------------------------------------------------
-  componentDidMount() {
-    var node = ReactDOM.findDOMNode(this.refs.container);
-    this._node = node;
-    node.addEventListener('click', (event) => this.handleClick(event));
   }
 
   // --------------------------------------------------
@@ -82,12 +34,12 @@ class SchoolPageOverlay extends Component {
     }
   }
 
-//  --------------------------------------------------
-//  Render
-//  --------------------------------------------------
+  //  --------------------------------------------------
+  //  Render
+  //  --------------------------------------------------
   renderModal() {
     return (
-      <EditSchoolModal
+      <SchoolEditModal
         overlay={this.props.overlay}
         school={this.props.school} />
     );

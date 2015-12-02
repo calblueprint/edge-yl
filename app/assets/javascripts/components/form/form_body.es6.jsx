@@ -1,21 +1,23 @@
 class FormBody extends Component {
 
-  static get defaultState() {
-    return {};
-  }
-
+  // --------------------------------------------------
+  // Props
+  // --------------------------------------------------
   static get propTypes() {
-    return {};
+    return {
+      form: React.PropTypes.object.isRequired,
+    };
   }
 
   static get defaultProps() {
-    return {};
+    return {
+      form: {},
+    };
   }
 
-  //TODO(Sonia): Finish this method definition
-  updateValue(section, key, value) {
-  }
-
+  // --------------------------------------------------
+  // Styles
+  // --------------------------------------------------
   get styles() {
     return {
       container: Object.assign(
@@ -37,21 +39,19 @@ class FormBody extends Component {
     };
   }
 
-  createStudent(event) {
-    Requester.post(
-      RouteConstants.students.create,
-      {
-        student: {
-          birthday: '12/25/2000',
-          cell_phone: '(510) 333-3333',
-          email: 'jonie_distefano@gmail.com',
-          first_name: 'Jonie',
-          home_address: '5150 Kingston Street',
-          home_phone: '(510) 333-3333',
-          last_name: 'Distefano',
-        },
-      }
+  // --------------------------------------------------
+  // Render
+  // --------------------------------------------------
+  renderSection(section, index) {
+    return (
+      <FormSection
+        key={index}
+        section={section} />
     );
+  }
+
+  renderSections() {
+    return this.state.sections.map((section, index) => this.renderSection(section, index));
   }
 
   render() {
@@ -60,13 +60,10 @@ class FormBody extends Component {
         <div style={this.styles.header}>
           <h1 style={this.styles.title}>{'Form'}</h1>
         </div>
-        <FormSection
-          title={'Basic Information'}
-          updateValue={() => this.updateValue()} />
-        <FormSection
-          title={'Health Information'}
-          updateValue={() => this.updateValue()} />
-        <FormFooter />
+        {this.renderSections()}
+        <FormButton
+          action={(event) => FormActions.createObject(this.state.sections)}
+          content={'Submit'} />
       </div>
     );
   }

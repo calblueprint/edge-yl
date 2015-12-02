@@ -1,12 +1,12 @@
-def generate_responsibility(student_id)
+def generate_responsibility(student)
   new_responsibility = Responsibility.create(
     status: rand(2),
-    student_id: student_id,
+    student: student,
     user_id: 1 + rand(4),
   )
 end
 
 Student.all.each do |student|
-  generate_responsibility(student.id)
-  puts "Created responsibility for #{student.first_name} #{student.last_name}."
+  generate_responsibility(student)
+  puts "Created responsibility for #{student.name}."
 end

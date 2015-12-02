@@ -77,7 +77,7 @@ class CreateModal extends Component {
     switch (this.props.overlay.target) {
       case 'comment':
         return (
-          <CreateComment
+          <StudentCommentCreate
             profile={this.props.profile}
             student={this.props.student} />
         );

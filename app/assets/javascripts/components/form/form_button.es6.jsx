@@ -2,9 +2,8 @@ class FormButton extends Component {
 
   static get propTypes() {
     return {
-      action: React.PropTypes.func,
+      action: React.PropTypes.func.isRequired,
       content: React.PropTypes.string.isRequired,
-      route: React.PropTypes.string,
     };
   }
 
@@ -12,7 +11,6 @@ class FormButton extends Component {
     return {
       action: null,
       content: '',
-      route: '',
     };
   }
 
@@ -46,7 +44,6 @@ class FormButton extends Component {
         <Clickable
           action={this.props.action}
           content={this.props.content}
-          route={this.props.route}
           styles={this.clickableStyles} />
       </div>
     );

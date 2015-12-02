@@ -1,0 +1,3 @@
+class FormIndexSerializer < FormBaseSerializer
+
+end

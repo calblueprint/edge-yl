@@ -1,4 +1,4 @@
-class PaginatedSerializer < ActiveModel::Serializer::ArraySerializer
+class PaginatedSerializer < ActiveModel::ArraySerializer
 
   def initialize(object, options={})
     options[:meta] ||= {}

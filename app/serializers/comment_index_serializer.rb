@@ -1,5 +1,5 @@
 class CommentIndexSerializer < CommentBaseSerializer
 
-  belongs_to :user, serializer: UserBaseSerializer
+  has_one :user, serializer: UserBaseSerializer
 
 end
