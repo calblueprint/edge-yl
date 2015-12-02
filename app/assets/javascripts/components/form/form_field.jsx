@@ -47,7 +47,11 @@ class FormField extends Component {
   // --------------------------------------------------
   handleChange(event) {
     var question = this.props.question;
-    FormActions.storeResponse(1, question.id, event.target.value);
+    FormActions.storeResponse(
+      question.section_id,
+      question.id,
+      event.target.value
+    );
   }
 
   // --------------------------------------------------
