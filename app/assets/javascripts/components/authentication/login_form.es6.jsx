@@ -42,6 +42,8 @@ class LoginForm extends Component {
   // Lifecycle
   // --------------------------------------------------
   componentDidMount() {
+    var container = ReactDOM.findDOMNode(this.refs.container);
+    container.addEventListener('keydown', (event) => this.handleKeyDown(event));
     var email = ReactDOM.findDOMNode(this.refs.email);
     email.addEventListener('input', this.generateHandler('email'));
     var password = ReactDOM.findDOMNode(this.refs.password);
@@ -72,6 +74,15 @@ class LoginForm extends Component {
   }
 
   // --------------------------------------------------
+  // Handlers
+  // --------------------------------------------------
+    handleKeyDown(event) {
+      if (event.keyCode === 13) {
+        this.createSession(event);
+      }
+    }
+
+  // --------------------------------------------------
   // Render
   // --------------------------------------------------
   renderError() {
@@ -86,7 +97,9 @@ class LoginForm extends Component {
 
   render() {
     return (
-      <div style={this.styles.container}>
+      <div
+        ref={'container'}
+        style={this.styles.container}>
         <label style={this.styles.label}>
           {'Email'}
         </label>
