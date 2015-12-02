@@ -54,7 +54,7 @@ class SidebarRecents extends Component {
     }
     return (
       <SidebarItem
-        key={index}
+        key={visit.id}
         label={visit.visitable_name}
         icon={icon}
         route={route} />
@@ -62,13 +62,13 @@ class SidebarRecents extends Component {
   }
 
   renderItems() {
-    return this.props.visits.map((visit, index) => this.renderItem(visit, index));
+    return this.props.visits.map((visit) => this.renderItem(visit));
   }
 
   render() {
     return (
       <div style={this.styles.container}>
-        <h3 style={this.styles.title}>{'Recents'}</h3>
+        <h4 style={this.styles.title}>{'Recents'}</h4>
         {this.renderItems()}
         <div style={this.styles.divider} />
       </div>
