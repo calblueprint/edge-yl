@@ -60,7 +60,7 @@ class FormPage extends Component {
   render() {
     return (
       <div style={this.styles.container}>
-
+        <FormBody form={this.state.form} />
       </div>
     );
   }

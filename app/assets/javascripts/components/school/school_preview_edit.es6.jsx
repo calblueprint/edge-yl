@@ -1,4 +1,4 @@
-class EditSchool extends Component {
+class SchoolPreviewEdit extends Component {
 
   static get propTypes() {
     return {
