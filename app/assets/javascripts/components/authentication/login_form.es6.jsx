@@ -47,9 +47,7 @@ class LoginForm extends Component {
     var password = ReactDOM.findDOMNode(this.refs.password);
     password.addEventListener('input', this.generateHandler('password'));
     var node = ReactDOM.findDOMNode(this.refs.container);
-    node.addEventListener('keypress', 'handleKeyPress');
-    var node = ReactDOM.findDOMNode(this.refs.container);
-    node.addEventListener('keydown', (event) => this.handleKeyPress(event));
+    node.addEventListener('keydown', (event) => this.handleKeyDown(event));
   }
 
   // --------------------------------------------------
@@ -78,7 +76,7 @@ class LoginForm extends Component {
   // --------------------------------------------------
   // Handlers
   // --------------------------------------------------
-    handleKeyPress(event) {
+    handleKeyDown(event) {
       if (event.keyCode == 13) {
         this.createSession(event);
       }

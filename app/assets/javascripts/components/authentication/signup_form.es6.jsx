@@ -86,7 +86,7 @@ class SignupForm extends Component {
   // --------------------------------------------------
   // Handlers
   // --------------------------------------------------
-    handleKeyPress(event) {
+    handleKeyDown(event) {
       if (event.keyCode == 13) {
         this.createUser(event);
       }
