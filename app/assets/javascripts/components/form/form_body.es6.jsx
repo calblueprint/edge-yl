@@ -1,11 +1,18 @@
 class FormBody extends Component {
 
   // --------------------------------------------------
-  // Setup
+  // Props
   // --------------------------------------------------
-  constructor(props) {
-    super(props);
-    this._listener = (state) => this.setState(state);
+  static get propTypes() {
+    return {
+      form: React.PropTypes.object.isRequired,
+    };
+  }
+
+  static get defaultProps() {
+    return {
+      form: {},
+    };
   }
 
   // --------------------------------------------------
@@ -30,21 +37,6 @@ class FormBody extends Component {
         marginBottom: '24px',
       },
     };
-  }
-
-  // --------------------------------------------------
-  // Lifecycle
-  // --------------------------------------------------
-  componentWillMount() {
-    this.setState(FormStore.getState());
-  }
-
-  componentDidMount() {
-    FormStore.listen(this._listener);
-  }
-
-  componentWillUnmount() {
-    FormStore.unlisten(this._listener);
   }
 
   // --------------------------------------------------
