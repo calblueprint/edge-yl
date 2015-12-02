@@ -7,7 +7,7 @@
         index: '/api/conferences',
         show: function(id) {
           return `/api/conferences/${id}`;
-        }
+        },
         update: function(id) {
           return `/api/conferences/${id}`;
         },

@@ -40,7 +40,6 @@ class ConferencePage extends Component {
     };
   }
 
-
   // --------------------------------------------------
   // Lifecycle
   // --------------------------------------------------
@@ -53,7 +52,7 @@ class ConferencePage extends Component {
     ProfileStore.listen(this._listener);
     ConferenceStore.listen(this._listener);
     ProfileActions.fetchProfile();
-    ConferenceStore.fetchSchool(this.props.id);
+    ConferenceActions.fetchConference(this.props.id);
   }
 
   componentWillUnmount() {
@@ -67,6 +66,7 @@ class ConferencePage extends Component {
   renderOverlay() {
   if (this.state.overlay.active) {
       return (
+        <div>Render Overlay</div>
       );
     }
   }

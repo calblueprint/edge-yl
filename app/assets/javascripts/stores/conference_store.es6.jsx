@@ -1,5 +1,5 @@
 (() => {
-  class SchoolStore {
+  class ConferenceStore {
 
     constructor() {
       this.overlay = {

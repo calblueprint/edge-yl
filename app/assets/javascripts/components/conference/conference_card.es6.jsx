@@ -45,7 +45,7 @@ class ConferenceCard extends Component {
           content={conference.id}
           icon={TypeConstants.icons.edit} />
         <div style={this.styles.section}>
-          <h3>{`Conference Location: ${conference.address}`}</h3>
+          <h3>{`Conference Location: ${conference.location}`}</h3>
           <h3>{`Start Date: ${conference.start_date}`}</h3>
           <h3>{`End Date: ${conference.end_date}`}</h3>
       </div>

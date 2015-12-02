@@ -8,7 +8,7 @@
 
   get 'profile', to: 'users#profile'
 
-  resources :conferences, only: [:show]
+  resources :conferences, only: [:index, :show]
   resources :forms, only: [:show]
   resources :students, only: [:index, :show]
   resources :schools, only: [:index, :show]
