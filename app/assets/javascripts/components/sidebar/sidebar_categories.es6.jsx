@@ -8,7 +8,7 @@ class SidebarCategories extends Component {
       container: {
         display: 'flex',
         flexFlow: 'column',
-        paddingTop: '10px',
+        paddingTop: '12px',
       },
       divider: {
         marginTop: '16px',
