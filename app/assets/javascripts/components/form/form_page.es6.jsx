@@ -9,6 +9,21 @@ class FormPage extends Component {
   }
 
   // --------------------------------------------------
+  // Props
+  // --------------------------------------------------
+  static get propTypes() {
+    return {
+      id: React.PropTypes.number.isRequired,
+    };
+  }
+
+  static get defaultProps() {
+    return {
+      id: 1,
+    };
+  }
+
+  // --------------------------------------------------
   // Styles
   // --------------------------------------------------
   get styles() {
@@ -45,7 +60,7 @@ class FormPage extends Component {
   render() {
     return (
       <div style={this.styles.container}>
-        <FormBody />
+
       </div>
     );
   }
