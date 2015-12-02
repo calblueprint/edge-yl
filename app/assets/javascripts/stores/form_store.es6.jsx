@@ -35,8 +35,13 @@
         },
       ];
       this.bindListeners({
+        handleStoreForm: FormActions.STORE_FORM,
         handleStoreResponse: FormActions.STORE_RESPONSE,
       });
+    }
+
+    handleStoreForm(response) {
+      console.log(response);
     }
 
     handleStoreResponse(response) {
