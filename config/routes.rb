@@ -31,6 +31,7 @@
 
     get '/users/profile', to: 'users#profile'
 
+    resources :forms, only: [:show]
     resources :groups, only: [:create, :index, :show]
     resources :schools, only: [:create, :index, :show, :update]
     resources :students, only: [:create, :index, :show, :update] do
