@@ -23,6 +23,7 @@ class SidebarRecents extends Component {
       container: {
         display: 'flex',
         flexFlow: 'column',
+        paddingTop: '12px',
       },
       divider: {
         marginTop: '16px',
@@ -64,6 +65,7 @@ class SidebarRecents extends Component {
   render() {
     return (
       <div style={this.styles.container}>
+        <h3>{'Recent'}</h3>
         {this.renderItems()}
         <div style={this.styles.divider} />
       </div>

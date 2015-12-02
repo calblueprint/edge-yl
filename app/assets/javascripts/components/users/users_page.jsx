@@ -35,15 +35,19 @@ class UsersPage extends Component {
   // --------------------------------------------------
 
   componentWillMount() {
+    this.setState(ProfileStore.getState());
     this.setState(UsersStore.getState());
   }
 
   componentDidMount() {
+    ProfileStore.listen(this._listener);
     UsersStore.listen(this._listener);
+    ProfileActions.fetchProfile();
     UsersActions.fetchUsers();
   }
 
   componentWillUnmount() {
+    ProfileStore.unlisten(this._listener);
     UsersStore.unlisten(this._listener);
   }
 
@@ -55,7 +59,9 @@ class UsersPage extends Component {
       <div style={StyleConstants.pages.default}>
         <Header toggleSidebar={() => UsersActions.toggleSidebar()} />
         <div style={this.styles.container}>
-          <Sidebar hidden={this.state.sidebar} />
+          <Sidebar 
+            hidden={this.state.sidebar}
+            profile={this.state.profile} />
           <div style={this.styles.body}>
             <UsersGrid users={this.state.users} />
           </div>
