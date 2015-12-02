@@ -67,9 +67,6 @@ class ConferencePage extends Component {
   renderOverlay() {
   if (this.state.overlay.active) {
       return (
-        <SchoolPageOverlay
-          overlay={this.state.overlay}
-          school={this.state.conference} />
       );
     }
   }
@@ -83,6 +80,7 @@ class ConferencePage extends Component {
           <Sidebar
             hidden={this.state.sidebar}
             profile={this.state.profile} />
+          <ConferenceGrid conference={this.state.conference} />
           <div style={this.styles.placeholder}></div>
         </div>
       </div>
