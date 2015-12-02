@@ -8,6 +8,7 @@ class SidebarCategories extends Component {
       container: {
         display: 'flex',
         flexFlow: 'column',
+        paddingTop: '10px',
       },
       divider: {
         marginTop: '16px',
@@ -23,6 +24,7 @@ class SidebarCategories extends Component {
   render() {
     return (
       <div style={this.styles.container}>
+        <h3>{'General'}</h3>
         <SidebarItem
           label={'Students'}
           icon={TypeConstants.icons.student}
