@@ -42,16 +42,19 @@ class FormBody extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
-  renderSection(section, index) {
+  renderSection(section) {
     return (
       <FormSection
-        key={index}
+        key={section.id}
         section={section} />
     );
   }
 
   renderSections() {
-    return this.state.sections.map((section, index) => this.renderSection(section, index));
+    var sections = this.props.form.sections;
+    if (sections) {
+      return sections.map((section) => this.renderSection(section));
+    }
   }
 
   render() {
@@ -62,7 +65,7 @@ class FormBody extends Component {
         </div>
         {this.renderSections()}
         <FormButton
-          action={(event) => FormActions.createObject(this.state.sections)}
+          action={(event) => FormActions.createObject(this.props.form)}
           content={'Submit'} />
       </div>
     );

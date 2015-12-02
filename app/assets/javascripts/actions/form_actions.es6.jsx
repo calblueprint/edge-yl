@@ -7,7 +7,8 @@
       );
     }
 
-    createObject(sections) {
+    createObject(form) {
+      // TODO(Warren): Fix this method definition.
       var attributes = {};
       sections.map(
         (section) => {

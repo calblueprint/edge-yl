@@ -42,7 +42,7 @@ class FormField extends Component {
     var question = this.props.question;
     return (
       <div style={this.styles.container}>
-        <h5>{question.label}</h5>
+        <h5>{question.title}</h5>
         <input
           ref={'container'}
           style={this.styles.input}
