@@ -52,6 +52,8 @@ class SignupForm extends Component {
     password.addEventListener('input', this.generateHandler('password'));
     var passwordConfirmation = ReactDOM.findDOMNode(this.refs.passwordConfirmation);
     passwordConfirmation.addEventListener('input', this.generateHandler('passwordConfirmation'));
+    var node = ReactDOM.findDOMNode(this.refs.container);
+    node.addEventListener('keydown', (event) => this.handleKeyPress(event));
   }
 
   // --------------------------------------------------
@@ -82,6 +84,15 @@ class SignupForm extends Component {
   }
 
   // --------------------------------------------------
+  // Handlers
+  // --------------------------------------------------
+    handleKeyPress(event) {
+      if (event.keyCode == 13) {
+        this.createUser(event);
+      }
+    }
+
+  // --------------------------------------------------
   // Render
   // --------------------------------------------------
   renderError() {
@@ -96,7 +107,9 @@ class SignupForm extends Component {
 
   render() {
     return (
-      <div style={this.styles.container}>
+      <div
+        style={this.styles.container}
+        ref={'container'}>
         <label style={this.styles.label}>
           {'First Name'}
         </label>
