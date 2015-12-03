@@ -50,8 +50,6 @@ class UserCard extends Component {
   // --------------------------------------------------
   renderBody() {
     switch (this.props.target) {
-      case 'outreach':
-        return <StudentOutreach user={this.props.user} />;
       case 'responsibilities':
         return <ResponsibilitiesCard user={this.props.user} />;
     };
@@ -59,8 +57,6 @@ class UserCard extends Component {
 
   renderTitle() {
     switch (this.props.target) {
-      case 'outreach':
-        return 'Student Outreach';
       case 'responsibilities':
         return 'Responsibilities';
     };

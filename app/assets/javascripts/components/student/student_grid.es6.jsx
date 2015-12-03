@@ -53,6 +53,10 @@ class StudentGrid extends Component {
           target={TypeConstants.overlay.target.conference}
           type={TypeConstants.overlay.type.edit}
           student={this.props.student} />
+        <StudentCard
+          target={TypeConstants.overlay.target.outreach}
+          type={TypeConstants.overlay.type.edit}
+          student={this.props.student} />
       </div>
     );
   }

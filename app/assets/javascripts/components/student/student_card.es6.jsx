@@ -10,6 +10,7 @@ class StudentCard extends Component {
         'comment',
         'contact',
         'conference',
+        'outreach',
         'parent',
         'preview',
       ]).isRequired,
@@ -58,6 +59,8 @@ class StudentCard extends Component {
         return <StudentContact student={this.props.student} />;
       case 'conference':
         return <StudentConference student={this.props.student} />;
+      case 'outreach':
+        return <StudentOutreach student={this.props.student} />;
       case 'parent':
         return <StudentParent student={this.props.student} />;
       default:
@@ -73,6 +76,8 @@ class StudentCard extends Component {
         return 'Student Information';
       case 'parent':
         return 'Parent Information';
+      case 'outreach':
+        return 'Student Outreach';
       case 'conference':
         return 'Conference Information';
     };
