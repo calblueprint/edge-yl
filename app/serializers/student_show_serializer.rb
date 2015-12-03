@@ -6,6 +6,6 @@ class StudentShowSerializer < StudentIndexSerializer
 
   has_many :comments, serializer: CommentIndexSerializer
 
-  has_one :student_conference, serializer: StudentConferenceBaseSerializer
+  has_one :group, serializer: GroupStudentSerializer
 
 end
