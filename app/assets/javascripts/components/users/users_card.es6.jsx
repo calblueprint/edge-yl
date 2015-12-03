@@ -1,5 +1,8 @@
 class UsersCard extends Component {
 
+  // --------------------------------------------------
+  // Props
+  // --------------------------------------------------
   static get propTypes() {
     return {
       user: React.PropTypes.object.isRequired,
@@ -12,6 +15,9 @@ class UsersCard extends Component {
     };
   }
 
+  // --------------------------------------------------
+  // Styles
+  // --------------------------------------------------
   get styles() {
     return {
       container: Object.assign(
@@ -46,6 +52,9 @@ class UsersCard extends Component {
     };
   }
 
+  // --------------------------------------------------
+  // Render
+  // --------------------------------------------------
   render() {
     var user = this.props.user;
     return (
