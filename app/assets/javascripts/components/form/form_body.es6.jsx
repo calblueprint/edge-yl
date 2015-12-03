@@ -1,11 +1,18 @@
 class FormBody extends Component {
 
   // --------------------------------------------------
-  // Setup
+  // Props
   // --------------------------------------------------
-  constructor(props) {
-    super(props);
-    this._listener = (state) => this.setState(state);
+  static get propTypes() {
+    return {
+      form: React.PropTypes.object.isRequired,
+    };
+  }
+
+  static get defaultProps() {
+    return {
+      form: {},
+    };
   }
 
   // --------------------------------------------------
@@ -33,33 +40,21 @@ class FormBody extends Component {
   }
 
   // --------------------------------------------------
-  // Lifecycle
-  // --------------------------------------------------
-  componentWillMount() {
-    this.setState(FormStore.getState());
-  }
-
-  componentDidMount() {
-    FormStore.listen(this._listener);
-  }
-
-  componentWillUnmount() {
-    FormStore.unlisten(this._listener);
-  }
-
-  // --------------------------------------------------
   // Render
   // --------------------------------------------------
-  renderSection(section, index) {
+  renderSection(section) {
     return (
       <FormSection
-        key={index}
+        key={section.id}
         section={section} />
     );
   }
 
   renderSections() {
-    return this.state.sections.map((section, index) => this.renderSection(section, index));
+    var sections = this.props.form.sections;
+    if (sections) {
+      return sections.map((section) => this.renderSection(section));
+    }
   }
 
   render() {
@@ -70,7 +65,7 @@ class FormBody extends Component {
         </div>
         {this.renderSections()}
         <FormButton
-          action={(event) => FormActions.createObject(this.state.sections)}
+          action={(event) => FormActions.createObject(this.props.form)}
           content={'Submit'} />
       </div>
     );

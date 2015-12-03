@@ -3,7 +3,6 @@ class FormSection extends Component {
   // --------------------------------------------------
   // Props
   // --------------------------------------------------
-  // TODO(Sonia): Add a 'required' proptype
   static get propTypes() {
     return {
       section: React.PropTypes.object.isRequired,
@@ -46,10 +45,10 @@ class FormSection extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
-  renderQuestion(question, index) {
+  renderQuestion(question) {
     return (
       <FormField
-        key={index}
+        key={question.id}
         question={question} />
     );
   }
@@ -57,7 +56,7 @@ class FormSection extends Component {
   renderQuestions() {
     var questions = this.props.section.questions;
     if (questions) {
-      return questions.map((question, index) => this.renderQuestion(question, index));
+      return questions.map((question) => this.renderQuestion(question));
     }
   }
 

@@ -1,5 +1,8 @@
 class FormField extends Component {
 
+  // --------------------------------------------------
+  // Props
+  // --------------------------------------------------
   static get propTypes() {
     return {
       question: React.PropTypes.object.isRequired,
@@ -12,6 +15,9 @@ class FormField extends Component {
     };
   }
 
+  // --------------------------------------------------
+  // Styles
+  // --------------------------------------------------
   get styles() {
     return {
       container: {
@@ -28,21 +34,34 @@ class FormField extends Component {
     };
   }
 
-  handleChange(event) {
-    var question = this.props.question;
-    FormActions.storeResponse(1, question.id, event.target.value);
-  }
-
+  // --------------------------------------------------
+  // Lifecycle
+  // --------------------------------------------------
   componentDidMount() {
     var node = ReactDOM.findDOMNode(this.refs.container);
     node.addEventListener('input', (event) => this.handleChange(event));
   }
 
+  // --------------------------------------------------
+  // Handlers
+  // --------------------------------------------------
+  handleChange(event) {
+    var question = this.props.question;
+    FormActions.storeResponse(
+      question.section_id,
+      question.id,
+      event.target.value
+    );
+  }
+
+  // --------------------------------------------------
+  // Render
+  // --------------------------------------------------
   render() {
     var question = this.props.question;
     return (
       <div style={this.styles.container}>
-        <h5>{question.label}</h5>
+        <h5>{question.title}</h5>
         <input
           ref={'container'}
           style={this.styles.input}

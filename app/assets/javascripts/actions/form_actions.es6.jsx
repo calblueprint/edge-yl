@@ -1,7 +1,14 @@
 (() => {
   class FormActions {
 
-    createObject(sections) {
+    constructor() {
+      this.generateActions(
+        'storeForm'
+      );
+    }
+
+    createObject(form) {
+      // TODO(Warren): Fix this method definition.
       var attributes = {};
       sections.map(
         (section) => {
@@ -15,6 +22,12 @@
       var params = { student: attributes };
       var resolve = (response) => { console.log(response) };
       Requester.post(ApiConstants.students.create, params, resolve);
+      return true;
+    }
+
+    fetchForm(id) {
+      resolve = (response) => this.storeForm(response);
+      Requester.get(ApiConstants.forms.show(id), resolve);
       return true;
     }
 

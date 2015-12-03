@@ -14,7 +14,7 @@
     }
 
     handleStoreResults(response) {
-      this.results = response['pg_search/documents'];
+      this.results = response.searchables;
     }
 
     handleStoreSearch(search) {

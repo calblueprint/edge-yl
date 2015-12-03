@@ -2,7 +2,6 @@
   class StudentStore {
 
     constructor() {
-      this.comments = [];
       this.overlay = {
         active: false,
         target: '',
@@ -15,7 +14,6 @@
       };
       this.bindListeners({
         handleStoreComment: StudentActions.STORE_COMMENT,
-        handleStoreComments: StudentActions.STORE_COMMENTS,
         handleStoreOverlay: StudentActions.STORE_OVERLAY,
         handleStoreStudent: StudentActions.STORE_STUDENT,
         handleToggleSidebar: StudentActions.TOGGLE_SIDEBAR,
@@ -23,12 +21,8 @@
     }
 
     handleStoreComment(response) {
-      this.comments.push(response.comment);
+      this.student.comments.push(response.comment);
       this.overlay.active = false;
-    }
-
-    handleStoreComments(response) {
-      this.comments = response.comments;
     }
 
     handleStoreOverlay(overlay) {

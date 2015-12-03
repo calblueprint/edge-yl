@@ -50,7 +50,6 @@ class StudentPage extends Component {
     ProfileStore.listen(this._listener);
     StudentStore.listen(this._listener);
     ProfileActions.fetchProfile();
-    StudentActions.fetchComments(this.props.id);
     StudentActions.fetchStudent(this.props.id);
   }
 
@@ -83,7 +82,7 @@ class StudentPage extends Component {
             hidden={this.state.sidebar}
             profile={this.state.profile} />
           <StudentGrid student={this.state.student} />
-          <StudentComments comments={this.state.comments} />
+          <StudentComments comments={this.state.student.comments} />
         </div>
       </div>
     );

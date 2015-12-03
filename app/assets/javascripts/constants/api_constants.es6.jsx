@@ -1,6 +1,14 @@
 (() => {
   class ApiConstants {
 
+    get forms() {
+      return {
+        show: function(id) {
+          return `/api/forms/${id}`;
+        },
+      };
+    }
+
     get schools() {
       return {
         create: '/api/schools',
