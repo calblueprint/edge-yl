@@ -64,11 +64,11 @@ class ConferencePage extends Component {
   // Render
   // --------------------------------------------------
   renderOverlay() {
-  if (this.state.overlay.active) {
-      return (
-        <div>Render Overlay</div>
-      );
-    }
+    if (this.state.overlay.active) {
+        return (
+          <div>Render Overlay</div>
+        );
+      }
   }
 
   render() {

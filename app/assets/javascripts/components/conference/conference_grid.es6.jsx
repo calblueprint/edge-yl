@@ -29,7 +29,7 @@ class ConferenceGrid extends Component {
     return (
       <div style={this.styles.container}>
         <ConferenceCard
-          school={this.props.conference}/>
+          conference={this.props.conference}/>
       </div>
     );
   }

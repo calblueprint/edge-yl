@@ -22,7 +22,7 @@
       };
     }
 
-    updateconference(id, params) {
+    updateConference(id, params) {
       resolve = (response) => this.storeConference(response);
       Requester.update(ApiConstants.conferences.update(id), params, resolve);
       return true;
