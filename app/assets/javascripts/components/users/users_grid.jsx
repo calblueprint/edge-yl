@@ -1,5 +1,8 @@
 class UsersGrid extends Component {
 
+  // --------------------------------------------------
+  // Props
+  // --------------------------------------------------
   static get propTypes() {
     return {
       users: React.PropTypes.array.isRequired,
@@ -12,6 +15,9 @@ class UsersGrid extends Component {
     };
   }
 
+  // --------------------------------------------------
+  // Styles
+  // --------------------------------------------------
   get styles() {
     return {
       container: {
@@ -24,6 +30,9 @@ class UsersGrid extends Component {
     };
   }
 
+  // --------------------------------------------------
+  // Render
+  // --------------------------------------------------
   renderCard(user) {
     return (
       <UsersCard
