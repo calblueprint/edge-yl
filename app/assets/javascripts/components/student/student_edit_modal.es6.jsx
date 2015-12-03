@@ -39,11 +39,11 @@ class StudentEditModal extends EditModal {
   // --------------------------------------------------
   renderBody() {
     switch (this.props.overlay.target) {
-      case TypeConstants.overlay.preview:
+      case TypeConstants.overlay.target.preview:
         return <StudentPreviewEdit student={this.props.student} />;
-      case TypeConstants.overlay.contact:
+      case TypeConstants.overlay.target.contact:
         return <StudentContactEdit student={this.props.student} />;
-      case TypeConstants.overlay.guardian:
+      case TypeConstants.overlay.target.guardian:
         return <StudentGuardianEdit student={this.props.student} />;
     }
   }
