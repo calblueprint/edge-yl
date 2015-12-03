@@ -1,5 +1,8 @@
 class SchoolCard extends Component {
 
+  // --------------------------------------------------
+  // Props
+  // --------------------------------------------------
   static get propTypes() {
     return {
       school: React.PropTypes.object.isRequired,
@@ -12,6 +15,9 @@ class SchoolCard extends Component {
     };
   }
 
+  // --------------------------------------------------
+  // Styles
+  // --------------------------------------------------
   get styles() {
     return {
       container: Object.assign(
@@ -42,6 +48,9 @@ class SchoolCard extends Component {
     };
   }
 
+  // --------------------------------------------------
+  // Render
+  // --------------------------------------------------
   render() {
     var school = this.props.school;
     return (

@@ -1,5 +1,8 @@
 class ProfilePreview extends Component {
 
+  // --------------------------------------------------
+  // Props
+  // --------------------------------------------------
   static get propTypes() {
     return {
       profile: React.PropTypes.object.isRequired,
@@ -12,6 +15,9 @@ class ProfilePreview extends Component {
     }
   }
 
+  // --------------------------------------------------
+  // Styles
+  // --------------------------------------------------
   get styles() {
     return {
       container: Object.assign(
@@ -42,6 +48,9 @@ class ProfilePreview extends Component {
     };
   }
 
+  // --------------------------------------------------
+  // Render
+  // --------------------------------------------------
   render() {
     var profile = this.props.profile;
     return (
