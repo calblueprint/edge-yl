@@ -22,11 +22,10 @@
           comment: 'comment',
           contact: 'contact',
           conference: 'conference',
+          guardian: 'guardian',
           outreach: 'outreach',
-          parent: 'parent',
           preview: 'preview',
           responsibilities: 'responsibilities',
-          guardian: 'guardian',
         },
         type: {
           create: 'create',
