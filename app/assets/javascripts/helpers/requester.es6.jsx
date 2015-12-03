@@ -56,13 +56,17 @@
       request.send(JSON.stringify(params));
     }
 
-    update(route, params, resolve) {
+    update(route, params, resolve, reject) {
       var request = this.initialize('PATCH', route);
       request.onreadystatechange = () => {
         if (request.readyState === XMLHttpRequest.DONE) {
           if (request.status === 201) {
             if (resolve) {
               resolve(JSON.parse(request.response));
+            }
+          } else if (request.status === 401 || request.status === 422) {
+            if (reject) {
+              reject(JSON.parse(request.response));
             }
           }
         }
