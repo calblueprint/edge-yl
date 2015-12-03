@@ -31,6 +31,11 @@ class StudentComment extends Component {
         marginTop: '16px',
         borderRadius: '1px',
       },
+      divider: {
+        marginTop: '16px',
+        borderBottom: '1px solid',
+        borderColor: StyleConstants.colors.gray,
+      },         
     };
   }
 
@@ -49,6 +54,7 @@ class StudentComment extends Component {
         <h6 style={this.styles.content}>
           {comment.updated_at}
         </h6>
+        <div style={this.styles.divider} />
       </div>
     );
   }
