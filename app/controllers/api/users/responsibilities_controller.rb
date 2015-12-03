@@ -1,4 +1,4 @@
-class ResponsibilitiesController < Api::Users::ResponsibilitiesController
+class Api::Users::ResponsibilitiesController < Api::BaseController
 
   def create
     responsibility = Responsibility.new responsibility_params

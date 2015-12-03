@@ -6,7 +6,7 @@ class StudentShowSerializer < StudentIndexSerializer
 
   has_many :comments, serializer: CommentIndexSerializer
 
-  has_one :student_conference, serializer: StudentConferenceBaseSerializer
   has_one :responsibility, serializer: ResponsibilityBaseSerializer
+  has_one :student_conference, serializer: StudentConferenceBaseSerializer
 
 end

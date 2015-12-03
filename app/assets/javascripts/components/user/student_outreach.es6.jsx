@@ -33,13 +33,13 @@ class StudentOutreach extends Component {
   // Render
   // --------------------------------------------------
   renderResponsibility() {
-    var student = this.props.student;
-    if (student.responsibility) {
+    var responsibility = this.props.student.responsibility;
+    if (responsibility) {
       return (
-          <Clickable
-            content={'Volunteer'}
-            route={RouteConstants.users.show(student.responsibility.user.id)}
-            type={'h6'} />
+        <Clickable
+          content={'Volunteer'}
+          route={RouteConstants.users.show(responsibility.user.id)}
+          type={'h6'} />
       );
     }
   }
