@@ -11,6 +11,7 @@ class Dropdown extends Component {
         children: React.PropTypes.node,
         content: React.PropTypes.string,
         route: React.PropTypes.string,
+        static: React.PropTypes.boolean,
       })).isRequired,
       styles: React.PropTypes.shape({
         child: React.PropTypes.shape({
@@ -78,6 +79,16 @@ class Dropdown extends Component {
           borderColor: StyleConstants.colors.gray
         }
       );
+    }
+    if (option.static) {
+      styles.default = Object.assign(
+        {},
+        styles.default,
+        {
+          textAlign: 'right',
+        }
+      );
+      styles.hover = {};
     }
     if (option.children) {
       return (

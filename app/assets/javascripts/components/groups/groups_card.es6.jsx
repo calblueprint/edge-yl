@@ -1,17 +1,17 @@
-class UsersCard extends Component {
+class GroupsCard extends Component {
 
   // --------------------------------------------------
   // Props
   // --------------------------------------------------
   static get propTypes() {
     return {
-      user: React.PropTypes.object.isRequired,
+      group: React.PropTypes.object.isRequired,
     };
   }
 
   static get defaultProps() {
     return {
-      user: {},
+      group: {},
     };
   }
 
@@ -56,21 +56,16 @@ class UsersCard extends Component {
   // Render
   // --------------------------------------------------
   render() {
-    var user = this.props.user;
     return (
       <div style={this.styles.container}>
         <div style={this.styles.info}>
           <Clickable
-            content={`${user.first_name} ${user.last_name}`}
-            route={RouteConstants.users.show(user.id)}
+            content={`${group.name}`}
+            route={RouteConstants.groups.show(this.props.group.id)}
             styles={this.clickableStyles}
             type={'h3'} />
-          <h6>{`${user.first_name} ${user.last_name}`}</h6>
-          <h6>{`${user.birthday}`}</h6>
-          <h6>{`${user.email}`}</h6>
         </div>
       </div>
     );
   }
 }
-

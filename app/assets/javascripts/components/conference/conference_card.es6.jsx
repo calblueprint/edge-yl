@@ -1,17 +1,17 @@
-class SchoolCard extends Component {
+class ConferenceCard extends Component {
 
   // --------------------------------------------------
   // Props
   // --------------------------------------------------
   static get propTypes() {
     return {
-      school: React.PropTypes.object.isRequired,
+      conference: React.PropTypes.object.isRequired,
     };
   }
 
   static get defaultProps() {
     return {
-      school: {},
+      conference: {},
     };
   }
 
@@ -31,12 +31,6 @@ class SchoolCard extends Component {
           marginTop: '1%',
         }
       ),
-      image: {
-        width: '250px',
-        height: '250px',
-        borderRadius: '50%',
-        margin: '20px 0px',
-      },
       section: {
         display: 'flex',
         flexFlow: 'column',
@@ -49,34 +43,20 @@ class SchoolCard extends Component {
   }
 
   // --------------------------------------------------
-  // Helpers
-  // --------------------------------------------------
-  showOverlay(event) {
-    SchoolActions.storeOverlay(
-      true,
-      TypeConstants.overlay.type.edit,
-      TypeConstants.overlay.target.preview
-    );
-  }
-
-  // --------------------------------------------------
   // Render
   // --------------------------------------------------
   render() {
-    var school = this.props.school;
+    var conference = this.props.conference;
     return (
       <div style={this.styles.container}>
         <CardHeader
-          action={(event) => this.showOverlay(event)}
-          content={school.name}
+          action={(event) => ConferenceActions.storeOverlay(true, TypeConstants.overlay.type.edit)}
+          content={`Conference ${conference.id}`}
           icon={TypeConstants.icons.edit} />
         <div style={this.styles.section}>
-          <img
-            src={'http://www.wlac.edu/WLAC/media/images/highschool/highschool-index.jpg'}
-            style={this.styles.image} />
-          <h3>{`School Address: ${school.address}`}</h3>
-          <h3>{`Counselor Name: ${school.counselor_name}`}</h3>
-          <h3>{`Counselor Email: ${school.counselor_email}`}</h3>
+          <h3>{`Conference Location: ${conference.location}`}</h3>
+          <h3>{`Start Date: ${conference.start_date}`}</h3>
+          <h3>{`End Date: ${conference.end_date}`}</h3>
       </div>
       </div>
     );

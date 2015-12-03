@@ -1,6 +1,24 @@
 (() => {
   class RouteConstants {
 
+    get conferences() {
+      return {
+        index: '/conferences',
+        show: function(id) {
+          return `/conferences/${id}`;
+        },
+      };
+    }
+
+    get groups() {
+      return {
+        index: '/groups',
+        show: function(id) {
+          return `/groups/${id}`;
+        },
+      };
+    }
+
     get pages() {
       return {
         login: '/login',

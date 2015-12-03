@@ -1,17 +1,17 @@
-class SchoolGrid extends Component {
+class GroupsGrid extends Component {
 
- // --------------------------------------------------
+  // --------------------------------------------------
   // Props
   // --------------------------------------------------
   static get propTypes() {
     return {
-      school: React.PropTypes.object.isRequired,
+      groups: React.PropTypes.array.isRequired,
     };
   }
 
   static get defaultProps() {
     return {
-      school: {},
+      groups: [],
     };
   }
 
@@ -34,11 +34,22 @@ class SchoolGrid extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
+  renderGroup(group) {
+    return (
+      <GroupsCard
+        key={group.id}
+        group={group} />
+    );
+  }
+
+  renderGroups() {
+    return this.props.groups.map((group) => this.renderGroup(group));
+  }
+
   render() {
     return (
       <div style={this.styles.container}>
-        <SchoolCard
-          school={this.props.school}/>
+        {this.renderGroups()}
       </div>
     );
   }
