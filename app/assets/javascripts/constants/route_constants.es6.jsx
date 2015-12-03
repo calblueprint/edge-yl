@@ -10,6 +10,15 @@
       };
     }
 
+    get groups() {
+      return {
+        index: '/groups',
+        show: function(id) {
+          return `/groups/${id}`;
+        },
+      };
+    }
+
     get pages() {
       return {
         login: '/login',
