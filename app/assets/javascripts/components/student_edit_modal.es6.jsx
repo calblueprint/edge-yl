@@ -43,6 +43,8 @@ class StudentEditModal extends EditModal {
         return <StudentPreviewEdit student={this.props.student} />;
       case 'contact':
         return <StudentContactEdit student={this.props.student} />;
+      case 'guardian':
+        return <StudentGuardianEdit student={this.props.student} />;
     }
   }
 }
