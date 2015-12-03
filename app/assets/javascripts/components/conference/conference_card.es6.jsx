@@ -42,7 +42,7 @@ class ConferenceCard extends Component {
       <div style={this.styles.container}>
         <CardHeader
           action={(event) => ConferenceActions.storeOverlay(true, TypeConstants.overlay.type.edit)}
-          content={`${conference.id}`}
+          content={`Conference ${conference.id}`}
           icon={TypeConstants.icons.edit} />
         <div style={this.styles.section}>
           <h3>{`Conference Location: ${conference.location}`}</h3>

@@ -72,6 +72,7 @@ class ConferencePage extends Component {
   }
 
   render() {
+    console.log(this.state.conference);
     return (
       <div style={StyleConstants.pages.default}>
         {this.renderOverlay()}
@@ -80,7 +81,8 @@ class ConferencePage extends Component {
           <Sidebar
             hidden={this.state.sidebar}
             profile={this.state.profile} />
-          <ConferenceGrid conference={this.state.conference} />
+          <ConferenceCard conference={this.state.conference}/>
+          <GroupsGrid groups={this.state.conference.groups} />
           <div style={this.styles.placeholder}></div>
         </div>
       </div>
