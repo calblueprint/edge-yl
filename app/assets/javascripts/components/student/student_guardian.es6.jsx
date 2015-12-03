@@ -1,4 +1,4 @@
-class StudentParent extends Component {
+class StudentGuardian extends Component {
 
   // --------------------------------------------------
   // Props
@@ -16,7 +16,7 @@ class StudentParent extends Component {
   }
 
   // --------------------------------------------------
-  // State
+  // Styles
   // --------------------------------------------------
   get styles() {
     return {
@@ -35,19 +35,17 @@ class StudentParent extends Component {
   render() {
     var student = this.props.student;
     return (
-      <div style={this.styles.container}>
-        <h4>{'Parent 1'}</h4>
-        <h6>{`${student.parent1_name}, ${student.parent1_type}`}</h6>
-        <h6>{student.parent1_cell_number}</h6>
-        <h6>{student.parent1_home_number}</h6>
-        <h6>{student.parent1_address}</h6>
-        <br />
-        <h4>{'Parent 2'}</h4>
-        <h6>{`${student.parent2_name}, ${student.parent2_type}`}</h6>
-        <h6>{student.parent1_cell_number}</h6>
-        <h6>{student.parent1_home_number}</h6>
-        <h6>{student.parent1_address}</h6>
-      </div>
+        <div style={this.styles.container}>
+          <h4>{'Guardian One'}</h4>
+          <h6>{student.guardian_one_name}</h6>
+          <h6>{student.guardian_one_phone}</h6>
+          <h6>{student.guardian_one_email}</h6>
+          <br />
+          <h4>{'Guardian Two'}</h4>
+          <h6>{student.guardian_two_name}</h6>
+          <h6>{student.guardian_two_phone}</h6>
+          <h6>{student.guardian_two_email}</h6>
+        </div>
     );
   }
 }

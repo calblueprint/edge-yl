@@ -10,7 +10,7 @@ class StudentCard extends Component {
         'comment',
         'contact',
         'conference',
-        'parent',
+        'guardian',
         'preview',
       ]).isRequired,
       type: React.PropTypes.oneOf([
@@ -52,14 +52,14 @@ class StudentCard extends Component {
   // --------------------------------------------------
   renderBody() {
     switch (this.props.target) {
-      case 'preview':
+      case TypeConstants.overlay.preview:
         return <StudentPreview student={this.props.student} />;
-      case 'contact':
+      case TypeConstants.overlay.contact:
         return <StudentContact student={this.props.student} />;
-      case 'conference':
+      case TypeConstants.overlay.conference:
         return <StudentConference student={this.props.student} />;
-      case 'parent':
-        return <StudentParent student={this.props.student} />;
+      case TypeConstants.overlay.guardian:
+        return <StudentGuardian student={this.props.student} />;
       default:
         return <StudentPreview student={this.props.student} />;
     };
@@ -67,14 +67,14 @@ class StudentCard extends Component {
 
   renderTitle() {
     switch (this.props.target) {
-      case 'preview':
+      case TypeConstants.overlay.preview:
         return 'Student Preview';
-      case 'contact':
+      case TypeConstants.overlay.contact:
         return 'Student Information';
-      case 'parent':
-        return 'Parent Information';
-      case 'conference':
+      case TypeConstants.overlay.conference:
         return 'Conference Information';
+      case TypeConstants.overlay.guardian:
+        return 'Guardian Information';
     };
   }
 

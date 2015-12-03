@@ -46,7 +46,7 @@ class StudentGrid extends Component {
           type={TypeConstants.overlay.type.edit}
           student={this.props.student} />
         <StudentCard
-          target={TypeConstants.overlay.target.parent}
+          target={TypeConstants.overlay.target.guardian}
           type={TypeConstants.overlay.type.edit}
           student={this.props.student} />
         <StudentCard
