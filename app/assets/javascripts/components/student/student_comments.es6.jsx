@@ -30,6 +30,11 @@ class StudentComments extends Component {
         width: '172px',
         paddingRight: '16px',
       },
+      divider: {
+        marginTop: '16px',
+        borderBottom: '1px solid',
+        borderColor: StyleConstants.colors.gray,
+      },      
       title: {
         paddingTop: '12px',
         marginTop: '16px',
@@ -52,6 +57,8 @@ class StudentComments extends Component {
     };
   }
 
+
+
   // --------------------------------------------------
   // Handlers
   // --------------------------------------------------
@@ -68,9 +75,12 @@ class StudentComments extends Component {
   // --------------------------------------------------
   renderComment(comment) {
     return (
-      <StudentComment
-        comment={comment}
-        key={comment.id} />
+      <div>
+        <StudentComment
+          comment={comment}
+          key={comment.id} />
+        <div style={this.styles.divider} />
+      </div>
     );
   }
 
