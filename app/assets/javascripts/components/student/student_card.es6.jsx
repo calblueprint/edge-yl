@@ -48,6 +48,17 @@ class StudentCard extends Component {
   }
 
   // --------------------------------------------------
+  // Helpers
+  // --------------------------------------------------
+  showOverlay(event) {
+    StudentActions.storeOverlay(
+      true,
+      TypeConstants.overlay.type.edit,
+      this.props.target
+    );
+  }
+
+  // --------------------------------------------------
   // Render
   // --------------------------------------------------
   renderBody() {
@@ -80,7 +91,7 @@ class StudentCard extends Component {
     return (
       <div style={this.styles.container}>
         <CardHeader
-          action={(event) => StudentActions.storeOverlay(true, TypeConstants.overlay.type.edit, this.props.target)}
+          action={(event) => showOverlay(event)}
           content={this.renderTitle()}
           icon={TypeConstants.icons.edit} />
         {this.renderBody()}
