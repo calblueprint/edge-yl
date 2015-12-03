@@ -26,6 +26,7 @@
           parent: 'parent',
           preview: 'preview',
           responsibilities: 'responsibilities',
+          guardian: 'guardian',
         },
         type: {
           create: 'create',

@@ -45,6 +45,7 @@ class Dropdown extends Component {
         width: '0px',
         height: '0px',
         border: '0px',
+        display: 'block',
       },
     };
   }
