@@ -1,5 +1,8 @@
 class FormDropdown extends Component {
 
+  // --------------------------------------------------
+  // Props
+  // --------------------------------------------------
   static get propTypes() {
     return {
       options: React.PropTypes.arrayOf(React.PropTypes.string).isRequired,
@@ -7,6 +10,9 @@ class FormDropdown extends Component {
     };
   }
 
+  // --------------------------------------------------
+  // State
+  // --------------------------------------------------
   static get defaultState() {
     return {
       dropdown: false,
@@ -14,6 +20,9 @@ class FormDropdown extends Component {
     };
   }
 
+  // --------------------------------------------------
+  // Styles
+  // --------------------------------------------------
   get dropdownStyles() {
     return {
       child: {
@@ -85,10 +94,16 @@ class FormDropdown extends Component {
     };
   }
 
+  // --------------------------------------------------
+  // Handlers
+  // --------------------------------------------------
   handleClick(event) {
     this.setState({ dropdown: !this.state.dropdown });
   }
 
+  // --------------------------------------------------
+  // Helpers
+  // --------------------------------------------------
   generateHandler(item) {
     return function() {
       this.setState({ value: item, dropdown: false});
@@ -110,6 +125,9 @@ class FormDropdown extends Component {
     this.setState({ dropdown: false });
   }
 
+  // --------------------------------------------------
+  // Render
+  // --------------------------------------------------
   renderDropdown() {
     if (this.state.dropdown) {
       return (
