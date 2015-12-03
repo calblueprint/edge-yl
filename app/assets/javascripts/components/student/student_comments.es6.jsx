@@ -29,7 +29,7 @@ class StudentComments extends Component {
         right: '0px',
         width: '172px',
         paddingRight: '16px',
-      },
+      },   
       title: {
         paddingTop: '12px',
         marginTop: '16px',
@@ -68,9 +68,9 @@ class StudentComments extends Component {
   // --------------------------------------------------
   renderComment(comment) {
     return (
-      <StudentComment
-        comment={comment}
-        key={comment.id} />
+        <StudentComment
+          comment={comment}
+          key={comment.id} />
     );
   }
 

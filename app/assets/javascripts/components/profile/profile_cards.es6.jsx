@@ -1,5 +1,8 @@
 class ProfileCards extends Component {
 
+// --------------------------------------------------
+// Props
+// --------------------------------------------------
   static get propTypes() {
     return {
       profile: React.PropTypes.object.isRequired,
@@ -12,6 +15,9 @@ class ProfileCards extends Component {
     }
   }
 
+// --------------------------------------------------
+// Styles
+// --------------------------------------------------  
   get styles() {
     return {
       container: {
@@ -23,6 +29,9 @@ class ProfileCards extends Component {
     };
   }
 
+// --------------------------------------------------
+// Render
+// --------------------------------------------------
   render() {
     return (
       <div style = {this.styles.container}>
