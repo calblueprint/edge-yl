@@ -40,7 +40,7 @@ class StudentOutreach extends Component {
             content={'Volunteer'}
             route={RouteConstants.users.show(student.responsibility.user.id)}
             type={'h6'} />
-      )
+      );
     }
   }
   render() {
