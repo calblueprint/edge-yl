@@ -1,6 +1,29 @@
 (() => {
   class ApiConstants {
 
+    get conferences() {
+      return {
+        create: '/api/conferences',
+        index: '/api/conferences',
+        show: function(id) {
+          return `/api/conferences/${id}`;
+        },
+        update: function(id) {
+          return `/api/conferences/${id}`;
+        },
+      };
+    }
+
+    get groups() {
+      return {
+        create: '/api/groups',
+        index: '/api/groups',
+        show: function(id) {
+          return `/api/groups/${id}`;
+        },
+      };
+    }
+
     get forms() {
       return {
         show: function(id) {
@@ -29,7 +52,7 @@
         search: function(query) {
           return `/api/searchables/search?query=${query}`;
         },
-      }
+      };
     }
 
     get students() {
