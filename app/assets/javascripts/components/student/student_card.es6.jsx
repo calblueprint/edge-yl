@@ -10,6 +10,7 @@ class StudentCard extends Component {
         'comment',
         'contact',
         'conference',
+        'outreach',
         'guardian',
         'preview',
       ]).isRequired,
@@ -69,8 +70,10 @@ class StudentCard extends Component {
         return <StudentContact student={this.props.student} />;
       case TypeConstants.overlay.target.guardian:
         return <StudentGuardian student={this.props.student} />;
-        case TypeConstants.overlay.target.preview:
-          return <StudentPreview student={this.props.student} />;
+      case TypeConstants.overlay.target.outreach:
+        return <StudentOutreach student={this.props.student} />;
+      case TypeConstants.overlay.target.preview:
+        return <StudentPreview student={this.props.student} />;
     };
   }
 
@@ -82,6 +85,8 @@ class StudentCard extends Component {
         return 'Student Information';
       case TypeConstants.overlay.target.guardian:
         return 'Guardian Information';
+      case TypeConstants.overlay.target.outreach:
+        return 'Student Outreach';
       case TypeConstants.overlay.target.preview:
         return 'Student Preview';
     };
