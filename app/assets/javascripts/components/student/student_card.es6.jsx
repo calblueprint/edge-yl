@@ -48,33 +48,42 @@ class StudentCard extends Component {
   }
 
   // --------------------------------------------------
+  // Helpers
+  // --------------------------------------------------
+  showOverlay(event) {
+    StudentActions.storeOverlay(
+      true,
+      TypeConstants.overlay.type.edit,
+      this.props.target
+    );
+  }
+
+  // --------------------------------------------------
   // Render
   // --------------------------------------------------
   renderBody() {
     switch (this.props.target) {
-      case TypeConstants.overlay.preview:
-        return <StudentPreview student={this.props.student} />;
-      case TypeConstants.overlay.contact:
-        return <StudentContact student={this.props.student} />;
-      case TypeConstants.overlay.conference:
+      case TypeConstants.overlay.target.conference:
         return <StudentConference student={this.props.student} />;
-      case TypeConstants.overlay.guardian:
+      case TypeConstants.overlay.target.contact:
+        return <StudentContact student={this.props.student} />;
+      case TypeConstants.overlay.target.guardian:
         return <StudentGuardian student={this.props.student} />;
-      default:
-        return <StudentPreview student={this.props.student} />;
+        case TypeConstants.overlay.target.preview:
+          return <StudentPreview student={this.props.student} />;
     };
   }
 
   renderTitle() {
     switch (this.props.target) {
-      case TypeConstants.overlay.preview:
-        return 'Student Preview';
-      case TypeConstants.overlay.contact:
-        return 'Student Information';
-      case TypeConstants.overlay.conference:
+      case TypeConstants.overlay.target.conference:
         return 'Conference Information';
-      case TypeConstants.overlay.guardian:
+      case TypeConstants.overlay.target.contact:
+        return 'Student Information';
+      case TypeConstants.overlay.target.guardian:
         return 'Guardian Information';
+      case TypeConstants.overlay.target.preview:
+        return 'Student Preview';
     };
   }
 
@@ -82,7 +91,7 @@ class StudentCard extends Component {
     return (
       <div style={this.styles.container}>
         <CardHeader
-          action={(event) => StudentActions.storeOverlay(true, TypeConstants.overlay.type.edit, this.props.target)}
+          action={(event) => showOverlay(event)}
           content={this.renderTitle()}
           icon={TypeConstants.icons.edit} />
         {this.renderBody()}

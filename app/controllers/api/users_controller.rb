@@ -8,11 +8,7 @@ class Api::UsersController < Api::BaseController
   end
 
   def profile
-    if user_signed_in?
-      render json: current_user, serializer: ProfileBaseSerializer
-    else
-      unauthorized_response
-    end
+    render json: current_user, serializer: ProfileBaseSerializer
   end
 
   def show

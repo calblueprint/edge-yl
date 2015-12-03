@@ -1,6 +1,23 @@
 class HeaderSearch extends Component {
 
   // --------------------------------------------------
+  // Props
+  // --------------------------------------------------
+  static get propTypes() {
+    return {
+      pagination: React.PropTypes.object.isRequired,
+      results: React.PropTypes.array.isRequired,
+    };
+  }
+
+  static get defaultProps() {
+    return {
+      pagination: {},
+      results: [],
+    };
+  }
+
+  // --------------------------------------------------
   // Styles
   // --------------------------------------------------
   get styles() {
@@ -137,7 +154,14 @@ class HeaderSearch extends Component {
   }
 
   generateResults() {
-    return this.props.results.map((result) => this.generateResult(result));
+    var results = this.props.results.map((result) => this.generateResult(result));
+    var pagination = this.props.pagination;
+    var footer = {
+      content: `Displaying page ${pagination.current} of ${pagination.limit} total`,
+      static: true,
+    };
+    results.push(footer);
+    return results;
   }
 
   // --------------------------------------------------
