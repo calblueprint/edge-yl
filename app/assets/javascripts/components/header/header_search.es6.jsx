@@ -158,6 +158,7 @@ class HeaderSearch extends Component {
     var pagination = this.props.pagination;
     var footer = {
       content: `Displaying page ${pagination.current} of ${pagination.limit} total`,
+      static: true,
     };
     results.push(footer);
     return results;
