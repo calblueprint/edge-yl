@@ -44,20 +44,20 @@ class ConferencePage extends Component {
   // Lifecycle
   // --------------------------------------------------
   componentWillMount() {
-    this.setState(ProfileStore.getState());
     this.setState(ConferenceStore.getState());
+    this.setState(ProfileStore.getState());
   }
 
   componentDidMount() {
-    ProfileStore.listen(this._listener);
     ConferenceStore.listen(this._listener);
-    ProfileActions.fetchProfile();
+    ProfileStore.listen(this._listener);
     ConferenceActions.fetchConference(this.props.id);
+    ProfileActions.fetchProfile();
   }
 
   componentWillUnmount() {
-    ProfileStore.unlisten(this._listener);
     ConferenceStore.unlisten(this._listener);
+    ProfileStore.unlisten(this._listener);
   }
 
   // --------------------------------------------------
@@ -65,14 +65,13 @@ class ConferencePage extends Component {
   // --------------------------------------------------
   renderOverlay() {
     if (this.state.overlay.active) {
-        return (
-          <div>Render Overlay</div>
-        );
-      }
+      return (
+        <div>Render Overlay</div>
+      );
+    }
   }
 
   render() {
-    console.log(this.state.conference);
     return (
       <div style={StyleConstants.pages.default}>
         {this.renderOverlay()}

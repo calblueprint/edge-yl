@@ -1,6 +1,9 @@
 class GroupsCard extends Component {
 
-static get propTypes() {
+  // --------------------------------------------------
+  // Props
+  // --------------------------------------------------
+  static get propTypes() {
     return {
       group: React.PropTypes.object.isRequired,
     };
@@ -8,10 +11,13 @@ static get propTypes() {
 
   static get defaultProps() {
     return {
-      group: null,
+      group: {},
     };
   }
 
+  // --------------------------------------------------
+  // Styles
+  // --------------------------------------------------
   get styles() {
     return {
       container: Object.assign(
@@ -46,14 +52,16 @@ static get propTypes() {
     };
   }
 
+  // --------------------------------------------------
+  // Render
+  // --------------------------------------------------
   render() {
-    var group = this.props.group;
     return (
       <div style={this.styles.container}>
         <div style={this.styles.info}>
           <Clickable
             content={`${group.name}`}
-            route={RouteConstants.groups.show(group.id)}
+            route={RouteConstants.groups.show(this.props.group.id)}
             styles={this.clickableStyles}
             type={'h3'} />
         </div>

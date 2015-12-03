@@ -12,8 +12,8 @@
 
 class Conference < ActiveRecord::Base
 
+  has_many :groups
   has_many :student_conferences, dependent: :destroy
   has_many :students, through: :student_conferences
-  has_many :groups
 
 end

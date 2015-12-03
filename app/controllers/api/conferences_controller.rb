@@ -4,6 +4,8 @@ class Api::ConferencesController < Api::BaseController
     conference = Conference.new conference_params
     if conference.save
       render json: conference, serializer: ConferenceBaseSerializer
+    else
+      unprocessable_response conference
     end
   end
 
