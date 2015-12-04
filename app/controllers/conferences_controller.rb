@@ -4,4 +4,7 @@ class ConferencesController < BaseController
     @id = params[:id].to_i
   end
 
+  def index
+  end
+
 end
