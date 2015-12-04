@@ -89,6 +89,9 @@
           return `/api/users/${id}`;
         },
         signout: '/api/users/signout',
+        update: function(id) {
+          return `/api/users/${id}`;
+        },
       };
     }
   }

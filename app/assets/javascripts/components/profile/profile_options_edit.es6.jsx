@@ -75,7 +75,7 @@ class ProfileOptionsEdit extends Component {
       first_name: this.state.firstName,
       last_name: this.state.lastName
     };
-    ProfileActions.updateProfile(this.props.profile, params);
+    ProfileActions.updateProfile(this.props.profile.id, params);
   }
 
   // --------------------------------------------------

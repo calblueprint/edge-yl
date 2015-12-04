@@ -23,7 +23,7 @@
 
     updateProfile(id, params) {
       resolve = (response) => this.storeProfile(response);
-      Requester.update(ApiConstants.profile.update(id), params, resolve);
+      Requester.update(ApiConstants.users.update(id), params, resolve);
       return true;
     }
   }
