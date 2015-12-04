@@ -3,6 +3,8 @@
 def generate_group(conference)
   new_group = Group.create(
     name: @alphabet.shift,
+    primary_leader: "#{Faker::Name.name}",
+    secondary_leader: "#{Faker::Name.name}",
     conference: conference,
   )
 end

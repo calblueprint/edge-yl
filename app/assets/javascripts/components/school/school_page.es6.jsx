@@ -84,7 +84,7 @@ class SchoolPage extends Component {
             hidden={this.state.sidebar}
             profile={this.state.profile} />
           <SchoolGrid school={this.state.school} />
-          <div style={this.styles.placeholder}></div>
+          <div style={this.styles.placeholder} />
         </div>
       </div>
     );

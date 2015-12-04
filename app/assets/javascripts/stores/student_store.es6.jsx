@@ -9,8 +9,8 @@
       };
       this.sidebar = true;
       this.student = {
+        group: {},
         school: {},
-        student_conference: {},
       };
       this.bindListeners({
         handleStoreComment: StudentActions.STORE_COMMENT,
