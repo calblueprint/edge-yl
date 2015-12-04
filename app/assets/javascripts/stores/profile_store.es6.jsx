@@ -2,19 +2,19 @@
   class ProfileStore {
 
     constructor() {
+      this.bindListeners({
+        handleStoreOverlay: ProfileActions.STORE_OVERLAY,
+        handleStoreProfile: ProfileActions.STORE_PROFILE,
+      });
       this.overlay = {
         active: false,
         target: '',
         type: '',
       };
-      this.sidebar = false;
       this.profile = {
         visits: [],
       };
-      this.bindListeners({
-        handleStoreProfile: ProfileActions.STORE_PROFILE,
-        handleStoreOverlay: ProfileActions.STORE_OVERLAY,
-      });
+      this.sidebar = false;
     }
 
     handleStoreOverlay(overlay) {

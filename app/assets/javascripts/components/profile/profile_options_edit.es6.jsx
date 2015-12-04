@@ -75,7 +75,6 @@ class ProfileOptionsEdit extends Component {
       first_name: this.state.firstName,
       last_name: this.state.lastName
     };
-    console.log(this.props.profile)
     ProfileActions.updateProfile(this.props.profile.id, params);
   }
 
@@ -92,7 +91,7 @@ class ProfileOptionsEdit extends Component {
           icon={TypeConstants.icons.save} />
         <div style={this.styles.form}>
           <img
-            src='https://scontent.fsnc1-1.fna.fbcdn.net/hphotos-xfp1/t31.0-8/11856297_10200932572512494_2256826043885795533_o.jpg'
+            src={'https://scontent.fsnc1-1.fna.fbcdn.net/hphotos-xfp1/t31.0-8/11856297_10200932572512494_2256826043885795533_o.jpg'}
             style={this.styles.image} />
           <CardInput
             action={this.generateHandler('firstName')}
