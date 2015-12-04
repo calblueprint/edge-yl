@@ -82,12 +82,12 @@ class ProfilePreviewEdit extends Component {
   // Render
   // --------------------------------------------------
   render() {
-    var student = this.props.student;
+    var profile = this.props.profile;
     return (
       <div style={this.styles.container}>
         <CardHeader
-          action={(event) => this.updateStudent()}
-          content={'Student Preview'}
+          action={(event) => this.updateProfile()}
+          content={'Profile'}
           icon={TypeConstants.icons.save} />
         <div style={this.styles.form}>
           <img

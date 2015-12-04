@@ -38,6 +38,6 @@ class UserEditModal extends EditModal {
   // Render
   // --------------------------------------------------
   renderBody() {
-    return <StudentPreviewEdit student={this.props.student} />;
+    return <ProfilePreviewEdit profile={this.props.profile} />;
   }
 }

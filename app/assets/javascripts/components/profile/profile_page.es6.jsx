@@ -48,6 +48,16 @@ class ProfilePage extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
+  renderOverlay() {
+    if (this.state.overlay.active) {
+      return (
+        <ProfilePageOverlay
+          overlay={this.state.overlay}
+          profile={this.state.profile} />
+      );
+    }
+  }
+    
   render() {
     return (
       <div style={this.styles.container}>

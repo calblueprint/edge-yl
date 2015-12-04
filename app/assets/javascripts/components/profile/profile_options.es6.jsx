@@ -54,13 +54,13 @@ class ProfileOptions extends Component {
   // Helpers
   // --------------------------------------------------
   showOverlay(event) {
-    UserActions.storeOverlay(
+    ProfileActions.storeOverlay(
       true,
       TypeConstants.overlay.type.edit,
       this.props.target
     );
   }
-  
+
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
@@ -73,7 +73,7 @@ class ProfileOptions extends Component {
             {`Name: ${profile.first_name} ${profile.last_name}`}
           </span>
           <Clickable
-            content={'Change'}
+            content={'Edit'}
             action={(event) => this.showOverlay(event)}
             styles={this.clickableStyles} />
         </div>
@@ -82,7 +82,7 @@ class ProfileOptions extends Component {
             {'Birthday: ' + profile.birthday}
           </span>
           <Clickable
-            content={'Change'}
+            content={'Edit'}
             action={(event) => this.showOverlay(event)}
             styles={this.clickableStyles} />
         </div>
@@ -91,7 +91,7 @@ class ProfileOptions extends Component {
             {'Email: ' + profile.email}
           </span>
           <Clickable
-            content={'Change'}
+            content={'Edit'}
             action={(event) => this.showOverlay(event)}
             styles={this.clickableStyles} />
         </div>
@@ -100,7 +100,7 @@ class ProfileOptions extends Component {
             {'Password: **********'}
           </span>
           <Clickable
-            content={'Change'}
+            content={'Edit'}
             action={(event) => this.showOverlay(event)}
             styles={this.clickableStyles} />
         </div>
