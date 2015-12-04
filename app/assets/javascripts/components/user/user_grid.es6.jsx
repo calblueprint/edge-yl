@@ -41,10 +41,6 @@ class UserGrid extends Component {
           target={TypeConstants.overlay.target.responsibilities}
           type={TypeConstants.overlay.type.edit}
           user={this.props.user} />
-        <UserCard
-          target={TypeConstants.overlay.target.outreach}
-          type={TypeConstants.overlay.type.edit}
-          user={this.props.user} />
       </div>
     );
   }
