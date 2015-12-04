@@ -47,8 +47,8 @@ ActiveRecord::Schema.define(version: 20151130013648) do
 
   create_table "groups", force: :cascade do |t|
     t.string   "name",             null: false
-    t.string   "primary_leader"
-    t.string   "secondary_leader"
+    t.string   "primary_leader",   null: false
+    t.string   "secondary_leader", null: false
     t.integer  "conference_id",    null: false
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
