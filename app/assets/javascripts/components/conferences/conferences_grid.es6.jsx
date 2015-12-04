@@ -1,17 +1,17 @@
-class SchoolsGrid extends Component {
+class ConferencesGrid extends Component {
 
   // --------------------------------------------------
   // Props
   // --------------------------------------------------
   static get propTypes() {
     return {
-      schools: React.PropTypes.array.isRequired,
+      conferences: React.PropTypes.array.isRequired,
     };
   }
 
   static get defaultProps() {
     return {
-      schools: [],
+      conferences: [],
     };
   }
 
@@ -25,7 +25,6 @@ class SchoolsGrid extends Component {
         flexFlow: 'wrap',
         justifyContent: 'space-between',
         alignContent: 'flex-start',
-        flex: '1',
       },
     };
   }
@@ -33,16 +32,16 @@ class SchoolsGrid extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
-  renderCard(school) {
+  renderCard(conference) {
     return (
-      <SchoolsCard
-        key={school.id}
-        school={school} />
+      <ConferencesCard
+        conference={conference}
+        key={conference.id} />
     );
   }
 
   renderCards() {
-    return this.props.schools.map((school) => this.renderCard(school));
+    return this.props.conferences.map((conference) => this.renderCard(conference));
   }
 
   render() {

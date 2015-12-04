@@ -1,17 +1,17 @@
-class SchoolsCard extends Component {
-
-static get propTypes() {
-    return {
-      school: React.PropTypes.object.isRequired,
-    };
-  }
+class ConferencesCard extends Component {
 
   // --------------------------------------------------
   // Props
   // --------------------------------------------------
+  static get propTypes() {
+    return {
+      conference: React.PropTypes.object.isRequired,
+    };
+  }
+
   static get defaultProps() {
     return {
-      school: null,
+      conference: {},
     };
   }
 
@@ -37,27 +37,18 @@ static get propTypes() {
     };
   }
 
-// --------------------------------------------------
+  // --------------------------------------------------
   // Render
   // --------------------------------------------------
-  get clickableStyles() {
-    return {
-      hover: {
-        textDecoration: 'underline',
-      },
-    };
-  }
-
   render() {
-    var school = this.props.school;
+    var conference = this.props.conference;
     return (
       <div style={this.styles.container}>
         <Clickable
-          content={school.name}
-          route={RouteConstants.schools.show(school.id)}
+          content={conference.location}
+          route={RouteConstants.conferences.show(conference.id)}
           styles={this.clickableStyles}
           type={'h3'} />
-        <h6>{school.address}</h6>
       </div>
     );
   }

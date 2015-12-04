@@ -5,6 +5,7 @@
       return {
         bars: 'fa fa-bars fa-x',
         close: 'fa fa-times fa-2x',
+        conference: 'fa-building',
         edit: 'fa-pencil-square-o',
         mail: 'fa fa-envelope fa-x',
         profile: 'fa fa-user fa-x',

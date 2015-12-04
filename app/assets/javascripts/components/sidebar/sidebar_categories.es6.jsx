@@ -29,6 +29,10 @@ class SidebarCategories extends Component {
       <div style={this.styles.container}>
         <h4 style={this.styles.title}>{'General'}</h4>
         <SidebarItem
+          label={'Conferences'}
+          icon={TypeConstants.icons.conference}
+          route={RouteConstants.conferences.index} />
+        <SidebarItem
           label={'Students'}
           icon={TypeConstants.icons.student}
           route={RouteConstants.students.index()}/>
