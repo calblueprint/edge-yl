@@ -34,13 +34,14 @@ class StudentConference extends Component {
   // --------------------------------------------------
   // TODO: Add Student status and Rooming information.
   render() {
-    var studentConference = this.props.student.group.conference;
+    var conference = this.props.student.group.conference;
+    var group = this.props.student.group;
     return (
       <div style={this.styles.container}>
         <h4>{'Status'}</h4>
         <br />
         <h4>{'Group'}</h4>
-        <h6>{studentConference.name}</h6>
+        <h6>{group.name}</h6>
         <br />
         <h4>{'Rooming'}</h4>
       </div>

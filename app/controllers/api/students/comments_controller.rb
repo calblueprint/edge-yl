@@ -1,6 +1,7 @@
 class Api::Students::CommentsController < Api::BaseController
 
   def create
+    puts params
     comment = Comment.new comment_params
     comment.student_id = params[:student_id]
     if comment.save
