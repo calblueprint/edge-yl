@@ -10,12 +10,16 @@
 
 
 
-  resources :conferences, only: [:index, :show]
+  resources :conferences, only: [:index, :show] do
+    scope module: :conferences do
+      resources :groups, only: [:show]
+    end
+  end
   resources :forms, only: [:show]
   resources :students, only: [:index, :show]
   resources :schools, only: [:index, :show]
   resources :users, only: [:index, :show]
-  resources :groups, only: [:index, :show]
+
 
   devise_for :users, only: []
   devise_scope :user do
