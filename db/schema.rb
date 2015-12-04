@@ -105,17 +105,6 @@ ActiveRecord::Schema.define(version: 20151130013648) do
 
   add_index "sections", ["form_id"], name: "index_sections_on_form_id", using: :btree
 
-  create_table "student_conferences", force: :cascade do |t|
-    t.integer  "status",        null: false
-    t.integer  "conference_id"
-    t.integer  "student_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-  end
-
-  add_index "student_conferences", ["conference_id"], name: "index_student_conferences_on_conference_id", using: :btree
-  add_index "student_conferences", ["student_id"], name: "index_student_conferences_on_student_id", using: :btree
-
   create_table "students", force: :cascade do |t|
     t.date     "birthday",           null: false
     t.string   "cell_phone",         null: false

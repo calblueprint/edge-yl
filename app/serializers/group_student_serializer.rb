@@ -3,4 +3,3 @@
   has_one :conference, serializer: ConferenceBaseSerializer
 
 end
-
