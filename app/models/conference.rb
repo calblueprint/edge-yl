@@ -12,7 +12,7 @@
 
 class Conference < ActiveRecord::Base
 
-  has_many :students, through: :group # Does this make sense?
   has_many :groups, dependent: :destroy
+  has_many :student_conferences, dependent: :destroy
 
 end

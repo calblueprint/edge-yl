@@ -2,6 +2,10 @@
   class HeaderStore {
 
     constructor() {
+      this.pagination = {
+        current: 1,
+        limit: 1,
+      };
       this.results = [];
       this.search = {
         active: false,
@@ -14,7 +18,8 @@
     }
 
     handleStoreResults(response) {
-      this.results = response['pg_search/documents'];
+      this.pagination = response.meta.pagination;
+      this.results = response.searchables;
     }
 
     handleStoreSearch(search) {

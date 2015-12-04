@@ -104,6 +104,7 @@ class Header extends Component {
           {this.renderToggler()}
         </div>
         <HeaderNavigation
+          pagination={this.state.pagination}
           results={this.state.results}
           search={this.state.search} />
         <HeaderShortcuts showShortcuts={this.props.hasSidebar} />

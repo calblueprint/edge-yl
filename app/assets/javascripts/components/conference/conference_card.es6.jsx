@@ -1,5 +1,8 @@
 class ConferenceCard extends Component {
 
+  // --------------------------------------------------
+  // Props
+  // --------------------------------------------------
   static get propTypes() {
     return {
       conference: React.PropTypes.object.isRequired,
@@ -12,6 +15,9 @@ class ConferenceCard extends Component {
     };
   }
 
+  // --------------------------------------------------
+  // Styles
+  // --------------------------------------------------
   get styles() {
     return {
       container: Object.assign(
@@ -36,6 +42,9 @@ class ConferenceCard extends Component {
     };
   }
 
+  // --------------------------------------------------
+  // Render
+  // --------------------------------------------------
   render() {
     var conference = this.props.conference;
     return (

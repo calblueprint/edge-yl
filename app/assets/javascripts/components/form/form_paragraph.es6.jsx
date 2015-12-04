@@ -1,5 +1,8 @@
 class FormParagraph extends Component {
 
+  // --------------------------------------------------
+  // Props
+  // --------------------------------------------------
   static get propTypes() {
     return {
       title: React.PropTypes.string.isRequired,
@@ -12,16 +15,9 @@ class FormParagraph extends Component {
     return {};
   }
 
-  handleChange(event) {
-    var node = ReactDOM.findDOMNode(this.refs.container);
-    // TODO(Max): Finish this method definition
-  }
-
-  componentDidMount() {
-    var node = ReactDOM.findDOMNode(this.refs.container);
-    node.addEventListener('input', (event) => this.handleChange(event));
-  }
-
+  // --------------------------------------------------
+  // Styles
+  // --------------------------------------------------
   get styles() {
     return {
       container: {
@@ -42,6 +38,25 @@ class FormParagraph extends Component {
     };
   }
 
+  // --------------------------------------------------
+  // Lifecycle
+  // --------------------------------------------------
+  componentDidMount() {
+    var node = ReactDOM.findDOMNode(this.refs.container);
+    node.addEventListener('input', (event) => this.handleChange(event));
+  }
+
+  // --------------------------------------------------
+  // Handlers
+  // --------------------------------------------------
+  handleChange(event) {
+    var node = ReactDOM.findDOMNode(this.refs.container);
+    // TODO(Max): Finish this method definition
+  }
+
+  // --------------------------------------------------
+  // Render
+  // --------------------------------------------------
   render() {
     return (
       <div style={this.styles.container}>

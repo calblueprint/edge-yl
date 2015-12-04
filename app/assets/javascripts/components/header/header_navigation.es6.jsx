@@ -40,6 +40,7 @@ class HeaderNavigation extends Component {
           styles={this.clickableStyles}
           type={'h2'} />
         <HeaderSearch
+          pagination={this.props.pagination}
           results={this.props.results}
           search={this.props.search} />
       </div>

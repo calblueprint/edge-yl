@@ -1,5 +1,8 @@
 class GroupsGrid extends Component {
 
+  // --------------------------------------------------
+  // Props
+  // --------------------------------------------------
   static get propTypes() {
     return {
       groups: React.PropTypes.array.isRequired,
@@ -12,6 +15,9 @@ class GroupsGrid extends Component {
     };
   }
 
+  // --------------------------------------------------
+  // Styles
+  // --------------------------------------------------
   get styles() {
     return {
       container: {
@@ -25,6 +31,9 @@ class GroupsGrid extends Component {
     };
   }
 
+  // --------------------------------------------------
+  // Render
+  // --------------------------------------------------
   renderGroup(group) {
     return (
       <GroupsCard

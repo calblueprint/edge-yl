@@ -5,13 +5,13 @@ class StudentOutreach extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      user: React.PropTypes.object.isRequired,
+      student: React.PropTypes.object.isRequired,
     };
   }
 
   static get defaultProps() {
     return {
-      user: {},
+      student: {}
     };
   }
 
@@ -23,16 +23,8 @@ class StudentOutreach extends Component {
       container: {
         display: 'flex',
         flexFlow: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
         flex: '1',
         padding: '12px',
-      },
-      image: {
-        width: '152px',
-        height: '152px',
-        marginBottom: '12px',
-        borderRadius: '50%',
       },
     };
   }
@@ -40,10 +32,21 @@ class StudentOutreach extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
+  renderResponsibility() {
+    var responsibility = this.props.student.responsibility;
+    if (responsibility) {
+      return (
+        <Clickable
+          content={'Volunteer'}
+          route={RouteConstants.users.show(responsibility.user.id)}
+          type={'h6'} />
+      );
+    }
+  }
   render() {
-    var user = this.props.user;
     return (
       <div style={this.styles.container}>
+        {this.renderResponsibility()}
       </div>
     );
   }

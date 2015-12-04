@@ -1,5 +1,8 @@
 class SchoolCard extends Component {
 
+  // --------------------------------------------------
+  // Props
+  // --------------------------------------------------
   static get propTypes() {
     return {
       school: React.PropTypes.object.isRequired,
@@ -12,6 +15,9 @@ class SchoolCard extends Component {
     };
   }
 
+  // --------------------------------------------------
+  // Styles
+  // --------------------------------------------------
   get styles() {
     return {
       container: Object.assign(
@@ -42,17 +48,31 @@ class SchoolCard extends Component {
     };
   }
 
+  // --------------------------------------------------
+  // Helpers
+  // --------------------------------------------------
+  showOverlay(event) {
+    SchoolActions.storeOverlay(
+      true,
+      TypeConstants.overlay.type.edit,
+      TypeConstants.overlay.target.preview
+    );
+  }
+
+  // --------------------------------------------------
+  // Render
+  // --------------------------------------------------
   render() {
     var school = this.props.school;
     return (
       <div style={this.styles.container}>
         <CardHeader
-          action={(event) => SchoolActions.storeOverlay(true, TypeConstants.overlay.type.edit, TypeConstants.overlay.target.preview)}
+          action={(event) => this.showOverlay(event)}
           content={school.name}
           icon={TypeConstants.icons.edit} />
         <div style={this.styles.section}>
           <img
-            src='http://www.wlac.edu/WLAC/media/images/highschool/highschool-index.jpg'
+            src={'http://www.wlac.edu/WLAC/media/images/highschool/highschool-index.jpg'}
             style={this.styles.image} />
           <h3>{`School Address: ${school.address}`}</h3>
           <h3>{`Counselor Name: ${school.counselor_name}`}</h3>

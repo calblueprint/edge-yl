@@ -20,13 +20,13 @@
       });
     }
 
-    handleStoreOverlay(overlay) {
-      this.overlay = overlay;
-    }
-
     handleStoreConference(response) {
       this.overlay.active = false;
       this.conference = response.conference;
+    }
+
+    handleStoreOverlay(overlay) {
+      this.overlay = overlay;
     }
 
     handleToggleSidebar(sidebar) {

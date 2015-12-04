@@ -1,4 +1,4 @@
-class EditSchool extends Component {
+class SchoolPreviewEdit extends Component {
 
   static get propTypes() {
     return {
@@ -46,6 +46,7 @@ class EditSchool extends Component {
       address: this.props.school.address,
       counselor_name: this.props.school.counselor_name,
       counselor_email: this.props.school.counselor_email,
+      school_name: this.props.school.name,      
     });
   }
 
@@ -53,7 +54,8 @@ class EditSchool extends Component {
     var params = {
       address: this.state.address,
       counselor_name: this.state.counselor_name,
-      counselor_email: this.state.counselor_email
+      counselor_email: this.state.counselor_email,
+      school_name: this.state.school_name,
     };
     SchoolActions.updateSchool(this.props.school.id, params);
   }
@@ -76,8 +78,12 @@ class EditSchool extends Component {
           icon={TypeConstants.icons.save} />
         <div style={this.styles.form}>
           <img
-            src='https://scontent.fsnc1-1.fna.fbcdn.net/hphotos-xfp1/t31.0-8/11856297_10200932572512494_2256826043885795533_o.jpg'
+            src='http://www.wlac.edu/WLAC/media/images/highschool/highschool-index.jpg'
             style={this.styles.image} />
+          <CardInput
+            action={this.generateHandler('school')}
+            placeholder={'School'}
+            value={this.state.school_name} />            
           <CardInput
             action={this.generateHandler('address')}
             placeholder={'Address'}
