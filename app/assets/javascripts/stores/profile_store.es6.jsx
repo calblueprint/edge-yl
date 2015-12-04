@@ -9,7 +9,6 @@
       };
       this.sidebar = false;
       this.profile = {
-        profile: {},
         visits: [],
       };
       this.bindListeners({

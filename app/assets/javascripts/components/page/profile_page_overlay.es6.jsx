@@ -39,8 +39,9 @@ class ProfilePageOverlay extends PageOverlay {
   //  --------------------------------------------------
   renderModal() {
     return (
-      <UserEditModal
-        overlay={this.props.overlay} />
+      <ProfileEditModal
+        overlay={this.props.overlay}
+        profile={this.props.profile} />
     );
   }
 
