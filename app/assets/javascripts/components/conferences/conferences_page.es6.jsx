@@ -34,15 +34,19 @@ class ConferencesPage extends Component {
   // Lifecycle
   // --------------------------------------------------
   componentWillMount() {
+    this.setState(ConferencesStore.getState());
     this.setState(ProfileStore.getState());
   }
 
   componentDidMount() {
+    ConferencesStore.listen(this._listener);
     ProfileStore.listen(this._listener);
+    ConferencesActions.fetchConferences();
     ProfileActions.fetchProfile();
   }
 
   componentWillUnmount() {
+    ConferencesStore.unlisten(this._listener);
     ProfileStore.unlisten(this._listener);
   }
 
