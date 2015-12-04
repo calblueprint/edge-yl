@@ -10,12 +10,9 @@
 
 
 
-  resources :conferences, only: [:index, :show] do
-    scope module: :conferences do
-      resources :groups, only: [:show]
-    end
-  end
+  resources :conferences, only: [:index, :show]
   resources :forms, only: [:show]
+  resources :groups, only: [:show]
   resources :students, only: [:index, :show]
   resources :schools, only: [:index, :show]
   resources :users, only: [:index, :show]

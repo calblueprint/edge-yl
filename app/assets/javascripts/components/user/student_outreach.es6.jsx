@@ -34,14 +34,15 @@ class StudentOutreach extends Component {
   // --------------------------------------------------
   renderResponsibility() {
     var responsibility = this.props.student.responsibility;
-    if (responsibility) {
-      return (
-        <Clickable
-          content={'Volunteer'}
-          route={RouteConstants.users.show(responsibility.user.id)}
-          type={'h6'} />
-      );
-    }
+    // TODO(Warren & Unzi): Fix this with responsibility serializers.
+    // if (responsibility) {
+    //   return (
+    //     <Clickable
+    //       content={'Volunteer'}
+    //       route={RouteConstants.users.show(responsibility.user.id)}
+    //       type={'h6'} />
+    //   );
+    // }
   }
   render() {
     return (
