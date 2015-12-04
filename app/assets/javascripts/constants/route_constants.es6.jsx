@@ -60,7 +60,13 @@
 
     get users() {
       return {
-        index: '/users',
+        index: function(page) {
+          if (page) {
+            return `/users?page=${page}`;
+          } else {
+            return '/users';
+          }
+        },
         show: function(id) {
           return `/users/${id}`;
         },

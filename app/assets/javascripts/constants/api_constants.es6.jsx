@@ -81,7 +81,9 @@
     get users() {
       return {
         create: '/api/users/signup',
-        index: '/api/users',
+        index: function(page) {
+          return `/api/users?=${page}`;
+        },
         login: '/api/users/login',
         logout: '/api/users/logout',
         profile: '/api/users/profile',

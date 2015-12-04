@@ -8,9 +8,9 @@
       );
     }
 
-    fetchUsers() {
+    fetchUsers(page) {
       resolve = (response) => this.storeUsers(response);
-      Requester.get(ApiConstants.users.index, resolve);
+      Requester.get(ApiConstants.users.index(page), resolve);
       return true;
     }
   }
