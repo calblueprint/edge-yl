@@ -35,6 +35,7 @@ class Student < ActiveRecord::Base
 
   has_one :student_conference
   has_one :conference, through: :student_conference
+  has_one :responsibility, dependent: :destroy
 
   validates :cell_phone, presence: true
   validates :email, presence: true
