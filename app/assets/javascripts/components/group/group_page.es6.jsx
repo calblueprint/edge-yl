@@ -54,7 +54,6 @@ class GroupPage extends Component {
     ProfileStore.unlisten(this._listener);
   }
 
-
   render() {
     return (
         <div style={this.styles.container}>
