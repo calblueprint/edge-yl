@@ -51,6 +51,17 @@ class ProfileOptions extends Component {
   }
 
   // --------------------------------------------------
+  // Helpers
+  // --------------------------------------------------
+  showOverlay(event) {
+    UserActions.storeOverlay(
+      true,
+      TypeConstants.overlay.type.edit,
+      this.props.target
+    );
+  }
+  
+  // --------------------------------------------------
   // Render
   // --------------------------------------------------
   render() {
@@ -63,7 +74,7 @@ class ProfileOptions extends Component {
           </span>
           <Clickable
             content={'Change'}
-            route={RouteConstants.pages.profile}
+            action={(event) => this.showOverlay(event)}
             styles={this.clickableStyles} />
         </div>
         <div style= {this.styles.row}>
@@ -72,7 +83,7 @@ class ProfileOptions extends Component {
           </span>
           <Clickable
             content={'Change'}
-            route={RouteConstants.pages.profile}
+            action={(event) => this.showOverlay(event)}
             styles={this.clickableStyles} />
         </div>
         <div style= {this.styles.row}>
@@ -81,7 +92,7 @@ class ProfileOptions extends Component {
           </span>
           <Clickable
             content={'Change'}
-            route={RouteConstants.pages.profile}
+            action={(event) => this.showOverlay(event)}
             styles={this.clickableStyles} />
         </div>
         <div style= {this.styles.row}>
@@ -90,7 +101,7 @@ class ProfileOptions extends Component {
           </span>
           <Clickable
             content={'Change'}
-            route={RouteConstants.pages.profile}
+            action={(event) => this.showOverlay(event)}
             styles={this.clickableStyles} />
         </div>
       </div>
