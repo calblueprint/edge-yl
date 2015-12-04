@@ -25,7 +25,8 @@ static get propTypes() {
         StyleConstants.cards.default,
         {
           display: 'flex',
-          alignItems: 'center',
+          flexFlow: 'column',
+          justifyContent: 'center',
           width: '49%',
           height: '24%',
           padding: '24px',
@@ -33,14 +34,6 @@ static get propTypes() {
           boxSizing: 'border-box',
         }
       ),
-      image: {
-        width: '122px',
-        height: '122px',
-        borderRadius: '50%',
-      },
-      info: {
-        paddingLeft: '24px',
-      },
     };
   }
 
@@ -59,17 +52,12 @@ static get propTypes() {
     var school = this.props.school;
     return (
       <div style={this.styles.container}>
-        <img
-          src='http://www.wlac.edu/WLAC/media/images/highschool/highschool-index.jpg'
-          style={this.styles.image} />
-        <div style={this.styles.info}>
-          <Clickable
-            content={`${school.name}`}
-            route={RouteConstants.schools.show(school.id)}
-            styles={this.clickableStyles}
-            type={'h3'} />
-          <h6>{`${school.address}`}</h6>
-        </div>
+        <Clickable
+          content={`${school.name}`}
+          route={RouteConstants.schools.show(school.id)}
+          styles={this.clickableStyles}
+          type={'h3'} />
+        <h6>{`${school.address}`}</h6>
       </div>
     );
   }
