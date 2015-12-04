@@ -14,7 +14,7 @@
       };
       this.bindListeners({
         handleStoreProfile: ProfileActions.STORE_PROFILE,
-        handleStoreOverlay: StudentActions.STORE_OVERLAY,
+        handleStoreOverlay: ProfileActions.STORE_OVERLAY,
       });
     }
 
