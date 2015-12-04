@@ -10,7 +10,9 @@ class Api::ConferencesController < Api::BaseController
   end
 
   def index
-    render json: Conference.all, each_serializer: ConferenceIndexSerializer
+    conferences = Conference.all
+    render json: conferences,
+                 each_serializer: ConferenceIndexSerializer
   end
 
   def show
