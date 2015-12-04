@@ -62,6 +62,7 @@ class ConferencesPage extends Component {
             hidden={this.state.sidebar}
             profile={this.state.profile} />
           <div style={this.styles.body}>
+            <ConferencesGrid conferences={this.state.conferences} />
           </div>
         </div>
       </div>

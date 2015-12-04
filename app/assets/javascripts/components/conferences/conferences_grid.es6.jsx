@@ -34,7 +34,7 @@ class ConferencesGrid extends Component {
   // --------------------------------------------------
   renderCard(conference) {
     return (
-      <StudentsCard
+      <ConferencesCard
         conference={conference}
         key={conference.id} />
     );
