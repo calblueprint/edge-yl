@@ -31,7 +31,7 @@ class SidebarCategories extends Component {
         <SidebarItem
           label={'Conferences'}
           icon={TypeConstants.icons.conference}
-          route={RouteConstants.conferences.index} />
+          route={RouteConstants.conferences.index()} />
         <SidebarItem
           label={'Students'}
           icon={TypeConstants.icons.student}
@@ -43,7 +43,7 @@ class SidebarCategories extends Component {
         <SidebarItem
           label={'Volunteers'}
           icon={TypeConstants.icons.volunteer}
-          route={RouteConstants.users.index}/>
+          route={RouteConstants.users.index()}/>
         <div style={this.styles.divider} />
       </div>
     );

@@ -10,13 +10,13 @@
     }
 
     createComment(id, params) {
-      resolve = (response) => this.storeComment(response);
+      var resolve = (response) => this.storeComment(response);
       Requester.post(ApiConstants.students.comments.create(id), params, resolve);
       return true;
     }
 
     fetchStudent(id) {
-      resolve = (response) => this.storeStudent(response);
+      var resolve = (response) => this.storeStudent(response);
       Requester.get(ApiConstants.students.show(id), resolve);
       return true;
     }
@@ -30,7 +30,7 @@
     }
 
     updateStudent(id, params) {
-      resolve = (response) => this.storeStudent(response);
+      var resolve = (response) => this.storeStudent(response);
       Requester.update(ApiConstants.students.update(id), params, resolve);
       return true;
     }
