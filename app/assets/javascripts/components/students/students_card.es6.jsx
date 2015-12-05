@@ -22,15 +22,10 @@ class StudentsCard extends Component {
     return {
       container: Object.assign(
         {},
-        StyleConstants.cards.default,
+        StyleConstants.cards.grid,
         {
-          display: 'flex',
-          alignItems: 'center',
-          width: '49%',
-          height: '24%',
-          padding: '24px',
-          marginTop: '12px',
-          boxSizing: 'border-box',
+          flexFlow: 'row',
+          justifyContent: 'flex-start',
         }
       ),
       image: {
@@ -42,7 +37,7 @@ class StudentsCard extends Component {
         display: 'flex',
         flexFlow: 'column',
         justifyContent: 'center',
-        alignSelf: 'stretch',
+        flex: '1',
         paddingLeft: '24px',
       },
     };
@@ -69,7 +64,7 @@ class StudentsCard extends Component {
           route={RouteConstants.students.show(student.id)}
           type={'img'}>
           <img
-            src='https://scontent.fsnc1-1.fna.fbcdn.net/hphotos-xfp1/t31.0-8/11856297_10200932572512494_2256826043885795533_o.jpg'
+            src={'https://scontent.fsnc1-1.fna.fbcdn.net/hphotos-xfp1/t31.0-8/11856297_10200932572512494_2256826043885795533_o.jpg'}
             style={this.styles.image} />
         </Clickable>
         <div style={this.styles.section}>
