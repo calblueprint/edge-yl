@@ -25,18 +25,11 @@ class StudentsFilters extends Component {
         StyleConstants.cards.default,
         {
           display: 'flex',
-          height: '40px',
+          height: '44px',
           marginTop: '12px',
-          boxSizing: 'border-box',
         }
       ),
-      placeholder: {
-        width: '0px',
-        height: '40px',
-      },
-      section: {
-        display: 'flex',
-        flex: '1',
+      title: {
         padding: '12px',
       },
     };
@@ -60,11 +53,8 @@ class StudentsFilters extends Component {
   render() {
     return (
       <div style={this.styles.container}>
-        <div style={this.styles.section}>
-          <h5>{'Filters'}</h5>
-          {this.renderFilters()}
-        </div>
-        <div styl={this.styles.placeholder} />
+        <h5 style={this.styles.title}>{'Filters'}</h5>
+        {this.renderFilters()}
       </div>
     );
   }
