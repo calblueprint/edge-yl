@@ -15,8 +15,8 @@
     }
 
     handleStoreConferences(response) {
-      this.pagination = response.meta.pagination;
       this.conferences = response.conferences;
+      this.pagination = response.meta.pagination;
     }
 
     handleToggleSidebar() {

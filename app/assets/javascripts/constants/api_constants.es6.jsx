@@ -4,7 +4,9 @@
     get conferences() {
       return {
         create: '/api/conferences',
-        index: '/api/conferences',
+        index: function(page) {
+          return `/api/conferences?page=${page}`;
+        },
         show: function(id) {
           return `/api/conferences/${id}`;
         },

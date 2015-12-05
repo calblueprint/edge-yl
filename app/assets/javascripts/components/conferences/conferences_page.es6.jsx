@@ -56,7 +56,7 @@ class ConferencesPage extends Component {
   componentDidMount() {
     ConferencesStore.listen(this._listener);
     ProfileStore.listen(this._listener);
-    ConferencesActions.fetchConferences();
+    ConferencesActions.fetchConferences(this.props.page);
     ProfileActions.fetchProfile();
   }
 
