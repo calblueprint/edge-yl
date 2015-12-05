@@ -22,11 +22,9 @@ class StudentsFilter extends Component {
     return {
       container: {
         display: 'flex',
-        flexFlow: 'row',
-        margin: '0px 8px',
-        justifyContent: 'space-between',
+        justifyContent: 'flex-end',
         alignItems: 'center',
-        width: '200px',
+        paddingLeft: '24px',
         zIndex: StyleConstants.planes.two,
       },
     }
@@ -34,9 +32,8 @@ class StudentsFilter extends Component {
 
   get clickableStyles() {
     return {
-        default: {
-        alignSelf: 'flex-end',
-        borderRadius: '1px',
+      default: {
+
       },
     };
   }
@@ -93,19 +90,20 @@ class StudentsFilter extends Component {
 
   generateDropdownOptions() {
     var options = this.props.filter.options;
-    return options.map((option, index) => this.generateDropdownOption(option, index));
+    return options.map((option) => this.generateDropdownOption(option));
   }
 
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
   renderDropdown() {
-    if (this.props.filter.active) {
+    var filter = this.props.filter;
+    if (filter.active) {
       return (
         <Dropdown
           options={this.generateDropdownOptions()}
           styles={this.dropdownStyles}
-          blur={(event) => this.handleBlur(event)} />
+          blur={(event) => StudentsActions.storeFilter(filter.key, false)} />
       );
     }
   }
@@ -114,7 +112,7 @@ class StudentsFilter extends Component {
     var filter = this.props.filter;
     return (
       <div style={this.styles.container}>
-        <h5>{filter.selected}</h5>
+        <h5>{`${filter.name}: ${filter.selected}`}</h5>
         <Clickable
           action={(event) => StudentsActions.storeFilter(filter.key, true)}
           icon={'fa fa-angle-down'}

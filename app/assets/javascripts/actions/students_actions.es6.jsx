@@ -16,7 +16,10 @@
 
     storeFilter(key, active, selected) {
       if (selected) {
-        var options = { order: 'ASC' };
+        var options = {};
+        if (selected !== 'None') {
+          options.order = `${key} ${selected}`;
+        }
         var resolve = (response) => this.storeStudents(response);
         Requester.get(ApiConstants.students.index(1, options), resolve);
       }
