@@ -16,16 +16,6 @@ class StudentsFilter extends Component {
   }
 
   // --------------------------------------------------
-  // State
-  // --------------------------------------------------
-  static get defaultState() {
-    return {
-      isExpanded: false,
-      selectedOption: 'Select one',
-    };
-  }
-
-  // --------------------------------------------------
   // Styles
   // --------------------------------------------------
   get styles() {
@@ -38,9 +28,6 @@ class StudentsFilter extends Component {
         alignItems: 'center',
         width: '200px',
         zIndex: StyleConstants.planes.two,
-      },
-      selected: {
-        paddingLeft: '4px',
       },
     }
   }
@@ -96,13 +83,10 @@ class StudentsFilter extends Component {
   // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
-  generateHandler(option) {
-    return () => this.setState({ selectedOption: option, isExpanded: false});
-  }
-
   generateDropdownOption(option) {
+    var filter = this.props.filter;
     return {
-      action: this.generateHandler(option),
+      action: () => StudentsActions.storeFilter(filter.key, false, option),
       content: option,
     };
   }
@@ -116,7 +100,7 @@ class StudentsFilter extends Component {
   // Render
   // --------------------------------------------------
   renderDropdown() {
-    if (this.state.isExpanded) {
+    if (this.props.filter.active) {
       return (
         <Dropdown
           options={this.generateDropdownOptions()}
@@ -127,11 +111,12 @@ class StudentsFilter extends Component {
   }
 
   render() {
+    var filter = this.props.filter;
     return (
       <div style={this.styles.container}>
-        <span style={this.styles.selected}> {this.state.selectedOption} </span>
+        <h5>{filter.selected}</h5>
         <Clickable
-          action={this.handleExpand.bind(this)}
+          action={(event) => StudentsActions.storeFilter(filter.key, true)}
           icon={'fa fa-angle-down'}
           styles={this.clickableStyles}
           type={'i'} />

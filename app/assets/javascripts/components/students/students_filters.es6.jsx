@@ -30,9 +30,6 @@ class StudentsFilters extends Component {
           alignItems: 'center',
         }
       ),
-      title: {
-        padding: '0px 16px',
-      },
     };
   }
 
