@@ -3,7 +3,13 @@
 
     get conferences() {
       return {
-        index: '/conferences',
+        index: function(page) {
+          if (page) {
+            return `/conferences?page=${page}`;
+          } else {
+            return '/conferences';
+          }
+        },
         show: function(id) {
           return `/conferences/${id}`;
         },

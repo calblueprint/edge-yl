@@ -9,6 +9,21 @@ class ConferencesPage extends Component {
   }
 
   // --------------------------------------------------
+  // Props
+  // --------------------------------------------------
+  static get propTypes() {
+    return {
+      page: React.PropTypes.number.isRequired,
+    };
+  }
+
+  static get defaultProps() {
+    return {
+      page: 1,
+    };
+  }
+
+  // --------------------------------------------------
   // Styles
   // --------------------------------------------------
   get styles() {
@@ -63,6 +78,9 @@ class ConferencesPage extends Component {
             profile={this.state.profile} />
           <div style={this.styles.body}>
             <ConferencesGrid conferences={this.state.conferences} />
+            <PageNavigator
+              route={RouteConstants.conferences.index}
+              pagination={this.state.pagination} />
           </div>
         </div>
       </div>
