@@ -66,8 +66,13 @@
           },
         },
         create: '/api/students',
-        index: function(page) {
-          return `/api/students?page=${page}`;
+        index: function(page, options={}) {
+          var route = `/api/students?page=${page}`;
+          if (options.order) {
+            route = `${route}&order=${options.order}`;
+          }
+          console.log(route);
+          return route;
         },
         show: function(id) {
           return `/api/students/${id}`;

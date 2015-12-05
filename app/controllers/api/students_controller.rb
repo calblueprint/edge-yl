@@ -10,9 +10,10 @@ class Api::StudentsController < Api::BaseController
   end
 
   def index
-    students = Student.includes(:group, :school)
-                      .order('first_name ASC')
-                      .page params[:page]
+    students = Student.includes(:group, :school).page params[:page]
+    if params[:order]
+      students = students.order 'first_name ASC'
+    end
     render json: students,
                  serializer: PaginatedSerializer,
                  each_serializer: StudentIndexSerializer
