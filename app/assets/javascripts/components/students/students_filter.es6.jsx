@@ -22,10 +22,14 @@ class StudentsFilter extends Component {
     return {
       container: {
         display: 'flex',
-        justifyContent: 'flex-end',
-        alignItems: 'center',
-        paddingLeft: '24px',
+        flexFlow: 'column',
+        marginLeft: '24px',
         zIndex: StyleConstants.planes.two,
+      },
+      section: {
+        display: 'flex',
+        alignItems: 'center',
+        flex: '1',
       },
     }
   }
@@ -42,9 +46,8 @@ class StudentsFilter extends Component {
     return {
       child: {
         default: {
-          display: 'flex',
           flex: '1',
-          padding: '4px',
+          padding: '8px',
         },
         hover: {
           backgroundColor: StyleConstants.colors.turquoise,
@@ -54,13 +57,12 @@ class StudentsFilter extends Component {
         {},
         StyleConstants.cards.default,
         {
+          display: 'flex',
+          flexFlow: 'column',
           flex: '1',
-          position: 'absolute',
-          top: '26px',
+          top: '12px',
           left: '0px',
           zIndex: StyleConstants.planes.two,
-          // TODO(Warren): Figure out a way to set width without hardcoded value.
-          width: '200px',
         }
       ),
     };
@@ -90,7 +92,7 @@ class StudentsFilter extends Component {
     if (filter.active) {
       return (
         <Dropdown
-          blur={(event) => StudentsActions.storeFilter(filter.key, false)}
+          action={(event) => StudentsActions.storeFilter(filter.key, false)}
           options={this.generateDropdownOptions()}
           styles={this.dropdownStyles} />
       );
@@ -101,12 +103,14 @@ class StudentsFilter extends Component {
     var filter = this.props.filter;
     return (
       <div style={this.styles.container}>
-        <h5>{`${filter.name}: ${filter.selected}`}</h5>
-        <Clickable
-          action={(event) => StudentsActions.storeFilter(filter.key, true)}
-          icon={'fa fa-angle-down'}
-          styles={this.clickableStyles}
-          type={'i'} />
+        <div style={this.styles.section}>
+          <h6>{`${filter.name}: ${filter.selected}`}</h6>
+          <Clickable
+            action={(event) => StudentsActions.storeFilter(filter.key, true)}
+            icon={'fa fa-angle-down'}
+            styles={this.clickableStyles}
+            type={'i'} />
+        </div>
         {this.renderDropdown()}
       </div>
     );

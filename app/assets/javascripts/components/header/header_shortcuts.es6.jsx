@@ -75,7 +75,7 @@ class HeaderShortcuts extends Component {
           flexFlow: 'column',
           position: 'absolute',
           width: '128px',
-          top: '48px',
+          top: '44px',
           right: '0px',
         }
       ),
@@ -115,7 +115,7 @@ class HeaderShortcuts extends Component {
       ];
       return (
         <Dropdown
-          blur={(event) => this.handleBlur(event)}
+          action={(event) => this.handleBlur(event)}
           options={options}
           styles={this.dropdownStyles} />
       );
