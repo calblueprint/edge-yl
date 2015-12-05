@@ -9,12 +9,6 @@ class AuthenticationPage extends Component {
     };
   }
 
-  static get defaultProps() {
-    return {
-      type: 'login',
-    };
-  }
-
   // --------------------------------------------------
   // Styles
   // --------------------------------------------------
