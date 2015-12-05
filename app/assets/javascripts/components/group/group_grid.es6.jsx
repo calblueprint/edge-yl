@@ -5,11 +5,13 @@ class GroupGrid extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
+      group: React.PropTypes.object.isRequired,
     };
   }
 
   static get defaultProps() {
     return {
+      group: {},
     };
   }
 
@@ -32,9 +34,24 @@ class GroupGrid extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
+
+  renderCard(student) {
+    return (
+      <StudentsCard
+        key={student.id}
+        student={student} />
+    );
+  }
+
+  renderCards() {
+    console.log(this.props.group.students);
+    return this.props.group.students.map((student) => this.renderCard(student));
+  }
+
   render() {
     return (
       <div style={this.styles.container}>
+        {this.renderCards()}
       </div>
     );
   }

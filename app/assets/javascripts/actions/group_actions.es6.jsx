@@ -9,6 +9,7 @@
     }
 
     fetchGroup(conferenceId, id) {
+      console.log(conferenceId + ' ' + id);
       resolve = (response) => this.storeGroup(response);
       Requester.get(ApiConstants.conferences.groups.show(conferenceId, id), resolve);
       return true;

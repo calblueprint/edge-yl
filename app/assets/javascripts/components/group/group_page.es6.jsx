@@ -13,7 +13,7 @@ class GroupPage extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
-    	conferenceId: React.PropTypes.number.isRequired
+    	conferenceId: React.PropTypes.number.isRequired,
       id: React.PropTypes.number.isRequired,
     };
   }
@@ -67,7 +67,7 @@ class GroupPage extends Component {
           <Sidebar
             hidden={this.state.sidebar}
             profile={this.state.profile} />
-          <GroupGrid students={this.state.group.students} />
+          <GroupGrid group={this.state.group} />
         </div>
     );
   }

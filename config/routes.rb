@@ -10,9 +10,12 @@
 
 
 
-  resources :conferences, only: [:index, :show]
+  resources :conferences, only: [:index, :show] do
+    scope module: :conferences do
+      resources :groups, only: [:show]
+    end
+  end
   resources :forms, only: [:show]
-  resources :groups, only: [:show]
   resources :students, only: [:index, :show]
   resources :schools, only: [:index, :show]
   resources :users, only: [:index, :show]
@@ -36,7 +39,11 @@
 
     get '/users/profile', to: 'users#profile'
 
-    resources :conferences, only: [:create, :index, :show, :update]
+    resources :conferences, only: [:create, :index, :show, :update] do
+      scope module: :conferences do
+        resources :groups, only: [:show]
+      end
+    end
     resources :forms, only: [:show]
     resources :groups, only: [:create, :index, :show]
     resources :schools, only: [:create, :index, :show, :update]
@@ -47,5 +54,4 @@
     end
     resources :users, only: [:index, :show, :update]
   end
-
 end

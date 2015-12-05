@@ -10,7 +10,7 @@
           update: function(conferenceId, id) {
             return `/api/conferences/${conferenceId}/groups/${id}`
           },
-        }
+        },
         create: '/api/conferences',
         index: '/api/conferences',
         show: function(id) {
