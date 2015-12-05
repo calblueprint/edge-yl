@@ -9,7 +9,7 @@
     }
 
     fetchSchool(id) {
-      resolve = (response) => this.storeSchool(response);
+      var resolve = (response) => this.storeSchool(response);
       Requester.get(ApiConstants.schools.show(id), resolve);
       return true;
     }
@@ -23,7 +23,7 @@
     }
 
     updateSchool(id, params) {
-      resolve = (response) => this.storeSchool(response);
+      var resolve = (response) => this.storeSchool(response);
       Requester.update(ApiConstants.schools.update(id), params, resolve);
       return true;
     }

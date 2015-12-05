@@ -10,8 +10,9 @@ class Api::ConferencesController < Api::BaseController
   end
 
   def index
-    conferences = Conference.all
+    conferences = Conference.page params[:page]
     render json: conferences,
+                 serializer: PaginatedSerializer,
                  each_serializer: ConferenceIndexSerializer
   end
 

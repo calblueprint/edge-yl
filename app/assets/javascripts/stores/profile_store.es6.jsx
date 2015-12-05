@@ -14,7 +14,6 @@
       this.profile = {
         visits: [],
       };
-      this.sidebar = false;
     }
 
     handleStoreOverlay(overlay) {

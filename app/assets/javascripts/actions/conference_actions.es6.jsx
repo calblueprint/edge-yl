@@ -9,7 +9,7 @@
     }
 
     fetchConference(id) {
-      resolve = (response) => this.storeConference(response);
+      var resolve = (response) => this.storeConference(response);
       Requester.get(ApiConstants.conferences.show(id), resolve);
       return true;
     }
@@ -23,7 +23,7 @@
     }
 
     updateConference(id, params) {
-      resolve = (response) => this.storeConference(response);
+      var resolve = (response) => this.storeConference(response);
       Requester.update(ApiConstants.conferences.update(id), params, resolve);
       return true;
     }

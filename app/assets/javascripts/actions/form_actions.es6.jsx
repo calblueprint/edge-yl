@@ -26,7 +26,7 @@
     }
 
     fetchForm(id) {
-      resolve = (response) => this.storeForm(response);
+      var resolve = (response) => this.storeForm(response);
       Requester.get(ApiConstants.forms.show(id), resolve);
       return true;
     }

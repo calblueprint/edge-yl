@@ -31,7 +31,7 @@ class SidebarCategories extends Component {
         <SidebarItem
           label={'Conferences'}
           icon={TypeConstants.icons.conference}
-          route={RouteConstants.conferences.index} />
+          route={RouteConstants.conferences.index()} />
         <SidebarItem
           label={'Students'}
           icon={TypeConstants.icons.student}

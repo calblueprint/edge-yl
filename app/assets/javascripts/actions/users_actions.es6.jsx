@@ -9,7 +9,7 @@
     }
 
     fetchUsers(page) {
-      resolve = (response) => this.storeUsers(response);
+      var resolve = (response) => this.storeUsers(response);
       Requester.get(ApiConstants.users.index(page), resolve);
       return true;
     }

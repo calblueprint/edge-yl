@@ -4,13 +4,9 @@
     get conferences() {
       return {
         create: '/api/conferences',
-        index: '/api/conferences',
-        show: function(id) {
-          return `/api/conferences/${id}`;
-        },
-        update: function(id) {
-          return `/api/conferences/${id}`;
-        },
+        index: (page) => `/api/conferences?page=${page}`,
+        show: (id) => `/api/conferences/${id}`,
+        update: (id) => `/api/conferences/${id}`,
       };
     }
 
@@ -18,52 +14,35 @@
       return {
         create: '/api/groups',
         index: '/api/groups',
-        show: function(id) {
-          return `/api/groups/${id}`;
-        },
+        show: (id) => `/api/groups/${id}`,
       };
     }
 
     get forms() {
       return {
-        show: function(id) {
-          return `/api/forms/${id}`;
-        },
+        show: (id) => `/api/forms/${id}`,
       };
     }
 
     get schools() {
       return {
         create: '/api/schools',
-        index: function(page) {
-          return `/api/schools?page=${page}`;
-        },
-        show: function(id) {
-          return `/api/schools/${id}`;
-        },
-        update: function(id) {
-          return `/api/schools/${id}`;
-        },
+        index: (page) => `/api/schools?page=${page}`,
+        show: (id) => `/api/schools/${id}`,
+        update: (id) => `/api/schools/${id}`,
       };
     }
 
     get searchables() {
       return {
-        search: function(query) {
-          return `/api/searchables/search?query=${query}`;
-        },
+        search: (query) => `/api/searchables/search?query=${query}`,
       };
     }
 
     get students() {
       return {
         comments: {
-          create: function(id) {
-            return `/api/students/${id}/comments`;
-          },
-          index: function(id) {
-            return `/api/students/${id}/comments`;
-          },
+          create: (id) => `/api/students/${id}/comments`,
         },
         create: '/api/students',
         index: function(page, options={}) {
@@ -71,34 +50,23 @@
           if (options.order) {
             route = `${route}&order=${options.order}`;
           }
-          console.log(route);
           return route;
         },
-        show: function(id) {
-          return `/api/students/${id}`;
-        },
-        update: function(id) {
-          return `/api/students/${id}`;
-        },
+        show: (id) => `/api/students/${id}`,
+        update: (id) => `/api/students/${id}`,
       };
     }
 
     get users() {
       return {
         create: '/api/users/signup',
-        index: function(page) {
-          return `/api/users?=${page}`;
-        },
+        index: (page) => `/api/users?=${page}`,
         login: '/api/users/login',
         logout: '/api/users/logout',
         profile: '/api/users/profile',
-        show: function(id) {
-          return `/api/users/${id}`;
-        },
+        show: (id) => `/api/users/${id}`,
         signout: '/api/users/signout',
-        update: function(id) {
-          return `/api/users/${id}`;
-        },
+        update: (id) => `/api/users/${id}`,
       };
     }
   }

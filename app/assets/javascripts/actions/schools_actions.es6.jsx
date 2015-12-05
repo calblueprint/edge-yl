@@ -9,7 +9,7 @@
     }
 
     fetchSchools(page) {
-      resolve = (response) => this.storeSchools(response);
+      var resolve = (response) => this.storeSchools(response);
       Requester.get(ApiConstants.schools.index(page), resolve);
       return true;
     }
