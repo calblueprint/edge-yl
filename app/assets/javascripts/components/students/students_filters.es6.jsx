@@ -5,7 +5,7 @@ class StudentsFilters extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      filters: React.PropTypes.arrayOf(React.PropTypes.array).isRequired,
+      filters: React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
     };
   }
 
@@ -39,16 +39,16 @@ class StudentsFilters extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
-  renderFilter(options, index) {
+  renderFilter(filter, index) {
     return (
       <StudentsFilter
         key={index}
-        options={options} />
+        filter={filter} />
     );
   }
 
   renderFilters() {
-    return this.props.filters.map((options, index) => this.renderFilter(options, index));
+    return this.props.filters.map((filter, index) => this.renderFilter(filter, index));
   }
 
   render() {

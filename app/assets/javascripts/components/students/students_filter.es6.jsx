@@ -5,13 +5,13 @@ class StudentsFilter extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      options: React.PropTypes.arrayOf(React.PropTypes.string).isRequired,
+      filter: React.PropTypes.object.isRequired,
     };
   }
 
   static get defaultProps() {
     return {
-      options: [],
+      filter: {},
     };
   }
 
@@ -96,19 +96,20 @@ class StudentsFilter extends Component {
   // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
-  generateHandler(item) {
-    return () => this.setState({ selectedOption: item, isExpanded: false});
+  generateHandler(option) {
+    return () => this.setState({ selectedOption: option, isExpanded: false});
   }
 
-  generateDropdownOption(item) {
+  generateDropdownOption(option) {
     return {
-      action: this.generateHandler(item),
-      content: item,
+      action: this.generateHandler(option),
+      content: option,
     };
   }
 
   generateDropdownOptions() {
-    return this.props.options.map(this.generateDropdownOption.bind(this));
+    var options = this.props.filter.options;
+    return options.map((option, index) => this.generateDropdownOption(option, index));
   }
 
   // --------------------------------------------------
@@ -128,12 +129,12 @@ class StudentsFilter extends Component {
   render() {
     return (
       <div style={this.styles.container}>
-          <span style={this.styles.selected}> {this.state.selectedOption} </span>
-          <Clickable
-            action={this.handleExpand.bind(this)}
-            icon={'fa fa-angle-down'}
-            type={'i'}
-            styles={this.clickableStyles} />
+        <span style={this.styles.selected}> {this.state.selectedOption} </span>
+        <Clickable
+          action={this.handleExpand.bind(this)}
+          icon={'fa fa-angle-down'}
+          styles={this.clickableStyles}
+          type={'i'} />
         {this.renderDropdown()}
       </div>
     );

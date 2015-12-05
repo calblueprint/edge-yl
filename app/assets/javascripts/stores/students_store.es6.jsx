@@ -3,8 +3,18 @@
 
     constructor() {
       this.filters = [
-        ['Female', 'Male', 'Other'],
-        ['One', 'Two', 'Three'],
+        {
+          key: 'first_name',
+          name: 'First Name',
+          options: ['ASC', 'DESC', 'N/A'],
+          selected: 'None',
+        },
+        {
+          key: 'last_name',
+          name: 'Last Name',
+          options: ['ASC', 'DESC', 'N/A'],
+          selected: 'None',
+        },
       ];
       this.pagination = {
         current: 1,
