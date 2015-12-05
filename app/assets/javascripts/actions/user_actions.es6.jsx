@@ -9,7 +9,7 @@
     }
 
     fetchUser(id) {
-      resolve = (response) => this.storeUser(response);
+      var resolve = (response) => this.storeUser(response);
       Requester.get(ApiConstants.users.show(id), resolve);
       return true;
     }
@@ -23,7 +23,7 @@
     }
 
     updateUser(id, params) {
-      resolve = (response) => this.storeUser(response);
+      var resolve = (response) => this.storeUser(response);
       Requester.update(ApiConstants.users.update(id), params, resolve);
       return true;
     }

@@ -9,7 +9,7 @@
     }
 
     fetchStudents(page) {
-      resolve = (response) => this.storeStudents(response);
+      var resolve = (response) => this.storeStudents(response);
       Requester.get(ApiConstants.students.index(page), resolve);
       return true;
     }

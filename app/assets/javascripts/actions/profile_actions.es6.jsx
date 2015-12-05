@@ -8,7 +8,7 @@
     }
 
     fetchProfile() {
-      resolve = (response) => this.storeProfile(response);
+      var resolve = (response) => this.storeProfile(response);
       Requester.get(ApiConstants.users.profile, resolve);
       return true;
     }
@@ -22,7 +22,7 @@
     }
 
     updateProfile(id, params) {
-      resolve = (response) => this.storeProfile(response);
+      var resolve = (response) => this.storeProfile(response);
       Requester.update(ApiConstants.users.update(id), params, resolve);
       return true;
     }

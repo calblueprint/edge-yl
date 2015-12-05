@@ -9,7 +9,7 @@
     }
 
     fetchConferences(page) {
-      resolve = (response) => this.storeConferences(response);
+      var resolve = (response) => this.storeConferences(response);
       Requester.get(ApiConstants.conferences.index(page), resolve);
       return true;
     }
