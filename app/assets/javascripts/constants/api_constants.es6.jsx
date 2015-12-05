@@ -45,7 +45,13 @@
           create: (id) => `/api/students/${id}/comments`,
         },
         create: '/api/students',
-        index: (page) => `/api/students?page=${page}`,
+        index: function(page, options={}) {
+          var route = `/api/students?page=${page}`;
+          if (options.order) {
+            route = `${route}&order=${options.order}`;
+          }
+          return route;
+        },
         show: (id) => `/api/students/${id}`,
         update: (id) => `/api/students/${id}`,
       };

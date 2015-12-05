@@ -5,7 +5,7 @@ class StudentsFilters extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      filters: React.PropTypes.arrayOf(React.PropTypes.array).isRequired,
+      filters: React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
     };
   }
 
@@ -25,13 +25,12 @@ class StudentsFilters extends Component {
         StyleConstants.cards.default,
         {
           display: 'flex',
-          padding: '10px',
+          height: '44px',
           marginTop: '12px',
-          alignItems: 'center',
         }
       ),
       title: {
-        padding: '0px 16px',
+        padding: '12px',
       },
     };
   }
@@ -39,24 +38,22 @@ class StudentsFilters extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
-  renderFilter(options, index) {
+  renderFilter(filter) {
     return (
       <StudentsFilter
-        key={index}
-        options={options} />
+        key={filter.key}
+        filter={filter} />
     );
   }
 
   renderFilters() {
-    return this.props.filters.map((options, index) => this.renderFilter(options, index));
+    return this.props.filters.map((filter) => this.renderFilter(filter));
   }
 
   render() {
     return (
       <div style={this.styles.container}>
-        <div style={this.styles.title}>
-          <h5>{'Filters'}</h5>
-        </div>
+        <h5 style={this.styles.title}>{'Filters'}</h5>
         {this.renderFilters()}
       </div>
     );
