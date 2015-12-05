@@ -24,15 +24,11 @@ class ResponsibilitiesCard extends Component {
         display: 'flex',
         flexFlow: 'column',
         justifyContent: 'center',
-        alignItems: 'center',
         flex: '1',
         padding: '12px',
       },
-      image: {
-        width: '152px',
-        height: '152px',
-        marginBottom: '12px',
-        borderRadius: '50%',
+      responsibilities: {
+        overflow: 'scroll',
       },
     };
   }
@@ -40,10 +36,32 @@ class ResponsibilitiesCard extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
+  renderResponsibilities() {
+    var responsibilities = this.props.user.responsibilities;
+    if (responsibilities.length) {
+      return (
+        <div style={this.styles.responsibilities} >
+          {responsibilities.map((responsibility) => this.renderResponsibility(responsibility))}
+        </div>
+      );
+    }
+  }
+
+  renderResponsibility(responsibility) {
+    return (
+      <div key={responsibility.id}>
+        {responsibility.id}
+        {responsibility.status}
+        {responsibility.student.first_name}
+      </div>
+    );
+  }
+
   render() {
     var user = this.props.user;
     return (
       <div style={this.styles.container}>
+        {this.renderResponsibilities()}
       </div>
     );
   }
