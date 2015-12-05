@@ -115,9 +115,9 @@ class HeaderShortcuts extends Component {
       ];
       return (
         <Dropdown
+          blur={(event) => this.handleBlur(event)}
           options={options}
-          styles={this.dropdownStyles}
-          blur={(event) => this.handleBlur(event)} />
+          styles={this.dropdownStyles} />
       );
     }
   }

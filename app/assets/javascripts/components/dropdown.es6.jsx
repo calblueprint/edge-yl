@@ -5,7 +5,7 @@ class Dropdown extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      blur: React.PropTypes.func,
+      action: React.PropTypes.func,
       options: React.PropTypes.arrayOf(React.PropTypes.shape({
         action: React.PropTypes.func,
         children: React.PropTypes.node,
@@ -25,7 +25,7 @@ class Dropdown extends Component {
 
   static get defaultProps() {
     return {
-      blur: null,
+      action: null,
       options: [],
       styles: {
         child: {

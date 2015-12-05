@@ -132,9 +132,9 @@ class FormDropdown extends Component {
     if (this.state.dropdown) {
       return (
         <Dropdown
+          action={() => this.hideDropdown()}
           styles={this.dropdownStyles}
-          options={this.generateDropdownOptions()}
-          blur={() => this.hideDropdown()}/>
+          options={this.generateDropdownOptions()} />
       );
     }
   }

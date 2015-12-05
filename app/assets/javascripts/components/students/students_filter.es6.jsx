@@ -67,17 +67,6 @@ class StudentsFilter extends Component {
   }
 
   // --------------------------------------------------
-  // Handlers
-  // --------------------------------------------------
-  handleBlur(event) {
-    this.setState({ isExpanded: false });
-  }
-
-  handleExpand() {
-    this.setState({ isExpanded: !this.state.isExpanded });
-  }
-
-  // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
   generateDropdownOption(option) {
@@ -101,9 +90,9 @@ class StudentsFilter extends Component {
     if (filter.active) {
       return (
         <Dropdown
+          blur={(event) => StudentsActions.storeFilter(filter.key, false)}
           options={this.generateDropdownOptions()}
-          styles={this.dropdownStyles}
-          blur={(event) => StudentsActions.storeFilter(filter.key, false)} />
+          styles={this.dropdownStyles} />
       );
     }
   }
