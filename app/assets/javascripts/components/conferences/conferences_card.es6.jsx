@@ -9,12 +9,6 @@ class ConferencesCard extends Component {
     };
   }
 
-  static get defaultProps() {
-    return {
-      conference: {},
-    };
-  }
-
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
