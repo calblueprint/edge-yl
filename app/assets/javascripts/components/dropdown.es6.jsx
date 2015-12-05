@@ -43,6 +43,9 @@ class Dropdown extends Component {
   get styles() {
     return {
       input: {
+        position: 'absolute',
+        top: '0px',
+        left: '0px',
         width: '0px',
         height: '0px',
         border: '0px',
@@ -62,7 +65,9 @@ class Dropdown extends Component {
   // Handlers
   // --------------------------------------------------
   handleBlur(event) {
-    this.props.blur(event);
+    if (this.props.action) {
+      this.props.action(event);
+    }
   }
 
   // --------------------------------------------------
