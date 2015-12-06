@@ -9,12 +9,6 @@ class ResponsibilitiesGrid extends Component {
     };
   }
 
-  static get defaultProps() {
-    return {
-      responsibilities: [],
-    };
-  }
-
   // --------------------------------------------------
   // Styles
   // --------------------------------------------------

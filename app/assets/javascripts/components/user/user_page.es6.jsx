@@ -72,15 +72,6 @@ class UserPage extends Component {
     }
   }
 
-  renderResponsibilitiesGrid() {
-    var responsibilities = this.state.user.responsibilities
-    if (responsibilities.length) {
-      return (
-        <ResponsibilitiesGrid responsibilities={responsibilities} />
-      );
-    }
-  }
-
   render() {
     return (
       <div style={StyleConstants.pages.default}>
@@ -89,7 +80,7 @@ class UserPage extends Component {
           <Sidebar
             hidden={this.state.sidebar}
             profile={this.state.profile} />
-          {this.renderResponsibilitiesGrid()}
+          <ResponsibilitiesGrid responsibilities={this.state.user.responsibilities} />
         </div>
       </div>
     );

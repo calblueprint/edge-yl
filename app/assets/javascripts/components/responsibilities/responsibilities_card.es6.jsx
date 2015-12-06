@@ -9,12 +9,6 @@ class ResponsibilitiesCard extends Component {
     };
   }
 
-  static get defaultProps() {
-    return {
-      responsibility: {},
-    };
-  }
-
   // --------------------------------------------------
   // Styles
   // --------------------------------------------------
