@@ -20,14 +20,15 @@ class UserCard extends Component {
         {
           display: 'flex',
           flexFlow: 'column',
-          width: '32.5%',
-          height: '312px',
+          height: '256px',
           marginTop: '1%',
         }
       ),
       section: {
         display: 'flex',
         flexFlow: 'column',
+        alignItems: 'center',
+        justifyContent: 'space-around',
         padding: '12px',
         flex: '1',
       },
