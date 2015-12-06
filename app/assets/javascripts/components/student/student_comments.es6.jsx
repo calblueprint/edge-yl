@@ -19,7 +19,7 @@ class StudentComments extends Component {
         flexFlow: 'column',
         alignItems: 'flex-end',
         position: 'absolute',
-        top: '48px',
+        top: '0px',
         right: '0px',
         width: '196px',
         paddingRight: '16px',

@@ -12,6 +12,7 @@
         'resize',
         () => this.storeMedia(document.documentElement.clientWidth)
       );
+      this.storeMedia(document.documentElement.clientWidth);
       return true;
     }
   }

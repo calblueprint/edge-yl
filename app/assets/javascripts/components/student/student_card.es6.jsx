@@ -37,7 +37,8 @@ class StudentCard extends Component {
           marginTop: '1%',
         },
         this.props.media === 'large' && { width: '32.5%' },
-        this.props.media === 'medium' && { width: '49%' }
+        this.props.media === 'medium' && { width: '49%' },
+        this.props.media === 'small' && { width: '100%' }
       ),
     };
   }
