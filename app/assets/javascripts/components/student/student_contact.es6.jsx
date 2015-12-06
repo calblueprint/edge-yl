@@ -18,7 +18,7 @@ class StudentContact extends Component {
         display: 'flex',
         flexFlow: 'column',
         flex: '1',
-        padding: '12px',
+        padding: '18px',
       },
     };
   }

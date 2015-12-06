@@ -27,10 +27,8 @@
         grid: {
           display: 'flex',
           flexFlow: 'column',
-          justifyContent: 'center',
           width: '49%',
-          height: '24%',
-          padding: '24px',
+          padding: '18px',
           marginTop: '12px',
           backgroundColor: this.colors.white,
           border: '1px solid',
