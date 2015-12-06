@@ -44,7 +44,6 @@ class GroupGrid extends Component {
   }
 
   renderCards() {
-    console.log(this.props.group.students);
     return this.props.group.students.map((student) => this.renderCard(student));
   }
 

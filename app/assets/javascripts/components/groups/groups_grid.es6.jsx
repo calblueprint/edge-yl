@@ -5,6 +5,7 @@ class GroupsGrid extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
+      conferenceId: React.PropTypes.number.isRequired,
       groups: React.PropTypes.array.isRequired,
     };
   }
@@ -34,16 +35,17 @@ class GroupsGrid extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
-  renderGroup(group) {
+  renderGroup(conferenceId, group) {
     return (
       <GroupsCard
         key={group.id}
+        conferenceId={conferenceId}
         group={group} />
     );
   }
 
   renderGroups() {
-    return this.props.groups.map((group) => this.renderGroup(group));
+    return this.props.groups.map((group) => this.renderGroup(this.props.conferenceId, group));
   }
 
   render() {
