@@ -29,9 +29,21 @@ class StudentEditModal extends EditModal {
   renderBody() {
     switch (this.props.overlay.target) {
       case TypeConstants.overlay.target.preview:
-        return <StudentPreviewEdit student={this.props.student} />;
+        return (
+          <div style={this.styles.section}>
+            <CardHeader
+              action={() => StudentActions.updateStudent(this.props.template)}
+              content={'Student Preview'}
+              icon={TypeConstants.icons.save} />
+            <StudentPreviewEdit
+              student={this.props.student}
+              template={this.props.template} />
+          </div>
+        );
       case TypeConstants.overlay.target.contact:
-        return <StudentContactEdit student={this.props.student} />;
+        return (
+          <StudentContactEdit student={this.props.student} />
+        );
       case TypeConstants.overlay.target.guardian:
         return <StudentGuardianEdit student={this.props.student} />;
       case TypeConstants.overlay.target.outreach:

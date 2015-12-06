@@ -14,17 +14,7 @@ class StudentPreviewEdit extends Component {
   // --------------------------------------------------
   get styles() {
     return {
-      container: Object.assign(
-        {},
-        StyleConstants.cards.default,
-        {
-          display: 'flex',
-          flexFlow: 'column',
-          justifyContent: 'center',
-          width: '356px',
-        }
-      ),
-      form: {
+      container: {
         display: 'flex',
         flexFlow: 'column',
         justifyContent: 'center',
@@ -57,8 +47,7 @@ class StudentPreviewEdit extends Component {
   generateHandler(field) {
     var state = {};
     return(event) => {
-      state[field] = event.target.value;
-      this.setState(state);
+      StudentActions.storeTemplate(field, event.target.value);
     };
   }
 
@@ -77,30 +66,24 @@ class StudentPreviewEdit extends Component {
   // Render
   // --------------------------------------------------
   render() {
-    var student = this.props.student;
+    var template = this.props.template;
     return (
       <div style={this.styles.container}>
-        <CardHeader
-          action={() => this.updateStudent()}
-          content={'Student Preview'}
-          icon={TypeConstants.icons.save} />
-        <div style={this.styles.form}>
-          <img
-            src='https://scontent.fsnc1-1.fna.fbcdn.net/hphotos-xfp1/t31.0-8/11856297_10200932572512494_2256826043885795533_o.jpg'
-            style={this.styles.image} />
-          <CardInput
-            action={this.generateHandler('firstName')}
-            placeholder={'First name'}
-            value={this.state.firstName} />
-          <CardInput
-            action={this.generateHandler('lastName')}
-            placeholder={'Last name'}
-            value={this.state.lastName} />
-          <CardInput
-            action={this.generateHandler('birthday')}
-            placeholder={'Birthday'}
-            value={this.state.birthday} />
-        </div>
+        <img
+          src={'https://scontent.fsnc1-1.fna.fbcdn.net/hphotos-xfp1/t31.0-8/11856297_10200932572512494_2256826043885795533_o.jpg'}
+          style={this.styles.image} />
+        <CardInput
+          action={this.generateHandler('first_name')}
+          placeholder={'First name'}
+          value={template.first_name} />
+        <CardInput
+          action={this.generateHandler('last_name')}
+          placeholder={'Last name'}
+          value={template.last_name} />
+        <CardInput
+          action={this.generateHandler('birthday')}
+          placeholder={'Birthday'}
+          value={template.birthday} />
       </div>
     );
   }
