@@ -8,9 +8,9 @@
       );
     }
 
-    fetchConferences() {
-      resolve = (response) => this.storeConferences(response);
-      Requester.get(ApiConstants.conferences.index, resolve);
+    fetchConferences(page) {
+      var resolve = (response) => this.storeConferences(response);
+      Requester.get(ApiConstants.conferences.index(page), resolve);
       return true;
     }
   }

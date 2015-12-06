@@ -1,10 +1,11 @@
 class ConferencesController < BaseController
 
-  def show
-    @id = params[:id].to_i
+  def index
+    @page = params[:page] ? params[:page].to_i : 1
   end
 
-  def index
+  def show
+    @id = params[:id].to_i
   end
 
 end

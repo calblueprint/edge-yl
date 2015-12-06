@@ -5,23 +5,13 @@ class StudentsFilter extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      options: React.PropTypes.arrayOf(React.PropTypes.string).isRequired,
+      filter: React.PropTypes.object.isRequired,
     };
   }
 
   static get defaultProps() {
     return {
-      options: [],
-    };
-  }
-
-  // --------------------------------------------------
-  // State
-  // --------------------------------------------------
-  static get defaultState() {
-    return {
-      isExpanded: false,
-      selectedOption: 'Select one',
+      filter: {},
     };
   }
 
@@ -32,24 +22,25 @@ class StudentsFilter extends Component {
     return {
       container: {
         display: 'flex',
-        flexFlow: 'row',
-        margin: '0px 8px',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        width: '200px',
+        flexFlow: 'column',
+        flex: '1',
         zIndex: StyleConstants.planes.two,
-      },
-      selected: {
-        paddingLeft: '4px',
       },
     }
   }
 
   get clickableStyles() {
     return {
-        default: {
-        alignSelf: 'flex-end',
-        borderRadius: '1px',
+      child: {
+        paddingRight: '4px',
+      },
+      default: {
+        display: 'flex',
+        alignItems: 'center',
+        flex: '1',
+        minHeight: '44px',
+        padding: '12px',
+        boxSizing: 'border-box',
       },
     };
   }
@@ -58,9 +49,8 @@ class StudentsFilter extends Component {
     return {
       child: {
         default: {
-          display: 'flex',
           flex: '1',
-          padding: '4px',
+          padding: '8px',
         },
         hover: {
           backgroundColor: StyleConstants.colors.turquoise,
@@ -70,70 +60,60 @@ class StudentsFilter extends Component {
         {},
         StyleConstants.cards.default,
         {
+          display: 'flex',
+          flexFlow: 'column',
           flex: '1',
-          position: 'absolute',
-          top: '26px',
+          top: '4px',
           left: '0px',
           zIndex: StyleConstants.planes.two,
-          // TODO(Warren): Figure out a way to set width without hardcoded value.
-          width: '200px',
+          margin: '0 12px',
         }
       ),
     };
   }
 
   // --------------------------------------------------
-  // Handlers
-  // --------------------------------------------------
-  handleBlur(event) {
-    this.setState({ isExpanded: false });
-  }
-
-  handleExpand() {
-    this.setState({ isExpanded: !this.state.isExpanded });
-  }
-
-  // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
-  generateHandler(item) {
-    return () => this.setState({ selectedOption: item, isExpanded: false});
-  }
-
-  generateDropdownOption(item) {
+  generateDropdownOption(option) {
+    var filter = this.props.filter;
     return {
-      action: this.generateHandler(item),
-      content: item,
+      action: () => StudentsActions.storeFilter(filter.key, false, option),
+      content: option,
     };
   }
 
   generateDropdownOptions() {
-    return this.props.options.map(this.generateDropdownOption.bind(this));
+    var options = this.props.filter.options;
+    return options.map((option) => this.generateDropdownOption(option));
   }
 
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
   renderDropdown() {
-    if (this.state.isExpanded) {
+    var filter = this.props.filter;
+    if (filter.active) {
       return (
         <Dropdown
+          action={(event) => StudentsActions.storeFilter(filter.key, false)}
           options={this.generateDropdownOptions()}
-          styles={this.dropdownStyles}
-          blur={(event) => this.handleBlur(event)} />
+          styles={this.dropdownStyles} />
       );
     }
   }
 
   render() {
+    var filter = this.props.filter;
     return (
       <div style={this.styles.container}>
-          <span style={this.styles.selected}> {this.state.selectedOption} </span>
-          <Clickable
-            action={this.handleExpand.bind(this)}
-            icon={'fa fa-angle-down'}
-            type={'i'}
-            styles={this.clickableStyles} />
+        <Clickable
+          action={(event) => StudentsActions.storeFilter(filter.key, true)}
+          icon={'fa-angle-down'}
+          styles={this.clickableStyles}
+          type={'i'}>
+          <h6>{`${filter.name}: ${filter.selected}`}</h6>
+        </Clickable>
         {this.renderDropdown()}
       </div>
     );
