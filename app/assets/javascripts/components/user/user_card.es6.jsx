@@ -42,7 +42,7 @@ class UserCard extends Component {
     return (
       <div style={this.styles.container}>
         <CardHeader
-          action={(event) => ConferenceActions.storeOverlay(true, TypeConstants.overlay.type.edit)}
+          action={(event) => UserActions.storeOverlay(true, TypeConstants.overlay.type.edit)}
           content={`User ${user.id}`}
           icon={TypeConstants.icons.edit} />
         <div style={this.styles.section}>
