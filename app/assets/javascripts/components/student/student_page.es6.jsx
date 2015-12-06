@@ -41,6 +41,7 @@ class StudentPage extends Component {
   }
 
   componentDidMount() {
+    window.addEventListener('resize', (event) => console.log(document.documentElement.clientWidth))
     ProfileStore.listen(this._listener);
     StudentStore.listen(this._listener);
     ProfileActions.fetchProfile();
