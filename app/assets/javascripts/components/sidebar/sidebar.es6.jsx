@@ -41,7 +41,6 @@ class Sidebar extends Component {
     }
   }
   render() {
-    // TODO(Warren): Fix when sidebar shows and hides.
     var style = Object.assign(
       {},
       this.styles.container,

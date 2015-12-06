@@ -48,6 +48,7 @@ class Api::StudentsController < Api::BaseController
       responsibility_attributes: [
         :user_id,
       ],
+      :sidebar_active,
     )
   end
 
