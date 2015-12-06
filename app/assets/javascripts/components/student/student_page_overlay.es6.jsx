@@ -36,7 +36,7 @@ class StudentPageOverlay extends PageOverlay {
       );
     } else {
       return (
-        <CreateModal
+        <StudentCreateModal
           overlay={this.props.overlay}
           profile={this.props.profile}
           student={this.props.student} />

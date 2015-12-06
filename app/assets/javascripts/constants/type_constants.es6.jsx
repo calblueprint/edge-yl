@@ -27,7 +27,6 @@
           guardian: 'guardian',
           outreach: 'outreach',
           preview: 'preview',
-          responsibilities: 'responsibilities',
         },
         type: {
           create: 'create',
