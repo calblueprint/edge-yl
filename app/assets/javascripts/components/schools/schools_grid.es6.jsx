@@ -1,5 +1,8 @@
 class SchoolsGrid extends Component {
 
+  // --------------------------------------------------
+  // Props
+  // --------------------------------------------------
   static get propTypes() {
     return {
       schools: React.PropTypes.array.isRequired,
@@ -12,6 +15,9 @@ class SchoolsGrid extends Component {
     };
   }
 
+  // --------------------------------------------------
+  // Styles
+  // --------------------------------------------------
   get styles() {
     return {
       container: {
@@ -24,6 +30,9 @@ class SchoolsGrid extends Component {
     };
   }
 
+  // --------------------------------------------------
+  // Render
+  // --------------------------------------------------
   renderCard(school) {
     return (
       <SchoolsCard

@@ -46,10 +46,12 @@ ActiveRecord::Schema.define(version: 20151130013648) do
   end
 
   create_table "groups", force: :cascade do |t|
-    t.string   "name",          null: false
-    t.integer  "conference_id", null: false
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.string   "name",             null: false
+    t.string   "primary_leader",   null: false
+    t.string   "secondary_leader", null: false
+    t.integer  "conference_id",    null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
 
   add_index "groups", ["conference_id"], name: "index_groups_on_conference_id", using: :btree
@@ -104,17 +106,6 @@ ActiveRecord::Schema.define(version: 20151130013648) do
   end
 
   add_index "sections", ["form_id"], name: "index_sections_on_form_id", using: :btree
-
-  create_table "student_conferences", force: :cascade do |t|
-    t.integer  "status",        null: false
-    t.integer  "conference_id"
-    t.integer  "student_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-  end
-
-  add_index "student_conferences", ["conference_id"], name: "index_student_conferences_on_conference_id", using: :btree
-  add_index "student_conferences", ["student_id"], name: "index_student_conferences_on_student_id", using: :btree
 
   create_table "students", force: :cascade do |t|
     t.date     "birthday",           null: false

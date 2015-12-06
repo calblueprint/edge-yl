@@ -9,6 +9,21 @@ class UsersPage extends Component {
   }
 
   // --------------------------------------------------
+  // Props
+  // --------------------------------------------------
+  static get propTypes() {
+    return {
+      page: React.PropTypes.number.isRequired,
+    };
+  }
+
+  static get defaultProps() {
+    return {
+      page: 1,
+    };
+  }
+
+  // --------------------------------------------------
   // Styles
   // --------------------------------------------------
   get styles() {
@@ -43,7 +58,7 @@ class UsersPage extends Component {
     ProfileStore.listen(this._listener);
     UsersStore.listen(this._listener);
     ProfileActions.fetchProfile();
-    UsersActions.fetchUsers();
+    UsersActions.fetchUsers(this.props.page);
   }
 
   componentWillUnmount() {
@@ -59,11 +74,14 @@ class UsersPage extends Component {
       <div style={StyleConstants.pages.default}>
         <Header toggleSidebar={() => UsersActions.toggleSidebar()} />
         <div style={this.styles.container}>
-          <Sidebar 
+          <Sidebar
             hidden={this.state.sidebar}
             profile={this.state.profile} />
           <div style={this.styles.body}>
             <UsersGrid users={this.state.users} />
+            <PageNavigator
+              route={RouteConstants.users.index}
+              pagination={this.state.pagination} />
           </div>
         </div>
       </div>

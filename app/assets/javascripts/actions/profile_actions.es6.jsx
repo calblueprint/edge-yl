@@ -8,8 +8,22 @@
     }
 
     fetchProfile() {
-      resolve = (response) => this.storeProfile(response);
+      var resolve = (response) => this.storeProfile(response);
       Requester.get(ApiConstants.users.profile, resolve);
+      return true;
+    }
+
+    storeOverlay(active, type, target) {
+      return {
+        active: active,
+        target: target,
+        type: type,
+      };
+    }
+
+    updateProfile(id, params) {
+      var resolve = (response) => this.storeProfile(response);
+      Requester.update(ApiConstants.users.update(id), params, resolve);
       return true;
     }
   }

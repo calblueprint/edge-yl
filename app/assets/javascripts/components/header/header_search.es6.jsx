@@ -48,11 +48,9 @@ class HeaderSearch extends Component {
       option: {
         display: 'flex',
         flexFlow: 'column',
-        flex: '1',
       },
       section: {
         display: 'flex',
-        flex: '1',
       },
     };
   }
@@ -94,9 +92,9 @@ class HeaderSearch extends Component {
         {
           display: 'flex',
           flexFlow: 'column',
-          zIndex: StyleConstants.planes.nine,
           top: '4px',
           left: '0px',
+          zIndex: StyleConstants.planes.nine,
         },
         (!this.props.search.active ||
          !this.props.results.length) &&

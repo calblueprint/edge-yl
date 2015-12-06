@@ -1,17 +1,17 @@
-class StudentsFilters extends Component {
+class ConferencesCard extends Component {
 
   // --------------------------------------------------
   // Props
   // --------------------------------------------------
   static get propTypes() {
     return {
-      filters: React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
+      conference: React.PropTypes.object.isRequired,
     };
   }
 
   static get defaultProps() {
     return {
-      filters: [],
+      conference: {},
     };
   }
 
@@ -25,36 +25,30 @@ class StudentsFilters extends Component {
         StyleConstants.cards.default,
         {
           display: 'flex',
-          height: '44px',
-          marginTop: '12px',
+          flexFlow: 'column',
+          justifyContent: 'center',
+          width: '49%',
+          height: '24%',
+          padding: '24px',
+          marginTop: '2%',
+          boxSizing: 'border-box',
         }
       ),
-      title: {
-        padding: '12px',
-      },
     };
   }
 
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
-  renderFilter(filter) {
-    return (
-      <StudentsFilter
-        key={filter.key}
-        filter={filter} />
-    );
-  }
-
-  renderFilters() {
-    return this.props.filters.map((filter) => this.renderFilter(filter));
-  }
-
   render() {
+    var conference = this.props.conference;
     return (
       <div style={this.styles.container}>
-        <h5 style={this.styles.title}>{'Filters'}</h5>
-        {this.renderFilters()}
+        <Clickable
+          content={conference.location}
+          route={RouteConstants.conferences.show(conference.id)}
+          styles={this.clickableStyles}
+          type={'h3'} />
       </div>
     );
   }

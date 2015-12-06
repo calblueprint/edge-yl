@@ -1,4 +1,4 @@
-class SchoolPage extends Component {
+class ConferencesPage extends Component {
 
   // --------------------------------------------------
   // Setup
@@ -13,13 +13,13 @@ class SchoolPage extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      id: React.PropTypes.number.isRequired,
+      page: React.PropTypes.number.isRequired,
     };
   }
 
   static get defaultProps() {
     return {
-      id: 1,
+      page: 1,
     };
   }
 
@@ -34,57 +34,54 @@ class SchoolPage extends Component {
         paddingTop: '48px',
         paddingLeft: '196px',
       },
-      placeholder: {
-        width: '196px',
+      body: {
+        display: 'flex',
+        flexFlow: 'column',
+        flex: '1',
+        paddingLeft: '12px',
+        paddingRight: '208px',
+        overflow: 'scroll',
       },
     };
   }
-
 
   // --------------------------------------------------
   // Lifecycle
   // --------------------------------------------------
   componentWillMount() {
+    this.setState(ConferencesStore.getState());
     this.setState(ProfileStore.getState());
-    this.setState(SchoolStore.getState());
   }
 
   componentDidMount() {
+    ConferencesStore.listen(this._listener);
     ProfileStore.listen(this._listener);
-    SchoolStore.listen(this._listener);
+    ConferencesActions.fetchConferences(this.props.page);
     ProfileActions.fetchProfile();
-    SchoolActions.fetchSchool(this.props.id);
   }
 
   componentWillUnmount() {
+    ConferencesStore.unlisten(this._listener);
     ProfileStore.unlisten(this._listener);
-    SchoolStore.unlisten(this._listener);
   }
 
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
-  renderOverlay() {
-  if (this.state.overlay.active) {
-      return (
-        <SchoolPageOverlay
-          overlay={this.state.overlay}
-          school={this.state.school} />
-      );
-    }
-  }
-
   render() {
     return (
       <div style={StyleConstants.pages.default}>
-        {this.renderOverlay()}
-        <Header toggleSidebar={() => this.toggleSidebar()} />
+        <Header toggleSidebar={(event) => StudentsActions.toggleSidebar()} />
         <div style={this.styles.container}>
           <Sidebar
             hidden={this.state.sidebar}
             profile={this.state.profile} />
-          <SchoolGrid school={this.state.school} />
-          <div style={this.styles.placeholder} />
+          <div style={this.styles.body}>
+            <ConferencesGrid conferences={this.state.conferences} />
+            <PageNavigator
+              route={RouteConstants.conferences.index}
+              pagination={this.state.pagination} />
+          </div>
         </div>
       </div>
     );

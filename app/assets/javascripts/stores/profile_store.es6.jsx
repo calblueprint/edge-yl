@@ -2,10 +2,22 @@
   class ProfileStore {
 
     constructor() {
-      this.profile = { visits: [] };
       this.bindListeners({
+        handleStoreOverlay: ProfileActions.STORE_OVERLAY,
         handleStoreProfile: ProfileActions.STORE_PROFILE,
       });
+      this.overlay = {
+        active: false,
+        target: '',
+        type: '',
+      };
+      this.profile = {
+        visits: [],
+      };
+    }
+
+    handleStoreOverlay(overlay) {
+      this.overlay = overlay;
     }
 
     handleStoreProfile(response) {
