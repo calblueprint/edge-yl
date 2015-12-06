@@ -14,21 +14,10 @@ class ProfilePageOverlay extends PageOverlay {
     };
   }
 
-  static get defaultProps() {
-    return {
-      overlay: {
-        active: false,
-        target: TypeConstants.overlay.target.preview,
-        type: TypeConstants.overlay.type.edit,
-      },
-      profile: {},
-    };
-  }
-
   // --------------------------------------------------
   // Handlers
   // --------------------------------------------------
-  handleClick(event) {
+  handleClick() {
     if (event.target === this._node) {
       ProfileActions.storeOverlay(false);
     }
@@ -49,7 +38,7 @@ class ProfilePageOverlay extends PageOverlay {
     return (
       <div ref={'container'} style={this.styles.container}>
         <Clickable
-          action={(event) => ProfileActions.storeOverlay(false)}
+          action={() => ProfileActions.storeOverlay(false)}
           icon={TypeConstants.icons.close}
           styles={this.clickableStyles}
           type={'i'} />
