@@ -4,12 +4,18 @@
     constructor() {
       this.media = 'large';
       this.bindListeners({
-        handleStoreMedia: StudentActions.STORE_COMMENT,
+        handleStoreMedia: ViewActions.STORE_MEDIA,
       });
     }
 
     handleStoreMedia(width) {
-      this.media = width;
+      if (width >= 1200) {
+        this.media = 'large';
+      } else if (width >= 900) {
+        this.media = 'medium';
+      } else {
+        this.media = 'small',
+      }
     }
   }
   this.ViewStore = alt.createStore(ViewStore);
