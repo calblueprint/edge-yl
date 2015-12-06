@@ -12,7 +12,7 @@
       return {
         index: '/groups',
         show: function (conferenceId, id) {
-          return `${conferenceId}/groups/${id}`
+          return `/conferences/${conferenceId}/groups/${id}`
         },
       };
     }

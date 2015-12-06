@@ -1,5 +1,5 @@
 class GroupShowSerializer < GroupIndexSerializer
 
-	has_many :students, serializer: StudentGroupSerializer
+  has_many :students, serializer: StudentGroupSerializer
 
 end
