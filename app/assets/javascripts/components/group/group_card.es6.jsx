@@ -1,11 +1,11 @@
-class ConferenceCard extends Component {
+class GroupCard extends Component {
 
   // --------------------------------------------------
   // Props
   // --------------------------------------------------
   static get propTypes() {
     return {
-      conference: React.PropTypes.object.isRequired,
+      group: React.PropTypes.object.isRequired,
     };
   }
 
@@ -14,14 +14,14 @@ class ConferenceCard extends Component {
   // --------------------------------------------------
   get styles() {
     return {
-      container: Object.assign(
+      group: Object.assign(
         {},
         StyleConstants.cards.default,
         {
           display: 'flex',
-          flex: 1,
           flexFlow: 'column',
           height: '256px',
+          width: '100%',
           marginTop: '1%',
         }
       ),
@@ -37,31 +37,22 @@ class ConferenceCard extends Component {
   }
 
   // --------------------------------------------------
-  // Helpers
-  // --------------------------------------------------
-  showOverlay() {
-    ConferenceActions.storeOverlay(
-      true,
-      TypeConstants.overlay.type.edit
-    );
-  }
-
-  // --------------------------------------------------
   // Render
   // --------------------------------------------------
   render() {
-    var conference = this.props.conference;
+    var group = this.props.group;
     return (
-      <div style={this.styles.container}>
+      <div style={this.styles.group}>
         <CardHeader
-          action={() => this.showOverlay()}
-          content={`Conference ${conference.id}`}
+          action={(event) => GroupActions.storeOverlay(true, TypeConstants.overlay.type.edit)}
+          content={`Group ${group.name}`}
           icon={TypeConstants.icons.edit} />
         <div style={this.styles.section}>
-          <h3>{`Conference Location: ${conference.location}`}</h3>
-          <h3>{`Start Date: ${conference.start_date}`}</h3>
-          <h3>{`End Date: ${conference.end_date}`}</h3>
-        </div>
+          <h3>{`Primary Leader: ${group.primary_leader}`}</h3>
+          <h3>{`Secondary Leader: ${group.secondary_leader}`}</h3>
+          <h3>{`Conference: ${group.conference.id}`}</h3>
+          <h3>{`Location: ${group.conference.location}`}</h3>
+      </div>
       </div>
     );
   }
