@@ -6,23 +6,6 @@ class UserCard extends Component {
   static get propTypes() {
     return {
       user: React.PropTypes.object.isRequired,
-      target: React.PropTypes.oneOf([
-        'comment',
-        'outreach',
-        'responsibilities',
-      ]).isRequired,
-      type: React.PropTypes.oneOf([
-        'create',
-        'edit',
-      ]).isRequired,
-    };
-  }
-
-  static get defaultProps() {
-    return {
-      user: {},
-      target: TypeConstants.overlay.target.outreach,
-      type: TypeConstants.overlay.type.edit,
     };
   }
 
@@ -42,45 +25,30 @@ class UserCard extends Component {
           marginTop: '1%',
         }
       ),
+      section: {
+        display: 'flex',
+        flexFlow: 'column',
+        padding: '12px',
+        flex: '1',
+      },
     };
-  }
-
-  // --------------------------------------------------
-  // Helpers
-  // --------------------------------------------------
-  showOverlay(event) {
-    UserActions.storeOverlay(
-      true,
-      TypeConstants.overlay.type.edit,
-      this.props.target
-    );
   }
 
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
-  renderBody() {
-    switch (this.props.target) {
-      case 'responsibilities':
-        return <ResponsibilitiesCard user={this.props.user} />;
-    };
-  }
-
-  renderTitle() {
-    switch (this.props.target) {
-      case 'responsibilities':
-        return 'Responsibilities';
-    };
-  }
-
   render() {
+    var user = this.props.user;
     return (
       <div style={this.styles.container}>
         <CardHeader
-          action={(event) => this.showOverlay(event)}
-          content={this.renderTitle()}
+          action={(event) => ConferenceActions.storeOverlay(true, TypeConstants.overlay.type.edit)}
+          content={`User ${user.id}`}
           icon={TypeConstants.icons.edit} />
-        {this.renderBody()}
+        <div style={this.styles.section}>
+          <h5>{`${user.first_name} ${user.last_name}`}</h5>
+          <h5>{`Email: ${user.email}`}</h5>
+        </div>
       </div>
     );
   }

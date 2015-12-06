@@ -57,7 +57,7 @@ class ConferenceCard extends Component {
           <h3>{`Conference Location: ${conference.location}`}</h3>
           <h3>{`Start Date: ${conference.start_date}`}</h3>
           <h3>{`End Date: ${conference.end_date}`}</h3>
-      </div>
+        </div>
       </div>
     );
   }
