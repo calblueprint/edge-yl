@@ -25,6 +25,7 @@
 class Student < ActiveRecord::Base
 
   include PgSearch
+
   multisearchable against: [:first_name, :last_name, :email]
 
   belongs_to :group
@@ -35,6 +36,8 @@ class Student < ActiveRecord::Base
 
   has_one :conference, through: :group
   has_one :responsibility, dependent: :destroy
+
+  accepts_nested_attributes_for :responsibility
 
   validates :cell_phone, presence: true
   validates :email, presence: true

@@ -45,6 +45,9 @@ class Api::StudentsController < Api::BaseController
       :home_address,
       :home_phone,
       :last_name,
+      responsibility_attributes: [
+        :user_id,
+      ],
     )
   end
 
