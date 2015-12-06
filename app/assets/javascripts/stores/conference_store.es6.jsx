@@ -9,9 +9,8 @@
       };
       this.sidebar = true;
       this.conference = {
-        conference: {
-          groups: [],
-        },
+        id: 1,
+        groups: [],
       };
       this.bindListeners({
         handleStoreOverlay: ConferenceActions.STORE_OVERLAY,

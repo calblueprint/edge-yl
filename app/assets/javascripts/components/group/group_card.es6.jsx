@@ -41,7 +41,6 @@ class GroupCard extends Component {
   // --------------------------------------------------
   render() {
     var group = this.props.group;
-    console.log(group);
     return (
       <div style={this.styles.group}>
         <CardHeader
