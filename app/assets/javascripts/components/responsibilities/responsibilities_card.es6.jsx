@@ -37,10 +37,9 @@ class ResponsibilitiesCard extends Component {
     var responsibility = this.props.responsibility;
     return (
       <div style={this.styles.container}>
-        {responsibility.id}
-        {responsibility.status}
-        {responsibility.student.first_name}
-        {responsibility.student.last_name}
+        <h5>{`Responsibility ID: ${responsibility.id}`}</h5>
+        <h5>{`Status: ${responsibility.status}`}</h5>
+        <h5>{`${responsibility.student.first_name} ${responsibility.student.last_name}`}</h5>
       </div>
     );
   }
