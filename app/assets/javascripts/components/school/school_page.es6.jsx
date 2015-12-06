@@ -78,7 +78,7 @@ class SchoolPage extends Component {
     return (
       <div style={StyleConstants.pages.default}>
         {this.renderOverlay()}
-        <Header toggleSidebar={() => this.toggleSidebar()} />
+        <Header active={true} />
         <div style={this.styles.container}>
           <Sidebar
             hidden={this.state.sidebar}

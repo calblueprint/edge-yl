@@ -69,7 +69,7 @@ class ConferencePage extends Component {
     return (
       <div style={StyleConstants.pages.default}>
         {this.renderOverlay()}
-        <Header toggleSidebar={() => this.toggleSidebar()} />
+        <Header active={false} />
         <div style={this.styles.container}>
           <Sidebar
             hidden={this.state.sidebar}

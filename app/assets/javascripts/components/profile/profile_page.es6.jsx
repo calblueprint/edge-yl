@@ -62,7 +62,7 @@ class ProfilePage extends Component {
     return (
       <div style={this.styles.container}>
         {this.renderOverlay()}
-        <Header />
+        <Header active={true} />
         <div style={this.styles.section}>
           <Sidebar
             hidden={this.state.sidebar}

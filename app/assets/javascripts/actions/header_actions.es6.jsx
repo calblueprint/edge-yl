@@ -3,7 +3,8 @@
 
     constructor() {
       this.generateActions(
-        'storeResults'
+        'storeResults',
+        'toggleDropdown'
       );
     }
 

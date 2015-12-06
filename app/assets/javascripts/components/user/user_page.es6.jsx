@@ -75,7 +75,7 @@ class UserPage extends Component {
   render() {
     return (
       <div style={StyleConstants.pages.default}>
-        <Header toggleSidebar={(event) => UserActions.toggleSidebar()} />
+        <Header active={true} />
         <div style={this.styles.container}>
           <Sidebar
             hidden={this.state.sidebar}
