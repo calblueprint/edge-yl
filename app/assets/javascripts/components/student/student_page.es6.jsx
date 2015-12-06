@@ -38,22 +38,22 @@ class StudentPage extends Component {
   componentWillMount() {
     this.setState(ProfileStore.getState());
     this.setState(StudentStore.getState());
+    this.setState(ViewStore.getState());
   }
 
   componentDidMount() {
-    window.addEventListener(
-      'resize',
-      () => ViewActions.storeMedia(document.documentElement.clientWidth)
-    );
     ProfileStore.listen(this._listener);
     StudentStore.listen(this._listener);
+    ViewStore.listen(this._listener);
     ProfileActions.fetchProfile();
     StudentActions.fetchStudent(this.props.id);
+    ViewActions.attachListener();
   }
 
   componentWillUnmount() {
     ProfileStore.unlisten(this._listener);
     StudentStore.unlisten(this._listener);
+    ViewStore.unlisten(this._listener);
   }
 
   // --------------------------------------------------

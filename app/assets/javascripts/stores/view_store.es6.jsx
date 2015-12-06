@@ -14,7 +14,7 @@
       } else if (width >= 900) {
         this.media = 'medium';
       } else {
-        this.media = 'small',
+        this.media = 'small';
       }
     }
   }
