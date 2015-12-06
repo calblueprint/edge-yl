@@ -58,8 +58,11 @@ class StudentOutreachEdit extends Component {
 
   updateStudent() {
     var params = {
-      first_name: this.state.first_name,
-      last_name: this.state.last_name,
+      student: {
+        responsibility: {
+          user_id: 2,
+        },
+      },
     };
     StudentActions.updateStudent(this.props.student.id, params);
   }

@@ -62,12 +62,14 @@ class StudentGuardianEdit extends Component {
 
   updateStudent() {
     var params = {
-      guardian_one_name: this.state.guardianOneName,
-      guardian_one_phone: this.state.guardianOnePhone,
-      guardian_one_email: this.state.guardianOneEmail,
-      guardian_two_name: this.state.guardianTwoName,
-      guardian_two_phone: this.state.guardianTwoPhone,
-      guardian_two_email: this.state.guardianTwoEmail,
+      student: {
+        guardian_one_name: this.state.guardianOneName,
+        guardian_one_phone: this.state.guardianOnePhone,
+        guardian_one_email: this.state.guardianOneEmail,
+        guardian_two_name: this.state.guardianTwoName,
+        guardian_two_phone: this.state.guardianTwoPhone,
+        guardian_two_email: this.state.guardianTwoEmail,
+      },
     };
     StudentActions.updateStudent(this.props.student.id, params);
   }

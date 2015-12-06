@@ -66,10 +66,12 @@ class StudentContactEdit extends Component {
 
   updateStudent() {
     var params = {
-      cell_phone: this.state.cellPhone,
-      email: this.state.email,
-      home_address: this.state.homeAddress,
-      home_phone: this.state.homePhone,
+      student: {
+        cell_phone: this.state.cellPhone,
+        email: this.state.email,
+        home_address: this.state.homeAddress,
+        home_phone: this.state.homePhone,
+      },
     };
     StudentActions.updateStudent(this.props.student.id, params);
   }
