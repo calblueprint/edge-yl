@@ -9,6 +9,7 @@
       };
       this.sidebar = true;
       this.student = {
+        comments: [],
         group: {},
         school: {},
       };

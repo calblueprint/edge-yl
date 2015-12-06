@@ -9,12 +9,6 @@ class FormBody extends Component {
     };
   }
 
-  static get defaultProps() {
-    return {
-      form: {},
-    };
-  }
-
   // --------------------------------------------------
   // Styles
   // --------------------------------------------------
@@ -65,7 +59,7 @@ class FormBody extends Component {
         </div>
         {this.renderSections()}
         <FormButton
-          action={(event) => FormActions.createObject(this.props.form)}
+          action={() => FormActions.createObject(this.props.form)}
           content={'Submit'} />
       </div>
     );

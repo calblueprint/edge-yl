@@ -9,12 +9,6 @@ class StudentPreview extends Component {
     };
   }
 
-  static get defaultProps() {
-    return {
-      student: {},
-    };
-  }
-
   // --------------------------------------------------
   // Styles
   // --------------------------------------------------

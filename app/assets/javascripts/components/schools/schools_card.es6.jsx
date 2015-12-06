@@ -1,44 +1,16 @@
 class SchoolsCard extends Component {
 
-static get propTypes() {
+  // --------------------------------------------------
+  // Props
+  // --------------------------------------------------
+  static get propTypes() {
     return {
       school: React.PropTypes.object.isRequired,
     };
   }
 
   // --------------------------------------------------
-  // Props
-  // --------------------------------------------------
-  static get defaultProps() {
-    return {
-      school: null,
-    };
-  }
-
-  // --------------------------------------------------
   // Styles
-  // --------------------------------------------------
-  get styles() {
-    return {
-      container: Object.assign(
-        {},
-        StyleConstants.cards.default,
-        {
-          display: 'flex',
-          flexFlow: 'column',
-          justifyContent: 'center',
-          width: '49%',
-          height: '24%',
-          padding: '24px',
-          marginTop: '2%',
-          boxSizing: 'border-box',
-        }
-      ),
-    };
-  }
-
-// --------------------------------------------------
-  // Render
   // --------------------------------------------------
   get clickableStyles() {
     return {
@@ -48,10 +20,13 @@ static get propTypes() {
     };
   }
 
+  // --------------------------------------------------
+  // Render
+  // --------------------------------------------------
   render() {
     var school = this.props.school;
     return (
-      <div style={this.styles.container}>
+      <div style={StyleConstants.cards.grid}>
         <Clickable
           content={school.name}
           route={RouteConstants.schools.show(school.id)}

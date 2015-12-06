@@ -23,18 +23,6 @@ class CreateModal extends Component {
     };
   }
 
-  static get defaultProps() {
-    return {
-      overlay: {
-        active: false,
-        target: TypeConstants.overlay.target.comment,
-        type: TypeConstants.overlay.type.create,
-      },
-      profile: {},
-      student: {},
-    };
-  }
-
   // --------------------------------------------------
   // Styles
   // --------------------------------------------------

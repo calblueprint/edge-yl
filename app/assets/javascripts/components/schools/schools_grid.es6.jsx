@@ -9,12 +9,6 @@ class SchoolsGrid extends Component {
     };
   }
 
-  static get defaultProps() {
-    return {
-      schools: [],
-    };
-  }
-
   // --------------------------------------------------
   // Styles
   // --------------------------------------------------

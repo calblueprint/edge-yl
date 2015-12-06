@@ -9,12 +9,6 @@ class ProfileOptionsEdit extends Component {
     };
   }
 
-  static get defaultProps() {
-    return {
-      profile: {},
-    };
-  }
-
   // --------------------------------------------------
   // Styles
   // --------------------------------------------------

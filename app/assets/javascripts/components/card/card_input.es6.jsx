@@ -11,14 +11,6 @@ class CardInput extends Component {
     };
   }
 
-  static get defaultProps() {
-    return {
-      action: null,
-      placeholder: 'First Name',
-      value: '',
-    };
-  }
-
   // --------------------------------------------------
   // Styles
   // --------------------------------------------------

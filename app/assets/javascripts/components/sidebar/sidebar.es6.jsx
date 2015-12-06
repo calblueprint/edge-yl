@@ -5,15 +5,8 @@ class Sidebar extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      hidden: React.PropTypes.bool.isRequired,
+      active: React.PropTypes.bool.isRequired,
       profile: React.PropTypes.object.isRequired,
-    };
-  }
-
-  static get defaultProps() {
-    return {
-      hidden: true,
-      profile: {},
     };
   }
 
@@ -52,7 +45,7 @@ class Sidebar extends Component {
     var style = Object.assign(
       {},
       this.styles.container,
-      !this.props.hidden && this.styles.hidden
+      !this.props.active && this.styles.hidden
     );
     return (
       <div style={style}>

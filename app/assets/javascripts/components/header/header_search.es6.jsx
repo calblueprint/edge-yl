@@ -10,13 +10,6 @@ class HeaderSearch extends Component {
     };
   }
 
-  static get defaultProps() {
-    return {
-      pagination: {},
-      results: [],
-    };
-  }
-
   // --------------------------------------------------
   // Styles
   // --------------------------------------------------

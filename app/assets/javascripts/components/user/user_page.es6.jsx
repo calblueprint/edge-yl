@@ -17,12 +17,6 @@ class UserPage extends Component {
     };
   }
 
-  static get defaultProps() {
-    return {
-      id: 1,
-    };
-  }
-
   // --------------------------------------------------
   // Styles
   // --------------------------------------------------
@@ -75,10 +69,10 @@ class UserPage extends Component {
   render() {
     return (
       <div style={StyleConstants.pages.default}>
-        <Header toggleSidebar={(event) => UserActions.toggleSidebar()} />
+        <Header active={true} />
         <div style={this.styles.container}>
           <Sidebar
-            hidden={this.state.sidebar}
+            active={this.state.sidebar}
             profile={this.state.profile} />
           <UserCard user={this.state.user} />
           <ResponsibilitiesGrid responsibilities={this.state.user.responsibilities} />

@@ -5,21 +5,9 @@ class HeaderShortcuts extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      showShortcuts: React.PropTypes.bool.isRequired,
+      active: React.PropTypes.bool.isRequired,
+      dropdown: React.PropTypes.bool.isRequired,
     };
-  }
-
-  static get defaultProps() {
-    return {
-      showShortcuts: true,
-    };
-  }
-
-  // --------------------------------------------------
-  // State
-  // --------------------------------------------------
-  static get defaultState() {
-    return { dropdown: false };
   }
 
   // --------------------------------------------------
@@ -83,21 +71,10 @@ class HeaderShortcuts extends Component {
   }
 
   // --------------------------------------------------
-  // Handlers
-  // --------------------------------------------------
-  handleBlur(event) {
-    this.setState({ dropdown: false });
-  }
-
-  handleClick(event) {
-    this.setState({ dropdown: !this.state.dropdown });
-  }
-
-  // --------------------------------------------------
   // Render
   // --------------------------------------------------
   renderDropdown() {
-    if (this.state.dropdown) {
+    if (this.props.dropdown) {
       var options = [
         {
           content: 'Profile',
@@ -115,7 +92,7 @@ class HeaderShortcuts extends Component {
       ];
       return (
         <Dropdown
-          action={(event) => this.handleBlur(event)}
+          action={() => HeaderActions.toggleDropdown()}
           options={options}
           styles={this.dropdownStyles} />
       );
@@ -123,7 +100,7 @@ class HeaderShortcuts extends Component {
   }
 
   renderShortcuts() {
-    if (this.props.showShortcuts) {
+    if (this.props.active) {
       return [
         <Clickable
           key={1}
@@ -134,7 +111,7 @@ class HeaderShortcuts extends Component {
         <Clickable
           key={2}
           icon={TypeConstants.icons.profile}
-          action={(event) => this.handleClick(event)}
+          action={() => HeaderActions.toggleDropdown()}
           styles={this.clickableStyles}
           type={'i'} />,
       ];

@@ -9,12 +9,6 @@ class ConferencesGrid extends Component {
     };
   }
 
-  static get defaultProps() {
-    return {
-      conferences: [],
-    };
-  }
-
   // --------------------------------------------------
   // Styles
   // --------------------------------------------------

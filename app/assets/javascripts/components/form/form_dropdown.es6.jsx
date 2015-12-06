@@ -23,6 +23,40 @@ class FormDropdown extends Component {
   // --------------------------------------------------
   // Styles
   // --------------------------------------------------
+  get styles() {
+    return {
+      container: {
+        display: 'flex',
+        flexFlow: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        width: '250px',
+        marginBottom: '20px',
+      },
+      label: {
+        fontSize: StyleConstants.fonts.sizes.smaller,
+      },
+      selected: {
+        width: '130px',
+        color: StyleConstants.colors.gray,
+      },
+      dropdownContainer: {
+        display: 'flex',
+        flexFlow: 'row',
+        padding: '4px',
+        border: '1px solid' + StyleConstants.colors.gray,
+      },
+      icon: {
+        padding: '0px 2px',
+        color: StyleConstants.colors.gray,
+      },
+      dropdown: {
+        display: 'flex',
+        flexFlow: 'column',
+      },
+    };
+  }
+
   get dropdownStyles() {
     return {
       child: {
@@ -58,47 +92,6 @@ class FormDropdown extends Component {
       hover: {
       },
     };
-  }
-
-  get styles() {
-    return {
-      container: {
-        display: 'flex',
-        flexFlow: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        width: '250px',
-        marginBottom: '20px',
-      },
-      label: {
-        fontSize: StyleConstants.fonts.sizes.smaller,
-      },
-      selected: {
-        width: '130px',
-        color: StyleConstants.colors.gray,
-      },
-      dropdownContainer: {
-        display: 'flex',
-        flexFlow: 'row',
-        padding: '4px',
-        border: '1px solid' + StyleConstants.colors.gray,
-      },
-      icon: {
-        padding: '0px 2px',
-        color: StyleConstants.colors.gray,
-      },
-      dropdown: {
-        display: 'flex',
-        flexFlow: 'column',
-      },
-    };
-  }
-
-  // --------------------------------------------------
-  // Handlers
-  // --------------------------------------------------
-  handleClick(event) {
-    this.setState({ dropdown: !this.state.dropdown });
   }
 
   // --------------------------------------------------
@@ -150,9 +143,8 @@ class FormDropdown extends Component {
             </div>
             <Clickable
               icon={'fa fa-angle-down'}
-              action={(event) => handleClick(event)}
-              type={'i'}
               styles={this.clickableStyles}
+              type={'i'}
             />
           </div>
       </div>
