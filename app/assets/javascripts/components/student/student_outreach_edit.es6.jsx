@@ -9,12 +9,6 @@ class StudentOutreachEdit extends Component {
     };
   }
 
-  static get defaultProps() {
-    return {
-      student: {},
-    };
-  }
-
   // --------------------------------------------------
   // Styles
   // --------------------------------------------------
