@@ -62,7 +62,7 @@ class StudentOutreachEdit extends Component {
     };
   }
 
-  updateResponsibility() {
+  updateStudent() {
     var params = {
       first_name: this.state.first_name,
       last_name: this.state.last_name,
@@ -92,7 +92,7 @@ class StudentOutreachEdit extends Component {
     return (
       <div style={this.styles.container}>
         <CardHeader
-          action={(event) => this.updateStudent()}
+          action={() => this.updateStudent()}
           content={'Student Outreach'}
           icon={TypeConstants.icons.save} />
         {this.renderForm()}
