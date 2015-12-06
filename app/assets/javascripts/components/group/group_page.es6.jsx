@@ -20,7 +20,7 @@ class GroupPage extends Component {
 
   static get defaultProps() {
     return {
-    	conferenceId: 1,
+      conferenceId: 1,
       id: 1,
     };
   }

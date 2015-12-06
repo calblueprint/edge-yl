@@ -50,6 +50,7 @@ class GroupGrid extends Component {
   render() {
     return (
       <div style={this.styles.container}>
+        <GroupCard group={this.props.group} />
         {this.renderCards()}
       </div>
     );

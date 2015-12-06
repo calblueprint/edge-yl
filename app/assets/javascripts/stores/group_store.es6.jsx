@@ -5,6 +5,7 @@
       this.sidebar = true;
       this.group = {
         students: [],
+        conference: {},
       };
       this.bindListeners({
         handleStoreGroup: GroupActions.STORE_GROUP,
