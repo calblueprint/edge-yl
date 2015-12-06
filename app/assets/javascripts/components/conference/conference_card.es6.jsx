@@ -25,9 +25,9 @@ class ConferenceCard extends Component {
         StyleConstants.cards.default,
         {
           display: 'flex',
+          flex: 1,
           flexFlow: 'column',
-          width: '50%',
-          height: '512px',
+          height: '256px',
           marginTop: '1%',
         }
       ),
