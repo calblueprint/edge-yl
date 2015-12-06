@@ -71,7 +71,7 @@ class StudentsPage extends Component {
   render() {
     return (
       <div style={StyleConstants.pages.default}>
-        <Header toggleSidebar={(event) => StudentsActions.toggleSidebar()} />
+        <Header active={true} />
         <div style={this.styles.container}>
           <Sidebar
             hidden={this.state.sidebar}
