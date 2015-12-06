@@ -17,12 +17,6 @@ class UsersPage extends Component {
     };
   }
 
-  static get defaultProps() {
-    return {
-      page: 1,
-    };
-  }
-
   // --------------------------------------------------
   // Styles
   // --------------------------------------------------
@@ -72,10 +66,10 @@ class UsersPage extends Component {
   render() {
     return (
       <div style={StyleConstants.pages.default}>
-        <Header toggleSidebar={() => UsersActions.toggleSidebar()} />
+        <Header active={true} />
         <div style={this.styles.container}>
           <Sidebar
-            hidden={this.state.sidebar}
+            active={this.state.sidebar}
             profile={this.state.profile} />
           <div style={this.styles.body}>
             <UsersGrid users={this.state.users} />

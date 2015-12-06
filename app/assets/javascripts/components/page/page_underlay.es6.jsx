@@ -9,12 +9,6 @@ class PageUnderlay extends Component {
     };
   }
 
-  static get defaultProps() {
-    return {
-      active: false,
-    };
-  }
-
   // --------------------------------------------------
   // Styles
   // --------------------------------------------------

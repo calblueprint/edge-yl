@@ -60,7 +60,7 @@ class SignupForm extends Component {
   // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
-  createUser(event) {
+  createUser() {
     var params = {
       registration: {
         email: this.state.email,
@@ -71,8 +71,8 @@ class SignupForm extends Component {
         password_confirmation: this.state.passwordConfirmation,
       },
     };
-    var resolve = (response) => { window.location = RouteConstants.students.index() };
-    var reject = (response) => { this.setState({error: response.message}) };
+    var resolve = (response) => window.location = RouteConstants.students.index();
+    var reject = (response) => this.setState({error: response.message});
     Requester.post(ApiConstants.users.create, params, resolve, reject);
   }
 
@@ -89,7 +89,7 @@ class SignupForm extends Component {
   // --------------------------------------------------
     handleKeyDown(event) {
       if (event.keyCode === 13) {
-        this.createUser(event);
+        this.createUser();
       }
     }
 
@@ -156,7 +156,7 @@ class SignupForm extends Component {
         </input>
         {this.renderError()}
         <FormButton
-          action={(event) => this.createUser(event)}
+          action={() => this.createUser()}
           content={'Sign up'} />
       </div>
     );

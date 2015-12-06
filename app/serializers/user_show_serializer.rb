@@ -1,4 +1,5 @@
 class UserShowSerializer < UserIndexSerializer
 
-end
+  has_many :responsibilities, serializer: ResponsibilityIndexSerializer
 
+end

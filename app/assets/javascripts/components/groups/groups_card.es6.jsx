@@ -10,12 +10,6 @@ class GroupsCard extends Component {
     };
   }
 
-  static get defaultProps() {
-    return {
-      group: {},
-    };
-  }
-
   // --------------------------------------------------
   // Styles
   // --------------------------------------------------

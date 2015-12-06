@@ -1,6 +1,15 @@
 class HeaderNavigation extends Component {
 
   // --------------------------------------------------
+  // Props
+  // --------------------------------------------------
+  static get propTypes() {
+    return {
+      active: React.PropTypes.bool.isRequired,
+    };
+  }
+
+  // --------------------------------------------------
   // Styles
   // --------------------------------------------------
   get styles() {
@@ -31,6 +40,16 @@ class HeaderNavigation extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
+  renderSearch() {
+    if (this.props.active) {
+      return (
+        <HeaderSearch
+          pagination={this.props.pagination}
+          results={this.props.results}
+          search={this.props.search} />
+      );
+    }
+  }
   render() {
     return (
       <div style={this.styles.container}>
@@ -39,10 +58,7 @@ class HeaderNavigation extends Component {
           route={RouteConstants.students.index()}
           styles={this.clickableStyles}
           type={'h2'} />
-        <HeaderSearch
-          pagination={this.props.pagination}
-          results={this.props.results}
-          search={this.props.search} />
+        {this.renderSearch()}
       </div>
     );
   }

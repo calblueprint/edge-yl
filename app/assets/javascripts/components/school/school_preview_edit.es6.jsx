@@ -1,17 +1,17 @@
 class SchoolPreviewEdit extends Component {
 
+  // --------------------------------------------------
+  // Props
+  // --------------------------------------------------
   static get propTypes() {
     return {
       school: React.PropTypes.object.isRequired,
     };
   }
 
-  static get defaultProps() {
-    return {
-      school: {},
-    };
-  }
-
+  // --------------------------------------------------
+  // Styles
+  // --------------------------------------------------
   get styles() {
     return {
       container: Object.assign(
@@ -41,13 +41,27 @@ class SchoolPreviewEdit extends Component {
     };
   }
 
+  // --------------------------------------------------
+  // Lifecycle
+  // --------------------------------------------------
   componentWillMount() {
     this.setState({
       address: this.props.school.address,
       counselor_name: this.props.school.counselor_name,
       counselor_email: this.props.school.counselor_email,
-      school_name: this.props.school.name,      
+      school_name: this.props.school.name,
     });
+  }
+
+  // --------------------------------------------------
+  // Helpers
+  // --------------------------------------------------
+  generateHandler(field) {
+    var state = {};
+    return(event) => {
+      state[field] = event.target.value;
+      this.setState(state);
+    };
   }
 
   updateSchool() {
@@ -60,20 +74,15 @@ class SchoolPreviewEdit extends Component {
     SchoolActions.updateSchool(this.props.school.id, params);
   }
 
-  generateHandler(field) {
-    var state = {};
-    return(event) => {
-      state[field] = event.target.value;
-      this.setState(state);
-    };
-  }
-
+  // --------------------------------------------------
+  // Render
+  // --------------------------------------------------
   render() {
     var school = this.props.school;
     return (
       <div style={this.styles.container}>
         <CardHeader
-          action={(event) => this.updateSchool()}
+          action={() => this.updateSchool()}
           content={'School Preview'}
           icon={TypeConstants.icons.save} />
         <div style={this.styles.form}>
@@ -83,7 +92,7 @@ class SchoolPreviewEdit extends Component {
           <CardInput
             action={this.generateHandler('school')}
             placeholder={'School'}
-            value={this.state.school_name} />            
+            value={this.state.school_name} />
           <CardInput
             action={this.generateHandler('address')}
             placeholder={'Address'}

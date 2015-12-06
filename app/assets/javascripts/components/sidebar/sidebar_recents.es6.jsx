@@ -9,12 +9,6 @@ class SidebarRecents extends Component {
     };
   }
 
-  static get defaultProps() {
-    return {
-      visits: [],
-    };
-  }
-
   // --------------------------------------------------
   // Styles
   // --------------------------------------------------

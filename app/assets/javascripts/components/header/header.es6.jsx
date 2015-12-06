@@ -13,15 +13,7 @@ class Header extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      toggleSidebar: React.PropTypes.func,
-      hasSidebar: React.PropTypes.bool.isRequired,
-    };
-  }
-
-  static get defaultProps() {
-    return {
-      toggleSidebar: null,
-      hasSidebar: true,
+      active: React.PropTypes.bool.isRequired,
     };
   }
 
@@ -86,10 +78,10 @@ class Header extends Component {
   // Render
   // --------------------------------------------------
   renderToggler() {
-    if (this.props.hasSidebar) {
+    if (this.props.active) {
       return (
         <Clickable
-          action={this.props.toggleSidebar}
+          action={null}
           icon={TypeConstants.icons.bars}
           styles={this.clickableStyles}
           type={'i'} />
@@ -104,10 +96,13 @@ class Header extends Component {
           {this.renderToggler()}
         </div>
         <HeaderNavigation
+          active={this.props.active}
           pagination={this.state.pagination}
           results={this.state.results}
           search={this.state.search} />
-        <HeaderShortcuts showShortcuts={this.props.hasSidebar} />
+        <HeaderShortcuts
+          active={this.props.active}
+          dropdown={this.state.dropdown} />
       </div>
     );
   }

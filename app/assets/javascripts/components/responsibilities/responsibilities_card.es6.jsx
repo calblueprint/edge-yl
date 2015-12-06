@@ -1,11 +1,11 @@
-class AuthenticationModal extends Component {
+class ResponsibilitiesCard extends Component {
 
   // --------------------------------------------------
   // Props
   // --------------------------------------------------
   static get propTypes() {
     return {
-      type: React.PropTypes.oneOf(['login', 'signup']).isRequired,
+      responsibility: React.PropTypes.object.isRequired,
     };
   }
 
@@ -19,39 +19,27 @@ class AuthenticationModal extends Component {
         StyleConstants.cards.default,
         {
           display: 'flex',
-          flexFlow: 'column',
-          width: '372px',
-          padding: '36px',
+          alignItems: 'center',
+          width: '49%',
+          height: '24%',
+          padding: '24px',
+          marginTop: '12px',
+          boxSizing: 'border-box',
         }
       ),
-      header: {
-        display: 'flex',
-        justifyContent: 'center',
-        marginBottom: '24px',
-      },
     };
   }
 
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
-  renderForm() {
-    return this.props.type === 'login' ? <LoginForm /> : <SignupForm />;
-  }
-
-  renderHeader() {
-    return (
-      <div style={this.styles.header}>
-        <h2>{this.props.type === 'login' ? 'Login' : 'Signup'}</h2>
-      </div>
-    );
-  }
-
   render() {
+    var responsibility = this.props.responsibility;
     return (
       <div style={this.styles.container}>
-        {this.renderHeader()}
-        {this.renderForm()}
+        <h5>{`Responsibility ID: ${responsibility.id}`}</h5>
+        <h5>{`Status: ${responsibility.status}`}</h5>
+        <h5>{`${responsibility.student.first_name} ${responsibility.student.last_name}`}</h5>
       </div>
     );
   }

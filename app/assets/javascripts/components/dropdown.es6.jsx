@@ -26,14 +26,6 @@ class Dropdown extends Component {
   static get defaultProps() {
     return {
       action: null,
-      options: [],
-      styles: {
-        child: {
-          default: {},
-          hover: {},
-        },
-        container: {},
-      },
     };
   }
 
@@ -58,15 +50,15 @@ class Dropdown extends Component {
   // --------------------------------------------------
   componentDidMount() {
     var input = ReactDOM.findDOMNode(this.refs.input);
-    input.addEventListener('blur', (event) => this.handleBlur(event));
+    input.addEventListener('blur', () => this.handleBlur());
   }
 
   // --------------------------------------------------
   // Handlers
   // --------------------------------------------------
-  handleBlur(event) {
+  handleBlur() {
     if (this.props.action) {
-      this.props.action(event);
+      this.props.action();
     }
   }
 
@@ -120,7 +112,8 @@ class Dropdown extends Component {
   }
 
   renderOptions() {
-    return this.props.options.map((option, index) => this.renderOption(option, index));
+    var options = this.props.options;
+    return options.map((option, index) => this.renderOption(option, index));
   }
 
   render() {

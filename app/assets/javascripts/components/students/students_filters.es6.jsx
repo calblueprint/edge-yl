@@ -9,12 +9,6 @@ class StudentsFilters extends Component {
     };
   }
 
-  static get defaultProps() {
-    return {
-      filters: [],
-    };
-  }
-
   // --------------------------------------------------
   // Styles
   // --------------------------------------------------

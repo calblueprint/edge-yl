@@ -15,22 +15,10 @@ class StudentPageOverlay extends PageOverlay {
     };
   }
 
-  static get defaultProps() {
-    return {
-      overlay: {
-        active: false,
-        target: TypeConstants.overlay.target.preview,
-        type: TypeConstants.overlay.type.edit,
-      },
-      profile: {},
-      student: {},
-    };
-  }
-
   // --------------------------------------------------
   // Handlers
   // --------------------------------------------------
-  handleClick(event) {
+  handleClick() {
     if (event.target === this._node) {
       StudentActions.storeOverlay(false);
     }
@@ -60,7 +48,7 @@ class StudentPageOverlay extends PageOverlay {
     return (
       <div ref={'container'} style={this.styles.container}>
         <Clickable
-          action={(event) => StudentActions.storeOverlay(false)}
+          action={() => StudentActions.storeOverlay(false)}
           icon={TypeConstants.icons.close}
           styles={this.clickableStyles}
           type={'i'} />

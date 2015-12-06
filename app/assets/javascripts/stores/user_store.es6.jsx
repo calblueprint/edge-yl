@@ -9,7 +9,7 @@
       };
       this.sidebar = true;
       this.user = {
-        responsibilities: {},
+        responsibilities: [],
       };
       this.bindListeners({
         handleStoreOverlay: UserActions.STORE_OVERLAY,

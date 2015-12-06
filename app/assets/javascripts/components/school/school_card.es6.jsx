@@ -9,12 +9,6 @@ class SchoolCard extends Component {
     };
   }
 
-  static get defaultProps() {
-    return {
-      school: {},
-    };
-  }
-
   // --------------------------------------------------
   // Styles
   // --------------------------------------------------
@@ -51,7 +45,7 @@ class SchoolCard extends Component {
   // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
-  showOverlay(event) {
+  showOverlay() {
     SchoolActions.storeOverlay(
       true,
       TypeConstants.overlay.type.edit,
@@ -67,7 +61,7 @@ class SchoolCard extends Component {
     return (
       <div style={this.styles.container}>
         <CardHeader
-          action={(event) => this.showOverlay(event)}
+          action={() => this.showOverlay()}
           content={school.name}
           icon={TypeConstants.icons.edit} />
         <div style={this.styles.section}>

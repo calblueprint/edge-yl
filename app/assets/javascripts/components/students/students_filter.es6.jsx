@@ -9,12 +9,6 @@ class StudentsFilter extends Component {
     };
   }
 
-  static get defaultProps() {
-    return {
-      filter: {},
-    };
-  }
-
   // --------------------------------------------------
   // Styles
   // --------------------------------------------------
@@ -96,7 +90,7 @@ class StudentsFilter extends Component {
     if (filter.active) {
       return (
         <Dropdown
-          action={(event) => StudentsActions.storeFilter(filter.key, false)}
+          action={() => StudentsActions.storeFilter(filter.key, false)}
           options={this.generateDropdownOptions()}
           styles={this.dropdownStyles} />
       );
@@ -108,8 +102,8 @@ class StudentsFilter extends Component {
     return (
       <div style={this.styles.container}>
         <Clickable
-          action={(event) => StudentsActions.storeFilter(filter.key, true)}
-          icon={'fa-angle-down'}
+          action={() => StudentsActions.storeFilter(filter.key, true)}
+          icon={TypeConstants.icons.expand}
           styles={this.clickableStyles}
           type={'i'}>
           <h6>{`${filter.name}: ${filter.selected}`}</h6>

@@ -9,12 +9,6 @@ class FormField extends Component {
     };
   }
 
-  static get defaultProps() {
-    return {
-      question: {},
-    };
-  }
-
   // --------------------------------------------------
   // Styles
   // --------------------------------------------------

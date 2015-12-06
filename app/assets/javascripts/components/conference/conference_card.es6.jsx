@@ -9,12 +9,6 @@ class ConferenceCard extends Component {
     };
   }
 
-  static get defaultProps() {
-    return {
-      conference: {},
-    };
-  }
-
   // --------------------------------------------------
   // Styles
   // --------------------------------------------------
@@ -43,6 +37,16 @@ class ConferenceCard extends Component {
   }
 
   // --------------------------------------------------
+  // Helpers
+  // --------------------------------------------------
+  showOverlay() {
+    ConferenceActions.storeOverlay(
+      true,
+      TypeConstants.overlay.type.edit
+    );
+  }
+
+  // --------------------------------------------------
   // Render
   // --------------------------------------------------
   render() {
@@ -50,14 +54,14 @@ class ConferenceCard extends Component {
     return (
       <div style={this.styles.container}>
         <CardHeader
-          action={(event) => ConferenceActions.storeOverlay(true, TypeConstants.overlay.type.edit)}
+          action={() => this.showOverlay()}
           content={`Conference ${conference.id}`}
           icon={TypeConstants.icons.edit} />
         <div style={this.styles.section}>
           <h3>{`Conference Location: ${conference.location}`}</h3>
           <h3>{`Start Date: ${conference.start_date}`}</h3>
           <h3>{`End Date: ${conference.end_date}`}</h3>
-      </div>
+        </div>
       </div>
     );
   }

@@ -1,17 +1,11 @@
-class StudentOutreach extends Component {
+class ResponsibilitiesGrid extends Component {
 
   // --------------------------------------------------
   // Props
   // --------------------------------------------------
   static get propTypes() {
     return {
-      student: React.PropTypes.object.isRequired,
-    };
-  }
-
-  static get defaultProps() {
-    return {
-      student: {}
+      responsibilities: React.PropTypes.array.isRequired,
     };
   }
 
@@ -22,9 +16,11 @@ class StudentOutreach extends Component {
     return {
       container: {
         display: 'flex',
-        flexFlow: 'column',
+        flexFlow: 'wrap',
+        justifyContent: 'space-between',
+        alignContent: 'flex-start',
         flex: '1',
-        padding: '12px',
+        padding: '0px 12px',
       },
     };
   }
@@ -32,13 +28,22 @@ class StudentOutreach extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
-  renderResponsibility() {
-    var responsibility = this.props.student.responsibility;
+  renderCard(responsibility) {
+    return (
+      <ResponsibilitiesCard
+        key={responsibility.id}
+        responsibility={responsibility} />
+    );
   }
+
+  renderCards() {
+    return this.props.responsibilities.map((responsibility) => this.renderCard(responsibility));
+  }
+
   render() {
     return (
       <div style={this.styles.container}>
-        {this.renderResponsibility()}
+        {this.renderCards()}
       </div>
     );
   }

@@ -2,11 +2,11 @@
   class GroupStore {
 
     constructor() {
-      this.sidebar = true;
       this.group = {
         students: [],
         conference: {},
       };
+      this.sidebar = true;
       this.bindListeners({
         handleStoreGroup: GroupActions.STORE_GROUP,
         handleToggleSidebar: StudentActions.TOGGLE_SIDEBAR,

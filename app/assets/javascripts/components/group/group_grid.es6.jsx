@@ -9,12 +9,6 @@ class GroupGrid extends Component {
     };
   }
 
-  static get defaultProps() {
-    return {
-      group: {},
-    };
-  }
-
   // --------------------------------------------------
   // Styles
   // --------------------------------------------------
