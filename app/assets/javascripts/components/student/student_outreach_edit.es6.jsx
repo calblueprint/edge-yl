@@ -1,0 +1,102 @@
+class StudentOutreachEdit extends Component {
+
+  // --------------------------------------------------
+  // Props
+  // --------------------------------------------------
+  static get propTypes() {
+    return {
+      student: React.PropTypes.object.isRequired,
+    };
+  }
+
+  static get defaultProps() {
+    return {
+      student: {},
+    };
+  }
+
+  // --------------------------------------------------
+  // Styles
+  // --------------------------------------------------
+  get styles() {
+    return {
+      container: Object.assign(
+        {},
+        StyleConstants.cards.default,
+        {
+          display: 'flex',
+          flexFlow: 'column',
+          justifyContent: 'center',
+          width: '356px',
+        }
+      ),
+      form: {
+        display: 'flex',
+        flexFlow: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: '12px',
+        marginBottom: '18px',
+      },
+    };
+  }
+
+  // --------------------------------------------------
+  // Lifecycle
+  // --------------------------------------------------
+  componentWillMount() {
+    this.setState({
+      first_name: this.props.student.responsibility.user.first_name,
+      last_name: this.props.student.responsibility.user.last_name,
+    });
+  }
+
+  // --------------------------------------------------
+  // Helpers
+  // --------------------------------------------------
+  generateHandler(field) {
+    var state = {};
+    return(event) => {
+      state[field] = event.target.value;
+      this.setState(state);
+    };
+  }
+
+  updateResponsibility() {
+    var params = {
+      first_name: this.state.first_name,
+      last_name: this.state.last_name,
+    };
+    StudentActions.updateStudent(this.props.student.id, params);
+  }
+
+  // --------------------------------------------------
+  // Render
+  // --------------------------------------------------
+  renderForm() {
+    var responsibility = this.props.student.responsibility;
+    if (responsibility) {
+      return (
+        <div style={this.styles.form}>
+          <CardInput
+            action={this.generateHandler('user')}
+            placeholder={'Volunteer'}
+            value={`${this.state.first_name} ${this.state.last_name}`}
+          />
+        </div>
+      );
+    }
+  }
+
+  render() {
+    return (
+      <div style={this.styles.container}>
+        <CardHeader
+          action={(event) => this.updateStudent()}
+          content={'Student Outreach'}
+          icon={TypeConstants.icons.save} />
+        {this.renderForm()}
+      </div>
+    );
+  }
+}
