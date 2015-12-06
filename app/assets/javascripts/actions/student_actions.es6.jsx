@@ -29,6 +29,13 @@
       };
     }
 
+    storeTemplate(key, value) {
+      return {
+        key: key,
+        value: value,
+      };
+    }
+
     updateStudent(id, params) {
       var resolve = (response) => this.storeStudent(response);
       Requester.update(ApiConstants.students.update(id), params, resolve);
