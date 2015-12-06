@@ -10,13 +10,6 @@ class FormButton extends Component {
     };
   }
 
-  static get defaultProps() {
-    return {
-      action: null,
-      content: '',
-    };
-  }
-
   // --------------------------------------------------
   // Styles
   // --------------------------------------------------

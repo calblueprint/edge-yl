@@ -1,4 +1,3 @@
 class UserShowSerializer < UserIndexSerializer
 
 end
-
