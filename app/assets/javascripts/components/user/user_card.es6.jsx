@@ -18,14 +18,6 @@ class UserCard extends Component {
     };
   }
 
-  static get defaultProps() {
-    return {
-      user: {},
-      target: TypeConstants.overlay.target.outreach,
-      type: TypeConstants.overlay.type.edit,
-    };
-  }
-
   // --------------------------------------------------
   // Styles
   // --------------------------------------------------
@@ -48,7 +40,7 @@ class UserCard extends Component {
   // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
-  showOverlay(event) {
+  showOverlay() {
     UserActions.storeOverlay(
       true,
       TypeConstants.overlay.type.edit,
@@ -77,7 +69,7 @@ class UserCard extends Component {
     return (
       <div style={this.styles.container}>
         <CardHeader
-          action={(event) => this.showOverlay(event)}
+          action={() => this.showOverlay()}
           content={this.renderTitle()}
           icon={TypeConstants.icons.edit} />
         {this.renderBody()}

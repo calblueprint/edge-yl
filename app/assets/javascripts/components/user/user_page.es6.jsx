@@ -17,12 +17,6 @@ class UserPage extends Component {
     };
   }
 
-  static get defaultProps() {
-    return {
-      id: 1,
-    };
-  }
-
   // --------------------------------------------------
   // Styles
   // --------------------------------------------------

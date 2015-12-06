@@ -9,12 +9,6 @@ class UsersGrid extends Component {
     };
   }
 
-  static get defaultProps() {
-    return {
-      users: [],
-    };
-  }
-
   // --------------------------------------------------
   // Styles
   // --------------------------------------------------

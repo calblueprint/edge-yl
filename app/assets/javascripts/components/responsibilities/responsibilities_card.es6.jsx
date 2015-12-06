@@ -9,12 +9,6 @@ class ResponsibilitiesCard extends Component {
     };
   }
 
-  static get defaultProps() {
-    return {
-      user: {},
-    };
-  }
-
   // --------------------------------------------------
   // Styles
   // --------------------------------------------------
@@ -28,12 +22,6 @@ class ResponsibilitiesCard extends Component {
         flex: '1',
         padding: '12px',
       },
-      image: {
-        width: '152px',
-        height: '152px',
-        marginBottom: '12px',
-        borderRadius: '50%',
-      },
     };
   }
 
@@ -41,7 +29,6 @@ class ResponsibilitiesCard extends Component {
   // Render
   // --------------------------------------------------
   render() {
-    var user = this.props.user;
     return (
       <div style={this.styles.container}>
       </div>
