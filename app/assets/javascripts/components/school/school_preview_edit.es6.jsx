@@ -82,7 +82,7 @@ class SchoolPreviewEdit extends Component {
     return (
       <div style={this.styles.container}>
         <CardHeader
-          action={(event) => this.updateSchool()}
+          action={() => this.updateSchool()}
           content={'School Preview'}
           icon={TypeConstants.icons.save} />
         <div style={this.styles.form}>

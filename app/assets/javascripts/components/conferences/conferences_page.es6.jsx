@@ -68,7 +68,7 @@ class ConferencesPage extends Component {
         <Header active={true} />
         <div style={this.styles.container}>
           <Sidebar
-            hidden={this.state.sidebar}
+            active={this.state.sidebar}
             profile={this.state.profile} />
           <div style={this.styles.body}>
             <ConferencesGrid conferences={this.state.conferences} />

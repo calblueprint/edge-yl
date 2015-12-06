@@ -9,12 +9,6 @@ class StudentGrid extends Component {
     };
   }
 
-  static get defaultProps() {
-    return {
-      student: {},
-    };
-  }
-
   // --------------------------------------------------
   // Styles
   // --------------------------------------------------

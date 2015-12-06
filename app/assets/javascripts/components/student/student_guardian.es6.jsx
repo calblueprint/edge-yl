@@ -9,12 +9,6 @@ class StudentGuardian extends Component {
     };
   }
 
-  static get defaultProps() {
-    return {
-      student: {},
-    };
-  }
-
   // --------------------------------------------------
   // Styles
   // --------------------------------------------------

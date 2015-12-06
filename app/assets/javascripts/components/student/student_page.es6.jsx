@@ -17,12 +17,6 @@ class StudentPage extends Component {
     };
   }
 
-  static get defaultProps() {
-    return {
-      id: 1,
-    };
-  }
-
   // --------------------------------------------------
   // Styles
   // --------------------------------------------------
@@ -79,7 +73,7 @@ class StudentPage extends Component {
         <Header active={true} />
         <div style={this.styles.container}>
           <Sidebar
-            hidden={this.state.sidebar}
+            active={this.state.sidebar}
             profile={this.state.profile} />
           <StudentGrid student={this.state.student} />
           <StudentComments comments={this.state.student.comments} />

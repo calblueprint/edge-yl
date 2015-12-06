@@ -75,7 +75,7 @@ class SchoolPage extends Component {
         <Header active={true} />
         <div style={this.styles.container}>
           <Sidebar
-            hidden={this.state.sidebar}
+            active={this.state.sidebar}
             profile={this.state.profile} />
           <SchoolGrid school={this.state.school} />
           <div style={this.styles.placeholder} />

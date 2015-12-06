@@ -31,8 +31,7 @@ class SchoolGrid extends Component {
   render() {
     return (
       <div style={this.styles.container}>
-        <SchoolCard
-          school={this.props.school}/>
+        <SchoolCard school={this.props.school}/>
       </div>
     );
   }

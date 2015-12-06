@@ -9,12 +9,6 @@ class StudentContact extends Component {
     };
   }
 
-  static get defaultProps() {
-    return {
-      student: {},
-    };
-  }
-
   // --------------------------------------------------
   // Styles
   // --------------------------------------------------

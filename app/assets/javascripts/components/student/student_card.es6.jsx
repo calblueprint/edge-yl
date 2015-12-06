@@ -21,14 +21,6 @@ class StudentCard extends Component {
     };
   }
 
-  static get defaultProps() {
-    return {
-      student: {},
-      target: TypeConstants.overlay.target.preview,
-      type: TypeConstants.overlay.type.edit,
-    };
-  }
-
   // --------------------------------------------------
   // Styles
   // --------------------------------------------------
@@ -51,7 +43,7 @@ class StudentCard extends Component {
   // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
-  showOverlay(event) {
+  showOverlay() {
     StudentActions.storeOverlay(
       true,
       TypeConstants.overlay.type.edit,
@@ -96,7 +88,7 @@ class StudentCard extends Component {
     return (
       <div style={this.styles.container}>
         <CardHeader
-          action={(event) => showOverlay(event)}
+          action={() => this.showOverlay()}
           content={this.renderTitle()}
           icon={TypeConstants.icons.edit} />
         {this.renderBody()}

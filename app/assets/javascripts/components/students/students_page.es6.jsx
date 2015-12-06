@@ -74,7 +74,7 @@ class StudentsPage extends Component {
         <Header active={true} />
         <div style={this.styles.container}>
           <Sidebar
-            hidden={this.state.sidebar}
+            active={this.state.sidebar}
             profile={this.state.profile} />
           <div style={this.styles.body}>
             <StudentsFilters filters={this.state.filters} />

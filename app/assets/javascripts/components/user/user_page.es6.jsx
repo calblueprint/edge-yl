@@ -78,7 +78,7 @@ class UserPage extends Component {
         <Header active={true} />
         <div style={this.styles.container}>
           <Sidebar
-            hidden={this.state.sidebar}
+            active={this.state.sidebar}
             profile={this.state.profile} />
           <UserGrid user={this.state.user} />
         </div>
