@@ -11,7 +11,9 @@
     get groups() {
       return {
         index: '/groups',
-        show: (id) => `/groups/${id}`,
+        show: function (conferenceId, id) {
+          return `/conferences/${conferenceId}/groups/${id}`
+        },
       };
     }
 

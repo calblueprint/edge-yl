@@ -1,4 +1,4 @@
-class Api::GroupsController < Api::BaseController
+class Api::Conferences::GroupsController < Api::BaseController
 
   def create
     group = Group.new group_params
@@ -15,7 +15,7 @@ class Api::GroupsController < Api::BaseController
 
   def show
     group = Group.find params[:id]
-    render json: group, serializer: GroupIndexSerializer
+    render json: group, serializer: GroupShowSerializer
   end
 
   private

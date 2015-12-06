@@ -1,4 +1,4 @@
-class ConferencePage extends Component {
+class GroupPage extends Component {
 
   // --------------------------------------------------
   // Setup
@@ -13,6 +13,7 @@ class ConferencePage extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
+      conferenceId: React.PropTypes.number.isRequired,
       id: React.PropTypes.number.isRequired,
     };
   }
@@ -27,9 +28,7 @@ class ConferencePage extends Component {
         flex: '1',
         paddingTop: '48px',
         paddingLeft: '196px',
-      },
-      placeholder: {
-        width: '196px',
+        paddingRight: '196px',
       },
     };
   }
@@ -38,49 +37,32 @@ class ConferencePage extends Component {
   // Lifecycle
   // --------------------------------------------------
   componentWillMount() {
-    this.setState(ConferenceStore.getState());
     this.setState(ProfileStore.getState());
+    this.setState(GroupStore.getState());
   }
 
   componentDidMount() {
-    ConferenceStore.listen(this._listener);
     ProfileStore.listen(this._listener);
-    ConferenceActions.fetchConference(this.props.id);
+    GroupStore.listen(this._listener);
     ProfileActions.fetchProfile();
+    GroupActions.fetchGroup(this.props.conferenceId, this.props.id)
   }
 
   componentWillUnmount() {
-    ConferenceStore.unlisten(this._listener);
     ProfileStore.unlisten(this._listener);
-  }
-
-  // --------------------------------------------------
-  // Render
-  // --------------------------------------------------
-  renderOverlay() {
-    if (this.state.overlay.active) {
-      return (
-        <div>Render Overlay</div>
-      );
-    }
+    GroupStore.unlisten(this._listener);
   }
 
   render() {
     return (
-      <div style={StyleConstants.pages.default}>
-        {this.renderOverlay()}
-        <Header active={false} />
-        <div style={this.styles.container}>
-          <Sidebar
-            active={this.state.sidebar}
-            profile={this.state.profile} />
-          <ConferenceCard conference={this.state.conference} />
-          <GroupsGrid
-            conferenceId={this.props.id}
-            groups={this.state.conference.groups} />
-          <div style={this.styles.placeholder} />
-        </div>
+      <div style={this.styles.container}>
+      <Header hasSidebar={true}/>
+        <Sidebar
+          hidden={this.state.sidebar}
+          profile={this.state.profile} />
+        <GroupGrid group={this.state.group} />
       </div>
     );
   }
 }
+
