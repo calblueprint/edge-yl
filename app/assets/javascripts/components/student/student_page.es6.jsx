@@ -27,7 +27,12 @@ class StudentPage extends Component {
         flex: '1',
         paddingTop: '48px',
         paddingLeft: '196px',
+      },
+      section: {
+        display: 'flex',
+        flex: '1',
         paddingRight: '196px',
+        overflow: 'scroll',
       },
     };
   }
@@ -79,8 +84,12 @@ class StudentPage extends Component {
           <Sidebar
             active={this.state.sidebar}
             profile={this.state.profile} />
-          <StudentGrid student={this.state.student} />
-          <StudentComments comments={this.state.student.comments} />
+          <div style={this.styles.section}>
+            <StudentGrid
+              media={this.state.media}
+              student={this.state.student} />
+            <StudentComments comments={this.state.student.comments} />
+          </div>
         </div>
       </div>
     );

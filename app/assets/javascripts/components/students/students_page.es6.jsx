@@ -28,7 +28,7 @@ class StudentsPage extends Component {
         paddingTop: '48px',
         paddingLeft: '196px',
       },
-      body: {
+      section: {
         display: 'flex',
         flexFlow: 'column',
         flex: '1',
@@ -70,7 +70,7 @@ class StudentsPage extends Component {
           <Sidebar
             active={this.state.sidebar}
             profile={this.state.profile} />
-          <div style={this.styles.body}>
+          <div style={this.styles.section}>
             <StudentsFilters filters={this.state.filters} />
             <StudentsGrid students={this.state.students} />
             <PageNavigator

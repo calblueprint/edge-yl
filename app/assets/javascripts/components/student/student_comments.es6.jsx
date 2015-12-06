@@ -21,8 +21,9 @@ class StudentComments extends Component {
         position: 'absolute',
         top: '48px',
         right: '0px',
-        width: '172px',
+        width: '196px',
         paddingRight: '16px',
+        boxSizing: 'border-box',
       },
       title: {
         paddingTop: '12px',

@@ -21,8 +21,9 @@ class Sidebar extends Component {
         position: 'absolute',
         top: '48px',
         left: '0px',
-        width: '172px',
+        width: '196px',
         paddingLeft: '16px',
+        boxSizing: 'border-box',
         transition: 'left 0.375s ease-out',
       },
       hidden: {
