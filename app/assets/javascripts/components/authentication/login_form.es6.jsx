@@ -97,9 +97,7 @@ class LoginForm extends Component {
 
   render() {
     return (
-      <div
-        ref={'container'}
-        style={this.styles.container}>
+      <div ref={'container'} style={this.styles.container}>
         <label style={this.styles.label}>
           {'Email'}
         </label>

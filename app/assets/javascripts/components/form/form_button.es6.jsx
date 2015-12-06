@@ -46,7 +46,8 @@ class FormButton extends Component {
         <Clickable
           action={this.props.action}
           content={this.props.content}
-          styles={this.clickableStyles} />
+          styles={this.clickableStyles}
+          type={'span'} />
       </div>
     );
   }
