@@ -6,6 +6,7 @@ class StudentPreviewEdit extends Component {
   static get propTypes() {
     return {
       student: React.PropTypes.object.isRequired,
+      template: React.PropTypes.object.isRequired,
     };
   }
 
@@ -31,17 +32,6 @@ class StudentPreviewEdit extends Component {
   }
 
   // --------------------------------------------------
-  // Lifecycle
-  // --------------------------------------------------
-  componentWillMount() {
-    this.setState({
-      birthday: this.props.student.birthday,
-      firstName: this.props.student.first_name,
-      lastName: this.props.student.last_name,
-    });
-  }
-
-  // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
   generateHandler(field) {
@@ -49,17 +39,6 @@ class StudentPreviewEdit extends Component {
     return(event) => {
       StudentActions.storeTemplate(field, event.target.value);
     };
-  }
-
-  updateStudent() {
-    var params = {
-      student: {
-        birthday: this.state.birthday,
-        first_name: this.state.firstName,
-        last_name: this.state.lastName,
-      },
-    };
-    StudentActions.updateStudent(this.props.student.id, params);
   }
 
   // --------------------------------------------------

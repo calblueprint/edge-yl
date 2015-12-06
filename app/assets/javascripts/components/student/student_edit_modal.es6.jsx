@@ -11,6 +11,7 @@ class StudentEditModal extends EditModal {
         type: React.PropTypes.string.isRequired,
       }).isRequired,
       student: React.PropTypes.object.isRequired,
+      template: React.PropTypes.object.isRequired,
     };
   }
 
@@ -24,6 +25,16 @@ class StudentEditModal extends EditModal {
   }
 
   // --------------------------------------------------
+  // Helpers
+  // --------------------------------------------------
+  updateStudent() {
+    StudentActions.updateStudent(
+      this.props.student,
+      this.props.template
+    );
+  }
+
+  // --------------------------------------------------
   // Render
   // --------------------------------------------------
   renderBody() {
@@ -32,7 +43,7 @@ class StudentEditModal extends EditModal {
         return (
           <div style={this.styles.section}>
             <CardHeader
-              action={() => StudentActions.updateStudent(this.props.template)}
+              action={() => this.updateStudent()}
               content={'Student Preview'}
               icon={TypeConstants.icons.save} />
             <StudentPreviewEdit

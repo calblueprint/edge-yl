@@ -36,9 +36,15 @@
       };
     }
 
-    updateStudent(template) {
+    updateStudent(student, template) {
       var id = template.id;
       delete template.id;
+      Object.keys(template).map((key) => {
+        if (typeof(template[key]) === 'object' ||
+            student[key] === template[key]) {
+          delete template[key];
+        }
+      });
       var params = { student: template };
       var resolve = (response) => this.storeStudent(response);
       Requester.update(ApiConstants.students.update(id), params, resolve);
