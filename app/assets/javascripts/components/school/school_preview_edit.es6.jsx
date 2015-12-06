@@ -66,10 +66,12 @@ class SchoolPreviewEdit extends Component {
 
   updateSchool() {
     var params = {
-      address: this.state.address,
-      counselor_name: this.state.counselor_name,
-      counselor_email: this.state.counselor_email,
-      school_name: this.state.school_name,
+      school: {
+        address: this.state.address,
+        counselor_name: this.state.counselor_name,
+        counselor_email: this.state.counselor_email,
+        school_name: this.state.school_name,
+      },
     };
     SchoolActions.updateSchool(this.props.school.id, params);
   }
