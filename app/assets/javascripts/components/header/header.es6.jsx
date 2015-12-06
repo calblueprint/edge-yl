@@ -78,7 +78,7 @@ class Header extends Component {
   // Render
   // --------------------------------------------------
   renderToggler() {
-    if (true) {
+    if (this.props.active) {
       return (
         <Clickable
           action={null}
@@ -96,6 +96,7 @@ class Header extends Component {
           {this.renderToggler()}
         </div>
         <HeaderNavigation
+          active={this.props.active}
           pagination={this.state.pagination}
           results={this.state.results}
           search={this.state.search} />
