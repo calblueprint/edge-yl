@@ -62,13 +62,13 @@ class GroupPage extends Component {
 
   render() {
     return (
-        <div style={this.styles.container}>
-        <Header hasSidebar={true}/>
-          <Sidebar
-            hidden={this.state.sidebar}
-            profile={this.state.profile} />
-          <GroupGrid group={this.state.group} />
-        </div>
+      <div style={this.styles.container}>
+      <Header hasSidebar={true}/>
+        <Sidebar
+          hidden={this.state.sidebar}
+          profile={this.state.profile} />
+        <GroupGrid group={this.state.group} />
+      </div>
     );
   }
 }

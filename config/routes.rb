@@ -5,10 +5,7 @@
   get 'login', to: 'pages#login'
   get 'mail', to: 'pages#mail'
   get 'signup', to: 'pages#signup'
-
   get 'profile', to: 'users#profile'
-
-
 
   resources :conferences, only: [:index, :show] do
     scope module: :conferences do
@@ -19,7 +16,6 @@
   resources :students, only: [:index, :show]
   resources :schools, only: [:index, :show]
   resources :users, only: [:index, :show]
-
 
   devise_for :users, only: []
   devise_scope :user do
