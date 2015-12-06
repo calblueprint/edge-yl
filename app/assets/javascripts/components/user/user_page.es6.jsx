@@ -80,7 +80,7 @@ class UserPage extends Component {
           <Sidebar
             hidden={this.state.sidebar}
             profile={this.state.profile} />
-          <UserGrid user={this.state.user} />
+          <ResponsibilitiesGrid responsibilities={this.state.user.responsibilities} />
         </div>
       </div>
     );
