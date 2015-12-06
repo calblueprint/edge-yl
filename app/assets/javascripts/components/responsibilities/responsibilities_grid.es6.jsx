@@ -1,17 +1,11 @@
-class ResponsibilitiesCard extends Component {
+class ResponsibilitiesGrid extends Component {
 
   // --------------------------------------------------
   // Props
   // --------------------------------------------------
   static get propTypes() {
     return {
-      user: React.PropTypes.object.isRequired,
-    };
-  }
-
-  static get defaultProps() {
-    return {
-      user: {},
+      responsibilities: React.PropTypes.array.isRequired,
     };
   }
 
@@ -22,17 +16,11 @@ class ResponsibilitiesCard extends Component {
     return {
       container: {
         display: 'flex',
-        flexFlow: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
+        flexFlow: 'wrap',
+        justifyContent: 'space-between',
+        alignContent: 'flex-start',
         flex: '1',
-        padding: '12px',
-      },
-      image: {
-        width: '152px',
-        height: '152px',
-        marginBottom: '12px',
-        borderRadius: '50%',
+        padding: '0px 12px',
       },
     };
   }
@@ -40,10 +28,22 @@ class ResponsibilitiesCard extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
+  renderCard(responsibility) {
+    return (
+      <ResponsibilitiesCard
+        key={responsibility.id}
+        responsibility={responsibility} />
+    );
+  }
+
+  renderCards() {
+    return this.props.responsibilities.map((responsibility) => this.renderCard(responsibility));
+  }
+
   render() {
-    var user = this.props.user;
     return (
       <div style={this.styles.container}>
+        {this.renderCards()}
       </div>
     );
   }
