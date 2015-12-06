@@ -9,12 +9,6 @@ class ProfilePreview extends Component {
     }
   }
 
-  static get defaultProps() {
-    return {
-      profile: {},
-    }
-  }
-
   // --------------------------------------------------
   // Styles
   // --------------------------------------------------

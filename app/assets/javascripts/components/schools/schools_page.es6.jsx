@@ -17,12 +17,6 @@ class SchoolsPage extends Component {
     };
   }
 
-  static get defaultProps() {
-    return {
-      page: 1,
-    };
-  }
-
   // --------------------------------------------------
   // Styles
   // --------------------------------------------------

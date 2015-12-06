@@ -3,21 +3,15 @@ class ProfileCards extends Component {
 // --------------------------------------------------
 // Props
 // --------------------------------------------------
-  static get propTypes() {
-    return {
-      profile: React.PropTypes.object.isRequired,
-    }
+static get propTypes() {
+  return {
+    profile: React.PropTypes.object.isRequired,
   }
-
-  static get defaultProps() {
-    return {
-      profile: {},
-    }
-  }
+}
 
 // --------------------------------------------------
 // Styles
-// --------------------------------------------------  
+// --------------------------------------------------
   get styles() {
     return {
       container: {

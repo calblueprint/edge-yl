@@ -9,12 +9,6 @@ class SchoolCard extends Component {
     };
   }
 
-  static get defaultProps() {
-    return {
-      school: {},
-    };
-  }
-
   // --------------------------------------------------
   // Styles
   // --------------------------------------------------

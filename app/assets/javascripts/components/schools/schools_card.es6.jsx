@@ -1,22 +1,16 @@
 class SchoolsCard extends Component {
 
-static get propTypes() {
+  // --------------------------------------------------
+  // Props
+  // --------------------------------------------------
+  static get propTypes() {
     return {
       school: React.PropTypes.object.isRequired,
     };
   }
 
   // --------------------------------------------------
-  // Props
-  // --------------------------------------------------
-  static get defaultProps() {
-    return {
-      school: null,
-    };
-  }
-
-// --------------------------------------------------
-  // Render
+  // Styles
   // --------------------------------------------------
   get clickableStyles() {
     return {
@@ -26,6 +20,9 @@ static get propTypes() {
     };
   }
 
+  // --------------------------------------------------
+  // Render
+  // --------------------------------------------------
   render() {
     var school = this.props.school;
     return (
