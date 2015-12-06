@@ -1,17 +1,17 @@
-class UserGrid extends Component {
+class ResponsibilitiesGrid extends Component {
 
   // --------------------------------------------------
   // Props
   // --------------------------------------------------
   static get propTypes() {
     return {
-      user: React.PropTypes.object.isRequired,
+      responsibilities: React.PropTypes.array.isRequired,
     };
   }
 
   static get defaultProps() {
     return {
-      user: {},
+      responsibilities: [],
     };
   }
 
@@ -34,13 +34,22 @@ class UserGrid extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
+  renderCard(responsibility) {
+    return (
+      <ResponsibilitiesCard
+        key={responsibility.id}
+        responsibility={responsibility} />
+    );
+  }
+
+  renderCards() {
+    return this.props.responsibilities.map((responsibility) => this.renderCard(responsibility));
+  }
+
   render() {
     return (
       <div style={this.styles.container}>
-        <UserCard
-          target={TypeConstants.overlay.target.responsibilities}
-          type={TypeConstants.overlay.type.edit}
-          user={this.props.user} />
+        {this.renderCards()}
       </div>
     );
   }
