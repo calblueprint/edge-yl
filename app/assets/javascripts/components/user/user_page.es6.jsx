@@ -81,6 +81,7 @@ class UserPage extends Component {
             hidden={this.state.sidebar}
             profile={this.state.profile} />
           <UserCard user={this.state.user} />
+          <ResponsibilitiesGrid responsibilities={this.state.user.responsibilities} />
         </div>
       </div>
     );
