@@ -53,15 +53,15 @@ class LoginForm extends Component {
   // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
-  createSession(event) {
+  createSession() {
     var params = {
       user: {
         email: this.state.email,
         password: this.state.password,
       },
     };
-    var resolve = (response) => { window.location = RouteConstants.students.index() };
-    var reject = (response) => { this.setState({ error: response.message }) };
+    var resolve = (response) => window.location = RouteConstants.students.index();
+    var reject = (response) => this.setState({ error: response.message });
     Requester.post(ApiConstants.users.login, params, resolve, reject);
   }
 
@@ -78,7 +78,7 @@ class LoginForm extends Component {
   // --------------------------------------------------
     handleKeyDown(event) {
       if (event.keyCode === 13) {
-        this.createSession(event);
+        this.createSession();
       }
     }
 
@@ -120,7 +120,7 @@ class LoginForm extends Component {
         </input>
         {this.renderError()}
         <FormButton
-          action={(event) => this.createSession(event)}
+          action={() => this.createSession()}
           content={'Log in'} />
       </div>
     );

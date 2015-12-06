@@ -11,14 +11,6 @@ class CardHeader extends Component {
     };
   }
 
-  static get defaultProps() {
-    return {
-      action: null,
-      content: 'Student Preview',
-      icon: TypeConstants.icons.students,
-    };
-  }
-
   // --------------------------------------------------
   // Styles
   // --------------------------------------------------

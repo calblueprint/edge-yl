@@ -17,12 +17,6 @@ class ConferencePage extends Component {
     };
   }
 
-  static get defaultProps() {
-    return {
-      id: 1,
-    };
-  }
-
   // --------------------------------------------------
   // Styles
   // --------------------------------------------------
@@ -75,13 +69,15 @@ class ConferencePage extends Component {
     return (
       <div style={StyleConstants.pages.default}>
         {this.renderOverlay()}
-        <Header toggleSidebar={() => this.toggleSidebar()} />
+        <Header active={false} />
         <div style={this.styles.container}>
           <Sidebar
-            hidden={this.state.sidebar}
+            active={this.state.sidebar}
             profile={this.state.profile} />
           <ConferenceCard conference={this.state.conference} />
-          <GroupsGrid groups={this.state.conference.groups} />
+          <GroupsGrid
+            conferenceId={this.props.id}
+            groups={this.state.conference.groups} />
           <div style={this.styles.placeholder} />
         </div>
       </div>

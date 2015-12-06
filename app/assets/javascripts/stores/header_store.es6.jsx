@@ -2,6 +2,7 @@
   class HeaderStore {
 
     constructor() {
+      this.dropdown = false;
       this.pagination = {
         current: 1,
         limit: 1,
@@ -14,6 +15,7 @@
       this.bindListeners({
         handleStoreResults: HeaderActions.STORE_RESULTS,
         handleStoreSearch: HeaderActions.STORE_SEARCH,
+        handleToggleDropdown: HeaderActions.TOGGLE_DROPDOWN,
       });
     }
 
@@ -29,6 +31,10 @@
         search.active = false;
       }
       this.search = search;
+    }
+
+    handleToggleDropdown() {
+      this.dropdown = !this.dropdown;
     }
   }
   this.HeaderStore = alt.createStore(HeaderStore);

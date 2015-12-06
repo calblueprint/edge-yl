@@ -14,21 +14,10 @@ class SchoolPageOverlay extends PageOverlay {
     };
   }
 
-  static get defaultProps() {
-    return {
-      overlay: {
-        active: false,
-        target: TypeConstants.overlay.target.preview,
-        type: TypeConstants.overlay.type.edit,
-      },
-      school: {},
-    };
-  }
-
   // --------------------------------------------------
   // Handlers
   // --------------------------------------------------
-  handleClick(event) {
+  handleClick() {
     if (event.target === this._node) {
       SchoolActions.storeOverlay(false);
     }
@@ -49,7 +38,7 @@ class SchoolPageOverlay extends PageOverlay {
     return (
       <div ref={'container'} style={this.styles.container}>
         <Clickable
-          action={(event) => SchoolActions.storeOverlay(false)}
+          action={() => SchoolActions.storeOverlay(false)}
           icon={'fa fa-times fa-2x'}
           styles={this.clickableStyles}
           type={'i'} />

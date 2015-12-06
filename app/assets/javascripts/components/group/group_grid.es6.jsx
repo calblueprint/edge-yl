@@ -1,11 +1,11 @@
-class UsersGrid extends Component {
+class GroupGrid extends Component {
 
   // --------------------------------------------------
   // Props
   // --------------------------------------------------
   static get propTypes() {
     return {
-      users: React.PropTypes.array.isRequired,
+      group: React.PropTypes.object.isRequired,
     };
   }
 
@@ -20,6 +20,7 @@ class UsersGrid extends Component {
         justifyContent: 'space-between',
         alignContent: 'flex-start',
         flex: '1',
+        padding: '0px 12px',
       },
     };
   }
@@ -27,16 +28,17 @@ class UsersGrid extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
-  renderCard(user) {
+
+  renderCard(student) {
     return (
-      <UsersCard
-        key={user.id}
-        user={user} />
+      <StudentsCard
+        key={student.id}
+        student={student} />
     );
   }
 
   renderCards() {
-    return this.props.users.map((user) => this.renderCard(user));
+    return this.props.group.students.map((student) => this.renderCard(student));
   }
 
   render() {

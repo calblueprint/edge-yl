@@ -9,12 +9,6 @@ class StudentComments extends Component {
     };
   }
 
-  static get defaultProps() {
-    return {
-      comments: [],
-    };
-  }
-
   // --------------------------------------------------
   // Styles
   // --------------------------------------------------
@@ -55,7 +49,7 @@ class StudentComments extends Component {
   // --------------------------------------------------
   // Handlers
   // --------------------------------------------------
-  handleClick(event) {
+  handleClick() {
     StudentActions.storeOverlay(
       true,
       TypeConstants.overlay.type.create,
@@ -75,7 +69,8 @@ class StudentComments extends Component {
   }
 
   renderComments() {
-    return this.props.comments.map((comment) => this.renderComment(comment));
+    var comments = this.props.comments;
+    return comments.map((comment) => this.renderComment(comment));
   }
 
   render() {
@@ -85,7 +80,7 @@ class StudentComments extends Component {
         {this.renderComments()}
         <Clickable
           content={"Add Comment"}
-          action={(event) => this.handleClick(event)}
+          action={() => this.handleClick(event)}
           styles={this.clickableStyles}
           type={'h3'} />
       </div>

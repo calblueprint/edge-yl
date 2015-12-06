@@ -9,12 +9,6 @@ class AuthenticationModal extends Component {
     };
   }
 
-  static get defaultProps() {
-    return {
-      type: 'login',
-    };
-  }
-
   // --------------------------------------------------
   // Styles
   // --------------------------------------------------

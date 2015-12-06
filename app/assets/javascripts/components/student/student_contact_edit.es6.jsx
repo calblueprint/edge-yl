@@ -9,12 +9,6 @@ class StudentContactEdit extends Component {
     };
   }
 
-  static get defaultProps() {
-    return {
-      student: {},
-    };
-  }
-
   // --------------------------------------------------
   // Styles
   // --------------------------------------------------
@@ -88,7 +82,7 @@ class StudentContactEdit extends Component {
     return (
       <div style={this.styles.container}>
         <CardHeader
-          action={(event) => this.updateStudent()}
+          action={() => this.updateStudent()}
           content={'Student Information'}
           icon={TypeConstants.icons.save} />
         <div style={this.styles.form}>

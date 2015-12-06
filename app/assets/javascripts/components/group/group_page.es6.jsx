@@ -1,4 +1,4 @@
-class StudentPage extends Component {
+class GroupPage extends Component {
 
   // --------------------------------------------------
   // Setup
@@ -13,6 +13,7 @@ class StudentPage extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
+      conferenceId: React.PropTypes.number.isRequired,
       id: React.PropTypes.number.isRequired,
     };
   }
@@ -37,47 +38,29 @@ class StudentPage extends Component {
   // --------------------------------------------------
   componentWillMount() {
     this.setState(ProfileStore.getState());
-    this.setState(StudentStore.getState());
+    this.setState(GroupStore.getState());
   }
 
   componentDidMount() {
     ProfileStore.listen(this._listener);
-    StudentStore.listen(this._listener);
+    GroupStore.listen(this._listener);
     ProfileActions.fetchProfile();
-    StudentActions.fetchStudent(this.props.id);
+    GroupActions.fetchGroup(this.props.conferenceId, this.props.id)
   }
 
   componentWillUnmount() {
     ProfileStore.unlisten(this._listener);
-    StudentStore.unlisten(this._listener);
-  }
-
-  // --------------------------------------------------
-  // Render
-  // --------------------------------------------------
-  renderOverlay() {
-    if (this.state.overlay.active) {
-      return (
-        <StudentPageOverlay
-          overlay={this.state.overlay}
-          profile={this.state.profile}
-          student={this.state.student} />
-      );
-    }
+    GroupStore.unlisten(this._listener);
   }
 
   render() {
     return (
-      <div style={StyleConstants.pages.default}>
-        {this.renderOverlay()}
-        <Header active={true} />
-        <div style={this.styles.container}>
-          <Sidebar
-            active={this.state.sidebar}
-            profile={this.state.profile} />
-          <StudentGrid student={this.state.student} />
-          <StudentComments comments={this.state.student.comments} />
-        </div>
+      <div style={this.styles.container}>
+      <Header hasSidebar={true}/>
+        <Sidebar
+          hidden={this.state.sidebar}
+          profile={this.state.profile} />
+        <GroupGrid group={this.state.group} />
       </div>
     );
   }

@@ -10,13 +10,6 @@ class StudentCommentCreate extends Component {
     };
   }
 
-  static get defaultProps() {
-    return {
-      profile: {},
-      student: {},
-    };
-  }
-
   // --------------------------------------------------
   // State
   // --------------------------------------------------
@@ -81,7 +74,7 @@ class StudentCommentCreate extends Component {
     return (
       <div style={this.styles.container}>
         <CardHeader
-          action={(event) => this.createComment()}
+          action={() => this.createComment()}
           content={'Add a Comment'}
           icon={TypeConstants.icons.save} />
         <div style={this.styles.form}>

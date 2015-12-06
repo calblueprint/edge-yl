@@ -24,6 +24,20 @@
           borderColor: '#e5e6e9 #dfe0e4 #d0d1d5',
           borderRadius: '1px',
         },
+        grid: {
+          display: 'flex',
+          flexFlow: 'column',
+          justifyContent: 'center',
+          width: '49%',
+          height: '24%',
+          padding: '24px',
+          marginTop: '12px',
+          backgroundColor: this.colors.white,
+          border: '1px solid',
+          borderColor: '#e5e6e9 #dfe0e4 #d0d1d5',
+          borderRadius: '1px',
+          boxSizing: 'border-box',
+        },
       };
     }
 

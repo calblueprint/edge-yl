@@ -14,17 +14,6 @@ class StudentEditModal extends EditModal {
     };
   }
 
-  static get defaultProps() {
-    return {
-      overlay: {
-        active: false,
-        target: TypeConstants.overlay.target.preview,
-        type: TypeConstants.overlay.type.edit,
-      },
-      student: {},
-    };
-  }
-
   // --------------------------------------------------
   // Handlers
   // --------------------------------------------------

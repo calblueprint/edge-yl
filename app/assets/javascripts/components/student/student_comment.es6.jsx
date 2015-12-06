@@ -9,12 +9,6 @@ class StudentComment extends Component {
     };
   }
 
-  static get defaultProps() {
-    return {
-      comment: {},
-    };
-  }
-
   // --------------------------------------------------
   // Styles
   // --------------------------------------------------
@@ -35,7 +29,7 @@ class StudentComment extends Component {
         marginTop: '16px',
         borderBottom: '1px solid',
         borderColor: StyleConstants.colors.gray,
-      },         
+      },
     };
   }
 

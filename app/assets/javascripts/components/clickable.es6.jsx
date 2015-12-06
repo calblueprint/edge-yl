@@ -42,7 +42,6 @@ class Clickable extends Component {
         default: {},
         hover: {},
       },
-      type: 'span',
     };
   }
 

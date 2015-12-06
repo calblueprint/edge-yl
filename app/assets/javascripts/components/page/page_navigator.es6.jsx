@@ -13,16 +13,6 @@ class PageNavigator extends Component {
     };
   }
 
-  static get defaultProps() {
-    return {
-      pagination: {
-        current: 1,
-        limit: 1,
-      },
-      route: null,
-    };
-  }
-
   // --------------------------------------------------
   // Styles
   // --------------------------------------------------

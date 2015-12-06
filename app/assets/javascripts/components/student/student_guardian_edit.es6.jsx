@@ -9,12 +9,6 @@ class StudentGuardianEdit extends Component {
     };
   }
 
-  static get defaultProps() {
-    return {
-      student: {},
-    };
-  }
-
   // --------------------------------------------------
   // Styles
   // --------------------------------------------------
@@ -86,7 +80,7 @@ class StudentGuardianEdit extends Component {
     return (
       <div style={this.styles.container}>
         <CardHeader
-          action={(event) => this.updateStudent()}
+          action={() => this.updateStudent()}
           content={'Guardian Information'}
           icon={TypeConstants.icons.save} />
         <div style={this.styles.form}>

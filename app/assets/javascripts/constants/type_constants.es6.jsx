@@ -7,6 +7,7 @@
         close: 'fa fa-times fa-2x',
         conference: 'fa-building',
         edit: 'fa-pencil-square-o',
+        expand: 'fa-angle-down',
         mail: 'fa fa-envelope fa-x',
         profile: 'fa fa-user fa-x',
         save: 'fa-save',

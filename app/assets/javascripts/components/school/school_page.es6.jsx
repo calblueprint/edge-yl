@@ -17,12 +17,6 @@ class SchoolPage extends Component {
     };
   }
 
-  static get defaultProps() {
-    return {
-      id: 1,
-    };
-  }
-
   // --------------------------------------------------
   // Styles
   // --------------------------------------------------
@@ -78,10 +72,10 @@ class SchoolPage extends Component {
     return (
       <div style={StyleConstants.pages.default}>
         {this.renderOverlay()}
-        <Header toggleSidebar={() => this.toggleSidebar()} />
+        <Header active={true} />
         <div style={this.styles.container}>
           <Sidebar
-            hidden={this.state.sidebar}
+            active={this.state.sidebar}
             profile={this.state.profile} />
           <SchoolGrid school={this.state.school} />
           <div style={this.styles.placeholder} />
