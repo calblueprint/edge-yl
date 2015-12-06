@@ -3,6 +3,7 @@
 
     constructor() {
       this.group = {
+        conference: {},
         students: [],
       };
       this.sidebar = true;
