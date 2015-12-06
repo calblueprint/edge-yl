@@ -9,7 +9,6 @@
       };
       this.sidebar = true;
       this.conference = {
-        id: 1,
         groups: [],
       };
       this.bindListeners({
