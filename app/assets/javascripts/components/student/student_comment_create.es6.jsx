@@ -50,9 +50,9 @@ class StudentCommentCreate extends Component {
   // --------------------------------------------------
   createComment() {
     var params = {
-      'comment' : {
-        'content': this.state.content,
-        'user_id': this.props.profile.id,
+      comment: {
+        content: this.state.content,
+        user_id: this.props.profile.id,
       },
     };
     StudentActions.createComment(this.props.student.id, params);
