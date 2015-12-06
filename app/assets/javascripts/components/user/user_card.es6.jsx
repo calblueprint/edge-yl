@@ -1,17 +1,11 @@
-class ConferenceCard extends Component {
+class UserCard extends Component {
 
   // --------------------------------------------------
   // Props
   // --------------------------------------------------
   static get propTypes() {
     return {
-      conference: React.PropTypes.object.isRequired,
-    };
-  }
-
-  static get defaultProps() {
-    return {
-      conference: {},
+      user: React.PropTypes.object.isRequired,
     };
   }
 
@@ -26,16 +20,14 @@ class ConferenceCard extends Component {
         {
           display: 'flex',
           flexFlow: 'column',
-          width: '50%',
-          height: '512px',
+          width: '32.5%',
+          height: '312px',
           marginTop: '1%',
         }
       ),
       section: {
         display: 'flex',
         flexFlow: 'column',
-        alignItems: 'center',
-        justifyContent: 'space-around',
         padding: '12px',
         flex: '1',
       },
@@ -46,17 +38,16 @@ class ConferenceCard extends Component {
   // Render
   // --------------------------------------------------
   render() {
-    var conference = this.props.conference;
+    var user = this.props.user;
     return (
       <div style={this.styles.container}>
         <CardHeader
-          action={(event) => ConferenceActions.storeOverlay(true, TypeConstants.overlay.type.edit)}
-          content={`Conference ${conference.id}`}
+          action={() => UserActions.storeOverlay(true, TypeConstants.overlay.type.edit)}
+          content={`User ${user.id}`}
           icon={TypeConstants.icons.edit} />
         <div style={this.styles.section}>
-          <h3>{`Conference Location: ${conference.location}`}</h3>
-          <h3>{`Start Date: ${conference.start_date}`}</h3>
-          <h3>{`End Date: ${conference.end_date}`}</h3>
+          <h5>{`${user.first_name} ${user.last_name}`}</h5>
+          <h5>{`Email: ${user.email}`}</h5>
         </div>
       </div>
     );
