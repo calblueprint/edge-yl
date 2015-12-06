@@ -1,4 +1,4 @@
-@alphabet = ("A".."Z").to_a
+@alphabet = ('A'..'Z').to_a
 
 def generate_group(conference)
   new_group = Group.create(

@@ -45,6 +45,7 @@ class Api::StudentsController < Api::BaseController
       :home_address,
       :home_phone,
       :last_name,
+      :sidebar_active,
     )
   end
 

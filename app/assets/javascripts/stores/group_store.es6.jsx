@@ -3,8 +3,8 @@
 
     constructor() {
       this.group = {
-        students: [],
         conference: {},
+        students: [],
       };
       this.sidebar = true;
       this.bindListeners({
