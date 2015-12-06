@@ -36,7 +36,10 @@
       };
     }
 
-    updateStudent(id, params) {
+    updateStudent(template) {
+      var id = template.id;
+      delete template.id;
+      var params = { student: template };
       var resolve = (response) => this.storeStudent(response);
       Requester.update(ApiConstants.students.update(id), params, resolve);
       return true;
