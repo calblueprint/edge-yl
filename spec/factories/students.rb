@@ -15,9 +15,11 @@
 #  guardian_two_email :string           not null
 #  home_address       :string           not null
 #  home_phone         :string           not null
+#  is_flagged         :boolean          not null
+#  is_primary         :boolean          not null
 #  last_name          :string           not null
-#  school_id          :integer
 #  group_id           :integer
+#  school_id          :integer
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
 #
@@ -37,6 +39,8 @@ FactoryGirl.define do
     guardian_two_phone  { Faker::PhoneNumber.phone_number }
     home_address        { "#{Faker::Address.street_address}, #{Faker::Address.city}" }
     home_phone          { Faker::PhoneNumber.phone_number }
+    is_flagged          { true }
+    is_primary          { true }
     last_name           { Faker::Name.last_name }
   end
 

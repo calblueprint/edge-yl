@@ -70,6 +70,8 @@ class StudentsCard extends Component {
           <h6>{`${student.birthday}`}</h6>
           <h6>{`${student.email}`}</h6>
           <h6>{`${student.home_address}`}</h6>
+          <h6>{`Flagged: ${student.is_flagged}`}</h6>
+          <h6>{`Primary: ${student.is_primary}`}</h6>
           <Clickable
             content={student.school.name}
             route={RouteConstants.schools.show(student.school.id)}
