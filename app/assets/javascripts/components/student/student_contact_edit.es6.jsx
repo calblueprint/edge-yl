@@ -18,10 +18,7 @@ class StudentContactEdit extends Component {
       container: {
         display: 'flex',
         flexFlow: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
         padding: '18px',
-        marginBottom: '18px',
       },
     };
   }
@@ -45,6 +42,7 @@ class StudentContactEdit extends Component {
       <div style={this.styles.container}>
         <CardInput
           action={this.generateHandler('email')}
+          margin={false}
           placeholder={'Email'}
           value={template.email} />
         <CardInput

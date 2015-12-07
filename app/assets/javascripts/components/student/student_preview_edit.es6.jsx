@@ -18,10 +18,8 @@ class StudentPreviewEdit extends Component {
       container: {
         display: 'flex',
         flexFlow: 'column',
-        justifyContent: 'center',
         alignItems: 'center',
         padding: '18px',
-        marginBottom: '18px',
       },
       image: {
         width: '128px',

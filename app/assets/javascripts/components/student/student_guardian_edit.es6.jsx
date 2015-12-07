@@ -18,10 +18,7 @@ class StudentGuardianEdit extends Component {
       container: {
         display: 'flex',
         flexFlow: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
         padding: '18px',
-        marginBottom: '18px',
       },
     };
   }
@@ -45,6 +42,7 @@ class StudentGuardianEdit extends Component {
       <div style={this.styles.container}>
         <CardInput
           action={this.generateHandler('guardian_one_name')}
+          margin={false}
           placeholder={'Guardian one name'}
           value={template.guardian_one_name} />
         <CardInput
