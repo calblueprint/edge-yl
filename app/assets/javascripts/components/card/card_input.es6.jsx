@@ -6,8 +6,15 @@ class CardInput extends Component {
   static get propTypes() {
     return {
       action: React.PropTypes.func.isRequired,
+      margin: React.PropTypes.bool,
       placeholder: React.PropTypes.string.isRequired,
       value: React.PropTypes.string.isRequired,
+    };
+  }
+
+  static get defaultProps() {
+    return {
+      margin: true,
     };
   }
 
@@ -16,12 +23,13 @@ class CardInput extends Component {
   // --------------------------------------------------
   get styles() {
     return {
-      container: {
-        display: 'flex',
-        alignSelf: 'stretch',
-        padding: '0px 12px',
-        marginTop: '18px',
-      },
+      container: Object.assign(
+        {
+          display: 'flex',
+          alignSelf: 'stretch',
+        },
+        this.props.margin && { marginTop: '18px' }
+      ),
       input: {
         flex: '1',
         padding: '8px',

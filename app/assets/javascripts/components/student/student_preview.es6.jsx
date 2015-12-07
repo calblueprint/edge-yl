@@ -14,14 +14,11 @@ class StudentPreview extends Component {
   // --------------------------------------------------
   get styles() {
     return {
-      container: {
-        display: 'flex',
-        flexFlow: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        flex: '1',
-        padding: '18px',
-      },
+      container: Object.assign(
+        {},
+        StyleConstants.cards.body,
+        { alignItems: 'center' }
+      ),
       image: {
         width: '128px',
         height: '128px',

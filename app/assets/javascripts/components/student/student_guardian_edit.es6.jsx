@@ -6,47 +6,8 @@ class StudentGuardianEdit extends Component {
   static get propTypes() {
     return {
       student: React.PropTypes.object.isRequired,
+      template: React.PropTypes.object.isRequired,
     };
-  }
-
-  // --------------------------------------------------
-  // Styles
-  // --------------------------------------------------
-  get styles() {
-    return {
-      container: Object.assign(
-        {},
-        StyleConstants.cards.default,
-        {
-          display: 'flex',
-          flexFlow: 'column',
-          justifyContent: 'center',
-          width: '356px',
-        }
-      ),
-      form: {
-        display: 'flex',
-        flexFlow: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        padding: '18px',
-        marginBottom: '18px',
-      },
-    };
-  }
-
-  // --------------------------------------------------
-  // Lifecycle
-  // --------------------------------------------------
-  componentWillMount() {
-    this.setState({
-      guardianOneName: this.props.student.guardian_one_name,
-      guardianOnePhone: this.props.student.guardian_one_phone,
-      guardianOneEmail: this.props.student.guardian_one_email,
-      guardianTwoName: this.props.student.guardian_two_name,
-      guardianTwoPhone: this.props.student.guardian_two_phone,
-      guardianTwoEmail: this.props.student.guardian_two_email,
-    });
   }
 
   // --------------------------------------------------
@@ -55,62 +16,42 @@ class StudentGuardianEdit extends Component {
   generateHandler(field) {
     var state = {};
     return(event) => {
-      state[field] = event.target.value;
-      this.setState(state);
+      StudentActions.storeAttribute(field, event.target.value);
     };
-  }
-
-  updateStudent() {
-    var params = {
-      student: {
-        guardian_one_name: this.state.guardianOneName,
-        guardian_one_phone: this.state.guardianOnePhone,
-        guardian_one_email: this.state.guardianOneEmail,
-        guardian_two_name: this.state.guardianTwoName,
-        guardian_two_phone: this.state.guardianTwoPhone,
-        guardian_two_email: this.state.guardianTwoEmail,
-      },
-    };
-    StudentActions.updateStudent(this.props.student.id, params);
   }
 
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
   render() {
-    var student = this.props.student;
+    var template = this.props.template;
     return (
-      <div style={this.styles.container}>
-        <CardHeader
-          action={() => this.updateStudent()}
-          content={'Guardian Information'}
-          icon={TypeConstants.icons.save} />
-        <div style={this.styles.form}>
-          <CardInput
-            action={this.generateHandler('guardianOneName')}
-            placeholder={'Guardian One Name'}
-            value={this.state.guardianOneName} />
-          <CardInput
-            action={this.generateHandler('guardianOnePhone')}
-            placeholder={'Guardian One Phone'}
-            value={this.state.guardianOnePhone} />
-          <CardInput
-            action={this.generateHandler('guardianOneEmail')}
-            placeholder={'Guardian One Email'}
-            value={this.state.guardianOneEmail} />
-          <CardInput
-            action={this.generateHandler('guardianTwoName')}
-            placeholder={'Guardian Two Name'}
-            value={this.state.guardianTwoName} />
-          <CardInput
-            action={this.generateHandler('guardianTwoPhone')}
-            placeholder={'Guardian Two Phone'}
-            value={this.state.guardianTwoPhone} />
-          <CardInput
-            action={this.generateHandler('guardianTwoEmail')}
-            placeholder={'Guardian Two Email'}
-            value={this.state.guardianTwoEmail} />
-        </div>
+      <div style={StyleConstants.cards.body}>
+        <CardInput
+          action={this.generateHandler('guardian_one_name')}
+          margin={false}
+          placeholder={'Guardian one name'}
+          value={template.guardian_one_name} />
+        <CardInput
+          action={this.generateHandler('guardian_one_phone')}
+          placeholder={'Guardian one phone'}
+          value={template.guardian_one_phone} />
+        <CardInput
+          action={this.generateHandler('guardian_one_email')}
+          placeholder={'Guardian one email'}
+          value={template.guardian_one_email} />
+        <CardInput
+          action={this.generateHandler('guardian_two_name')}
+          placeholder={'Guardian two name'}
+          value={template.guardian_two_name} />
+        <CardInput
+          action={this.generateHandler('guardian_two_phone')}
+          placeholder={'Guardian two phone'}
+          value={template.guardian_two_phone} />
+        <CardInput
+          action={this.generateHandler('guardian_two_email')}
+          placeholder={'Guardian two email'}
+          value={template.guardian_two_email} />
       </div>
     );
   }
