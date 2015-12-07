@@ -55,7 +55,7 @@ class GroupsCard extends Component {
       <div style={this.styles.container}>
         <div style={this.styles.info}>
           <Clickable
-            content={`${this.props.group.name}`}
+            content={`Group ${this.props.group.name}`}
             route={RouteConstants.groups.show(this.props.conferenceId, this.props.group.id)}
             styles={this.clickableStyles}
             type={'h3'} />

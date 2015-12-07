@@ -63,12 +63,13 @@ class StudentsPage extends Component {
   // Render
   // --------------------------------------------------
   render() {
+    console.log(this.state);
     return (
       <div style={StyleConstants.pages.default}>
         <Header active={true} />
         <div style={this.styles.container}>
           <Sidebar
-            active={this.state.sidebar}
+            active={this.state.profile.has_sidebar}
             profile={this.state.profile} />
           <div style={this.styles.body}>
             <StudentsFilters filters={this.state.filters} />

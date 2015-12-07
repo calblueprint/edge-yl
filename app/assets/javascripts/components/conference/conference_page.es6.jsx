@@ -24,6 +24,7 @@ class ConferencePage extends Component {
     return {
       container: {
         display: 'flex',
+        flexFlow: 'column',
         flex: '1',
         paddingTop: '48px',
         paddingLeft: '196px',
@@ -70,7 +71,7 @@ class ConferencePage extends Component {
     return (
       <div style={StyleConstants.pages.default}>
         {this.renderOverlay()}
-        <Header active={false} />
+        <Header active={true} />
         <div style={this.styles.container}>
           <Sidebar
             active={this.state.profile.has_sidebar}

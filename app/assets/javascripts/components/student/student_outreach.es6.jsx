@@ -37,7 +37,7 @@ class StudentOutreach extends Component {
     if (responsibility) {
       return (
         <Clickable
-          content={'Volunteer'}
+          content={`${responsibility.user.first_name} ${responsibility.user.last_name}`}
           route={RouteConstants.users.show(responsibility.user.id)}
           type={'h6'} />
       );

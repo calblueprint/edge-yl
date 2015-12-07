@@ -34,6 +34,8 @@ class StudentEditModal extends EditModal {
         return <StudentContactEdit student={this.props.student} />;
       case TypeConstants.overlay.target.guardian:
         return <StudentGuardianEdit student={this.props.student} />;
+      case TypeConstants.overlay.target.outreach:
+        return <StudentOutreachEdit student={this.props.student} />;
     }
   }
 }

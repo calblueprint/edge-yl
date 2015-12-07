@@ -64,14 +64,18 @@ class Header extends Component {
   // --------------------------------------------------
   componentWillMount() {
     this.setState(HeaderStore.getState());
+    this.setState(ProfileStore.getState());
   }
 
   componentDidMount() {
     HeaderStore.listen(this._listener);
+    ProfileStore.listen(this._listener);
+    ProfileActions.fetchProfile();
   }
 
   componentWillUnmount() {
     HeaderStore.unlisten(this._listener);
+    ProfileStore.unlisten(this._listener);
   }
 
   // --------------------------------------------------
@@ -81,7 +85,7 @@ class Header extends Component {
     if (this.props.active) {
       return (
         <Clickable
-          action={null}
+          action={() => {ProfileActions.toggleSidebar(this.state.profile.id, !this.state.profile.has_sidebar);}}
           icon={TypeConstants.icons.bars}
           styles={this.clickableStyles}
           type={'i'} />

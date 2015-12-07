@@ -65,9 +65,11 @@ class StudentPreviewEdit extends Component {
 
   updateStudent() {
     var params = {
-      birthday: this.state.birthday,
-      first_name: this.state.firstName,
-      last_name: this.state.lastName
+      student: {
+        birthday: this.state.birthday,
+        first_name: this.state.firstName,
+        last_name: this.state.lastName,
+      },
     };
     StudentActions.updateStudent(this.props.student.id, params);
   }

@@ -1,4 +1,4 @@
-class StudentContactEdit extends Component {
+class StudentOutreachEdit extends Component {
 
   // --------------------------------------------------
   // Props
@@ -32,12 +32,6 @@ class StudentContactEdit extends Component {
         padding: '12px',
         marginBottom: '18px',
       },
-      image: {
-        width: '152px',
-        height: '152px',
-        marginTop: '18px',
-        borderRadius: '50%',
-      },
     };
   }
 
@@ -46,10 +40,8 @@ class StudentContactEdit extends Component {
   // --------------------------------------------------
   componentWillMount() {
     this.setState({
-      cellPhone: this.props.student.cell_phone,
-      email: this.props.student.email,
-      homeAddress: this.props.student.home_address,
-      homePhone: this.props.student.home_phone,
+      first_name: this.props.student.responsibility.user.first_name,
+      last_name: this.props.student.responsibility.user.last_name,
     });
   }
 
@@ -67,10 +59,9 @@ class StudentContactEdit extends Component {
   updateStudent() {
     var params = {
       student: {
-        cell_phone: this.state.cellPhone,
-        email: this.state.email,
-        home_address: this.state.homeAddress,
-        home_phone: this.state.homePhone,
+        responsibility: {
+          user_id: 2,
+        },
       },
     };
     StudentActions.updateStudent(this.props.student.id, params);
@@ -79,32 +70,29 @@ class StudentContactEdit extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
+  renderForm() {
+    var responsibility = this.props.student.responsibility;
+    if (responsibility) {
+      return (
+        <div style={this.styles.form}>
+          <CardInput
+            action={this.generateHandler('user')}
+            placeholder={'Volunteer'}
+            value={`${this.state.first_name} ${this.state.last_name}`}
+          />
+        </div>
+      );
+    }
+  }
+
   render() {
-    var student = this.props.student;
     return (
       <div style={this.styles.container}>
         <CardHeader
           action={() => this.updateStudent()}
-          content={'Student Information'}
+          content={'Student Outreach'}
           icon={TypeConstants.icons.save} />
-        <div style={this.styles.form}>
-          <CardInput
-            action={this.generateHandler('cellPhone')}
-            placeholder={'Cell phone'}
-            value={this.state.cellPhone} />
-          <CardInput
-            action={this.generateHandler('homePhone')}
-            placeholder={'Home phone'}
-            value={this.state.homePhone} />
-          <CardInput
-            action={this.generateHandler('email')}
-            placeholder={'Email'}
-            value={this.state.email} />
-          <CardInput
-            action={this.generateHandler('homeAddress')}
-            placeholder={'Home address'}
-            value={this.state.homeAddress} />
-        </div>
+        {this.renderForm()}
       </div>
     );
   }

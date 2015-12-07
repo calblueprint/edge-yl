@@ -1,4 +1,4 @@
-class CreateModal extends Component {
+class StudentCreateModal extends Component {
 
   // --------------------------------------------------
   // Setup
@@ -63,7 +63,7 @@ class CreateModal extends Component {
   // --------------------------------------------------
   renderBody() {
     switch (this.props.overlay.target) {
-      case 'comment':
+      case TypeConstants.overlay.target.comment:
         return (
           <StudentCommentCreate
             profile={this.props.profile}
