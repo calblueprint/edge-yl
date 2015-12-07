@@ -16,21 +16,11 @@ class SchoolCard extends Component {
     return {
       container: Object.assign(
         {},
-        StyleConstants.cards.default,
+        StyleConstants.cards.show,
         {
-          display: 'flex',
-          flexFlow: 'column',
-          width: '50%',
-          height: '512px',
-          marginTop: '12px',
+          height: '256px',
         }
       ),
-      image: {
-        width: '250px',
-        height: '250px',
-        borderRadius: '50%',
-        margin: '20px 0px',
-      },
       section: {
         display: 'flex',
         flexFlow: 'column',
@@ -65,9 +55,6 @@ class SchoolCard extends Component {
           content={school.name}
           icon={TypeConstants.icons.edit} />
         <div style={this.styles.section}>
-          <img
-            src={'http://www.wlac.edu/WLAC/media/images/highschool/highschool-index.jpg'}
-            style={this.styles.image} />
           <h3>{`School Address: ${school.address}`}</h3>
           <h3>{`Counselor Name: ${school.counselor_name}`}</h3>
           <h3>{`Counselor Email: ${school.counselor_email}`}</h3>

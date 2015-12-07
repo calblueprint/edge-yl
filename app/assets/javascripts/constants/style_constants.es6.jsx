@@ -24,23 +24,36 @@
           flex: '1',
           padding: '18px',
         },
-        default: {
-          backgroundColor: this.colors.white,
-          border: '1px solid',
-          borderColor: '#e5e6e9 #dfe0e4 #d0d1d5',
-          borderRadius: '1px',
-        },
-        grid: {
+        index: Object.assign(
+          {},
+          this.defaults.card,
+          {
+            width: '49%',
+            padding: '18px',
+            marginTop: '12px',
+            boxSizing: 'border-box',
+          }
+        ),
+        show: Object.assign(
+          {},
+          this.defaults.card,
+          {
+            marginTop: '12px',
+            boxSizing: 'border-box',
+          }
+        ),
+      };
+    }
+
+    get defaults() {
+      return {
+        card: {
           display: 'flex',
           flexFlow: 'column',
-          width: '49%',
-          padding: '18px',
-          marginTop: '12px',
           backgroundColor: this.colors.white,
           border: '1px solid',
           borderColor: '#e5e6e9 #dfe0e4 #d0d1d5',
           borderRadius: '1px',
-          boxSizing: 'border-box',
         },
       };
     }

@@ -16,10 +16,8 @@ class FormBody extends Component {
     return {
       container: Object.assign(
         {},
-        StyleConstants.cards.default,
+        StyleConstants.defaults.card,
         {
-          display: 'flex',
-          flexFlow: 'column',
           width: '712px',
           padding: '36px',
           margin: '20px',

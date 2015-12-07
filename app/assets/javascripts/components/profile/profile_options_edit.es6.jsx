@@ -16,10 +16,8 @@ class ProfileOptionsEdit extends Component {
     return {
       container: Object.assign(
         {},
-        StyleConstants.cards.default,
+        StyleConstants.defaults.card,
         {
-          display: 'flex',
-          flexFlow: 'column',
           justifyContent: 'center',
           width: '356px',
         }

@@ -16,10 +16,9 @@ class StudentsCard extends Component {
     return {
       container: Object.assign(
         {},
-        StyleConstants.cards.grid,
+        StyleConstants.cards.index,
         {
           flexFlow: 'row',
-          justifyContent: 'flex-start',
         }
       ),
       image: {

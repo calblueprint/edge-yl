@@ -70,11 +70,9 @@ class FormDropdown extends Component {
       },
       container: Object.assign(
         {},
-        StyleConstants.cards.default,
+        StyleConstants.defaults.card,
         {
-          display: 'flex',
-          flexFlow: 'column',
-          position:'absolute',
+          position: 'absolute',
           zIndex: StyleConstants.planes.two,
           top: '19px',
           left: '-5px',

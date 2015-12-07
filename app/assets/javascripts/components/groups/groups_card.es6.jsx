@@ -15,19 +15,6 @@ class GroupsCard extends Component {
   // --------------------------------------------------
   get styles() {
     return {
-      container: Object.assign(
-        {},
-        StyleConstants.cards.default,
-        {
-          display: 'flex',
-          alignItems: 'center',
-          width: '49%',
-          height: '24%',
-          padding: '24px',
-          marginTop: '2%',
-          boxSizing: 'border-box',
-        }
-      ),
       image: {
         width: '122px',
         height: '122px',
@@ -52,7 +39,7 @@ class GroupsCard extends Component {
   // --------------------------------------------------
   render() {
     return (
-      <div style={this.styles.container}>
+      <div style={StyleConstants.cards.index}>
         <div style={this.styles.info}>
           <Clickable
             content={`Group ${this.props.group.name}`}

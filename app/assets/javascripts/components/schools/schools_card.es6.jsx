@@ -26,7 +26,7 @@ class SchoolsCard extends Component {
   render() {
     var school = this.props.school;
     return (
-      <div style={StyleConstants.cards.grid}>
+      <div style={StyleConstants.cards.index}>
         <Clickable
           content={school.name}
           route={RouteConstants.schools.show(school.id)}

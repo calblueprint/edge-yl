@@ -16,13 +16,9 @@ class ConferenceCard extends Component {
     return {
       container: Object.assign(
         {},
-        StyleConstants.cards.default,
+        StyleConstants.cards.show,
         {
-          display: 'flex',
-          flex: 1,
-          flexFlow: 'column',
           height: '256px',
-          marginTop: '12px',
         }
       ),
       section: {

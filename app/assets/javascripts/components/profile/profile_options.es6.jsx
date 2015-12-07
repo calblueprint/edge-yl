@@ -16,10 +16,10 @@ class ProfileOptions extends Component {
     return {
       container: Object.assign(
         {},
-        StyleConstants.cards.default,
+        StyleConstants.defaults.card,
         {
           padding: '24px',
-          marginTop: '2%',
+          marginTop: '12px',
         }
       ),
       field: {

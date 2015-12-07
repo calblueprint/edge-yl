@@ -18,11 +18,7 @@ class GroupCard extends Component {
         {},
         StyleConstants.cards.default,
         {
-          display: 'flex',
-          flexFlow: 'column',
           height: '256px',
-          width: '100%',
-          marginTop: '12px',
         }
       ),
       section: {
