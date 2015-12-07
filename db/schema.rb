@@ -150,7 +150,6 @@ ActiveRecord::Schema.define(version: 20151130013648) do
     t.string   "last_name",                              null: false
     t.boolean  "has_sidebar",            default: true,  null: false
     t.boolean  "is_admin",               default: false, null: false
-    t.boolean  "sidebar_active",         default: true,  null: false
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
   end
