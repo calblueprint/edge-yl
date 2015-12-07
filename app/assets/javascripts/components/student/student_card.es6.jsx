@@ -5,6 +5,7 @@ class StudentCard extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
+      media: React.PropTypes.string.isRequired,
       student: React.PropTypes.object.isRequired,
       target: React.PropTypes.oneOf([
         'comment',
@@ -32,10 +33,12 @@ class StudentCard extends Component {
         {
           display: 'flex',
           flexFlow: 'column',
-          width: '32.5%',
           height: '312px',
           marginTop: '1%',
-        }
+        },
+        this.props.media === 'large' && { width: '32.5%' },
+        this.props.media === 'medium' && { width: '49%' },
+        this.props.media === 'small' && { width: '100%' }
       ),
     };
   }

@@ -29,7 +29,7 @@ class StudentOutreachEdit extends Component {
         flexFlow: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        padding: '12px',
+        padding: '18px',
         marginBottom: '18px',
       },
     };

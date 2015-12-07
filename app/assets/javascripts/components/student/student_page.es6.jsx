@@ -27,7 +27,12 @@ class StudentPage extends Component {
         flex: '1',
         paddingTop: '48px',
         paddingLeft: '196px',
+      },
+      section: {
+        display: 'flex',
+        flex: '1',
         paddingRight: '196px',
+        overflow: 'scroll',
       },
     };
   }
@@ -38,18 +43,22 @@ class StudentPage extends Component {
   componentWillMount() {
     this.setState(ProfileStore.getState());
     this.setState(StudentStore.getState());
+    this.setState(ViewStore.getState());
   }
 
   componentDidMount() {
     ProfileStore.listen(this._listener);
     StudentStore.listen(this._listener);
+    ViewStore.listen(this._listener);
     ProfileActions.fetchProfile();
     StudentActions.fetchStudent(this.props.id);
+    ViewActions.attachListener();
   }
 
   componentWillUnmount() {
     ProfileStore.unlisten(this._listener);
     StudentStore.unlisten(this._listener);
+    ViewStore.unlisten(this._listener);
   }
 
   // --------------------------------------------------
@@ -75,8 +84,12 @@ class StudentPage extends Component {
           <Sidebar
             active={this.state.sidebar}
             profile={this.state.profile} />
-          <StudentGrid student={this.state.student} />
-          <StudentComments comments={this.state.student.comments} />
+          <div style={this.styles.section}>
+            <StudentGrid
+              media={this.state.media}
+              student={this.state.student} />
+            <StudentComments comments={this.state.student.comments} />
+          </div>
         </div>
       </div>
     );

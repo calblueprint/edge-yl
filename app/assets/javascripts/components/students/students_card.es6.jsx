@@ -23,8 +23,8 @@ class StudentsCard extends Component {
         }
       ),
       image: {
-        width: '136px',
-        height: '136px',
+        width: '128px',
+        height: '128px',
         borderRadius: '50%',
       },
       section: {
