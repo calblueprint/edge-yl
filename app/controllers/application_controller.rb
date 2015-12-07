@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :null_session
 
   def error_response(object: nil, message: nil, status: nil)
-    render json: { message: response_message(object, message) }, status: status
+    render json: response_message(object, message), status: status
   end
 
   def unprocessable_response(object)
@@ -17,7 +17,11 @@ class ApplicationController < ActionController::Base
   private
 
   def response_message(object=nil, message=nil)
-    message || object.errors.full_messages.to_sentence
+    if message
+      { message: message }
+    else
+      { errors: object.errors.to_hash(true) }
+    end
   end
 
 end

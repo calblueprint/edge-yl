@@ -70,7 +70,8 @@ class StudentPage extends Component {
         <StudentPageOverlay
           overlay={this.state.overlay}
           profile={this.state.profile}
-          student={this.state.student} />
+          student={this.state.student}
+          template={this.state.template} />
       );
     }
   }

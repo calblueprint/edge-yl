@@ -16,7 +16,7 @@ class Api::Users::SessionsController < Devise::SessionsController
   private
 
   def invalid_login
-    error_response message: "Incorrect email or password", status: 401
+    error_response message: 'Incorrect email or password', status: 401
   end
 
 end

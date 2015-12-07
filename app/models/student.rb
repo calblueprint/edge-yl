@@ -53,6 +53,7 @@ class Student < ActiveRecord::Base
   validates :home_address, presence: true
   validates :is_flagged, presence: true
   validates :is_primary, presence: true
+  validates :home_phone, presence: true
   validates :last_name, presence: true
   def name
     "#{first_name} #{last_name}"

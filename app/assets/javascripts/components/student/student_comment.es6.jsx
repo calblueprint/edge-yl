@@ -14,19 +14,14 @@ class StudentComment extends Component {
   // --------------------------------------------------
   get styles() {
     return {
-      content: {
-        textAlign: 'right',
-      },
       container: {
         display: 'flex',
         flexFlow: 'column',
-        alignItems: 'flex-end',
-        paddingTop: '12px',
-        marginTop: '16px',
-        borderRadius: '1px',
+        marginTop: '12px',
+        textAlign: 'right'
       },
       divider: {
-        marginTop: '16px',
+        marginTop: '12px',
         borderBottom: '1px solid',
         borderColor: StyleConstants.colors.gray,
       },
@@ -41,13 +36,9 @@ class StudentComment extends Component {
     var user = comment.user;
     return (
       <div style={this.styles.container}>
-        <h6 style={this.styles.content}>{comment.content}</h6>
-        <h6 style={this.styles.content}>
-          {`- ${user.first_name} ${user.last_name}`}
-        </h6>
-        <h6 style={this.styles.content}>
-          {comment.updated_at}
-        </h6>
+        <h6>{comment.content}</h6>
+        <h6>{`- ${user.first_name} ${user.last_name}`}</h6>
+        <h6>{comment.updated_at}</h6>
         <div style={this.styles.divider} />
       </div>
     );
