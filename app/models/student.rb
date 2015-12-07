@@ -49,6 +49,7 @@ class Student < ActiveRecord::Base
   validates :guardian_two_phone, presence: true
   validates :guardian_two_email, presence: true
   validates :home_address, presence: true
+  validates :home_phone, presence: true
   validates :last_name, presence: true
 
   def name
