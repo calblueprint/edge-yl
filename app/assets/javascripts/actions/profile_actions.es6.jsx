@@ -29,7 +29,11 @@
 
     toggleSidebar(id, status) {
       var resolve = (response) => this.storeProfile(response);
-      params = {'has_sidebar': status};
+      var params = {
+        user: {
+          has_sidebar: status,
+        },
+      };
       Requester.update(ApiConstants.users.update(id), params, resolve);
       return true;
     }

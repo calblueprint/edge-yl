@@ -65,7 +65,9 @@ class StudentsPage extends Component {
   render() {
     return (
       <div style={StyleConstants.pages.default}>
-        <Header active={true} />
+        <Header
+          active={true}
+          profile={this.state.profile} />
         <div style={this.styles.container}>
           <Sidebar
             active={this.state.profile.has_sidebar}
