@@ -17,28 +17,31 @@ class StudentComments extends Component {
       container: {
         display: 'flex',
         flexFlow: 'column',
-        alignItems: 'flex-end',
         position: 'absolute',
         top: '0px',
         right: '0px',
         width: '196px',
         paddingRight: '16px',
+        textAlign: 'right',
         boxSizing: 'border-box',
       },
       title: {
-        paddingTop: '12px',
-        marginTop: '16px',
+        marginTop: '24px',
       },
     };
   }
 
   get clickableStyles() {
     return {
+      child: {
+        paddingRight: '12px',
+      },
       default: {
         flex: '1',
         padding: '12px',
         marginTop: '12px',
         borderRadius: '1px',
+        textAlign: 'center',
         boxSizing: 'border-box',
       },
       hover: {
@@ -77,13 +80,15 @@ class StudentComments extends Component {
   render() {
     return (
       <div style={this.styles.container}>
-        <h5 style={this.styles.title}>{'Student Comments'}</h5>
+        <h4 style={this.styles.title}>{'Comments'}</h4>
         {this.renderComments()}
         <Clickable
-          content={"Add Comment"}
           action={() => this.handleClick(event)}
+          icon={TypeConstants.icons.create}
           styles={this.clickableStyles}
-          type={'h3'} />
+          type={'i'}>
+          <h5>{'Add comment'}</h5>
+        </Clickable>
       </div>
     );
   }
