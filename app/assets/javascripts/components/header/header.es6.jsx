@@ -89,7 +89,7 @@ class Header extends Component {
     if (this.props.active) {
       return (
         <Clickable
-          action={this.toggleSidebar.bind(this)}
+          action={() => this.toggleSidebar()}
           icon={TypeConstants.icons.bars}
           styles={this.clickableStyles}
           type={'i'} />
