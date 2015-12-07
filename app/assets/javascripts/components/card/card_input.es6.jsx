@@ -6,7 +6,7 @@ class CardInput extends Component {
   static get propTypes() {
     return {
       action: React.PropTypes.func.isRequired,
-      error: React.PropTypes.string,
+      errors: React.PropTypes.array,
       margin: React.PropTypes.bool,
       placeholder: React.PropTypes.string.isRequired,
       value: React.PropTypes.string.isRequired,
@@ -15,7 +15,7 @@ class CardInput extends Component {
 
   static get defaultProps() {
     return {
-      error: '',
+      errors: [],
       margin: true,
     };
   }
@@ -34,7 +34,7 @@ class CardInput extends Component {
         },
         this.props.margin && { marginTop: '18px' }
       ),
-      error: {
+      errors: {
         marginTop: '12px',
         color: StyleConstants.colors.red,
       },
@@ -56,11 +56,12 @@ class CardInput extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
-  renderError() {
-    if (this.props.error) {
+  renderErrors() {
+    var errors = this.props.errors;
+    if (errors && errors.length) {
       return (
-        <h6 style={this.styles.error}>
-          {this.props.error}
+        <h6 style={this.styles.errors}>
+          {errors[0]}
         </h6>
       );
     }
@@ -74,7 +75,7 @@ class CardInput extends Component {
           placeholder={this.props.placeholder}
           ref={'input'}
           style={this.styles.input} />
-        {this.renderError()}
+        {this.renderErrors()}
       </div>
     );
   }

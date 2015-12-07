@@ -42,12 +42,14 @@
     handleStoreOverlay(overlay) {
       this.overlay = overlay;
       this.template = Object.assign({}, this.student);
+      this.template.errors = {};
     }
 
     handleStoreStudent(response) {
       this.overlay.active = false;
       this.student = response.student;
       this.template = Object.assign({}, this.student);
+      this.template.errors = {};
     }
 
     handleToggleSidebar() {
