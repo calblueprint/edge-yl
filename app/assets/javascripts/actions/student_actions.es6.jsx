@@ -4,6 +4,7 @@
     constructor() {
       this.generateActions(
         'storeComment',
+        'storeError',
         'storeStudent',
         'toggleSidebar'
       );
@@ -38,16 +39,19 @@
 
     updateStudent(student, template) {
       var id = template.id;
-      delete template.id;
-      Object.keys(template).map((key) => {
-        if (typeof(template[key]) === 'object' ||
-            student[key] === template[key]) {
-          delete template[key];
+      var attributes = Object.assign({}, template);
+      Object.keys(attributes).map((key) => {
+        if (typeof(attributes[key]) === 'object' ||
+            student[key] === attributes[key]) {
+          delete attributes[key];
         }
       });
-      var params = { student: template };
+      // TOOD(Warren): Set up error as errors object with server.
+      delete attributes.error;
+      var params = { student: attributes };
       var resolve = (response) => this.storeStudent(response);
-      Requester.update(ApiConstants.students.update(id), params, resolve);
+      var reject = (response) => this.storeError(response);
+      Requester.update(ApiConstants.students.update(id), params, resolve, reject);
       return true;
     }
   }
