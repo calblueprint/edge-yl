@@ -50,14 +50,17 @@ class StudentPreviewEdit extends Component {
           style={this.styles.image} />
         <CardInput
           action={this.generateHandler('first_name')}
+          errors={template.errors.first_name}
           placeholder={'First name'}
           value={template.first_name} />
         <CardInput
           action={this.generateHandler('last_name')}
+          errors={template.errors.last_name}
           placeholder={'Last name'}
           value={template.last_name} />
         <CardInput
           action={this.generateHandler('birthday')}
+          errors={template.errors.birthday}
           placeholder={'Birthday'}
           value={template.birthday} />
       </div>

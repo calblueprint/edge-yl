@@ -31,6 +31,7 @@ class CardInput extends Component {
           display: 'flex',
           flexFlow: 'column',
           alignItems: 'center',
+          alignSelf: 'stretch',
         },
         this.props.margin && { marginTop: '18px' }
       ),
