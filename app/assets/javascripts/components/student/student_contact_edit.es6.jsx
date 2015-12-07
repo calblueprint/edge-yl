@@ -32,7 +32,7 @@ class StudentContactEdit extends Component {
   generateHandler(field) {
     var state = {};
     return(event) => {
-      StudentActions.storeTemplate(field, event.target.value);
+      StudentActions.storeAttribute(field, event.target.value);
     };
   }
 

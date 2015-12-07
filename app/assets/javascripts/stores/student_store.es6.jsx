@@ -15,10 +15,10 @@
       };
       this.template = {};
       this.bindListeners({
+        handleStoreAttribute: StudentActions.STORE_ATTRIBUTE,
         handleStoreComment: StudentActions.STORE_COMMENT,
         handleStoreOverlay: StudentActions.STORE_OVERLAY,
         handleStoreStudent: StudentActions.STORE_STUDENT,
-        handleStoreTemplate: StudentActions.STORE_TEMPLATE,
         handleToggleSidebar: StudentActions.TOGGLE_SIDEBAR,
       });
     }
@@ -38,9 +38,8 @@
       this.template = Object.assign({}, this.student);
     }
 
-    handleStoreTemplate(params) {
-      this.template[params.key] = params.value;
-      console.log(this.template);
+    handleStoreAttribute(attribute) {
+      this.template[attribute.key] = attribute.value;
     }
 
     handleToggleSidebar() {

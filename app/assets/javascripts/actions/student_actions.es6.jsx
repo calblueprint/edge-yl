@@ -21,18 +21,18 @@
       return true;
     }
 
+    storeAttribute(key, value) {
+      return {
+        key: key,
+        value: value,
+      };
+    }
+
     storeOverlay(active, type, target) {
       return {
         active: active,
         target: target,
         type: type,
-      };
-    }
-
-    storeTemplate(key, value) {
-      return {
-        key: key,
-        value: value,
       };
     }
 
