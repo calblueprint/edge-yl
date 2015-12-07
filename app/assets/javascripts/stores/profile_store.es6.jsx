@@ -22,8 +22,6 @@
     }
 
     handleStoreProfile(response) {
-
-      console.log(response);
       this.profile = response.user;
     }
   }
