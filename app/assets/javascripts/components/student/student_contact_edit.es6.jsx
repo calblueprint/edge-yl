@@ -29,6 +29,7 @@ class StudentContactEdit extends Component {
       <div style={StyleConstants.cards.body}>
         <CardInput
           action={this.generateHandler('email')}
+          error={'Email cant be blank'}
           margin={false}
           placeholder={'Email'}
           value={template.email} />

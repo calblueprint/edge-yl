@@ -6,6 +6,7 @@
         bars: 'fa fa-bars fa-x',
         close: 'fa fa-times fa-2x',
         conference: 'fa-building',
+        create: 'fa-pencil',
         edit: 'fa-pencil-square-o',
         expand: 'fa-angle-down',
         mail: 'fa fa-envelope fa-x',

@@ -46,8 +46,9 @@
           delete attributes[key];
         }
       });
-      // TOOD(Warren): Set up error as errors object with server.
-      delete attributes.error;
+      if (attributes.errors) {
+        delete attributes.errors;
+      }
       var params = { student: attributes };
       var resolve = (response) => this.storeStudent(response);
       var reject = (response) => this.storeError(response);

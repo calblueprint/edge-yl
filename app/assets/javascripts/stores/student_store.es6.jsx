@@ -13,7 +13,9 @@
         group: {},
         school: {},
       };
-      this.template = {};
+      this.template = {
+        errors: {},
+      };
       this.bindListeners({
         handleStoreAttribute: StudentActions.STORE_ATTRIBUTE,
         handleStoreComment: StudentActions.STORE_COMMENT,
@@ -34,7 +36,7 @@
     }
 
     handleStoreError(response) {
-      this.template.error = response.message;
+      this.template.errors = response.errors;
     }
 
     handleStoreOverlay(overlay) {
