@@ -15,9 +15,11 @@
 #  guardian_two_email :string           not null
 #  home_address       :string           not null
 #  home_phone         :string           not null
+#  is_flagged         :boolean          not null
+#  is_primary         :boolean          not null
 #  last_name          :string           not null
-#  school_id          :integer
 #  group_id           :integer
+#  school_id          :integer
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
 #

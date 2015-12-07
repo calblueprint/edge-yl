@@ -15,9 +15,11 @@
 #  guardian_two_email :string           not null
 #  home_address       :string           not null
 #  home_phone         :string           not null
+#  is_flagged         :boolean          not null
+#  is_primary         :boolean          not null
 #  last_name          :string           not null
-#  school_id          :integer
 #  group_id           :integer
+#  school_id          :integer
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
 #
@@ -49,9 +51,10 @@ class Student < ActiveRecord::Base
   validates :guardian_two_phone, presence: true
   validates :guardian_two_email, presence: true
   validates :home_address, presence: true
+  validates :is_flagged, presence: true
+  validates :is_primary, presence: true
   validates :home_phone, presence: true
   validates :last_name, presence: true
-
   def name
     "#{first_name} #{last_name}"
   end
