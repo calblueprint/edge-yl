@@ -17,9 +17,7 @@ class ConferenceCard extends Component {
       container: Object.assign(
         {},
         StyleConstants.cards.show,
-        {
-          height: '256px',
-        }
+        { height: '256px' }
       ),
       section: {
         display: 'flex',

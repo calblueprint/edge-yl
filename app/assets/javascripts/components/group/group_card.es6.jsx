@@ -16,7 +16,7 @@ class GroupCard extends Component {
     return {
       group: Object.assign(
         {},
-        StyleConstants.cards.default,
+        StyleConstants.defaults.card,
         {
           height: '256px',
         }

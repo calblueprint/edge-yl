@@ -16,9 +16,9 @@ class StudentsFilters extends Component {
     return {
       container: Object.assign(
         {},
-        StyleConstants.cards.default,
+        StyleConstants.defaults.card,
         {
-          display: 'flex',
+          flexFlow: 'row',
           height: '44px',
           marginTop: '12px',
         }
