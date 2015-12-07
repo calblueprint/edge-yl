@@ -5,6 +5,7 @@ class StudentsGrid extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
+      media: React.PropTypes.string.isRequired,
       students: React.PropTypes.array.isRequired,
     };
   }
@@ -30,6 +31,7 @@ class StudentsGrid extends Component {
     return (
       <StudentsCard
         key={student.id}
+        media={this.props.media}
         student={student} />
     );
   }

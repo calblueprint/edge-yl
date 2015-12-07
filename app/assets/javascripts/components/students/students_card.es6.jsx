@@ -17,9 +17,10 @@ class StudentsCard extends Component {
       container: Object.assign(
         {},
         StyleConstants.cards.index,
-        {
-          flexFlow: 'row',
-        }
+        { flexFlow: 'row' },
+        this.props.media === 'large' && { width: '49%' },
+        (this.props.media === 'medium' ||
+         this.props.media === 'small') && { width: '100%' },
       ),
       image: {
         width: '128px',
