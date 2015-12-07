@@ -5,7 +5,6 @@
       this.generateActions(
         'storeComment',
         'storeStudent',
-        'toggleSidebar'
       );
     }
 
