@@ -13,6 +13,7 @@
       };
       this.profile = {
         visits: [],
+        has_sidebar: true,
       };
     }
 

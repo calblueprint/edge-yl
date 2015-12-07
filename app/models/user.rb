@@ -18,6 +18,7 @@
 #  confirmation_sent_at   :datetime
 #  first_name             :string           not null
 #  last_name              :string           not null
+#  has_sidebar            :boolean          default(TRUE), not null
 #  is_admin               :boolean          default(FALSE), not null
 #  sidebar_active         :boolean          default(TRUE), not null
 #  created_at             :datetime         not null

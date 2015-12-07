@@ -31,6 +31,7 @@ class Api::UsersController < Api::BaseController
       params.require(:user).permit(
         :email,
         :first_name,
+        :has_sidebar,
         :last_name,
         :password
       )

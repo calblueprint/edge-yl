@@ -14,7 +14,6 @@
       this.bindListeners({
         handleStoreOverlay: SchoolActions.STORE_OVERLAY,
         handleStoreSchool: SchoolActions.STORE_SCHOOL,
-        handleToggleSidebar: SchoolActions.TOGGLE_SIDEBAR,
       });
     }
 
@@ -25,10 +24,6 @@
     handleStoreSchool(response) {
       this.overlay.active = false;
       this.school = response.school;
-    }
-
-    handleToggleSidebar(sidebar) {
-      this.sidebar = sidebar;
     }
   }
   this.SchoolStore = alt.createStore(SchoolStore);

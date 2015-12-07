@@ -1,6 +1,6 @@
 class ProfileBaseSerializer < BaseSerializer
 
-  attributes :id, :email, :first_name, :is_admin, :last_name
+  attributes :id, :email, :first_name, :has_sidebar, :is_admin, :last_name
 
   has_many :visits, serializer: VisitBaseSerializer
 

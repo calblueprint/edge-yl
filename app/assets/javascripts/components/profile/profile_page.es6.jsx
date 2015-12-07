@@ -65,7 +65,7 @@ class ProfilePage extends Component {
         <Header active={true} />
         <div style={this.styles.section}>
           <Sidebar
-            active={this.state.sidebar}
+            active={this.state.profile.has_sidebar}
             profile={this.state.profile} />
           <ProfileCards profile={this.state.profile} />
           <div style={this.styles.placeholder} />

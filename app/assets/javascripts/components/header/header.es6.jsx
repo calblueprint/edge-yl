@@ -75,13 +75,21 @@ class Header extends Component {
   }
 
   // --------------------------------------------------
+  // Helpers
+  // --------------------------------------------------
+
+  toggleSidebar() {
+    ProfileActions.toggleSidebar(this.props.profile.id, !this.props.profile.has_sidebar);
+  }
+
+  // --------------------------------------------------
   // Render
   // --------------------------------------------------
   renderToggler() {
     if (this.props.active) {
       return (
         <Clickable
-          action={null}
+          action={() => this.toggleSidebar()}
           icon={TypeConstants.icons.bars}
           styles={this.clickableStyles}
           type={'i'} />

@@ -13,6 +13,8 @@
     guardian_two_email: Faker::Internet.email,
     home_address: "#{Faker::Address.street_address}, #{Faker::Address.city}",
     home_phone: Faker::PhoneNumber.phone_number,
+    is_flagged: true,
+    is_primary: true,
     last_name: Faker::Name.last_name,
     registration_status: rand(3),
     school_id: index,

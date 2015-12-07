@@ -40,6 +40,8 @@ FactoryGirl.define do
     guardian_two_phone  { Faker::PhoneNumber.phone_number }
     home_address        { "#{Faker::Address.street_address}, #{Faker::Address.city}" }
     home_phone          { Faker::PhoneNumber.phone_number }
+    is_flagged          { true }
+    is_primary          { true }
     last_name           { Faker::Name.last_name }
   end
 

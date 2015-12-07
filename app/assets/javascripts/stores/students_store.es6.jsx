@@ -27,7 +27,6 @@
       this.bindListeners({
         handleStoreFilter: StudentsActions.STORE_FILTER,
         handleStoreStudents: StudentsActions.STORE_STUDENTS,
-        handleToggleSidebar: StudentsActions.TOGGLE_SIDEBAR,
       });
     }
 
@@ -42,10 +41,6 @@
     handleStoreStudents(response) {
       this.pagination = response.meta.pagination;
       this.students = response.students;
-    }
-
-    handleToggleSidebar() {
-      this.sidebar = !this.sidebar;
     }
   }
   this.StudentsStore = alt.createStore(StudentsStore);
