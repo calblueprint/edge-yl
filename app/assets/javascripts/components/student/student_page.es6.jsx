@@ -80,10 +80,12 @@ class StudentPage extends Component {
     return (
       <div style={StyleConstants.pages.default}>
         {this.renderOverlay()}
-        <Header active={true} />
+        <Header
+          active={true}
+          profile={this.state.profile} />
         <div style={this.styles.container}>
           <Sidebar
-            active={this.state.sidebar}
+            active={this.state.profile.has_sidebar}
             profile={this.state.profile} />
           <div style={this.styles.section}>
             <StudentGrid

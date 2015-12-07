@@ -6,7 +6,6 @@
         'storeComment',
         'storeError',
         'storeStudent',
-        'toggleSidebar'
       );
     }
 
