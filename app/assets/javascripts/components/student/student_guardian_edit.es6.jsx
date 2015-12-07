@@ -86,6 +86,7 @@ class StudentGuardianEdit extends Component {
           content={'Guardian Information'}
           icon={TypeConstants.icons.save} />
         <div style={this.styles.form}>
+          <span>Guardian One</span>
           <CardInput
             action={this.generateHandler('guardianOneName')}
             placeholder={'Guardian One Name'}
@@ -98,6 +99,8 @@ class StudentGuardianEdit extends Component {
             action={this.generateHandler('guardianOneEmail')}
             placeholder={'Guardian One Email'}
             value={this.state.guardianOneEmail} />
+          <br> </br>
+          <span>Guardian Two</span>
           <CardInput
             action={this.generateHandler('guardianTwoName')}
             placeholder={'Guardian Two Name'}
