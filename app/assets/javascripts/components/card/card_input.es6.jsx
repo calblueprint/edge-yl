@@ -24,17 +24,15 @@ class CardInput extends Component {
   get styles() {
     return {
       container: Object.assign(
+        {},
         {
-          display: 'flex',
           alignSelf: 'stretch',
+          flex: '1',
+          padding: '8px',
+          fontSize: StyleConstants.fonts.sizes.smallest,
         },
         this.props.margin && { marginTop: '18px' }
       ),
-      input: {
-        flex: '1',
-        padding: '8px',
-        fontSize: StyleConstants.fonts.sizes.smallest,
-      },
     };
   }
 
@@ -51,14 +49,12 @@ class CardInput extends Component {
   // --------------------------------------------------
   render() {
     return (
-      <div style={this.styles.container}>
-        <input
-          defaultValue={this.props.value}
-          ref={'input'}
-          style={this.styles.input}
-          placeholder={this.props.placeholder}>
-        </input>
-      </div>
+      <input
+        defaultValue={this.props.value}
+        ref={'input'}
+        style={this.styles.container}
+        placeholder={this.props.placeholder}>
+      </input>
     );
   }
 }
