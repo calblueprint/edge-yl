@@ -4,6 +4,7 @@ class CreateStudents < ActiveRecord::Migration
 
       t.date :birthday, null: false
       t.integer :gender, null: false
+      t.integer :registration_status, null: false
       t.integer :shirt_size, null: false
       t.string :cell_phone, null: false
       t.string :email, null: false
