@@ -120,6 +120,8 @@ ActiveRecord::Schema.define(version: 20151130013648) do
     t.string   "guardian_two_email", null: false
     t.string   "home_address",       null: false
     t.string   "home_phone",         null: false
+    t.boolean  "is_flagged",         null: false
+    t.boolean  "is_primary",         null: false
     t.string   "last_name",          null: false
     t.integer  "group_id"
     t.integer  "school_id"
