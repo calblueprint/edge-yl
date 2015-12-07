@@ -24,10 +24,10 @@ class UserPage extends Component {
     return {
       container: {
         display: 'flex',
+        flexFlow: 'column',
         flex: '1',
         paddingTop: '48px',
         paddingLeft: '196px',
-        paddingRight: '196px',
       },
     };
   }

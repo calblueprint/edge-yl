@@ -29,13 +29,12 @@ class StudentPreviewEdit extends Component {
         flexFlow: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        padding: '12px',
+        padding: '18px',
         marginBottom: '18px',
       },
       image: {
-        width: '152px',
-        height: '152px',
-        marginTop: '18px',
+        width: '128px',
+        height: '128px',
         borderRadius: '50%',
       },
     };

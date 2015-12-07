@@ -5,6 +5,7 @@ class StudentGrid extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
+      media: React.PropTypes.string.isRequired,
       student: React.PropTypes.object.isRequired,
     };
   }
@@ -32,25 +33,30 @@ class StudentGrid extends Component {
     return (
       <div style={this.styles.container}>
         <StudentCard
+          media={this.props.media}
+          student={this.props.student}
           target={TypeConstants.overlay.target.preview}
-          type={TypeConstants.overlay.type.edit}
-          student={this.props.student} />
+          type={TypeConstants.overlay.type.edit} />
         <StudentCard
+          media={this.props.media}
+          student={this.props.student}
           target={TypeConstants.overlay.target.contact}
-          type={TypeConstants.overlay.type.edit}
-          student={this.props.student} />
+          type={TypeConstants.overlay.type.edit} />
         <StudentCard
+          media={this.props.media}
+          student={this.props.student}
           target={TypeConstants.overlay.target.guardian}
-          type={TypeConstants.overlay.type.edit}
-          student={this.props.student} />
+          type={TypeConstants.overlay.type.edit} />
         <StudentCard
+          media={this.props.media}
+          student={this.props.student}
           target={TypeConstants.overlay.target.conference}
-          type={TypeConstants.overlay.type.edit}
-          student={this.props.student} />
+          type={TypeConstants.overlay.type.edit} />
         <StudentCard
+          media={this.props.media}
+          student={this.props.student}
           target={TypeConstants.overlay.target.outreach}
-          type={TypeConstants.overlay.type.edit}
-          student={this.props.student} />
+          type={TypeConstants.overlay.type.edit} />
       </div>
     );
   }
