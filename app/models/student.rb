@@ -49,9 +49,9 @@ class Student < ActiveRecord::Base
   validates :guardian_two_phone, presence: true
   validates :guardian_two_email, presence: true
   validates :home_address, presence: true
-  validates :last_name, presence: true
-  validates :is_primary, null: false
   validates :is_flagged, null: false
+  validates :is_primary, null: false
+  validates :last_name, presence: true
   def name
     "#{first_name} #{last_name}"
   end
