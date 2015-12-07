@@ -11,19 +11,6 @@ class StudentGuardianEdit extends Component {
   }
 
   // --------------------------------------------------
-  // Styles
-  // --------------------------------------------------
-  get styles() {
-    return {
-      container: {
-        display: 'flex',
-        flexFlow: 'column',
-        padding: '18px',
-      },
-    };
-  }
-
-  // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
   generateHandler(field) {
@@ -39,7 +26,7 @@ class StudentGuardianEdit extends Component {
   render() {
     var template = this.props.template;
     return (
-      <div style={this.styles.container}>
+      <div style={StyleConstants.cards.body}>
         <CardInput
           action={this.generateHandler('guardian_one_name')}
           margin={false}

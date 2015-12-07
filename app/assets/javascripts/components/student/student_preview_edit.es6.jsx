@@ -15,12 +15,11 @@ class StudentPreviewEdit extends Component {
   // --------------------------------------------------
   get styles() {
     return {
-      container: {
-        display: 'flex',
-        flexFlow: 'column',
-        alignItems: 'center',
-        padding: '18px',
-      },
+      container: Object.assign(
+        {},
+        StyleConstants.cards.body,
+        { alignItems: 'center' }
+      ),
       image: {
         width: '128px',
         height: '128px',

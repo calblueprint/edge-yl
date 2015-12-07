@@ -9,26 +9,6 @@ class StudentOutreach extends Component {
     };
   }
 
-  static get defaultProps() {
-    return {
-      student: {}
-    };
-  }
-
-  // --------------------------------------------------
-  // Styles
-  // --------------------------------------------------
-  get styles() {
-    return {
-      container: {
-        display: 'flex',
-        flexFlow: 'column',
-        flex: '1',
-        padding: '18px',
-      },
-    };
-  }
-
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
@@ -45,7 +25,7 @@ class StudentOutreach extends Component {
   }
   render() {
     return (
-      <div style={this.styles.container}>
+      <div style={StyleConstants.cards.body}>
         {this.renderResponsibility()}
       </div>
     );
