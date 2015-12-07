@@ -11,6 +11,7 @@ class StudentEditModal extends EditModal {
         type: React.PropTypes.string.isRequired,
       }).isRequired,
       student: React.PropTypes.object.isRequired,
+      template: React.PropTypes.object.isRequired,
     };
   }
 
@@ -24,18 +25,68 @@ class StudentEditModal extends EditModal {
   }
 
   // --------------------------------------------------
+  // Helpers
+  // --------------------------------------------------
+  updateStudent() {
+    StudentActions.updateStudent(
+      this.props.student,
+      this.props.template
+    );
+  }
+
+  // --------------------------------------------------
   // Render
   // --------------------------------------------------
   renderBody() {
     switch (this.props.overlay.target) {
       case TypeConstants.overlay.target.preview:
-        return <StudentPreviewEdit student={this.props.student} />;
+        return (
+          <div style={this.styles.section}>
+            <CardHeader
+              action={() => this.updateStudent()}
+              content={'Student Preview'}
+              icon={TypeConstants.icons.save} />
+            <StudentPreviewEdit
+              student={this.props.student}
+              template={this.props.template} />
+          </div>
+        );
       case TypeConstants.overlay.target.contact:
-        return <StudentContactEdit student={this.props.student} />;
+        return (
+          <div style={this.styles.section}>
+            <CardHeader
+              action={() => this.updateStudent()}
+              content={'Student Contact'}
+              icon={TypeConstants.icons.save} />
+            <StudentContactEdit
+              student={this.props.student}
+              template={this.props.template} />
+          </div>
+        );
       case TypeConstants.overlay.target.guardian:
-        return <StudentGuardianEdit student={this.props.student} />;
+        return (
+          <div style={this.styles.section}>
+            <CardHeader
+              action={() => this.updateStudent()}
+              content={'Student Guardian'}
+              icon={TypeConstants.icons.save} />
+            <StudentGuardianEdit
+              student={this.props.student}
+              template={this.props.template} />
+          </div>
+        );
       case TypeConstants.overlay.target.outreach:
-        return <StudentOutreachEdit student={this.props.student} />;
+        return (
+          <div style={this.styles.section}>
+            <CardHeader
+              action={() => this.updateStudent()}
+              content={'Student Outreach'}
+              icon={TypeConstants.icons.save} />
+            <StudentOutreachEdit
+              student={this.props.student}
+              template={this.props.template} />
+          </div>
+        );
     }
   }
 }

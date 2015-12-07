@@ -6,8 +6,17 @@ class CardInput extends Component {
   static get propTypes() {
     return {
       action: React.PropTypes.func.isRequired,
+      errors: React.PropTypes.array,
+      margin: React.PropTypes.bool,
       placeholder: React.PropTypes.string.isRequired,
       value: React.PropTypes.string.isRequired,
+    };
+  }
+
+  static get defaultProps() {
+    return {
+      errors: [],
+      margin: true,
     };
   }
 
@@ -16,16 +25,23 @@ class CardInput extends Component {
   // --------------------------------------------------
   get styles() {
     return {
-      container: {
-        display: 'flex',
-        alignSelf: 'stretch',
-        padding: '0px 12px',
-        marginTop: '18px',
+      container: Object.assign(
+        {},
+        {
+          display: 'flex',
+          flexFlow: 'column',
+          alignItems: 'center',
+          alignSelf: 'stretch',
+        },
+        this.props.margin && { marginTop: '18px' }
+      ),
+      errors: {
+        marginTop: '12px',
+        color: StyleConstants.colors.red,
       },
       input: {
-        flex: '1',
+        alignSelf: 'stretch',
         padding: '8px',
-        fontSize: StyleConstants.fonts.sizes.smallest,
       },
     };
   }
@@ -41,15 +57,26 @@ class CardInput extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
+  renderErrors() {
+    var errors = this.props.errors;
+    if (errors && errors.length) {
+      return (
+        <h6 style={this.styles.errors}>
+          {errors[0]}
+        </h6>
+      );
+    }
+  }
+
   render() {
     return (
       <div style={this.styles.container}>
         <input
           defaultValue={this.props.value}
+          placeholder={this.props.placeholder}
           ref={'input'}
-          style={this.styles.input}
-          placeholder={this.props.placeholder}>
-        </input>
+          style={this.styles.input} />
+        {this.renderErrors()}
       </div>
     );
   }

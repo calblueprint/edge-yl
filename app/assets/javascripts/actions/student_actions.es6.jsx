@@ -4,8 +4,8 @@
     constructor() {
       this.generateActions(
         'storeComment',
+        'storeError',
         'storeStudent',
-        'toggleSidebar'
       );
     }
 
@@ -21,6 +21,13 @@
       return true;
     }
 
+    storeAttribute(key, value) {
+      return {
+        key: key,
+        value: value,
+      };
+    }
+
     storeOverlay(active, type, target) {
       return {
         active: active,
@@ -29,9 +36,22 @@
       };
     }
 
-    updateStudent(id, params) {
+    updateStudent(student, template) {
+      var id = template.id;
+      var attributes = Object.assign({}, template);
+      Object.keys(attributes).map((key) => {
+        if (typeof(attributes[key]) === 'object' ||
+            student[key] === attributes[key]) {
+          delete attributes[key];
+        }
+      });
+      if (attributes.errors) {
+        delete attributes.errors;
+      }
+      var params = { student: attributes };
       var resolve = (response) => this.storeStudent(response);
-      Requester.update(ApiConstants.students.update(id), params, resolve);
+      var reject = (response) => this.storeError(response);
+      Requester.update(ApiConstants.students.update(id), params, resolve, reject);
       return true;
     }
   }

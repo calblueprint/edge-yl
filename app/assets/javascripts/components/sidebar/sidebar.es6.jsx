@@ -27,7 +27,7 @@ class Sidebar extends Component {
         transition: 'left 0.375s ease-out',
       },
       hidden: {
-        left: '-172px',
+        left: '-200px',
       },
     };
   }

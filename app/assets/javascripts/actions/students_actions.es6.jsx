@@ -4,7 +4,6 @@
     constructor() {
       this.generateActions(
         'storeStudents',
-        'toggleSidebar'
       );
     }
 

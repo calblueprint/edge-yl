@@ -18,6 +18,12 @@
 
     get cards() {
       return {
+        body: {
+          display: 'flex',
+          flexFlow: 'column',
+          flex: '1',
+          padding: '18px',
+        },
         default: {
           backgroundColor: this.colors.white,
           border: '1px solid',

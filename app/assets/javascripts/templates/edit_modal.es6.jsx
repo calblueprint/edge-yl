@@ -19,6 +19,16 @@ class EditModal extends Component {
         justifyContent: 'center',
         alignItems: 'center',
       },
+      section: Object.assign(
+        {},
+        StyleConstants.cards.default,
+        {
+          display: 'flex',
+          flexFlow: 'column',
+          justifyContent: 'center',
+          width: '356px',
+        }
+      ),
       title: {
         marginBottom: '6px',
       },
