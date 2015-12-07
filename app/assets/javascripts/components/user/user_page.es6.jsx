@@ -72,7 +72,7 @@ class UserPage extends Component {
         <Header active={true} />
         <div style={this.styles.container}>
           <Sidebar
-            active={this.state.sidebar}
+            active={this.state.profile.has_sidebar}
             profile={this.state.profile} />
           <UserCard user={this.state.user} />
           <ResponsibilitiesGrid responsibilities={this.state.user.responsibilities} />
