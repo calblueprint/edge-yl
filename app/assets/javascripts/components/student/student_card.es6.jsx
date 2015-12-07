@@ -34,7 +34,7 @@ class StudentCard extends Component {
           display: 'flex',
           flexFlow: 'column',
           height: '312px',
-          marginTop: '1%',
+          marginTop: '12px',
         },
         this.props.media === 'large' && { width: '32.5%' },
         this.props.media === 'medium' && { width: '49%' },

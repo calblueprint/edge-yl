@@ -22,7 +22,7 @@ class ConferenceCard extends Component {
           flex: 1,
           flexFlow: 'column',
           height: '256px',
-          marginTop: '1%',
+          marginTop: '12px',
         }
       ),
       section: {

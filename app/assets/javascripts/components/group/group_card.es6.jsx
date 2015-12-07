@@ -22,7 +22,7 @@ class GroupCard extends Component {
           flexFlow: 'column',
           height: '256px',
           width: '100%',
-          marginTop: '1%',
+          marginTop: '12px',
         }
       ),
       section: {

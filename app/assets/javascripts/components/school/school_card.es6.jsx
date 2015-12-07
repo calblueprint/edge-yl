@@ -22,7 +22,7 @@ class SchoolCard extends Component {
           flexFlow: 'column',
           width: '50%',
           height: '512px',
-          marginTop: '1%',
+          marginTop: '12px',
         }
       ),
       image: {
