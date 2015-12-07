@@ -99,7 +99,7 @@ class StudentGuardianEdit extends Component {
             action={this.generateHandler('guardianOneEmail')}
             placeholder={'Guardian One Email'}
             value={this.state.guardianOneEmail} />
-          <br> </br>
+          <br />
           <span>Guardian Two</span>
           <CardInput
             action={this.generateHandler('guardianTwoName')}
