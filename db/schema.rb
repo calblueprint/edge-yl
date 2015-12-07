@@ -109,6 +109,8 @@ ActiveRecord::Schema.define(version: 20151130013648) do
 
   create_table "students", force: :cascade do |t|
     t.date     "birthday",           null: false
+    t.integer  "gender",             null: false
+    t.integer  "shirt_size",         null: false
     t.string   "cell_phone",         null: false
     t.string   "email",              null: false
     t.string   "first_name",         null: false
@@ -147,6 +149,7 @@ ActiveRecord::Schema.define(version: 20151130013648) do
     t.string   "first_name",                             null: false
     t.string   "last_name",                              null: false
     t.boolean  "is_admin",               default: false, null: false
+    t.boolean  "sidebar_active",         default: true,  null: false
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
   end

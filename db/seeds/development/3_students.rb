@@ -4,6 +4,7 @@
     cell_phone: Faker::PhoneNumber.phone_number,
     email: Faker::Internet.email,
     first_name: Faker::Name.first_name,
+    gender: rand(3),
     guardian_one_name: Faker::Name.name,
     guardian_one_phone: Faker::PhoneNumber.phone_number,
     guardian_one_email: Faker::Internet.email,
@@ -14,6 +15,7 @@
     home_phone: Faker::PhoneNumber.phone_number,
     last_name: Faker::Name.last_name,
     school_id: index,
+    shirt_size: rand(6),
   )
   puts "Created student: #{new_student.name}"
 end

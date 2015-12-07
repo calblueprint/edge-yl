@@ -3,6 +3,8 @@ class CreateStudents < ActiveRecord::Migration
     create_table :students do |t|
 
       t.date :birthday, null: false
+      t.integer :gender, null: false
+      t.integer :shirt_size, null: false
       t.string :cell_phone, null: false
       t.string :email, null: false
       t.string :first_name, null: false
