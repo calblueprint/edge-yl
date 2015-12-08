@@ -18,6 +18,8 @@
 #  guardian_two_email  :string           not null
 #  home_address        :string           not null
 #  home_phone          :string           not null
+#  is_flagged          :boolean          not null
+#  is_primary          :boolean          not null
 #  last_name           :string           not null
 #  group_id            :integer
 #  school_id           :integer
@@ -32,6 +34,7 @@ FactoryGirl.define do
     cell_phone          { Faker::PhoneNumber.phone_number }
     email               { Faker::Internet.email }
     first_name          { Faker::Name.first_name }
+    gender              { rand(3) }
     guardian_one_email  { Faker::Internet.email }
     guardian_one_name   { Faker::Name.name }
     guardian_one_phone  { Faker::PhoneNumber.phone_number }
@@ -43,6 +46,8 @@ FactoryGirl.define do
     is_flagged          { true }
     is_primary          { true }
     last_name           { Faker::Name.last_name }
+    registration_status { rand(3) }
+    shirt_size          { rand(6) }
   end
 
 end
