@@ -27,7 +27,7 @@ class StudentGuardianEdit extends Component {
     var template = this.props.template;
     return (
       <div style={StyleConstants.cards.body}>
-        <h4>Guardian One</h4>
+        <h4>{'Guardian One'}</h4>
         <CardInput
           action={this.generateHandler('guardian_one_name')}
           placeholder={'Guardian one name'}
@@ -41,7 +41,7 @@ class StudentGuardianEdit extends Component {
           placeholder={'Guardian one email'}
           value={template.guardian_one_email} />
         <br />
-        <h4>Guardian Two</h4>
+        <h4>{'Guardian Two'}</h4>
         <CardInput
           action={this.generateHandler('guardian_two_name')}
           placeholder={'Guardian two name'}
