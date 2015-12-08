@@ -10,6 +10,7 @@
 #  cell_phone          :string           not null
 #  email               :string           not null
 #  first_name          :string           not null
+#  preferred_name      :string           not null
 #  guardian_one_name   :string           not null
 #  guardian_one_phone  :string           not null
 #  guardian_one_email  :string           not null
