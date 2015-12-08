@@ -29,8 +29,13 @@ class ConferencePage extends Component {
         paddingTop: '48px',
         paddingLeft: '196px',
       },
-      placeholder: {
-        width: '196px',
+      body: {
+        display: 'flex',
+        flexFlow: 'column',
+        flex: '1',
+        paddingLeft: '12px',
+        paddingRight: '208px',
+        overflow: 'scroll',
       },
     };
   }
@@ -77,11 +82,10 @@ class ConferencePage extends Component {
           <Sidebar
             active={this.state.profile.has_sidebar}
             profile={this.state.profile} />
-          <ConferenceCard conference={this.state.conference} />
-          <GroupsGrid
-            conferenceId={this.props.id}
-            groups={this.state.conference.groups} />
-          <div style={this.styles.placeholder} />
+          <div style={this.styles.body}>
+            <ConferenceGrid conference={this.state.conference} />
+            <div style={this.styles.placeholder} />
+          </div>
         </div>
       </div>
     );

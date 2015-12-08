@@ -1,5 +1,5 @@
 class GroupBaseSerializer < BaseSerializer
 
-  attributes :id, :name, :primary_leader, :secondary_leader
+  attributes :id, :conference_id, :name, :primary_leader, :secondary_leader
 
 end
