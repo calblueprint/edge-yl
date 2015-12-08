@@ -16,11 +16,8 @@ class GroupGrid extends Component {
     return {
       container: {
         display: 'flex',
-        flexFlow: 'wrap',
-        justifyContent: 'space-between',
-        alignContent: 'flex-start',
+        flexFlow: 'column',
         flex: '1',
-        padding: '0px 12px',
       },
     };
   }
@@ -29,23 +26,12 @@ class GroupGrid extends Component {
   // Render
   // --------------------------------------------------
 
-  renderCard(student) {
-    return (
-      <StudentsCard
-        key={student.id}
-        student={student} />
-    );
-  }
-
-  renderCards() {
-    return this.props.group.students.map((student) => this.renderCard(student));
-  }
-
   render() {
+    var group = this.props.group;
     return (
       <div style={this.styles.container}>
-        <GroupCard group={this.props.group} />
-        {this.renderCards()}
+        <GroupCard group={group} />
+        <StudentsGrid students={group.students} />
       </div>
     );
   }

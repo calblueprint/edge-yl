@@ -28,7 +28,14 @@ class GroupPage extends Component {
         flex: '1',
         paddingTop: '48px',
         paddingLeft: '196px',
-        paddingRight: '196px',
+      },
+      body: {
+        display: 'flex',
+        flexFlow: 'column',
+        flex: '1',
+        paddingLeft: '12px',
+        paddingRight: '208px',
+        overflow: 'scroll',
       },
     };
   }
@@ -62,7 +69,9 @@ class GroupPage extends Component {
         <Sidebar
           active={this.state.profile.has_sidebar}
           profile={this.state.profile} />
-        <GroupGrid group={this.state.group} />
+        <div style={this.styles.body}>
+          <GroupGrid group={this.state.group} />
+        </div>
       </div>
     );
   }

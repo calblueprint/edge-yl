@@ -20,6 +20,8 @@ class GroupsCard extends Component {
           content={`Group ${group.name}`}
           route={RouteConstants.groups.show(group.conference_id, group.id)}
           type={'h3'} />
+        <h6>{group.primary_leader}</h6>
+        <h6>{group.secondary_leader}</h6>
       </div>
     );
   }

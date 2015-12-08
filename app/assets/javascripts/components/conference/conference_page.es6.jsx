@@ -84,7 +84,6 @@ class ConferencePage extends Component {
             profile={this.state.profile} />
           <div style={this.styles.body}>
             <ConferenceGrid conference={this.state.conference} />
-            <div style={this.styles.placeholder} />
           </div>
         </div>
       </div>

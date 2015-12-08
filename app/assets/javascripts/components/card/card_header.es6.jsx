@@ -44,7 +44,7 @@ class CardHeader extends Component {
   render() {
     return (
       <div style={this.styles.container}>
-        <h5>{this.props.content}</h5>
+        <h4>{this.props.content}</h4>
         <Clickable
           action={this.props.action}
           icon={this.props.icon}
