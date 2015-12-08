@@ -115,6 +115,7 @@ ActiveRecord::Schema.define(version: 20151130013648) do
     t.string   "cell_phone",          null: false
     t.string   "email",               null: false
     t.string   "first_name",          null: false
+    t.string   "preferred_name",      null: false
     t.string   "guardian_one_name",   null: false
     t.string   "guardian_one_phone",  null: false
     t.string   "guardian_one_email",  null: false

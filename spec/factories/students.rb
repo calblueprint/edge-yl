@@ -46,6 +46,7 @@ FactoryGirl.define do
     is_flagged          { true }
     is_primary          { true }
     last_name           { Faker::Name.last_name }
+    preferred_name      { Faker::Name.first_name }
     registration_status { rand(3) }
     shirt_size          { rand(6) }
   end
