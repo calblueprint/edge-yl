@@ -156,7 +156,6 @@ class Clickable extends Component {
   render() {
     var props = this.props;
     var styles = props.styles;
-    var type = props.type;
     var style = Object.assign(
       {},
       styles.default,

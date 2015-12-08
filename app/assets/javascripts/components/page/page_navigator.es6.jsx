@@ -47,8 +47,8 @@ class PageNavigator extends Component {
         <div style={style}>
           <h6 style={this.styles.right}>{'|'}</h6>
           <Clickable
-            content={'Next'}
             action={action}
+            content={'Next'}
             type={'h6'} />
         </div>
       );
@@ -63,8 +63,8 @@ class PageNavigator extends Component {
       return (
         <div style={style}>
           <Clickable
-            content={'Previous'}
             action={action}
+            content={'Previous'}
             type={'h6'} />
           <h6 style={this.styles.left}>{'|'}</h6>
         </div>
