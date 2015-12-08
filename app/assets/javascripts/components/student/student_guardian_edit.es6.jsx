@@ -27,9 +27,9 @@ class StudentGuardianEdit extends Component {
     var template = this.props.template;
     return (
       <div style={StyleConstants.cards.body}>
+        <h4>{'Guardian One'}</h4>
         <CardInput
           action={this.generateHandler('guardian_one_name')}
-          margin={false}
           placeholder={'Guardian one name'}
           value={template.guardian_one_name} />
         <CardInput
@@ -40,6 +40,8 @@ class StudentGuardianEdit extends Component {
           action={this.generateHandler('guardian_one_email')}
           placeholder={'Guardian one email'}
           value={template.guardian_one_email} />
+        <br />
+        <h4>{'Guardian Two'}</h4>
         <CardInput
           action={this.generateHandler('guardian_two_name')}
           placeholder={'Guardian two name'}
