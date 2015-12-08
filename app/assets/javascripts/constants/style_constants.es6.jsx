@@ -74,7 +74,21 @@
 
     get pages() {
       return {
-        default: {
+        container: {
+          display: 'flex',
+          flex: '1',
+          paddingTop: '48px',
+          paddingLeft: '196px',
+        },
+        content: {
+          display: 'flex',
+          flexFlow: 'column',
+          flex: '1',
+          paddingLeft: '12px',
+          paddingRight: '208px',
+          overflow: 'scroll',
+        },
+        wrapper: {
           display: 'flex',
           flexFlow: 'column',
           height: '100vh',

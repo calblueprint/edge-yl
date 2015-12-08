@@ -68,7 +68,7 @@ class UserPage extends Component {
 
   render() {
     return (
-      <div style={StyleConstants.pages.default}>
+      <div style={StyleConstants.pages.wrapper}>
         <Header
           active={true}
           profile={this.state.profile} />

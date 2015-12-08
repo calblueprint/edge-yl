@@ -53,7 +53,7 @@ class AuthenticationPage extends Component {
 
   render() {
     return (
-      <div style={StyleConstants.pages.default}>
+      <div style={StyleConstants.pages.wrapper}>
         <Header active={false} />
         <div style={this.styles.container}>
           <AuthenticationModal type={this.props.type} />

@@ -78,7 +78,7 @@ class StudentPage extends Component {
 
   render() {
     return (
-      <div style={StyleConstants.pages.default}>
+      <div style={StyleConstants.pages.wrapper}>
         {this.renderOverlay()}
         <Header
           active={true}
