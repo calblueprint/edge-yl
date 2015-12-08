@@ -32,14 +32,6 @@ class AuthenticationPage extends Component {
     };
   }
 
-  get clickableStyles() {
-    return {
-      hover: {
-        textDecoration: 'underline',
-      },
-    };
-  }
-
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
@@ -53,7 +45,6 @@ class AuthenticationPage extends Component {
         <h6 style={this.styles.label}>{label}</h6>
         <Clickable
           content={content}
-          styles={this.clickableStyles}
           route={route}
           type={'h5'} />
       </div>
