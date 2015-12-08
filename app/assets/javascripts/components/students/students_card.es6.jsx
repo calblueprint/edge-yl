@@ -40,7 +40,6 @@ class StudentsCard extends Component {
   get clickableStyles() {
     return {
       hover: {
-        textDecoration: 'underline',
         opacity: '0.875',
       },
     };
@@ -65,7 +64,6 @@ class StudentsCard extends Component {
           <Clickable
             content={`${student.first_name} ${student.last_name}`}
             route={RouteConstants.students.show(student.id)}
-            styles={this.clickableStyles}
             type={'h3'} />
           <h6>{student.cell_phone}</h6>
           <h6>{student.email}</h6>
@@ -75,7 +73,6 @@ class StudentsCard extends Component {
           <Clickable
             content={student.school.name}
             route={RouteConstants.schools.show(student.school.id)}
-            styles={this.clickableStyles}
             type={'h5'} />
         </div>
       </div>

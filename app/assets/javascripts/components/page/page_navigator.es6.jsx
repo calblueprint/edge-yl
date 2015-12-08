@@ -35,19 +35,12 @@ class PageNavigator extends Component {
     };
   }
 
-  get clickableStyles() {
-    return {
-      hover: {
-        textDecoration: 'underline',
-      },
-    };
-  }
-
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
   renderNext() {
     var pagination = this.props.pagination;
+    var action = () => window.location = this.props.route(pagination.current + 1);
     var style = Object.assign({}, this.styles.section, this.styles.left);
     if (pagination.current < pagination.limit) {
       return (
@@ -55,8 +48,7 @@ class PageNavigator extends Component {
           <h6 style={this.styles.right}>{'|'}</h6>
           <Clickable
             content={'Next'}
-            action={() => window.location = this.props.route(pagination.current + 1)}
-            styles={this.clickableStyles}
+            action={action}
             type={'h6'} />
         </div>
       );
@@ -65,14 +57,14 @@ class PageNavigator extends Component {
 
   renderPrevious() {
     var pagination = this.props.pagination;
+    var action = () => window.location = this.props.route(pagination.current - 1);
     var style = Object.assign({}, this.styles.section, this.styles.right);
     if (pagination.current > 1) {
       return (
         <div style={style}>
           <Clickable
             content={'Previous'}
-            action={() => window.location = this.props.route(pagination.current - 1)}
-            styles={this.clickableStyles}
+            action={action}
             type={'h6'} />
           <h6 style={this.styles.left}>{'|'}</h6>
         </div>

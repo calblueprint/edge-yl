@@ -36,14 +36,6 @@ class UsersCard extends Component {
     };
   }
 
-  get clickableStyles() {
-    return {
-      hover: {
-        textDecoration: 'underline',
-      },
-    };
-  }
-
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
@@ -63,7 +55,6 @@ class UsersCard extends Component {
           <Clickable
             content={`${user.first_name} ${user.last_name}`}
             route={RouteConstants.users.show(user.id)}
-            styles={this.clickableStyles}
             type={'h3'} />
           <h6>{`${user.first_name} ${user.last_name}`}</h6>
           <h6>{`${user.birthday}`}</h6>
