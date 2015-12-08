@@ -16,13 +16,11 @@ class ProfilePreview extends Component {
     return {
       container: Object.assign(
         {},
-        StyleConstants.cards.default,
+        StyleConstants.defaults.card,
         {
-          display: 'flex',
-          flexFlow: 'column',
           alignItems: 'center',
           padding: '24px 0px',
-          marginTop: '2%',
+          marginTop: '12px',
         }
       ),
       image: {

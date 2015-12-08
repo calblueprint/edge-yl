@@ -16,13 +16,9 @@ class GroupCard extends Component {
     return {
       group: Object.assign(
         {},
-        StyleConstants.cards.default,
+        StyleConstants.defaults.card,
         {
-          display: 'flex',
-          flexFlow: 'column',
           height: '256px',
-          width: '100%',
-          marginTop: '1%',
         }
       ),
       section: {

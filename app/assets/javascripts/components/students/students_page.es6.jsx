@@ -45,18 +45,22 @@ class StudentsPage extends Component {
   componentWillMount() {
     this.setState(ProfileStore.getState());
     this.setState(StudentsStore.getState());
+    this.setState(ViewStore.getState());
   }
 
   componentDidMount() {
     ProfileStore.listen(this._listener);
     StudentsStore.listen(this._listener);
+    ViewStore.listen(this._listener);
     ProfileActions.fetchProfile();
     StudentsActions.fetchStudents(this.props.page);
+    ViewActions.attachListener();
   }
 
   componentWillUnmount() {
     ProfileStore.unlisten(this._listener);
     StudentsStore.unlisten(this._listener);
+    ViewStore.unlisten(this._listener);
   }
 
   // --------------------------------------------------
@@ -74,7 +78,9 @@ class StudentsPage extends Component {
             profile={this.state.profile} />
           <div style={this.styles.body}>
             <StudentsFilters filters={this.state.filters} />
-            <StudentsGrid students={this.state.students} />
+            <StudentsGrid
+              media={this.state.media}
+              students={this.state.students} />
             <PageNavigator
               route={RouteConstants.students.index}
               pagination={this.state.pagination} />

@@ -16,12 +16,10 @@ class UserCard extends Component {
     return {
       container: Object.assign(
         {},
-        StyleConstants.cards.default,
+        StyleConstants.defaults.card,
         {
-          display: 'flex',
-          flexFlow: 'column',
           height: '256px',
-          marginTop: '1%',
+          marginTop: '12px',
         }
       ),
       section: {

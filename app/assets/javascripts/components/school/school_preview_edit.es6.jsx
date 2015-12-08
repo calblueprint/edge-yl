@@ -16,13 +16,8 @@ class SchoolPreviewEdit extends Component {
     return {
       container: Object.assign(
         {},
-        StyleConstants.cards.default,
-        {
-          display: 'flex',
-          flexFlow: 'column',
-          justifyContent: 'center',
-          width: '356px',
-        }
+        StyleConstants.cards.body,
+        { alignItems: 'center' }
       ),
       form: {
         display: 'flex',

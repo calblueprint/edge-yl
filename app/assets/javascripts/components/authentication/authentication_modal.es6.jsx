@@ -16,10 +16,8 @@ class AuthenticationModal extends Component {
     return {
       container: Object.assign(
         {},
-        StyleConstants.cards.default,
+        StyleConstants.defaults.card,
         {
-          display: 'flex',
-          flexFlow: 'column',
           width: '372px',
           padding: '36px',
         }

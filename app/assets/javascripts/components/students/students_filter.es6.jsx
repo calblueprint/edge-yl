@@ -52,11 +52,8 @@ class StudentsFilter extends Component {
       },
       container: Object.assign(
         {},
-        StyleConstants.cards.default,
+        StyleConstants.defaults.card,
         {
-          display: 'flex',
-          flexFlow: 'column',
-          flex: '1',
           top: '4px',
           left: '0px',
           zIndex: StyleConstants.planes.two,

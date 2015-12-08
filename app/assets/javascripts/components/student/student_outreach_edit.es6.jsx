@@ -6,6 +6,7 @@ class StudentOutreachEdit extends Component {
   static get propTypes() {
     return {
       student: React.PropTypes.object.isRequired,
+      template: React.PropTypes.object.isRequired,
     };
   }
 
@@ -16,22 +17,9 @@ class StudentOutreachEdit extends Component {
     return {
       container: Object.assign(
         {},
-        StyleConstants.cards.default,
-        {
-          display: 'flex',
-          flexFlow: 'column',
-          justifyContent: 'center',
-          width: '356px',
-        }
+        StyleConstants.cards.body,
+        { alignItems: 'center' }
       ),
-      form: {
-        display: 'flex',
-        flexFlow: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        padding: '18px',
-        marginBottom: '18px',
-      },
     };
   }
 

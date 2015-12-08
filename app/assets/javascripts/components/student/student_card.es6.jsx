@@ -29,13 +29,8 @@ class StudentCard extends Component {
     return {
       container: Object.assign(
         {},
-        StyleConstants.cards.default,
-        {
-          display: 'flex',
-          flexFlow: 'column',
-          height: '312px',
-          marginTop: '1%',
-        },
+        StyleConstants.cards.show,
+        { height: '256px' },
         this.props.media === 'large' && { width: '32.5%' },
         this.props.media === 'medium' && { width: '49%' },
         this.props.media === 'small' && { width: '100%' }

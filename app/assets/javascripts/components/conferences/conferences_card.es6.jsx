@@ -15,7 +15,7 @@ class ConferencesCard extends Component {
   render() {
     var conference = this.props.conference;
     return (
-      <div style={StyleConstants.cards.grid}>
+      <div style={StyleConstants.cards.index}>
         <Clickable
           content={conference.location}
           route={RouteConstants.conferences.show(conference.id)}

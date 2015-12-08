@@ -57,10 +57,8 @@ class HeaderShortcuts extends Component {
       },
       container: Object.assign(
         {},
-        StyleConstants.cards.default,
+        StyleConstants.defaults.card,
         {
-          display: 'flex',
-          flexFlow: 'column',
           position: 'absolute',
           width: '128px',
           top: '44px',

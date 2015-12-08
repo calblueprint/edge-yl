@@ -81,10 +81,8 @@ class HeaderSearch extends Component {
       },
       container: Object.assign(
         {},
-        StyleConstants.cards.default,
+        StyleConstants.defaults.card,
         {
-          display: 'flex',
-          flexFlow: 'column',
           top: '4px',
           left: '0px',
           zIndex: StyleConstants.planes.nine,
