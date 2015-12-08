@@ -60,6 +60,12 @@ class Clickable extends Component {
   // --------------------------------------------------
   get styles() {
     return {
+      hover: Object.assign(
+        {},
+        this.props.styles.hover,
+        this.props.type !== 'i' && this.props.type !== 'img' &&
+        this.props.type !== 'div' && { textDecoration: 'underline' }
+      ),
       static: {
         cursor: 'default',
       },
@@ -150,10 +156,11 @@ class Clickable extends Component {
   render() {
     var props = this.props;
     var styles = props.styles;
+    var type = props.type;
     var style = Object.assign(
       {},
       styles.default,
-      this.state.mouse === 'hover' && styles.hover,
+      this.state.mouse === 'hover' && this.styles.hover,
       props.route === '' && props.action === null && this.styles.static
     );
     if (props.type === 'i' || props.type === 'img') {
