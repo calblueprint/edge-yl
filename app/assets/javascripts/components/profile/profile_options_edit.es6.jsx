@@ -65,7 +65,7 @@ class ProfileOptionsEdit extends Component {
 
   updateProfile() {
     var params = {
-      profile: {
+      user: {
         birthday: this.state.birthday,
         first_name: this.state.firstName,
         last_name: this.state.lastName,
