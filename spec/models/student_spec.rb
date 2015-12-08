@@ -2,26 +2,30 @@
 #
 # Table name: students
 #
-#  id                 :integer          not null, primary key
-#  birthday           :date             not null
-#  cell_phone         :string           not null
-#  email              :string           not null
-#  first_name         :string           not null
-#  guardian_one_name  :string           not null
-#  guardian_one_phone :string           not null
-#  guardian_one_email :string           not null
-#  guardian_two_name  :string           not null
-#  guardian_two_phone :string           not null
-#  guardian_two_email :string           not null
-#  home_address       :string           not null
-#  home_phone         :string           not null
-#  is_flagged         :boolean          not null
-#  is_primary         :boolean          not null
-#  last_name          :string           not null
-#  group_id           :integer
-#  school_id          :integer
-#  created_at         :datetime         not null
-#  updated_at         :datetime         not null
+#  id                  :integer          not null, primary key
+#  birthday            :date             not null
+#  gender              :integer          not null
+#  registration_status :integer          not null
+#  shirt_size          :integer          not null
+#  cell_phone          :string           not null
+#  email               :string           not null
+#  first_name          :string           not null
+#  preferred_name      :string           not null
+#  guardian_one_name   :string           not null
+#  guardian_one_phone  :string           not null
+#  guardian_one_email  :string           not null
+#  guardian_two_name   :string           not null
+#  guardian_two_phone  :string           not null
+#  guardian_two_email  :string           not null
+#  home_address        :string           not null
+#  home_phone          :string           not null
+#  is_flagged          :boolean          not null
+#  is_primary          :boolean          not null
+#  last_name           :string           not null
+#  group_id            :integer
+#  school_id           :integer
+#  created_at          :datetime         not null
+#  updated_at          :datetime         not null
 #
 
 require 'rails_helper'

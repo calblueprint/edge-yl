@@ -108,25 +108,29 @@ ActiveRecord::Schema.define(version: 20151130013648) do
   add_index "sections", ["form_id"], name: "index_sections_on_form_id", using: :btree
 
   create_table "students", force: :cascade do |t|
-    t.date     "birthday",           null: false
-    t.string   "cell_phone",         null: false
-    t.string   "email",              null: false
-    t.string   "first_name",         null: false
-    t.string   "guardian_one_name",  null: false
-    t.string   "guardian_one_phone", null: false
-    t.string   "guardian_one_email", null: false
-    t.string   "guardian_two_name",  null: false
-    t.string   "guardian_two_phone", null: false
-    t.string   "guardian_two_email", null: false
-    t.string   "home_address",       null: false
-    t.string   "home_phone",         null: false
-    t.boolean  "is_flagged",         null: false
-    t.boolean  "is_primary",         null: false
-    t.string   "last_name",          null: false
+    t.date     "birthday",            null: false
+    t.integer  "gender",              null: false
+    t.integer  "registration_status", null: false
+    t.integer  "shirt_size",          null: false
+    t.string   "cell_phone",          null: false
+    t.string   "email",               null: false
+    t.string   "first_name",          null: false
+    t.string   "preferred_name",      null: false
+    t.string   "guardian_one_name",   null: false
+    t.string   "guardian_one_phone",  null: false
+    t.string   "guardian_one_email",  null: false
+    t.string   "guardian_two_name",   null: false
+    t.string   "guardian_two_phone",  null: false
+    t.string   "guardian_two_email",  null: false
+    t.string   "home_address",        null: false
+    t.string   "home_phone",          null: false
+    t.boolean  "is_flagged",          null: false
+    t.boolean  "is_primary",          null: false
+    t.string   "last_name",           null: false
     t.integer  "group_id"
     t.integer  "school_id"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
   end
 
   add_index "students", ["group_id"], name: "index_students_on_group_id", using: :btree
