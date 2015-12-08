@@ -67,12 +67,11 @@ class StudentsCard extends Component {
             route={RouteConstants.students.show(student.id)}
             styles={this.clickableStyles}
             type={'h3'} />
-          <h6>{`Status: ${student.registration_status}`}</h6>
-          <h6>{`${student.birthday}`}</h6>
-          <h6>{`${student.email}`}</h6>
-          <h6>{`${student.home_address}`}</h6>
+          <h6>{student.cell_phone}</h6>
+          <h6>{student.email}</h6>
           <h6>{`Flagged: ${student.is_flagged}`}</h6>
           <h6>{`Primary: ${student.is_primary}`}</h6>
+          <h6>{`Status: ${student.registration_status}`}</h6>
           <Clickable
             content={student.school.name}
             route={RouteConstants.schools.show(student.school.id)}
