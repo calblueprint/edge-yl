@@ -1,6 +1,5 @@
 class StudentBaseSerializer < BaseSerializer
 
-  attributes :id, :birthday, :email,
-             :first_name, :gender, :last_name, :home_address, :preferred_name, :shirt_size
+  attributes :id, :cell_phone, :email, :first_name, :last_name
 
 end

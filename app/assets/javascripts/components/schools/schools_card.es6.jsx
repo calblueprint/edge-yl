@@ -10,17 +10,6 @@ class SchoolsCard extends Component {
   }
 
   // --------------------------------------------------
-  // Styles
-  // --------------------------------------------------
-  get clickableStyles() {
-    return {
-      hover: {
-        textDecoration: 'underline',
-      },
-    };
-  }
-
-  // --------------------------------------------------
   // Render
   // --------------------------------------------------
   render() {
@@ -30,9 +19,10 @@ class SchoolsCard extends Component {
         <Clickable
           content={school.name}
           route={RouteConstants.schools.show(school.id)}
-          styles={this.clickableStyles}
           type={'h3'} />
         <h6>{school.address}</h6>
+        <h6>{school.counselor_name}</h6>
+        <h6>{school.counselor_email}</h6>
       </div>
     );
   }
