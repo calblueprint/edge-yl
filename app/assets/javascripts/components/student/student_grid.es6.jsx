@@ -21,7 +21,6 @@ class StudentGrid extends Component {
         justifyContent: 'space-between',
         alignContent: 'flex-start',
         flex: '1',
-        padding: '0px 12px',
       },
     };
   }
