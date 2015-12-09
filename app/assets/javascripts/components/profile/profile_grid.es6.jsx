@@ -1,4 +1,4 @@
-class ProfileCards extends Component {
+class ProfileGrid extends Component {
 
 // --------------------------------------------------
 // Props
@@ -18,7 +18,6 @@ static get propTypes() {
         display: 'flex',
         flexFlow: 'column',
         flex: '1',
-        padding: '0px 12px',
       },
     };
   }

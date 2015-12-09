@@ -24,7 +24,7 @@ class FormPage extends Component {
     return {
       container: Object.assign(
         {},
-        StyleConstants.pages.default,
+        StyleConstants.pages.wrapper,
         {
           alignItems: 'center',
         }

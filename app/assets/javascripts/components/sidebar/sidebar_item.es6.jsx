@@ -32,14 +32,6 @@ class SidebarItem extends Component {
     };
   }
 
-  get styles() {
-    return {
-      content: {
-        textOverflow: 'ellipsis',
-      }
-    };
-  }
-
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
@@ -50,9 +42,7 @@ class SidebarItem extends Component {
         route={this.props.route}
         styles={this.clickableStyles}
         type={'i'}>
-        <h5 styles={this.styles.content}>
-          {this.props.label}
-        </h5>
+        <h5>{this.props.label}</h5>
       </Clickable>
     );
   }

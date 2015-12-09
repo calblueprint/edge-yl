@@ -19,21 +19,6 @@ class GroupPage extends Component {
   }
 
   // --------------------------------------------------
-  // Styles
-  // --------------------------------------------------
-  get styles() {
-    return {
-      container: {
-        display: 'flex',
-        flex: '1',
-        paddingTop: '48px',
-        paddingLeft: '196px',
-        paddingRight: '196px',
-      },
-    };
-  }
-
-  // --------------------------------------------------
   // Lifecycle
   // --------------------------------------------------
   componentWillMount() {
@@ -59,10 +44,14 @@ class GroupPage extends Component {
         <Header
           active={true}
           profile={this.state.profile} />
-        <Sidebar
-          active={this.state.profile.has_sidebar}
-          profile={this.state.profile} />
-        <GroupGrid group={this.state.group} />
+        <div style={StyleConstants.pages.container}>
+          <Sidebar
+            active={this.state.profile.has_sidebar}
+            profile={this.state.profile} />
+          <div style={StyleConstants.pages.content}>
+            <GroupGrid group={this.state.group} />
+          </div>
+        </div>
       </div>
     );
   }

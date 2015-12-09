@@ -14,12 +14,10 @@ class GroupCard extends Component {
   // --------------------------------------------------
   get styles() {
     return {
-      group: Object.assign(
+      container: Object.assign(
         {},
-        StyleConstants.defaults.card,
-        {
-          height: '256px',
-        }
+        StyleConstants.cards.show,
+        { height: '256px' }
       ),
       section: {
         display: 'flex',
@@ -38,17 +36,17 @@ class GroupCard extends Component {
   render() {
     var group = this.props.group;
     return (
-      <div style={this.styles.group}>
+      <div style={this.styles.container}>
         <CardHeader
           action={(event) => GroupActions.storeOverlay(true, TypeConstants.overlay.type.edit)}
           content={`Group ${group.name}`}
           icon={TypeConstants.icons.edit} />
         <div style={this.styles.section}>
-          <h3>{`Primary Leader: ${group.primary_leader}`}</h3>
-          <h3>{`Secondary Leader: ${group.secondary_leader}`}</h3>
-          <h3>{`Conference: ${group.conference.id}`}</h3>
-          <h3>{`Location: ${group.conference.location}`}</h3>
-      </div>
+          <h4>{`Primary Leader: ${group.primary_leader}`}</h4>
+          <h4>{`Secondary Leader: ${group.secondary_leader}`}</h4>
+          <h4>{`Conference: ${group.conference.id}`}</h4>
+          <h4>{`Location: ${group.conference.location}`}</h4>
+        </div>
       </div>
     );
   }

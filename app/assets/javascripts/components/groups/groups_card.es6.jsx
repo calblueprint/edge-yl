@@ -5,7 +5,6 @@ class GroupsCard extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      conferenceId: React.PropTypes.number.isRequired,
       group: React.PropTypes.object.isRequired,
     };
   }
@@ -14,12 +13,15 @@ class GroupsCard extends Component {
   // Render
   // --------------------------------------------------
   render() {
+    var group = this.props.group;
     return (
       <div style={StyleConstants.cards.index}>
         <Clickable
-          content={`Group ${this.props.group.name}`}
-          route={RouteConstants.groups.show(this.props.conferenceId, this.props.group.id)}
+          content={`Group ${group.name}`}
+          route={RouteConstants.groups.show(group.conference_id, group.id)}
           type={'h3'} />
+        <h6>{group.primary_leader}</h6>
+        <h6>{group.secondary_leader}</h6>
       </div>
     );
   }

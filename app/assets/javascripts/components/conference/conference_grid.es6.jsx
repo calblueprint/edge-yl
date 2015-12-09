@@ -1,11 +1,11 @@
-class GroupsGrid extends Component {
+class ConferenceGrid extends Component {
 
   // --------------------------------------------------
   // Props
   // --------------------------------------------------
   static get propTypes() {
     return {
-      groups: React.PropTypes.array.isRequired,
+      conference: React.PropTypes.object.isRequired,
     };
   }
 
@@ -16,9 +16,7 @@ class GroupsGrid extends Component {
     return {
       container: {
         display: 'flex',
-        flexFlow: 'wrap',
-        justifyContent: 'space-between',
-        alignContent: 'flex-start',
+        flexFlow: 'column',
         flex: '1',
       },
     };
@@ -27,22 +25,11 @@ class GroupsGrid extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
-  renderGroup(group) {
-    return (
-      <GroupsCard
-        group={group}
-        key={group.id} />
-    );
-  }
-
-  renderGroups() {
-    return this.props.groups.map((group) => this.renderGroup(group));
-  }
-
   render() {
     return (
       <div style={this.styles.container}>
-        {this.renderGroups()}
+        <ConferenceCard conference={this.props.conference} />
+        <GroupsGrid groups={this.props.conference.groups} />
       </div>
     );
   }

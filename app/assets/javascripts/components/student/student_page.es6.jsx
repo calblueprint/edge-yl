@@ -18,26 +18,6 @@ class StudentPage extends Component {
   }
 
   // --------------------------------------------------
-  // Styles
-  // --------------------------------------------------
-  get styles() {
-    return {
-      container: {
-        display: 'flex',
-        flex: '1',
-        paddingTop: '48px',
-        paddingLeft: '196px',
-      },
-      section: {
-        display: 'flex',
-        flex: '1',
-        paddingRight: '196px',
-        overflow: 'scroll',
-      },
-    };
-  }
-
-  // --------------------------------------------------
   // Lifecycle
   // --------------------------------------------------
   componentWillMount() {
@@ -78,16 +58,16 @@ class StudentPage extends Component {
 
   render() {
     return (
-      <div style={StyleConstants.pages.default}>
+      <div style={StyleConstants.pages.wrapper}>
         {this.renderOverlay()}
         <Header
           active={true}
           profile={this.state.profile} />
-        <div style={this.styles.container}>
+        <div style={StyleConstants.pages.container}>
           <Sidebar
             active={this.state.profile.has_sidebar}
             profile={this.state.profile} />
-          <div style={this.styles.section}>
+          <div style={StyleConstants.pages.content}>
             <StudentGrid
               media={this.state.media}
               student={this.state.student} />

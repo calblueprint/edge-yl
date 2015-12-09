@@ -18,24 +18,6 @@ class ConferencePage extends Component {
   }
 
   // --------------------------------------------------
-  // Styles
-  // --------------------------------------------------
-  get styles() {
-    return {
-      container: {
-        display: 'flex',
-        flexFlow: 'column',
-        flex: '1',
-        paddingTop: '48px',
-        paddingLeft: '196px',
-      },
-      placeholder: {
-        width: '196px',
-      },
-    };
-  }
-
-  // --------------------------------------------------
   // Lifecycle
   // --------------------------------------------------
   componentWillMount() {
@@ -61,27 +43,25 @@ class ConferencePage extends Component {
   renderOverlay() {
     if (this.state.overlay.active) {
       return (
-        <div>Render Overlay</div>
+        <div>{'Render Overlay'}</div>
       );
     }
   }
 
   render() {
     return (
-      <div style={StyleConstants.pages.default}>
+      <div style={StyleConstants.pages.wrapper}>
         {this.renderOverlay()}
         <Header
           active={true}
           profile={this.state.profile} />
-        <div style={this.styles.container}>
+        <div style={StyleConstants.pages.container}>
           <Sidebar
             active={this.state.profile.has_sidebar}
             profile={this.state.profile} />
-          <ConferenceCard conference={this.state.conference} />
-          <GroupsGrid
-            conferenceId={this.props.id}
-            groups={this.state.conference.groups} />
-          <div style={this.styles.placeholder} />
+          <div style={StyleConstants.pages.content}>
+            <ConferenceGrid conference={this.state.conference} />
+          </div>
         </div>
       </div>
     );
