@@ -18,24 +18,6 @@ class SchoolPage extends Component {
   }
 
   // --------------------------------------------------
-  // Styles
-  // --------------------------------------------------
-  get styles() {
-    return {
-      container: {
-        display: 'flex',
-        flex: '1',
-        paddingTop: '48px',
-        paddingLeft: '196px',
-      },
-      placeholder: {
-        width: '196px',
-      },
-    };
-  }
-
-
-  // --------------------------------------------------
   // Lifecycle
   // --------------------------------------------------
   componentWillMount() {
@@ -75,12 +57,13 @@ class SchoolPage extends Component {
         <Header
           active={true}
           profile={this.state.profile} />
-        <div style={this.styles.container}>
+        <div style={StyleConstants.pages.container}>
           <Sidebar
             active={this.state.profile.has_sidebar}
             profile={this.state.profile} />
-          <SchoolGrid school={this.state.school} />
-          <div style={this.styles.placeholder} />
+          <div style={StyleConstants.pages.content}>
+            <SchoolGrid school={this.state.school} />
+          </div>
         </div>
       </div>
     );
