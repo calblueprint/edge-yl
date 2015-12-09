@@ -69,7 +69,8 @@ class ProfileOptions extends Component {
           <Clickable
             content={'Edit'}
             action={(event) => this.showOverlay(event)}
-            styles={this.clickableStyles} />
+            styles={this.clickableStyles}
+            type={'span'} />
         </div>
         <div style= {this.styles.row}>
           <span style={this.styles.field}>
@@ -78,7 +79,8 @@ class ProfileOptions extends Component {
           <Clickable
             content={'Edit'}
             action={(event) => this.showOverlay(event)}
-            styles={this.clickableStyles} />
+            styles={this.clickableStyles}
+            type={'span'} />
         </div>
         <div style= {this.styles.row}>
           <span style={this.styles.field}>
@@ -87,7 +89,8 @@ class ProfileOptions extends Component {
           <Clickable
             content={'Edit'}
             action={(event) => this.showOverlay(event)}
-            styles={this.clickableStyles} />
+            styles={this.clickableStyles}
+            type={'span'} />
         </div>
         <div style= {this.styles.row}>
           <span style={this.styles.field}>
@@ -96,7 +99,8 @@ class ProfileOptions extends Component {
           <Clickable
             content={'Edit'}
             action={(event) => this.showOverlay(event)}
-            styles={this.clickableStyles} />
+            styles={this.clickableStyles}
+            type={'span'} />
         </div>
       </div>
     );
