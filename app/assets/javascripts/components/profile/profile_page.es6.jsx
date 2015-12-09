@@ -9,27 +9,6 @@ class ProfilePage extends Component {
   }
 
   // --------------------------------------------------
-  // Styles
-  // --------------------------------------------------
-  get styles() {
-    return {
-      container: {
-        display: 'flex',
-        flexFlow: 'column',
-        height: '100vh',
-      },
-      placeholder: {
-        width: '196px',
-      },
-      section: {
-        display: 'flex',
-        flex: '1',
-        paddingLeft: '196px',
-      },
-    };
-  }
-
-  // --------------------------------------------------
   // Lifecycle
   // --------------------------------------------------
   componentWillMount() {
@@ -60,15 +39,16 @@ class ProfilePage extends Component {
 
   render() {
     return (
-      <div style={this.styles.container}>
+      <div style={StyleConstants.pages.wrapper}>
         {this.renderOverlay()}
         <Header active={true} />
-        <div style={this.styles.section}>
+        <div style={StyleConstants.pages.container}>
           <Sidebar
             active={this.state.profile.has_sidebar}
             profile={this.state.profile} />
-          <ProfileCards profile={this.state.profile} />
-          <div style={this.styles.placeholder} />
+          <div style={StyleConstants.pages.content}>
+            <ProfileGrid profile={this.state.profile} />
+          </div>
         </div>
       </div>
     );
