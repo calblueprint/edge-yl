@@ -7,6 +7,7 @@ new_form = Form.create(
     title: 'Basic Information',
   ) do |section|
     Question.create(
+      is_required: true,
       key: 'first_name',
       placeholder: 'Kira',
       section: section,
@@ -14,6 +15,7 @@ new_form = Form.create(
       title: 'First Name',
     )
     Question.create(
+      is_required: true,
       key: 'last_name',
       placeholder: 'Klapper',
       section: section,
@@ -21,6 +23,7 @@ new_form = Form.create(
       title: 'Last Name',
     )
     Question.create(
+      is_required: true,
       key: 'preferred_name',
       placeholder: 'Kira',
       section: section,
@@ -28,6 +31,7 @@ new_form = Form.create(
       title: 'Preferred Name',
     )
     Question.create(
+      is_required: true,
       key: 'gender',
       placeholder: 'Female',
       section: section,
@@ -35,6 +39,7 @@ new_form = Form.create(
       title: 'Gender',
     )
     Question.create(
+      is_required: true,
       key: 'birthday',
       placeholder: '01/01/96',
       section: section,
@@ -42,6 +47,7 @@ new_form = Form.create(
       title: 'Birthday',
     )
     Question.create(
+      is_required: true,
       key: 'email',
       placeholder: 'kiraklapper@gmail.com',
       section: section,
@@ -49,6 +55,7 @@ new_form = Form.create(
       title: 'Email',
     )
     Question.create(
+      is_required: true,
       key: 'cell_phone',
       placeholder: '(555) 555-5555',
       section: section,
@@ -56,6 +63,7 @@ new_form = Form.create(
       title: 'Cell Phone',
     )
     Question.create(
+      is_required: true,
       key: 'home_phone',
       placeholder: '(555) 555-5555',
       section: section,
@@ -63,11 +71,44 @@ new_form = Form.create(
       title: 'Home Phone',
     )
     Question.create(
-      key: 'home_address',
+      is_required: true,
+      key: 'address_one',
       placeholder: '213 Queen Street',
       section: section,
       style: Question.styles[:input],
-      title: 'Home Address',
+      title: 'Address One',
+    )
+    Question.create(
+      is_required: false,
+      key: 'address_two',
+      placeholder: '213 Queen Street',
+      section: section,
+      style: Question.styles[:input],
+      title: 'Address Two',
+    )
+    Question.create(
+      is_required: false,
+      key: 'address_city',
+      placeholder: 'San Francisco',
+      section: section,
+      style: Question.styles[:input],
+      title: 'Address City',
+    )
+    Question.create(
+      is_required: false,
+      key: 'address_state',
+      placeholder: 'CA',
+      section: section,
+      style: Question.styles[:input],
+      title: 'Address State',
+    )
+    Question.create(
+      is_required: false,
+      key: 'address_zip',
+      placeholder: '90474',
+      section: section,
+      style: Question.styles[:input],
+      title: 'Address ZIP',
     )
   end
   Section.create(

@@ -4,6 +4,7 @@
 #
 #  id          :integer          not null, primary key
 #  key         :string           not null
+#  is_required :boolean          not null
 #  placeholder :string           not null
 #  style       :integer          not null
 #  title       :string           not null
