@@ -28,6 +28,13 @@ new_form = Form.create(
       title: 'Preferred Name',
     )
     Question.create(
+      key: 'gender',
+      placeholder: 'Female',
+      section: section,
+      style: Question.styles[:input],
+      title: 'Gender',
+    )
+    Question.create(
       key: 'birthday',
       placeholder: '01/01/96',
       section: section,
@@ -35,11 +42,11 @@ new_form = Form.create(
       title: 'Birthday',
     )
     Question.create(
-      key: 'gender',
-      placeholder: 'Female',
+      key: 'email',
+      placeholder: 'kiraklapper@gmail.com',
       section: section,
       style: Question.styles[:input],
-      title: 'Gender',
+      title: 'Email',
     )
     Question.create(
       key: 'cell_phone',
@@ -65,14 +72,28 @@ new_form = Form.create(
   end
   Section.create(
     form: form,
-    title: 'Parent/Guardian Information',
+    title: 'Emergency Contact Information',
   ) do |section|
     Question.create(
       key: 'guardian_one_name',
       placeholder: 'Kira',
       section: section,
       style: Question.styles[:input],
-      title: 'First Name',
+      title: 'Parent/Guardian One Name',
+    )
+    Question.create(
+      key: 'guardian_one_email',
+      placeholder: 'kira@gmail.com',
+      section: section,
+      style: Question.styles[:input],
+      title: 'Parent/Guardian One Email',
+    )
+    Question.create(
+      key: 'guardian_one_phone',
+      placeholder: '(555) 555-5555',
+      section: section,
+      style: Question.styles[:input],
+      title: 'Parent/Guardian One Email',
     )
   end
 end

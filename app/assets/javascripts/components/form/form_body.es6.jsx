@@ -53,7 +53,7 @@ class FormBody extends Component {
     return(
       <div style={this.styles.container}>
         <div style={this.styles.header}>
-          <h1 style={this.styles.title}>{'Form'}</h1>
+          <h1 style={this.styles.title}>{this.props.form.title}</h1>
         </div>
         {this.renderSections()}
         <FormButton
