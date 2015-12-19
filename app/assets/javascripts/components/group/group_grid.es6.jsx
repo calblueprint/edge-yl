@@ -6,6 +6,7 @@ class GroupGrid extends Component {
   static get propTypes() {
     return {
       group: React.PropTypes.object.isRequired,
+      media: React.PropTypes.string.isRequired,
     };
   }
 
@@ -31,7 +32,9 @@ class GroupGrid extends Component {
     return (
       <div style={this.styles.container}>
         <GroupCard group={group} />
-        <StudentsGrid students={group.students} />
+        <StudentsGrid
+          media={this.props.media}
+          students={group.students} />
       </div>
     );
   }
