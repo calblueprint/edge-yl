@@ -3,6 +3,11 @@
 # Table name: students
 #
 #  id                  :integer          not null, primary key
+#  address_city        :string           not null
+#  address_one         :string           not null
+#  address_state       :string           not null
+#  address_two         :string           not null
+#  address_zip         :string           not null
 #  birthday            :date             not null
 #  gender              :integer          not null
 #  registration_status :integer          not null
@@ -17,7 +22,6 @@
 #  guardian_two_name   :string           not null
 #  guardian_two_phone  :string           not null
 #  guardian_two_email  :string           not null
-#  home_address        :string           not null
 #  home_phone          :string           not null
 #  is_flagged          :boolean          not null
 #  is_primary          :boolean          not null

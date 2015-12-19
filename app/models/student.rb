@@ -3,6 +3,11 @@
 # Table name: students
 #
 #  id                  :integer          not null, primary key
+#  address_city        :string           not null
+#  address_one         :string           not null
+#  address_state       :string           not null
+#  address_two         :string           not null
+#  address_zip         :string           not null
 #  birthday            :date             not null
 #  gender              :integer          not null
 #  registration_status :integer          not null
@@ -17,7 +22,6 @@
 #  guardian_two_name   :string           not null
 #  guardian_two_phone  :string           not null
 #  guardian_two_email  :string           not null
-#  home_address        :string           not null
 #  home_phone          :string           not null
 #  is_flagged          :boolean          not null
 #  is_primary          :boolean          not null
@@ -49,6 +53,10 @@ class Student < ActiveRecord::Base
 
   accepts_nested_attributes_for :responsibility
 
+  validates :address_one, presence: true
+  validates :address_city, presence: true
+  validates :address_state, presence: true
+  validates :address_zip, presence: true
   validates :cell_phone, presence: true
   validates :email, presence: true
   validates :first_name, presence: true
@@ -59,7 +67,6 @@ class Student < ActiveRecord::Base
   validates :guardian_two_name, presence: true
   validates :guardian_two_phone, presence: true
   validates :guardian_two_email, presence: true
-  validates :home_address, presence: true
   validates :is_flagged, presence: true
   validates :is_primary, presence: true
   validates :home_phone, presence: true
