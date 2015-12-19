@@ -1,6 +1,11 @@
 (1..50).each do |index|
   first_name = Faker::Name.first_name
   new_student = Student.create!(
+    address_city: "#{Faker::Address.city}",
+    address_one: "#{Faker::Address.street_address}",
+    address_state: "#{Faker::Address.state}",
+    address_two: "#{Faker::Address.street_address}",
+    address_zip: "#{Faker::Address.zip}",
     birthday: Faker::Date.between(33.days.ago, Date.today),
     cell_phone: Faker::PhoneNumber.phone_number,
     email: Faker::Internet.email,
@@ -12,7 +17,6 @@
     guardian_two_name: Faker::Name.name,
     guardian_two_phone: Faker::PhoneNumber.phone_number,
     guardian_two_email: Faker::Internet.email,
-    home_address: "#{Faker::Address.street_address}, #{Faker::Address.city}",
     home_phone: Faker::PhoneNumber.phone_number,
     is_flagged: true,
     is_primary: true,

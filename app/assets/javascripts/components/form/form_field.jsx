@@ -56,6 +56,7 @@ class FormField extends Component {
     return (
       <div style={this.styles.container}>
         <h5>{question.title}</h5>
+        <h6>{`Required: ${question.is_required}`}</h6>
         <input
           ref={'container'}
           style={this.styles.input}

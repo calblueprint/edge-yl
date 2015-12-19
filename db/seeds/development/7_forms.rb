@@ -116,6 +116,7 @@ new_form = Form.create(
     title: 'Emergency Contact Information',
   ) do |section|
     Question.create(
+      is_required: true,
       key: 'guardian_one_name',
       placeholder: 'Kira',
       section: section,
@@ -123,6 +124,7 @@ new_form = Form.create(
       title: 'Parent/Guardian One Name',
     )
     Question.create(
+      is_required: true,
       key: 'guardian_one_email',
       placeholder: 'kira@gmail.com',
       section: section,
@@ -130,6 +132,7 @@ new_form = Form.create(
       title: 'Parent/Guardian One Email',
     )
     Question.create(
+      is_required: true,
       key: 'guardian_one_phone',
       placeholder: '(555) 555-5555',
       section: section,
