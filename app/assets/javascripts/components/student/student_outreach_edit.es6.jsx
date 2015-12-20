@@ -5,7 +5,6 @@ class StudentOutreachEdit extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      student: React.PropTypes.object.isRequired,
       template: React.PropTypes.object.isRequired,
     };
   }

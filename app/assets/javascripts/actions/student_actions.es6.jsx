@@ -5,7 +5,7 @@
       this.generateActions(
         'storeComment',
         'storeError',
-        'storeStudent',
+        'storeStudent'
       );
     }
 
@@ -37,7 +37,7 @@
     }
 
     updateStudent(student, template) {
-      var id = template.id;
+      var id = student.id;
       var attributes = Object.assign({}, template);
       Object.keys(attributes).map((key) => {
         if (typeof(attributes[key]) === 'object' ||

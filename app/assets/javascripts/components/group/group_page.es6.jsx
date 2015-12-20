@@ -24,23 +24,27 @@ class GroupPage extends Component {
   componentWillMount() {
     this.setState(ProfileStore.getState());
     this.setState(GroupStore.getState());
+    this.setState(ViewStore.getState());
   }
 
   componentDidMount() {
     ProfileStore.listen(this._listener);
     GroupStore.listen(this._listener);
+    ViewStore.listen(this._listener);
     ProfileActions.fetchProfile();
     GroupActions.fetchGroup(this.props.conferenceId, this.props.id)
+    ViewActions.attachListener();
   }
 
   componentWillUnmount() {
     ProfileStore.unlisten(this._listener);
     GroupStore.unlisten(this._listener);
+    ViewStore.unlisten(this._listener);
   }
 
   render() {
     return (
-      <div style={this.styles.container}>
+      <div style={StyleConstants.pages.wrapper}>
         <Header
           active={true}
           profile={this.state.profile} />
@@ -49,7 +53,9 @@ class GroupPage extends Component {
             active={this.state.profile.has_sidebar}
             profile={this.state.profile} />
           <div style={StyleConstants.pages.content}>
-            <GroupGrid group={this.state.group} />
+            <GroupGrid
+              group={this.state.group}
+              media={this.state.media} />
           </div>
         </div>
       </div>

@@ -46,9 +46,7 @@ class StudentEditModal extends EditModal {
               action={() => this.updateStudent()}
               content={'Student Preview'}
               icon={TypeConstants.icons.save} />
-            <StudentPreviewEdit
-              student={this.props.student}
-              template={this.props.template} />
+            <StudentPreviewEdit template={this.props.template} />
           </div>
         );
       case TypeConstants.overlay.target.contact:
@@ -58,9 +56,7 @@ class StudentEditModal extends EditModal {
               action={() => this.updateStudent()}
               content={'Student Contact'}
               icon={TypeConstants.icons.save} />
-            <StudentContactEdit
-              student={this.props.student}
-              template={this.props.template} />
+            <StudentContactEdit template={this.props.template} />
           </div>
         );
       case TypeConstants.overlay.target.guardian:
@@ -70,9 +66,7 @@ class StudentEditModal extends EditModal {
               action={() => this.updateStudent()}
               content={'Student Guardian'}
               icon={TypeConstants.icons.save} />
-            <StudentGuardianEdit
-              student={this.props.student}
-              template={this.props.template} />
+            <StudentGuardianEdit template={this.props.template} />
           </div>
         );
       case TypeConstants.overlay.target.outreach:
@@ -82,9 +76,7 @@ class StudentEditModal extends EditModal {
               action={() => this.updateStudent()}
               content={'Student Outreach'}
               icon={TypeConstants.icons.save} />
-            <StudentOutreachEdit
-              student={this.props.student}
-              template={this.props.template} />
+            <StudentOutreachEdit template={this.props.template} />
           </div>
         );
     }
