@@ -27,8 +27,12 @@ class ConferenceCreate extends Component {
     return (
       <div style={StyleConstants.cards.body}>
         <CardInput
-          action={this.generateHandler('location')}
+          action={this.generateHandler('name')}
           margin={false}
+          placeholder={'Name'}
+          value={template.name} />
+        <CardInput
+          action={this.generateHandler('location')}
           placeholder={'Location'}
           value={template.location} />
         <CardInput

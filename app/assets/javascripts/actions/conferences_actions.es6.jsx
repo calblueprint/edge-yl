@@ -12,12 +12,13 @@
       var params = { conference: template };
       var resolve = (response) => console.log('success');
       var reject = (response) => this.storeError(response);
-      Requester.create(
+      Requester.post(
         ApiConstants.conferences.create,
         params,
         resolve,
         reject
       );
+      return true;
     }
 
     fetchConferences(page) {
