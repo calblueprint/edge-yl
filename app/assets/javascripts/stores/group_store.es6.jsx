@@ -6,7 +6,6 @@
         conference: {},
         students: [],
       };
-      this.sidebar = true;
       this.bindListeners({
         handleStoreGroup: GroupActions.STORE_GROUP,
       });

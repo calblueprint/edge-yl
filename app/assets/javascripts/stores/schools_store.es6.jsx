@@ -7,7 +7,6 @@
         limit: 1,
       };
       this.schools = [];
-      this.sidebar = true;
       this.bindListeners({
         handleStoreSchools: SchoolsActions.STORE_SCHOOLS,
       });

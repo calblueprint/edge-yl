@@ -22,7 +22,6 @@
         current: 1,
         limit: 1,
       };
-      this.sidebar = true;
       this.students = [];
       this.bindListeners({
         handleStoreFilter: StudentsActions.STORE_FILTER,

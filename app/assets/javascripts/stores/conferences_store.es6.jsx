@@ -7,7 +7,6 @@
         current: 1,
         limit: 1,
       };
-      this.sidebar = true;
       this.bindListeners({
         handleStoreConferences: ConferencesActions.STORE_CONFERENCES,
         handleStoreOverlay: ConferencesActions.STORE_OVERLAY,
