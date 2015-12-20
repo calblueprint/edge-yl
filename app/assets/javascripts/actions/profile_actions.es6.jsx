@@ -3,6 +3,7 @@
 
     constructor() {
       this.generateActions(
+        'storeError',
         'storeProfile'
       );
     }
@@ -11,6 +12,13 @@
       var resolve = (response) => this.storeProfile(response);
       Requester.get(ApiConstants.users.profile, resolve);
       return true;
+    }
+
+    storeAttribute(key, value) {
+      return {
+        key: key,
+        value: value,
+      };
     }
 
     storeOverlay(active, type, target) {
@@ -29,8 +37,21 @@
       return true;
     }
 
-    updateProfile(id, params) {
+    updateProfile(profile, template) {
+      var id = profile.id;
+      var attributes = Object.assign({}, template);
+      Object.keys(attributes).map((key) => {
+        if (typeof(attributes[key]) === 'object' ||
+            profile[key] === attributes[key]) {
+          delete attributes[key];
+        }
+      });
+      if (attributes.errors) {
+        delete attributes.errors;
+      }
+      var params = { user: attributes };
       var resolve = (response) => this.storeProfile(response);
+      var reject = (response) => this.storeError(response);
       Requester.update(ApiConstants.users.update(id), params, resolve);
       return true;
     }
