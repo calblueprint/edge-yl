@@ -6,7 +6,7 @@ class ProfileOptions extends Component {
   static get propTypes() {
     return {
       profile: React.PropTypes.object.isRequired,
-    }
+    };
   }
 
   // --------------------------------------------------
@@ -22,24 +22,10 @@ class ProfileOptions extends Component {
           marginTop: '12px',
         }
       ),
-      field: {
-        alignSelf: 'flex-start',
-        flex: '1',
-        fontSize: StyleConstants.fonts.sizes.small,
-      },
       row: {
         display: 'flex',
+        justifyContent: 'space-between',
         paddingTop: '24px',
-      },
-    };
-  }
-
-  get clickableStyles() {
-    return {
-      default: {
-        display: 'flex',
-        alignSelf: 'flex-end',
-        fontSize: StyleConstants.fonts.sizes.small,
       },
     };
   }
@@ -47,7 +33,7 @@ class ProfileOptions extends Component {
   // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
-  showOverlay(event) {
+  showOverlay() {
     ProfileActions.storeOverlay(
       true,
       TypeConstants.overlay.type.edit,
@@ -58,49 +44,36 @@ class ProfileOptions extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
+  renderAttribute(attribute, index) {
+    return (
+      <div key={index} style={this.styles.row}>
+        <h4>{attribute}</h4>
+        <Clickable
+          content={'Edit'}
+          action={() => this.showOverlay()}
+          type={'h4'} />
+      </div>
+    );
+  }
+
+  renderAttributes() {
+    var profile = this.props.profile;
+    var attributes = [
+      `First name: ${profile.first_name}`,
+      `Last name: ${profile.last_name}`,
+      `Birthday: ${profile.birthday}`,
+      `Email: ${profile.email}`,
+    ];
+    return attributes.map((attribute) => this.renderAttribute(attribute));
+  }
+
   render() {
     var profile = this.props.profile;
     return (
       <div style={this.styles.container}>
-        <div style= {this.styles.row}>
-          <span style={this.styles.field}>
-            {`Name: ${profile.first_name} ${profile.last_name}`}
-          </span>
-          <Clickable
-            content={'Edit'}
-            action={(event) => this.showOverlay(event)}
-            styles={this.clickableStyles}
-            type={'span'} />
-        </div>
-        <div style= {this.styles.row}>
-          <span style={this.styles.field}>
-            {'Birthday: ' + profile.birthday}
-          </span>
-          <Clickable
-            content={'Edit'}
-            action={(event) => this.showOverlay(event)}
-            styles={this.clickableStyles}
-            type={'span'} />
-        </div>
-        <div style= {this.styles.row}>
-          <span style={this.styles.field}>
-            {'Email: ' + profile.email}
-          </span>
-          <Clickable
-            content={'Edit'}
-            action={(event) => this.showOverlay(event)}
-            styles={this.clickableStyles}
-            type={'span'} />
-        </div>
-        <div style= {this.styles.row}>
-          <span style={this.styles.field}>
-            {'Password: **********'}
-          </span>
-          <Clickable
-            content={'Edit'}
-            action={(event) => this.showOverlay(event)}
-            styles={this.clickableStyles}
-            type={'span'} />
+        {this.renderAttributes()}
+        <div style={this.styles.row}>
+          <h4>{'Password: **********'}</h4>
         </div>
       </div>
     );
