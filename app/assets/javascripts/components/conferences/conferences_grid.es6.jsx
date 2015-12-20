@@ -31,6 +31,17 @@ class ConferencesGrid extends Component {
   }
 
   // --------------------------------------------------
+  // Helpers
+  // --------------------------------------------------
+  showOverlay() {
+    ConferencesActions.storeOverlay(
+      true,
+      TypeConstants.overlay.type.edit,
+      'conference'
+    );
+  }
+
+  // --------------------------------------------------
   // Render
   // --------------------------------------------------
   renderCard(conference) {
@@ -51,6 +62,7 @@ class ConferencesGrid extends Component {
         <div style={this.styles.header}>
           <h2>{'Conferences'}</h2>
           <Clickable
+            action={() => this.showOverlay()}
             content={'+ New Conference'}
             type={'h3'} />
         </div>

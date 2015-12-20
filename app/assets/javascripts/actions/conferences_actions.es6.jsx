@@ -12,6 +12,14 @@
       Requester.get(ApiConstants.conferences.index(page), resolve);
       return true;
     }
+
+    storeOverlay(active, type, target) {
+      return {
+        active: active,
+        target: target,
+        type: type,
+      };
+    }
   }
   this.ConferencesActions = alt.createActions(ConferencesActions);
 })();
