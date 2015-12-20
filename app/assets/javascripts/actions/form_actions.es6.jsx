@@ -3,6 +3,7 @@
 
     constructor() {
       this.generateActions(
+        'storeError',
         'storeForm'
       );
     }
@@ -20,7 +21,8 @@
       );
       var params = { student: attributes };
       var resolve = (response) => { console.log(response) };
-      Requester.post(ApiConstants.students.create, params, resolve);
+      var reject = (response) => this.storeError(response);
+      Requester.post(ApiConstants.students.create, params, resolve, reject);
       return true;
     }
 

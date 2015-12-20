@@ -4,8 +4,24 @@
     constructor() {
       this.form = {};
       this.bindListeners({
+        handleStoreError: FormActions.STORE_ERROR,
         handleStoreForm: FormActions.STORE_FORM,
         handleStoreResponse: FormActions.STORE_RESPONSE,
+      });
+    }
+
+    handleStoreError(response) {
+      var errors = response.errors;
+      Object.keys(errors).map((key) => {
+        var sections = this.form.sections;
+        sections.map((section) => {
+          var questions = section.questions;
+          questions.map((question) => {
+            if (question.key === key) {
+              question.errors = errors[key];
+            }
+          });
+        });
       });
     }
 
