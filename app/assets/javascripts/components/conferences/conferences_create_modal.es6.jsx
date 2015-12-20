@@ -26,6 +26,8 @@ class ConferencesCreateModal extends CreateModal {
   // Render
   // --------------------------------------------------
   renderBody() {
-
+    return (
+      <ConferenceCreate />
+    );
   }
 }
