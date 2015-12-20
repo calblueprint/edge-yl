@@ -14,7 +14,11 @@
     }
 
     handleStoreResponse(response) {
-      this.sections[response.section - 1].questions[response.question - 1].value = response.value;
+      var sections = this.form.sections;
+      var section = sections.filter((section) => section.id === response.section)[0];
+      var questions = section.questions;
+      var question = questions.filter((question) => question.id === response.question)[0];
+      question.value = response.value;
     }
   }
   this.FormStore = alt.createStore(FormStore);
