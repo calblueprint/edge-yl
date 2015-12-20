@@ -40,9 +40,20 @@ class ConferencesPage extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
+  renderOverlay() {
+    if (this.state.overlay.active) {
+      return (
+        <ConferencesPageOverlay
+          overlay={this.state.overlay}
+          template={this.state.template} />
+      );
+    }
+  }
+
   render() {
     return (
       <div style={StyleConstants.pages.wrapper}>
+        {this.renderOverlay()}
         <Header
           active={true}
           profile={this.state.profile} />

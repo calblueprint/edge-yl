@@ -7,16 +7,19 @@ class CardInput extends Component {
     return {
       action: React.PropTypes.func.isRequired,
       errors: React.PropTypes.array,
+      focus: React.PropTypes.bool,
       margin: React.PropTypes.bool,
       placeholder: React.PropTypes.string.isRequired,
-      value: React.PropTypes.string.isRequired,
+      value: React.PropTypes.string,
     };
   }
 
   static get defaultProps() {
     return {
       errors: [],
+      focus: false,
       margin: true,
+      value: '',
     };
   }
 
@@ -72,6 +75,7 @@ class CardInput extends Component {
     return (
       <div style={this.styles.container}>
         <input
+          autoFocus={this.props.focus}
           defaultValue={this.props.value}
           placeholder={this.props.placeholder}
           ref={'input'}

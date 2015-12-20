@@ -3,7 +3,9 @@ class Api::ConferencesController < Api::BaseController
   def create
     conference = Conference.new conference_params
     if conference.save
-      render json: conference, serializer: ConferenceBaseSerializer
+      render json: conference,
+                   serializer: ConferenceBaseSerializer,
+                   status: 201
     else
       unprocessable_response conference
     end
@@ -24,9 +26,11 @@ class Api::ConferencesController < Api::BaseController
   def update
     conference = Conference.find params[:id]
     if conference.update_attributes conference_params
-      render json: conference, serializer: ConferenceShowSerializer, status: 201
+      render json: conference,
+             serializer: ConferenceShowSerializer,
+             status: 201
     else
-      unprocessable_response student
+      unprocessable_response conference
     end
   end
 
@@ -37,6 +41,7 @@ class Api::ConferencesController < Api::BaseController
       :id,
       :end_date,
       :location,
+      :name,
       :start_date,
     )
   end

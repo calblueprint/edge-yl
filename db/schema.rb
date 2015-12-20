@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20151130013648) do
   create_table "conferences", force: :cascade do |t|
     t.date     "end_date",   null: false
     t.string   "location",   null: false
+    t.string   "name",       null: false
     t.date     "start_date", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -67,8 +68,8 @@ ActiveRecord::Schema.define(version: 20151130013648) do
   add_index "pg_search_documents", ["searchable_type", "searchable_id"], name: "index_pg_search_documents_on_searchable_type_and_searchable_id", using: :btree
 
   create_table "questions", force: :cascade do |t|
-    t.string   "key",         null: false
     t.boolean  "is_required", null: false
+    t.string   "key",         null: false
     t.string   "placeholder", null: false
     t.integer  "style",       null: false
     t.string   "title",       null: false

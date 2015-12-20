@@ -62,7 +62,12 @@ class LoginForm extends Component {
     };
     var resolve = (response) => window.location = RouteConstants.students.index();
     var reject = (response) => this.setState({ error: response.message });
-    Requester.post(ApiConstants.users.login, params, resolve, reject);
+    Requester.post(
+      ApiConstants.users.login,
+      params,
+      resolve,
+      reject
+    );
   }
 
   generateHandler(field) {

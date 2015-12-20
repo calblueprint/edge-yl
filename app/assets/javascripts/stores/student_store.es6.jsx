@@ -7,7 +7,6 @@
         target: '',
         type: '',
       };
-      this.sidebar = true;
       this.student = {
         comments: [],
         group: {},

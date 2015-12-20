@@ -1,4 +1,4 @@
-class StudentPageOverlay extends PageOverlay {
+class ConferencesPageOverlay extends PageOverlay {
 
   // --------------------------------------------------
   // Props
@@ -10,8 +10,6 @@ class StudentPageOverlay extends PageOverlay {
         target: React.PropTypes.string.isRequired,
         type: React.PropTypes.string.isRequired,
       }).isRequired,
-      profile: React.PropTypes.object.isRequired,
-      student: React.PropTypes.object.isRequired,
       template: React.PropTypes.object.isRequired,
     };
   }
@@ -21,7 +19,7 @@ class StudentPageOverlay extends PageOverlay {
   // --------------------------------------------------
   handleClick() {
     if (event.target === this._node) {
-      StudentActions.storeOverlay(false);
+      ConferencesActions.storeOverlay(false);
     }
   }
 
@@ -29,28 +27,18 @@ class StudentPageOverlay extends PageOverlay {
   // Render
   // --------------------------------------------------
   renderModal() {
-    if (this.props.overlay.type === TypeConstants.overlay.type.edit) {
-      return (
-        <StudentEditModal
-          overlay={this.props.overlay}
-          student={this.props.student}
-          template={this.props.template} />
-      );
-    } else {
-      return (
-        <StudentCreateModal
-          overlay={this.props.overlay}
-          profile={this.props.profile}
-          student={this.props.student} />
-      );
-    }
+    return (
+      <ConferencesCreateModal
+        overlay={this.props.overlay}
+        template={this.props.template} />
+    );
   }
 
   render() {
     return (
       <div ref={'container'} style={this.styles.container}>
         <Clickable
-          action={() => StudentActions.storeOverlay(false)}
+          action={() => ConferencesActions.storeOverlay(false)}
           icon={TypeConstants.icons.close}
           styles={this.clickableStyles}
           type={'i'} />

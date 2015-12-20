@@ -6,7 +6,6 @@
         current: 1,
         limit: 1,
       };
-      this.sidebar = true;
       this.users = [];
       this.bindListeners({
         handleStoreUsers: UsersActions.STORE_USERS,

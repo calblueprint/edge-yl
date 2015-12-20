@@ -20,7 +20,25 @@ class ConferencesGrid extends Component {
         justifyContent: 'space-between',
         alignContent: 'flex-start',
       },
+      header: {
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'flex-end',
+        width: '100%',
+        marginTop: '12px',
+      },
     };
+  }
+
+  // --------------------------------------------------
+  // Helpers
+  // --------------------------------------------------
+  showOverlay() {
+    ConferencesActions.storeOverlay(
+      true,
+      TypeConstants.overlay.type.edit,
+      'conference'
+    );
   }
 
   // --------------------------------------------------
@@ -41,6 +59,13 @@ class ConferencesGrid extends Component {
   render() {
     return (
       <div style={this.styles.container}>
+        <div style={this.styles.header}>
+          <h2>{'Conferences'}</h2>
+          <Clickable
+            action={() => this.showOverlay()}
+            content={'+ New Conference'}
+            type={'h3'} />
+        </div>
         {this.renderCards()}
       </div>
     );
