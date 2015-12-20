@@ -1,4 +1,4 @@
-class StudentPageOverlay extends PageOverlay {
+class ConferencesPageOverlay extends PageOverlay {
 
   // --------------------------------------------------
   // Props
@@ -10,9 +10,6 @@ class StudentPageOverlay extends PageOverlay {
         target: React.PropTypes.string.isRequired,
         type: React.PropTypes.string.isRequired,
       }).isRequired,
-      profile: React.PropTypes.object.isRequired,
-      student: React.PropTypes.object.isRequired,
-      template: React.PropTypes.object.isRequired,
     };
   }
 
@@ -21,7 +18,7 @@ class StudentPageOverlay extends PageOverlay {
   // --------------------------------------------------
   handleClick() {
     if (event.target === this._node) {
-      StudentActions.storeOverlay(false);
+      ConferencesActions.storeOverlay(false);
     }
   }
 
@@ -50,7 +47,7 @@ class StudentPageOverlay extends PageOverlay {
     return (
       <div ref={'container'} style={this.styles.container}>
         <Clickable
-          action={() => StudentActions.storeOverlay(false)}
+          action={() => ConferencesActions.storeOverlay(false)}
           icon={TypeConstants.icons.close}
           styles={this.clickableStyles}
           type={'i'} />
