@@ -75,7 +75,7 @@ class StudentCommentCreate extends Component {
       <div style={this.styles.container}>
         <CardHeader
           action={() => this.createComment()}
-          content={'Add a Comment'}
+          content={'New Comment'}
           icon={TypeConstants.icons.save} />
         <div style={this.styles.form}>
           <CardInput

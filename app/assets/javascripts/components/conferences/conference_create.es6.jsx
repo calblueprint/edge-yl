@@ -26,9 +26,9 @@ class ConferenceCreate extends Component {
     var template = this.props.template;
     return (
       <div style={StyleConstants.cards.body}>
-        <h4>{'Guardian One'}</h4>
         <CardInput
           action={this.generateHandler('location')}
+          margin={false}
           placeholder={'Location'}
           value={template.location} />
         <CardInput

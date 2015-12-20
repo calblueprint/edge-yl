@@ -10,6 +10,7 @@ class ConferencesCreateModal extends CreateModal {
         target: React.PropTypes.string.isRequired,
         type: React.PropTypes.string.isRequired,
       }).isRequired,
+      template: React.PropTypes.object.isRequired,
     };
   }
 
@@ -22,12 +23,28 @@ class ConferencesCreateModal extends CreateModal {
     }
   }
 
+
+  // --------------------------------------------------
+  // Helpers
+  // --------------------------------------------------
+  createConference() {
+    ConferencesActions.createConference(this.props.template);
+  }
+
+
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
   renderBody() {
     return (
-      <ConferenceCreate />
+      <div style={this.styles.section}>
+        <CardHeader
+          action={() => this.createConference()}
+          content={'New Conference'}
+          icon={TypeConstants.icons.save} />
+        <ConferenceCreate
+          template={this.props.template} />
+      </div>
     );
   }
 }

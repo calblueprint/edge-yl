@@ -9,7 +9,7 @@ class CardInput extends Component {
       errors: React.PropTypes.array,
       margin: React.PropTypes.bool,
       placeholder: React.PropTypes.string.isRequired,
-      value: React.PropTypes.string.isRequired,
+      value: React.PropTypes.string,
     };
   }
 
@@ -17,6 +17,7 @@ class CardInput extends Component {
     return {
       errors: [],
       margin: true,
+      value: '',
     };
   }
 

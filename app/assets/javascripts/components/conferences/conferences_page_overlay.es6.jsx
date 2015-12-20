@@ -10,6 +10,7 @@ class ConferencesPageOverlay extends PageOverlay {
         target: React.PropTypes.string.isRequired,
         type: React.PropTypes.string.isRequired,
       }).isRequired,
+      template: React.PropTypes.object.isRequired,
     };
   }
 
@@ -28,7 +29,8 @@ class ConferencesPageOverlay extends PageOverlay {
   renderModal() {
     return (
       <ConferencesCreateModal
-        overlay={this.props.overlay} />
+        overlay={this.props.overlay}
+        template={this.props.template} />
     );
   }
 
