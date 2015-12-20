@@ -16,9 +16,12 @@ class Api::StudentsController < Api::BaseController
     if params[:order]
       students = students.order params[:order]
     end
-    render json: students,
-                 serializer: PaginatedSerializer,
-                 each_serializer: StudentIndexSerializer
+    respond_to do |format|
+      format.csv { send_data students.to_csv }
+      format.json { render json: students,
+                           serializer: PaginatedSerializer,
+                           each_serializer: StudentIndexSerializer }
+    end
   end
 
   def show
