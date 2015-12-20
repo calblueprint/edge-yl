@@ -20,6 +20,13 @@ class ConferencesGrid extends Component {
         justifyContent: 'space-between',
         alignContent: 'flex-start',
       },
+      header: {
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'flex-end',
+        width: '100%',
+        marginTop: '12px',
+      },
     };
   }
 
@@ -41,6 +48,12 @@ class ConferencesGrid extends Component {
   render() {
     return (
       <div style={this.styles.container}>
+        <div style={this.styles.header}>
+          <h2>{'Conferences'}</h2>
+          <Clickable
+            content={'+ New Conference'}
+            type={'h3'} />
+        </div>
         {this.renderCards()}
       </div>
     );
