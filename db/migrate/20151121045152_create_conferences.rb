@@ -4,6 +4,7 @@ class CreateConferences < ActiveRecord::Migration
 
       t.date :end_date, null: false
       t.string :location, null: false
+      t.string :name, null: false
       t.date :start_date, null: false
 
       t.timestamps null: false
