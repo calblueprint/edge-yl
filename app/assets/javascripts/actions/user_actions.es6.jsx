@@ -3,8 +3,7 @@
 
     constructor() {
       this.generateActions(
-        'storeUser',
-        'toggleSidebar'
+        'storeUser'
       );
     }
 
