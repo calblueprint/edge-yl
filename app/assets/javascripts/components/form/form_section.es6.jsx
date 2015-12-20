@@ -47,7 +47,7 @@ class FormSection extends Component {
   // --------------------------------------------------
   renderQuestion(question) {
     return (
-      <FormField
+      <FormInput
         key={question.id}
         question={question} />
     );
