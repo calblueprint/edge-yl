@@ -3,6 +3,7 @@
 
     constructor() {
       this.generateActions(
+        'storeConference',
         'storeConferences',
         'storeError'
       );
@@ -14,7 +15,7 @@
         delete attributes.errors;
       }
       var params = { conference: attributes };
-      var resolve = (response) => console.log('success');
+      var resolve = (response) => this.storeConference(response);
       var reject = (response) => this.storeError(response);
       Requester.post(
         ApiConstants.conferences.create,

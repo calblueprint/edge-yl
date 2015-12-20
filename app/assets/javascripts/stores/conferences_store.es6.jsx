@@ -12,6 +12,7 @@
       };
       this.bindListeners({
         handleStoreAttribute: ConferencesActions.STORE_ATTRIBUTE,
+        handleStoreConference: ConferencesActions.STORE_CONFERENCE,
         handleStoreConferences: ConferencesActions.STORE_CONFERENCES,
         handleStoreError: ConferencesActions.STORE_ERROR,
         handleStoreOverlay: ConferencesActions.STORE_OVERLAY,
@@ -20,6 +21,11 @@
 
     handleStoreAttribute(attribute) {
       this.template[attribute.key] = attribute.value;
+    }
+
+    handleStoreConference(response) {
+      this.overlay.active = false;
+      this.conferences.push(response.conference);
     }
 
     handleStoreConferences(response) {

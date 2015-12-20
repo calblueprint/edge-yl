@@ -3,7 +3,7 @@ class Api::ConferencesController < Api::BaseController
   def create
     conference = Conference.new conference_params
     if conference.save
-      render json: conference, serializer: ConferenceBaseSerializer
+      render json: conference, serializer: ConferenceBaseSerializer, status: 201
     else
       unprocessable_response conference
     end
