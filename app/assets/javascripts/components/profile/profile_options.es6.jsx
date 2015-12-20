@@ -37,7 +37,7 @@ class ProfileOptions extends Component {
     ProfileActions.storeOverlay(
       true,
       TypeConstants.overlay.type.edit,
-      this.props.target
+      'profile'
     );
   }
 
@@ -64,7 +64,7 @@ class ProfileOptions extends Component {
       `Birthday: ${profile.birthday}`,
       `Email: ${profile.email}`,
     ];
-    return attributes.map((attribute) => this.renderAttribute(attribute));
+    return attributes.map((attribute, index) => this.renderAttribute(attribute, index));
   }
 
   render() {

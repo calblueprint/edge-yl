@@ -11,6 +11,7 @@ class ProfilePageOverlay extends PageOverlay {
         type: React.PropTypes.string.isRequired,
       }).isRequired,
       profile: React.PropTypes.object.isRequired,
+      template: React.PropTypes.object.isRequired,
     };
   }
 
@@ -30,7 +31,8 @@ class ProfilePageOverlay extends PageOverlay {
     return (
       <ProfileEditModal
         overlay={this.props.overlay}
-        profile={this.props.profile} />
+        profile={this.props.profile}
+        template={this.props.template} />
     );
   }
 

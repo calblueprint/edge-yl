@@ -21,19 +21,16 @@
       };
     }
 
-    updateProfile(id, params) {
+    toggleSidebar(id, status) {
       var resolve = (response) => this.storeProfile(response);
+      var params = {};
+      params.user = { has_sidebar: status };
       Requester.update(ApiConstants.users.update(id), params, resolve);
       return true;
     }
 
-    toggleSidebar(id, status) {
+    updateProfile(id, params) {
       var resolve = (response) => this.storeProfile(response);
-      var params = {
-        user: {
-          has_sidebar: status,
-        },
-      };
       Requester.update(ApiConstants.users.update(id), params, resolve);
       return true;
     }
