@@ -9,12 +9,6 @@ class FormSection extends Component {
     };
   }
 
-  static get defaultProps() {
-    return {
-      section: {},
-    };
-  }
-
   // --------------------------------------------------
   // Styles
   // --------------------------------------------------
