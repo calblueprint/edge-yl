@@ -34,6 +34,9 @@ class ProfileEditModal extends EditModal {
           action={() => this.updateStudent()}
           content={'Student Preview'}
           icon={TypeConstants.icons.save} />
+        <ProfilePreviewEdit
+          profile={this.props.profile}
+          template={this.props.template} />
       </div>
     );
   }
