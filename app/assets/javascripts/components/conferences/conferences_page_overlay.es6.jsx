@@ -26,21 +26,10 @@ class ConferencesPageOverlay extends PageOverlay {
   // Render
   // --------------------------------------------------
   renderModal() {
-    if (this.props.overlay.type === TypeConstants.overlay.type.edit) {
-      return (
-        <StudentEditModal
-          overlay={this.props.overlay}
-          student={this.props.student}
-          template={this.props.template} />
-      );
-    } else {
-      return (
-        <StudentCreateModal
-          overlay={this.props.overlay}
-          profile={this.props.profile}
-          student={this.props.student} />
-      );
-    }
+    return (
+      <ConferencesCreateModal
+        overlay={this.props.overlay} />
+    );
   }
 
   render() {
