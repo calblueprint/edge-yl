@@ -44,6 +44,16 @@ class ProfilePreviewEdit extends Component {
           errors={template.errors.first_name}
           placeholder={'First name'}
           value={template.first_name} />
+        <CardInput
+          action={this.generateHandler('last_name')}
+          errors={template.errors.last_name}
+          placeholder={'Last name'}
+          value={template.last_name} />
+        <CardInput
+          action={this.generateHandler('email')}
+          errors={template.errors.email}
+          placeholder={'Email'}
+          value={template.email} />
       </div>
     );
   }

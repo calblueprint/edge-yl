@@ -25,14 +25,24 @@ class ProfileEditModal extends EditModal {
   }
 
   // --------------------------------------------------
+  // Helpers
+  // --------------------------------------------------
+  updateProfile() {
+    ProfileActions.updateProfile(
+      this.props.profile,
+      this.props.template
+    );
+  }
+
+  // --------------------------------------------------
   // Render
   // --------------------------------------------------
   renderBody() {
     return (
       <div style={this.styles.section}>
         <CardHeader
-          action={() => this.updateStudent()}
-          content={'Student Preview'}
+          action={() => this.updateProfile()}
+          content={'Profile Preview'}
           icon={TypeConstants.icons.save} />
         <ProfilePreviewEdit
           profile={this.props.profile}

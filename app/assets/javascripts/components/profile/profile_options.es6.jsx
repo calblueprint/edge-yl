@@ -61,7 +61,6 @@ class ProfileOptions extends Component {
     var attributes = [
       `First name: ${profile.first_name}`,
       `Last name: ${profile.last_name}`,
-      `Birthday: ${profile.birthday}`,
       `Email: ${profile.email}`,
     ];
     return attributes.map((attribute, index) => this.renderAttribute(attribute, index));

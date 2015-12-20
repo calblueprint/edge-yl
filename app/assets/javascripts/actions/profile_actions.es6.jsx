@@ -52,7 +52,7 @@
       var params = { user: attributes };
       var resolve = (response) => this.storeProfile(response);
       var reject = (response) => this.storeError(response);
-      Requester.update(ApiConstants.users.update(id), params, resolve);
+      Requester.update(ApiConstants.users.update(id), params, resolve, reject);
       return true;
     }
   }
