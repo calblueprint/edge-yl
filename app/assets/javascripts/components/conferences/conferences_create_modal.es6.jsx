@@ -31,7 +31,6 @@ class ConferencesCreateModal extends CreateModal {
     ConferencesActions.createConference(this.props.template);
   }
 
-
   // --------------------------------------------------
   // Render
   // --------------------------------------------------

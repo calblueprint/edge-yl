@@ -33,6 +33,8 @@
 
     handleStoreOverlay(overlay) {
       this.overlay = overlay;
+      this.template = {};
+      this.template.errors = {};
     }
   }
   this.ConferencesStore = alt.createStore(ConferencesStore);

@@ -28,20 +28,24 @@ class ConferenceCreate extends Component {
       <div style={StyleConstants.cards.body}>
         <CardInput
           action={this.generateHandler('name')}
+          errors={template.errors.name}
           focus={true}
           margin={false}
           placeholder={'Name'}
           value={template.name} />
         <CardInput
           action={this.generateHandler('location')}
+          errors={template.errors.location}
           placeholder={'Location'}
           value={template.location} />
         <CardInput
           action={this.generateHandler('start_date')}
+          errors={template.errors.start_date}
           placeholder={'Start date'}
           value={template.start_date} />
         <CardInput
           action={this.generateHandler('end_date')}
+          errors={template.errors.end_date}
           placeholder={'End date'}
           value={template.end_date} />
       </div>

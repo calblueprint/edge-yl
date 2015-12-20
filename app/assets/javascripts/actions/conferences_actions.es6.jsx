@@ -9,7 +9,11 @@
     }
 
     createConference(template) {
-      var params = { conference: template };
+      var attributes = Object.assign({}, template);
+      if (attributes.errors) {
+        delete attributes.errors;
+      }
+      var params = { conference: attributes };
       var resolve = (response) => console.log('success');
       var reject = (response) => this.storeError(response);
       Requester.post(
