@@ -1,4 +1,4 @@
-class ConferencesCreateModal extends CreateModal {
+class StudentCreateModal extends CreateModal {
 
   // --------------------------------------------------
   // Props
@@ -10,6 +10,8 @@ class ConferencesCreateModal extends CreateModal {
         target: React.PropTypes.string.isRequired,
         type: React.PropTypes.string.isRequired,
       }).isRequired,
+      profile: React.PropTypes.object.isRequired,
+      student: React.PropTypes.object.isRequired,
     };
   }
 
@@ -18,7 +20,7 @@ class ConferencesCreateModal extends CreateModal {
   // --------------------------------------------------
   handleClick(event) {
     if (event.target === this._node) {
-      ConferencesActions.storeOverlay(false);
+      StudentActions.storeOverlay(false);
     }
   }
 
@@ -26,6 +28,10 @@ class ConferencesCreateModal extends CreateModal {
   // Render
   // --------------------------------------------------
   renderBody() {
-
+    return (
+      <StudentCommentCreate
+        profile={this.props.profile}
+        student={this.props.student} />
+    );
   }
 }

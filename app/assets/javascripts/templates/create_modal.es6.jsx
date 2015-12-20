@@ -1,4 +1,4 @@
-class StudentCreateModal extends Component {
+class CreateModal extends Component {
 
   // --------------------------------------------------
   // Setup
@@ -6,21 +6,6 @@ class StudentCreateModal extends Component {
   constructor(props) {
     super(props);
     this._node = null;
-  }
-
-  // --------------------------------------------------
-  // Props
-  // --------------------------------------------------
-  static get propTypes() {
-    return {
-      overlay: React.PropTypes.shape({
-        active: React.PropTypes.bool.isRequired,
-        target: React.PropTypes.string.isRequired,
-        type: React.PropTypes.string.isRequired,
-      }).isRequired,
-      profile: React.PropTypes.object.isRequired,
-      student: React.PropTypes.object.isRequired,
-    };
   }
 
   // --------------------------------------------------
@@ -34,6 +19,14 @@ class StudentCreateModal extends Component {
         justifyContent: 'center',
         alignItems: 'center',
       },
+      section: Object.assign(
+        {},
+        StyleConstants.defaults.card,
+        {
+          justifyContent: 'center',
+          width: '356px',
+        }
+      ),
       title: {
         marginBottom: '6px',
       },
@@ -50,28 +43,8 @@ class StudentCreateModal extends Component {
   }
 
   // --------------------------------------------------
-  // Handlers
-  // --------------------------------------------------
-  handleClick(event) {
-    if (event.target === this._node) {
-      StudentActions.storeOverlay(false);
-    }
-  }
-
-  // --------------------------------------------------
   // Render
   // --------------------------------------------------
-  renderBody() {
-    switch (this.props.overlay.target) {
-      case TypeConstants.overlay.target.comment:
-        return (
-          <StudentCommentCreate
-            profile={this.props.profile}
-            student={this.props.student} />
-        );
-    }
-  }
-
   render() {
     return (
       <div ref={'container'} style={this.styles.container}>
