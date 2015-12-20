@@ -22,7 +22,12 @@
       var params = { student: attributes };
       var resolve = (response) => { console.log(response) };
       var reject = (response) => this.storeError(response);
-      Requester.post(ApiConstants.students.create, params, resolve, reject);
+      Requester.post(
+        ApiConstants.students.create,
+        params,
+        resolve,
+        reject
+      );
       return true;
     }
 
