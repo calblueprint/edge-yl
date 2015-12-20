@@ -51,11 +51,6 @@ RSpec.describe Student, type: :model do
     expect(factory).to be_invalid
   end
 
-  it "is invalid without a home_address" do
-    factory = FactoryGirl.build(:student, home_address: nil)
-    expect(factory).to be_invalid
-  end
-
   it "is invalid without a last_name" do
     factory = FactoryGirl.build(:student, last_name: nil)
     expect(factory).to be_invalid
