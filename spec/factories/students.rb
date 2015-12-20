@@ -3,6 +3,11 @@
 # Table name: students
 #
 #  id                  :integer          not null, primary key
+#  address_city        :string           not null
+#  address_one         :string           not null
+#  address_state       :string           not null
+#  address_two         :string           not null
+#  address_zip         :string           not null
 #  birthday            :date             not null
 #  gender              :integer          not null
 #  registration_status :integer          not null
@@ -17,7 +22,6 @@
 #  guardian_two_name   :string           not null
 #  guardian_two_phone  :string           not null
 #  guardian_two_email  :string           not null
-#  home_address        :string           not null
 #  home_phone          :string           not null
 #  is_flagged          :boolean          not null
 #  is_primary          :boolean          not null
@@ -31,6 +35,11 @@
 FactoryGirl.define do
 
   factory :student do
+    address_city        { Faker::Address.city }
+    address_one         { Faker::Address.street_address }
+    address_state       { Faker::Address.state }
+    address_two         { Faker::Address.street_address }
+    address_zip         { Faker::Address.zip }
     birthday            { Faker::Date.between(33.days.ago, Date.today) }
     cell_phone          { Faker::PhoneNumber.phone_number }
     email               { Faker::Internet.email }
@@ -42,7 +51,6 @@ FactoryGirl.define do
     guardian_two_email  { Faker::Internet.email }
     guardian_two_name   { Faker::Name.name }
     guardian_two_phone  { Faker::PhoneNumber.phone_number }
-    home_address        { "#{Faker::Address.street_address}, #{Faker::Address.city}" }
     home_phone          { Faker::PhoneNumber.phone_number }
     is_flagged          { true }
     is_primary          { true }

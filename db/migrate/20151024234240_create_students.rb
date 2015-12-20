@@ -2,6 +2,11 @@ class CreateStudents < ActiveRecord::Migration
   def change
     create_table :students do |t|
 
+      t.string :address_city, null: false
+      t.string :address_one, null: false
+      t.string :address_state, null: false
+      t.string :address_two, null: false
+      t.string :address_zip, null: false
       t.date :birthday, null: false
       t.integer :gender, null: false
       t.integer :registration_status, null: false
@@ -16,7 +21,6 @@ class CreateStudents < ActiveRecord::Migration
       t.string :guardian_two_name, null: false
       t.string :guardian_two_phone, null: false
       t.string :guardian_two_email, null: false
-      t.string :home_address, null: false
       t.string :home_phone, null: false
       t.boolean :is_flagged, null: false
       t.boolean :is_primary, null: false

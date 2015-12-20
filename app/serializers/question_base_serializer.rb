@@ -1,5 +1,6 @@
 class QuestionBaseSerializer < BaseSerializer
 
-  attributes :id, :key, :placeholder, :section_id, :style, :title
+  attributes :id, :is_required, :key, :placeholder,
+             :section_id, :style, :title
 
 end

@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(version: 20151130013648) do
 
   create_table "questions", force: :cascade do |t|
     t.string   "key",         null: false
+    t.boolean  "is_required", null: false
     t.string   "placeholder", null: false
     t.integer  "style",       null: false
     t.string   "title",       null: false
@@ -108,6 +109,11 @@ ActiveRecord::Schema.define(version: 20151130013648) do
   add_index "sections", ["form_id"], name: "index_sections_on_form_id", using: :btree
 
   create_table "students", force: :cascade do |t|
+    t.string   "address_city",        null: false
+    t.string   "address_one",         null: false
+    t.string   "address_state",       null: false
+    t.string   "address_two",         null: false
+    t.string   "address_zip",         null: false
     t.date     "birthday",            null: false
     t.integer  "gender",              null: false
     t.integer  "registration_status", null: false
@@ -122,7 +128,6 @@ ActiveRecord::Schema.define(version: 20151130013648) do
     t.string   "guardian_two_name",   null: false
     t.string   "guardian_two_phone",  null: false
     t.string   "guardian_two_email",  null: false
-    t.string   "home_address",        null: false
     t.string   "home_phone",          null: false
     t.boolean  "is_flagged",          null: false
     t.boolean  "is_primary",          null: false

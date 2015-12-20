@@ -1,5 +1,7 @@
 class Api::StudentsController < Api::BaseController
 
+  skip_before_filter :authenticate_user, only: [:create]
+
   def create
     student = Student.new student_params
     if student.save
