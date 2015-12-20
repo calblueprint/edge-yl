@@ -53,24 +53,26 @@ class Student < ActiveRecord::Base
 
   accepts_nested_attributes_for :responsibility
 
-  validates :address_one, presence: true
   validates :address_city, presence: true
+  validates :address_one, presence: true
   validates :address_state, presence: true
   validates :address_zip, presence: true
+  validates :birthday, presence: true
   validates :cell_phone, presence: true
   validates :email, presence: true
   validates :first_name, presence: true
-  validates :preferred_name, presence: true
+  validates :gender, presence: true
   validates :guardian_one_name, presence: true
   validates :guardian_one_phone, presence: true
   validates :guardian_one_email, presence: true
   validates :guardian_two_name, presence: true
   validates :guardian_two_phone, presence: true
   validates :guardian_two_email, presence: true
+  validates :home_phone, presence: true
   validates :is_flagged, presence: true
   validates :is_primary, presence: true
-  validates :home_phone, presence: true
   validates :last_name, presence: true
+  validates :preferred_name, presence: true
 
   def name
     "#{first_name} #{last_name}"
