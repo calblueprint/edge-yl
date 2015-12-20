@@ -1,4 +1,4 @@
-class StudentPreviewEdit extends Component {
+class ProfilePreviewEdit extends Component {
 
   // --------------------------------------------------
   // Props
@@ -19,11 +19,6 @@ class StudentPreviewEdit extends Component {
         StyleConstants.cards.body,
         { alignItems: 'center' }
       ),
-      image: {
-        width: '128px',
-        height: '128px',
-        borderRadius: '50%',
-      },
     };
   }
 
@@ -33,7 +28,7 @@ class StudentPreviewEdit extends Component {
   generateHandler(field) {
     var state = {};
     return(event) => {
-      StudentActions.storeAttribute(field, event.target.value);
+      ProfileActions.storeAttribute(field, event.target.value);
     };
   }
 
@@ -44,9 +39,6 @@ class StudentPreviewEdit extends Component {
     var template = this.props.template;
     return (
       <div style={this.styles.container}>
-        <img
-          src={'https://scontent.fsnc1-1.fna.fbcdn.net/hphotos-xfp1/t31.0-8/11856297_10200932572512494_2256826043885795533_o.jpg'}
-          style={this.styles.image} />
         <CardInput
           action={this.generateHandler('first_name')}
           errors={template.errors.first_name}
@@ -58,10 +50,10 @@ class StudentPreviewEdit extends Component {
           placeholder={'Last name'}
           value={template.last_name} />
         <CardInput
-          action={this.generateHandler('birthday')}
-          errors={template.errors.birthday}
-          placeholder={'Birthday'}
-          value={template.birthday} />
+          action={this.generateHandler('email')}
+          errors={template.errors.email}
+          placeholder={'Email'}
+          value={template.email} />
       </div>
     );
   }

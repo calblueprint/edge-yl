@@ -30,11 +30,9 @@ class ProfilePreview extends Component {
       },
       name: {
         paddingTop: '24px',
-        fontSize: StyleConstants.fonts.sizes.largest,
       },
       position: {
         paddingTop: '12px',
-        fontSize: StyleConstants.fonts.sizes.small,
         fontStyle: 'italic',
       },
     };
@@ -48,14 +46,14 @@ class ProfilePreview extends Component {
     return (
       <div style={this.styles.container}>
         <img
-          src='https://scontent.fsnc1-1.fna.fbcdn.net/hphotos-xfp1/t31.0-8/11856297_10200932572512494_2256826043885795533_o.jpg'
+          src={'https://scontent.fsnc1-1.fna.fbcdn.net/hphotos-xfp1/t31.0-8/11856297_10200932572512494_2256826043885795533_o.jpg'}
           style={this.styles.image} />
-        <span style={this.styles.name}>
+        <h2 style={this.styles.name}>
           {`${profile.first_name} ${profile.last_name}`}
-        </span>
-        <span style={this.styles.position}>
+        </h2>
+        <h5 style={this.styles.position}>
           {'Volunteer, Recruitment Group'}
-        </span>
+        </h5>
       </div>
     );
   }

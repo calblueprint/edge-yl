@@ -32,7 +32,8 @@ class ProfilePage extends Component {
       return (
         <ProfilePageOverlay
           overlay={this.state.overlay}
-          profile={this.state.profile} />
+          profile={this.state.profile}
+          template={this.state.template} />
       );
     }
   }
