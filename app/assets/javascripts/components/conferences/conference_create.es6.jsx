@@ -28,6 +28,7 @@ class ConferenceCreate extends Component {
       <div style={StyleConstants.cards.body}>
         <CardInput
           action={this.generateHandler('name')}
+          focus={true}
           margin={false}
           placeholder={'Name'}
           value={template.name} />
