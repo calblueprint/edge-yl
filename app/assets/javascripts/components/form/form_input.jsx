@@ -28,6 +28,10 @@ class FormInput extends Component {
         marginLeft: '24px',
         fontSize: StyleConstants.fonts.sizes.smallest,
       },
+      required: {
+        paddingLeft: '4px',
+        color: StyleConstants.colors.red,
+      }
     };
   }
 
@@ -65,12 +69,18 @@ class FormInput extends Component {
     }
   }
 
+  renderRequired() {
+    if (this.props.question.is_required) {
+      return <h6 style={this.styles.required}>{'*'}</h6>;
+    }
+  }
+
   render() {
     var question = this.props.question;
     return (
       <div style={this.styles.container}>
         <h5>{question.title}</h5>
-        <h6>{`Required: ${question.is_required}`}</h6>
+        {this.renderRequired()}
         <input
           ref={'container'}
           style={this.styles.input}

@@ -29,7 +29,6 @@ class FormButton extends Component {
         backgroundColor: StyleConstants.colors.blue,
         borderRadius: '1px',
         color: StyleConstants.colors.white,
-        fontSize: StyleConstants.fonts.sizes.smaller,
       },
       hover: {
         backgroundColor: StyleConstants.colors.azure,
@@ -47,7 +46,7 @@ class FormButton extends Component {
           action={this.props.action}
           content={this.props.content}
           styles={this.clickableStyles}
-          type={'span'} />
+          type={'h5'} />
       </div>
     );
   }

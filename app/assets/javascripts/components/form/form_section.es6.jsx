@@ -21,16 +21,18 @@ class FormSection extends Component {
       },
       header: {
         display: 'flex',
-        flexFlow: 'row',
         alignItems: 'center',
       },
       line: {
         flex: '1',
         height: '1px',
         marginLeft: '10px',
-        borderTop: 'solid gray 1px',
+        borderTop: 'solid 1px',
+        borderColor: StyleConstants.colors.gray,
       },
-      questions: {
+      section: {
+        display: 'flex',
+        flexDirection: 'column',
         padding: '24px',
       },
     };
@@ -61,7 +63,7 @@ class FormSection extends Component {
           <h4>{this.props.section.title}</h4>
           <span style={this.styles.line} />
         </div>
-        <div style={this.styles.questions}>
+        <div style={this.styles.section}>
           {this.renderQuestions()}
         </div>
       </div>
