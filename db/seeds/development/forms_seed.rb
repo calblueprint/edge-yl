@@ -87,7 +87,7 @@ new_form = Form.create(
       title: 'Address Two',
     )
     Question.create(
-      is_required: false,
+      is_required: true,
       key: 'address_city',
       placeholder: 'San Francisco',
       section: section,
@@ -95,7 +95,7 @@ new_form = Form.create(
       title: 'Address City',
     )
     Question.create(
-      is_required: false,
+      is_required: true,
       key: 'address_state',
       placeholder: 'CA',
       section: section,
@@ -103,7 +103,7 @@ new_form = Form.create(
       title: 'Address State',
     )
     Question.create(
-      is_required: false,
+      is_required: true,
       key: 'address_zip',
       placeholder: '90474',
       section: section,
