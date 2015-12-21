@@ -4,6 +4,7 @@ class CreateQuestions < ActiveRecord::Migration
 
       t.boolean :is_required, null: false
       t.string :key, null: false
+      t.string :options, null: false, array: true
       t.string :placeholder, null: false
       t.integer :style, null: false
       t.string :title, null: false
