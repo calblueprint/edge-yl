@@ -1,4 +1,4 @@
-new_form = Form.create(
+student_form = Form.create(
   target: Form.targets[:student],
   title: 'Student Form',
 ) do |form|
@@ -23,7 +23,7 @@ new_form = Form.create(
       title: 'Last Name',
     )
     Question.create(
-      is_required: true,
+      is_required: false,
       key: 'preferred_name',
       placeholder: 'Kira',
       section: section,
@@ -33,9 +33,10 @@ new_form = Form.create(
     Question.create(
       is_required: true,
       key: 'gender',
+      options: ['Female', 'Male', 'Other'],
       placeholder: 'Female',
       section: section,
-      style: Question.styles[:input],
+      style: Question.styles[:dropdown],
       title: 'Gender',
     )
     Question.create(
@@ -141,4 +142,4 @@ new_form = Form.create(
     )
   end
 end
-puts "Created form: #{new_form.title}."
+puts "Created form: #{student_form.title}."
