@@ -68,14 +68,15 @@ ActiveRecord::Schema.define(version: 20151130013648) do
   add_index "pg_search_documents", ["searchable_type", "searchable_id"], name: "index_pg_search_documents_on_searchable_type_and_searchable_id", using: :btree
 
   create_table "questions", force: :cascade do |t|
-    t.boolean  "is_required", null: false
-    t.string   "key",         null: false
-    t.string   "placeholder", null: false
-    t.integer  "style",       null: false
-    t.string   "title",       null: false
+    t.boolean  "is_required",              null: false
+    t.string   "key",                      null: false
+    t.string   "options",     default: [], null: false, array: true
+    t.string   "placeholder",              null: false
+    t.integer  "style",                    null: false
+    t.string   "title",                    null: false
     t.integer  "section_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   add_index "questions", ["section_id"], name: "index_questions_on_section_id", using: :btree

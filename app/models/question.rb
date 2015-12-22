@@ -3,8 +3,9 @@
 # Table name: questions
 #
 #  id          :integer          not null, primary key
-#  key         :string           not null
 #  is_required :boolean          not null
+#  options     :string           not null, is an Array
+#  key         :string           not null
 #  placeholder :string           not null
 #  style       :integer          not null
 #  title       :string           not null
@@ -18,5 +19,15 @@ class Question < ActiveRecord::Base
   enum style: [:dropdown, :input, :textarea]
 
   belongs_to :section
+
+  validates_presence_of :key, :is_required, :style, :title
+  validates_presence_of :placeholder, allow_nil: true
+
+  validates_absence_of :placeholder, if: :is_dropdown?
+  validates_length_of :options, minimum: 2, if: :is_dropdown?
+
+  def is_dropdown?
+    style == Question.styles['dropdown']
+  end
 
 end
