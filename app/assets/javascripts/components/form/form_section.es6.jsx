@@ -26,9 +26,8 @@ class FormSection extends Component {
       line: {
         flex: '1',
         height: '1px',
-        marginLeft: '10px',
-        borderTop: 'solid 1px',
-        borderColor: StyleConstants.colors.gray,
+        marginLeft: '12px',
+        borderTop: `1px solid ${StyleConstants.colors.gray}`,
       },
       section: {
         display: 'flex',
