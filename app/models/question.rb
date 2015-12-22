@@ -20,10 +20,11 @@ class Question < ActiveRecord::Base
 
   belongs_to :section
 
-  validates_presence_of :key, :is_required, :style, :title
+  validates_presence_of :key, :style, :title
   validates_presence_of :placeholder, allow_nil: true
 
   validates_absence_of :placeholder, if: :is_dropdown?
+  validates_inclusion_of :is_required, in: [true, false]
   validates_length_of :options, minimum: 2, if: :is_dropdown?
 
   def is_dropdown?
