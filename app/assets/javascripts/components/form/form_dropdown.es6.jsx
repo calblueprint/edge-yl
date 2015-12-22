@@ -5,8 +5,7 @@ class FormDropdown extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      options: React.PropTypes.arrayOf(React.PropTypes.string).isRequired,
-      title: React.PropTypes.string.isRequired,
+      question: React.PropTypes.object.isRequired,
     };
   }
 
@@ -27,32 +26,31 @@ class FormDropdown extends Component {
     return {
       container: {
         display: 'flex',
-        flexFlow: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        width: '250px',
-        marginBottom: '20px',
+        marginBottom: '18px',
       },
-      label: {
-        fontSize: StyleConstants.fonts.sizes.smaller,
-      },
-      selected: {
-        width: '130px',
-        color: StyleConstants.colors.gray,
-      },
-      dropdownContainer: {
-        display: 'flex',
-        flexFlow: 'row',
-        padding: '4px',
-        border: '1px solid' + StyleConstants.colors.gray,
-      },
-      icon: {
-        padding: '0px 2px',
-        color: StyleConstants.colors.gray,
-      },
-      dropdown: {
+      section: {
         display: 'flex',
         flexFlow: 'column',
+        height: '34px',
+        border: `1px solid ${StyleConstants.colors.gray}`,
+      },
+    };
+  }
+
+  get clickableStyles() {
+    return {
+      child: {
+        paddingRight: '4px',
+      },
+      default: {
+        display: 'flex',
+        alignItems: 'center',
+        flex: '1',
+        minHeight: '34px',
+        padding: '8px',
+        boxSizing: 'border-box',
       },
     };
   }
@@ -62,7 +60,7 @@ class FormDropdown extends Component {
       child: {
         default: {
           flex: '1',
-          padding: '4px',
+          padding: '8px',
         },
         hover: {
           backgroundColor: StyleConstants.colors.turquoise,
@@ -72,44 +70,31 @@ class FormDropdown extends Component {
         {},
         StyleConstants.defaults.card,
         {
-          position: 'absolute',
+          top: '6px',
+          left: '0px',
           zIndex: StyleConstants.planes.two,
-          top: '19px',
-          left: '-5px',
-          width: '136px',
         }
       ),
-    };
-  }
-
-  get clickableStyles() {
-    return {
-      default: {
-        padding: '0px 2px',
-      },
-      hover: {
-      },
     };
   }
 
   // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
-  generateHandler(item) {
-    return function() {
-      this.setState({ value: item, dropdown: false});
-    }.bind(this);
+  generateHandler(option) {
+    return () => this.setState({ value: option, dropdown: false});
   }
 
-  generateDropdownOption(item) {
+  generateOption(option) {
     return {
-      action: this.generateHandler(item),
-      content: item,
+      action: this.generateHandler(option),
+      content: option,
     };
   }
 
-  generateDropdownOptions() {
-    return this.props.options.map(this.generateDropdownOption.bind(this));
+  generateOptions() {
+    var options = this.props.question.options;
+    return options.map((option) => this.generateOption(option));
   }
 
   hideDropdown() {
@@ -124,27 +109,29 @@ class FormDropdown extends Component {
       return (
         <Dropdown
           action={() => this.hideDropdown()}
-          styles={this.dropdownStyles}
-          options={this.generateDropdownOptions()} />
+          options={this.generateOptions()}
+          styles={this.dropdownStyles} />
       );
     }
   }
 
   render() {
+    var question = this.props.question;
     return (
-      <div style = {this.styles.container}>
-        <label style={this.styles.label}>{this.props.title}</label>
-          <div style={this.styles.dropdownContainer}>
-            <div style={this.styles.dropdown}>
-              <span style={this.styles.selected}> {this.state.value} </span>
-              {this.renderDropdown()}
-            </div>
-            <Clickable
-              icon={'fa fa-angle-down'}
-              styles={this.clickableStyles}
-              type={'i'}
-            />
-          </div>
+      <div style={this.styles.container}>
+        <h5>{question.title}</h5>
+        <div style={this.styles.section}>
+          <Clickable
+            action={() => this.setState({ dropdown: true })}
+            icon={TypeConstants.icons.expand}
+            styles={this.clickableStyles}
+            type={'i'}>
+            <h6 style={this.styles.selected}>
+              {'Select one' + question.value}
+            </h6>
+          </Clickable>
+          {this.renderDropdown()}
+        </div>
       </div>
     );
   }

@@ -42,11 +42,20 @@ class FormSection extends Component {
   // Render
   // --------------------------------------------------
   renderQuestion(question) {
-    return (
-      <FormInput
-        key={question.id}
-        question={question} />
-    );
+    switch (question.style) {
+      case 'dropdown':
+        return (
+          <FormDropdown
+            key={question.id}
+            question={question} />
+        );
+      default:
+        return (
+          <FormInput
+            key={question.id}
+            question={question} />
+        );
+    }
   }
 
   renderQuestions() {
