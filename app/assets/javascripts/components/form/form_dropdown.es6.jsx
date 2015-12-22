@@ -30,10 +30,16 @@ class FormDropdown extends Component {
         alignItems: 'center',
         marginBottom: '18px',
       },
+      required: {
+        paddingLeft: '4px',
+        color: StyleConstants.colors.red,
+      },
       section: {
         display: 'flex',
         flexFlow: 'column',
+        flex: '1',
         height: '34px',
+        marginLeft: '24px',
         border: `1px solid ${StyleConstants.colors.gray}`,
       },
     };
@@ -115,11 +121,18 @@ class FormDropdown extends Component {
     }
   }
 
+  renderRequired() {
+    if (this.props.question.is_required) {
+      return <h6 style={this.styles.required}>{'*'}</h6>;
+    }
+  }
+
   render() {
     var question = this.props.question;
     return (
       <div style={this.styles.container}>
         <h5>{question.title}</h5>
+        {this.renderRequired()}
         <div style={this.styles.section}>
           <Clickable
             action={() => this.setState({ dropdown: true })}

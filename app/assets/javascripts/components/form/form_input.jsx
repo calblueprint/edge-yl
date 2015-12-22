@@ -31,7 +31,7 @@ class FormInput extends Component {
       required: {
         paddingLeft: '4px',
         color: StyleConstants.colors.red,
-      }
+      },
     };
   }
 
