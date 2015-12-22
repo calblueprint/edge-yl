@@ -15,8 +15,13 @@
 #
 
 FactoryGirl.define do
+
   factory :question do
-    
+    is_required { true }
+    key         { 'first_name' }
+    title       { 'First name' }
+    placeholder { 'Kira' }
+    style       { Question.styles['input'] }
   end
 
 end
