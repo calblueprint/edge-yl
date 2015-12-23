@@ -35,9 +35,9 @@ class User < ActiveRecord::Base
   has_many :responsibilities, dependent: :destroy
   has_many :visits, dependent: :destroy
 
-  validates :email, presence: true
-  validates :first_name, presence: true
-  validates :last_name, presence: true
+  validates_presence_of :email, :first_name, :last_name
+
+  validates_inclusion_of :has_sidebar, :is_admin, in: [true, false]
 
   def name
     "#{first_name} #{last_name}"
