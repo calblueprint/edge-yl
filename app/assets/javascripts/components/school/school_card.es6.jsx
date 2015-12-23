@@ -53,9 +53,14 @@ class SchoolCard extends Component {
           content={school.name}
           icon={TypeConstants.icons.edit} />
         <div style={this.styles.section}>
-          <h3>{`School Address: ${school.address}`}</h3>
-          <h3>{`Counselor Name: ${school.counselor_name}`}</h3>
-          <h3>{`Counselor Email: ${school.counselor_email}`}</h3>
+          <h3>{`School Address:`}</h3>
+          <h6>{school.address_one}</h6>
+          <h6>{`${school.address_city}, ${school.address_state}`}</h6>
+          <h3>{`Contact Information:`}</h3>
+          <h6>{`${school.contact_first_name} ${school.contact_last_name}`}</h6>
+          <h6>{`Title: ${school.contact_title}`}</h6>
+          <h6>{school.contact_email}</h6>
+          <h6>{school.contact_phone_number}</h6>
       </div>
       </div>
     );
