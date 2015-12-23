@@ -3,8 +3,6 @@
 # Table name: questions
 #
 #  id          :integer          not null, primary key
-#  is_required :boolean          not null
-#  options     :string           not null, is an Array
 #  key         :string           not null
 #  placeholder :string           not null
 #  style       :integer          not null

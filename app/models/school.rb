@@ -19,10 +19,18 @@ class School < ActiveRecord::Base
   has_many :students
   has_many :visits, dependent: :destroy, as: :visitable
 
-  validates :address, presence: true
-  validates :counselor_email, presence: true
-  validates :counselor_name, presence: true
+  validates :address_city, presence: true
+  validates :address_one, presence: true
+  validates :address_state, presence: true
+  validates :address_two, presence: false
+  validates :address_zip, presence: true
+  validates :contact_email, presence: true
+  validates :contact_first_name, presence: true
+  validates :contact_last_name, presence: true
+  validates :contact_phone_number, presence: true
+  validates :contact_title, presence: true
   validates :name, presence: true
+  validates :website, presence: true
 
 end
 
