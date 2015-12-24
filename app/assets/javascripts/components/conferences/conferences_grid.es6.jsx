@@ -14,12 +14,6 @@ class ConferencesGrid extends Component {
   // --------------------------------------------------
   get styles() {
     return {
-      container: {
-        display: 'flex',
-        flexFlow: 'wrap',
-        justifyContent: 'space-between',
-        alignContent: 'flex-start',
-      },
       header: {
         display: 'flex',
         justifyContent: 'space-between',
@@ -58,7 +52,7 @@ class ConferencesGrid extends Component {
 
   render() {
     return (
-      <div style={this.styles.container}>
+      <div style={StyleConstants.containers.grid}>
         <div style={this.styles.header}>
           <h2>{'Conferences'}</h2>
           <Clickable
