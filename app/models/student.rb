@@ -75,7 +75,7 @@ class Student < ActiveRecord::Base
   validates :preferred_name, presence: true
 
   def self.to_csv
-    attributes = %w{id address_city address_one address_state address_two address_zip birthday gender registration_status shirt_size cell_phone email first_name preferred_name guardian_one_name guardian_one_phone guardian_one_email guardian_two_name guardian_two_phone guardian_two_email home_phone is_flagged is_primary last_name group_id school_id created_at updated_at}
+    attributes = %w{first_name last_name birthday email}
     CSV.generate(headers: true) do |csv|
       csv << attributes
       all.each do |student|
@@ -83,9 +83,4 @@ class Student < ActiveRecord::Base
       end
     end
   end
-
-  def name
-    "#{first_name} #{last_name}"
-  end
-
 end
