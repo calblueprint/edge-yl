@@ -14,6 +14,16 @@ class SidebarItem extends Component {
   // --------------------------------------------------
   // Styles
   // --------------------------------------------------
+  get styles() {
+    return {
+      content: {
+        overflow: 'hidden',
+        textOverflow: 'ellipsis',
+        whiteSpace: 'nowrap',
+      }
+    };
+  }
+
   get clickableStyles() {
     return {
       child: {
@@ -22,7 +32,6 @@ class SidebarItem extends Component {
       default: {
         flex: '1',
         padding: '12px',
-        marginTop: '12px',
         borderRadius: '1px',
         boxSizing: 'border-box',
       },
@@ -42,7 +51,9 @@ class SidebarItem extends Component {
         route={this.props.route}
         styles={this.clickableStyles}
         type={'i'}>
-        <h5>{this.props.label}</h5>
+        <h5 style={this.styles.content}>
+          {this.props.label}
+        </h5>
       </Clickable>
     );
   }

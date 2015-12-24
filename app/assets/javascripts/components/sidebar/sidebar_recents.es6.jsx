@@ -19,12 +19,12 @@ class SidebarRecents extends Component {
         flexFlow: 'column',
       },
       divider: {
-        marginTop: '16px',
+        marginTop: '12px',
         borderBottom: `1px solid ${StyleConstants.colors.gray}`,
       },
       title: {
-        padding: '0 12px',
-        marginTop: '24px',
+        padding: '6px 12px',
+        marginTop: '12px',
       },
     };
   }

@@ -26,7 +26,7 @@ class StudentComments extends Component {
         boxSizing: 'border-box',
       },
       title: {
-        marginTop: '24px',
+        marginTop: '12px',
       },
     };
   }
