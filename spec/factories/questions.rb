@@ -3,9 +3,10 @@
 # Table name: questions
 #
 #  id          :integer          not null, primary key
-#  key         :string           not null
 #  is_required :boolean          not null
-#  placeholder :string           not null
+#  key         :string           not null
+#  options     :string           default([]), not null, is an Array
+#  placeholder :string           default(""), not null
 #  style       :integer          not null
 #  title       :string           not null
 #  section_id  :integer
@@ -14,8 +15,13 @@
 #
 
 FactoryGirl.define do
+
   factory :question do
-    
+    is_required { true }
+    key         { 'first_name' }
+    title       { 'First name' }
+    placeholder { 'Kira' }
+    style       { Question.styles['input'] }
   end
 
 end

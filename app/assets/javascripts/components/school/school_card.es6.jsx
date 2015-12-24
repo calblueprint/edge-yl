@@ -50,12 +50,14 @@ class SchoolCard extends Component {
       <div style={this.styles.container}>
         <CardHeader
           action={() => this.showOverlay()}
-          content={school.name}
+          content={`${school.name}`}
           icon={TypeConstants.icons.edit} />
         <div style={this.styles.section}>
-          <h3>{`School Address: ${school.address}`}</h3>
-          <h3>{`Counselor Name: ${school.counselor_name}`}</h3>
-          <h3>{`Counselor Email: ${school.counselor_email}`}</h3>
+          <h4>{`School Address:`}</h4>
+          <h6>{school.address_one}</h6>
+          <h6>{`${school.address_city}, ${school.address_state} ${school.address_zip}`}</h6>
+          <h4>{`Website:`}</h4>
+          <h6>{school.website}</h6>
       </div>
       </div>
     );

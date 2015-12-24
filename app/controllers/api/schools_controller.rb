@@ -31,10 +31,18 @@ class Api::SchoolsController < Api::BaseController
 
   def school_params
     params.require(:school).permit(
-      :address,
-      :counselor_email,
-      :counselor_name,
+      :address_city,
+      :address_one,
+      :address_state,
+      :address_two,
+      :address_zip,
+      :contact_email,
+      :contact_first_name,
+      :contact_last_name,
+      :contact_phone_number,
+      :contact_title,
       :name,
+      :website,
     )
   end
 

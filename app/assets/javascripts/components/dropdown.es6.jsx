@@ -71,10 +71,7 @@ class Dropdown extends Component {
       styles.default = Object.assign(
         {},
         styles.default,
-        {
-          borderTop: '1px solid',
-          borderColor: StyleConstants.colors.gray
-        }
+        { borderTop: `1px solid ${StyleConstants.colors.gray}` }
       );
     }
     if (option.static) {

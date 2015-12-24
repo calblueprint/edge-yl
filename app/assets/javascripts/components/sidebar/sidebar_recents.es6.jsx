@@ -20,8 +20,7 @@ class SidebarRecents extends Component {
       },
       divider: {
         marginTop: '16px',
-        borderBottom: '1px solid',
-        borderColor: StyleConstants.colors.gray,
+        borderBottom: `1px solid ${StyleConstants.colors.gray}`,
       },
       title: {
         padding: '0 12px',

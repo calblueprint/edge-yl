@@ -18,12 +18,11 @@ class StudentComment extends Component {
         display: 'flex',
         flexFlow: 'column',
         marginTop: '12px',
-        textAlign: 'right'
+        textAlign: 'right',
       },
       divider: {
         marginTop: '12px',
-        borderBottom: '1px solid',
-        borderColor: StyleConstants.colors.gray,
+        borderBottom: `1px solid ${StyleConstants.colors.gray}`,
       },
     };
   }
