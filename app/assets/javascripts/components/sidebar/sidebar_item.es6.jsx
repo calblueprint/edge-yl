@@ -17,10 +17,10 @@ class SidebarItem extends Component {
   get styles() {
     return {
       content: {
-        overflow: 'hidden',
         textOverflow: 'ellipsis',
         whiteSpace: 'nowrap',
-      }
+        overflow: 'hidden',
+      },
     };
   }
 
