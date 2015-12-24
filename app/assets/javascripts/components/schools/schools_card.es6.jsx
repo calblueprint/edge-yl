@@ -20,9 +20,7 @@ class SchoolsCard extends Component {
           content={school.name}
           route={RouteConstants.schools.show(school.id)}
           type={'h3'} />
-        <h6>{school.address}</h6>
-        <h6>{school.counselor_name}</h6>
-        <h6>{school.counselor_email}</h6>
+        <h6>{school.website}</h6>
       </div>
     );
   }
