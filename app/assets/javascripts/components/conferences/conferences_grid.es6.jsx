@@ -30,7 +30,7 @@ class ConferencesGrid extends Component {
   showOverlay() {
     ConferencesActions.storeOverlay(
       true,
-      TypeConstants.overlay.type.edit,
+      TypeConstants.actions.edit,
       'conference'
     );
   }

@@ -36,7 +36,7 @@ class ConferenceCard extends Component {
   showOverlay() {
     ConferenceActions.storeOverlay(
       true,
-      TypeConstants.overlay.type.edit
+      TypeConstants.actions.edit
     );
   }
 

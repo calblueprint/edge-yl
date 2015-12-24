@@ -41,7 +41,7 @@ class UserCard extends Component {
     return (
       <div style={this.styles.container}>
         <CardHeader
-          action={() => UserActions.storeOverlay(true, TypeConstants.overlay.type.edit)}
+          action={() => UserActions.storeOverlay(true, TypeConstants.actions.edit)}
           content={`User ${user.id}`}
           icon={TypeConstants.icons.edit} />
         <div style={this.styles.section}>

@@ -8,16 +8,11 @@ class StudentCard extends Component {
       media: React.PropTypes.string.isRequired,
       student: React.PropTypes.object.isRequired,
       target: React.PropTypes.oneOf([
-        'comment',
-        'contact',
-        'conference',
-        'outreach',
-        'guardian',
-        'preview',
-      ]).isRequired,
-      type: React.PropTypes.oneOf([
-        'create',
-        'edit',
+        TypeConstants.student.contact,
+        TypeConstants.student.conference,
+        TypeConstants.student.emergency,
+        TypeConstants.student.general,
+        TypeConstants.student.outreach,
       ]).isRequired,
     };
   }
@@ -42,7 +37,7 @@ class StudentCard extends Component {
   showOverlay() {
     StudentActions.storeOverlay(
       true,
-      TypeConstants.overlay.type.edit,
+      TypeConstants.actions.edit,
       this.props.target
     );
   }
@@ -52,28 +47,28 @@ class StudentCard extends Component {
   // --------------------------------------------------
   renderBody() {
     switch (this.props.target) {
-      case TypeConstants.overlay.target.conference:
+      case TypeConstants.student.conference:
         return <StudentConference student={this.props.student} />;
-      case TypeConstants.overlay.target.contact:
+      case TypeConstants.student.contact:
         return <StudentContact student={this.props.student} />;
-      case TypeConstants.overlay.target.guardian:
+      case TypeConstants.student.emergency:
         return <StudentGuardian student={this.props.student} />;
-      case TypeConstants.overlay.target.preview:
+      case TypeConstants.student.general:
         return <StudentGeneral student={this.props.student} />;
     };
   }
 
   renderTitle() {
     switch (this.props.target) {
-      case TypeConstants.overlay.target.conference:
+      case TypeConstants.student.conference:
         return 'Conference Information';
-      case TypeConstants.overlay.target.contact:
+      case TypeConstants.student.contact:
         return 'Student Information';
-      case TypeConstants.overlay.target.guardian:
+      case TypeConstants.student.emergency:
         return 'Guardian Information';
-      case TypeConstants.overlay.target.outreach:
+      case TypeConstants.student.outreach:
         return 'Student Outreach';
-      case TypeConstants.overlay.target.preview:
+      case TypeConstants.student.general:
         return 'Student Preview';
     };
   }

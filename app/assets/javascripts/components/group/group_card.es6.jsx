@@ -38,7 +38,7 @@ class GroupCard extends Component {
     return (
       <div style={this.styles.container}>
         <CardHeader
-          action={(event) => GroupActions.storeOverlay(true, TypeConstants.overlay.type.edit)}
+          action={(event) => GroupActions.storeOverlay(true, TypeConstants.actions.edit)}
           content={`Group ${group.name}`}
           icon={TypeConstants.icons.edit} />
         <div style={this.styles.section}>

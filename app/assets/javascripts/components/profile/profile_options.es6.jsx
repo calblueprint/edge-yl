@@ -36,7 +36,7 @@ class ProfileOptions extends Component {
   showOverlay() {
     ProfileActions.storeOverlay(
       true,
-      TypeConstants.overlay.type.edit,
+      TypeConstants.actions.edit,
       'profile'
     );
   }
