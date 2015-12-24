@@ -16,15 +16,27 @@ class StudentGuardian extends Component {
     var student = this.props.student;
     return (
       <div style={StyleConstants.cards.body}>
-        <h4>{'Guardian One'}</h4>
-        <h6>{student.guardian_one_name}</h6>
-        <h6>{student.guardian_one_phone}</h6>
-        <h6>{student.guardian_one_email}</h6>
+        <h4>{'Guardian one'}</h4>
+        <CardAttribute
+          label={'Name'}
+          value={student.guardian_one_name} />
+        <CardAttribute
+          label={'Phone'}
+          value={student.guardian_one_phone} />
+        <CardAttribute
+          label={'Email'}
+          value={student.guardian_one_email} />
         <br />
-        <h4>{'Guardian Two'}</h4>
-        <h6>{student.guardian_two_name}</h6>
-        <h6>{student.guardian_two_phone}</h6>
-        <h6>{student.guardian_two_email}</h6>
+        <h4>{'Guardian two'}</h4>
+        <CardAttribute
+          label={'Name'}
+          value={student.guardian_two_name} />
+        <CardAttribute
+          label={'Phone'}
+          value={student.guardian_two_phone} />
+        <CardAttribute
+          label={'Email'}
+          value={student.guardian_two_email} />
       </div>
     );
   }

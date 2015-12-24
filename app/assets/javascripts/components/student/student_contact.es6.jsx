@@ -18,14 +18,14 @@ class StudentContact extends Component {
       <div style={StyleConstants.cards.body}>
         <h4>{'Contact'}</h4>
         <CardAttribute
-          label={'Email'}
-          value={student.email} />
-        <CardAttribute
           label={'Cell phone'}
           value={student.cell_phone} />
         <CardAttribute
           label={'Home phone'}
           value={student.home_phone} />
+        <CardAttribute
+          label={'Email'}
+          value={student.email} />
         <CardAttribute
           label={'Address one'}
           value={student.address_one} />
