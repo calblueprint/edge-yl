@@ -23,22 +23,27 @@ require 'rails_helper'
 
 RSpec.describe School, type: :model do
 
-  it "is invalid without an address" do
-    factory = FactoryGirl.build(:school, address: nil)
+  it "is invalid without an address_one" do
+    factory = FactoryGirl.build(:school, address_one: nil)
     expect(factory).to be_invalid
   end
 
-  it "is invalid without a counselor_email" do
-    factory = FactoryGirl.build(:school, counselor_email: nil)
+  it "is invalid without a contact_email" do
+    factory = FactoryGirl.build(:school, contact_email: nil)
     expect(factory).to be_invalid
   end
 
-  it "is invalid without a counselor_name" do
-    factory = FactoryGirl.build(:school, counselor_name: nil)
+  it "is invalid without a contact_first_name" do
+    factory = FactoryGirl.build(:school, contact_first_name: nil)
     expect(factory).to be_invalid
   end
 
-  it "is invalid without a counselor_name" do
+  it "is invalid without a contact_last_name" do
+    factory = FactoryGirl.build(:school, contact_last_name: nil)
+    expect(factory).to be_invalid
+  end
+
+  it "is invalid without a name" do
     factory = FactoryGirl.build(:school, name: nil)
     expect(factory).to be_invalid
   end

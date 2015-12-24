@@ -46,7 +46,7 @@ class SchoolPreviewEdit extends Component {
       address: school.address_one,
       address_state: school.address_state,
       address_zip: school.address_zip,
-      name: school.name,
+      school_name: school.name,
       website: school.website
     });
   }
@@ -69,7 +69,7 @@ class SchoolPreviewEdit extends Component {
         address_one: this.state.address,
         address_state: this.state.address_state,
         address_zip: this.state.address_zip,
-        name: this.state.name,
+        name: this.state.school_name,
         website: this.state.website,
       },
     };
@@ -92,9 +92,9 @@ class SchoolPreviewEdit extends Component {
             src='http://www.wlac.edu/WLAC/media/images/highschool/highschool-index.jpg'
             style={this.styles.image} />
           <CardInput
-            action={this.generateHandler('name')}
+            action={this.generateHandler('school_name')}
             placeholder={'School'}
-            value={this.state.name} />
+            value={this.state.school_name} />
           <CardInput
             action={this.generateHandler('address')}
             placeholder={'Address'}
