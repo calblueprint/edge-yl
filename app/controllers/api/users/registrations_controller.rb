@@ -8,7 +8,9 @@ class Api::Users::RegistrationsController < Devise::RegistrationsController
     user.skip_confirmation!
     if user.save
       sign_in user
-      render json: user, status: 201
+      render json: user,
+                   serializer: UserBaseSerializer,
+                   status: 201
     else
       unprocessable_response user
     end
