@@ -27,7 +27,6 @@ class StudentContact extends Component {
           content={student.school.name}
           route={RouteConstants.schools.show(student.school.id)}
           type={'h6'} />
-        <h6>{student.school.address}</h6>
       </div>
     );
   }

@@ -30,7 +30,6 @@ class School < ActiveRecord::Base
   validates :address_city, presence: true
   validates :address_one, presence: true
   validates :address_state, presence: true
-  validates :address_two, presence: false
   validates :address_zip, presence: true
   validates :contact_email, presence: true
   validates :contact_first_name, presence: true
