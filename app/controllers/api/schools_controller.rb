@@ -21,7 +21,9 @@ class Api::SchoolsController < Api::BaseController
   def update
     school = School.find params[:id]
     if school.update_attributes school_params
-      render json: school, serializer: SchoolShowSerializer, status: 201
+      render json: school,
+             serializer: SchoolShowSerializer,
+             status: 201
     else
       unprocessable_response school
     end

@@ -1,6 +1,6 @@
 class UserBaseSerializer < BaseSerializer
 
-  attributes :id, :email, :first_name, :has_sidebar, :is_admin, :last_name
+  attributes :id, :first_name, :last_name
 
   def visits
     object.visits.first(3)
