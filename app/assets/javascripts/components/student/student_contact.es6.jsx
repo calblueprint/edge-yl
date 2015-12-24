@@ -33,7 +33,7 @@ class StudentContact extends Component {
           value={student.address_two} />
         <CardAttribute
           label={'Address city'}
-          value={student.address_one} />
+          value={student.address_city} />
         <CardAttribute
           label={'Address state'}
           value={student.address_state} />
