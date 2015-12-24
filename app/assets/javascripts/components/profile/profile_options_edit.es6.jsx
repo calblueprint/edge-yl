@@ -16,7 +16,7 @@ class ProfileOptionsEdit extends Component {
     return {
       container: Object.assign(
         {},
-        StyleConstants.defaults.container,
+        StyleConstants.containers.card,
         {
           justifyContent: 'center',
           width: '356px',

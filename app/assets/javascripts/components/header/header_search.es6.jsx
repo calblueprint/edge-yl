@@ -81,7 +81,7 @@ class HeaderSearch extends Component {
       },
       container: Object.assign(
         {},
-        StyleConstants.defaults.container,
+        StyleConstants.containers.card,
         {
           top: '4px',
           left: '0px',

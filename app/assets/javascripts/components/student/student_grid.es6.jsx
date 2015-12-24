@@ -15,13 +15,6 @@ class StudentGrid extends Component {
   // --------------------------------------------------
   get styles() {
     return {
-      container: {
-        display: 'flex',
-        flexFlow: 'wrap',
-        justifyContent: 'space-between',
-        alignContent: 'flex-start',
-        flex: '1',
-      },
       header: {
         display: 'flex',
         justifyContent: 'space-between',
@@ -42,7 +35,7 @@ class StudentGrid extends Component {
   render() {
     var student = this.props.student;
     return (
-      <div style={this.styles.container}>
+      <div style={StyleConstants.containers.grid}>
         <div style={this.styles.header}>
           <div style={this.styles.section}>
             <h4>{'Student'}</h4>

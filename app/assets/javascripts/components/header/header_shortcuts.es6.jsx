@@ -57,7 +57,7 @@ class HeaderShortcuts extends Component {
       },
       container: Object.assign(
         {},
-        StyleConstants.defaults.container,
+        StyleConstants.containers.card,
         {
           position: 'absolute',
           width: '128px',

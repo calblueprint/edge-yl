@@ -21,7 +21,7 @@ class CreateModal extends Component {
       },
       section: Object.assign(
         {},
-        StyleConstants.defaults.container,
+        StyleConstants.containers.card,
         {
           justifyContent: 'center',
           width: '356px',

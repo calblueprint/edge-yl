@@ -16,7 +16,7 @@ class ProfileOptions extends Component {
     return {
       container: Object.assign(
         {},
-        StyleConstants.defaults.container,
+        StyleConstants.containers.card,
         {
           padding: '24px',
           marginTop: '12px',
