@@ -19,12 +19,12 @@ class Api::ConferencesController < Api::BaseController
   end
 
   def show
-    conference = Conference.find params[:id]
+    conference = Conference.includes(:groups).find params[:id]
     render json: conference, serializer: ConferenceShowSerializer
   end
 
   def update
-    conference = Conference.find params[:id]
+    conference = Conference.includes(:groups).find params[:id]
     if conference.update_attributes conference_params
       render json: conference,
              serializer: ConferenceShowSerializer,

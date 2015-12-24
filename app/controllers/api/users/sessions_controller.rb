@@ -7,7 +7,9 @@ class Api::Users::SessionsController < Devise::SessionsController
     return invalid_login if user.nil?
     if user.valid_password? params[:user][:password]
       sign_in user
-      render json: user, status: 201
+      render json: user,
+             serializer: UserBaseSerializer,
+             status: 201
     else
       invalid_login
     end
