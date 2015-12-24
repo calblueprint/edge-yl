@@ -30,7 +30,7 @@ class StudentCard extends Component {
       container: Object.assign(
         {},
         StyleConstants.cards.show,
-        this.props.media !== 'small' && { width: '49%' },
+        this.props.media === 'big' && { width: '49%' },
         this.props.media === 'small' && { width: '100%' }
       ),
     };
