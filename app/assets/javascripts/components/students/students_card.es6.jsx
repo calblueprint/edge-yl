@@ -30,10 +30,12 @@ class StudentsCard extends Component {
     var student = this.props.student;
     return (
       <div style={this.styles.container}>
-        <Clickable
-          content={`${student.first_name} ${student.last_name}`}
+        <CardAttribute
+          clickable={true}
+          label={'Name'}
           route={RouteConstants.students.show(student.id)}
-          type={'h3'} />
+          type={'h4'}
+          value={`${student.first_name} ${student.last_name}`} />
         <CardAttribute
           label={'Cell phone'}
           value={student.cell_phone} />
@@ -49,10 +51,12 @@ class StudentsCard extends Component {
         <CardAttribute
           label={'Status'}
           value={student.registration_status} />
-        <Clickable
-          content={student.school.name}
+        <CardAttribute
+          clickable={true}
+          label={'School'}
           route={RouteConstants.schools.show(student.school.id)}
-          type={'h5'} />
+          type={'h5'}
+          value={student.school.name} />
       </div>
     );
   }
