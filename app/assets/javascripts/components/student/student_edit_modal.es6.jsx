@@ -46,7 +46,7 @@ class StudentEditModal extends EditModal {
               action={() => this.updateStudent()}
               content={'Student Preview'}
               icon={TypeConstants.icons.save} />
-            <StudentPreviewEdit template={this.props.template} />
+            <StudentGeneralEdit template={this.props.template} />
           </div>
         );
       case TypeConstants.overlay.target.contact:

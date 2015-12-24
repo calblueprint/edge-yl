@@ -1,4 +1,4 @@
-class StudentPreviewEdit extends Component {
+class StudentGeneralEdit extends Component {
 
   // --------------------------------------------------
   // Props
