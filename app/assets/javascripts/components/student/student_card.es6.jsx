@@ -58,10 +58,8 @@ class StudentCard extends Component {
         return <StudentContact student={this.props.student} />;
       case TypeConstants.overlay.target.guardian:
         return <StudentGuardian student={this.props.student} />;
-      case TypeConstants.overlay.target.outreach:
-        return <StudentOutreach student={this.props.student} />;
       case TypeConstants.overlay.target.preview:
-        return <StudentPreview student={this.props.student} />;
+        return <StudentGeneral student={this.props.student} />;
     };
   }
 
