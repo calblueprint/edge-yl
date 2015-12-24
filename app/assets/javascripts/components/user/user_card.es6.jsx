@@ -16,7 +16,7 @@ class UserCard extends Component {
     return {
       container: Object.assign(
         {},
-        StyleConstants.defaults.card,
+        StyleConstants.defaults.container,
         {
           height: '256px',
           marginTop: '12px',

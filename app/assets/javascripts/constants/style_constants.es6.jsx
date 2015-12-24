@@ -45,7 +45,7 @@
       };
     }
 
-    get defaults() {
+    get containers() {
       return {
         card: {
           display: 'flex',

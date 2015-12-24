@@ -16,7 +16,7 @@ class StudentsFilters extends Component {
     return {
       container: Object.assign(
         {},
-        StyleConstants.defaults.card,
+        StyleConstants.defaults.container,
         {
           flexFlow: 'row',
           height: '44px',

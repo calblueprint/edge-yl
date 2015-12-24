@@ -16,7 +16,7 @@ class ProfilePreview extends Component {
     return {
       container: Object.assign(
         {},
-        StyleConstants.defaults.card,
+        StyleConstants.defaults.container,
         {
           alignItems: 'center',
           padding: '24px 0px',

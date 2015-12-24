@@ -74,7 +74,7 @@ class FormDropdown extends Component {
       },
       container: Object.assign(
         {},
-        StyleConstants.defaults.card,
+        StyleConstants.defaults.container,
         {
           top: '6px',
           left: '0px',

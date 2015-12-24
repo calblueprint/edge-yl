@@ -16,7 +16,7 @@ class AuthenticationModal extends Component {
     return {
       container: Object.assign(
         {},
-        StyleConstants.defaults.card,
+        StyleConstants.defaults.container,
         {
           width: '372px',
           padding: '36px',

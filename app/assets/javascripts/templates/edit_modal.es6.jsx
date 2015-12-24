@@ -21,7 +21,7 @@ class EditModal extends Component {
       },
       section: Object.assign(
         {},
-        StyleConstants.defaults.card,
+        StyleConstants.defaults.container,
         {
           justifyContent: 'center',
           width: '356px',
