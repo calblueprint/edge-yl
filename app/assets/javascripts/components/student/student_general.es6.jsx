@@ -34,6 +34,12 @@ class StudentGeneral extends Component {
         <CardAttribute
           label={'Shirt size'}
           value={student.shirt_size} />
+        <CardAttribute
+          label={'Placement'}
+          value={student.is_primary ? 'Primary' : 'Secondary'} />
+        <CardAttribute
+          label={'Flagged?'}
+          value={student.is_flagged ? 'Yes' : 'No'} />
         <br />
         <h4>{'School'}</h4>
         <Clickable

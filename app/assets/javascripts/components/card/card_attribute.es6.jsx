@@ -6,7 +6,13 @@ class CardAttribute extends Component {
   static get propTypes() {
     return {
       label: React.PropTypes.string.isRequired,
-      value: React.PropTypes.string.isRequired,
+      value: React.PropTypes.string,
+    };
+  }
+
+  static get defaultProps() {
+    return {
+      value: 'n/a',
     };
   }
 
