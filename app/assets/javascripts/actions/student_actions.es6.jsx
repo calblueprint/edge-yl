@@ -55,7 +55,12 @@
       var params = { student: attributes };
       var resolve = (response) => this.storeStudent(response);
       var reject = (response) => this.storeError(response);
-      Requester.update(ApiConstants.students.update(id), params, resolve, reject);
+      Requester.update(
+        ApiConstants.students.update(id),
+        params,
+        resolve,
+        reject
+      );
       return true;
     }
   }
