@@ -27,22 +27,16 @@
         index: (media) => Object.assign(
           {},
           this.containers.card,
-          {
-            width: '49%',
-            padding: '18px',
-            marginTop: '12px',
-            boxSizing: 'border-box',
-          },
+          { padding: '18px' },
+
           media === 'big' && { width: '49%' },
           media === 'small' && { width: '100%' }
         ),
-        show: Object.assign(
+        show: (media) => Object.assign(
           {},
           this.containers.card,
-          {
-            marginTop: '12px',
-            boxSizing: 'border-box',
-          }
+          media === 'big' && { width: '49%' },
+          media === 'small' && { width: '100%' }
         ),
       };
     }
@@ -52,10 +46,12 @@
         card: {
           display: 'flex',
           flexFlow: 'column',
+          marginTop: '12px',
           backgroundColor: this.colors.white,
           border: '1px solid',
           borderColor: '#e5e6e9 #dfe0e4 #d0d1d5',
           borderRadius: '1px',
+          boxSizing: 'border-box',
         },
         grid: {
           display: 'flex',

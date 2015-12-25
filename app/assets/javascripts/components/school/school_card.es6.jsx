@@ -49,7 +49,7 @@ class SchoolCard extends Component {
   render() {
     var school = this.props.school;
     return (
-      <div style={StyleConstants.cards.index(this.props.media)}>
+      <div style={StyleConstants.cards.show(this.props.media)}>
         <CardHeader
           action={() => this.showOverlay()}
           content={this.renderTitle()}
