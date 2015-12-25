@@ -6,6 +6,7 @@ class GroupsCard extends Component {
   static get propTypes() {
     return {
       group: React.PropTypes.object.isRequired,
+      media: React.PropTypes.string.isRequired,
     };
   }
 
@@ -15,7 +16,7 @@ class GroupsCard extends Component {
   render() {
     var group = this.props.group;
     return (
-      <div style={StyleConstants.cards.index}>
+      <div style={StyleConstants.cards.index(this.props.media)}>
         <CardAttribute
           clickable={true}
           label={'Name'}

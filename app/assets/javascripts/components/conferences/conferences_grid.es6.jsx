@@ -6,6 +6,7 @@ class ConferencesGrid extends Component {
   static get propTypes() {
     return {
       conferences: React.PropTypes.array.isRequired,
+      media: React.PropTypes.string.isRequired,
     };
   }
 
@@ -16,7 +17,8 @@ class ConferencesGrid extends Component {
     return (
       <ConferencesCard
         conference={conference}
-        key={conference.id} />
+        key={conference.id}
+        media={this.props.media} />
     );
   }
 

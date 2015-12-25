@@ -1,4 +1,4 @@
-class ConferencesCard extends Component {
+class ConferenceGeneral extends Component {
 
   // --------------------------------------------------
   // Props
@@ -6,7 +6,6 @@ class ConferencesCard extends Component {
   static get propTypes() {
     return {
       conference: React.PropTypes.object.isRequired,
-      media: React.PropTypes.string.isRequired,
     };
   }
 
@@ -16,12 +15,9 @@ class ConferencesCard extends Component {
   render() {
     var conference = this.props.conference;
     return (
-      <div style={StyleConstants.cards.index(this.props.media)}>
+      <div style={StyleConstants.cards.body}>
         <CardAttribute
-          clickable={true}
           label={'Name'}
-          route={RouteConstants.conferences.show(conference.id)}
-          type={'h4'}
           value={conference.name} />
         <CardAttribute
           label={'Location'}

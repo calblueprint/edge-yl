@@ -18,20 +18,6 @@ class StudentCard extends Component {
   }
 
   // --------------------------------------------------
-  // Styles
-  // --------------------------------------------------
-  get styles() {
-    return {
-      container: Object.assign(
-        {},
-        StyleConstants.cards.show,
-        this.props.media === 'big' && { width: '49%' },
-        this.props.media === 'small' && { width: '100%' }
-      ),
-    };
-  }
-
-  // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
   showOverlay() {
@@ -73,7 +59,7 @@ class StudentCard extends Component {
 
   render() {
     return (
-      <div style={this.styles.container}>
+      <div style={StyleConstants.cards.show(this.props.media)}>
         <CardHeader
           action={() => this.showOverlay()}
           content={this.renderTitle()}

@@ -24,42 +24,41 @@
           flex: '1',
           padding: '18px',
         },
-        index: Object.assign(
+        index: (media) => Object.assign(
           {},
           this.containers.card,
-          {
-            width: '49%',
-            padding: '18px',
-            marginTop: '12px',
-            boxSizing: 'border-box',
-          }
+          { padding: '18px' },
+
+          media === 'big' && { width: '49%' },
+          media === 'small' && { width: '100%' }
         ),
-        show: Object.assign(
+        show: (media) => Object.assign(
           {},
           this.containers.card,
-          {
-            marginTop: '12px',
-            boxSizing: 'border-box',
-          }
+          media === 'big' && { width: '49%' },
+          media === 'small' && { width: '100%' }
         ),
       };
     }
 
     get containers() {
       return {
-        card: {
-          display: 'flex',
-          flexFlow: 'column',
-          backgroundColor: this.colors.white,
-          border: '1px solid',
-          borderColor: '#e5e6e9 #dfe0e4 #d0d1d5',
-          borderRadius: '1px',
-        },
+        card: Object.assign(
+          {},
+          {
+            display: 'flex',
+            flexFlow: 'column',
+            marginTop: '12px',
+            boxSizing: 'border-box',
+          },
+          this.templates.card,
+        ),
         grid: {
           display: 'flex',
           flexFlow: 'wrap',
           justifyContent: 'space-between',
           alignContent: 'flex-start',
+          width: '100%',
         },
       };
     }
@@ -112,6 +111,17 @@
         seven: 700,
         eight: 800,
         nine: 900,
+      };
+    }
+
+    get templates() {
+      return {
+        card: {
+          backgroundColor: this.colors.white,
+          border: '1px solid',
+          borderColor: '#e5e6e9 #dfe0e4 #d0d1d5',
+          borderRadius: '1px',
+        },
       };
     }
   }

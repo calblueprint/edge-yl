@@ -6,19 +6,7 @@ class ConferenceGrid extends Component {
   static get propTypes() {
     return {
       conference: React.PropTypes.object.isRequired,
-    };
-  }
-
-  // --------------------------------------------------
-  // Styles
-  // --------------------------------------------------
-  get styles() {
-    return {
-      container: {
-        display: 'flex',
-        flexFlow: 'column',
-        flex: '1',
-      },
+      media: React.PropTypes.string.isRequired,
     };
   }
 
@@ -27,9 +15,18 @@ class ConferenceGrid extends Component {
   // --------------------------------------------------
   render() {
     return (
-      <div style={this.styles.container}>
-        <ConferenceCard conference={this.props.conference} />
-        <GroupsGrid groups={this.props.conference.groups} />
+      <div style={StyleConstants.containers.grid}>
+        <ConferenceCard
+          conference={this.props.conference}
+          media={this.props.media}
+          target={TypeConstants.conference.general} />
+        <ConferenceCard
+          conference={this.props.conference}
+          media={this.props.media}
+          target={TypeConstants.conference.statistic} />
+        <GroupsGrid
+          groups={this.props.conference.groups}
+          media={this.props.media} />
       </div>
     );
   }

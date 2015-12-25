@@ -45,7 +45,6 @@ class GroupCard extends Component {
           <h4>{`Primary Leader: ${group.primary_leader}`}</h4>
           <h4>{`Secondary Leader: ${group.secondary_leader}`}</h4>
           <h4>{`Conference: ${group.conference.id}`}</h4>
-          <h4>{`Location: ${group.conference.location}`}</h4>
         </div>
       </div>
     );
