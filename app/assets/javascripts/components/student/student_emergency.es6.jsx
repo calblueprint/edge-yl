@@ -16,27 +16,31 @@ class StudentEmergency extends Component {
     var student = this.props.student;
     return (
       <div style={StyleConstants.cards.body}>
-        <h5>{'Guardian one'}</h5>
         <CardAttribute
-          label={'Name'}
-          value={student.guardian_one_name} />
+          label={'Guardian first name'}
+          value={student.guardian_first_name} />
         <CardAttribute
-          label={'Phone'}
-          value={student.guardian_one_phone} />
+          label={'Guardian last name'}
+          value={student.guardian_last_name} />
         <CardAttribute
-          label={'Email'}
-          value={student.guardian_one_email} />
+          label={'Guardian phone number'}
+          value={student.guardian_phone_number} />
+        <CardAttribute
+          label={'Guardian phone type'}
+          value={student.guardian_phone_type} />
+        <CardAttribute
+          label={'Guardian email'}
+          value={student.guardian_email} />
+        <CardAttribute
+          label={'Guardian relationship'}
+          value={student.guardian_relationship} />
+        <CardAttribute
+          label={'Guardian employer'}
+          value={student.guardian_employer} />
+        <CardAttribute
+          label={'Guardian job title'}
+          value={student.guardian_job_title} />
         <br />
-        <h5>{'Guardian two'}</h5>
-        <CardAttribute
-          label={'Name'}
-          value={student.guardian_two_name} />
-        <CardAttribute
-          label={'Phone'}
-          value={student.guardian_two_phone} />
-        <CardAttribute
-          label={'Email'}
-          value={student.guardian_two_email} />
       </div>
     );
   }
