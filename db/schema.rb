@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20151130013648) do
   enable_extension "unaccent"
 
   create_table "comments", force: :cascade do |t|
-    t.text     "content",    null: false
+    t.string   "content",    null: false
     t.integer  "student_id"
     t.integer  "user_id"
     t.datetime "created_at", null: false
@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 20151130013648) do
     t.string   "name",             null: false
     t.string   "primary_leader",   null: false
     t.string   "secondary_leader", null: false
-    t.integer  "conference_id",    null: false
+    t.integer  "conference_id"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
   end
@@ -146,23 +146,23 @@ ActiveRecord::Schema.define(version: 20151130013648) do
   add_index "students", ["school_id"], name: "index_students_on_school_id", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                                  null: false
-    t.string   "encrypted_password",     default: "",    null: false
-    t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,     null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.inet     "current_sign_in_ip"
-    t.inet     "last_sign_in_ip"
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
+    t.datetime "current_sign_in_at"
+    t.inet     "current_sign_in_ip"
+    t.string   "email",                  default: "",    null: false
+    t.string   "encrypted_password",     default: "",    null: false
     t.string   "first_name",                             null: false
-    t.string   "last_name",                              null: false
     t.boolean  "has_sidebar",            default: true,  null: false
     t.boolean  "is_admin",               default: false, null: false
+    t.string   "last_name",                              null: false
+    t.datetime "last_sign_in_at"
+    t.inet     "last_sign_in_ip"
+    t.datetime "remember_created_at"
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.integer  "sign_in_count",          default: 0,     null: false
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
   end

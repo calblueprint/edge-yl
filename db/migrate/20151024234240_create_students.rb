@@ -1,7 +1,7 @@
 class CreateStudents < ActiveRecord::Migration
+
   def change
     create_table :students do |t|
-
       t.string  :address_city, null: false
       t.string  :address_one, null: false
       t.string  :address_state, null: false
@@ -32,4 +32,5 @@ class CreateStudents < ActiveRecord::Migration
       t.timestamps null: false
     end
   end
+
 end
