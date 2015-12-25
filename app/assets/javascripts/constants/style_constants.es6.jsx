@@ -61,7 +61,6 @@
           justifyContent: 'space-between',
           alignContent: 'flex-start',
           flex: '1',
-          paddingBottom: '48px',
         },
       };
     }
@@ -92,8 +91,7 @@
           display: 'flex',
           flexFlow: 'column',
           flex: '1',
-          paddingLeft: '12px',
-          paddingRight: '208px',
+          padding: '0px 208px 24px 12px',
           overflow: 'scroll',
         },
         wrapper: {
