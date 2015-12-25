@@ -93,20 +93,20 @@ ActiveRecord::Schema.define(version: 20151130013648) do
   add_index "responsibilities", ["user_id"], name: "index_responsibilities_on_user_id", using: :btree
 
   create_table "schools", force: :cascade do |t|
-    t.string   "address_city",         null: false
-    t.string   "address_one",          null: false
-    t.string   "address_state",        null: false
-    t.string   "address_two",          null: false
-    t.string   "address_zip",          null: false
-    t.string   "contact_email",        null: false
-    t.string   "contact_first_name",   null: false
-    t.string   "contact_last_name",    null: false
-    t.string   "contact_phone_number", null: false
-    t.string   "contact_title",        null: false
-    t.string   "name",                 null: false
-    t.string   "website",              null: false
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.string   "address_city",                      null: false
+    t.string   "address_one",                       null: false
+    t.string   "address_state",                     null: false
+    t.string   "address_two",          default: "", null: false
+    t.string   "address_zip",                       null: false
+    t.string   "contact_email",                     null: false
+    t.string   "contact_first_name",                null: false
+    t.string   "contact_last_name",                 null: false
+    t.string   "contact_phone_number",              null: false
+    t.string   "contact_title",                     null: false
+    t.string   "name",                              null: false
+    t.string   "website",                           null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
   end
 
   create_table "sections", force: :cascade do |t|
@@ -119,27 +119,35 @@ ActiveRecord::Schema.define(version: 20151130013648) do
   add_index "sections", ["form_id"], name: "index_sections_on_form_id", using: :btree
 
   create_table "students", force: :cascade do |t|
-    t.string   "address_city",                     null: false
-    t.string   "address_one",                      null: false
-    t.string   "address_state",                    null: false
-    t.string   "address_two",         default: "", null: false
-    t.string   "address_zip",                      null: false
-    t.date     "birthday",                         null: false
-    t.string   "cell_phone",                       null: false
-    t.string   "email",                            null: false
-    t.string   "first_name",                       null: false
-    t.integer  "gender",                           null: false
-    t.string   "home_phone",                       null: false
-    t.boolean  "is_flagged",                       null: false
-    t.boolean  "is_primary",                       null: false
-    t.string   "last_name",                        null: false
-    t.string   "preferred_name",      default: "", null: false
-    t.integer  "registration_status",              null: false
-    t.integer  "shirt_size",                       null: false
+    t.string   "address_city",                       null: false
+    t.string   "address_one",                        null: false
+    t.string   "address_state",                      null: false
+    t.string   "address_two",           default: "", null: false
+    t.string   "address_zip",                        null: false
+    t.date     "birthday",                           null: false
+    t.string   "cell_phone",                         null: false
+    t.string   "email",                              null: false
+    t.string   "first_name",                         null: false
+    t.integer  "gender",                             null: false
+    t.string   "guardian_email",                     null: false
+    t.string   "guardian_employer",     default: "", null: false
+    t.string   "guardian_first_name",                null: false
+    t.string   "guardian_job_title",    default: "", null: false
+    t.string   "guardian_last_name",                 null: false
+    t.string   "guardian_phone_number",              null: false
+    t.integer  "guardian_phone_type",                null: false
+    t.integer  "guardian_relationship",              null: false
+    t.string   "home_phone",                         null: false
+    t.boolean  "is_flagged",                         null: false
+    t.boolean  "is_primary",                         null: false
+    t.string   "last_name",                          null: false
+    t.string   "preferred_name",        default: "", null: false
+    t.integer  "registration_status",                null: false
+    t.integer  "shirt_size",                         null: false
     t.integer  "group_id"
     t.integer  "school_id"
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
   end
 
   add_index "students", ["group_id"], name: "index_students_on_group_id", using: :btree

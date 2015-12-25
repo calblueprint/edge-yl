@@ -2,28 +2,36 @@
 #
 # Table name: students
 #
-#  id                  :integer          not null, primary key
-#  address_city        :string           not null
-#  address_one         :string           not null
-#  address_state       :string           not null
-#  address_two         :string           default(""), not null
-#  address_zip         :string           not null
-#  birthday            :date             not null
-#  cell_phone          :string           not null
-#  email               :string           not null
-#  first_name          :string           not null
-#  gender              :integer          not null
-#  home_phone          :string           not null
-#  is_flagged          :boolean          not null
-#  is_primary          :boolean          not null
-#  last_name           :string           not null
-#  preferred_name      :string           default(""), not null
-#  registration_status :integer          not null
-#  shirt_size          :integer          not null
-#  group_id            :integer
-#  school_id           :integer
-#  created_at          :datetime         not null
-#  updated_at          :datetime         not null
+#  id                    :integer          not null, primary key
+#  address_city          :string           not null
+#  address_one           :string           not null
+#  address_state         :string           not null
+#  address_two           :string           default(""), not null
+#  address_zip           :string           not null
+#  birthday              :date             not null
+#  cell_phone            :string           not null
+#  email                 :string           not null
+#  first_name            :string           not null
+#  gender                :integer          not null
+#  guardian_email        :string           not null
+#  guardian_employer     :string           default(""), not null
+#  guardian_first_name   :string           not null
+#  guardian_job_title    :string           default(""), not null
+#  guardian_last_name    :string           not null
+#  guardian_phone_number :string           not null
+#  guardian_phone_type   :integer          not null
+#  guardian_relationship :integer          not null
+#  home_phone            :string           not null
+#  is_flagged            :boolean          not null
+#  is_primary            :boolean          not null
+#  last_name             :string           not null
+#  preferred_name        :string           default(""), not null
+#  registration_status   :integer          not null
+#  shirt_size            :integer          not null
+#  group_id              :integer
+#  school_id             :integer
+#  created_at            :datetime         not null
+#  updated_at            :datetime         not null
 #
 
 class Student < ActiveRecord::Base
@@ -36,6 +44,18 @@ class Student < ActiveRecord::Base
   belongs_to :school
 
   enum gender: [:Female, :Male, :Other]
+  enum guardian_phone_type: [:Cell, :Home, :Work]
+  enum guardian_relationship: [
+    :Mother,
+    :Father,
+    :Aunt,
+    :Uncle,
+    :Grandmother,
+    :Grandfather,
+    :Stepmother,
+    :Stepfather,
+    :Guardian,
+  ]
   enum registration_status: [:Registered, :Selected, :Dropped]
   enum shirt_size: [:S, :M, :L, :XL, :XXL]
 
@@ -54,13 +74,12 @@ class Student < ActiveRecord::Base
   validates :cell_phone, presence: true
   validates :email, presence: true
   validates :first_name, presence: true
-  # validates :gender, presence: true
-  # validates :guardian_one_name, presence: true
-  # validates :guardian_one_phone, presence: true
-  # validates :guardian_one_email, presence: true
-  # validates :guardian_two_name, presence: true
-  # validates :guardian_two_phone, presence: true
-  # validates :guardian_two_email, presence: true
+  validates :gender, presence: true
+  validates :guardian_email, presence: true
+  validates :guardian_first_name, presence: true
+  validates :guardian_last_name, presence: true
+  validates :guardian_phone_number, presence: true
+  validates :guardian_phone_type, presence: true
   validates :is_flagged, inclusion: { in: [false, true] }
   validates :is_primary, inclusion: { in: [false, true] }
   validates :home_phone, presence: true
