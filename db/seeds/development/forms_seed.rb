@@ -21,6 +21,7 @@ student_form = Form.create(
       title: 'Last name',
     )
     Question.create(
+      is_required: false,
       key: 'preferred_name',
       placeholder: 'Kira',
       section: section,
@@ -155,7 +156,7 @@ student_form = Form.create(
     Question.create(
       is_required: false,
       key: 'guardian_employer',
-      placeholder: 'EDGE Youth Leadership'
+      placeholder: 'EDGE Youth Leadership',
       section: section,
       style: Question.styles[:input],
       title: 'Guardian employer',
@@ -163,7 +164,7 @@ student_form = Form.create(
     Question.create(
       is_required: false,
       key: 'guardian_job_title',
-      placeholder: 'Software Engineer'
+      placeholder: 'Software Engineer',
       section: section,
       style: Question.styles[:input],
       title: 'Guardian job title',
