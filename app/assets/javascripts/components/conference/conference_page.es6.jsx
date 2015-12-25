@@ -23,18 +23,22 @@ class ConferencePage extends Component {
   componentWillMount() {
     this.setState(ConferenceStore.getState());
     this.setState(ProfileStore.getState());
+    this.setState(ViewStore.getState());
   }
 
   componentDidMount() {
     ConferenceStore.listen(this._listener);
     ProfileStore.listen(this._listener);
+    ViewStore.listen(this._listener);
     ConferenceActions.fetchConference(this.props.id);
     ProfileActions.fetchProfile();
+    ViewActions.attachListener();
   }
 
   componentWillUnmount() {
     ConferenceStore.unlisten(this._listener);
     ProfileStore.unlisten(this._listener);
+    ViewStore.unlisten(this._listener);
   }
 
   // --------------------------------------------------
@@ -66,7 +70,9 @@ class ConferencePage extends Component {
               content={'Edit'}
               label={'Conference'}
               value={conference.name} />
-            <ConferenceGrid conference={conference} />
+            <ConferenceGrid
+              conference={conference}
+              media={this.state.media} />
           </div>
         </div>
       </div>

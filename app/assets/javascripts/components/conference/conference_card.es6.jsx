@@ -6,6 +6,11 @@ class ConferenceCard extends Component {
   static get propTypes() {
     return {
       conference: React.PropTypes.object.isRequired,
+      media: React.PropTypes.string.isRequired,
+      target: React.PropTypes.oneOf([
+        TypeConstants.conference.general,
+        TypeConstants.conference.statistic,
+      ]).isRequired,
     };
   }
 
@@ -17,16 +22,9 @@ class ConferenceCard extends Component {
       container: Object.assign(
         {},
         StyleConstants.cards.show,
-        { height: '256px' }
+        this.props.media === 'big' && { width: '49%' },
+        this.props.media === 'small' && { width: '100%' }
       ),
-      section: {
-        display: 'flex',
-        flexFlow: 'column',
-        alignItems: 'center',
-        justifyContent: 'space-around',
-        padding: '12px',
-        flex: '1',
-      },
     };
   }
 
@@ -36,26 +34,39 @@ class ConferenceCard extends Component {
   showOverlay() {
     ConferenceActions.storeOverlay(
       true,
-      TypeConstants.actions.edit
+      TypeConstants.actions.edit,
+      this.props.target
     );
   }
 
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
+  renderBody() {
+    switch (this.props.target) {
+      case TypeConstants.conference.general:
+        return <ConferenceGeneral conference={this.props.conference} />;
+    }
+  }
+
+  renderTitle() {
+    switch (this.props.target) {
+      case TypeConstants.conference.general:
+        return 'General Information';
+      case TypeConstants.conference.statistic:
+        return 'Statistic Information';
+    };
+  }
+
   render() {
     var conference = this.props.conference;
     return (
       <div style={this.styles.container}>
         <CardHeader
           action={() => this.showOverlay()}
-          content={conference.name}
+          content={this.renderTitle()}
           icon={TypeConstants.icons.edit} />
-        <div style={this.styles.section}>
-          <h4>{`Location: ${conference.location}`}</h4>
-          <h4>{`Start Date: ${conference.start_date}`}</h4>
-          <h4>{`End Date: ${conference.end_date}`}</h4>
-        </div>
+        {this.renderBody()}
       </div>
     );
   }

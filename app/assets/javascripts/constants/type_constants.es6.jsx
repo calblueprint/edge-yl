@@ -16,7 +16,10 @@
     }
 
     get conference() {
-      return 'conference';
+      return {
+        general: 'conference-general',
+        statistic: 'conference-statistic',
+      }
     }
 
     get school() {

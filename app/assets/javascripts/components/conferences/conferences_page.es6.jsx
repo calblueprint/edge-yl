@@ -41,6 +41,7 @@ class ConferencesPage extends Component {
   // Helpers
   // --------------------------------------------------
   showOverlay() {
+    // TODO(Warren): Fix constants below.
     ConferencesActions.storeOverlay(
       true,
       TypeConstants.actions.edit,
