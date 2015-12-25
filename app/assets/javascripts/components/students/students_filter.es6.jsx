@@ -52,7 +52,7 @@ class StudentsFilter extends Component {
       },
       container: Object.assign(
         {},
-        StyleConstants.defaults.card,
+        StyleConstants.containers.card,
         {
           top: '4px',
           left: '0px',

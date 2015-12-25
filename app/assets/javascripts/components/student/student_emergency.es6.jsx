@@ -1,4 +1,4 @@
-class StudentContact extends Component {
+class StudentEmergency extends Component {
 
   // --------------------------------------------------
   // Props
@@ -16,30 +16,27 @@ class StudentContact extends Component {
     var student = this.props.student;
     return (
       <div style={StyleConstants.cards.body}>
+        <h4>{'Guardian one'}</h4>
         <CardAttribute
-          label={'Cell phone'}
-          value={student.cell_phone} />
+          label={'Name'}
+          value={student.guardian_one_name} />
         <CardAttribute
-          label={'Home phone'}
-          value={student.home_phone} />
+          label={'Phone'}
+          value={student.guardian_one_phone} />
         <CardAttribute
           label={'Email'}
-          value={student.email} />
+          value={student.guardian_one_email} />
+        <br />
+        <h4>{'Guardian two'}</h4>
         <CardAttribute
-          label={'Address one'}
-          value={student.address_one} />
+          label={'Name'}
+          value={student.guardian_two_name} />
         <CardAttribute
-          label={'Address two'}
-          value={student.address_two} />
+          label={'Phone'}
+          value={student.guardian_two_phone} />
         <CardAttribute
-          label={'Address city'}
-          value={student.address_city} />
-        <CardAttribute
-          label={'Address state'}
-          value={student.address_state} />
-        <CardAttribute
-          label={'Address zip'}
-          value={student.address_zip} />
+          label={'Email'}
+          value={student.guardian_two_email} />
       </div>
     );
   }

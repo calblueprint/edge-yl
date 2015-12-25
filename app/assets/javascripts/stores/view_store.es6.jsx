@@ -2,17 +2,15 @@
   class ViewStore {
 
     constructor() {
-      this.media = 'large';
+      this.media = 'big';
       this.bindListeners({
         handleStoreMedia: ViewActions.STORE_MEDIA,
       });
     }
 
     handleStoreMedia(width) {
-      if (width >= 1200) {
-        this.media = 'large';
-      } else if (width >= 992) {
-        this.media = 'medium';
+      if (width >= 992) {
+        this.media = 'big';
       } else {
         this.media = 'small';
       }

@@ -21,7 +21,7 @@ class PageNavigator extends Component {
       container: {
         display: 'flex',
         justifyContent: 'flex-end',
-        padding: '24px 0',
+        paddingTop: '24px',
       },
       left: {
         paddingLeft: '6px',

@@ -71,7 +71,8 @@ class StudentPage extends Component {
             <StudentGrid
               media={this.state.media}
               student={this.state.student} />
-            <StudentComments comments={this.state.student.comments} />
+            <StudentComments
+              comments={this.state.student.comments} />
           </div>
         </div>
       </div>

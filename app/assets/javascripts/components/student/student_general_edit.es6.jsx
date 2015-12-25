@@ -1,4 +1,4 @@
-class StudentPreviewEdit extends Component {
+class StudentGeneralEdit extends Component {
 
   // --------------------------------------------------
   // Props
@@ -6,24 +6,6 @@ class StudentPreviewEdit extends Component {
   static get propTypes() {
     return {
       template: React.PropTypes.object.isRequired,
-    };
-  }
-
-  // --------------------------------------------------
-  // Styles
-  // --------------------------------------------------
-  get styles() {
-    return {
-      container: Object.assign(
-        {},
-        StyleConstants.cards.body,
-        { alignItems: 'center' }
-      ),
-      image: {
-        width: '128px',
-        height: '128px',
-        borderRadius: '50%',
-      },
     };
   }
 
@@ -43,13 +25,11 @@ class StudentPreviewEdit extends Component {
   render() {
     var template = this.props.template;
     return (
-      <div style={this.styles.container}>
-        <img
-          src={'https://scontent.fsnc1-1.fna.fbcdn.net/hphotos-xfp1/t31.0-8/11856297_10200932572512494_2256826043885795533_o.jpg'}
-          style={this.styles.image} />
+      <div style={StyleConstants.cards.body}>
         <CardInput
           action={this.generateHandler('first_name')}
           errors={template.errors.first_name}
+          margin={false}
           placeholder={'First name'}
           value={template.first_name} />
         <CardInput

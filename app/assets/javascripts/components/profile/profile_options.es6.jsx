@@ -16,7 +16,7 @@ class ProfileOptions extends Component {
     return {
       container: Object.assign(
         {},
-        StyleConstants.defaults.card,
+        StyleConstants.containers.card,
         {
           padding: '24px',
           marginTop: '12px',
@@ -36,7 +36,7 @@ class ProfileOptions extends Component {
   showOverlay() {
     ProfileActions.storeOverlay(
       true,
-      TypeConstants.overlay.type.edit,
+      TypeConstants.actions.edit,
       'profile'
     );
   }

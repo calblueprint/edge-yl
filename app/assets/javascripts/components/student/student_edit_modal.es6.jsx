@@ -39,42 +39,42 @@ class StudentEditModal extends EditModal {
   // --------------------------------------------------
   renderBody() {
     switch (this.props.overlay.target) {
-      case TypeConstants.overlay.target.preview:
+      case TypeConstants.student.contact:
         return (
           <div style={this.styles.section}>
             <CardHeader
               action={() => this.updateStudent()}
-              content={'Student Preview'}
-              icon={TypeConstants.icons.save} />
-            <StudentPreviewEdit template={this.props.template} />
-          </div>
-        );
-      case TypeConstants.overlay.target.contact:
-        return (
-          <div style={this.styles.section}>
-            <CardHeader
-              action={() => this.updateStudent()}
-              content={'Student Contact'}
+              content={'Contact Information'}
               icon={TypeConstants.icons.save} />
             <StudentContactEdit template={this.props.template} />
           </div>
         );
-      case TypeConstants.overlay.target.guardian:
+      case TypeConstants.student.emergency:
         return (
           <div style={this.styles.section}>
             <CardHeader
               action={() => this.updateStudent()}
-              content={'Student Guardian'}
+              content={'Emergency Information'}
               icon={TypeConstants.icons.save} />
-            <StudentGuardianEdit template={this.props.template} />
+            <StudentEmergencyEdit template={this.props.template} />
           </div>
         );
-      case TypeConstants.overlay.target.outreach:
+      case TypeConstants.student.general:
         return (
           <div style={this.styles.section}>
             <CardHeader
               action={() => this.updateStudent()}
-              content={'Student Outreach'}
+              content={'General Information'}
+              icon={TypeConstants.icons.save} />
+            <StudentGeneralEdit template={this.props.template} />
+          </div>
+        );
+      case TypeConstants.student.outreach:
+        return (
+          <div style={this.styles.section}>
+            <CardHeader
+              action={() => this.updateStudent()}
+              content={'Outreach Information'}
               icon={TypeConstants.icons.save} />
             <StudentOutreachEdit template={this.props.template} />
           </div>

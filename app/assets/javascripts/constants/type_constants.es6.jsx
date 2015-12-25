@@ -1,6 +1,30 @@
 (() => {
   class TypeConstants {
 
+    get actions() {
+      return {
+        create: 'create',
+        edit: 'edit',
+      };
+    }
+
+    get comment() {
+      return {
+        school: 'comment-school',
+        student: 'comment-student',
+      };
+    }
+
+    get student() {
+      return {
+        contact: 'student-contact',
+        conference: 'student-conference',
+        emergency: 'student-emergency',
+        general: 'student-general',
+        outreach: 'student-outreach',
+      };
+    }
+
     get icons() {
       return {
         bars: 'fa fa-bars fa-x',
@@ -16,23 +40,6 @@
         search: 'fa-search',
         student: 'fa-graduation-cap',
         volunteer: 'fa-users',
-      };
-    }
-
-    get overlay() {
-      return {
-        target: {
-          comment: 'comment',
-          contact: 'contact',
-          conference: 'conference',
-          guardian: 'guardian',
-          outreach: 'outreach',
-          preview: 'preview',
-        },
-        type: {
-          create: 'create',
-          edit: 'edit',
-        },
       };
     }
   }

@@ -10,21 +10,6 @@ class SchoolsGrid extends Component {
   }
 
   // --------------------------------------------------
-  // Styles
-  // --------------------------------------------------
-  get styles() {
-    return {
-      container: {
-        display: 'flex',
-        flexFlow: 'wrap',
-        justifyContent: 'space-between',
-        alignContent: 'flex-start',
-        flex: '1',
-      },
-    };
-  }
-
-  // --------------------------------------------------
   // Render
   // --------------------------------------------------
   renderCard(school) {
@@ -41,7 +26,7 @@ class SchoolsGrid extends Component {
 
   render() {
     return (
-      <div style={this.styles.container}>
+      <div style={StyleConstants.containers.grid}>
         {this.renderCards()}
       </div>
     );

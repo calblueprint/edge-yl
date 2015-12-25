@@ -36,8 +36,8 @@ class SchoolCard extends Component {
   showOverlay() {
     SchoolActions.storeOverlay(
       true,
-      TypeConstants.overlay.type.edit,
-      TypeConstants.overlay.target.preview
+      TypeConstants.actions.edit,
+      TypeConstants.student.general
     );
   }
 

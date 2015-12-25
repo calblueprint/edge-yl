@@ -26,7 +26,7 @@
         },
         index: Object.assign(
           {},
-          this.defaults.card,
+          this.containers.card,
           {
             width: '49%',
             padding: '18px',
@@ -36,7 +36,7 @@
         ),
         show: Object.assign(
           {},
-          this.defaults.card,
+          this.containers.card,
           {
             marginTop: '12px',
             boxSizing: 'border-box',
@@ -45,7 +45,7 @@
       };
     }
 
-    get defaults() {
+    get containers() {
       return {
         card: {
           display: 'flex',
@@ -54,6 +54,13 @@
           border: '1px solid',
           borderColor: '#e5e6e9 #dfe0e4 #d0d1d5',
           borderRadius: '1px',
+        },
+        grid: {
+          display: 'flex',
+          flexFlow: 'wrap',
+          justifyContent: 'space-between',
+          alignContent: 'flex-start',
+          flex: '1',
         },
       };
     }
@@ -84,8 +91,7 @@
           display: 'flex',
           flexFlow: 'column',
           flex: '1',
-          paddingLeft: '12px',
-          paddingRight: '208px',
+          padding: '0px 208px 24px 12px',
           overflow: 'scroll',
         },
         wrapper: {

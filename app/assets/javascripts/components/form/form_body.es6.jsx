@@ -16,7 +16,7 @@ class FormBody extends Component {
     return {
       container: Object.assign(
         {},
-        StyleConstants.defaults.card,
+        StyleConstants.containers.card,
         {
           width: '712px',
           padding: '36px',
