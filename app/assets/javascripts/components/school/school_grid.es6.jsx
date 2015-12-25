@@ -11,27 +11,19 @@ class SchoolGrid extends Component {
   }
 
   // --------------------------------------------------
-  // Styles
-  // --------------------------------------------------
-  get styles() {
-    return {
-      container: {
-        display: 'flex',
-        flexFlow: 'column',
-        flex: '1',
-      },
-    };
-  }
-
-  // --------------------------------------------------
   // Render
   // --------------------------------------------------
   render() {
     return (
-      <div style={this.styles.container}>
+      <div style={StyleConstants.containers.grid}>
         <SchoolCard
           media={this.props.media}
-          school={this.props.school}/>
+          school={this.props.school}
+          target={TypeConstants.school.general} />
+        <SchoolCard
+          media={this.props.media}
+          school={this.props.school}
+          target={TypeConstants.school.contact} />
       </div>
     );
   }

@@ -15,6 +15,13 @@
       };
     }
 
+    get school() {
+      return {
+        contact: 'school-contact',
+        general: 'school-general',
+      };
+    }
+
     get student() {
       return {
         contact: 'student-contact',

@@ -20,23 +20,19 @@ class StudentGrid extends Component {
         <StudentCard
           media={this.props.media}
           student={student}
-          target={TypeConstants.student.general}
-          type={TypeConstants.actions.edit} />
+          target={TypeConstants.student.general} />
         <StudentCard
           media={this.props.media}
           student={student}
-          target={TypeConstants.student.contact}
-          type={TypeConstants.actions.edit} />
+          target={TypeConstants.student.contact} />
         <StudentCard
           media={this.props.media}
           student={student}
-          target={TypeConstants.student.emergency}
-          type={TypeConstants.actions.edit} />
+          target={TypeConstants.student.emergency} />
         <StudentCard
           media={this.props.media}
           student={student}
-          target={TypeConstants.student.conference}
-          type={TypeConstants.actions.edit} />
+          target={TypeConstants.student.conference} />
       </div>
     );
   }

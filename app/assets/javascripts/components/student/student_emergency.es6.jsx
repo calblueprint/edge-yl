@@ -16,7 +16,7 @@ class StudentEmergency extends Component {
     var student = this.props.student;
     return (
       <div style={StyleConstants.cards.body}>
-        <h4>{'Guardian one'}</h4>
+        <h5>{'Guardian one'}</h5>
         <CardAttribute
           label={'Name'}
           value={student.guardian_one_name} />
@@ -27,7 +27,7 @@ class StudentEmergency extends Component {
           label={'Email'}
           value={student.guardian_one_email} />
         <br />
-        <h4>{'Guardian two'}</h4>
+        <h5>{'Guardian two'}</h5>
         <CardAttribute
           label={'Name'}
           value={student.guardian_two_name} />

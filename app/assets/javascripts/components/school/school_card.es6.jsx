@@ -7,6 +7,10 @@ class SchoolCard extends Component {
     return {
       media: React.PropTypes.string.isRequired,
       school: React.PropTypes.object.isRequired,
+      target: React.PropTypes.oneOf([
+        TypeConstants.school.contact,
+        TypeConstants.school.general,
+      ]).isRequired,
     };
   }
 
@@ -31,7 +35,7 @@ class SchoolCard extends Component {
     SchoolActions.storeOverlay(
       true,
       TypeConstants.actions.edit,
-      TypeConstants.student.general
+      this.props.target
     );
   }
 
@@ -39,11 +43,21 @@ class SchoolCard extends Component {
   // Render
   // --------------------------------------------------
   renderBody() {
-    return <SchoolGeneral school={this.props.school} />;
+    switch (this.props.target) {
+      case TypeConstants.school.contact:
+        return <SchoolContact school={this.props.school} />;
+      case TypeConstants.school.general:
+        return <SchoolGeneral school={this.props.school} />;
+    };
   }
 
   renderTitle() {
-    return 'General Information';
+    switch (this.props.target) {
+      case TypeConstants.school.contact:
+        return 'Contact Information';
+      case TypeConstants.school.general:
+        return 'General Information';
+    };
   }
 
   render() {
