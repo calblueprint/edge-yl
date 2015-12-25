@@ -47,7 +47,9 @@ class ConferencePage extends Component {
   renderOverlay() {
     if (this.state.overlay.active) {
       return (
-        <div>{'Render Overlay'}</div>
+        <ConferencePageOverlay
+          overlay={this.state.overlay}
+          conference={this.state.conference} />
       );
     }
   }

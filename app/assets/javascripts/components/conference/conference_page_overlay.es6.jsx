@@ -10,7 +10,7 @@ class ConferencePageOverlay extends PageOverlay {
         target: React.PropTypes.string.isRequired,
         type: React.PropTypes.string.isRequired,
       }).isRequired,
-      template: React.PropTypes.object.isRequired,
+      // template: React.PropTypes.object.isRequired,
     };
   }
 
@@ -34,10 +34,6 @@ class ConferencePageOverlay extends PageOverlay {
   // Render
   // --------------------------------------------------
   renderModal() {
-    return (
-      <StudentEditModal
-        overlay={this.props.overlay}
-        template={this.props.template} />
-    );
+    return null;
   }
 }
