@@ -80,6 +80,7 @@ class Student < ActiveRecord::Base
   validates :guardian_last_name, presence: true
   validates :guardian_phone_number, presence: true
   validates :guardian_phone_type, presence: true
+  validates :guardian_relationship, presence: true
   validates :is_flagged, inclusion: { in: [false, true] }
   validates :is_primary, inclusion: { in: [false, true] }
   validates :home_phone, presence: true

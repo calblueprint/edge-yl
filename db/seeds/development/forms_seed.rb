@@ -125,27 +125,51 @@ student_form = Form.create(
   ) do |section|
     Question.create(
       is_required: true,
-      key: 'guardian_one_name',
+      key: 'guardian_first_name',
       placeholder: 'Kira',
       section: section,
       style: Question.styles[:input],
-      title: 'Parent/Guardian One Name',
+      title: 'Guardian first name',
     )
     Question.create(
       is_required: true,
-      key: 'guardian_one_email',
-      placeholder: 'kira@gmail.com',
+      key: 'guardian_last_name',
+      placeholder: 'Klapper',
       section: section,
       style: Question.styles[:input],
-      title: 'Parent/Guardian One Email',
+      title: 'Guardian last name',
     )
     Question.create(
       is_required: true,
-      key: 'guardian_one_phone',
+      key: 'guardian_email',
+      placeholder: 'kiraklapper@gmail.com',
+      section: section,
+      style: Question.styles[:input],
+      title: 'Guardian email',
+    )
+    Question.create(
+      is_required: true,
+      key: 'guardian_relationship',
+      options: Student.guardian_relationships.keys,
+      section: section,
+      style: Question.styles[:dropdown],
+      title: 'Guardian relationship',
+    )
+    Question.create(
+      is_required: true,
+      key: 'guardian_phone_number',
       placeholder: '(555) 555-5555',
       section: section,
       style: Question.styles[:input],
-      title: 'Parent/Guardian One Email',
+      title: 'Guardian phone number',
+    )
+    Question.create(
+      is_required: true,
+      key: 'guardian_phone_type',
+      options: Student.guardian_phone_types.keys,
+      section: section,
+      style: Question.styles[:dropdown],
+      title: 'Guardian phone type',
     )
   end
 end
