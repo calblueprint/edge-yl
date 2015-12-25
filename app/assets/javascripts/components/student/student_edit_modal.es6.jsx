@@ -39,16 +39,6 @@ class StudentEditModal extends EditModal {
   // --------------------------------------------------
   renderBody() {
     switch (this.props.overlay.target) {
-      case TypeConstants.student.general:
-        return (
-          <div style={this.styles.section}>
-            <CardHeader
-              action={() => this.updateStudent()}
-              content={'General Information'}
-              icon={TypeConstants.icons.save} />
-            <StudentGeneralEdit template={this.props.template} />
-          </div>
-        );
       case TypeConstants.student.contact:
         return (
           <div style={this.styles.section}>
@@ -66,7 +56,17 @@ class StudentEditModal extends EditModal {
               action={() => this.updateStudent()}
               content={'Emergency Information'}
               icon={TypeConstants.icons.save} />
-            <StudentGuardianEdit template={this.props.template} />
+            <StudentEmergencyEdit template={this.props.template} />
+          </div>
+        );
+      case TypeConstants.student.general:
+        return (
+          <div style={this.styles.section}>
+            <CardHeader
+              action={() => this.updateStudent()}
+              content={'General Information'}
+              icon={TypeConstants.icons.save} />
+            <StudentGeneralEdit template={this.props.template} />
           </div>
         );
       case TypeConstants.student.outreach:
