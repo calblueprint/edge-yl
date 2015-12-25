@@ -43,16 +43,16 @@
 
     get containers() {
       return {
-        card: {
-          display: 'flex',
-          flexFlow: 'column',
-          marginTop: '12px',
-          backgroundColor: this.colors.white,
-          border: '1px solid',
-          borderColor: '#e5e6e9 #dfe0e4 #d0d1d5',
-          borderRadius: '1px',
-          boxSizing: 'border-box',
-        },
+        card: Object.assign(
+          {},
+          {
+            display: 'flex',
+            flexFlow: 'column',
+            marginTop: '12px',
+            boxSizing: 'border-box',
+          },
+          this.templates.card,
+        ),
         grid: {
           display: 'flex',
           flexFlow: 'wrap',
@@ -111,6 +111,17 @@
         seven: 700,
         eight: 800,
         nine: 900,
+      };
+    }
+
+    get templates() {
+      return {
+        card: {
+          backgroundColor: this.colors.white,
+          border: '1px solid',
+          borderColor: '#e5e6e9 #dfe0e4 #d0d1d5',
+          borderRadius: '1px',
+        },
       };
     }
   }
