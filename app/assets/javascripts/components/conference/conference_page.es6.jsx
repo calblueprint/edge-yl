@@ -49,6 +49,7 @@ class ConferencePage extends Component {
   }
 
   render() {
+    var conference = this.state.conference;
     return (
       <div style={StyleConstants.pages.wrapper}>
         {this.renderOverlay()}
@@ -60,7 +61,12 @@ class ConferencePage extends Component {
             active={this.state.profile.has_sidebar}
             profile={this.state.profile} />
           <div style={StyleConstants.pages.content}>
-            <ConferenceGrid conference={this.state.conference} />
+            <PageHeader
+              clickable={true}
+              content={'Edit'}
+              label={'Conference'}
+              value={conference.name} />
+            <ConferenceGrid conference={conference} />
           </div>
         </div>
       </div>
