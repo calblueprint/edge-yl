@@ -23,18 +23,22 @@ class ConferencesPage extends Component {
   componentWillMount() {
     this.setState(ConferencesStore.getState());
     this.setState(ProfileStore.getState());
+    this.setState(ViewStore.getState());
   }
 
   componentDidMount() {
     ConferencesStore.listen(this._listener);
     ProfileStore.listen(this._listener);
+    ViewStore.listen(this._listener);
     ConferencesActions.fetchConferences(this.props.page);
     ProfileActions.fetchProfile();
+    ViewActions.attachListener();
   }
 
   componentWillUnmount() {
     ConferencesStore.unlisten(this._listener);
     ProfileStore.unlisten(this._listener);
+    ViewStore.unlisten(this._listener);
   }
 
   // --------------------------------------------------
@@ -79,7 +83,9 @@ class ConferencesPage extends Component {
               content={'New'}
               clickable={true}
               label={'Conferences'} />
-            <ConferencesGrid conferences={this.state.conferences} />
+            <ConferencesGrid
+              conferences={this.state.conferences}
+              media={this.state.media} />
             <PageNavigator
               route={RouteConstants.conferences.index}
               pagination={this.state.pagination} />
