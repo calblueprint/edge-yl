@@ -4,7 +4,7 @@ student_form = Form.create(
 ) do |form|
   Section.create(
     form: form,
-    title: 'Basic Information',
+    title: 'General Information',
   ) do |section|
     Question.create(
       is_required: true,
@@ -12,7 +12,7 @@ student_form = Form.create(
       placeholder: 'Kira',
       section: section,
       style: Question.styles[:input],
-      title: 'First Name',
+      title: 'First name',
     )
     Question.create(
       is_required: true,
@@ -20,7 +20,7 @@ student_form = Form.create(
       placeholder: 'Klapper',
       section: section,
       style: Question.styles[:input],
-      title: 'Last Name',
+      title: 'Last name',
     )
     Question.create(
       is_required: false,
@@ -28,13 +28,12 @@ student_form = Form.create(
       placeholder: 'Kira',
       section: section,
       style: Question.styles[:input],
-      title: 'Preferred Name',
+      title: 'Preferred name',
     )
     Question.create(
       is_required: true,
       key: 'gender',
       options: ['Female', 'Male', 'Other'],
-      placeholder: 'Female',
       section: section,
       style: Question.styles[:dropdown],
       title: 'Gender',
@@ -61,7 +60,7 @@ student_form = Form.create(
       placeholder: '(555) 555-5555',
       section: section,
       style: Question.styles[:input],
-      title: 'Cell Phone',
+      title: 'Cell phone',
     )
     Question.create(
       is_required: true,
@@ -69,7 +68,7 @@ student_form = Form.create(
       placeholder: '(555) 555-5555',
       section: section,
       style: Question.styles[:input],
-      title: 'Home Phone',
+      title: 'Home phone',
     )
     Question.create(
       is_required: true,
@@ -77,7 +76,7 @@ student_form = Form.create(
       placeholder: '213 Queen Street',
       section: section,
       style: Question.styles[:input],
-      title: 'Address One',
+      title: 'Address one',
     )
     Question.create(
       is_required: false,
@@ -85,7 +84,7 @@ student_form = Form.create(
       placeholder: '213 Queen Street',
       section: section,
       style: Question.styles[:input],
-      title: 'Address Two',
+      title: 'Address two',
     )
     Question.create(
       is_required: true,
@@ -93,7 +92,7 @@ student_form = Form.create(
       placeholder: 'San Francisco',
       section: section,
       style: Question.styles[:input],
-      title: 'Address City',
+      title: 'Address city',
     )
     Question.create(
       is_required: true,
@@ -101,7 +100,7 @@ student_form = Form.create(
       placeholder: 'CA',
       section: section,
       style: Question.styles[:input],
-      title: 'Address State',
+      title: 'Address state',
     )
     Question.create(
       is_required: true,
@@ -110,6 +109,14 @@ student_form = Form.create(
       section: section,
       style: Question.styles[:input],
       title: 'Address ZIP',
+    )
+    Question.create(
+      is_required: true,
+      key: 'shirt_size',
+      options: ['S', 'M', 'L', 'XL', 'XXL', 'Other'],
+      section: section,
+      style: Question.styles[:dropdown],
+      title: 'Shirt size',
     )
   end
   Section.create(
