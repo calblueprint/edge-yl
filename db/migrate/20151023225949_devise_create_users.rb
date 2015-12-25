@@ -7,11 +7,11 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.datetime :confirmation_sent_at # confirmable
       t.datetime :current_sign_in_at # trackable
       t.inet     :current_sign_in_ip # trackable
-      t.string   :email,              null: false, default: '' # authenticatable
-      t.string   :encrypted_password, null: false, default: '' # authenticatable
+      t.string   :email, default: '', null: false # authenticatable
+      t.string   :encrypted_password, default: '', null: false # authenticatable
       t.string   :first_name, null: false # custom
-      t.boolean  :has_sidebar, null: false, default: true # custom
-      t.boolean  :is_admin, null: false, default: false # custom
+      t.boolean  :has_sidebar, default: true, null: false # custom
+      t.boolean  :is_admin, default: false, null: false # custom
       t.string   :last_name, null: false # custom
       t.datetime :last_sign_in_at # trackable
       t.inet     :last_sign_in_ip # trackable
