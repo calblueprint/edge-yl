@@ -24,6 +24,13 @@ class ConferencePageOverlay extends PageOverlay {
   }
 
   // --------------------------------------------------
+  // Helpers
+  // --------------------------------------------------
+  storeOverlay() {
+    ConferenceActions.storeOverlay(false);
+  }
+
+  // --------------------------------------------------
   // Render
   // --------------------------------------------------
   renderModal() {
@@ -31,19 +38,6 @@ class ConferencePageOverlay extends PageOverlay {
       <StudentEditModal
         overlay={this.props.overlay}
         template={this.props.template} />
-    );
-  }
-
-  render() {
-    return (
-      <div ref={'container'} style={this.styles.container}>
-        <Clickable
-          action={() => StudentActions.storeOverlay(false)}
-          icon={TypeConstants.icons.close}
-          styles={this.clickableStyles}
-          type={'i'} />
-        {this.renderModal()}
-      </div>
     );
   }
 }

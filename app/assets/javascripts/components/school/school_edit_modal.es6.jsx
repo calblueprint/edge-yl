@@ -27,6 +27,14 @@ class SchoolEditModal extends EditModal {
   // Render
   // --------------------------------------------------
   renderBody() {
-    return <SchoolPreviewEdit school={this.props.school} />;
+    return (
+      <div style={this.styles.section}>
+        <CardHeader
+          action={() => this.updateStudent()}
+          content={'Outreach Information'}
+          icon={TypeConstants.icons.save} />
+        <SchoolPreviewEdit school={this.props.school} />;
+      </div>
+    );
   }
 }

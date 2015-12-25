@@ -23,27 +23,21 @@ class SchoolPageOverlay extends PageOverlay {
     }
   }
 
-  //  --------------------------------------------------
-  //  Render
-  //  --------------------------------------------------
+  // --------------------------------------------------
+  // Helpers
+  // --------------------------------------------------
+  storeOverlay() {
+    SchoolActions.storeOverlay(false);
+  }
+
+  // --------------------------------------------------
+  // Render
+  // --------------------------------------------------
   renderModal() {
     return (
       <SchoolEditModal
         overlay={this.props.overlay}
         school={this.props.school} />
-    );
-  }
-
-  render() {
-    return (
-      <div ref={'container'} style={this.styles.container}>
-        <Clickable
-          action={() => SchoolActions.storeOverlay(false)}
-          icon={'fa fa-times fa-2x'}
-          styles={this.clickableStyles}
-          type={'i'} />
-        {this.renderModal()}
-      </div>
     );
   }
 }

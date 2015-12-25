@@ -10,33 +10,6 @@ class SchoolPreviewEdit extends Component {
   }
 
   // --------------------------------------------------
-  // Styles
-  // --------------------------------------------------
-  get styles() {
-    return {
-      container: Object.assign(
-        {},
-        StyleConstants.cards.body,
-        { alignItems: 'center' }
-      ),
-      form: {
-        display: 'flex',
-        flexFlow: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        padding: '12px',
-        marginBottom: '18px',
-      },
-      image: {
-        width: '152px',
-        height: '152px',
-        marginTop: '18px',
-        borderRadius: '50%',
-      },
-    };
-  }
-
-  // --------------------------------------------------
   // Lifecycle
   // --------------------------------------------------
   componentWillMount() {
@@ -82,40 +55,31 @@ class SchoolPreviewEdit extends Component {
   render() {
     var school = this.props.school;
     return (
-      <div style={this.styles.container}>
-        <CardHeader
-          action={() => this.updateSchool()}
-          content={'School Preview'}
-          icon={TypeConstants.icons.save} />
-        <div style={this.styles.form}>
-          <img
-            src='http://www.wlac.edu/WLAC/media/images/highschool/highschool-index.jpg'
-            style={this.styles.image} />
-          <CardInput
-            action={this.generateHandler('school_name')}
-            placeholder={'School'}
-            value={this.state.school_name} />
-          <CardInput
-            action={this.generateHandler('address')}
-            placeholder={'Address'}
-            value={this.state.address} />
-          <CardInput
-            action={this.generateHandler('address_city')}
-            placeholder={'City'}
-            value={this.state.address_city} />
-          <CardInput
-            action={this.generateHandler('address_state')}
-            placeholder={'State'}
-            value={this.state.address_state} />
-          <CardInput
-            action={this.generateHandler('address_zip')}
-            placeholder={'Zip'}
-            value={this.state.address_zip} />
-          <CardInput
-            action={this.generateHandler('website')}
-            placeholder={'website'}
-            value={this.state.website} />
-        </div>
+      <div style={StyleConstants.cards.body}>
+        <CardInput
+          action={this.generateHandler('school_name')}
+          placeholder={'School'}
+          value={this.state.school_name} />
+        <CardInput
+          action={this.generateHandler('address')}
+          placeholder={'Address'}
+          value={this.state.address} />
+        <CardInput
+          action={this.generateHandler('address_city')}
+          placeholder={'City'}
+          value={this.state.address_city} />
+        <CardInput
+          action={this.generateHandler('address_state')}
+          placeholder={'State'}
+          value={this.state.address_state} />
+        <CardInput
+          action={this.generateHandler('address_zip')}
+          placeholder={'Zip'}
+          value={this.state.address_zip} />
+        <CardInput
+          action={this.generateHandler('website')}
+          placeholder={'website'}
+          value={this.state.website} />
       </div>
     );
   }

@@ -24,28 +24,22 @@ class ProfilePageOverlay extends PageOverlay {
     }
   }
 
-  //  --------------------------------------------------
-  //  Render
-  //  --------------------------------------------------
+  // --------------------------------------------------
+  // Helpers
+  // --------------------------------------------------
+  storeOverlay() {
+    ProfileActions.storeOverlay(false);
+  }
+
+  // --------------------------------------------------
+  // Render
+  // --------------------------------------------------
   renderModal() {
     return (
       <ProfileEditModal
         overlay={this.props.overlay}
         profile={this.props.profile}
         template={this.props.template} />
-    );
-  }
-
-  render() {
-    return (
-      <div ref={'container'} style={this.styles.container}>
-        <Clickable
-          action={() => ProfileActions.storeOverlay(false)}
-          icon={TypeConstants.icons.close}
-          styles={this.clickableStyles}
-          type={'i'} />
-        {this.renderModal()}
-      </div>
     );
   }
 }
