@@ -24,7 +24,7 @@
     preferred_name: first_name,
     registration_status: rand(3),
     school_id: index,
-    shirt_size: rand(6),
+    shirt_size: rand(5),
   )
   puts "Created student: #{new_student.name}"
 end

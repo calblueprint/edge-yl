@@ -33,7 +33,7 @@ student_form = Form.create(
     Question.create(
       is_required: true,
       key: 'gender',
-      options: ['Female', 'Male', 'Other'],
+      options: Student.genders.keys,
       section: section,
       style: Question.styles[:dropdown],
       title: 'Gender',
@@ -113,7 +113,7 @@ student_form = Form.create(
     Question.create(
       is_required: true,
       key: 'shirt_size',
-      options: ['S', 'M', 'L', 'XL', 'XXL', 'Other'],
+      options: Student.shirt_sizes.keys,
       section: section,
       style: Question.styles[:dropdown],
       title: 'Shirt size',
