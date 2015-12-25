@@ -15,7 +15,7 @@ class ConferencesCard extends Component {
   render() {
     var conference = this.props.conference;
     return (
-      <div style={StyleConstants.cards.index}>
+      <div style={StyleConstants.cards.index('large')}>
         <CardAttribute
           clickable={true}
           label={'Name'}

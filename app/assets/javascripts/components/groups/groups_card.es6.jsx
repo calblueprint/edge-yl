@@ -11,26 +11,12 @@ class GroupsCard extends Component {
   }
 
   // --------------------------------------------------
-  // Styles
-  // --------------------------------------------------
-  get styles() {
-    return {
-      container: Object.assign(
-        {},
-        StyleConstants.cards.index,
-        this.props.media === 'big' && { width: '49%' },
-        this.props.media === 'small' && { width: '100%' }
-      ),
-    };
-  }
-
-  // --------------------------------------------------
   // Render
   // --------------------------------------------------
   render() {
     var group = this.props.group;
     return (
-      <div style={this.styles.container}>
+      <div style={StyleConstants.cards.index(this.props.media)}>
         <CardAttribute
           clickable={true}
           label={'Name'}

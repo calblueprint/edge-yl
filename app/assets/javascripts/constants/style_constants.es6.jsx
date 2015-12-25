@@ -24,7 +24,7 @@
           flex: '1',
           padding: '18px',
         },
-        index: Object.assign(
+        index: (media) => Object.assign(
           {},
           this.containers.card,
           {
@@ -32,7 +32,9 @@
             padding: '18px',
             marginTop: '12px',
             boxSizing: 'border-box',
-          }
+          },
+          media === 'big' && { width: '49%' },
+          media === 'small' && { width: '100%' }
         ),
         show: Object.assign(
           {},
@@ -60,6 +62,7 @@
           flexFlow: 'wrap',
           justifyContent: 'space-between',
           alignContent: 'flex-start',
+          width: '100%',
         },
       };
     }

@@ -15,20 +15,6 @@ class SchoolCard extends Component {
   }
 
   // --------------------------------------------------
-  // Styles
-  // --------------------------------------------------
-  get styles() {
-    return {
-      container: Object.assign(
-        {},
-        StyleConstants.cards.show,
-        this.props.media === 'big' && { width: '49%' },
-        this.props.media === 'small' && { width: '100%' }
-      ),
-    };
-  }
-
-  // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
   showOverlay() {
@@ -63,7 +49,7 @@ class SchoolCard extends Component {
   render() {
     var school = this.props.school;
     return (
-      <div style={this.styles.container}>
+      <div style={StyleConstants.cards.index(this.props.media)}>
         <CardHeader
           action={() => this.showOverlay()}
           content={this.renderTitle()}
