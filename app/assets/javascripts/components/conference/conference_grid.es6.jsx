@@ -6,7 +6,7 @@ class ConferenceGrid extends Component {
   static get propTypes() {
     return {
       conference: React.PropTypes.object.isRequired,
-      school: React.PropTypes.object.isRequired,
+      media: React.PropTypes.string.isRequired,
     };
   }
 
@@ -24,7 +24,9 @@ class ConferenceGrid extends Component {
           conference={this.props.conference}
           media={this.props.media}
           target={TypeConstants.conference.statistic} />
-        <GroupsGrid groups={this.props.conference.groups} />
+        <GroupsGrid
+          groups={this.props.conference.groups}
+          media={this.props.media} />
       </div>
     );
   }

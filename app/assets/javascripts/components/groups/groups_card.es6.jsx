@@ -6,6 +6,21 @@ class GroupsCard extends Component {
   static get propTypes() {
     return {
       group: React.PropTypes.object.isRequired,
+      media: React.PropTypes.string.isRequired,
+    };
+  }
+
+  // --------------------------------------------------
+  // Styles
+  // --------------------------------------------------
+  get styles() {
+    return {
+      container: Object.assign(
+        {},
+        StyleConstants.cards.index,
+        this.props.media === 'big' && { width: '49%' },
+        this.props.media === 'small' && { width: '100%' }
+      ),
     };
   }
 
@@ -15,7 +30,7 @@ class GroupsCard extends Component {
   render() {
     var group = this.props.group;
     return (
-      <div style={StyleConstants.cards.index}>
+      <div style={this.styles.container}>
         <CardAttribute
           clickable={true}
           label={'Name'}
