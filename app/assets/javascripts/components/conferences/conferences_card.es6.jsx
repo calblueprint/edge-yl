@@ -16,13 +16,21 @@ class ConferencesCard extends Component {
     var conference = this.props.conference;
     return (
       <div style={StyleConstants.cards.index}>
-        <Clickable
-          content={conference.name}
+        <CardAttribute
+          clickable={true}
+          label={'Name'}
           route={RouteConstants.conferences.show(conference.id)}
-          styles={this.clickableStyles}
-          type={'h3'} />
-        <h6>{conference.location}</h6>
-        <h6>{`${conference.start_date} - ${conference.end_date}`}</h6>
+          type={'h4'}
+          value={conference.name} />
+        <CardAttribute
+          label={'Location'}
+          value={conference.location} />
+        <CardAttribute
+          label={'Start date'}
+          value={conference.start_date} />
+        <CardAttribute
+          label={'End date'}
+          value={conference.end_date} />
       </div>
     );
   }

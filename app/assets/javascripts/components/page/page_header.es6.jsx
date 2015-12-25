@@ -1,25 +1,26 @@
-class CardAttribute extends Component {
+class PageHeader extends Component {
 
   // --------------------------------------------------
   // Props
   // --------------------------------------------------
   static get propTypes() {
     return {
+      action: React.PropTypes.func,
       clickable: React.PropTypes.bool,
+      content: React.PropTypes.string,
       label: React.PropTypes.string.isRequired,
       route: React.PropTypes.string,
-      type: React.PropTypes.string,
-      type: React.PropTypes.oneOf(['h4', 'h5', 'h6']),
       value: React.PropTypes.string,
     };
   }
 
   static get defaultProps() {
     return {
+      action: null,
       clickable: false,
+      content: '',
       route: '',
-      type: 'h6',
-      value: null,
+      value: '',
     };
   }
 
@@ -28,9 +29,16 @@ class CardAttribute extends Component {
   // --------------------------------------------------
   get styles() {
     return {
-      container: {
+      header: {
         display: 'flex',
         justifyContent: 'space-between',
+        alignItems: 'center',
+        width: '100%',
+        marginTop: '12px',
+      },
+      section: {
+        display: 'flex',
+        flexFlow: 'column',
       },
     };
   }
@@ -38,44 +46,32 @@ class CardAttribute extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
-  renderLabel() {
-    var label = this.props.label;
-    switch (this.props.type) {
-      case 'h4':
-        return <h4>{label}</h4>;
-      case 'h5':
-        return <h5>{label}</h5>;
-      case 'h6':
-        return <h6>{label}</h6>;
+  renderClickable() {
+    if (this.props.clickable) {
+      return (
+        <Clickable
+          action={() => this.props.action()}
+          content={this.props.content}
+          route={this.props.route}
+          type={'h4'} />
+      );
     }
   }
 
   renderValue() {
-    var value = this.props.value ? this.props.value : 'n/a';
-    if (this.props.clickable) {
-      return (
-        <Clickable
-          content={value}
-          route={this.props.route}
-          type={this.props.type} />
-      );
-    } else {
-      switch (this.props.type) {
-        case 'h4':
-          return <h4>{value}</h4>;
-        case 'h5':
-          return <h5>{value}</h5>;
-        case 'h6':
-          return <h6>{value}</h6>;
-      }
+    if (this.props.value) {
+      return <h3>{this.props.value}</h3>;
     }
   }
 
   render() {
     return (
-      <div style={this.styles.container}>
-        {this.renderLabel()}
-        {this.renderValue()}
+      <div style={this.styles.header}>
+        <div style={this.styles.section}>
+          <h4>{this.props.label}</h4>
+          {this.renderValue()}
+        </div>
+        {this.renderClickable()}
       </div>
     );
   }

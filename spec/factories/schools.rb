@@ -25,6 +25,7 @@ FactoryGirl.define do
     address_city          { Faker::Address.city }
     address_one           { Faker::Address.street_address }
     address_state         { Faker::Address.state }
+    address_two           { Faker::Address.street_address }
     address_zip           { Faker::Address.zip }
     contact_email         { Faker::Internet.email }
     contact_first_name    { Faker::Name.first_name }

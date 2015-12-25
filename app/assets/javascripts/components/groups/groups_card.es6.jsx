@@ -16,12 +16,18 @@ class GroupsCard extends Component {
     var group = this.props.group;
     return (
       <div style={StyleConstants.cards.index}>
-        <Clickable
-          content={`Group ${group.name}`}
+        <CardAttribute
+          clickable={true}
+          label={'Name'}
           route={RouteConstants.groups.show(group.conference_id, group.id)}
-          type={'h3'} />
-        <h6>{group.primary_leader}</h6>
-        <h6>{group.secondary_leader}</h6>
+          type={'h4'}
+          value={`Group ${group.name}`} />
+        <CardAttribute
+          label={'Primary leader'}
+          value={group.primary_leader} />
+        <CardAttribute
+          label={'Secondary leader'}
+          value={group.secondary_leader} />
       </div>
     );
   }

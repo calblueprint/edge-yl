@@ -5,7 +5,12 @@ class SchoolCard extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
+      media: React.PropTypes.string.isRequired,
       school: React.PropTypes.object.isRequired,
+      target: React.PropTypes.oneOf([
+        TypeConstants.school.contact,
+        TypeConstants.school.general,
+      ]).isRequired,
     };
   }
 
@@ -17,16 +22,9 @@ class SchoolCard extends Component {
       container: Object.assign(
         {},
         StyleConstants.cards.show,
-        { height: '256px' }
+        this.props.media === 'big' && { width: '49%' },
+        this.props.media === 'small' && { width: '100%' }
       ),
-      section: {
-        display: 'flex',
-        flexFlow: 'column',
-        alignItems: 'center',
-        justifyContent: 'space-around',
-        padding: '12px',
-        flex: '1',
-      },
     };
   }
 
@@ -37,28 +35,40 @@ class SchoolCard extends Component {
     SchoolActions.storeOverlay(
       true,
       TypeConstants.actions.edit,
-      TypeConstants.student.general
+      this.props.target
     );
   }
 
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
+  renderBody() {
+    switch (this.props.target) {
+      case TypeConstants.school.contact:
+        return <SchoolContact school={this.props.school} />;
+      case TypeConstants.school.general:
+        return <SchoolGeneral school={this.props.school} />;
+    };
+  }
+
+  renderTitle() {
+    switch (this.props.target) {
+      case TypeConstants.school.contact:
+        return 'Contact Information';
+      case TypeConstants.school.general:
+        return 'General Information';
+    };
+  }
+
   render() {
     var school = this.props.school;
     return (
       <div style={this.styles.container}>
         <CardHeader
           action={() => this.showOverlay()}
-          content={`${school.name}`}
+          content={this.renderTitle()}
           icon={TypeConstants.icons.edit} />
-        <div style={this.styles.section}>
-          <h4>{`School Address:`}</h4>
-          <h6>{school.address_one}</h6>
-          <h6>{`${school.address_city}, ${school.address_state} ${school.address_zip}`}</h6>
-          <h4>{`Website:`}</h4>
-          <h6>{school.website}</h6>
-      </div>
+        {this.renderBody()}
       </div>
     );
   }
