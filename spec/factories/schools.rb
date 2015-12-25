@@ -6,7 +6,7 @@
 #  address_city         :string           not null
 #  address_one          :string           not null
 #  address_state        :string           not null
-#  address_two          :string
+#  address_two          :string           default(""), not null
 #  address_zip          :string           not null
 #  contact_email        :string           not null
 #  contact_first_name   :string           not null

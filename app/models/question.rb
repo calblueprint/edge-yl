@@ -3,7 +3,7 @@
 # Table name: questions
 #
 #  id          :integer          not null, primary key
-#  is_required :boolean          not null
+#  is_required :boolean          default(TRUE), not null
 #  key         :string           not null
 #  options     :string           default([]), not null, is an Array
 #  placeholder :string           default(""), not null
@@ -20,15 +20,20 @@ class Question < ActiveRecord::Base
 
   belongs_to :section
 
-  validates_presence_of :key, :style, :title
-  validates_presence_of :placeholder, allow_nil: true
-
-  validates_absence_of :placeholder, if: :is_dropdown?
-  validates_inclusion_of :is_required, in: [true, false]
-  validates_length_of :options, minimum: 2, if: :is_dropdown?
+  validates :key, presence: true
+  validates :style, presence: true
+  validates :title, presence: true
+  validates :is_required, inclusion: { in: [false, true] }
+  validates :options, length: { minimum: 2, if: :is_dropdown? }
+  validates :placeholder, presence: true, if: :is_input?
+  validates :placeholder, absence: true, if: :is_dropdown?
 
   def is_dropdown?
-    style == Question.styles['dropdown']
+    style == Question.styles[:dropdown]
+  end
+
+  def is_input?
+    style == Question.styles[:input]
   end
 
 end

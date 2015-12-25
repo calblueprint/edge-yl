@@ -1,7 +1,7 @@
 class CreateResponsibilities < ActiveRecord::Migration
+
   def change
     create_table :responsibilities do |t|
-
       t.integer :status, null: false
 
       t.references :student, index: true
@@ -10,4 +10,5 @@ class CreateResponsibilities < ActiveRecord::Migration
       t.timestamps null: false
     end
   end
+
 end
