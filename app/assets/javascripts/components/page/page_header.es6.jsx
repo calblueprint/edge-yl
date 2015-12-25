@@ -5,8 +5,9 @@ class PageHeader extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      action: React.PropTypes.string,
+      action: React.PropTypes.func,
       clickable: React.PropTypes.bool,
+      content: React.PropTypes.string,
       label: React.PropTypes.string.isRequired,
       value: React.PropTypes.string,
     };
@@ -16,6 +17,7 @@ class PageHeader extends Component {
     return {
       action: null,
       clickable: false,
+      content: '',
       value: '',
     };
   }
@@ -42,6 +44,17 @@ class PageHeader extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
+  renderClickable() {
+    if (this.props.clickable) {
+      return (
+        <Clickable
+          action={() => this.props.action()}
+          content={this.props.content}
+          type={'h4'} />
+      );
+    }
+  }
+
   renderValue() {
     if (this.props.value) {
       return <h3>{this.props.value}</h3>;
@@ -55,10 +68,7 @@ class PageHeader extends Component {
           <h4>{this.props.label}</h4>
           {this.renderValue()}
         </div>
-        <Clickable
-          action={() => this.showOverlay()}
-          content={'Edit'}
-          type={'h3'} />
+        {this.renderClickable()}
       </div>
     );
   }

@@ -38,6 +38,17 @@ class ConferencesPage extends Component {
   }
 
   // --------------------------------------------------
+  // Helpers
+  // --------------------------------------------------
+  showOverlay() {
+    ConferencesActions.storeOverlay(
+      true,
+      TypeConstants.actions.edit,
+      'conference'
+    );
+  }
+
+  // --------------------------------------------------
   // Render
   // --------------------------------------------------
   renderOverlay() {
@@ -62,6 +73,11 @@ class ConferencesPage extends Component {
             active={this.state.profile.has_sidebar}
             profile={this.state.profile} />
           <div style={StyleConstants.pages.content}>
+            <PageHeader
+              action={() => this.showOverlay()}
+              content={'New'}
+              clickable={true}
+              label={'Conferences'} />
             <ConferencesGrid conferences={this.state.conferences} />
             <PageNavigator
               route={RouteConstants.conferences.index}
