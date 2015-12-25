@@ -6,8 +6,14 @@ class CardHeader extends Component {
   static get propTypes() {
     return {
       action: React.PropTypes.func.isRequired,
-      content: React.PropTypes.string.isRequired,
+      content: React.PropTypes.string,
       icon: React.PropTypes.string.isRequired,
+    };
+  }
+
+  static get defaultProps() {
+    return {
+      content: '',
     };
   }
 
