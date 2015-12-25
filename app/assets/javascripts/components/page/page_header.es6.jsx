@@ -9,6 +9,7 @@ class PageHeader extends Component {
       clickable: React.PropTypes.bool,
       content: React.PropTypes.string,
       label: React.PropTypes.string.isRequired,
+      route: React.PropTypes.string,
       value: React.PropTypes.string,
     };
   }
@@ -18,6 +19,7 @@ class PageHeader extends Component {
       action: null,
       clickable: false,
       content: '',
+      route: '',
       value: '',
     };
   }
@@ -50,6 +52,7 @@ class PageHeader extends Component {
         <Clickable
           action={() => this.props.action()}
           content={this.props.content}
+          route={this.props.route}
           type={'h4'} />
       );
     }

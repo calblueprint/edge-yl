@@ -55,7 +55,11 @@ class StudentsPage extends Component {
             active={this.state.profile.has_sidebar}
             profile={this.state.profile} />
           <div style={StyleConstants.pages.content}>
-            <PageHeader label={'Students'} />
+            <PageHeader
+              clickable={true}
+              content={'New'}
+              route={RouteConstants.forms.student}
+              label={'Students'} />
             <StudentsFilters filters={this.state.filters} />
             <StudentsGrid
               media={this.state.media}
