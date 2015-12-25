@@ -51,6 +51,7 @@ class SchoolPage extends Component {
   }
 
   render() {
+    var school = this.state.school;
     return (
       <div style={StyleConstants.pages.wrapper}>
         {this.renderOverlay()}
@@ -62,7 +63,12 @@ class SchoolPage extends Component {
             active={this.state.profile.has_sidebar}
             profile={this.state.profile} />
           <div style={StyleConstants.pages.content}>
-            <SchoolGrid school={this.state.school} />
+            <PageHeader
+              clickable={true}
+              content={'Edit'}
+              label={'School'}
+              value={school.name} />
+            <SchoolGrid school={school} />
           </div>
         </div>
       </div>
