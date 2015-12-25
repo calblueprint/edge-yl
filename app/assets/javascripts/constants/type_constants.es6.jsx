@@ -19,7 +19,7 @@
       return {
         general: 'conference-general',
         statistic: 'conference-statistic',
-      }
+      };
     }
 
     get school() {
