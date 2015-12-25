@@ -23,18 +23,22 @@ class SchoolsPage extends Component {
   componentWillMount() {
     this.setState(ProfileStore.getState());
     this.setState(SchoolsStore.getState());
+    this.setState(ViewStore.getState());
   }
 
   componentDidMount() {
     ProfileStore.listen(this._listener);
     SchoolsStore.listen(this._listener);
+    ViewStore.listen(this._listener);
     ProfileActions.fetchProfile();
     SchoolsActions.fetchSchools(this.props.page);
+    ViewActions.attachListener();
   }
 
   componentWillUnmount() {
     ProfileStore.unlisten(this._listener);
     SchoolsStore.unlisten(this._listener);
+    ViewStore.unlisten(this._listener);
   }
 
   // --------------------------------------------------
@@ -56,7 +60,9 @@ class SchoolsPage extends Component {
               content={'New'}
               route={RouteConstants.forms.student}
               label={'Schools'} />
-            <SchoolsGrid schools={this.state.schools} />
+            <SchoolsGrid
+              media={this.state.media}
+              schools={this.state.schools} />
             <PageNavigator
               route={RouteConstants.schools.index}
               pagination={this.state.pagination} />
