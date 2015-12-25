@@ -47,17 +47,20 @@ class Api::StudentsController < Api::BaseController
 
   def student_params
     params.require(:student).permit(
+      :address_city,
+      :address_one,
+      :address_state,
+      :address_two,
+      :address_zip,
       :birthday,
       :cell_phone,
       :email,
       :first_name,
-      :home_address,
+      :gender,
       :home_phone,
       :last_name,
-      :has_sidebar,
-      responsibility_attributes: [
-        :user_id,
-      ],
+      :preferred_name,
+      :shirt_size,
     )
   end
 
