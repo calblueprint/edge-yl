@@ -17,16 +17,9 @@ class SchoolCard extends Component {
       container: Object.assign(
         {},
         StyleConstants.cards.show,
-        { height: '256px' }
+        this.props.media === 'big' && { width: '49%' },
+        this.props.media === 'small' && { width: '100%' }
       ),
-      section: {
-        display: 'flex',
-        flexFlow: 'column',
-        alignItems: 'center',
-        justifyContent: 'space-around',
-        padding: '12px',
-        flex: '1',
-      },
     };
   }
 
@@ -44,21 +37,23 @@ class SchoolCard extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
+  renderBody() {
+    return <SchoolGeneral school={this.props.school} />;
+  }
+
+  renderTitle() {
+    return 'General Information';
+  }
+
   render() {
     var school = this.props.school;
     return (
       <div style={this.styles.container}>
         <CardHeader
           action={() => this.showOverlay()}
-          content={`${school.name}`}
+          content={this.renderTitle()}
           icon={TypeConstants.icons.edit} />
-        <div style={this.styles.section}>
-          <h4>{`School Address:`}</h4>
-          <h6>{school.address_one}</h6>
-          <h6>{`${school.address_city}, ${school.address_state} ${school.address_zip}`}</h6>
-          <h4>{`Website:`}</h4>
-          <h6>{school.website}</h6>
-      </div>
+        {this.renderBody()}
       </div>
     );
   }
