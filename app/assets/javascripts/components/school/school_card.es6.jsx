@@ -5,6 +5,7 @@ class SchoolCard extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
+      media: React.PropTypes.string.isRequired,
       school: React.PropTypes.object.isRequired,
     };
   }

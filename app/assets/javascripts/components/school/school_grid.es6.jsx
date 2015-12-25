@@ -5,6 +5,7 @@ class SchoolGrid extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
+      media: React.PropTypes.string.isRequired,
       school: React.PropTypes.object.isRequired,
     };
   }
@@ -28,7 +29,9 @@ class SchoolGrid extends Component {
   render() {
     return (
       <div style={this.styles.container}>
-        <SchoolCard school={this.props.school}/>
+        <SchoolCard
+          media={this.props.media}
+          school={this.props.school}/>
       </div>
     );
   }

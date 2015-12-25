@@ -23,18 +23,22 @@ class SchoolPage extends Component {
   componentWillMount() {
     this.setState(ProfileStore.getState());
     this.setState(SchoolStore.getState());
+    this.setState(ViewStore.getState());
   }
 
   componentDidMount() {
     ProfileStore.listen(this._listener);
     SchoolStore.listen(this._listener);
+    ViewStore.listen(this._listener);
     ProfileActions.fetchProfile();
     SchoolActions.fetchSchool(this.props.id);
+    ViewActions.attachListener();
   }
 
   componentWillUnmount() {
     ProfileStore.unlisten(this._listener);
     SchoolStore.unlisten(this._listener);
+    ViewStore.unlisten(this._listener);
   }
 
   // --------------------------------------------------
@@ -68,7 +72,9 @@ class SchoolPage extends Component {
               content={'Edit'}
               label={'School'}
               value={school.name} />
-            <SchoolGrid school={school} />
+            <SchoolGrid
+              media={this.state.media}
+              school={school} />
           </div>
         </div>
       </div>
