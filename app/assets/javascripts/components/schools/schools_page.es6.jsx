@@ -51,6 +51,11 @@ class SchoolsPage extends Component {
             active={this.state.profile.has_sidebar}
             profile={this.state.profile} />
           <div style={StyleConstants.pages.content}>
+            <PageHeader
+              clickable={true}
+              content={'New'}
+              route={RouteConstants.forms.student}
+              label={'Schools'} />
             <SchoolsGrid schools={this.state.schools} />
             <PageNavigator
               route={RouteConstants.schools.index}
