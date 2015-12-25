@@ -15,6 +15,10 @@
       };
     }
 
+    get conference() {
+      return 'conference';
+    }
+
     get school() {
       return {
         contact: 'school-contact',

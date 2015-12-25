@@ -44,7 +44,7 @@ class ConferencesPage extends Component {
     ConferencesActions.storeOverlay(
       true,
       TypeConstants.actions.edit,
-      'conference'
+      TypeConstants.conference
     );
   }
 
