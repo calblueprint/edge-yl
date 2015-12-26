@@ -12,10 +12,9 @@
 #
 
 FactoryGirl.define do
+
   factory :group do
-    name {Faker::Team.name}
-    primary_leader {Faker::Name.name}
-    secondary_leader {Faker::Name.name}
+    letter { 'A' }
   end
 
 end
