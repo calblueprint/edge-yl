@@ -18,10 +18,10 @@ class GroupGeneral extends Component {
       <div style={StyleConstants.cards.body}>
         <CardAttribute
           label={'Primary leader'}
-          value={group.primary_leader} />
+          value={null} />
         <CardAttribute
           label={'Secondary leader'}
-          value={group.secondary_leader} />
+          value={null} />
       </div>
     );
   }

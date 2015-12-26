@@ -25,10 +25,10 @@ class GroupsCard extends Component {
           value={`Group ${group.name}`} />
         <CardAttribute
           label={'Primary leader'}
-          value={group.primary_leader && group.primary_leader.first_name} />
+          value={null} />
         <CardAttribute
           label={'Secondary leader'}
-          value={group.secondary_leader && group.secondary_leader.last_name} />
+          value={null} />
       </div>
     );
   }
