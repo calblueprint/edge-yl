@@ -3,6 +3,7 @@
 
     constructor() {
       this.generateActions(
+        'storeError',
         'storeSchool'
       );
     }
@@ -13,6 +14,13 @@
       return true;
     }
 
+    storeAttribute(key, value) {
+      return {
+        key: key,
+        value: value,
+      };
+    }
+
     storeOverlay(active, type, target) {
       return {
         active: active,
@@ -21,9 +29,27 @@
       };
     }
 
-    updateSchool(id, params) {
+    updateSchool(school, template) {
+      var id = school.id;
+      var attributes = Object.assign({}, template);
+      Object.keys(attributes).map((key) => {
+        if (typeof(attributes[key]) === 'object' ||
+            student[key] === attributes[key]) {
+          delete attributes[key];
+        }
+      });
+      if (attributes.errors) {
+        delete attributes.errors;
+      }
+      var params = { school: attributes };
       var resolve = (response) => this.storeSchool(response);
-      Requester.update(ApiConstants.schools.update(id), params, resolve);
+      var reject = (response) => this.storeError(response);
+      Requester.update(
+        ApiConstants.schools.update(id),
+        params,
+        resolve,
+        reject
+      );
       return true;
     }
   }

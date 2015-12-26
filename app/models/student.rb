@@ -86,7 +86,7 @@ class Student < ActiveRecord::Base
   validates :home_phone, presence: true
   validates :last_name, presence: true
 
-  def name
+  def full_name
     "#{first_name} #{last_name}"
   end
 

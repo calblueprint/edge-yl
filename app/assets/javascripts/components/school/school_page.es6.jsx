@@ -49,7 +49,8 @@ class SchoolPage extends Component {
       return (
         <SchoolPageOverlay
           overlay={this.state.overlay}
-          school={this.state.school} />
+          school={this.state.school}
+          template={this.state.template} />
       );
     }
   }

@@ -9,5 +9,5 @@ end
 Student.all.each do |student|
   generate_comment(student)
   generate_comment(student)
-  puts "Created comments for #{student.name}."
+  puts "Created comments for #{student.full_name}."
 end

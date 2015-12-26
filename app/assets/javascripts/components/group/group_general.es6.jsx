@@ -1,4 +1,4 @@
-class GroupsCard extends Component {
+class GroupGeneral extends Component {
 
   // --------------------------------------------------
   // Props
@@ -6,7 +6,6 @@ class GroupsCard extends Component {
   static get propTypes() {
     return {
       group: React.PropTypes.object.isRequired,
-      media: React.PropTypes.string.isRequired,
     };
   }
 
@@ -16,13 +15,7 @@ class GroupsCard extends Component {
   render() {
     var group = this.props.group;
     return (
-      <div style={StyleConstants.cards.index(this.props.media)}>
-        <CardAttribute
-          clickable={true}
-          label={'Name'}
-          route={RouteConstants.groups.show(group.conference_id, group.id)}
-          type={'h4'}
-          value={`Group ${group.name}`} />
+      <div style={StyleConstants.cards.body}>
         <CardAttribute
           label={'Primary leader'}
           value={null} />

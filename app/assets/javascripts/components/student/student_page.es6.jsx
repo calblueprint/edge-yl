@@ -73,7 +73,7 @@ class StudentPage extends Component {
               clickable={true}
               content={'Edit'}
               label={'Student'}
-              value={`${student.first_name} ${student.last_name}`} />
+              value={student.full_name} />
             <StudentGrid
               media={this.state.media}
               student={student} />

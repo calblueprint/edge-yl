@@ -23,18 +23,22 @@ class UsersPage extends Component {
   componentWillMount() {
     this.setState(ProfileStore.getState());
     this.setState(UsersStore.getState());
+    this.setState(ViewStore.getState());
   }
 
   componentDidMount() {
     ProfileStore.listen(this._listener);
     UsersStore.listen(this._listener);
+    ViewStore.listen(this._listener);
     ProfileActions.fetchProfile();
     UsersActions.fetchUsers(this.props.page);
+    ViewActions.attachListener();
   }
 
   componentWillUnmount() {
     ProfileStore.unlisten(this._listener);
     UsersStore.unlisten(this._listener);
+    ViewStore.unlisten(this._listener);
   }
 
   // --------------------------------------------------
@@ -51,7 +55,9 @@ class UsersPage extends Component {
             active={this.state.profile.has_sidebar}
             profile={this.state.profile} />
           <div style={StyleConstants.pages.content}>
-            <UsersGrid users={this.state.users} />
+            <UsersGrid
+              media={this.state.media}
+              users={this.state.users} />
             <PageNavigator
               route={RouteConstants.users.index}
               pagination={this.state.pagination} />

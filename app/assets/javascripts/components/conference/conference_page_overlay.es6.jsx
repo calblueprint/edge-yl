@@ -1,4 +1,4 @@
-class StudentPageOverlay extends PageOverlay {
+class ConferencePageOverlay extends PageOverlay {
 
   // --------------------------------------------------
   // Props
@@ -10,9 +10,7 @@ class StudentPageOverlay extends PageOverlay {
         target: React.PropTypes.string.isRequired,
         type: React.PropTypes.string.isRequired,
       }).isRequired,
-      profile: React.PropTypes.object.isRequired,
-      student: React.PropTypes.object.isRequired,
-      template: React.PropTypes.object.isRequired,
+      // template: React.PropTypes.object.isRequired,
     };
   }
 
@@ -21,7 +19,7 @@ class StudentPageOverlay extends PageOverlay {
   // --------------------------------------------------
   handleClick() {
     if (event.target === this._node) {
-      StudentActions.storeOverlay(false);
+      ConferenceActions.storeOverlay(false);
     }
   }
 
@@ -29,27 +27,13 @@ class StudentPageOverlay extends PageOverlay {
   // Helpers
   // --------------------------------------------------
   storeOverlay() {
-    StudentActions.storeOverlay(false);
+    ConferenceActions.storeOverlay(false);
   }
 
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
   renderModal() {
-    if (this.props.overlay.type === TypeConstants.actions.edit) {
-      return (
-        <StudentEditModal
-          overlay={this.props.overlay}
-          student={this.props.student}
-          template={this.props.template} />
-      );
-    } else {
-      return (
-        <StudentCreateModal
-          overlay={this.props.overlay}
-          profile={this.props.profile}
-          student={this.props.student} />
-      );
-    }
+    return null;
   }
 }

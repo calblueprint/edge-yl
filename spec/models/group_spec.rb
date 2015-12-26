@@ -2,13 +2,11 @@
 #
 # Table name: groups
 #
-#  id               :integer          not null, primary key
-#  name             :string           not null
-#  primary_leader   :string           not null
-#  secondary_leader :string           not null
-#  conference_id    :integer
-#  created_at       :datetime         not null
-#  updated_at       :datetime         not null
+#  id            :integer          not null, primary key
+#  letter        :string           not null
+#  conference_id :integer
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
 #
 
 require 'rails_helper'

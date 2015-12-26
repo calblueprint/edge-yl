@@ -1,5 +1,5 @@
 class GroupIndexSerializer < GroupBaseSerializer
 
-  attributes :conference_id, :primary_leader, :secondary_leader
+  attributes :conference_id
 
 end

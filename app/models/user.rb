@@ -39,7 +39,7 @@ class User < ActiveRecord::Base
 
   validates_inclusion_of :has_sidebar, :is_admin, in: [true, false]
 
-  def name
+  def full_name
     "#{first_name} #{last_name}"
   end
 

@@ -8,5 +8,5 @@ end
 
 Student.all.each do |student|
   generate_responsibility(student)
-  puts "Created responsibility for #{student.name}."
+  puts "Created responsibility for #{student.full_name}."
 end

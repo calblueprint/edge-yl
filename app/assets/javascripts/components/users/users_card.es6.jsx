@@ -5,19 +5,8 @@ class UsersCard extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
+      media: React.PropTypes.string.isRequired,
       user: React.PropTypes.object.isRequired,
-    };
-  }
-
-  // --------------------------------------------------
-  // Styles
-  // --------------------------------------------------
-  get styles() {
-    return {
-      container: Object.assign(
-        {},
-        StyleConstants.cards.index,
-      ),
     };
   }
 
@@ -27,13 +16,13 @@ class UsersCard extends Component {
   render() {
     var user = this.props.user;
     return (
-      <div style={this.styles.container}>
+      <div style={StyleConstants.cards.index(this.props.media)}>
         <CardAttribute
           clickable={true}
           label={'Name'}
           route={RouteConstants.users.show(user.id)}
           type={'h4'}
-          value={`${user.first_name} ${user.last_name}`} />
+          value={user.full_name} />
         <CardAttribute
           label={'Email'}
           value={user.email} />
