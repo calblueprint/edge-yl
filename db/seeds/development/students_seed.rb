@@ -27,5 +27,5 @@
     school_id: index,
     shirt_size: rand(5),
   )
-  puts "Created student: #{new_student.full_name}"
+  puts "Created student #{new_student.full_name}"
 end
