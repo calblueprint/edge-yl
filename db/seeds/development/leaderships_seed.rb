@@ -2,8 +2,8 @@ def generate_leadership(is_primary, group_id, user_id)
   group = Group.find(group_id)
   user = User.find(user_id)
   new_leadership = Leadership.create(
-    is_primary: is_primary,
     group: group,
+    is_primary: is_primary,
     user: user,
   )
   puts "Created leadership of #{group.full_name} for #{user.full_name}."
