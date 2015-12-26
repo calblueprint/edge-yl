@@ -4,6 +4,7 @@
     constructor() {
       this.group = {
         conference: {},
+        leaderships: [],
         students: [],
       };
       this.bindListeners({
