@@ -6,19 +6,7 @@ class GroupCard extends Component {
   static get propTypes() {
     return {
       group: React.PropTypes.object.isRequired,
-    };
-  }
-
-  // --------------------------------------------------
-  // Styles
-  // --------------------------------------------------
-  get styles() {
-    return {
-      container: Object.assign(
-        {},
-        StyleConstants.cards.show,
-        { height: '256px' }
-      ),
+      media: React.PropTypes.string.isRequired,
     };
   }
 

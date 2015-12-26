@@ -47,15 +47,17 @@ ActiveRecord::Schema.define(version: 20151130013648) do
   end
 
   create_table "groups", force: :cascade do |t|
-    t.string   "name",             null: false
-    t.string   "primary_leader",   null: false
-    t.string   "secondary_leader", null: false
+    t.string   "name",                null: false
+    t.integer  "primary_leader_id"
+    t.integer  "secondary_leader_id"
     t.integer  "conference_id"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
   end
 
   add_index "groups", ["conference_id"], name: "index_groups_on_conference_id", using: :btree
+  add_index "groups", ["primary_leader_id"], name: "index_groups_on_primary_leader_id", using: :btree
+  add_index "groups", ["secondary_leader_id"], name: "index_groups_on_secondary_leader_id", using: :btree
 
   create_table "pg_search_documents", force: :cascade do |t|
     t.text     "content"
