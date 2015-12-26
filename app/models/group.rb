@@ -3,7 +3,7 @@
 # Table name: groups
 #
 #  id                  :integer          not null, primary key
-#  name                :string           not null
+#  letter              :string           not null
 #  primary_leader_id   :integer
 #  secondary_leader_id :integer
 #  conference_id       :integer
@@ -18,5 +18,9 @@ class Group < ActiveRecord::Base
   belongs_to :secondary_leader, class_name: 'User'
 
   has_many :students
+
+  def full_name
+    "Group #{letter}"
+  end
 
 end

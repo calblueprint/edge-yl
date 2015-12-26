@@ -2,7 +2,7 @@ class CreateGroups < ActiveRecord::Migration
 
   def change
     create_table :groups do |t|
-      t.string :name, null: false
+      t.string :letter, null: false
 
       t.references :primary_leader, index: true
       t.references :secondary_leader, index: true
