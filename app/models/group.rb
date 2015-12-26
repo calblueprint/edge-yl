@@ -18,9 +18,9 @@ class Group < ActiveRecord::Base
   has_many :leaderships, dependent: :destroy
   has_many :students
 
-  validates :letter, presence: true
+  after_create :generate_leaderships
 
-  validate :validate_leaderships
+  validates :letter, presence: true
 
   def full_name
     "Group #{letter}"
@@ -28,10 +28,15 @@ class Group < ActiveRecord::Base
 
   private
 
-  def validate_leaderships
-    if leaderships.count >= 2
-      errors.add(:leaderships, 'count exceeds maximum of 2')
-    end
+  def generate_leaderships
+    Leadership.create(
+      group: self,
+      is_primary: true,
+    )
+    Leadership.create(
+      group: self,
+      is_primary: false,
+    )
   end
 
 end

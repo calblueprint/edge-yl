@@ -15,6 +15,4 @@ class Leadership < ActiveRecord::Base
   belongs_to :group
   belongs_to :user
 
-  validates_associated :group
-
 end

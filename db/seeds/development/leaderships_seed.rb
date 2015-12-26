@@ -1,16 +1,12 @@
-def generate_leadership(is_primary, group_id, user_id)
-  group = Group.find(group_id)
+def assign_leadership(leadership_id, user_id)
+  leadership = Leadership.find(leadership_id)
   user = User.find(user_id)
-  new_leadership = Leadership.create(
-    group: group,
-    is_primary: is_primary,
-    user: user,
-  )
-  puts "Created leadership of #{group.full_name} for #{user.full_name}."
+  leadership.user = user
+  leadership.save
+  group = leadership.group
+  puts "Assigned leadership of #{group.full_name} to #{user.full_name}."
 end
 
-generate_leadership(true, 1, 1)
-generate_leadership(false, 1, 2)
-generate_leadership(true, 2, 3)
-generate_leadership(false, 2, 4)
-
+(1..4).each do |index|
+  assign_leadership(index, index)
+end
