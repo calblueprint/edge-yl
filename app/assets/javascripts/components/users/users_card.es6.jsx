@@ -33,7 +33,7 @@ class UsersCard extends Component {
           label={'Name'}
           route={RouteConstants.users.show(user.id)}
           type={'h4'}
-          value={`${user.first_name} ${user.last_name}`} />
+          value={user.full_name} />
         <CardAttribute
           label={'Email'}
           value={user.email} />

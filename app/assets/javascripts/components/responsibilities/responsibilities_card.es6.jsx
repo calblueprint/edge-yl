@@ -18,7 +18,7 @@ class ResponsibilitiesCard extends Component {
       <div style={StyleConstants.cards.index('large')}>
         <h5>{`Responsibility ID: ${responsibility.id}`}</h5>
         <h5>{`Status: ${responsibility.status}`}</h5>
-        <h5>{`${responsibility.student.first_name} ${responsibility.student.last_name}`}</h5>
+        <h5>{responsibility.student.full_name}</h5>
       </div>
     );
   }

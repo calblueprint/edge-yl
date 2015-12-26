@@ -36,7 +36,7 @@ class StudentComment extends Component {
     return (
       <div style={this.styles.container}>
         <h6>{comment.content}</h6>
-        <h6>{`- ${user.first_name} ${user.last_name}`}</h6>
+        <h6>{`- ${user.full_name}`}</h6>
         <h6>{comment.updated_at}</h6>
         <div style={this.styles.divider} />
       </div>

@@ -22,7 +22,7 @@ class StudentsCard extends Component {
           label={'Name'}
           route={RouteConstants.students.show(student.id)}
           type={'h4'}
-          value={`${student.first_name} ${student.last_name}`} />
+          value={student.full_name} />
         <CardAttribute
           label={'Cell phone'}
           value={student.cell_phone} />

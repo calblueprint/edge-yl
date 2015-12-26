@@ -1,6 +1,6 @@
 class UserBaseSerializer < BaseSerializer
 
-  attributes :id, :first_name, :last_name
+  attributes :id, :full_name
 
   def visits
     object.visits.first(3)

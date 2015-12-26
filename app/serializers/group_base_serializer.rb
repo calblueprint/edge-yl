@@ -1,5 +1,5 @@
 class GroupBaseSerializer < BaseSerializer
 
-  attributes :id, :name
+  attributes :id, :full_name
 
 end
