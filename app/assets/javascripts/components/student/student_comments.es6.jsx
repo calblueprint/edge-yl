@@ -1,4 +1,4 @@
-class StudentComments extends Component {
+class PageComments extends Component {
 
   // --------------------------------------------------
   // Props
