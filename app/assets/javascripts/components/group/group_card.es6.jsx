@@ -19,15 +19,18 @@ class GroupCard extends Component {
         StyleConstants.cards.show,
         { height: '256px' }
       ),
-      section: {
-        display: 'flex',
-        flexFlow: 'column',
-        alignItems: 'center',
-        justifyContent: 'space-around',
-        padding: '12px',
-        flex: '1',
-      },
     };
+  }
+
+  // --------------------------------------------------
+  // Helpers
+  // --------------------------------------------------
+  showOverlay() {
+    GroupActions.storeOverlay(
+      true,
+      TypeConstants.actions.edit,
+      this.props.target
+    );
   }
 
   // --------------------------------------------------
@@ -36,16 +39,12 @@ class GroupCard extends Component {
   render() {
     var group = this.props.group;
     return (
-      <div style={this.styles.container}>
+      <div style={StyleConstants.cards.show(this.props.media)}>
         <CardHeader
-          action={(event) => GroupActions.storeOverlay(true, TypeConstants.actions.edit)}
+          action={() => this.showOverlay()}
           content={`Group ${group.name}`}
           icon={TypeConstants.icons.edit} />
-        <div style={this.styles.section}>
-          <h4>{`Primary Leader: ${group.primary_leader}`}</h4>
-          <h4>{`Secondary Leader: ${group.secondary_leader}`}</h4>
-          <h4>{`Conference: ${group.conference.id}`}</h4>
-        </div>
+        <GroupGeneral group={this.props.group} />
       </div>
     );
   }

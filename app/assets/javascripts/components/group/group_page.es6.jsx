@@ -43,6 +43,7 @@ class GroupPage extends Component {
   }
 
   render() {
+    var group = this.state.group;
     return (
       <div style={StyleConstants.pages.wrapper}>
         <Header
@@ -53,8 +54,13 @@ class GroupPage extends Component {
             active={this.state.profile.has_sidebar}
             profile={this.state.profile} />
           <div style={StyleConstants.pages.content}>
+            <PageHeader
+              clickable={true}
+              content={'Edit'}
+              label={'Group'}
+              value={`Group ${group.name}`} />
             <GroupGrid
-              group={this.state.group}
+              group={group}
               media={this.state.media} />
           </div>
         </div>
