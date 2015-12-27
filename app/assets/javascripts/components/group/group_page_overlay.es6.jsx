@@ -15,15 +15,6 @@ class GroupPageOverlay extends PageOverlay {
   }
 
   // --------------------------------------------------
-  // Handlers
-  // --------------------------------------------------
-  handleClick() {
-    if (event.target === this._node) {
-      GroupActions.storeOverlay(false);
-    }
-  }
-
-  // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
   storeOverlay() {
