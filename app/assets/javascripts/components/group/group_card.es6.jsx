@@ -7,6 +7,10 @@ class GroupCard extends Component {
     return {
       group: React.PropTypes.object.isRequired,
       media: React.PropTypes.string.isRequired,
+      target: React.PropTypes.oneOf([
+        TypeConstants.group.general,
+        TypeConstants.group.leadership,
+      ]).isRequired,
     };
   }
 
@@ -25,11 +29,21 @@ class GroupCard extends Component {
   // Render
   // --------------------------------------------------
   renderBody() {
-    return <GroupGeneral group={this.props.group} />;
+    switch (this.props.target) {
+      case TypeConstants.group.general:
+        return <GroupGeneral group={this.props.group} />;
+      case TypeConstants.group.leadership:
+        return <GroupLeadership group={this.props.group} />;
+    };
   }
 
   renderTitle() {
-    return 'General Information';
+    switch (this.props.target) {
+      case TypeConstants.group.general:
+        return 'General Information';
+      case TypeConstants.group.leadership:
+        return 'Leadership Information';
+    };
   }
 
   render() {
