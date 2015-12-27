@@ -39,5 +39,9 @@ class School < ActiveRecord::Base
   validates :name, presence: true
   validates :website, presence: true
 
+  def full_name
+    name
+  end
+
 end
 

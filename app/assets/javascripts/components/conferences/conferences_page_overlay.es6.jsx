@@ -15,15 +15,6 @@ class ConferencesPageOverlay extends PageOverlay {
   }
 
   // --------------------------------------------------
-  // Handlers
-  // --------------------------------------------------
-  handleClick() {
-    if (event.target === this._node) {
-      ConferencesActions.storeOverlay(false);
-    }
-  }
-
-  // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
   storeOverlay() {

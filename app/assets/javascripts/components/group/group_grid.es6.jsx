@@ -23,6 +23,10 @@ class GroupGrid extends Component {
         <GroupCard
           group={this.props.group}
           media={this.props.media} />
+        <PageHeader
+          clickable={true}
+          content={'Add'}
+          label={'Students in this group'} />
         <StudentsGrid
           media={this.props.media}
           students={this.props.group.students} />

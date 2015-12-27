@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151130013648) do
+ActiveRecord::Schema.define(version: 20151226090227) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,17 @@ ActiveRecord::Schema.define(version: 20151130013648) do
   end
 
   add_index "groups", ["conference_id"], name: "index_groups_on_conference_id", using: :btree
+
+  create_table "leaderships", force: :cascade do |t|
+    t.boolean  "is_primary", null: false
+    t.integer  "group_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "leaderships", ["group_id"], name: "index_leaderships_on_group_id", using: :btree
+  add_index "leaderships", ["user_id"], name: "index_leaderships_on_user_id", using: :btree
 
   create_table "pg_search_documents", force: :cascade do |t|
     t.text     "content"

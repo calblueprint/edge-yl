@@ -35,6 +35,8 @@ class User < ActiveRecord::Base
   has_many :responsibilities, dependent: :destroy
   has_many :visits, dependent: :destroy
 
+  has_one :leadership, dependent: :destroy
+
   validates_presence_of :email, :first_name, :last_name
 
   validates_inclusion_of :has_sidebar, :is_admin, in: [true, false]

@@ -15,10 +15,28 @@ class Group < ActiveRecord::Base
   belongs_to :primary_leader, class_name: 'User'
   belongs_to :secondary_leader, class_name: 'User'
 
+  has_many :leaderships, dependent: :destroy
   has_many :students
+
+  after_create :generate_leaderships
+
+  validates :letter, presence: true
 
   def full_name
     "Group #{letter}"
+  end
+
+  private
+
+  def generate_leaderships
+    Leadership.create(
+      group: self,
+      is_primary: true,
+    )
+    Leadership.create(
+      group: self,
+      is_primary: false,
+    )
   end
 
 end

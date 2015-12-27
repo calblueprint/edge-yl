@@ -86,6 +86,16 @@ class Student < ActiveRecord::Base
   validates :home_phone, presence: true
   validates :last_name, presence: true
 
+  def self.to_csv
+    attributes = %w{first_name last_name birthday email}
+    CSV.generate(headers: true) do |csv|
+      csv << attributes
+      all.each do |student|
+        csv << attributes.map{ |attr| student.send(attr) }
+      end
+    end
+  end
+
   def full_name
     "#{first_name} #{last_name}"
   end
