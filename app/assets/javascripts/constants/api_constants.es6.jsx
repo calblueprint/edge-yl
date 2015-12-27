@@ -20,7 +20,7 @@
 
     get csvs() {
       return {
-        students: '/api/students.csv'
+        students: '/api/students.csv',
       };
     }
 
