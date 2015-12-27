@@ -61,7 +61,7 @@ class SidebarRecents extends Component {
   render() {
     return (
       <div style={this.styles.container}>
-        <h4 style={this.styles.title}>{'Recents'}</h4>
+        <h5 style={this.styles.title}>{'Recents'}</h5>
         {this.renderItems()}
         <div style={this.styles.divider} />
       </div>

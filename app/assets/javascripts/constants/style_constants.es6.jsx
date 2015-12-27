@@ -83,13 +83,13 @@
           display: 'flex',
           flex: '1',
           paddingTop: '48px',
-          paddingLeft: '196px',
+          paddingLeft: '172px',
         },
         content: {
           display: 'flex',
           flexFlow: 'column',
           flex: '1',
-          padding: '0px 208px 24px 12px',
+          padding: '0px 184px 24px 12px',
           overflow: 'scroll',
         },
         wrapper: {

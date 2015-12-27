@@ -9,7 +9,7 @@
     }
 
     handleStoreMedia(width) {
-      if (width >= 992) {
+      if (width >= 912) {
         this.media = 'big';
       } else {
         this.media = 'small';

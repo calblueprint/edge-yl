@@ -20,8 +20,8 @@ class StudentComments extends Component {
         position: 'absolute',
         top: '0px',
         right: '0px',
-        width: '196px',
-        paddingRight: '16px',
+        width: '172px',
+        paddingRight: '12px',
         textAlign: 'right',
         boxSizing: 'border-box',
       },
@@ -80,7 +80,7 @@ class StudentComments extends Component {
   render() {
     return (
       <div style={this.styles.container}>
-        <h4 style={this.styles.title}>{'Comments'}</h4>
+        <h5 style={this.styles.title}>{'Comments'}</h5>
         {this.renderComments()}
         <Clickable
           action={() => this.handleClick(event)}

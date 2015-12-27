@@ -26,7 +26,7 @@ class SidebarCategories extends Component {
   render() {
     return (
       <div style={this.styles.container}>
-        <h4 style={this.styles.title}>{'General'}</h4>
+        <h5 style={this.styles.title}>{'General'}</h5>
         <SidebarItem
           label={'Conferences'}
           icon={TypeConstants.icons.conference}

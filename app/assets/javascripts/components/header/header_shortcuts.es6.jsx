@@ -20,7 +20,7 @@ class HeaderShortcuts extends Component {
         justifyContent: 'flex-end',
         alignItems: 'center',
         alignSelf: 'stretch',
-        width: '196px',
+        width: '172px',
         paddingRight: '12px',
         boxSizing: 'border-box',
       },

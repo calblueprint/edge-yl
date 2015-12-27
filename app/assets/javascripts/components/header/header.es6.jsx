@@ -38,7 +38,7 @@ class Header extends Component {
         display: 'flex',
         alignItems: 'center',
         alignSelf: 'stretch',
-        width: '196px',
+        width: '172px',
         paddingLeft: '12px',
         boxSizing: 'border-box',
       },
