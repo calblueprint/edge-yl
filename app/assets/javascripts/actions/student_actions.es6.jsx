@@ -11,7 +11,6 @@
 
     createComment(id, params) {
       var resolve = (response) => this.storeComment(response);
-      console.log('params', params)
       Requester.post(
         ApiConstants.comments.create,
         params,

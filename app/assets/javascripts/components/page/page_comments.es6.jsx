@@ -66,7 +66,7 @@ class PageComments extends Component {
   // --------------------------------------------------
   renderComment(comment) {
     return (
-      <StudentComment
+      <PageComment
         comment={comment}
         key={comment.id} />
     );
