@@ -6,21 +6,7 @@ class GroupsGrid extends Component {
   static get propTypes() {
     return {
       groups: React.PropTypes.array.isRequired,
-    };
-  }
-
-  // --------------------------------------------------
-  // Styles
-  // --------------------------------------------------
-  get styles() {
-    return {
-      container: {
-        display: 'flex',
-        flexFlow: 'wrap',
-        justifyContent: 'space-between',
-        alignContent: 'flex-start',
-        flex: '1',
-      },
+      media: React.PropTypes.string.isRequired,
     };
   }
 
@@ -31,7 +17,8 @@ class GroupsGrid extends Component {
     return (
       <GroupsCard
         group={group}
-        key={group.id} />
+        key={group.id}
+        media={this.props.media} />
     );
   }
 
@@ -41,7 +28,11 @@ class GroupsGrid extends Component {
 
   render() {
     return (
-      <div style={this.styles.container}>
+      <div style={StyleConstants.containers.grid}>
+        <PageHeader
+          clickable={true}
+          content={'New'}
+          label={'Groups in this conference'} />
         {this.renderGroups()}
       </div>
     );

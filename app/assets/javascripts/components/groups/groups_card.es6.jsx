@@ -6,6 +6,7 @@ class GroupsCard extends Component {
   static get propTypes() {
     return {
       group: React.PropTypes.object.isRequired,
+      media: React.PropTypes.string.isRequired,
     };
   }
 
@@ -15,13 +16,19 @@ class GroupsCard extends Component {
   render() {
     var group = this.props.group;
     return (
-      <div style={StyleConstants.cards.index}>
-        <Clickable
-          content={`Group ${group.name}`}
+      <div style={StyleConstants.cards.index(this.props.media)}>
+        <CardAttribute
+          clickable={true}
+          label={'Name'}
           route={RouteConstants.groups.show(group.conference_id, group.id)}
-          type={'h3'} />
-        <h6>{group.primary_leader}</h6>
-        <h6>{group.secondary_leader}</h6>
+          type={'h4'}
+          value={`Group ${group.name}`} />
+        <CardAttribute
+          label={'Primary leader'}
+          value={null} />
+        <CardAttribute
+          label={'Secondary leader'}
+          value={null} />
       </div>
     );
   }

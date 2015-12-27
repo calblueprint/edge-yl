@@ -6,8 +6,14 @@ class CardHeader extends Component {
   static get propTypes() {
     return {
       action: React.PropTypes.func.isRequired,
-      content: React.PropTypes.string.isRequired,
+      content: React.PropTypes.string,
       icon: React.PropTypes.string.isRequired,
+    };
+  }
+
+  static get defaultProps() {
+    return {
+      content: '',
     };
   }
 
@@ -44,7 +50,7 @@ class CardHeader extends Component {
   render() {
     return (
       <div style={this.styles.container}>
-        <h3>{this.props.content}</h3>
+        <h4>{this.props.content}</h4>
         <Clickable
           action={this.props.action}
           icon={this.props.icon}

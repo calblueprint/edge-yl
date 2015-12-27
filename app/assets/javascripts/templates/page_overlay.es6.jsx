@@ -49,16 +49,18 @@ class PageOverlay extends Component {
   }
 
   // --------------------------------------------------
-  // Handlers
-  // --------------------------------------------------
-  handleClick(event) {
-
-  }
-
-  // --------------------------------------------------
   // Render
   // --------------------------------------------------
   render() {
-    return <div></div>;
+    return (
+      <div ref={'container'} style={this.styles.container}>
+        <Clickable
+          action={() => this.storeOverlay()}
+          icon={TypeConstants.icons.close}
+          styles={this.clickableStyles}
+          type={'i'} />
+        {this.renderModal()}
+      </div>
+    );
   }
 }

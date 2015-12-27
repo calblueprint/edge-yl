@@ -57,6 +57,7 @@ class StudentPage extends Component {
   }
 
   render() {
+    var student = this.state.student;
     return (
       <div style={StyleConstants.pages.wrapper}>
         {this.renderOverlay()}
@@ -68,10 +69,16 @@ class StudentPage extends Component {
             active={this.state.profile.has_sidebar}
             profile={this.state.profile} />
           <div style={StyleConstants.pages.content}>
+            <PageHeader
+              clickable={true}
+              content={'Edit'}
+              label={'Student'}
+              value={student.full_name} />
             <StudentGrid
               media={this.state.media}
-              student={this.state.student} />
-            <StudentComments comments={this.state.student.comments} />
+              student={student} />
+            <StudentComments
+              comments={student.comments} />
           </div>
         </div>
       </div>

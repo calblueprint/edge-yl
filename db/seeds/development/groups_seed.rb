@@ -4,9 +4,7 @@
 def generate_group(conference)
   new_group = Group.create(
     conference: conference,
-    name: @alphabet.shift,
-    primary_leader: "#{Faker::Name.name}",
-    secondary_leader: "#{Faker::Name.name}",
+    letter: @alphabet.shift,
   )
 end
 
@@ -19,5 +17,5 @@ Student.all.each do |student|
   group = Group.find(rand(1..5))
   student.group = group
   student.save
-  puts "Assigned #{student.name} to group #{group.name}."
+  puts "Assigned #{student.full_name} to #{group.full_name}."
 end

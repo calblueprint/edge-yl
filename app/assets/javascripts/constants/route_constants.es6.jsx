@@ -8,6 +8,12 @@
       };
     }
 
+    get forms() {
+      return {
+        student: '/forms/1',
+      };
+    }
+
     get groups() {
       return {
         index: '/groups',

@@ -8,32 +8,12 @@ class StudentCard extends Component {
       media: React.PropTypes.string.isRequired,
       student: React.PropTypes.object.isRequired,
       target: React.PropTypes.oneOf([
-        'comment',
-        'contact',
-        'conference',
-        'outreach',
-        'guardian',
-        'preview',
+        TypeConstants.student.contact,
+        TypeConstants.student.conference,
+        TypeConstants.student.emergency,
+        TypeConstants.student.general,
+        TypeConstants.student.outreach,
       ]).isRequired,
-      type: React.PropTypes.oneOf([
-        'create',
-        'edit',
-      ]).isRequired,
-    };
-  }
-
-  // --------------------------------------------------
-  // Styles
-  // --------------------------------------------------
-  get styles() {
-    return {
-      container: Object.assign(
-        {},
-        StyleConstants.cards.show,
-        this.props.media === 'large' && { width: '32.5%' },
-        this.props.media === 'medium' && { width: '49%' },
-        this.props.media === 'small' && { width: '100%' }
-      ),
     };
   }
 
@@ -43,7 +23,7 @@ class StudentCard extends Component {
   showOverlay() {
     StudentActions.storeOverlay(
       true,
-      TypeConstants.overlay.type.edit,
+      TypeConstants.actions.edit,
       this.props.target
     );
   }
@@ -53,37 +33,33 @@ class StudentCard extends Component {
   // --------------------------------------------------
   renderBody() {
     switch (this.props.target) {
-      case TypeConstants.overlay.target.conference:
+      case TypeConstants.student.conference:
         return <StudentConference student={this.props.student} />;
-      case TypeConstants.overlay.target.contact:
+      case TypeConstants.student.contact:
         return <StudentContact student={this.props.student} />;
-      case TypeConstants.overlay.target.guardian:
-        return <StudentGuardian student={this.props.student} />;
-      case TypeConstants.overlay.target.outreach:
-        return <StudentOutreach student={this.props.student} />;
-      case TypeConstants.overlay.target.preview:
-        return <StudentPreview student={this.props.student} />;
+      case TypeConstants.student.emergency:
+        return <StudentEmergency student={this.props.student} />;
+      case TypeConstants.student.general:
+        return <StudentGeneral student={this.props.student} />;
     };
   }
 
   renderTitle() {
     switch (this.props.target) {
-      case TypeConstants.overlay.target.conference:
+      case TypeConstants.student.contact:
+        return 'Contact Information';
+      case TypeConstants.student.conference:
         return 'Conference Information';
-      case TypeConstants.overlay.target.contact:
-        return 'Student Information';
-      case TypeConstants.overlay.target.guardian:
-        return 'Guardian Information';
-      case TypeConstants.overlay.target.outreach:
-        return 'Student Outreach';
-      case TypeConstants.overlay.target.preview:
-        return 'Student Preview';
+      case TypeConstants.student.emergency:
+        return 'Emergency Information';
+      case TypeConstants.student.general:
+        return 'General Information';
     };
   }
 
   render() {
     return (
-      <div style={this.styles.container}>
+      <div style={StyleConstants.cards.show(this.props.media)}>
         <CardHeader
           action={() => this.showOverlay()}
           content={this.renderTitle()}

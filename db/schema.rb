@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20151130013648) do
   enable_extension "unaccent"
 
   create_table "comments", force: :cascade do |t|
-    t.text     "content",    null: false
+    t.string   "content",    null: false
     t.integer  "student_id"
     t.integer  "user_id"
     t.datetime "created_at", null: false
@@ -47,12 +47,10 @@ ActiveRecord::Schema.define(version: 20151130013648) do
   end
 
   create_table "groups", force: :cascade do |t|
-    t.string   "name",             null: false
-    t.string   "primary_leader",   null: false
-    t.string   "secondary_leader", null: false
-    t.integer  "conference_id",    null: false
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.string   "letter",        null: false
+    t.integer  "conference_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   add_index "groups", ["conference_id"], name: "index_groups_on_conference_id", using: :btree
@@ -68,15 +66,15 @@ ActiveRecord::Schema.define(version: 20151130013648) do
   add_index "pg_search_documents", ["searchable_type", "searchable_id"], name: "index_pg_search_documents_on_searchable_type_and_searchable_id", using: :btree
 
   create_table "questions", force: :cascade do |t|
-    t.boolean  "is_required",              null: false
-    t.string   "key",                      null: false
-    t.string   "options",     default: [], null: false, array: true
-    t.string   "placeholder", default: "", null: false
-    t.integer  "style",                    null: false
-    t.string   "title",                    null: false
+    t.boolean  "is_required", default: true, null: false
+    t.string   "key",                        null: false
+    t.string   "options",     default: [],   null: false, array: true
+    t.string   "placeholder", default: "",   null: false
+    t.integer  "style",                      null: false
+    t.string   "title",                      null: false
     t.integer  "section_id"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   add_index "questions", ["section_id"], name: "index_questions_on_section_id", using: :btree
@@ -93,20 +91,20 @@ ActiveRecord::Schema.define(version: 20151130013648) do
   add_index "responsibilities", ["user_id"], name: "index_responsibilities_on_user_id", using: :btree
 
   create_table "schools", force: :cascade do |t|
-    t.string   "address_city",         null: false
-    t.string   "address_one",          null: false
-    t.string   "address_state",        null: false
-    t.string   "address_two"
-    t.string   "address_zip",          null: false
-    t.string   "contact_email",        null: false
-    t.string   "contact_first_name",   null: false
-    t.string   "contact_last_name",    null: false
-    t.string   "contact_phone_number", null: false
-    t.string   "contact_title",        null: false
-    t.string   "name",                 null: false
-    t.string   "website",              null: false
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.string   "address_city",                      null: false
+    t.string   "address_one",                       null: false
+    t.string   "address_state",                     null: false
+    t.string   "address_two",          default: "", null: false
+    t.string   "address_zip",                       null: false
+    t.string   "contact_email",                     null: false
+    t.string   "contact_first_name",                null: false
+    t.string   "contact_last_name",                 null: false
+    t.string   "contact_phone_number",              null: false
+    t.string   "contact_title",                     null: false
+    t.string   "name",                              null: false
+    t.string   "website",                           null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
   end
 
   create_table "sections", force: :cascade do |t|
@@ -119,56 +117,58 @@ ActiveRecord::Schema.define(version: 20151130013648) do
   add_index "sections", ["form_id"], name: "index_sections_on_form_id", using: :btree
 
   create_table "students", force: :cascade do |t|
-    t.string   "address_city",        null: false
-    t.string   "address_one",         null: false
-    t.string   "address_state",       null: false
-    t.string   "address_two",         null: false
-    t.string   "address_zip",         null: false
-    t.date     "birthday",            null: false
-    t.integer  "gender",              null: false
-    t.integer  "registration_status", null: false
-    t.integer  "shirt_size",          null: false
-    t.string   "cell_phone",          null: false
-    t.string   "email",               null: false
-    t.string   "first_name",          null: false
-    t.string   "preferred_name",      null: false
-    t.string   "guardian_one_name",   null: false
-    t.string   "guardian_one_phone",  null: false
-    t.string   "guardian_one_email",  null: false
-    t.string   "guardian_two_name",   null: false
-    t.string   "guardian_two_phone",  null: false
-    t.string   "guardian_two_email",  null: false
-    t.string   "home_phone",          null: false
-    t.boolean  "is_flagged",          null: false
-    t.boolean  "is_primary",          null: false
-    t.string   "last_name",           null: false
+    t.string   "address_city",                       null: false
+    t.string   "address_one",                        null: false
+    t.string   "address_state",                      null: false
+    t.string   "address_two",           default: "", null: false
+    t.string   "address_zip",                        null: false
+    t.date     "birthday",                           null: false
+    t.string   "cell_phone",                         null: false
+    t.string   "email",                              null: false
+    t.string   "first_name",                         null: false
+    t.integer  "gender",                             null: false
+    t.string   "guardian_email",                     null: false
+    t.string   "guardian_employer",     default: "", null: false
+    t.string   "guardian_first_name",                null: false
+    t.string   "guardian_job_title",    default: "", null: false
+    t.string   "guardian_last_name",                 null: false
+    t.string   "guardian_phone_number",              null: false
+    t.integer  "guardian_phone_type",                null: false
+    t.integer  "guardian_relationship",              null: false
+    t.string   "home_phone",                         null: false
+    t.boolean  "is_flagged",                         null: false
+    t.boolean  "is_primary",                         null: false
+    t.string   "last_name",                          null: false
+    t.string   "preferred_name",        default: "", null: false
+    t.integer  "registration_status",                null: false
+    t.integer  "shirt_size",                         null: false
     t.integer  "group_id"
     t.integer  "school_id"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
   end
 
   add_index "students", ["group_id"], name: "index_students_on_group_id", using: :btree
   add_index "students", ["school_id"], name: "index_students_on_school_id", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                                  null: false
-    t.string   "encrypted_password",     default: "",    null: false
-    t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,     null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.inet     "current_sign_in_ip"
-    t.inet     "last_sign_in_ip"
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
+    t.datetime "current_sign_in_at"
+    t.inet     "current_sign_in_ip"
+    t.string   "email",                  default: "",    null: false
+    t.string   "encrypted_password",     default: "",    null: false
     t.string   "first_name",                             null: false
-    t.string   "last_name",                              null: false
     t.boolean  "has_sidebar",            default: true,  null: false
     t.boolean  "is_admin",               default: false, null: false
+    t.string   "last_name",                              null: false
+    t.datetime "last_sign_in_at"
+    t.inet     "last_sign_in_ip"
+    t.datetime "remember_created_at"
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.integer  "sign_in_count",          default: 0,     null: false
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
   end

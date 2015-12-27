@@ -12,16 +12,22 @@ class StudentConference extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
+  renderGroup() {
+    var group = this.props.student.group;
+    if (group) {
+      return <h6>{group.name}</h6>;
+    }
+  }
   render() {
     var group = this.props.student.group;
     return (
       <div style={StyleConstants.cards.body}>
-        <h4>{'Status'}</h4>
+        <h5>{'Status'}</h5>
         <br />
-        <h4>{'Group'}</h4>
-        <h6>{group.name}</h6>
+        <h5>{'Group'}</h5>
+        {this.renderGroup()}
         <br />
-        <h4>{'Rooming'}</h4>
+        <h5>{'Rooming'}</h5>
       </div>
     );
   }

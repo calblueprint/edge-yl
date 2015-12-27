@@ -23,18 +23,22 @@ class SchoolPage extends Component {
   componentWillMount() {
     this.setState(ProfileStore.getState());
     this.setState(SchoolStore.getState());
+    this.setState(ViewStore.getState());
   }
 
   componentDidMount() {
     ProfileStore.listen(this._listener);
     SchoolStore.listen(this._listener);
+    ViewStore.listen(this._listener);
     ProfileActions.fetchProfile();
     SchoolActions.fetchSchool(this.props.id);
+    ViewActions.attachListener();
   }
 
   componentWillUnmount() {
     ProfileStore.unlisten(this._listener);
     SchoolStore.unlisten(this._listener);
+    ViewStore.unlisten(this._listener);
   }
 
   // --------------------------------------------------
@@ -45,12 +49,14 @@ class SchoolPage extends Component {
       return (
         <SchoolPageOverlay
           overlay={this.state.overlay}
-          school={this.state.school} />
+          school={this.state.school}
+          template={this.state.template} />
       );
     }
   }
 
   render() {
+    var school = this.state.school;
     return (
       <div style={StyleConstants.pages.wrapper}>
         {this.renderOverlay()}
@@ -62,7 +68,14 @@ class SchoolPage extends Component {
             active={this.state.profile.has_sidebar}
             profile={this.state.profile} />
           <div style={StyleConstants.pages.content}>
-            <SchoolGrid school={this.state.school} />
+            <PageHeader
+              clickable={true}
+              content={'Edit'}
+              label={'School'}
+              value={school.name} />
+            <SchoolGrid
+              media={this.state.media}
+              school={school} />
           </div>
         </div>
       </div>

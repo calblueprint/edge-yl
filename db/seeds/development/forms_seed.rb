@@ -4,23 +4,21 @@ student_form = Form.create(
 ) do |form|
   Section.create(
     form: form,
-    title: 'Basic Information',
+    title: 'General Information',
   ) do |section|
     Question.create(
-      is_required: true,
       key: 'first_name',
       placeholder: 'Kira',
       section: section,
       style: Question.styles[:input],
-      title: 'First Name',
+      title: 'First name',
     )
     Question.create(
-      is_required: true,
       key: 'last_name',
       placeholder: 'Klapper',
       section: section,
       style: Question.styles[:input],
-      title: 'Last Name',
+      title: 'Last name',
     )
     Question.create(
       is_required: false,
@@ -28,19 +26,16 @@ student_form = Form.create(
       placeholder: 'Kira',
       section: section,
       style: Question.styles[:input],
-      title: 'Preferred Name',
+      title: 'Preferred name',
     )
     Question.create(
-      is_required: true,
       key: 'gender',
-      options: ['Female', 'Male', 'Other'],
-      placeholder: 'Female',
+      options: Student.genders.keys,
       section: section,
       style: Question.styles[:dropdown],
       title: 'Gender',
     )
     Question.create(
-      is_required: true,
       key: 'birthday',
       placeholder: '01/01/96',
       section: section,
@@ -48,7 +43,6 @@ student_form = Form.create(
       title: 'Birthday',
     )
     Question.create(
-      is_required: true,
       key: 'email',
       placeholder: 'kiraklapper@gmail.com',
       section: section,
@@ -56,28 +50,25 @@ student_form = Form.create(
       title: 'Email',
     )
     Question.create(
-      is_required: true,
       key: 'cell_phone',
       placeholder: '(555) 555-5555',
       section: section,
       style: Question.styles[:input],
-      title: 'Cell Phone',
+      title: 'Cell phone',
     )
     Question.create(
-      is_required: true,
       key: 'home_phone',
       placeholder: '(555) 555-5555',
       section: section,
       style: Question.styles[:input],
-      title: 'Home Phone',
+      title: 'Home phone',
     )
     Question.create(
-      is_required: true,
       key: 'address_one',
       placeholder: '213 Queen Street',
       section: section,
       style: Question.styles[:input],
-      title: 'Address One',
+      title: 'Address one',
     )
     Question.create(
       is_required: false,
@@ -85,31 +76,35 @@ student_form = Form.create(
       placeholder: '213 Queen Street',
       section: section,
       style: Question.styles[:input],
-      title: 'Address Two',
+      title: 'Address two',
     )
     Question.create(
-      is_required: true,
       key: 'address_city',
       placeholder: 'San Francisco',
       section: section,
       style: Question.styles[:input],
-      title: 'Address City',
+      title: 'Address city',
     )
     Question.create(
-      is_required: true,
       key: 'address_state',
       placeholder: 'CA',
       section: section,
       style: Question.styles[:input],
-      title: 'Address State',
+      title: 'Address state',
     )
     Question.create(
-      is_required: true,
       key: 'address_zip',
       placeholder: '90474',
       section: section,
       style: Question.styles[:input],
       title: 'Address ZIP',
+    )
+    Question.create(
+      key: 'shirt_size',
+      options: Student.shirt_sizes.keys,
+      section: section,
+      style: Question.styles[:dropdown],
+      title: 'Shirt size',
     )
   end
   Section.create(
@@ -117,28 +112,62 @@ student_form = Form.create(
     title: 'Emergency Contact Information',
   ) do |section|
     Question.create(
-      is_required: true,
-      key: 'guardian_one_name',
+      key: 'guardian_first_name',
       placeholder: 'Kira',
       section: section,
       style: Question.styles[:input],
-      title: 'Parent/Guardian One Name',
+      title: 'Guardian first name',
     )
     Question.create(
-      is_required: true,
-      key: 'guardian_one_email',
-      placeholder: 'kira@gmail.com',
+      key: 'guardian_last_name',
+      placeholder: 'Klapper',
       section: section,
       style: Question.styles[:input],
-      title: 'Parent/Guardian One Email',
+      title: 'Guardian last name',
     )
     Question.create(
-      is_required: true,
-      key: 'guardian_one_phone',
+      key: 'guardian_email',
+      placeholder: 'kiraklapper@gmail.com',
+      section: section,
+      style: Question.styles[:input],
+      title: 'Guardian email',
+    )
+    Question.create(
+      key: 'guardian_relationship',
+      options: Student.guardian_relationships.keys,
+      section: section,
+      style: Question.styles[:dropdown],
+      title: 'Guardian relationship',
+    )
+    Question.create(
+      key: 'guardian_phone_number',
       placeholder: '(555) 555-5555',
       section: section,
       style: Question.styles[:input],
-      title: 'Parent/Guardian One Email',
+      title: 'Guardian phone number',
+    )
+    Question.create(
+      key: 'guardian_phone_type',
+      options: Student.guardian_phone_types.keys,
+      section: section,
+      style: Question.styles[:dropdown],
+      title: 'Guardian phone type',
+    )
+    Question.create(
+      is_required: false,
+      key: 'guardian_employer',
+      placeholder: 'EDGE Youth Leadership',
+      section: section,
+      style: Question.styles[:input],
+      title: 'Guardian employer',
+    )
+    Question.create(
+      is_required: false,
+      key: 'guardian_job_title',
+      placeholder: 'Software Engineer',
+      section: section,
+      style: Question.styles[:input],
+      title: 'Guardian job title',
     )
   end
 end

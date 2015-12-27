@@ -5,20 +5,8 @@ class SchoolGrid extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
+      media: React.PropTypes.string.isRequired,
       school: React.PropTypes.object.isRequired,
-    };
-  }
-
-  // --------------------------------------------------
-  // Styles
-  // --------------------------------------------------
-  get styles() {
-    return {
-      container: {
-        display: 'flex',
-        flexFlow: 'column',
-        flex: '1',
-      },
     };
   }
 
@@ -27,8 +15,15 @@ class SchoolGrid extends Component {
   // --------------------------------------------------
   render() {
     return (
-      <div style={this.styles.container}>
-        <SchoolCard school={this.props.school}/>
+      <div style={StyleConstants.containers.grid}>
+        <SchoolCard
+          media={this.props.media}
+          school={this.props.school}
+          target={TypeConstants.school.general} />
+        <SchoolCard
+          media={this.props.media}
+          school={this.props.school}
+          target={TypeConstants.school.contact} />
       </div>
     );
   }

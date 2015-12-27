@@ -11,30 +11,21 @@ class GroupGrid extends Component {
   }
 
   // --------------------------------------------------
-  // Styles
-  // --------------------------------------------------
-  get styles() {
-    return {
-      container: {
-        display: 'flex',
-        flexFlow: 'column',
-        flex: '1',
-      },
-    };
-  }
-
-  // --------------------------------------------------
   // Render
   // --------------------------------------------------
 
   render() {
-    var group = this.props.group;
     return (
-      <div style={this.styles.container}>
-        <GroupCard group={group} />
+      <div style={StyleConstants.containers.grid}>
+        <GroupCard
+          group={this.props.group}
+          media={this.props.media} />
+        <GroupCard
+          group={this.props.group}
+          media={this.props.media} />
         <StudentsGrid
           media={this.props.media}
-          students={group.students} />
+          students={this.props.group.students} />
       </div>
     );
   }

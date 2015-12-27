@@ -10,11 +10,12 @@ class Api::Conferences::GroupsController < Api::BaseController
   end
 
   def index
+    groups = Group.all
     render json: Group.all, each_serializer: GroupIndexSerializer
   end
 
   def show
-    group = Group.find params[:id]
+    group = Group.includes(:conference, students: :school).find params[:id]
     render json: group, serializer: GroupShowSerializer
   end
 

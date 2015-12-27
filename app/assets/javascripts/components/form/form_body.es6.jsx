@@ -16,11 +16,11 @@ class FormBody extends Component {
     return {
       container: Object.assign(
         {},
-        StyleConstants.defaults.card,
+        StyleConstants.templates.card,
         {
           width: '712px',
-          padding: '36px',
-          margin: '20px',
+          padding: '24px',
+          margin: '48px 0px',
         }
       ),
       header: {

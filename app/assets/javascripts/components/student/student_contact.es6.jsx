@@ -16,18 +16,30 @@ class StudentContact extends Component {
     var student = this.props.student;
     return (
       <div style={StyleConstants.cards.body}>
-        <h4>{'Contact'}</h4>
-        <h6>{student.email}</h6>
-        <h6>{student.cell_phone}</h6>
-        <h6>{student.home_phone}</h6>
-        <h6>{student.home_address}</h6>
-        <br />
-        <h4>{'School'}</h4>
-        <Clickable
-          content={student.school.name}
-          route={RouteConstants.schools.show(student.school.id)}
-          type={'h6'} />
-        <h6>{student.school.address}</h6>
+        <CardAttribute
+          label={'Cell phone'}
+          value={student.cell_phone} />
+        <CardAttribute
+          label={'Home phone'}
+          value={student.home_phone} />
+        <CardAttribute
+          label={'Email'}
+          value={student.email} />
+        <CardAttribute
+          label={'Address one'}
+          value={student.address_one} />
+        <CardAttribute
+          label={'Address two'}
+          value={student.address_two} />
+        <CardAttribute
+          label={'Address city'}
+          value={student.address_city} />
+        <CardAttribute
+          label={'Address state'}
+          value={student.address_state} />
+        <CardAttribute
+          label={'Address zip'}
+          value={student.address_zip} />
       </div>
     );
   }

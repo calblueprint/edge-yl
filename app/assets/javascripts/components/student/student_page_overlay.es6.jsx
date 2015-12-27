@@ -26,10 +26,17 @@ class StudentPageOverlay extends PageOverlay {
   }
 
   // --------------------------------------------------
+  // Helpers
+  // --------------------------------------------------
+  storeOverlay() {
+    StudentActions.storeOverlay(false);
+  }
+
+  // --------------------------------------------------
   // Render
   // --------------------------------------------------
   renderModal() {
-    if (this.props.overlay.type === TypeConstants.overlay.type.edit) {
+    if (this.props.overlay.type === TypeConstants.actions.edit) {
       return (
         <StudentEditModal
           overlay={this.props.overlay}
@@ -44,18 +51,5 @@ class StudentPageOverlay extends PageOverlay {
           student={this.props.student} />
       );
     }
-  }
-
-  render() {
-    return (
-      <div ref={'container'} style={this.styles.container}>
-        <Clickable
-          action={() => StudentActions.storeOverlay(false)}
-          icon={TypeConstants.icons.close}
-          styles={this.clickableStyles}
-          type={'i'} />
-        {this.renderModal()}
-      </div>
-    );
   }
 }

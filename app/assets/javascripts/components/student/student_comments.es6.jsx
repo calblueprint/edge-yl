@@ -26,7 +26,7 @@ class StudentComments extends Component {
         boxSizing: 'border-box',
       },
       title: {
-        marginTop: '24px',
+        marginTop: '12px',
       },
     };
   }
@@ -56,7 +56,7 @@ class StudentComments extends Component {
   handleClick() {
     StudentActions.storeOverlay(
       true,
-      TypeConstants.overlay.type.create,
+      TypeConstants.actions.create,
       TypeConstants.overlay.target.comment
     );
   }

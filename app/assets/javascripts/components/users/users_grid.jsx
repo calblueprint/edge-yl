@@ -5,22 +5,8 @@ class UsersGrid extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
+      media: React.PropTypes.string.isRequired,
       users: React.PropTypes.array.isRequired,
-    };
-  }
-
-  // --------------------------------------------------
-  // Styles
-  // --------------------------------------------------
-  get styles() {
-    return {
-      container: {
-        display: 'flex',
-        flexFlow: 'wrap',
-        justifyContent: 'space-between',
-        alignContent: 'flex-start',
-        flex: '1',
-      },
     };
   }
 
@@ -31,6 +17,7 @@ class UsersGrid extends Component {
     return (
       <UsersCard
         key={user.id}
+        media={this.props.media}
         user={user} />
     );
   }
@@ -41,7 +28,7 @@ class UsersGrid extends Component {
 
   render() {
     return (
-      <div style={this.styles.container}>
+      <div style={StyleConstants.containers.grid}>
         {this.renderCards()}
       </div>
     );

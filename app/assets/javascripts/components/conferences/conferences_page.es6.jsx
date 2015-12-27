@@ -23,18 +23,34 @@ class ConferencesPage extends Component {
   componentWillMount() {
     this.setState(ConferencesStore.getState());
     this.setState(ProfileStore.getState());
+    this.setState(ViewStore.getState());
   }
 
   componentDidMount() {
     ConferencesStore.listen(this._listener);
     ProfileStore.listen(this._listener);
+    ViewStore.listen(this._listener);
     ConferencesActions.fetchConferences(this.props.page);
     ProfileActions.fetchProfile();
+    ViewActions.attachListener();
   }
 
   componentWillUnmount() {
     ConferencesStore.unlisten(this._listener);
     ProfileStore.unlisten(this._listener);
+    ViewStore.unlisten(this._listener);
+  }
+
+  // --------------------------------------------------
+  // Helpers
+  // --------------------------------------------------
+  showOverlay() {
+    // TODO(Warren): Fix constants below.
+    ConferencesActions.storeOverlay(
+      true,
+      TypeConstants.actions.edit,
+      TypeConstants.conference
+    );
   }
 
   // --------------------------------------------------
@@ -62,7 +78,14 @@ class ConferencesPage extends Component {
             active={this.state.profile.has_sidebar}
             profile={this.state.profile} />
           <div style={StyleConstants.pages.content}>
-            <ConferencesGrid conferences={this.state.conferences} />
+            <PageHeader
+              action={() => this.showOverlay()}
+              content={'New'}
+              clickable={true}
+              label={'Conferences'} />
+            <ConferencesGrid
+              conferences={this.state.conferences}
+              media={this.state.media} />
             <PageNavigator
               route={RouteConstants.conferences.index}
               pagination={this.state.pagination} />

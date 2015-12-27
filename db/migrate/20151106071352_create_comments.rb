@@ -1,8 +1,8 @@
 class CreateComments < ActiveRecord::Migration
+
   def change
     create_table :comments do |t|
-
-      t.text :content, null: false
+      t.string :content, null: false
 
       t.references :student, index: true
       t.references :user, index: true
@@ -10,4 +10,5 @@ class CreateComments < ActiveRecord::Migration
       t.timestamps null: false
     end
   end
+
 end

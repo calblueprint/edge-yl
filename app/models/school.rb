@@ -6,7 +6,7 @@
 #  address_city         :string           not null
 #  address_one          :string           not null
 #  address_state        :string           not null
-#  address_two          :string
+#  address_two          :string           default(""), not null
 #  address_zip          :string           not null
 #  contact_email        :string           not null
 #  contact_first_name   :string           not null
@@ -30,7 +30,6 @@ class School < ActiveRecord::Base
   validates :address_city, presence: true
   validates :address_one, presence: true
   validates :address_state, presence: true
-  validates :address_two, presence: false
   validates :address_zip, presence: true
   validates :contact_email, presence: true
   validates :contact_first_name, presence: true

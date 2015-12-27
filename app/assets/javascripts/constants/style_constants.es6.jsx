@@ -24,36 +24,41 @@
           flex: '1',
           padding: '18px',
         },
-        index: Object.assign(
+        index: (media) => Object.assign(
           {},
-          this.defaults.card,
-          {
-            width: '49%',
-            padding: '18px',
-            marginTop: '12px',
-            boxSizing: 'border-box',
-          }
+          this.containers.card,
+          { padding: '18px' },
+
+          media === 'big' && { width: '49%' },
+          media === 'small' && { width: '100%' }
         ),
-        show: Object.assign(
+        show: (media) => Object.assign(
           {},
-          this.defaults.card,
-          {
-            marginTop: '12px',
-            boxSizing: 'border-box',
-          }
+          this.containers.card,
+          media === 'big' && { width: '49%' },
+          media === 'small' && { width: '100%' }
         ),
       };
     }
 
-    get defaults() {
+    get containers() {
       return {
-        card: {
+        card: Object.assign(
+          {},
+          {
+            display: 'flex',
+            flexFlow: 'column',
+            marginTop: '12px',
+            boxSizing: 'border-box',
+          },
+          this.templates.card,
+        ),
+        grid: {
           display: 'flex',
-          flexFlow: 'column',
-          backgroundColor: this.colors.white,
-          border: '1px solid',
-          borderColor: '#e5e6e9 #dfe0e4 #d0d1d5',
-          borderRadius: '1px',
+          flexFlow: 'wrap',
+          justifyContent: 'space-between',
+          alignContent: 'flex-start',
+          width: '100%',
         },
       };
     }
@@ -84,8 +89,7 @@
           display: 'flex',
           flexFlow: 'column',
           flex: '1',
-          paddingLeft: '12px',
-          paddingRight: '208px',
+          padding: '0px 208px 24px 12px',
           overflow: 'scroll',
         },
         wrapper: {
@@ -107,6 +111,17 @@
         seven: 700,
         eight: 800,
         nine: 900,
+      };
+    }
+
+    get templates() {
+      return {
+        card: {
+          backgroundColor: this.colors.white,
+          border: '1px solid',
+          borderColor: '#e5e6e9 #dfe0e4 #d0d1d5',
+          borderRadius: '1px',
+        },
       };
     }
   }
