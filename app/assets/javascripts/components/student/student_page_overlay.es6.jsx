@@ -17,15 +17,6 @@ class StudentPageOverlay extends PageOverlay {
   }
 
   // --------------------------------------------------
-  // Handlers
-  // --------------------------------------------------
-  handleClick() {
-    if (event.target === this._node) {
-      StudentActions.storeOverlay(false);
-    }
-  }
-
-  // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
   storeOverlay() {

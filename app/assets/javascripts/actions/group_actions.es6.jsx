@@ -13,6 +13,14 @@
       return true;
     }
 
+    storeOverlay(active, type, target) {
+      return {
+        active: active,
+        target: target,
+        type: type,
+      };
+    }
+
     updateGroup(conferenceId, id, params) {
       var resolve = (response) => this.storeGroup(response);
       Requester.update(

@@ -42,10 +42,24 @@ class GroupPage extends Component {
     ViewStore.unlisten(this._listener);
   }
 
+  // --------------------------------------------------
+  // Render
+  // --------------------------------------------------
+  renderOverlay() {
+    if (this.state.overlay.active) {
+      return (
+        <GroupPageOverlay
+          overlay={this.state.overlay}
+          template={this.state.template} />
+      );
+    }
+  }
+
   render() {
     var group = this.state.group;
     return (
       <div style={StyleConstants.pages.wrapper}>
+        {this.renderOverlay()}
         <Header
           active={true}
           profile={this.state.profile} />
@@ -58,7 +72,7 @@ class GroupPage extends Component {
               clickable={true}
               content={'Edit'}
               label={'Group'}
-              value={`Group ${group.name}`} />
+              value={group.full_name} />
             <GroupGrid
               group={group}
               media={this.state.media} />

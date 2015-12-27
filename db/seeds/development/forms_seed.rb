@@ -171,4 +171,4 @@ student_form = Form.create(
     )
   end
 end
-puts "Created form: #{student_form.title}."
+puts "Created form #{student_form.title}."

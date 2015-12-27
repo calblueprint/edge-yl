@@ -29,10 +29,6 @@ class GroupsGrid extends Component {
   render() {
     return (
       <div style={StyleConstants.containers.grid}>
-        <PageHeader
-          clickable={true}
-          content={'New'}
-          label={'Groups in this conference'} />
         {this.renderGroups()}
       </div>
     );
