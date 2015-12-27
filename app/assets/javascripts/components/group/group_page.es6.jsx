@@ -69,8 +69,6 @@ class GroupPage extends Component {
             profile={this.state.profile} />
           <div style={StyleConstants.pages.content}>
             <PageHeader
-              clickable={true}
-              content={'Edit'}
               label={'Group'}
               value={group.full_name} />
             <GroupGrid

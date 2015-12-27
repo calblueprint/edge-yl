@@ -44,7 +44,16 @@ class ConferencesPage extends Component {
   // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
-  showOverlay() {
+  generateOptions() {
+    return [
+      {
+        action: () => this.storeOverlay(),
+        content: 'New',
+      },
+    ];
+  }
+
+  storeOverlay() {
     // TODO(Warren): Fix constants below.
     ConferencesActions.storeOverlay(
       true,
@@ -79,10 +88,8 @@ class ConferencesPage extends Component {
             profile={this.state.profile} />
           <div style={StyleConstants.pages.content}>
             <PageHeader
-              action={() => this.showOverlay()}
-              content={'New'}
-              clickable={true}
-              label={'Conferences'} />
+              label={'Conferences'}
+              options={this.generateOptions()} />
             <ConferencesGrid
               conferences={this.state.conferences}
               media={this.state.media} />

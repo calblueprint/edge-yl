@@ -42,6 +42,18 @@ class SchoolsPage extends Component {
   }
 
   // --------------------------------------------------
+  // Helpers
+  // --------------------------------------------------
+  generateOptions() {
+    return [
+      {
+        content: 'New',
+        route: RouteConstants.forms.student,
+      },
+    ];
+  }
+
+  // --------------------------------------------------
   // Render
   // --------------------------------------------------
   render() {
@@ -56,10 +68,8 @@ class SchoolsPage extends Component {
             profile={this.state.profile} />
           <div style={StyleConstants.pages.content}>
             <PageHeader
-              clickable={true}
-              content={'New'}
-              route={RouteConstants.forms.student}
-              label={'Schools'} />
+              label={'Schools'}
+              options={this.generateOptions()} />
             <SchoolsGrid
               media={this.state.media}
               schools={this.state.schools} />
