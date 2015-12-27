@@ -5,21 +5,21 @@ class PageHeader extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      action: React.PropTypes.func,
-      clickable: React.PropTypes.bool,
-      content: React.PropTypes.string,
       label: React.PropTypes.string.isRequired,
-      route: React.PropTypes.string,
+      options: React.PropTypes.arrayOf(
+        React.PropTypes.shape({
+          action: React.PropTypes.func,
+          content: React.PropTypes.string,
+          route: React.PropTypes.string,
+        })
+      ),
       value: React.PropTypes.string,
     };
   }
 
   static get defaultProps() {
     return {
-      action: null,
-      clickable: false,
-      content: '',
-      route: '',
+      options: [],
       value: '',
     };
   }
@@ -29,16 +29,19 @@ class PageHeader extends Component {
   // --------------------------------------------------
   get styles() {
     return {
-      header: {
+      container: {
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
         width: '100%',
         marginTop: '12px',
       },
-      section: {
+      title: {
         display: 'flex',
         flexFlow: 'column',
+      },
+      options: {
+        display: 'flex',
       },
     };
   }
@@ -46,16 +49,20 @@ class PageHeader extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
-  renderClickable() {
-    if (this.props.clickable) {
-      return (
-        <Clickable
-          action={() => this.props.action()}
-          content={this.props.content}
-          route={this.props.route}
-          type={'h4'} />
-      );
-    }
+  renderOption(option, index) {
+    return (
+      <Clickable
+        action={option.action}
+        content={option.content}
+        key={index}
+        route={option.route}
+        type={'h4'} />
+    );
+  }
+
+  renderOptions() {
+    var options = this.props.options;
+    return options.map((option, index) => this.renderOption(option, index));
   }
 
   renderValue() {
@@ -66,12 +73,14 @@ class PageHeader extends Component {
 
   render() {
     return (
-      <div style={this.styles.header}>
-        <div style={this.styles.section}>
+      <div style={this.styles.container}>
+        <div style={this.styles.title}>
           <h4>{this.props.label}</h4>
           {this.renderValue()}
         </div>
-        {this.renderClickable()}
+        <div style={this.styles.options}>
+          {this.renderOptions()}
+        </div>
       </div>
     );
   }

@@ -42,6 +42,22 @@ class StudentsPage extends Component {
   }
 
   // --------------------------------------------------
+  // Helpers
+  // --------------------------------------------------
+  generateOptions() {
+    return [
+      {
+        content: 'New',
+        route: RouteConstants.forms.student,
+      },
+      {
+        action: () => console.log('export'),
+        content: 'Export',
+      },
+    ];
+  }
+
+  // --------------------------------------------------
   // Render
   // --------------------------------------------------
   render() {
@@ -56,10 +72,8 @@ class StudentsPage extends Component {
             profile={this.state.profile} />
           <div style={StyleConstants.pages.content}>
             <PageHeader
-              clickable={true}
-              content={'New'}
-              route={RouteConstants.forms.student}
-              label={'Students'} />
+              label={'Students'}
+              options={this.generateOptions()} />
             <StudentsFilters filters={this.state.filters} />
             <StudentsGrid
               media={this.state.media}
