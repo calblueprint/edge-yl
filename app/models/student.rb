@@ -86,7 +86,6 @@ class Student < ActiveRecord::Base
   validates :home_phone, presence: true
   validates :last_name, presence: true
 
-<<<<<<< HEAD
   def self.to_csv
     attributes = %w{first_name last_name birthday email}
     CSV.generate(headers: true) do |csv|
@@ -97,10 +96,7 @@ class Student < ActiveRecord::Base
     end
   end
 
-  def name
-=======
   def full_name
->>>>>>> 4af4fd92a6cffe049192845a3382bd1b1be8b28f
     "#{first_name} #{last_name}"
   end
 
