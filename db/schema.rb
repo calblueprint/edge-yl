@@ -178,13 +178,16 @@ ActiveRecord::Schema.define(version: 20151130013648) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "visits", force: :cascade do |t|
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
     t.integer  "visitable_id"
     t.string   "visitable_type"
     t.integer  "user_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
 
+  add_index "visits", ["commentable_type", "commentable_id"], name: "index_visits_on_commentable_type_and_commentable_id", using: :btree
   add_index "visits", ["user_id"], name: "index_visits_on_user_id", using: :btree
   add_index "visits", ["visitable_type", "visitable_id"], name: "index_visits_on_visitable_type_and_visitable_id", using: :btree
 

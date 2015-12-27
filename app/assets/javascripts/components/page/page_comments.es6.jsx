@@ -57,7 +57,7 @@ class PageComments extends Component {
     StudentActions.storeOverlay(
       true,
       TypeConstants.actions.create,
-      TypeConstants.overlay.target.comment
+      'comment' // change to constant later
     );
   }
 

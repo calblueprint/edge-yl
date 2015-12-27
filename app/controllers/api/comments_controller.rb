@@ -1,4 +1,4 @@
-class Api::Students::CommentsController < Api::BaseController
+class Api::CommentsController < Api::BaseController
 
   def create
     comment = Comment.new comment_params
