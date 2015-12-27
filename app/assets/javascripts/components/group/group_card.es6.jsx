@@ -24,15 +24,23 @@ class GroupCard extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
+  renderBody() {
+    return <GroupGeneral group={this.props.group} />;
+  }
+
+  renderTitle() {
+    return 'General Information';
+  }
+
   render() {
     var group = this.props.group;
     return (
       <div style={StyleConstants.cards.show(this.props.media)}>
         <CardHeader
           action={() => this.showOverlay()}
-          content={`Group ${group.name}`}
+          content={this.renderTitle()}
           icon={TypeConstants.icons.edit} />
-        <GroupGeneral group={this.props.group} />
+        {this.renderBody()}
       </div>
     );
   }
