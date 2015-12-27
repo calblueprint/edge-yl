@@ -51,7 +51,7 @@ class StudentsPage extends Component {
         route: RouteConstants.forms.student,
       },
       {
-        action: () => console.log('export'),
+        route: ApiConstants.csvs.students,
         content: 'Export',
       },
     ];
