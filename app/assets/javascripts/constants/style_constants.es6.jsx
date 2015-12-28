@@ -89,12 +89,18 @@
       };
     }
 
+    get heights() {
+      return {
+        header: '48px',
+      };
+    }
+
     get pages() {
       return {
         container: {
           display: 'flex',
           flex: '1',
-          paddingTop: '48px',
+          paddingTop: this.heights.header,
           paddingLeft: this.widths.sidebar,
         },
         content: {

@@ -30,7 +30,7 @@ class Header extends Component {
         left: '0px',
         zIndex: StyleConstants.planes.eight,
         width: '100%',
-        height: '48px',
+        height: StyleConstants.heights.header,
         backgroundColor: StyleConstants.colors.blue,
         boxShadow: '0px 0px 5px 0px rgba(0, 0, 0, 0.25)',
       },
