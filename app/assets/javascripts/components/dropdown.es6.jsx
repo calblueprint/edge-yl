@@ -6,13 +6,15 @@ class Dropdown extends Component {
   static get propTypes() {
     return {
       action: React.PropTypes.func,
-      options: React.PropTypes.arrayOf(React.PropTypes.shape({
-        action: React.PropTypes.func,
-        children: React.PropTypes.node,
-        content: React.PropTypes.string,
-        route: React.PropTypes.string,
-        static: React.PropTypes.boolean,
-      })).isRequired,
+      options: React.PropTypes.arrayOf(
+        React.PropTypes.shape({
+          action: React.PropTypes.func,
+          children: React.PropTypes.node,
+          content: React.PropTypes.string,
+          route: React.PropTypes.string,
+          static: React.PropTypes.boolean,
+        })
+      ).isRequired,
       styles: React.PropTypes.shape({
         child: React.PropTypes.shape({
           default: React.PropTypes.object,

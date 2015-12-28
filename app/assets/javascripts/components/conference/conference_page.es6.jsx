@@ -42,6 +42,17 @@ class ConferencePage extends Component {
   }
 
   // --------------------------------------------------
+  // Helpers
+  // --------------------------------------------------
+  generateOptions() {
+    return [
+      {
+        content: 'Edit',
+      },
+    ];
+  }
+
+  // --------------------------------------------------
   // Render
   // --------------------------------------------------
   renderOverlay() {
@@ -68,9 +79,8 @@ class ConferencePage extends Component {
             profile={this.state.profile} />
           <div style={StyleConstants.pages.content}>
             <PageHeader
-              clickable={true}
-              content={'Edit'}
               label={'Conference'}
+              options={this.generateOptions()}
               value={conference.name} />
             <ConferenceGrid
               conference={conference}
