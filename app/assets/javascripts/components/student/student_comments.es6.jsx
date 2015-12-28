@@ -34,7 +34,7 @@ class StudentComments extends Component {
   get clickableStyles() {
     return {
       child: {
-        paddingRight: '12px',
+        paddingRight: '8px',
       },
       default: {
         flex: '1',
