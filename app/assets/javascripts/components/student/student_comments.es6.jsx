@@ -20,7 +20,7 @@ class StudentComments extends Component {
         position: 'absolute',
         top: '0px',
         right: '0px',
-        width: '172px',
+        width: StyleConstants.widths.sidebar,
         paddingRight: '12px',
         textAlign: 'right',
         boxSizing: 'border-box',

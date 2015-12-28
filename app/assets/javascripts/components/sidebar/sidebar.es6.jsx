@@ -21,7 +21,7 @@ class Sidebar extends Component {
         position: 'absolute',
         top: '48px',
         left: '0px',
-        width: '172px',
+        width: StyleConstants.widths.sidebar,
         paddingLeft: '12px',
         boxSizing: 'border-box',
         transition: 'left 0.375s ease-out',

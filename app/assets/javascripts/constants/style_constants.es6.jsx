@@ -60,6 +60,18 @@
           alignContent: 'flex-start',
           width: '100%',
         },
+        header: (left) => Object.assign(
+          {},
+          {
+            display: 'flex',
+            alignItems: 'center',
+            alignSelf: 'stretch',
+            width: this.widths.sidebar,
+            boxSizing: 'border-box',
+          },
+          left && { paddingLeft: '12px' },
+          !left && { paddingRight: '12px', justifyContent: 'flex-end' }
+        )
       };
     }
 
@@ -83,7 +95,7 @@
           display: 'flex',
           flex: '1',
           paddingTop: '48px',
-          paddingLeft: '172px',
+          paddingLeft: this.widths.sidebar,
         },
         content: {
           display: 'flex',
@@ -122,6 +134,12 @@
           borderColor: '#e5e6e9 #dfe0e4 #d0d1d5',
           borderRadius: '1px',
         },
+      };
+    }
+
+    get widths() {
+      return {
+        sidebar: '172px',
       };
     }
   }

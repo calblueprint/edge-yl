@@ -34,14 +34,6 @@ class Header extends Component {
         backgroundColor: StyleConstants.colors.blue,
         boxShadow: '0px 0px 5px 0px rgba(0, 0, 0, 0.25)',
       },
-      section: {
-        display: 'flex',
-        alignItems: 'center',
-        alignSelf: 'stretch',
-        width: '172px',
-        paddingLeft: '12px',
-        boxSizing: 'border-box',
-      },
     };
   }
 
@@ -100,7 +92,7 @@ class Header extends Component {
   render() {
     return (
       <div style={this.styles.container}>
-        <div style={this.styles.section}>
+        <div style={StyleConstants.containers.header(true)}>
           {this.renderToggler()}
         </div>
         <HeaderNavigation
