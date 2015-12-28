@@ -1,6 +1,21 @@
 class SignupForm extends Component {
 
   // --------------------------------------------------
+  // Props
+  // --------------------------------------------------
+  static get propTypes() {
+    return {
+      styles: React.PropTypes.shape({
+        container: React.PropTypes.object,
+        error: React.PropTypes.object,
+        label: React.PropTypes.object,
+        input: React.PropTypes.object,
+      }).isRequired,
+    };
+  }
+
+
+  // --------------------------------------------------
   // State
   // --------------------------------------------------
   static get defaultState() {
@@ -11,30 +26,6 @@ class SignupForm extends Component {
       lastName: '',
       password: '',
       passwordConfirmation: '',
-    };
-  }
-
-  get styles() {
-    return {
-      container: {
-        display: 'flex',
-        flexFlow: 'column',
-      },
-      error: {
-        flex: 1,
-        marginBottom: '24px',
-        color: StyleConstants.colors.red,
-        textAlign: 'center',
-      },
-      input: {
-        flex: 1,
-        padding: '8px',
-        marginBottom: '24px',
-      },
-      label: {
-        flex: 1,
-        marginBottom: '6px',
-      },
     };
   }
 
@@ -112,49 +103,50 @@ class SignupForm extends Component {
   }
 
   render() {
+    var styles = this.props.styles;
     return (
-      <div ref={'container'} style={this.styles.container}>
-        <label style={this.styles.label}>
-          {'First Name'}
+      <div ref={'container'} style={styles.container}>
+        <label style={styles.label}>
+          {'First name'}
         </label>
         <input
           autoFocus={true}
           placeholder={'Emily'}
           ref={'firstName'}
-          style={this.styles.input}>
+          style={styles.input}>
         </input>
-        <label style={this.styles.label}>
-          {'Last Name'}
+        <label style={styles.label}>
+          {'Last name'}
         </label>
         <input
           placeholder={'Wilson'}
           ref={'lastName'}
-          style={this.styles.input}>
+          style={styles.input}>
         </input>
-        <label style={this.styles.label}>
+        <label style={styles.label}>
           {'Email'}
         </label>
         <input
           placeholder={'example@email.com'}
           ref={'email'}
-          style={this.styles.input}>
+          style={styles.input}>
         </input>
-        <label style={this.styles.label}>
+        <label style={styles.label}>
           {'Password'}
         </label>
         <input
           placeholder={'topsecretpassword'}
           ref={'password'}
-          style={this.styles.input}
+          style={styles.input}
           type={'password'}>
         </input>
-        <label style={this.styles.label}>
-          {'Password Confirmation'}
+        <label style={styles.label}>
+          {'Password confirmation'}
         </label>
         <input
           placeholder={'topsecretpassword'}
           ref={'passwordConfirmation'}
-          style={this.styles.input}
+          style={styles.input}
           type={'password'}>
         </input>
         {this.renderError()}
