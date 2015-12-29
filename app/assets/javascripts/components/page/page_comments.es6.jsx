@@ -55,7 +55,7 @@ class PageComments extends Component {
   // Handlers
   // --------------------------------------------------
   handleClick() {
-    if (this.props.type == 'Student') {
+    if (this.props.type == TypeConstants.student.comment) {
       StudentActions.storeOverlay(
         true,
         TypeConstants.actions.create,

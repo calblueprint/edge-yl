@@ -77,7 +77,7 @@ class StudentPage extends Component {
               student={student} />
             <PageComments
               comments={student.comments}
-              type={'Student'} />
+              type={TypeConstants.student.comment} />
           </div>
         </div>
       </div>

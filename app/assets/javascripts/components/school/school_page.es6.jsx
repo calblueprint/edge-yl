@@ -79,7 +79,7 @@ class SchoolPage extends Component {
               school={school} />
             <PageComments
               comments={school.comments}
-              type={'School'} />
+              type={TypeConstants.school.comment} />
           </div>
         </div>
       </div>
