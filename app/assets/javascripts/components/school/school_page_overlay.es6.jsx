@@ -26,11 +26,20 @@ class SchoolPageOverlay extends PageOverlay {
   // Render
   // --------------------------------------------------
   renderModal() {
-    return (
-      <SchoolEditModal
-        overlay={this.props.overlay}
-        school={this.props.school}
-        template={this.props.template} />
-    );
+    if (this.props.overlay.type === TypeConstants.actions.edit) {
+      return (
+        <SchoolEditModal
+          overlay={this.props.overlay}
+          school={this.props.school}
+          template={this.props.template} />
+      );
+    } else {
+      return (
+        <SchoolCreateModal
+          overlay={this.props.overlay}
+          profile={this.props.profile}
+          school={this.props.school} />
+      );
+    }
   }
 }
