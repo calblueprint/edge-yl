@@ -24,6 +24,12 @@
       };
     }
 
+    get csvs() {
+      return {
+        students: '/api/students.csv',
+      };
+    }
+
     get groups() {
       return {
         create: '/api/groups',

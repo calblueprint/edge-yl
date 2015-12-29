@@ -70,8 +70,6 @@ class StudentPage extends Component {
             profile={this.state.profile} />
           <div style={StyleConstants.pages.content}>
             <PageHeader
-              clickable={true}
-              content={'Edit'}
               label={'Student'}
               value={student.full_name} />
             <StudentGrid
