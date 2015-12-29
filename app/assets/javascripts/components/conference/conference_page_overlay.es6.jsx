@@ -25,6 +25,8 @@ class ConferencePageOverlay extends PageOverlay {
   // Render
   // --------------------------------------------------
   renderModal() {
-    return null;
+    return (
+      <GroupCreateModal />
+    );
   }
 }
