@@ -57,7 +57,7 @@ class StudentCommentCreate extends Component {
         user_id: this.props.profile.id,
       },
     };
-    StudentActions.createComment(this.props.student.id, params);
+    StudentActions.createComment(params);
   }
 
   generateHandler(field) {

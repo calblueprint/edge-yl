@@ -2,8 +2,6 @@ class Api::CommentsController < Api::BaseController
 
   def create
     comment = Comment.new comment_params
-    comment.commentable_id = params[:commentable_id]
-    comment.commentable_type = params[:commentable_type]
     if comment.save
       render json: comment,
              serializer: CommentBaseSerializer,

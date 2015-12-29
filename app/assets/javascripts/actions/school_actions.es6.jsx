@@ -9,7 +9,7 @@
       );
     }
 
-    createComment(id, params) {
+    createComment(params) {
       var resolve = (response) => this.storeComment(response);
       Requester.post(
         ApiConstants.comments.create,
