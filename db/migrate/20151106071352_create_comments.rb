@@ -4,6 +4,7 @@ class CreateComments < ActiveRecord::Migration
     create_table :comments do |t|
       t.string :content, null: false
 
+      t.references :commentable, polymorphic: true, index: true
       t.references :student, index: true
       t.references :user, index: true
 

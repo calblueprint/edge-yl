@@ -24,6 +24,7 @@ class School < ActiveRecord::Base
   include PgSearch
   multisearchable against: [:name]
 
+  has_many :comments, as: :commentable, dependent: :destroy
   has_many :students
   has_many :visits, dependent: :destroy, as: :visitable
 
