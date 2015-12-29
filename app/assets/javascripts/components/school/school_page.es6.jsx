@@ -49,6 +49,7 @@ class SchoolPage extends Component {
       return (
         <SchoolPageOverlay
           overlay={this.state.overlay}
+          profile={this.state.profile}
           school={this.state.school}
           template={this.state.template} />
       );
@@ -77,7 +78,8 @@ class SchoolPage extends Component {
               media={this.state.media}
               school={school} />
             <PageComments
-              comments={school.comments} />
+              comments={school.comments}
+              type={'School'} />
           </div>
         </div>
       </div>

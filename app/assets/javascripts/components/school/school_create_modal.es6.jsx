@@ -28,6 +28,10 @@ class SchoolCreateModal extends CreateModal {
   // Render
   // --------------------------------------------------
   renderBody() {
-    console.log("in create modal")
+    return (
+      <SchoolCommentCreate
+        profile={this.props.profile}
+        school={this.props.school} />
+    );
   }
 }

@@ -6,6 +6,7 @@ class PageComments extends Component {
   static get propTypes() {
     return {
       comments: React.PropTypes.array.isRequired,
+      type: React.PropTypes.string.isRequired,
     };
   }
 
@@ -54,11 +55,19 @@ class PageComments extends Component {
   // Handlers
   // --------------------------------------------------
   handleClick() {
-    StudentActions.storeOverlay(
-      true,
-      TypeConstants.actions.create,
-      TypeConstants.student.comment
-    );
+    if (this.props.type == 'Student') {
+      StudentActions.storeOverlay(
+        true,
+        TypeConstants.actions.create,
+        TypeConstants.student.comment
+      );
+    } else {
+      SchoolActions.storeOverlay(
+        true,
+        TypeConstants.actions.create,
+        TypeConstants.school.comment
+      );
+    }
   }
 
   // --------------------------------------------------

@@ -10,6 +10,7 @@ class SchoolPageOverlay extends PageOverlay {
         target: React.PropTypes.string.isRequired,
         type: React.PropTypes.string.isRequired,
       }).isRequired,
+      profile: React.PropTypes.object.isRequired,
       school: React.PropTypes.object.isRequired,
       template: React.PropTypes.object.isRequired,
     };

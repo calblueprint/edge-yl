@@ -76,7 +76,8 @@ class StudentPage extends Component {
               media={this.state.media}
               student={student} />
             <PageComments
-              comments={student.comments} />
+              comments={student.comments}
+              type={'Student'} />
           </div>
         </div>
       </div>
