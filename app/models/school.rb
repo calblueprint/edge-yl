@@ -39,6 +39,16 @@ class School < ActiveRecord::Base
   validates :name, presence: true
   validates :website, presence: true
 
+  def self.to_csv
+    attributes = School.attribute_names
+    CSV.generate(headers: true) do |csv|
+      csv << attributes
+      all.each do |school|
+        csv << attributes.map{ |attr| school.send(attr) }
+      end
+    end
+  end
+
   def full_name
     name
   end
