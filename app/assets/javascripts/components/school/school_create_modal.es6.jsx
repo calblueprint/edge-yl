@@ -11,7 +11,7 @@ class SchoolCreateModal extends CreateModal {
         type: React.PropTypes.string.isRequired,
       }).isRequired,
       profile: React.PropTypes.object.isRequired,
-      student: React.PropTypes.object.isRequired,
+      school: React.PropTypes.object.isRequired,
     };
   }
 
@@ -20,7 +20,7 @@ class SchoolCreateModal extends CreateModal {
   // --------------------------------------------------
   handleClick(event) {
     if (event.target === this._node) {
-      StudentActions.storeOverlay(false);
+      SchoolActions.storeOverlay(false);
     }
   }
 

@@ -76,6 +76,8 @@ class SchoolPage extends Component {
             <SchoolGrid
               media={this.state.media}
               school={school} />
+            <PageComments
+              comments={school.comments} />
           </div>
         </div>
       </div>
