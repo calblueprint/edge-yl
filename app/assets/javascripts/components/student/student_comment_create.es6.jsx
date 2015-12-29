@@ -51,6 +51,8 @@ class StudentCommentCreate extends Component {
   createComment() {
     var params = {
       comment: {
+        commentable_id: this.props.student.id,
+        commentable_type: 'Student',
         content: this.state.content,
         user_id: this.props.profile.id,
       },

@@ -2,7 +2,8 @@ class Api::CommentsController < Api::BaseController
 
   def create
     comment = Comment.new comment_params
-    comment.student_id = params[:student_id]
+    comment.commentable_id = params[:commentable_id]
+    comment.commentable_type = params[:commentable_type]
     if comment.save
       render json: comment,
              serializer: CommentBaseSerializer,
@@ -19,7 +20,6 @@ class Api::CommentsController < Api::BaseController
       :commentable_id,
       :commentable_type,
       :content,
-      :student_id,
       :user_id,
     )
   end
