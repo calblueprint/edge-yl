@@ -11,6 +11,25 @@ class ConferenceGrid extends Component {
   }
 
   // --------------------------------------------------
+  // Helpers
+  // --------------------------------------------------
+  generateOptions() {
+    return [
+      {
+        action: () => this.storeOverlay(),
+        content: 'New',
+      },
+    ];
+  }
+
+  storeOverlay() {
+    ConferenceActions.storeOverlay(
+      true,
+      TypeConstants.actions.create
+    );
+  }
+
+  // --------------------------------------------------
   // Render
   // --------------------------------------------------
   render() {
@@ -24,7 +43,9 @@ class ConferenceGrid extends Component {
           conference={this.props.conference}
           media={this.props.media}
           target={TypeConstants.conference.statistic} />
-        <PageHeader label={'Groups in this conference'} />
+        <PageHeader
+          label={'Groups in this conference'}
+          options={this.generateOptions()} />
         <GroupsGrid
           groups={this.props.conference.groups}
           media={this.props.media} />
