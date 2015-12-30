@@ -10,23 +10,6 @@ class HeaderShortcuts extends Component {
     };
   }
 
-  // --------------------------------------------------
-  // Styles
-  // --------------------------------------------------
-  get styles() {
-    return {
-      container: {
-        display: 'flex',
-        justifyContent: 'flex-end',
-        alignItems: 'center',
-        alignSelf: 'stretch',
-        width: '196px',
-        paddingRight: '12px',
-        boxSizing: 'border-box',
-      },
-    };
-  }
-
   get clickableStyles() {
     return {
       default: {
@@ -118,7 +101,7 @@ class HeaderShortcuts extends Component {
 
   render() {
     return (
-      <div style={this.styles.container}>
+      <div style={StyleConstants.containers.header(false)}>
         {this.renderShortcuts()}
         {this.renderDropdown()}
       </div>

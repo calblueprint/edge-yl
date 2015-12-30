@@ -19,10 +19,12 @@ class GroupGrid extends Component {
       <div style={StyleConstants.containers.grid}>
         <GroupCard
           group={this.props.group}
-          media={this.props.media} />
+          media={this.props.media}
+          target={TypeConstants.group.general} />
         <GroupCard
           group={this.props.group}
-          media={this.props.media} />
+          media={this.props.media}
+          target={TypeConstants.group.leadership} />
         <PageHeader label={'Students in this group'} />
         <StudentsGrid
           media={this.props.media}

@@ -22,6 +22,13 @@
       };
     }
 
+    get group() {
+      return {
+        general: 'group-general',
+        leadership: 'group-leadership',
+      };
+    }
+
     get school() {
       return {
         contact: 'school-contact',
