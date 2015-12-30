@@ -15,6 +15,11 @@ class Api::GroupsController < Api::BaseController
   end
 
   def update
+    group = Group.includes(:conference, students: :school).find params[:id]
+    if group.update_attributes group_params
+      render json: group,
+                   serializer: GroupShowSerializer,
+                   status: 201
   end
 
   private
@@ -22,8 +27,7 @@ class Api::GroupsController < Api::BaseController
   def group_params
     params.require(:group).permit(
       :id,
-      :name,
-      :conference_id,
+      :letter,
     )
   end
 
