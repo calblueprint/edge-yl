@@ -38,7 +38,6 @@ class Api::ConferencesController < Api::BaseController
 
   def conference_params
     params.require(:conference).permit(
-      :id,
       :end_date,
       :location,
       :name,

@@ -26,7 +26,6 @@ class Api::GroupsController < Api::BaseController
 
   def group_params
     params.require(:group).permit(
-      :id,
       :letter,
     )
   end
