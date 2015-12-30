@@ -26,7 +26,7 @@ class GroupLeadershipEdit extends Component {
     var template = this.props.template;
     return (
       <div style={StyleConstants.cards.body}>
-
+        <CardDropdown />
       </div>
     );
   }
