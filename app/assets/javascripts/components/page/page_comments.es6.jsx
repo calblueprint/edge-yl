@@ -6,7 +6,7 @@ class PageComments extends Component {
   static get propTypes() {
     return {
       comments: React.PropTypes.array.isRequired,
-      type: React.PropTypes.string.isRequired,
+      type: React.PropTypes.oneOf(['school-comment', 'student-comment']).isRequired,
     };
   }
 
