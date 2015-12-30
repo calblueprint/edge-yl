@@ -6,7 +6,10 @@ class PageComments extends Component {
   static get propTypes() {
     return {
       comments: React.PropTypes.array.isRequired,
-      type: React.PropTypes.oneOf(['school-comment', 'student-comment']).isRequired,
+      type: React.PropTypes.oneOf([
+        TypeConstants.school.comment,
+        TypeConstants.student.comment,
+      ]).isRequired,
     };
   }
 
@@ -21,8 +24,8 @@ class PageComments extends Component {
         position: 'absolute',
         top: '0px',
         right: '0px',
-        width: StyleConstants.widths.sidebar,
-        paddingRight: '12px',
+        width: '196px',
+        paddingRight: '16px',
         textAlign: 'right',
         boxSizing: 'border-box',
       },
@@ -35,7 +38,7 @@ class PageComments extends Component {
   get clickableStyles() {
     return {
       child: {
-        paddingRight: '8px',
+        paddingRight: '12px',
       },
       default: {
         flex: '1',
@@ -89,7 +92,7 @@ class PageComments extends Component {
   render() {
     return (
       <div style={this.styles.container}>
-        <h5 style={this.styles.title}>{'Comments'}</h5>
+        <h4 style={this.styles.title}>{'Comments'}</h4>
         {this.renderComments()}
         <Clickable
           action={() => this.handleClick(event)}
