@@ -33,15 +33,12 @@
     get '/users/profile', to: 'users#profile'
 
     resources :conferences, only: [:create, :index, :show, :update]
+    resources :comments, only: [:create]
     resources :forms, only: [:show]
     resources :groups, only: [:create, :show]
     resources :leaderships, only: [:update]
     resources :schools, only: [:create, :index, :show, :update]
-    resources :students, only: [:create, :index, :show, :update] do
-      scope module: :students do
-        resources :comments, only: [:create]
-      end
-    end
+    resources :students, only: [:create, :index, :show, :update]
     resources :users, only: [:index, :show, :update] do
       get '/groupables', on: :collection, to: 'users#groupables'
     end

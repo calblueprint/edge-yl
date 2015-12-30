@@ -1,4 +1,4 @@
-class StudentCommentCreate extends Component {
+class SchoolCommentCreate extends Component {
 
   // --------------------------------------------------
   // Props
@@ -6,7 +6,7 @@ class StudentCommentCreate extends Component {
   static get propTypes() {
     return {
       profile: React.PropTypes.object.isRequired,
-      student: React.PropTypes.object.isRequired,
+      school: React.PropTypes.object.isRequired,
     };
   }
 
@@ -51,13 +51,13 @@ class StudentCommentCreate extends Component {
   createComment() {
     var params = {
       comment: {
-        commentable_id: this.props.student.id,
-        commentable_type: 'Student',
+        commentable_id: this.props.school.id,
+        commentable_type: 'School',
         content: this.state.content,
         user_id: this.props.profile.id,
       },
     };
-    StudentActions.createComment(params);
+    SchoolActions.createComment(params);
   }
 
   generateHandler(field) {
