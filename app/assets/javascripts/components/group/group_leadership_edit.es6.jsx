@@ -1,15 +1,10 @@
-class GroupPageOverlay extends PageOverlay {
+class GroupLeadershipEdit extends Component {
 
   // --------------------------------------------------
   // Props
   // --------------------------------------------------
   static get propTypes() {
     return {
-      overlay: React.PropTypes.shape({
-        active: React.PropTypes.bool.isRequired,
-        target: React.PropTypes.string.isRequired,
-        type: React.PropTypes.string.isRequired,
-      }).isRequired,
       template: React.PropTypes.object.isRequired,
     };
   }
@@ -17,18 +12,22 @@ class GroupPageOverlay extends PageOverlay {
   // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
-  storeOverlay() {
-    GroupActions.storeOverlay(false);
+  generateHandler(field) {
+    var state = {};
+    return(event) => {
+      GroupActions.storeAttribute(field, event.target.value);
+    };
   }
 
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
-  renderModal() {
+  render() {
+    var template = this.props.template;
     return (
-      <GroupEditModal
-        overlay={this.props.overlay}
-        template={this.props.template} />
+      <div style={StyleConstants.cards.body}>
+        <CardDropdown />
+      </div>
     );
   }
 }

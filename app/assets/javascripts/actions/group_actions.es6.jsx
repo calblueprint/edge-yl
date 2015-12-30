@@ -7,13 +7,14 @@
       );
     }
 
-    fetchGroup(conferenceId, id) {
+    fetchGroup(id) {
       var resolve = (response) => this.storeGroup(response);
-      Requester.get(ApiConstants.conferences.groups.show(conferenceId, id), resolve);
+      Requester.get(ApiConstants.groups.show(id), resolve);
       return true;
     }
 
     storeOverlay(active, type, target) {
+      // if (target === TypeConstants.group.leadership) {}
       return {
         active: active,
         target: target,
@@ -21,10 +22,10 @@
       };
     }
 
-    updateGroup(conferenceId, id, params) {
+    updateGroup(id, params) {
       var resolve = (response) => this.storeGroup(response);
       Requester.update(
-        ApiConstants.conferences.groups.update(conferenceId, id),
+        ApiConstants.groups.update(id),
         params,
         resolve
       );

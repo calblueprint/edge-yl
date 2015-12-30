@@ -99,10 +99,6 @@ class FormDropdown extends Component {
     return options.map((option) => this.generateOption(option));
   }
 
-  hideDropdown() {
-    this.setState({ dropdown: false });
-  }
-
   storeResponse(option) {
     var question = this.props.question;
     FormActions.storeResponse(
@@ -119,7 +115,7 @@ class FormDropdown extends Component {
     if (this.state.dropdown) {
       return (
         <Dropdown
-          action={() => this.hideDropdown()}
+          action={() => this.setState({ dropdown: false })}
           options={this.generateOptions()}
           styles={this.dropdownStyles} />
       );

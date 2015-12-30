@@ -1,4 +1,4 @@
-class GroupPageOverlay extends PageOverlay {
+class GroupEditModal extends EditModal {
 
   // --------------------------------------------------
   // Props
@@ -15,20 +15,26 @@ class GroupPageOverlay extends PageOverlay {
   }
 
   // --------------------------------------------------
-  // Helpers
+  // Handlers
   // --------------------------------------------------
-  storeOverlay() {
-    GroupActions.storeOverlay(false);
+  handleClick(event) {
+    if (event.target === this._node) {
+      GroupActions.storeOverlay(false);
+    }
   }
 
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
-  renderModal() {
+  renderBody() {
     return (
-      <GroupEditModal
-        overlay={this.props.overlay}
-        template={this.props.template} />
+      <div style={this.styles.section}>
+        <CardHeader
+          action={() => this.updateStudent()}
+          content={'Leadership Information'}
+          icon={TypeConstants.icons.save} />
+        <GroupLeadershipEdit template={this.props.template} />
+      </div>
     );
   }
 }

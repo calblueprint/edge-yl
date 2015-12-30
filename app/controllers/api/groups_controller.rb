@@ -1,4 +1,4 @@
-class Api::Conferences::GroupsController < Api::BaseController
+class Api::GroupsController < Api::BaseController
 
   def create
     group = Group.new group_params
@@ -9,14 +9,12 @@ class Api::Conferences::GroupsController < Api::BaseController
     end
   end
 
-  def index
-    groups = Group.all
-    render json: Group.all, each_serializer: GroupIndexSerializer
-  end
-
   def show
     group = Group.includes(:conference, students: :school).find params[:id]
     render json: group, serializer: GroupShowSerializer
+  end
+
+  def update
   end
 
   private
@@ -30,3 +28,4 @@ class Api::Conferences::GroupsController < Api::BaseController
   end
 
 end
+

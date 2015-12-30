@@ -3,14 +3,6 @@
 
     get conferences() {
       return {
-        groups: {
-          show: function(conferenceId, id) {
-            return `/api/conferences/${conferenceId}/groups/${id}`
-          },
-          update: function(conferenceId, id) {
-            return `/api/conferences/${conferenceId}/groups/${id}`
-          },
-        },
         create: '/api/conferences',
         index: (page) => `/api/conferences?page=${page}`,
         show: (id) => `/api/conferences/${id}`,
@@ -27,8 +19,8 @@
     get groups() {
       return {
         create: '/api/groups',
-        index: '/api/groups',
         show: (id) => `/api/groups/${id}`,
+        update: (id) => `api/groups/${id}`,
       };
     }
 
