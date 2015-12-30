@@ -43,20 +43,20 @@ class Student < ActiveRecord::Base
   belongs_to :group
   belongs_to :school
 
-  enum gender: [:Female, :Male, :Other]
-  enum guardian_phone_type: [:Cell, :Home, :Work]
+  enum gender: [:female, :male, :other]
+  enum guardian_phone_type: [:cell, :home, :work]
   enum guardian_relationship: [
-    :Mother,
-    :Father,
-    :Aunt,
-    :Uncle,
-    :Grandmother,
-    :Grandfather,
-    :Stepmother,
-    :Stepfather,
-    :Guardian,
+    :mother,
+    :father,
+    :aunt,
+    :uncle,
+    :grandmother,
+    :grandfather,
+    :stepmother,
+    :stepfather,
+    :guardian,
   ]
-  enum registration_status: [:Registered, :Selected, :Dropped]
+  enum registration_status: [:registered, :selected, :dropped]
   enum shirt_size: [:S, :M, :L, :XL, :XXL]
 
   has_many :comments, as: :commentable, dependent: :destroy

@@ -10,4 +10,20 @@ class StudentShowSerializer < StudentIndexSerializer
 
   has_many :comments, serializer: CommentBaseSerializer
 
+  def gender
+    object.gender.humanize
+  end
+
+  def guardian_phone_type
+    object.guardian_phone_type.humanize
+  end
+
+  def guardian_relationship
+    object.guardian_relationship.humanize
+  end
+
+  def shirt_size
+    object.shirt_size.humanize
+  end
+
 end
