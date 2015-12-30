@@ -7,9 +7,12 @@ class Api::SchoolsController < Api::BaseController
 
   def index
     schools = School.page params[:page]
-    render json: schools,
-                 serializer: PaginatedSerializer,
-                 each_serializer: SchoolIndexSerializer
+    respond_to do |format|
+      format.csv { send_data schools.to_csv }
+      format.json { render json: schools,
+                           serializer: PaginatedSerializer,
+                           each_serializer: SchoolIndexSerializer }
+    end                 
   end
 
   def show
