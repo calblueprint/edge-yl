@@ -46,7 +46,7 @@ class GroupsCard extends Component {
         <CardAttribute
           clickable={true}
           label={'Name'}
-          route={RouteConstants.groups.show(group.conference_id, group.id)}
+          route={RouteConstants.groups.show(group.id)}
           type={'h4'}
           value={group.full_name} />
         {this.renderLeaderships()}
