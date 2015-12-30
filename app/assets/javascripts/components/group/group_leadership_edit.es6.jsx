@@ -5,6 +5,7 @@ class GroupLeadershipEdit extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
+      groupables: React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
       template: React.PropTypes.object.isRequired,
     };
   }
@@ -23,7 +24,7 @@ class GroupLeadershipEdit extends Component {
   // Render
   // --------------------------------------------------
   render() {
-    var template = this.props.template;
+    console.log(this.props.groupables);
     return (
       <div style={StyleConstants.cards.body}>
         <CardDropdown />

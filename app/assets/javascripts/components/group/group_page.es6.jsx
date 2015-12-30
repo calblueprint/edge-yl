@@ -48,6 +48,7 @@ class GroupPage extends Component {
     if (this.state.overlay.active) {
       return (
         <GroupPageOverlay
+          groupables={this.state.groupables}
           overlay={this.state.overlay}
           template={this.state.template} />
       );

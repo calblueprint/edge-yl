@@ -5,6 +5,7 @@ class GroupEditModal extends EditModal {
   // --------------------------------------------------
   static get propTypes() {
     return {
+      groupables: React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
       overlay: React.PropTypes.shape({
         active: React.PropTypes.bool.isRequired,
         target: React.PropTypes.string.isRequired,
@@ -33,7 +34,9 @@ class GroupEditModal extends EditModal {
           action={() => this.updateStudent()}
           content={'Leadership Information'}
           icon={TypeConstants.icons.save} />
-        <GroupLeadershipEdit template={this.props.template} />
+        <GroupLeadershipEdit
+          groupables={this.props.groupables}
+          template={this.props.template} />
       </div>
     );
   }

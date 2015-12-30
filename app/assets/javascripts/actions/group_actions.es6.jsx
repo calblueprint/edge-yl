@@ -16,9 +16,8 @@
 
     storeOverlay(active, type, target) {
       if (target === TypeConstants.group.leadership) {
-        var resolve = (response) => console.log(response);
+        var resolve = (response) => this.storeGroupables(response);
         Requester.get(ApiConstants.users.groupables, resolve);
-        return true;
       }
       return {
         active: active,

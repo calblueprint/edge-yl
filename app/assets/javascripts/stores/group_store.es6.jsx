@@ -7,6 +7,7 @@
         leaderships: [],
         students: [],
       };
+      this.groupables = [];
       this.overlay = {
         active: false,
         target: '',
@@ -14,12 +15,17 @@
       };
       this.bindListeners({
         handleStoreGroup: GroupActions.STORE_GROUP,
+        handleStoreGroupables: GroupActions.STORE_GROUPABLES,
         handleStoreOverlay: GroupActions.STORE_OVERLAY,
       });
     }
 
     handleStoreGroup(response) {
       this.group = response.group;
+    }
+
+    handleStoreGroupables(response) {
+      this.groupables = response.users;
     }
 
     handleStoreOverlay(overlay) {

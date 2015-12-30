@@ -5,6 +5,7 @@ class GroupPageOverlay extends PageOverlay {
   // --------------------------------------------------
   static get propTypes() {
     return {
+      groupables: React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
       overlay: React.PropTypes.shape({
         active: React.PropTypes.bool.isRequired,
         target: React.PropTypes.string.isRequired,
@@ -27,6 +28,7 @@ class GroupPageOverlay extends PageOverlay {
   renderModal() {
     return (
       <GroupEditModal
+        groupables={this.props.groupables}
         overlay={this.props.overlay}
         template={this.props.template} />
     );
