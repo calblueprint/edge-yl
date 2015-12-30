@@ -41,6 +41,8 @@
         resources :comments, only: [:create]
       end
     end
-    resources :users, only: [:index, :show, :update]
+    resources :users, only: [:index, :show, :update] do
+      get '/groupables', on: :collection, to: 'users#groupables'
+    end
   end
 end

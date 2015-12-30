@@ -4,6 +4,7 @@
     constructor() {
       this.generateActions(
         'storeGroup',
+        'storeGroupables',
       );
     }
 
@@ -14,7 +15,11 @@
     }
 
     storeOverlay(active, type, target) {
-      // if (target === TypeConstants.group.leadership) {}
+      if (target === TypeConstants.group.leadership) {
+        var resolve = (response) => console.log(response);
+        Requester.get(ApiConstants.users.groupables, resolve);
+        return true;
+      }
       return {
         active: active,
         target: target,

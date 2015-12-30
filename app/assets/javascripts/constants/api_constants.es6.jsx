@@ -66,6 +66,7 @@
     get users() {
       return {
         create: '/api/users/signup',
+        groupables: '/api/users/groupables',
         index: (page) => `/api/users?=${page}`,
         login: '/api/users/login',
         logout: '/api/users/logout',
