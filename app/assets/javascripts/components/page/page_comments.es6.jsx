@@ -21,8 +21,8 @@ class PageComments extends Component {
         position: 'absolute',
         top: '0px',
         right: '0px',
-        width: '196px',
-        paddingRight: '16px',
+        width: StyleConstants.widths.sidebar,
+        paddingRight: '12px',
         textAlign: 'right',
         boxSizing: 'border-box',
       },
@@ -35,7 +35,7 @@ class PageComments extends Component {
   get clickableStyles() {
     return {
       child: {
-        paddingRight: '12px',
+        paddingRight: '8px',
       },
       default: {
         flex: '1',
@@ -89,7 +89,7 @@ class PageComments extends Component {
   render() {
     return (
       <div style={this.styles.container}>
-        <h4 style={this.styles.title}>{'Comments'}</h4>
+        <h5 style={this.styles.title}>{'Comments'}</h5>
         {this.renderComments()}
         <Clickable
           action={() => this.handleClick(event)}

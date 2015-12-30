@@ -1,4 +1,4 @@
-class AuthenticationModal extends Component {
+class AuthenticationCard extends Component {
 
   // --------------------------------------------------
   // Props
@@ -18,14 +18,39 @@ class AuthenticationModal extends Component {
         {},
         StyleConstants.containers.card,
         {
-          width: '372px',
-          padding: '36px',
+          width: '472px',
+          padding: '24px',
+          margin: '0px',
         }
       ),
       header: {
         display: 'flex',
         justifyContent: 'center',
-        marginBottom: '24px',
+        marginBottom: '16px',
+      },
+    };
+  }
+
+  get childStyles() {
+    return {
+      container: {
+        display: 'flex',
+        flexFlow: 'column',
+      },
+      error: {
+        flex: 1,
+        marginBottom: '16px',
+        color: StyleConstants.colors.red,
+        textAlign: 'center',
+      },
+      input: {
+        flex: 1,
+        padding: '8px',
+        marginBottom: '16px',
+      },
+      label: {
+        flex: 1,
+        marginBottom: '6px',
       },
     };
   }
@@ -34,7 +59,11 @@ class AuthenticationModal extends Component {
   // Render
   // --------------------------------------------------
   renderForm() {
-    return this.props.type === 'login' ? <LoginForm /> : <SignupForm />;
+    if (this.props.type === 'login') {
+      return <LoginForm styles={this.childStyles} />;
+    } else {
+      return <SignupForm styles={this.childStyles} />;
+    }
   }
 
   renderHeader() {

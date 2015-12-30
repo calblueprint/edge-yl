@@ -27,9 +27,6 @@ class CreateModal extends Component {
           width: '356px',
         }
       ),
-      title: {
-        marginBottom: '6px',
-      },
     };
   }
 
@@ -48,7 +45,7 @@ class CreateModal extends Component {
   render() {
     return (
       <div ref={'container'} style={this.styles.container}>
-        <h2 style={this.styles.title}>{'Create'}</h2>
+        <h2>{'Create'}</h2>
         {this.renderBody()}
       </div>
     );

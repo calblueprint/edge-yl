@@ -20,6 +20,8 @@ class AuthenticationPage extends Component {
         justifyContent: 'center',
         alignItems: 'center',
         flex: '1',
+        paddingTop: StyleConstants.heights.header,
+        overflow: 'scroll',
       },
       footer: {
         display: 'flex',
@@ -56,7 +58,7 @@ class AuthenticationPage extends Component {
       <div style={StyleConstants.pages.wrapper}>
         <Header active={false} />
         <div style={this.styles.container}>
-          <AuthenticationModal type={this.props.type} />
+          <AuthenticationCard type={this.props.type} />
           {this.renderFooter()}
         </div>
       </div>
