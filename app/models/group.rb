@@ -31,11 +31,10 @@ class Group < ActiveRecord::Base
   def generate_leaderships
     Leadership.create(
       group: self,
-      is_primary: true,
     )
     Leadership.create(
       group: self,
-      is_primary: false,
+      style: Leadership.styles['Secondary_leader'],
     )
   end
 

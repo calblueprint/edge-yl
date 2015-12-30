@@ -1,5 +1,9 @@
 class LeadershipBaseSerializer < BaseSerializer
 
-  attributes :id, :is_primary
+  attributes :id, :style
+
+  def style
+    object.style.humanize
+  end
 
 end
