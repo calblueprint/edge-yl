@@ -8,6 +8,7 @@
         type: '',
       };
       this.school = {
+        comments: [],
         students: [],
       };
       this.template = {
@@ -15,6 +16,7 @@
       };
       this.bindListeners({
         handleStoreAttribute: SchoolActions.STORE_ATTRIBUTE,
+        handleStoreComment: SchoolActions.STORE_COMMENT,
         handleStoreError: SchoolActions.STORE_ERROR,
         handleStoreOverlay: SchoolActions.STORE_OVERLAY,
         handleStoreSchool: SchoolActions.STORE_SCHOOL,
@@ -23,6 +25,11 @@
 
     handleStoreAttribute(attribute) {
       this.template[attribute.key] = attribute.value;
+    }
+
+    handleStoreComment(response) {
+      this.overlay.active = false;
+      this.school.comments.push(response.comment);
     }
 
     handleStoreError(response) {

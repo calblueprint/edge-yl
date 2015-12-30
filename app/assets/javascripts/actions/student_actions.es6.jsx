@@ -9,10 +9,10 @@
       );
     }
 
-    createComment(id, params) {
+    createComment(params) {
       var resolve = (response) => this.storeComment(response);
       Requester.post(
-        ApiConstants.students.comments.create(id),
+        ApiConstants.comments.create,
         params,
         resolve
       );

@@ -1,4 +1,4 @@
-class SchoolPageOverlay extends PageOverlay {
+class SchoolCreateModal extends CreateModal {
 
   // --------------------------------------------------
   // Props
@@ -12,35 +12,26 @@ class SchoolPageOverlay extends PageOverlay {
       }).isRequired,
       profile: React.PropTypes.object.isRequired,
       school: React.PropTypes.object.isRequired,
-      template: React.PropTypes.object.isRequired,
     };
   }
 
   // --------------------------------------------------
-  // Helpers
+  // Handlers
   // --------------------------------------------------
-  storeOverlay() {
-    SchoolActions.storeOverlay(false);
+  handleClick(event) {
+    if (event.target === this._node) {
+      SchoolActions.storeOverlay(false);
+    }
   }
 
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
-  renderModal() {
-    if (this.props.overlay.type === TypeConstants.actions.edit) {
-      return (
-        <SchoolEditModal
-          overlay={this.props.overlay}
-          school={this.props.school}
-          template={this.props.template} />
-      );
-    } else {
-      return (
-        <SchoolCreateModal
-          overlay={this.props.overlay}
-          profile={this.props.profile}
-          school={this.props.school} />
-      );
-    }
+  renderBody() {
+    return (
+      <SchoolCommentCreate
+        profile={this.props.profile}
+        school={this.props.school} />
+    );
   }
 }
