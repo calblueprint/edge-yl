@@ -18,7 +18,6 @@ class GroupCard extends Component {
   // Helpers
   // --------------------------------------------------
   showOverlay() {
-    console.log(this.props.target);
     GroupActions.storeOverlay(
       true,
       TypeConstants.actions.edit,

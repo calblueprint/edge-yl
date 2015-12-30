@@ -5,9 +5,14 @@ class CardDropdown extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      action: React.PropTypes.func.isRequired,
       errors: React.PropTypes.array,
       margin: React.PropTypes.bool,
+      options: React.PropTypes.arrayOf(
+        React.PropTypes.shape({
+          action: React.PropTypes.action,
+          content: React.PropTypes.string,
+        })
+      ).isRequired,
       value: React.PropTypes.string,
     };
   }
@@ -32,6 +37,39 @@ class CardDropdown extends Component {
   // --------------------------------------------------
   // Styles
   // --------------------------------------------------
+  get styles() {
+    return {
+      container: {
+        display: 'flex',
+        justifyContent: 'space-between',
+      },
+      section: {
+        display: 'flex',
+        flexFlow: 'column',
+        flex: '1',
+        height: '34px',
+        marginLeft: '24px',
+        border: `1px solid ${StyleConstants.colors.gray}`,
+      },
+    };
+  }
+
+  get clickableStyles() {
+    return {
+      child: {
+        paddingRight: '4px',
+      },
+      default: {
+        display: 'flex',
+        alignItems: 'center',
+        flex: '1',
+        minHeight: '34px',
+        padding: '8px',
+        boxSizing: 'border-box',
+      },
+    };
+  }
+
   get dropdownStyles() {
     return {
       child: {
@@ -56,29 +94,14 @@ class CardDropdown extends Component {
   }
 
   // --------------------------------------------------
-  // Helpers
-  // --------------------------------------------------
-  generateOption(option) {
-    return {
-      action: () => this.storeResponse(option),
-      content: option,
-    };
-  }
-
-  generateOptions() {
-    var options = [];
-    return options.map((option) => this.generateOption(option));
-  }
-
-  // --------------------------------------------------
   // Render
   // --------------------------------------------------
   renderDropdown() {
     if (this.state.dropdown) {
       return (
         <Dropdown
-          action={() => this.hideDropdown()}
-          options={this.generateOptions()}
+          action={() => this.setState({ dropdown: false })}
+          options={this.props.options}
           styles={this.dropdownStyles} />
       );
     }
@@ -99,7 +122,18 @@ class CardDropdown extends Component {
     return (
       <div style={this.styles.container}>
         <h6>{'Primary leader'}</h6>
-        {this.renderDropdown()}
+        <div style={this.styles.section}>
+          <Clickable
+            action={() => this.setState({ dropdown: true })}
+            icon={TypeConstants.icons.expand}
+            styles={this.clickableStyles}
+            type={'i'}>
+            <h6 style={this.styles.selected}>
+              {'Select one'}
+            </h6>
+          </Clickable>
+          {this.renderDropdown()}
+        </div>
         {this.renderErrors()}
       </div>
     );

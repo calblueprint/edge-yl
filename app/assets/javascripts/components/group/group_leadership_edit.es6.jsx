@@ -13,21 +13,26 @@ class GroupLeadershipEdit extends Component {
   // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
-  generateHandler(field) {
-    var state = {};
-    return(event) => {
-      GroupActions.storeAttribute(field, event.target.value);
+  generateOption(groupabale) {
+    return {
+      action: () => console.log(`${groupabale.full_name}: ${groupabale.id}`),
+      content: groupabale.full_name,
     };
+  }
+
+  generateOptions() {
+    var groupables = this.props.groupables;
+    return groupables.map((groupabale) => this.generateOption(groupabale));
   }
 
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
   render() {
-    console.log(this.props.groupables);
+    console.log(this.generateOptions());
     return (
       <div style={StyleConstants.cards.body}>
-        <CardDropdown />
+        <CardDropdown options={this.generateOptions()} />
       </div>
     );
   }
