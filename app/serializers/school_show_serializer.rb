@@ -5,4 +5,6 @@ class SchoolShowSerializer < SchoolIndexSerializer
              :contact_first_name, :contact_last_name,
              :contact_phone_number, :contact_title
 
+  has_many :comments, serializer: CommentBaseSerializer
+
 end

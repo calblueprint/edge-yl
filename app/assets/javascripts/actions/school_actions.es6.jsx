@@ -3,9 +3,20 @@
 
     constructor() {
       this.generateActions(
+        'storeComment',
         'storeError',
         'storeSchool'
       );
+    }
+
+    createComment(params) {
+      var resolve = (response) => this.storeComment(response);
+      Requester.post(
+        ApiConstants.comments.create,
+        params,
+        resolve
+      );
+      return true;
     }
 
     fetchSchool(id) {

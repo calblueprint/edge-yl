@@ -1,6 +1,12 @@
 (() => {
   class ApiConstants {
 
+    get comments() {
+      return {
+        create: '/api/comments',
+      };
+    }
+
     get conferences() {
       return {
         create: '/api/conferences',
@@ -47,9 +53,6 @@
 
     get students() {
       return {
-        comments: {
-          create: (id) => `/api/students/${id}/comments`,
-        },
         create: '/api/students',
         index: function(page, options={}) {
           var route = `/api/students?page=${page}`;

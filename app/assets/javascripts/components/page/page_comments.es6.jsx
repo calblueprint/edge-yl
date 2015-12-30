@@ -1,4 +1,4 @@
-class StudentComments extends Component {
+class PageComments extends Component {
 
   // --------------------------------------------------
   // Props
@@ -6,6 +6,10 @@ class StudentComments extends Component {
   static get propTypes() {
     return {
       comments: React.PropTypes.array.isRequired,
+      type: React.PropTypes.oneOf([
+        TypeConstants.school.comment,
+        TypeConstants.student.comment,
+      ]).isRequired,
     };
   }
 
@@ -20,8 +24,8 @@ class StudentComments extends Component {
         position: 'absolute',
         top: '0px',
         right: '0px',
-        width: StyleConstants.widths.sidebar,
-        paddingRight: '12px',
+        width: '196px',
+        paddingRight: '16px',
         textAlign: 'right',
         boxSizing: 'border-box',
       },
@@ -34,7 +38,7 @@ class StudentComments extends Component {
   get clickableStyles() {
     return {
       child: {
-        paddingRight: '8px',
+        paddingRight: '12px',
       },
       default: {
         flex: '1',
@@ -54,11 +58,19 @@ class StudentComments extends Component {
   // Handlers
   // --------------------------------------------------
   handleClick() {
-    StudentActions.storeOverlay(
-      true,
-      TypeConstants.actions.create,
-      TypeConstants.overlay.target.comment
-    );
+    if (this.props.type == TypeConstants.student.comment) {
+      StudentActions.storeOverlay(
+        true,
+        TypeConstants.actions.create,
+        TypeConstants.student.comment
+      );
+    } else {
+      SchoolActions.storeOverlay(
+        true,
+        TypeConstants.actions.create,
+        TypeConstants.school.comment
+      );
+    }
   }
 
   // --------------------------------------------------
@@ -66,7 +78,7 @@ class StudentComments extends Component {
   // --------------------------------------------------
   renderComment(comment) {
     return (
-      <StudentComment
+      <PageComment
         comment={comment}
         key={comment.id} />
     );
@@ -80,7 +92,7 @@ class StudentComments extends Component {
   render() {
     return (
       <div style={this.styles.container}>
-        <h5 style={this.styles.title}>{'Comments'}</h5>
+        <h4 style={this.styles.title}>{'Comments'}</h4>
         {this.renderComments()}
         <Clickable
           action={() => this.handleClick(event)}

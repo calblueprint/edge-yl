@@ -49,6 +49,7 @@ class SchoolPage extends Component {
       return (
         <SchoolPageOverlay
           overlay={this.state.overlay}
+          profile={this.state.profile}
           school={this.state.school}
           template={this.state.template} />
       );
@@ -76,6 +77,9 @@ class SchoolPage extends Component {
             <SchoolGrid
               media={this.state.media}
               school={school} />
+            <PageComments
+              comments={school.comments}
+              type={TypeConstants.school.comment} />
           </div>
         </div>
       </div>
