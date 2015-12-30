@@ -35,6 +35,7 @@
     resources :conferences, only: [:create, :index, :show, :update]
     resources :forms, only: [:show]
     resources :groups, only: [:create, :show]
+    resources :leaderships, only: [:update]
     resources :schools, only: [:create, :index, :show, :update]
     resources :students, only: [:create, :index, :show, :update] do
       scope module: :students do

@@ -16,6 +16,12 @@
       };
     }
 
+    get forms() {
+      return {
+        show: (id) => `/api/forms/${id}`,
+      };
+    }
+
     get groups() {
       return {
         create: '/api/groups',
@@ -24,9 +30,9 @@
       };
     }
 
-    get forms() {
+    get leaderships() {
       return {
-        show: (id) => `/api/forms/${id}`,
+        update: (id) => `api/leaderships/${id}`,
       };
     }
 
