@@ -10,7 +10,9 @@ class Api::GroupsController < Api::BaseController
   end
 
   def show
-    group = Group.includes(:conference, students: :school).find params[:id]
+    group = Group.includes(:conference,
+                           leaderships: :user,
+                           students: :school).find params[:id]
     render json: group, serializer: GroupShowSerializer
   end
 
@@ -20,6 +22,9 @@ class Api::GroupsController < Api::BaseController
       render json: group,
                    serializer: GroupShowSerializer,
                    status: 201
+    else
+      unprocessable_response group
+    end
   end
 
   private

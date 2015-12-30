@@ -35,6 +35,16 @@
       );
       return true;
     }
+
+    updateLeadership(id, params) {
+      var resolve = (response) => console.log(response);
+      Requester.update(
+        ApiConstants.leaderships.update(id),
+        { leadership: params },
+        resolve
+      );
+      return true;
+    }
   }
   this.GroupActions = alt.createActions(GroupActions);
 })();

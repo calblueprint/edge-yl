@@ -15,7 +15,7 @@ class GroupLeadershipEdit extends Component {
   // --------------------------------------------------
   generateOption(groupabale) {
     return {
-      action: () => console.log(`${groupabale.full_name}: ${groupabale.id}`),
+      action: () => GroupActions.updateLeadership(groupabale.id, { user_id: 6 }),
       content: groupabale.full_name,
     };
   }

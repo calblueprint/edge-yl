@@ -13,6 +13,7 @@
         target: '',
         type: '',
       };
+      this.template = {};
       this.bindListeners({
         handleStoreGroup: GroupActions.STORE_GROUP,
         handleStoreGroupables: GroupActions.STORE_GROUPABLES,

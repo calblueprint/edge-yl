@@ -38,7 +38,7 @@
 
     get leaderships() {
       return {
-        update: (id) => `api/leaderships/${id}`,
+        update: (id) => `/api/leaderships/${id}`,
       };
     }
 
