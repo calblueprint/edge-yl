@@ -34,7 +34,7 @@ class Group < ActiveRecord::Base
     )
     Leadership.create(
       group: self,
-      style: Leadership.styles['Secondary_leader'],
+      style: Leadership.styles['secondary_leader'],
     )
   end
 

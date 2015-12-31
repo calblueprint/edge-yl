@@ -105,7 +105,6 @@ class Student < ActiveRecord::Base
   def set_initials
     self.is_flagged = false
     self.is_primary = true
-    self.registration_status = Student.registration_statuses[:Registered]
   end
 
 end
