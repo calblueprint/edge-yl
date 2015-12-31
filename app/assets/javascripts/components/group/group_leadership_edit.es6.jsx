@@ -14,6 +14,7 @@ class GroupLeadershipEdit extends Component {
   // Helpers
   // --------------------------------------------------
   generateOption(groupabale) {
+    // TODO(Warren): Don't set user_id manually.
     return {
       action: () => GroupActions.updateLeadership(groupabale.id, { user_id: 6 }),
       content: groupabale.full_name,
