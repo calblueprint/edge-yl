@@ -21,7 +21,7 @@ class AuthenticationCard extends Component {
         {
           width: '472px',
           padding: '24px',
-          margin: '0px',
+          marginTop: '24px',
         }
       ),
       header: {

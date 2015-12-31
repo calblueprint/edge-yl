@@ -25,16 +25,15 @@ class AuthenticationPage extends Component {
       container: {
         display: 'flex',
         flexFlow: 'column',
-        justifyContent: 'center',
         alignItems: 'center',
-        flex: '1',
         paddingTop: StyleConstants.heights.header,
-        overflow: 'scroll',
       },
       footer: {
         display: 'flex',
+        justifyContent: 'center',
         alignItems: 'flex-end',
-        marginTop: '12px',
+        alignSelf: 'stretch',
+        margin: '12px 0px',
       },
       label: {
         paddingRight: '4px',
