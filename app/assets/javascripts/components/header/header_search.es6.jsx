@@ -166,6 +166,7 @@ class HeaderSearch extends Component {
             placeholder={'Search for a school or student'}
             ref={'input'}
             style={this.styles.input}
+            type={'search'}
             value={this.props.search.query}>
           </input>
         </div>

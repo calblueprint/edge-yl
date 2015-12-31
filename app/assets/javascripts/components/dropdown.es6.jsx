@@ -123,7 +123,7 @@ class Dropdown extends Component {
         <input
           autoFocus={true}
           ref={'input'}
-          style = {this.styles.input} />
+          style={this.styles.input} />
       </div>
     );
   }
