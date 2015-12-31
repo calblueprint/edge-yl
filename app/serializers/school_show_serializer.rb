@@ -6,5 +6,6 @@ class SchoolShowSerializer < SchoolIndexSerializer
              :contact_phone_number, :contact_title
 
   has_many :comments, serializer: CommentBaseSerializer
+  has_many :students, serializer: StudentShowSerializer
 
 end

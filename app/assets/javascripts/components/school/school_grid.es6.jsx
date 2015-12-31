@@ -24,6 +24,10 @@ class SchoolGrid extends Component {
           media={this.props.media}
           school={this.props.school}
           target={TypeConstants.school.contact} />
+        <PageHeader label={'Students in this school'} />
+        <StudentsGrid
+          media={this.props.media}
+          students={this.props.school.students} />
       </div>
     );
   }
