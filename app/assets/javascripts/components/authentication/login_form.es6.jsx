@@ -11,17 +11,7 @@ class LoginForm extends Component {
         label: React.PropTypes.object,
         input: React.PropTypes.object,
       }).isRequired,
-    };
-  }
-
-  // --------------------------------------------------
-  // State
-  // --------------------------------------------------
-  static get defaultState() {
-    return {
-      email: '',
-      error: '',
-      password: '',
+      template: React.PropTypes.object.isRequired,
     };
   }
 
@@ -31,48 +21,30 @@ class LoginForm extends Component {
   componentDidMount() {
     var container = ReactDOM.findDOMNode(this.refs.container);
     container.addEventListener('keydown', (event) => this.handleKeyDown(event));
-    var email = ReactDOM.findDOMNode(this.refs.email);
-    email.addEventListener('input', this.generateHandler('email'));
-    var password = ReactDOM.findDOMNode(this.refs.password);
-    password.addEventListener('input', this.generateHandler('password'));
   }
 
   // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
   createSession() {
-    var params = {
-      user: {
-        email: this.state.email,
-        password: this.state.password,
-      },
-    };
-    var resolve = (response) => window.location = RouteConstants.students.index();
-    var reject = (response) => this.setState({ error: response.message });
-    Requester.post(
-      ApiConstants.users.login,
-      params,
-      resolve,
-      reject
-    );
+    AuthenticationActions.createSession(this.props.template);
   }
 
   generateHandler(field) {
     var state = {};
-    return (event) => {
-      state[field] = event.target.value;
-      this.setState(state);
+    return(event) => {
+      AuthenticationActions.storeAttribute(field, event.target.value);
     };
   }
 
   // --------------------------------------------------
   // Handlers
   // --------------------------------------------------
-    handleKeyDown(event) {
-      if (event.keyCode === 13) {
-        this.createSession();
-      }
+  handleKeyDown(event) {
+    if (event.keyCode === 13) {
+      this.createSession();
     }
+  }
 
   // --------------------------------------------------
   // Render
@@ -89,26 +61,27 @@ class LoginForm extends Component {
 
   render() {
     var styles = this.props.styles;
+    var template = this.props.template;
     return (
       <div ref={'container'} style={styles.container}>
         <label style={styles.label}>
           {'Email'}
         </label>
-        <input
-          autoFocus={true}
-          placeholder={'example@email.com'}
-          ref={'email'}
-          style={styles.input}>
-        </input>
+        <CardInput
+          action={this.generateHandler('email')}
+          errors={template.errors.email}
+          focus={true}
+          margin={false}
+          placeholder={'admin@edgeyl.com'}
+          value={template.email} />
         <label style={styles.label}>
           {'Password'}
         </label>
-        <input
-          placeholder={'topsecretpassword'}
-          ref={'password'}
-          style={styles.input}
-          type={'password'}>
-        </input>
+        <CardInput
+          action={this.generateHandler('password')}
+          errors={template.errors.password}
+          placeholder={'password'}
+          value={template.password} />
         {this.renderError()}
         <FormButton
           action={() => this.createSession()}

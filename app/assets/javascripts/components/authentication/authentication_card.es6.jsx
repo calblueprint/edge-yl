@@ -5,6 +5,7 @@ class AuthenticationCard extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
+      template: React.PropTypes.object.isRequired,
       type: React.PropTypes.oneOf(['login', 'signup']).isRequired,
     };
   }
@@ -60,9 +61,17 @@ class AuthenticationCard extends Component {
   // --------------------------------------------------
   renderForm() {
     if (this.props.type === 'login') {
-      return <LoginForm styles={this.childStyles} />;
+      return (
+        <LoginForm
+          styles={this.childStyles}
+          template={this.props.template} />
+      );
     } else {
-      return <SignupForm styles={this.childStyles} />;
+      return (
+        <SignupForm
+          styles={this.childStyles}
+          template={this.props.template} />
+      );
     }
   }
 
