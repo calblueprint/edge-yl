@@ -56,6 +56,7 @@
         create: 'fa-pencil',
         edit: 'fa-pencil-square-o',
         expand: 'fa-angle-down',
+        group: 'fa-star',
         mail: 'fa fa-envelope fa-x',
         profile: 'fa fa-user fa-x',
         save: 'fa-save',

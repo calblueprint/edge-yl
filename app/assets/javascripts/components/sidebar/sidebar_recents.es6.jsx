@@ -41,6 +41,9 @@ class SidebarRecents extends Component {
     } else if (visit.visitable_type === 'School') {
       icon = TypeConstants.icons.school;
       route = RouteConstants.schools.show(visit.visitable_id);
+    } else if (visit.visitable_type === 'Group') {
+      icon = TypeConstants.icons.group;
+      route = RouteConstants.groups.show(visit.visitable_id);
     } else {
       icon = TypeConstants.icons.volunteer;
       route = RouteConstants.users.show(visit.visitable_id);
