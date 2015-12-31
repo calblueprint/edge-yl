@@ -17,6 +17,7 @@ class Group < ActiveRecord::Base
 
   has_many :leaderships, dependent: :destroy
   has_many :students
+  has_many :visits, dependent: :destroy, as: :visitable
 
   after_create :generate_leaderships
 
