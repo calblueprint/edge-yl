@@ -50,11 +50,12 @@ class LoginForm extends Component {
   // Render
   // --------------------------------------------------
   renderError() {
-    if (this.state.error) {
+    var props = this.props;
+    if (props.template.message) {
       return (
-        <span style={this.styles.error}>
-          {this.state.error}
-        </span>
+        <h6 style={props.styles.error}>
+          {props.template.message}
+        </h6>
       );
     }
   }
@@ -69,7 +70,6 @@ class LoginForm extends Component {
         </label>
         <CardInput
           action={this.generateHandler('email')}
-          errors={template.errors.email}
           focus={true}
           margin={false}
           placeholder={'admin@edgeyl.com'}
@@ -79,7 +79,6 @@ class LoginForm extends Component {
         </label>
         <CardInput
           action={this.generateHandler('password')}
-          errors={template.errors.password}
           placeholder={'password'}
           value={template.password} />
         {this.renderError()}

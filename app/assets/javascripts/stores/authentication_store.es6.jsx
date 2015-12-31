@@ -4,10 +4,12 @@
     constructor() {
       this.template = {
         errors: {},
+        message: '',
       };
       this.bindListeners({
         handleStoreAttribute: AuthenticationActions.STORE_ATTRIBUTE,
         handleStoreError: AuthenticationActions.STORE_ERROR,
+        handleStoreMessage: AuthenticationActions.STORE_MESSAGE,
         handleStoreSession: AuthenticationActions.STORE_SESSION,
         handleStoreUser: AuthenticationActions.STORE_USER,
       });
@@ -19,6 +21,10 @@
 
     handleStoreError(response) {
       this.template.errors = response.errors;
+    }
+
+    handleStoreMessage(response) {
+      this.template.message = response.message;
     }
 
     handleStoreSession(response) {

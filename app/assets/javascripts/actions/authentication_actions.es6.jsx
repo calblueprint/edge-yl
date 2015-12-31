@@ -4,6 +4,7 @@
     constructor() {
       this.generateActions(
         'storeError',
+        'storeMessage',
         'storeSession',
         'storeUser'
       );
@@ -12,7 +13,7 @@
     createSession(template) {
       var params = { user: template };
       var resolve = (response) => this.storeSession(response);
-      var reject = (response) => this.storeError(response);
+      var reject = (response) => this.storeMessage(response);
       Requester.post(
         ApiConstants.users.login,
         params,
