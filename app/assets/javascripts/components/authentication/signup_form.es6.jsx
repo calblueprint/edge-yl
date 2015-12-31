@@ -5,12 +5,6 @@ class SignupForm extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      styles: React.PropTypes.shape({
-        container: React.PropTypes.object,
-        error: React.PropTypes.object,
-        label: React.PropTypes.object,
-        input: React.PropTypes.object,
-      }).isRequired,
       template: React.PropTypes.object.isRequired,
     };
   }
@@ -50,52 +44,43 @@ class SignupForm extends Component {
   // Render
   // --------------------------------------------------
   render() {
-    var styles = this.props.styles;
     var template = this.props.template;
     return (
-      <div ref={'container'} style={styles.container}>
-        <label style={styles.label}>
-          {'First name'}
-        </label>
+      <div ref={'container'} style={this.styles.container}>
         <CardInput
           action={this.generateHandler('first_name')}
           errors={template.errors.first_name}
           focus={true}
+          label={'First name'}
+          margin={false}
           placeholder={'Kira'}
           value={template.first_name} />
-        <label style={styles.label}>
-          {'Last name'}
-        </label>
         <CardInput
           action={this.generateHandler('last_name')}
           errors={template.errors.last_name}
-          focus={true}
+          label={'Last name'}
           placeholder={'Klapper'}
           value={template.last_name} />
-        <label style={styles.label}>
-          {'Email'}
-        </label>
         <CardInput
           action={this.generateHandler('email')}
           errors={template.errors.email}
-          focus={true}
+          label={'Email'}
           placeholder={'volunteer@edgeyl.com'}
+          type={'email'}
           value={template.email} />
-        <label style={styles.label}>
-          {'Password'}
-        </label>
         <CardInput
           action={this.generateHandler('password')}
           errors={template.errors.password}
+          label={'Password'}
           placeholder={'password'}
+          type={'password'}
           value={template.password} />
-        <label style={styles.label}>
-          {'Password confirmation'}
-        </label>
         <CardInput
           action={this.generateHandler('password_confirmation')}
           errors={template.errors.password_confirmation}
+          label={'Password confirmation'}
           placeholder={'password'}
+          type={'password'}
           value={template.password_confirmation} />
         <FormButton
           action={() => this.createUser()}

@@ -27,22 +27,7 @@ class AuthenticationCard extends Component {
       header: {
         display: 'flex',
         justifyContent: 'center',
-        marginBottom: '16px',
-      },
-    };
-  }
-
-  get childStyles() {
-    return {
-      container: {
-        display: 'flex',
-        flexFlow: 'column',
-      },
-      error: {
-        flex: 1,
-        marginBottom: '16px',
-        color: StyleConstants.colors.red,
-        textAlign: 'center',
+        marginBottom: '12px',
       },
     };
   }
@@ -52,17 +37,9 @@ class AuthenticationCard extends Component {
   // --------------------------------------------------
   renderForm() {
     if (this.props.type === 'login') {
-      return (
-        <LoginForm
-          styles={this.childStyles}
-          template={this.props.template} />
-      );
+      return <LoginForm template={this.props.template} />;
     } else {
-      return (
-        <SignupForm
-          styles={this.childStyles}
-          template={this.props.template} />
-      );
+      return <SignupForm template={this.props.template} />;
     }
   }
 

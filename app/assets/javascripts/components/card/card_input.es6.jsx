@@ -8,8 +8,10 @@ class CardInput extends Component {
       action: React.PropTypes.func.isRequired,
       errors: React.PropTypes.array,
       focus: React.PropTypes.bool,
+      label: React.PropTypes.string.isRequired,
       margin: React.PropTypes.bool,
-      placeholder: React.PropTypes.string.isRequired,
+      placeholder: React.PropTypes.string,
+      type: React.PropTypes.string,
       value: React.PropTypes.string,
     };
   }
@@ -19,6 +21,8 @@ class CardInput extends Component {
       errors: [],
       focus: false,
       margin: true,
+      placeholder: '',
+      type: 'text',
       value: '',
     };
   }
@@ -35,10 +39,9 @@ class CardInput extends Component {
           flexFlow: 'column',
           alignSelf: 'stretch',
         },
-        this.props.margin && { marginTop: '18px' }
+        this.props.margin && { marginTop: '12px' }
       ),
-      errors: {
-        marginTop: '12px',
+      error: {
         color: StyleConstants.colors.red,
       },
     };
@@ -55,11 +58,11 @@ class CardInput extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
-  renderErrors() {
+  renderError() {
     var errors = this.props.errors;
     if (errors && errors.length) {
       return (
-        <h6 style={this.styles.errors}>
+        <h6 style={this.styles.error}>
           {errors[0]}
         </h6>
       );
@@ -69,12 +72,14 @@ class CardInput extends Component {
   render() {
     return (
       <div style={this.styles.container}>
+        <h6>{this.props.label}</h6>
         <input
           autoFocus={this.props.focus}
           defaultValue={this.props.value}
           placeholder={this.props.placeholder}
-          ref={'input'} />
-        {this.renderErrors()}
+          ref={'input'}
+          type={this.props.type} />
+        {this.renderError()}
       </div>
     );
   }

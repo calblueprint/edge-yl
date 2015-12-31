@@ -5,13 +5,25 @@ class LoginForm extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      styles: React.PropTypes.shape({
-        container: React.PropTypes.object,
-        error: React.PropTypes.object,
-        label: React.PropTypes.object,
-        input: React.PropTypes.object,
-      }).isRequired,
       template: React.PropTypes.object.isRequired,
+    };
+  }
+
+  // --------------------------------------------------
+  // Styles
+  // --------------------------------------------------
+  get styles() {
+    return {
+      container: {
+        display: 'flex',
+        flexFlow: 'column',
+      },
+      error: {
+        flex: 1,
+        marginTop: '12px',
+        color: StyleConstants.colors.red,
+        textAlign: 'center',
+      },
     };
   }
 
@@ -50,36 +62,33 @@ class LoginForm extends Component {
   // Render
   // --------------------------------------------------
   renderError() {
-    var props = this.props;
-    if (props.template.message) {
+    var template = this.props.template;
+    if (template.message) {
       return (
-        <h6 style={props.styles.error}>
-          {props.template.message}
+        <h6 style={this.styles.error}>
+          {template.message}
         </h6>
       );
     }
   }
 
   render() {
-    var styles = this.props.styles;
     var template = this.props.template;
     return (
-      <div ref={'container'} style={styles.container}>
-        <label style={styles.label}>
-          {'Email'}
-        </label>
+      <div ref={'container'} style={this.styles.container}>
         <CardInput
           action={this.generateHandler('email')}
           focus={true}
+          label={'Email'}
           margin={false}
           placeholder={'admin@edgeyl.com'}
+          type={'email'}
           value={template.email} />
-        <label style={styles.label}>
-          {'Password'}
-        </label>
         <CardInput
           action={this.generateHandler('password')}
+          label={'Password'}
           placeholder={'password'}
+          type={'password'}
           value={template.password} />
         {this.renderError()}
         <FormButton
