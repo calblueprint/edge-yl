@@ -93,7 +93,8 @@ class LoginForm extends Component {
         {this.renderError()}
         <FormButton
           action={() => this.createSession()}
-          content={'Log in'} />
+          content={'Log in'}
+          margin={this.props.template.message ? 12 : 24} />
       </div>
     );
   }

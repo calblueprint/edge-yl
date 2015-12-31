@@ -84,7 +84,8 @@ class SignupForm extends Component {
           value={template.password_confirmation} />
         <FormButton
           action={() => this.createUser()}
-          content={'Sign up'} />
+          content={'Sign up'}
+          margin={24} />
       </div>
     );
   }
