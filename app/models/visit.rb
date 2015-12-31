@@ -17,4 +17,10 @@ class Visit < ActiveRecord::Base
   belongs_to :visitable, polymorphic: true
   belongs_to :user
 
+  def equals(visit)
+    !visit.nil? &&
+    visit.visitable_id == visitable_id &&
+    visit.visitable_type == visitable_type
+  end
+
 end

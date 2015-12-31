@@ -54,10 +54,13 @@ class User < ActiveRecord::Base
 
   def create_visit(visitable_type, visitable_id)
     last_visit = visits.first
-    if last_visit.nil? ||
-       last_visit.visitable_type != visitable_type ||
-       last_visit.visitable_id != visitable_id
-      visits.create visitable_id: visitable_id, visitable_type: visitable_type
+    new_visit = Visit.new(
+      user_id: id,
+      visitable_id: visitable_id,
+      visitable_type: visitable_type
+    )
+    if !new_visit.equals(last_visit)
+      new_visit.save
     end
   end
 
