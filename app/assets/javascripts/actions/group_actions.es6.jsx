@@ -4,16 +4,21 @@
     constructor() {
       this.generateActions(
         'storeGroup',
+        'storeGroupables',
       );
     }
 
-    fetchGroup(conferenceId, id) {
+    fetchGroup(id) {
       var resolve = (response) => this.storeGroup(response);
-      Requester.get(ApiConstants.conferences.groups.show(conferenceId, id), resolve);
+      Requester.get(ApiConstants.groups.show(id), resolve);
       return true;
     }
 
     storeOverlay(active, type, target) {
+      if (target === TypeConstants.group.leadership) {
+        var resolve = (response) => this.storeGroupables(response);
+        Requester.get(ApiConstants.users.groupables, resolve);
+      }
       return {
         active: active,
         target: target,
@@ -21,11 +26,21 @@
       };
     }
 
-    updateGroup(conferenceId, id, params) {
+    updateGroup(id, params) {
       var resolve = (response) => this.storeGroup(response);
       Requester.update(
-        ApiConstants.conferences.groups.update(conferenceId, id),
+        ApiConstants.groups.update(id),
         params,
+        resolve
+      );
+      return true;
+    }
+
+    updateLeadership(id, params) {
+      var resolve = (response) => console.log(response);
+      Requester.update(
+        ApiConstants.leaderships.update(id),
+        { leadership: params },
         resolve
       );
       return true;

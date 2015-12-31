@@ -13,7 +13,6 @@ class GroupPage extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      conferenceId: React.PropTypes.number.isRequired,
       id: React.PropTypes.number.isRequired,
     };
   }
@@ -32,7 +31,7 @@ class GroupPage extends Component {
     GroupStore.listen(this._listener);
     ViewStore.listen(this._listener);
     ProfileActions.fetchProfile();
-    GroupActions.fetchGroup(this.props.conferenceId, this.props.id)
+    GroupActions.fetchGroup(this.props.id)
     ViewActions.attachListener();
   }
 
@@ -49,6 +48,7 @@ class GroupPage extends Component {
     if (this.state.overlay.active) {
       return (
         <GroupPageOverlay
+          groupables={this.state.groupables}
           overlay={this.state.overlay}
           template={this.state.template} />
       );

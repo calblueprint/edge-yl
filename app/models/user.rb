@@ -37,9 +37,16 @@ class User < ActiveRecord::Base
 
   has_one :leadership, dependent: :destroy
 
-  validates_presence_of :email, :first_name, :last_name
+  validates :email, presence: true
+  validates :first_name, presence: true
+  validates :last_name, presence: true
 
-  validates_inclusion_of :has_sidebar, :is_admin, in: [true, false]
+  validates :has_sidebar, inclusion: { in: [true, false] }
+  validates :is_admin, inclusion: { in: [true, false] }
+
+  def self.groupable
+    self.includes(:leadership).where(leaderships: { id: nil })
+  end
 
   def full_name
     "#{first_name} #{last_name}"

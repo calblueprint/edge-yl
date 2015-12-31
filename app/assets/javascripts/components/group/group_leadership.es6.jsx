@@ -13,14 +13,13 @@ class GroupLeadership extends Component {
   // Render
   // --------------------------------------------------
   renderLeadership(leadership) {
-    var label = leadership.is_primary ? 'Primary' : 'Secondary';
     var user = leadership.user;
     if (user) {
       return (
         <CardAttribute
           clickable={true}
           key={leadership.id}
-          label={`${label} leader`}
+          label={leadership.style}
           route={RouteConstants.users.show(user.id)}
           value={user.full_name} />
       );
@@ -28,7 +27,7 @@ class GroupLeadership extends Component {
       return (
         <CardAttribute
           key={leadership.id}
-          label={`${label} leader`} />
+          label={leadership.style} />
       );
     }
   }

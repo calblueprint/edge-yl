@@ -1,4 +1,4 @@
-class GroupPageOverlay extends PageOverlay {
+class GroupLeadershipEdit extends Component {
 
   // --------------------------------------------------
   // Props
@@ -6,11 +6,6 @@ class GroupPageOverlay extends PageOverlay {
   static get propTypes() {
     return {
       groupables: React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
-      overlay: React.PropTypes.shape({
-        active: React.PropTypes.bool.isRequired,
-        target: React.PropTypes.string.isRequired,
-        type: React.PropTypes.string.isRequired,
-      }).isRequired,
       template: React.PropTypes.object.isRequired,
     };
   }
@@ -18,19 +13,28 @@ class GroupPageOverlay extends PageOverlay {
   // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
-  storeOverlay() {
-    GroupActions.storeOverlay(false);
+  generateOption(groupabale) {
+    // TODO(Warren): Don't set user_id manually.
+    return {
+      action: () => GroupActions.updateLeadership(groupabale.id, { user_id: 6 }),
+      content: groupabale.full_name,
+    };
+  }
+
+  generateOptions() {
+    var groupables = this.props.groupables;
+    return groupables.map((groupabale) => this.generateOption(groupabale));
   }
 
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
-  renderModal() {
+  render() {
+    console.log(this.generateOptions());
     return (
-      <GroupEditModal
-        groupables={this.props.groupables}
-        overlay={this.props.overlay}
-        template={this.props.template} />
+      <div style={StyleConstants.cards.body}>
+        <CardDropdown options={this.generateOptions()} />
+      </div>
     );
   }
 }

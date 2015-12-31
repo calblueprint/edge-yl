@@ -10,7 +10,7 @@ new_admin.skip_confirmation!
 new_admin.save
 puts "Created admin #{new_admin.full_name}"
 
-(1..3).each do |index|
+(1..7).each do |index|
   new_user = User.new(
     email: Faker::Internet.email,
     first_name: Faker::Name.first_name,

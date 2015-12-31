@@ -9,14 +9,6 @@
 
     get conferences() {
       return {
-        groups: {
-          show: function(conferenceId, id) {
-            return `/api/conferences/${conferenceId}/groups/${id}`
-          },
-          update: function(conferenceId, id) {
-            return `/api/conferences/${conferenceId}/groups/${id}`
-          },
-        },
         create: '/api/conferences',
         index: (page) => `/api/conferences?page=${page}`,
         show: (id) => `/api/conferences/${id}`,
@@ -30,17 +22,23 @@
       };
     }
 
-    get groups() {
-      return {
-        create: '/api/groups',
-        index: '/api/groups',
-        show: (id) => `/api/groups/${id}`,
-      };
-    }
-
     get forms() {
       return {
         show: (id) => `/api/forms/${id}`,
+      };
+    }
+
+    get groups() {
+      return {
+        create: '/api/groups',
+        show: (id) => `/api/groups/${id}`,
+        update: (id) => `api/groups/${id}`,
+      };
+    }
+
+    get leaderships() {
+      return {
+        update: (id) => `/api/leaderships/${id}`,
       };
     }
 
@@ -77,6 +75,7 @@
     get users() {
       return {
         create: '/api/users/signup',
+        groupables: '/api/users/groupables',
         index: (page) => `/api/users?=${page}`,
         login: '/api/users/login',
         logout: '/api/users/logout',

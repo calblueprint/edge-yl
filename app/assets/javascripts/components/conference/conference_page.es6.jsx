@@ -47,9 +47,17 @@ class ConferencePage extends Component {
   generateOptions() {
     return [
       {
+        action: () => this.storeOverlay(),
         content: 'Edit',
       },
     ];
+  }
+
+  storeOverlay() {
+    ConferenceActions.storeOverlay(
+      true,
+      TypeConstants.actions.edit
+    );
   }
 
   // --------------------------------------------------

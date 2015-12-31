@@ -1,5 +1,10 @@
 class Api::UsersController < Api::BaseController
 
+  def groupables
+    users = User.groupable
+    render json: users, each_serializer: UserBaseSerializer
+  end
+
   def index
     users = User.page params[:page]
     render json: users,

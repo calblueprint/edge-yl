@@ -14,14 +14,13 @@ class GroupsCard extends Component {
   // Render
   // --------------------------------------------------
   renderLeadership(leadership) {
-    var label = leadership.is_primary ? 'Primary' : 'Secondary';
     var user = leadership.user;
     if (user) {
       return (
         <CardAttribute
           clickable={true}
           key={leadership.id}
-          label={`${label} leader`}
+          label={leadership.style}
           route={RouteConstants.users.show(user.id)}
           value={user.full_name} />
       );
@@ -29,7 +28,7 @@ class GroupsCard extends Component {
       return (
         <CardAttribute
           key={leadership.id}
-          label={`${label} leader`} />
+          label={leadership.style} />
       );
     }
   }
@@ -46,7 +45,7 @@ class GroupsCard extends Component {
         <CardAttribute
           clickable={true}
           label={'Name'}
-          route={RouteConstants.groups.show(group.conference_id, group.id)}
+          route={RouteConstants.groups.show(group.id)}
           type={'h4'}
           value={group.full_name} />
         {this.renderLeaderships()}

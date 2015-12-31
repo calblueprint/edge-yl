@@ -1,11 +1,27 @@
-class FormDropdown extends Component {
+class CardDropdown extends Component {
 
   // --------------------------------------------------
   // Props
   // --------------------------------------------------
   static get propTypes() {
     return {
-      question: React.PropTypes.object.isRequired,
+      errors: React.PropTypes.array,
+      margin: React.PropTypes.bool,
+      options: React.PropTypes.arrayOf(
+        React.PropTypes.shape({
+          action: React.PropTypes.action,
+          content: React.PropTypes.string,
+        })
+      ).isRequired,
+      value: React.PropTypes.string,
+    };
+  }
+
+  static get defaultProps() {
+    return {
+      errors: [],
+      margin: true,
+      value: '',
     };
   }
 
@@ -15,7 +31,6 @@ class FormDropdown extends Component {
   static get defaultState() {
     return {
       dropdown: false,
-      value: 'Select one',
     };
   }
 
@@ -27,12 +42,6 @@ class FormDropdown extends Component {
       container: {
         display: 'flex',
         justifyContent: 'space-between',
-        alignItems: 'center',
-        marginBottom: '18px',
-      },
-      required: {
-        paddingLeft: '4px',
-        color: StyleConstants.colors.red,
       },
       section: {
         display: 'flex',
@@ -85,30 +94,6 @@ class FormDropdown extends Component {
   }
 
   // --------------------------------------------------
-  // Helpers
-  // --------------------------------------------------
-  generateOption(option) {
-    return {
-      action: () => this.storeResponse(option),
-      content: option,
-    };
-  }
-
-  generateOptions() {
-    var options = this.props.question.options;
-    return options.map((option) => this.generateOption(option));
-  }
-
-  storeResponse(option) {
-    var question = this.props.question;
-    FormActions.storeResponse(
-      question.section_id,
-      question.id,
-      option
-    );
-  }
-
-  // --------------------------------------------------
   // Render
   // --------------------------------------------------
   renderDropdown() {
@@ -116,24 +101,27 @@ class FormDropdown extends Component {
       return (
         <Dropdown
           action={() => this.setState({ dropdown: false })}
-          options={this.generateOptions()}
+          options={this.props.options}
           styles={this.dropdownStyles} />
       );
     }
   }
 
-  renderRequired() {
-    if (this.props.question.is_required) {
-      return <h6 style={this.styles.required}>{'*'}</h6>;
+  renderErrors() {
+    var errors = this.props.errors;
+    if (errors && errors.length) {
+      return (
+        <h6 style={this.styles.errors}>
+          {errors[0]}
+        </h6>
+      );
     }
   }
 
   render() {
-    var question = this.props.question;
     return (
       <div style={this.styles.container}>
-        <h5>{question.title}</h5>
-        {this.renderRequired()}
+        <h6>{'Primary leader'}</h6>
         <div style={this.styles.section}>
           <Clickable
             action={() => this.setState({ dropdown: true })}
@@ -141,11 +129,12 @@ class FormDropdown extends Component {
             styles={this.clickableStyles}
             type={'i'}>
             <h6 style={this.styles.selected}>
-              {question.value || 'Select one'}
+              {'Select one'}
             </h6>
           </Clickable>
           {this.renderDropdown()}
         </div>
+        {this.renderErrors()}
       </div>
     );
   }
