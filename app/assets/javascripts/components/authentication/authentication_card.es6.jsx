@@ -44,15 +44,6 @@ class AuthenticationCard extends Component {
         color: StyleConstants.colors.red,
         textAlign: 'center',
       },
-      input: {
-        flex: 1,
-        padding: '8px',
-        marginBottom: '16px',
-      },
-      label: {
-        flex: 1,
-        marginBottom: '6px',
-      },
     };
   }
 

@@ -121,6 +121,9 @@ a {
 
 input,
 textarea {
+  flex: 1;
+  align-self: stretch;
+  padding: 8px;
   border: 1px solid $gray;
   -webkit-transition: border-color, box-shadow 0.375s ease-in-out;
   -moz-transition: border-color, box-shadow 0.375s ease-in-out;

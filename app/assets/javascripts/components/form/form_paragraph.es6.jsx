@@ -30,11 +30,6 @@ class FormParagraph extends Component {
         paddingBottom: '10px',
         fontSize: StyleConstants.fonts.sizes.smaller,
       },
-      input: {
-        flex: '1',
-        padding: '8px',
-        fontSize: StyleConstants.fonts.sizes.smallest,
-      },
     };
   }
 
@@ -62,11 +57,10 @@ class FormParagraph extends Component {
       <div style={this.styles.container}>
         <label style={this.styles.label}>{this.props.title}</label>
         <textarea
-          ref={'container'}
-          rows={'8'}
           cols={'50'}
-          style={this.styles.input}
-          placeholder={this.props.placeholder}>
+          placeholder={this.props.placeholder}
+          ref={'container'}
+          rows={'8'}>
         </textarea>
       </div>
     )

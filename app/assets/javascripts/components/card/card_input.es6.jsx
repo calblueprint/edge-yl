@@ -33,7 +33,6 @@ class CardInput extends Component {
         {
           display: 'flex',
           flexFlow: 'column',
-          alignItems: 'center',
           alignSelf: 'stretch',
         },
         this.props.margin && { marginTop: '18px' }
@@ -41,10 +40,6 @@ class CardInput extends Component {
       errors: {
         marginTop: '12px',
         color: StyleConstants.colors.red,
-      },
-      input: {
-        alignSelf: 'stretch',
-        padding: '8px',
       },
     };
   }
@@ -78,8 +73,7 @@ class CardInput extends Component {
           autoFocus={this.props.focus}
           defaultValue={this.props.value}
           placeholder={this.props.placeholder}
-          ref={'input'}
-          style={this.styles.input} />
+          ref={'input'} />
         {this.renderErrors()}
       </div>
     );

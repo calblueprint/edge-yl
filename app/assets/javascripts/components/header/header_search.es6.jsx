@@ -22,7 +22,6 @@ class HeaderSearch extends Component {
         height: '30px',
       },
       input: {
-        flex: '1',
         height: '30px',
         padding: '8px 16px',
         border: 'none',
