@@ -36,6 +36,12 @@
       return true;
     }
 
+    destroySession() {
+      var resolve = (response) => window.location = RouteConstants.pages.login;
+      Requester.delete(ApiConstants.users.logout, resolve);
+      return true;
+    }
+
     storeAttribute(key, value) {
       return {
         key: key,
