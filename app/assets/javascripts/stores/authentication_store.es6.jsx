@@ -9,6 +9,7 @@
         handleStoreAttribute: AuthenticationActions.STORE_ATTRIBUTE,
         handleStoreError: AuthenticationActions.STORE_ERROR,
         handleStoreSession: AuthenticationActions.STORE_SESSION,
+        handleStoreUser: AuthenticationActions.STORE_USER,
       });
     }
 
@@ -21,6 +22,10 @@
     }
 
     handleStoreSession(response) {
+      window.location = RouteConstants.students.index();
+    }
+
+    handleStoreUser(response) {
       window.location = RouteConstants.students.index();
     }
   }

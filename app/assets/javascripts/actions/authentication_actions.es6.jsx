@@ -4,7 +4,8 @@
     constructor() {
       this.generateActions(
         'storeError',
-        'storeSession'
+        'storeSession',
+        'storeUser'
       );
     }
 
@@ -14,6 +15,19 @@
       var reject = (response) => this.storeError(response);
       Requester.post(
         ApiConstants.users.login,
+        params,
+        resolve,
+        reject
+      );
+      return true;
+    }
+
+    createUser(template) {
+      var params = { registration: template };
+      var resolve = (response) => this.storeUser(response);
+      var reject = (response) => this.storeError(response);
+      Requester.post(
+        ApiConstants.users.create,
         params,
         resolve,
         reject
