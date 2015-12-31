@@ -5,23 +5,25 @@ class LoginForm extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      styles: React.PropTypes.shape({
-        container: React.PropTypes.object,
-        error: React.PropTypes.object,
-        label: React.PropTypes.object,
-        input: React.PropTypes.object,
-      }).isRequired,
+      template: React.PropTypes.object.isRequired,
     };
   }
 
   // --------------------------------------------------
-  // State
+  // Styles
   // --------------------------------------------------
-  static get defaultState() {
+  get styles() {
     return {
-      email: '',
-      error: '',
-      password: '',
+      container: {
+        display: 'flex',
+        flexFlow: 'column',
+      },
+      error: {
+        flex: 1,
+        marginTop: '12px',
+        color: StyleConstants.colors.red,
+        textAlign: 'center',
+      },
     };
   }
 
@@ -31,88 +33,68 @@ class LoginForm extends Component {
   componentDidMount() {
     var container = ReactDOM.findDOMNode(this.refs.container);
     container.addEventListener('keydown', (event) => this.handleKeyDown(event));
-    var email = ReactDOM.findDOMNode(this.refs.email);
-    email.addEventListener('input', this.generateHandler('email'));
-    var password = ReactDOM.findDOMNode(this.refs.password);
-    password.addEventListener('input', this.generateHandler('password'));
   }
 
   // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
   createSession() {
-    var params = {
-      user: {
-        email: this.state.email,
-        password: this.state.password,
-      },
-    };
-    var resolve = (response) => window.location = RouteConstants.students.index();
-    var reject = (response) => this.setState({ error: response.message });
-    Requester.post(
-      ApiConstants.users.login,
-      params,
-      resolve,
-      reject
-    );
+    AuthenticationActions.createSession(this.props.template);
   }
 
   generateHandler(field) {
     var state = {};
-    return (event) => {
-      state[field] = event.target.value;
-      this.setState(state);
+    return(event) => {
+      AuthenticationActions.storeAttribute(field, event.target.value);
     };
   }
 
   // --------------------------------------------------
   // Handlers
   // --------------------------------------------------
-    handleKeyDown(event) {
-      if (event.keyCode === 13) {
-        this.createSession();
-      }
+  handleKeyDown(event) {
+    if (event.keyCode === 13) {
+      this.createSession();
     }
+  }
 
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
   renderError() {
-    if (this.state.error) {
+    var template = this.props.template;
+    if (template.message) {
       return (
-        <span style={this.styles.error}>
-          {this.state.error}
-        </span>
+        <h6 style={this.styles.error}>
+          {template.message}
+        </h6>
       );
     }
   }
 
   render() {
-    var styles = this.props.styles;
+    var template = this.props.template;
     return (
-      <div ref={'container'} style={styles.container}>
-        <label style={styles.label}>
-          {'Email'}
-        </label>
-        <input
-          autoFocus={true}
-          placeholder={'example@email.com'}
-          ref={'email'}
-          style={styles.input}>
-        </input>
-        <label style={styles.label}>
-          {'Password'}
-        </label>
-        <input
-          placeholder={'topsecretpassword'}
-          ref={'password'}
-          style={styles.input}
-          type={'password'}>
-        </input>
+      <div ref={'container'} style={this.styles.container}>
+        <CardInput
+          action={this.generateHandler('email')}
+          focus={true}
+          label={'Email'}
+          margin={false}
+          placeholder={'admin@edgeyl.com'}
+          type={'email'}
+          value={template.email} />
+        <CardInput
+          action={this.generateHandler('password')}
+          label={'Password'}
+          placeholder={'password'}
+          type={'password'}
+          value={template.password} />
         {this.renderError()}
         <FormButton
           action={() => this.createSession()}
-          content={'Log in'} />
+          content={'Log in'}
+          margin={this.props.template.message ? 12 : 24} />
       </div>
     );
   }

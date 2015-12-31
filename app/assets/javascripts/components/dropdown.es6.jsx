@@ -42,6 +42,7 @@ class Dropdown extends Component {
         left: '0px',
         width: '0px',
         height: '0px',
+        padding: '0px',
         border: '0px',
       },
     };
@@ -122,7 +123,7 @@ class Dropdown extends Component {
         <input
           autoFocus={true}
           ref={'input'}
-          style = {this.styles.input} />
+          style={this.styles.input} />
       </div>
     );
   }

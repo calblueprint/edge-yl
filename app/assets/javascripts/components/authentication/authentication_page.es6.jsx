@@ -1,6 +1,14 @@
 class AuthenticationPage extends Component {
 
   // --------------------------------------------------
+  // Setup
+  // --------------------------------------------------
+  constructor(props) {
+    super(props);
+    this._listener = (state) => this.setState(state);
+  }
+
+  // --------------------------------------------------
   // Props
   // --------------------------------------------------
   static get propTypes() {
@@ -17,21 +25,35 @@ class AuthenticationPage extends Component {
       container: {
         display: 'flex',
         flexFlow: 'column',
-        justifyContent: 'center',
         alignItems: 'center',
-        flex: '1',
         paddingTop: StyleConstants.heights.header,
-        overflow: 'scroll',
       },
       footer: {
         display: 'flex',
+        justifyContent: 'center',
         alignItems: 'flex-end',
-        marginTop: '12px',
+        alignSelf: 'stretch',
+        margin: '12px 0px',
       },
       label: {
         paddingRight: '4px',
       },
     };
+  }
+
+  // --------------------------------------------------
+  // Lifecycle
+  // --------------------------------------------------
+  componentWillMount() {
+    this.setState(AuthenticationStore.getState());
+  }
+
+  componentDidMount() {
+    AuthenticationStore.listen(this._listener);
+  }
+
+  componentWillUnmount() {
+    AuthenticationStore.unlisten(this._listener);
   }
 
   // --------------------------------------------------
@@ -58,7 +80,9 @@ class AuthenticationPage extends Component {
       <div style={StyleConstants.pages.wrapper}>
         <Header active={false} />
         <div style={this.styles.container}>
-          <AuthenticationCard type={this.props.type} />
+          <AuthenticationCard
+            template={this.state.template}
+            type={this.props.type} />
           {this.renderFooter()}
         </div>
       </div>

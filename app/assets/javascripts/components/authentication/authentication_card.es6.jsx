@@ -5,6 +5,7 @@ class AuthenticationCard extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
+      template: React.PropTypes.object.isRequired,
       type: React.PropTypes.oneOf(['login', 'signup']).isRequired,
     };
   }
@@ -20,37 +21,13 @@ class AuthenticationCard extends Component {
         {
           width: '472px',
           padding: '24px',
-          margin: '0px',
+          marginTop: '24px',
         }
       ),
       header: {
         display: 'flex',
         justifyContent: 'center',
-        marginBottom: '16px',
-      },
-    };
-  }
-
-  get childStyles() {
-    return {
-      container: {
-        display: 'flex',
-        flexFlow: 'column',
-      },
-      error: {
-        flex: 1,
-        marginBottom: '16px',
-        color: StyleConstants.colors.red,
-        textAlign: 'center',
-      },
-      input: {
-        flex: 1,
-        padding: '8px',
-        marginBottom: '16px',
-      },
-      label: {
-        flex: 1,
-        marginBottom: '6px',
+        marginBottom: '12px',
       },
     };
   }
@@ -60,9 +37,9 @@ class AuthenticationCard extends Component {
   // --------------------------------------------------
   renderForm() {
     if (this.props.type === 'login') {
-      return <LoginForm styles={this.childStyles} />;
+      return <LoginForm template={this.props.template} />;
     } else {
-      return <SignupForm styles={this.childStyles} />;
+      return <SignupForm template={this.props.template} />;
     }
   }
 

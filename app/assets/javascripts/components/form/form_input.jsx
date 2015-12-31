@@ -23,10 +23,7 @@ class FormInput extends Component {
         color: StyleConstants.colors.red,
       },
       input: {
-        flex: '1',
-        padding: '8px',
         marginLeft: '24px',
-        fontSize: StyleConstants.fonts.sizes.smallest,
       },
       required: {
         paddingLeft: '4px',
@@ -76,6 +73,7 @@ class FormInput extends Component {
   }
 
   render() {
+    // TODO(Warren): Configure input with type attribute!
     var question = this.props.question;
     return (
       <div style={this.styles.container}>
