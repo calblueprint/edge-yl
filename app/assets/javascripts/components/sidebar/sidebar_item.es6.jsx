@@ -51,9 +51,9 @@ class SidebarItem extends Component {
         route={this.props.route}
         styles={this.clickableStyles}
         type={'i'}>
-        <h5 style={this.styles.content}>
+        <h6 style={this.styles.content}>
           {this.props.label}
-        </h5>
+        </h6>
       </Clickable>
     );
   }
