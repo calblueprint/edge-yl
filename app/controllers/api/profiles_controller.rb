@@ -6,13 +6,15 @@ class Api::ProfilesController < Api::BaseController
       render json: profile,
                    serializer: ProfileBaseSerializer,
                    status: 201
+    else
+      unprocessable_response profile
     end
   end
 
   private
 
   def profile_params
-    params.require(:user).permit(
+    params.require(:profile).permit(
       :has_sidebar,
     )
   end

@@ -25,7 +25,7 @@
 
     toggleSidebar(id, status) {
       var attributes = { has_sidebar: status };
-      var params = { user: attributes };
+      var params = { profile: attributes };
       var resolve = (response) => this.storeProfile(response);
       Requester.update(
         ApiConstants.profiles.update(id),
