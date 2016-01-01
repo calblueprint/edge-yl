@@ -4,10 +4,12 @@ class BaseController < ApplicationController
 
   def authenticate_user
     redirect_to login_path if !user_signed_in?
+    profile_json = ProfileBaseSerializer.new(current_user).to_json
+    @profile = JSON.parse(profile_json)['user']
   end
 
   def current_profile
-    JSON.parse(ProfileBaseSerializer.new(current_user).to_json)['user']
+
   end
 
 end
