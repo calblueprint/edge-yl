@@ -8,12 +8,6 @@
       );
     }
 
-    fetchProfile() {
-      var resolve = (response) => this.storeProfile(response);
-      Requester.get(ApiConstants.users.profile, resolve);
-      return true;
-    }
-
     storeAttribute(key, value) {
       return {
         key: key,
