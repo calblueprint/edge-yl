@@ -1,9 +1,5 @@
 class Api::ProfilesController < Api::BaseController
 
-  def show
-    render json: current_user, serializer: ProfileBaseSerializer
-  end
-
   def update
     profile = User.find params[:id]
     if profile.update_attributes profile_params
