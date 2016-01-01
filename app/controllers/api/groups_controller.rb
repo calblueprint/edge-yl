@@ -13,6 +13,7 @@ class Api::GroupsController < Api::BaseController
     group = Group.includes(:conference,
                            leaderships: :user,
                            students: :school).find params[:id]
+    current_user.create_visit('Group', params[:id].to_i)
     render json: group, serializer: GroupShowSerializer
   end
 
