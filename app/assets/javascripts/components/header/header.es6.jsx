@@ -14,6 +14,7 @@ class Header extends Component {
   static get propTypes() {
     return {
       active: React.PropTypes.bool.isRequired,
+      profile: React.PropTypes.object.isRequired,
     };
   }
 
@@ -71,7 +72,8 @@ class Header extends Component {
   // --------------------------------------------------
 
   toggleSidebar() {
-    ProfileActions.toggleSidebar(this.props.profile.id, !this.props.profile.has_sidebar);
+    var profile = this.props.profile;
+    ProfileActions.toggleSidebar(profile.id, !profile.has_sidebar);
   }
 
   // --------------------------------------------------

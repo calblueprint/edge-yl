@@ -37,6 +37,7 @@
     handleStoreProfile(response) {
       this.overlay.active = false;
       this.profile = response.user;
+      console.log(this.profile);
       this.template = Object.assign({}, this.profile);
       this.template.errors = {};
     }

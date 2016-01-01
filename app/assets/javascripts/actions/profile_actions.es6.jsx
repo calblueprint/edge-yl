@@ -34,7 +34,7 @@
       var params = { user: attributes };
       var resolve = (response) => this.storeProfile(response);
       Requester.update(
-        ApiConstants.users.update(id),
+        ApiConstants.profiles.update(id),
         params,
         resolve
       );
