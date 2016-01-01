@@ -58,7 +58,7 @@ class StudentsPage extends Component {
   }
 
   selectProfile() {
-    return this.state.profile.id ?
+    return this.state.profile ?
            this.state.profile :
            this.props.profile;
   }
