@@ -1,12 +1,45 @@
 class GroupCreateModal extends CreateModal {
 
   // --------------------------------------------------
+  // Props
+  // --------------------------------------------------
+  static get propTypes() {
+    return {
+      conference: React.PropTypes.object.isRequired,
+      overlay: React.PropTypes.shape({
+        active: React.PropTypes.bool.isRequired,
+        type: React.PropTypes.string.isRequired,
+      }).isRequired,
+    };
+  }
+
+  // --------------------------------------------------
+  // State
+  // --------------------------------------------------
+  static get defaultState() {
+    return {
+      letter: '',
+    };
+  }
+
+  // --------------------------------------------------
   // Handlers
   // --------------------------------------------------
   handleClick(event) {
     if (event.target === this._node) {
       ConferenceActions.storeOverlay(false);
     }
+  }
+
+  // --------------------------------------------------
+  // Helpers
+  // --------------------------------------------------
+  createGroup() {
+    var params = {
+      conference_id: this.props.conference.id,
+      letter: this.state.letter,
+    }
+    ConferenceActions.createGroup(params)
   }
 
   generateHandler(field) {
@@ -19,15 +52,16 @@ class GroupCreateModal extends CreateModal {
 
   renderBody() {
     return (
-      <div style={this.styles.container}>
+      <div style={this.styles.section}>
         <CardHeader
-          action={() => this.createComment()}
+          action={() => this.createGroup()}
           content={'New Group'}
           icon={TypeConstants.icons.save} />
-        <div style={this.styles.form}>
+        <div style={StyleConstants.cards.body}>
           <CardInput
             action={this.generateHandler('letter')}
             focus={true}
+            label={'Group Letter'}
             margin={false}
             placeholder={'A'}
             value={''} />
