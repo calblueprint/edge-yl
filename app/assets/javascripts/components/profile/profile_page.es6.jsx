@@ -9,6 +9,15 @@ class ProfilePage extends Component {
   }
 
   // --------------------------------------------------
+  // Props
+  // --------------------------------------------------
+  static get propTypes() {
+    return {
+      profile: React.PropTypes.object.isRequired,
+    };
+  }
+
+  // --------------------------------------------------
   // Lifecycle
   // --------------------------------------------------
   componentWillMount() {
@@ -17,11 +26,19 @@ class ProfilePage extends Component {
 
   componentDidMount() {
     ProfileStore.listen(this._listener);
-    ProfileActions.fetchProfile();
   }
 
   componentWillUnmount() {
     ProfileStore.unlisten(this._listener);
+  }
+
+  // --------------------------------------------------
+  // Helpers
+  // --------------------------------------------------
+  selectProfile() {
+    return this.state.profile ?
+           this.state.profile :
+           this.props.profile;
   }
 
   // --------------------------------------------------
@@ -42,13 +59,13 @@ class ProfilePage extends Component {
     return (
       <div style={StyleConstants.pages.wrapper}>
         {this.renderOverlay()}
-        <Header active={true} />
+        <Header
+          active={true}
+          profile={this.selectProfile()} />
         <div style={StyleConstants.pages.container}>
-          <Sidebar
-            active={this.state.profile.has_sidebar}
-            profile={this.state.profile} />
+          <Sidebar profile={this.selectProfile()} />
           <div style={StyleConstants.pages.content}>
-            <ProfileGrid profile={this.state.profile} />
+            <ProfileGrid profile={this.selectProfile()} />
           </div>
         </div>
       </div>

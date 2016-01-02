@@ -12,10 +12,6 @@ class Api::UsersController < Api::BaseController
                  each_serializer: UserIndexSerializer
   end
 
-  def profile
-    render json: current_user, serializer: ProfileBaseSerializer
-  end
-
   def show
     user = User.includes(:responsibilities).find params[:id]
     current_user.create_visit('User', params[:id].to_i)
@@ -34,14 +30,15 @@ class Api::UsersController < Api::BaseController
   end
 
   private
-    def user_params
-      params.require(:user).permit(
-        :email,
-        :first_name,
-        :has_sidebar,
-        :last_name,
-        :password
-      )
-    end
+
+  def user_params
+    params.require(:user).permit(
+      :email,
+      :first_name,
+      :has_sidebar,
+      :last_name,
+      :password
+    )
+  end
 
 end

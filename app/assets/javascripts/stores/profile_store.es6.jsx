@@ -7,10 +7,7 @@
         target: '',
         type: '',
       };
-      this.profile = {
-        has_sidebar: true,
-        visits: [],
-      };
+      this.profile = null;
       this.template = {
         errors: {},
       };

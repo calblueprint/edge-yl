@@ -14,6 +14,7 @@ class UserPage extends Component {
   static get propTypes() {
     return {
       id: React.PropTypes.number.isRequired,
+      profile: React.PropTypes.object.isRequired,
     };
   }
 
@@ -28,13 +29,21 @@ class UserPage extends Component {
   componentDidMount() {
     ProfileStore.listen(this._listener);
     UserStore.listen(this._listener);
-    ProfileActions.fetchProfile();
     UserActions.fetchUser(this.props.id);
   }
 
   componentWillUnmount() {
     ProfileStore.unlisten(this._listner);
     UserStore.unlisten(this._listener);
+  }
+
+  // --------------------------------------------------
+  // Helpers
+  // --------------------------------------------------
+  selectProfile() {
+    return this.state.profile ?
+           this.state.profile :
+           this.props.profile;
   }
 
   // --------------------------------------------------
@@ -56,11 +65,9 @@ class UserPage extends Component {
       <div style={StyleConstants.pages.wrapper}>
         <Header
           active={true}
-          profile={this.state.profile} />
+          profile={this.selectProfile()} />
         <div style={StyleConstants.pages.container}>
-          <Sidebar
-            active={this.state.profile.has_sidebar}
-            profile={this.state.profile} />
+          <Sidebar profile={this.selectProfile()} />
           <div style={StyleConstants.pages.content}>
             <UserCard user={this.state.user} />
             <ResponsibilitiesGrid responsibilities={this.state.user.responsibilities} />

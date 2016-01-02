@@ -8,8 +8,8 @@ class SidebarFooter extends Component {
       container: {
         display: 'flex',
         alignItems: 'center',
-        padding: '12px',
-        marginTop: '16px',
+        padding: '0px 12px',
+        marginTop: '12px',
       },
     };
   }
@@ -17,8 +17,8 @@ class SidebarFooter extends Component {
   get clickableStyles() {
     return {
       child: {
-        width: '18px',
-        height: '18px',
+        width: '16px',
+        height: '16px',
       },
       default: {
         marginLeft: '8px',
@@ -37,7 +37,7 @@ class SidebarFooter extends Component {
   render() {
     return (
       <div style={this.styles.container}>
-        <h5>{'Powered by'}</h5>
+        <h6>{'Powered by'}</h6>
         <Clickable
           styles={this.clickableStyles}
           source={'https://avatars3.githubusercontent.com/u/2729578?v=3&s=200'}

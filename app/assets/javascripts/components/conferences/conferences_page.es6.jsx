@@ -14,6 +14,7 @@ class ConferencesPage extends Component {
   static get propTypes() {
     return {
       page: React.PropTypes.number.isRequired,
+      profile: React.PropTypes.object.isRequired,
     };
   }
 
@@ -31,7 +32,6 @@ class ConferencesPage extends Component {
     ProfileStore.listen(this._listener);
     ViewStore.listen(this._listener);
     ConferencesActions.fetchConferences(this.props.page);
-    ProfileActions.fetchProfile();
     ViewActions.attachListener();
   }
 
@@ -51,6 +51,12 @@ class ConferencesPage extends Component {
         content: 'New',
       },
     ];
+  }
+
+  selectProfile() {
+    return this.state.profile ?
+           this.state.profile :
+           this.props.profile;
   }
 
   storeOverlay() {
@@ -81,11 +87,9 @@ class ConferencesPage extends Component {
         {this.renderOverlay()}
         <Header
           active={true}
-          profile={this.state.profile} />
+          profile={this.selectProfile()} />
         <div style={StyleConstants.pages.container}>
-          <Sidebar
-            active={this.state.profile.has_sidebar}
-            profile={this.state.profile} />
+          <Sidebar profile={this.selectProfile()} />
           <div style={StyleConstants.pages.content}>
             <PageHeader
               label={'Conferences'}

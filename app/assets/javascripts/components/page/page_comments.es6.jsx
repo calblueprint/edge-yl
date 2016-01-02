@@ -43,7 +43,7 @@ class PageComments extends Component {
       default: {
         flex: '1',
         padding: '12px',
-        marginTop: '12px',
+        marginTop: '6px',
         borderRadius: '1px',
         textAlign: 'center',
         boxSizing: 'border-box',
@@ -92,14 +92,14 @@ class PageComments extends Component {
   render() {
     return (
       <div style={this.styles.container}>
-        <h4 style={this.styles.title}>{'Comments'}</h4>
+        <h5 style={this.styles.title}>{'Comments'}</h5>
         {this.renderComments()}
         <Clickable
           action={() => this.handleClick(event)}
           icon={TypeConstants.icons.create}
           styles={this.clickableStyles}
           type={'i'}>
-          <h5>{'Add comment'}</h5>
+          <h6>{'Add comment'}</h6>
         </Clickable>
       </div>
     );

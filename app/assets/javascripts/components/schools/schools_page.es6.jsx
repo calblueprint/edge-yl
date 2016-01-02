@@ -14,6 +14,7 @@ class SchoolsPage extends Component {
   static get propTypes() {
     return {
       page: React.PropTypes.number.isRequired,
+      profile: React.PropTypes.object.isRequired,
     };
   }
 
@@ -30,7 +31,6 @@ class SchoolsPage extends Component {
     ProfileStore.listen(this._listener);
     SchoolsStore.listen(this._listener);
     ViewStore.listen(this._listener);
-    ProfileActions.fetchProfile();
     SchoolsActions.fetchSchools(this.props.page);
     ViewActions.attachListener();
   }
@@ -53,19 +53,23 @@ class SchoolsPage extends Component {
     ];
   }
 
+  selectProfile() {
+    return this.state.profile ?
+           this.state.profile :
+           this.props.profile;
+  }
+
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
   render() {
     return (
       <div style={StyleConstants.pages.wrapper}>
-        <Header
-          active={true}
-          profile={this.state.profile} />
+      <Header
+        active={true}
+        profile={this.selectProfile()} />
         <div style={StyleConstants.pages.container}>
-          <Sidebar
-            active={this.state.profile.has_sidebar}
-            profile={this.state.profile} />
+          <Sidebar profile={this.selectProfile()} />
           <div style={StyleConstants.pages.content}>
             <PageHeader
               label={'Schools'}

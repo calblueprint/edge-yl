@@ -24,7 +24,7 @@ class ProfilePreview extends Component {
         }
       ),
       image: {
-        width: '312px',
+        width: '172px',
         borderRadius: '50%',
         marginTop: '4%',
       },

@@ -19,11 +19,11 @@ class SidebarRecents extends Component {
         flexFlow: 'column',
       },
       divider: {
-        marginTop: '12px',
+        marginTop: '6px',
         borderBottom: `1px solid ${StyleConstants.colors.gray}`,
       },
       title: {
-        padding: '6px 12px',
+        padding: '0px 12px',
         marginTop: '12px',
       },
     };
@@ -32,18 +32,18 @@ class SidebarRecents extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
-  renderItem(visit, index) {
+  renderItem(visit) {
     var icon;
     var route;
-    if (visit.visitable_type === 'Student') {
+    if (visit.visitable_type === 'Group') {
+      icon = TypeConstants.icons.group;
+      route = RouteConstants.groups.show(visit.visitable_id);
+    } else if (visit.visitable_type === 'Student') {
       icon = TypeConstants.icons.student;
       route = RouteConstants.students.show(visit.visitable_id);
     } else if (visit.visitable_type === 'School') {
       icon = TypeConstants.icons.school;
       route = RouteConstants.schools.show(visit.visitable_id);
-    } else if (visit.visitable_type === 'Group') {
-      icon = TypeConstants.icons.group;
-      route = RouteConstants.groups.show(visit.visitable_id);
     } else {
       icon = TypeConstants.icons.volunteer;
       route = RouteConstants.users.show(visit.visitable_id);

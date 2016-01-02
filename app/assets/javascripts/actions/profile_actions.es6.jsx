@@ -8,12 +8,6 @@
       );
     }
 
-    fetchProfile() {
-      var resolve = (response) => this.storeProfile(response);
-      Requester.get(ApiConstants.users.profile, resolve);
-      return true;
-    }
-
     storeAttribute(key, value) {
       return {
         key: key,
@@ -31,10 +25,10 @@
 
     toggleSidebar(id, status) {
       var attributes = { has_sidebar: status };
-      var params = { user: attributes };
+      var params = { profile: attributes };
       var resolve = (response) => this.storeProfile(response);
       Requester.update(
-        ApiConstants.users.update(id),
+        ApiConstants.profiles.update(id),
         params,
         resolve
       );

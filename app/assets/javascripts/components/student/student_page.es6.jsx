@@ -14,6 +14,7 @@ class StudentPage extends Component {
   static get propTypes() {
     return {
       id: React.PropTypes.number.isRequired,
+      profile: React.PropTypes.object.isRequired,
     };
   }
 
@@ -30,7 +31,6 @@ class StudentPage extends Component {
     ProfileStore.listen(this._listener);
     StudentStore.listen(this._listener);
     ViewStore.listen(this._listener);
-    ProfileActions.fetchProfile();
     StudentActions.fetchStudent(this.props.id);
     ViewActions.attachListener();
   }
@@ -42,6 +42,15 @@ class StudentPage extends Component {
   }
 
   // --------------------------------------------------
+  // Helpers
+  // --------------------------------------------------
+  selectProfile() {
+    return this.state.profile ?
+           this.state.profile :
+           this.props.profile;
+  }
+
+  // --------------------------------------------------
   // Render
   // --------------------------------------------------
   renderOverlay() {
@@ -49,7 +58,7 @@ class StudentPage extends Component {
       return (
         <StudentPageOverlay
           overlay={this.state.overlay}
-          profile={this.state.profile}
+          profile={this.selectProfile()}
           student={this.state.student}
           template={this.state.template} />
       );
@@ -63,11 +72,9 @@ class StudentPage extends Component {
         {this.renderOverlay()}
         <Header
           active={true}
-          profile={this.state.profile} />
+          profile={this.selectProfile()} />
         <div style={StyleConstants.pages.container}>
-          <Sidebar
-            active={this.state.profile.has_sidebar}
-            profile={this.state.profile} />
+          <Sidebar profile={this.selectProfile()} />
           <div style={StyleConstants.pages.content}>
             <PageHeader
               label={'Student'}

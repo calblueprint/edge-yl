@@ -42,6 +42,11 @@
       };
     }
 
+    get profiles() {
+      return {
+        update: (id) => `/api/profiles/${id}`,
+      };
+    }
     get schools() {
       return {
         create: '/api/schools',
