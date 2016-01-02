@@ -2,10 +2,9 @@ class Api::GroupsController < Api::BaseController
 
   def create
     group = Group.new group_params
-    group.conference_id = params[:conference_id]
     if group.save
       render json: group,
-             serializer: GroupBaseSerializer,
+             serializer: GroupIndexSerializer,
              status: 201
     else
       unprocessable_response group

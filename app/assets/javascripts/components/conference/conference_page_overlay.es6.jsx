@@ -26,10 +26,12 @@ class ConferencePageOverlay extends PageOverlay {
   // Render
   // --------------------------------------------------
   renderModal() {
-    return (
-      <GroupCreateModal
-        conference={this.props.conference}
-        overlay={this.props.overlay} />
-    );
+    if (this.props.overlay.type === TypeConstants.actions.create) {
+      return (
+        <GroupCreateModal
+          conference={this.props.conference}
+          overlay={this.props.overlay} />
+      );
+    }
   }
 }
