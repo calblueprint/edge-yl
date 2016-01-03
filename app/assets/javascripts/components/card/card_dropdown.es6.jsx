@@ -6,6 +6,7 @@ class CardDropdown extends Component {
   static get propTypes() {
     return {
       errors: React.PropTypes.array,
+      label: React.PropTypes.string.isRequired,
       margin: React.PropTypes.bool,
       options: React.PropTypes.arrayOf(
         React.PropTypes.shape({
@@ -39,16 +40,19 @@ class CardDropdown extends Component {
   // --------------------------------------------------
   get styles() {
     return {
-      container: {
-        display: 'flex',
-        justifyContent: 'space-between',
-      },
+      container: Object.assign(
+        {},
+        {
+          display: 'flex',
+          flexFlow: 'column',
+          alignSelf: 'stretch',
+        },
+        this.props.margin && { marginTop: '12px' }
+      ),
       section: {
         display: 'flex',
         flexFlow: 'column',
-        flex: '1',
-        height: '34px',
-        marginLeft: '24px',
+        maxHeight: '40px',
         border: `1px solid ${StyleConstants.colors.gray}`,
       },
     };
@@ -62,10 +66,7 @@ class CardDropdown extends Component {
       default: {
         display: 'flex',
         alignItems: 'center',
-        flex: '1',
-        minHeight: '34px',
         padding: '8px',
-        boxSizing: 'border-box',
       },
     };
   }
@@ -74,7 +75,7 @@ class CardDropdown extends Component {
     return {
       child: {
         default: {
-          flex: '1',
+          // flex: '1',
           padding: '8px',
         },
         hover: {
@@ -83,9 +84,11 @@ class CardDropdown extends Component {
       },
       container: Object.assign(
         {},
-        StyleConstants.containers.card,
+        StyleConstants.templates.card,
         {
-          top: '6px',
+          display: 'flex',
+          flexFlow: 'column',
+          top: '0px',
           left: '0px',
           zIndex: StyleConstants.planes.two,
         }
@@ -121,16 +124,14 @@ class CardDropdown extends Component {
   render() {
     return (
       <div style={this.styles.container}>
-        <h6>{'Primary leader'}</h6>
+        <h6>{this.props.label}</h6>
         <div style={this.styles.section}>
           <Clickable
             action={() => this.setState({ dropdown: true })}
             icon={TypeConstants.icons.expand}
             styles={this.clickableStyles}
             type={'i'}>
-            <h6 style={this.styles.selected}>
-              {'Select one'}
-            </h6>
+            <h6>{this.props.value.humanize() || 'Select one'}</h6>
           </Clickable>
           {this.renderDropdown()}
         </div>

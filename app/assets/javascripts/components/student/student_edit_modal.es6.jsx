@@ -22,10 +22,6 @@ class StudentEditModal extends EditModal {
   // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
-  storeAttribute(event) {
-    StudentActions.storeAttribute(event.target.value);
-  }
-
   updateStudent() {
     StudentActions.updateStudent(
       this.props.student.id,
@@ -36,6 +32,36 @@ class StudentEditModal extends EditModal {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
+  renderChild() {
+    var template = this.props.template;
+    if (template.type === 'input') {
+      return (
+        <CardInput
+          action={(event) => StudentActions.storeAttribute(event.target.value)}
+          errors={template.errors[template.key]}
+          focus={true}
+          label={template.key}
+          margin={false}
+          placeholder={'Email'}
+          value={template.value} />
+      );
+    } else {
+      var options = template.options.map((option) =>{
+      return {
+        action: () => StudentActions.storeAttribute(option),
+        content: option.humanize(),
+      }});
+      return (
+        <CardDropdown
+          errors={template.errors[template.key]}
+          label={template.key}
+          margin={false}
+          options={options}
+          value={template.value} />
+      );
+    }
+  }
+
   renderBody() {
     var template = this.props.template;
     return (
@@ -45,14 +71,7 @@ class StudentEditModal extends EditModal {
           content={'Contact Information'}
           icon={TypeConstants.icons.save} />
         <div style={StyleConstants.cards.body}>
-          <CardInput
-            action={(event) => this.storeAttribute(event)}
-            errors={template.errors.email}
-            focus={true}
-            label={template.key}
-            margin={false}
-            placeholder={'Email'}
-            value={template.value} />
+          {this.renderChild()}
         </div>
       </div>
     );

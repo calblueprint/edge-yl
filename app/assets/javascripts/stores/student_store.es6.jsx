@@ -27,7 +27,6 @@
     }
 
     handleStoreAttribute(value) {
-      console.log(value);
       this.template.value = value;
     }
 
@@ -40,7 +39,6 @@
     }
 
     handleStoreStudent(response) {
-      console.log(response);
       this.student = response.student;
       this.template = {
         active: false,

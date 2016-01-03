@@ -30,7 +30,6 @@ class GroupLeadershipEdit extends Component {
   // Render
   // --------------------------------------------------
   render() {
-    console.log(this.generateOptions());
     return (
       <div style={StyleConstants.cards.body}>
         <CardDropdown options={this.generateOptions()} />

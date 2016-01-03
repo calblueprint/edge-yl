@@ -32,7 +32,7 @@
         active: active,
         errors: {},
         key: key ? key : '',
-        options: options ? options: [],
+        options: options ? options : [],
         type: type,
         value: value ? value : '',
       };

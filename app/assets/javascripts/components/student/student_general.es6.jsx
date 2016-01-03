@@ -5,8 +5,22 @@ class StudentGeneral extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
+      editable: React.PropTypes.bool.isRequired,
       student: React.PropTypes.object.isRequired,
     };
+  }
+
+  // --------------------------------------------------
+  // Helpers
+  // --------------------------------------------------
+  storeTemplate(type, key, options) {
+    StudentActions.storeTemplate(
+      true,
+      type,
+      key,
+      this.props.student[key],
+      options
+    );
   }
 
   // --------------------------------------------------
@@ -29,6 +43,8 @@ class StudentGeneral extends Component {
           label={'Birthday'}
           value={student.birthday} />
         <CardAttribute
+          action={() => this.storeTemplate('dropdown', 'gender', student.gender_choices)}
+          editable={this.props.editable}
           label={'Gender'}
           value={student.gender} />
         <CardAttribute
