@@ -46,10 +46,10 @@ class StudentGeneral extends Component {
           action={() => this.storeTemplate('dropdown', 'gender', student.gender_choices)}
           editable={this.props.editable}
           label={'Gender'}
-          value={student.gender} />
+          value={Helpers.humanize(student.gender)} />
         <CardAttribute
           label={'Shirt size'}
-          value={student.shirt_size} />
+          value={Helpers.capitalize(student.shirt_size)} />
         <CardAttribute
           label={'Placement'}
           value={student.is_primary ? 'Primary' : 'Secondary'} />

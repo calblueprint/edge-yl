@@ -11,12 +11,8 @@ class StudentShowSerializer < StudentIndexSerializer
 
   has_many :comments, serializer: CommentBaseSerializer
 
-  def gender
-    object.gender.humanize
-  end
-
   def gender_choices
-    Student.genders.keys.map { |gender| gender.humanize }
+    Student.genders.keys.map
   end
 
   def guardian_phone_type
@@ -25,10 +21,6 @@ class StudentShowSerializer < StudentIndexSerializer
 
   def guardian_relationship
     object.guardian_relationship.humanize
-  end
-
-  def shirt_size
-    object.shirt_size.humanize
   end
 
 end

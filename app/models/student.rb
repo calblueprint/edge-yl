@@ -57,7 +57,7 @@ class Student < ActiveRecord::Base
     :guardian,
   ]
   enum registration_status: [:registered, :selected, :dropped]
-  enum shirt_size: [:S, :M, :L, :XL, :XXL]
+  enum shirt_size: [:s, :m, :l, :xl, :xxl]
 
   has_many :comments, as: :commentable, dependent: :destroy
   has_many :visits, dependent: :destroy, as: :visitable
