@@ -26,8 +26,9 @@
       });
     }
 
-    handleStoreAttribute(attribute) {
-      this.template[attribute.key] = attribute.value;
+    handleStoreAttribute(value) {
+      console.log(value);
+      this.template.value = value;
     }
 
     handleStoreComment(response) {
@@ -39,9 +40,16 @@
     }
 
     handleStoreStudent(response) {
+      console.log(response);
       this.student = response.student;
-      this.template = Object.assign({}, this.student);
-      this.template.errors = {};
+      this.template = {
+        active: false,
+        key: '',
+        errors: {},
+        options: [],
+        type: '',
+        value: '',
+      };
     }
 
     handleStoreTemplate(template) {

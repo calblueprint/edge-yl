@@ -6,6 +6,7 @@ class StudentPageOverlay extends PageOverlay {
   static get propTypes() {
     return {
       profile: React.PropTypes.object.isRequired,
+      student: React.PropTypes.object.isRequired,
       template: React.PropTypes.object.isRequired,
     };
   }
@@ -23,6 +24,7 @@ class StudentPageOverlay extends PageOverlay {
   renderModal() {
     return (
       <StudentEditModal
+        student={this.props.student}
         template={this.props.template} />
     );
     // } else {

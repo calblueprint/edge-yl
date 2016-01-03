@@ -5,6 +5,7 @@ class StudentEditModal extends EditModal {
   // --------------------------------------------------
   static get propTypes() {
     return {
+      student: React.PropTypes.object.isRequired,
       template: React.PropTypes.object.isRequired,
     };
   }
@@ -14,22 +15,20 @@ class StudentEditModal extends EditModal {
   // --------------------------------------------------
   handleClick(event) {
     if (event.target === this._node) {
-      StudentActions.storeOverlay(false);
+      StudentActions.storeTemplate(false);
     }
   }
 
   // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
-  generateHandler(key) {
-    return(event) => {
-      StudentActions.storeAttribute(key, event.target.value);
-    };
+  storeAttribute(event) {
+    StudentActions.storeAttribute(event.target.value);
   }
 
   updateStudent() {
     StudentActions.updateStudent(
-      this.props.student,
+      this.props.student.id,
       this.props.template
     );
   }
@@ -47,7 +46,7 @@ class StudentEditModal extends EditModal {
           icon={TypeConstants.icons.save} />
         <div style={StyleConstants.cards.body}>
           <CardInput
-            action={this.generateHandler(template.key)}
+            action={(event) => this.storeAttribute(event)}
             errors={template.errors.email}
             focus={true}
             label={template.key}

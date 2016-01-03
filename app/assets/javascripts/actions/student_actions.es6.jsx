@@ -3,6 +3,7 @@
 
     constructor() {
       this.generateActions(
+        'storeAttribute',
         'storeComment',
         'storeError',
         'storeStudent',
@@ -26,13 +27,6 @@
       return true;
     }
 
-    storeAttribute(key, value) {
-      return {
-        key: key,
-        value: value,
-      };
-    }
-
     storeTemplate(active, type, key, value, options) {
       return {
         active: active,
@@ -44,18 +38,9 @@
       };
     }
 
-    updateStudent(student, template) {
-      var id = student.id;
-      var attributes = Object.assign({}, template);
-      Object.keys(attributes).map((key) => {
-        if (typeof(attributes[key]) === 'object' ||
-            student[key] === attributes[key]) {
-          delete attributes[key];
-        }
-      });
-      if (attributes.errors) {
-        delete attributes.errors;
-      }
+    updateStudent(id, template) {
+      var attributes = {};
+      attributes[template.key] = template.value;
       var params = { student: attributes };
       var resolve = (response) => this.storeStudent(response);
       var reject = (response) => this.storeError(response);

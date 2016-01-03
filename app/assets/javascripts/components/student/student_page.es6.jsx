@@ -67,6 +67,7 @@ class StudentPage extends Component {
       return (
         <StudentPageOverlay
           profile={this.selectProfile()}
+          student={this.state.student}
           template={this.state.template} />
       );
     }
