@@ -5,7 +5,8 @@
       this.generateActions(
         'storeComment',
         'storeError',
-        'storeStudent'
+        'storeStudent',
+        'toggleEditability'
       );
     }
 

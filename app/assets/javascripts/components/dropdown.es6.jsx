@@ -12,7 +12,7 @@ class Dropdown extends Component {
           children: React.PropTypes.node,
           content: React.PropTypes.string,
           route: React.PropTypes.string,
-          static: React.PropTypes.boolean,
+          static: React.PropTypes.bool,
         })
       ).isRequired,
       styles: React.PropTypes.shape({

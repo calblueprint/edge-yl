@@ -2,6 +2,7 @@
   class StudentStore {
 
     constructor() {
+      this.editable = false;
       this.overlay = {
         active: false,
         target: '',
@@ -21,6 +22,7 @@
         handleStoreError: StudentActions.STORE_ERROR,
         handleStoreOverlay: StudentActions.STORE_OVERLAY,
         handleStoreStudent: StudentActions.STORE_STUDENT,
+        handleToggleEditablity: StudentActions.TOGGLE_EDITABILITY,
       });
     }
 
@@ -48,6 +50,10 @@
       this.student = response.student;
       this.template = Object.assign({}, this.student);
       this.template.errors = {};
+    }
+
+    handleToggleEditablity() {
+      this.editable = !this.editable;
     }
   }
   this.StudentStore = alt.createStore(StudentStore);

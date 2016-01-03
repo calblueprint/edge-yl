@@ -5,6 +5,7 @@ class StudentGrid extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
+      editable: React.PropTypes.bool.isRequired,
       media: React.PropTypes.string.isRequired,
       student: React.PropTypes.object.isRequired,
     };
@@ -14,24 +15,27 @@ class StudentGrid extends Component {
   // Render
   // --------------------------------------------------
   render() {
-    var student = this.props.student;
     return (
       <div style={StyleConstants.containers.grid}>
         <StudentCard
+          editable={this.props.editable}
           media={this.props.media}
-          student={student}
+          student={this.props.student}
           target={TypeConstants.student.general} />
         <StudentCard
+          editable={this.props.editable}
           media={this.props.media}
-          student={student}
+          student={this.props.student}
           target={TypeConstants.student.contact} />
         <StudentCard
+          editable={this.props.editable}
           media={this.props.media}
-          student={student}
+          student={this.props.student}
           target={TypeConstants.student.emergency} />
         <StudentCard
+          editable={this.props.editable}
           media={this.props.media}
-          student={student}
+          student={this.props.student}
           target={TypeConstants.student.conference} />
       </div>
     );
