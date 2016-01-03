@@ -5,6 +5,7 @@ class CardAttribute extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
+      editable: React.PropTypes.bool,
       clickable: React.PropTypes.bool,
       label: React.PropTypes.string.isRequired,
       route: React.PropTypes.string,
@@ -16,6 +17,7 @@ class CardAttribute extends Component {
 
   static get defaultProps() {
     return {
+      editable: false,
       clickable: false,
       route: '',
       type: 'h6',
@@ -28,9 +30,24 @@ class CardAttribute extends Component {
   // --------------------------------------------------
   get styles() {
     return {
-      container: {
-        display: 'flex',
-        justifyContent: 'space-between',
+      container: Object.assign(
+        {},
+        {
+          display: 'flex',
+          justifyContent: 'space-between',
+        },
+        this.props.editable && { paddingRight: '18px' }
+      ),
+    };
+  }
+
+  get clickableStyles() {
+    return {
+      default: {
+        display: 'inline',
+        position: 'absolute',
+        right: '0px',
+        lineHeight: '100%',
       },
     };
   }
@@ -38,6 +55,18 @@ class CardAttribute extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
+  renderClickable() {
+    if (this.props.editable) {
+      return (
+        <Clickable
+          action={this.props.action}
+          icon={TypeConstants.icons.edit}
+          styles={this.clickableStyles}
+          type={'i'} />
+      );
+    }
+  }
+
   renderLabel() {
     var label = this.props.label;
     switch (this.props.type) {
@@ -76,6 +105,7 @@ class CardAttribute extends Component {
       <div style={this.styles.container}>
         {this.renderLabel()}
         {this.renderValue()}
+        {this.renderClickable()}
       </div>
     );
   }
