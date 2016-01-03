@@ -23,9 +23,11 @@ class ConferenceGrid extends Component {
   }
 
   storeOverlay() {
+    // TODO: Fix constants below.
     ConferenceActions.storeOverlay(
       true,
-      TypeConstants.actions.create
+      TypeConstants.actions.create,
+      'group',
     );
   }
 

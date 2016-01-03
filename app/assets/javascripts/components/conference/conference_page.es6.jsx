@@ -60,9 +60,11 @@ class ConferencePage extends Component {
   }
 
   storeOverlay() {
+    // TODO: Fix constants below.
     ConferenceActions.storeOverlay(
       true,
-      TypeConstants.actions.edit
+      TypeConstants.actions.edit,
+      'conference',
     );
   }
 

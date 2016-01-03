@@ -3,7 +3,9 @@ class Api::GroupsController < Api::BaseController
   def create
     group = Group.new group_params
     if group.save
-      render json: group, serializer: GroupBaseSerializer
+      render json: group,
+             serializer: GroupIndexSerializer,
+             status: 201
     else
       unprocessable_response group
     end
@@ -32,6 +34,7 @@ class Api::GroupsController < Api::BaseController
 
   def group_params
     params.require(:group).permit(
+      :conference_id,
       :letter,
     )
   end

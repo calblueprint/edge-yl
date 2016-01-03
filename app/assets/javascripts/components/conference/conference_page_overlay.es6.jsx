@@ -5,6 +5,7 @@ class ConferencePageOverlay extends PageOverlay {
   // --------------------------------------------------
   static get propTypes() {
     return {
+      conference: React.PropTypes.object.isRequired,
       overlay: React.PropTypes.shape({
         active: React.PropTypes.bool.isRequired,
         target: React.PropTypes.string.isRequired,
@@ -25,8 +26,12 @@ class ConferencePageOverlay extends PageOverlay {
   // Render
   // --------------------------------------------------
   renderModal() {
-    return (
-      <GroupCreateModal />
-    );
+    if (this.props.overlay.type === TypeConstants.actions.create) {
+      return (
+        <GroupCreateModal
+          conference={this.props.conference}
+          overlay={this.props.overlay} />
+      );
+    }
   }
 }
