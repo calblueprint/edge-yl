@@ -18,6 +18,12 @@ class StudentContact extends Component {
     return (
       <div style={StyleConstants.cards.body}>
         <CardAttribute
+          action={() => StudentActions.storeTemplate(
+            true,
+            'input',
+            'cell_phone',
+            student.cell_phone
+          )}
           editable={this.props.editable}
           label={'Cell phone'}
           value={student.cell_phone} />

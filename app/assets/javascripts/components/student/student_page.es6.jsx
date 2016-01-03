@@ -63,12 +63,10 @@ class StudentPage extends Component {
   // Render
   // --------------------------------------------------
   renderOverlay() {
-    if (this.state.overlay.active) {
+    if (this.state.template.active) {
       return (
         <StudentPageOverlay
-          overlay={this.state.overlay}
           profile={this.selectProfile()}
-          student={this.state.student}
           template={this.state.template} />
       );
     }

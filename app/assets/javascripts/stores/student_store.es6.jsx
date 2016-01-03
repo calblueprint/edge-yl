@@ -3,25 +3,25 @@
 
     constructor() {
       this.editable = false;
-      this.overlay = {
-        active: false,
-        target: '',
-        type: '',
-      };
       this.student = {
         comments: [],
         group: {},
         school: {},
       };
       this.template = {
+        active: false,
+        key: '',
         errors: {},
+        options: [],
+        type: '',
+        value: '',
       };
       this.bindListeners({
         handleStoreAttribute: StudentActions.STORE_ATTRIBUTE,
         handleStoreComment: StudentActions.STORE_COMMENT,
         handleStoreError: StudentActions.STORE_ERROR,
-        handleStoreOverlay: StudentActions.STORE_OVERLAY,
         handleStoreStudent: StudentActions.STORE_STUDENT,
+        handleStoreTemplate: StudentActions.STORE_TEMPLATE,
         handleToggleEditablity: StudentActions.TOGGLE_EDITABILITY,
       });
     }
@@ -31,7 +31,6 @@
     }
 
     handleStoreComment(response) {
-      this.overlay.active = false;
       this.student.comments.push(response.comment);
     }
 
@@ -39,17 +38,14 @@
       this.template.errors = response.errors;
     }
 
-    handleStoreOverlay(overlay) {
-      this.overlay = overlay;
+    handleStoreStudent(response) {
+      this.student = response.student;
       this.template = Object.assign({}, this.student);
       this.template.errors = {};
     }
 
-    handleStoreStudent(response) {
-      this.overlay.active = false;
-      this.student = response.student;
-      this.template = Object.assign({}, this.student);
-      this.template.errors = {};
+    handleStoreTemplate(template) {
+      this.template = template;
     }
 
     handleToggleEditablity() {

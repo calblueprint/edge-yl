@@ -33,11 +33,14 @@
       };
     }
 
-    storeOverlay(active, type, target) {
+    storeTemplate(active, type, key, value, options) {
       return {
         active: active,
-        target: target,
+        errors: {},
+        key: key ? key : '',
+        options: options ? options: [],
         type: type,
+        value: value ? value : '',
       };
     }
 
