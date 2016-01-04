@@ -40,6 +40,7 @@ class StudentEditModal extends EditModal {
           label={template.key}
           margin={false}
           placeholder={'Email'}
+          type={template.key === 'birthday' ? 'date' : 'text'}
           value={template.value} />
       );
     } else {
@@ -54,7 +55,7 @@ class StudentEditModal extends EditModal {
           label={template.key}
           margin={false}
           options={options}
-          value={template.value} />
+          value={Helpers.humanize(template.value)} />
       );
     }
   }

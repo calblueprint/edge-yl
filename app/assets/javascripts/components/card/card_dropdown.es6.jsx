@@ -132,7 +132,7 @@ class CardDropdown extends Component {
             styles={this.clickableStyles}
             type={'i'}>
             <h6>
-              {Helpers.humanize(this.props.value) || 'Select one'}
+              {this.props.value || 'Select one'}
             </h6>
           </Clickable>
           {this.renderDropdown()}
