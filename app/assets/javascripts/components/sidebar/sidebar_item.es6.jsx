@@ -27,7 +27,7 @@ class SidebarItem extends Component {
   get clickableStyles() {
     return {
       child: {
-        paddingRight: '8px',
+        paddingRight: '6px',
       },
       default: {
         flex: '1',

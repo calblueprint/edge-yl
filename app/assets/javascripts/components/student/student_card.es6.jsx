@@ -5,6 +5,7 @@ class StudentCard extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
+      editable: React.PropTypes.bool.isRequired,
       media: React.PropTypes.string.isRequired,
       student: React.PropTypes.object.isRequired,
       target: React.PropTypes.oneOf([
@@ -18,29 +19,34 @@ class StudentCard extends Component {
   }
 
   // --------------------------------------------------
-  // Helpers
-  // --------------------------------------------------
-  showOverlay() {
-    StudentActions.storeOverlay(
-      true,
-      TypeConstants.actions.edit,
-      this.props.target
-    );
-  }
-
-  // --------------------------------------------------
   // Render
   // --------------------------------------------------
   renderBody() {
     switch (this.props.target) {
       case TypeConstants.student.conference:
-        return <StudentConference student={this.props.student} />;
+        return (
+          <StudentConference
+            editable={this.props.editable}
+            student={this.props.student} />
+        );
       case TypeConstants.student.contact:
-        return <StudentContact student={this.props.student} />;
+        return (
+          <StudentContact
+            editable={this.props.editable}
+            student={this.props.student} />
+        );
       case TypeConstants.student.emergency:
-        return <StudentEmergency student={this.props.student} />;
+        return (
+          <StudentEmergency
+            editable={this.props.editable}
+            student={this.props.student} />
+        );
       case TypeConstants.student.general:
-        return <StudentGeneral student={this.props.student} />;
+        return (
+          <StudentGeneral
+            editable={this.props.editable}
+            student={this.props.student} />
+        );
     };
   }
 
@@ -60,10 +66,7 @@ class StudentCard extends Component {
   render() {
     return (
       <div style={StyleConstants.cards.show(this.props.media)}>
-        <CardHeader
-          action={() => this.showOverlay()}
-          content={this.renderTitle()}
-          icon={TypeConstants.icons.edit} />
+        <CardHeader content={this.renderTitle()} />
         {this.renderBody()}
       </div>
     );

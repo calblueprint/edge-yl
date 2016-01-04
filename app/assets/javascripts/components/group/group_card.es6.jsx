@@ -5,6 +5,7 @@ class GroupCard extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
+      editable: React.PropTypes.bool.isRequired,
       group: React.PropTypes.object.isRequired,
       media: React.PropTypes.string.isRequired,
       target: React.PropTypes.oneOf([
@@ -15,25 +16,22 @@ class GroupCard extends Component {
   }
 
   // --------------------------------------------------
-  // Helpers
-  // --------------------------------------------------
-  showOverlay() {
-    GroupActions.storeOverlay(
-      true,
-      TypeConstants.actions.edit,
-      this.props.target
-    );
-  }
-
-  // --------------------------------------------------
   // Render
   // --------------------------------------------------
   renderBody() {
     switch (this.props.target) {
       case TypeConstants.group.general:
-        return <GroupGeneral group={this.props.group} />;
+        return (
+          <GroupGeneral
+            editable={this.props.editable}
+            group={this.props.group} />
+        );
       case TypeConstants.group.leadership:
-        return <GroupLeadership group={this.props.group} />;
+        return (
+          <GroupLeadership
+            editable={this.props.editable}
+            group={this.props.group} />
+        );
     };
   }
 
@@ -47,13 +45,9 @@ class GroupCard extends Component {
   }
 
   render() {
-    var group = this.props.group;
     return (
       <div style={StyleConstants.cards.show(this.props.media)}>
-        <CardHeader
-          action={() => this.showOverlay()}
-          content={this.renderTitle()}
-          icon={TypeConstants.icons.edit} />
+        <CardHeader content={this.renderTitle()} />
         {this.renderBody()}
       </div>
     );

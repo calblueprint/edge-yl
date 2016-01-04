@@ -15,16 +15,24 @@ class StudentConference extends Component {
   renderGroup() {
     var group = this.props.student.group;
     if (group) {
-      return <h6>{group.name}</h6>;
+      return (
+        <CardAttribute
+          clickable={true}
+          label={'Group'}
+          route={RouteConstants.groups.show(group.id)}
+          type={'h5'}
+          value={group.full_name} />
+      );
+    } else {
+      return <CardAttribute label={'Group'} />
     }
   }
+
   render() {
-    var group = this.props.student.group;
     return (
       <div style={StyleConstants.cards.body}>
         <h5>{'Status'}</h5>
         <br />
-        <h5>{'Group'}</h5>
         {this.renderGroup()}
         <br />
         <h5>{'Rooming'}</h5>

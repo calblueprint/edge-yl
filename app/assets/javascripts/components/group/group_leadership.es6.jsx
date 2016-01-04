@@ -5,8 +5,16 @@ class GroupLeadership extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
+      editable: React.PropTypes.bool.isRequired,
       group: React.PropTypes.object.isRequired,
     };
+  }
+
+  // --------------------------------------------------
+  // Helpers
+  // --------------------------------------------------
+  storeTemplate(id, key, value) {
+    GroupActions.storeTemplate('dropdown', id, key, value);
   }
 
   // --------------------------------------------------
@@ -17,7 +25,9 @@ class GroupLeadership extends Component {
     if (user) {
       return (
         <CardAttribute
+          action={() => this.storeTemplate(leadership.id, 'user', user)}
           clickable={true}
+          editable={this.props.editable}
           key={leadership.id}
           label={leadership.style}
           route={RouteConstants.users.show(user.id)}
@@ -26,6 +36,8 @@ class GroupLeadership extends Component {
     } else {
       return (
         <CardAttribute
+          action={() => this.storeTemplate(leadership.id, 'user')}
+          editable={this.props.editable}
           key={leadership.id}
           label={leadership.style} />
       );

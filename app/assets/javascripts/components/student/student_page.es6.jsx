@@ -44,6 +44,15 @@ class StudentPage extends Component {
   // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
+  generateOptions() {
+    return [
+      {
+        action: () => StudentActions.toggleEditability(),
+        content: this.state.editable ? 'Finish' : 'Edit',
+      },
+    ];
+  }
+
   selectProfile() {
     return this.state.profile ?
            this.state.profile :
@@ -54,10 +63,9 @@ class StudentPage extends Component {
   // Render
   // --------------------------------------------------
   renderOverlay() {
-    if (this.state.overlay.active) {
+    if (this.state.overlay) {
       return (
         <StudentPageOverlay
-          overlay={this.state.overlay}
           profile={this.selectProfile()}
           student={this.state.student}
           template={this.state.template} />
@@ -78,8 +86,10 @@ class StudentPage extends Component {
           <div style={StyleConstants.pages.content}>
             <PageHeader
               label={'Student'}
+              options={this.generateOptions()}
               value={student.full_name} />
             <StudentGrid
+              editable={this.state.editable}
               media={this.state.media}
               student={student} />
             <PageComments

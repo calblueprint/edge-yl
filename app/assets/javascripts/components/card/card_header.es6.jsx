@@ -5,15 +5,17 @@ class CardHeader extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      action: React.PropTypes.func.isRequired,
+      action: React.PropTypes.func,
       content: React.PropTypes.string,
-      icon: React.PropTypes.string.isRequired,
+      icon: React.PropTypes.string,
     };
   }
 
   static get defaultProps() {
     return {
+      action: null,
       content: '',
+      icon: '',
     };
   }
 
@@ -47,15 +49,23 @@ class CardHeader extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
-  render() {
-    return (
-      <div style={this.styles.container}>
-        <h4>{this.props.content}</h4>
+  renderClickable() {
+    if (this.props.icon) {
+      return (
         <Clickable
           action={this.props.action}
           icon={this.props.icon}
           styles={this.clickableStyles}
           type={'i'} />
+      );
+    }
+  }
+
+  render() {
+    return (
+      <div style={this.styles.container}>
+        <h4>{this.props.content}</h4>
+        {this.renderClickable()}
       </div>
     );
   }

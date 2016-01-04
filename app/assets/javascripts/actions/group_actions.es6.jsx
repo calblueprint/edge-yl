@@ -3,8 +3,12 @@
 
     constructor() {
       this.generateActions(
+        'closeOverlay',
+        'storeAttribute',
         'storeGroup',
         'storeGroupables',
+        'storeLeadership',
+        'toggleEditability',
       );
     }
 
@@ -14,15 +18,19 @@
       return true;
     }
 
-    storeOverlay(active, type, target) {
-      if (target === TypeConstants.group.leadership) {
+    storeTemplate(type, id, key, value, options) {
+      // TODO(Warren): Think about a possible better conditional.
+      if (type === 'dropdown') {
         var resolve = (response) => this.storeGroupables(response);
         Requester.get(ApiConstants.users.groupables, resolve);
       }
       return {
-        active: active,
-        target: target,
+        errors: {},
+        id: id,
+        key: key,
+        options: options ? options : [],
         type: type,
+        value: value,
       };
     }
 
@@ -31,17 +39,19 @@
       Requester.update(
         ApiConstants.groups.update(id),
         params,
-        resolve
+        resolve,
       );
       return true;
     }
 
-    updateLeadership(id, params) {
-      var resolve = (response) => console.log(response);
+    updateLeadership(template) {
+      var attributes = { user_id: template.value.id };
+      var params = { leadership: attributes };
+      var resolve = (response) => this.storeLeadership(response);
       Requester.update(
-        ApiConstants.leaderships.update(id),
-        { leadership: params },
-        resolve
+        ApiConstants.leaderships.update(template.id),
+        params,
+        resolve,
       );
       return true;
     }

@@ -13,6 +13,22 @@ class StudentsCard extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
+  renderSchool() {
+    var school = this.props.student.school;
+    if (school) {
+      return (
+        <CardAttribute
+          clickable={true}
+          label={'School'}
+          route={RouteConstants.schools.show(school.id)}
+          type={'h5'}
+          value={school.name} />
+      );
+    } else {
+      return <CardAttribute label={'School'} />;
+    }
+  }
+
   render() {
     var student = this.props.student;
     return (
@@ -38,12 +54,7 @@ class StudentsCard extends Component {
         <CardAttribute
           label={'Status'}
           value={student.registration_status} />
-        <CardAttribute
-          clickable={true}
-          label={'School'}
-          route={RouteConstants.schools.show(student.school.id)}
-          type={'h5'}
-          value={student.school.name} />
+        {this.renderSchool()}
       </div>
     );
   }

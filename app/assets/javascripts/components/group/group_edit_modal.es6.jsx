@@ -6,11 +6,6 @@ class GroupEditModal extends EditModal {
   static get propTypes() {
     return {
       groupables: React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
-      overlay: React.PropTypes.shape({
-        active: React.PropTypes.bool.isRequired,
-        target: React.PropTypes.string.isRequired,
-        type: React.PropTypes.string.isRequired,
-      }).isRequired,
       template: React.PropTypes.object.isRequired,
     };
   }
@@ -20,23 +15,51 @@ class GroupEditModal extends EditModal {
   // --------------------------------------------------
   handleClick(event) {
     if (event.target === this._node) {
-      GroupActions.storeOverlay(false);
+      GroupActions.closeOverlay();
     }
+  }
+
+  // --------------------------------------------------
+  // Helpers
+  // --------------------------------------------------
+  generateOption(groupable) {
+    return {
+      action: () => GroupActions.storeAttribute(groupable),
+      content: Helpers.humanize(groupable.full_name),
+    }
+  }
+
+  generateOptions() {
+    var groupables = this.props.groupables;
+    return groupables.map((groupable) => this.generateOption(groupable));
   }
 
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
+  renderChild() {
+    var template = this.props.template;
+    return (
+      <CardDropdown
+        errors={template.errors[template.key]}
+        label={template.key}
+        margin={false}
+        options={this.generateOptions()}
+        value={template.value.full_name} />
+    );
+  }
+
   renderBody() {
+    var template = this.props.template;
     return (
       <div style={this.styles.section}>
         <CardHeader
-          action={() => this.updateStudent()}
+          action={() => GroupActions.updateLeadership(template)}
           content={'Leadership Information'}
           icon={TypeConstants.icons.save} />
-        <GroupLeadershipEdit
-          groupables={this.props.groupables}
-          template={this.props.template} />
+        <div style={StyleConstants.cards.body}>
+          {this.renderChild()}
+        </div>
       </div>
     );
   }
