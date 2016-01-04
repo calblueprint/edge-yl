@@ -49,7 +49,7 @@ class StudentEditModal extends EditModal {
       var options = template.options.map((option) =>{
       return {
         action: () => StudentActions.storeAttribute(option),
-        content: option.humanize(),
+        content: Helpers.humanize(option),
       }});
       return (
         <CardDropdown

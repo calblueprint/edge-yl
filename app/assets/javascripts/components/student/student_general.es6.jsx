@@ -48,6 +48,8 @@ class StudentGeneral extends Component {
           label={'Gender'}
           value={Helpers.humanize(student.gender)} />
         <CardAttribute
+          action={() => this.storeTemplate('dropdown', 'shirt_size', student.shirt_sizes)}
+          editable={this.props.editable}
           label={'Shirt size'}
           value={Helpers.capitalize(student.shirt_size)} />
         <CardAttribute
