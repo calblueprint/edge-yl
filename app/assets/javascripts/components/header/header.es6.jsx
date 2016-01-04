@@ -14,7 +14,13 @@ class Header extends Component {
   static get propTypes() {
     return {
       active: React.PropTypes.bool.isRequired,
-      profile: React.PropTypes.object.isRequired,
+      profile: React.PropTypes.object,
+    };
+  }
+
+  static get defaultProps() {
+    return {
+      profile: {},
     };
   }
 

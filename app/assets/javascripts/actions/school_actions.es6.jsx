@@ -5,7 +5,7 @@
       this.generateActions(
         'storeComment',
         'storeError',
-        'storeSchool'
+        'storeSchool',
       );
     }
 
@@ -14,7 +14,7 @@
       Requester.post(
         ApiConstants.comments.create,
         params,
-        resolve
+        resolve,
       );
       return true;
     }
@@ -59,7 +59,7 @@
         ApiConstants.schools.update(id),
         params,
         resolve,
-        reject
+        reject,
       );
       return true;
     }

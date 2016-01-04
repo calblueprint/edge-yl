@@ -24,7 +24,6 @@ class StudentConference extends Component {
           value={group.full_name} />
       );
     } else {
-      debugger
       return <CardAttribute label={'Group'} />
     }
   }

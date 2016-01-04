@@ -8,7 +8,7 @@
         'storeComment',
         'storeError',
         'storeStudent',
-        'toggleEditability'
+        'toggleEditability',
       );
     }
 
@@ -17,7 +17,7 @@
       Requester.post(
         ApiConstants.comments.create,
         params,
-        resolve
+        resolve,
       );
       return true;
     }
@@ -49,7 +49,7 @@
         ApiConstants.students.update(template.id),
         params,
         resolve,
-        reject
+        reject,
       );
       return true;
     }

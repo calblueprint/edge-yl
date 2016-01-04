@@ -5,7 +5,7 @@
       this.generateActions(
         'storeConference',
         'storeConferences',
-        'storeError'
+        'storeError',
       );
     }
 
@@ -21,7 +21,7 @@
         ApiConstants.conferences.create,
         params,
         resolve,
-        reject
+        reject,
       );
       return true;
     }

@@ -8,7 +8,7 @@
         'storeGroup',
         'storeGroupables',
         'storeLeadership',
-        'toggleEditability'
+        'toggleEditability',
       );
     }
 
@@ -39,7 +39,7 @@
       Requester.update(
         ApiConstants.groups.update(id),
         params,
-        resolve
+        resolve,
       );
       return true;
     }
@@ -51,7 +51,7 @@
       Requester.update(
         ApiConstants.leaderships.update(template.id),
         params,
-        resolve
+        resolve,
       );
       return true;
     }

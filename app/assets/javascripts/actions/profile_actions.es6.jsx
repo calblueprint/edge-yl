@@ -4,7 +4,7 @@
     constructor() {
       this.generateActions(
         'storeError',
-        'storeProfile'
+        'storeProfile',
       );
     }
 
@@ -30,7 +30,7 @@
       Requester.update(
         ApiConstants.profiles.update(id),
         params,
-        resolve
+        resolve,
       );
       return true;
     }
@@ -54,7 +54,7 @@
         ApiConstants.users.update(id),
         params,
         resolve,
-        reject
+        reject,
       );
       return true;
     }

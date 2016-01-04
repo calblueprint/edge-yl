@@ -4,7 +4,7 @@
     constructor() {
       this.generateActions(
         'storeError',
-        'storeForm'
+        'storeForm',
       );
     }
 
@@ -26,7 +26,7 @@
         ApiConstants.students.create,
         params,
         resolve,
-        reject
+        reject,
       );
       return true;
     }

@@ -6,7 +6,7 @@
         'storeError',
         'storeMessage',
         'storeSession',
-        'storeUser'
+        'storeUser',
       );
     }
 
@@ -18,7 +18,7 @@
         ApiConstants.users.login,
         params,
         resolve,
-        reject
+        reject,
       );
       return true;
     }
@@ -31,7 +31,7 @@
         ApiConstants.users.create,
         params,
         resolve,
-        reject
+        reject,
       );
       return true;
     }

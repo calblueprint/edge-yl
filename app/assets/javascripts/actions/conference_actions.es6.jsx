@@ -4,7 +4,7 @@
     constructor() {
       this.generateActions(
         'storeConference',
-        'storeGroup'
+        'storeGroup',
       );
     }
 
@@ -13,7 +13,7 @@
       Requester.post(
         ApiConstants.groups.create,
         params,
-        resolve
+        resolve,
       );
       return true;
     }
@@ -37,7 +37,7 @@
       Requester.update(
         ApiConstants.conferences.update(id),
         params,
-        resolve
+        resolve,
       );
       return true;
     }
