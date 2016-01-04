@@ -5,7 +5,6 @@ class StudentEditModal extends EditModal {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      student: React.PropTypes.object.isRequired,
       template: React.PropTypes.object.isRequired,
     };
   }

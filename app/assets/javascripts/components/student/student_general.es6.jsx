@@ -17,6 +17,7 @@ class StudentGeneral extends Component {
     var student = this.props.student;
     StudentActions.storeTemplate(
       options ? 'dropdown' : 'input',
+      'student',
       student.id,
       key,
       student[key],

@@ -8,9 +8,11 @@
       };
       this.overlay = false;
       this.template = {
-        key: '',
         errors: {},
+        id: 0,
+        key: '',
         options: [],
+        target: '',
         type: '',
         value: '',
       };
@@ -34,6 +36,7 @@
     }
 
     handleStoreComment(response) {
+      this.overlay = false;
       this.student.comments.push(response.comment);
     }
 

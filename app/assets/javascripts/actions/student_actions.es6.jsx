@@ -12,7 +12,13 @@
       );
     }
 
-    createComment(params) {
+    createComment(template, profile, student) {
+      var attributes = {};
+      attributes[template.key] = template.value;
+      attributes.commentable_id = student.id;
+      attributes.commentable_type = 'Student';
+      attributes.user_id = profile.id;
+      var params = { comment: attributes };
       var resolve = (response) => this.storeComment(response);
       Requester.post(
         ApiConstants.comments.create,
@@ -28,14 +34,15 @@
       return true;
     }
 
-    storeTemplate(type, id, key, value, options) {
+    storeTemplate(type, target, id, key, value, options) {
       return {
         errors: {},
         id: id,
         key: key,
         options: options ? options : [],
+        target: target,
         type: type,
-        value: value,
+        value: value ? value : '',
       };
     }
 

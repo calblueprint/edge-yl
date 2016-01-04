@@ -59,10 +59,11 @@ class PageComments extends Component {
   // --------------------------------------------------
   handleClick() {
     if (this.props.type == TypeConstants.student.comment) {
-      StudentActions.storeOverlay(
-        true,
-        TypeConstants.actions.create,
-        TypeConstants.student.comment
+      StudentActions.storeTemplate(
+        'input',
+        'comment',
+        null,
+        'content',
       );
     } else {
       SchoolActions.storeOverlay(
