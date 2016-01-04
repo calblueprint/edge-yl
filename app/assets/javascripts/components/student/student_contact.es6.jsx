@@ -13,7 +13,7 @@ class StudentContact extends Component {
   // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
-  storeTemplate(type, key, options) {
+  storeTemplate(type, key) {
     StudentActions.storeTemplate(true, type, key, this.props.student[key]);
   }
 
