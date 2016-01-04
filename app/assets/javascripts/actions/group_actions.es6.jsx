@@ -3,6 +3,7 @@
 
     constructor() {
       this.generateActions(
+        'closeOverlay',
         'storeAttribute',
         'storeGroup',
         'storeGroupables',
@@ -17,14 +18,13 @@
       return true;
     }
 
-    storeTemplate(active, type, id, key, value, options) {
+    storeTemplate(type, id, key, value, options) {
       // TODO(Warren): Think about a possible better conditional.
       if (type === 'dropdown') {
         var resolve = (response) => this.storeGroupables(response);
         Requester.get(ApiConstants.users.groupables, resolve);
       }
       return {
-        active: active,
         errors: {},
         id: id,
         key: key ? key : '',

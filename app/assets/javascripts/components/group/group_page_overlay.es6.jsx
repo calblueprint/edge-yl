@@ -14,7 +14,7 @@ class GroupPageOverlay extends PageOverlay {
   // Helpers
   // --------------------------------------------------
   storeOverlay() {
-    GroupActions.storeTemplate(false);
+    GroupActions.closeOverlay();
   }
 
   // --------------------------------------------------

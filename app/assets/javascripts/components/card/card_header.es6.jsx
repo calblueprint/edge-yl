@@ -5,7 +5,7 @@ class CardHeader extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      action: React.PropTypes.func.isRequired,
+      action: React.PropTypes.func,
       content: React.PropTypes.string,
       icon: React.PropTypes.string,
     };
@@ -13,6 +13,7 @@ class CardHeader extends Component {
 
   static get defaultProps() {
     return {
+      action: null,
       content: '',
       icon: '',
     };

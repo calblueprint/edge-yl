@@ -14,7 +14,7 @@ class GroupLeadership extends Component {
   // Helpers
   // --------------------------------------------------
   storeTemplate(type, id, key, value) {
-    GroupActions.storeTemplate(true, type, id, key, value);
+    GroupActions.storeTemplate(type, id, key, value);
   }
 
   // --------------------------------------------------

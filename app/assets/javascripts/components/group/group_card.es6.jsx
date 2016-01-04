@@ -16,17 +16,6 @@ class GroupCard extends Component {
   }
 
   // --------------------------------------------------
-  // Helpers
-  // --------------------------------------------------
-  showOverlay() {
-    GroupActions.storeOverlay(
-      true,
-      TypeConstants.actions.edit,
-      this.props.target
-    );
-  }
-
-  // --------------------------------------------------
   // Render
   // --------------------------------------------------
   renderBody() {
@@ -56,12 +45,9 @@ class GroupCard extends Component {
   }
 
   render() {
-    var group = this.props.group;
     return (
       <div style={StyleConstants.cards.show(this.props.media)}>
-        <CardHeader
-          action={() => this.showOverlay()}
-          content={this.renderTitle()} />
+        <CardHeader content={this.renderTitle()} />
         {this.renderBody()}
       </div>
     );

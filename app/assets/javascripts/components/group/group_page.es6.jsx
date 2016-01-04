@@ -64,7 +64,7 @@ class GroupPage extends Component {
 
 
   renderOverlay() {
-    if (this.state.template.active) {
+    if (this.state.overlay) {
       return (
         <GroupPageOverlay
           groupables={this.state.groupables}

@@ -9,8 +9,8 @@
         students: [],
       };
       this.groupables = [];
+      this.overlay = false;
       this.template = {
-        active: false,
         id: 0,
         key: '',
         errors: {},
@@ -19,6 +19,7 @@
         value: '',
       };
       this.bindListeners({
+        handleCloseOverlay: GroupActions.CLOSE_OVERLAY,
         handleStoreAttribute: GroupActions.STORE_ATTRIBUTE,
         handleStoreGroup: GroupActions.STORE_GROUP,
         handleStoreGroupables: GroupActions.STORE_GROUPABLES,
@@ -26,6 +27,10 @@
         handleStoreTemplate: GroupActions.STORE_TEMPLATE,
         handleToggleEditablity: GroupActions.TOGGLE_EDITABILITY,
       });
+    }
+
+    handleCloseOverlay() {
+      this.overlay = false;
     }
 
     handleStoreAttribute(value) {
@@ -46,10 +51,11 @@
           leadership.user = response.leadership.user;
         }
       });
+      this.overlay = false;
       this.template = {
-        active: false,
-        key: '',
         errors: {},
+        id: 0,
+        key: '',
         options: [],
         type: '',
         value: '',
@@ -57,6 +63,7 @@
     }
 
     handleStoreTemplate(template) {
+      this.overlay = true;
       this.template = template;
     }
 

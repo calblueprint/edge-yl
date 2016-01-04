@@ -15,7 +15,7 @@ class GroupEditModal extends EditModal {
   // --------------------------------------------------
   handleClick(event) {
     if (event.target === this._node) {
-      GroupActions.storeOverlay(false);
+      GroupActions.closeOverlay();
     }
   }
 

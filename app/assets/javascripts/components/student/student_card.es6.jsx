@@ -19,17 +19,6 @@ class StudentCard extends Component {
   }
 
   // --------------------------------------------------
-  // Helpers
-  // --------------------------------------------------
-  showOverlay() {
-    StudentActions.storeOverlay(
-      true,
-      TypeConstants.actions.edit,
-      this.props.target
-    );
-  }
-
-  // --------------------------------------------------
   // Render
   // --------------------------------------------------
   renderBody() {
@@ -77,9 +66,7 @@ class StudentCard extends Component {
   render() {
     return (
       <div style={StyleConstants.cards.show(this.props.media)}>
-        <CardHeader
-          action={() => this.showOverlay()}
-          content={this.renderTitle()} />
+        <CardHeader content={this.renderTitle()} />
         {this.renderBody()}
       </div>
     );
