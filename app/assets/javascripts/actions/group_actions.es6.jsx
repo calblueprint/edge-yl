@@ -27,10 +27,10 @@
       return {
         errors: {},
         id: id,
-        key: key ? key : '',
+        key: key,
         options: options ? options : [],
         type: type,
-        value: value ? value : '',
+        value: value,
       };
     }
 

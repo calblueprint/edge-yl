@@ -3,6 +3,7 @@
 
     constructor() {
       this.generateActions(
+        'closeOverlay',
         'storeAttribute',
         'storeComment',
         'storeError',
@@ -27,25 +28,25 @@
       return true;
     }
 
-    storeTemplate(active, type, key, value, options) {
+    storeTemplate(type, id, key, value, options) {
       return {
-        active: active,
         errors: {},
-        key: key ? key : '',
+        id: id,
+        key: key,
         options: options ? options : [],
         type: type,
-        value: value ? value : '',
+        value: value,
       };
     }
 
-    updateStudent(id, template) {
+    updateStudent(template) {
       var attributes = {};
       attributes[template.key] = template.value;
       var params = { student: attributes };
       var resolve = (response) => this.storeStudent(response);
       var reject = (response) => this.storeError(response);
       Requester.update(
-        ApiConstants.students.update(id),
+        ApiConstants.students.update(template.id),
         params,
         resolve,
         reject

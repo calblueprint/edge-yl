@@ -15,7 +15,7 @@ class StudentEditModal extends EditModal {
   // --------------------------------------------------
   handleClick(event) {
     if (event.target === this._node) {
-      StudentActions.storeTemplate(false);
+      StudentActions.closeOverlay();
     }
   }
 
@@ -23,10 +23,7 @@ class StudentEditModal extends EditModal {
   // Helpers
   // --------------------------------------------------
   updateStudent() {
-    StudentActions.updateStudent(
-      this.props.student.id,
-      this.props.template
-    );
+    StudentActions.updateStudent(this.props.template);
   }
 
   // --------------------------------------------------

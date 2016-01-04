@@ -52,14 +52,6 @@
         }
       });
       this.overlay = false;
-      this.template = {
-        errors: {},
-        id: 0,
-        key: '',
-        options: [],
-        type: '',
-        value: '',
-      };
     }
 
     handleStoreTemplate(template) {

@@ -15,7 +15,7 @@ class StudentPageOverlay extends PageOverlay {
   // Helpers
   // --------------------------------------------------
   storeOverlay() {
-    StudentActions.storeTemplate(false);
+    StudentActions.closeOverlay();
   }
 
   // --------------------------------------------------

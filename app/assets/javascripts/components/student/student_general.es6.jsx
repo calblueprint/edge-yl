@@ -14,11 +14,12 @@ class StudentGeneral extends Component {
   // Helpers
   // --------------------------------------------------
   storeTemplate(type, key, options) {
+    var student = this.props.student;
     StudentActions.storeTemplate(
-      true,
       type,
+      student.id,
       key,
-      this.props.student[key],
+      student[key],
       options
     );
   }

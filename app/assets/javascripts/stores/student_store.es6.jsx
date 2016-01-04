@@ -8,8 +8,8 @@
         group: {},
         school: {},
       };
+      this.overlay = false;
       this.template = {
-        active: false,
         key: '',
         errors: {},
         options: [],
@@ -17,6 +17,7 @@
         value: '',
       };
       this.bindListeners({
+        handleCloseOverlay: StudentActions.CLOSE_OVERLAY,
         handleStoreAttribute: StudentActions.STORE_ATTRIBUTE,
         handleStoreComment: StudentActions.STORE_COMMENT,
         handleStoreError: StudentActions.STORE_ERROR,
@@ -24,6 +25,10 @@
         handleStoreTemplate: StudentActions.STORE_TEMPLATE,
         handleToggleEditablity: StudentActions.TOGGLE_EDITABILITY,
       });
+    }
+
+    handleCloseOverlay() {
+      this.overlay = false;
     }
 
     handleStoreAttribute(value) {
@@ -39,18 +44,12 @@
     }
 
     handleStoreStudent(response) {
+      this.overlay = false;
       this.student = response.student;
-      this.template = {
-        active: false,
-        key: '',
-        errors: {},
-        options: [],
-        type: '',
-        value: '',
-      };
     }
 
     handleStoreTemplate(template) {
+      this.overlay = true;
       this.template = template;
     }
 
