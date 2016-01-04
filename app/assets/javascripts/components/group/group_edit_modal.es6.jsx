@@ -43,7 +43,6 @@ class GroupEditModal extends EditModal {
       <CardDropdown
         errors={template.errors[template.key]}
         label={template.key}
-        margin={false}
         options={this.generateOptions()}
         value={template.value.full_name} />
     );

@@ -83,7 +83,6 @@ class SchoolCommentCreate extends Component {
           <CardInput
             action={this.generateHandler('content')}
             focus={true}
-            margin={false}
             placeholder={'Your comment here...'}
             value={''} />
         </div>

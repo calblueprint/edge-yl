@@ -21,7 +21,7 @@ class CardDropdown extends Component {
   static get defaultProps() {
     return {
       errors: [],
-      margin: true,
+      margin: false,
       value: '',
     };
   }
@@ -75,7 +75,6 @@ class CardDropdown extends Component {
     return {
       child: {
         default: {
-          // flex: '1',
           padding: '8px',
         },
         hover: {

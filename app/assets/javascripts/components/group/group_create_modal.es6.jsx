@@ -62,7 +62,6 @@ class GroupCreateModal extends CreateModal {
             action={this.generateHandler('letter')}
             focus={true}
             label={'Group Letter'}
-            margin={false}
             placeholder={'A'}
             value={''} />
         </div>

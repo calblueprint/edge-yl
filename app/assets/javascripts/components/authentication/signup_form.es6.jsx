@@ -52,19 +52,20 @@ class SignupForm extends Component {
           errors={template.errors.first_name}
           focus={true}
           label={'First name'}
-          margin={false}
           placeholder={'Kira'}
           value={template.first_name} />
         <CardInput
           action={this.generateHandler('last_name')}
           errors={template.errors.last_name}
           label={'Last name'}
+          margin={true}
           placeholder={'Klapper'}
           value={template.last_name} />
         <CardInput
           action={this.generateHandler('email')}
           errors={template.errors.email}
           label={'Email'}
+          margin={true}
           placeholder={'volunteer@edgeyl.com'}
           type={'email'}
           value={template.email} />
@@ -72,6 +73,7 @@ class SignupForm extends Component {
           action={this.generateHandler('password')}
           errors={template.errors.password}
           label={'Password'}
+          margin={true}
           placeholder={'password'}
           type={'password'}
           value={template.password} />
@@ -79,6 +81,7 @@ class SignupForm extends Component {
           action={this.generateHandler('password_confirmation')}
           errors={template.errors.password_confirmation}
           label={'Password confirmation'}
+          margin={true}
           placeholder={'password'}
           type={'password'}
           value={template.password_confirmation} />

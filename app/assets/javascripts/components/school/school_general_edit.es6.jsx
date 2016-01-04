@@ -29,7 +29,6 @@ class SchoolGeneralEdit extends Component {
         <CardInput
           action={this.generateHandler('school_name')}
           errors={template.errors.name}
-          margin={false}
           placeholder={'School'}
           value={template.name} />
         <CardInput

@@ -38,7 +38,6 @@ class StudentEditModal extends EditModal {
           errors={template.errors[template.key]}
           focus={true}
           label={Helpers.humanize(template.key)}
-          margin={false}
           placeholder={'Email'}
           type={template.key === 'birthday' ? 'date' : 'text'}
           value={template.value} />
@@ -53,7 +52,6 @@ class StudentEditModal extends EditModal {
         <CardDropdown
           errors={template.errors[template.key]}
           label={template.key}
-          margin={false}
           options={options}
           value={Helpers.humanize(template.value)} />
       );
