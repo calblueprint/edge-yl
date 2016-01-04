@@ -53,6 +53,16 @@ class GroupPage extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
+  generateOptions() {
+    return [
+      {
+        action: () => GroupActions.toggleEditability(),
+        content: this.state.editable ? 'Finish' : 'Edit',
+      },
+    ];
+  }
+
+
   renderOverlay() {
     if (this.state.overlay.active) {
       return (
@@ -77,8 +87,10 @@ class GroupPage extends Component {
           <div style={StyleConstants.pages.content}>
             <PageHeader
               label={'Group'}
+              options={this.generateOptions()}
               value={group.full_name} />
             <GroupGrid
+              editable={this.state.editable}
               group={group}
               media={this.state.media} />
           </div>

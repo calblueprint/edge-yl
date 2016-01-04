@@ -5,6 +5,7 @@
       this.generateActions(
         'storeGroup',
         'storeGroupables',
+        'toggleEditability'
       );
     }
 

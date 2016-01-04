@@ -5,6 +5,7 @@ class GroupLeadership extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
+      editable: React.PropTypes.bool.isRequired,
       group: React.PropTypes.object.isRequired,
     };
   }
@@ -18,6 +19,7 @@ class GroupLeadership extends Component {
       return (
         <CardAttribute
           clickable={true}
+          editable={this.props.editable}
           key={leadership.id}
           label={leadership.style}
           route={RouteConstants.users.show(user.id)}
@@ -26,6 +28,7 @@ class GroupLeadership extends Component {
     } else {
       return (
         <CardAttribute
+          editable={this.props.editable}
           key={leadership.id}
           label={leadership.style} />
       );

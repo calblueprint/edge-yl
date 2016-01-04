@@ -5,6 +5,7 @@ class GroupGrid extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
+      editable: React.PropTypes.bool.isRequired,
       group: React.PropTypes.object.isRequired,
       media: React.PropTypes.string.isRequired,
     };
@@ -18,10 +19,12 @@ class GroupGrid extends Component {
     return (
       <div style={StyleConstants.containers.grid}>
         <GroupCard
+          editable={this.props.editable}
           group={this.props.group}
           media={this.props.media}
           target={TypeConstants.group.general} />
         <GroupCard
+          editable={this.props.editable}
           group={this.props.group}
           media={this.props.media}
           target={TypeConstants.group.leadership} />
