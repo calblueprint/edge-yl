@@ -5,8 +5,6 @@
       this.editable = false;
       this.student = {
         comments: [],
-        group: {},
-        school: {},
       };
       this.overlay = false;
       this.template = {

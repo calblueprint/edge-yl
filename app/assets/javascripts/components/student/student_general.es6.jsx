@@ -27,6 +27,22 @@ class StudentGeneral extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
+  renderSchool() {
+    var school = this.props.student.school;
+    if (school) {
+      return (
+        <CardAttribute
+          clickable={true}
+          label={'School'}
+          route={RouteConstants.schools.show(school.id)}
+          type={'h5'}
+          value={school.name} />
+      );
+    } else {
+      return <CardAttribute label={'School'} />;
+    }
+  }
+
   render() {
     var student = this.props.student;
     return (
@@ -71,12 +87,7 @@ class StudentGeneral extends Component {
           editable={this.props.editable}
           label={'Flagged?'}
           value={student.is_flagged ? 'Yes' : 'No'} />
-        <br />
-        <h4>{'School'}</h4>
-        <Clickable
-          content={student.school.name}
-          route={RouteConstants.schools.show(student.school.id)}
-          type={'h6'} />
+        {this.renderSchool()}
       </div>
     );
   }

@@ -37,7 +37,7 @@ class StudentEditModal extends EditModal {
           action={(event) => StudentActions.storeAttribute(event.target.value)}
           errors={template.errors[template.key]}
           focus={true}
-          label={template.key}
+          label={Helpers.humanize(template.key)}
           margin={false}
           placeholder={'Email'}
           type={template.key === 'birthday' ? 'date' : 'text'}

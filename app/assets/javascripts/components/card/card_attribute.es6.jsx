@@ -9,7 +9,7 @@ class CardAttribute extends Component {
       clickable: React.PropTypes.bool,
       label: React.PropTypes.string.isRequired,
       route: React.PropTypes.string,
-      type: React.PropTypes.oneOf(['h4', 'h5', 'h6']),
+      type: React.PropTypes.oneOf(['h4', 'h5', 'h6']).isRequired,
       value: React.PropTypes.string,
     };
   }
@@ -86,7 +86,7 @@ class CardAttribute extends Component {
         <Clickable
           content={value}
           route={this.props.route}
-          type={'i'} />
+          type={this.props.type} />
       );
     } else {
       switch (this.props.type) {
