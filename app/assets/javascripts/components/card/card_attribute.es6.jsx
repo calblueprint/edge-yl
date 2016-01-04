@@ -35,18 +35,19 @@ class CardAttribute extends Component {
           display: 'flex',
           justifyContent: 'space-between',
         },
-        this.props.editable && { paddingRight: '18px' }
+        this.props.editable && { paddingRight: '20px' }
       ),
     };
   }
 
   get clickableStyles() {
     return {
+      child: {
+        textAlign: 'right',
+      },
       default: {
-        display: 'inline',
         position: 'absolute',
         right: '0px',
-        lineHeight: '100%',
       },
     };
   }
@@ -85,7 +86,7 @@ class CardAttribute extends Component {
         <Clickable
           content={value}
           route={this.props.route}
-          type={this.props.type} />
+          type={'i'} />
       );
     } else {
       switch (this.props.type) {
