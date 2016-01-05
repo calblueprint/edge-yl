@@ -3,9 +3,12 @@
 
     constructor() {
       this.generateActions(
+        'closeOverlay',
+        'storeAttribute',
         'storeComment',
         'storeError',
         'storeSchool',
+        'toggleEditability',
       );
     }
 
@@ -25,38 +28,26 @@
       return true;
     }
 
-    storeAttribute(key, value) {
+    storeTemplate(options) {
       return {
-        key: key,
-        value: value,
+        choices: options.choices,
+        errors: {},
+        id: options.id,
+        key: options.key,
+        model: options.model,
+        type: options.type,
+        value: options.value,
       };
     }
 
-    storeOverlay(active, type, target) {
-      return {
-        active: active,
-        target: target,
-        type: type,
-      };
-    }
-
-    updateSchool(school, template) {
-      var id = school.id;
-      var attributes = Object.assign({}, template);
-      Object.keys(attributes).map((key) => {
-        if (typeof(attributes[key]) === 'object' ||
-            student[key] === attributes[key]) {
-          delete attributes[key];
-        }
-      });
-      if (attributes.errors) {
-        delete attributes.errors;
-      }
+    updateSchool(template) {
+      var attributes = {};
+      attributes[template.key] = template.value;
       var params = { school: attributes };
       var resolve = (response) => this.storeSchool(response);
       var reject = (response) => this.storeError(response);
       Requester.update(
-        ApiConstants.schools.update(id),
+        ApiConstants.schools.update(template.id),
         params,
         resolve,
         reject,
