@@ -5,7 +5,6 @@ class StudentEditModal extends EditModal {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      student: React.PropTypes.object.isRequired,
       template: React.PropTypes.object.isRequired,
     };
   }
@@ -38,30 +37,26 @@ class StudentEditModal extends EditModal {
           errors={template.errors[template.key]}
           focus={true}
           label={Helpers.humanize(template.key)}
-          margin={false}
-          placeholder={'Email'}
           type={template.key === 'birthday' ? 'date' : 'text'}
           value={template.value} />
       );
     } else {
-      var options = template.options.map((option) =>{
+      var choices = template.choices.map((choice) =>{
       return {
-        action: () => StudentActions.storeAttribute(option),
-        content: Helpers.humanize(option),
+        action: () => StudentActions.storeAttribute(choice),
+        content: Helpers.humanize(choice),
       }});
       return (
         <CardDropdown
           errors={template.errors[template.key]}
           label={template.key}
-          margin={false}
-          options={options}
+          options={choices}
           value={Helpers.humanize(template.value)} />
       );
     }
   }
 
   renderBody() {
-    var template = this.props.template;
     return (
       <div style={this.styles.section}>
         <CardHeader

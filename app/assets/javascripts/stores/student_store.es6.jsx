@@ -7,13 +7,7 @@
         comments: [],
       };
       this.overlay = false;
-      this.template = {
-        key: '',
-        errors: {},
-        options: [],
-        type: '',
-        value: '',
-      };
+      this.template = {};
       this.bindListeners({
         handleCloseOverlay: StudentActions.CLOSE_OVERLAY,
         handleStoreAttribute: StudentActions.STORE_ATTRIBUTE,
@@ -34,6 +28,7 @@
     }
 
     handleStoreComment(response) {
+      this.overlay = false;
       this.student.comments.push(response.comment);
     }
 

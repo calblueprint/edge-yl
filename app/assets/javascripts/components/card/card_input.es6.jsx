@@ -20,7 +20,7 @@ class CardInput extends Component {
     return {
       errors: [],
       focus: false,
-      margin: true,
+      margin: false,
       placeholder: '',
       type: 'text',
       value: '',

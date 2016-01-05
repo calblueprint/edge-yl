@@ -13,8 +13,14 @@ class GroupLeadership extends Component {
   // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
-  storeTemplate(id, key, value) {
-    GroupActions.storeTemplate('dropdown', id, key, value);
+  storeTemplate(id, value) {
+    GroupActions.storeTemplate({
+      id: id,
+      key: 'user',
+      model: 'leadership',
+      type: 'dropdown',
+      value: value,
+    });
   }
 
   // --------------------------------------------------
@@ -25,7 +31,7 @@ class GroupLeadership extends Component {
     if (user) {
       return (
         <CardAttribute
-          action={() => this.storeTemplate(leadership.id, 'user', user)}
+          action={() => this.storeTemplate(leadership.id, user)}
           clickable={true}
           editable={this.props.editable}
           key={leadership.id}
@@ -36,7 +42,7 @@ class GroupLeadership extends Component {
     } else {
       return (
         <CardAttribute
-          action={() => this.storeTemplate(leadership.id, 'user')}
+          action={() => this.storeTemplate(leadership.id)}
           editable={this.props.editable}
           key={leadership.id}
           label={leadership.style} />

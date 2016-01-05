@@ -80,13 +80,13 @@ class LoginForm extends Component {
           action={this.generateHandler('email')}
           focus={true}
           label={'Email'}
-          margin={false}
-          placeholder={'admin@edgeyl.com'}
+          placeholder={'admin@edgeyl.org'}
           type={'email'}
           value={template.email} />
         <CardInput
           action={this.generateHandler('password')}
           label={'Password'}
+          margin={true}
           placeholder={'password'}
           type={'password'}
           value={template.password} />

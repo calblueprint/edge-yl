@@ -30,7 +30,6 @@ class ConferenceCreate extends Component {
           action={this.generateHandler('name')}
           errors={template.errors.name}
           focus={true}
-          margin={false}
           placeholder={'Name'}
           value={template.name} />
         <CardInput

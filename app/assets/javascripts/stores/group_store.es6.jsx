@@ -10,14 +10,7 @@
       };
       this.groupables = [];
       this.overlay = false;
-      this.template = {
-        id: 0,
-        key: '',
-        errors: {},
-        options: [],
-        type: '',
-        value: '',
-      };
+      this.template = {};
       this.bindListeners({
         handleCloseOverlay: GroupActions.CLOSE_OVERLAY,
         handleStoreAttribute: GroupActions.STORE_ATTRIBUTE,

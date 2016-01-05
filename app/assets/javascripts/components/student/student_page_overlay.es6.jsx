@@ -22,18 +22,15 @@ class StudentPageOverlay extends PageOverlay {
   // Render
   // --------------------------------------------------
   renderModal() {
-    return (
-      <StudentEditModal
-        student={this.props.student}
-        template={this.props.template} />
-    );
-    // } else {
-    //   return (
-    //     <StudentCreateModal
-    //       overlay={this.props.overlay}
-    //       profile={this.props.profile}
-    //       student={this.props.student} />
-    //   );
-    // }
+    if (this.props.template.model === 'student') {
+      return <StudentEditModal template={this.props.template} />;
+    } else {
+      return (
+        <StudentCreateModal
+          profile={this.props.profile}
+          student={this.props.student}
+          template={this.props.template} />
+      );
+    }
   }
 }
