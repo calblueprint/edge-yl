@@ -27,9 +27,9 @@ class SchoolPageOverlay extends PageOverlay {
     } else {
       return (
         <SchoolCreateModal
-          overlay={this.props.overlay}
           profile={this.props.profile}
-          school={this.props.school} />
+          school={this.props.school}
+          template={this.props.template} />
       );
     }
   }

@@ -12,7 +12,13 @@
       );
     }
 
-    createComment(params) {
+    createComment(template, profile, school) {
+      var attributes = {};
+      attributes[template.key] = template.value;
+      attributes.commentable_id = school.id;
+      attributes.commentable_type = 'School';
+      attributes.user_id = profile.id;
+      var params = { comment: attributes };
       var resolve = (response) => this.storeComment(response);
       Requester.post(
         ApiConstants.comments.create,
