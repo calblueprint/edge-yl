@@ -14,6 +14,14 @@ school_form = Form.create(
       title: 'School name',
     )
     Question.create(
+      is_required: false,
+      key: 'website',
+      placeholder: '...',
+      section: section,
+      style: Question.styles[:input],
+      title: 'School website',
+    )
+    Question.create(
       key: 'address_one',
       placeholder: '...',
       section: section,
@@ -21,6 +29,7 @@ school_form = Form.create(
       title: 'Address one',
     )
     Question.create(
+      is_required: false,
       key: 'address_two',
       placeholder: '...',
       section: section,
@@ -47,13 +56,6 @@ school_form = Form.create(
       section: section,
       style: Question.styles[:input],
       title: 'Address zip',
-    )
-    Question.create(
-      key: 'website',
-      placeholder: '...',
-      section: section,
-      style: Question.styles[:input],
-      title: 'School website',
     )
   end
   Section.create(
