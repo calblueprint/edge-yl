@@ -101,7 +101,6 @@ school_form = Form.create(
 end
 puts "Created form #{school_form.title}."
 
-
 student_form = Form.create(
   target: Form.targets[:student],
   title: 'Student Form',

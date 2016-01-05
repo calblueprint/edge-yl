@@ -26,8 +26,6 @@
       var route = (form.target === 'school') ?
                   ApiConstants.schools.create :
                   ApiConstants.students.create;
-      console.log(params);
-      console.log(route);
       Requester.post(
         route,
         params,
