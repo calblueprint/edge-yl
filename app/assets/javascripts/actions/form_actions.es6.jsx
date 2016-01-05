@@ -5,6 +5,7 @@
       this.generateActions(
         'storeError',
         'storeForm',
+        'storeObject',
       );
     }
 
@@ -21,7 +22,7 @@
       );
       var params = {};
       params[form.target] = attributes;
-      var resolve = (response) => console.log(response);
+      var resolve = (response) => this.storeObject(response);
       var reject = (response) => this.storeError(response);
       var route = (form.target === 'school') ?
                   ApiConstants.schools.create :

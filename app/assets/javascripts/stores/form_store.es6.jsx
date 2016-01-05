@@ -6,6 +6,7 @@
       this.bindListeners({
         handleStoreError: FormActions.STORE_ERROR,
         handleStoreForm: FormActions.STORE_FORM,
+        handleStoreObject: FormActions.STORE_OBJECT,
         handleStoreResponse: FormActions.STORE_RESPONSE,
       });
     }
@@ -27,6 +28,10 @@
 
     handleStoreForm(response) {
       this.form = response.form;
+    }
+
+    handleStoreObject(response) {
+      console.log(response);
     }
 
     handleStoreResponse(response) {
