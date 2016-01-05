@@ -18,19 +18,19 @@
       return true;
     }
 
-    storeTemplate(type, id, key, value, options) {
-      // TODO(Warren): Think about a possible better conditional.
-      if (type === 'dropdown') {
+    storeTemplate(options) {
+      if (options.model === 'leadership') {
         var resolve = (response) => this.storeGroupables(response);
         Requester.get(ApiConstants.users.groupables, resolve);
       }
       return {
+        choices: options.choices,
         errors: {},
-        id: id,
-        key: key,
-        options: options ? options : [],
-        type: type,
-        value: value,
+        id: options.id,
+        key: options.key,
+        model: options.model,
+        type: options.type,
+        value: options.value,
       };
     }
 

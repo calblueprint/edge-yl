@@ -44,7 +44,7 @@ class GroupEditModal extends EditModal {
         errors={template.errors[template.key]}
         label={template.key}
         options={this.generateOptions()}
-        value={template.value.full_name} />
+        value={template.value && template.value.full_name} />
     );
   }
 
