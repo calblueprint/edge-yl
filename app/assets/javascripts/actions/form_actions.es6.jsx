@@ -19,11 +19,17 @@
           );
         }
       );
-      var params = { student: attributes };
-      var resolve = (response) => { console.log(response) };
+      var params = {};
+      params[form.target] = attributes;
+      var resolve = (response) => console.log(response);
       var reject = (response) => this.storeError(response);
+      var route = (form.target === 'school') ?
+                  ApiConstants.schools.create :
+                  ApiConstants.students.create;
+      console.log(params);
+      console.log(route);
       Requester.post(
-        ApiConstants.students.create,
+        route,
         params,
         resolve,
         reject,
