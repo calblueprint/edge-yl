@@ -22,7 +22,7 @@ class StudentPageOverlay extends PageOverlay {
   // Render
   // --------------------------------------------------
   renderModal() {
-    if (this.props.template.target === 'student') {
+    if (this.props.template.model === 'student') {
       return <StudentEditModal template={this.props.template} />;
     } else {
       return (

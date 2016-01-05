@@ -7,15 +7,7 @@
         comments: [],
       };
       this.overlay = false;
-      this.template = {
-        errors: {},
-        id: 0,
-        key: '',
-        options: [],
-        target: '',
-        type: '',
-        value: '',
-      };
+      this.template = {};
       this.bindListeners({
         handleCloseOverlay: StudentActions.CLOSE_OVERLAY,
         handleStoreAttribute: StudentActions.STORE_ATTRIBUTE,

@@ -34,15 +34,15 @@
       return true;
     }
 
-    storeTemplate(type, target, id, key, value, options) {
+    storeTemplate(options) {
       return {
+        choices: options.choices,
         errors: {},
-        id: id,
-        key: key,
-        options: options ? options : [],
-        target: target,
-        type: type,
-        value: value ? value : '',
+        id: options.id,
+        key: options.key,
+        model: options.model,
+        type: options.type,
+        value: options.value,
       };
     }
 
