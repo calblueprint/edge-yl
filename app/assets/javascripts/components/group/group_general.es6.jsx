@@ -19,12 +19,12 @@ class GroupGeneral extends Component {
         <CardAttribute
           label={'Letter'}
           value={group.letter} />
-        <br />
-        <h4>{'Conference'}</h4>
-        <Clickable
-          content={group.conference.name}
+        <CardAttribute
+          clickable={true}
+          label={'Conference'}
           route={RouteConstants.conferences.show(group.conference.id)}
-          type={'h6'} />
+          type={'h5'}
+          value={group.conference.name} />
       </div>
     );
   }
