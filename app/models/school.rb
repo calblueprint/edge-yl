@@ -38,7 +38,6 @@ class School < ActiveRecord::Base
   validates :contact_phone_number, presence: true
   validates :contact_title, presence: true
   validates :name, presence: true
-  validates :website, presence: true
 
   def self.to_csv
     attributes = School.attribute_names

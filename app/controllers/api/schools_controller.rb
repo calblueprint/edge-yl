@@ -4,7 +4,14 @@ class Api::SchoolsController < Api::BaseController
 
   def create
     school = School.new school_params
-    render json: school, serializer: SchoolBaseSerializer
+    if school.save
+      SchoolMailer.welcome(school).deliver_now
+      render json: school,
+             serializer: SchoolBaseSerializer,
+             status: 201
+    else
+      unprocessable_response school
+    end
   end
 
   def index
