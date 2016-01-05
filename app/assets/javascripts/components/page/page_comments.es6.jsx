@@ -65,11 +65,11 @@ class PageComments extends Component {
         type: 'input',
       });
     } else {
-      SchoolActions.storeOverlay(
-        true,
-        TypeConstants.actions.create,
-        TypeConstants.school.comment
-      );
+      SchoolActions.storeTemplate({
+        key: 'content',
+        model: 'comment',
+        type: 'input',
+      });
     }
   }
 

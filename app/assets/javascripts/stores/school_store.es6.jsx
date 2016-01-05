@@ -2,33 +2,34 @@
   class SchoolStore {
 
     constructor() {
-      this.overlay = {
-        active: false,
-        target: '',
-        type: '',
-      };
+      this.editable = false;
+      this.overlay = false;
       this.school = {
         comments: [],
         students: [],
       };
-      this.template = {
-        errors: {},
-      };
+      this.template = {};
       this.bindListeners({
+        handleCloseOverlay: SchoolActions.CLOSE_OVERLAY,
         handleStoreAttribute: SchoolActions.STORE_ATTRIBUTE,
         handleStoreComment: SchoolActions.STORE_COMMENT,
         handleStoreError: SchoolActions.STORE_ERROR,
-        handleStoreOverlay: SchoolActions.STORE_OVERLAY,
         handleStoreSchool: SchoolActions.STORE_SCHOOL,
+        handleStoreTemplate: SchoolActions.STORE_TEMPLATE,
+        handleToggleEditablity: SchoolActions.TOGGLE_EDITABILITY,
       });
     }
 
-    handleStoreAttribute(attribute) {
-      this.template[attribute.key] = attribute.value;
+    handleCloseOverlay() {
+      this.overlay = false;
+    }
+
+    handleStoreAttribute(value) {
+      this.template.value = value;
     }
 
     handleStoreComment(response) {
-      this.overlay.active = false;
+      this.overlay = false;
       this.school.comments.push(response.comment);
     }
 
@@ -36,17 +37,18 @@
       this.template.errors = response.errors;
     }
 
-    handleStoreOverlay(overlay) {
-      this.overlay = overlay;
-      this.template = Object.assign({}, this.school);
-      this.template.errors = {};
+    handleStoreSchool(response) {
+      this.overlay = false;
+      this.school = response.school;
     }
 
-    handleStoreSchool(response) {
-      this.overlay.active = false;
-      this.school = response.school;
-      this.template = Object.assign({}, this.student);
-      this.template.errors = {};
+    handleStoreTemplate(template) {
+      this.overlay = true;
+      this.template = template;
+    }
+
+    handleToggleEditablity() {
+      this.editable = !this.editable;
     }
   }
   this.SchoolStore = alt.createStore(SchoolStore);

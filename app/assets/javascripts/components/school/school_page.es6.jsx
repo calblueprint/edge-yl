@@ -44,6 +44,15 @@ class SchoolPage extends Component {
   // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
+  generateOptions() {
+    return [
+      {
+        action: () => SchoolActions.toggleEditability(),
+        content: this.state.editable ? 'Finish' : 'Edit',
+      },
+    ];
+  }
+
   selectProfile() {
     return this.state.profile ?
            this.state.profile :
@@ -54,11 +63,10 @@ class SchoolPage extends Component {
   // Render
   // --------------------------------------------------
   renderOverlay() {
-  if (this.state.overlay.active) {
+  if (this.state.overlay) {
       return (
         <SchoolPageOverlay
-          overlay={this.state.overlay}
-          profile={this.state.profile}
+          profile={this.selectProfile()}
           school={this.state.school}
           template={this.state.template} />
       );
@@ -80,8 +88,10 @@ class SchoolPage extends Component {
               clickable={true}
               content={'Edit'}
               label={'School'}
+              options={this.generateOptions()}
               value={school.name} />
             <SchoolGrid
+              editable={this.state.editable}
               media={this.state.media}
               school={school} />
             <PageComments

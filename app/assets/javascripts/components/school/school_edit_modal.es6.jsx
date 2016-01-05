@@ -5,12 +5,6 @@ class SchoolEditModal extends EditModal {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      overlay: React.PropTypes.shape({
-        active: React.PropTypes.bool.isRequired,
-        target: React.PropTypes.string.isRequired,
-        type: React.PropTypes.string.isRequired,
-      }).isRequired,
-      school: React.PropTypes.object.isRequired,
       template: React.PropTypes.object.isRequired,
     };
   }
@@ -20,7 +14,7 @@ class SchoolEditModal extends EditModal {
   // --------------------------------------------------
   handleClick(event) {
     if (event.target === this._node) {
-      SchoolActions.storeOverlay(false);
+      SchoolActions.closeOverlay();
     }
   }
 
@@ -28,23 +22,28 @@ class SchoolEditModal extends EditModal {
   // Helpers
   // --------------------------------------------------
   updateSchool() {
-    SchoolActions.updateSchool(
-      this.props.school,
-      this.props.template
-    );
+    SchoolActions.updateSchool(this.props.template);
   }
 
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
   renderBody() {
+    var template = this.props.template;
     return (
       <div style={this.styles.section}>
         <CardHeader
           action={() => this.updateSchool()}
           content={'General Information'}
           icon={TypeConstants.icons.save} />
-        <SchoolGeneralEdit template={this.props.template} />
+        <div style={StyleConstants.cards.body}>
+          <CardInput
+            action={(event) => SchoolActions.storeAttribute(event.target.value)}
+            errors={template.errors[template.key]}
+            focus={true}
+            label={Helpers.humanize(template.key)}
+            value={template.value} />
+        </div>
       </div>
     );
   }

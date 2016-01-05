@@ -5,6 +5,7 @@ class SchoolCard extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
+      editable: React.PropTypes.bool.isRequired,
       media: React.PropTypes.string.isRequired,
       school: React.PropTypes.object.isRequired,
       target: React.PropTypes.oneOf([
@@ -15,25 +16,22 @@ class SchoolCard extends Component {
   }
 
   // --------------------------------------------------
-  // Helpers
-  // --------------------------------------------------
-  showOverlay() {
-    SchoolActions.storeOverlay(
-      true,
-      TypeConstants.actions.edit,
-      this.props.target
-    );
-  }
-
-  // --------------------------------------------------
   // Render
   // --------------------------------------------------
   renderBody() {
     switch (this.props.target) {
       case TypeConstants.school.contact:
-        return <SchoolContact school={this.props.school} />;
+        return (
+          <SchoolContact
+            editable={this.props.editable}
+            school={this.props.school} />
+        );
       case TypeConstants.school.general:
-        return <SchoolGeneral school={this.props.school} />;
+        return (
+          <SchoolGeneral
+            editable={this.props.editable}
+            school={this.props.school} />
+        );
     };
   }
 
@@ -50,10 +48,7 @@ class SchoolCard extends Component {
     var school = this.props.school;
     return (
       <div style={StyleConstants.cards.show(this.props.media)}>
-        <CardHeader
-          action={() => this.showOverlay()}
-          content={this.renderTitle()}
-          icon={TypeConstants.icons.edit} />
+        <CardHeader content={this.renderTitle()} />
         {this.renderBody()}
       </div>
     );

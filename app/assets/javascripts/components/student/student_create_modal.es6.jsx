@@ -16,7 +16,7 @@ class StudentCreateModal extends CreateModal {
   // --------------------------------------------------
   handleClick(event) {
     if (event.target === this._node) {
-      StudentActions.closeOverlay(false);
+      StudentActions.closeOverlay();
     }
   }
 

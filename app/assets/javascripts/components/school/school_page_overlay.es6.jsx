@@ -5,11 +5,6 @@ class SchoolPageOverlay extends PageOverlay {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      overlay: React.PropTypes.shape({
-        active: React.PropTypes.bool.isRequired,
-        target: React.PropTypes.string.isRequired,
-        type: React.PropTypes.string.isRequired,
-      }).isRequired,
       profile: React.PropTypes.object.isRequired,
       school: React.PropTypes.object.isRequired,
       template: React.PropTypes.object.isRequired,
@@ -20,26 +15,21 @@ class SchoolPageOverlay extends PageOverlay {
   // Helpers
   // --------------------------------------------------
   storeOverlay() {
-    SchoolActions.storeOverlay(false);
+    SchoolActions.closeOverlay();
   }
 
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
   renderModal() {
-    if (this.props.overlay.type === TypeConstants.actions.edit) {
-      return (
-        <SchoolEditModal
-          overlay={this.props.overlay}
-          school={this.props.school}
-          template={this.props.template} />
-      );
+    if (this.props.template.model === 'school') {
+      return <SchoolEditModal template={this.props.template} />;
     } else {
       return (
         <SchoolCreateModal
-          overlay={this.props.overlay}
           profile={this.props.profile}
-          school={this.props.school} />
+          school={this.props.school}
+          template={this.props.template} />
       );
     }
   }
