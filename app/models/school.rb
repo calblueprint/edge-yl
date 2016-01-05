@@ -14,7 +14,7 @@
 #  contact_phone_number :string           not null
 #  contact_title        :string           not null
 #  name                 :string           not null
-#  website              :string           not null
+#  website              :string           default(""), not null
 #  created_at           :datetime         not null
 #  updated_at           :datetime         not null
 #
