@@ -8,8 +8,8 @@ class Api::UsersController < Api::BaseController
   def index
     users = User.page params[:page]
     render json: users,
-                 serializer: PaginatedSerializer,
-                 each_serializer: UserIndexSerializer
+           serializer: PaginatedSerializer,
+           each_serializer: UserIndexSerializer
   end
 
   def show
@@ -22,8 +22,8 @@ class Api::UsersController < Api::BaseController
     user = User.includes(:responsibilities).find params[:id]
     if user.update_attributes user_params
       render json: user,
-                   serializer: UserShowSerializer,
-                   status: 201
+             serializer: UserShowSerializer,
+             status: :created
     else
       unprocessable_response user
     end

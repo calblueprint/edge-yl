@@ -5,7 +5,7 @@ class Api::CommentsController < Api::BaseController
     if comment.save
       render json: comment,
              serializer: CommentBaseSerializer,
-             status: 201
+             status: :created
     else
       unprocessable_response comment
     end

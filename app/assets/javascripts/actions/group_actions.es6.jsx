@@ -8,7 +8,6 @@
         'storeGroup',
         'storeGroupables',
         'storeLeadership',
-        'toggleEditability',
       );
     }
 

@@ -9,7 +9,7 @@ class Api::Users::SessionsController < Devise::SessionsController
       sign_in user
       render json: user,
              serializer: UserBaseSerializer,
-             status: 201
+             status: :created
     else
       invalid_login
     end

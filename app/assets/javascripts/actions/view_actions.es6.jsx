@@ -4,6 +4,7 @@
     constructor() {
       this.generateActions(
         'storeMedia',
+        'toggleEditability',
       );
     }
 

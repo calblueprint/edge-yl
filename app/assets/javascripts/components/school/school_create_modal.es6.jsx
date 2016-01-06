@@ -26,8 +26,11 @@ class SchoolCreateModal extends CreateModal {
   createComment() {
     SchoolActions.createComment(
       this.props.template,
-      this.props.profile,
-      this.props.school,
+      {
+        commentable_id: this.props.school.id,
+        commentable_type: 'School',
+        user_id: this.props.profile.id,
+      },
     );
   }
 

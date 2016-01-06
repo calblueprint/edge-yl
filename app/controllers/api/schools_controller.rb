@@ -8,7 +8,7 @@ class Api::SchoolsController < Api::BaseController
       SchoolMailer.welcome(school).deliver_now
       render json: school,
              serializer: SchoolBaseSerializer,
-             status: 201
+             status: :created
     else
       unprocessable_response school
     end
@@ -35,7 +35,7 @@ class Api::SchoolsController < Api::BaseController
     if school.update_attributes school_params
       render json: school,
              serializer: SchoolShowSerializer,
-             status: 201
+             status: :created
     else
       unprocessable_response school
     end

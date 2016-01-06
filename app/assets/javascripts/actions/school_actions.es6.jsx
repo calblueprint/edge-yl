@@ -12,12 +12,8 @@
       );
     }
 
-    createComment(template, profile, school) {
-      var attributes = {};
+    createComment(template, attributes={}) {
       attributes[template.key] = template.value;
-      attributes.commentable_id = school.id;
-      attributes.commentable_type = 'School';
-      attributes.user_id = profile.id;
       var params = { comment: attributes };
       var resolve = (response) => this.storeComment(response);
       Requester.post(
@@ -46,8 +42,7 @@
       };
     }
 
-    updateSchool(template) {
-      var attributes = {};
+    updateSchool(template, attributes={}) {
       attributes[template.key] = template.value;
       var params = { school: attributes };
       var resolve = (response) => this.storeSchool(response);

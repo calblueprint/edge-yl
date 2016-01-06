@@ -57,7 +57,8 @@ class HeaderNavigation extends Component {
           content={'EDGE'}
           route={RouteConstants.students.index()}
           styles={this.clickableStyles}
-          type={'h2'} />
+          type={'h2'}
+          underline={false} />
         {this.renderSearch()}
       </div>
     );
