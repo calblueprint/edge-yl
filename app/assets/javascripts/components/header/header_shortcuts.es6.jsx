@@ -107,9 +107,9 @@ class HeaderShortcuts extends Component {
           styles={this.clickableStyles}
           type={'i'} />,
         <Clickable
+          action={() => HeaderActions.toggleDropdown()}
           key={2}
           icon={TypeConstants.icons.profile}
-          action={() => HeaderActions.toggleDropdown()}
           styles={this.clickableStyles}
           type={'i'} />,
       ];

@@ -27,6 +27,7 @@ class Clickable extends Component {
         'img',
         'span',
       ]).isRequired,
+      underline: React.PropTypes.bool,
     };
   }
 
@@ -42,6 +43,7 @@ class Clickable extends Component {
         default: {},
         hover: {},
       },
+      underline: true,
     };
   }
 
@@ -63,8 +65,10 @@ class Clickable extends Component {
       hover: Object.assign(
         {},
         this.props.styles.hover,
-        this.props.type !== 'i' && this.props.type !== 'img' &&
-        this.props.type !== 'div' && { textDecoration: 'underline' }
+        this.props.underline && this.props.type !== 'i' &&
+        this.props.type !== 'img' && this.props.type !== 'div' &&
+        !(this.props.route === '' && this.props.action === null) &&
+        { textDecoration: 'underline' }
       ),
       static: {
         cursor: 'default',

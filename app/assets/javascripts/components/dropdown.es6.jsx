@@ -84,28 +84,17 @@ class Dropdown extends Component {
       );
       styles.hover = {};
     }
-    if (option.children) {
-      return (
-        <Clickable
-          action={option.action}
-          key={index}
-          route={option.route}
-          styles={styles}
-          type={'div'}>
-          {option.children}
-        </Clickable>
-      );
-    } else {
-      return (
-        <Clickable
-          action={option.action}
-          content={option.content}
-          key={index}
-          route={option.route}
-          styles={styles}
-          type={'span'} />
-      );
-    }
+    return (
+      <Clickable
+        action={option.action}
+        children={option.children}
+        content={option.content}
+        key={index}
+        route={option.route}
+        styles={styles}
+        type={option.children ? 'div' : 'h6'}
+        underline={false} />
+    );
   }
 
   renderOptions() {
