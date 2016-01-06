@@ -42,9 +42,11 @@ ActiveRecord::Schema.define(version: 20160106185219) do
 
   create_table "emails", force: :cascade do |t|
     t.string   "content",    null: false
+    t.string   "from",       null: false
     t.string   "sender",     null: false
     t.string   "subject",    null: false
-    t.string   "receiver",   null: false
+    t.string   "recipient",  null: false
+    t.string   "to",         null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -6,7 +6,7 @@ class Api::EmailsController < Api::BaseController
     custom_params = ActionController::Parameters.new(
       content: params['body-plain'],
       from: params[:from],
-      receiver: params[:recipient],
+      recipient: params[:recipient],
       sender: params[:sender],
       to: params[:to],
       subject: params[:subject],
@@ -25,7 +25,7 @@ class Api::EmailsController < Api::BaseController
     params.permit(
       :content,
       :from,
-      :receiver,
+      :recipient,
       :sender,
       :subject,
       :to,
