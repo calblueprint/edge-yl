@@ -12,12 +12,8 @@
       );
     }
 
-    createComment(template, profile, student) {
-      var attributes = {};
+    createComment(template, attributes={}) {
       attributes[template.key] = template.value;
-      attributes.commentable_id = student.id;
-      attributes.commentable_type = 'Student';
-      attributes.user_id = profile.id;
       var params = { comment: attributes };
       var resolve = (response) => this.storeComment(response);
       Requester.post(
@@ -46,8 +42,7 @@
       };
     }
 
-    updateStudent(template) {
-      var attributes = {};
+    updateStudent(template, attributes={}) {
       attributes[template.key] = template.value;
       var params = { student: attributes };
       var resolve = (response) => this.storeStudent(response);
