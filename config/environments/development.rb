@@ -9,13 +9,12 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :letter_opener
   # config.action_mailer.delivery_method = :smtp
   # config.action_mailer.smtp_settings = {
-  #   address:              'smtp.gmail.com',
-  #   port:                 587,
-  #   domain:               'gmail.com',
-  #   user_name:            ENV['gmail_username'],
-  #   password:             ENV['gmail_password'],
-  #   authentication:       'plain',
-  #   enable_starttls_auto: true,
+  #   authentication: 'plain',
+  #   port:            587,
+  #   address:         ENV['smtp_address'],
+  #   domain:          ENV['smtp_domain'],
+  #   user_name:       ENV['smtp_username'],
+  #   password:        ENV['smtp_password'],
   # }
 
   # In the development environment your application's code is reloaded on

@@ -1,10 +1,12 @@
 # Generate secret keys with the command `rake secret` and
 # populate the development environment secret keys below.
 development:
-  gmail_username: ''
-  gmail_password: ''
   secret_key_base: ''
   secret_key_devise: ''
+  smtp_address: ''
+  smtp_domain: ''
+  smtp_password: ''
+  smtp_username: ''
 
 test:
   secret_key_base: '378980e58b8e616553bd06187c8f99c402919e3ab3b0349772419b700a8ee6a059f64b2fd7300be46fbc22761ed37d31857304d1554a5f6dcd4dc0f4995898cc'
