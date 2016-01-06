@@ -4,8 +4,8 @@ class Api::ConferencesController < Api::BaseController
     conference = Conference.new conference_params
     if conference.save
       render json: conference,
-                   serializer: ConferenceBaseSerializer,
-                   status: :created
+             serializer: ConferenceBaseSerializer,
+             status: :created
     else
       unprocessable_response conference
     end
@@ -14,8 +14,8 @@ class Api::ConferencesController < Api::BaseController
   def index
     conferences = Conference.page params[:page]
     render json: conferences,
-                 serializer: PaginatedSerializer,
-                 each_serializer: ConferenceIndexSerializer
+           serializer: PaginatedSerializer,
+           each_serializer: ConferenceIndexSerializer
   end
 
   def show

@@ -4,8 +4,8 @@ class Api::ProfilesController < Api::BaseController
     profile = User.find params[:id]
     if profile.update_attributes profile_params
       render json: profile,
-                   serializer: ProfileBaseSerializer,
-                   status: :created
+             serializer: ProfileBaseSerializer,
+             status: :created
     else
       unprocessable_response profile
     end

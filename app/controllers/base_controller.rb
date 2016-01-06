@@ -8,8 +8,4 @@ class BaseController < ApplicationController
     @profile = JSON.parse(profile_json)['user']
   end
 
-  def current_profile
-
-  end
-
 end

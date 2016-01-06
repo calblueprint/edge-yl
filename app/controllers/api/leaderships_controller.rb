@@ -4,8 +4,8 @@ class Api::LeadershipsController < Api::BaseController
     leadership = Leadership.includes(:user).find params[:id]
     if leadership.update_attributes leadership_params
       render json: leadership,
-                   serializer: LeadershipGroupSerializer,
-                   status: :created
+             serializer: LeadershipGroupSerializer,
+             status: :created
     else
       unprocessable_response leadership
     end
