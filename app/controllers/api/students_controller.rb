@@ -66,6 +66,8 @@ class Api::StudentsController < Api::BaseController
       :guardian_phone_type,
       :guardian_relationship,
       :home_phone,
+      :is_flagged,
+      :is_primary,
       :last_name,
       :preferred_name,
       :shirt_size,
