@@ -6,20 +6,29 @@ class ConferenceGrid extends Component {
   static get propTypes() {
     return {
       conference: React.PropTypes.object.isRequired,
+      media: React.PropTypes.string.isRequired,
     };
   }
 
   // --------------------------------------------------
-  // Styles
+  // Helpers
   // --------------------------------------------------
-  get styles() {
-    return {
-      container: {
-        display: 'flex',
-        flexFlow: 'column',
-        flex: '1',
+  generateOptions() {
+    return [
+      {
+        action: () => this.storeOverlay(),
+        content: 'New',
       },
-    };
+    ];
+  }
+
+  storeOverlay() {
+    // TODO: Fix constants below.
+    ConferenceActions.storeOverlay(
+      true,
+      TypeConstants.actions.create,
+      'group',
+    );
   }
 
   // --------------------------------------------------
@@ -27,9 +36,21 @@ class ConferenceGrid extends Component {
   // --------------------------------------------------
   render() {
     return (
-      <div style={this.styles.container}>
-        <ConferenceCard conference={this.props.conference} />
-        <GroupsGrid groups={this.props.conference.groups} />
+      <div style={StyleConstants.containers.grid}>
+        <ConferenceCard
+          conference={this.props.conference}
+          media={this.props.media}
+          target={TypeConstants.conference.general} />
+        <ConferenceCard
+          conference={this.props.conference}
+          media={this.props.media}
+          target={TypeConstants.conference.statistic} />
+        <PageHeader
+          label={'Groups in this conference'}
+          options={this.generateOptions()} />
+        <GroupsGrid
+          groups={this.props.conference.groups}
+          media={this.props.media} />
       </div>
     );
   }

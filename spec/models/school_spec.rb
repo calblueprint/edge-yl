@@ -6,7 +6,7 @@
 #  address_city         :string           not null
 #  address_one          :string           not null
 #  address_state        :string           not null
-#  address_two          :string
+#  address_two          :string           default(""), not null
 #  address_zip          :string           not null
 #  contact_email        :string           not null
 #  contact_first_name   :string           not null
@@ -14,7 +14,7 @@
 #  contact_phone_number :string           not null
 #  contact_title        :string           not null
 #  name                 :string           not null
-#  website              :string           not null
+#  website              :string           default(""), not null
 #  created_at           :datetime         not null
 #  updated_at           :datetime         not null
 #

@@ -8,18 +8,18 @@ class SidebarFooter extends Component {
       container: {
         display: 'flex',
         alignItems: 'center',
-        padding: '12px',
-        marginTop: '16px',
-      },
-      image: {
-        width: '20px',
-        height: '20px',
+        padding: '0px 12px',
+        marginTop: '12px',
       },
     };
   }
 
   get clickableStyles() {
     return {
+      child: {
+        width: '16px',
+        height: '16px',
+      },
       default: {
         marginLeft: '8px',
         lineHeight: '0px',
@@ -37,14 +37,11 @@ class SidebarFooter extends Component {
   render() {
     return (
       <div style={this.styles.container}>
-        <h5>{'Powered by'}</h5>
+        <h6>{'Powered by'}</h6>
         <Clickable
           styles={this.clickableStyles}
-          type={'img'}>
-          <img
-            src={'https://avatars3.githubusercontent.com/u/2729578?v=3&s=200'}
-            style={this.styles.image} />
-        </Clickable>
+          source={'https://avatars3.githubusercontent.com/u/2729578?v=3&s=200'}
+          type={'img'} />
       </div>
     );
   }

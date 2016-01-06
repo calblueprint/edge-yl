@@ -1,12 +1,13 @@
 if Rails.env.development? || Rails.env.staging?
   seeds = [
     'users',
-    'conferences',
     'schools',
     'students',
+    'conferences',
+    'groups',
+    'leaderships',
     'comments',
     'responsibilities',
-    'groups',
     'forms',
   ]
   seeds.each do |seed|

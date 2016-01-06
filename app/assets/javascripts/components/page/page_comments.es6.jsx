@@ -1,4 +1,4 @@
-class StudentComments extends Component {
+class PageComments extends Component {
 
   // --------------------------------------------------
   // Props
@@ -6,6 +6,10 @@ class StudentComments extends Component {
   static get propTypes() {
     return {
       comments: React.PropTypes.array.isRequired,
+      type: React.PropTypes.oneOf([
+        TypeConstants.school.comment,
+        TypeConstants.student.comment,
+      ]).isRequired,
     };
   }
 
@@ -20,8 +24,8 @@ class StudentComments extends Component {
         position: 'absolute',
         top: '0px',
         right: '0px',
-        width: '196px',
-        paddingRight: '16px',
+        width: StyleConstants.widths.sidebar,
+        paddingRight: '12px',
         textAlign: 'right',
         boxSizing: 'border-box',
       },
@@ -34,12 +38,12 @@ class StudentComments extends Component {
   get clickableStyles() {
     return {
       child: {
-        paddingRight: '12px',
+        paddingRight: '8px',
       },
       default: {
         flex: '1',
         padding: '12px',
-        marginTop: '12px',
+        marginTop: '6px',
         borderRadius: '1px',
         textAlign: 'center',
         boxSizing: 'border-box',
@@ -54,11 +58,19 @@ class StudentComments extends Component {
   // Handlers
   // --------------------------------------------------
   handleClick() {
-    StudentActions.storeOverlay(
-      true,
-      TypeConstants.actions.create,
-      TypeConstants.overlay.target.comment
-    );
+    if (this.props.type == TypeConstants.student.comment) {
+      StudentActions.storeTemplate({
+        key: 'content',
+        model: 'comment',
+        type: 'input',
+      });
+    } else {
+      SchoolActions.storeTemplate({
+        key: 'content',
+        model: 'comment',
+        type: 'input',
+      });
+    }
   }
 
   // --------------------------------------------------
@@ -66,7 +78,7 @@ class StudentComments extends Component {
   // --------------------------------------------------
   renderComment(comment) {
     return (
-      <StudentComment
+      <PageComment
         comment={comment}
         key={comment.id} />
     );
@@ -80,14 +92,14 @@ class StudentComments extends Component {
   render() {
     return (
       <div style={this.styles.container}>
-        <h4 style={this.styles.title}>{'Comments'}</h4>
+        <h5 style={this.styles.title}>{'Comments'}</h5>
         {this.renderComments()}
         <Clickable
           action={() => this.handleClick(event)}
           icon={TypeConstants.icons.create}
           styles={this.clickableStyles}
           type={'i'}>
-          <h5>{'Add comment'}</h5>
+          <h6>{'Add comment'}</h6>
         </Clickable>
       </div>
     );

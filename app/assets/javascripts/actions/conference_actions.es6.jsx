@@ -3,8 +3,19 @@
 
     constructor() {
       this.generateActions(
-        'storeConference'
+        'storeConference',
+        'storeGroup',
       );
+    }
+
+    createGroup(params) {
+      var resolve = (response) => this.storeGroup(response);
+      Requester.post(
+        ApiConstants.groups.create,
+        params,
+        resolve,
+      );
+      return true;
     }
 
     fetchConference(id) {
@@ -26,7 +37,7 @@
       Requester.update(
         ApiConstants.conferences.update(id),
         params,
-        resolve
+        resolve,
       );
       return true;
     }

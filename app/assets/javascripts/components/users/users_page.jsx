@@ -14,6 +14,7 @@ class UsersPage extends Component {
   static get propTypes() {
     return {
       page: React.PropTypes.number.isRequired,
+      profile: React.PropTypes.object.isRequired,
     };
   }
 
@@ -23,18 +24,30 @@ class UsersPage extends Component {
   componentWillMount() {
     this.setState(ProfileStore.getState());
     this.setState(UsersStore.getState());
+    this.setState(ViewStore.getState());
   }
 
   componentDidMount() {
     ProfileStore.listen(this._listener);
     UsersStore.listen(this._listener);
-    ProfileActions.fetchProfile();
+    ViewStore.listen(this._listener);
     UsersActions.fetchUsers(this.props.page);
+    ViewActions.attachListener();
   }
 
   componentWillUnmount() {
     ProfileStore.unlisten(this._listener);
     UsersStore.unlisten(this._listener);
+    ViewStore.unlisten(this._listener);
+  }
+
+  // --------------------------------------------------
+  // Helpers
+  // --------------------------------------------------
+  selectProfile() {
+    return this.state.profile ?
+           this.state.profile :
+           this.props.profile;
   }
 
   // --------------------------------------------------
@@ -45,13 +58,13 @@ class UsersPage extends Component {
       <div style={StyleConstants.pages.wrapper}>
         <Header
           active={true}
-          profile={this.state.profile} />
+          profile={this.selectProfile()} />
         <div style={StyleConstants.pages.container}>
-          <Sidebar
-            active={this.state.profile.has_sidebar}
-            profile={this.state.profile} />
+          <Sidebar profile={this.selectProfile()} />
           <div style={StyleConstants.pages.content}>
-            <UsersGrid users={this.state.users} />
+            <UsersGrid
+              media={this.state.media}
+              users={this.state.users} />
             <PageNavigator
               route={RouteConstants.users.index}
               pagination={this.state.pagination} />

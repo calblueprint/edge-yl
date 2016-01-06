@@ -1,14 +1,15 @@
 class Api::UsersController < Api::BaseController
 
+  def groupables
+    users = User.groupable
+    render json: users, each_serializer: UserBaseSerializer
+  end
+
   def index
     users = User.page params[:page]
     render json: users,
                  serializer: PaginatedSerializer,
                  each_serializer: UserIndexSerializer
-  end
-
-  def profile
-    render json: current_user, serializer: ProfileBaseSerializer
   end
 
   def show
@@ -29,14 +30,15 @@ class Api::UsersController < Api::BaseController
   end
 
   private
-    def user_params
-      params.require(:user).permit(
-        :email,
-        :first_name,
-        :has_sidebar,
-        :last_name,
-        :password
-      )
-    end
+
+  def user_params
+    params.require(:user).permit(
+      :email,
+      :first_name,
+      :has_sidebar,
+      :last_name,
+      :password
+    )
+  end
 
 end

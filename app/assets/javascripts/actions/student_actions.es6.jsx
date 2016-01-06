@@ -3,18 +3,27 @@
 
     constructor() {
       this.generateActions(
+        'closeOverlay',
+        'storeAttribute',
         'storeComment',
         'storeError',
-        'storeStudent'
+        'storeStudent',
+        'toggleEditability',
       );
     }
 
-    createComment(id, params) {
+    createComment(template, profile, student) {
+      var attributes = {};
+      attributes[template.key] = template.value;
+      attributes.commentable_id = student.id;
+      attributes.commentable_type = 'Student';
+      attributes.user_id = profile.id;
+      var params = { comment: attributes };
       var resolve = (response) => this.storeComment(response);
       Requester.post(
-        ApiConstants.students.comments.create(id),
+        ApiConstants.comments.create,
         params,
-        resolve
+        resolve,
       );
       return true;
     }
@@ -25,37 +34,30 @@
       return true;
     }
 
-    storeAttribute(key, value) {
+    storeTemplate(options) {
       return {
-        key: key,
-        value: value,
+        choices: options.choices,
+        errors: {},
+        id: options.id,
+        key: options.key,
+        model: options.model,
+        type: options.type,
+        value: options.value,
       };
     }
 
-    storeOverlay(active, type, target) {
-      return {
-        active: active,
-        target: target,
-        type: type,
-      };
-    }
-
-    updateStudent(student, template) {
-      var id = student.id;
-      var attributes = Object.assign({}, template);
-      Object.keys(attributes).map((key) => {
-        if (typeof(attributes[key]) === 'object' ||
-            student[key] === attributes[key]) {
-          delete attributes[key];
-        }
-      });
-      if (attributes.errors) {
-        delete attributes.errors;
-      }
+    updateStudent(template) {
+      var attributes = {};
+      attributes[template.key] = template.value;
       var params = { student: attributes };
       var resolve = (response) => this.storeStudent(response);
       var reject = (response) => this.storeError(response);
-      Requester.update(ApiConstants.students.update(id), params, resolve, reject);
+      Requester.update(
+        ApiConstants.students.update(template.id),
+        params,
+        resolve,
+        reject,
+      );
       return true;
     }
   }

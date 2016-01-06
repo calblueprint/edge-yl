@@ -14,6 +14,13 @@ class Header extends Component {
   static get propTypes() {
     return {
       active: React.PropTypes.bool.isRequired,
+      profile: React.PropTypes.object,
+    };
+  }
+
+  static get defaultProps() {
+    return {
+      profile: {},
     };
   }
 
@@ -30,17 +37,9 @@ class Header extends Component {
         left: '0px',
         zIndex: StyleConstants.planes.eight,
         width: '100%',
-        height: '48px',
+        height: StyleConstants.heights.header,
         backgroundColor: StyleConstants.colors.blue,
         boxShadow: '0px 0px 5px 0px rgba(0, 0, 0, 0.25)',
-      },
-      section: {
-        display: 'flex',
-        alignItems: 'center',
-        alignSelf: 'stretch',
-        width: '196px',
-        paddingLeft: '12px',
-        boxSizing: 'border-box',
       },
     };
   }
@@ -79,7 +78,8 @@ class Header extends Component {
   // --------------------------------------------------
 
   toggleSidebar() {
-    ProfileActions.toggleSidebar(this.props.profile.id, !this.props.profile.has_sidebar);
+    var profile = this.props.profile;
+    ProfileActions.toggleSidebar(profile.id, !profile.has_sidebar);
   }
 
   // --------------------------------------------------
@@ -100,7 +100,7 @@ class Header extends Component {
   render() {
     return (
       <div style={this.styles.container}>
-        <div style={this.styles.section}>
+        <div style={StyleConstants.containers.header(true)}>
           {this.renderToggler()}
         </div>
         <HeaderNavigation

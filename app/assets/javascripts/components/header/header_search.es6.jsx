@@ -22,7 +22,7 @@ class HeaderSearch extends Component {
         height: '30px',
       },
       input: {
-        flex: '1',
+        zIndex: StyleConstants.planes.nine,
         height: '30px',
         padding: '8px 16px',
         border: 'none',
@@ -167,6 +167,7 @@ class HeaderSearch extends Component {
             placeholder={'Search for a school or student'}
             ref={'input'}
             style={this.styles.input}
+            type={'search'}
             value={this.props.search.query}>
           </input>
         </div>

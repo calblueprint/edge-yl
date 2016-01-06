@@ -1,4 +1,4 @@
-class StudentGeneralEdit extends Component {
+class SchoolGeneralEdit extends Component {
 
   // --------------------------------------------------
   // Props
@@ -15,7 +15,7 @@ class StudentGeneralEdit extends Component {
   generateHandler(field) {
     var state = {};
     return(event) => {
-      StudentActions.storeAttribute(field, event.target.value);
+      SchoolActions.storeAttribute(field, event.target.value);
     };
   }
 
@@ -27,21 +27,15 @@ class StudentGeneralEdit extends Component {
     return (
       <div style={StyleConstants.cards.body}>
         <CardInput
-          action={this.generateHandler('first_name')}
-          errors={template.errors.first_name}
-          margin={false}
-          placeholder={'First name'}
-          value={template.first_name} />
+          action={this.generateHandler('school_name')}
+          errors={template.errors.name}
+          placeholder={'School'}
+          value={template.name} />
         <CardInput
-          action={this.generateHandler('last_name')}
-          errors={template.errors.last_name}
-          placeholder={'Last name'}
-          value={template.last_name} />
-        <CardInput
-          action={this.generateHandler('birthday')}
-          errors={template.errors.birthday}
-          placeholder={'Birthday'}
-          value={template.birthday} />
+          action={this.generateHandler('address_one')}
+          errors={template.errors.address_one}
+          placeholder={'Address one'}
+          value={template.address_one} />
       </div>
     );
   }

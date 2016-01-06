@@ -14,6 +14,7 @@ class ConferencesPage extends Component {
   static get propTypes() {
     return {
       page: React.PropTypes.number.isRequired,
+      profile: React.PropTypes.object.isRequired,
     };
   }
 
@@ -23,18 +24,48 @@ class ConferencesPage extends Component {
   componentWillMount() {
     this.setState(ConferencesStore.getState());
     this.setState(ProfileStore.getState());
+    this.setState(ViewStore.getState());
   }
 
   componentDidMount() {
     ConferencesStore.listen(this._listener);
     ProfileStore.listen(this._listener);
+    ViewStore.listen(this._listener);
     ConferencesActions.fetchConferences(this.props.page);
-    ProfileActions.fetchProfile();
+    ViewActions.attachListener();
   }
 
   componentWillUnmount() {
     ConferencesStore.unlisten(this._listener);
     ProfileStore.unlisten(this._listener);
+    ViewStore.unlisten(this._listener);
+  }
+
+  // --------------------------------------------------
+  // Helpers
+  // --------------------------------------------------
+  generateOptions() {
+    return [
+      {
+        action: () => this.storeOverlay(),
+        content: 'New',
+      },
+    ];
+  }
+
+  selectProfile() {
+    return this.state.profile ?
+           this.state.profile :
+           this.props.profile;
+  }
+
+  storeOverlay() {
+    // TODO(Warren): Fix constants below.
+    ConferencesActions.storeOverlay(
+      true,
+      TypeConstants.actions.edit,
+      TypeConstants.conference
+    );
   }
 
   // --------------------------------------------------
@@ -56,13 +87,16 @@ class ConferencesPage extends Component {
         {this.renderOverlay()}
         <Header
           active={true}
-          profile={this.state.profile} />
+          profile={this.selectProfile()} />
         <div style={StyleConstants.pages.container}>
-          <Sidebar
-            active={this.state.profile.has_sidebar}
-            profile={this.state.profile} />
+          <Sidebar profile={this.selectProfile()} />
           <div style={StyleConstants.pages.content}>
-            <ConferencesGrid conferences={this.state.conferences} />
+            <PageHeader
+              label={'Conferences'}
+              options={this.generateOptions()} />
+            <ConferencesGrid
+              conferences={this.state.conferences}
+              media={this.state.media} />
             <PageNavigator
               route={RouteConstants.conferences.index}
               pagination={this.state.pagination} />

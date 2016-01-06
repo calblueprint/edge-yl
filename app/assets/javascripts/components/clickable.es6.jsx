@@ -10,6 +10,7 @@ class Clickable extends Component {
       content: React.PropTypes.string,
       icon: React.PropTypes.string,
       route: React.PropTypes.string,
+      source: React.PropTypes.string,
       styles: React.PropTypes.shape({
         child: React.PropTypes.object,
         default: React.PropTypes.object,
@@ -38,6 +39,7 @@ class Clickable extends Component {
       content: '',
       icon: '',
       route: '',
+      source: '',
       styles: {
         child: {},
         default: {},
@@ -70,9 +72,6 @@ class Clickable extends Component {
         !(this.props.route === '' && this.props.action === null) &&
         { textDecoration: 'underline' }
       ),
-      static: {
-        cursor: 'default',
-      },
     };
   }
 
@@ -135,7 +134,16 @@ class Clickable extends Component {
   renderContent(style) {
     var content = this.props.content;
     var icon = this.props.icon;
-    if (content || icon) {
+    var source = this.props.source;
+    var style = Object.assign(
+      {},
+      this.props.styles.child,
+      {
+        color: 'inherit',
+        backgroundColor: 'inherit',
+      }
+    );
+    if (content || icon || source) {
       switch (this.props.type) {
         case 'h1':
           return <h1 style={style}>{content}</h1>;
@@ -151,6 +159,8 @@ class Clickable extends Component {
           return <h6 style={style}>{content}</h6>;
         case 'i':
           return <i className={icon} style={style} />;
+        case 'img':
+          return <img style={style} src={source} />;
         case 'span':
           return <span style={style}>{content}</span>;
       }
@@ -159,12 +169,11 @@ class Clickable extends Component {
 
   render() {
     var props = this.props;
-    var styles = props.styles;
     var style = Object.assign(
       {},
-      styles.default,
+      props.styles.default,
       this.state.mouse === 'hover' && this.styles.hover,
-      props.route === '' && props.action === null && this.styles.static
+      props.route === '' && props.action === null && { cursor: 'default' }
     );
     if (props.type === 'i' || props.type === 'img') {
       return (
@@ -172,7 +181,7 @@ class Clickable extends Component {
           href={this.props.route}
           ref={'container'}
           style={style}>
-          {this.renderContent(styles.child)}
+          {this.renderContent()}
           {this.renderChildren()}
         </a>
       );
@@ -189,9 +198,9 @@ class Clickable extends Component {
       return (
         <a
           href={props.route}
-          ref={'container'}>
-          {this.renderContent(style)}
-          {this.renderChildren()}
+          ref={'container'}
+          style={style}>
+          {this.renderContent()}
         </a>
       );
     }

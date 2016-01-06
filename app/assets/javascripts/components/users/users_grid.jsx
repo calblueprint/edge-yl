@@ -5,6 +5,7 @@ class UsersGrid extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
+      media: React.PropTypes.string.isRequired,
       users: React.PropTypes.array.isRequired,
     };
   }
@@ -16,6 +17,7 @@ class UsersGrid extends Component {
     return (
       <UsersCard
         key={user.id}
+        media={this.props.media}
         user={user} />
     );
   }

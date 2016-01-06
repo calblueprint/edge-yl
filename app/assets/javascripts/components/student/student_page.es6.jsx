@@ -14,6 +14,7 @@ class StudentPage extends Component {
   static get propTypes() {
     return {
       id: React.PropTypes.number.isRequired,
+      profile: React.PropTypes.object.isRequired,
     };
   }
 
@@ -30,7 +31,6 @@ class StudentPage extends Component {
     ProfileStore.listen(this._listener);
     StudentStore.listen(this._listener);
     ViewStore.listen(this._listener);
-    ProfileActions.fetchProfile();
     StudentActions.fetchStudent(this.props.id);
     ViewActions.attachListener();
   }
@@ -42,14 +42,31 @@ class StudentPage extends Component {
   }
 
   // --------------------------------------------------
+  // Helpers
+  // --------------------------------------------------
+  generateOptions() {
+    return [
+      {
+        action: () => StudentActions.toggleEditability(),
+        content: this.state.editable ? 'Finish' : 'Edit',
+      },
+    ];
+  }
+
+  selectProfile() {
+    return this.state.profile ?
+           this.state.profile :
+           this.props.profile;
+  }
+
+  // --------------------------------------------------
   // Render
   // --------------------------------------------------
   renderOverlay() {
-    if (this.state.overlay.active) {
+    if (this.state.overlay) {
       return (
         <StudentPageOverlay
-          overlay={this.state.overlay}
-          profile={this.state.profile}
+          profile={this.selectProfile()}
           student={this.state.student}
           template={this.state.template} />
       );
@@ -57,22 +74,27 @@ class StudentPage extends Component {
   }
 
   render() {
+    var student = this.state.student;
     return (
       <div style={StyleConstants.pages.wrapper}>
         {this.renderOverlay()}
         <Header
           active={true}
-          profile={this.state.profile} />
+          profile={this.selectProfile()} />
         <div style={StyleConstants.pages.container}>
-          <Sidebar
-            active={this.state.profile.has_sidebar}
-            profile={this.state.profile} />
+          <Sidebar profile={this.selectProfile()} />
           <div style={StyleConstants.pages.content}>
+            <PageHeader
+              label={'Student'}
+              options={this.generateOptions()}
+              value={student.full_name} />
             <StudentGrid
+              editable={this.state.editable}
               media={this.state.media}
-              student={this.state.student} />
-            <StudentComments
-              comments={this.state.student.comments} />
+              student={student} />
+            <PageComments
+              comments={student.comments}
+              type={TypeConstants.student.comment} />
           </div>
         </div>
       </div>

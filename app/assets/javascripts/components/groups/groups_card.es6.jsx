@@ -6,22 +6,49 @@ class GroupsCard extends Component {
   static get propTypes() {
     return {
       group: React.PropTypes.object.isRequired,
+      media: React.PropTypes.string.isRequired,
     };
   }
 
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
+  renderLeadership(leadership) {
+    var user = leadership.user;
+    if (user) {
+      return (
+        <CardAttribute
+          clickable={true}
+          key={leadership.id}
+          label={leadership.style}
+          route={RouteConstants.users.show(user.id)}
+          value={user.full_name} />
+      );
+    } else {
+      return (
+        <CardAttribute
+          key={leadership.id}
+          label={leadership.style} />
+      );
+    }
+  }
+
+  renderLeaderships() {
+    var leaderships = this.props.group.leaderships;
+    return leaderships.map((leadership) => this.renderLeadership(leadership));
+  }
+
   render() {
     var group = this.props.group;
     return (
-      <div style={StyleConstants.cards.index}>
-        <Clickable
-          content={`Group ${group.name}`}
-          route={RouteConstants.groups.show(group.conference_id, group.id)}
-          type={'h3'} />
-        <h6>{group.primary_leader}</h6>
-        <h6>{group.secondary_leader}</h6>
+      <div style={StyleConstants.cards.index(this.props.media)}>
+        <CardAttribute
+          clickable={true}
+          label={'Name'}
+          route={RouteConstants.groups.show(group.id)}
+          type={'h4'}
+          value={group.full_name} />
+        {this.renderLeaderships()}
       </div>
     );
   }

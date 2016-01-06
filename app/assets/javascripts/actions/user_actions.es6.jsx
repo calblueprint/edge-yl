@@ -3,7 +3,7 @@
 
     constructor() {
       this.generateActions(
-        'storeUser'
+        'storeUser',
       );
     }
 
@@ -23,7 +23,11 @@
 
     updateUser(id, params) {
       var resolve = (response) => this.storeUser(response);
-      Requester.update(ApiConstants.users.update(id), params, resolve);
+      Requester.update(
+        ApiConstants.users.update(id),
+        params,
+        resolve,
+      );
       return true;
     }
   }

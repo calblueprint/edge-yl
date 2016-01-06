@@ -2,34 +2,33 @@
   class StudentStore {
 
     constructor() {
-      this.overlay = {
-        active: false,
-        target: '',
-        type: '',
-      };
+      this.editable = false;
+      this.overlay = false;
       this.student = {
         comments: [],
-        group: {},
-        school: {},
       };
-      this.template = {
-        errors: {},
-      };
+      this.template = {};
       this.bindListeners({
+        handleCloseOverlay: StudentActions.CLOSE_OVERLAY,
         handleStoreAttribute: StudentActions.STORE_ATTRIBUTE,
         handleStoreComment: StudentActions.STORE_COMMENT,
         handleStoreError: StudentActions.STORE_ERROR,
-        handleStoreOverlay: StudentActions.STORE_OVERLAY,
         handleStoreStudent: StudentActions.STORE_STUDENT,
+        handleStoreTemplate: StudentActions.STORE_TEMPLATE,
+        handleToggleEditablity: StudentActions.TOGGLE_EDITABILITY,
       });
     }
 
-    handleStoreAttribute(attribute) {
-      this.template[attribute.key] = attribute.value;
+    handleCloseOverlay() {
+      this.overlay = false;
+    }
+
+    handleStoreAttribute(value) {
+      this.template.value = value;
     }
 
     handleStoreComment(response) {
-      this.overlay.active = false;
+      this.overlay = false;
       this.student.comments.push(response.comment);
     }
 
@@ -37,17 +36,18 @@
       this.template.errors = response.errors;
     }
 
-    handleStoreOverlay(overlay) {
-      this.overlay = overlay;
-      this.template = Object.assign({}, this.student);
-      this.template.errors = {};
+    handleStoreStudent(response) {
+      this.overlay = false;
+      this.student = response.student;
     }
 
-    handleStoreStudent(response) {
-      this.overlay.active = false;
-      this.student = response.student;
-      this.template = Object.assign({}, this.student);
-      this.template.errors = {};
+    handleStoreTemplate(template) {
+      this.overlay = true;
+      this.template = template;
+    }
+
+    handleToggleEditablity() {
+      this.editable = !this.editable;
     }
   }
   this.StudentStore = alt.createStore(StudentStore);

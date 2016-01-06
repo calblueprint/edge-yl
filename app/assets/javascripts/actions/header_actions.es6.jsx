@@ -4,7 +4,7 @@
     constructor() {
       this.generateActions(
         'storeResults',
-        'toggleDropdown'
+        'toggleDropdown',
       );
     }
 

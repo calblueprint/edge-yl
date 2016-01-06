@@ -3,8 +3,29 @@
 
     constructor() {
       this.generateActions(
-        'storeSchool'
+        'closeOverlay',
+        'storeAttribute',
+        'storeComment',
+        'storeError',
+        'storeSchool',
+        'toggleEditability',
       );
+    }
+
+    createComment(template, profile, school) {
+      var attributes = {};
+      attributes[template.key] = template.value;
+      attributes.commentable_id = school.id;
+      attributes.commentable_type = 'School';
+      attributes.user_id = profile.id;
+      var params = { comment: attributes };
+      var resolve = (response) => this.storeComment(response);
+      Requester.post(
+        ApiConstants.comments.create,
+        params,
+        resolve,
+      );
+      return true;
     }
 
     fetchSchool(id) {
@@ -13,17 +34,30 @@
       return true;
     }
 
-    storeOverlay(active, type, target) {
+    storeTemplate(options) {
       return {
-        active: active,
-        target: target,
-        type: type,
+        choices: options.choices,
+        errors: {},
+        id: options.id,
+        key: options.key,
+        model: options.model,
+        type: options.type,
+        value: options.value,
       };
     }
 
-    updateSchool(id, params) {
+    updateSchool(template) {
+      var attributes = {};
+      attributes[template.key] = template.value;
+      var params = { school: attributes };
       var resolve = (response) => this.storeSchool(response);
-      Requester.update(ApiConstants.schools.update(id), params, resolve);
+      var reject = (response) => this.storeError(response);
+      Requester.update(
+        ApiConstants.schools.update(template.id),
+        params,
+        resolve,
+        reject,
+      );
       return true;
     }
   }

@@ -1,6 +1,6 @@
 class UserShowSerializer < UserIndexSerializer
 
-  attributes :email
+  attributes :first_name, :last_name
 
   has_many :responsibilities, serializer: ResponsibilityIndexSerializer
 

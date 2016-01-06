@@ -3,7 +3,7 @@
 
     constructor() {
       this.generateActions(
-        'storeSchools'
+        'storeSchools',
       );
     }
 

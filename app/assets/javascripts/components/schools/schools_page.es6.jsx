@@ -14,6 +14,7 @@ class SchoolsPage extends Component {
   static get propTypes() {
     return {
       page: React.PropTypes.number.isRequired,
+      profile: React.PropTypes.object.isRequired,
     };
   }
 
@@ -23,18 +24,39 @@ class SchoolsPage extends Component {
   componentWillMount() {
     this.setState(ProfileStore.getState());
     this.setState(SchoolsStore.getState());
+    this.setState(ViewStore.getState());
   }
 
   componentDidMount() {
     ProfileStore.listen(this._listener);
     SchoolsStore.listen(this._listener);
-    ProfileActions.fetchProfile();
+    ViewStore.listen(this._listener);
     SchoolsActions.fetchSchools(this.props.page);
+    ViewActions.attachListener();
   }
 
   componentWillUnmount() {
     ProfileStore.unlisten(this._listener);
     SchoolsStore.unlisten(this._listener);
+    ViewStore.unlisten(this._listener);
+  }
+
+  // --------------------------------------------------
+  // Helpers
+  // --------------------------------------------------
+  generateOptions() {
+    return [
+      {
+        content: 'New',
+        route: RouteConstants.forms.student,
+      },
+    ];
+  }
+
+  selectProfile() {
+    return this.state.profile ?
+           this.state.profile :
+           this.props.profile;
   }
 
   // --------------------------------------------------
@@ -43,15 +65,18 @@ class SchoolsPage extends Component {
   render() {
     return (
       <div style={StyleConstants.pages.wrapper}>
-        <Header
-          active={true}
-          profile={this.state.profile} />
+      <Header
+        active={true}
+        profile={this.selectProfile()} />
         <div style={StyleConstants.pages.container}>
-          <Sidebar
-            active={this.state.profile.has_sidebar}
-            profile={this.state.profile} />
+          <Sidebar profile={this.selectProfile()} />
           <div style={StyleConstants.pages.content}>
-            <SchoolsGrid schools={this.state.schools} />
+            <PageHeader
+              label={'Schools'}
+              options={this.generateOptions()} />
+            <SchoolsGrid
+              media={this.state.media}
+              schools={this.state.schools} />
             <PageNavigator
               route={RouteConstants.schools.index}
               pagination={this.state.pagination} />

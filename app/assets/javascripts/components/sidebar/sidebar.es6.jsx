@@ -5,7 +5,6 @@ class Sidebar extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      active: React.PropTypes.bool.isRequired,
       profile: React.PropTypes.object.isRequired,
     };
   }
@@ -21,8 +20,8 @@ class Sidebar extends Component {
         position: 'absolute',
         top: '48px',
         left: '0px',
-        width: '196px',
-        paddingLeft: '16px',
+        width: StyleConstants.widths.sidebar,
+        paddingLeft: '12px',
         boxSizing: 'border-box',
         transition: 'left 0.375s ease-out',
       },
@@ -45,7 +44,7 @@ class Sidebar extends Component {
     var style = Object.assign(
       {},
       this.styles.container,
-      !this.props.active && this.styles.hidden
+      !this.props.profile.has_sidebar && this.styles.hidden
     );
     return (
       <div style={style}>

@@ -4,14 +4,8 @@
     constructor() {
       this.generateActions(
         'storeError',
-        'storeProfile'
+        'storeProfile',
       );
-    }
-
-    fetchProfile() {
-      var resolve = (response) => this.storeProfile(response);
-      Requester.get(ApiConstants.users.profile, resolve);
-      return true;
     }
 
     storeAttribute(key, value) {
@@ -30,10 +24,14 @@
     }
 
     toggleSidebar(id, status) {
+      var attributes = { has_sidebar: status };
+      var params = { profile: attributes };
       var resolve = (response) => this.storeProfile(response);
-      var params = {};
-      params.user = { has_sidebar: status };
-      Requester.update(ApiConstants.users.update(id), params, resolve);
+      Requester.update(
+        ApiConstants.profiles.update(id),
+        params,
+        resolve,
+      );
       return true;
     }
 
@@ -42,7 +40,7 @@
       var attributes = Object.assign({}, template);
       Object.keys(attributes).map((key) => {
         if (typeof(attributes[key]) === 'object' ||
-            profile[key] === attributes[key]) {
+          profile[key] === attributes[key]) {
           delete attributes[key];
         }
       });
@@ -52,7 +50,12 @@
       var params = { user: attributes };
       var resolve = (response) => this.storeProfile(response);
       var reject = (response) => this.storeError(response);
-      Requester.update(ApiConstants.users.update(id), params, resolve, reject);
+      Requester.update(
+        ApiConstants.users.update(id),
+        params,
+        resolve,
+        reject,
+      );
       return true;
     }
   }

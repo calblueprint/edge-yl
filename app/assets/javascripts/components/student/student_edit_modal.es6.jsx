@@ -5,12 +5,6 @@ class StudentEditModal extends EditModal {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      overlay: React.PropTypes.shape({
-        active: React.PropTypes.bool.isRequired,
-        target: React.PropTypes.string.isRequired,
-        type: React.PropTypes.string.isRequired,
-      }).isRequired,
-      student: React.PropTypes.object.isRequired,
       template: React.PropTypes.object.isRequired,
     };
   }
@@ -20,7 +14,7 @@ class StudentEditModal extends EditModal {
   // --------------------------------------------------
   handleClick(event) {
     if (event.target === this._node) {
-      StudentActions.storeOverlay(false);
+      StudentActions.closeOverlay();
     }
   }
 
@@ -28,57 +22,51 @@ class StudentEditModal extends EditModal {
   // Helpers
   // --------------------------------------------------
   updateStudent() {
-    StudentActions.updateStudent(
-      this.props.student,
-      this.props.template
-    );
+    StudentActions.updateStudent(this.props.template);
   }
 
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
-  renderBody() {
-    switch (this.props.overlay.target) {
-      case TypeConstants.student.contact:
-        return (
-          <div style={this.styles.section}>
-            <CardHeader
-              action={() => this.updateStudent()}
-              content={'Contact Information'}
-              icon={TypeConstants.icons.save} />
-            <StudentContactEdit template={this.props.template} />
-          </div>
-        );
-      case TypeConstants.student.emergency:
-        return (
-          <div style={this.styles.section}>
-            <CardHeader
-              action={() => this.updateStudent()}
-              content={'Emergency Information'}
-              icon={TypeConstants.icons.save} />
-            <StudentEmergencyEdit template={this.props.template} />
-          </div>
-        );
-      case TypeConstants.student.general:
-        return (
-          <div style={this.styles.section}>
-            <CardHeader
-              action={() => this.updateStudent()}
-              content={'General Information'}
-              icon={TypeConstants.icons.save} />
-            <StudentGeneralEdit template={this.props.template} />
-          </div>
-        );
-      case TypeConstants.student.outreach:
-        return (
-          <div style={this.styles.section}>
-            <CardHeader
-              action={() => this.updateStudent()}
-              content={'Outreach Information'}
-              icon={TypeConstants.icons.save} />
-            <StudentOutreachEdit template={this.props.template} />
-          </div>
-        );
+  renderChild() {
+    var template = this.props.template;
+    if (template.type === 'input') {
+      return (
+        <CardInput
+          action={(event) => StudentActions.storeAttribute(event.target.value)}
+          errors={template.errors[template.key]}
+          focus={true}
+          label={Helpers.humanize(template.key)}
+          type={template.key === 'birthday' ? 'date' : 'text'}
+          value={template.value} />
+      );
+    } else {
+      var choices = template.choices.map((choice) =>{
+      return {
+        action: () => StudentActions.storeAttribute(choice),
+        content: Helpers.humanize(choice),
+      }});
+      return (
+        <CardDropdown
+          errors={template.errors[template.key]}
+          label={template.key}
+          options={choices}
+          value={Helpers.humanize(template.value)} />
+      );
     }
+  }
+
+  renderBody() {
+    return (
+      <div style={this.styles.section}>
+        <CardHeader
+          action={() => this.updateStudent()}
+          content={'Contact Information'}
+          icon={TypeConstants.icons.save} />
+        <div style={StyleConstants.cards.body}>
+          {this.renderChild()}
+        </div>
+      </div>
+    );
   }
 }

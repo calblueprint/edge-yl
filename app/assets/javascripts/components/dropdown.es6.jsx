@@ -6,13 +6,15 @@ class Dropdown extends Component {
   static get propTypes() {
     return {
       action: React.PropTypes.func,
-      options: React.PropTypes.arrayOf(React.PropTypes.shape({
-        action: React.PropTypes.func,
-        children: React.PropTypes.node,
-        content: React.PropTypes.string,
-        route: React.PropTypes.string,
-        static: React.PropTypes.boolean,
-      })).isRequired,
+      options: React.PropTypes.arrayOf(
+        React.PropTypes.shape({
+          action: React.PropTypes.func,
+          children: React.PropTypes.node,
+          content: React.PropTypes.string,
+          route: React.PropTypes.string,
+          static: React.PropTypes.bool,
+        })
+      ).isRequired,
       styles: React.PropTypes.shape({
         child: React.PropTypes.shape({
           default: React.PropTypes.object,
@@ -40,6 +42,7 @@ class Dropdown extends Component {
         left: '0px',
         width: '0px',
         height: '0px',
+        padding: '0px',
         border: '0px',
       },
     };
@@ -109,7 +112,7 @@ class Dropdown extends Component {
         <input
           autoFocus={true}
           ref={'input'}
-          style = {this.styles.input} />
+          style={this.styles.input} />
       </div>
     );
   }

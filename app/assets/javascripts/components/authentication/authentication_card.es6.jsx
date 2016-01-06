@@ -1,10 +1,11 @@
-class AuthenticationModal extends Component {
+class AuthenticationCard extends Component {
 
   // --------------------------------------------------
   // Props
   // --------------------------------------------------
   static get propTypes() {
     return {
+      template: React.PropTypes.object.isRequired,
       type: React.PropTypes.oneOf(['login', 'signup']).isRequired,
     };
   }
@@ -18,14 +19,15 @@ class AuthenticationModal extends Component {
         {},
         StyleConstants.containers.card,
         {
-          width: '372px',
-          padding: '36px',
+          width: '472px',
+          padding: '24px',
+          marginTop: '24px',
         }
       ),
       header: {
         display: 'flex',
         justifyContent: 'center',
-        marginBottom: '24px',
+        marginBottom: '12px',
       },
     };
   }
@@ -34,7 +36,11 @@ class AuthenticationModal extends Component {
   // Render
   // --------------------------------------------------
   renderForm() {
-    return this.props.type === 'login' ? <LoginForm /> : <SignupForm />;
+    if (this.props.type === 'login') {
+      return <LoginForm template={this.props.template} />;
+    } else {
+      return <SignupForm template={this.props.template} />;
+    }
   }
 
   renderHeader() {

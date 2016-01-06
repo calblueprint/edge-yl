@@ -5,21 +5,22 @@ class CardAttribute extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
+      editable: React.PropTypes.bool,
       clickable: React.PropTypes.bool,
       label: React.PropTypes.string.isRequired,
       route: React.PropTypes.string,
-      type: React.PropTypes.string,
-      type: React.PropTypes.oneOf(['h4', 'h5', 'h6']),
+      type: React.PropTypes.oneOf(['h4', 'h5', 'h6']).isRequired,
       value: React.PropTypes.string,
     };
   }
 
   static get defaultProps() {
     return {
+      editable: false,
       clickable: false,
       route: '',
       type: 'h6',
-      value: 'n/a',
+      value: null,
     };
   }
 
@@ -28,9 +29,25 @@ class CardAttribute extends Component {
   // --------------------------------------------------
   get styles() {
     return {
-      container: {
-        display: 'flex',
-        justifyContent: 'space-between',
+      container: Object.assign(
+        {},
+        {
+          display: 'flex',
+          justifyContent: 'space-between',
+        },
+        this.props.editable && { paddingRight: '20px' }
+      ),
+    };
+  }
+
+  get clickableStyles() {
+    return {
+      child: {
+        textAlign: 'right',
+      },
+      default: {
+        position: 'absolute',
+        right: '0px',
       },
     };
   }
@@ -38,6 +55,18 @@ class CardAttribute extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
+  renderClickable() {
+    if (this.props.editable) {
+      return (
+        <Clickable
+          action={this.props.action}
+          icon={TypeConstants.icons.edit}
+          styles={this.clickableStyles}
+          type={'i'} />
+      );
+    }
+  }
+
   renderLabel() {
     var label = this.props.label;
     switch (this.props.type) {
@@ -51,7 +80,7 @@ class CardAttribute extends Component {
   }
 
   renderValue() {
-    var value = this.props.value;
+    var value = this.props.value ? this.props.value : 'n/a';
     if (this.props.clickable) {
       return (
         <Clickable
@@ -76,6 +105,7 @@ class CardAttribute extends Component {
       <div style={this.styles.container}>
         {this.renderLabel()}
         {this.renderValue()}
+        {this.renderClickable()}
       </div>
     );
   }

@@ -5,11 +5,6 @@ class StudentPageOverlay extends PageOverlay {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      overlay: React.PropTypes.shape({
-        active: React.PropTypes.bool.isRequired,
-        target: React.PropTypes.string.isRequired,
-        type: React.PropTypes.string.isRequired,
-      }).isRequired,
       profile: React.PropTypes.object.isRequired,
       student: React.PropTypes.object.isRequired,
       template: React.PropTypes.object.isRequired,
@@ -17,45 +12,25 @@ class StudentPageOverlay extends PageOverlay {
   }
 
   // --------------------------------------------------
-  // Handlers
+  // Helpers
   // --------------------------------------------------
-  handleClick() {
-    if (event.target === this._node) {
-      StudentActions.storeOverlay(false);
-    }
+  storeOverlay() {
+    StudentActions.closeOverlay();
   }
 
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
   renderModal() {
-    if (this.props.overlay.type === TypeConstants.actions.edit) {
-      return (
-        <StudentEditModal
-          overlay={this.props.overlay}
-          student={this.props.student}
-          template={this.props.template} />
-      );
+    if (this.props.template.model === 'student') {
+      return <StudentEditModal template={this.props.template} />;
     } else {
       return (
         <StudentCreateModal
-          overlay={this.props.overlay}
           profile={this.props.profile}
-          student={this.props.student} />
+          student={this.props.student}
+          template={this.props.template} />
       );
     }
-  }
-
-  render() {
-    return (
-      <div ref={'container'} style={this.styles.container}>
-        <Clickable
-          action={() => StudentActions.storeOverlay(false)}
-          icon={TypeConstants.icons.close}
-          styles={this.clickableStyles}
-          type={'i'} />
-        {this.renderModal()}
-      </div>
-    );
   }
 }

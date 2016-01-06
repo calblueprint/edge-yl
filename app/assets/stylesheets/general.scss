@@ -98,8 +98,8 @@ i {
   width: $font-size-medium;
   color: inherit;
   font: normal normal normal 14px/1 'FontAwesome';
-  font-size: $font-size-small;
-  line-height: $font-size-medium;
+  font-size: $font-size-smaller;
+  line-height: $font-size-large;
   text-align: center;
 }
 
@@ -121,11 +121,14 @@ a {
 
 input,
 textarea {
+  flex: 1;
+  align-self: stretch;
+  padding: 8px;
   border: 1px solid $gray;
-  -webkit-transition: all 0.375s ease-in-out;
-  -moz-transition: all 0.375s ease-in-out;
-  -ms-transition: all 0.375s ease-in-out;
-  -o-transition: all 0.375s ease-in-out;
+  -webkit-transition: border-color, box-shadow 0.375s ease-in-out;
+  -moz-transition: border-color, box-shadow 0.375s ease-in-out;
+  -ms-transition: border-color, box-shadow 0.375s ease-in-out;
+  -o-transition: border-color, box-shadow 0.375s ease-in-out;
 }
 
 input:focus,

@@ -3,19 +3,56 @@
 
     constructor() {
       this.generateActions(
+        'closeOverlay',
+        'storeAttribute',
         'storeGroup',
+        'storeGroupables',
+        'storeLeadership',
+        'toggleEditability',
       );
     }
 
-    fetchGroup(conferenceId, id) {
+    fetchGroup(id) {
       var resolve = (response) => this.storeGroup(response);
-      Requester.get(ApiConstants.conferences.groups.show(conferenceId, id), resolve);
+      Requester.get(ApiConstants.groups.show(id), resolve);
       return true;
     }
 
-    updateGroup(conferenceId, id, params) {
+    storeTemplate(options) {
+      if (options.model === 'leadership') {
+        var resolve = (response) => this.storeGroupables(response);
+        Requester.get(ApiConstants.users.groupables, resolve);
+      }
+      return {
+        choices: options.choices,
+        errors: {},
+        id: options.id,
+        key: options.key,
+        model: options.model,
+        type: options.type,
+        value: options.value,
+      };
+    }
+
+    updateGroup(id, params) {
       var resolve = (response) => this.storeGroup(response);
-      Requester.update(ApiConstants.conferences.groups.update(conferenceId, id), params, resolve);
+      Requester.update(
+        ApiConstants.groups.update(id),
+        params,
+        resolve,
+      );
+      return true;
+    }
+
+    updateLeadership(template) {
+      var attributes = { user_id: template.value.id };
+      var params = { leadership: attributes };
+      var resolve = (response) => this.storeLeadership(response);
+      Requester.update(
+        ApiConstants.leaderships.update(template.id),
+        params,
+        resolve,
+      );
       return true;
     }
   }

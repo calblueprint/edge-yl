@@ -5,48 +5,50 @@ class GroupCard extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
+      editable: React.PropTypes.bool.isRequired,
       group: React.PropTypes.object.isRequired,
-    };
-  }
-
-  // --------------------------------------------------
-  // Styles
-  // --------------------------------------------------
-  get styles() {
-    return {
-      container: Object.assign(
-        {},
-        StyleConstants.cards.show,
-        { height: '256px' }
-      ),
-      section: {
-        display: 'flex',
-        flexFlow: 'column',
-        alignItems: 'center',
-        justifyContent: 'space-around',
-        padding: '12px',
-        flex: '1',
-      },
+      media: React.PropTypes.string.isRequired,
+      target: React.PropTypes.oneOf([
+        TypeConstants.group.general,
+        TypeConstants.group.leadership,
+      ]).isRequired,
     };
   }
 
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
+  renderBody() {
+    switch (this.props.target) {
+      case TypeConstants.group.general:
+        return (
+          <GroupGeneral
+            editable={this.props.editable}
+            group={this.props.group} />
+        );
+      case TypeConstants.group.leadership:
+        return (
+          <GroupLeadership
+            editable={this.props.editable}
+            group={this.props.group} />
+        );
+    };
+  }
+
+  renderTitle() {
+    switch (this.props.target) {
+      case TypeConstants.group.general:
+        return 'General Information';
+      case TypeConstants.group.leadership:
+        return 'Leadership Information';
+    };
+  }
+
   render() {
-    var group = this.props.group;
     return (
-      <div style={this.styles.container}>
-        <CardHeader
-          action={(event) => GroupActions.storeOverlay(true, TypeConstants.actions.edit)}
-          content={`Group ${group.name}`}
-          icon={TypeConstants.icons.edit} />
-        <div style={this.styles.section}>
-          <h4>{`Primary Leader: ${group.primary_leader}`}</h4>
-          <h4>{`Secondary Leader: ${group.secondary_leader}`}</h4>
-          <h4>{`Conference: ${group.conference.id}`}</h4>
-          <h4>{`Location: ${group.conference.location}`}</h4>
-        </div>
+      <div style={StyleConstants.cards.show(this.props.media)}>
+        <CardHeader content={this.renderTitle()} />
+        {this.renderBody()}
       </div>
     );
   }

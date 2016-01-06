@@ -5,13 +5,9 @@ class StudentCreateModal extends CreateModal {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      overlay: React.PropTypes.shape({
-        active: React.PropTypes.bool.isRequired,
-        target: React.PropTypes.string.isRequired,
-        type: React.PropTypes.string.isRequired,
-      }).isRequired,
       profile: React.PropTypes.object.isRequired,
       student: React.PropTypes.object.isRequired,
+      template: React.PropTypes.object.isRequired,
     };
   }
 
@@ -20,18 +16,42 @@ class StudentCreateModal extends CreateModal {
   // --------------------------------------------------
   handleClick(event) {
     if (event.target === this._node) {
-      StudentActions.storeOverlay(false);
+      StudentActions.closeOverlay();
     }
+  }
+
+  // --------------------------------------------------
+  // Helpers
+  // --------------------------------------------------
+  createComment() {
+    StudentActions.createComment(
+      this.props.template,
+      this.props.profile,
+      this.props.student,
+    );
   }
 
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
   renderBody() {
+    var template = this.props.template;
     return (
-      <StudentCommentCreate
-        profile={this.props.profile}
-        student={this.props.student} />
+      <div style={this.styles.section}>
+        <CardHeader
+          action={() => this.createComment()}
+          content={'New Comment'}
+          icon={TypeConstants.icons.save} />
+        <div style={StyleConstants.cards.body}>
+          <CardInput
+            action={(event) => StudentActions.storeAttribute(event.target.value)}
+            errors={template.errors[template.key]}
+            focus={true}
+            label={Helpers.humanize(template.key)}
+            placeholder={'Your comment here...'}
+            value={template.value} />
+        </div>
+      </div>
     );
   }
 }

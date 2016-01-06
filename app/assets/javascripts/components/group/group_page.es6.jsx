@@ -13,8 +13,8 @@ class GroupPage extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      conferenceId: React.PropTypes.number.isRequired,
       id: React.PropTypes.number.isRequired,
+      profile: React.PropTypes.object.isRequired,
     };
   }
 
@@ -31,8 +31,7 @@ class GroupPage extends Component {
     ProfileStore.listen(this._listener);
     GroupStore.listen(this._listener);
     ViewStore.listen(this._listener);
-    ProfileActions.fetchProfile();
-    GroupActions.fetchGroup(this.props.conferenceId, this.props.id)
+    GroupActions.fetchGroup(this.props.id)
     ViewActions.attachListener();
   }
 
@@ -42,19 +41,56 @@ class GroupPage extends Component {
     ViewStore.unlisten(this._listener);
   }
 
+  // --------------------------------------------------
+  // Helpers
+  // --------------------------------------------------
+  selectProfile() {
+    return this.state.profile ?
+           this.state.profile :
+           this.props.profile;
+  }
+
+  // --------------------------------------------------
+  // Render
+  // --------------------------------------------------
+  generateOptions() {
+    return [
+      {
+        action: () => GroupActions.toggleEditability(),
+        content: this.state.editable ? 'Finish' : 'Edit',
+      },
+    ];
+  }
+
+
+  renderOverlay() {
+    if (this.state.overlay) {
+      return (
+        <GroupPageOverlay
+          groupables={this.state.groupables}
+          template={this.state.template} />
+      );
+    }
+  }
+
   render() {
+    var group = this.state.group;
     return (
       <div style={StyleConstants.pages.wrapper}>
+        {this.renderOverlay()}
         <Header
           active={true}
-          profile={this.state.profile} />
+          profile={this.selectProfile()} />
         <div style={StyleConstants.pages.container}>
-          <Sidebar
-            active={this.state.profile.has_sidebar}
-            profile={this.state.profile} />
+          <Sidebar profile={this.selectProfile()} />
           <div style={StyleConstants.pages.content}>
+            <PageHeader
+              label={'Group'}
+              options={this.generateOptions()}
+              value={group.full_name} />
             <GroupGrid
-              group={this.state.group}
+              editable={this.state.editable}
+              group={group}
               media={this.state.media} />
           </div>
         </div>

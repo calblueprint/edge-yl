@@ -10,11 +10,11 @@ class SidebarCategories extends Component {
         flexFlow: 'column',
       },
       divider: {
-        marginTop: '12px',
+        marginTop: '6px',
         borderBottom: `1px solid ${StyleConstants.colors.gray}`,
       },
       title: {
-        padding: '6px 12px',
+        padding: '0px 12px',
         marginTop: '12px',
       },
     };
@@ -26,7 +26,7 @@ class SidebarCategories extends Component {
   render() {
     return (
       <div style={this.styles.container}>
-        <h4 style={this.styles.title}>{'General'}</h4>
+        <h5 style={this.styles.title}>{'General'}</h5>
         <SidebarItem
           label={'Conferences'}
           icon={TypeConstants.icons.conference}

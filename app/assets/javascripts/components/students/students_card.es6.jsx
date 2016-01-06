@@ -5,37 +5,40 @@ class StudentsCard extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
+      media: React.PropTypes.string.isRequired,
       student: React.PropTypes.object.isRequired,
-    };
-  }
-
-  // --------------------------------------------------
-  // Styles
-  // --------------------------------------------------
-  get styles() {
-    return {
-      container: Object.assign(
-        {},
-        StyleConstants.cards.index,
-        this.props.media === 'big' && { width: '49%' },
-        this.props.media === 'small' && { width: '100%' }
-      ),
     };
   }
 
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
+  renderSchool() {
+    var school = this.props.student.school;
+    if (school) {
+      return (
+        <CardAttribute
+          clickable={true}
+          label={'School'}
+          route={RouteConstants.schools.show(school.id)}
+          type={'h5'}
+          value={school.name} />
+      );
+    } else {
+      return <CardAttribute label={'School'} />;
+    }
+  }
+
   render() {
     var student = this.props.student;
     return (
-      <div style={this.styles.container}>
+      <div style={StyleConstants.cards.index(this.props.media)}>
         <CardAttribute
           clickable={true}
           label={'Name'}
           route={RouteConstants.students.show(student.id)}
           type={'h4'}
-          value={`${student.first_name} ${student.last_name}`} />
+          value={student.full_name} />
         <CardAttribute
           label={'Cell phone'}
           value={student.cell_phone} />
@@ -51,12 +54,7 @@ class StudentsCard extends Component {
         <CardAttribute
           label={'Status'}
           value={student.registration_status} />
-        <CardAttribute
-          clickable={true}
-          label={'School'}
-          route={RouteConstants.schools.show(student.school.id)}
-          type={'h5'}
-          value={student.school.name} />
+        {this.renderSchool()}
       </div>
     );
   }

@@ -15,8 +15,31 @@
       };
     }
 
+    get conference() {
+      return {
+        general: 'conference-general',
+        statistic: 'conference-statistic',
+      };
+    }
+
+    get group() {
+      return {
+        general: 'group-general',
+        leadership: 'group-leadership',
+      };
+    }
+
+    get school() {
+      return {
+        comment: 'school-comment',
+        contact: 'school-contact',
+        general: 'school-general',
+      };
+    }
+
     get student() {
       return {
+        comment: 'student-comment',
         contact: 'student-contact',
         conference: 'student-conference',
         emergency: 'student-emergency',
@@ -33,6 +56,7 @@
         create: 'fa-pencil',
         edit: 'fa-pencil-square-o',
         expand: 'fa-angle-down',
+        group: 'fa-star',
         mail: 'fa fa-envelope fa-x',
         profile: 'fa fa-user fa-x',
         save: 'fa-save',

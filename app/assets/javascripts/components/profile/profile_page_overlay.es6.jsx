@@ -16,36 +16,21 @@ class ProfilePageOverlay extends PageOverlay {
   }
 
   // --------------------------------------------------
-  // Handlers
+  // Helpers
   // --------------------------------------------------
-  handleClick() {
-    if (event.target === this._node) {
-      ProfileActions.storeOverlay(false);
-    }
+  storeOverlay() {
+    ProfileActions.storeOverlay(false);
   }
 
-  //  --------------------------------------------------
-  //  Render
-  //  --------------------------------------------------
+  // --------------------------------------------------
+  // Render
+  // --------------------------------------------------
   renderModal() {
     return (
       <ProfileEditModal
         overlay={this.props.overlay}
         profile={this.props.profile}
         template={this.props.template} />
-    );
-  }
-
-  render() {
-    return (
-      <div ref={'container'} style={this.styles.container}>
-        <Clickable
-          action={() => ProfileActions.storeOverlay(false)}
-          icon={TypeConstants.icons.close}
-          styles={this.clickableStyles}
-          type={'i'} />
-        {this.renderModal()}
-      </div>
     );
   }
 }

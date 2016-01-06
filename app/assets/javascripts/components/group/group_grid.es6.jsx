@@ -5,21 +5,9 @@ class GroupGrid extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
+      editable: React.PropTypes.bool.isRequired,
       group: React.PropTypes.object.isRequired,
       media: React.PropTypes.string.isRequired,
-    };
-  }
-
-  // --------------------------------------------------
-  // Styles
-  // --------------------------------------------------
-  get styles() {
-    return {
-      container: {
-        display: 'flex',
-        flexFlow: 'column',
-        flex: '1',
-      },
     };
   }
 
@@ -28,13 +16,22 @@ class GroupGrid extends Component {
   // --------------------------------------------------
 
   render() {
-    var group = this.props.group;
     return (
-      <div style={this.styles.container}>
-        <GroupCard group={group} />
+      <div style={StyleConstants.containers.grid}>
+        <GroupCard
+          editable={this.props.editable}
+          group={this.props.group}
+          media={this.props.media}
+          target={TypeConstants.group.general} />
+        <GroupCard
+          editable={this.props.editable}
+          group={this.props.group}
+          media={this.props.media}
+          target={TypeConstants.group.leadership} />
+        <PageHeader label={'Students in this group'} />
         <StudentsGrid
           media={this.props.media}
-          students={group.students} />
+          students={this.props.group.students} />
       </div>
     );
   }

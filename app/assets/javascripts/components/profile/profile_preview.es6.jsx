@@ -24,7 +24,7 @@ class ProfilePreview extends Component {
         }
       ),
       image: {
-        width: '312px',
+        width: '172px',
         borderRadius: '50%',
         marginTop: '4%',
       },
@@ -48,9 +48,7 @@ class ProfilePreview extends Component {
         <img
           src={'https://scontent.fsnc1-1.fna.fbcdn.net/hphotos-xfp1/t31.0-8/11856297_10200932572512494_2256826043885795533_o.jpg'}
           style={this.styles.image} />
-        <h2 style={this.styles.name}>
-          {`${profile.first_name} ${profile.last_name}`}
-        </h2>
+        <h2 style={this.styles.name}>{profile.full_name}</h2>
         <h5 style={this.styles.position}>
           {'Volunteer, Recruitment Group'}
         </h5>

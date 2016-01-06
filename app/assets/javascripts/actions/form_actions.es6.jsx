@@ -4,7 +4,8 @@
     constructor() {
       this.generateActions(
         'storeError',
-        'storeForm'
+        'storeForm',
+        'storeObject',
       );
     }
 
@@ -19,14 +20,18 @@
           );
         }
       );
-      var params = { student: attributes };
-      var resolve = (response) => { console.log(response) };
+      var params = {};
+      params[form.target] = attributes;
+      var resolve = (response) => this.storeObject(response);
       var reject = (response) => this.storeError(response);
+      var route = (form.target === 'school') ?
+                  ApiConstants.schools.create :
+                  ApiConstants.students.create;
       Requester.post(
-        ApiConstants.students.create,
+        route,
         params,
         resolve,
-        reject
+        reject,
       );
       return true;
     }

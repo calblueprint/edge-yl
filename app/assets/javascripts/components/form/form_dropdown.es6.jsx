@@ -87,13 +87,9 @@ class FormDropdown extends Component {
   // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
-  generateHandler(option) {
-    return () => this.setState({ value: option, dropdown: false});
-  }
-
   generateOption(option) {
     return {
-      action: this.generateHandler(option),
+      action: () => this.storeResponse(option),
       content: option,
     };
   }
@@ -103,8 +99,13 @@ class FormDropdown extends Component {
     return options.map((option) => this.generateOption(option));
   }
 
-  hideDropdown() {
-    this.setState({ dropdown: false });
+  storeResponse(option) {
+    var question = this.props.question;
+    FormActions.storeResponse(
+      question.section_id,
+      question.id,
+      option
+    );
   }
 
   // --------------------------------------------------
@@ -114,7 +115,7 @@ class FormDropdown extends Component {
     if (this.state.dropdown) {
       return (
         <Dropdown
-          action={() => this.hideDropdown()}
+          action={() => this.setState({ dropdown: false })}
           options={this.generateOptions()}
           styles={this.dropdownStyles} />
       );
@@ -140,7 +141,7 @@ class FormDropdown extends Component {
             styles={this.clickableStyles}
             type={'i'}>
             <h6 style={this.styles.selected}>
-              {'Select one' + question.value}
+              {question.value || 'Select one'}
             </h6>
           </Clickable>
           {this.renderDropdown()}

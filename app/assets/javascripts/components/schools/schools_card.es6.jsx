@@ -5,6 +5,7 @@ class SchoolsCard extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
+      media: React.PropTypes.string.isRequired,
       school: React.PropTypes.object.isRequired,
     };
   }
@@ -15,12 +16,16 @@ class SchoolsCard extends Component {
   render() {
     var school = this.props.school;
     return (
-      <div style={StyleConstants.cards.index}>
-        <Clickable
-          content={school.name}
+      <div style={StyleConstants.cards.index(this.props.media)}>
+        <CardAttribute
+          clickable={true}
+          label={'Name'}
           route={RouteConstants.schools.show(school.id)}
-          type={'h3'} />
-        <h6>{school.website}</h6>
+          type={'h4'}
+          value={school.name} />
+        <CardAttribute
+          label={'Website'}
+          value={school.website} />
       </div>
     );
   }

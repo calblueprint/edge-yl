@@ -1,4 +1,5 @@
 class AddSqlContribModules < ActiveRecord::Migration
+
   def up
     execute "CREATE EXTENSION IF NOT EXISTS pg_trgm;"
     execute "CREATE EXTENSION IF NOT EXISTS fuzzystrmatch;"
@@ -10,4 +11,5 @@ class AddSqlContribModules < ActiveRecord::Migration
     execute "DROP EXTENSION IF EXISTS fuzzystrmatch;"
     execute "DROP EXTENSION IF EXISTS unaccent;"
   end
+
 end

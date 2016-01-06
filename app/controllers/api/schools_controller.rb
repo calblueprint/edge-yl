@@ -1,15 +1,27 @@
 class Api::SchoolsController < Api::BaseController
 
+  skip_before_filter :authenticate_user, only: [:create]
+
   def create
     school = School.new school_params
-    render json: student, serializer: SchoolBaseSerializer
+    if school.save
+      SchoolMailer.welcome(school).deliver_now
+      render json: school,
+             serializer: SchoolBaseSerializer,
+             status: 201
+    else
+      unprocessable_response school
+    end
   end
 
   def index
     schools = School.page params[:page]
-    render json: schools,
-                 serializer: PaginatedSerializer,
-                 each_serializer: SchoolIndexSerializer
+    respond_to do |format|
+      format.csv { send_data schools.to_csv }
+      format.json { render json: schools,
+                           serializer: PaginatedSerializer,
+                           each_serializer: SchoolIndexSerializer }
+    end
   end
 
   def show

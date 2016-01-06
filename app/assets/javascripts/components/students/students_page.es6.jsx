@@ -14,6 +14,7 @@ class StudentsPage extends Component {
   static get propTypes() {
     return {
       page: React.PropTypes.number.isRequired,
+      profile: React.PropTypes.object.isRequired,
     };
   }
 
@@ -30,7 +31,6 @@ class StudentsPage extends Component {
     ProfileStore.listen(this._listener);
     StudentsStore.listen(this._listener);
     ViewStore.listen(this._listener);
-    ProfileActions.fetchProfile();
     StudentsActions.fetchStudents(this.props.page);
     ViewActions.attachListener();
   }
@@ -42,6 +42,28 @@ class StudentsPage extends Component {
   }
 
   // --------------------------------------------------
+  // Helpers
+  // --------------------------------------------------
+  generateOptions() {
+    return [
+      {
+        content: 'New',
+        route: RouteConstants.forms.student,
+      },
+      {
+        route: ApiConstants.csvs.students,
+        content: 'Export',
+      },
+    ];
+  }
+
+  selectProfile() {
+    return this.state.profile ?
+           this.state.profile :
+           this.props.profile;
+  }
+
+  // --------------------------------------------------
   // Render
   // --------------------------------------------------
   render() {
@@ -49,12 +71,13 @@ class StudentsPage extends Component {
       <div style={StyleConstants.pages.wrapper}>
         <Header
           active={true}
-          profile={this.state.profile} />
+          profile={this.selectProfile()} />
         <div style={StyleConstants.pages.container}>
-          <Sidebar
-            active={this.state.profile.has_sidebar}
-            profile={this.state.profile} />
+          <Sidebar profile={this.selectProfile()} />
           <div style={StyleConstants.pages.content}>
+            <PageHeader
+              label={'Students'}
+              options={this.generateOptions()} />
             <StudentsFilters filters={this.state.filters} />
             <StudentsGrid
               media={this.state.media}

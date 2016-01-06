@@ -1,23 +1,21 @@
-@alphabet = ('A'..'Z').to_a
-@conference = Conference.first
-
 def generate_group(conference)
   new_group = Group.create(
     conference: conference,
-    name: @alphabet.shift,
-    primary_leader: "#{Faker::Name.name}",
-    secondary_leader: "#{Faker::Name.name}",
+    letter: @alphabet.shift,
   )
+  puts "Created #{new_group.full_name} for conference #{@conference.name}."
 end
 
-(1..5).each do
+@alphabet = ('A'..'Z').to_a
+@conference = Conference.first
+
+(1..4).each do
   generate_group(@conference)
-  puts "Created group for conference #{@conference.name}."
 end
 
 Student.all.each do |student|
-  group = Group.find(rand(1..5))
+  group = Group.find(rand(1..4))
   student.group = group
   student.save
-  puts "Assigned #{student.name} to group #{group.name}."
+  puts "Assigned #{student.full_name} to #{group.full_name}."
 end
