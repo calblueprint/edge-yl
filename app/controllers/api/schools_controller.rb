@@ -1,8 +1,17 @@
 class Api::SchoolsController < Api::BaseController
 
+  skip_before_filter :authenticate_user, only: [:create]
+
   def create
     school = School.new school_params
-    render json: student, serializer: SchoolBaseSerializer
+    if school.save
+      SchoolMailer.welcome(school).deliver_now
+      render json: school,
+             serializer: SchoolBaseSerializer,
+             status: 201
+    else
+      unprocessable_response school
+    end
   end
 
   def index
@@ -12,7 +21,7 @@ class Api::SchoolsController < Api::BaseController
       format.json { render json: schools,
                            serializer: PaginatedSerializer,
                            each_serializer: SchoolIndexSerializer }
-    end                 
+    end
   end
 
   def show

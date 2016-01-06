@@ -1,3 +1,106 @@
+school_form = Form.create(
+  target: Form.targets[:school],
+  title: 'School Form',
+) do |form|
+  Section.create(
+    form: form,
+    title: 'General Information',
+  ) do |section|
+    Question.create(
+      key: 'name',
+      placeholder: '...',
+      section: section,
+      style: Question.styles[:input],
+      title: 'School name',
+    )
+    Question.create(
+      is_required: false,
+      key: 'website',
+      placeholder: '...',
+      section: section,
+      style: Question.styles[:input],
+      title: 'School website',
+    )
+    Question.create(
+      key: 'address_one',
+      placeholder: '...',
+      section: section,
+      style: Question.styles[:input],
+      title: 'Address one',
+    )
+    Question.create(
+      is_required: false,
+      key: 'address_two',
+      placeholder: '...',
+      section: section,
+      style: Question.styles[:input],
+      title: 'Address two',
+    )
+    Question.create(
+      key: 'address_city',
+      placeholder: '...',
+      section: section,
+      style: Question.styles[:input],
+      title: 'Address city',
+    )
+    Question.create(
+      key: 'address_state',
+      placeholder: '...',
+      section: section,
+      style: Question.styles[:input],
+      title: 'Address state',
+    )
+    Question.create(
+      key: 'address_zip',
+      placeholder: '...',
+      section: section,
+      style: Question.styles[:input],
+      title: 'Address zip',
+    )
+  end
+  Section.create(
+    form: form,
+    title: 'General Information',
+  ) do |section|
+    Question.create(
+      key: 'contact_first_name',
+      placeholder: '...',
+      section: section,
+      style: Question.styles[:input],
+      title: 'Contact first name',
+    )
+    Question.create(
+      key: 'contact_last_name',
+      placeholder: '...',
+      section: section,
+      style: Question.styles[:input],
+      title: 'Contact last name',
+    )
+    Question.create(
+      key: 'contact_email',
+      placeholder: '...',
+      section: section,
+      style: Question.styles[:input],
+      title: 'Contact email',
+    )
+    Question.create(
+      key: 'contact_phone_number',
+      placeholder: '...',
+      section: section,
+      style: Question.styles[:input],
+      title: 'Contact phone number',
+    )
+    Question.create(
+      key: 'contact_title',
+      placeholder: '...',
+      section: section,
+      style: Question.styles[:input],
+      title: 'Contact title',
+    )
+  end
+end
+puts "Created form #{school_form.title}."
+
 student_form = Form.create(
   target: Form.targets[:student],
   title: 'Student Form',
@@ -97,7 +200,7 @@ student_form = Form.create(
       placeholder: '90474',
       section: section,
       style: Question.styles[:input],
-      title: 'Address ZIP',
+      title: 'Address zip',
     )
     Question.create(
       key: 'shirt_size',

@@ -114,7 +114,7 @@ ActiveRecord::Schema.define(version: 20151226090227) do
     t.string   "contact_phone_number",              null: false
     t.string   "contact_title",                     null: false
     t.string   "name",                              null: false
-    t.string   "website",                           null: false
+    t.string   "website",              default: "", null: false
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
   end

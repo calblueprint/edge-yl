@@ -14,7 +14,7 @@
 #  contact_phone_number :string           not null
 #  contact_title        :string           not null
 #  name                 :string           not null
-#  website              :string           not null
+#  website              :string           default(""), not null
 #  created_at           :datetime         not null
 #  updated_at           :datetime         not null
 #
@@ -38,7 +38,6 @@ class School < ActiveRecord::Base
   validates :contact_phone_number, presence: true
   validates :contact_title, presence: true
   validates :name, presence: true
-  validates :website, presence: true
 
   def self.to_csv
     attributes = School.attribute_names

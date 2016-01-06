@@ -14,7 +14,7 @@ class CreateSchools < ActiveRecord::Migration
       t.string :contact_phone_number, null: false
       t.string :contact_title, null: false
       t.string :name, null: false
-      t.string :website, null: false
+      t.string :website, default: '', null: false
 
       t.timestamps null: false
     end
