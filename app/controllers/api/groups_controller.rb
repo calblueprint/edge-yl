@@ -5,7 +5,7 @@ class Api::GroupsController < Api::BaseController
     if group.save
       render json: group,
              serializer: GroupIndexSerializer,
-             status: 201
+             status: :created
     else
       unprocessable_response group
     end
@@ -23,8 +23,8 @@ class Api::GroupsController < Api::BaseController
     group = Group.includes(:conference, students: :school).find params[:id]
     if group.update_attributes group_params
       render json: group,
-                   serializer: GroupShowSerializer,
-                   status: 201
+             serializer: GroupShowSerializer,
+             status: :created
     else
       unprocessable_response group
     end

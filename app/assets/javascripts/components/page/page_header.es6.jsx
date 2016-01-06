@@ -36,6 +36,12 @@ class PageHeader extends Component {
         width: '100%',
         marginTop: '12px',
       },
+      divider: {
+        padding: '0px 6px',
+      },
+      section: {
+        display: 'flex',
+      },
       title: {
         display: 'flex',
         flexFlow: 'column',
@@ -49,14 +55,22 @@ class PageHeader extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
-  renderOption(option, index) {
+  renderDivider(index, length) {
+    if (index < this.props.options.length - 1) {
+      return <h4 style={this.styles.divider}>{'|'}</h4>;
+    }
+  }
+
+  renderOption(option, index, length) {
     return (
-      <Clickable
-        action={option.action}
-        content={option.content}
-        key={index}
-        route={option.route}
-        type={'h4'} />
+      <div key={index} style={this.styles.section}>
+        <Clickable
+          action={option.action}
+          content={option.content}
+          route={option.route}
+          type={'h4'} />
+        {this.renderDivider(index)}
+      </div>
     );
   }
 

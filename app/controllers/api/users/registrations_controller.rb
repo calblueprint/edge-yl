@@ -9,8 +9,8 @@ class Api::Users::RegistrationsController < Devise::RegistrationsController
     if user.save
       sign_in user
       render json: user,
-                   serializer: UserBaseSerializer,
-                   status: 201
+             serializer: UserBaseSerializer,
+             status: :created
     else
       unprocessable_response user
     end

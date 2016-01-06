@@ -6,8 +6,8 @@ class Api::StudentsController < Api::BaseController
     student = Student.new student_params
     if student.save
       render json: student,
-                   serializer: StudentBaseSerializer,
-                   status: 201
+             serializer: StudentBaseSerializer,
+             status: :created
     else
       unprocessable_response student
     end
@@ -36,8 +36,8 @@ class Api::StudentsController < Api::BaseController
     student = Student.includes(comments: :user).find params[:id]
     if student.update_attributes student_params
       render json: student,
-                   serializer: StudentShowSerializer,
-                   status: 201
+             serializer: StudentShowSerializer,
+             status: :created
     else
       unprocessable_response student
     end

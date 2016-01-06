@@ -26,8 +26,11 @@ class StudentCreateModal extends CreateModal {
   createComment() {
     StudentActions.createComment(
       this.props.template,
-      this.props.profile,
-      this.props.student,
+      {
+        commentable_id: this.props.student.id,
+        commentable_type: 'Student',
+        user_id: this.props.profile.id,
+      },
     );
   }
 
