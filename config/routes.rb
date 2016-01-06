@@ -34,7 +34,7 @@
 
     resources :conferences, only: [:create, :index, :show, :update]
     resources :comments, only: [:create]
-    resources :email, only: [:create]
+    resources :emails, only: [:create]
     resources :forms, only: [:show]
     resources :groups, only: [:create, :show]
     resources :leaderships, only: [:update]
