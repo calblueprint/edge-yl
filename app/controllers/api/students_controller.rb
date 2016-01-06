@@ -7,7 +7,7 @@ class Api::StudentsController < Api::BaseController
     if student.save
       render json: student,
                    serializer: StudentBaseSerializer,
-                   status: 201
+                   status: :created
     else
       unprocessable_response student
     end
@@ -37,7 +37,7 @@ class Api::StudentsController < Api::BaseController
     if student.update_attributes student_params
       render json: student,
                    serializer: StudentShowSerializer,
-                   status: 201
+                   status: :created
     else
       unprocessable_response student
     end

@@ -5,7 +5,7 @@ class Api::LeadershipsController < Api::BaseController
     if leadership.update_attributes leadership_params
       render json: leadership,
                    serializer: LeadershipGroupSerializer,
-                   status: 201
+                   status: :created
     else
       unprocessable_response leadership
     end

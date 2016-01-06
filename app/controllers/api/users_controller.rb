@@ -23,7 +23,7 @@ class Api::UsersController < Api::BaseController
     if user.update_attributes user_params
       render json: user,
                    serializer: UserShowSerializer,
-                   status: 201
+                   status: :created
     else
       unprocessable_response user
     end

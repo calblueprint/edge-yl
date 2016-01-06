@@ -7,11 +7,11 @@ class ApplicationController < ActionController::Base
   end
 
   def unprocessable_response(object)
-    error_response object: object, status: 422
+    error_response object: object, status: :unprocessable_entity
   end
 
   def unauthorized_response
-    error_response message: 'Unauthorized', status: 403
+    error_response message: 'Unauthorized', status: :unauthorized
   end
 
   private

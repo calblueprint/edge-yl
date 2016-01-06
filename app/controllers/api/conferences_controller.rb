@@ -5,7 +5,7 @@ class Api::ConferencesController < Api::BaseController
     if conference.save
       render json: conference,
                    serializer: ConferenceBaseSerializer,
-                   status: 201
+                   status: :created
     else
       unprocessable_response conference
     end
@@ -28,7 +28,7 @@ class Api::ConferencesController < Api::BaseController
     if conference.update_attributes conference_params
       render json: conference,
              serializer: ConferenceShowSerializer,
-             status: 201
+             status: :created
     else
       unprocessable_response conference
     end

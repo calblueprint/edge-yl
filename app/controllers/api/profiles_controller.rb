@@ -5,7 +5,7 @@ class Api::ProfilesController < Api::BaseController
     if profile.update_attributes profile_params
       render json: profile,
                    serializer: ProfileBaseSerializer,
-                   status: 201
+                   status: :created
     else
       unprocessable_response profile
     end
