@@ -56,7 +56,7 @@ class GroupPage extends Component {
   generateOptions() {
     return [
       {
-        action: () => GroupActions.toggleEditability(),
+        action: () => ViewActions.toggleEditability(),
         content: this.state.editable ? 'Finish' : 'Edit',
       },
     ];

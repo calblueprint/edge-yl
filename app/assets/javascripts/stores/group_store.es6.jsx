@@ -2,7 +2,6 @@
   class GroupStore {
 
     constructor() {
-      this.editable = false;
       this.group = {
         conference: {},
         leaderships: [],
@@ -18,7 +17,6 @@
         handleStoreGroupables: GroupActions.STORE_GROUPABLES,
         handleStoreLeadership: GroupActions.STORE_LEADERSHIP,
         handleStoreTemplate: GroupActions.STORE_TEMPLATE,
-        handleToggleEditablity: GroupActions.TOGGLE_EDITABILITY,
       });
     }
 
@@ -50,10 +48,6 @@
     handleStoreTemplate(template) {
       this.overlay = true;
       this.template = template;
-    }
-
-    handleToggleEditablity() {
-      this.editable = !this.editable;
     }
   }
   this.GroupStore = alt.createStore(GroupStore);

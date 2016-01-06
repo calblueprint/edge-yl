@@ -2,9 +2,11 @@
   class ViewStore {
 
     constructor() {
+      this.editable = false;
       this.media = 'big';
       this.bindListeners({
         handleStoreMedia: ViewActions.STORE_MEDIA,
+        handleToggleEditablity: ViewActions.TOGGLE_EDITABILITY,
       });
     }
 
@@ -14,6 +16,10 @@
       } else {
         this.media = 'small';
       }
+    }
+
+    handleToggleEditablity() {
+      this.editable = !this.editable;
     }
   }
   this.ViewStore = alt.createStore(ViewStore);

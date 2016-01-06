@@ -47,7 +47,7 @@ class StudentPage extends Component {
   generateOptions() {
     return [
       {
-        action: () => StudentActions.toggleEditability(),
+        action: () => ViewActions.toggleEditability(),
         content: this.state.editable ? 'Finish' : 'Edit',
       },
     ];

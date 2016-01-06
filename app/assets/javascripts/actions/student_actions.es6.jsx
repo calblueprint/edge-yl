@@ -8,7 +8,6 @@
         'storeComment',
         'storeError',
         'storeStudent',
-        'toggleEditability',
       );
     }
 
