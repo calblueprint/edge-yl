@@ -3,10 +3,10 @@ class PagesController < BaseController
   before_filter :poll_authentication, only: [:login, :signup]
   skip_before_filter :authenticate_user, only: [:login, :signup]
 
-  def login
+  def email
   end
 
-  def mail
+  def login
   end
 
   def profile
