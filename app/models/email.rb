@@ -15,4 +15,13 @@
 
 class Email < ActiveRecord::Base
 
+  before_validation :set_initials, on: :create
+
+  private
+
+  def set_initials
+    self.to ||= ''
+    self.from ||= ''
+  end
+
 end
