@@ -1,6 +1,6 @@
 class EmailIndexSerializer < EmailBaseSerializer
 
   attributes :content, :created_at, :from, :sender,
-             :subject, :recipient, :to,
+             :subject, :recipient, :to
 
 end
