@@ -18,6 +18,29 @@ class EmailsPage extends Component {
   }
 
   // --------------------------------------------------
+  // Lifecycle
+  // --------------------------------------------------
+  componentWillMount() {
+    this.setState(EmailsStore.getState());
+    this.setState(ProfileStore.getState());
+    this.setState(ViewStore.getState());
+  }
+
+  componentDidMount() {
+    EmailsStore.listen(this._listener);
+    StudentsStore.listen(this._listener);
+    ViewStore.listen(this._listener);
+    EmailsActions.fetchEmails();
+    ViewActions.attachListener();
+  }
+
+  componentWillUnmount() {
+    EmailsStore.unlisten(this._listener);
+    StudentsStore.unlisten(this._listener);
+    ViewStore.unlisten(this._listener);
+  }
+
+  // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
   selectProfile() {
