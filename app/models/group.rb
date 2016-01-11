@@ -22,6 +22,7 @@ class Group < ActiveRecord::Base
   after_create :generate_leaderships
 
   validates :letter, presence: true
+  validates_uniqueness_of :letter, scope: :conference_id
 
   def full_name
     "Group #{letter}"
