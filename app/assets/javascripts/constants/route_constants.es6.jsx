@@ -23,10 +23,10 @@
 
     get pages() {
       return {
+        email: '/email',
         login: '/login',
         signup: '/signup',
         profile: '/profile',
-        mail: '/mail',
       };
     }
 

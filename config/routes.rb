@@ -2,6 +2,7 @@
 
   root 'pages#login'
 
+  get 'email', to: 'pages#email'
   get 'login', to: 'pages#login'
   get 'mail', to: 'pages#mail'
   get 'signup', to: 'pages#signup'

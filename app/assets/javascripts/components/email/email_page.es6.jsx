@@ -39,8 +39,7 @@ class EmailPage extends Component {
           <Sidebar profile={this.selectProfile()} />
           <div style={StyleConstants.pages.content}>
             <PageHeader
-              label={'Inbox'}
-              options={this.generateOptions()} />
+              label={'Inbox'} />
           </div>
         </div>
       </div>
