@@ -81,7 +81,7 @@ class HeaderShortcuts extends Component {
         <Clickable
           key={1}
           icon={TypeConstants.icons.email}
-          route={RouteConstants.pages.email}
+          route={RouteConstants.emails.index}
           styles={this.clickableStyles}
           type={'i'} />,
         <Clickable

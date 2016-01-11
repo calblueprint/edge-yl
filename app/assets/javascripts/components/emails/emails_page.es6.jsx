@@ -1,4 +1,4 @@
-class EmailPage extends Component {
+class EmailsPage extends Component {
 
   // --------------------------------------------------
   // Setup
