@@ -61,8 +61,10 @@ class EmailsPage extends Component {
         <div style={StyleConstants.pages.container}>
           <Sidebar profile={this.selectProfile()} />
           <div style={StyleConstants.pages.content}>
-            <PageHeader
-              label={'Inbox'} />
+            <PageHeader label={'Inbox'} />
+            <EmailsGrid
+              emails={this.state.emails}
+              media={this.state.media} />
           </div>
         </div>
       </div>
