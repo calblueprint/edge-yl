@@ -2,12 +2,13 @@
 
   root 'pages#login'
 
+  get 'email', to: 'pages#email'
   get 'login', to: 'pages#login'
-  get 'mail', to: 'pages#mail'
   get 'signup', to: 'pages#signup'
   get 'profile', to: 'users#profile'
 
   resources :conferences, only: [:index, :show]
+  resources :emails, only: [:index]
   resources :forms, only: [:show]
   resources :groups, only: [:show]
   resources :students, only: [:index, :show]
@@ -34,6 +35,7 @@
 
     resources :conferences, only: [:create, :index, :show, :update]
     resources :comments, only: [:create]
+    resources :emails, only: [:create, :index]
     resources :forms, only: [:show]
     resources :groups, only: [:create, :show]
     resources :leaderships, only: [:update]

@@ -8,6 +8,12 @@
       };
     }
 
+    get emails() {
+      return {
+        index: '/emails',
+      };
+    }
+
     get forms() {
       return {
         student: '/forms/1',
@@ -26,7 +32,6 @@
         login: '/login',
         signup: '/signup',
         profile: '/profile',
-        mail: '/mail',
       };
     }
 

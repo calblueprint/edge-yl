@@ -6,9 +6,6 @@ class PagesController < BaseController
   def login
   end
 
-  def mail
-  end
-
   def profile
   end
 

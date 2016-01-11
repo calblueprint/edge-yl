@@ -22,6 +22,12 @@
       };
     }
 
+    get emails() {
+      return {
+        index: '/api/emails',
+      };
+    }
+
     get forms() {
       return {
         show: (id) => `/api/forms/${id}`,
