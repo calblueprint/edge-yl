@@ -2,27 +2,40 @@
   class UserStore {
 
     constructor() {
-      this.overlay = {
-        active: false,
-        target: '',
-        type: '',
-      };
+      this.overlay = false;
       this.user = {
         responsibilities: [],
       };
+      this.template = {};
       this.bindListeners({
-        handleStoreOverlay: UserActions.STORE_OVERLAY,
+        handleCloseOverlay: UserActions.CLOSE_OVERLAY,
+        handleStoreAttribute: UserActions.STORE_ATTRIBUTE,
+        handleStoreError: UserActions.STORE_ERROR,
+        handleStoreTemplate: UserActions.STORE_TEMPLATE,
         handleStoreUser: UserActions.STORE_USER,
       });
     }
 
-    handleStoreOverlay(overlay) {
-      this.overlay = overlay;
+    handleCloseOverlay() {
+      this.overlay = false;
+    }
+
+    handleStoreAttribute(value) {
+      this.template.value = value;
+    }
+
+    handleStoreError(response) {
+      this.template.errors = response.errors;
+    }
+
+    handleStoreTemplate(template) {
+      this.overlay = true;
+      this.template = template;
     }
 
     handleStoreUser(response) {
+      this.overlay = false;
       this.user = response.user;
-      this.overlay.active = false;
     }
   }
   this.UserStore = alt.createStore(UserStore);
