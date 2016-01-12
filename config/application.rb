@@ -18,7 +18,7 @@ module EdgeYl
         :routing_specs => false,
         :controller_specs => true,
         :request_specs => true
-      g.fixture_replacement :factory_girl, :dir => "spec/factories"
+      g.fixture_replacement :factory_girl, :dir => 'spec/factories'
     end
 
     # Settings in config/environments/* take precedence over those specified here.
@@ -35,5 +35,8 @@ module EdgeYl
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    # Autoload all serializers within serializers directory
+    config.autoload_paths += Dir[Rails.root.join('app', 'serializers', '**/')]
   end
 end
