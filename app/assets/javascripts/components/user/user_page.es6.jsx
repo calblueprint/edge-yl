@@ -50,7 +50,7 @@ class UserPage extends Component {
   // Render
   // --------------------------------------------------
   renderOverlay() {
-    if (this.state.overlay.active) {
+    if (this.state.overlay) {
       return (
         <PageOverlay
           overlay={this.state.overlay}
