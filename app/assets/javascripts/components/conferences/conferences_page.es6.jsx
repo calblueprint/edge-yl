@@ -61,11 +61,7 @@ class ConferencesPage extends Component {
 
   storeOverlay() {
     // TODO(Warren): Fix constants below.
-    ConferencesActions.storeOverlay(
-      true,
-      TypeConstants.actions.edit,
-      TypeConstants.conference
-    );
+    ConferencesActions.storeTemplate();
   }
 
   // --------------------------------------------------
@@ -73,11 +69,7 @@ class ConferencesPage extends Component {
   // --------------------------------------------------
   renderOverlay() {
     if (this.state.overlay) {
-      return (
-        <ConferencesPageOverlay
-          overlay={this.state.overlay}
-          template={this.state.template} />
-      );
+      return <ConferencesPageOverlay template={this.state.template} />;
     }
   }
 

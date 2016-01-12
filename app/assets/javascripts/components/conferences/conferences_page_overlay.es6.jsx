@@ -5,11 +5,6 @@ class ConferencesPageOverlay extends PageOverlay {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      overlay: React.PropTypes.shape({
-        active: React.PropTypes.bool.isRequired,
-        target: React.PropTypes.string.isRequired,
-        type: React.PropTypes.string.isRequired,
-      }).isRequired,
       template: React.PropTypes.object.isRequired,
     };
   }
@@ -18,17 +13,13 @@ class ConferencesPageOverlay extends PageOverlay {
   // Helpers
   // --------------------------------------------------
   storeOverlay() {
-    ConferencesActions.storeOverlay(false);
+    ConferencesActions.closeOverlay();
   }
 
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
   renderModal() {
-    return (
-      <ConferencesCreateModal
-        overlay={this.props.overlay}
-        template={this.props.template} />
-    );
+    return <ConferencesCreateModal template={this.props.template} />;
   }
 }

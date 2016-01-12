@@ -3,20 +3,24 @@
 
     constructor() {
       this.conferences = [];
+      this.overlay = false;
       this.pagination = {
         current: 1,
         limit: 1,
       };
-      this.template = {
-        errors: {},
-      };
+      this.template = {};
       this.bindListeners({
+        handleCloseOverlay: ConferencesActions.CLOSE_OVERLAY,
         handleStoreAttribute: ConferencesActions.STORE_ATTRIBUTE,
         handleStoreConference: ConferencesActions.STORE_CONFERENCE,
         handleStoreConferences: ConferencesActions.STORE_CONFERENCES,
         handleStoreError: ConferencesActions.STORE_ERROR,
-        handleStoreOverlay: ConferencesActions.STORE_OVERLAY,
+        handleStoreTemplate: ConferencesActions.STORE_TEMPLATE,
       });
+    }
+
+    handleCloseOverlay() {
+      this.overlay = false;
     }
 
     handleStoreAttribute(attribute) {
@@ -37,10 +41,9 @@
       this.template.errors = response.errors;
     }
 
-    handleStoreOverlay(overlay) {
-      this.overlay = overlay;
-      this.template = {};
-      this.template.errors = {};
+    handleStoreTemplate(template) {
+      this.overlay = true;
+      this.template = template;
     }
   }
   this.ConferencesStore = alt.createStore(ConferencesStore);
