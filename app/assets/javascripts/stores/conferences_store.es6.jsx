@@ -28,7 +28,7 @@
     }
 
     handleStoreConference(response) {
-      this.overlay.active = false;
+      this.overlay = false;
       this.conferences.push(response.conference);
     }
 
