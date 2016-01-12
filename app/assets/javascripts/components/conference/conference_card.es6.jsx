@@ -32,6 +32,8 @@ class ConferenceCard extends Component {
     switch (this.props.target) {
       case TypeConstants.conference.general:
         return <ConferenceGeneral conference={this.props.conference} />;
+      case TypeConstants.conference.statistic:
+        return <ConferenceStatistic conference={this.props.conference} />;
     }
   }
 
