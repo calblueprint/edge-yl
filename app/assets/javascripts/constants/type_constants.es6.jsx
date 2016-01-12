@@ -50,20 +50,20 @@
 
     get icons() {
       return {
-        bars: 'fa fa-bars fa-x',
         close: 'fa fa-times fa-2x',
         conference: 'fa-building',
         create: 'fa-pencil',
         edit: 'fa-pencil-square-o',
-        email: 'fa fa-envelope fa-x',
+        email: 'fa-envelope',
         expand: 'fa-angle-down',
         group: 'fa-star',
-        profile: 'fa fa-user fa-x',
+        hamburger: 'fa-bars',
         save: 'fa-save',
         school: 'fa-university',
         search: 'fa-search',
+        settings: 'fa-cog',
         student: 'fa-graduation-cap',
-        volunteer: 'fa-users',
+        volunteer: 'fa-user',
       };
     }
   }

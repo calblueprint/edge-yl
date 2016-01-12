@@ -15,14 +15,6 @@
       };
     }
 
-    storeOverlay(active, type, target) {
-      return {
-        active: active,
-        target: target,
-        type: type,
-      };
-    }
-
     toggleSidebar(id, status) {
       var attributes = { has_sidebar: status };
       var params = { profile: attributes };

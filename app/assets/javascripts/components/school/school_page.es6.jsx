@@ -84,7 +84,7 @@ class SchoolPage extends Component {
         <div style={StyleConstants.pages.container}>
           <Sidebar profile={this.selectProfile()} />
           <div style={StyleConstants.pages.content}>
-            <PageHeader
+            <GridHeader
               clickable={true}
               content={'Edit'}
               label={'School'}

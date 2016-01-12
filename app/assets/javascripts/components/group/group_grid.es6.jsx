@@ -28,7 +28,7 @@ class GroupGrid extends Component {
           group={this.props.group}
           media={this.props.media}
           target={TypeConstants.group.leadership} />
-        <PageHeader label={'Students in this group'} />
+        <GridHeader label={'Students in this group'} />
         <StudentsGrid
           media={this.props.media}
           students={this.props.group.students} />

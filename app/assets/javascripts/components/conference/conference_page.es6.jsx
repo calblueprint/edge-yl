@@ -72,7 +72,7 @@ class ConferencePage extends Component {
   // Render
   // --------------------------------------------------
   renderOverlay() {
-    if (this.state.overlay.active) {
+    if (this.state.overlay) {
       return (
         <ConferencePageOverlay
           overlay={this.state.overlay}
@@ -92,7 +92,7 @@ class ConferencePage extends Component {
         <div style={StyleConstants.pages.container}>
           <Sidebar profile={this.selectProfile()} />
           <div style={StyleConstants.pages.content}>
-            <PageHeader
+            <GridHeader
               label={'Conference'}
               options={this.generateOptions()}
               value={conference.name} />
