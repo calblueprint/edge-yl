@@ -5,6 +5,7 @@ class ProfileGrid extends Component {
 // --------------------------------------------------
 static get propTypes() {
   return {
+    editable: React.PropTypes.bool.isRequired,
     profile: React.PropTypes.object.isRequired,
   }
 }
@@ -29,7 +30,9 @@ static get propTypes() {
     return (
       <div style = {this.styles.container}>
         <ProfilePreview profile={this.props.profile} />
-        <ProfileOptions profile={this.props.profile} />
+        <ProfileOptions
+          editable={this.props.editable}
+          profile={this.props.profile} />
       </div>
     );
   }

@@ -3,15 +3,22 @@
 
     constructor() {
       this.generateActions(
+        'closeOverlay',
+        'storeAttribute',
         'storeError',
         'storeProfile',
       );
     }
 
-    storeAttribute(key, value) {
+    storeTemplate(options) {
       return {
-        key: key,
-        value: value,
+        choices: options.choices,
+        errors: {},
+        id: options.id,
+        key: options.key,
+        model: options.model,
+        type: options.type,
+        value: options.value,
       };
     }
 
@@ -27,23 +34,13 @@
       return true;
     }
 
-    updateProfile(profile, template) {
-      var id = profile.id;
-      var attributes = Object.assign({}, template);
-      Object.keys(attributes).map((key) => {
-        if (typeof(attributes[key]) === 'object' ||
-          profile[key] === attributes[key]) {
-          delete attributes[key];
-        }
-      });
-      if (attributes.errors) {
-        delete attributes.errors;
-      }
+    updateProfile(template, attributes={}) {
+      attributes[template.key] = template.value;
       var params = { user: attributes };
       var resolve = (response) => this.storeProfile(response);
       var reject = (response) => this.storeError(response);
       Requester.update(
-        ApiConstants.users.update(id),
+        ApiConstants.users.update(template.id),
         params,
         resolve,
         reject,

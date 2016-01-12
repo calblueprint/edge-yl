@@ -5,77 +5,55 @@ class ProfileOptions extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
+      editable: React.PropTypes.bool.isRequired,
       profile: React.PropTypes.object.isRequired,
-    };
-  }
-
-  // --------------------------------------------------
-  // Styles
-  // --------------------------------------------------
-  get styles() {
-    return {
-      container: Object.assign(
-        {},
-        StyleConstants.containers.card,
-        {
-          padding: '24px',
-          marginTop: '12px',
-        }
-      ),
-      row: {
-        display: 'flex',
-        justifyContent: 'space-between',
-        paddingTop: '24px',
-      },
     };
   }
 
   // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
-  showOverlay() {
-    ProfileActions.storeOverlay(
-      true,
-      TypeConstants.actions.edit,
-      'profile'
-    );
+  storeTemplate(key, choices) {
+    var profile = this.props.profile;
+    ProfileActions.storeTemplate({
+      choices: choices,
+      id: profile.id,
+      key: key,
+      model: 'profile',
+      type: choices ? 'dropdown' : 'input',
+      value: profile[key],
+    });
   }
 
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
-  renderAttribute(attribute, index) {
-    return (
-      <div key={index} style={this.styles.row}>
-        <h4>{attribute}</h4>
-        <Clickable
-          content={'Edit'}
-          action={() => this.showOverlay()}
-          type={'h4'} />
-      </div>
-    );
-  }
-
-  renderAttributes() {
-    var profile = this.props.profile;
-    var attributes = [
-      `First name: ${profile.first_name}`,
-      `Last name: ${profile.last_name}`,
-      `Email: ${profile.email}`,
-    ];
-    return attributes.map((attribute, index) => this.renderAttribute(attribute, index));
-  }
-
   render() {
     var profile = this.props.profile;
     return (
-      <div style={this.styles.container}>
-        {this.renderAttributes()}
-        <div style={this.styles.row}>
-          <h4>{'Password: **********'}</h4>
+      <div style={StyleConstants.cards.show(this.props.media)}>
+        <CardHeader content={`Profile ${profile.id}`} />
+        <div style={StyleConstants.cards.body}>
+          <CardAttribute
+            action={() => this.storeTemplate('first_name')}
+            editable={this.props.editable}
+            label={'First name'}
+            value={profile.first_name} />
+          <CardAttribute
+            action={() => this.storeTemplate('last_name')}
+            editable={this.props.editable}
+            label={'Last name'}
+            value={profile.last_name} />
+          <CardAttribute
+            action={() => this.storeTemplate('email')}
+            editable={this.props.editable}
+            label={'Email'}
+            value={profile.email} />
+          <CardAttribute
+            label={'Password'}
+            value={'**********'} />
         </div>
       </div>
     );
   }
 }
-
