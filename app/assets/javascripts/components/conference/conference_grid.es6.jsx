@@ -45,7 +45,7 @@ class ConferenceGrid extends Component {
           conference={this.props.conference}
           media={this.props.media}
           target={TypeConstants.conference.statistic} />
-        <PageHeader
+        <GridHeader
           label={'Groups in this conference'}
           options={this.generateOptions()} />
         <GroupsGrid
