@@ -1,4 +1,4 @@
-class PageHeader extends Component {
+class GridHeader extends Component {
 
   // --------------------------------------------------
   // Props

@@ -10,13 +10,38 @@ class HeaderShortcuts extends Component {
     };
   }
 
+  // --------------------------------------------------
+  // Styles
+  // --------------------------------------------------
+  get styles() {
+    return {
+      container: {
+        display: 'flex',
+        flexFlow: 'column',
+        width: StyleConstants.widths.sidebar,
+        height: StyleConstants.heights.header,
+        paddingRight: '6px',
+        boxSizing: 'border-box',
+      },
+      section: {
+        display: 'flex',
+        justifyContent: 'flex-end',
+        alignContent: 'center',
+        alignSelf: 'stretch',
+        minHeight: StyleConstants.heights.header,
+      },
+    };
+  }
+
   get clickableStyles() {
     return {
       default: {
-        padding: '8px',
-        marginLeft: '8px',
+        display: 'flex',
+        flexFlow: 'column',
+        justifyContent: 'center',
+        alignSelf: 'stretch',
+        padding: '0px 12px',
         color: StyleConstants.colors.opaque,
-        fontSize: '20px',
       },
       hover: {
         color: StyleConstants.colors.white,
@@ -42,10 +67,7 @@ class HeaderShortcuts extends Component {
         {},
         StyleConstants.containers.card,
         {
-          position: 'absolute',
-          width: '128px',
-          top: '44px',
-          right: '0px',
+          marginTop: '0px',
         }
       ),
     };
@@ -81,26 +103,26 @@ class HeaderShortcuts extends Component {
 
   renderShortcuts() {
     if (this.props.active) {
-      return [
-        <Clickable
-          key={1}
-          icon={TypeConstants.icons.email}
-          route={RouteConstants.emails.index}
-          styles={this.clickableStyles}
-          type={'i'} />,
-        <Clickable
-          action={() => HeaderActions.toggleDropdown()}
-          key={2}
-          icon={TypeConstants.icons.profile}
-          styles={this.clickableStyles}
-          type={'i'} />,
-      ];
+      return (
+        <div style={this.styles.section}>
+          <Clickable
+            icon={TypeConstants.icons.email}
+            route={RouteConstants.emails.index}
+            styles={this.clickableStyles}
+            type={'i'} />
+          <Clickable
+            action={() => HeaderActions.toggleDropdown()}
+            icon={TypeConstants.icons.settings}
+            styles={this.clickableStyles}
+            type={'i'} />
+        </div>
+      );
     }
   }
 
   render() {
     return (
-      <div style={StyleConstants.containers.header(false)}>
+      <div style={this.styles.container}>
         {this.renderShortcuts()}
         {this.renderDropdown()}
       </div>

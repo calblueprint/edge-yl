@@ -69,8 +69,8 @@
             width: this.widths.sidebar,
             boxSizing: 'border-box',
           },
-          left && { paddingLeft: '12px' },
-          !left && { paddingRight: '12px', justifyContent: 'flex-end' }
+          left && { paddingLeft: '6px' },
+          !left && { paddingRight: '6px', justifyContent: 'flex-end' }
         )
       };
     }

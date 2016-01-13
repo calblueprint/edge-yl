@@ -47,10 +47,12 @@ class Header extends Component {
   get clickableStyles() {
     return {
       default: {
-        padding: '8px',
-        marginLeft: '8px',
+        display: 'flex',
+        flexFlow: 'column',
+        justifyContent: 'center',
+        alignSelf: 'stretch',
+        padding: '0px 12px',
         color: StyleConstants.colors.opaque,
-        fontSize: '20px',
       },
       hover: {
         color: StyleConstants.colors.white,
@@ -90,7 +92,7 @@ class Header extends Component {
       return (
         <Clickable
           action={() => this.toggleSidebar()}
-          icon={TypeConstants.icons.bars}
+          icon={TypeConstants.icons.hamburger}
           styles={this.clickableStyles}
           type={'i'} />
       );
