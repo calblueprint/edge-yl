@@ -32,6 +32,7 @@
         login: '/login',
         signup: '/signup',
         profile: '/profile',
+        feedback: '/feedback'
       };
     }
 

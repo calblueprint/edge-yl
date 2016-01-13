@@ -5,6 +5,7 @@
   get 'email', to: 'pages#email'
   get 'login', to: 'pages#login'
   get 'signup', to: 'pages#signup'
+  get 'feedback', to: 'pages#feedback'
   get 'profile', to: 'users#profile'
 
   resources :conferences, only: [:index, :show]
@@ -36,6 +37,7 @@
     resources :conferences, only: [:create, :index, :show, :update]
     resources :comments, only: [:create]
     resources :emails, only: [:create, :index]
+    resources :feedbacks, only: [:create]
     resources :forms, only: [:show]
     resources :groups, only: [:create, :show]
     resources :leaderships, only: [:update]
