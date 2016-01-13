@@ -12,6 +12,9 @@ class PagesController < BaseController
   def signup
   end
 
+  def feedback
+  end
+
   private
 
   def poll_authentication

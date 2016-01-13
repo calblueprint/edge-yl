@@ -96,6 +96,12 @@
         update: (id) => `/api/users/${id}`,
       };
     }
+
+    get feedbacks() {
+      return {
+        create: '/api/feedbacks'
+      };
+    }
   }
   this.ApiConstants = new ApiConstants();
 })();
