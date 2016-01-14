@@ -1,11 +1,10 @@
-class UserLeadership extends UserCard {
+class UserLeadership extends Component {
 
   // --------------------------------------------------
   // Props
   // --------------------------------------------------
   static get propTypes() {
     return {
-      editable: React.PropTypes.bool.isRequired,
       media: React.PropTypes.string.isRequired,
       user: React.PropTypes.object.isRequired,
     };
@@ -24,6 +23,12 @@ class UserLeadership extends UserCard {
             value={leadership.group.full_name} />
         );
       }
+    } else {
+      return (
+        <CardAttribute
+          label={'Group'}
+          value={'n/a'} />
+      );
     }
   }
 
@@ -34,6 +39,12 @@ class UserLeadership extends UserCard {
         <CardAttribute
           label={'Leadership Type'}
           value={leadership.style} />
+      );
+    } else {
+      return (
+        <CardAttribute
+          label={'Leadership Type'}
+          value={'n/a'} />
       );
     }
   }

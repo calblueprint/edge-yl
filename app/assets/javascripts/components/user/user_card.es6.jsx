@@ -38,7 +38,6 @@ class UserCard extends Component {
           media={this.props.media}
           user={this.props.user} />
         <UserLeadership
-          editable={this.props.editable}
           media={this.props.media}
           user={this.props.user} />
       </div>
