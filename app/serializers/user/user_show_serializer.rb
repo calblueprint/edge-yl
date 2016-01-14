@@ -4,4 +4,6 @@ class UserShowSerializer < UserIndexSerializer
 
   has_many :responsibilities, serializer: ResponsibilityIndexSerializer
 
+  has_one :leadership, serializer: LeadershipBaseSerializer
+
 end

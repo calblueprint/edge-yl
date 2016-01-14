@@ -90,6 +90,7 @@ class UserPage extends Component {
               value={user.full_name} />
             <UserCard
               editable={this.state.editable}
+              media={this.state.media}
               user={user} />
             <ResponsibilitiesGrid responsibilities={user.responsibilities} />
           </div>

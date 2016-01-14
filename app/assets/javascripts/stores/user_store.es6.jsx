@@ -5,6 +5,7 @@
       this.overlay = false;
       this.user = {
         responsibilities: [],
+        leadership: {},
       };
       this.template = {};
       this.bindListeners({
