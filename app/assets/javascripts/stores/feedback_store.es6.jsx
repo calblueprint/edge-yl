@@ -3,18 +3,21 @@
 
     constructor() {
       this.template = {
+        content: '',
+        errors: {},
         message: '',
         type: 'entry',
-        errors: {},
-        content: '',
       };
       this.bindListeners({
+        handleSaveFeedback: FeedbackActions.SAVE_FEEDBACK,
         handleStoreFeedback: FeedbackActions.STORE_FEEDBACK,
         handleStoreMessage: FeedbackActions.STORE_MESSAGE,
-        handleSaveFeedback: FeedbackActions.SAVE_FEEDBACK,
       });
     }
 
+    handleSaveFeedback(feedback) {
+      this.template.content = feedback;
+    }
 
     handleStoreMessage(response) {
       this.template.errors = response.errors;
@@ -22,9 +25,6 @@
 
     handleStoreFeedback(response) {
       this.template.type = 'done';
-    }
-    handleSaveFeedback(feedback) {
-      this.template.content = feedback;
     }
   }
   this.FeedbackStore = alt.createStore(FeedbackStore);

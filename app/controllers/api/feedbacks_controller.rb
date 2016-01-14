@@ -1,9 +1,7 @@
 class Api::FeedbacksController < Api::BaseController
 
-  skip_before_filter :authenticate_user
-
   def create
-    feedback = Feedback.new feedback_params(params)
+    feedback = Feedback.new feedback_params
     if feedback.save
       render json: { message: 'Received' }, status: :created
     else
@@ -13,7 +11,7 @@ class Api::FeedbacksController < Api::BaseController
 
   private
 
-  def feedback_params(params)
+  def feedback_params
     params.require(:feedback).permit(
       :content,
       :user_id

@@ -3,9 +3,9 @@
   root 'pages#login'
 
   get 'email', to: 'pages#email'
+  get 'feedback', to: 'pages#feedback'
   get 'login', to: 'pages#login'
   get 'signup', to: 'pages#signup'
-  get 'feedback', to: 'pages#feedback'
   get 'profile', to: 'users#profile'
 
   resources :conferences, only: [:index, :show]

@@ -5,8 +5,8 @@ class FeedbackForm extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      template: React.PropTypes.object.isRequired,
       profile: React.PropTypes.object.isRequired,
+      template: React.PropTypes.object.isRequired,
     };
   }
 
