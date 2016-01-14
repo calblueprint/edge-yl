@@ -68,9 +68,8 @@ class FeedbackPage extends Component {
         <Header active={false} />
         <div style={this.styles.container}>
           <FeedbackCard
-            template={this.state.template}
             profile={this.props.profile}
-          />
+            template={this.state.template} />
         </div>
       </div>
     );

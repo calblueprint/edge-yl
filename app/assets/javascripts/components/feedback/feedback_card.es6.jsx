@@ -5,8 +5,8 @@ class FeedbackCard extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      template: React.PropTypes.object.isRequired,
       profile: React.PropTypes.object.isRequired,
+      template: React.PropTypes.object.isRequired,
     };
   }
 
@@ -37,10 +37,11 @@ class FeedbackCard extends Component {
   // --------------------------------------------------
   renderForm() {
     if (this.props.template.type === 'entry') {
-      return <FeedbackForm
+      return (
+        <FeedbackForm
            template={this.props.template}
-           profile ={this.props.profile}
-        />;
+           profile ={this.props.profile} />
+           );
     } else {
       return <span>Thank you for submitting your feedback.</span>;
     }
