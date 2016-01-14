@@ -48,6 +48,13 @@
       };
     }
 
+    get user() {
+      return {
+        general: 'user-generap',
+        leadership: 'user-leadership',
+      };
+    }
+
     get icons() {
       return {
         close: 'fa fa-times fa-2x',

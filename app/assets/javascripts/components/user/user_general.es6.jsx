@@ -1,4 +1,4 @@
-class UserGeneral extends UserCard {
+class UserGeneral extends Component {
 
   // --------------------------------------------------
   // Props
@@ -6,9 +6,23 @@ class UserGeneral extends UserCard {
   static get propTypes() {
     return {
       editable: React.PropTypes.bool.isRequired,
-      media: React.PropTypes.string.isRequired,
       user: React.PropTypes.object.isRequired,
     };
+  }
+
+  // --------------------------------------------------
+  // Helpers
+  // --------------------------------------------------
+  storeTemplate(key, choices) {
+    var user = this.props.user;
+    UserActions.storeTemplate({
+      choices: choices,
+      id: user.id,
+      key: key,
+      model: 'user',
+      type: choices ? 'dropdown' : 'input',
+      value: user[key],
+    });
   }
 
   // --------------------------------------------------
@@ -17,25 +31,22 @@ class UserGeneral extends UserCard {
   render() {
     var user = this.props.user;
     return (
-      <div style={StyleConstants.cards.show(this.props.media)}>
-        <CardHeader content={`General Information`} />
-        <div style={StyleConstants.cards.body}>
-          <CardAttribute
-            action={() => this.storeTemplate('first_name')}
-            editable={this.props.editable}
-            label={'First name'}
-            value={user.first_name} />
-          <CardAttribute
-            action={() => this.storeTemplate('last_name')}
-            editable={this.props.editable}
-            label={'Last name'}
-            value={user.last_name} />
-          <CardAttribute
-            action={() => this.storeTemplate('email')}
-            editable={this.props.editable}
-            label={'Email'}
-            value={user.email} />
-        </div>
+      <div style={StyleConstants.cards.body}>
+        <CardAttribute
+          action={() => this.storeTemplate('first_name')}
+          editable={this.props.editable}
+          label={'First name'}
+          value={user.first_name} />
+        <CardAttribute
+          action={() => this.storeTemplate('last_name')}
+          editable={this.props.editable}
+          label={'Last name'}
+          value={user.last_name} />
+        <CardAttribute
+          action={() => this.storeTemplate('email')}
+          editable={this.props.editable}
+          label={'Email'}
+          value={user.email} />
       </div>
     );
   }

@@ -5,7 +5,6 @@ class UserLeadership extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      media: React.PropTypes.string.isRequired,
       user: React.PropTypes.object.isRequired,
     };
   }
@@ -51,12 +50,9 @@ class UserLeadership extends Component {
 
   render() {
     return (
-      <div style={StyleConstants.cards.show(this.props.media)}>
-        <CardHeader content={`Leadership Information`} />
-        <div style={StyleConstants.cards.body}>
-          {this.renderLeadership()}
-          {this.renderGroup()}
-        </div>
+      <div style={StyleConstants.cards.body}>
+        {this.renderLeadership()}
+        {this.renderGroup()}
       </div>
     );
   }

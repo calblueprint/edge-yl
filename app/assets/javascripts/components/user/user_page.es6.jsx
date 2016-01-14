@@ -88,7 +88,7 @@ class UserPage extends Component {
               label={'Volunteer'}
               options={this.generateOptions()}
               value={user.full_name} />
-            <UserCard
+            <UserGrid
               editable={this.state.editable}
               media={this.state.media}
               user={user} />

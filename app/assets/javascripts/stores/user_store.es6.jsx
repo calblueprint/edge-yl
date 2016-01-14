@@ -4,8 +4,8 @@
     constructor() {
       this.overlay = false;
       this.user = {
-        responsibilities: [],
         leadership: {},
+        responsibilities: [],
       };
       this.template = {};
       this.bindListeners({
