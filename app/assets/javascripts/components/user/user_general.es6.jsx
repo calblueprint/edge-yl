@@ -14,7 +14,6 @@ class UserGeneral extends UserCard {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
-
   render() {
     var user = this.props.user;
     return (
