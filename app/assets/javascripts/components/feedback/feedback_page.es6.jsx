@@ -12,12 +12,11 @@ class FeedbackPage extends Component {
   // Props
   // --------------------------------------------------
 
-  static get PropTypes() {
+  static get propTypes() {
     return {
       profile: React.PropTypes.object.isRequired,
-    }
+    };
   }
-
 
   // --------------------------------------------------
   // Styles

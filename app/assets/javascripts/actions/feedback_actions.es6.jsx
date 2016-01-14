@@ -11,9 +11,9 @@
 
     createFeedback(template, profile) {
       var params = {
-                     content: template.content,
-                     user_id: profile.id,
-                   };
+        content: template.content,
+        user_id: profile.id,
+      };
       var resolve = (response) => { this.storeFeedback(response); };
       var reject = (response) => { this.storeMessage(response); }
       Requester.post(
@@ -23,7 +23,6 @@
         reject,
       );
       return true;
-
     }
 
   }

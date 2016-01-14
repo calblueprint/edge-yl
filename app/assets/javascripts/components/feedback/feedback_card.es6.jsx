@@ -41,7 +41,7 @@ class FeedbackCard extends Component {
         <FeedbackForm
            template={this.props.template}
            profile ={this.props.profile} />
-           );
+      );
     } else {
       return <span>Thank you for submitting your feedback.</span>;
     }

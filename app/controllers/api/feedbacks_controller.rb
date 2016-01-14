@@ -14,7 +14,7 @@ class Api::FeedbacksController < Api::BaseController
   def feedback_params
     params.require(:feedback).permit(
       :content,
-      :user_id
+      :user_id,
     )
   end
 
