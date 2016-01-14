@@ -1,4 +1,4 @@
-class ProfileEditModal extends EditModal {
+class UserEditModal extends EditModal {
 
   // --------------------------------------------------
   // Props
@@ -14,15 +14,15 @@ class ProfileEditModal extends EditModal {
   // --------------------------------------------------
   handleClick(event) {
     if (event.target === this._node) {
-      ProfileActions.closeOverlay();
+      UserActions.closeOverlay();
     }
   }
 
   // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
-  updateProfile() {
-    ProfileActions.updateProfile(this.props.template);
+  updateUser() {
+    UserActions.updateUser(this.props.template);
   }
 
   // --------------------------------------------------
@@ -33,7 +33,7 @@ class ProfileEditModal extends EditModal {
     if (template.type === 'input') {
       return (
         <CardInput
-          action={(event) => ProfileActions.storeAttribute(event.target.value)}
+          action={(event) => UserActions.storeAttribute(event.target.value)}
           errors={template.errors[template.key]}
           focus={true}
           label={Helpers.humanize(template.key)}
@@ -43,7 +43,7 @@ class ProfileEditModal extends EditModal {
     } else {
       var choices = template.choices.map((choice) =>{
       return {
-        action: () => ProfileActions.storeAttribute(choice),
+        action: () => StudentActions.storeAttribute(choice),
         content: Helpers.humanize(choice),
       }});
       return (
@@ -60,8 +60,8 @@ class ProfileEditModal extends EditModal {
     return (
       <div style={this.styles.section}>
         <CardHeader
-          action={() => this.updateProfile()}
-          content={'Profile Preview'}
+          action={() => this.updateUser()}
+          content={'Contact Information'}
           icon={TypeConstants.icons.save} />
         <div style={StyleConstants.cards.body}>
           {this.renderChild()}
