@@ -53,10 +53,9 @@ class Clickable extends Component {
   // State
   // --------------------------------------------------
   static get defaultState() {
-    // Mouse state enum: 'default' or 'hover'.
     return {
-      mouse: 'default',
-    }
+      hover: false,
+    };
   }
 
   // --------------------------------------------------
@@ -104,22 +103,22 @@ class Clickable extends Component {
     if (props.route !== '' || props.action !== null) {
       event.preventDefault();
     }
-    this.setState({ mouse: 'hover' });
+    this.setState({ hover: true });
   }
 
   handleMouseEnter(event) {
-    this.setState({ mouse: 'hover' });
+    this.setState({ hover: true });
   }
 
 
   handleMouseLeave(event) {
-    if (this.state.mouse !== 'default') {
-      this.setState({ mouse: 'default' });
+    if (this.state.hover) {
+      this.setState({ hover: false });
     }
   }
 
   handleMouseUp(event) {
-    this.setState({ mouse: 'hover' });
+    this.setState({ hover: true });
   }
 
   // --------------------------------------------------
@@ -172,7 +171,7 @@ class Clickable extends Component {
     var style = Object.assign(
       {},
       props.styles.default,
-      this.state.mouse === 'hover' && this.styles.hover,
+      this.state.hover && this.styles.hover,
       props.route === '' && props.action === null && { cursor: 'default' }
     );
     if (props.type === 'i' || props.type === 'img') {

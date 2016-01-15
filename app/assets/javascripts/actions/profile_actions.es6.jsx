@@ -22,12 +22,12 @@
       };
     }
 
-    toggleSidebar(id, status) {
-      var attributes = { has_sidebar: status };
+    toggleSidebar(profile) {
+      var attributes = { has_sidebar: !profile.has_sidebar };
       var params = { profile: attributes };
       var resolve = (response) => this.storeProfile(response);
       Requester.update(
-        ApiConstants.profiles.update(id),
+        ApiConstants.profiles.update(profile.id),
         params,
         resolve,
       );

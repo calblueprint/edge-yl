@@ -65,9 +65,7 @@ class SchoolsPage extends Component {
   render() {
     return (
       <div style={StyleConstants.pages.wrapper}>
-      <Header
-        active={true}
-        profile={this.selectProfile()} />
+      <Header profile={this.selectProfile()} />
         <div style={StyleConstants.pages.container}>
           <Sidebar profile={this.selectProfile()} />
           <div style={StyleConstants.pages.content}>

@@ -13,13 +13,14 @@ class Header extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      active: React.PropTypes.bool.isRequired,
+      active: React.PropTypes.bool,
       profile: React.PropTypes.object,
     };
   }
 
   static get defaultProps() {
     return {
+      active: true,
       profile: {},
     };
   }
@@ -39,7 +40,7 @@ class Header extends Component {
         width: '100%',
         height: StyleConstants.heights.header,
         backgroundColor: StyleConstants.colors.blue,
-        boxShadow: '0px 0px 5px 0px rgba(0, 0, 0, 0.25)',
+        boxShadow: '0px 0px 3px 0px rgba(0, 0, 0, 0.25)',
       },
     };
   }
@@ -78,10 +79,8 @@ class Header extends Component {
   // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
-
   toggleSidebar() {
-    var profile = this.props.profile;
-    ProfileActions.toggleSidebar(profile.id, !profile.has_sidebar);
+    ProfileActions.toggleSidebar(this.props.profile);
   }
 
   // --------------------------------------------------
@@ -110,9 +109,7 @@ class Header extends Component {
           pagination={this.state.pagination}
           results={this.state.results}
           search={this.state.search} />
-        <HeaderShortcuts
-          active={this.props.active}
-          dropdown={this.state.dropdown} />
+        <HeaderShortcuts active={this.props.active} />
       </div>
     );
   }

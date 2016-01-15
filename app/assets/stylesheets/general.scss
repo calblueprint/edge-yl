@@ -125,6 +125,7 @@ textarea {
   align-self: stretch;
   padding: 8px;
   border: 1px solid $gray;
+  box-sizing: border-box;
   -webkit-transition: border-color, box-shadow 0.375s ease-in-out;
   -moz-transition: border-color, box-shadow 0.375s ease-in-out;
   -ms-transition: border-color, box-shadow 0.375s ease-in-out;
