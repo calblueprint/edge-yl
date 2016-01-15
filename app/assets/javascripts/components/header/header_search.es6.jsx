@@ -24,7 +24,6 @@ class HeaderSearch extends Component {
       input: {
         zIndex: StyleConstants.planes.nine,
         height: '30px',
-        padding: '8px 16px',
         border: 'none',
         borderRadius: '1px',
         boxSizing: 'border-box',

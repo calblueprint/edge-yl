@@ -85,9 +85,7 @@ class ConferencesPage extends Component {
     return (
       <div style={StyleConstants.pages.wrapper}>
         {this.renderOverlay()}
-        <Header
-          active={true}
-          profile={this.selectProfile()} />
+        <Header profile={this.selectProfile()} />
         <div style={StyleConstants.pages.container}>
           <Sidebar profile={this.selectProfile()} />
           <div style={StyleConstants.pages.content}>
