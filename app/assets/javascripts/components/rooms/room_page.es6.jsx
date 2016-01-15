@@ -31,7 +31,7 @@ class RoomPage extends Component {
     ProfileStore.listen(this._listener);
     RoomStore.listen(this._listener);
     ViewStore.listen(this._listener);
-    SchoolActions.fetchSchool(this.props.id);
+    RoomActions.fetchRoom(this.props.id);
     ViewActions.attachListener();
   }
 
@@ -47,7 +47,7 @@ class RoomPage extends Component {
   generateOptions() {
     return [
       {
-        action: () => SchoolActions.toggleEditability(),
+        action: () => RoomActions.toggleEditability(),
         content: this.state.editable ? 'Finish' : 'Edit',
       },
     ];
@@ -77,7 +77,7 @@ class RoomPage extends Component {
               content={'Edit'}
               label={'Room'}
               options={this.generateOptions()}
-              value={room.number} />
+              value={`${room.number}`} />
             <RoomGrid
               editable={this.state.editable}
               media={this.state.media}

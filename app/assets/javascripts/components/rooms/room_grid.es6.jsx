@@ -17,11 +17,6 @@ class RoomGrid extends Component {
   render() {
     return (
       <div style={StyleConstants.containers.grid}>
-        <RoomCard
-          editable={this.props.editable}
-          media={this.props.media}
-          room={this.props.room}
-          target={TypeConstants.room.general} />
       </div>
     );
   }

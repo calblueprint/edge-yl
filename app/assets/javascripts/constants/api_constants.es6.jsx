@@ -53,6 +53,14 @@
         update: (id) => `/api/profiles/${id}`,
       };
     }
+
+    get rooms() {
+      return {
+        show: (id) => `/api/rooms/${id}`,
+        update: (id) => `/api/rooms/${id}`,
+      }
+    }
+
     get schools() {
       return {
         create: '/api/schools',

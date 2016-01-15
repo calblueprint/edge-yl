@@ -5,7 +5,6 @@ class Api::RoomsController < Api::BaseController
 
   def show
     room = Room.find params[:id]
-    current_user.create_visit('Room', params[:id].to_i)
     render json: room, serializer: RoomShowSerializer
   end
 
