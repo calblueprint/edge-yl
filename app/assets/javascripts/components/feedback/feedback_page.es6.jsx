@@ -1,4 +1,4 @@
-class ProfilePage extends Component {
+class FeedbackPage extends Component {
 
   // --------------------------------------------------
   // Setup
@@ -11,9 +11,34 @@ class ProfilePage extends Component {
   // --------------------------------------------------
   // Props
   // --------------------------------------------------
+
   static get propTypes() {
     return {
       profile: React.PropTypes.object.isRequired,
+    };
+  }
+
+  // --------------------------------------------------
+  // Styles
+  // --------------------------------------------------
+  get styles() {
+    return {
+      container: {
+        display: 'flex',
+        flexFlow: 'column',
+        alignItems: 'center',
+        paddingTop: StyleConstants.heights.header,
+      },
+      footer: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'flex-end',
+        alignSelf: 'stretch',
+        margin: '12px 0px',
+      },
+      label: {
+        paddingRight: '4px',
+      },
     };
   }
 
@@ -22,32 +47,22 @@ class ProfilePage extends Component {
   // --------------------------------------------------
   componentWillMount() {
     this.setState(ProfileStore.getState());
-    this.setState(ViewStore.getState());
+    this.setState(FeedbackStore.getState());
   }
 
   componentDidMount() {
     ProfileStore.listen(this._listener);
-    ViewStore.listen(this._listener);
-    ViewActions.attachListener();
+    FeedbackStore.listen(this._listener);
   }
 
   componentWillUnmount() {
     ProfileStore.unlisten(this._listener);
-    ViewStore.unlisten(this._listener);
+    FeedbackStore.unlisten(this._listener);
   }
 
   // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
-  generateOptions() {
-    return [
-      {
-        action: () => ViewActions.toggleEditability(),
-        content: this.state.editable ? 'Finish' : 'Edit',
-      },
-    ];
-  }
-
   selectProfile() {
     return this.state.profile ?
            this.state.profile :
@@ -57,33 +72,19 @@ class ProfilePage extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
-  renderOverlay() {
-    if (this.state.overlay) {
-      return (
-        <ProfilePageOverlay template={this.state.template} />
-      );
-    }
-  }
-
   render() {
-    var profile = this.state.profile;
     return (
       <div style={StyleConstants.pages.wrapper}>
-        {this.renderOverlay()}
         <Header profile={this.selectProfile()} />
         <div style={StyleConstants.pages.container}>
           <Sidebar profile={this.selectProfile()} />
           <div style={StyleConstants.pages.content}>
-            <GridHeader
-              label={'Profile'}
-              options={this.generateOptions()} />
-            <ProfileGrid
-              editable={this.state.editable}
-              profile={this.selectProfile()} />
+            <FeedbackCard
+              profile={this.props.profile}
+              template={this.state.template} />
           </div>
         </div>
       </div>
     );
   }
 }
-

@@ -24,22 +24,35 @@ class UserPage extends Component {
   componentWillMount() {
     this.setState(ProfileStore.getState());
     this.setState(UserStore.getState());
+    this.setState(ViewStore.getState());
   }
 
   componentDidMount() {
     ProfileStore.listen(this._listener);
     UserStore.listen(this._listener);
+    ViewStore.listen(this._listener);
     UserActions.fetchUser(this.props.id);
+    ViewActions.attachListener();
   }
 
   componentWillUnmount() {
     ProfileStore.unlisten(this._listner);
     UserStore.unlisten(this._listener);
+    ViewStore.unlisten(this._listener);
   }
 
   // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
+  generateOptions() {
+    return [
+      {
+        action: () => ViewActions.toggleEditability(),
+        content: this.state.editable ? 'Finish' : 'Edit',
+      },
+    ];
+  }
+
   selectProfile() {
     return this.state.profile ?
            this.state.profile :
@@ -52,25 +65,31 @@ class UserPage extends Component {
   renderOverlay() {
     if (this.state.overlay) {
       return (
-        <PageOverlay
-          overlay={this.state.overlay}
-          profile={this.state.profile}
-          user={this.state.user} />
+        <UserPageOverlay
+          profile={this.selectProfile()}
+          user={this.state.user}
+          template={this.state.template} />
       );
     }
   }
 
   render() {
+    var user = this.state.user;
     return (
       <div style={StyleConstants.pages.wrapper}>
-        <Header
-          active={true}
-          profile={this.selectProfile()} />
+        {this.renderOverlay()}
+        <Header profile={this.selectProfile()} />
         <div style={StyleConstants.pages.container}>
           <Sidebar profile={this.selectProfile()} />
           <div style={StyleConstants.pages.content}>
-            <UserCard user={this.state.user} />
-            <ResponsibilitiesGrid responsibilities={this.state.user.responsibilities} />
+            <GridHeader
+              label={'Volunteer'}
+              options={this.generateOptions()}
+              value={user.full_name} />
+            <UserCard
+              editable={this.state.editable}
+              user={user} />
+            <ResponsibilitiesGrid responsibilities={user.responsibilities} />
           </div>
         </div>
       </div>

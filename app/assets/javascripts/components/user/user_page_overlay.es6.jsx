@@ -1,10 +1,12 @@
-class ProfilePageOverlay extends PageOverlay {
+class UserPageOverlay extends PageOverlay {
 
   // --------------------------------------------------
   // Props
   // --------------------------------------------------
   static get propTypes() {
     return {
+      profile: React.PropTypes.object.isRequired,
+      user: React.PropTypes.object.isRequired,
       template: React.PropTypes.object.isRequired,
     };
   }
@@ -13,18 +15,15 @@ class ProfilePageOverlay extends PageOverlay {
   // Helpers
   // --------------------------------------------------
   storeOverlay() {
-    ProfileActions.closeOverlay();
+    UserActions.closeOverlay();
   }
 
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
   renderModal() {
-    if (this.props.template.model === 'profile') {
-      return (
-        <ProfileEditModal
-          template={this.props.template} />
-      );
+    if (this.props.template.model === 'user') {
+      return <UserEditModal template={this.props.template} />;
     }
   }
 }

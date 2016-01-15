@@ -54,7 +54,8 @@ class FormButton extends Component {
           action={this.props.action}
           content={this.props.content}
           styles={this.clickableStyles}
-          type={'h5'} />
+          type={'h5'}
+          underline={false} />
       </div>
     );
   }

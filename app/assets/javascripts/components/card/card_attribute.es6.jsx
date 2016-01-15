@@ -5,6 +5,7 @@ class CardAttribute extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
+      action: React.PropTypes.func,
       editable: React.PropTypes.bool,
       clickable: React.PropTypes.bool,
       label: React.PropTypes.string.isRequired,
