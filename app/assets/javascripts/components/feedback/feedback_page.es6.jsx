@@ -46,29 +46,45 @@ class FeedbackPage extends Component {
   // Lifecycle
   // --------------------------------------------------
   componentWillMount() {
+    this.setState(ProfileStore.getState());
     this.setState(FeedbackStore.getState());
   }
 
   componentDidMount() {
+    ProfileStore.listen(this._listener);
     FeedbackStore.listen(this._listener);
   }
 
   componentWillUnmount() {
+    ProfileStore.unlisten(this._listener);
     FeedbackStore.unlisten(this._listener);
+  }
+
+  // --------------------------------------------------
+  // Helpers
+  // --------------------------------------------------
+  selectProfile() {
+    return this.state.profile ?
+           this.state.profile :
+           this.props.profile;
   }
 
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
-
   render() {
     return (
       <div style={StyleConstants.pages.wrapper}>
-        <Header active={false} />
-        <div style={this.styles.container}>
-          <FeedbackCard
-            profile={this.props.profile}
-            template={this.state.template} />
+        <Header
+          active={true}
+          profile={this.selectProfile()} />
+        <div style={StyleConstants.pages.container}>
+          <Sidebar profile={this.selectProfile()} />
+          <div style={StyleConstants.pages.content}>
+            <FeedbackCard
+              profile={this.props.profile}
+              template={this.state.template} />
+          </div>
         </div>
       </div>
     );
