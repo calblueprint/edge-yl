@@ -3,9 +3,6 @@
 
     constructor() {
       this.generateActions(
-        'closeOverlay',
-        'storeAttribute',
-        'storeError',
         'storeRoom',
         'toggleEditability',
       );
