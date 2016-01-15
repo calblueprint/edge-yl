@@ -41,6 +41,7 @@
     resources :groups, only: [:create, :show]
     resources :leaderships, only: [:update]
     resources :profiles, only: [:update]
+    resources :rooms, only: [:create]
     resources :schools, only: [:create, :index, :show, :update]
     resources :students, only: [:create, :index, :show, :update]
     resources :users, only: [:index, :show, :update] do
