@@ -1,0 +1,3 @@
+class RoomShowSerializer < RoomBaseSerializer
+
+end
