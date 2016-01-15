@@ -20,7 +20,7 @@
       return {
         students: '/api/students.csv',
         schools: '/api/schools.csv',
-        groups: '/groups/1.csv',
+        groups: '/api/groups/1.csv',
       };
     }
 
