@@ -76,8 +76,7 @@ class RoomPage extends Component {
               clickable={true}
               content={'Edit'}
               label={'Room'}
-              options={this.generateOptions()}
-              value={`${room.number}`} />
+              options={this.generateOptions()} />
             <RoomGrid
               editable={this.state.editable}
               media={this.state.media}
