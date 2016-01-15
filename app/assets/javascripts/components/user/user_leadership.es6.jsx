@@ -15,13 +15,11 @@ class UserLeadership extends Component {
   renderGroup() {
     var leadership = this.props.user.leadership;
     if (leadership) {
-      if (leadership.group) {
-        return (
-          <CardAttribute
-            label={'Group'}
-            value={leadership.group.full_name} />
-        );
-      }
+      return (
+        <CardAttribute
+          label={'Group'}
+          value={leadership.group.full_name} />
+      );
     } else {
       return (
         <CardAttribute
@@ -36,13 +34,13 @@ class UserLeadership extends Component {
     if (leadership) {
       return (
         <CardAttribute
-          label={'Leadership Type'}
+          label={'Leadership type'}
           value={leadership.style} />
       );
     } else {
       return (
         <CardAttribute
-          label={'Leadership Type'}
+          label={'Leadership type'}
           value={'n/a'} />
       );
     }

@@ -20,12 +20,12 @@ class UserGrid extends Component {
         <UserCard
           editable={this.props.editable}
           media={this.props.media}
-          user={this.props.user}
-          type={TypeConstants.user.general} />
+          type={TypeConstants.user.general}
+          user={this.props.user} />
         <UserCard
           media={this.props.media}
-          user={this.props.user}
-          type={TypeConstants.user.leadership} />
+          type={TypeConstants.user.leadership}
+          user={this.props.user} />
       </div>
     );
   }

@@ -50,7 +50,7 @@
 
     get user() {
       return {
-        general: 'user-generap',
+        general: 'user-general',
         leadership: 'user-leadership',
       };
     }
