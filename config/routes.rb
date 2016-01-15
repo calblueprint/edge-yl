@@ -11,6 +11,7 @@
   resources :emails, only: [:index]
   resources :forms, only: [:show]
   resources :groups, only: [:show]
+  resources :rooms, only: [:show]
   resources :students, only: [:index, :show]
   resources :schools, only: [:index, :show]
   resources :users, only: [:index, :show]
