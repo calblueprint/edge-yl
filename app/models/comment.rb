@@ -13,6 +13,8 @@
 
 class Comment < ActiveRecord::Base
 
+  self.default_scope { order('created_at DESC') }
+
   belongs_to :commentable, polymorphic: true
   belongs_to :user
 
