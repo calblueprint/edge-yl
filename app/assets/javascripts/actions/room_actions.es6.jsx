@@ -16,7 +16,6 @@
       Requester.get(ApiConstants.rooms.show(id), resolve);
       return true;
     }
-
   }
   this.RoomActions = alt.createActions(RoomActions);
 })();
