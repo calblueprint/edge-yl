@@ -51,6 +51,15 @@ ActiveRecord::Schema.define(version: 20160114193445) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "feedbacks", force: :cascade do |t|
+    t.text     "content"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "feedbacks", ["user_id"], name: "index_feedbacks_on_user_id", using: :btree
+
   create_table "forms", force: :cascade do |t|
     t.integer  "target",     null: false
     t.string   "title",      null: false
@@ -220,4 +229,5 @@ ActiveRecord::Schema.define(version: 20160114193445) do
   add_index "visits", ["user_id"], name: "index_visits_on_user_id", using: :btree
   add_index "visits", ["visitable_type", "visitable_id"], name: "index_visits_on_visitable_type_and_visitable_id", using: :btree
 
+  add_foreign_key "feedbacks", "users"
 end

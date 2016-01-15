@@ -3,6 +3,7 @@
   root 'pages#login'
 
   get 'email', to: 'pages#email'
+  get 'feedback', to: 'pages#feedback'
   get 'login', to: 'pages#login'
   get 'signup', to: 'pages#signup'
   get 'profile', to: 'users#profile'
@@ -37,6 +38,7 @@
     resources :conferences, only: [:create, :index, :show, :update]
     resources :comments, only: [:create]
     resources :emails, only: [:create, :index]
+    resources :feedbacks, only: [:create]
     resources :forms, only: [:show]
     resources :groups, only: [:create, :show]
     resources :leaderships, only: [:update]

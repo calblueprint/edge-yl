@@ -1,4 +1,4 @@
-class UserPage extends Component {
+class FeedbackPage extends Component {
 
   // --------------------------------------------------
   // Setup
@@ -11,10 +11,34 @@ class UserPage extends Component {
   // --------------------------------------------------
   // Props
   // --------------------------------------------------
+
   static get propTypes() {
     return {
-      id: React.PropTypes.number.isRequired,
       profile: React.PropTypes.object.isRequired,
+    };
+  }
+
+  // --------------------------------------------------
+  // Styles
+  // --------------------------------------------------
+  get styles() {
+    return {
+      container: {
+        display: 'flex',
+        flexFlow: 'column',
+        alignItems: 'center',
+        paddingTop: StyleConstants.heights.header,
+      },
+      footer: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'flex-end',
+        alignSelf: 'stretch',
+        margin: '12px 0px',
+      },
+      label: {
+        paddingRight: '4px',
+      },
     };
   }
 
@@ -23,36 +47,22 @@ class UserPage extends Component {
   // --------------------------------------------------
   componentWillMount() {
     this.setState(ProfileStore.getState());
-    this.setState(UserStore.getState());
-    this.setState(ViewStore.getState());
+    this.setState(FeedbackStore.getState());
   }
 
   componentDidMount() {
     ProfileStore.listen(this._listener);
-    UserStore.listen(this._listener);
-    ViewStore.listen(this._listener);
-    UserActions.fetchUser(this.props.id);
-    ViewActions.attachListener();
+    FeedbackStore.listen(this._listener);
   }
 
   componentWillUnmount() {
-    ProfileStore.unlisten(this._listner);
-    UserStore.unlisten(this._listener);
-    ViewStore.unlisten(this._listener);
+    ProfileStore.unlisten(this._listener);
+    FeedbackStore.unlisten(this._listener);
   }
 
   // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
-  generateOptions() {
-    return [
-      {
-        action: () => ViewActions.toggleEditability(),
-        content: this.state.editable ? 'Finish' : 'Edit',
-      },
-    ];
-  }
-
   selectProfile() {
     return this.state.profile ?
            this.state.profile :
@@ -62,39 +72,19 @@ class UserPage extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
-  renderOverlay() {
-    if (this.state.overlay) {
-      return (
-        <UserPageOverlay
-          profile={this.selectProfile()}
-          user={this.state.user}
-          template={this.state.template} />
-      );
-    }
-  }
-
   render() {
-    var user = this.state.user;
     return (
       <div style={StyleConstants.pages.wrapper}>
-        {this.renderOverlay()}
         <Header profile={this.selectProfile()} />
         <div style={StyleConstants.pages.container}>
           <Sidebar profile={this.selectProfile()} />
           <div style={StyleConstants.pages.content}>
-            <GridHeader
-              label={'Volunteer'}
-              options={this.generateOptions()}
-              value={user.full_name} />
-            <UserGrid
-              editable={this.state.editable}
-              media={this.state.media}
-              user={user} />
-            <ResponsibilitiesGrid responsibilities={user.responsibilities} />
+            <FeedbackCard
+              profile={this.props.profile}
+              template={this.state.template} />
           </div>
         </div>
       </div>
     );
   }
 }
-
