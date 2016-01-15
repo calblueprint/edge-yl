@@ -23,8 +23,6 @@ class Api::GroupsController < Api::BaseController
     end          
   end
 
-  GroupShowSerializer
-
   def update
     group = Group.includes(:conference, students: :school).find params[:id]
     if group.update_attributes group_params
