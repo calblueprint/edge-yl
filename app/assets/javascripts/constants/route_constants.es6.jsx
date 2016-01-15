@@ -29,6 +29,7 @@
 
     get pages() {
       return {
+        feedback: '/feedback',
         login: '/login',
         signup: '/signup',
         profile: '/profile',

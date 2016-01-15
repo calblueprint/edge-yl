@@ -84,6 +84,10 @@ class HeaderShortcuts extends Component {
           route: RouteConstants.pages.profile,
         },
         {
+          content: 'Give Feedback',
+          route: RouteConstants.pages.feedback,
+        },
+        {
           action: () => AuthenticationActions.destroySession(),
           content: 'Logout',
         },

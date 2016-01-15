@@ -28,6 +28,12 @@
       };
     }
 
+    get feedbacks() {
+      return {
+        create: '/api/feedbacks'
+      };
+    }
+
     get forms() {
       return {
         show: (id) => `/api/forms/${id}`,
@@ -96,6 +102,7 @@
         update: (id) => `/api/users/${id}`,
       };
     }
+
   }
   this.ApiConstants = new ApiConstants();
 })();
