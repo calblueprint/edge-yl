@@ -59,6 +59,10 @@ class GroupPage extends Component {
         action: () => ViewActions.toggleEditability(),
         content: this.state.editable ? 'Finish' : 'Edit',
       },
+      {
+        route: ApiConstants.csvs.groups,
+        content: 'Export',
+      },
     ];
   }
 

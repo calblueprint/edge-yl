@@ -16,8 +16,14 @@ class Api::GroupsController < Api::BaseController
                            leaderships: :user,
                            students: :school).find params[:id]
     current_user.create_visit('Group', params[:id].to_i)
-    render json: group, serializer: GroupShowSerializer
+    respond_to do |format|
+      format.csv { send_data group.to_csv }
+      format.json { render json: group,
+                           serializer: GroupShowSerializer }
+    end          
   end
+
+  GroupShowSerializer
 
   def update
     group = Group.includes(:conference, students: :school).find params[:id]
