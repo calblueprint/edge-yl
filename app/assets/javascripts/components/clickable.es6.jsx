@@ -56,7 +56,7 @@ class Clickable extends Component {
     // Mouse state enum: 'default' or 'hover'.
     return {
       mouse: 'default',
-    }
+    };
   }
 
   // --------------------------------------------------

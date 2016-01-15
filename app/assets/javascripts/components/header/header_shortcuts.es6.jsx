@@ -6,7 +6,15 @@ class HeaderShortcuts extends Component {
   static get propTypes() {
     return {
       active: React.PropTypes.bool.isRequired,
-      dropdown: React.PropTypes.bool.isRequired,
+    };
+  }
+
+  // --------------------------------------------------
+  // State
+  // --------------------------------------------------
+  static get defaultState() {
+    return {
+      dropdown: false,
     };
   }
 
@@ -23,7 +31,7 @@ class HeaderShortcuts extends Component {
         paddingRight: '6px',
         boxSizing: 'border-box',
       },
-      section: {
+      shortcuts: {
         display: 'flex',
         justifyContent: 'flex-end',
         alignContent: 'center',
@@ -53,14 +61,13 @@ class HeaderShortcuts extends Component {
     return {
       child: {
         default: {
-          flex: '1',
           padding: '12px 0px',
           paddingLeft: '0px',
           margin: '0px 12px',
           transition: 'padding 0.25s ease-out',
         },
         hover: {
-          paddingLeft: '8px',
+          paddingLeft: '4px',
         },
       },
       container: Object.assign(
@@ -74,27 +81,34 @@ class HeaderShortcuts extends Component {
   }
 
   // --------------------------------------------------
+  // Helpers
+  // --------------------------------------------------
+  toggleDropdown() {
+    this.setState({ dropdown: !this.state.dropdown });
+  }
+
+  // --------------------------------------------------
   // Render
   // --------------------------------------------------
   renderDropdown() {
-    if (this.props.dropdown) {
+    if (this.state.dropdown) {
       var options = [
         {
-          content: 'Profile',
+          content: 'Edit profile',
           route: RouteConstants.pages.profile,
         },
         {
-          content: 'Give Feedback',
+          content: 'Leave feedback',
           route: RouteConstants.pages.feedback,
         },
         {
           action: () => AuthenticationActions.destroySession(),
-          content: 'Logout',
+          content: 'Log out',
         },
       ];
       return (
         <Dropdown
-          action={() => HeaderActions.toggleDropdown()}
+          action={() => this.toggleDropdown()}
           options={options}
           styles={this.dropdownStyles} />
       );
@@ -104,14 +118,14 @@ class HeaderShortcuts extends Component {
   renderShortcuts() {
     if (this.props.active) {
       return (
-        <div style={this.styles.section}>
+        <div style={this.styles.shortcuts}>
           <Clickable
             icon={TypeConstants.icons.email}
             route={RouteConstants.emails.index}
             styles={this.clickableStyles}
             type={'i'} />
           <Clickable
-            action={() => HeaderActions.toggleDropdown()}
+            action={() => this.toggleDropdown()}
             icon={TypeConstants.icons.settings}
             styles={this.clickableStyles}
             type={'i'} />
