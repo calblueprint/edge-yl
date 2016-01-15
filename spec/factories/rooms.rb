@@ -11,7 +11,7 @@
 
 FactoryGirl.define do
   factory :room do
-    room { Faker::Number.between(1, 25) }
+    number { Faker::Number.between(1, 25) }
   end
 
 end
