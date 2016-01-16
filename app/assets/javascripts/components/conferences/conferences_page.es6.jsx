@@ -47,7 +47,7 @@ class ConferencesPage extends Component {
   generateOptions() {
     return [
       {
-        action: () => this.storeOverlay(),
+        action: () => this.ConferencesActions.storeTemplate(),
         content: 'New',
       },
     ];
@@ -57,11 +57,6 @@ class ConferencesPage extends Component {
     return this.state.profile ?
            this.state.profile :
            this.props.profile;
-  }
-
-  storeOverlay() {
-    // TODO(Warren): Fix constants below.
-    ConferencesActions.storeTemplate();
   }
 
   // --------------------------------------------------

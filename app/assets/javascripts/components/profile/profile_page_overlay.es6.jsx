@@ -12,7 +12,7 @@ class ProfilePageOverlay extends PageOverlay {
   // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
-  storeOverlay() {
+  closeOverlay() {
     ProfileActions.closeOverlay();
   }
 

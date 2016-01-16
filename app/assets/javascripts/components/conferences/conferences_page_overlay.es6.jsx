@@ -12,7 +12,7 @@ class ConferencesPageOverlay extends PageOverlay {
   // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
-  storeOverlay() {
+  closeOverlay() {
     ConferencesActions.closeOverlay();
   }
 

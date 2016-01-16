@@ -6,15 +6,15 @@ class UserPageOverlay extends PageOverlay {
   static get propTypes() {
     return {
       profile: React.PropTypes.object.isRequired,
-      user: React.PropTypes.object.isRequired,
       template: React.PropTypes.object.isRequired,
+      user: React.PropTypes.object.isRequired,
     };
   }
 
   // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
-  storeOverlay() {
+  closeOverlay() {
     UserActions.closeOverlay();
   }
 
