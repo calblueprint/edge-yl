@@ -1,10 +1,10 @@
 if Rails.env.development? || Rails.env.staging?
   seeds = [
     'users',
-    'rooms',
     'schools',
     'students',
     'conferences',
+    'rooms',
     'groups',
     'leaderships',
     'comments',
