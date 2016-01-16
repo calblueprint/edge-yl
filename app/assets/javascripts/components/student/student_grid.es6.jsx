@@ -21,22 +21,22 @@ class StudentGrid extends Component {
           editable={this.props.editable}
           media={this.props.media}
           student={this.props.student}
-          target={TypeConstants.student.general} />
+          type={TypeConstants.student.general} />
         <StudentCard
           editable={this.props.editable}
           media={this.props.media}
           student={this.props.student}
-          target={TypeConstants.student.contact} />
+          type={TypeConstants.student.contact} />
         <StudentCard
           editable={this.props.editable}
           media={this.props.media}
           student={this.props.student}
-          target={TypeConstants.student.emergency} />
+          type={TypeConstants.student.emergency} />
         <StudentCard
           editable={this.props.editable}
           media={this.props.media}
           student={this.props.student}
-          target={TypeConstants.student.conference} />
+          type={TypeConstants.student.conference} />
       </div>
     );
   }
