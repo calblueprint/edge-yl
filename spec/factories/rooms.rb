@@ -10,8 +10,9 @@
 #
 
 FactoryGirl.define do
+
   factory :room do
-    number { Faker::Number.between(1, 25) }
+    sequence(:number) { |n| n }
   end
 
 end
