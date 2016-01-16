@@ -8,7 +8,7 @@ class StudentCard extends Component {
       editable: React.PropTypes.bool.isRequired,
       media: React.PropTypes.string.isRequired,
       student: React.PropTypes.object.isRequired,
-      target: React.PropTypes.oneOf([
+      type: React.PropTypes.oneOf([
         TypeConstants.student.contact,
         TypeConstants.student.conference,
         TypeConstants.student.emergency,
@@ -22,7 +22,7 @@ class StudentCard extends Component {
   // Render
   // --------------------------------------------------
   renderBody() {
-    switch (this.props.target) {
+    switch (this.props.type) {
       case TypeConstants.student.conference:
         return (
           <StudentConference
@@ -51,7 +51,7 @@ class StudentCard extends Component {
   }
 
   renderTitle() {
-    switch (this.props.target) {
+    switch (this.props.type) {
       case TypeConstants.student.contact:
         return 'Contact Information';
       case TypeConstants.student.conference:
