@@ -36,7 +36,7 @@ class RoomGeneral extends Component {
           action={() => this.storeTemplate('number')}
           editable={this.props.editable}
           label={'Number'}
-          value={`${room.number}`} />
+          value={room.number} />
       </div>
     );
   }
