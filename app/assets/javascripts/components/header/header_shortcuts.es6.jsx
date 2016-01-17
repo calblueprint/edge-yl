@@ -74,7 +74,7 @@ class HeaderShortcuts extends Component {
         {},
         StyleConstants.containers.card,
         {
-          marginTop: '16px',
+          marginTop: '6px',
         }
       ),
     };

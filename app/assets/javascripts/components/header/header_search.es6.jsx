@@ -59,7 +59,7 @@ class HeaderSearch extends Component {
         StyleConstants.containers.card,
         {
           zIndex: StyleConstants.planes.nine,
-          marginTop: '6px',
+          marginTop: '16px',
         },
         (!this.props.search.active ||
          !this.props.results.length) &&
