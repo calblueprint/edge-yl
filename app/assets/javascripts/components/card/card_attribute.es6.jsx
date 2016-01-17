@@ -11,7 +11,10 @@ class CardAttribute extends Component {
       label: React.PropTypes.string.isRequired,
       route: React.PropTypes.string,
       type: React.PropTypes.oneOf(['h4', 'h5', 'h6']).isRequired,
-      value: React.PropTypes.string,
+      value: React.PropTypes.oneOfType([
+        React.PropTypes.number,
+        React.PropTypes.string,
+      ]),
     };
   }
 
