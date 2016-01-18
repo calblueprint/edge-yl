@@ -15,12 +15,14 @@
 
     storeFilter(key, active, selected) {
       if (selected) {
-        var options = {};
+        var query = StudentsStore.getState().query;
         if (selected !== 'None') {
-          options['is_flagged'] = `${key} = ${selected}`;
+          query[key] = `${key} = ${selected}`;
+        } else if (selected === 'None') {
+          delete query[key];
         }
         var resolve = (response) => this.storeStudents(response);
-        Requester.get(ApiConstants.students.index(1, options), resolve);
+        Requester.get(ApiConstants.students.index(1, query), resolve);
       }
       return {
         active: active,
@@ -31,12 +33,14 @@
 
     storeSort(key, active, selected) {
       if (selected) {
-        var options = {};
+        var query = StudentsStore.getState().query;
         if (selected !== 'None') {
-          options.order = `${key} ${selected}`;
+          query.order = `${key} ${selected}`;
+        } else if (selected === 'None') {
+          delete query.order;
         }
         var resolve = (response) => this.storeStudents(response);
-        Requester.get(ApiConstants.students.index(1, options), resolve);
+        Requester.get(ApiConstants.students.index(1, query), resolve);
       }
       return {
         active: active,

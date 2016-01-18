@@ -85,13 +85,13 @@
     get students() {
       return {
         create: '/api/students',
-        index: function(page, options={}) {
+        index: function(page, query={}) {
           var route = `/api/students?page=${page}`;
-          if (options['is_flagged']) {
-            route = `${route}&is_flagged=${options['is_flagged']}`;
+          if (query['is_flagged']) {
+            route = `${route}&is_flagged=${query['is_flagged']}`;
           }
-          if (options.order) {
-            route = `${route}&order=${options.order}`;
+          if (query.order) {
+            route = `${route}&order=${query.order}`;
           }
           return route;
         },

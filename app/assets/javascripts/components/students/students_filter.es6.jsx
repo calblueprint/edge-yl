@@ -84,7 +84,6 @@ class StudentsFilter extends Component {
   // --------------------------------------------------
   renderDropdown() {
     var filter = this.props.filter;
-    console.log(filter);
     if (filter.active) {
       return (
         <Dropdown

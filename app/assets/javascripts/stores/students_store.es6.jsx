@@ -11,6 +11,7 @@
           selected: 'None',
         },
       ];
+      this.query = {};
       this.sorts = [
         {
           active: false,
@@ -43,6 +44,11 @@
       var target = this.filters.filter((filter) => filter.key === params.key)[0];
       target.active = params.active;
       if (params.selected) {
+        if (params.selected === 'None') {
+          delete this.query[target.key];
+        } else {
+          this.query[target.key] = `${target.key} = ${params.selected}`;
+        }
         target.selected = params.selected;
       }
     }
@@ -51,6 +57,11 @@
       var target = this.sorts.filter((sort) => sort.key === params.key)[0];
       target.active = params.active;
       if (params.selected) {
+        if (params.selected === 'None') {
+          delete this.query.order;
+        } else {
+          this.query.order = `${target.key} ${params.selected}`;
+        }
         target.selected = params.selected;
       }
     }
