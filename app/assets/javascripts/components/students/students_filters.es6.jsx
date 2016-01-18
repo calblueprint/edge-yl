@@ -1,12 +1,11 @@
-class StudentsSidebar extends Component {
+class StudentsFilters extends Component {
 
   // --------------------------------------------------
   // Props
   // --------------------------------------------------
   static get propTypes() {
     return {
-      filters: React.PropTypes.array.isRequired,
-      sorts: React.PropTypes.array.isRequired,
+      filters: React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
     };
   }
 
@@ -15,19 +14,16 @@ class StudentsSidebar extends Component {
   // --------------------------------------------------
   get styles() {
     return {
-      container: {
-        display: 'flex',
-        flexFlow: 'column',
-        position: 'absolute',
-        top: '0px',
-        right: '0px',
-        width: StyleConstants.widths.sidebar,
-        paddingRight: '18px',
-        textAlign: 'right',
-        boxSizing: 'border-box',
-      },
+      container: Object.assign(
+        {},
+        StyleConstants.containers.card,
+        {
+          flexFlow: 'column',
+          marginTop: '12px',
+        }
+      ),
       title: {
-        marginTop: '12px',
+        padding: '12px',
       },
     };
   }
@@ -35,11 +31,21 @@ class StudentsSidebar extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
+  renderFilter(filter) {
+    return (
+      <span>{'Blah'}</span>
+    );
+  }
+
+  renderFilters() {
+    return this.props.filters.map((filter) => this.renderFilter(filter));
+  }
+
   render() {
     return (
       <div style={this.styles.container}>
-        <StudentsSorts sorts={this.props.sorts} />
-        <StudentsFilters filters={this.props.filters} />
+        <h5 style={this.styles.title}>{'Filters'}</h5>
+        {this.renderFilters()}
       </div>
     );
   }
