@@ -29,6 +29,12 @@
       };
     }
 
+    get room() {
+      return {
+        general: 'room-general',
+      };
+    }
+
     get school() {
       return {
         comment: 'school-comment',

@@ -14,6 +14,7 @@
 class Conference < ActiveRecord::Base
 
   has_many :groups, dependent: :destroy
+  has_many :rooms, dependent: :destroy
 
   validates :end_date, presence: true
   validates :location, presence: true
