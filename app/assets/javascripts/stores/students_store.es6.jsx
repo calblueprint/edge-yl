@@ -2,6 +2,15 @@
   class StudentsStore {
 
     constructor() {
+      this.filters = [
+        {
+          active: false,
+          key: 'is_flagged',
+          name: 'Flagged?',
+          options: ['ASC', 'DESC', 'None'],
+          selected: 'None',
+        },
+      ];
       this.sorts = [
         {
           active: false,

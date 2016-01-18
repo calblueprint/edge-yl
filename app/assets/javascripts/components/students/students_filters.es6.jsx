@@ -33,7 +33,9 @@ class StudentsFilters extends Component {
   // --------------------------------------------------
   renderFilter(filter) {
     return (
-      <span>{'Blah'}</span>
+      <StudentsFilter
+        filter={filter}
+        key={filter.key} />
     );
   }
 

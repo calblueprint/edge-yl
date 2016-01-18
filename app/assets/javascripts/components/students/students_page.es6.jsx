@@ -83,7 +83,7 @@ class StudentsPage extends Component {
               route={RouteConstants.students.index}
               pagination={this.state.pagination} />
             <StudentsSidebar
-              filters={[{}]}
+              filters={this.state.filters}
               sorts={this.state.sorts} />
           </div>
         </div>
