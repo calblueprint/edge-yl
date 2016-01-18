@@ -76,13 +76,13 @@ class StudentsPage extends Component {
             <GridHeader
               label={'Students'}
               options={this.generateOptions()} />
-            <StudentsFilters filters={this.state.filters} />
             <StudentsGrid
               media={this.state.media}
               students={this.state.students} />
             <PageNavigator
               route={RouteConstants.students.index}
               pagination={this.state.pagination} />
+            <StudentsSidebar filters={this.state.filters} />
           </div>
         </div>
       </div>
