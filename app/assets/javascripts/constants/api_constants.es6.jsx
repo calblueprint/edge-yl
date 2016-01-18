@@ -87,6 +87,9 @@
         create: '/api/students',
         index: function(page, options={}) {
           var route = `/api/students?page=${page}`;
+          if (options['is_flagged']) {
+            route = `${route}&is_flagged=${options['is_flagged']}`;
+          }
           if (options.order) {
             route = `${route}&order=${options.order}`;
           }

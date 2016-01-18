@@ -84,10 +84,11 @@ class StudentsFilter extends Component {
   // --------------------------------------------------
   renderDropdown() {
     var filter = this.props.filter;
+    console.log(filter);
     if (filter.active) {
       return (
         <Dropdown
-          action={() => StudentsActions.storeFilter(filter.key, false)}
+          action={null}
           options={this.generateDropdownOptions()}
           styles={this.dropdownStyles} />
       );

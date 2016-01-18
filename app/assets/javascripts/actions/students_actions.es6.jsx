@@ -13,6 +13,22 @@
       return true;
     }
 
+    storeFilter(key, active, selected) {
+      if (selected) {
+        var options = {};
+        if (selected !== 'None') {
+          options['is_flagged'] = `${key} = ${selected}`;
+        }
+        var resolve = (response) => this.storeStudents(response);
+        Requester.get(ApiConstants.students.index(1, options), resolve);
+      }
+      return {
+        active: active,
+        key: key,
+        selected: selected,
+      };
+    }
+
     storeSort(key, active, selected) {
       if (selected) {
         var options = {};

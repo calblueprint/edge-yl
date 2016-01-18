@@ -7,7 +7,7 @@
           active: false,
           key: 'is_flagged',
           name: 'Flagged?',
-          options: ['ASC', 'DESC', 'None'],
+          options: ['TRUE', 'FALSE', 'None'],
           selected: 'None',
         },
       ];
@@ -33,13 +33,22 @@
       };
       this.students = [];
       this.bindListeners({
+        handleStoreFilter: StudentsActions.STORE_FILTER,
         handleStoreSort: StudentsActions.STORE_SORT,
         handleStoreStudents: StudentsActions.STORE_STUDENTS,
       });
     }
 
+    handleStoreFilter(params) {
+      var target = this.filters.filter((filter) => filter.key === params.key)[0];
+      target.active = params.active;
+      if (params.selected) {
+        target.selected = params.selected;
+      }
+    }
+
     handleStoreSort(params) {
-      var target = this.sorts.filter((sorts) => sorts.key === params.key)[0];
+      var target = this.sorts.filter((sort) => sort.key === params.key)[0];
       target.active = params.active;
       if (params.selected) {
         target.selected = params.selected;
