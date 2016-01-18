@@ -5,7 +5,7 @@ class StudentsSidebar extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      filters: React.PropTypes.array.isRequired,
+      sorts: React.PropTypes.array.isRequired,
     };
   }
 
@@ -37,7 +37,7 @@ class StudentsSidebar extends Component {
   render() {
     return (
       <div style={this.styles.container}>
-        <StudentsFilters filters={this.props.filters} />
+        <StudentsSorts sorts={this.props.sorts} />
       </div>
     );
   }

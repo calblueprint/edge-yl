@@ -13,7 +13,7 @@
       return true;
     }
 
-    storeFilter(key, active, selected) {
+    storeSort(key, active, selected) {
       if (selected) {
         var options = {};
         if (selected !== 'None') {
