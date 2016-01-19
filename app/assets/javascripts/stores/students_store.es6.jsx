@@ -42,7 +42,13 @@
     }
 
     handleRestoreStudents(state) {
-
+      if (state) {
+        this.filters = state.filters;
+        this.pagination = state.pagination;
+        this.query = state.query;
+        this.sorts = state.sorts;
+        this.students = state.students;
+      }
     }
 
     handleStoreFilter(params) {
@@ -77,6 +83,7 @@
       history.pushState(
         {
           filters: this.filters,
+          pagination: this.pagination,
           query: this.query,
           sorts: this.sorts,
           students: this.students,
