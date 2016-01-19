@@ -5,12 +5,6 @@ class ProfilePageOverlay extends PageOverlay {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      overlay: React.PropTypes.shape({
-        active: React.PropTypes.bool.isRequired,
-        target: React.PropTypes.string.isRequired,
-        type: React.PropTypes.string.isRequired,
-      }).isRequired,
-      profile: React.PropTypes.object.isRequired,
       template: React.PropTypes.object.isRequired,
     };
   }
@@ -18,19 +12,19 @@ class ProfilePageOverlay extends PageOverlay {
   // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
-  storeOverlay() {
-    ProfileActions.storeOverlay(false);
+  closeOverlay() {
+    ProfileActions.closeOverlay();
   }
 
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
   renderModal() {
-    return (
-      <ProfileEditModal
-        overlay={this.props.overlay}
-        profile={this.props.profile}
-        template={this.props.template} />
-    );
+    if (this.props.template.model === 'profile') {
+      return (
+        <ProfileEditModal
+          template={this.props.template} />
+      );
+    }
   }
 }

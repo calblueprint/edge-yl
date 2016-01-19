@@ -4,7 +4,7 @@ class Api::ConferencesController < Api::BaseController
     conference = Conference.new conference_params
     if conference.save
       render json: conference,
-             serializer: ConferenceBaseSerializer,
+             serializer: ConferenceIndexSerializer,
              status: :created
     else
       unprocessable_response conference

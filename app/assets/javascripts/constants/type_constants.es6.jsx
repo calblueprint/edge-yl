@@ -29,6 +29,12 @@
       };
     }
 
+    get room() {
+      return {
+        general: 'room-general',
+      };
+    }
+
     get school() {
       return {
         comment: 'school-comment',
@@ -45,6 +51,13 @@
         emergency: 'student-emergency',
         general: 'student-general',
         outreach: 'student-outreach',
+      };
+    }
+
+    get user() {
+      return {
+        general: 'user-general',
+        leadership: 'user-leadership',
       };
     }
 

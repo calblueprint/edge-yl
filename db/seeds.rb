@@ -4,6 +4,7 @@ if Rails.env.development? || Rails.env.staging?
     'schools',
     'students',
     'conferences',
+    'rooms',
     'groups',
     'leaderships',
     'comments',

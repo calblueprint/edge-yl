@@ -5,49 +5,48 @@ class UserCard extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
+      editable: React.PropTypes.bool,
+      media: React.PropTypes.string.isRequired,
+      type: React.PropTypes.oneOf([
+        TypeConstants.user.general,
+        TypeConstants.user.leadership,
+      ]).isRequired,
       user: React.PropTypes.object.isRequired,
-    };
-  }
-
-  // --------------------------------------------------
-  // Styles
-  // --------------------------------------------------
-  get styles() {
-    return {
-      container: Object.assign(
-        {},
-        StyleConstants.containers.card,
-        {
-          height: '256px',
-          marginTop: '12px',
-        }
-      ),
-      section: {
-        display: 'flex',
-        flexFlow: 'column',
-        alignItems: 'center',
-        justifyContent: 'space-around',
-        padding: '12px',
-        flex: '1',
-      },
     };
   }
 
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
+  renderBody() {
+    switch (this.props.type) {
+      case TypeConstants.user.general:
+        return (
+          <UserGeneral
+            editable={this.props.editable}
+            user={this.props.user} />
+        );
+      case TypeConstants.user.leadership:
+        return (
+          <UserLeadership
+            user={this.props.user} />
+        );
+    };
+  }
+
+  renderTitle() {
+    switch (this.props.type) {
+      case TypeConstants.user.general:
+        return 'General Information'
+      case TypeConstants.user.leadership:
+        return 'Leadership Information'
+    };
+  }
   render() {
-    var user = this.props.user;
     return (
-      <div style={this.styles.container}>
-        <CardHeader
-          action={() => UserActions.storeOverlay(true, TypeConstants.actions.edit)}
-          content={`User ${user.id}`}
-          icon={TypeConstants.icons.edit} />
-        <div style={this.styles.section}>
-          <h5>{`${user.first_name} ${user.last_name}`}</h5>
-          <h5>{`Email: ${user.email}`}</h5>
-        </div>
+      <div style={StyleConstants.cards.show(this.props.media)}>
+        <CardHeader content={this.renderTitle()} />
+        {this.renderBody()}
       </div>
     );
   }

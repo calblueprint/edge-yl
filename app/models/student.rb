@@ -42,6 +42,7 @@ class Student < ActiveRecord::Base
 
   belongs_to :group
   belongs_to :school
+  belongs_to :room
 
   enum gender: [:female, :male, :other]
   enum guardian_phone_type: [:cell, :home, :work]

@@ -53,18 +53,29 @@ class PageOverlay extends Component {
   // --------------------------------------------------
   handleClick() {
     if (event.target === this._node) {
-      this.storeOverlay(false);
+      this.closeOverlay();
     }
+  }
+
+  // --------------------------------------------------
+  // Helpers
+  // --------------------------------------------------
+  closeOverlay() {
+    console.log('Child component should override closeOverlay.');
   }
 
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
+  renderModal() {
+    console.log('Child component should override renderModal.');
+  }
+
   render() {
     return (
       <div ref={'container'} style={this.styles.container}>
         <Clickable
-          action={() => this.storeOverlay()}
+          action={() => this.closeOverlay()}
           icon={TypeConstants.icons.close}
           styles={this.clickableStyles}
           type={'i'} />

@@ -47,7 +47,7 @@ class ConferencesPage extends Component {
   generateOptions() {
     return [
       {
-        action: () => this.storeOverlay(),
+        action: () => ConferencesActions.storeTemplate(),
         content: 'New',
       },
     ];
@@ -59,25 +59,12 @@ class ConferencesPage extends Component {
            this.props.profile;
   }
 
-  storeOverlay() {
-    // TODO(Warren): Fix constants below.
-    ConferencesActions.storeOverlay(
-      true,
-      TypeConstants.actions.edit,
-      TypeConstants.conference
-    );
-  }
-
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
   renderOverlay() {
     if (this.state.overlay) {
-      return (
-        <ConferencesPageOverlay
-          overlay={this.state.overlay}
-          template={this.state.template} />
-      );
+      return <ConferencesPageOverlay template={this.state.template} />;
     }
   }
 
@@ -85,9 +72,7 @@ class ConferencesPage extends Component {
     return (
       <div style={StyleConstants.pages.wrapper}>
         {this.renderOverlay()}
-        <Header
-          active={true}
-          profile={this.selectProfile()} />
+        <Header profile={this.selectProfile()} />
         <div style={StyleConstants.pages.container}>
           <Sidebar profile={this.selectProfile()} />
           <div style={StyleConstants.pages.content}>

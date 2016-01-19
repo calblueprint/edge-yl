@@ -21,17 +21,13 @@ class HeaderNavigation extends Component {
         alignSelf: 'stretch',
         padding: '0px 12px',
       },
-      icon: {
-        color: StyleConstants.colors.white,
-        fontSize: '20px',
-      },
     };
   }
 
   get clickableStyles() {
     return {
-     default: {
-        marginRight: '16px',
+      default: {
+        marginRight: '12px',
         color: StyleConstants.colors.white,
       },
     };
@@ -50,6 +46,7 @@ class HeaderNavigation extends Component {
       );
     }
   }
+
   render() {
     return (
       <div style={this.styles.container}>

@@ -30,22 +30,27 @@ class ConferenceCreate extends Component {
           action={this.generateHandler('name')}
           errors={template.errors.name}
           focus={true}
-          placeholder={'Name'}
+          label={'Name'}
           value={template.name} />
         <CardInput
           action={this.generateHandler('location')}
           errors={template.errors.location}
-          placeholder={'Location'}
+          label={'Location'}
+          margin={true}
           value={template.location} />
         <CardInput
           action={this.generateHandler('start_date')}
           errors={template.errors.start_date}
-          placeholder={'Start date'}
+          label={'Start date'}
+          margin={true}
+          type={'date'}
           value={template.start_date} />
         <CardInput
           action={this.generateHandler('end_date')}
           errors={template.errors.end_date}
-          placeholder={'End date'}
+          label={'End date'}
+          margin={true}
+          type={'date'}
           value={template.end_date} />
       </div>
     );

@@ -2,11 +2,7 @@
   class ConferenceStore {
 
     constructor() {
-      this.overlay = {
-        active: false,
-        target: '',
-        type: '',
-      };
+      this.overlay = false;
       this.conference = {
         groups: [],
       };
@@ -18,12 +14,12 @@
     }
 
     handleStoreGroup(response) {
-      this.overlay.active = false;
+      this.overlay = false;
       this.conference.groups.push(response.group);
     }
 
     handleStoreConference(response) {
-      this.overlay.active = false;
+      this.overlay = false;
       this.conference = response.conference;
     }
 

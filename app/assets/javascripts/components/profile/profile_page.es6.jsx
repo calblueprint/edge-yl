@@ -22,19 +22,32 @@ class ProfilePage extends Component {
   // --------------------------------------------------
   componentWillMount() {
     this.setState(ProfileStore.getState());
+    this.setState(ViewStore.getState());
   }
 
   componentDidMount() {
     ProfileStore.listen(this._listener);
+    ViewStore.listen(this._listener);
+    ViewActions.attachListener();
   }
 
   componentWillUnmount() {
     ProfileStore.unlisten(this._listener);
+    ViewStore.unlisten(this._listener);
   }
 
   // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
+  generateOptions() {
+    return [
+      {
+        action: () => ViewActions.toggleEditability(),
+        content: this.state.editable ? 'Finish' : 'Edit',
+      },
+    ];
+  }
+
   selectProfile() {
     return this.state.profile ?
            this.state.profile :
@@ -47,25 +60,26 @@ class ProfilePage extends Component {
   renderOverlay() {
     if (this.state.overlay) {
       return (
-        <ProfilePageOverlay
-          overlay={this.state.overlay}
-          profile={this.state.profile}
-          template={this.state.template} />
+        <ProfilePageOverlay template={this.state.template} />
       );
     }
   }
 
   render() {
+    var profile = this.state.profile;
     return (
       <div style={StyleConstants.pages.wrapper}>
         {this.renderOverlay()}
-        <Header
-          active={true}
-          profile={this.selectProfile()} />
+        <Header profile={this.selectProfile()} />
         <div style={StyleConstants.pages.container}>
           <Sidebar profile={this.selectProfile()} />
           <div style={StyleConstants.pages.content}>
-            <ProfileGrid profile={this.selectProfile()} />
+            <GridHeader
+              label={'Profile'}
+              options={this.generateOptions()} />
+            <ProfileGrid
+              editable={this.state.editable}
+              profile={this.selectProfile()} />
           </div>
         </div>
       </div>

@@ -16,7 +16,7 @@
         handleStoreError: SchoolActions.STORE_ERROR,
         handleStoreSchool: SchoolActions.STORE_SCHOOL,
         handleStoreTemplate: SchoolActions.STORE_TEMPLATE,
-        handleToggleEditablity: SchoolActions.TOGGLE_EDITABILITY,
+        handleToggleEditability: SchoolActions.TOGGLE_EDITABILITY,
       });
     }
 
@@ -47,7 +47,7 @@
       this.template = template;
     }
 
-    handleToggleEditablity() {
+    handleToggleEditability() {
       this.editable = !this.editable;
     }
   }

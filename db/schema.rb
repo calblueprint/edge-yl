@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160106185219) do
+ActiveRecord::Schema.define(version: 20160114193445) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,15 @@ ActiveRecord::Schema.define(version: 20160106185219) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "feedbacks", force: :cascade do |t|
+    t.text     "content"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "feedbacks", ["user_id"], name: "index_feedbacks_on_user_id", using: :btree
 
   create_table "forms", force: :cascade do |t|
     t.integer  "target",     null: false
@@ -112,6 +121,15 @@ ActiveRecord::Schema.define(version: 20160106185219) do
 
   add_index "responsibilities", ["student_id"], name: "index_responsibilities_on_student_id", using: :btree
   add_index "responsibilities", ["user_id"], name: "index_responsibilities_on_user_id", using: :btree
+
+  create_table "rooms", force: :cascade do |t|
+    t.integer  "number",        null: false
+    t.integer  "conference_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "rooms", ["conference_id"], name: "index_rooms_on_conference_id", using: :btree
 
   create_table "schools", force: :cascade do |t|
     t.string   "address_city",                      null: false
@@ -211,4 +229,5 @@ ActiveRecord::Schema.define(version: 20160106185219) do
   add_index "visits", ["user_id"], name: "index_visits_on_user_id", using: :btree
   add_index "visits", ["visitable_type", "visitable_id"], name: "index_visits_on_visitable_type_and_visitable_id", using: :btree
 
+  add_foreign_key "feedbacks", "users"
 end

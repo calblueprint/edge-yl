@@ -5,7 +5,7 @@ ruby '2.2.1'
 gem 'rails', '4.2.1'
 
 # Core
-gem 'active_model_serializers', '0.9.3'
+gem 'active_model_serializers', '0.9.4'
 gem 'devise', '3.5.2'
 gem 'figaro', '1.1.1'
 gem 'kaminari', '0.16.3'

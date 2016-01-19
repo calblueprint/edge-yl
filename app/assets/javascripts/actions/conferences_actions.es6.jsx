@@ -3,6 +3,7 @@
 
     constructor() {
       this.generateActions(
+        'closeOverlay',
         'storeConference',
         'storeConferences',
         'storeError',
@@ -39,11 +40,9 @@
       };
     }
 
-    storeOverlay(active, type, target) {
+    storeTemplate() {
       return {
-        active: active,
-        target: target,
-        type: type,
+        errors: {},
       };
     }
   }

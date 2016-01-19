@@ -7,6 +7,7 @@ class HeaderSearch extends Component {
     return {
       pagination: React.PropTypes.object.isRequired,
       results: React.PropTypes.array.isRequired,
+      search: React.PropTypes.object.isRequired,
     };
   }
 
@@ -21,15 +22,7 @@ class HeaderSearch extends Component {
         flex: '1',
         height: '30px',
       },
-      input: {
-        zIndex: StyleConstants.planes.nine,
-        height: '30px',
-        padding: '8px 16px',
-        border: 'none',
-        borderRadius: '1px',
-        boxSizing: 'border-box',
-      },
-      logo: {
+      header: {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
@@ -38,29 +31,11 @@ class HeaderSearch extends Component {
         borderRadius: '1px',
         color: StyleConstants.colors.white,
       },
-      option: {
-        display: 'flex',
-        flexFlow: 'column',
-      },
-      section: {
-        display: 'flex',
-      },
-    };
-  }
-
-  get clickableStyles() {
-    return {
-      default: {
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        width: '64px',
-        backgroundColor: StyleConstants.colors.indigo,
+      input: {
+        zIndex: StyleConstants.planes.nine,
+        height: '30px',
+        border: 'none',
         borderRadius: '1px',
-        color: StyleConstants.colors.white,
-      },
-      hover: {
-        backgroundColor: StyleConstants.colors.white,
       },
     };
   }
@@ -76,16 +51,15 @@ class HeaderSearch extends Component {
           transition: 'padding 0.25s ease-out',
         },
         hover: {
-          paddingLeft: '8px',
+          paddingLeft: '4px',
         },
       },
       container: Object.assign(
         {},
         StyleConstants.containers.card,
         {
-          top: '4px',
-          left: '0px',
           zIndex: StyleConstants.planes.nine,
+          marginTop: '16px',
         },
         (!this.props.search.active ||
          !this.props.results.length) &&
@@ -122,11 +96,11 @@ class HeaderSearch extends Component {
   // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
-  generateResult(result, index) {
+  generateOption(result) {
     var route;
     var type = result.searchable_type;
     var node = (
-      <div style={this.styles.option}>
+      <div>
         <h6>{type}</h6>
         <h6>{result.content}</h6>
       </div>
@@ -142,15 +116,16 @@ class HeaderSearch extends Component {
     };
   }
 
-  generateResults() {
-    var results = this.props.results.map((result) => this.generateResult(result));
+  generateOptions() {
+    var results = this.props.results;
+    var options = results.map((result) => this.generateOption(result));
     var pagination = this.props.pagination;
     var footer = {
       content: `Displaying page ${pagination.current} of ${pagination.limit} total`,
       static: true,
     };
-    results.push(footer);
-    return results;
+    options.push(footer);
+    return options;
   }
 
   // --------------------------------------------------
@@ -159,8 +134,8 @@ class HeaderSearch extends Component {
   render() {
     return (
       <div style={this.styles.container}>
-        <div style={this.styles.section}>
-          <div style={this.styles.logo}>
+        <div style={{ display: 'flex' }}>
+          <div style={this.styles.header}>
             <i className={TypeConstants.icons.search} />
           </div>
           <input
@@ -168,11 +143,10 @@ class HeaderSearch extends Component {
             ref={'input'}
             style={this.styles.input}
             type={'search'}
-            value={this.props.search.query}>
-          </input>
+            value={this.props.search.query} />
         </div>
         <Dropdown
-          options={this.generateResults()}
+          options={this.generateOptions()}
           styles={this.dropdownStyles} />
         <PageUnderlay active={this.props.search.active} />
       </div>

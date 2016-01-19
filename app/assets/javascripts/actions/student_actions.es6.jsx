@@ -15,10 +15,12 @@
       attributes[template.key] = template.value;
       var params = { comment: attributes };
       var resolve = (response) => this.storeComment(response);
+      var reject = (response) => this.storeError(response);
       Requester.post(
         ApiConstants.comments.create,
         params,
         resolve,
+        reject,
       );
       return true;
     }

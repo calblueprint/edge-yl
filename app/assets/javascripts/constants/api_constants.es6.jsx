@@ -30,6 +30,12 @@
       };
     }
 
+    get feedbacks() {
+      return {
+        create: '/api/feedbacks'
+      };
+    }
+
     get forms() {
       return {
         show: (id) => `/api/forms/${id}`,
@@ -55,6 +61,14 @@
         update: (id) => `/api/profiles/${id}`,
       };
     }
+
+    get rooms() {
+      return {
+        show: (id) => `/api/rooms/${id}`,
+        update: (id) => `/api/rooms/${id}`,
+      };
+    }
+
     get schools() {
       return {
         create: '/api/schools',
@@ -98,6 +112,7 @@
         update: (id) => `/api/users/${id}`,
       };
     }
+
   }
   this.ApiConstants = new ApiConstants();
 })();

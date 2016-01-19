@@ -5,12 +5,6 @@ class ProfileEditModal extends EditModal {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      overlay: React.PropTypes.shape({
-        active: React.PropTypes.bool.isRequired,
-        target: React.PropTypes.string.isRequired,
-        type: React.PropTypes.string.isRequired,
-      }).isRequired,
-      profile: React.PropTypes.object.isRequired,
       template: React.PropTypes.object.isRequired,
     };
   }
@@ -20,7 +14,7 @@ class ProfileEditModal extends EditModal {
   // --------------------------------------------------
   handleClick(event) {
     if (event.target === this._node) {
-      ProfileActions.storeOverlay(false);
+      ProfileActions.closeOverlay();
     }
   }
 
@@ -28,15 +22,40 @@ class ProfileEditModal extends EditModal {
   // Helpers
   // --------------------------------------------------
   updateProfile() {
-    ProfileActions.updateProfile(
-      this.props.profile,
-      this.props.template
-    );
+    ProfileActions.updateProfile(this.props.template);
   }
 
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
+  renderChild() {
+    var template = this.props.template;
+    if (template.type === 'input') {
+      return (
+        <CardInput
+          action={(event) => ProfileActions.storeAttribute(event.target.value)}
+          errors={template.errors[template.key]}
+          focus={true}
+          label={Helpers.humanize(template.key)}
+          type={template.key === 'birthday' ? 'date' : 'text'}
+          value={template.value} />
+      );
+    } else {
+      var choices = template.choices.map((choice) =>{
+      return {
+        action: () => ProfileActions.storeAttribute(choice),
+        content: Helpers.humanize(choice),
+      }});
+      return (
+        <CardDropdown
+          errors={template.errors[template.key]}
+          label={template.key}
+          options={choices}
+          value={Helpers.humanize(template.value)} />
+      );
+    }
+  }
+
   renderBody() {
     return (
       <div style={this.styles.section}>
@@ -44,9 +63,9 @@ class ProfileEditModal extends EditModal {
           action={() => this.updateProfile()}
           content={'Profile Preview'}
           icon={TypeConstants.icons.save} />
-        <ProfilePreviewEdit
-          profile={this.props.profile}
-          template={this.props.template} />
+        <div style={StyleConstants.cards.body}>
+          {this.renderChild()}
+        </div>
       </div>
     );
   }
