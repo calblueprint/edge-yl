@@ -2,7 +2,24 @@
   class StudentsStore {
 
     constructor() {
-      this.filters = [
+      this.filters = this.generateFilters();
+      this.query = {};
+      this.sorts = this.generateSorts();
+      this.pagination = {
+        current: 1,
+        limit: 1,
+      };
+      this.students = [];
+      this.bindListeners({
+        handleRestoreStudents: StudentsActions.RESTORE_STUDENTS,
+        handleStoreFilter: StudentsActions.STORE_FILTER,
+        handleStoreSort: StudentsActions.STORE_SORT,
+        handleStoreStudents: StudentsActions.STORE_STUDENTS,
+      });
+    }
+
+    generateFilters() {
+      return [
         {
           active: false,
           key: 'is_flagged',
@@ -11,8 +28,10 @@
           selected: 'None',
         },
       ];
-      this.query = {};
-      this.sorts = [
+    }
+
+    generateSorts() {
+      return [
         {
           active: false,
           key: 'first_name',
@@ -28,64 +47,72 @@
           selected: 'None',
         },
       ];
-      this.pagination = {
-        current: 1,
-        limit: 1,
-      };
-      this.students = [];
-      this.bindListeners({
-        handleRestoreStudents: StudentsActions.RESTORE_STUDENTS,
-        handleStoreFilter: StudentsActions.STORE_FILTER,
-        handleStoreSort: StudentsActions.STORE_SORT,
-        handleStoreStudents: StudentsActions.STORE_STUDENTS,
+    }
+
+    propogateQuery() {
+      this.filters = this.generateFilters();
+      this.sorts = this.generateSorts();
+      Object.keys(this.query).map((key) => {
+        if (key === 'order') {
+          var pairing = this.query[key].split(' ');
+          var value = pairing[1];
+          var sort = this.sorts.filter(
+            (sort) => sort.key === pairing[0]
+          )[0];
+          if (sort) {
+            sort.selected = value;
+          }
+        } else if (key) {
+          var pairing = this.query[key].split(' = ');
+          var value = pairing[1];
+          var filter = this.filters.filter(
+            (filter) => filter.key === key
+          )[0];
+          if (filter) {
+            filter.selected = value;
+          }
+        }
       });
     }
 
     handleRestoreStudents(state) {
       if (state) {
-        this.filters = state.filters;
         this.pagination = state.pagination;
         this.query = state.query;
-        this.sorts = state.sorts;
         this.students = state.students;
+        this.propogateQuery();
       }
     }
 
     handleStoreFilter(params) {
-      var target = this.filters.filter((filter) => filter.key === params.key)[0];
-      target.active = params.active;
+      var filter = this.filters.filter(
+        (filter) => filter.key === params.key
+      )[0];
+      filter.active = params.active;
       if (params.selected) {
-        if (params.selected === 'None') {
-          delete this.query[target.key];
-        } else {
-          this.query[target.key] = `${target.key} = ${params.selected}`;
-        }
-        target.selected = params.selected;
+        filter.selected = params.selected;
       }
     }
 
     handleStoreSort(params) {
-      var target = this.sorts.filter((sort) => sort.key === params.key)[0];
-      target.active = params.active;
+      var sort = this.sorts.filter(
+        (sort) => sort.key === params.key
+      )[0];
+      sort.active = params.active;
       if (params.selected) {
-        if (params.selected === 'None') {
-          delete this.query.order;
-        } else {
-          this.query.order = `${target.key} ${params.selected}`;
-        }
-        target.selected = params.selected;
+        sort.selected = params.selected;
       }
     }
 
     handleStoreStudents(response) {
       this.pagination = response.meta.pagination;
+      this.query = response.meta.query;
       this.students = response.students;
+      this.propogateQuery();
       history.pushState(
         {
-          filters: this.filters,
           pagination: this.pagination,
           query: this.query,
-          sorts: this.sorts,
           students: this.students,
         },
         null,

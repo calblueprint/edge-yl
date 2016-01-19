@@ -15,6 +15,7 @@ class StudentsPage extends Component {
     return {
       page: React.PropTypes.number.isRequired,
       profile: React.PropTypes.object.isRequired,
+      query: React.PropTypes.object.isRequired,
     };
   }
 
@@ -32,7 +33,7 @@ class StudentsPage extends Component {
     StudentsStore.listen(this._listener);
     ViewStore.listen(this._listener);
     StudentsActions.attachListener();
-    StudentsActions.fetchStudents(this.props.page);
+    StudentsActions.fetchStudents(this.props.page, this.props.query);
     ViewActions.attachListener();
   }
 

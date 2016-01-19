@@ -13,9 +13,12 @@
       return true;
     }
 
-    fetchStudents(page) {
-      var resolve = (response) => this.storeStudents(response);
-      Requester.get(ApiConstants.students.index(page), resolve);
+    fetchStudents(page, query) {
+      var resolve = (response) => {
+        response.meta.query = query;
+        this.storeStudents(response);
+      };
+      Requester.get(ApiConstants.students.index(page, query), resolve);
       return true;
     }
 
@@ -27,7 +30,10 @@
         } else if (selected === 'None') {
           delete query[key];
         }
-        var resolve = (response) => this.storeStudents(response);
+        var resolve = (response) => {
+          response.meta.query = query;
+          this.storeStudents(response);
+        };
         Requester.get(ApiConstants.students.index(1, query), resolve);
       }
       return {
@@ -45,7 +51,10 @@
         } else if (selected === 'None') {
           delete query.order;
         }
-        var resolve = (response) => this.storeStudents(response);
+        var resolve = (response) => {
+          response.meta.query = query;
+          this.storeStudents(response);
+        };
         Requester.get(ApiConstants.students.index(1, query), resolve);
       }
       return {
