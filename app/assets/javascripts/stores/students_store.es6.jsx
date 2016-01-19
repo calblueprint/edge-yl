@@ -34,10 +34,15 @@
       };
       this.students = [];
       this.bindListeners({
+        handleRestoreStudents: StudentsActions.RESTORE_STUDENTS,
         handleStoreFilter: StudentsActions.STORE_FILTER,
         handleStoreSort: StudentsActions.STORE_SORT,
         handleStoreStudents: StudentsActions.STORE_STUDENTS,
       });
+    }
+
+    handleRestoreStudents(state) {
+
     }
 
     handleStoreFilter(params) {
@@ -69,6 +74,19 @@
     handleStoreStudents(response) {
       this.pagination = response.meta.pagination;
       this.students = response.students;
+      history.pushState(
+        {
+          filters: this.filters,
+          query: this.query,
+          sorts: this.sorts,
+          students: this.students,
+        },
+        null,
+        RouteConstants.students.index(
+          this.pagination.current,
+          this.query,
+        ),
+      );
     }
   }
   this.StudentsStore = alt.createStore(StudentsStore);

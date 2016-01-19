@@ -85,7 +85,7 @@
     get students() {
       return {
         create: '/api/students',
-        index: function(page, query={}) {
+        index: (page, query={}) => {
           var route = `/api/students?page=${page}`;
           if (query['is_flagged']) {
             route = `${route}&is_flagged=${query['is_flagged']}`;

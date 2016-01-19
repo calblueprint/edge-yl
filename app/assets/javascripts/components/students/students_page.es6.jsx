@@ -31,6 +31,7 @@ class StudentsPage extends Component {
     ProfileStore.listen(this._listener);
     StudentsStore.listen(this._listener);
     ViewStore.listen(this._listener);
+    StudentsActions.attachListener();
     StudentsActions.fetchStudents(this.props.page);
     ViewActions.attachListener();
   }

@@ -3,8 +3,14 @@
 
     constructor() {
       this.generateActions(
+        'restoreStudents',
         'storeStudents',
       );
+    }
+
+    attachListener() {
+      window.onpopstate = (event) => this.restoreStudents(event.state);
+      return true;
     }
 
     fetchStudents(page) {

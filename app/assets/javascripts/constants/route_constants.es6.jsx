@@ -45,7 +45,16 @@
 
     get students() {
       return {
-        index: (page) => `/students?page=${page ? page : 1}`,
+        index: (page=1, query={}) => {
+          var route = `/students?page=${page}`;
+          if (query['is_flagged']) {
+            route = `${route}&is_flagged=${query['is_flagged']}`;
+          }
+          if (query.order) {
+            route = `${route}&order=${query.order}`;
+          }
+          return route;
+        },
         show: (id) => `/students/${id}`,
       };
     }
