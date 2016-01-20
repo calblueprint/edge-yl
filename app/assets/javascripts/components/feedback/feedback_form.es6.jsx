@@ -33,7 +33,7 @@ class FeedbackForm extends Component {
   // --------------------------------------------------
   componentDidMount() {
     var container = ReactDOM.findDOMNode(this.refs.container);
-    container.addEventListener('keydown', (event) => this.handleKeyDown(event));
+    container.onkeydown = (event) => this.handleKeyDown(event);
   }
 
   // --------------------------------------------------

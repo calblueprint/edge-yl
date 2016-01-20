@@ -24,7 +24,21 @@
           active: false,
           key: 'is_flagged',
           name: 'Flagged?',
-          options: ['TRUE', 'FALSE', 'None'],
+          options: ['True', 'False', 'None'],
+          selected: 'None',
+        },
+        {
+          active: false,
+          key: 'gender',
+          name: 'Gender',
+          options: ['Female', 'Male', 'Other', 'None'],
+          selected: 'None',
+        },
+        {
+          active: false,
+          key: 'is_primary',
+          name: 'Primary?',
+          options: ['True', 'False', 'None'],
           selected: 'None',
         },
       ];
@@ -63,8 +77,7 @@
             sort.selected = value;
           }
         } else if (key) {
-          var pairing = this.query[key].split(' = ');
-          var value = pairing[1];
+          var value = this.query[key];
           var filter = this.filters.filter(
             (filter) => filter.key === key
           )[0];
