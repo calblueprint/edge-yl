@@ -24,14 +24,21 @@
           active: false,
           key: 'is_flagged',
           name: 'Flagged?',
-          options: ['TRUE', 'FALSE', 'None'],
+          options: ['True', 'False', 'None'],
           selected: 'None',
         },
         {
           active: false,
           key: 'gender',
           name: 'Gender',
-          options: ['female', 'male', 'other', 'None'],
+          options: ['Female', 'Male', 'Other', 'None'],
+          selected: 'None',
+        },
+        {
+          active: false,
+          key: 'is_primary',
+          name: 'Primary?',
+          options: ['True', 'False', 'None'],
           selected: 'None',
         },
       ];

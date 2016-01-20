@@ -87,15 +87,9 @@
         create: '/api/students',
         index: (page, query={}) => {
           var route = `/api/students?page=${page}`;
-          if (query.gender) {
-            route = `${route}&gender=${query.gender}`;
-          }
-          if (query['is_flagged']) {
-            route = `${route}&is_flagged=${query['is_flagged']}`;
-          }
-          if (query.order) {
-            route = `${route}&order=${query.order}`;
-          }
+          Object.keys(query).map((key) => {
+            route = `${route}&${key}=${query[key]}`
+          });
           return route;
         },
         show: (id) => `/api/students/${id}`,

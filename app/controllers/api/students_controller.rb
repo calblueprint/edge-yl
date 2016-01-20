@@ -16,10 +16,13 @@ class Api::StudentsController < Api::BaseController
   def index
     students = Student.includes(:group, :school).page params[:page]
     if params[:gender]
-      students = students.where gender: Student.genders[params[:gender]]
+      students = students.where gender: Student.genders[params[:gender].downcase]
     end
     if params[:is_flagged]
       students = students.where is_flagged: params[:is_flagged]
+    end
+    if params[:is_primary]
+      students = students.where is_primary: params[:is_primary]
     end
     if params[:order]
       students = students.order params[:order]
