@@ -44,6 +44,10 @@ class SchoolsPage extends Component {
   // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
+  changePage(page) {
+    window.location = RouteConstants.schools.index(page);
+  }
+
   generateOptions() {
     return [
       {
@@ -76,7 +80,7 @@ class SchoolsPage extends Component {
               media={this.state.media}
               schools={this.state.schools} />
             <PageNavigator
-              route={RouteConstants.schools.index}
+              action={(page) => this.changePage(page)}
               pagination={this.state.pagination} />
           </div>
         </div>

@@ -43,6 +43,16 @@
       };
     }
 
+    storePage(page) {
+      var query = StudentsStore.getState().query;
+      var resolve = (response) => {
+        response.meta.query = query;
+        this.storeStudents(response);
+      };
+      Requester.get(ApiConstants.students.index(page, query), resolve);
+      return true;
+    }
+
     storeSort(key, active, selected) {
       if (selected) {
         var query = StudentsStore.getState().query;

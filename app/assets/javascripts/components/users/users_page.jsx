@@ -44,6 +44,10 @@ class UsersPage extends Component {
   // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
+  changePage(page) {
+    window.location = RouteConstants.conferences.index(page);
+  }
+
   selectProfile() {
     return this.state.profile ?
            this.state.profile :
@@ -64,7 +68,7 @@ class UsersPage extends Component {
               media={this.state.media}
               users={this.state.users} />
             <PageNavigator
-              route={RouteConstants.users.index}
+              action={(page) => this.changePage(page)}
               pagination={this.state.pagination} />
           </div>
         </div>
