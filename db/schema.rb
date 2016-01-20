@@ -229,5 +229,4 @@ ActiveRecord::Schema.define(version: 20160114193445) do
   add_index "visits", ["user_id"], name: "index_visits_on_user_id", using: :btree
   add_index "visits", ["visitable_type", "visitable_id"], name: "index_visits_on_visitable_type_and_visitable_id", using: :btree
 
-  add_foreign_key "feedbacks", "users"
 end
