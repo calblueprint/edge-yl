@@ -39,7 +39,6 @@
       return {
         active: active,
         key: key,
-        selected: selected,
       };
     }
 
@@ -70,7 +69,6 @@
       return {
         active: active,
         key: key,
-        selected: selected,
       };
     }
   }

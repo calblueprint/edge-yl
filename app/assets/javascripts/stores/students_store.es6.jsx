@@ -95,17 +95,11 @@
     handleStoreFilter(params) {
       var filter = this.filters.filter((cmp) => cmp.key === params.key)[0];
       filter.active = params.active;
-      if (params.selected) {
-        filter.selected = params.selected;
-      }
     }
 
     handleStoreSort(params) {
       var sort = this.sorts.filter((cmp) => cmp.key === params.key)[0];
       sort.active = params.active;
-      if (params.selected) {
-        sort.selected = params.selected;
-      }
     }
 
     handleStoreStudents(response) {
