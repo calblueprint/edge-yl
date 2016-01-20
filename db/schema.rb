@@ -184,12 +184,14 @@ ActiveRecord::Schema.define(version: 20160114193445) do
     t.integer  "registration_status",                null: false
     t.integer  "shirt_size",                         null: false
     t.integer  "group_id"
+    t.integer  "room_id"
     t.integer  "school_id"
     t.datetime "created_at",                         null: false
     t.datetime "updated_at",                         null: false
   end
 
   add_index "students", ["group_id"], name: "index_students_on_group_id", using: :btree
+  add_index "students", ["room_id"], name: "index_students_on_room_id", using: :btree
   add_index "students", ["school_id"], name: "index_students_on_school_id", using: :btree
 
   create_table "users", force: :cascade do |t|

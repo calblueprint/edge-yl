@@ -1,6 +1,6 @@
 conference = Conference.first
 
-(1..25).each do |index|
+(1..5).each do |index|
   new_room = Room.create(
     conference: conference,
     number: index,

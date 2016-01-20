@@ -79,6 +79,9 @@ class RoomPage extends Component {
               editable={this.state.editable}
               media={this.state.media}
               room={room} />
+            <StudentsGrid
+              media={this.state.media}
+              students={room.students} />
           </div>
         </div>
       </div>
