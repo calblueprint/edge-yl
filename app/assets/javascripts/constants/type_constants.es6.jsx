@@ -71,6 +71,7 @@
         expand: 'fa-angle-down',
         group: 'fa-star',
         hamburger: 'fa-bars',
+        room: 'fa-book',
         save: 'fa-save',
         school: 'fa-university',
         search: 'fa-search',
