@@ -27,6 +27,13 @@
           options: ['TRUE', 'FALSE', 'None'],
           selected: 'None',
         },
+        {
+          active: false,
+          key: 'gender',
+          name: 'Gender',
+          options: ['female', 'male', 'other', 'None'],
+          selected: 'None',
+        },
       ];
     }
 
@@ -63,8 +70,7 @@
             sort.selected = value;
           }
         } else if (key) {
-          var pairing = this.query[key].split(' = ');
-          var value = pairing[1];
+          var value = this.query[key];
           var filter = this.filters.filter(
             (filter) => filter.key === key
           )[0];

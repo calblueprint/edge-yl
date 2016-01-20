@@ -47,6 +47,9 @@
       return {
         index: (page=1, query={}) => {
           var route = `/students?page=${page}`;
+          if (query.gender) {
+            route = `${route}&gender=${query.gender}`;
+          }
           if (query['is_flagged']) {
             route = `${route}&is_flagged=${query['is_flagged']}`;
           }
