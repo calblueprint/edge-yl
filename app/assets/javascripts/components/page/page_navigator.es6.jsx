@@ -5,19 +5,11 @@ class PageNavigator extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      action: React.PropTypes.func,
+      action: React.PropTypes.func.isRequired,
       pagination: React.PropTypes.shape({
         current: React.PropTypes.number.isRequired,
         limit: React.PropTypes.number.isRequired,
       }).isRequired,
-      route: React.PropTypes.func,
-    };
-  }
-
-  static get defaultProps() {
-    return {
-      action: null,
-      route: null,
     };
   }
 
@@ -49,13 +41,7 @@ class PageNavigator extends Component {
   renderNext() {
     var pagination = this.props.pagination;
     if (pagination.current < pagination.limit) {
-      var action;
-      var next = pagination.current + 1;
-      if (this.props.action) {
-        action = () => this.props.action(next);
-      } else {
-        action = () => window.location = this.props.route(next);
-      }
+      var action = () => this.props.action(pagination.current + 1);
       var style = Object.assign({}, this.styles.section, this.styles.left);
       return (
         <div style={style}>
@@ -72,13 +58,7 @@ class PageNavigator extends Component {
   renderPrevious() {
     var pagination = this.props.pagination;
     if (pagination.current > 1) {
-      var action;
-      var previous = pagination.current - 1;
-      if (this.props.action) {
-        action = () => this.props.action(previous);
-      } else {
-        action = () => window.location = this.props.route(previous);
-      }
+      var action = () => this.props.action(pagination.current - 1);
       var style = Object.assign({}, this.styles.section, this.styles.right);
       return (
         <div style={style}>

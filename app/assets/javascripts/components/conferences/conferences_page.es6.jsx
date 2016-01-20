@@ -44,6 +44,10 @@ class ConferencesPage extends Component {
   // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
+  changePage(page) {
+    window.location = RouteConstants.conferences.index(page);
+  }
+
   generateOptions() {
     return [
       {
@@ -83,7 +87,7 @@ class ConferencesPage extends Component {
               conferences={this.state.conferences}
               media={this.state.media} />
             <PageNavigator
-              route={RouteConstants.conferences.index}
+              action={(page) => this.changePage(page)}
               pagination={this.state.pagination} />
           </div>
         </div>
