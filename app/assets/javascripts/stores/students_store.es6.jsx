@@ -49,38 +49,33 @@
         {
           active: false,
           key: 'first_name',
-          name: 'First Name',
+          name: 'First name',
           options: ['ASC', 'DESC', 'None'],
           selected: 'None',
         },
         {
           active: false,
           key: 'last_name',
-          name: 'Last Name',
+          name: 'Last name',
           options: ['ASC', 'DESC', 'None'],
           selected: 'None',
         },
       ];
     }
 
-    propogateQuery() {
+    syncQuery() {
       this.filters = this.generateFilters();
       this.sorts = this.generateSorts();
       Object.keys(this.query).map((key) => {
         if (key === 'order') {
           var pairing = this.query[key].split(' ');
-          var value = pairing[1];
-          var sort = this.sorts.filter(
-            (sort) => sort.key === pairing[0]
-          )[0];
+          var sort = this.sorts.filter((cmp) => cmp.key === pairing[0])[0];
           if (sort) {
-            sort.selected = value;
+            sort.selected = pairing[1];
           }
         } else if (key) {
           var value = this.query[key];
-          var filter = this.filters.filter(
-            (filter) => filter.key === key
-          )[0];
+          var filter = this.filters.filter((cmp) => cmp.key === key)[0];
           if (filter) {
             filter.selected = value;
           }
@@ -93,14 +88,12 @@
         this.pagination = state.pagination;
         this.query = state.query;
         this.students = state.students;
-        this.propogateQuery();
+        this.syncQuery();
       }
     }
 
     handleStoreFilter(params) {
-      var filter = this.filters.filter(
-        (filter) => filter.key === params.key
-      )[0];
+      var filter = this.filters.filter((cmp) => cmp.key === params.key)[0];
       filter.active = params.active;
       if (params.selected) {
         filter.selected = params.selected;
@@ -108,9 +101,7 @@
     }
 
     handleStoreSort(params) {
-      var sort = this.sorts.filter(
-        (sort) => sort.key === params.key
-      )[0];
+      var sort = this.sorts.filter((cmp) => cmp.key === params.key)[0];
       sort.active = params.active;
       if (params.selected) {
         sort.selected = params.selected;
@@ -121,7 +112,7 @@
       this.pagination = response.meta.pagination;
       this.query = response.meta.query;
       this.students = response.students;
-      this.propogateQuery();
+      this.syncQuery();
       history.pushState(
         {
           pagination: this.pagination,
