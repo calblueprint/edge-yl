@@ -17,7 +17,6 @@ class StudentsFilter extends Component {
       container: {
         display: 'flex',
         flexFlow: 'column',
-        flex: '1',
         zIndex: StyleConstants.planes.two,
       },
     }
@@ -87,7 +86,7 @@ class StudentsFilter extends Component {
     if (filter.active) {
       return (
         <Dropdown
-          action={null}
+          action={() => StudentsActions.storeFilter(filter.key, false)}
           options={this.generateDropdownOptions()}
           styles={this.dropdownStyles} />
       );
