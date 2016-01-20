@@ -88,9 +88,9 @@ class HeaderSearch extends Component {
   // --------------------------------------------------
   componentDidMount() {
     var input = ReactDOM.findDOMNode(this.refs.input);
-    input.addEventListener('blur', (event) => this.handleBlur(event));
-    input.addEventListener('focus', (event) => this.handleFocus(event));
-    input.addEventListener('input', (event) => this.handleInput(event));
+    input.onblur = (event) => this.handleBlur(event);
+    input.onfocus = (event) => this.handleFocus(event);
+    input.oninput = (event) => this.handleInput(event);
   }
 
   // --------------------------------------------------

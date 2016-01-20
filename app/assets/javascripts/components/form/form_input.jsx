@@ -37,7 +37,7 @@ class FormInput extends Component {
   // --------------------------------------------------
   componentDidMount() {
     var node = ReactDOM.findDOMNode(this.refs.container);
-    node.addEventListener('input', (event) => this.handleChange(event));
+    node.oninput = (event) => this.handleChange(event);
   }
 
   // --------------------------------------------------

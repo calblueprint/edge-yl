@@ -14,7 +14,16 @@ class SignupForm extends Component {
   // --------------------------------------------------
   componentDidMount() {
     var container = ReactDOM.findDOMNode(this.refs.container);
-    container.addEventListener('keydown', (event) => this.handleKeyDown(event));
+    container.onkeydown = (event) => this.handleKeyDown(event);
+  }
+
+  // --------------------------------------------------
+  // Handlers
+  // --------------------------------------------------
+  handleKeyDown(event) {
+    if (event.keyCode === 13) {
+      this.createUser();
+    }
   }
 
   // --------------------------------------------------
@@ -29,15 +38,6 @@ class SignupForm extends Component {
     return(event) => {
       AuthenticationActions.storeAttribute(field, event.target.value);
     };
-  }
-
-  // --------------------------------------------------
-  // Handlers
-  // --------------------------------------------------
-  handleKeyDown(event) {
-    if (event.keyCode === 13) {
-      this.createUser();
-    }
   }
 
   // --------------------------------------------------
