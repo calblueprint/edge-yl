@@ -82,7 +82,7 @@ class StudentsPage extends Component {
               media={this.state.media}
               students={this.state.students} />
             <PageNavigator
-              route={RouteConstants.students.index}
+              action={(page) => StudentsActions.storePage(page)}
               pagination={this.state.pagination} />
             <StudentsSidebar
               filters={this.state.filters}
