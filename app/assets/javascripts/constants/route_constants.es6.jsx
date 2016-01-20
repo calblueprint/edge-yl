@@ -36,6 +36,13 @@
       };
     }
 
+    get rooms() {
+      return {
+        index: (page) => `/rooms?page=${page ? page : 1}`,
+        show: (id) => `/rooms/${id}`,
+      };
+    }
+
     get schools() {
       return {
         index: (page) => `/schools?page=${page ? page : 1}`,

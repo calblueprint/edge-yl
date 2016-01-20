@@ -63,6 +63,7 @@
     get rooms() {
       return {
         show: (id) => `/api/rooms/${id}`,
+        index: (page) => `/api/rooms?page=${page}`,
         update: (id) => `/api/rooms/${id}`,
       };
     }

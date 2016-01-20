@@ -1,5 +1,5 @@
 class RoomShowSerializer < RoomBaseSerializer
 
-  has_many :students, serializer: StudentBaseSerializer
+  has_many :students, serializer: StudentShowSerializer
 
 end

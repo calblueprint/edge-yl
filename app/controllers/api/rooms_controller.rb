@@ -1,5 +1,15 @@
 class Api::RoomsController < Api::BaseController
 
+  def index
+    rooms = Room.page params[:page]
+    respond_to do |format|
+      format.csv { send_data rooms.to_csv }
+      format.json { render json: rooms,
+                           serializer: PaginatedSerializer,
+                           each_serializer: RoomIndexSerializer }
+    end
+  end
+
   def show
     room = Room.find params[:id]
     render json: room, serializer: RoomShowSerializer
