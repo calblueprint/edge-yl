@@ -100,12 +100,14 @@ class HeaderSearch extends Component {
     var route;
     var type = result.searchable_type;
     var node = (
-      <div>
+      <div style={{ display: 'flex', flexFlow: 'column' }}>
         <h6>{type}</h6>
         <h6>{result.content}</h6>
       </div>
     );
-    if (type === 'School') {
+    if (type === 'Group') {
+      route = RouteConstants.groups.show(result.searchable_id);
+    } else if (type === 'School') {
       route = RouteConstants.schools.show(result.searchable_id);
     } else {
       route = RouteConstants.students.show(result.searchable_id);
@@ -139,7 +141,7 @@ class HeaderSearch extends Component {
             <i className={TypeConstants.icons.search} />
           </div>
           <input
-            placeholder={'Search for a school or student'}
+            placeholder={'Search for a group, school, or student'}
             ref={'input'}
             style={this.styles.input}
             type={'search'}
