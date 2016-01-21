@@ -2,6 +2,9 @@ class Api::RoomsController < Api::BaseController
 
   def index
     rooms = Room.page params[:page]
+    if params[:conference_id]
+      rooms = rooms.where params[:conference_id]
+    end
     respond_to do |format|
       format.csv { send_data rooms.to_csv }
       format.json { render json: rooms,

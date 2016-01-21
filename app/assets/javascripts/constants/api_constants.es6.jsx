@@ -63,7 +63,14 @@
     get rooms() {
       return {
         show: (id) => `/api/rooms/${id}`,
-        index: (page) => `/api/rooms?page=${page}`,
+        index: (page=1, query={}) => {
+          var route = `/api/rooms?page=${page}`;
+          if (query['conference_id']) {
+            route = `${route}&?conference_id=${query['conference_id']}`;
+          }
+          console.log('ApiConstants: ', route)
+          return route;
+        },
         update: (id) => `/api/rooms/${id}`,
       };
     }

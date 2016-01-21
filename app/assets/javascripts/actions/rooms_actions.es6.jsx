@@ -7,9 +7,13 @@
       );
     }
 
-    fetchRooms(page) {
-      var resolve = (response) => this.storeRooms(response);
-      Requester.get(ApiConstants.rooms.index(page), resolve);
+    fetchRooms(page, query) {
+      console.log('RoomsActions', query)
+      var resolve = (response) => {
+        response.meta.query = query;
+        this.storeRooms(response);
+      };
+      Requester.get(ApiConstants.rooms.index(page, query), resolve);
       return true;
     }
   }

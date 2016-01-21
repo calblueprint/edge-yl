@@ -15,6 +15,7 @@ class RoomsPage extends Component {
     return {
       page: React.PropTypes.number.isRequired,
       profile: React.PropTypes.object.isRequired,
+      query: React.PropTypes.object.isRequired,
     };
   }
 
@@ -31,7 +32,7 @@ class RoomsPage extends Component {
     ProfileStore.listen(this._listener);
     RoomsStore.listen(this._listener);
     ViewStore.listen(this._listener);
-    RoomsActions.fetchRooms(this.props.page);
+    RoomsActions.fetchRooms(this.props.page, this.props.query);
     ViewActions.attachListener();
   }
 
@@ -44,8 +45,20 @@ class RoomsPage extends Component {
   // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
+  generateOption(conference_id) {
+    this.props.query['conference_id'] = conference_id;
+    return {
+      content: conference_id,
+      route: RouteConstants.rooms.index(this.props.page, this.props.query)
+    }
+  }
+
+  generateOptions() {
+    return this.props.query['conference_ids'].map((conference_id) => this.generateOption(conference_id))
+  }
+
   changePage(page) {
-    window.location = RouteConstants.rooms.index(page);
+    window.location = RouteConstants.rooms.index(page, this.props.query);
   }
 
   selectProfile() {
@@ -58,6 +71,8 @@ class RoomsPage extends Component {
   // Render
   // --------------------------------------------------
   render() {
+    console.log('RoomsPage: ', this.props.query['conference_id'])
+    console.log(this.state.rooms)
     return (
       <div style={StyleConstants.pages.wrapper}>
       <Header profile={this.selectProfile()} />
@@ -65,7 +80,8 @@ class RoomsPage extends Component {
           <Sidebar profile={this.selectProfile()} />
           <div style={StyleConstants.pages.content}>
             <GridHeader
-              label={'Rooms'} />
+              label={'Rooms'}
+              options={this.generateOptions()} />
             <RoomsGrid
               media={this.state.media}
               rooms={this.state.rooms} />

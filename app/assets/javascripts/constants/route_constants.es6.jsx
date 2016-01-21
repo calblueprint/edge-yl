@@ -40,6 +40,7 @@
       return {
         index: (page=1, query={}) => {
           var route = `/rooms?page=${page}`;
+          console.log('RouteConstants: ', query)
           if (query['conference_id']) {
             route = `${route}&?conference_id=${query['conference_id']}`;
           }
