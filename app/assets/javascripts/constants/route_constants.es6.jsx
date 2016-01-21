@@ -38,7 +38,13 @@
 
     get rooms() {
       return {
-        index: (page) => `/rooms?page=${page ? page : 1}`,
+        index: (page=1, query={}) => {
+          var route = `/rooms?page=${page}`;
+          if (query['conference_id']) {
+            route = `${route}&?conference_id=${query['conference_id']}`;
+          }
+          return route;
+        },
         show: (id) => `/rooms/${id}`,
       };
     }

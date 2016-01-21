@@ -13,8 +13,11 @@ class Room < ActiveRecord::Base
 
   belongs_to :conference
 
+  enum gender: [:female, :male, :other]
+
   has_many :students
 
+  validates :capacity, presence: true
   validates :number, presence: true
 
 end
