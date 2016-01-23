@@ -13,9 +13,9 @@ class RoomsPage extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
+      conference_id: React.PropTypes.object.isRequired,
       page: React.PropTypes.number.isRequired,
       profile: React.PropTypes.object.isRequired,
-      query: React.PropTypes.object.isRequired,
     };
   }
 
@@ -32,7 +32,7 @@ class RoomsPage extends Component {
     ProfileStore.listen(this._listener);
     RoomsStore.listen(this._listener);
     ViewStore.listen(this._listener);
-    RoomsActions.fetchRooms(this.props.page, this.props.query);
+    RoomsActions.fetchRooms(this.props.page, this.props.conference_id);
     ViewActions.attachListener();
   }
 
@@ -46,19 +46,18 @@ class RoomsPage extends Component {
   // Helpers
   // --------------------------------------------------
   generateOption(conference_id) {
-    this.props.query['conference_id'] = conference_id;
     return {
       content: conference_id,
-      route: RouteConstants.rooms.index(this.props.page, this.props.query)
+      route: RouteConstants.rooms.index(this.props.page, this.props.conference_id)
     }
   }
 
   generateOptions() {
-    return this.props.query['conference_ids'].map((conference_id) => this.generateOption(conference_id))
+    return [1, 2].map((conference_id) => this.generateOption(conference_id))
   }
 
   changePage(page) {
-    window.location = RouteConstants.rooms.index(page, this.props.query);
+    window.location = RouteConstants.rooms.index(page, conference_id);
   }
 
   selectProfile() {
@@ -71,8 +70,6 @@ class RoomsPage extends Component {
   // Render
   // --------------------------------------------------
   render() {
-    console.log('RoomsPage: ', this.props.query['conference_id'])
-    console.log(this.state.rooms)
     return (
       <div style={StyleConstants.pages.wrapper}>
       <Header profile={this.selectProfile()} />
