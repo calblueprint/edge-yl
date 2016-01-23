@@ -79,6 +79,7 @@ class ProfilePage extends Component {
               options={this.generateOptions()} />
             <ProfileGrid
               editable={this.state.editable}
+              media={this.state.media}
               profile={this.selectProfile()} />
           </div>
         </div>
