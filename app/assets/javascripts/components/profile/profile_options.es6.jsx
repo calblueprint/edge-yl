@@ -31,28 +31,25 @@ class ProfileOptions extends Component {
   render() {
     var profile = this.props.profile;
     return (
-      <div style={StyleConstants.cards.show(this.props.media)}>
-        <CardHeader content={`Profile ${profile.id}`} />
-        <div style={StyleConstants.cards.body}>
-          <CardAttribute
-            action={() => this.storeTemplate('first_name')}
-            editable={this.props.editable}
-            label={'First name'}
-            value={profile.first_name} />
-          <CardAttribute
-            action={() => this.storeTemplate('last_name')}
-            editable={this.props.editable}
-            label={'Last name'}
-            value={profile.last_name} />
-          <CardAttribute
-            action={() => this.storeTemplate('email')}
-            editable={this.props.editable}
-            label={'Email'}
-            value={profile.email} />
-          <CardAttribute
-            label={'Password'}
-            value={'**********'} />
-        </div>
+      <div style={StyleConstants.cards.body}>
+        <CardAttribute
+          action={() => this.storeTemplate('first_name')}
+          editable={this.props.editable}
+          label={'First name'}
+          value={profile.first_name} />
+        <CardAttribute
+          action={() => this.storeTemplate('last_name')}
+          editable={this.props.editable}
+          label={'Last name'}
+          value={profile.last_name} />
+        <CardAttribute
+          action={() => this.storeTemplate('email')}
+          editable={this.props.editable}
+          label={'Email'}
+          value={profile.email} />
+        <CardAttribute
+          label={'Password'}
+          value={'**********'} />
       </div>
     );
   }
