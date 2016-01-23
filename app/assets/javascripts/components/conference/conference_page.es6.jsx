@@ -48,7 +48,7 @@ class ConferencePage extends Component {
     return [
       {
         action: () => ViewActions.toggleEditability(),
-        content: 'Edit',
+        content: this.state.editable ? 'Finish' : 'Edit',
       },
     ];
   }

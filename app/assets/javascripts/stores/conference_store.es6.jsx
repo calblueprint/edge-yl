@@ -6,10 +6,11 @@
       this.conference = {
         groups: [],
       };
+      this.template = {};
       this.bindListeners({
-        handleStoreOverlay: ConferenceActions.STORE_OVERLAY,
         handleStoreConference: ConferenceActions.STORE_CONFERENCE,
         handleStoreGroup: ConferenceActions.STORE_GROUP,
+        handleStoreTemplate: ConferenceActions.STORE_TEMPLATE,
       });
     }
 
@@ -23,8 +24,9 @@
       this.conference = response.conference;
     }
 
-    handleStoreOverlay(overlay) {
-      this.overlay = overlay;
+    handleStoreTemplate(template) {
+      this.overlay = true;
+      this.template = template;
     }
   }
   this.ConferenceStore = alt.createStore(ConferenceStore);

@@ -24,11 +24,15 @@
       return true;
     }
 
-    storeOverlay(active, type, target) {
+    storeTemplate(options) {
       return {
-        active: active,
-        target: target,
-        type: type,
+        choices: options.choices,
+        errors: {},
+        id: options.id,
+        key: options.key,
+        model: options.model,
+        type: options.type,
+        value: options.value,
       };
     }
 
