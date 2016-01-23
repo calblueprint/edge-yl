@@ -8,10 +8,15 @@
       };
       this.template = {};
       this.bindListeners({
+        handleCloseOverlay: ConferenceActions.CLOSE_OVERLAY,
         handleStoreConference: ConferenceActions.STORE_CONFERENCE,
         handleStoreGroup: ConferenceActions.STORE_GROUP,
         handleStoreTemplate: ConferenceActions.STORE_TEMPLATE,
       });
+    }
+
+    handleCloseOverlay() {
+      this.overlay = false;
     }
 
     handleStoreGroup(response) {

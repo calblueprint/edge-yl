@@ -66,8 +66,8 @@ class ConferencePage extends Component {
     if (this.state.overlay) {
       return (
         <ConferencePageOverlay
-          overlay={this.state.overlay}
-          conference={this.state.conference} />
+          conference={this.state.conference}
+          template={this.state.template} />
       );
     }
   }

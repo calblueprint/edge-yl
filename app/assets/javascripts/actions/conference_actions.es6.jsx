@@ -3,6 +3,7 @@
 
     constructor() {
       this.generateActions(
+        'closeOverlay',
         'storeConference',
         'storeGroup',
       );
