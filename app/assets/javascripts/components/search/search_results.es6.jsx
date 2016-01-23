@@ -1,4 +1,4 @@
-class HeaderSearch extends Component {
+class SearchResults extends Component {
 
   // --------------------------------------------------
   // Props
@@ -19,23 +19,6 @@ class HeaderSearch extends Component {
       container: {
         display: 'flex',
         flexFlow: 'column',
-        flex: '1',
-        height: '30px',
-      },
-      header: {
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        width: '48px',
-        backgroundColor: StyleConstants.colors.indigo,
-        borderRadius: '1px',
-        color: StyleConstants.colors.white,
-      },
-      input: {
-        zIndex: StyleConstants.planes.nine,
-        height: '30px',
-        border: 'none',
-        borderRadius: '1px',
       },
     };
   }
@@ -69,43 +52,15 @@ class HeaderSearch extends Component {
   }
 
   // --------------------------------------------------
-  // Handlers
-  // --------------------------------------------------
-  handleBlur(event) {
-    HeaderActions.storeSearch(false);
-  }
-
-  handleFocus(event) {
-    HeaderActions.storeSearch(true);
-  }
-
-  handleInput(event) {
-    HeaderActions.storeSearch(true, event.target.value);
-  }
-
-  // --------------------------------------------------
-  // Lifecycle
-  // --------------------------------------------------
-  componentDidMount() {
-    var input = ReactDOM.findDOMNode(this.refs.input);
-    input.onblur = (event) => this.handleBlur(event);
-    input.onfocus = (event) => this.handleFocus(event);
-    input.oninput = (event) => this.handleInput(event);
-  }
-
-  // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
   generateOption(result) {
     var route;
     var type = result.searchable_type;
-    var node = (
-      <div>
-        <h6>{type}</h6>
-        <h6>{result.content}</h6>
-      </div>
-    );
-    if (type === 'School') {
+    var node = <SearchResult label={type} value={result.content} />;
+    if (type === 'Group') {
+      route = RouteConstants.groups.show(result.searchable_id);
+    } else if (type === 'School') {
       route = RouteConstants.schools.show(result.searchable_id);
     } else {
       route = RouteConstants.students.show(result.searchable_id);
@@ -133,23 +88,9 @@ class HeaderSearch extends Component {
   // --------------------------------------------------
   render() {
     return (
-      <div style={this.styles.container}>
-        <div style={{ display: 'flex' }}>
-          <div style={this.styles.header}>
-            <i className={TypeConstants.icons.search} />
-          </div>
-          <input
-            placeholder={'Search for a school or student'}
-            ref={'input'}
-            style={this.styles.input}
-            type={'search'}
-            value={this.props.search.query} />
-        </div>
-        <Dropdown
-          options={this.generateOptions()}
-          styles={this.dropdownStyles} />
-        <PageUnderlay active={this.props.search.active} />
-      </div>
+      <Dropdown
+        options={this.generateOptions()}
+        styles={this.dropdownStyles} />
     );
   }
 }
