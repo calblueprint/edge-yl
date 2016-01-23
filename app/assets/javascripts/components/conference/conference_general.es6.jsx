@@ -5,6 +5,7 @@ class ConferenceGeneral extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
+      editable: React.PropTypes.bool.isRequired,
       conference: React.PropTypes.object.isRequired,
     };
   }
@@ -17,9 +18,13 @@ class ConferenceGeneral extends Component {
     return (
       <div style={StyleConstants.cards.body}>
         <CardAttribute
+          action={() => this.storeTemplate('name')}
+          editable={this.props.editable}
           label={'Name'}
           value={conference.name} />
         <CardAttribute
+          action={() => this.storeTemplate('location')}
+          editable={this.props.editable}
           label={'Location'}
           value={conference.location} />
         <CardAttribute

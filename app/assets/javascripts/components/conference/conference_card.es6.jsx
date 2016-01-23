@@ -6,6 +6,7 @@ class ConferenceCard extends Component {
   static get propTypes() {
     return {
       conference: React.PropTypes.object.isRequired,
+      editable: React.PropTypes.bool.isRequired,
       media: React.PropTypes.string.isRequired,
       target: React.PropTypes.oneOf([
         TypeConstants.conference.general,
@@ -15,25 +16,21 @@ class ConferenceCard extends Component {
   }
 
   // --------------------------------------------------
-  // Helpers
-  // --------------------------------------------------
-  showOverlay() {
-    ConferenceActions.storeOverlay(
-      true,
-      TypeConstants.actions.edit,
-      this.props.target
-    );
-  }
-
-  // --------------------------------------------------
   // Render
   // --------------------------------------------------
   renderBody() {
     switch (this.props.target) {
       case TypeConstants.conference.general:
-        return <ConferenceGeneral conference={this.props.conference} />;
+        return (
+          <ConferenceGeneral
+            conference={this.props.conference}
+            editable={this.props.editable} />
+        );
       case TypeConstants.conference.statistic:
-        return <ConferenceStatistic conference={this.props.conference} />;
+        return (
+          <ConferenceStatistic
+            conference={this.props.conference} />
+        );
     }
   }
 
