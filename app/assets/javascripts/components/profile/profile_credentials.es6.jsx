@@ -1,4 +1,4 @@
-class ProfileOptions extends Component {
+class ProfileCredentials extends Component {
 
   // --------------------------------------------------
   // Props

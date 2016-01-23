@@ -22,13 +22,13 @@ class ProfileCard extends Component {
     switch (this.props.type) {
       case TypeConstants.profile.credentials:
         return (
-          <ProfileOptions
+          <ProfileCredentials
             editable={this.props.editable}
             profile={this.props.profile} />
         );
       case TypeConstants.profile.general:
         return (
-          <ProfilePreview
+          <ProfileGeneral
             editable={this.props.editable}
             profile={this.props.profile} />
         );
@@ -37,9 +37,9 @@ class ProfileCard extends Component {
 
   renderTitle() {
     switch (this.props.type) {
-      case TypeConstants.student.credentials:
+      case TypeConstants.profile.credentials:
         return 'Profile Credentials';
-      case TypeConstants.student.general:
+      case TypeConstants.profile.general:
         return 'Profile General';
     };
   }

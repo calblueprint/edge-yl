@@ -1,4 +1,4 @@
-class ProfilePreview extends Component {
+class ProfileGeneral extends Component {
 
   // --------------------------------------------------
   // Props
