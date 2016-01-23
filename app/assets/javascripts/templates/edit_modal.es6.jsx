@@ -36,7 +36,7 @@ class EditModal extends Component {
   componentDidMount() {
     var node = ReactDOM.findDOMNode(this.refs.container);
     this._node = node;
-    node.addEventListener('click', (event) => this.handleClick(event));
+    node.onclick = (event) => this.handleClick(event);
   }
 
   // --------------------------------------------------

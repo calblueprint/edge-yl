@@ -39,7 +39,7 @@ class HeaderNavigation extends Component {
   renderSearch() {
     if (this.props.active) {
       return (
-        <HeaderSearch
+        <SearchInput
           pagination={this.props.pagination}
           results={this.props.results}
           search={this.props.search} />

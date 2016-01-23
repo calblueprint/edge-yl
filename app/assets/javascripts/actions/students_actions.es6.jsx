@@ -26,7 +26,7 @@
       if (selected) {
         var query = StudentsStore.getState().query;
         if (selected !== 'None') {
-          query[key] = `${key} = ${selected}`;
+          query[key] = selected;
         } else if (selected === 'None') {
           delete query[key];
         }
@@ -39,7 +39,6 @@
       return {
         active: active,
         key: key,
-        selected: selected,
       };
     }
 
@@ -70,7 +69,6 @@
       return {
         active: active,
         key: key,
-        selected: selected,
       };
     }
   }

@@ -17,7 +17,6 @@ class StudentsSort extends Component {
       container: {
         display: 'flex',
         flexFlow: 'column',
-        flex: '1',
         zIndex: StyleConstants.planes.two,
       },
     }
@@ -54,11 +53,9 @@ class StudentsSort extends Component {
         {},
         StyleConstants.containers.card,
         {
-          top: '4px',
-          left: '0px',
           zIndex: StyleConstants.planes.two,
           margin: '0 12px',
-        }
+        },
       ),
     };
   }
@@ -84,11 +81,10 @@ class StudentsSort extends Component {
   // --------------------------------------------------
   renderDropdown() {
     var sort = this.props.sort;
-    // TODO(Warren): Fix dropdown action prop below.
     if (sort.active) {
       return (
         <Dropdown
-          action={null}
+          action={() => StudentsActions.storeSort(sort.key, false)}
           options={this.generateDropdownOptions()}
           styles={this.dropdownStyles} />
       );

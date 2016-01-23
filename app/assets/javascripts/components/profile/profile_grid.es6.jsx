@@ -6,33 +6,27 @@ class ProfileGrid extends Component {
 static get propTypes() {
   return {
     editable: React.PropTypes.bool.isRequired,
+    media: React.PropTypes.string.isRequired,
     profile: React.PropTypes.object.isRequired,
   }
 }
-
-// --------------------------------------------------
-// Styles
-// --------------------------------------------------
-  get styles() {
-    return {
-      container: {
-        display: 'flex',
-        flexFlow: 'column',
-        flex: '1',
-      },
-    };
-  }
 
 // --------------------------------------------------
 // Render
 // --------------------------------------------------
   render() {
     return (
-      <div style = {this.styles.container}>
-        <ProfilePreview profile={this.props.profile} />
-        <ProfileOptions
+      <div style={StyleConstants.containers.grid}>
+        <ProfileCard
           editable={this.props.editable}
-          profile={this.props.profile} />
+          media={this.props.media}
+          profile={this.props.profile}
+          type={TypeConstants.profile.general} />
+        <ProfileCard
+          editable={this.props.editable}
+          media={this.props.media}
+          profile={this.props.profile}
+          type={TypeConstants.profile.credentials} />
       </div>
     );
   }

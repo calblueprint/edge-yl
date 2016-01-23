@@ -29,6 +29,13 @@
       };
     }
 
+    get profile() {
+      return {
+        credentials: 'profile-credentials',
+        general: 'profile-general',
+      };
+    }
+
     get room() {
       return {
         general: 'room-general',
