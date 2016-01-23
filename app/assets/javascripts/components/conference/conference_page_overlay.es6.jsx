@@ -21,7 +21,9 @@ class ConferencePageOverlay extends PageOverlay {
   // Render
   // --------------------------------------------------
   renderModal() {
-    if (this.props) {
+    if (this.props.template.model === 'conference') {
+      return <ConferenceEditModal template={this.props.template} />;
+    } else {
       return (
         <GroupCreateModal
           conference={this.props.conference}

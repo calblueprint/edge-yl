@@ -4,8 +4,10 @@
     constructor() {
       this.generateActions(
         'closeOverlay',
+        'storeAttribute',
         'storeConference',
         'storeGroup',
+        'storeError',
       );
     }
 
@@ -37,12 +39,16 @@
       };
     }
 
-    updateConference(id, params) {
+    updateConference(template, attributes={}) {
+      attributes[template.key] = template.value;
+      var params = { conference: attributes };
       var resolve = (response) => this.storeConference(response);
+      var reject = (response) => this.storeError(response);
       Requester.update(
-        ApiConstants.conferences.update(id),
+        ApiConstants.conferences.update(template.id),
         params,
         resolve,
+        reject,
       );
       return true;
     }
