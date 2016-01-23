@@ -13,7 +13,7 @@ class RoomsPage extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      conference_id: React.PropTypes.object.isRequired,
+      conference_id: React.PropTypes.number.isRequired,
       page: React.PropTypes.number.isRequired,
       profile: React.PropTypes.object.isRequired,
     };
@@ -45,15 +45,15 @@ class RoomsPage extends Component {
   // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
-  generateOption(conference_id) {
+  generateOption(id) {
     return {
-      content: conference_id,
-      route: RouteConstants.rooms.index(this.props.page, this.props.conference_id)
+      content: id,
+      route: RouteConstants.rooms.index(this.props.page, id)
     }
   }
 
   generateOptions() {
-    return [1, 2].map((conference_id) => this.generateOption(conference_id))
+    return [1, 2].map((id) => this.generateOption(id))
   }
 
   changePage(page) {
