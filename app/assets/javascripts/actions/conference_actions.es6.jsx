@@ -3,8 +3,11 @@
 
     constructor() {
       this.generateActions(
+        'closeOverlay',
+        'storeAttribute',
         'storeConference',
         'storeGroup',
+        'storeError',
       );
     }
 
@@ -24,20 +27,28 @@
       return true;
     }
 
-    storeOverlay(active, type, target) {
+    storeTemplate(options) {
       return {
-        active: active,
-        target: target,
-        type: type,
+        choices: options.choices,
+        errors: {},
+        id: options.id,
+        key: options.key,
+        model: options.model,
+        type: options.type,
+        value: options.value,
       };
     }
 
-    updateConference(id, params) {
+    updateConference(template, attributes={}) {
+      attributes[template.key] = template.value;
+      var params = { conference: attributes };
       var resolve = (response) => this.storeConference(response);
+      var reject = (response) => this.storeError(response);
       Requester.update(
-        ApiConstants.conferences.update(id),
+        ApiConstants.conferences.update(template.id),
         params,
         resolve,
+        reject,
       );
       return true;
     }

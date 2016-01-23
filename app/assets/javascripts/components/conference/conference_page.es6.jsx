@@ -47,8 +47,8 @@ class ConferencePage extends Component {
   generateOptions() {
     return [
       {
-        action: () => this.storeOverlay(),
-        content: 'Edit',
+        action: () => ViewActions.toggleEditability(),
+        content: this.state.editable ? 'Finish' : 'Edit',
       },
     ];
   }
@@ -59,15 +59,6 @@ class ConferencePage extends Component {
            this.props.profile;
   }
 
-  storeOverlay() {
-    // TODO: Fix constants below.
-    ConferenceActions.storeOverlay(
-      true,
-      TypeConstants.actions.edit,
-      'conference',
-    );
-  }
-
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
@@ -75,8 +66,8 @@ class ConferencePage extends Component {
     if (this.state.overlay) {
       return (
         <ConferencePageOverlay
-          overlay={this.state.overlay}
-          conference={this.state.conference} />
+          conference={this.state.conference}
+          template={this.state.template} />
       );
     }
   }
@@ -96,6 +87,7 @@ class ConferencePage extends Component {
               value={conference.name} />
             <ConferenceGrid
               conference={conference}
+              editable={this.state.editable}
               media={this.state.media} />
           </div>
         </div>
