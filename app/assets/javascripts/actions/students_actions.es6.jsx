@@ -3,29 +3,72 @@
 
     constructor() {
       this.generateActions(
+        'restoreStudents',
         'storeStudents',
       );
     }
 
-    fetchStudents(page) {
-      var resolve = (response) => this.storeStudents(response);
-      Requester.get(ApiConstants.students.index(page), resolve);
+    attachListener() {
+      window.onpopstate = (event) => this.restoreStudents(event.state);
+      return true;
+    }
+
+    fetchStudents(page, query) {
+      var resolve = (response) => {
+        response.meta.query = query;
+        this.storeStudents(response);
+      };
+      Requester.get(ApiConstants.students.index(page, query), resolve);
       return true;
     }
 
     storeFilter(key, active, selected) {
       if (selected) {
-        var options = {};
+        var query = StudentsStore.getState().query;
         if (selected !== 'None') {
-          options.order = `${key} ${selected}`;
+          query[key] = selected;
+        } else if (selected === 'None') {
+          delete query[key];
         }
-        var resolve = (response) => this.storeStudents(response);
-        Requester.get(ApiConstants.students.index(1, options), resolve);
+        var resolve = (response) => {
+          response.meta.query = query;
+          this.storeStudents(response);
+        };
+        Requester.get(ApiConstants.students.index(1, query), resolve);
       }
       return {
         active: active,
         key: key,
-        selected: selected,
+      };
+    }
+
+    storePage(page) {
+      var query = StudentsStore.getState().query;
+      var resolve = (response) => {
+        response.meta.query = query;
+        this.storeStudents(response);
+      };
+      Requester.get(ApiConstants.students.index(page, query), resolve);
+      return true;
+    }
+
+    storeSort(key, active, selected) {
+      if (selected) {
+        var query = StudentsStore.getState().query;
+        if (selected !== 'None') {
+          query.order = `${key} ${selected}`;
+        } else if (selected === 'None') {
+          delete query.order;
+        }
+        var resolve = (response) => {
+          response.meta.query = query;
+          this.storeStudents(response);
+        };
+        Requester.get(ApiConstants.students.index(1, query), resolve);
+      }
+      return {
+        active: active,
+        key: key,
       };
     }
   }

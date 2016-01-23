@@ -5,11 +5,11 @@ class PageNavigator extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
+      action: React.PropTypes.func.isRequired,
       pagination: React.PropTypes.shape({
         current: React.PropTypes.number.isRequired,
         limit: React.PropTypes.number.isRequired,
       }).isRequired,
-      route: React.PropTypes.func.isRequired,
     };
   }
 
@@ -40,9 +40,9 @@ class PageNavigator extends Component {
   // --------------------------------------------------
   renderNext() {
     var pagination = this.props.pagination;
-    var action = () => window.location = this.props.route(pagination.current + 1);
-    var style = Object.assign({}, this.styles.section, this.styles.left);
     if (pagination.current < pagination.limit) {
+      var action = () => this.props.action(pagination.current + 1);
+      var style = Object.assign({}, this.styles.section, this.styles.left);
       return (
         <div style={style}>
           <h6 style={this.styles.right}>{'|'}</h6>
@@ -57,9 +57,9 @@ class PageNavigator extends Component {
 
   renderPrevious() {
     var pagination = this.props.pagination;
-    var action = () => window.location = this.props.route(pagination.current - 1);
-    var style = Object.assign({}, this.styles.section, this.styles.right);
     if (pagination.current > 1) {
+      var action = () => this.props.action(pagination.current - 1);
+      var style = Object.assign({}, this.styles.section, this.styles.right);
       return (
         <div style={style}>
           <Clickable

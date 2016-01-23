@@ -15,6 +15,7 @@ class StudentsPage extends Component {
     return {
       page: React.PropTypes.number.isRequired,
       profile: React.PropTypes.object.isRequired,
+      query: React.PropTypes.object.isRequired,
     };
   }
 
@@ -31,7 +32,8 @@ class StudentsPage extends Component {
     ProfileStore.listen(this._listener);
     StudentsStore.listen(this._listener);
     ViewStore.listen(this._listener);
-    StudentsActions.fetchStudents(this.props.page);
+    StudentsActions.attachListener();
+    StudentsActions.fetchStudents(this.props.page, this.props.query);
     ViewActions.attachListener();
   }
 
@@ -76,13 +78,15 @@ class StudentsPage extends Component {
             <GridHeader
               label={'Students'}
               options={this.generateOptions()} />
-            <StudentsFilters filters={this.state.filters} />
             <StudentsGrid
               media={this.state.media}
               students={this.state.students} />
             <PageNavigator
-              route={RouteConstants.students.index}
+              action={(page) => StudentsActions.storePage(page)}
               pagination={this.state.pagination} />
+            <StudentsSidebar
+              filters={this.state.filters}
+              sorts={this.state.sorts} />
           </div>
         </div>
       </div>

@@ -53,7 +53,7 @@ class Dropdown extends Component {
   // --------------------------------------------------
   componentDidMount() {
     var input = ReactDOM.findDOMNode(this.refs.input);
-    input.addEventListener('blur', () => this.handleBlur());
+    input.onblur = () => this.handleBlur();
   }
 
   // --------------------------------------------------

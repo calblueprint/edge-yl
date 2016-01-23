@@ -1,11 +1,11 @@
-class StudentsFilter extends Component {
+class StudentsSort extends Component {
 
   // --------------------------------------------------
   // Props
   // --------------------------------------------------
   static get propTypes() {
     return {
-      filter: React.PropTypes.object.isRequired,
+      sort: React.PropTypes.object.isRequired,
     };
   }
 
@@ -53,11 +53,9 @@ class StudentsFilter extends Component {
         {},
         StyleConstants.containers.card,
         {
-          top: '4px',
-          left: '0px',
           zIndex: StyleConstants.planes.two,
           margin: '0 12px',
-        }
+        },
       ),
     };
   }
@@ -66,15 +64,15 @@ class StudentsFilter extends Component {
   // Helpers
   // --------------------------------------------------
   generateDropdownOption(option) {
-    var filter = this.props.filter;
+    var sort = this.props.sort;
     return {
-      action: () => StudentsActions.storeFilter(filter.key, false, option),
+      action: () => StudentsActions.storeSort(sort.key, false, option),
       content: option,
     };
   }
 
   generateDropdownOptions() {
-    var options = this.props.filter.options;
+    var options = this.props.sort.options;
     return options.map((option) => this.generateDropdownOption(option));
   }
 
@@ -82,11 +80,11 @@ class StudentsFilter extends Component {
   // Render
   // --------------------------------------------------
   renderDropdown() {
-    var filter = this.props.filter;
-    if (filter.active) {
+    var sort = this.props.sort;
+    if (sort.active) {
       return (
         <Dropdown
-          action={() => StudentsActions.storeFilter(filter.key, false)}
+          action={() => StudentsActions.storeSort(sort.key, false)}
           options={this.generateDropdownOptions()}
           styles={this.dropdownStyles} />
       );
@@ -94,15 +92,15 @@ class StudentsFilter extends Component {
   }
 
   render() {
-    var filter = this.props.filter;
+    var sort = this.props.sort;
     return (
       <div style={this.styles.container}>
         <Clickable
-          action={() => StudentsActions.storeFilter(filter.key, true)}
+          action={() => StudentsActions.storeSort(sort.key, true)}
           icon={TypeConstants.icons.expand}
           styles={this.clickableStyles}
           type={'i'}>
-          <h6>{`${filter.name}: ${filter.selected}`}</h6>
+          <h6>{`${sort.name}: ${sort.selected}`}</h6>
         </Clickable>
         {this.renderDropdown()}
       </div>

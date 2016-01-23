@@ -87,11 +87,11 @@
     get students() {
       return {
         create: '/api/students',
-        index: function(page, options={}) {
+        index: (page, query={}) => {
           var route = `/api/students?page=${page}`;
-          if (options.order) {
-            route = `${route}&order=${options.order}`;
-          }
+          Object.keys(query).map((key) => {
+            route = `${route}&${key}=${query[key]}`
+          });
           return route;
         },
         show: (id) => `/api/students/${id}`,

@@ -52,7 +52,7 @@ class CardInput extends Component {
   // --------------------------------------------------
   componentDidMount() {
     var node = ReactDOM.findDOMNode(this.refs.input);
-    node.addEventListener('input', (event) => this.props.action(event));
+    node.oninput = (event) => this.props.action(event);
   }
 
   // --------------------------------------------------

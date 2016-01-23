@@ -9,10 +9,9 @@
     }
 
     attachListener() {
-      window.addEventListener(
-        'resize',
-        () => this.storeMedia(document.documentElement.clientWidth)
-      );
+      window.onresize = () => {
+        this.storeMedia(document.documentElement.clientWidth);
+      };
       this.storeMedia(document.documentElement.clientWidth);
       return true;
     }

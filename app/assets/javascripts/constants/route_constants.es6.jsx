@@ -45,7 +45,13 @@
 
     get students() {
       return {
-        index: (page) => `/students?page=${page ? page : 1}`,
+        index: (page, query={}) => {
+          var route = `/students?page=${page}`;
+          Object.keys(query).map((key) => {
+            route = `${route}&${key}=${query[key]}`
+          });
+          return route;
+        },
         show: (id) => `/students/${id}`,
       };
     }

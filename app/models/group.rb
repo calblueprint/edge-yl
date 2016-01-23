@@ -11,6 +11,10 @@
 
 class Group < ActiveRecord::Base
 
+  include PgSearch
+
+  multisearchable against: [:full_name]
+
   belongs_to :conference
   belongs_to :primary_leader, class_name: 'User'
   belongs_to :secondary_leader, class_name: 'User'

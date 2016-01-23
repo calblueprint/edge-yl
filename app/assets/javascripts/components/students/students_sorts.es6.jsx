@@ -1,11 +1,11 @@
-class StudentsFilters extends Component {
+class StudentsSorts extends Component {
 
   // --------------------------------------------------
   // Props
   // --------------------------------------------------
   static get propTypes() {
     return {
-      filters: React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
+      sorts: React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
     };
   }
 
@@ -31,23 +31,23 @@ class StudentsFilters extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
-  renderFilter(filter) {
+  renderSort(sort) {
     return (
-      <StudentsFilter
-        filter={filter}
-        key={filter.key} />
+      <StudentsSort
+        key={sort.key}
+        sort={sort} />
     );
   }
 
-  renderFilters() {
-    return this.props.filters.map((filter) => this.renderFilter(filter));
+  renderSorts() {
+    return this.props.sorts.map((sort) => this.renderSort(sort));
   }
 
   render() {
     return (
       <div style={this.styles.container}>
-        <h5 style={this.styles.title}>{'Filters'}</h5>
-        {this.renderFilters()}
+        <h5 style={this.styles.title}>{'Sorts'}</h5>
+        {this.renderSorts()}
       </div>
     );
   }

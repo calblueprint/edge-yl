@@ -79,11 +79,11 @@ class Clickable extends Component {
   // --------------------------------------------------
   componentDidMount() {
     var node = ReactDOM.findDOMNode(this.refs.container);
-    node.addEventListener('click', (event) => this.handleClick(event));
-    node.addEventListener('mousedown', (event) => this.handleMouseDown(event));
-    node.addEventListener('mouseenter', (event) => this.handleMouseEnter(event));
-    node.addEventListener('mouseleave', (event) => this.handleMouseLeave(event));
-    node.addEventListener('mouseup', (event) => this.handleMouseUp(event));
+    node.onclick = (event) => this.handleClick(event);
+    node.onmousedown = (event) => this.handleMouseDown(event);
+    node.onmouseenter = (event) => this.handleMouseEnter(event);
+    node.onmouseleave = (event) => this.handleMouseLeave(event);
+    node.onmouseup = (event) => this.handleMouseUp(event);
   }
 
   // --------------------------------------------------
