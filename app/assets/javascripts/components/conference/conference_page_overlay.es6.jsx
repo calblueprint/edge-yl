@@ -11,7 +11,7 @@ class ConferencePageOverlay extends PageOverlay {
         target: React.PropTypes.string.isRequired,
         type: React.PropTypes.string.isRequired,
       }).isRequired,
-      // template: React.PropTypes.object.isRequired,
+      template: React.PropTypes.object.isRequired,
     };
   }
 
@@ -30,7 +30,8 @@ class ConferencePageOverlay extends PageOverlay {
       return (
         <GroupCreateModal
           conference={this.props.conference}
-          overlay={this.props.overlay} />
+          overlay={this.props.overlay}
+          template={this.props.template} />
       );
     }
   }

@@ -4,16 +4,19 @@
     constructor() {
       this.generateActions(
         'storeConference',
+        'storeError',
         'storeGroup',
       );
     }
 
     createGroup(params) {
       var resolve = (response) => this.storeGroup(response);
+      var reject = (response) => this.storeError(response);
       Requester.post(
         ApiConstants.groups.create,
         params,
         resolve,
+        reject,
       );
       return true;
     }
