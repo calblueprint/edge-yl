@@ -27,7 +27,6 @@ class ConferencePageOverlay extends PageOverlay {
       return (
         <GroupCreateModal
           conference={this.props.conference}
-          overlay={this.props.overlay}
           template={this.props.template} />
       );
     }

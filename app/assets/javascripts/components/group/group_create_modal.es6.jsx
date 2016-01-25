@@ -6,10 +6,6 @@ class GroupCreateModal extends CreateModal {
   static get propTypes() {
     return {
       conference: React.PropTypes.object.isRequired,
-      overlay: React.PropTypes.shape({
-        active: React.PropTypes.bool.isRequired,
-        type: React.PropTypes.string.isRequired,
-      }).isRequired,
       template: React.PropTypes.object.isRequired,
     };
   }
@@ -52,11 +48,10 @@ class GroupCreateModal extends CreateModal {
   }
 
   renderBody() {
-    // var errors = []
-    // if (this.props.template.errors) {
-    //   errors = this.props.template.errors['letter']
-    // }
-
+    var errors = [];
+    if (this.props.template.errors) {
+      errors = this.props.template.errors['letter']
+    }
     return (
       <div style={this.styles.section}>
         <CardHeader
@@ -66,7 +61,7 @@ class GroupCreateModal extends CreateModal {
         <div style={StyleConstants.cards.body}>
           <CardInput
             action={this.generateHandler('letter')}
-            errors={this.props.template.errors}
+            errors={errors}
             focus={true}
             label={'Group Letter'}
             placeholder={'A'}
