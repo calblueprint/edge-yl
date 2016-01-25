@@ -5,7 +5,6 @@
       this.generateActions(
         'closeOverlay',
         'storeAttribute',
-        'storeError',
         'storeGroup',
         'storeGroupables',
         'storeLeadership',

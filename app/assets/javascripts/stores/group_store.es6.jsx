@@ -13,7 +13,6 @@
       this.bindListeners({
         handleCloseOverlay: GroupActions.CLOSE_OVERLAY,
         handleStoreAttribute: GroupActions.STORE_ATTRIBUTE,
-        handleStoreError: GroupActions.STORE_ERROR,
         handleStoreGroup: GroupActions.STORE_GROUP,
         handleStoreGroupables: GroupActions.STORE_GROUPABLES,
         handleStoreLeadership: GroupActions.STORE_LEADERSHIP,
@@ -27,10 +26,6 @@
 
     handleStoreAttribute(value) {
       this.template.value = value;
-    }
-
-    handleStoreError(response) {
-      this.template.errors = response.errors;
     }
 
     handleStoreGroup(response) {
