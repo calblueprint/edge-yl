@@ -41,6 +41,14 @@
       };
     }
 
+    storeOverlay(active, type, target) {
+      return {
+        active: active,
+        target: target,
+        type: type,
+      };
+    }
+
     updateConference(template, attributes={}) {
       attributes[template.key] = template.value;
       var params = { conference: attributes };
