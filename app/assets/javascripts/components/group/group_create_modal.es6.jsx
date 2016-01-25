@@ -52,10 +52,10 @@ class GroupCreateModal extends CreateModal {
   }
 
   renderBody() {
-    var errors = []
-    if (this.props.template.errors) {
-      errors = this.props.template.errors['letter']
-    }
+    // var errors = []
+    // if (this.props.template.errors) {
+    //   errors = this.props.template.errors['letter']
+    // }
 
     return (
       <div style={this.styles.section}>
@@ -66,7 +66,7 @@ class GroupCreateModal extends CreateModal {
         <div style={StyleConstants.cards.body}>
           <CardInput
             action={this.generateHandler('letter')}
-            errors={this.errors}
+            errors={this.props.template.errors}
             focus={true}
             label={'Group Letter'}
             placeholder={'A'}
