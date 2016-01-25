@@ -6,7 +6,6 @@
         'closeOverlay',
         'storeAttribute',
         'storeConference',
-        'storeError',
         'storeGroup',
         'storeError',
       );

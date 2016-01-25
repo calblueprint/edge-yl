@@ -66,7 +66,7 @@ class GroupCreateModal extends CreateModal {
         <div style={StyleConstants.cards.body}>
           <CardInput
             action={this.generateHandler('letter')}
-            errors={errors}
+            errors={this.errors}
             focus={true}
             label={'Group Letter'}
             placeholder={'A'}
