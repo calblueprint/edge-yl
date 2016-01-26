@@ -58,13 +58,13 @@
       }
     }
 
-    updateStudent(template, attributes={}) {
-      attributes[template.key] = template.value;
+    updateStudent(pairing, attributes={}) {
+      attributes[pairing.key] = pairing.value;
       var params = { student: attributes };
       var resolve = (response) => this.storeStudent(response);
       var reject = (response) => this.storeError(response);
       Requester.update(
-        ApiConstants.students.update(template.id),
+        ApiConstants.students.update(pairing.id),
         params,
         resolve,
         reject,

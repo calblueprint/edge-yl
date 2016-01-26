@@ -5,9 +5,10 @@ class StudentPageOverlay extends PageOverlay {
   // --------------------------------------------------
   static get propTypes() {
     return {
+      pairing: React.PropTypes.object,
       profile: React.PropTypes.object.isRequired,
       student: React.PropTypes.object.isRequired,
-      template: React.PropTypes.object.isRequired,
+      template: React.PropTypes.object,
     };
   }
 
@@ -22,9 +23,9 @@ class StudentPageOverlay extends PageOverlay {
   // Render
   // --------------------------------------------------
   renderModal() {
-    if (this.props.template.model === 'student') {
-      return <StudentEditModal template={this.props.template} />;
-    } else {
+    if (this.props.pairing) {
+      return <StudentEditModal pairing={this.props.pairing} />;
+    } else if (this.props.template) {
       return (
         <StudentCreateModal
           profile={this.props.profile}

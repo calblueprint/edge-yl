@@ -13,9 +13,9 @@ class StudentGeneral extends Component {
   // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
-  storeTemplate(key, choices) {
+  storePairing(key, choices) {
     var student = this.props.student;
-    StudentActions.storeTemplate({
+    StudentActions.storePairing({
       choices: choices,
       id: student.id,
       key: key,
@@ -49,42 +49,42 @@ class StudentGeneral extends Component {
     return (
       <div style={StyleConstants.cards.body}>
         <CardAttribute
-          action={() => this.storeTemplate('first_name')}
+          action={() => this.storePairing('first_name')}
           editable={this.props.editable}
           label={'First name'}
           value={student.first_name} />
         <CardAttribute
-          action={() => this.storeTemplate('preferred_name')}
+          action={() => this.storePairing('preferred_name')}
           editable={this.props.editable}
           label={'Preferred name'}
           value={student.preferred_name} />
         <CardAttribute
-          action={() => this.storeTemplate('last_name')}
+          action={() => this.storePairing('last_name')}
           editable={this.props.editable}
           label={'Last name'}
           value={student.last_name} />
         <CardAttribute
-          action={() => this.storeTemplate('birthday')}
+          action={() => this.storePairing('birthday')}
           editable={this.props.editable}
           label={'Birthday'}
           value={student.birthday} />
         <CardAttribute
-          action={() => this.storeTemplate('gender', student.gender_choices)}
+          action={() => this.storePairing('gender', student.gender_choices)}
           editable={this.props.editable}
           label={'Gender'}
           value={Helpers.humanize(student.gender)} />
         <CardAttribute
-          action={() => this.storeTemplate('shirt_size', student.shirt_sizes)}
+          action={() => this.storePairing('shirt_size', student.shirt_sizes)}
           editable={this.props.editable}
           label={'Shirt size'}
           value={Helpers.capitalize(student.shirt_size)} />
         <CardAttribute
-          action={() => this.storeTemplate('is_primary', ['true', 'false'])}
+          action={() => this.storePairing('is_primary', ['true', 'false'])}
           editable={this.props.editable}
           label={'Placement'}
           value={student.is_primary ? 'Primary' : 'Secondary'} />
         <CardAttribute
-          action={() => this.storeTemplate('is_flagged', ['true', 'false'])}
+          action={() => this.storePairing('is_flagged', ['true', 'false'])}
           editable={this.props.editable}
           label={'Flagged?'}
           value={student.is_flagged ? 'Yes' : 'No'} />

@@ -6,8 +6,8 @@
       this.student = {
         comments: [],
       };
-      this.pairing = {};
-      this.template = {};
+      this.pairing = null;
+      this.template = null;
       this.bindListeners({
         handleCloseOverlay: StudentActions.CLOSE_OVERLAY,
         handleStoreAttribute: StudentActions.STORE_ATTRIBUTE,
@@ -34,7 +34,7 @@
     }
 
     handleStoreError(response) {
-      this.template.errors = response.errors;
+      this.pairing.errors = response.errors;
     }
 
     handleStoreStudent(response) {
