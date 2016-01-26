@@ -27,10 +27,11 @@ class StudentPageOverlay extends PageOverlay {
       return <StudentEditModal pairing={this.props.pairing} />;
     } else if (this.props.template) {
       return (
-        <StudentCreateModal
+        <CommentCreateModal
           profile={this.props.profile}
           student={this.props.student}
-          template={this.props.template} />
+          template={this.props.template}
+          type={'student'} />
       );
     }
   }

@@ -92,7 +92,8 @@ class StudentPage extends Component {
               media={this.state.media}
               student={student} />
             <PageComments
-              comments={student.comments}
+              profile={this.selectProfile()}
+              student={this.state.student}
               type={TypeConstants.student.comment} />
           </div>
         </div>
