@@ -29,6 +29,7 @@
 #  registration_status   :integer          not null
 #  shirt_size            :integer          not null
 #  group_id              :integer
+#  room_id               :integer
 #  school_id             :integer
 #  created_at            :datetime         not null
 #  updated_at            :datetime         not null
