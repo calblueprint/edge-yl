@@ -6,6 +6,7 @@ class ConferenceGrid extends Component {
   static get propTypes() {
     return {
       conference: React.PropTypes.object.isRequired,
+      editable: React.PropTypes.bool.isRequired,
       media: React.PropTypes.string.isRequired,
     };
   }
@@ -22,15 +23,6 @@ class ConferenceGrid extends Component {
     ];
   }
 
-  storeOverlay() {
-    // TODO: Fix constants below.
-    ConferenceActions.storeOverlay(
-      true,
-      TypeConstants.actions.create,
-      'group',
-    );
-  }
-
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
@@ -39,10 +31,12 @@ class ConferenceGrid extends Component {
       <div style={StyleConstants.containers.grid}>
         <ConferenceCard
           conference={this.props.conference}
+          editable={this.props.editable}
           media={this.props.media}
           target={TypeConstants.conference.general} />
         <ConferenceCard
           conference={this.props.conference}
+          editable={this.props.editable}
           media={this.props.media}
           target={TypeConstants.conference.statistic} />
         <GridHeader
