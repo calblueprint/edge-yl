@@ -18,7 +18,6 @@ class StudentContact extends Component {
     StudentActions.storePairing({
       id: student.id,
       key: key,
-      model: 'student',
       type: 'input',
       value: student[key],
     });

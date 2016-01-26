@@ -18,7 +18,6 @@ class SchoolGeneral extends Component {
     SchoolActions.storePairing({
       id: school.id,
       key: key,
-      model: 'school',
       type: 'input',
       value: school[key],
     });

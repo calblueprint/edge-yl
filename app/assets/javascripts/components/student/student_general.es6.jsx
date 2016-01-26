@@ -19,7 +19,6 @@ class StudentGeneral extends Component {
       choices: choices,
       id: student.id,
       key: key,
-      model: 'student',
       type: choices ? 'dropdown' : 'input',
       value: student[key],
     });

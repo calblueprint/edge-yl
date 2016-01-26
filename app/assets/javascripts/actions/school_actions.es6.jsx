@@ -43,17 +43,16 @@
         errors: {},
         id: options.id,
         key: options.key,
-        model: options.model,
         type: options.type,
         value: options.value,
       };
     }
 
-    storeTemplate(type, attributes={}) {
+    storeTemplate(model, attributes={}) {
       return {
         attributes: attributes,
         errors: {},
-        type: type,
+        model: type,
       }
     }
 
