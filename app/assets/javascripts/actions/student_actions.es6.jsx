@@ -4,10 +4,10 @@
     constructor() {
       this.generateActions(
         'closeOverlay',
-        'storeAttribute',
         'storeComment',
         'storeError',
         'storeStudent',
+        'storeValue',
       );
     }
 
@@ -31,7 +31,14 @@
       return true;
     }
 
-    storeTemplate(options) {
+    storeAttribute(key, value) {
+      return {
+        key: key,
+        value: value,
+      };
+    }
+
+    storePairing(options) {
       return {
         choices: options.choices,
         errors: {},
@@ -41,6 +48,14 @@
         type: options.type,
         value: options.value,
       };
+    }
+
+    storeTemplate(type, attributes={}) {
+      return {
+        attributes: attributes,
+        errors: {},
+        type: type,
+      }
     }
 
     updateStudent(template, attributes={}) {
