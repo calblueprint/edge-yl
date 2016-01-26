@@ -34,7 +34,11 @@
     }
 
     handleStoreError(response) {
-      this.pairing.errors = response.errors;
+      if (this.pairing) {
+        this.pairing.errors = response.errors;
+      } else {
+        this.template.errors = response.errors;
+      }
     }
 
     handleStoreStudent(response) {
@@ -45,10 +49,12 @@
     handleStorePairing(pairing) {
       this.overlay = true;
       this.pairing = pairing;
+      this.template = null;
     }
 
     handleStoreTemplate(template) {
       this.overlay = true;
+      this.pairing = null;
       this.template = template;
     }
 

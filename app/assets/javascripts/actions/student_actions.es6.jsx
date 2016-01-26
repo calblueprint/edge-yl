@@ -11,9 +11,8 @@
       );
     }
 
-    createComment(template, attributes={}) {
-      attributes[template.key] = template.value;
-      var params = { comment: attributes };
+    createComment(template) {
+      var params = { comment: template.attributes };
       var resolve = (response) => this.storeComment(response);
       var reject = (response) => this.storeError(response);
       Requester.post(
