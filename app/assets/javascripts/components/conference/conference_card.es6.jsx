@@ -47,10 +47,7 @@ class ConferenceCard extends Component {
     var conference = this.props.conference;
     return (
       <div style={StyleConstants.cards.show(this.props.media)}>
-        <CardHeader
-          action={() => this.showOverlay()}
-          content={this.renderTitle()}
-          icon={TypeConstants.icons.edit} />
+        <CardHeader content={this.renderTitle()} />
         {this.renderBody()}
       </div>
     );

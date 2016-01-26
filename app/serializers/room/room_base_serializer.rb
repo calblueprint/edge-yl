@@ -1,5 +1,5 @@
 class RoomBaseSerializer < BaseSerializer
 
-  attributes :id, :number
+  attributes :id, :capacity, :gender, :number
 
 end

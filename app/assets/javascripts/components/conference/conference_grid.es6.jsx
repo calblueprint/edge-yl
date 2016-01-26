@@ -17,7 +17,7 @@ class ConferenceGrid extends Component {
   generateOptions() {
     return [
       {
-        action: () => this.storeOverlay(),
+        action: () => ConferenceActions.storeTemplate(),
         content: 'New',
       },
     ];

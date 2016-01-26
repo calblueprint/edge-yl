@@ -6,11 +6,23 @@
       this.conference = {
         groups: [],
       };
+      this.template = {};
       this.bindListeners({
-        handleStoreOverlay: ConferenceActions.STORE_OVERLAY,
+        handleCloseOverlay: ConferenceActions.CLOSE_OVERLAY,
+        handleStoreAttribute: ConferenceActions.STORE_ATTRIBUTE,
         handleStoreConference: ConferenceActions.STORE_CONFERENCE,
+        handleStoreError: ConferenceActions.STORE_ERROR,
         handleStoreGroup: ConferenceActions.STORE_GROUP,
+        handleStoreTemplate: ConferenceActions.STORE_TEMPLATE,
       });
+    }
+
+    handleCloseOverlay() {
+      this.overlay = false;
+    }
+
+    handleStoreAttribute(value) {
+      this.template.value = value;
     }
 
     handleStoreGroup(response) {
@@ -23,8 +35,13 @@
       this.conference = response.conference;
     }
 
-    handleStoreOverlay(overlay) {
-      this.overlay = overlay;
+    handleStoreError(response) {
+      this.template.errors = response.errors;
+    }
+
+    handleStoreTemplate(template) {
+      this.overlay = true;
+      this.template = template;
     }
   }
   this.ConferenceStore = alt.createStore(ConferenceStore);

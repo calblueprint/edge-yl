@@ -4,7 +4,9 @@
     constructor() {
       this.editable = false;
       this.overlay = false;
-      this.room = {};
+      this.room = {
+        students: [],
+      };
       this.template = {};
       this.bindListeners({
         handleStoreRoom: RoomActions.STORE_ROOM,

@@ -13,6 +13,8 @@
 
 class Conference < ActiveRecord::Base
 
+  self.default_scope { order('created_at DESC') }
+
   has_many :groups, dependent: :destroy
   has_many :rooms, dependent: :destroy
 

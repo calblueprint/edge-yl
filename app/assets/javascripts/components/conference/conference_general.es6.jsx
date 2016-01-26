@@ -11,6 +11,20 @@ class ConferenceGeneral extends Component {
   }
 
   // --------------------------------------------------
+  // Helpers
+  // --------------------------------------------------
+  storeTemplate(key) {
+    var conference = this.props.conference;
+    ConferenceActions.storeTemplate({
+      id: conference.id,
+      key: key,
+      model: 'conference',
+      type: 'input',
+      value: conference[key],
+    });
+  }
+
+  // --------------------------------------------------
   // Render
   // --------------------------------------------------
   render() {
@@ -28,11 +42,15 @@ class ConferenceGeneral extends Component {
           label={'Location'}
           value={conference.location} />
         <CardAttribute
+          action={() => this.storeTemplate('start_date')}
+          editable={this.props.editable}
           label={'Start date'}
           value={conference.start_date} />
         <CardAttribute
-          label={'End date'}
-          value={conference.end_date} />
+          action={() => this.storeTemplate('end_date')}
+          editable={this.props.editable}
+          label={'Start date'}
+          value={conference.start_date} />
       </div>
     );
   }

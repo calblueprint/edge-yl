@@ -12,7 +12,7 @@
   resources :emails, only: [:index]
   resources :forms, only: [:show]
   resources :groups, only: [:show]
-  resources :rooms, only: [:show]
+  resources :rooms, only: [:index, :show]
   resources :students, only: [:index, :show]
   resources :schools, only: [:index, :show]
   resources :users, only: [:index, :show]
@@ -43,7 +43,7 @@
     resources :groups, only: [:create, :show]
     resources :leaderships, only: [:update]
     resources :profiles, only: [:update]
-    resources :rooms, only: [:show, :update]
+    resources :rooms, only: [:index, :show, :update]
     resources :schools, only: [:create, :index, :show, :update]
     resources :students, only: [:create, :index, :show, :update]
     resources :users, only: [:index, :show, :update] do
