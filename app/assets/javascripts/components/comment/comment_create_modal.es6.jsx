@@ -1,4 +1,4 @@
-class StudentCreateModal extends CreateModal {
+class CommentCreateModal extends CreateModal {
 
   // --------------------------------------------------
   // Props
@@ -6,8 +6,9 @@ class StudentCreateModal extends CreateModal {
   static get propTypes() {
     return {
       profile: React.PropTypes.object.isRequired,
-      student: React.PropTypes.object.isRequired,
+      student: React.PropTypes.object,
       template: React.PropTypes.object.isRequired,
+      type: React.PropTypes.oneOf(['school', 'student']).isRequired,
     };
   }
 
@@ -16,7 +17,11 @@ class StudentCreateModal extends CreateModal {
   // --------------------------------------------------
   handleClick(event) {
     if (event.target === this._node) {
-      StudentActions.closeOverlay();
+      if (this.props.type === 'student') {
+        StudentActions.closeOverlay();
+      } else if (this.props.type === 'school') {
+        SchoolActions.closeOverlay();
+      }
     }
   }
 
@@ -24,14 +29,22 @@ class StudentCreateModal extends CreateModal {
   // Helpers
   // --------------------------------------------------
   createComment() {
-    StudentActions.createComment(
-      this.props.template,
-      {
-        commentable_id: this.props.student.id,
-        commentable_type: 'Student',
-        user_id: this.props.profile.id,
-      },
-    );
+    if (this.props.type === 'student') {
+      StudentActions.createComment(this.props.template);
+    } else if (this.props.type === 'school') {
+      SchoolActions.createComment(this.props.template);
+    }
+  }
+
+  generateAction() {
+    return (event) => {
+      var value = event.target.value;
+      if (this.props.type === 'student') {
+        StudentActions.storeAttribute('content', value);
+      } else if (this.props.type === 'school') {
+        SchoolActions.storeAttribute('content', value);
+      }
+    };
   }
 
   // --------------------------------------------------
@@ -47,10 +60,10 @@ class StudentCreateModal extends CreateModal {
           icon={TypeConstants.icons.save} />
         <div style={StyleConstants.cards.body}>
           <CardInput
-            action={(event) => StudentActions.storeAttribute(event.target.value)}
-            errors={template.errors[template.key]}
+            action={this.generateAction()}
+            errors={template.errors.content}
             focus={true}
-            label={Helpers.humanize(template.key)}
+            label={'Content'}
             placeholder={'Your comment here...'}
             value={template.value} />
         </div>
