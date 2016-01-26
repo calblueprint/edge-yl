@@ -14,11 +14,28 @@ class ConferenceGrid extends Component {
   // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
-  generateOptions() {
+  generateGroupsOptions() {
     return [
       {
         action: () => ConferenceActions.storeTemplate(),
         content: 'New',
+      },
+      {
+        content: 'All',
+        route: '',
+      },
+    ];
+  }
+
+  generateRoomsOptions() {
+    return [
+      {
+        action: () => ConferenceActions.storeTemplate(),
+        content: 'New',
+      },
+      {
+        content: 'All',
+        route: RouteConstants.rooms.index(),
       },
     ];
   }
@@ -41,9 +58,15 @@ class ConferenceGrid extends Component {
           target={TypeConstants.conference.statistic} />
         <GridHeader
           label={'Groups in this conference'}
-          options={this.generateOptions()} />
+          options={this.generateGroupsOptions()} />
         <GroupsGrid
           groups={this.props.conference.groups}
+          media={this.props.media} />
+        <GridHeader
+          label={'Rooms in this conference'}
+          options={this.generateRoomsOptions()} />
+        <RoomsGrid
+          rooms={this.props.conference.rooms}
           media={this.props.media} />
       </div>
     );

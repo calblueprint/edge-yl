@@ -6,7 +6,7 @@ class ProfileBaseSerializer < BaseSerializer
   has_many :visits, serializer: VisitBaseSerializer
 
   def visits
-    object.visits.first(4)
+    object.visits.first(3)
   end
 
 end

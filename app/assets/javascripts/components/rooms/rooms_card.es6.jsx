@@ -13,6 +13,19 @@ class RoomsCard extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
+  renderConference() {
+    var room = this.props.room;
+    if (room.conference) {
+      return (
+        <CardAttribute
+          clickable={true}
+          label={'Conference'}
+          route={RouteConstants.conferences.show(room.conference.id)}
+          type={'h5'}
+          value={room.conference.name} />
+      );
+    }
+  }
   render() {
     var room = this.props.room;
     return (
@@ -31,12 +44,7 @@ class RoomsCard extends Component {
           clickable={true}
           label={'Gender'}
           value={room.gender} />
-        <CardAttribute
-          clickable={true}
-          label={'Conference'}
-          route={RouteConstants.conferences.show(room.conference.id)}
-          type={'h5'}
-          value={room.conference.name} />
+        {this.renderConference()}
       </div>
     );
   }

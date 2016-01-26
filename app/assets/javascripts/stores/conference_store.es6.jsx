@@ -5,6 +5,7 @@
       this.overlay = false;
       this.conference = {
         groups: [],
+        rooms: [],
       };
       this.template = {};
       this.bindListeners({
