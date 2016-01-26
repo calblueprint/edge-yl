@@ -26,10 +26,11 @@ class SchoolPageOverlay extends PageOverlay {
       return <SchoolEditModal template={this.props.template} />;
     } else {
       return (
-        <SchoolCreateModal
+        <CommentCreateModal
           profile={this.props.profile}
           school={this.props.school}
-          template={this.props.template} />
+          template={this.props.template}
+          type={'school'} />
       );
     }
   }
