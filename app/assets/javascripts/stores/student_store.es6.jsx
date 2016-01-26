@@ -36,7 +36,7 @@
     handleStoreError(response) {
       if (this.pairing) {
         this.pairing.errors = response.errors;
-      } else {
+      } else if (this.template) {
         this.template.errors = response.errors;
       }
     }
