@@ -13,10 +13,12 @@
 
     createGroup(params) {
       var resolve = (response) => this.storeGroup(response);
+      var reject = (response) => this.storeError(response);
       Requester.post(
         ApiConstants.groups.create,
         params,
         resolve,
+        reject,
       );
       return true;
     }
@@ -27,15 +29,16 @@
       return true;
     }
 
-    storeTemplate(options) {
+    storeTemplate() {
       return {
-        choices: options.choices,
+        // choices: options.choices,
+        // errors: {},
+        // id: options.id,
+        // key: options.key,
+        // model: options.model,
+        // type: options.type,
+        // value: options.value,
         errors: {},
-        id: options.id,
-        key: options.key,
-        model: options.model,
-        type: options.type,
-        value: options.value,
       };
     }
 

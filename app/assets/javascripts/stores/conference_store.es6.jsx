@@ -11,6 +11,7 @@
         handleCloseOverlay: ConferenceActions.CLOSE_OVERLAY,
         handleStoreAttribute: ConferenceActions.STORE_ATTRIBUTE,
         handleStoreConference: ConferenceActions.STORE_CONFERENCE,
+        handleStoreError: ConferenceActions.STORE_ERROR,
         handleStoreGroup: ConferenceActions.STORE_GROUP,
         handleStoreTemplate: ConferenceActions.STORE_TEMPLATE,
       });
@@ -32,6 +33,10 @@
     handleStoreConference(response) {
       this.overlay = false;
       this.conference = response.conference;
+    }
+
+    handleStoreError(response) {
+      this.template.errors = response.errors;
     }
 
     handleStoreTemplate(template) {
