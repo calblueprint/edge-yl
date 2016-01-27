@@ -4,22 +4,22 @@
     constructor() {
       this.generateActions(
         'closeOverlay',
-        'storeAttribute',
         'storeComment',
         'storeError',
         'storeSchool',
-        'toggleEditability',
+        'storeValue',
       );
     }
 
-    createComment(template, attributes={}) {
-      attributes[template.key] = template.value;
-      var params = { comment: attributes };
+    createComment(template) {
+      var params = { comment: template.attributes };
       var resolve = (response) => this.storeComment(response);
+      var reject = (response) => this.storeError(response);
       Requester.post(
         ApiConstants.comments.create,
         params,
         resolve,
+        reject,
       );
       return true;
     }
@@ -30,16 +30,30 @@
       return true;
     }
 
-    storeTemplate(options) {
+    storeAttribute(key, value) {
+      return {
+        key: key,
+        value: value,
+      };
+    }
+
+    storePairing(options) {
       return {
         choices: options.choices,
         errors: {},
         id: options.id,
         key: options.key,
-        model: options.model,
         type: options.type,
         value: options.value,
       };
+    }
+
+    storeTemplate(model, attributes={}) {
+      return {
+        attributes: attributes,
+        errors: {},
+        model: type,
+      }
     }
 
     updateSchool(template, attributes={}) {
