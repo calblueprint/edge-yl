@@ -29,12 +29,13 @@ class DropdownButton extends Component {
   // --------------------------------------------------
   get styles() {
     return {
-      container: {
-        display: 'flex',
-        flexFlow: 'column',
-        maxHeight: '40px',
-        border: `1px solid ${StyleConstants.colors.gray}`,
-      },
+      container: Object.assign(
+        {},
+        StyleConstants.containers.card,
+        {
+          maxHeight: '40px',
+        },
+      ),
     };
   }
 
@@ -63,14 +64,10 @@ class DropdownButton extends Component {
       },
       container: Object.assign(
         {},
-        StyleConstants.templates.card,
+        StyleConstants.containers.card,
         {
-          display: 'flex',
-          flexFlow: 'column',
-          top: '0px',
-          left: '0px',
           zIndex: StyleConstants.planes.two,
-        }
+        },
       ),
     };
   }
