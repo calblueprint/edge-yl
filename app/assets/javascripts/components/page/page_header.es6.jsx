@@ -35,18 +35,15 @@ class PageHeader extends Component {
         width: '100%',
         marginTop: '12px',
       },
-      header: {
-        display: 'flex',
-        alignContent: 'center',
-      },
       divider: {
         padding: '0px 6px',
       },
       section: {
         display: 'flex',
       },
-      options: {
-        display: 'flex',
+      title: {
+        alignSelf: 'center',
+        paddingRight: '8px',
       },
     };
   }
@@ -81,13 +78,15 @@ class PageHeader extends Component {
   render() {
     return (
       <div style={this.styles.container}>
-        <div style={this.styles.header}>
-          <h4>{this.props.title}</h4>
+        <div style={this.styles.section}>
+          <h4 style={this.styles.title}>
+            {this.props.title}
+          </h4>
           <PageFilter
             conferences={[{}, {}]}
             type={this.props.type} />
         </div>
-        <div style={this.styles.options}>
+        <div style={this.styles.section}>
           {this.renderOptions()}
         </div>
       </div>

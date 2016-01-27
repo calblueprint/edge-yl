@@ -27,7 +27,10 @@
         index: (media) => Object.assign(
           {},
           this.containers.card,
-          { marginTop: '12px' },
+          {
+            padding: '18px',
+            marginTop: '12px',
+          },
           media === 'big' && { width: '49%' },
           media === 'small' && { width: '100%' }
         ),

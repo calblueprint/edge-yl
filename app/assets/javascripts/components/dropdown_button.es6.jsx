@@ -41,13 +41,10 @@ class DropdownButton extends Component {
 
   get clickableStyles() {
     return {
-      child: {
-        paddingRight: '4px',
-      },
       default: {
         display: 'flex',
         alignItems: 'center',
-        padding: '8px',
+        padding: '8px 10px 8px 8px',
       },
     };
   }
