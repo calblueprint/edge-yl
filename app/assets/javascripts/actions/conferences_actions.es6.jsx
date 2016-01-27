@@ -11,11 +11,7 @@
     }
 
     createConference(template) {
-      var attributes = Object.assign({}, template);
-      if (attributes.errors) {
-        delete attributes.errors;
-      }
-      var params = { conference: attributes };
+      var params = { conference: template.attributes };
       var resolve = (response) => this.storeConference(response);
       var reject = (response) => this.storeError(response);
       Requester.post(
@@ -40,9 +36,11 @@
       };
     }
 
-    storeTemplate() {
+    storeTemplate(model, attributes={}) {
       return {
+        attributes: attributes,
         errors: {},
+        model: model,
       };
     }
   }

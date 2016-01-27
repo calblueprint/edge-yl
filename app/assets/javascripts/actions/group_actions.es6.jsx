@@ -4,10 +4,11 @@
     constructor() {
       this.generateActions(
         'closeOverlay',
-        'storeAttribute',
+        'storeError',
         'storeGroup',
         'storeGroupables',
         'storeLeadership',
+        'storeValue',
       );
     }
 
@@ -15,6 +16,24 @@
       var resolve = (response) => this.storeGroup(response);
       Requester.get(ApiConstants.groups.show(id), resolve);
       return true;
+    }
+
+    storeAttribute(key, value) {
+      return {
+        key: key,
+        value: value,
+      };
+    }
+
+    storePairing(options) {
+      return {
+        choices: options.choices,
+        errors: {},
+        id: options.id,
+        key: options.key,
+        type: options.type,
+        value: options.value,
+      };
     }
 
     storeTemplate(options) {
@@ -33,12 +52,15 @@
       };
     }
 
-    updateGroup(id, params) {
+    updateGroup(pairing, attributes={}) {
+      attributes[pairing.key] = pairing.value;
       var resolve = (response) => this.storeGroup(response);
+      var reject = (response) => this.storeError(response);
       Requester.update(
         ApiConstants.groups.update(id),
         params,
         resolve,
+        reject,
       );
       return true;
     }

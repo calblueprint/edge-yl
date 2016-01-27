@@ -20,6 +20,6 @@ class ConferencesPageOverlay extends PageOverlay {
   // Render
   // --------------------------------------------------
   renderModal() {
-    return <ConferencesCreateModal template={this.props.template} />;
+    return <ConferenceCreateModal template={this.props.template} />;
   }
 }
