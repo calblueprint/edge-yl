@@ -28,16 +28,6 @@ class Group < ActiveRecord::Base
   validates :letter, presence: true
   validates_uniqueness_of :letter, scope: :conference_id
 
-  def self.to_csv
-    attributes = Group.attribute_names
-    CSV.generate(headers: true) do |csv|
-      csv << attributes
-      all.each do |group|
-        csv << attributes.map{ |attr| group.send(attr) }
-      end
-    end
-  end
-
   def full_name
     "Group #{letter}"
   end
@@ -53,4 +43,5 @@ class Group < ActiveRecord::Base
       style: Leadership.styles['secondary_leader'],
     )
   end
+  
 end

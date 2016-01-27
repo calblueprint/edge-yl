@@ -12,15 +12,10 @@ class Api::GroupsController < Api::BaseController
   end
 
   def show
-    group = Group.includes(:conference,
-                           leaderships: :user,
-                           students: :school).find params[:id]
-    current_user.create_visit('Group', params[:id].to_i)
     respond_to do |format|
-      format.csv { send_data group.to_csv }
-      format.json { render json: group,
-                           serializer: GroupShowSerializer }
-    end          
+      format.csv { show_csv }  
+      format.json { show_json }
+    end
   end
 
   def update
@@ -36,6 +31,19 @@ class Api::GroupsController < Api::BaseController
 
   private
 
+  def show_csv
+    group = Group.find params[:id]
+    send_data group.students.to_csv
+  end
+
+  def show_json
+    group = Group.includes(:conference,
+                           leaderships: :user,
+                           students: :school).find params[:id]
+    current_user.create_visit('Group', params[:id].to_i)
+    render json: group, serializer: GroupShowSerializer
+  end
+  
   def group_params
     params.require(:group).permit(
       :conference_id,
