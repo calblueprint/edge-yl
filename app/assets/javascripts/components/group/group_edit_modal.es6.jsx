@@ -24,7 +24,7 @@ class GroupEditModal extends EditModal {
   // --------------------------------------------------
   generateOption(groupable) {
     return {
-      action: () => GroupActions.storeAttribute(groupable),
+      action: () => GroupActions.storeValue(groupable),
       content: Helpers.humanize(groupable.full_name),
     }
   }
@@ -76,7 +76,7 @@ class GroupEditModal extends EditModal {
     var type = null;
     var content = null;
     switch (this.props.pairing.key) {
-      case 'leader':
+      case 'user':
         action = () => GroupActions.updateLeadership(pairing);
         content = 'Change Leadership'
         type = 'dropdown';

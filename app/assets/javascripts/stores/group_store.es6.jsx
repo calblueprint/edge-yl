@@ -19,7 +19,6 @@
         handleStoreGroupables: GroupActions.STORE_GROUPABLES,
         handleStoreLeadership: GroupActions.STORE_LEADERSHIP,
         handleStorePairing: GroupActions.STORE_PAIRING,
-        handleStoreTemplate: GroupActions.STORE_TEMPLATE,
         handleStoreValue: GroupActions.STORE_VALUE,
       });
     }
@@ -42,6 +41,7 @@
 
     handleStoreGroup(response) {
       this.group = response.group;
+      this.overlay = false;
     }
 
     handleStoreGroupables(response) {

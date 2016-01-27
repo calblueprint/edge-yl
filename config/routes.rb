@@ -40,7 +40,7 @@
     resources :emails, only: [:create, :index]
     resources :feedbacks, only: [:create]
     resources :forms, only: [:show]
-    resources :groups, only: [:create, :show]
+    resources :groups, only: [:create, :show, :update]
     resources :leaderships, only: [:update]
     resources :profiles, only: [:update]
     resources :rooms, only: [:index, :show, :update]
