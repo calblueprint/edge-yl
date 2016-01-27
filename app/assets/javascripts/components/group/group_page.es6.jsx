@@ -60,7 +60,7 @@ class GroupPage extends Component {
         content: this.state.editable ? 'Finish' : 'Edit',
       },
       {
-        route: ApiConstants.csvs.groups,
+        route: ApiConstants.csvs.groups(this.state.group.id),
         content: 'Export',
       },
     ];
