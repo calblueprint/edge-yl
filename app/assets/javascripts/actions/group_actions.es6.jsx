@@ -18,13 +18,6 @@
       return true;
     }
 
-    storeAttribute(key, value) {
-      return {
-        key: key,
-        value: value,
-      };
-    }
-
     storePairing(options) {
       if (options.model === 'leadership') {
         var resolve = (response) => this.storeGroupables(response);

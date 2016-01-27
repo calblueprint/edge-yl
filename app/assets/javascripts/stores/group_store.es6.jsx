@@ -13,7 +13,6 @@
       this.template = {};
       this.bindListeners({
         handleCloseOverlay: GroupActions.CLOSE_OVERLAY,
-        handleStoreAttribute: GroupActions.STORE_ATTRIBUTE,
         handleStoreError: GroupActions.STORE_ERROR,
         handleStoreGroup: GroupActions.STORE_GROUP,
         handleStoreGroupables: GroupActions.STORE_GROUPABLES,

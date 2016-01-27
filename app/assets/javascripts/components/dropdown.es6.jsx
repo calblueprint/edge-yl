@@ -89,7 +89,7 @@ class Dropdown extends Component {
     }
     return (
       <Clickable
-        action={option.action}
+        action={() => {option.action(); this.props.action()}}
         children={option.children}
         content={option.content}
         key={index}
