@@ -76,18 +76,17 @@ class RoomsPage extends Component {
         <div style={StyleConstants.pages.container}>
           <Sidebar profile={this.selectProfile()} />
           <div style={StyleConstants.pages.content}>
-            <GridHeader
-              label={'Rooms'}
-              options={this.generateOptions()} />
+            <PageHeader
+              conferences={[{}, {}]}
+              options={this.generateOptions()}
+              title={'Rooms'}
+              type={'rooms'} />
             <RoomsGrid
               media={this.state.media}
               rooms={this.state.rooms} />
             <PageNavigator
               action={(page) => this.changePage(page)}
               pagination={this.state.pagination} />
-            <PageFilter
-              conferences={[{}, {}]}
-              type={'rooms'} />
           </div>
         </div>
       </div>
