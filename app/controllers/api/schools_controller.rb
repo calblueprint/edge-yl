@@ -41,7 +41,7 @@ class Api::SchoolsController < Api::BaseController
   private
 
   def index_csv
-    schools = Student.all
+    schools = School.all
     send_data schools.to_csv
   end
   
