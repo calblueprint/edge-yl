@@ -70,6 +70,14 @@ class Dropdown extends Component {
   // --------------------------------------------------
   renderOption(option, index) {
     var styles = Object.assign({}, this.props.styles.child);
+    // TODO: Rename action to be something better (like close)
+    var action = null;
+    if (option.action) {
+      action = (event) => {this.props.action(); option.action(event)};
+    } else {
+      action = (event) => this.props.action();
+    }
+
     if (index > 0) {
       styles.default = Object.assign(
         {},
@@ -89,7 +97,7 @@ class Dropdown extends Component {
     }
     return (
       <Clickable
-        action={() => {option.action(); this.props.action()}}
+        action={action}
         children={option.children}
         content={option.content}
         key={index}
