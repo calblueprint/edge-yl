@@ -11,6 +11,7 @@
     get emails() {
       return {
         index: '/emails',
+        show: (id) => `/emails/${id}`,
       };
     }
 
