@@ -13,12 +13,11 @@ class ConferenceGeneral extends Component {
   // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
-  storeTemplate(key) {
+  storePairing(key) {
     var conference = this.props.conference;
-    ConferenceActions.storeTemplate({
+    ConferenceActions.storePairing({
       id: conference.id,
       key: key,
-      model: 'conference',
       type: 'input',
       value: conference[key],
     });
@@ -32,22 +31,22 @@ class ConferenceGeneral extends Component {
     return (
       <div style={StyleConstants.cards.body}>
         <CardAttribute
-          action={() => this.storeTemplate('name')}
+          action={() => this.storePairing('name')}
           editable={this.props.editable}
           label={'Name'}
           value={conference.name} />
         <CardAttribute
-          action={() => this.storeTemplate('location')}
+          action={() => this.storePairing('location')}
           editable={this.props.editable}
           label={'Location'}
           value={conference.location} />
         <CardAttribute
-          action={() => this.storeTemplate('start_date')}
+          action={() => this.storePairing('start_date')}
           editable={this.props.editable}
           label={'Start date'}
           value={conference.start_date} />
         <CardAttribute
-          action={() => this.storeTemplate('end_date')}
+          action={() => this.storePairing('end_date')}
           editable={this.props.editable}
           label={'Start date'}
           value={conference.start_date} />

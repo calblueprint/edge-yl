@@ -67,6 +67,7 @@ class ConferencePage extends Component {
       return (
         <ConferencePageOverlay
           conference={this.state.conference}
+          pairing={this.state.pairing}
           template={this.state.template} />
       );
     }
