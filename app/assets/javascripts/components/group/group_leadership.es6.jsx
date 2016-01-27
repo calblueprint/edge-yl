@@ -14,13 +14,12 @@ class GroupLeadership extends Component {
   // Helpers
   // --------------------------------------------------
     storePairing(id, value) {
-    var group = this.props.group;
     GroupActions.storePairing({
-      id: group.id,
+      id: this.props.group.id,
       key: 'user',
       model: 'leadership',
       type: 'dropdown',
-      value: value
+      value: value,
     });
   }
 

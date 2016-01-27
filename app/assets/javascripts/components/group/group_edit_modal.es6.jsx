@@ -5,7 +5,7 @@ class GroupEditModal extends EditModal {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      groupables: React.PropTypes.arrayOf(React.PropTypes.object).isRequired, // Potentially make this not required.
+      groupables: React.PropTypes.arrayOf(React.PropTypes.object)
       pairing: React.PropTypes.object.isRequired,
     };
   }
@@ -78,7 +78,7 @@ class GroupEditModal extends EditModal {
     switch (this.props.pairing.key) {
       case 'user':
         action = () => GroupActions.updateLeadership(pairing);
-        content = 'Change Leadership'
+        content = 'Change Leadership';
         type = 'dropdown';
         break;
       case 'letter':
