@@ -27,14 +27,14 @@
         index: (media) => Object.assign(
           {},
           this.containers.card,
-          { padding: '18px' },
-
+          { marginTop: '12px' },
           media === 'big' && { width: '49%' },
           media === 'small' && { width: '100%' }
         ),
         show: (media) => Object.assign(
           {},
           this.containers.card,
+          { marginTop: '12px' },
           media === 'big' && { width: '49%' },
           media === 'small' && { width: '100%' }
         ),
@@ -48,7 +48,6 @@
           {
             display: 'flex',
             flexFlow: 'column',
-            marginTop: '12px',
             boxSizing: 'border-box',
           },
           this.templates.card,
