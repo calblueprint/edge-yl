@@ -1,4 +1,4 @@
-class ConferencesCreateModal extends CreateModal {
+class ConferenceCreateModal extends CreateModal {
 
   // --------------------------------------------------
   // Props

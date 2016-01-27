@@ -51,7 +51,7 @@ class ConferencesPage extends Component {
   generateOptions() {
     return [
       {
-        action: () => ConferencesActions.storeTemplate(),
+        action: () => ConferencesActions.storeTemplate('conference'),
         content: 'New',
       },
     ];
