@@ -5,11 +5,36 @@ class StudentsCard extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
+      editable: React.PropTypes.bool.isRequired,
       media: React.PropTypes.string.isRequired,
       student: React.PropTypes.object.isRequired,
     };
   }
 
+  // --------------------------------------------------
+  // Styles
+  // --------------------------------------------------
+  get styles() {
+    return {
+      header: {
+        display: 'flex',
+        justifyContent: 'flex-end',
+        width: '100%',
+        borderBottom: 'solid #D6D6D6 1px',
+        marginBottom: '5px',
+      }
+    }
+  }
+
+  get clickableStyles() {
+    return {
+      default: {
+        display: 'inline',
+        top: '0px',
+        paddingBottom: '5px',
+      },
+    };
+  }
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
@@ -29,13 +54,13 @@ class StudentsCard extends Component {
     }
   }
 
-  renderEditHeader() {
-    if (this.props.clickable) {
+  renderClickable() {
+    if (this.props.editable) {
       return (
-        <div>
+        <div style={this.styles.header}>
           <Clickable
-            action=
-            content=
+            //action={this.props.action}
+            icon={TypeConstants.icons.close}
             styles={this.clickableStyles}
             type={'i'} />
         </div>
@@ -47,6 +72,7 @@ class StudentsCard extends Component {
     var student = this.props.student;
     return (
       <div style={StyleConstants.cards.index(this.props.media)}>
+        {this.renderClickable()}
         <CardAttribute
           clickable={true}
           label={'Name'}

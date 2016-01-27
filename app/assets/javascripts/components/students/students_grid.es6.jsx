@@ -5,7 +5,7 @@ class StudentsGrid extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      editable: React.PropTypes.boolean.isRequired,
+      editable: React.PropTypes.bool.isRequired,
       media: React.PropTypes.string.isRequired,
       students: React.PropTypes.array.isRequired,
     };
@@ -17,6 +17,7 @@ class StudentsGrid extends Component {
   renderCard(student) {
     return (
       <StudentsCard
+        editable={this.props.editable}
         key={student.id}
         media={this.props.media}
         student={student} />
