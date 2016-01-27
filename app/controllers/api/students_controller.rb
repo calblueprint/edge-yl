@@ -13,25 +13,17 @@ class Api::StudentsController < Api::BaseController
     end
   end
 
-  def index
-    students = Student.includes(:group, :school).page params[:page]
-    if params[:gender]
-      students = students.where gender: Student.genders[params[:gender].downcase]
-    end
-    if params[:is_flagged]
-      students = students.where is_flagged: params[:is_flagged]
-    end
-    if params[:is_primary]
-      students = students.where is_primary: params[:is_primary]
-    end
-    if params[:order]
-      students = students.order params[:order]
-    end
+  def show
     respond_to do |format|
-      format.csv { send_data students.to_csv }
-      format.json { render json: students,
-                           serializer: PaginatedSerializer,
-                           each_serializer: StudentIndexSerializer }
+      format.csv { show_csv }  
+      format.json { show_json }
+    end
+  end
+
+  def index
+    respond_to do |format|
+      format.csv { index_csv }
+      format.json { index_json }
     end
   end
 
@@ -53,6 +45,30 @@ class Api::StudentsController < Api::BaseController
   end
 
   private
+
+  def index_csv
+    students = Student.all
+    send_data students.to_csv
+  end
+
+  def index_json
+    students = Student.includes(:group, :school).page params[:page]
+    if params[:gender]
+      students = students.where gender: Student.genders[params[:gender].downcase]
+    end
+    if params[:is_flagged]
+      students = students.where is_flagged: params[:is_flagged]
+    end
+    if params[:is_primary]
+      students = students.where is_primary: params[:is_primary]
+    end
+    if params[:order]
+      students = students.order params[:order]
+    end
+    render json: students,
+           serializer: PaginatedSerializer,
+           each_serializer: StudentIndexSerializer
+  end
 
   def student_params
     params.require(:student).permit(
