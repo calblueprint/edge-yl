@@ -34,9 +34,6 @@ class GroupEditModal extends EditModal {
     return groupables.map((groupable) => this.generateChoice(groupable));
   }
 
-  // --------------------------------------------------
-  // Helpers
-  // --------------------------------------------------
   updateGroup() {
     GroupActions.updateGroup(this.props.pairing);
   }
@@ -46,35 +43,30 @@ class GroupEditModal extends EditModal {
   // --------------------------------------------------
   renderChild(type) {
     var pairing = this.props.pairing;
-    var child = null;
-    switch (type) {
-      case 'dropdown':
-        child = (
-          <CardDropdown
-            errors={pairing.errors[pairing.key]}
-            label={pairing.key}
-            choices={this.generateChoices()}
-            value={pairing.value && pairing.value.full_name} />
-        );
-        break;
-      case 'input':
-        child = (
-          <CardInput
-            action={(event) => GroupActions.storeValue(event.target.value)}
-            errors={pairing.errors[pairing.key]}
-            label={pairing.key}
-            value={pairing.value} />
-        );
-        break;
+    if (pairing.type === 'dropdown') {
+      return (
+        <CardDropdown
+          errors={pairing.errors[pairing.key]}
+          label={pairing.key}
+          choices={this.generateChoices()}
+          value={pairing.value && pairing.value.full_name} />
+      );
+    } else {
+      return (
+        <CardInput
+          action={(event) => GroupActions.storeValue(event.target.value)}
+          errors={pairing.errors[pairing.key]}
+          label={pairing.key}
+          value={pairing.value} />
+      );
     }
-    return child;
   }
 
   renderBody() {
+    var action;
+    var content;
+    var type;
     var pairing = this.props.pairing;
-    var action = null;
-    var type = null;
-    var content = null;
     switch (pairing.key) {
       case 'user':
         action = () => GroupActions.updateLeadership(pairing);
