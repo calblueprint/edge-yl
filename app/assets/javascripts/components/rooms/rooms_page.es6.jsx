@@ -79,7 +79,8 @@ class RoomsPage extends Component {
               type={'rooms'} />
             <RoomsGrid
               media={this.state.media}
-              rooms={this.state.rooms} />
+              rooms={this.state.rooms}
+              type={TypeConstants.room.default} />
           </div>
         </div>
       </div>

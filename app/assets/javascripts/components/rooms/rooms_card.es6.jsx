@@ -7,7 +7,10 @@ class RoomsCard extends Component {
     return {
       media: React.PropTypes.string.isRequired,
       room: React.PropTypes.object.isRequired,
-      type: React.PropTypes.oneOf(['conference', 'default']).isRequired,
+      type: React.PropTypes.oneOf([
+        TypeConstants.room.conference,
+        TypeConstants.room.default,
+      ]).isRequired,
     };
   }
 
@@ -15,8 +18,8 @@ class RoomsCard extends Component {
   // Render
   // --------------------------------------------------
   renderConference() {
-    var room = this.props.room;
-    if (room.conference) {
+    if (this.props.type == TypeConstants.room.default) {
+      var room = this.props.room;
       return (
         <CardAttribute
           clickable={true}
