@@ -3,10 +3,10 @@
 
     constructor() {
       this.overlay = false;
+      this.pairing = null;
       this.student = {
         comments: [],
       };
-      this.pairing = null;
       this.template = null;
       this.bindListeners({
         handleCloseOverlay: StudentActions.CLOSE_OVERLAY,
