@@ -18,25 +18,7 @@
       return true;
     }
 
-    storeAttribute(key, value) {
-      return {
-        key: key,
-        value: value,
-      };
-    }
-
     storePairing(options) {
-      return {
-        choices: options.choices,
-        errors: {},
-        id: options.id,
-        key: options.key,
-        type: options.type,
-        value: options.value,
-      };
-    }
-
-    storeTemplate(options) {
       if (options.model === 'leadership') {
         var resolve = (response) => this.storeGroupables(response);
         Requester.get(ApiConstants.users.groupables, resolve);
@@ -54,10 +36,11 @@
 
     updateGroup(pairing, attributes={}) {
       attributes[pairing.key] = pairing.value;
+      var params = { group: attributes };
       var resolve = (response) => this.storeGroup(response);
       var reject = (response) => this.storeError(response);
       Requester.update(
-        ApiConstants.groups.update(id),
+        ApiConstants.groups.update(pairing.id),
         params,
         resolve,
         reject,
@@ -69,10 +52,12 @@
       var attributes = { user_id: template.value.id };
       var params = { leadership: attributes };
       var resolve = (response) => this.storeLeadership(response);
+      var reject = (response) => this.storeError(response);
       Requester.update(
         ApiConstants.leaderships.update(template.id),
         params,
         resolve,
+        reject,
       );
       return true;
     }

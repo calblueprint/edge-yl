@@ -72,7 +72,7 @@ class GroupPage extends Component {
       return (
         <GroupPageOverlay
           groupables={this.state.groupables}
-          template={this.state.template} />
+          pairing={this.state.pairing} />
       );
     }
   }

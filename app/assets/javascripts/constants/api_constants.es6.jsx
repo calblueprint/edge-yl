@@ -46,7 +46,7 @@
       return {
         create: '/api/groups',
         show: (id) => `/api/groups/${id}`,
-        update: (id) => `api/groups/${id}`,
+        update: (id) => `/api/groups/${id}`,
       };
     }
 
