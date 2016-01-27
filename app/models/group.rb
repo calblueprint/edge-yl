@@ -43,5 +43,5 @@ class Group < ActiveRecord::Base
       style: Leadership.styles['secondary_leader'],
     )
   end
-
+  
 end
