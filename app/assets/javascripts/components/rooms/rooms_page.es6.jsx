@@ -14,7 +14,6 @@ class RoomsPage extends Component {
   static get propTypes() {
     return {
       conference_id: React.PropTypes.number.isRequired,
-      page: React.PropTypes.number.isRequired,
       profile: React.PropTypes.object.isRequired,
     };
   }
@@ -32,7 +31,7 @@ class RoomsPage extends Component {
     ProfileStore.listen(this._listener);
     RoomsStore.listen(this._listener);
     ViewStore.listen(this._listener);
-    RoomsActions.fetchRooms(this.props.page, this.props.conference_id);
+    RoomsActions.fetchRooms(this.props.conference_id, this.props.conferences);
     ViewActions.attachListener();
   }
 
@@ -48,16 +47,12 @@ class RoomsPage extends Component {
   generateOption(id) {
     return {
       content: id,
-      route: RouteConstants.rooms.index(this.props.page, id)
+      route: RouteConstants.rooms.index(id)
     }
   }
 
   generateOptions() {
     return ['1', '2'].map((id) => this.generateOption(id))
-  }
-
-  changePage(page) {
-    window.location = RouteConstants.rooms.index(page, conference_id);
   }
 
   selectProfile() {
@@ -77,16 +72,13 @@ class RoomsPage extends Component {
           <Sidebar profile={this.selectProfile()} />
           <div style={StyleConstants.pages.content}>
             <PageHeader
-              conferences={[{}, {}]}
+              conferences={this.props.conferences}
               options={this.generateOptions()}
               title={'Rooms'}
               type={'rooms'} />
             <RoomsGrid
               media={this.state.media}
               rooms={this.state.rooms} />
-            <PageNavigator
-              action={(page) => this.changePage(page)}
-              pagination={this.state.pagination} />
           </div>
         </div>
       </div>

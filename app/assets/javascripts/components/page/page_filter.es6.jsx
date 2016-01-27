@@ -77,8 +77,8 @@ class PageFilter extends Component {
   // --------------------------------------------------
   generateDropdownOption(option) {
     return {
-      action: () => StudentsActions.storeFilter(filter.key, false, option),
-      content: 'blah',
+      action: () => RoomsActions.fetchRooms(option.id, this.props.conferences),
+      content: option.name,
     };
   }
 

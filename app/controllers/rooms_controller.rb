@@ -1,10 +1,8 @@
 class RoomsController < BaseController
 
   def index
-    @page = params[:page] ? params[:page].to_i : 1
-    @conference_id = params[:conference_id] ?
-                     params[:conference_id].to_i :
-                     Conference.first.id
+    @conferences = Conference.all
+    @conference_id = params[:conference_id]
   end
 
   def show

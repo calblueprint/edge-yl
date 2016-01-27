@@ -1,12 +1,10 @@
 class Api::RoomsController < Api::BaseController
 
   def index
-    rooms = Room.where(conference_id: params[:conference_id]).page params[:page]
-    puts rooms.first.id
+    rooms = Room.where(conference_id: params[:conference_id])
     respond_to do |format|
       format.csv { send_data rooms.to_csv }
       format.json { render json: rooms,
-                           serializer: PaginatedSerializer,
                            each_serializer: RoomIndexSerializer }
     end
   end

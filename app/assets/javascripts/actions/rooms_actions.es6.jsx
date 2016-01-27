@@ -7,9 +7,12 @@
       );
     }
 
-    fetchRooms(page, conference_id) {
+    fetchRooms(conference_id, conferences) {
       var resolve = (response) => this.storeRooms(response);
-      Requester.get(ApiConstants.rooms.index(page, conference_id), resolve);
+      if (!conference_id) {
+        conference_id = conferences[0].id
+      }
+      Requester.get(ApiConstants.rooms.index(conference_id), resolve);
       return true;
     }
   }

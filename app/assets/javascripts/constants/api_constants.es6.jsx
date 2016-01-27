@@ -63,8 +63,8 @@
     get rooms() {
       return {
         show: (id) => `/api/rooms/${id}`,
-        index: (page=1, conference_id=1) => {
-          return `/api/rooms?page=${page}&conference_id=${conference_id}`;
+        index: (conference_id=1) => {
+          return `/api/rooms?&conference_id=${conference_id}`;
         },
         update: (id) => `/api/rooms/${id}`,
       };

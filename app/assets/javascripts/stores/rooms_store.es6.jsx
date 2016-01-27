@@ -2,10 +2,7 @@
   class RoomsStore {
 
     constructor() {
-      this.pagination = {
-        current: 1,
-        limit: 1,
-      };
+      this.conferences = [];
       this.conference_id = {};
       this.rooms = [];
       this.bindListeners({
@@ -14,7 +11,6 @@
     }
 
     handleStoreRooms(response) {
-      this.pagination = response.meta.pagination;
       this.rooms = response.rooms;
     }
   }
