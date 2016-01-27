@@ -18,9 +18,9 @@
 
     get csvs() {
       return {
-        students: '/api/students.csv',
+        groups: (id) => `/api/groups/${id}.csv`,        
         schools: '/api/schools.csv',
-        groups: (id) => `/api/groups/${id}.csv`,
+        students: '/api/students.csv',
       };
     }
 
