@@ -13,8 +13,8 @@ class RoomsPage extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
+      conference: React.PropTypes.number.isRequired,
       conferences: React.PropTypes.array.isRequired,
-      conference_id: React.PropTypes.number.isRequired,
       profile: React.PropTypes.object.isRequired,
     };
   }
@@ -32,7 +32,7 @@ class RoomsPage extends Component {
     ProfileStore.listen(this._listener);
     RoomsStore.listen(this._listener);
     ViewStore.listen(this._listener);
-    RoomsActions.fetchRooms(this.props.conference_id, this.props.conferences);
+    RoomsActions.fetchRooms(this.props.conference);
     ViewActions.attachListener();
   }
 
@@ -73,6 +73,7 @@ class RoomsPage extends Component {
           <Sidebar profile={this.selectProfile()} />
           <div style={StyleConstants.pages.content}>
             <PageHeader
+              conference={this.props.conference}
               conferences={this.props.conferences}
               options={this.generateOptions()}
               title={'Rooms'}
