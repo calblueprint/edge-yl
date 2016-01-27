@@ -15,12 +15,9 @@ class Api::SchoolsController < Api::BaseController
   end
 
   def index
-    schools = School.page params[:page]
     respond_to do |format|
-      format.csv { send_data schools.to_csv }
-      format.json { render json: schools,
-                           serializer: PaginatedSerializer,
-                           each_serializer: SchoolIndexSerializer }
+      format.csv { index_csv }
+      format.json { index_json }
     end
   end
 
@@ -42,6 +39,19 @@ class Api::SchoolsController < Api::BaseController
   end
 
   private
+
+  def index_csv
+    schools = Student.all
+    send_data schools.to_csv
+  end
+  
+  def index_json
+    schools = School.page params[:page]
+    render json: schools,
+           serializer: PaginatedSerializer,
+           each_serializer: SchoolIndexSerializer }
+    end
+  end
 
   def school_params
     params.require(:school).permit(
