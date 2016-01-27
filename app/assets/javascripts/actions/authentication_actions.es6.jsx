@@ -11,7 +11,7 @@
     }
 
     createSession(template) {
-      var params = { user: template };
+      var params = { user: template.attributes };
       var resolve = (response) => this.storeSession(response);
       var reject = (response) => this.storeMessage(response);
       Requester.post(
@@ -24,7 +24,7 @@
     }
 
     createUser(template) {
-      var params = { registration: template };
+      var params = { registration: template.attributes };
       var resolve = (response) => this.storeUser(response);
       var reject = (response) => this.storeError(response);
       Requester.post(

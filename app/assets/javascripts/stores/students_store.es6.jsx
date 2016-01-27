@@ -22,23 +22,23 @@
       return [
         {
           active: false,
+          choices: ['True', 'False', 'None'],
           key: 'is_flagged',
           name: 'Flagged?',
-          options: ['True', 'False', 'None'],
           selected: 'None',
         },
         {
           active: false,
+          choices: ['Female', 'Male', 'Other', 'None'],
           key: 'gender',
           name: 'Gender',
-          options: ['Female', 'Male', 'Other', 'None'],
           selected: 'None',
         },
         {
           active: false,
+          choices: ['True', 'False', 'None'],
           key: 'is_primary',
           name: 'Primary?',
-          options: ['True', 'False', 'None'],
           selected: 'None',
         },
       ];
@@ -48,16 +48,16 @@
       return [
         {
           active: false,
+          choices: ['ASC', 'DESC', 'None'],
           key: 'first_name',
           name: 'First name',
-          options: ['ASC', 'DESC', 'None'],
           selected: 'None',
         },
         {
           active: false,
+          choices: ['ASC', 'DESC', 'None'],
           key: 'last_name',
           name: 'Last name',
-          options: ['ASC', 'DESC', 'None'],
           selected: 'None',
         },
       ];

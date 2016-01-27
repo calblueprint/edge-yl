@@ -92,7 +92,7 @@ class HeaderShortcuts extends Component {
   // --------------------------------------------------
   renderDropdown() {
     if (this.state.dropdown) {
-      var options = [
+      var choices = [
         {
           content: 'Edit profile',
           route: RouteConstants.pages.profile,
@@ -107,9 +107,9 @@ class HeaderShortcuts extends Component {
         },
       ];
       return (
-        <Dropdown
+        <DropdownChoices
           action={() => this.toggleDropdown()}
-          options={options}
+          choices={choices}
           styles={this.dropdownStyles} />
       );
     }
