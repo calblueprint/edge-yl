@@ -53,7 +53,7 @@ class RoomsPage extends Component {
   }
 
   generateOptions() {
-    return [1, 2].map((id) => this.generateOption(id))
+    return ['1', '2'].map((id) => this.generateOption(id))
   }
 
   changePage(page) {
@@ -85,6 +85,9 @@ class RoomsPage extends Component {
             <PageNavigator
               action={(page) => this.changePage(page)}
               pagination={this.state.pagination} />
+            <PageFilter
+              conferences={[{}, {}]}
+              type={'rooms'} />
           </div>
         </div>
       </div>
