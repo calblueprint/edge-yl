@@ -35,6 +35,14 @@ class StudentsCard extends Component {
       },
     };
   }
+
+  // --------------------------------------------------
+  // Helpers
+  // --------------------------------------------------
+  deleteStudentFromGroup() {
+    GroupActions.deleteStudent(this.props.student.id);
+  }
+
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
@@ -59,7 +67,7 @@ class StudentsCard extends Component {
       return (
         <div style={this.styles.header}>
           <Clickable
-            //action={this.props.action}
+            action={() => this.deleteStudentFromGroup()}
             icon={TypeConstants.icons.close}
             styles={this.clickableStyles}
             type={'i'} />

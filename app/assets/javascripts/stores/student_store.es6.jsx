@@ -44,6 +44,7 @@
     handleStoreStudent(response) {
       this.overlay = false;
       this.student = response.student;
+      console.log(this.student);
     }
 
     handleStorePairing(pairing) {
