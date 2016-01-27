@@ -3,6 +3,7 @@
 
     constructor() {
       this.template = {
+        attributes: {},
         errors: {},
         message: '',
       };
@@ -16,7 +17,7 @@
     }
 
     handleStoreAttribute(attribute) {
-      this.template[attribute.key] = attribute.value;
+      this.template.attributes[attribute.key] = attribute.value;
     }
 
     handleStoreError(response) {

@@ -50,7 +50,7 @@ class ProfileEditModal extends EditModal {
         <CardDropdown
           errors={template.errors[template.key]}
           label={template.key}
-          options={choices}
+          choices={choices}
           value={Helpers.humanize(template.value)} />
       );
     }

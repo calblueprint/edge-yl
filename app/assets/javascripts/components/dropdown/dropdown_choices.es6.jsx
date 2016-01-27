@@ -1,4 +1,4 @@
-class Dropdown extends Component {
+class DropdownChoices extends Component {
 
   // --------------------------------------------------
   // Props
@@ -6,7 +6,7 @@ class Dropdown extends Component {
   static get propTypes() {
     return {
       action: React.PropTypes.func,
-      options: React.PropTypes.arrayOf(
+      choices: React.PropTypes.arrayOf(
         React.PropTypes.shape({
           action: React.PropTypes.func,
           children: React.PropTypes.node,
@@ -68,7 +68,7 @@ class Dropdown extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
-  renderOption(option, index) {
+  renderChoice(choice, index) {
     var styles = Object.assign({}, this.props.styles.child);
     if (index > 0) {
       styles.default = Object.assign(
@@ -77,7 +77,7 @@ class Dropdown extends Component {
         { borderTop: `1px solid ${StyleConstants.colors.gray}` }
       );
     }
-    if (option.static) {
+    if (choice.static) {
       styles.default = Object.assign(
         {},
         styles.default,
@@ -89,26 +89,26 @@ class Dropdown extends Component {
     }
     return (
       <Clickable
-        action={option.action}
-        children={option.children}
-        content={option.content}
+        action={choice.action}
+        children={choice.children}
+        content={choice.content}
         key={index}
-        route={option.route}
+        route={choice.route}
         styles={styles}
-        type={option.children ? 'div' : 'h6'}
+        type={choice.children ? 'div' : 'h6'}
         underline={false} />
     );
   }
 
-  renderOptions() {
-    var options = this.props.options;
-    return options.map((option, index) => this.renderOption(option, index));
+  renderChoices() {
+    var choices = this.props.choices;
+    return choices.map((choice, index) => this.renderChoice(choice, index));
   }
 
   render() {
     return (
       <div style={this.props.styles.container}>
-        {this.renderOptions()}
+        {this.renderChoices()}
         <input
           autoFocus={true}
           ref={'input'}
