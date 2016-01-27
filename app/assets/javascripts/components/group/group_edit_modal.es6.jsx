@@ -22,16 +22,16 @@ class GroupEditModal extends EditModal {
   // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
-  generateOption(groupable) {
+  generateChoice(groupable) {
     return {
       action: () => GroupActions.storeAttribute(groupable),
       content: Helpers.humanize(groupable.full_name),
     }
   }
 
-  generateOptions() {
+  generateChoices() {
     var groupables = this.props.groupables;
-    return groupables.map((groupable) => this.generateOption(groupable));
+    return groupables.map((groupable) => this.generateChoice(groupable));
   }
 
   // --------------------------------------------------
@@ -43,7 +43,7 @@ class GroupEditModal extends EditModal {
       <CardDropdown
         errors={template.errors[template.key]}
         label={template.key}
-        options={this.generateOptions()}
+        choices={this.generateChoices()}
         value={template.value && template.value.full_name} />
     );
   }

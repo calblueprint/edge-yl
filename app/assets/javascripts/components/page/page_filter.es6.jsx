@@ -13,22 +13,22 @@ class PageFilter extends Component {
   // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
-  generateDropdownOption(option) {
+  generateChoice(option) {
     return {
       action: () => StudentsActions.storeFilter(filter.key, false, option),
       content: 'blah',
     };
   }
 
-  generateDropdownOptions() {
+  generateChoices() {
     var conferences = this.props.conferences;
-    return conferences.map((option) => this.generateDropdownOption(option));
+    return conferences.map((option) => this.generateChoice(option));
   }
 
   render() {
     return (
       <DropdownButton
-        options={this.generateDropdownOptions()}
+        choices={this.generateChoices()}
         value={'Conference name'} />
     );
   }

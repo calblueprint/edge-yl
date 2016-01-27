@@ -5,15 +5,15 @@ class CardDropdown extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      errors: React.PropTypes.array,
-      label: React.PropTypes.string.isRequired,
-      margin: React.PropTypes.bool,
-      options: React.PropTypes.arrayOf(
+      choices: React.PropTypes.arrayOf(
         React.PropTypes.shape({
           action: React.PropTypes.action,
           content: React.PropTypes.string,
         })
       ).isRequired,
+      errors: React.PropTypes.array,
+      label: React.PropTypes.string.isRequired,
+      margin: React.PropTypes.bool,
       value: React.PropTypes.string,
     };
   }
@@ -23,15 +23,6 @@ class CardDropdown extends Component {
       errors: [],
       margin: false,
       value: '',
-    };
-  }
-
-  // --------------------------------------------------
-  // State
-  // --------------------------------------------------
-  static get defaultState() {
-    return {
-      dropdown: false,
     };
   }
 
@@ -71,7 +62,7 @@ class CardDropdown extends Component {
       <div style={this.styles.container}>
         <h6>{this.props.label}</h6>
         <DropdownButton
-          options={this.props.options}
+          choices={this.props.choices}
           value={this.props.value} />
         {this.renderErrors()}
       </div>

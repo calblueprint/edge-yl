@@ -5,7 +5,7 @@ class DropdownButton extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      options: React.PropTypes.arrayOf(
+      choices: React.PropTypes.arrayOf(
         React.PropTypes.shape({
           action: React.PropTypes.action,
           content: React.PropTypes.string,
@@ -75,9 +75,9 @@ class DropdownButton extends Component {
   renderDropdown() {
     if (this.state.dropdown) {
       return (
-        <Dropdown
+        <DropdownChoices
           action={() => this.setState({ dropdown: false })}
-          options={this.props.options}
+          choices={this.props.choices}
           styles={this.dropdownStyles} />
       );
     }
