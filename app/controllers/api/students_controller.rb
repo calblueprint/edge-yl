@@ -13,13 +13,6 @@ class Api::StudentsController < Api::BaseController
     end
   end
 
-  def show
-    respond_to do |format|
-      format.csv { show_csv }  
-      format.json { show_json }
-    end
-  end
-
   def index
     respond_to do |format|
       format.csv { index_csv }
