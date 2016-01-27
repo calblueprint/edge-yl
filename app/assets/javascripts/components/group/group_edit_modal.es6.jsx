@@ -5,7 +5,7 @@ class GroupEditModal extends EditModal {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      groupables: React.PropTypes.arrayOf(React.PropTypes.object)
+      groupables: React.PropTypes.arrayOf(React.PropTypes.object),
       pairing: React.PropTypes.object.isRequired,
     };
   }
@@ -22,16 +22,16 @@ class GroupEditModal extends EditModal {
   // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
-  generateOption(groupable) {
+  generateChoice(groupable) {
     return {
       action: () => GroupActions.storeValue(groupable),
       content: Helpers.humanize(groupable.full_name),
     }
   }
 
-  generateOptions() {
+  generateChoices() {
     var groupables = this.props.groupables;
-    return groupables.map((groupable) => this.generateOption(groupable));
+    return groupables.map((groupable) => this.generateChoice(groupable));
   }
 
   // --------------------------------------------------
@@ -53,7 +53,7 @@ class GroupEditModal extends EditModal {
           <CardDropdown
             errors={pairing.errors[pairing.key]}
             label={pairing.key}
-            options={this.generateOptions()}
+            choices={this.generateChoices()}
             value={pairing.value && pairing.value.full_name} />
         );
         break;
@@ -75,7 +75,7 @@ class GroupEditModal extends EditModal {
     var action = null;
     var type = null;
     var content = null;
-    switch (this.props.pairing.key) {
+    switch (pairing.key) {
       case 'user':
         action = () => GroupActions.updateLeadership(pairing);
         content = 'Change Leadership';

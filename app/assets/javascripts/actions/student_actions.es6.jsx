@@ -53,7 +53,7 @@
         attributes: attributes,
         errors: {},
         model: model,
-      }
+      };
     }
 
     updateStudent(pairing, attributes={}) {
