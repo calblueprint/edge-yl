@@ -13,6 +13,7 @@ class RoomsPage extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
+      conferences: React.PropTypes.array.isRequired,
       conference_id: React.PropTypes.number.isRequired,
       profile: React.PropTypes.object.isRequired,
     };

@@ -7,6 +7,7 @@ class RoomsCard extends Component {
     return {
       media: React.PropTypes.string.isRequired,
       room: React.PropTypes.object.isRequired,
+      type: React.PropTypes.oneOf(['conference', 'default']).isRequired,
     };
   }
 
