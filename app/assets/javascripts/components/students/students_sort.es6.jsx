@@ -83,9 +83,9 @@ class StudentsSort extends Component {
     var sort = this.props.sort;
     if (sort.active) {
       return (
-        <Dropdown
+        <DropdownChoices
           action={() => StudentsActions.storeSort(sort.key, false)}
-          options={this.generateDropdownOptions()}
+          choices={this.generateDropdownOptions()}
           styles={this.dropdownStyles} />
       );
     }

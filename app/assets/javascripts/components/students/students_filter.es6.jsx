@@ -65,17 +65,17 @@ class StudentsFilter extends Component {
   // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
-  generateDropdownOption(option) {
+  generateChoice(choice) {
     var filter = this.props.filter;
     return {
-      action: () => StudentsActions.storeFilter(filter.key, false, option),
-      content: option,
+      action: () => StudentsActions.storeFilter(filter.key, false, choice),
+      content: choice,
     };
   }
 
-  generateDropdownOptions() {
-    var options = this.props.filter.options;
-    return options.map((option) => this.generateDropdownOption(option));
+  generateChoices() {
+    var choices = this.props.filter.choices;
+    return choices.map((choice) => this.generateChoice(choice));
   }
 
   // --------------------------------------------------
@@ -85,9 +85,9 @@ class StudentsFilter extends Component {
     var filter = this.props.filter;
     if (filter.active) {
       return (
-        <Dropdown
+        <DropdownChoices
           action={() => StudentsActions.storeFilter(filter.key, false)}
-          options={this.generateDropdownOptions()}
+          choices={this.generateChoices()}
           styles={this.dropdownStyles} />
       );
     }

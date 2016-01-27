@@ -89,7 +89,7 @@ class SearchResults extends Component {
   render() {
     return (
       <DropdownChoices
-        choice={this.generateChoices()}
+        choices={this.generateChoices()}
         styles={this.dropdownStyles} />
     );
   }
