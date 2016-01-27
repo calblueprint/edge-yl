@@ -5,6 +5,7 @@ class StudentsGrid extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
+      editable: React.PropTypes.boolean.isRequired,
       media: React.PropTypes.string.isRequired,
       students: React.PropTypes.array.isRequired,
     };

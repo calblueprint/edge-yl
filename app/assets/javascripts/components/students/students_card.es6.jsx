@@ -29,6 +29,20 @@ class StudentsCard extends Component {
     }
   }
 
+  renderEditHeader() {
+    if (this.props.clickable) {
+      return (
+        <div>
+          <Clickable
+            action=
+            content=
+            styles={this.clickableStyles}
+            type={'i'} />
+        </div>
+      );
+    }
+  }
+
   render() {
     var student = this.props.student;
     return (
