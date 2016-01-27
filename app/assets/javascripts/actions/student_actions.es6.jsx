@@ -67,7 +67,6 @@
         resolve,
         reject,
       );
-      this.fetchStudent(pairing.id)
       return true;
     }
   }
