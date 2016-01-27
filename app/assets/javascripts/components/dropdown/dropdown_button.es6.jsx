@@ -76,8 +76,8 @@ class DropdownButton extends Component {
     if (this.state.dropdown) {
       return (
         <DropdownChoices
-          action={() => this.setState({ dropdown: false })}
           choices={this.props.choices}
+          hide={() => this.setState({ dropdown: false })}
           styles={this.dropdownStyles} />
       );
     }

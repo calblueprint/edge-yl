@@ -81,13 +81,6 @@ class HeaderShortcuts extends Component {
   }
 
   // --------------------------------------------------
-  // Helpers
-  // --------------------------------------------------
-  toggleDropdown() {
-    this.setState({ dropdown: !this.state.dropdown });
-  }
-
-  // --------------------------------------------------
   // Render
   // --------------------------------------------------
   renderDropdown() {
@@ -108,8 +101,8 @@ class HeaderShortcuts extends Component {
       ];
       return (
         <DropdownChoices
-          action={() => this.toggleDropdown()}
           choices={choices}
+          hide={() => this.setState({ dropdown: false })}
           styles={this.dropdownStyles} />
       );
     }
@@ -125,7 +118,7 @@ class HeaderShortcuts extends Component {
             styles={this.clickableStyles}
             type={'i'} />
           <Clickable
-            action={() => this.toggleDropdown()}
+            action={() => this.setState({ dropdown: !this.state.dropdown })}
             icon={TypeConstants.icons.settings}
             styles={this.clickableStyles}
             type={'i'} />
