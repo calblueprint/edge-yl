@@ -7,7 +7,10 @@ class Clickable extends Component {
     return {
       action: React.PropTypes.func,
       children: React.PropTypes.node,
-      content: React.PropTypes.string,
+      content: React.PropTypes.oneOfType([
+        React.PropTypes.number,
+        React.PropTypes.string,
+      ]),
       icon: React.PropTypes.string,
       route: React.PropTypes.string,
       source: React.PropTypes.string,
