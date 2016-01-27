@@ -5,7 +5,9 @@ class PageComments extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      comments: React.PropTypes.array.isRequired,
+      profile: React.PropTypes.object.isRequired,
+      school: React.PropTypes.object,
+      student: React.PropTypes.object,
       type: React.PropTypes.oneOf([
         TypeConstants.school.comment,
         TypeConstants.student.comment,
@@ -59,17 +61,23 @@ class PageComments extends Component {
   // --------------------------------------------------
   handleClick() {
     if (this.props.type == TypeConstants.student.comment) {
-      StudentActions.storeTemplate({
-        key: 'content',
-        model: 'comment',
-        type: 'input',
-      });
+      StudentActions.storeTemplate(
+        'comment',
+        {
+          commentable_id: this.props.student.id,
+          commentable_type: 'Student',
+          user_id: this.props.profile.id,
+        },
+      );
     } else {
-      SchoolActions.storeTemplate({
-        key: 'content',
-        model: 'comment',
-        type: 'input',
-      });
+      SchoolActions.storeTemplate(
+        'comment',
+        {
+          commentable_id: this.props.school.id,
+          commentable_type: 'School',
+          user_id: this.props.profile.id,
+        },
+      );
     }
   }
 
@@ -85,7 +93,12 @@ class PageComments extends Component {
   }
 
   renderComments() {
-    var comments = this.props.comments;
+    var comments;
+    if (this.props.type == TypeConstants.student.comment) {
+      comments = this.props.student.comments;
+    } else {
+      comments = this.props.school.comments;
+    }
     return comments.map((comment) => this.renderComment(comment));
   }
 

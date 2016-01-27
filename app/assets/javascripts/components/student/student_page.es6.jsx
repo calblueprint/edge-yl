@@ -66,6 +66,7 @@ class StudentPage extends Component {
     if (this.state.overlay) {
       return (
         <StudentPageOverlay
+          pairing={this.state.pairing}
           profile={this.selectProfile()}
           student={this.state.student}
           template={this.state.template} />
@@ -91,7 +92,8 @@ class StudentPage extends Component {
               media={this.state.media}
               student={student} />
             <PageComments
-              comments={student.comments}
+              profile={this.selectProfile()}
+              student={this.state.student}
               type={TypeConstants.student.comment} />
           </div>
         </div>

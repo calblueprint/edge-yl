@@ -1,0 +1,96 @@
+class PageHeader extends Component {
+
+  // --------------------------------------------------
+  // Props
+  // --------------------------------------------------
+  static get propTypes() {
+    return {
+      options: React.PropTypes.arrayOf(
+        React.PropTypes.shape({
+          action: React.PropTypes.func,
+          content: React.PropTypes.string,
+          route: React.PropTypes.string,
+        })
+      ),
+      title: React.PropTypes.string.isRequired,
+      type: React.PropTypes.oneOf(['groups', 'rooms']).isRequired,
+    };
+  }
+
+  static get defaultProps() {
+    return {
+      options: [],
+    };
+  }
+
+  // --------------------------------------------------
+  // Styles
+  // --------------------------------------------------
+  get styles() {
+    return {
+      container: {
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        width: '100%',
+        marginTop: '12px',
+      },
+      header: {
+        display: 'flex',
+        alignContent: 'center',
+      },
+      divider: {
+        padding: '0px 6px',
+      },
+      section: {
+        display: 'flex',
+      },
+      options: {
+        display: 'flex',
+      },
+    };
+  }
+
+  // --------------------------------------------------
+  // Render
+  // --------------------------------------------------
+  renderDivider(index, length) {
+    if (index < this.props.options.length - 1) {
+      return <h4 style={this.styles.divider}>{'|'}</h4>;
+    }
+  }
+
+  renderOption(option, index, length) {
+    return (
+      <div key={index} style={this.styles.section}>
+        <Clickable
+          action={option.action}
+          content={option.content}
+          route={option.route}
+          type={'h4'} />
+        {this.renderDivider(index)}
+      </div>
+    );
+  }
+
+  renderOptions() {
+    var options = this.props.options;
+    return options.map((option, index) => this.renderOption(option, index));
+  }
+
+  render() {
+    return (
+      <div style={this.styles.container}>
+        <div style={this.styles.header}>
+          <h4>{this.props.title}</h4>
+          <PageFilter
+            conferences={[{}, {}]}
+            type={this.props.type} />
+        </div>
+        <div style={this.styles.options}>
+          {this.renderOptions()}
+        </div>
+      </div>
+    );
+  }
+}

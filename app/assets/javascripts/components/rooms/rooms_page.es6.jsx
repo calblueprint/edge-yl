@@ -53,7 +53,7 @@ class RoomsPage extends Component {
   }
 
   generateOptions() {
-    return [1, 2].map((id) => this.generateOption(id))
+    return ['1', '2'].map((id) => this.generateOption(id))
   }
 
   changePage(page) {
@@ -76,9 +76,11 @@ class RoomsPage extends Component {
         <div style={StyleConstants.pages.container}>
           <Sidebar profile={this.selectProfile()} />
           <div style={StyleConstants.pages.content}>
-            <GridHeader
-              label={'Rooms'}
-              options={this.generateOptions()} />
+            <PageHeader
+              conferences={[{}, {}]}
+              options={this.generateOptions()}
+              title={'Rooms'}
+              type={'rooms'} />
             <RoomsGrid
               media={this.state.media}
               rooms={this.state.rooms} />

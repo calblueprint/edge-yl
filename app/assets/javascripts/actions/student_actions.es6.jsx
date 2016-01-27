@@ -4,16 +4,15 @@
     constructor() {
       this.generateActions(
         'closeOverlay',
-        'storeAttribute',
         'storeComment',
         'storeError',
         'storeStudent',
+        'storeValue',
       );
     }
 
-    createComment(template, attributes={}) {
-      attributes[template.key] = template.value;
-      var params = { comment: attributes };
+    createComment(template) {
+      var params = { comment: template.attributes };
       var resolve = (response) => this.storeComment(response);
       var reject = (response) => this.storeError(response);
       Requester.post(
@@ -31,25 +30,39 @@
       return true;
     }
 
-    storeTemplate(options) {
+    storeAttribute(key, value) {
+      return {
+        key: key,
+        value: value,
+      };
+    }
+
+    storePairing(options) {
       return {
         choices: options.choices,
         errors: {},
         id: options.id,
         key: options.key,
-        model: options.model,
         type: options.type,
         value: options.value,
       };
     }
 
-    updateStudent(template, attributes={}) {
-      attributes[template.key] = template.value;
+    storeTemplate(model, attributes={}) {
+      return {
+        attributes: attributes,
+        errors: {},
+        model: model,
+      };
+    }
+
+    updateStudent(pairing, attributes={}) {
+      attributes[pairing.key] = pairing.value;
       var params = { student: attributes };
       var resolve = (response) => this.storeStudent(response);
       var reject = (response) => this.storeError(response);
       Requester.update(
-        ApiConstants.students.update(template.id),
+        ApiConstants.students.update(pairing.id),
         params,
         resolve,
         reject,

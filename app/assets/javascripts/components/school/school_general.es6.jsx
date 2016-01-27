@@ -13,12 +13,11 @@ class SchoolGeneral extends Component {
   // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
-  storeTemplate(key) {
+  storePairing(key) {
     var school = this.props.school;
-    SchoolActions.storeTemplate({
+    SchoolActions.storePairing({
       id: school.id,
       key: key,
-      model: 'school',
       type: 'input',
       value: school[key],
     });
@@ -32,32 +31,32 @@ class SchoolGeneral extends Component {
     return (
       <div style={StyleConstants.cards.body}>
         <CardAttribute
-          action={() => this.storeTemplate('name')}
+          action={() => this.storePairing('name')}
           editable={this.props.editable}
           label={'Name'}
           value={school.name} />
         <CardAttribute
-          action={() => this.storeTemplate('address_one')}
+          action={() => this.storePairing('address_one')}
           editable={this.props.editable}
           label={'Address one'}
           value={school.address_one} />
         <CardAttribute
-          action={() => this.storeTemplate('address_two')}
+          action={() => this.storePairing('address_two')}
           editable={this.props.editable}
           label={'Address two'}
           value={school.address_two} />
         <CardAttribute
-          action={() => this.storeTemplate('address_city')}
+          action={() => this.storePairing('address_city')}
           editable={this.props.editable}
           label={'Address city'}
           value={school.address_city} />
         <CardAttribute
-          action={() => this.storeTemplate('address_state')}
+          action={() => this.storePairing('address_state')}
           editable={this.props.editable}
           label={'Address state'}
           value={school.address_state} />
         <CardAttribute
-          action={() => this.storeTemplate('address_zip')}
+          action={() => this.storePairing('address_zip')}
           editable={this.props.editable}
           label={'Address zip'}
           value={school.address_zip} />
