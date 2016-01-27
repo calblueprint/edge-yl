@@ -5,8 +5,22 @@ class GroupGeneral extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
+      editable: React.PropTypes.bool.isRequired,
       group: React.PropTypes.object.isRequired,
     };
+  }
+
+  // --------------------------------------------------
+  // Helpers
+  // --------------------------------------------------
+  storePairing(key) {
+    var group = this.props.group;
+    GroupActions.storePairing({
+      id: group.id,
+      key: key,
+      type: 'input',
+      value: group[key],
+    });
   }
 
   // --------------------------------------------------
@@ -17,6 +31,8 @@ class GroupGeneral extends Component {
     return (
       <div style={StyleConstants.cards.body}>
         <CardAttribute
+          action={() => this.storePairing('letter')}
+          editable={this.props.editable}
           label={'Letter'}
           value={group.letter} />
         <CardAttribute

@@ -54,10 +54,11 @@
 
     updateGroup(pairing, attributes={}) {
       attributes[pairing.key] = pairing.value;
+      var params = { group: attributes };
       var resolve = (response) => this.storeGroup(response);
       var reject = (response) => this.storeError(response);
       Requester.update(
-        ApiConstants.groups.update(id),
+        ApiConstants.groups.update(pairing.id),
         params,
         resolve,
         reject,

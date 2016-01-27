@@ -5,8 +5,8 @@ class GroupEditModal extends EditModal {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      groupables: React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
-      template: React.PropTypes.object.isRequired,
+      groupables: React.PropTypes.arrayOf(React.PropTypes.object).isRequired, // Potentially make this not required.
+      pairing: React.PropTypes.object.isRequired,
     };
   }
 
@@ -35,29 +35,66 @@ class GroupEditModal extends EditModal {
   }
 
   // --------------------------------------------------
+  // Helpers
+  // --------------------------------------------------
+  updateGroup() {
+    GroupActions.updateGroup(this.props.pairing);
+  }
+
+  // --------------------------------------------------
   // Render
   // --------------------------------------------------
-  renderChild() {
-    var template = this.props.template;
-    return (
-      <CardDropdown
-        errors={template.errors[template.key]}
-        label={template.key}
-        options={this.generateOptions()}
-        value={template.value && template.value.full_name} />
-    );
+  renderChild(type) {
+    var pairing = this.props.pairing;
+    var child = null;
+    switch (type) {
+      case 'dropdown':
+        child = (
+          <CardDropdown
+            errors={pairing.errors[pairing.key]}
+            label={pairing.key}
+            options={this.generateOptions()}
+            value={pairing.value && pairing.value.full_name} />
+        );
+        break;
+      case 'input':
+        child = (
+          <CardInput
+            action={(event) => GroupActions.storeValue(event.target.value)}
+            errors={pairing.errors[pairing.key]}
+            label={pairing.key}
+            value={pairing.value} />
+        );
+        break;
+    }
+    return child;
   }
 
   renderBody() {
-    var template = this.props.template;
+    var pairing = this.props.pairing;
+    var action = null;
+    var type = null;
+    var content = null;
+    switch (this.props.pairing.key) {
+      case 'leader':
+        action = () => GroupActions.updateLeadership(pairing);
+        content = 'Change Leadership'
+        type = 'dropdown';
+        break;
+      case 'letter':
+        action = () => GroupActions.updateGroup(pairing);
+        content = 'Change Letter';
+        type = 'input';
+        break;
+    }
     return (
       <div style={this.styles.section}>
         <CardHeader
-          action={() => GroupActions.updateLeadership(template)}
-          content={'Leadership Information'}
+          action={action}
+          content={content}
           icon={TypeConstants.icons.save} />
         <div style={StyleConstants.cards.body}>
-          {this.renderChild()}
+          {this.renderChild(type)}
         </div>
       </div>
     );

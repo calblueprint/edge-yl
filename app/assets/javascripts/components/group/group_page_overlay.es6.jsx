@@ -6,7 +6,7 @@ class GroupPageOverlay extends PageOverlay {
   static get propTypes() {
     return {
       groupables: React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
-      template: React.PropTypes.object.isRequired,
+      pairing: React.PropTypes.object.isRequired,
     };
   }
 
@@ -21,10 +21,12 @@ class GroupPageOverlay extends PageOverlay {
   // Render
   // --------------------------------------------------
   renderModal() {
-    return (
-      <GroupEditModal
-        groupables={this.props.groupables}
-        template={this.props.template} />
-    );
+    if (this.props.pairing){
+      return (
+        <GroupEditModal
+          groupables={this.props.groupables}
+          pairing={this.props.pairing} />
+      );
+    }
   }
 }
