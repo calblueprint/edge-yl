@@ -66,8 +66,8 @@ class ConferenceGrid extends Component {
           label={'Rooms in this conference'}
           options={this.generateRoomsOptions()} />
         <RoomsGrid
-          rooms={this.props.conference.rooms}
           media={this.props.media}
+          rooms={this.props.conference.rooms}
           type={TypeConstants.room.conference} />
       </div>
     );

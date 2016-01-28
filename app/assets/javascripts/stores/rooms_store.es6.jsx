@@ -3,7 +3,7 @@
 
     constructor() {
       this.conferences = [];
-      this.conference_id = {};
+      this.conference = {};
       this.rooms = [];
       this.bindListeners({
         handleStoreRooms: RoomsActions.STORE_ROOMS,
