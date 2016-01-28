@@ -37,7 +37,6 @@ input,
 label,
 ol,
 p,
-span,
 textarea,
 ul {
   position: relative;
@@ -61,7 +60,8 @@ h5,
 h6 {
   display: inline-block;
   font-family: $font-family;
-  font-weight: $font-weight-medium;
+  font-weight: $font-weight-large;
+  letter-spacing: 0.5px;
 }
 
 h1 {
@@ -107,11 +107,11 @@ a,
 input,
 label,
 li,
-p,
-span {
+p {
   font-family: $font-family;
   font-size: $font-size-smallest;
   font-weight: $font-weight-medium;
+  letter-spacing: 0.5px;
 }
 
 a {

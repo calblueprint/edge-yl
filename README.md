@@ -69,6 +69,7 @@ Happy developing!
     fontFamily,
     fontSize,
     fontWeight,
+    letterSpacing,
     lineHeight,
     textAlign,
     textDecoration,
