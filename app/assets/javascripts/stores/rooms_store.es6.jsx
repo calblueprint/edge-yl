@@ -2,8 +2,8 @@
   class RoomsStore {
 
     constructor() {
-      this.conferences = [];
       this.conference = {};
+      this.conferences = [];
       this.rooms = [];
       this.bindListeners({
         handleStoreRooms: RoomsActions.STORE_ROOMS,
