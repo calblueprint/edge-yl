@@ -5,6 +5,8 @@ class PageHeader extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
+      conference: React.PropTypes.object.isRequired,
+      conferences: React.PropTypes.array.isRequired,
       options: React.PropTypes.arrayOf(
         React.PropTypes.shape({
           action: React.PropTypes.func,
@@ -83,7 +85,8 @@ class PageHeader extends Component {
             {this.props.title}
           </h4>
           <PageFilter
-            conferences={[{}, {}]}
+            conference={this.props.conference}
+            conferences={this.props.conferences}
             type={this.props.type} />
         </div>
         <div style={this.styles.section}>

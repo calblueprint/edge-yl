@@ -5,6 +5,7 @@ class PageFilter extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
+      conference: React.PropTypes.object.isRequired,
       conferences: React.PropTypes.array.isRequired,
       type: React.PropTypes.oneOf(['groups', 'rooms']).isRequired,
     };
@@ -15,8 +16,8 @@ class PageFilter extends Component {
   // --------------------------------------------------
   generateChoice(option) {
     return {
-      action: () => StudentsActions.storeFilter(filter.key, false, option),
-      content: 'blah',
+      action: () => RoomsActions.fetchRooms(option),
+      content: option.name,
     };
   }
 
@@ -29,7 +30,7 @@ class PageFilter extends Component {
     return (
       <DropdownButton
         choices={this.generateChoices()}
-        value={'Conference name'} />
+        value={this.props.conference.name} />
     );
   }
 }
