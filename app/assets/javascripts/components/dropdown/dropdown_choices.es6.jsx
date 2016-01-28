@@ -5,7 +5,6 @@ class DropdownChoices extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      action: React.PropTypes.func,
       choices: React.PropTypes.arrayOf(
         React.PropTypes.shape({
           action: React.PropTypes.func,
@@ -15,6 +14,7 @@ class DropdownChoices extends Component {
           static: React.PropTypes.bool,
         })
       ).isRequired,
+      hide: React.PropTypes.func,
       styles: React.PropTypes.shape({
         child: React.PropTypes.shape({
           default: React.PropTypes.object,
@@ -27,7 +27,7 @@ class DropdownChoices extends Component {
 
   static get defaultProps() {
     return {
-      action: null,
+      hide: null,
     };
   }
 
@@ -60,8 +60,8 @@ class DropdownChoices extends Component {
   // Handlers
   // --------------------------------------------------
   handleBlur() {
-    if (this.props.action) {
-      this.props.action();
+    if (this.props.hide) {
+      this.props.hide();
     }
   }
 
@@ -69,15 +69,13 @@ class DropdownChoices extends Component {
   // Render
   // --------------------------------------------------
   renderChoice(choice, index) {
+    var action = (event) => {
+      if (this.props.hide) {
+        this.props.hide();
+      }
+      choice.action(event)
+    };
     var styles = Object.assign({}, this.props.styles.child);
-    // TODO: Rename action to be something better (like close)
-    var action = null;
-    if (choice.action) {
-      action = (event) => {this.props.action(); choice.action(event)};
-    } else {
-      action = (event) => this.props.action();
-    }
-
     if (index > 0) {
       styles.default = Object.assign(
         {},

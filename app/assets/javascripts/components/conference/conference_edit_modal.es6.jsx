@@ -5,7 +5,7 @@ class ConferenceEditModal extends EditModal {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      template: React.PropTypes.object.isRequired,
+      pairing: React.PropTypes.object.isRequired,
     };
   }
 
@@ -22,14 +22,14 @@ class ConferenceEditModal extends EditModal {
   // Helpers
   // --------------------------------------------------
   updateStudent() {
-    ConferenceActions.updateConference(this.props.template);
+    ConferenceActions.updateConference(this.props.pairing);
   }
 
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
   renderBody() {
-    var template = this.props.template;
+    var pairing = this.props.pairing;
     return (
       <div style={this.styles.section}>
         <CardHeader
@@ -39,10 +39,10 @@ class ConferenceEditModal extends EditModal {
         <div style={StyleConstants.cards.body}>
           <CardInput
             action={(event) => ConferenceActions.storeAttribute(event.target.value)}
-            errors={template.errors[template.key]}
+            errors={pairing.errors[pairing.key]}
             focus={true}
-            label={Helpers.humanize(template.key)}
-            value={template.value} />
+            label={Helpers.humanize(pairing.key)}
+            value={pairing.value} />
         </div>
       </div>
     );
