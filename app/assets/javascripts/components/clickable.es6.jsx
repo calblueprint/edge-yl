@@ -29,7 +29,7 @@ class Clickable extends Component {
         'h6',
         'i',
         'img',
-        'span',
+        'p',
       ]).isRequired,
       underline: React.PropTypes.bool,
     };
@@ -163,8 +163,8 @@ class Clickable extends Component {
           return <i className={icon} style={style} />;
         case 'img':
           return <img style={style} src={source} />;
-        case 'span':
-          return <span style={style}>{content}</span>;
+        case 'p':
+          return <p style={style}>{content}</p>;
       }
     }
   }
