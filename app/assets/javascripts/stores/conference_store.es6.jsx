@@ -10,6 +10,7 @@
       this.template = {};
       this.bindListeners({
         handleCloseOverlay: ConferenceActions.CLOSE_OVERLAY,
+        handleDeleteGroup: ConferenceActions.DELETE_GROUP,
         handleStoreAttribute: ConferenceActions.STORE_ATTRIBUTE,
         handleStoreConference: ConferenceActions.STORE_CONFERENCE,
         handleStoreError: ConferenceActions.STORE_ERROR,
@@ -20,6 +21,10 @@
 
     handleCloseOverlay() {
       this.overlay = false;
+    }
+
+    handleDeleteGroup(groupId) {
+      this.conference.groups = this.conference.groups.filter(function(group) { return group.id != groupId });
     }
 
     handleStoreAttribute(value) {

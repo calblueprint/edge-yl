@@ -5,14 +5,62 @@ class GroupsCard extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
+      editable: React.PropTypes.bool.isRequired,
       group: React.PropTypes.object.isRequired,
       media: React.PropTypes.string.isRequired,
     };
   }
 
+
+  // --------------------------------------------------
+  // Styles
+  // --------------------------------------------------
+  get styles() {
+    return {
+      header: {
+        display: 'flex',
+        justifyContent: 'flex-end',
+        width: '100%',
+        marginBottom: '5px',
+        borderBottom: 'solid #D6D6D6 1px',
+      }
+    }
+  }
+
+  get clickableStyles() {
+    return {
+      default: {
+        display: 'inline',
+        top: '0px',
+        paddingBottom: '5px',
+      },
+    };
+  }
+
+  // --------------------------------------------------
+  // Helpers
+  // --------------------------------------------------
+  deleteGroupFromConference() {
+    ConferenceActions.deleteGroup(this.props.group.id);
+  }
+
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
+  renderClickable() {
+    if (this.props.editable) {
+      return (
+        <div style={this.styles.header}>
+          <Clickable
+            action={() => this.deleteGroupFromConference()}
+            icon={TypeConstants.icons.close}
+            styles={this.clickableStyles}
+            type={'i'} />
+        </div>
+      );
+    }
+  }
+
   renderLeadership(leadership) {
     var user = leadership.user;
     if (user) {
@@ -42,6 +90,7 @@ class GroupsCard extends Component {
     var group = this.props.group;
     return (
       <div style={StyleConstants.cards.index(this.props.media)}>
+      {this.renderClickable()}
         <CardAttribute
           clickable={true}
           label={'Name'}
