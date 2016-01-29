@@ -12,6 +12,17 @@
       );
     }
 
+    deleteStudent(id) {
+      attributes = {};
+      attributes['group_id'] = null;
+      params = { student: attributes };
+      Requester.update(
+        ApiConstants.students.update(id),
+        params,
+      );
+      return id;
+    }
+
     fetchGroup(id) {
       var resolve = (response) => this.storeGroup(response);
       Requester.get(ApiConstants.groups.show(id), resolve);

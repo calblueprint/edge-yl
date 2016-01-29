@@ -75,6 +75,7 @@ class Api::StudentsController < Api::BaseController
       :email,
       :first_name,
       :gender,
+      :group_id,
       :guardian_email,
       :guardian_employer,
       :guardian_first_name,
