@@ -20,8 +20,8 @@ class StudentsCard extends Component {
         display: 'flex',
         justifyContent: 'flex-end',
         width: '100%',
-        borderBottom: 'solid #D6D6D6 1px',
         marginBottom: '5px',
+        borderBottom: 'solid #D6D6D6 1px',
       }
     }
   }
