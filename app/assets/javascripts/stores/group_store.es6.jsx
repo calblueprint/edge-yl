@@ -19,11 +19,16 @@
         handleStoreLeadership: GroupActions.STORE_LEADERSHIP,
         handleStorePairing: GroupActions.STORE_PAIRING,
         handleStoreValue: GroupActions.STORE_VALUE,
+        handleDeleteStudent: GroupActions.DELETE_STUDENT,
       });
     }
 
     handleCloseOverlay() {
       this.overlay = false;
+    }
+
+    handleDeleteStudent(studentId) {
+      this.group.students = this.group.students.filter(function(student) { return student.id != studentId });
     }
 
     handleStoreAttribute(attribute) {
