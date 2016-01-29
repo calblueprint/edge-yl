@@ -1,4 +1,4 @@
-  class GroupsCard extends Component {
+class GroupsCard extends Component {
 
   // --------------------------------------------------
   // Props
