@@ -75,6 +75,7 @@
         close: 'fa fa-times fa-2x',
         conference: 'fa-building',
         create: 'fa-pencil',
+        delete: 'fa-times',
         edit: 'fa-pencil-square-o',
         email: 'fa-envelope',
         expand: 'fa-angle-down',

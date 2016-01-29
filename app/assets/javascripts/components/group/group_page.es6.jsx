@@ -44,15 +44,6 @@ class GroupPage extends Component {
   // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
-  selectProfile() {
-    return this.state.profile ?
-           this.state.profile :
-           this.props.profile;
-  }
-
-  // --------------------------------------------------
-  // Render
-  // --------------------------------------------------
   generateOptions() {
     return [
       {
@@ -66,7 +57,15 @@ class GroupPage extends Component {
     ];
   }
 
+  selectProfile() {
+    return this.state.profile ?
+           this.state.profile :
+           this.props.profile;
+  }
 
+  // --------------------------------------------------
+  // Render
+  // --------------------------------------------------
   renderOverlay() {
     if (this.state.overlay) {
       return (
