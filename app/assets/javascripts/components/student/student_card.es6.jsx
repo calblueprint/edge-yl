@@ -65,7 +65,7 @@ class StudentCard extends Component {
 
   render() {
     return (
-      <div style={StyleConstants.cards.show(this.props.media)}>
+      <div style={StyleConstants.cards.wrapper(this.props.media)}>
         <CardHeader content={this.renderTitle()} />
         {this.renderBody()}
       </div>
