@@ -12,30 +12,6 @@ class StudentsCard extends Component {
   }
 
   // --------------------------------------------------
-  // Styles
-  // --------------------------------------------------
-  get styles() {
-    return {
-      header: {
-        display: 'flex',
-        justifyContent: 'space-between',
-        marginBottom: '5px',
-        borderBottom: 'solid #D6D6D6 1px',
-      }
-    }
-  }
-
-  get clickableStyles() {
-    return {
-      default: {
-        display: 'inline',
-        top: '0px',
-        paddingBottom: '5px',
-      },
-    };
-  }
-
-  // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
   deleteStudentFromGroup() {
