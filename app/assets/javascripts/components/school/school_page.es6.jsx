@@ -47,7 +47,7 @@ class SchoolPage extends Component {
   generateOptions() {
     return [
       {
-        action: () => SchoolActions.toggleEditability(),
+        action: () => ViewActions.toggleEditability(),
         content: this.state.editable ? 'Finish' : 'Edit',
       },
     ];
@@ -66,6 +66,7 @@ class SchoolPage extends Component {
   if (this.state.overlay) {
       return (
         <SchoolPageOverlay
+          pairing={this.state.pairing}
           profile={this.selectProfile()}
           school={this.state.school}
           template={this.state.template} />
@@ -93,7 +94,8 @@ class SchoolPage extends Component {
               media={this.state.media}
               school={school} />
             <PageComments
-              comments={school.comments}
+              profile={this.selectProfile()}
+              school={this.state.school}
               type={TypeConstants.school.comment} />
           </div>
         </div>

@@ -38,6 +38,8 @@
 
     get room() {
       return {
+        conference: 'room-conference',
+        default: 'room-default',
         general: 'room-general',
       };
     }

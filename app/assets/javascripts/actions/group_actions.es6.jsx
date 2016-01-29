@@ -4,10 +4,11 @@
     constructor() {
       this.generateActions(
         'closeOverlay',
-        'storeAttribute',
+        'storeError',
         'storeGroup',
         'storeGroupables',
         'storeLeadership',
+        'storeValue',
       );
     }
 
@@ -17,7 +18,7 @@
       return true;
     }
 
-    storeTemplate(options) {
+    storePairing(options) {
       if (options.model === 'leadership') {
         var resolve = (response) => this.storeGroupables(response);
         Requester.get(ApiConstants.users.groupables, resolve);
@@ -33,12 +34,16 @@
       };
     }
 
-    updateGroup(id, params) {
+    updateGroup(pairing, attributes={}) {
+      attributes[pairing.key] = pairing.value;
+      var params = { group: attributes };
       var resolve = (response) => this.storeGroup(response);
+      var reject = (response) => this.storeError(response);
       Requester.update(
-        ApiConstants.groups.update(id),
+        ApiConstants.groups.update(pairing.id),
         params,
         resolve,
+        reject,
       );
       return true;
     }
@@ -47,10 +52,12 @@
       var attributes = { user_id: template.value.id };
       var params = { leadership: attributes };
       var resolve = (response) => this.storeLeadership(response);
+      var reject = (response) => this.storeError(response);
       Requester.update(
         ApiConstants.leaderships.update(template.id),
         params,
         resolve,
+        reject,
       );
       return true;
     }

@@ -17,7 +17,7 @@ class ConferenceGrid extends Component {
   generateGroupsOptions() {
     return [
       {
-        action: () => ConferenceActions.storeTemplate(),
+        action: () => ConferenceActions.storeTemplate('group'),
         content: 'New',
       },
       {
@@ -67,8 +67,9 @@ class ConferenceGrid extends Component {
           label={'Rooms in this conference'}
           options={this.generateRoomsOptions()} />
         <RoomsGrid
+          media={this.props.media}
           rooms={this.props.conference.rooms}
-          media={this.props.media} />
+          type={TypeConstants.room.conference} />
       </div>
     );
   }

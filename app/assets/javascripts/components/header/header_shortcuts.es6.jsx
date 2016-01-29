@@ -81,18 +81,11 @@ class HeaderShortcuts extends Component {
   }
 
   // --------------------------------------------------
-  // Helpers
-  // --------------------------------------------------
-  toggleDropdown() {
-    this.setState({ dropdown: !this.state.dropdown });
-  }
-
-  // --------------------------------------------------
   // Render
   // --------------------------------------------------
   renderDropdown() {
     if (this.state.dropdown) {
-      var options = [
+      var choices = [
         {
           content: 'Edit profile',
           route: RouteConstants.pages.profile,
@@ -107,9 +100,9 @@ class HeaderShortcuts extends Component {
         },
       ];
       return (
-        <Dropdown
-          action={() => this.toggleDropdown()}
-          options={options}
+        <DropdownChoices
+          choices={choices}
+          hide={() => this.setState({ dropdown: false })}
           styles={this.dropdownStyles} />
       );
     }
@@ -125,7 +118,7 @@ class HeaderShortcuts extends Component {
             styles={this.clickableStyles}
             type={'i'} />
           <Clickable
-            action={() => this.toggleDropdown()}
+            action={() => this.setState({ dropdown: !this.state.dropdown })}
             icon={TypeConstants.icons.settings}
             styles={this.clickableStyles}
             type={'i'} />

@@ -2,21 +2,22 @@
   class SchoolStore {
 
     constructor() {
-      this.editable = false;
       this.overlay = false;
       this.school = {
         comments: [],
         students: [],
       };
-      this.template = {};
+      this.pairing = null;
+      this.template = null;
       this.bindListeners({
         handleCloseOverlay: SchoolActions.CLOSE_OVERLAY,
         handleStoreAttribute: SchoolActions.STORE_ATTRIBUTE,
         handleStoreComment: SchoolActions.STORE_COMMENT,
         handleStoreError: SchoolActions.STORE_ERROR,
+        handleStorePairing: SchoolActions.STORE_PAIRING,
         handleStoreSchool: SchoolActions.STORE_SCHOOL,
         handleStoreTemplate: SchoolActions.STORE_TEMPLATE,
-        handleToggleEditability: SchoolActions.TOGGLE_EDITABILITY,
+        handleStoreValue: SchoolActions.STORE_VALUE,
       });
     }
 
@@ -24,8 +25,8 @@
       this.overlay = false;
     }
 
-    handleStoreAttribute(value) {
-      this.template.value = value;
+    handleStoreAttribute(attribute) {
+      this.template.attributes[attribute.key] = attribute.value;
     }
 
     handleStoreComment(response) {
@@ -34,7 +35,17 @@
     }
 
     handleStoreError(response) {
-      this.template.errors = response.errors;
+      if (this.pairing) {
+        this.pairing.errors = response.errors;
+      } else if (this.template) {
+        this.template.errors = response.errors;
+      }
+    }
+
+    handleStorePairing(pairing) {
+      this.overlay = true;
+      this.pairing = pairing;
+      this.template = null;
     }
 
     handleStoreSchool(response) {
@@ -44,11 +55,12 @@
 
     handleStoreTemplate(template) {
       this.overlay = true;
+      this.pairing = null;
       this.template = template;
     }
 
-    handleToggleEditability() {
-      this.editable = !this.editable;
+    handleStoreValue(value) {
+      this.pairing.value = value;
     }
   }
   this.SchoolStore = alt.createStore(SchoolStore);

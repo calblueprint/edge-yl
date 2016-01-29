@@ -59,6 +59,10 @@ class GroupPage extends Component {
         action: () => ViewActions.toggleEditability(),
         content: this.state.editable ? 'Finish' : 'Edit',
       },
+      {
+        content: 'Export',
+        route: ApiConstants.csvs.groups(this.state.group.id),
+      },
     ];
   }
 
@@ -68,7 +72,7 @@ class GroupPage extends Component {
       return (
         <GroupPageOverlay
           groupables={this.state.groupables}
-          template={this.state.template} />
+          pairing={this.state.pairing} />
       );
     }
   }

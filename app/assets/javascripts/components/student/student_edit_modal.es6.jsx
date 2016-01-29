@@ -5,7 +5,7 @@ class StudentEditModal extends EditModal {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      template: React.PropTypes.object.isRequired,
+      pairing: React.PropTypes.object.isRequired,
     };
   }
 
@@ -22,36 +22,36 @@ class StudentEditModal extends EditModal {
   // Helpers
   // --------------------------------------------------
   updateStudent() {
-    StudentActions.updateStudent(this.props.template);
+    StudentActions.updateStudent(this.props.pairing);
   }
 
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
   renderChild() {
-    var template = this.props.template;
-    if (template.type === 'input') {
+    var pairing = this.props.pairing;
+    if (pairing.type === 'input') {
       return (
         <CardInput
-          action={(event) => StudentActions.storeAttribute(event.target.value)}
-          errors={template.errors[template.key]}
+          action={(event) => StudentActions.storeValue(event.target.value)}
+          errors={pairing.errors[pairing.key]}
           focus={true}
-          label={Helpers.humanize(template.key)}
-          type={template.key === 'birthday' ? 'date' : 'text'}
-          value={template.value} />
+          label={Helpers.humanize(pairing.key)}
+          type={pairing.key === 'birthday' ? 'date' : 'text'}
+          value={pairing.value} />
       );
     } else {
-      var choices = template.choices.map((choice) =>{
+      var choices = pairing.choices.map((choice) =>{
       return {
-        action: () => StudentActions.storeAttribute(choice),
+        action: () => StudentActions.storeValue(choice),
         content: Helpers.humanize(choice),
       }});
       return (
         <CardDropdown
-          errors={template.errors[template.key]}
-          label={template.key}
-          options={choices}
-          value={Helpers.humanize(template.value)} />
+          errors={pairing.errors[pairing.key]}
+          label={pairing.key}
+          choices={choices}
+          value={Helpers.humanize(pairing.value)} />
       );
     }
   }

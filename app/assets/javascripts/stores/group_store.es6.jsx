@@ -9,14 +9,16 @@
       };
       this.groupables = [];
       this.overlay = false;
+      this.pairing = null;
       this.template = {};
       this.bindListeners({
         handleCloseOverlay: GroupActions.CLOSE_OVERLAY,
-        handleStoreAttribute: GroupActions.STORE_ATTRIBUTE,
+        handleStoreError: GroupActions.STORE_ERROR,
         handleStoreGroup: GroupActions.STORE_GROUP,
         handleStoreGroupables: GroupActions.STORE_GROUPABLES,
         handleStoreLeadership: GroupActions.STORE_LEADERSHIP,
-        handleStoreTemplate: GroupActions.STORE_TEMPLATE,
+        handleStorePairing: GroupActions.STORE_PAIRING,
+        handleStoreValue: GroupActions.STORE_VALUE,
       });
     }
 
@@ -24,12 +26,21 @@
       this.overlay = false;
     }
 
-    handleStoreAttribute(value) {
-      this.template.value = value;
+    handleStoreAttribute(attribute) {
+      this.template.attributes[attribute.key] = attribute.value;
+    }
+
+    handleStoreError(response) {
+      if (this.pairing) {
+        this.pairing.errors = response.errors;
+      } else if (this.template) {
+        this.template.errors = response.errors;
+      }
     }
 
     handleStoreGroup(response) {
       this.group = response.group;
+      this.overlay = false;
     }
 
     handleStoreGroupables(response) {
@@ -45,9 +56,20 @@
       this.overlay = false;
     }
 
+    handleStorePairing(pairing) {
+      this.overlay = true;
+      this.pairing = pairing;
+      this.template = null;
+    }
+
     handleStoreTemplate(template) {
       this.overlay = true;
+      this.pairing = null;
       this.template = template;
+    }
+
+    handleStoreValue(value) {
+      this.pairing.value = value;
     }
   }
   this.GroupStore = alt.createStore(GroupStore);

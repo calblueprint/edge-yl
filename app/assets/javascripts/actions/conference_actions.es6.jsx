@@ -4,10 +4,10 @@
     constructor() {
       this.generateActions(
         'closeOverlay',
-        'storeAttribute',
         'storeConference',
         'storeGroup',
         'storeError',
+        'storeValue',
       );
     }
 
@@ -40,16 +40,29 @@
       return true;
     }
 
-    storeTemplate() {
+    storeAttribute(key, value) {
       return {
-        // choices: options.choices,
-        // errors: {},
-        // id: options.id,
-        // key: options.key,
-        // model: options.model,
-        // type: options.type,
-        // value: options.value,
+        key: key,
+        value: value,
+      };
+    }
+
+    storePairing(options) {
+      return {
+        choices: options.choices,
         errors: {},
+        id: options.id,
+        key: options.key,
+        type: options.type,
+        value: options.value,
+      };
+    }
+
+    storeTemplate(model, attributes={}) {
+      return {
+        attributes: attributes,
+        errors: {},
+        model: model,
       };
     }
 

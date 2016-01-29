@@ -5,7 +5,7 @@ class SchoolEditModal extends EditModal {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      template: React.PropTypes.object.isRequired,
+      pairing: React.PropTypes.object.isRequired,
     };
   }
 
@@ -22,14 +22,14 @@ class SchoolEditModal extends EditModal {
   // Helpers
   // --------------------------------------------------
   updateSchool() {
-    SchoolActions.updateSchool(this.props.template);
+    SchoolActions.updateSchool(this.props.pairing);
   }
 
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
   renderBody() {
-    var template = this.props.template;
+    var pairing = this.props.pairing;
     return (
       <div style={this.styles.section}>
         <CardHeader
@@ -38,11 +38,11 @@ class SchoolEditModal extends EditModal {
           icon={TypeConstants.icons.save} />
         <div style={StyleConstants.cards.body}>
           <CardInput
-            action={(event) => SchoolActions.storeAttribute(event.target.value)}
-            errors={template.errors[template.key]}
+            action={(event) => SchoolActions.storeValue(event.target.value)}
+            errors={pairing.errors[pairing.key]}
             focus={true}
-            label={Helpers.humanize(template.key)}
-            value={template.value} />
+            label={Helpers.humanize(pairing.key)}
+            value={pairing.value} />
         </div>
       </div>
     );

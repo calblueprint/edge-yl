@@ -7,7 +7,8 @@
         groups: [],
         rooms: [],
       };
-      this.template = {};
+      this.pairing = null;
+      this.template = null;
       this.bindListeners({
         handleCloseOverlay: ConferenceActions.CLOSE_OVERLAY,
         handleDeleteGroup: ConferenceActions.DELETE_GROUP,
@@ -15,7 +16,9 @@
         handleStoreConference: ConferenceActions.STORE_CONFERENCE,
         handleStoreError: ConferenceActions.STORE_ERROR,
         handleStoreGroup: ConferenceActions.STORE_GROUP,
+        handleStorePairing: ConferenceActions.STORE_PAIRING,
         handleStoreTemplate: ConferenceActions.STORE_TEMPLATE,
+        handleStoreValue: ConferenceActions.STORE_VALUE,
       });
     }
 
@@ -23,12 +26,14 @@
       this.overlay = false;
     }
 
+
     handleDeleteGroup(groupId) {
       this.conference.groups = this.conference.groups.filter(function(group) { return group.id != groupId });
     }
 
-    handleStoreAttribute(value) {
-      this.template.value = value;
+    handleStoreAttribute(attribute) {
+      this.template.attributes[attribute.key] = attribute.value;
+
     }
 
     handleStoreGroup(response) {
@@ -42,12 +47,27 @@
     }
 
     handleStoreError(response) {
-      this.template.errors = response.errors;
+      if (this.pairing) {
+        this.pairing.errors = response.errors;
+      } else if (this.template) {
+        this.template.errors = response.errors;
+      }
+    }
+
+    handleStorePairing(pairing) {
+      this.overlay = true;
+      this.pairing = pairing;
+      this.template = null;
     }
 
     handleStoreTemplate(template) {
       this.overlay = true;
+      this.pairing = null;
       this.template = template;
+    }
+
+    handleStoreValue(value) {
+      this.pairing.value = value;
     }
   }
   this.ConferenceStore = alt.createStore(ConferenceStore);

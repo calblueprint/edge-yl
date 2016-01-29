@@ -5,8 +5,8 @@ class GroupEditModal extends EditModal {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      groupables: React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
-      template: React.PropTypes.object.isRequired,
+      groupables: React.PropTypes.arrayOf(React.PropTypes.object),
+      pairing: React.PropTypes.object.isRequired,
     };
   }
 
@@ -22,42 +22,71 @@ class GroupEditModal extends EditModal {
   // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
-  generateOption(groupable) {
+  generateChoice(groupable) {
     return {
-      action: () => GroupActions.storeAttribute(groupable),
+      action: () => GroupActions.storeValue(groupable),
       content: Helpers.humanize(groupable.full_name),
     }
   }
 
-  generateOptions() {
+  generateChoices() {
     var groupables = this.props.groupables;
-    return groupables.map((groupable) => this.generateOption(groupable));
+    return groupables.map((groupable) => this.generateChoice(groupable));
+  }
+
+  updateGroup() {
+    GroupActions.updateGroup(this.props.pairing);
   }
 
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
-  renderChild() {
-    var template = this.props.template;
-    return (
-      <CardDropdown
-        errors={template.errors[template.key]}
-        label={template.key}
-        options={this.generateOptions()}
-        value={template.value && template.value.full_name} />
-    );
+  renderChild(type) {
+    var pairing = this.props.pairing;
+    if (pairing.type === 'dropdown') {
+      return (
+        <CardDropdown
+          errors={pairing.errors[pairing.key]}
+          label={pairing.key}
+          choices={this.generateChoices()}
+          value={pairing.value && pairing.value.full_name} />
+      );
+    } else {
+      return (
+        <CardInput
+          action={(event) => GroupActions.storeValue(event.target.value)}
+          errors={pairing.errors[pairing.key]}
+          label={pairing.key}
+          value={pairing.value} />
+      );
+    }
   }
 
   renderBody() {
-    var template = this.props.template;
+    var action;
+    var content;
+    var type;
+    var pairing = this.props.pairing;
+    switch (pairing.key) {
+      case 'user':
+        action = () => GroupActions.updateLeadership(pairing);
+        content = 'Change Leadership';
+        type = 'dropdown';
+        break;
+      case 'letter':
+        action = () => GroupActions.updateGroup(pairing);
+        content = 'Change Letter';
+        type = 'input';
+        break;
+    }
     return (
       <div style={this.styles.section}>
         <CardHeader
-          action={() => GroupActions.updateLeadership(template)}
-          content={'Leadership Information'}
+          action={action}
+          content={content}
           icon={TypeConstants.icons.save} />
         <div style={StyleConstants.cards.body}>
-          {this.renderChild()}
+          {this.renderChild(type)}
         </div>
       </div>
     );

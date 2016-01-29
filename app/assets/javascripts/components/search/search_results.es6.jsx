@@ -54,7 +54,7 @@ class SearchResults extends Component {
   // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
-  generateOption(result) {
+  generateChoice(result) {
     var route;
     var type = result.searchable_type;
     var node = <SearchResult label={type} value={result.content} />;
@@ -71,16 +71,16 @@ class SearchResults extends Component {
     };
   }
 
-  generateOptions() {
+  generateChoices() {
     var results = this.props.results;
-    var options = results.map((result) => this.generateOption(result));
+    var choices = results.map((result) => this.generateChoice(result));
     var pagination = this.props.pagination;
     var footer = {
       content: `Displaying page ${pagination.current} of ${pagination.limit} total`,
       static: true,
     };
-    options.push(footer);
-    return options;
+    choices.push(footer);
+    return choices;
   }
 
   // --------------------------------------------------
@@ -88,8 +88,8 @@ class SearchResults extends Component {
   // --------------------------------------------------
   render() {
     return (
-      <Dropdown
-        options={this.generateOptions()}
+      <DropdownChoices
+        choices={this.generateChoices()}
         styles={this.dropdownStyles} />
     );
   }

@@ -1,12 +1,11 @@
-class Dropdown extends Component {
+class DropdownChoices extends Component {
 
   // --------------------------------------------------
   // Props
   // --------------------------------------------------
   static get propTypes() {
     return {
-      action: React.PropTypes.func,
-      options: React.PropTypes.arrayOf(
+      choices: React.PropTypes.arrayOf(
         React.PropTypes.shape({
           action: React.PropTypes.func,
           children: React.PropTypes.node,
@@ -15,6 +14,7 @@ class Dropdown extends Component {
           static: React.PropTypes.bool,
         })
       ).isRequired,
+      hide: React.PropTypes.func,
       styles: React.PropTypes.shape({
         child: React.PropTypes.shape({
           default: React.PropTypes.object,
@@ -27,7 +27,7 @@ class Dropdown extends Component {
 
   static get defaultProps() {
     return {
-      action: null,
+      hide: null,
     };
   }
 
@@ -60,15 +60,21 @@ class Dropdown extends Component {
   // Handlers
   // --------------------------------------------------
   handleBlur() {
-    if (this.props.action) {
-      this.props.action();
+    if (this.props.hide) {
+      this.props.hide();
     }
   }
 
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
-  renderOption(option, index) {
+  renderChoice(choice, index) {
+    var action = (event) => {
+      if (this.props.hide) {
+        this.props.hide();
+      }
+      choice.action(event)
+    };
     var styles = Object.assign({}, this.props.styles.child);
     if (index > 0) {
       styles.default = Object.assign(
@@ -77,7 +83,7 @@ class Dropdown extends Component {
         { borderTop: `1px solid ${StyleConstants.colors.gray}` }
       );
     }
-    if (option.static) {
+    if (choice.static) {
       styles.default = Object.assign(
         {},
         styles.default,
@@ -89,26 +95,26 @@ class Dropdown extends Component {
     }
     return (
       <Clickable
-        action={option.action}
-        children={option.children}
-        content={option.content}
+        action={action}
+        children={choice.children}
+        content={choice.content}
         key={index}
-        route={option.route}
+        route={choice.route}
         styles={styles}
-        type={option.children ? 'div' : 'h6'}
+        type={choice.children ? 'div' : 'h6'}
         underline={false} />
     );
   }
 
-  renderOptions() {
-    var options = this.props.options;
-    return options.map((option, index) => this.renderOption(option, index));
+  renderChoices() {
+    var choices = this.props.choices;
+    return choices.map((choice, index) => this.renderChoice(choice, index));
   }
 
   render() {
     return (
       <div style={this.props.styles.container}>
-        {this.renderOptions()}
+        {this.renderChoices()}
         <input
           autoFocus={true}
           ref={'input'}

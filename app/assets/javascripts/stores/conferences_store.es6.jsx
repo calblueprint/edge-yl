@@ -8,7 +8,7 @@
         current: 1,
         limit: 1,
       };
-      this.template = {};
+      this.template = null;
       this.bindListeners({
         handleCloseOverlay: ConferencesActions.CLOSE_OVERLAY,
         handleStoreAttribute: ConferencesActions.STORE_ATTRIBUTE,
@@ -24,7 +24,7 @@
     }
 
     handleStoreAttribute(attribute) {
-      this.template[attribute.key] = attribute.value;
+      this.template.attributes[attribute.key] = attribute.value;
     }
 
     handleStoreConference(response) {
