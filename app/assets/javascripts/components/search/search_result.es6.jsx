@@ -29,7 +29,7 @@ class SearchResult extends Component {
     return (
       <div style={this.styles.container}>
         <h6>{this.props.label}</h6>
-        <h6>{this.props.value}</h6>
+        <p>{this.props.value}</p>
       </div>
     );
   }

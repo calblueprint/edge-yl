@@ -25,7 +25,7 @@ class RoomsCard extends Component {
           clickable={true}
           label={'Conference'}
           route={RouteConstants.conferences.show(room.conference.id)}
-          type={'h5'}
+          type={'h6'}
           value={room.conference.name} />
       );
     }

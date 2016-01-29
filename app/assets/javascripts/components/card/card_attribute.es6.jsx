@@ -13,6 +13,7 @@ class CardAttribute extends Component {
       type: React.PropTypes.oneOf([
         'h4',
         'h5',
+        'h6',
         'p',
       ]).isRequired,
       value: React.PropTypes.oneOfType([
@@ -82,6 +83,8 @@ class CardAttribute extends Component {
         return <h4>{label}</h4>;
       case 'h5':
         return <h5>{label}</h5>;
+      case 'h6':
+        return <h6>{label}</h6>;
       case 'p':
         return <p>{label}</p>;
     }
@@ -102,6 +105,8 @@ class CardAttribute extends Component {
           return <h4>{value}</h4>;
         case 'h5':
           return <h5>{value}</h5>;
+        case 'h6':
+          return <h6>{value}</h6>;
         case 'p':
           return <p>{value}</p>;
       }
