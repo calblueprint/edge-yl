@@ -54,7 +54,7 @@ class StudentsCard extends Component {
           clickable={true}
           label={'School'}
           route={RouteConstants.schools.show(school.id)}
-          type={'h5'}
+          type={'h6'}
           value={school.name} />
       );
     } else {

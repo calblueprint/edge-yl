@@ -22,13 +22,15 @@ class GroupsCard extends Component {
           key={leadership.id}
           label={leadership.style}
           route={RouteConstants.users.show(user.id)}
+          type={'h6'}
           value={user.full_name} />
       );
     } else {
       return (
         <CardAttribute
           key={leadership.id}
-          label={leadership.style} />
+          label={leadership.style}
+          type={'h6'} />
       );
     }
   }

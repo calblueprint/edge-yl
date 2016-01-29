@@ -25,6 +25,7 @@ class EditModal extends Component {
         {
           justifyContent: 'center',
           width: '356px',
+          marginTop: '6px',
         }
       ),
     };

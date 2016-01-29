@@ -17,10 +17,11 @@ class PageComment extends Component {
       container: {
         display: 'flex',
         flexFlow: 'column',
+        alignItems: 'flex-end',
         marginTop: '12px',
-        textAlign: 'right',
       },
       divider: {
+        alignSelf: 'stretch',
         marginTop: '12px',
         borderBottom: `1px solid ${StyleConstants.colors.gray}`,
       },
@@ -35,9 +36,12 @@ class PageComment extends Component {
     var user = comment.user;
     return (
       <div style={this.styles.container}>
-        <h6>{comment.content}</h6>
-        <h6>{`- ${user.full_name}`}</h6>
-        <h6>{comment.updated_at}</h6>
+        <p>{comment.content}</p>
+        <p>{comment.updated_at}</p>
+        <Clickable
+          content={user.full_name}
+          route={RouteConstants.users.show(user.id)}
+          type={'h6'} />
         <div style={this.styles.divider} />
       </div>
     );

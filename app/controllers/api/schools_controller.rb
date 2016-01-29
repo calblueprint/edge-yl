@@ -44,13 +44,12 @@ class Api::SchoolsController < Api::BaseController
     schools = School.all
     send_data schools.to_csv
   end
-  
+
   def index_json
     schools = School.page params[:page]
     render json: schools,
            serializer: PaginatedSerializer,
-           each_serializer: SchoolIndexSerializer }
-    end
+           each_serializer: SchoolIndexSerializer
   end
 
   def school_params
