@@ -60,6 +60,7 @@ class ConferenceGrid extends Component {
           label={'Groups in this conference'}
           options={this.generateGroupsOptions()} />
         <GroupsGrid
+          editable={this.props.editable}
           groups={this.props.conference.groups}
           media={this.props.media} />
         <GridHeader

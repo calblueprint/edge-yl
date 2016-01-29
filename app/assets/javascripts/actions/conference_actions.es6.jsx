@@ -23,6 +23,17 @@
       return true;
     }
 
+    deleteGroup(id) {
+      attributes = {};
+      attributes['conference_id'] = null;
+      params = { group: attributes };
+      Requester.update(
+        ApiConstants.groups.update(id),
+        params,
+      );
+      return id;
+    }
+
     fetchConference(id) {
       var resolve = (response) => this.storeConference(response);
       Requester.get(ApiConstants.conferences.show(id), resolve);
