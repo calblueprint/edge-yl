@@ -21,7 +21,7 @@ class SidebarFooter extends Component {
         height: '16px',
       },
       default: {
-        marginLeft: '8px',
+        marginLeft: '6px',
         lineHeight: '0px',
         transition: 'transform 0.75s ease-out',
       },
