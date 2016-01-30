@@ -5,6 +5,7 @@ class RoomsGrid extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
+      editable: React.PropTypes.bool,
       media: React.PropTypes.string.isRequired,
       rooms: React.PropTypes.array.isRequired,
       type: React.PropTypes.oneOf([
@@ -14,12 +15,19 @@ class RoomsGrid extends Component {
     };
   }
 
+  static get defaultProps() {
+    return {
+      editable: false,
+    };
+  }
+
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
   renderCard(room) {
     return (
       <RoomsCard
+        editable={this.props.editable}
         key={room.id}
         media={this.props.media}
         room={room}

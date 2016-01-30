@@ -5,9 +5,15 @@ class GroupsGrid extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      editable: React.PropTypes.bool.isRequired,
+      editable: React.PropTypes.bool,
       groups: React.PropTypes.array.isRequired,
       media: React.PropTypes.string.isRequired,
+    };
+  }
+
+  static get defaultProps() {
+    return {
+      editable: false,
     };
   }
 

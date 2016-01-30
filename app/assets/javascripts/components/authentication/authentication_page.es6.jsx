@@ -66,11 +66,11 @@ class AuthenticationPage extends Component {
     var route = bool ? RouteConstants.pages.signup : RouteConstants.pages.login;
     return (
       <div style={this.styles.footer}>
-        <h6 style={this.styles.label}>{label}</h6>
+        <p style={this.styles.label}>{label}</p>
         <Clickable
           content={content}
           route={route}
-          type={'h5'} />
+          type={'h6'} />
       </div>
     );
   }

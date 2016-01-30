@@ -39,7 +39,7 @@ class GroupGeneral extends Component {
           clickable={true}
           label={'Conference'}
           route={RouteConstants.conferences.show(group.conference.id)}
-          type={'h5'}
+          type={'h6'}
           value={group.conference.name} />
       </div>
     );

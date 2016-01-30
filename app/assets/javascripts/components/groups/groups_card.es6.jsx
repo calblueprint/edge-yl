@@ -11,32 +11,6 @@ class GroupsCard extends Component {
     };
   }
 
-
-  // --------------------------------------------------
-  // Styles
-  // --------------------------------------------------
-  get styles() {
-    return {
-      header: {
-        display: 'flex',
-        justifyContent: 'flex-end',
-        width: '100%',
-        marginBottom: '5px',
-        borderBottom: 'solid #D6D6D6 1px',
-      }
-    }
-  }
-
-  get clickableStyles() {
-    return {
-      default: {
-        display: 'inline',
-        top: '0px',
-        paddingBottom: '5px',
-      },
-    };
-  }
-
   // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
@@ -47,17 +21,16 @@ class GroupsCard extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
-  renderClickable() {
+  renderHeader() {
     if (this.props.editable) {
       return (
-        <div style={this.styles.header}>
-          <Clickable
-            action={() => this.deleteGroupFromConference()}
-            icon={TypeConstants.icons.close}
-            styles={this.clickableStyles}
-            type={'i'} />
-        </div>
+        <CardHeader
+          action={() => this.deleteGroupFromConference()}
+          content={'Group'}
+          icon={TypeConstants.icons.delete} />
       );
+    } else {
+      return <CardHeader content={'Group'} />;
     }
   }
 
@@ -91,15 +64,17 @@ class GroupsCard extends Component {
   render() {
     var group = this.props.group;
     return (
-      <div style={StyleConstants.cards.index(this.props.media)}>
-      {this.renderClickable()}
-        <CardAttribute
-          clickable={true}
-          label={'Name'}
-          route={RouteConstants.groups.show(group.id)}
-          type={'h4'}
-          value={group.full_name} />
-        {this.renderLeaderships()}
+      <div style={StyleConstants.cards.wrapper(this.props.media)}>
+        {this.renderHeader()}
+        <div style={StyleConstants.cards.body}>
+          <CardAttribute
+            clickable={true}
+            label={'Name'}
+            route={RouteConstants.groups.show(group.id)}
+            type={'h4'}
+            value={group.full_name} />
+          {this.renderLeaderships()}
+        </div>
       </div>
     );
   }

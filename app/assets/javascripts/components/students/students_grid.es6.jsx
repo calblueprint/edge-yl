@@ -5,13 +5,19 @@ class StudentsGrid extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      editable: React.PropTypes.bool.isRequired,
+      editable: React.PropTypes.bool,
       media: React.PropTypes.string.isRequired,
       students: React.PropTypes.array.isRequired,
     };
   }
 
-  // --------------------------------------------------
+  static get defaultProps() {
+    return {
+      editable: false,
+    };
+  }
+
+  // -----------------------------w---------------------
   // Render
   // --------------------------------------------------
   renderCard(student) {

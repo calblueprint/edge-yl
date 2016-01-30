@@ -12,31 +12,6 @@ class StudentsCard extends Component {
   }
 
   // --------------------------------------------------
-  // Styles
-  // --------------------------------------------------
-  get styles() {
-    return {
-      header: {
-        display: 'flex',
-        justifyContent: 'flex-end',
-        width: '100%',
-        marginBottom: '5px',
-        borderBottom: 'solid #D6D6D6 1px',
-      }
-    }
-  }
-
-  get clickableStyles() {
-    return {
-      default: {
-        display: 'inline',
-        top: '0px',
-        paddingBottom: '5px',
-      },
-    };
-  }
-
-  // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
   deleteStudentFromGroup() {
@@ -46,6 +21,19 @@ class StudentsCard extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
+  renderHeader() {
+    if (this.props.editable) {
+      return (
+        <CardHeader
+          action={() => this.deleteStudentFromGroup()}
+          content={'Student'}
+          icon={TypeConstants.icons.delete} />
+      );
+    } else {
+      return <CardHeader content={'Student'} />;
+    }
+  }
+
   renderSchool() {
     var school = this.props.student.school;
     if (school) {
@@ -62,47 +50,35 @@ class StudentsCard extends Component {
     }
   }
 
-  renderClickable() {
-    if (this.props.editable) {
-      return (
-        <div style={this.styles.header}>
-          <Clickable
-            action={() => this.deleteStudentFromGroup()}
-            icon={TypeConstants.icons.close}
-            styles={this.clickableStyles}
-            type={'i'} />
-        </div>
-      );
-    }
-  }
-
   render() {
     var student = this.props.student;
     return (
-      <div style={StyleConstants.cards.index(this.props.media)}>
-        {this.renderClickable()}
-        <CardAttribute
-          clickable={true}
-          label={'Name'}
-          route={RouteConstants.students.show(student.id)}
-          type={'h4'}
-          value={student.full_name} />
-        <CardAttribute
-          label={'Cell phone'}
-          value={student.cell_phone} />
-        <CardAttribute
-          label={'Email'}
-          value={student.email} />
-        <CardAttribute
-          label={'Placement'}
-          value={student.is_primary ? 'Primary' : 'Secondary'} />
-        <CardAttribute
-          label={'Flagged?'}
-          value={student.is_flagged ? 'Yes' : 'No'} />
-        <CardAttribute
-          label={'Status'}
-          value={student.registration_status} />
-        {this.renderSchool()}
+      <div style={StyleConstants.cards.wrapper(this.props.media)}>
+        {this.renderHeader()}
+        <div style={StyleConstants.cards.body}>
+          <CardAttribute
+            clickable={true}
+            label={'Name'}
+            route={RouteConstants.students.show(student.id)}
+            type={'h4'}
+            value={student.full_name} />
+          <CardAttribute
+            label={'Cell phone'}
+            value={student.cell_phone} />
+          <CardAttribute
+            label={'Email'}
+            value={student.email} />
+          <CardAttribute
+            label={'Placement'}
+            value={student.is_primary ? 'Primary' : 'Secondary'} />
+          <CardAttribute
+            label={'Flagged?'}
+            value={student.is_flagged ? 'Yes' : 'No'} />
+          <CardAttribute
+            label={'Status'}
+            value={student.registration_status} />
+          {this.renderSchool()}
+        </div>
       </div>
     );
   }

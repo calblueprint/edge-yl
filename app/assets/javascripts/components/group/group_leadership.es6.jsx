@@ -37,6 +37,7 @@ class GroupLeadership extends Component {
           key={leadership.id}
           label={leadership.style}
           route={RouteConstants.users.show(user.id)}
+          type={'h6'}
           value={user.full_name} />
       );
     } else {
@@ -45,7 +46,8 @@ class GroupLeadership extends Component {
           action={() => this.storePairing(leadership.id)}
           editable={this.props.editable}
           key={leadership.id}
-          label={leadership.style} />
+          label={leadership.style}
+          type={'h6'} />
       );
     }
   }

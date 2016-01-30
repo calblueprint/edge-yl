@@ -16,16 +16,19 @@ class SchoolsCard extends Component {
   render() {
     var school = this.props.school;
     return (
-      <div style={StyleConstants.cards.index(this.props.media)}>
-        <CardAttribute
-          clickable={true}
-          label={'Name'}
-          route={RouteConstants.schools.show(school.id)}
-          type={'h4'}
-          value={school.name} />
-        <CardAttribute
-          label={'Website'}
-          value={school.website} />
+      <div style={StyleConstants.cards.wrapper(this.props.media)}>
+        <CardHeader content={'School'} />
+        <div style={StyleConstants.cards.body}>
+          <CardAttribute
+            clickable={true}
+            label={'Name'}
+            route={RouteConstants.schools.show(school.id)}
+            type={'h4'}
+            value={school.name} />
+          <CardAttribute
+            label={'Website'}
+            value={school.website} />
+          </div>
       </div>
     );
   }

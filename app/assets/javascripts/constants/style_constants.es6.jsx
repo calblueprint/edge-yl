@@ -24,17 +24,7 @@
           flex: '1',
           padding: '18px',
         },
-        index: (media) => Object.assign(
-          {},
-          this.containers.card,
-          {
-            padding: '18px',
-            marginTop: '12px',
-          },
-          media === 'big' && { width: '49%' },
-          media === 'small' && { width: '100%' }
-        ),
-        show: (media) => Object.assign(
+        wrapper: (media) => Object.assign(
           {},
           this.containers.card,
           { marginTop: '12px' },

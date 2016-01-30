@@ -14,7 +14,6 @@ class GroupGrid extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
-
   render() {
     return (
       <div style={StyleConstants.containers.grid}>
