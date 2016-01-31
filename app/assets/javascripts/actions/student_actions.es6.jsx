@@ -26,7 +26,10 @@
 
     createEmail(student) {
       var params = { email: {} };
-      var resolve = (response) => console.log('created email');
+      var resolve = (response) => {
+        var id = response.email.id;
+        window.location = RouteConstants.emails.show(id);
+      };
       Requester.post(
         ApiConstants.emails.draft,
         params,

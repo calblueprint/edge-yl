@@ -15,6 +15,8 @@
 
 class Email < ActiveRecord::Base
 
+  belongs_to :emailable, polymorphic: true
+
   before_validation :set_initials, on: :create
 
   private
