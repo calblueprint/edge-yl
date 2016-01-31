@@ -6,6 +6,7 @@
         'closeOverlay',
         'storeConference',
         'storeGroup',
+        'storeRoom',
         'storeError',
         'storeValue',
       );
@@ -19,6 +20,19 @@
         params,
         resolve,
         reject,
+      );
+      return true;
+    }
+
+    createRoom(template) {
+      var params = {room: template.attributes };
+      var resolve = (response) => this.storeRoom(response);
+      var reject = (response) => this.storeError(response);
+      Requester.post(
+        ApiConstants.rooms.create,
+        params,
+        resolve,
+        reject
       );
       return true;
     }

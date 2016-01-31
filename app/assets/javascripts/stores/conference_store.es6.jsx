@@ -16,6 +16,7 @@
         handleStoreConference: ConferenceActions.STORE_CONFERENCE,
         handleStoreError: ConferenceActions.STORE_ERROR,
         handleStoreGroup: ConferenceActions.STORE_GROUP,
+        handleStoreRoom: ConferenceActions.STORE_ROOM,
         handleStorePairing: ConferenceActions.STORE_PAIRING,
         handleStoreTemplate: ConferenceActions.STORE_TEMPLATE,
         handleStoreValue: ConferenceActions.STORE_VALUE,
@@ -39,6 +40,11 @@
     handleStoreGroup(response) {
       this.overlay = false;
       this.conference.groups.push(response.group);
+    }
+
+    handleStoreRoom(response) {
+      this.overlay = false;
+      this.conference.rooms.push(response.room);
     }
 
     handleStoreConference(response) {

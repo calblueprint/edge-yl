@@ -65,6 +65,7 @@
 
     get rooms() {
       return {
+        create: '/api/rooms',
         show: (id) => `/api/rooms/${id}`,
         index: (conference_id) => {
           return `/api/rooms?&conference_id=${conference_id}`;
