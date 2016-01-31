@@ -24,6 +24,11 @@ class Api::EmailsController < Api::BaseController
     render json: emails, each_serializer: EmailIndexSerializer
   end
 
+  def show
+    email = Email.find params[:id]
+    render json: email, serializer: EmailShowSerializer
+  end
+
   private
 
   def email_params(params)

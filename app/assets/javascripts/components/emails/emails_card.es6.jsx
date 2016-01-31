@@ -1,11 +1,11 @@
-class EmailsGrid extends Component {
+class EmailsCard extends Component {
 
   // --------------------------------------------------
   // Props
   // --------------------------------------------------
   static get propTypes() {
     return {
-      emails: React.PropTypes.array.isRequired,
+      email: React.PropTypes.object.isRequired,
       media: React.PropTypes.string.isRequired,
     };
   }
@@ -13,23 +13,13 @@ class EmailsGrid extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
-  renderCard(email) {
-    return (
-      <EmailsCard
-        email={email}
-        media={this.props.media} />
-    );
-  }
-
-  renderCards() {
-    return this.props.emails.map((email) => this.renderCard(email));
-  }
-
   render() {
+    var email = this.props.email;
     return (
-      <div style={StyleConstants.containers.grid}>
-        {this.renderCards()}
+      <div style={StyleConstants.cards.show(this.props.media)}>
+        <a href={RouteConstants.emails.show(email.id)}>{`${email.sender} - ${email.subject}`}</a>
       </div>
     );
+
   }
 }
