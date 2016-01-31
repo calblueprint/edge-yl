@@ -72,7 +72,7 @@ class HeaderShortcuts extends Component {
       },
       container: Object.assign(
         {},
-        StyleConstants.containers.card,
+        StyleConstants.templates.card,
         {
           marginTop: '6px',
         }

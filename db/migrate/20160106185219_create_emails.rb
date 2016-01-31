@@ -9,6 +9,8 @@ class CreateEmails < ActiveRecord::Migration
       t.string :recipient, null: false
       t.string :to, null: false
 
+      t.references :emailable, index: true, polymorphic: true
+
       t.timestamps null: false
     end
   end

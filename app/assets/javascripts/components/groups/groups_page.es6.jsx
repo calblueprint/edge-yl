@@ -1,4 +1,4 @@
-class StudentPage extends Component {
+class GroupsPage extends Component {
 
   // --------------------------------------------------
   // Setup
@@ -13,7 +13,8 @@ class StudentPage extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      id: React.PropTypes.number.isRequired,
+      conference: React.PropTypes.object.isRequired,
+      conferences: React.PropTypes.array.isRequired,
       profile: React.PropTypes.object.isRequired,
     };
   }
@@ -22,41 +23,28 @@ class StudentPage extends Component {
   // Lifecycle
   // --------------------------------------------------
   componentWillMount() {
+    this.setState(GroupsStore.getState());
     this.setState(ProfileStore.getState());
-    this.setState(StudentStore.getState());
     this.setState(ViewStore.getState());
   }
 
   componentDidMount() {
+    GroupsActions.fetchGroups(this.props.conference);
+    GroupsStore.listen(this._listener);
     ProfileStore.listen(this._listener);
-    StudentStore.listen(this._listener);
     ViewStore.listen(this._listener);
-    StudentActions.fetchStudent(this.props.id);
     ViewActions.attachListener();
   }
 
   componentWillUnmount() {
+    GroupsStore.unlisten(this._listener);
     ProfileStore.unlisten(this._listener);
-    StudentStore.unlisten(this._listener);
     ViewStore.unlisten(this._listener);
   }
 
   // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
-  generateOptions() {
-    return [
-      {
-        action: () => ViewActions.toggleEditability(),
-        content: this.state.editable ? 'Finish' : 'Edit',
-      },
-      {
-        action: () => StudentActions.createEmail(this.state.student),
-        content: 'Email',
-      },
-    ];
-  }
-
   selectProfile() {
     return this.state.profile ?
            this.state.profile :
@@ -66,43 +54,25 @@ class StudentPage extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
-  renderOverlay() {
-    if (this.state.overlay) {
-      return (
-        <StudentPageOverlay
-          pairing={this.state.pairing}
-          profile={this.selectProfile()}
-          student={this.state.student}
-          template={this.state.template} />
-      );
-    }
-  }
-
   render() {
-    var student = this.state.student;
     return (
       <div style={StyleConstants.pages.wrapper}>
-        {this.renderOverlay()}
-        <Header profile={this.selectProfile()} />
+      <Header profile={this.selectProfile()} />
         <div style={StyleConstants.pages.container}>
           <Sidebar profile={this.selectProfile()} />
           <div style={StyleConstants.pages.content}>
-            <GridHeader
-              label={'Student'}
-              options={this.generateOptions()}
-              value={student.full_name} />
-            <StudentGrid
-              editable={this.state.editable}
+            <PageHeader
+              conference={this.props.conference}
+              conferences={this.props.conferences}
+              title={'Groups'}
+              type={'groups'} />
+            <GroupsGrid
               media={this.state.media}
-              student={student} />
-            <PageComments
-              profile={this.selectProfile()}
-              student={this.state.student}
-              type={TypeConstants.student.comment} />
+              groups={this.state.groups}
+              type={TypeConstants.group.default} />
           </div>
         </div>
       </div>
     );
   }
 }
-

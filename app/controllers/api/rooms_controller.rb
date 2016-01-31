@@ -25,7 +25,7 @@ class Api::RoomsController < Api::BaseController
   end
 
   def update
-    room = room.find params[:id]
+    room = Room.find params[:id]
     if room.update_attributes room_params
       render json: room,
              serializer: RoomShowSerializer,

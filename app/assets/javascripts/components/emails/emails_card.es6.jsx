@@ -16,10 +16,13 @@ class EmailsCard extends Component {
   render() {
     var email = this.props.email;
     return (
-      <div style={StyleConstants.cards.show(this.props.media)}>
-        <a href={RouteConstants.emails.show(email.id)}>{`${email.sender} - ${email.subject}`}</a>
+      <div style={StyleConstants.cards.wrapper('small')}>
+        <Clickable
+          content={email.sender}
+          route={RouteConstants.emails.show(email.id)}
+          type={'h4'} />
+        <p>{`Subject: ${email.subject}`}</p>
       </div>
     );
-
   }
 }

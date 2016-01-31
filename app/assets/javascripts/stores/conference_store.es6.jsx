@@ -12,6 +12,7 @@
       this.bindListeners({
         handleCloseOverlay: ConferenceActions.CLOSE_OVERLAY,
         handleDeleteGroup: ConferenceActions.DELETE_GROUP,
+        handleDeleteRoom: ConferenceActions.DELETE_ROOM,
         handleStoreAttribute: ConferenceActions.STORE_ATTRIBUTE,
         handleStoreConference: ConferenceActions.STORE_CONFERENCE,
         handleStoreError: ConferenceActions.STORE_ERROR,
@@ -30,6 +31,10 @@
 
     handleDeleteGroup(groupId) {
       this.conference.groups = this.conference.groups.filter(function(group) { return group.id != groupId });
+    }
+
+    handleDeleteRoom(roomId) {
+      this.conference.rooms = this.conference.rooms.filter(function(room) { return room.id != roomId });
     }
 
     handleStoreAttribute(attribute) {
