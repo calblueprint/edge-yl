@@ -7,17 +7,7 @@ class RoomCreateModal extends CreateModal {
     return {
       conference: React.PropTypes.object.isRequired,
       template: React.PropTypes.object.isRequired,
-    };
-  }
-
-  // --------------------------------------------------
-  // State
-  // --------------------------------------------------
-  static get defaultState() {
-    return {
-      capacity: 0,
-      gender: 0,
-      number: 0,
+      type: React.PropTypes.oneOf(['conference', 'rooms']).isRequired,
     };
   }
 
@@ -26,7 +16,11 @@ class RoomCreateModal extends CreateModal {
   // --------------------------------------------------
   handleClick(event) {
     if (event.target === this._node) {
-      ConferenceActions.storeOverlay(false);
+      if (this.props.type === 'conference') {
+        ConferenceActions.closeOverlay();
+      } else if (this.props.type === 'rooms') {
+        RoomsActions.closeOverlay();
+      }
     }
   }
 
@@ -34,29 +28,42 @@ class RoomCreateModal extends CreateModal {
   // Helpers
   // --------------------------------------------------
   createRoom() {
-    ConferenceActions.createRoom(this.props.template)
+    if (this.props.type === 'conference') {
+      ConferenceActions.createRoom(this.props.template)
+    } else if (this.props.type === 'rooms') {
+      RoomsActions.createRoom(this.props.template, this.props.conference.id)
+    }
+
   }
 
   generateChoice(gender) {
-    var gender_name = 'Female'
-    if (gender == 1) {
-      gender_name = 'Male';
-    } else if (gender == 2)
-      gender_name = 'Other';
-    return {
-      action: () => ConferenceActions.storeAttribute('gender', gender),
-      content: gender_name,
-   };
+    gender_names = ['Female', 'Male', 'Other']
+    if (this.props.type === 'conference') {
+      return {
+        action: () => ConferenceActions.storeAttribute('gender', gender),
+        content: gender_names[gender],
+      }
+    } else if (this.props.type === 'rooms') {
+      return {
+        action: () => RoomsActions.storeAttribute('gender', gender),
+        content: gender_names[gender],
+      }
+    }
   }
 
   generateChoices() {
-    var genders = [0, 1, 2]
+    var genders = [0, 1, 2];
     return genders.map((gender) => this.generateChoice(gender));
   }
 
   generateHandler(field) {
     return(event) => {
-      ConferenceActions.storeAttribute(field, event.target.value);
+      var value = event.target.value;
+      if (this.props.type === 'conference') {
+        ConferenceActions.storeAttribute(field, value);
+      } else if (this.props.type === 'rooms') {
+        RoomsActions.storeAttribute(field, value)
+      }
     };
   }
 
@@ -84,9 +91,8 @@ class RoomCreateModal extends CreateModal {
             placeholder={'50'}
             value={''} />
           <CardDropdown
-            errors={errors}
-            label={'Gender'}
             choices={this.generateChoices()}
+            label={'Gender'}
             value={''} />
         </div>
       </div>

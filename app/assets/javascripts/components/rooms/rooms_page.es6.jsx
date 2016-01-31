@@ -45,15 +45,14 @@ class RoomsPage extends Component {
   // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
-  generateOption(id) {
-    return {
-      content: id,
-      route: RouteConstants.rooms.index(id)
-    }
-  }
-
   generateOptions() {
-    return ['1', '2'].map((id) => this.generateOption(id))
+    return [
+      {
+        action: () => RoomsActions.storeTemplate('room'),
+        content: 'New',
+
+      },
+    ];
   }
 
   selectProfile() {
@@ -65,10 +64,22 @@ class RoomsPage extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
+  renderOverlay() {
+    if (this.state.overlay) {
+      return (
+        <RoomsPageOverlay
+          conference={this.props.conference}
+          template={this.state.template}
+          type={'rooms'} />
+      );
+    }
+  }
+
   render() {
     return (
       <div style={StyleConstants.pages.wrapper}>
-      <Header profile={this.selectProfile()} />
+        {this.renderOverlay()}
+        <Header profile={this.selectProfile()} />
         <div style={StyleConstants.pages.container}>
           <Sidebar profile={this.selectProfile()} />
           <div style={StyleConstants.pages.content}>
@@ -76,7 +87,7 @@ class RoomsPage extends Component {
               conference={this.props.conference}
               conferences={this.props.conferences}
               options={this.generateOptions()}
-              title={'Rooms'}
+              title={'Conference'}
               type={'rooms'} />
             <RoomsGrid
               media={this.state.media}
