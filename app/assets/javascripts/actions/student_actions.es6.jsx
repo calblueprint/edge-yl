@@ -24,6 +24,20 @@
       return true;
     }
 
+    createEmail(student) {
+      var params = { email: {} };
+      var resolve = (response) => {
+        var id = response.email.id;
+        window.location = RouteConstants.emails.show(id);
+      };
+      Requester.post(
+        ApiConstants.emails.draft,
+        params,
+        resolve,
+      );
+      return true;
+    }
+
     fetchStudent(id) {
       var resolve = (response) => this.storeStudent(response);
       Requester.get(ApiConstants.students.show(id), resolve);

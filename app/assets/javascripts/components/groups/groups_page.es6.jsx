@@ -45,20 +45,6 @@ class GroupsPage extends Component {
   // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
-  generateOption(conference) {
-    return {
-      content: React.PropTypes.oneOfType([
-            React.PropTypes.number,
-            React.PropTypes.string,
-          ]),
-      route: RouteConstants.groups.index(conference.id)
-    };
-  }
-
-  generateOptions() {
-    return this.props.conferences.map((conference) => this.generateOption(conference));
-  }
-
   selectProfile() {
     return this.state.profile ?
            this.state.profile :
@@ -78,7 +64,6 @@ class GroupsPage extends Component {
             <PageHeader
               conference={this.props.conference}
               conferences={this.props.conferences}
-              options={this.generateOptions()}
               title={'Groups'}
               type={'groups'} />
             <GroupsGrid
