@@ -16,32 +16,6 @@ class RoomsCard extends Component {
   }
 
   // --------------------------------------------------
-  // Styles
-  // --------------------------------------------------
-  get styles() {
-    return {
-      header: {
-        display: 'flex',
-        justifyContent: 'flex-end',
-        width: '100%',
-        marginBottom: '5px',
-        borderBottom: 'solid #D6D6D6 1px',
-      },
-    };
-  }
-
-  get clickableStyles() {
-    return {
-      default: {
-        display: 'inline',
-        top: '0px',
-        paddingBottom: '5px',
-      },
-    };
-  }
-
-
-  // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
   deleteRoomFromConference() {
@@ -50,6 +24,7 @@ class RoomsCard extends Component {
 
   // --------------------------------------------------
   // Render
+  // --------------------------------------------------
   renderHeader() {
     if (this.props.editable) {
       return (
