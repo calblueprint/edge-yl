@@ -24,7 +24,7 @@ class GroupCreateModal extends CreateModal {
   // --------------------------------------------------
   handleClick(event) {
     if (event.target === this._node) {
-      ConferenceActions.storeOverlay(false);
+      ConferenceActions.closeOverlay();
     }
   }
 
@@ -36,14 +36,13 @@ class GroupCreateModal extends CreateModal {
       conference_id: this.props.conference.id,
       letter: this.state.letter,
     }
-    ConferenceActions.createGroup(params)
+    ConferenceActions.createGroup(this.props.template)
   }
 
-  generateHandler(field) {
-    var state = {};
-    return(event) => {
-      state[field] = event.target.value;
-      this.setState(state);
+  generateAction() {
+    return (event) => {
+      var value = event.target.value;
+      ConferenceActions.storeAttribute('letter', value);
     };
   }
 
@@ -60,7 +59,7 @@ class GroupCreateModal extends CreateModal {
           icon={TypeConstants.icons.save} />
         <div style={StyleConstants.cards.body}>
           <CardInput
-            action={this.generateHandler('letter')}
+            action={this.generateAction()}
             errors={errors}
             focus={true}
             label={'Group Letter'}
