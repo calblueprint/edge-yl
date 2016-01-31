@@ -24,8 +24,6 @@ class Conference < ActiveRecord::Base
   validates :name, presence: true
   validates :start_date, presence: true
 
-
-
   def females_count
     students.female.count
   end
@@ -42,9 +40,6 @@ class Conference < ActiveRecord::Base
     rooms.count
   end
 
-
-
 end
-
 
 #females count males count serialization
