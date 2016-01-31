@@ -1,6 +1,6 @@
 class ConferenceShowSerializer < ConferenceIndexSerializer
 
-  attributes :groups_count, :rooms_count, :females_count, :males_count
+  attributes :females_count, :groups_count, :males_count, :rooms_count
 
   has_many :groups, serializer: GroupIndexSerializer
   has_many :rooms, serializer: RoomConferenceSerializer

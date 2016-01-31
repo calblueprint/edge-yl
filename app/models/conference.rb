@@ -24,21 +24,25 @@ class Conference < ActiveRecord::Base
   validates :name, presence: true
   validates :start_date, presence: true
 
-  def males_count
-  	students.male.count
-  end
+
 
   def females_count
-  	students.female.count
-  end
-
-  def rooms_count
-  	rooms.count
+    students.female.count
   end
 
   def groups_count
-  	groups.count
+    groups.count
   end
+
+  def males_count
+    students.male.count
+  end
+
+  def rooms_count
+    rooms.count
+  end
+
+
 
 end
 
