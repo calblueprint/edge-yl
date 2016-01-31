@@ -26,7 +26,7 @@ class Api::EmailsController < Api::BaseController
 
   def show
     email = Email.find params[:id]
-    render json: email, serializer: EmailIndexSerializer
+    render json: email, serializer: EmailShowSerializer
   end
 
   private
