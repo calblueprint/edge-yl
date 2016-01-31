@@ -47,6 +47,7 @@
         create: '/api/groups',
         show: (id) => `/api/groups/${id}`,
         update: (id) => `/api/groups/${id}`,
+        index: (conference_id) => `/api/groups?conference_id=${conference_id}`
       };
     }
 

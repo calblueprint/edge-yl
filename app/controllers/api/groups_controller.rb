@@ -11,9 +11,16 @@ class Api::GroupsController < Api::BaseController
     end
   end
 
+  def index(conference_id)
+    groups = Group.includes(:conference_id)
+    respond_to do |format|
+      format.json { render json: groups, each_serializer: GroupIndexSerializer }
+    end
+  end
+
   def show
     respond_to do |format|
-      format.csv { show_csv }  
+      format.csv { show_csv }
       format.json { show_json }
     end
   end
@@ -43,7 +50,7 @@ class Api::GroupsController < Api::BaseController
     current_user.create_visit('Group', params[:id].to_i)
     render json: group, serializer: GroupShowSerializer
   end
-  
+
   def group_params
     params.require(:group).permit(
       :conference_id,

@@ -24,6 +24,7 @@
       return {
         index: '/groups',
         show: (id) => `/groups/${id}`,
+        index: (conference_id) => `/api/groups?conference_id=${conference_id}`
       };
     }
 
