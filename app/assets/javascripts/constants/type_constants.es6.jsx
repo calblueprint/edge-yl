@@ -24,6 +24,8 @@
 
     get group() {
       return {
+        conference: 'group-conference',
+        default: 'group-default',
         general: 'group-general',
         leadership: 'group-leadership',
       };
