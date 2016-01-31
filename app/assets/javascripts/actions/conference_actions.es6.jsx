@@ -34,6 +34,17 @@
       return id;
     }
 
+    deleteRoom(id) {
+      attributes = {};
+      attributes['conference_id'] = null;
+      params = { room: attributes };
+      Requester.update(
+        ApiConstants.rooms.update(id),
+        params,
+      );
+      return id;
+    }
+
     fetchConference(id) {
       var resolve = (response) => this.storeConference(response);
       Requester.get(ApiConstants.conferences.show(id), resolve);

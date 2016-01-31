@@ -16,13 +16,45 @@ class RoomsCard extends Component {
   }
 
   // --------------------------------------------------
-  // Render
+  // Styles
   // --------------------------------------------------
+  get styles() {
+    return {
+      header: {
+        display: 'flex',
+        justifyContent: 'flex-end',
+        width: '100%',
+        marginBottom: '5px',
+        borderBottom: 'solid #D6D6D6 1px',
+      },
+    };
+  }
+
+  get clickableStyles() {
+    return {
+      default: {
+        display: 'inline',
+        top: '0px',
+        paddingBottom: '5px',
+      },
+    };
+  }
+
+
+  // --------------------------------------------------
+  // Helpers
+  // --------------------------------------------------
+  deleteRoomFromConference() {
+    ConferenceActions.deleteRoom(this.props.room.id);
+  }
+
+  // --------------------------------------------------
+  // Render
   renderHeader() {
     if (this.props.editable) {
       return (
         <CardHeader
-          action={() => console.log('Rooms card action!')}
+          action={() => this.deleteRoomFromConference()}
           content={'Room'}
           icon={TypeConstants.icons.delete} />
       );
