@@ -1,6 +1,6 @@
 class ConferenceShowSerializer < ConferenceIndexSerializer
 
-  attributes :groups_count
+  attributes :females_count, :groups_count, :males_count, :rooms_count
 
   has_many :groups, serializer: GroupIndexSerializer
   has_many :rooms, serializer: RoomConferenceSerializer
@@ -11,10 +11,6 @@ class ConferenceShowSerializer < ConferenceIndexSerializer
 
   def rooms
     object.rooms.first(3)
-  end
-
-  def groups_count
-    object.groups.count
   end
 
 end
