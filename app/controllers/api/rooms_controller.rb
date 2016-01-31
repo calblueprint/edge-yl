@@ -9,10 +9,8 @@ class Api::RoomsController < Api::BaseController
   end
 
   def show
-    respond_to do |format|
-      format.csv { show_csv }  
-      format.json { show_json }
-    end
+    room = Room.find params[:id]
+    render json: room, serializer: RoomShowSerializer
   end
 
   def update
@@ -21,7 +19,7 @@ class Api::RoomsController < Api::BaseController
       render json: room,
              serializer: RoomShowSerializer,
              status: :created
-    else_
+    else
       unprocessable_response room
     end
   end
@@ -32,15 +30,6 @@ class Api::RoomsController < Api::BaseController
     params.require(:room).permit(
       :number,
     )
-  end
-
-  def show_csv
-    room = Room.find params[:id]
-    send_data room.students.to_csv
-  end
-
-  def show_json
-    render json: room, serializer: RoomShowSerializer
   end
 
 end
