@@ -46,6 +46,7 @@
     get groups() {
       return {
         create: '/api/groups',
+        index: (conference_id) => `/api/groups?conference_id=${conference_id}`,
         show: (id) => `/api/groups/${id}`,
         update: (id) => `/api/groups/${id}`,
       };
