@@ -53,7 +53,13 @@ class RoomsPage extends Component {
   }
 
   generateOptions() {
-    return ['1', '2'].map((id) => this.generateOption(id))
+    return [
+      ['1', '2'].map((id) => this.generateOption(id)),
+      {
+        content: 'Export',
+        route: ApiConstants.csvs.rooms,
+      },
+    ];
   }
 
   selectProfile() {
