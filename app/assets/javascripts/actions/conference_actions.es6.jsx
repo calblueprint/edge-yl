@@ -33,7 +33,7 @@
         ApiConstants.rooms.create,
         params,
         resolve,
-        reject
+        reject,
       );
       return true;
     }
