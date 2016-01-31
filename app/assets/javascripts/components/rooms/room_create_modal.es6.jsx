@@ -29,11 +29,10 @@ class RoomCreateModal extends CreateModal {
   // --------------------------------------------------
   createRoom() {
     if (this.props.type === 'conference') {
-      ConferenceActions.createRoom(this.props.template, this.props.conference.id)
+      ConferenceActions.createRoom(this.props.template, this.props.conference.id);
     } else if (this.props.type === 'rooms') {
-      RoomsActions.createRoom(this.props.template, this.props.conference.id)
+      RoomsActions.createRoom(this.props.template, this.props.conference.id);
     }
-
   }
 
   generateChoice(gender) {
@@ -47,7 +46,7 @@ class RoomCreateModal extends CreateModal {
       return {
         action: () => RoomsActions.storeAttribute('gender', gender),
         content: gender_names[gender],
-      }
+      };
     }
   }
 
@@ -62,7 +61,7 @@ class RoomCreateModal extends CreateModal {
       if (this.props.type === 'conference') {
         ConferenceActions.storeAttribute(field, value);
       } else if (this.props.type === 'rooms') {
-        RoomsActions.storeAttribute(field, value)
+        RoomsActions.storeAttribute(field, value);
       }
     };
   }
@@ -82,18 +81,18 @@ class RoomCreateModal extends CreateModal {
             focus={true}
             label={'Room Number'}
             placeholder={'1'}
-            value={''} />
+            value={this.props.template.number} />
           <CardInput
             action={this.generateHandler('capacity')}
             errors={errors}
             focus={true}
             label={'Capacity'}
             placeholder={'50'}
-            value={''} />
+            value={this.props.template.capacity} />
           <CardDropdown
             choices={this.generateChoices()}
             label={'Gender'}
-            value={''} />
+            value={this.props.template.gender} />
         </div>
       </div>
     );

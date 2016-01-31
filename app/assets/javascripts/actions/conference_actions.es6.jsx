@@ -6,8 +6,8 @@
         'closeOverlay',
         'storeConference',
         'storeGroup',
-        'storeRoom',
         'storeError',
+        'storeRoom',
         'storeValue',
       );
     }

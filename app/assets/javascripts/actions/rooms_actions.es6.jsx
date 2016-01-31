@@ -5,7 +5,7 @@
       this.generateActions(
         'closeOverlay',
         'storeRoom',
-        'storeRooms'
+        'storeRooms',
       );
     }
 
@@ -18,7 +18,7 @@
         ApiConstants.rooms.create,
         params,
         resolve,
-        reject
+        reject,
       );
       return true;
     }

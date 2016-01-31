@@ -22,9 +22,11 @@ class RoomsPageOverlay extends PageOverlay {
   // Render
   // --------------------------------------------------
   renderModal() {
-    return <RoomCreateModal
-              conference={this.props.conference}
-              template={this.props.template}
-              type={this.props.type} />;
+    return (
+      <RoomCreateModal
+        conference={this.props.conference}
+        template={this.props.template}
+        type={this.props.type} />
+    );
   }
 }

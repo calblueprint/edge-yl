@@ -17,8 +17,8 @@
         handleStoreConference: ConferenceActions.STORE_CONFERENCE,
         handleStoreError: ConferenceActions.STORE_ERROR,
         handleStoreGroup: ConferenceActions.STORE_GROUP,
-        handleStoreRoom: ConferenceActions.STORE_ROOM,
         handleStorePairing: ConferenceActions.STORE_PAIRING,
+        handleStoreRoom: ConferenceActions.STORE_ROOM,
         handleStoreTemplate: ConferenceActions.STORE_TEMPLATE,
         handleStoreValue: ConferenceActions.STORE_VALUE,
       });
