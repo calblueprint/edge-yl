@@ -13,7 +13,6 @@
       Requester.get(ApiConstants.emails.show(id), resolve);
       return true;
     }
-
   }
   this.EmailActions = alt.createActions(EmailActions);
 })();

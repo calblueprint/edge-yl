@@ -3,7 +3,6 @@ class EmailsCard extends Component {
   // --------------------------------------------------
   // Props
   // --------------------------------------------------
-
   static get propTypes() {
     return {
       email: React.PropTypes.object.isRequired,
@@ -14,7 +13,6 @@ class EmailsCard extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
-
   render() {
     var email = this.props.email;
     return (

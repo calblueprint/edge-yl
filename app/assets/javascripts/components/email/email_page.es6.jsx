@@ -22,25 +22,24 @@ class EmailPage extends Component {
   // Lifecycle
   // --------------------------------------------------
   componentWillMount() {
-    this.setState(ProfileStore.getState());
     this.setState(EmailStore.getState());
+    this.setState(ProfileStore.getState());
   }
 
   componentDidMount() {
-    ProfileStore.listen(this._listener);
     EmailStore.listen(this._listener);
+    ProfileStore.listen(this._listener);
     EmailActions.fetchEmail(this.props.id);
   }
 
   componentWillUnmount() {
-    ProfileStore.unlisten(this._listener);
     EmailStore.unlisten(this._listener);
+    ProfileStore.unlisten(this._listener);
   }
 
   // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
-
   selectProfile() {
     return this.state.profile ?
            this.state.profile :
@@ -50,7 +49,6 @@ class EmailPage extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
-
   render() {
     var email = this.state.email;
     return (

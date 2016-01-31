@@ -10,14 +10,13 @@
       });
     }
 
-    handleStoreError(response) {
-      this.template.errors = response.errors;
-    }
-
     handleStoreEmail(response) {
       this.email = response.email;
     }
 
+    handleStoreError(response) {
+      this.template.errors = response.errors;
+    }
   }
   this.EmailStore = alt.createStore(EmailStore);
 })();
