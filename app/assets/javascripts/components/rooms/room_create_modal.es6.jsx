@@ -29,7 +29,7 @@ class RoomCreateModal extends CreateModal {
   // --------------------------------------------------
   createRoom() {
     if (this.props.type === 'conference') {
-      ConferenceActions.createRoom(this.props.template)
+      ConferenceActions.createRoom(this.props.template, this.props.conference.id)
     } else if (this.props.type === 'rooms') {
       RoomsActions.createRoom(this.props.template, this.props.conference.id)
     }
@@ -37,7 +37,7 @@ class RoomCreateModal extends CreateModal {
   }
 
   generateChoice(gender) {
-    gender_names = ['Female', 'Male', 'Other']
+    var gender_names = ['Female', 'Male', 'Other']
     if (this.props.type === 'conference') {
       return {
         action: () => ConferenceActions.storeAttribute('gender', gender),

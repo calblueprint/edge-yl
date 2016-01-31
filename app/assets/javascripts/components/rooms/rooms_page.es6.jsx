@@ -87,7 +87,7 @@ class RoomsPage extends Component {
               conference={this.props.conference}
               conferences={this.props.conferences}
               options={this.generateOptions()}
-              title={'Conference'}
+              title={'Rooms'}
               type={'rooms'} />
             <RoomsGrid
               media={this.state.media}
