@@ -24,8 +24,14 @@
       return {
         index: '/groups',
         show: (id) => `/groups/${id}`,
-        index: (conference_id) => `/api/groups?conference_id=${conference_id}`
-      };
+        index: (conference_id) => {
+          var route = '/groups';
+          if (conference_id) {
+            `${route}?conference_id=${conference_id}`;
+          }
+          return route;
+        },
+      }
     }
 
     get pages() {

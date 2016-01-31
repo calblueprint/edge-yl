@@ -11,8 +11,8 @@ class Api::GroupsController < Api::BaseController
     end
   end
 
-  def index(conference_id)
-    groups = Group.includes(:conference_id)
+  def index
+    groups = Group.includes(:conference).where conference_id: params[:conference_id]
     respond_to do |format|
       format.json { render json: groups, each_serializer: GroupIndexSerializer }
     end

@@ -4,7 +4,7 @@ class GroupsController < BaseController
     @id = params[:id].to_i
   end
 
-  def index(conference_id)
+  def index
     @conference = params[:conference_id] ?
                   Conference.where(id: params[:conference_id]).first :
                   Conference.first
