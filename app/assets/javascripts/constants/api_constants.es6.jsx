@@ -26,6 +26,7 @@
 
     get emails() {
       return {
+        draft: '/api/emails',
         index: '/api/emails',
         show: (id) => `/api/emails/${id}`
       };
