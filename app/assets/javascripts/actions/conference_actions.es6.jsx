@@ -24,9 +24,9 @@
     }
 
     deleteGroup(id) {
-      attributes = {};
+      var attributes = {};
       attributes['conference_id'] = null;
-      params = { group: attributes };
+      var params = { group: attributes };
       Requester.update(
         ApiConstants.groups.update(id),
         params,
@@ -35,9 +35,9 @@
     }
 
     deleteRoom(id) {
-      attributes = {};
+      var attributes = {};
       attributes['conference_id'] = null;
-      params = { room: attributes };
+      var params = { room: attributes };
       Requester.update(
         ApiConstants.rooms.update(id),
         params,
