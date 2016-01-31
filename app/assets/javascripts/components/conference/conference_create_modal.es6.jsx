@@ -26,7 +26,6 @@ class ConferenceCreateModal extends CreateModal {
   }
 
   generateHandler(field) {
-    var state = {};
     return(event) => {
       ConferencesActions.storeAttribute(field, event.target.value);
     };

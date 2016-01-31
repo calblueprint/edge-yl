@@ -18,6 +18,7 @@
         handleStoreError: ConferenceActions.STORE_ERROR,
         handleStoreGroup: ConferenceActions.STORE_GROUP,
         handleStorePairing: ConferenceActions.STORE_PAIRING,
+        handleStoreRoom: ConferenceActions.STORE_ROOM,
         handleStoreTemplate: ConferenceActions.STORE_TEMPLATE,
         handleStoreValue: ConferenceActions.STORE_VALUE,
       });
@@ -44,6 +45,11 @@
     handleStoreGroup(response) {
       this.overlay = false;
       this.conference.groups.push(response.group);
+    }
+
+    handleStoreRoom(response) {
+      this.overlay = false;
+      this.conference.rooms.push(response.room);
     }
 
     handleStoreConference(response) {
