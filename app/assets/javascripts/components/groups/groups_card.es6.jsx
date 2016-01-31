@@ -8,6 +8,10 @@ class GroupsCard extends Component {
       editable: React.PropTypes.bool.isRequired,
       group: React.PropTypes.object.isRequired,
       media: React.PropTypes.string.isRequired,
+      type: React.PropTypes.oneOf([
+        TypeConstants.group.conference,
+        TypeConstants.group.default,
+      ]).isRequired,
     };
   }
 

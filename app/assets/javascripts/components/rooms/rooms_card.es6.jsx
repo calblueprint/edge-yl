@@ -16,13 +16,20 @@ class RoomsCard extends Component {
   }
 
   // --------------------------------------------------
+  // Helpers
+  // --------------------------------------------------
+  deleteRoomFromConference() {
+    ConferenceActions.deleteRoom(this.props.room.id);
+  }
+
+  // --------------------------------------------------
   // Render
   // --------------------------------------------------
   renderHeader() {
     if (this.props.editable) {
       return (
         <CardHeader
-          action={() => console.log('Rooms card action!')}
+          action={() => this.deleteRoomFromConference()}
           content={'Room'}
           icon={TypeConstants.icons.delete} />
       );
