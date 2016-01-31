@@ -23,22 +23,22 @@ class GroupsPage extends Component {
   // Lifecycle
   // --------------------------------------------------
   componentWillMount() {
-    this.setState(ProfileStore.getState());
     this.setState(GroupsStore.getState());
+    this.setState(ProfileStore.getState());
     this.setState(ViewStore.getState());
   }
 
   componentDidMount() {
-    ProfileStore.listen(this._listener);
-    GroupsStore.listen(this._listener);
-    ViewStore.listen(this._listener);
     GroupsActions.fetchGroups(this.props.conference);
+    GroupsStore.listen(this._listener);
+    ProfileStore.listen(this._listener);
+    ViewStore.listen(this._listener);
     ViewActions.attachListener();
   }
 
   componentWillUnmount() {
-    ProfileStore.unlisten(this._listener);
     GroupsStore.unlisten(this._listener);
+    ProfileStore.unlisten(this._listener);
     ViewStore.unlisten(this._listener);
   }
 
@@ -47,7 +47,10 @@ class GroupsPage extends Component {
   // --------------------------------------------------
   generateOption(conference) {
     return {
-      content: conference.id.toString(),
+      content: React.PropTypes.oneOfType([
+            React.PropTypes.number,
+            React.PropTypes.string,
+          ]),
       route: RouteConstants.groups.index(conference.id)
     };
   }
