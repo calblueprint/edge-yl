@@ -8,6 +8,8 @@
   get 'signup', to: 'pages#signup'
   get 'profile', to: 'users#profile'
 
+  post '/api/drafts', to: 'api/emails#draft'
+
   resources :conferences, only: [:index, :show]
   resources :emails, only: [:draft, :index, :show]
   resources :forms, only: [:show]

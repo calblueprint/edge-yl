@@ -20,7 +20,11 @@ class Api::EmailsController < Api::BaseController
   end
 
   def draft
-    email = Email.new draft_params
+    email = Email.new draft_params.merge(
+      from: "\"#{current_user.full_name}\"<#{current_user.email}>",
+      sender: current_user.email,
+    )
+
     if email.save
       render json: email,
              serializer: EmailBaseSerializer,
@@ -54,8 +58,9 @@ class Api::EmailsController < Api::BaseController
   end
 
   def draft_params
-    params.permit(
-
+    params.require(:email).permit(
+      :emailable_id,
+      :emailable_type
     )
   end
 

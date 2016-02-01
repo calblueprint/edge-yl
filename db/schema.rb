@@ -41,15 +41,19 @@ ActiveRecord::Schema.define(version: 20160114193445) do
   end
 
   create_table "emails", force: :cascade do |t|
-    t.string   "content",    null: false
-    t.string   "from",       null: false
-    t.string   "sender",     null: false
-    t.string   "subject",    null: false
-    t.string   "recipient",  null: false
-    t.string   "to",         null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "content",        null: false
+    t.string   "from",           null: false
+    t.string   "sender",         null: false
+    t.string   "subject",        null: false
+    t.string   "recipient",      null: false
+    t.string   "to",             null: false
+    t.integer  "emailable_id"
+    t.string   "emailable_type"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
+
+  add_index "emails", ["emailable_type", "emailable_id"], name: "index_emails_on_emailable_type_and_emailable_id", using: :btree
 
   create_table "feedbacks", force: :cascade do |t|
     t.text     "content"

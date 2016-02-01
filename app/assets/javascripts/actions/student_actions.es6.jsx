@@ -25,7 +25,12 @@
     }
 
     createEmail(student) {
-      var params = { email: {} };
+      var params = {
+        email: {
+          emailable_id: student.id,
+          emailable_type: "Student",
+        },
+      };
       var resolve = (response) => {
         var id = response.email.id;
         window.location = RouteConstants.emails.show(id);

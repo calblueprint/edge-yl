@@ -2,15 +2,17 @@
 #
 # Table name: emails
 #
-#  id         :integer          not null, primary key
-#  content    :string           not null
-#  from       :string           not null
-#  sender     :string           not null
-#  subject    :string           not null
-#  recipient  :string           not null
-#  to         :string           not null
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id             :integer          not null, primary key
+#  content        :string           not null
+#  from           :string           not null
+#  sender         :string           not null
+#  subject        :string           not null
+#  recipient      :string           not null
+#  to             :string           not null
+#  emailable_id   :integer
+#  emailable_type :string
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
 #
 
 class Email < ActiveRecord::Base
@@ -22,8 +24,31 @@ class Email < ActiveRecord::Base
   private
 
   def set_initials
+    self.content ||= ''
+    self.subject ||= ''
+
     self.to ||= ''
     self.from ||= ''
+    self.sender ||= ''
+
+
+    if self.emailable_type == Student.name
+      student = Student.find self.emailable_id
+      self.recipient = student.email
+      self.to = smtp_format_name student.full_name, self.recipient
+
+    elsif self.emailable_type == School.name
+
+      school = School.find self.emailable_id
+      self.recipient = school.email
+      self.to = smtp_format_name school.name, self.recipient
+
+    end
+
+  end
+
+  def smtp_format_name(name, email)
+    "\"#{name}\"<#{email}>"
   end
 
 end
