@@ -7,6 +7,7 @@
         'storeConference',
         'storeGroup',
         'storeError',
+        'storeRoom',
         'storeValue',
       );
     }
@@ -23,12 +24,37 @@
       return true;
     }
 
+    createRoom(template, conference_id) {
+      template.attributes['conference_id'] = conference_id;
+      var params = { room: template.attributes };
+      var resolve = (response) => this.storeRoom(response);
+      var reject = (response) => this.storeError(response);
+      Requester.post(
+        ApiConstants.rooms.create,
+        params,
+        resolve,
+        reject
+      );
+      return true;
+    }
+
     deleteGroup(id) {
-      attributes = {};
+      var attributes = {};
       attributes['conference_id'] = null;
-      params = { group: attributes };
+      var params = { group: attributes };
       Requester.update(
         ApiConstants.groups.update(id),
+        params,
+      );
+      return id;
+    }
+
+    deleteRoom(id) {
+      var attributes = {};
+      attributes['conference_id'] = null;
+      var params = { room: attributes };
+      Requester.update(
+        ApiConstants.rooms.update(id),
         params,
       );
       return id;

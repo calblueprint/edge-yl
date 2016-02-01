@@ -50,6 +50,10 @@ class StudentPage extends Component {
         action: () => ViewActions.toggleEditability(),
         content: this.state.editable ? 'Finish' : 'Edit',
       },
+      {
+        action: () => StudentActions.createEmail(this.state.student),
+        content: 'Email',
+      },
     ];
   }
 

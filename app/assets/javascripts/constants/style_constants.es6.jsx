@@ -103,8 +103,6 @@
           overflow: 'scroll',
         },
         wrapper: {
-          display: 'flex',
-          flexFlow: 'column',
           height: '100vh',
         },
       };

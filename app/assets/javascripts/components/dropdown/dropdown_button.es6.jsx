@@ -31,7 +31,7 @@ class DropdownButton extends Component {
     return {
       container: Object.assign(
         {},
-        StyleConstants.containers.card,
+        StyleConstants.templates.card,
         {
           maxHeight: '40px',
         },
@@ -61,7 +61,7 @@ class DropdownButton extends Component {
       },
       container: Object.assign(
         {},
-        StyleConstants.containers.card,
+        StyleConstants.templates.card,
         {
           zIndex: StyleConstants.planes.two,
         },

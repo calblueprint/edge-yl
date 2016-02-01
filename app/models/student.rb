@@ -41,10 +41,6 @@ class Student < ActiveRecord::Base
 
   multisearchable against: [:first_name, :last_name, :email]
 
-  belongs_to :group
-  belongs_to :school
-  belongs_to :room
-
   enum gender: [:female, :male, :other]
   enum guardian_phone_type: [:cell, :home, :work]
   enum guardian_relationship: [
@@ -61,7 +57,12 @@ class Student < ActiveRecord::Base
   enum registration_status: [:registered, :selected, :dropped]
   enum shirt_size: [:S, :M, :L, :XL, :XXL]
 
+  belongs_to :group
+  belongs_to :school
+  belongs_to :room
+
   has_many :comments, as: :commentable, dependent: :destroy
+  has_many :emails, dependent: :destroy, as: :emailable
   has_many :visits, dependent: :destroy, as: :visitable
 
   has_one :conference, through: :group

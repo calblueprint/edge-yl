@@ -30,12 +30,12 @@ class ConferenceGrid extends Component {
   generateRoomsOptions() {
     return [
       {
-        action: () => ConferenceActions.storeTemplate(),
+        action: () => ConferenceActions.storeTemplate('room'),
         content: 'New',
       },
       {
         content: 'All',
-        route: RouteConstants.rooms.index(),
+        route: RouteConstants.rooms.index(this.props.conference.id),
       },
     ];
   }
@@ -67,6 +67,7 @@ class ConferenceGrid extends Component {
           label={'Rooms in this conference'}
           options={this.generateRoomsOptions()} />
         <RoomsGrid
+          editable={this.props.editable}
           media={this.props.media}
           rooms={this.props.conference.rooms}
           type={TypeConstants.room.conference} />

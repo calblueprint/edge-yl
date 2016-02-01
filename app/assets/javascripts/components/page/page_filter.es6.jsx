@@ -15,8 +15,17 @@ class PageFilter extends Component {
   // Helpers
   // --------------------------------------------------
   generateChoice(option) {
+    var action = null;
+    switch(this.props.type) {
+      case 'groups':
+        action = () => GroupsActions.fetchGroups(option);
+        break;
+      case 'rooms':
+        action = () => RoomsActions.fetchRooms(option);
+        break;
+    }
     return {
-      action: () => RoomsActions.fetchRooms(option),
+      action: action,
       content: option.name,
     };
   }

@@ -12,11 +12,13 @@
       this.bindListeners({
         handleCloseOverlay: ConferenceActions.CLOSE_OVERLAY,
         handleDeleteGroup: ConferenceActions.DELETE_GROUP,
+        handleDeleteRoom: ConferenceActions.DELETE_ROOM,
         handleStoreAttribute: ConferenceActions.STORE_ATTRIBUTE,
         handleStoreConference: ConferenceActions.STORE_CONFERENCE,
         handleStoreError: ConferenceActions.STORE_ERROR,
         handleStoreGroup: ConferenceActions.STORE_GROUP,
         handleStorePairing: ConferenceActions.STORE_PAIRING,
+        handleStoreRoom: ConferenceActions.STORE_ROOM,
         handleStoreTemplate: ConferenceActions.STORE_TEMPLATE,
         handleStoreValue: ConferenceActions.STORE_VALUE,
       });
@@ -31,6 +33,10 @@
       this.conference.groups = this.conference.groups.filter(function(group) { return group.id != groupId });
     }
 
+    handleDeleteRoom(roomId) {
+      this.conference.rooms = this.conference.rooms.filter(function(room) { return room.id != roomId });
+    }
+
     handleStoreAttribute(attribute) {
       this.template.attributes[attribute.key] = attribute.value;
 
@@ -39,6 +45,11 @@
     handleStoreGroup(response) {
       this.overlay = false;
       this.conference.groups.push(response.group);
+    }
+
+    handleStoreRoom(response) {
+      this.overlay = false;
+      this.conference.rooms.push(response.room);
     }
 
     handleStoreConference(response) {

@@ -25,6 +25,7 @@ class School < ActiveRecord::Base
   multisearchable against: [:name]
 
   has_many :comments, as: :commentable, dependent: :destroy
+  has_many :emails, dependent: :destroy, as: :emailable
   has_many :students
   has_many :visits, dependent: :destroy, as: :visitable
 

@@ -3,7 +3,9 @@
 # Table name: rooms
 #
 #  id            :integer          not null, primary key
+#  capacity      :integer          not null
 #  number        :integer          not null
+#  gender        :integer          not null
 #  conference_id :integer
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null

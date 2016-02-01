@@ -11,9 +11,20 @@ class Api::EmailsController < Api::BaseController
       to: params[:to],
       subject: params[:subject],
     )
-    email = Email.new email_params(custom_params)
+    email = Email.new create_params(custom_params)
     if email.save
       render json: { message: 'Received' }, status: :ok
+    else
+      unprocessable_response email
+    end
+  end
+
+  def draft
+    email = Email.new draft_params
+    if email.save
+      render json: email,
+             serializer: EmailBaseSerializer,
+             status: :created
     else
       unprocessable_response email
     end
@@ -24,9 +35,14 @@ class Api::EmailsController < Api::BaseController
     render json: emails, each_serializer: EmailIndexSerializer
   end
 
+  def show
+    email = Email.find params[:id]
+    render json: email, serializer: EmailShowSerializer
+  end
+
   private
 
-  def email_params(params)
+  def create_params(params)
     params.permit(
       :content,
       :from,
@@ -34,6 +50,12 @@ class Api::EmailsController < Api::BaseController
       :sender,
       :subject,
       :to,
+    )
+  end
+
+  def draft_params
+    params.permit(
+
     )
   end
 

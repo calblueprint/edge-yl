@@ -118,17 +118,12 @@ p {
   font-size: $font-size-smallest;
   font-weight: $font-weight-medium;
   letter-spacing: 0.5px;
+  line-height: $font-size-large;
 }
 
 a {
   display: flex;
   text-decoration: none;
-}
-
-p {
-  font-size: $font-size-smallest;
-  line-height: $font-size-large;
-  font-weight: $font-weight-medium;
 }
 
 input,

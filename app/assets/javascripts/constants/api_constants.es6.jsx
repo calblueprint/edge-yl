@@ -27,7 +27,9 @@
 
     get emails() {
       return {
+        draft: '/api/emails',
         index: '/api/emails',
+        show: (id) => `/api/emails/${id}`
       };
     }
 
@@ -46,6 +48,7 @@
     get groups() {
       return {
         create: '/api/groups',
+        index: (conference_id) => `/api/groups?conference_id=${conference_id}`,
         show: (id) => `/api/groups/${id}`,
         update: (id) => `/api/groups/${id}`,
       };
@@ -65,6 +68,7 @@
 
     get rooms() {
       return {
+        create: '/api/rooms',
         show: (id) => `/api/rooms/${id}`,
         index: (conference_id) => {
           return `/api/rooms?&conference_id=${conference_id}`;

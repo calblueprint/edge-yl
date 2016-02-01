@@ -1,4 +1,4 @@
-class RoomsPage extends Component {
+class EmailPage extends Component {
 
   // --------------------------------------------------
   // Setup
@@ -13,8 +13,7 @@ class RoomsPage extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      conference: React.PropTypes.object.isRequired,
-      conferences: React.PropTypes.array.isRequired,
+      id: React.PropTypes.number.isRequired,
       profile: React.PropTypes.object.isRequired,
     };
   }
@@ -23,41 +22,24 @@ class RoomsPage extends Component {
   // Lifecycle
   // --------------------------------------------------
   componentWillMount() {
+    this.setState(EmailStore.getState());
     this.setState(ProfileStore.getState());
-    this.setState(RoomsStore.getState());
-    this.setState(ViewStore.getState());
   }
 
   componentDidMount() {
+    EmailStore.listen(this._listener);
     ProfileStore.listen(this._listener);
-    RoomsStore.listen(this._listener);
-    ViewStore.listen(this._listener);
-    RoomsActions.fetchRooms(this.props.conference);
-    ViewActions.attachListener();
+    EmailActions.fetchEmail(this.props.id);
   }
 
   componentWillUnmount() {
+    EmailStore.unlisten(this._listener);
     ProfileStore.unlisten(this._listener);
-    RoomsStore.unlisten(this._listener);
-    ViewStore.unlisten(this._listener);
   }
 
   // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
-  generateOptions() {
-    return [
-      {
-        action: () => RoomsActions.storeTemplate('room'),
-        content: 'New',
-      },
-      {
-        content: 'Export',
-        route: ApiConstants.csvs.rooms,
-      },
-    ];
-  }
-
   selectProfile() {
     return this.state.profile ?
            this.state.profile :
@@ -67,38 +49,21 @@ class RoomsPage extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
-  renderOverlay() {
-    if (this.state.overlay) {
-      return (
-        <RoomsPageOverlay
-          conference={this.props.conference}
-          template={this.state.template}
-          type={'rooms'} />
-      );
-    }
-  }
-
   render() {
+    var email = this.state.email;
     return (
       <div style={StyleConstants.pages.wrapper}>
-        {this.renderOverlay()}
         <Header profile={this.selectProfile()} />
         <div style={StyleConstants.pages.container}>
           <Sidebar profile={this.selectProfile()} />
           <div style={StyleConstants.pages.content}>
-            <PageHeader
-              conference={this.props.conference}
-              conferences={this.props.conferences}
-              options={this.generateOptions()}
-              title={'Rooms'}
-              type={'rooms'} />
-            <RoomsGrid
-              media={this.state.media}
-              rooms={this.state.rooms}
-              type={TypeConstants.room.default} />
+            <h2>{email.subject}</h2>
+            <h3>{email.from}</h3>
+            <p>{email.content}</p>
           </div>
         </div>
       </div>
     );
   }
 }
+

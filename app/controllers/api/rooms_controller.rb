@@ -1,5 +1,16 @@
 class Api::RoomsController < Api::BaseController
 
+  def create
+    room = Room.new room_params
+    if room.save
+      render json: room,
+             serializer: RoomIndexSerializer,
+             status: :created
+    else
+      unprocessable_response room
+    end
+  end
+
   def index
     rooms = Room.includes(:conference).where conference_id: params[:conference_id]
     respond_to do |format|
@@ -14,7 +25,7 @@ class Api::RoomsController < Api::BaseController
   end
 
   def update
-    room = room.find params[:id]
+    room = Room.find params[:id]
     if room.update_attributes room_params
       render json: room,
              serializer: RoomShowSerializer,
@@ -28,6 +39,9 @@ class Api::RoomsController < Api::BaseController
 
   def room_params
     params.require(:room).permit(
+      :capacity,
+      :conference_id,
+      :gender,
       :number,
     )
   end

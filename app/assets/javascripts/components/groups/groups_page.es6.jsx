@@ -1,4 +1,4 @@
-class RoomsPage extends Component {
+class GroupsPage extends Component {
 
   // --------------------------------------------------
   // Setup
@@ -23,41 +23,28 @@ class RoomsPage extends Component {
   // Lifecycle
   // --------------------------------------------------
   componentWillMount() {
+    this.setState(GroupsStore.getState());
     this.setState(ProfileStore.getState());
-    this.setState(RoomsStore.getState());
     this.setState(ViewStore.getState());
   }
 
   componentDidMount() {
+    GroupsActions.fetchGroups(this.props.conference);
+    GroupsStore.listen(this._listener);
     ProfileStore.listen(this._listener);
-    RoomsStore.listen(this._listener);
     ViewStore.listen(this._listener);
-    RoomsActions.fetchRooms(this.props.conference);
     ViewActions.attachListener();
   }
 
   componentWillUnmount() {
+    GroupsStore.unlisten(this._listener);
     ProfileStore.unlisten(this._listener);
-    RoomsStore.unlisten(this._listener);
     ViewStore.unlisten(this._listener);
   }
 
   // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
-  generateOptions() {
-    return [
-      {
-        action: () => RoomsActions.storeTemplate('room'),
-        content: 'New',
-      },
-      {
-        content: 'Export',
-        route: ApiConstants.csvs.rooms,
-      },
-    ];
-  }
-
   selectProfile() {
     return this.state.profile ?
            this.state.profile :
@@ -67,35 +54,22 @@ class RoomsPage extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
-  renderOverlay() {
-    if (this.state.overlay) {
-      return (
-        <RoomsPageOverlay
-          conference={this.props.conference}
-          template={this.state.template}
-          type={'rooms'} />
-      );
-    }
-  }
-
   render() {
     return (
       <div style={StyleConstants.pages.wrapper}>
-        {this.renderOverlay()}
-        <Header profile={this.selectProfile()} />
+      <Header profile={this.selectProfile()} />
         <div style={StyleConstants.pages.container}>
           <Sidebar profile={this.selectProfile()} />
           <div style={StyleConstants.pages.content}>
             <PageHeader
               conference={this.props.conference}
               conferences={this.props.conferences}
-              options={this.generateOptions()}
-              title={'Rooms'}
-              type={'rooms'} />
-            <RoomsGrid
+              title={'Groups'}
+              type={'groups'} />
+            <GroupsGrid
               media={this.state.media}
-              rooms={this.state.rooms}
-              type={TypeConstants.room.default} />
+              groups={this.state.groups}
+              type={TypeConstants.group.default} />
           </div>
         </div>
       </div>
