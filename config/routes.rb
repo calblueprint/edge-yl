@@ -2,6 +2,7 @@
 
   root 'pages#login'
 
+  get 'compose/:id', to: 'pages#compose'
   get 'email', to: 'pages#email'
   get 'feedback', to: 'pages#feedback'
   get 'login', to: 'pages#login'
@@ -39,7 +40,7 @@
 
     resources :conferences, only: [:create, :index, :show, :update]
     resources :comments, only: [:create]
-    resources :emails, only: [:create, :draft, :index, :show]
+    resources :emails, only: [:create, :draft, :index, :show, :update]
     resources :feedbacks, only: [:create]
     resources :forms, only: [:show]
     resources :groups, only: [:create, :index, :show, :update]

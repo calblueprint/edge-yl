@@ -26,23 +26,18 @@ class Email < ActiveRecord::Base
   def set_initials
     self.content ||= ''
     self.subject ||= ''
-
     self.to ||= ''
     self.from ||= ''
     self.sender ||= ''
-
 
     if self.emailable_type == Student.name
       student = Student.find self.emailable_id
       self.recipient = student.email
       self.to = smtp_format_name student.full_name, self.recipient
-
     elsif self.emailable_type == School.name
-
       school = School.find self.emailable_id
       self.recipient = school.email
       self.to = smtp_format_name school.name, self.recipient
-
     end
 
   end

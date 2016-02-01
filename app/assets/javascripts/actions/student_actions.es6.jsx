@@ -25,15 +25,14 @@
     }
 
     createEmail(student) {
-      var params = {
-        email: {
-          emailable_id: student.id,
-          emailable_type: "Student",
-        },
+      var attributes = {
+        emailable_id: student.id,
+        emailable_type: "Student",
       };
+      var params = { email: attributes };
       var resolve = (response) => {
         var id = response.email.id;
-        window.location = RouteConstants.emails.show(id);
+        window.location = RouteConstants.pages.compose(id);
       };
       Requester.post(
         ApiConstants.emails.draft,

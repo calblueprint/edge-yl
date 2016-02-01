@@ -44,6 +44,18 @@ class Api::EmailsController < Api::BaseController
     render json: email, serializer: EmailShowSerializer
   end
 
+  def update
+    email = Email.find params[:id]
+    if student.update_attributes create_params
+      render json: email,
+             serializer: EmailBaseSerializer,
+             status: :created
+    else
+      unprocessable_response email
+    end
+
+  end
+
   private
 
   def create_params(params)

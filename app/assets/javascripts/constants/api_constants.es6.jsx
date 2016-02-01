@@ -28,7 +28,8 @@
       return {
         draft: '/api/drafts',
         index: '/api/emails',
-        show: (id) => `/api/emails/${id}`
+        show: (id) => `/api/emails/${id}`,
+        update: 'api/emails',
       };
     }
 

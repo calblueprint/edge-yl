@@ -22,25 +22,24 @@ class ComposePage extends Component {
   // Lifecycle
   // --------------------------------------------------
   componentWillMount() {
-    this.setState(ProfileStore.getState());
     this.setState(ComposeStore.getState());
+    this.setState(ProfileStore.getState());
   }
 
   componentDidMount() {
-    ProfileStore.listen(this._listener);
     ComposeStore.listen(this._listener);
-    ComposeActions.fetchCompose(this.props.id);
+    ProfileStore.listen(this._listener);
+    ComposeActions.fetchEmail(this.props.id);
   }
 
   componentWillUnmount() {
-    ProfileStore.unlisten(this._listener);
     ComposeStore.unlisten(this._listener);
+    ProfileStore.unlisten(this._listener);
   }
 
   // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
-
   selectProfile() {
     return this.state.profile ?
            this.state.profile :
@@ -50,7 +49,6 @@ class ComposePage extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
-
   render() {
     var email = this.state.email;
     return (
@@ -59,9 +57,8 @@ class ComposePage extends Component {
         <div style={StyleConstants.pages.container}>
           <Sidebar profile={this.selectProfile()} />
           <div style={StyleConstants.pages.content}>
-            <h2>{email.subject}</h2>
-            <h3>{email.from}</h3>
-            <p>{email.content}</p>
+            <ComposeForm
+              template={this.state.template} />
           </div>
         </div>
       </div>
