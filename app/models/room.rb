@@ -23,11 +23,11 @@ class Room < ActiveRecord::Base
   validates :number, presence: true
 
   def self.to_csv
-    attributes = %w{number students}
+    attributes = %w{room_id full_name}
     CSV.generate(headers: true) do |csv|
       csv << attributes
       all.each do |room|
-        csv << attributes.map{ |attr| room.send(attr) }
+        csv << attributes.map{ |attr| room.students.send(attr) }
       end
     end
   end

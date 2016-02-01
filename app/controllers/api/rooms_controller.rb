@@ -13,8 +13,9 @@ class Api::RoomsController < Api::BaseController
 
   def index
     rooms = Room.includes(:conference).where conference_id: params[:conference_id]
+    csv_rooms = Room.includes(:students)
     respond_to do |format|
-      format.csv { send_data rooms.to_csv }
+      format.csv { send_data csv_rooms.to_csv }
       format.json { render json: rooms, each_serializer: RoomIndexSerializer }
     end
   end
