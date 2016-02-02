@@ -22,18 +22,18 @@ class DraftPage extends Component {
   // Lifecycle
   // --------------------------------------------------
   componentWillMount() {
-    this.setState(ComposeStore.getState());
+    this.setState(DraftStore.getState());
     this.setState(ProfileStore.getState());
   }
 
   componentDidMount() {
-    ComposeStore.listen(this._listener);
+    DraftStore.listen(this._listener);
     ProfileStore.listen(this._listener);
-    ComposeActions.fetchEmail(this.props.id);
+    DraftActions.fetchDraft(this.props.id);
   }
 
   componentWillUnmount() {
-    ComposeStore.unlisten(this._listener);
+    DraftStore.unlisten(this._listener);
     ProfileStore.unlisten(this._listener);
   }
 
@@ -57,7 +57,7 @@ class DraftPage extends Component {
           <Sidebar profile={this.selectProfile()} />
           <div style={StyleConstants.pages.content}>
             <DraftGrid
-              email={this.state.email}
+              email={this.state.draft}
               template={this.state.template} />
           </div>
         </div>
