@@ -11,12 +11,28 @@ class DraftHeader extends Component {
   }
 
   // --------------------------------------------------
+  // Styles
+  // --------------------------------------------------
+  get styles() {
+    return {
+      container: Object.assign(
+        {},
+        StyleConstants.containers.card,
+        {
+          padding: '24px',
+          marginTop: '12px',
+        },
+      ),
+    };
+  }
+
+  // --------------------------------------------------
   // Render
   // --------------------------------------------------
   render() {
     var draft = this.props.draft;
     return (
-      <div style={StyleConstants.cards.wrapper('small')}>
+      <div style={this.styles.container}>
         <h6>{'From'}</h6>
         <p>{draft.from}</p>
         <CardInput
