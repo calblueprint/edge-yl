@@ -9,8 +9,6 @@
   get 'signup', to: 'pages#signup'
   get 'profile', to: 'users#profile'
 
-  post '/api/drafts', to: 'api/emails#draft'
-
   resources :conferences, only: [:index, :show]
   resources :emails, only: [:draft, :index, :show]
   resources :forms, only: [:show]
@@ -40,7 +38,8 @@
 
     resources :conferences, only: [:create, :index, :show, :update]
     resources :comments, only: [:create]
-    resources :emails, only: [:create, :draft, :index, :show, :update]
+    resources :drafts, only: [:create, :update]
+    resources :emails, only: [:create, :index, :show]
     resources :feedbacks, only: [:create]
     resources :forms, only: [:show]
     resources :groups, only: [:create, :index, :show, :update]
