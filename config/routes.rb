@@ -2,7 +2,6 @@
 
   root 'pages#login'
 
-  get 'compose/:id', to: 'pages#compose'
   get 'email', to: 'pages#email'
   get 'feedback', to: 'pages#feedback'
   get 'login', to: 'pages#login'
@@ -10,7 +9,8 @@
   get 'profile', to: 'users#profile'
 
   resources :conferences, only: [:index, :show]
-  resources :emails, only: [:draft, :index, :show]
+  resources :drafts, only: [:show]
+  resources :emails, only: [:index, :show]
   resources :forms, only: [:show]
   resources :groups, only: [:index, :show]
   resources :rooms, only: [:index, :show]
