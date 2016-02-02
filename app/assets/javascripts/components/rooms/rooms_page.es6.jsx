@@ -51,6 +51,10 @@ class RoomsPage extends Component {
         action: () => RoomsActions.storeTemplate('room'),
         content: 'New',
       },
+      {
+        content: 'Export',
+        route: ApiConstants.csvs.rooms,
+      },
     ];
   }
 

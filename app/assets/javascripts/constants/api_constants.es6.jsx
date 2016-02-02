@@ -19,6 +19,7 @@
     get csvs() {
       return {
         groups: (id) => `/api/groups/${id}.csv`,
+        rooms: '/api/rooms.csv',
         schools: '/api/schools.csv',
         students: '/api/students.csv',
       };

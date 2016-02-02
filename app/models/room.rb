@@ -22,4 +22,17 @@ class Room < ActiveRecord::Base
   validates :capacity, presence: true
   validates :number, presence: true
 
+  def self.to_csv
+    attributes = %w{number}
+    CSV.generate(headers: true) do |csv|
+      csv << attributes
+      all.each do |room|
+        students = room.students
+        row = attributes.map{ |attr| room.send(attr) }
+        students.map { |student| row << student.full_name }
+        csv << row
+      end 
+    end
+  end
+
 end
