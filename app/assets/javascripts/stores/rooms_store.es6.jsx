@@ -22,6 +22,7 @@
 
     handleStoreAttribute(attribute) {
       this.template.attributes[attribute.key] = attribute.value;
+      console.log(this.template);
     }
 
     handleStoreRoom(response) {

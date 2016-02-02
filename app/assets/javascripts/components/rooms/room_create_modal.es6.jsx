@@ -36,22 +36,21 @@ class RoomCreateModal extends CreateModal {
   }
 
   generateChoice(gender) {
-    var gender_names = ['Female', 'Male', 'Other']
     if (this.props.type === 'conference') {
       return {
         action: () => ConferenceActions.storeAttribute('gender', gender),
-        content: gender_names[gender],
+        content: gender,
       }
     } else if (this.props.type === 'rooms') {
       return {
         action: () => RoomsActions.storeAttribute('gender', gender),
-        content: gender_names[gender],
+        content: gender,
       };
     }
   }
 
   generateChoices() {
-    var genders = [0, 1, 2];
+    var genders = ['Female', 'Male', 'Other'];
     return genders.map((gender) => this.generateChoice(gender));
   }
 
@@ -66,8 +65,13 @@ class RoomCreateModal extends CreateModal {
     };
   }
 
+  // --------------------------------------------------
+  // Render
+  // --------------------------------------------------
   renderBody() {
-    var errors = [];
+    var template = this.props.template;
+    var attributes = template.attributes;
+    var errors = template.errors;
     return (
       <div style={this.styles.section}>
         <CardHeader
@@ -77,22 +81,22 @@ class RoomCreateModal extends CreateModal {
         <div style={StyleConstants.cards.body}>
           <CardInput
             action={this.generateHandler('number')}
-            errors={errors}
+            errors={errors.number}
             focus={true}
             label={'Room Number'}
             placeholder={'1'}
-            value={this.props.template.number} />
+            value={attributes.number} />
           <CardInput
             action={this.generateHandler('capacity')}
-            errors={errors}
-            focus={true}
+            errors={errors.capacity}
             label={'Capacity'}
             placeholder={'50'}
-            value={this.props.template.capacity} />
+            value={attributes.capacity} />
           <CardDropdown
             choices={this.generateChoices()}
+            errors={errors.gender}
             label={'Gender'}
-            value={this.props.template.gender} />
+            value={attributes.gender} />
         </div>
       </div>
     );
