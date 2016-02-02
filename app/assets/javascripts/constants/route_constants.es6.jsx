@@ -36,6 +36,7 @@
 
     get pages() {
       return {
+        compose: (id) => `/compose/${id}`,
         feedback: '/feedback',
         login: '/login',
         signup: '/signup',
