@@ -8,6 +8,12 @@
       };
     }
 
+    get drafts() {
+      return {
+        show: (id) => `/drafts/${id}`,
+      };
+    }
+
     get emails() {
       return {
         index: '/emails',
@@ -36,7 +42,6 @@
 
     get pages() {
       return {
-        compose: (id) => `/compose/${id}`,
         feedback: '/feedback',
         login: '/login',
         signup: '/signup',
