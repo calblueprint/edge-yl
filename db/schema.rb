@@ -49,11 +49,13 @@ ActiveRecord::Schema.define(version: 20160114193445) do
     t.string   "to",             null: false
     t.integer  "emailable_id"
     t.string   "emailable_type"
+    t.integer  "user_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end
 
   add_index "emails", ["emailable_type", "emailable_id"], name: "index_emails_on_emailable_type_and_emailable_id", using: :btree
+  add_index "emails", ["user_id"], name: "index_emails_on_user_id", using: :btree
 
   create_table "feedbacks", force: :cascade do |t|
     t.text     "content"

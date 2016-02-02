@@ -11,13 +11,16 @@
 #  to             :string           not null
 #  emailable_id   :integer
 #  emailable_type :string
+#  user_id        :integer
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #
 
 FactoryGirl.define do
+
   factory :email do
-    
+    from   { '' }
+    sender { '' }
   end
 
 end

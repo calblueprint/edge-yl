@@ -1,16 +1,16 @@
 (() => {
-  class ComposeActions {
+  class DraftActions {
 
     constructor() {
       this.generateActions(
-        'storeEmail',
+        'storeDraft',
         'storeErrors',
       );
     }
 
-    fetchEmail(id) {
-      var resolve = (response) => this.storeEmail(response);
-      Requester.get(ApiConstants.emails.show(id), resolve);
+    fetchDraft(id) {
+      var resolve = (response) => this.storeDraft(response);
+      Requester.get(ApiConstants.drafts.show(id), resolve);
       return true;
     }
 
@@ -26,7 +26,7 @@
       };
       var reject = (response) => { this.storeErrors(response); }
       Requester.post(
-        ApiConstants.emails.update,
+        ApiConstants.drafts.update,
         params,
         resolve,
         reject,
@@ -35,5 +35,5 @@
     }
 
   }
-  this.ComposeActions = alt.createActions(ComposeActions);
+  this.DraftActions = alt.createActions(DraftActions);
 })();

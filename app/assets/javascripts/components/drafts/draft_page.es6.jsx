@@ -1,4 +1,4 @@
-class ComposePage extends Component {
+class DraftPage extends Component {
 
   // --------------------------------------------------
   // Setup
@@ -22,18 +22,18 @@ class ComposePage extends Component {
   // Lifecycle
   // --------------------------------------------------
   componentWillMount() {
-    this.setState(ComposeStore.getState());
+    this.setState(DraftStore.getState());
     this.setState(ProfileStore.getState());
   }
 
   componentDidMount() {
-    ComposeStore.listen(this._listener);
+    DraftStore.listen(this._listener);
     ProfileStore.listen(this._listener);
-    ComposeActions.fetchEmail(this.props.id);
+    DraftActions.fetchDraft(this.props.id);
   }
 
   componentWillUnmount() {
-    ComposeStore.unlisten(this._listener);
+    DraftStore.unlisten(this._listener);
     ProfileStore.unlisten(this._listener);
   }
 
@@ -50,14 +50,14 @@ class ComposePage extends Component {
   // Render
   // --------------------------------------------------
   render() {
-    var email = this.state.email;
     return (
       <div style={StyleConstants.pages.wrapper}>
         <Header profile={this.selectProfile()} />
         <div style={StyleConstants.pages.container}>
           <Sidebar profile={this.selectProfile()} />
           <div style={StyleConstants.pages.content}>
-            <ComposeForm
+            <DraftGrid
+              draft={this.state.draft}
               template={this.state.template} />
           </div>
         </div>

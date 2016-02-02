@@ -1,10 +1,11 @@
-class ComposeForm extends Component {
+class DraftBody extends Component {
 
   // --------------------------------------------------
   // Props
   // --------------------------------------------------
   static get propTypes() {
     return {
+      draft: React.PropTypes.object.isRequired,
       template: React.PropTypes.object.isRequired,
     };
   }
@@ -14,10 +15,6 @@ class ComposeForm extends Component {
   // --------------------------------------------------
   get styles() {
     return {
-      container: {
-        display: 'flex',
-        flexFlow: 'column',
-      },
       error: {
         flex: 1,
         marginTop: '12px',
@@ -72,33 +69,26 @@ class ComposeForm extends Component {
   }
 
   render() {
+    var draft = this.props.draft;
     var template = this.props.template;
     return (
-      <div ref={'container'} style={this.styles.container}>
-        <CardInput
-          errors={template.errors.recipient}
-          focus={true}
-          label={'recipient'}
-          placeholder={'To'}
-          type={'text'}
-          value={template.email.recipient} />
+      <div ref={'container'} style={StyleConstants.cards.wrapper('small')}>
         <CardInput
           action={this.saveDraft()}
-          errors={template.errors.subject}
+          // errors={template.errors.subject}
           focus={true}
           label={'subject'}
           placeholder={'Subject'}
           type={'text'}
-          value={template.email.subject} />
+          value={draft.subject} />
         <CardInput
           action={this.saveDraft()}
-          errors={template.errors.content}
+          // errors={template.errors.content}
           focus={true}
           label={'content'}
           placeholder={'Content'}
           type={'textarea'}
-          value={template.email.content} />
-
+          value={draft.content} />
         {this.renderError()}
         <FormButton
           action={() => this.send()}
