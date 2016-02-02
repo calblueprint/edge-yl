@@ -13,7 +13,7 @@
     }
 
     handleStoreDraft(response) {
-      this.draft = response.draft;
+      this.draft = response.email;
     }
 
     handleStoreErrors(response) {
