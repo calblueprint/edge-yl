@@ -21,6 +21,7 @@
 
     handleCloseOverlay() {
       this.overlay = false;
+      this.template = null;
     }
 
     handleStoreAttribute(attribute) {

@@ -22,6 +22,8 @@
 
     handleCloseOverlay() {
       this.overlay = false;
+      this.pairing = null;
+      this.template = null;
     }
 
     handleStoreAttribute(attribute) {
