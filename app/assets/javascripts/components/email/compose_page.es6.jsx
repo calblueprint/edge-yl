@@ -56,7 +56,7 @@ class ComposePage extends Component {
         <div style={StyleConstants.pages.container}>
           <Sidebar profile={this.selectProfile()} />
           <div style={StyleConstants.pages.content}>
-            <ComposeForm
+            <DraftGrid
               email={this.state.email}
               template={this.state.template} />
           </div>

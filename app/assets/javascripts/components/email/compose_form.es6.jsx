@@ -15,10 +15,6 @@ class ComposeForm extends Component {
   // --------------------------------------------------
   get styles() {
     return {
-      container: {
-        display: 'flex',
-        flexFlow: 'column',
-      },
       error: {
         flex: 1,
         marginTop: '12px',
@@ -75,16 +71,8 @@ class ComposeForm extends Component {
   render() {
     var email = this.props.email;
     var template = this.props.template;
-    console.log(email);
     return (
-      <div ref={'container'} style={this.styles.container}>
-        <CardInput
-          // errors={template.errors.recipient}
-          focus={true}
-          label={'recipient'}
-          placeholder={'To'}
-          type={'text'}
-          value={email.recipient} />
+      <div ref={'container'} style={StyleConstants.cards.wrapper('small')}>
         <CardInput
           action={this.saveDraft()}
           // errors={template.errors.subject}
