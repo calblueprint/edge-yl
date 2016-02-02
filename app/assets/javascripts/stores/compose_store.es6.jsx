@@ -2,8 +2,8 @@
   class ComposeStore {
 
     constructor() {
+      this.email = {};
       this.template = {
-        email: {},
         errors: {},
       };
       this.bindListeners({

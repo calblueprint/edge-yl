@@ -50,7 +50,6 @@ class ComposePage extends Component {
   // Render
   // --------------------------------------------------
   render() {
-    var email = this.state.email;
     return (
       <div style={StyleConstants.pages.wrapper}>
         <Header profile={this.selectProfile()} />
@@ -58,6 +57,7 @@ class ComposePage extends Component {
           <Sidebar profile={this.selectProfile()} />
           <div style={StyleConstants.pages.content}>
             <ComposeForm
+              email={this.state.email}
               template={this.state.template} />
           </div>
         </div>

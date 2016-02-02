@@ -5,6 +5,7 @@ class ComposeForm extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
+      email: React.PropTypes.object.isRequired,
       template: React.PropTypes.object.isRequired,
     };
   }
@@ -72,33 +73,34 @@ class ComposeForm extends Component {
   }
 
   render() {
+    var email = this.props.email;
     var template = this.props.template;
+    console.log(template);
     return (
       <div ref={'container'} style={this.styles.container}>
         <CardInput
-          errors={template.errors.recipient}
+          // errors={template.errors.recipient}
           focus={true}
           label={'recipient'}
           placeholder={'To'}
           type={'text'}
-          value={template.email.recipient} />
+          value={email.recipient} />
         <CardInput
           action={this.saveDraft()}
-          errors={template.errors.subject}
+          // errors={template.errors.subject}
           focus={true}
           label={'subject'}
           placeholder={'Subject'}
           type={'text'}
-          value={template.email.subject} />
+          value={email.subject} />
         <CardInput
           action={this.saveDraft()}
-          errors={template.errors.content}
+          // errors={template.errors.content}
           focus={true}
           label={'content'}
           placeholder={'Content'}
           type={'textarea'}
-          value={template.email.content} />
-
+          value={email.content} />
         {this.renderError()}
         <FormButton
           action={() => this.send()}
