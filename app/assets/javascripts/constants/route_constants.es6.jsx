@@ -8,6 +8,12 @@
       };
     }
 
+    get drafts() {
+      return {
+        show: (id) => `/drafts/${id}`,
+      };
+    }
+
     get emails() {
       return {
         index: '/emails',

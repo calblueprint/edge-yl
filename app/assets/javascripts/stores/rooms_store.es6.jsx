@@ -3,8 +3,8 @@
 
     constructor() {
       this.conference = {};
-      this.overlay = false;
       this.conferences = [];
+      this.overlay = false;
       this.rooms = [];
       this.template = null;
       this.bindListeners({
@@ -18,6 +18,7 @@
 
     handleCloseOverlay() {
       this.overlay = false;
+      this.template = null;
     }
 
     handleStoreAttribute(attribute) {

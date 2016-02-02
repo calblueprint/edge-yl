@@ -1,4 +1,4 @@
-class StudentPage extends Component {
+class DraftPage extends Component {
 
   // --------------------------------------------------
   // Setup
@@ -22,41 +22,24 @@ class StudentPage extends Component {
   // Lifecycle
   // --------------------------------------------------
   componentWillMount() {
+    this.setState(DraftStore.getState());
     this.setState(ProfileStore.getState());
-    this.setState(StudentStore.getState());
-    this.setState(ViewStore.getState());
   }
 
   componentDidMount() {
+    DraftStore.listen(this._listener);
     ProfileStore.listen(this._listener);
-    StudentStore.listen(this._listener);
-    ViewStore.listen(this._listener);
-    StudentActions.fetchStudent(this.props.id);
-    ViewActions.attachListener();
+    DraftActions.fetchDraft(this.props.id);
   }
 
   componentWillUnmount() {
+    DraftStore.unlisten(this._listener);
     ProfileStore.unlisten(this._listener);
-    StudentStore.unlisten(this._listener);
-    ViewStore.unlisten(this._listener);
   }
 
   // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
-  generateOptions() {
-    return [
-      {
-        action: () => ViewActions.toggleEditability(),
-        content: this.state.editable ? 'Finish' : 'Edit',
-      },
-      {
-        action: () => StudentActions.createDraft(this.state.student),
-        content: 'Email',
-      },
-    ];
-  }
-
   selectProfile() {
     return this.state.profile ?
            this.state.profile :
@@ -66,39 +49,16 @@ class StudentPage extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
-  renderOverlay() {
-    if (this.state.overlay) {
-      return (
-        <StudentPageOverlay
-          pairing={this.state.pairing}
-          profile={this.selectProfile()}
-          student={this.state.student}
-          template={this.state.template} />
-      );
-    }
-  }
-
   render() {
-    var student = this.state.student;
     return (
       <div style={StyleConstants.pages.wrapper}>
-        {this.renderOverlay()}
         <Header profile={this.selectProfile()} />
         <div style={StyleConstants.pages.container}>
           <Sidebar profile={this.selectProfile()} />
           <div style={StyleConstants.pages.content}>
-            <GridHeader
-              label={'Student'}
-              options={this.generateOptions()}
-              value={student.full_name} />
-            <StudentGrid
-              editable={this.state.editable}
-              media={this.state.media}
-              student={student} />
-            <PageComments
-              profile={this.selectProfile()}
-              student={this.state.student}
-              type={TypeConstants.student.comment} />
+            <DraftGrid
+              draft={this.state.draft}
+              template={this.state.template} />
           </div>
         </div>
       </div>

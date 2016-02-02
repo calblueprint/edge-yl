@@ -1,6 +1,6 @@
 class Api::EmailsController < Api::BaseController
 
-  skip_before_filter :authenticate_user
+  skip_before_filter :authenticate_user, only: [:create]
 
   def create
     custom_params = ActionController::Parameters.new(
@@ -11,20 +11,9 @@ class Api::EmailsController < Api::BaseController
       to: params[:to],
       subject: params[:subject],
     )
-    email = Email.new create_params(custom_params)
+    email = Email.new email_params(custom_params)
     if email.save
       render json: { message: 'Received' }, status: :ok
-    else
-      unprocessable_response email
-    end
-  end
-
-  def draft
-    email = Email.new draft_params
-    if email.save
-      render json: email,
-             serializer: EmailBaseSerializer,
-             status: :created
     else
       unprocessable_response email
     end
@@ -42,7 +31,7 @@ class Api::EmailsController < Api::BaseController
 
   private
 
-  def create_params(params)
+  def email_params(params)
     params.permit(
       :content,
       :from,
@@ -50,12 +39,6 @@ class Api::EmailsController < Api::BaseController
       :sender,
       :subject,
       :to,
-    )
-  end
-
-  def draft_params
-    params.permit(
-
     )
   end
 

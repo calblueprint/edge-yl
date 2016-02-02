@@ -25,11 +25,18 @@
       };
     }
 
+    get drafts() {
+      return {
+        create: '/api/drafts',
+        show: (id) => `/api/drafts/${id}`,
+      };
+    }
+
     get emails() {
       return {
-        draft: '/api/emails',
         index: '/api/emails',
-        show: (id) => `/api/emails/${id}`
+        show: (id) => `/api/emails/${id}`,
+        update: 'api/emails',
       };
     }
 
