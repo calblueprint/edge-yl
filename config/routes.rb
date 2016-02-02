@@ -9,7 +9,8 @@
   get 'profile', to: 'users#profile'
 
   resources :conferences, only: [:index, :show]
-  resources :emails, only: [:draft, :index, :show]
+  resources :drafts, only: [:show]
+  resources :emails, only: [:index, :show]
   resources :forms, only: [:show]
   resources :groups, only: [:index, :show]
   resources :rooms, only: [:index, :show]
@@ -37,7 +38,8 @@
 
     resources :conferences, only: [:create, :index, :show, :update]
     resources :comments, only: [:create]
-    resources :emails, only: [:create, :draft, :index, :show]
+    resources :drafts, only: [:create, :show, :update]
+    resources :emails, only: [:create, :index, :show]
     resources :feedbacks, only: [:create]
     resources :forms, only: [:show]
     resources :groups, only: [:create, :index, :show, :update]

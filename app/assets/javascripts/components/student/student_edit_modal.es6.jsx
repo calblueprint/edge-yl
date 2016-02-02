@@ -48,9 +48,9 @@ class StudentEditModal extends EditModal {
       }});
       return (
         <CardDropdown
+          choices={choices}
           errors={pairing.errors[pairing.key]}
           label={pairing.key}
-          choices={choices}
           value={Helpers.humanize(pairing.value)} />
       );
     }
