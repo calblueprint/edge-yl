@@ -20,11 +20,8 @@ class Api::EmailsController < Api::BaseController
   end
 
   def draft
-    email = Email.new draft_params.merge(
-      from: "\"#{current_user.full_name}\"<#{current_user.email}>",
-      sender: current_user.email,
-    )
-
+    email = Email.new draft_params
+    email.user = current_user
     if email.save
       render json: email,
              serializer: EmailBaseSerializer,

@@ -75,7 +75,7 @@ class ComposeForm extends Component {
   render() {
     var email = this.props.email;
     var template = this.props.template;
-    console.log(template);
+    console.log(email);
     return (
       <div ref={'container'} style={this.styles.container}>
         <CardInput

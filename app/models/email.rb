@@ -11,6 +11,7 @@
 #  to             :string           not null
 #  emailable_id   :integer
 #  emailable_type :string
+#  user_id        :integer
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #
@@ -18,6 +19,7 @@
 class Email < ActiveRecord::Base
 
   belongs_to :emailable, polymorphic: true
+  belongs_to :user
 
   before_validation :set_initials, on: :create
 
@@ -26,10 +28,8 @@ class Email < ActiveRecord::Base
   def set_initials
     self.content ||= ''
     self.subject ||= ''
-    self.to ||= ''
-    self.from ||= ''
-    self.sender ||= ''
-
+    self.from ||= smtp_format_name user.full_name, user.email
+    self.sender ||= user.email
     if self.emailable_type == Student.name
       student = Student.find self.emailable_id
       self.recipient = student.email
@@ -39,11 +39,10 @@ class Email < ActiveRecord::Base
       self.recipient = school.email
       self.to = smtp_format_name school.name, self.recipient
     end
-
   end
 
   def smtp_format_name(name, email)
-    "\"#{name}\"<#{email}>"
+    "#{name} <#{email}>"
   end
 
 end
