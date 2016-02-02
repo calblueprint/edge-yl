@@ -5,7 +5,7 @@ class DraftBody extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      email: React.PropTypes.object.isRequired,
+      draft: React.PropTypes.object.isRequired,
       template: React.PropTypes.object.isRequired,
     };
   }
@@ -69,7 +69,7 @@ class DraftBody extends Component {
   }
 
   render() {
-    var email = this.props.email;
+    var draft = this.props.draft;
     var template = this.props.template;
     return (
       <div ref={'container'} style={StyleConstants.cards.wrapper('small')}>
@@ -80,7 +80,7 @@ class DraftBody extends Component {
           label={'subject'}
           placeholder={'Subject'}
           type={'text'}
-          value={email.subject} />
+          value={draft.subject} />
         <CardInput
           action={this.saveDraft()}
           // errors={template.errors.content}
@@ -88,7 +88,7 @@ class DraftBody extends Component {
           label={'content'}
           placeholder={'Content'}
           type={'textarea'}
-          value={email.content} />
+          value={draft.content} />
         {this.renderError()}
         <FormButton
           action={() => this.send()}

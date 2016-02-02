@@ -57,7 +57,7 @@ class DraftPage extends Component {
           <Sidebar profile={this.selectProfile()} />
           <div style={StyleConstants.pages.content}>
             <DraftGrid
-              email={this.state.draft}
+              draft={this.state.draft}
               template={this.state.template} />
           </div>
         </div>

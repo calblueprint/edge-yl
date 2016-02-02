@@ -5,7 +5,7 @@ class DraftHeader extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      email: React.PropTypes.object.isRequired,
+      draft: React.PropTypes.object.isRequired,
       template: React.PropTypes.object.isRequired,
     };
   }
@@ -14,16 +14,16 @@ class DraftHeader extends Component {
   // Render
   // --------------------------------------------------
   render() {
-    var email = this.props.email;
+    var draft = this.props.draft;
     return (
       <div style={StyleConstants.cards.wrapper('small')}>
         <h6>{'From'}</h6>
-        <p>{email.from}</p>
+        <p>{draft.from}</p>
         <CardInput
           action={() => console.log('typing')}
           label={'To'}
           type={'text'}
-          value={email.to} />
+          value={draft.to} />
       </div>
     );
   }

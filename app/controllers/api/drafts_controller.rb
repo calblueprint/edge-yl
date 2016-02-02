@@ -12,6 +12,11 @@ class Api::DraftsController < Api::BaseController
     end
   end
 
+  def show
+    email = Email.find params[:id]
+    render json: email, serializer: EmailShowSerializer
+  end
+
   def update
     draft = Email.find params[:id]
     if draft.update_attributes draft_params

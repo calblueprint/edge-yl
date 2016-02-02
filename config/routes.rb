@@ -38,7 +38,7 @@
 
     resources :conferences, only: [:create, :index, :show, :update]
     resources :comments, only: [:create]
-    resources :drafts, only: [:create, :update]
+    resources :drafts, only: [:create, :show, :update]
     resources :emails, only: [:create, :index, :show]
     resources :feedbacks, only: [:create]
     resources :forms, only: [:show]
