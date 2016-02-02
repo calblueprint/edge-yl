@@ -1,4 +1,4 @@
-class ComposePage extends Component {
+class DraftPage extends Component {
 
   // --------------------------------------------------
   // Setup

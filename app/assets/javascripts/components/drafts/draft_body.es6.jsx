@@ -1,4 +1,4 @@
-class ComposeForm extends Component {
+class DraftBody extends Component {
 
   // --------------------------------------------------
   // Props

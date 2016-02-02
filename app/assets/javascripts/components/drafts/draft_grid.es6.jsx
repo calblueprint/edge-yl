@@ -19,7 +19,7 @@ class DraftGrid extends Component {
         <DraftHeader
           email={this.props.email}
           template={this.props.template} />
-        <ComposeForm
+        <DraftBody
           email={this.props.email}
           template={this.props.template} />
       </div>
