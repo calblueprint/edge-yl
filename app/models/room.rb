@@ -21,8 +21,7 @@ class Room < ActiveRecord::Base
 
   validates :building, presence: true
   validates :capacity, presence: true
-  validates :number, presence: true
-  validates :number, uniqueness: { scope: :conference_id }
+  validates :number, presence: true, uniqueness: { scope: :conference_id }
 
   def self.to_csv
     attributes = %w{number}
