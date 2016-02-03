@@ -129,6 +129,7 @@ ActiveRecord::Schema.define(version: 20160114193445) do
   add_index "responsibilities", ["user_id"], name: "index_responsibilities_on_user_id", using: :btree
 
   create_table "rooms", force: :cascade do |t|
+    t.string   "building",      null: false
     t.integer  "capacity",      null: false
     t.integer  "gender",        null: false
     t.integer  "number",        null: false

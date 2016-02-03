@@ -19,8 +19,10 @@ class Room < ActiveRecord::Base
 
   has_many :students
 
+  validates :building, presence: true
   validates :capacity, presence: true
   validates :number, presence: true
+  validates :number, uniqueness: { scope: :conference_id }
 
   def self.to_csv
     attributes = %w{number}
@@ -31,7 +33,7 @@ class Room < ActiveRecord::Base
         row = attributes.map{ |attr| room.send(attr) }
         students.map { |student| row << student.full_name }
         csv << row
-      end 
+      end
     end
   end
 
