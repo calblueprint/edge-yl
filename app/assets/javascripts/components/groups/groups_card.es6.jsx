@@ -19,7 +19,10 @@ class GroupsCard extends Component {
   // Helpers
   // --------------------------------------------------
   deleteGroupFromConference() {
-    ConferenceActions.deleteGroup(this.props.group.id);
+    var response = confirm('This action cannot be undone.');
+    if (response) {
+      ConferenceActions.deleteGroup(this.props.group.id);
+    }
   }
 
   // --------------------------------------------------

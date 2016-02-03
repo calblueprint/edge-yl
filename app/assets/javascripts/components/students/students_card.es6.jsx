@@ -15,7 +15,10 @@ class StudentsCard extends Component {
   // Helpers
   // --------------------------------------------------
   deleteStudentFromGroup() {
-    GroupActions.deleteStudent(this.props.student.id);
+    var response = confirm('This action cannot be undone.');
+    if (response) {
+      GroupActions.deleteStudent(this.props.student.id);
+    }
   }
 
   // --------------------------------------------------
