@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160114193445) do
+ActiveRecord::Schema.define(version: 20160203043835) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,20 @@ ActiveRecord::Schema.define(version: 20160114193445) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "contacts", force: :cascade do |t|
+    t.string   "email",        null: false
+    t.string   "first_name",   null: false
+    t.string   "last_name",    null: false
+    t.string   "phone_number", null: false
+    t.string   "title",        null: false
+    t.boolean  "is_primary",   null: false
+    t.integer  "school_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "contacts", ["school_id"], name: "index_contacts_on_school_id", using: :btree
 
   create_table "emails", force: :cascade do |t|
     t.string   "content",        null: false
@@ -141,20 +155,15 @@ ActiveRecord::Schema.define(version: 20160114193445) do
   add_index "rooms", ["conference_id"], name: "index_rooms_on_conference_id", using: :btree
 
   create_table "schools", force: :cascade do |t|
-    t.string   "address_city",                      null: false
-    t.string   "address_one",                       null: false
-    t.string   "address_state",                     null: false
-    t.string   "address_two",          default: "", null: false
-    t.string   "address_zip",                       null: false
-    t.string   "contact_email",                     null: false
-    t.string   "contact_first_name",                null: false
-    t.string   "contact_last_name",                 null: false
-    t.string   "contact_phone_number",              null: false
-    t.string   "contact_title",                     null: false
-    t.string   "name",                              null: false
-    t.string   "website",              default: "", null: false
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
+    t.string   "address_city",               null: false
+    t.string   "address_one",                null: false
+    t.string   "address_state",              null: false
+    t.string   "address_two",   default: "", null: false
+    t.string   "address_zip",                null: false
+    t.string   "name",                       null: false
+    t.string   "website",       default: "", null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   create_table "sections", force: :cascade do |t|

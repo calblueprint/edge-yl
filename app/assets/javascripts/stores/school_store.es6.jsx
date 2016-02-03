@@ -5,6 +5,9 @@
       this.overlay = false;
       this.school = {
         comments: [],
+        contacts: [],
+        other_contacts: [],
+        primary_contact: {},
         students: [],
       };
       this.pairing = null;
