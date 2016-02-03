@@ -12,7 +12,8 @@
       );
     }
 
-    createGroup(params) {
+    createGroup(template) {
+      var params = { group: template.attributes };
       var resolve = (response) => this.storeGroup(response);
       var reject = (response) => this.storeError(response);
       Requester.post(
@@ -92,13 +93,13 @@
       };
     }
 
-    updateConference(template, attributes={}) {
-      attributes[template.key] = template.value;
+    updateConference(pairing, attributes={}) {
+      attributes[pairing.key] = pairing.value;
       var params = { conference: attributes };
       var resolve = (response) => this.storeConference(response);
       var reject = (response) => this.storeError(response);
       Requester.update(
-        ApiConstants.conferences.update(template.id),
+        ApiConstants.conferences.update(pairing.id),
         params,
         resolve,
         reject,
