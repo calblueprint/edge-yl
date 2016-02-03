@@ -12,11 +12,9 @@ class Api::RoomsController < Api::BaseController
   end
 
   def index
-    rooms = Room.includes(:conference).where conference_id: params[:conference_id]
-    csv_rooms = Room.includes(:students)
     respond_to do |format|
-      format.csv { send_data csv_rooms.to_csv }
-      format.json { render json: rooms, each_serializer: RoomIndexSerializer }
+      format.csv { index_csv }
+      format.json { index_json }
     end
   end
 
@@ -37,6 +35,17 @@ class Api::RoomsController < Api::BaseController
   end
 
   private
+
+  def index_csv
+    csv_rooms = Room.includes(:students)
+    send_data csv_rooms.to_csv
+  end
+
+  def index_json
+    rooms = Room.includes(:conference).where conference_id: params[:conference_id]
+    render json: rooms,
+           each_serializer: RoomIndexSerializer
+  end
 
   def room_params
     params.require(:room).permit(

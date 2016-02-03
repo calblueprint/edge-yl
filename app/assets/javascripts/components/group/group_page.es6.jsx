@@ -52,7 +52,7 @@ class GroupPage extends Component {
       },
       {
         content: 'Export',
-        route: ApiConstants.csvs.groups(this.state.group.id),
+        route: ApiConstants.csvs.group(this.state.group.id),
       },
     ];
   }

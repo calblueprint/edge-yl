@@ -45,6 +45,15 @@ class GroupsPage extends Component {
   // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
+  generateOptions() {
+    return [
+      {
+        content: 'Export',
+        route: ApiConstants.csvs.groups,
+      },
+    ];
+  }
+
   selectProfile() {
     return this.state.profile ?
            this.state.profile :
@@ -61,10 +70,12 @@ class GroupsPage extends Component {
         <div style={StyleConstants.pages.container}>
           <Sidebar profile={this.selectProfile()} />
           <div style={StyleConstants.pages.content}>
+            <GridHeader
+              label={'Groups'}
+              options={this.generateOptions()} />          
             <PageHeader
               conference={this.props.conference}
               conferences={this.props.conferences}
-              title={'Groups'}
               type={'groups'} />
             <GroupsGrid
               media={this.state.media}
