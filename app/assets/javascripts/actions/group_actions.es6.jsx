@@ -60,9 +60,7 @@
     }
 
     updateLeadership(pairing, attributes={}) {
-      console.log(pairing.key);
-      console.log(pairing.value);
-      attributes[pairing.key] = pairing.value;
+      attributes = { user_id: pairing.value.id };
       var params = { leadership: attributes };
       var resolve = (response) => this.storeLeadership(response);
       var reject = (response) => this.storeError(response);
