@@ -64,11 +64,9 @@ class RoomsCard extends Component {
             type={'h4'}
             value={room.number} />
           <CardAttribute
-            clickable={true}
             label={'Capacity'}
             value={room.capacity} />
           <CardAttribute
-            clickable={true}
             label={'Gender'}
             value={room.gender} />
           {this.renderConference()}

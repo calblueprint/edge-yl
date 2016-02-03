@@ -9,8 +9,7 @@
       );
     }
 
-    createRoom(template, conference_id) {
-      template.attributes['conference_id'] = conference_id;
+    createRoom(template) {
       var params = { room: template.attributes };
       var resolve = (response) => this.storeRoom(response);
       var reject = (response) => this.storeError(response);

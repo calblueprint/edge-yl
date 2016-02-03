@@ -30,7 +30,10 @@ class ConferenceGrid extends Component {
   generateRoomsOptions() {
     return [
       {
-        action: () => ConferenceActions.storeTemplate('room'),
+        action: () => ConferenceActions.storeTemplate(
+          'room',
+          { conference_id: this.props.conference.id },
+        ),
         content: 'New',
       },
       {
