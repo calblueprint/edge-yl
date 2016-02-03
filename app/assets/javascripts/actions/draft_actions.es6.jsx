@@ -34,6 +34,13 @@
       return true;
     }
 
+    storeAttribute(key, value) {
+      return {
+        key: key,
+        value: value,
+      };
+    }
+
   }
   this.DraftActions = alt.createActions(DraftActions);
 })();
