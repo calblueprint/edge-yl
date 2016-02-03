@@ -23,10 +23,6 @@ class GroupCreateModal extends CreateModal {
   // Helpers
   // --------------------------------------------------
   createGroup() {
-    var params = {
-      conference_id: this.props.conference.id,
-      letter: this.state.letter,
-    }
     ConferenceActions.createGroup(this.props.template);
   }
 
