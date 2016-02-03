@@ -2,6 +2,7 @@ conference = Conference.first
 
 (1..5).each do |index|
   new_room = Room.create(
+    building: "#{Faker::Lorem.word} building",
     capacity: 3,
     conference: conference,
     gender: rand(3),

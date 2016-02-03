@@ -65,6 +65,10 @@ class RoomsCard extends Component {
             value={room.number} />
           <CardAttribute
             clickable={true}
+            label={'Building'}
+            value={room.building} />
+          <CardAttribute
+            clickable={true}
             label={'Capacity'}
             value={room.capacity} />
           <CardAttribute
