@@ -9,6 +9,8 @@
 #  subject        :string           not null
 #  recipient      :string           not null
 #  to             :string           not null
+#  is_draft       :boolean          default(FALSE), not null
+#  is_unread      :boolean          default(TRUE), not null
 #  emailable_id   :integer
 #  emailable_type :string
 #  user_id        :integer

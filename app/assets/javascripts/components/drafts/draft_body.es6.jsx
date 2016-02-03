@@ -29,33 +29,33 @@ class DraftBody extends Component {
   // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
-  send() {
-    ComposeActions.sendEmail(this.state.template);
+  renderSave() {
+    if(this.props.template.saved) {
+      return (
+        <span>{this.props.template.saved}</span>
+      );
+    }
   }
 
-  saveDraft(field) {
-    return(event) => {
-      ComposeActions.saveDraft(event.target.value);
-    };
+  send() {
+    DraftActions.sendEmail(this.state.template);
   }
+
 
   render() {
     var draft = this.props.draft;
     var template = this.props.template;
     return (
       <div style={this.styles.container}>
-        <CardInput
-          action={this.saveDraft()}
+        <DraftSubject
+          id={draft.id}
           label={'Subject'}
-          placeholder={'Subject'}
-          type={'text'}
           value={draft.subject} />
-        <CardInput
-          action={this.saveDraft()}
+        <DraftContent
+          id={draft.id}
           label={'Content'}
-          placeholder={'Content'}
-          type={'textarea'}
           value={draft.content} />
+        {this.renderSave()}
         <FormButton
           action={() => this.send()}
           content={'Send'}

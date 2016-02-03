@@ -3,6 +3,7 @@
 
     constructor() {
       this.generateActions(
+        'saveDraft',
         'storeDraft',
         'storeErrors',
       );
@@ -24,6 +25,7 @@
       // SMTP.send(template.email);
         console.log("Email sent successfully!");
       };
+      var params = { email: template.attributes };
       var reject = (response) => { this.storeErrors(response); }
       Requester.post(
         ApiConstants.drafts.update,
@@ -32,6 +34,27 @@
         reject,
       );
       return true;
+    }
+
+    storeAttribute(key, value, id) {
+      // Fire a request to save the draft on the server.
+      var attributes = { id: id };
+      attributes[key] = value;
+      var params = { email: attributes };
+
+      var reject = (response) => { this.storeErrors(response); };
+      var resolve =  (response) => { this.saveDraft(response) };
+
+      Requester.update(
+        ApiConstants.drafts.update(id),
+        params,
+        resolve,
+        reject,
+      );
+      return {
+        key: key,
+        value: value,
+      };
     }
 
   }

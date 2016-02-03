@@ -30,6 +30,7 @@
       return {
         create: '/api/drafts',
         show: (id) => `/api/drafts/${id}`,
+        update: (id) => `/api/drafts/${id}`,
       };
     }
 

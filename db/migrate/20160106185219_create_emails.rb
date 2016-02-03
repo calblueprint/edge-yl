@@ -4,6 +4,8 @@ class CreateEmails < ActiveRecord::Migration
     create_table :emails do |t|
       t.string :content, null: false
       t.string :from, null: false
+      t.boolean :is_draft, null: false, default: false
+      t.boolean :is_unread, null: false, default: true
       t.string :sender, null: false
       t.string :subject, null: false
       t.string :recipient, null: false
