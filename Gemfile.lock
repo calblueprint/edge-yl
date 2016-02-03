@@ -102,6 +102,9 @@ GEM
       guard (~> 2.1)
       guard-compat (~> 1.1)
       rspec (>= 2.99.0, < 4.0)
+    has_scope (0.6.0)
+      actionpack (>= 3.2, < 5)
+      activesupport (>= 3.2, < 5)
     i18n (0.7.0)
     jquery-rails (3.1.4)
       railties (>= 3.0, < 5.0)
@@ -253,6 +256,7 @@ DEPENDENCIES
   figaro (= 1.1.1)
   font-awesome-rails (= 4.5.0)
   guard-rspec
+  has_scope (= 0.6.0)
   jquery-rails (= 3.1.4)
   kaminari (= 0.16.3)
   launchy

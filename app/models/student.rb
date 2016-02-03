@@ -41,6 +41,10 @@ class Student < ActiveRecord::Base
 
   multisearchable against: [:first_name, :last_name, :email]
 
+  # scope :gender
+  scope :is_flagged, -> is_flagged { where(is_flagged: is_flagged) }
+  scope :is_primary, -> is_primary { where(is_primary: is_primary) }
+
   enum gender: [:female, :male, :other]
   enum guardian_phone_type: [:cell, :home, :work]
   enum guardian_relationship: [
