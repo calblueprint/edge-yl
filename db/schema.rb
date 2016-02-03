@@ -41,15 +41,15 @@ ActiveRecord::Schema.define(version: 20160203043835) do
   end
 
   create_table "contacts", force: :cascade do |t|
-    t.string   "email",        null: false
-    t.string   "first_name",   null: false
-    t.string   "last_name",    null: false
-    t.string   "phone_number", null: false
-    t.string   "title",        null: false
-    t.boolean  "is_primary",   null: false
+    t.string   "email",                        null: false
+    t.string   "first_name",                   null: false
+    t.boolean  "is_primary",   default: false, null: false
+    t.string   "last_name",                    null: false
+    t.string   "phone_number",                 null: false
+    t.string   "title",                        null: false
     t.integer  "school_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
   end
 
   add_index "contacts", ["school_id"], name: "index_contacts_on_school_id", using: :btree
