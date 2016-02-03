@@ -15,8 +15,14 @@
 #
 
 FactoryGirl.define do
+
   factory :contact do
-    
+    email        { Faker::Internet.email }
+    first_name   { Faker::Name.first_name }
+    is_primary   { true }
+    last_name    { Faker::Name.last_name }
+    phone_number { Faker::PhoneNumber.phone_number }
+    title        { 'Software Engineer' }
   end
 
 end
