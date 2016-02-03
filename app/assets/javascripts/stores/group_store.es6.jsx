@@ -55,11 +55,9 @@
     handleStoreLeadership(response) {
       this.group.leaderships.map((leadership) => {
         if (leadership.id === response.leadership.id) {
-          console.log('in');
           leadership.user = response.leadership.user;
         }
       });
-      console.log(this.group.leaderships);
       this.overlay = false;
     }
 
