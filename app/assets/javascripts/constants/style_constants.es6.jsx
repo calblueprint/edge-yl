@@ -45,6 +45,10 @@
           },
           this.templates.card,
         ),
+        column: {
+          display: 'flex',
+          flexFlow: 'column',
+        },
         grid: {
           display: 'flex',
           flexFlow: 'wrap',

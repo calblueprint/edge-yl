@@ -5,6 +5,9 @@
       this.overlay = false;
       this.school = {
         comments: [],
+        contacts: [],
+        other_contacts: [],
+        primary_contact: {},
         students: [],
       };
       this.pairing = null;
@@ -23,6 +26,8 @@
 
     handleCloseOverlay() {
       this.overlay = false;
+      this.pairing = null;
+      this.template = null;
     }
 
     handleStoreAttribute(attribute) {

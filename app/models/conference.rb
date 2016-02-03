@@ -41,5 +41,3 @@ class Conference < ActiveRecord::Base
   end
 
 end
-
-#females count males count serialization

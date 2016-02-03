@@ -8,11 +8,6 @@ class CreateSchools < ActiveRecord::Migration
       t.string :address_state, null: false
       t.string :address_two, default: '', null: false
       t.string :address_zip, null: false
-      t.string :contact_email, null: false
-      t.string :contact_first_name, null: false
-      t.string :contact_last_name, null: false
-      t.string :contact_phone_number, null: false
-      t.string :contact_title, null: false
       t.string :name, null: false
       t.string :website, default: '', null: false
 

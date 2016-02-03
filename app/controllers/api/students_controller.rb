@@ -2,6 +2,10 @@ class Api::StudentsController < Api::BaseController
 
   skip_before_filter :authenticate_user, only: [:create]
 
+  has_scope :gender, only: [:index]
+  has_scope :is_flagged, only: [:index]
+  has_scope :is_primary, only: [:index]
+
   def create
     student = Student.new student_params
     if student.save
@@ -45,16 +49,7 @@ class Api::StudentsController < Api::BaseController
   end
 
   def index_json
-    students = Student.includes(:group, :school).page params[:page]
-    if params[:gender]
-      students = students.where gender: Student.genders[params[:gender].downcase]
-    end
-    if params[:is_flagged]
-      students = students.where is_flagged: params[:is_flagged]
-    end
-    if params[:is_primary]
-      students = students.where is_primary: params[:is_primary]
-    end
+    students = apply_scopes(Student).includes(:group, :school).page params[:page]
     if params[:order]
       students = students.order params[:order]
     end

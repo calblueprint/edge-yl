@@ -5,11 +5,6 @@
     address_state: Faker::Address.state,
     address_two: Faker::Address.street_address,
     address_zip: Faker::Address.zip,
-    contact_email: Faker::Internet.email,
-    contact_first_name: Faker::Name.first_name,
-    contact_last_name: Faker::Name.last_name,
-    contact_phone_number: Faker::PhoneNumber.phone_number,
-    contact_title: 'Principal',
     name: "#{Faker::Name.first_name} High School",
     website: Faker::Internet.url('schoolweb.com'),
   )

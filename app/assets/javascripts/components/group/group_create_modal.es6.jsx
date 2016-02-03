@@ -11,20 +11,11 @@ class GroupCreateModal extends CreateModal {
   }
 
   // --------------------------------------------------
-  // State
-  // --------------------------------------------------
-  static get defaultState() {
-    return {
-      letter: '',
-    };
-  }
-
-  // --------------------------------------------------
   // Handlers
   // --------------------------------------------------
   handleClick(event) {
     if (event.target === this._node) {
-      ConferenceActions.storeOverlay(false);
+      ConferenceActions.closeOverlay();
     }
   }
 
@@ -32,18 +23,13 @@ class GroupCreateModal extends CreateModal {
   // Helpers
   // --------------------------------------------------
   createGroup() {
-    var params = {
-      conference_id: this.props.conference.id,
-      letter: this.state.letter,
-    }
-    ConferenceActions.createGroup(params)
+    ConferenceActions.createGroup(this.props.template);
   }
 
   generateHandler(field) {
-    var state = {};
-    return(event) => {
-      state[field] = event.target.value;
-      this.setState(state);
+    return (event) => {
+      var value = event.target.value;
+      ConferenceActions.storeAttribute(field, value);
     };
   }
 

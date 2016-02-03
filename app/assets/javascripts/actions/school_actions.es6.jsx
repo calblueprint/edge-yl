@@ -52,7 +52,7 @@
       return {
         attributes: attributes,
         errors: {},
-        model: type,
+        model: model,
       }
     }
 

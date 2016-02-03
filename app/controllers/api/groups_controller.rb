@@ -12,9 +12,9 @@ class Api::GroupsController < Api::BaseController
   end
 
   def index
-    groups = Group.includes(:conference).where conference_id: params[:conference_id]
     respond_to do |format|
-      format.json { render json: groups, each_serializer: GroupIndexSerializer }
+      format.csv { index_csv }
+      format.json { index_json }
     end
   end
 
@@ -37,6 +37,17 @@ class Api::GroupsController < Api::BaseController
   end
 
   private
+
+  def index_csv
+    groups = Group.all
+    send_data groups.to_csv
+  end
+
+  def index_json
+    groups = Group.includes(:conference).where conference_id: params[:conference_id]
+    render json: groups,
+           each_serializer: GroupIndexSerializer
+  end
 
   def show_csv
     group = Group.find params[:id]

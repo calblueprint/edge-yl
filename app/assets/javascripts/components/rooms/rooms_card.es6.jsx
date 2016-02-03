@@ -64,6 +64,9 @@ class RoomsCard extends Component {
             type={'h4'}
             value={room.number} />
           <CardAttribute
+            label={'Building'}
+            value={room.building} />
+          <CardAttribute
             label={'Capacity'}
             value={room.capacity} />
           <CardAttribute

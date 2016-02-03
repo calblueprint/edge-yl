@@ -54,6 +54,10 @@ class RoomsPage extends Component {
         ),
         content: 'New',
       },
+      {
+        content: 'Export',
+        route: ApiConstants.csvs.rooms,
+      },
     ];
   }
 

@@ -59,13 +59,13 @@
       return true;
     }
 
-    updateLeadership(template) {
-      var attributes = { user_id: template.value.id };
+    updateLeadership(pairing, attributes={}) {
+      attributes = { user_id: pairing.value.id };
       var params = { leadership: attributes };
       var resolve = (response) => this.storeLeadership(response);
       var reject = (response) => this.storeError(response);
       Requester.update(
-        ApiConstants.leaderships.update(template.id),
+        ApiConstants.leaderships.update(pairing.id),
         params,
         resolve,
         reject,

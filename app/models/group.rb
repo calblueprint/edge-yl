@@ -16,8 +16,6 @@ class Group < ActiveRecord::Base
   multisearchable against: [:full_name]
 
   belongs_to :conference
-  belongs_to :primary_leader, class_name: 'User'
-  belongs_to :secondary_leader, class_name: 'User'
 
   has_many :leaderships, dependent: :destroy
   has_many :students
@@ -30,6 +28,26 @@ class Group < ActiveRecord::Base
 
   def full_name
     "Group #{letter}"
+  end
+
+  def self.to_csv
+    attributes = %w{letter}
+    headers = %w{Letter Primary_leader Secondary_leader}
+    CSV.generate(headers: true) do |csv|
+      csv << headers
+      all.each do |group|
+        row = attributes.map{ |attr| group.send(attr) }
+        if group.leaderships.first.user
+          primary_leader = group.leaderships.first.user.full_name
+          row << primary_leader
+        end
+        if group.leaderships.last.user
+          secondary_leader = group.leaderships.last.user.full_name
+          row << secondary_leader
+        end
+        csv << row
+      end 
+    end
   end
 
   private
