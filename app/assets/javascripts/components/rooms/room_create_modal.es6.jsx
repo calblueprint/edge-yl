@@ -5,7 +5,6 @@ class RoomCreateModal extends CreateModal {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      conference: React.PropTypes.object.isRequired,
       template: React.PropTypes.object.isRequired,
       type: React.PropTypes.oneOf(['conference', 'rooms']).isRequired,
     };
@@ -29,9 +28,9 @@ class RoomCreateModal extends CreateModal {
   // --------------------------------------------------
   createRoom() {
     if (this.props.type === 'conference') {
-      ConferenceActions.createRoom(this.props.template, this.props.conference.id);
+      ConferenceActions.createRoom(this.props.template);
     } else if (this.props.type === 'rooms') {
-      RoomsActions.createRoom(this.props.template, this.props.conference.id);
+      RoomsActions.createRoom(this.props.template);
     }
   }
 

@@ -48,7 +48,10 @@ class RoomsPage extends Component {
   generateOptions() {
     return [
       {
-        action: () => RoomsActions.storeTemplate('room'),
+        action: () => RoomsActions.storeTemplate(
+          'room',
+          { conference_id: this.props.conference.id },
+        ),
         content: 'New',
       },
       {

@@ -23,21 +23,6 @@ RSpec.describe School, type: :model do
     expect(factory).to be_invalid
   end
 
-  it "is invalid without a contact_email" do
-    factory = FactoryGirl.build(:school, contact_email: nil)
-    expect(factory).to be_invalid
-  end
-
-  it "is invalid without a contact_first_name" do
-    factory = FactoryGirl.build(:school, contact_first_name: nil)
-    expect(factory).to be_invalid
-  end
-
-  it "is invalid without a contact_last_name" do
-    factory = FactoryGirl.build(:school, contact_last_name: nil)
-    expect(factory).to be_invalid
-  end
-
   it "is invalid without a name" do
     factory = FactoryGirl.build(:school, name: nil)
     expect(factory).to be_invalid
