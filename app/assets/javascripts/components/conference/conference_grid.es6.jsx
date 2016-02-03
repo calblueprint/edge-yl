@@ -20,7 +20,7 @@ class ConferenceGrid extends Component {
         action: () => ConferenceActions.storeTemplate('group',
           {
             conference_id: this.props.conference.id,
-          }
+          },
         ),
         content: 'New',
       },

@@ -36,13 +36,13 @@ class GroupCreateModal extends CreateModal {
       conference_id: this.props.conference.id,
       letter: this.state.letter,
     }
-    ConferenceActions.createGroup(this.props.template)
+    ConferenceActions.createGroup(this.props.template);
   }
 
-  generateAction() {
+  generateHandler(field) {
     return (event) => {
       var value = event.target.value;
-      ConferenceActions.storeAttribute('letter', value);
+      ConferenceActions.storeAttribute(field, value);
     };
   }
 
@@ -59,7 +59,7 @@ class GroupCreateModal extends CreateModal {
           icon={TypeConstants.icons.save} />
         <div style={StyleConstants.cards.body}>
           <CardInput
-            action={this.generateAction()}
+            action={this.generateHandler('letter')}
             errors={errors}
             focus={true}
             label={'Group Letter'}

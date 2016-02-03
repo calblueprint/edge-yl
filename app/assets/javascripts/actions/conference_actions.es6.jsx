@@ -12,7 +12,7 @@
     }
 
     createGroup(template) {
-      var params = { group: template.attributes }
+      var params = { group: template.attributes };
       var resolve = (response) => this.storeGroup(response);
       var reject = (response) => this.storeError(response);
       Requester.post(
