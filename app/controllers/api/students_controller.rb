@@ -2,7 +2,7 @@ class Api::StudentsController < Api::BaseController
 
   skip_before_filter :authenticate_user, only: [:create]
 
-  # scope :gender, only: [:index]
+  has_scope :gender, only: [:index]
   has_scope :is_flagged, only: [:index]
   has_scope :is_primary, only: [:index]
 
@@ -50,9 +50,6 @@ class Api::StudentsController < Api::BaseController
 
   def index_json
     students = apply_scopes(Student).includes(:group, :school).page params[:page]
-    if params[:gender]
-      students = students.where gender: Student.genders[params[:gender].downcase]
-    end
     if params[:order]
       students = students.order params[:order]
     end
