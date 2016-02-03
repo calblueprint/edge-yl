@@ -1,6 +1,6 @@
 class Api::EmailsController < Api::BaseController
 
-  skip_before_filter :authenticate_user
+  skip_before_filter :authenticate_user, only: [:create]
 
   def create
     custom_params = ActionController::Parameters.new(
@@ -22,6 +22,11 @@ class Api::EmailsController < Api::BaseController
   def index
     emails = Email.all
     render json: emails, each_serializer: EmailIndexSerializer
+  end
+
+  def show
+    email = Email.find params[:id]
+    render json: email, serializer: EmailShowSerializer
   end
 
   private

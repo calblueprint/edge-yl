@@ -10,7 +10,10 @@ class PageHeader extends Component {
       options: React.PropTypes.arrayOf(
         React.PropTypes.shape({
           action: React.PropTypes.func,
-          content: React.PropTypes.string,
+          content: React.PropTypes.oneOfType([
+            React.PropTypes.number,
+            React.PropTypes.string,
+          ]),
           route: React.PropTypes.string,
         })
       ),

@@ -45,6 +45,10 @@
           },
           this.templates.card,
         ),
+        column: {
+          display: 'flex',
+          flexFlow: 'column',
+        },
         grid: {
           display: 'flex',
           flexFlow: 'wrap',
@@ -103,8 +107,6 @@
           overflow: 'scroll',
         },
         wrapper: {
-          display: 'flex',
-          flexFlow: 'column',
           height: '100vh',
         },
       };

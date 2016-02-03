@@ -24,6 +24,24 @@
       return true;
     }
 
+    createDraft(student) {
+      var attributes = {
+        emailable_id: student.id,
+        emailable_type: "Student",
+      };
+      var params = { email: attributes };
+      var resolve = (response) => {
+        var id = response.email.id;
+        window.location = RouteConstants.drafts.show(id);
+      };
+      Requester.post(
+        ApiConstants.drafts.create,
+        params,
+        resolve,
+      );
+      return true;
+    }
+
     fetchStudent(id) {
       var resolve = (response) => this.storeStudent(response);
       Requester.get(ApiConstants.students.show(id), resolve);

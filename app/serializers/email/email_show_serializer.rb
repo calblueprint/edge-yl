@@ -1,0 +1,3 @@
+class EmailShowSerializer < EmailIndexSerializer
+
+end

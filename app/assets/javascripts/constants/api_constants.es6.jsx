@@ -19,14 +19,24 @@
     get csvs() {
       return {
         groups: (id) => `/api/groups/${id}.csv`,
+        rooms: '/api/rooms.csv',
         schools: '/api/schools.csv',
         students: '/api/students.csv',
+      };
+    }
+
+    get drafts() {
+      return {
+        create: '/api/drafts',
+        show: (id) => `/api/drafts/${id}`,
       };
     }
 
     get emails() {
       return {
         index: '/api/emails',
+        show: (id) => `/api/emails/${id}`,
+        update: 'api/emails',
       };
     }
 
@@ -45,6 +55,7 @@
     get groups() {
       return {
         create: '/api/groups',
+        index: (conference_id) => `/api/groups?conference_id=${conference_id}`,
         show: (id) => `/api/groups/${id}`,
         update: (id) => `/api/groups/${id}`,
       };
@@ -64,6 +75,7 @@
 
     get rooms() {
       return {
+        create: '/api/rooms',
         show: (id) => `/api/rooms/${id}`,
         index: (conference_id) => {
           return `/api/rooms?&conference_id=${conference_id}`;

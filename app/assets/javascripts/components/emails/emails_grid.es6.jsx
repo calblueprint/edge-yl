@@ -15,12 +15,9 @@ class EmailsGrid extends Component {
   // --------------------------------------------------
   renderCard(email) {
     return (
-      <div key={email.id} style={{ display: 'flex', flexFlow: 'column'}}>
-        <h6>{`Sender: ${email.sender}`}</h6>
-        <h6>{`Recipient: ${email.recipient}`}</h6>
-        <h6>{`Subject: ${email.subject}`}</h6>
-        <h6>{`Content: ${email.content}`}</h6>
-      </div>
+      <EmailsCard
+        email={email}
+        media={this.props.media} />
     );
   }
 

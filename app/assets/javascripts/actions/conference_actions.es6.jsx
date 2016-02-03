@@ -7,6 +7,7 @@
         'storeConference',
         'storeGroup',
         'storeError',
+        'storeRoom',
         'storeValue',
       );
     }
@@ -17,6 +18,20 @@
       var reject = (response) => this.storeError(response);
       Requester.post(
         ApiConstants.groups.create,
+        params,
+        resolve,
+        reject,
+      );
+      return true;
+    }
+
+    createRoom(template, conference_id) {
+      template.attributes['conference_id'] = conference_id;
+      var params = { room: template.attributes };
+      var resolve = (response) => this.storeRoom(response);
+      var reject = (response) => this.storeError(response);
+      Requester.post(
+        ApiConstants.rooms.create,
         params,
         resolve,
         reject,

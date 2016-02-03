@@ -9,9 +9,10 @@
   get 'profile', to: 'users#profile'
 
   resources :conferences, only: [:index, :show]
-  resources :emails, only: [:index]
+  resources :drafts, only: [:show]
+  resources :emails, only: [:index, :show]
   resources :forms, only: [:show]
-  resources :groups, only: [:show]
+  resources :groups, only: [:index, :show]
   resources :rooms, only: [:index, :show]
   resources :students, only: [:index, :show]
   resources :schools, only: [:index, :show]
@@ -37,13 +38,14 @@
 
     resources :conferences, only: [:create, :index, :show, :update]
     resources :comments, only: [:create]
-    resources :emails, only: [:create, :index]
+    resources :drafts, only: [:create, :show, :update]
+    resources :emails, only: [:create, :index, :show]
     resources :feedbacks, only: [:create]
     resources :forms, only: [:show]
-    resources :groups, only: [:create, :show, :update]
+    resources :groups, only: [:create, :index, :show, :update]
     resources :leaderships, only: [:update]
     resources :profiles, only: [:update]
-    resources :rooms, only: [:index, :show, :update]
+    resources :rooms, only: [:create, :index, :show, :update]
     resources :schools, only: [:create, :index, :show, :update]
     resources :students, only: [:create, :index, :show, :update]
     resources :users, only: [:index, :show, :update] do
