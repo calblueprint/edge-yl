@@ -23,13 +23,11 @@ class ConferencePageOverlay extends PageOverlay {
   // Render
   // --------------------------------------------------
   renderModal() {
+    var pairing = this.props.pairing;
     var template = this.props.template;
-    if (this.props.pairing) {
-      return <ConferenceEditModal pairing={this.props.pairing} />;
-    } else if (this.props.template.model == 'group') {
-      if (!template.attributes['leaderships_attributes']) {
-        template.attributes['leaderships_attributes'] = [null, null];
-      }
+    if (pairing) {
+      return <ConferenceEditModal pairing={pairing} />;
+    } else if (template.model == 'group') {
       return (
         <GroupCreateModal
           conference={this.props.conference}

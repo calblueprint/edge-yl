@@ -13,14 +13,6 @@
       );
     }
 
-    storeListAttribute(key, index, value) {
-      return {
-        key: key,
-        index: index,
-        value: value,
-      };
-    }
-
     createGroup(template) {
       var params = { group: template.attributes };
       var resolve = (response) => this.storeGroup(response);
@@ -82,6 +74,14 @@
     storeAttribute(key, value) {
       return {
         key: key,
+        value: value,
+      };
+    }
+
+    storeListAttribute(key, index, value) {
+      return {
+        key: key,
+        index: index,
         value: value,
       };
     }

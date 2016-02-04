@@ -39,7 +39,7 @@ class GroupCreateModal extends CreateModal {
           action: () => ConferenceActions.storeListAttribute(
             'leaderships_attributes',
             primary,
-            {user_id: groupable.id}
+            { user_id: groupable.id }
           ),
           content: Helpers.humanize(groupable.full_name),
         };
@@ -48,7 +48,7 @@ class GroupCreateModal extends CreateModal {
           action: () => ConferenceActions.storeListAttribute(
             'leaderships_attributes',
             secondary,
-            {user_id: groupable.id, style: secondary}
+            { user_id: groupable.id, style: secondary }
           ),
           content: Helpers.humanize(groupable.full_name),
         };
@@ -71,10 +71,8 @@ class GroupCreateModal extends CreateModal {
 
   renderBody() {
     var attributes = this.props.template.attributes;
+    var errors = this.props.template.errors;
     var leaders = attributes['leaderships_attributes'];
-    if (this.props.template.errors) {
-      errors = this.props.template.errors;
-    }
     return (
       <div style={this.styles.section}>
         <CardHeader
@@ -84,7 +82,7 @@ class GroupCreateModal extends CreateModal {
         <div style={StyleConstants.cards.body}>
           <CardInput
             action={this.generateHandler('letter')}
-            errors={errors['letter']}
+            errors={errors.letter}
             focus={true}
             label={'Group Letter'}
             placeholder={'A'}
@@ -94,6 +92,7 @@ class GroupCreateModal extends CreateModal {
             choices={this.generateChoices('primary')}
             errors={errors['leaderships_attributes']}
             label={'Primary Leader'}
+            margin={true}
             value={leaders
                    && leaders[0]
                    && this.findGroupable(leaders[0]['user_id']).full_name} />
@@ -101,6 +100,7 @@ class GroupCreateModal extends CreateModal {
             errors={errors['leaderships_attributes']}
             choices={this.generateChoices('secondary')}
             label={'Secondary Leader'}
+            margin={true}
             value={leaders
                    && leaders[1]
                    && this.findGroupable(leaders[1]['user_id']).full_name} />
