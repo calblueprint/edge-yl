@@ -6,8 +6,14 @@ class GroupCreateModal extends CreateModal {
   static get propTypes() {
     return {
       conference: React.PropTypes.object.isRequired,
-      groupables: React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
+      groupables: React.PropTypes.arrayOf(React.PropTypes.object),
       template: React.PropTypes.object.isRequired,
+    };
+  }
+
+  static get defaultProps() {
+    return {
+      groupables: [],
     };
   }
 
@@ -23,44 +29,24 @@ class GroupCreateModal extends CreateModal {
   // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
-  /** Returns a groupable object (leadership candidate) by their id, this is needed
-   * because template does not store their full name.
-   */
-  findGroupable(groupable_id) {
-    return this.props.groupables.filter((groupable) => groupable.id == groupable_id).pop();
-  }
-
-  generateChoice(groupable, leader) {
-    var primary = 0;
-    var secondary = 1;
-    switch(leader) {
-      case 'primary':
-        return {
-          action: () => ConferenceActions.storeListAttribute(
-            'leaderships_attributes',
-            primary,
-            { user_id: groupable.id }
-          ),
-          content: Helpers.humanize(groupable.full_name),
-        };
-      case 'secondary':
-        return {
-          action: () => ConferenceActions.storeListAttribute(
-            'leaderships_attributes',
-            secondary,
-            { user_id: groupable.id, style: secondary }
-          ),
-          content: Helpers.humanize(groupable.full_name),
-        };
-    }
-  }
-
-  generateChoices(leader) {
-    return this.props.groupables.map((groupable) => this.generateChoice(groupable, leader));
-  }
-
   createGroup() {
     ConferenceActions.createGroup(this.props.template);
+  }
+
+  generateChoice(groupable, index) {
+    return {
+      action: () => ConferenceActions.storeListAttribute(
+        'leaderships_attributes',
+        { user_id: groupable.id },
+        index,
+      ),
+      content: Helpers.humanize(groupable.full_name),
+    };
+  }
+
+  generateChoices() {
+    var groupables = this.props.groupables;
+    return groupables.map((groupable, index) => this.generateChoice(groupable, index));
   }
 
   generateHandler(field) {
@@ -69,10 +55,25 @@ class GroupCreateModal extends CreateModal {
     };
   }
 
+  generateValue(type) {
+    var groupables = this.props.groupables;
+    var leaderships = this.props.template.attributes['leaderships_attributes'];
+    if (type === 'primary' && leaderships[0]) {
+      var id = leaderships[0]['user_id'];
+      var user = groupables.find((groupable) => groupable.id == id);
+      return user.full_name;
+    } else if (type === 'secondary' && leaderships[1]) {
+      var id = leaderships[1]['user_id'];
+      var user = groupables.find((groupable) => groupable.id == id);
+      return user.full_name
+    }
+  }
+
+  // --------------------------------------------------
+  // Render
+  // --------------------------------------------------
   renderBody() {
-    var attributes = this.props.template.attributes;
     var errors = this.props.template.errors;
-    var leaders = attributes['leaderships_attributes'];
     return (
       <div style={this.styles.section}>
         <CardHeader
@@ -93,17 +94,13 @@ class GroupCreateModal extends CreateModal {
             errors={errors['leaderships_attributes']}
             label={'Primary Leader'}
             margin={true}
-            value={leaders
-                   && leaders[0]
-                   && this.findGroupable(leaders[0]['user_id']).full_name} />
+            value={this.generateValue('primary')} />
           <CardDropdown
             errors={errors['leaderships_attributes']}
             choices={this.generateChoices('secondary')}
             label={'Secondary Leader'}
             margin={true}
-            value={leaders
-                   && leaders[1]
-                   && this.findGroupable(leaders[1]['user_id']).full_name} />
+            value={this.generateValue('secondary')} />
         </div>
       </div>
     );
