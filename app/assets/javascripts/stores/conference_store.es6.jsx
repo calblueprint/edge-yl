@@ -17,6 +17,8 @@
         handleStoreConference: ConferenceActions.STORE_CONFERENCE,
         handleStoreError: ConferenceActions.STORE_ERROR,
         handleStoreGroup: ConferenceActions.STORE_GROUP,
+        handleStoreGroupables: ConferenceActions.STORE_GROUPABLES,
+        handleStoreListAttribute: ConferenceActions.STORE_LIST_ATTRIBUTE,
         handleStorePairing: ConferenceActions.STORE_PAIRING,
         handleStoreRoom: ConferenceActions.STORE_ROOM,
         handleStoreTemplate: ConferenceActions.STORE_TEMPLATE,
@@ -30,7 +32,6 @@
       this.template = null;
     }
 
-
     handleDeleteGroup(groupId) {
       this.conference.groups = this.conference.groups.filter(function(group) { return group.id != groupId });
     }
@@ -41,12 +42,15 @@
 
     handleStoreAttribute(attribute) {
       this.template.attributes[attribute.key] = attribute.value;
-
     }
 
     handleStoreGroup(response) {
       this.overlay = false;
       this.conference.groups.push(response.group);
+    }
+
+    handleStoreGroupables(response) {
+      this.groupables = response.users;
     }
 
     handleStoreRoom(response) {
@@ -71,6 +75,10 @@
       this.overlay = true;
       this.pairing = pairing;
       this.template = null;
+    }
+
+    handleStoreListAttribute(attribute) {
+      this.template.attributes[attribute.key][attribute.index] = attribute.value;
     }
 
     handleStoreTemplate(template) {

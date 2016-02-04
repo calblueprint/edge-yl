@@ -6,10 +6,19 @@
         'closeOverlay',
         'storeConference',
         'storeGroup',
+        'storeGroupables',
         'storeError',
         'storeRoom',
         'storeValue',
       );
+    }
+
+    storeListAttribute(key, index, value) {
+      return {
+        key: key,
+        index: index,
+        value: value,
+      };
     }
 
     createGroup(template) {
@@ -63,6 +72,10 @@
     fetchConference(id) {
       var resolve = (response) => this.storeConference(response);
       Requester.get(ApiConstants.conferences.show(id), resolve);
+      // fetching the potential group leaders here, because fetching them on
+      // template creation is too slow
+      var resolve = (response) => this.storeGroupables(response);
+      Requester.get(ApiConstants.users.groupables, resolve);
       return true;
     }
 

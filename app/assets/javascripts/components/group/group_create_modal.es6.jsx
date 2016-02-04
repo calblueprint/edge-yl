@@ -6,6 +6,7 @@ class GroupCreateModal extends CreateModal {
   static get propTypes() {
     return {
       conference: React.PropTypes.object.isRequired,
+      groupables: React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
       template: React.PropTypes.object.isRequired,
     };
   }
@@ -22,21 +23,57 @@ class GroupCreateModal extends CreateModal {
   // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
+  /** Returns a groupable object (leadership candidate) by their id, this is needed
+   * because template does not store their full name.
+   */
+  findGroupable(groupable_id) {
+    return this.props.groupables.filter((groupable) => groupable.id == groupable_id).pop();
+  }
+
+  generateChoice(groupable, leader) {
+    var primary = 0;
+    var secondary = 1;
+    switch(leader) {
+      case 'primary':
+        return {
+          action: () => ConferenceActions.storeListAttribute(
+            'leaderships_attributes',
+            primary,
+            {user_id: groupable.id}
+          ),
+          content: Helpers.humanize(groupable.full_name),
+        };
+      case 'secondary':
+        return {
+          action: () => ConferenceActions.storeListAttribute(
+            'leaderships_attributes',
+            secondary,
+            {user_id: groupable.id, style: secondary}
+          ),
+          content: Helpers.humanize(groupable.full_name),
+        };
+    }
+  }
+
+  generateChoices(leader) {
+    return this.props.groupables.map((groupable) => this.generateChoice(groupable, leader));
+  }
+
   createGroup() {
     ConferenceActions.createGroup(this.props.template);
   }
 
   generateHandler(field) {
-    return (event) => {
-      var value = event.target.value;
-      ConferenceActions.storeAttribute(field, value);
+    return(event) => {
+      ConferenceActions.storeAttribute(field, event.target.value);
     };
   }
 
   renderBody() {
-    var errors = [];
+    var attributes = this.props.template.attributes;
+    var leaders = attributes['leaderships_attributes'];
     if (this.props.template.errors) {
-      errors = this.props.template.errors['letter']
+      errors = this.props.template.errors;
     }
     return (
       <div style={this.styles.section}>
@@ -47,11 +84,26 @@ class GroupCreateModal extends CreateModal {
         <div style={StyleConstants.cards.body}>
           <CardInput
             action={this.generateHandler('letter')}
-            errors={errors}
+            errors={errors['letter']}
             focus={true}
             label={'Group Letter'}
             placeholder={'A'}
             value={''} />
+          <CardDropdown
+            action={this.generateHandler('letter')}
+            choices={this.generateChoices('primary')}
+            errors={errors['leaderships_attributes']}
+            label={'Primary Leader'}
+            value={leaders
+                   && leaders[0]
+                   && this.findGroupable(leaders[0]['user_id']).full_name} />
+          <CardDropdown
+            errors={errors['leaderships_attributes']}
+            choices={this.generateChoices('secondary')}
+            label={'Secondary Leader'}
+            value={leaders
+                   && leaders[1]
+                   && this.findGroupable(leaders[1]['user_id']).full_name} />
         </div>
       </div>
     );
