@@ -1,6 +1,9 @@
 (() => {
   class UserActions {
 
+    // --------------------------------------------------
+    // Setup
+    // --------------------------------------------------
     constructor() {
       this.generateActions(
         'closeOverlay',
@@ -10,22 +13,13 @@
       );
     }
 
+    // --------------------------------------------------
+    // Requests
+    // --------------------------------------------------
     fetchUser(id) {
       var resolve = (response) => this.storeUser(response);
       Requester.get(ApiConstants.users.show(id), resolve);
       return true;
-    }
-
-    storeTemplate(options) {
-      return {
-        choices: options.choices,
-        errors: {},
-        id: options.id,
-        key: options.key,
-        model: options.model,
-        type: options.type,
-        value: options.value,
-      };
     }
 
     updateUser(template, attributes={}) {
@@ -40,6 +34,21 @@
         reject,
       );
       return true;
+    }
+
+    // --------------------------------------------------
+    // Stores
+    // --------------------------------------------------
+    storeTemplate(options) {
+      return {
+        choices: options.choices,
+        errors: {},
+        id: options.id,
+        key: options.key,
+        model: options.model,
+        type: options.type,
+        value: options.value,
+      };
     }
   }
   this.UserActions = alt.createActions(UserActions);

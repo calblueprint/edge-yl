@@ -1,6 +1,9 @@
 (() => {
   class GroupActions {
 
+    // --------------------------------------------------
+    // Setup
+    // --------------------------------------------------
     constructor() {
       this.generateActions(
         'closeOverlay',
@@ -12,6 +15,9 @@
       );
     }
 
+    // --------------------------------------------------
+    // Requests
+    // --------------------------------------------------
     deleteStudent(id) {
       attributes = {};
       attributes['group_id'] = null;
@@ -27,22 +33,6 @@
       var resolve = (response) => this.storeGroup(response);
       Requester.get(ApiConstants.groups.show(id), resolve);
       return true;
-    }
-
-    storePairing(options) {
-      if (options.model === 'leadership') {
-        var resolve = (response) => this.storeGroupables(response);
-        Requester.get(ApiConstants.users.groupables, resolve);
-      }
-      return {
-        choices: options.choices,
-        errors: {},
-        id: options.id,
-        key: options.key,
-        model: options.model,
-        type: options.type,
-        value: options.value,
-      };
     }
 
     updateGroup(pairing, attributes={}) {
@@ -71,6 +61,25 @@
         reject,
       );
       return true;
+    }
+
+    // --------------------------------------------------
+    // Stores
+    // --------------------------------------------------
+    storePairing(options) {
+      if (options.model === 'leadership') {
+        var resolve = (response) => this.storeGroupables(response);
+        Requester.get(ApiConstants.users.groupables, resolve);
+      }
+      return {
+        choices: options.choices,
+        errors: {},
+        id: options.id,
+        key: options.key,
+        model: options.model,
+        type: options.type,
+        value: options.value,
+      };
     }
   }
   this.GroupActions = alt.createActions(GroupActions);

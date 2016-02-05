@@ -1,6 +1,9 @@
 (() => {
   class FormActions {
 
+    // --------------------------------------------------
+    // Setup
+    // --------------------------------------------------
     constructor() {
       this.generateActions(
         'storeError',
@@ -9,6 +12,9 @@
       );
     }
 
+    // --------------------------------------------------
+    // Requests
+    // --------------------------------------------------
     createObject(form) {
       var attributes = {};
       form.sections.map(
@@ -42,6 +48,9 @@
       return true;
     }
 
+    // --------------------------------------------------
+    // Stores
+    // --------------------------------------------------
     storeResponse(section, question, value) {
       return {
         question: question,

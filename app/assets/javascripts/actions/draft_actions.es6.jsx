@@ -1,6 +1,9 @@
 (() => {
   class DraftActions {
 
+    // --------------------------------------------------
+    // Setup
+    // --------------------------------------------------
     constructor() {
       this.generateActions(
         'storeDraft',
@@ -8,6 +11,9 @@
       );
     }
 
+    // --------------------------------------------------
+    // Requests
+    // --------------------------------------------------
     fetchDraft(id) {
       var resolve = (response) => this.storeDraft(response);
       Requester.get(ApiConstants.drafts.show(id), resolve);
@@ -34,6 +40,9 @@
       return true;
     }
 
+    // --------------------------------------------------
+    // Stores
+    // --------------------------------------------------
     storeAttribute(key, value) {
       return {
         key: key,

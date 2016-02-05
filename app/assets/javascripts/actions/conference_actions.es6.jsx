@@ -1,6 +1,9 @@
 (() => {
   class ConferenceActions {
 
+    // --------------------------------------------------
+    // Setup
+    // --------------------------------------------------
     constructor() {
       this.generateActions(
         'closeOverlay',
@@ -13,6 +16,9 @@
       );
     }
 
+    // --------------------------------------------------
+    // Requests
+    // --------------------------------------------------
     createGroup(template) {
       var params = { group: template.attributes };
       var resolve = (response) => this.storeGroup(response);
@@ -67,6 +73,23 @@
       return true;
     }
 
+    updateConference(pairing, attributes={}) {
+      attributes[pairing.key] = pairing.value;
+      var params = { conference: attributes };
+      var resolve = (response) => this.storeConference(response);
+      var reject = (response) => this.storeError(response);
+      Requester.update(
+        ApiConstants.conferences.update(pairing.id),
+        params,
+        resolve,
+        reject,
+      );
+      return true;
+    }
+
+    // --------------------------------------------------
+    // Stores
+    // --------------------------------------------------
     storeAttribute(key, value) {
       return {
         key: key,
@@ -103,20 +126,6 @@
         errors: {},
         model: model,
       };
-    }
-
-    updateConference(pairing, attributes={}) {
-      attributes[pairing.key] = pairing.value;
-      var params = { conference: attributes };
-      var resolve = (response) => this.storeConference(response);
-      var reject = (response) => this.storeError(response);
-      Requester.update(
-        ApiConstants.conferences.update(pairing.id),
-        params,
-        resolve,
-        reject,
-      );
-      return true;
     }
   }
   this.ConferenceActions = alt.createActions(ConferenceActions);

@@ -1,6 +1,9 @@
 (() => {
   class ViewActions {
 
+    // --------------------------------------------------
+    // Setup
+    // --------------------------------------------------
     constructor() {
       this.generateActions(
         'storeMedia',

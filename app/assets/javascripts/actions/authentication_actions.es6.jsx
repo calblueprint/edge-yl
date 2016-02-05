@@ -1,6 +1,9 @@
 (() => {
   class AuthenticationActions {
 
+    // --------------------------------------------------
+    // Setup
+    // --------------------------------------------------
     constructor() {
       this.generateActions(
         'storeError',
@@ -10,6 +13,9 @@
       );
     }
 
+    // --------------------------------------------------
+    // Requests
+    // --------------------------------------------------
     createSession(template) {
       var params = { user: template.attributes };
       var resolve = (response) => this.storeSession(response);
@@ -42,6 +48,9 @@
       return true;
     }
 
+    // --------------------------------------------------
+    // Stores
+    // --------------------------------------------------
     storeAttribute(key, value) {
       return {
         key: key,

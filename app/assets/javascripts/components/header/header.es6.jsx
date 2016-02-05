@@ -79,8 +79,8 @@ class Header extends Component {
   // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
-  toggleSidebar() {
-    ProfileActions.toggleSidebar(this.props.profile);
+  updateSidebar() {
+    ProfileActions.updateSidebar(this.props.profile);
   }
 
   // --------------------------------------------------
@@ -90,7 +90,7 @@ class Header extends Component {
     if (this.props.active) {
       return (
         <Clickable
-          action={() => this.toggleSidebar()}
+          action={() => this.updateSidebar()}
           icon={TypeConstants.icons.hamburger}
           styles={this.clickableStyles}
           type={'i'} />

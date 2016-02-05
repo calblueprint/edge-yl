@@ -1,6 +1,9 @@
 (() => {
   class ConferenceStore {
 
+    // --------------------------------------------------
+    // Setup
+    // --------------------------------------------------
     constructor() {
       this.overlay = false;
       this.conference = {
@@ -26,6 +29,9 @@
       });
     }
 
+    // --------------------------------------------------
+    // Handlers
+    // --------------------------------------------------
     handleCloseOverlay() {
       this.overlay = false;
       this.pairing = null;

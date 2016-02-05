@@ -1,6 +1,9 @@
 (() => {
   class StudentsActions {
 
+    // --------------------------------------------------
+    // Setup
+    // --------------------------------------------------
     constructor() {
       this.generateActions(
         'restoreStudents',
@@ -13,6 +16,9 @@
       return true;
     }
 
+    // --------------------------------------------------
+    // Requests
+    // --------------------------------------------------
     fetchStudents(page, query) {
       var resolve = (response) => {
         response.meta.query = query;
@@ -22,6 +28,9 @@
       return true;
     }
 
+    // --------------------------------------------------
+    // Stores
+    // --------------------------------------------------
     storeFilter(key, active, selected) {
       if (selected) {
         var query = StudentsStore.getState().query;

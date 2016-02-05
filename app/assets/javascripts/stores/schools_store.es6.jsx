@@ -1,6 +1,9 @@
 (() => {
   class SchoolsStore {
 
+    // --------------------------------------------------
+    // Setup
+    // --------------------------------------------------
     constructor() {
       this.pagination = {
         current: 1,
@@ -12,6 +15,9 @@
       });
     }
 
+    // --------------------------------------------------
+    // Handlers
+    // --------------------------------------------------
     handleStoreSchools(response) {
       this.pagination = response.meta.pagination;
       this.schools = response.schools;

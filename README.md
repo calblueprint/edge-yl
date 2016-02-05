@@ -44,6 +44,18 @@ Happy developing!
     Helpers,
     Render,
 
+##### Actions Style Guide
+
+    Setup,
+    Requests,
+    Stores,
+
+##### Stores Style Guide
+
+    Setup,
+    Helpers,
+    Handlers,
+
 ##### CSS Style Guide
 
     display,

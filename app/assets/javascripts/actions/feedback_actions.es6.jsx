@@ -1,6 +1,9 @@
 (() => {
   class FeedbackActions {
 
+    // --------------------------------------------------
+    // Setup
+    // --------------------------------------------------
     constructor() {
       this.generateActions(
         'saveFeedback',
@@ -9,6 +12,9 @@
       );
     }
 
+    // --------------------------------------------------
+    // Requests
+    // --------------------------------------------------
     createFeedback(template, profile) {
       var params = {
         content: template.content,
@@ -24,7 +30,6 @@
       );
       return true;
     }
-
   }
   this.FeedbackActions = alt.createActions(FeedbackActions);
 })();
