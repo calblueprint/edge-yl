@@ -65,7 +65,7 @@ class GroupCreateModal extends CreateModal {
     } else if (type === 'secondary' && leaderships[1]) {
       var id = leaderships[1]['user_id'];
       var user = groupables.find((groupable) => groupable.id == id);
-      return user.full_name
+      return user.full_name;
     }
   }
 
