@@ -50,7 +50,7 @@ Happy developing!
     Requests,
     Stores,
 
-##### Stores Style Guide
+##### Store Style Guide
 
     Setup,
     Helpers,
