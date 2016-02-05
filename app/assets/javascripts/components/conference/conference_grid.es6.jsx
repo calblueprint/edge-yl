@@ -20,13 +20,14 @@ class ConferenceGrid extends Component {
         action: () => ConferenceActions.storeTemplate('group',
           {
             conference_id: this.props.conference.id,
+            leaderships_attributes: [null, null],
           },
         ),
         content: 'New',
       },
       {
         content: 'All',
-        route: '',
+        route: RouteConstants.groups.index(this.props.conference.id),
       },
     ];
   }

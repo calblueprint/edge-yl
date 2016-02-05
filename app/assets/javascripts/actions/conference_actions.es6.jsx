@@ -13,14 +13,6 @@
       );
     }
 
-    storeListAttribute(key, index, value) {
-      return {
-        key: key,
-        index: index,
-        value: value,
-      };
-    }
-
     createGroup(template) {
       var params = { group: template.attributes };
       var resolve = (response) => this.storeGroup(response);
@@ -72,16 +64,20 @@
     fetchConference(id) {
       var resolve = (response) => this.storeConference(response);
       Requester.get(ApiConstants.conferences.show(id), resolve);
-      // fetching the potential group leaders here, because fetching them on
-      // template creation is too slow
-      var resolve = (response) => this.storeGroupables(response);
-      Requester.get(ApiConstants.users.groupables, resolve);
       return true;
     }
 
     storeAttribute(key, value) {
       return {
         key: key,
+        value: value,
+      };
+    }
+
+    storeListAttribute(key, value, index) {
+      return {
+        key: key,
+        index: index,
         value: value,
       };
     }
@@ -98,6 +94,10 @@
     }
 
     storeTemplate(model, attributes={}) {
+      if (model === 'group') {
+        var resolve = (response) => this.storeGroupables(response);
+        Requester.get(ApiConstants.users.groupables, resolve);
+      }
       return {
         attributes: attributes,
         errors: {},
