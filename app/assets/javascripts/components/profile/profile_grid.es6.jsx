@@ -16,7 +16,7 @@ static get propTypes() {
 // --------------------------------------------------
   render() {
     return (
-      <div style={StyleConstants.containers.grid}>
+      <div style={StyleConstants.grids.wrap}>
         <ProfileCard
           editable={this.props.editable}
           media={this.props.media}

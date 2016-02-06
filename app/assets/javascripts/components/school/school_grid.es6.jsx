@@ -16,7 +16,7 @@ class SchoolGrid extends Component {
   // --------------------------------------------------
   render() {
     return (
-      <div style={StyleConstants.containers.grid}>
+      <div style={StyleConstants.grids.wrap}>
         <SchoolCard
           editable={this.props.editable}
           media={this.props.media}

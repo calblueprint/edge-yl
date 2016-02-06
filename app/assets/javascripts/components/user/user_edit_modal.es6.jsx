@@ -63,7 +63,7 @@ class UserEditModal extends EditModal {
           action={() => this.updateUser()}
           content={'Contact Information'}
           icon={TypeConstants.icons.save} />
-        <div style={StyleConstants.cards.body}>
+        <div style={StyleConstants.cards.content}>
           {this.renderChild()}
         </div>
       </div>

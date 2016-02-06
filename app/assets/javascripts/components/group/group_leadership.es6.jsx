@@ -59,7 +59,7 @@ class GroupLeadership extends Component {
 
   render() {
     return (
-      <div style={StyleConstants.cards.body}>
+      <div style={StyleConstants.cards.content}>
         {this.renderLeaderships()}
       </div>
     );

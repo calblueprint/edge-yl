@@ -15,7 +15,7 @@ class SchoolContact extends Component {
   render() {
     var primary_leader = this.props.school.primary_contact;
     return (
-      <div style={StyleConstants.cards.body}>
+      <div style={StyleConstants.cards.content}>
         <h5>{'Primary'}</h5>
         <CardAttribute
           label={'First name'}

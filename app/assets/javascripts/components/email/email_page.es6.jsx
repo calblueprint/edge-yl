@@ -54,8 +54,8 @@ class EmailPage extends Component {
     return (
       <div style={StyleConstants.pages.wrapper}>
         <Header profile={this.selectProfile()} />
+        <Sidebar profile={this.selectProfile()} />
         <div style={StyleConstants.pages.container}>
-          <Sidebar profile={this.selectProfile()} />
           <div style={StyleConstants.pages.content}>
             <h2>{email.subject}</h2>
             <h3>{email.from}</h3>

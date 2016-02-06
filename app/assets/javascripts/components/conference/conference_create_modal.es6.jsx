@@ -42,7 +42,7 @@ class ConferenceCreateModal extends CreateModal {
           action={() => this.createConference()}
           content={'New Conference'}
           icon={TypeConstants.icons.save} />
-        <div style={StyleConstants.cards.body}>
+        <div style={StyleConstants.cards.content}>
           <CardInput
             action={this.generateHandler('name')}
             errors={template.errors.name}

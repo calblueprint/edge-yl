@@ -31,7 +31,7 @@ class ProfileCredentials extends Component {
   render() {
     var profile = this.props.profile;
     return (
-      <div style={StyleConstants.cards.body}>
+      <div style={StyleConstants.cards.content}>
         <CardAttribute
           action={() => this.storeTemplate('first_name')}
           editable={this.props.editable}

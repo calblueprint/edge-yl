@@ -16,7 +16,7 @@ class EmailsCard extends Component {
   render() {
     var email = this.props.email;
     return (
-      <div style={StyleConstants.cards.wrapper('small')}>
+      <div style={StyleConstants.cards.container('small')}>
         <Clickable
           content={email.sender}
           route={RouteConstants.emails.show(email.id)}

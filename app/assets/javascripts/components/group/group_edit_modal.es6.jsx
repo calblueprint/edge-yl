@@ -85,7 +85,7 @@ class GroupEditModal extends EditModal {
           action={action}
           content={content}
           icon={TypeConstants.icons.save} />
-        <div style={StyleConstants.cards.body}>
+        <div style={StyleConstants.cards.content}>
           {this.renderChild(type)}
         </div>
       </div>

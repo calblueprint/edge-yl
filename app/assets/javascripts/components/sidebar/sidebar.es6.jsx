@@ -17,9 +17,10 @@ class Sidebar extends Component {
       container: {
         display: 'flex',
         flexFlow: 'column',
-        position: 'absolute',
-        top: '48px',
+        position: 'fixed',
+        top: StyleConstants.heights.header,
         left: '0px',
+        zIndex: StyleConstants.planes.eight,
         width: StyleConstants.widths.sidebar,
         paddingLeft: '6px',
         boxSizing: 'border-box',

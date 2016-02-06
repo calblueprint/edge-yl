@@ -25,7 +25,7 @@ class StudentOutreach extends Component {
   }
   render() {
     return (
-      <div style={StyleConstants.cards.body}>
+      <div style={StyleConstants.cards.content}>
         {this.renderResponsibility()}
       </div>
     );

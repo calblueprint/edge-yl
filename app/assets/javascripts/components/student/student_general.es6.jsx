@@ -46,7 +46,7 @@ class StudentGeneral extends Component {
   render() {
     var student = this.props.student;
     return (
-      <div style={StyleConstants.cards.body}>
+      <div style={StyleConstants.cards.content}>
         <CardAttribute
           action={() => this.storePairing('first_name')}
           editable={this.props.editable}

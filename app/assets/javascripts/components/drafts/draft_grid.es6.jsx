@@ -15,7 +15,7 @@ class DraftGrid extends Component {
   // --------------------------------------------------
   render() {
     return (
-      <div style={StyleConstants.containers.column}>
+      <div style={StyleConstants.grids.column}>
         <DraftHeader
           draft={this.props.draft}
           template={this.props.template} />

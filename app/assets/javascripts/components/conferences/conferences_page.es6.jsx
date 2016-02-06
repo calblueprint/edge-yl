@@ -77,8 +77,8 @@ class ConferencesPage extends Component {
       <div style={StyleConstants.pages.wrapper}>
         {this.renderOverlay()}
         <Header profile={this.selectProfile()} />
+        <Sidebar profile={this.selectProfile()} />
         <div style={StyleConstants.pages.container}>
-          <Sidebar profile={this.selectProfile()} />
           <div style={StyleConstants.pages.content}>
             <GridHeader
               label={'Conferences'}

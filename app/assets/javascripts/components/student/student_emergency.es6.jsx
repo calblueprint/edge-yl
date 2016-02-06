@@ -15,7 +15,7 @@ class StudentEmergency extends Component {
   render() {
     var student = this.props.student;
     return (
-      <div style={StyleConstants.cards.body}>
+      <div style={StyleConstants.cards.content}>
         <h5>{'Guardian One'}</h5>
         <CardAttribute
           label={'First name'}

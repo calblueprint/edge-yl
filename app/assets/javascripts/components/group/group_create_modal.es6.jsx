@@ -80,7 +80,7 @@ class GroupCreateModal extends CreateModal {
           action={() => this.createGroup()}
           content={'New Group'}
           icon={TypeConstants.icons.save} />
-        <div style={StyleConstants.cards.body}>
+        <div style={StyleConstants.cards.content}>
           <CardInput
             action={this.generateHandler('letter')}
             errors={errors.letter}
