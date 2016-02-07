@@ -77,9 +77,10 @@ class SchoolsPage extends Component {
         <Sidebar profile={this.selectProfile()} />
         <div style={StyleConstants.pages.container}>
           <div style={StyleConstants.pages.content}>
-            <GridHeader
-              label={'Schools'}
-              options={this.generateOptions()} />
+            <PageHeader
+              options={this.generateOptions()}
+              title={'Schools'}
+              type={'schools'} />
             <SchoolsGrid
               media={this.state.media}
               schools={this.state.schools} />
