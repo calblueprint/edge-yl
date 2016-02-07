@@ -11,6 +11,9 @@
       );
     }
 
+    // --------------------------------------------------
+    // Listeners
+    // --------------------------------------------------
     attachListener() {
       window.onresize = () => {
         this.storeMedia(document.documentElement.clientWidth);
