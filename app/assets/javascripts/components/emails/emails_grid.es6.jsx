@@ -17,6 +17,7 @@ class EmailsGrid extends Component {
     return (
       <EmailsCard
         email={email}
+        key={email.id}
         media={this.props.media} />
     );
   }
