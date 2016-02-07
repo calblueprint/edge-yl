@@ -80,9 +80,10 @@ class ConferencesPage extends Component {
         <Sidebar profile={this.selectProfile()} />
         <div style={StyleConstants.pages.container}>
           <div style={StyleConstants.pages.content}>
-            <GridHeader
-              label={'Conferences'}
-              options={this.generateOptions()} />
+            <PageHeader
+              options={this.generateOptions()}
+              title={'Conferences'}
+              type={'conferences'} />
             <ConferencesGrid
               conferences={this.state.conferences}
               media={this.state.media} />

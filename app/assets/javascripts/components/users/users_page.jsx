@@ -64,6 +64,9 @@ class UsersPage extends Component {
         <Sidebar profile={this.selectProfile()} />
         <div style={StyleConstants.pages.container}>
           <div style={StyleConstants.pages.content}>
+            <PageHeader
+              title={'Volunteers'}
+              type={'volunteers'} />
             <UsersGrid
               media={this.state.media}
               users={this.state.users} />

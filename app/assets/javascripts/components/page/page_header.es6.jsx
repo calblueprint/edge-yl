@@ -5,8 +5,8 @@ class PageHeader extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      conference: React.PropTypes.object.isRequired,
-      conferences: React.PropTypes.array.isRequired,
+      conference: React.PropTypes.object,
+      conferences: React.PropTypes.array,
       options: React.PropTypes.arrayOf(
         React.PropTypes.shape({
           action: React.PropTypes.func,
@@ -18,12 +18,21 @@ class PageHeader extends Component {
         })
       ),
       title: React.PropTypes.string.isRequired,
-      type: React.PropTypes.oneOf(['groups', 'rooms']).isRequired,
+      type: React.PropTypes.oneOf([
+        'conferences',
+        'groups',
+        'rooms',
+        'schools',
+        'students',
+        'volunteers',
+      ]).isRequired,
     };
   }
 
   static get defaultProps() {
     return {
+      conference: null,
+      conferences: [],
       options: [],
     };
   }
@@ -62,6 +71,17 @@ class PageHeader extends Component {
     }
   }
 
+  renderFilter() {
+    var type = this.props.type;
+    if (type === 'groups' || type === 'rooms') {
+      return (
+        <PageFilter
+          conference={this.props.conference}
+          conferences={this.props.conferences}
+          type={this.props.type} />
+      );
+    }
+  }
   renderOption(option, index, length) {
     return (
       <div key={index} style={this.styles.section}>
@@ -87,10 +107,7 @@ class PageHeader extends Component {
           <h4 style={this.styles.title}>
             {this.props.title}
           </h4>
-          <PageFilter
-            conference={this.props.conference}
-            conferences={this.props.conferences}
-            type={this.props.type} />
+          {this.renderFilter()}
         </div>
         <div style={this.styles.section}>
           {this.renderOptions()}
