@@ -57,9 +57,7 @@ class EmailPage extends Component {
         <Sidebar profile={this.selectProfile()} />
         <div style={StyleConstants.pages.container}>
           <div style={StyleConstants.pages.content}>
-            <h2>{email.subject}</h2>
-            <h3>{email.from}</h3>
-            <p>{email.content}</p>
+            <EmailGrid email={this.state.email} />
           </div>
         </div>
       </div>
