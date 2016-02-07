@@ -1,11 +1,12 @@
-class SchoolContact extends Component {
+class ContactsCard extends Component {
 
   // --------------------------------------------------
   // Props
   // --------------------------------------------------
   static get propTypes() {
     return {
-      school: React.PropTypes.object.isRequired,
+      contact: React.PropTypes.object.isRequired,
+      media: React.PropTypes.string.isRequired,
     };
   }
 
@@ -13,10 +14,12 @@ class SchoolContact extends Component {
   // Render
   // --------------------------------------------------
   render() {
-    var contact = this.props.school.primary_contact;
+    var contact = this.props.contact;
     return (
-      <div style={StyleConstants.cards.content}>
-        <h5>{'Primary'}</h5>
+      <div style={StyleConstants.cards.wrapper(this.props.media)}>
+        <CardHeader content={'Contact Information'} />
+        <div style={StyleConstants.cards.body}>
+          <h5>{'Secondary'}</h5>
           <CardAttribute
             label={'First name'}
             value={contact.first_name} />
@@ -29,6 +32,7 @@ class SchoolContact extends Component {
           <CardAttribute
             label={'Title'}
             value={contact.title} />
+        </div>
       </div>
     );
   }

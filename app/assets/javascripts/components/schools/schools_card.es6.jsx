@@ -28,6 +28,15 @@ class SchoolsCard extends Component {
           <CardAttribute
             label={'Website'}
             value={school.website} />
+          <CardAttribute
+            label={'Contact name'}
+            value={`${school.primary_contact.first_name} ${school.primary_contact.last_name}`} />
+          <CardAttribute
+            label={'Contact phone number'}
+            value={school.primary_contact.phone_number} />
+          <CardAttribute
+            label={'Contact email'}
+            value={school.primary_contact.email} />
           </div>
       </div>
     );

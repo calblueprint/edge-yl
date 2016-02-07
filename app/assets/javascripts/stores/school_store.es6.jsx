@@ -9,8 +9,8 @@
       this.school = {
         comments: [],
         contacts: [],
-        other_contacts: [],
         primary_contact: {},
+        secondary_contacts: [],
         students: [],
       };
       this.pairing = null;
