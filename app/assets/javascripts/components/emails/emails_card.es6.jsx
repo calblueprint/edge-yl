@@ -27,6 +27,7 @@ class EmailsCard extends Component {
   // --------------------------------------------------
   renderFrom() {
     // TODO: This should route to the appropriate emailable show page.
+    var email = this.props.email;
     return (
       <Clickable
         content={email.from}

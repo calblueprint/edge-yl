@@ -4,9 +4,9 @@ admin = User.first
   sender = Faker::Internet.email
   new_email = Email.create(
     content: Faker::Lorem.sentence,
-    from: "#{Faker::Lorem.name} <#{sender}>",
+    from: "#{Faker::Name.name} <#{sender}>",
     sender: sender,
-    subject: "#{Faker::Hacker.noun} #{Faker::Hacker.verb} #{Faker::Hacker.noun}",
+    subject: "#{Faker::Hacker.noun} #{Faker::Hacker.verb} #{Faker::Hacker.noun}".humanize,
     recipient: admin.email,
     to: "#{admin.full_name} <#{admin.email}>",
   )
