@@ -30,7 +30,7 @@ class StudentConference extends Component {
 
   render() {
     return (
-      <div style={StyleConstants.cards.body}>
+      <div style={StyleConstants.cards.content}>
         <h5>{'Status'}</h5>
         <br />
         {this.renderGroup()}

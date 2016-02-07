@@ -16,9 +16,9 @@ class UsersCard extends Component {
   render() {
     var user = this.props.user;
     return (
-      <div style={StyleConstants.cards.wrapper(this.props.media)}>
+      <div style={StyleConstants.cards.container(this.props.media)}>
         <CardHeader content={'Volunteer'} />
-        <div style={StyleConstants.cards.body}>
+        <div style={StyleConstants.cards.content}>
           <CardAttribute
             clickable={true}
             label={'Name'}

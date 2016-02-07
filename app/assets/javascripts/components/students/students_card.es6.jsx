@@ -56,9 +56,9 @@ class StudentsCard extends Component {
   render() {
     var student = this.props.student;
     return (
-      <div style={StyleConstants.cards.wrapper(this.props.media)}>
+      <div style={StyleConstants.cards.container(this.props.media)}>
         {this.renderHeader()}
-        <div style={StyleConstants.cards.body}>
+        <div style={StyleConstants.cards.content}>
           <CardAttribute
             clickable={true}
             label={'Name'}

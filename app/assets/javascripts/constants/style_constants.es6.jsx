@@ -6,7 +6,7 @@
         ash: '#565a5c',
         azure: '#78c1ee',
         blue: '#68b1de',
-        fog: 'rgba(255, 255, 255, 0.9)',
+        fog: 'rgba(245, 250, 255, 0.95)',
         gray: '#d6d6d6',
         indigo: '#28719e',
         opaque: 'rgba(255, 255, 255, 0.85)',
@@ -18,19 +18,18 @@
 
     get cards() {
       return {
-        body: {
-          display: 'flex',
-          flexFlow: 'column',
-          flex: '1',
-          padding: '18px',
-        },
-        wrapper: (media) => Object.assign(
+        container: (media) => Object.assign(
           {},
           this.containers.card,
           { marginTop: '12px' },
           media === 'big' && { width: '49%' },
-          media === 'small' && { width: '100%' }
+          media === 'small' && { width: '100%' },
         ),
+        content: {
+          display: 'flex',
+          flexFlow: 'column',
+          padding: '16px',
+        },
       };
     }
 
@@ -45,17 +44,6 @@
           },
           this.templates.card,
         ),
-        column: {
-          display: 'flex',
-          flexFlow: 'column',
-        },
-        grid: {
-          display: 'flex',
-          flexFlow: 'wrap',
-          justifyContent: 'space-between',
-          alignContent: 'flex-start',
-          width: '100%',
-        },
         header: (left) => Object.assign(
           {},
           {
@@ -66,8 +54,8 @@
             boxSizing: 'border-box',
           },
           left && { paddingLeft: '6px' },
-          !left && { paddingRight: '6px', justifyContent: 'flex-end' }
-        )
+          !left && { paddingRight: '6px', justifyContent: 'flex-end' },
+        ),
       };
     }
 
@@ -81,6 +69,23 @@
           small: '16px',
           smaller: '14px',
           smallest: '12px',
+        },
+      };
+    }
+
+    get grids() {
+      return {
+        column: {
+          display: 'flex',
+          flexFlow: 'column',
+          width: '100%',
+        },
+        wrap: {
+          display: 'flex',
+          flexFlow: 'wrap',
+          justifyContent: 'space-between',
+          alignContent: 'flex-start',
+          width: '100%',
         },
       };
     }
@@ -103,11 +108,12 @@
           display: 'flex',
           flexFlow: 'column',
           flex: '1',
-          padding: '0px 184px 24px 12px',
+          padding: '0px 184px 12px 12px',
           overflow: 'scroll',
         },
         wrapper: {
-          height: '100vh',
+          display: 'flex',
+          minHeight: '100vh',
         },
       };
     }

@@ -29,7 +29,7 @@ class ConferenceGeneral extends Component {
   render() {
     var conference = this.props.conference;
     return (
-      <div style={StyleConstants.cards.body}>
+      <div style={StyleConstants.cards.content}>
         <CardAttribute
           action={() => this.storePairing('name')}
           editable={this.props.editable}

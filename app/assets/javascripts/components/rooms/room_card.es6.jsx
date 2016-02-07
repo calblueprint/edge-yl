@@ -37,7 +37,7 @@ class RoomCard extends Component {
 
   render() {
     return (
-      <div style={StyleConstants.cards.wrapper(this.props.media)}>
+      <div style={StyleConstants.cards.container(this.props.media)}>
         <CardHeader content={this.renderTitle()} />
         {this.renderBody()}
       </div>

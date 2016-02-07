@@ -28,7 +28,7 @@ class ConferencesGrid extends Component {
 
   render() {
     return (
-      <div style={StyleConstants.containers.grid}>
+      <div style={StyleConstants.grids.wrap}>
         {this.renderCards()}
       </div>
     );

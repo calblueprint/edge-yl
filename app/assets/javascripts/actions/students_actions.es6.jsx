@@ -11,6 +11,9 @@
       );
     }
 
+    // --------------------------------------------------
+    // Listeners
+    // --------------------------------------------------
     attachListener() {
       window.onpopstate = (event) => this.restoreStudents(event.state);
       return true;

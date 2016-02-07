@@ -63,7 +63,7 @@ class ProfileEditModal extends EditModal {
           action={() => this.updateProfile()}
           content={'Profile Preview'}
           icon={TypeConstants.icons.save} />
-        <div style={StyleConstants.cards.body}>
+        <div style={StyleConstants.cards.content}>
           {this.renderChild()}
         </div>
       </div>

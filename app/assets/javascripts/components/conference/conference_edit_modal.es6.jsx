@@ -36,7 +36,7 @@ class ConferenceEditModal extends EditModal {
           action={() => this.updateStudent()}
           content={'General Information'}
           icon={TypeConstants.icons.save} />
-        <div style={StyleConstants.cards.body}>
+        <div style={StyleConstants.cards.content}>
           <CardInput
             action={(event) => ConferenceActions.storeAttribute(event.target.value)}
             errors={pairing.errors[pairing.key]}

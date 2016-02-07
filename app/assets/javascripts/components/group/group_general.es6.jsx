@@ -29,7 +29,7 @@ class GroupGeneral extends Component {
   render() {
     var group = this.props.group;
     return (
-      <div style={StyleConstants.cards.body}>
+      <div style={StyleConstants.cards.content}>
         <CardAttribute
           action={() => this.storePairing('letter')}
           editable={this.props.editable}

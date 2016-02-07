@@ -77,7 +77,7 @@ class RoomCreateModal extends CreateModal {
           action={() => this.createRoom()}
           content={'New Room'}
           icon={TypeConstants.icons.save} />
-        <div style={StyleConstants.cards.body}>
+        <div style={StyleConstants.cards.content}>
           <CardInput
             action={this.generateHandler('number')}
             errors={errors.number}

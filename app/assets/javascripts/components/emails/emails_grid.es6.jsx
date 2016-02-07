@@ -17,6 +17,7 @@ class EmailsGrid extends Component {
     return (
       <EmailsCard
         email={email}
+        key={email.id}
         media={this.props.media} />
     );
   }
@@ -27,7 +28,7 @@ class EmailsGrid extends Component {
 
   render() {
     return (
-      <div style={StyleConstants.containers.grid}>
+      <div style={StyleConstants.grids.column}>
         {this.renderCards()}
       </div>
     );

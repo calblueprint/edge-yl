@@ -16,9 +16,9 @@ class SchoolsCard extends Component {
   render() {
     var school = this.props.school;
     return (
-      <div style={StyleConstants.cards.wrapper(this.props.media)}>
+      <div style={StyleConstants.cards.container(this.props.media)}>
         <CardHeader content={'School'} />
-        <div style={StyleConstants.cards.body}>
+        <div style={StyleConstants.cards.content}>
           <CardAttribute
             clickable={true}
             label={'Name'}

@@ -58,7 +58,7 @@ class CommentCreateModal extends CreateModal {
           action={() => this.createComment()}
           content={'New Comment'}
           icon={TypeConstants.icons.save} />
-        <div style={StyleConstants.cards.body}>
+        <div style={StyleConstants.cards.content}>
           <CardInput
             action={this.generateAction()}
             errors={template.errors.content}

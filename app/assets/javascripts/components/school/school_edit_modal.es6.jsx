@@ -36,7 +36,7 @@ class SchoolEditModal extends EditModal {
           action={() => this.updateSchool()}
           content={'General Information'}
           icon={TypeConstants.icons.save} />
-        <div style={StyleConstants.cards.body}>
+        <div style={StyleConstants.cards.content}>
           <CardInput
             action={(event) => SchoolActions.storeValue(event.target.value)}
             errors={pairing.errors[pairing.key]}

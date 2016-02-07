@@ -11,17 +11,42 @@ class EmailsCard extends Component {
   }
 
   // --------------------------------------------------
+  // Styles
+  // --------------------------------------------------
+  get styles() {
+    return {
+      container: {
+        display: 'flex',
+        padding: '16px',
+      },
+    };
+  }
+
+  // --------------------------------------------------
   // Render
   // --------------------------------------------------
+  renderFrom() {
+    // TODO: This should route to the appropriate emailable show page.
+    var email = this.props.email;
+    return (
+      <Clickable
+        content={email.from}
+        route={RouteConstants.emails.show(email.id)}
+        type={'h6'} />
+    );
+  }
+
   render() {
     var email = this.props.email;
     return (
-      <div style={StyleConstants.cards.wrapper('small')}>
-        <Clickable
-          content={email.sender}
-          route={RouteConstants.emails.show(email.id)}
-          type={'h4'} />
-        <p>{`Subject: ${email.subject}`}</p>
+      <div style={StyleConstants.cards.container('small')}>
+        <div style={this.styles.container}>
+          {this.renderFrom()}
+          <Clickable
+            content={`Subject: ${email.subject}`}
+            route={RouteConstants.emails.show(email.id)}
+            type={'p'} />
+        </div>
       </div>
     );
   }

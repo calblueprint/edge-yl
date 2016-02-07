@@ -31,7 +31,7 @@ class RoomGeneral extends Component {
   render() {
     var room = this.props.room;
     return (
-      <div style={StyleConstants.cards.body}>
+      <div style={StyleConstants.cards.content}>
         <CardAttribute
           action={() => this.storeTemplate('number')}
           editable={this.props.editable}
