@@ -16,9 +16,9 @@ class ContactsCard extends Component {
   render() {
     var contact = this.props.contact;
     return (
-      <div style={StyleConstants.cards.wrapper(this.props.media)}>
+      <div style={StyleConstants.cards.container(this.props.media)}>
         <CardHeader content={'Contact Information'} />
-        <div style={StyleConstants.cards.body}>
+        <div style={StyleConstants.cards.content}>
           <h5>{'Secondary'}</h5>
           <CardAttribute
             label={'First name'}
