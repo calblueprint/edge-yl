@@ -20,7 +20,7 @@ class Sidebar extends Component {
         position: 'fixed',
         top: StyleConstants.heights.header,
         left: '0px',
-        zIndex: StyleConstants.planes.eight,
+        zIndex: StyleConstants.planes.seven,
         width: StyleConstants.widths.sidebar,
         paddingLeft: '6px',
         boxSizing: 'border-box',
