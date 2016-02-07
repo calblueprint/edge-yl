@@ -21,7 +21,6 @@
         handleStoreError: ConferenceActions.STORE_ERROR,
         handleStoreGroup: ConferenceActions.STORE_GROUP,
         handleStoreGroupables: ConferenceActions.STORE_GROUPABLES,
-        handleStoreListAttribute: ConferenceActions.STORE_LIST_ATTRIBUTE,
         handleStorePairing: ConferenceActions.STORE_PAIRING,
         handleStoreRoom: ConferenceActions.STORE_ROOM,
         handleStoreTemplate: ConferenceActions.STORE_TEMPLATE,
@@ -81,10 +80,6 @@
       this.overlay = true;
       this.pairing = pairing;
       this.template = null;
-    }
-
-    handleStoreListAttribute(attribute) {
-      this.template.attributes[attribute.key][attribute.index] = attribute.value;
     }
 
     handleStoreTemplate(template) {

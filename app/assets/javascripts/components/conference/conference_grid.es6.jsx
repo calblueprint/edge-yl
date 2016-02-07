@@ -17,11 +17,9 @@ class ConferenceGrid extends Component {
   generateGroupsOptions() {
     return [
       {
-        action: () => ConferenceActions.storeTemplate('group',
-          {
-            conference_id: this.props.conference.id,
-            leaderships_attributes: [null, null],
-          },
+        action: () => ConferenceActions.storeTemplate(
+          'group',
+          { conference_id: this.props.conference.id },
         ),
         content: 'New',
       },

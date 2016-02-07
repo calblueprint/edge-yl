@@ -33,20 +33,22 @@ class GroupCreateModal extends CreateModal {
     ConferenceActions.createGroup(this.props.template);
   }
 
-  generateChoice(groupable, index) {
+  generateChoice(groupable, type) {
     return {
-      action: () => ConferenceActions.storeListAttribute(
-        'leaderships_attributes',
-        { user_id: groupable.id },
-        index,
+      action: () => ConferenceActions.storeAttribute(
+        type === 'primary' ? 'primary_leader' : 'secondary_leader',
+        {
+          style: type === 'primary' ? 1 : 0,
+          user_id: groupable.id,
+        },
       ),
       content: Helpers.humanize(groupable.full_name),
     };
   }
 
-  generateChoices() {
+  generateChoices(type) {
     var groupables = this.props.groupables;
-    return groupables.map((groupable, index) => this.generateChoice(groupable, index));
+    return groupables.map((groupable) => this.generateChoice(groupable, type));
   }
 
   generateHandler(field) {
@@ -57,13 +59,13 @@ class GroupCreateModal extends CreateModal {
 
   generateValue(type) {
     var groupables = this.props.groupables;
-    var leaderships = this.props.template.attributes['leaderships_attributes'];
-    if (type === 'primary' && leaderships[0]) {
-      var id = leaderships[0]['user_id'];
+    var attributes = this.props.template.attributes;
+    if (type === 'primary' && attributes['primary_leader']) {
+      var id = attributes['primary_leader']['user_id'];
       var user = groupables.find((groupable) => groupable.id == id);
       return user.full_name;
-    } else if (type === 'secondary' && leaderships[1]) {
-      var id = leaderships[1]['user_id'];
+    } else if (type === 'secondary' && attributes['secondary_leader']) {
+      var id = attributes['secondary_leader']['user_id'];
       var user = groupables.find((groupable) => groupable.id == id);
       return user.full_name;
     }

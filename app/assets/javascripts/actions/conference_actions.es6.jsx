@@ -20,7 +20,14 @@
     // Requests
     // --------------------------------------------------
     createGroup(template) {
-      var params = { group: template.attributes };
+      var attributes = {
+        letter: template.attributes.letter,
+        leaderships_attributes: [],
+      };
+      var leaderships = attributes['leaderships_attributes'];
+      leaderships.push(template.attributes['primary_leader']);
+      leaderships.push(template.attributes['secondary_leader']);
+      var params = { group: attributes };
       var resolve = (response) => this.storeGroup(response);
       var reject = (response) => this.storeError(response);
       Requester.post(
@@ -93,14 +100,6 @@
     storeAttribute(key, value) {
       return {
         key: key,
-        value: value,
-      };
-    }
-
-    storeListAttribute(key, value, index) {
-      return {
-        key: key,
-        index: index,
         value: value,
       };
     }
