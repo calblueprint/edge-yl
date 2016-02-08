@@ -12,6 +12,7 @@
       this.template = null;
       this.bindListeners({
         handleCloseOverlay: RoomsActions.CLOSE_OVERLAY,
+        handleDeleteRoom: RoomsActions.DELETE_ROOM,
         handleStoreRoom: RoomsActions.STORE_ROOM,
         handleStoreRooms: RoomsActions.STORE_ROOMS,
         handleStoreAttribute: RoomsActions.STORE_ATTRIBUTE,
@@ -25,6 +26,10 @@
     handleCloseOverlay() {
       this.overlay = false;
       this.template = null;
+    }
+
+    handleDeleteRoom(roomId) {
+      this.rooms = this.rooms.filter(function(room) { return room.id != roomId });
     }
 
     handleStoreAttribute(attribute) {

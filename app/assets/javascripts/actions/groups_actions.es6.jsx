@@ -10,9 +10,21 @@
       );
     }
 
+
     // --------------------------------------------------
     // Requests
     // --------------------------------------------------
+    deleteGroup(id) {
+      var attributes = {};
+      attributes['conference_id'] = null;
+      var params = { group: attributes };
+      Requester.update(
+        ApiConstants.groups.update(id),
+        params,
+      );
+      return id;
+    }
+
     fetchGroups(conference) {
       var resolve = (response) => this.storeGroups(response);
       Requester.get(ApiConstants.groups.index(conference.id), resolve);

@@ -51,6 +51,10 @@ class GroupsPage extends Component {
         content: 'Export',
         route: ApiConstants.csvs.groups,
       },
+      {
+        action: () => ViewActions.toggleEditability(),
+        content: this.state.editable ? 'Finish' : 'Edit',
+      },
     ];
   }
 
@@ -77,6 +81,7 @@ class GroupsPage extends Component {
               title={'Groups'}
               type={'groups'} />
             <GroupsGrid
+              editable={this.state.editable}
               media={this.state.media}
               groups={this.state.groups}
               type={TypeConstants.group.default} />

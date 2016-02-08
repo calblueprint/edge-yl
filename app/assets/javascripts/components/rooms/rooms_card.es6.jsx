@@ -18,10 +18,14 @@ class RoomsCard extends Component {
   // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
-  deleteRoomFromConference() {
+  deleteRoom() {
     var response = confirm('This action cannot be undone.');
     if (response) {
-      ConferenceActions.deleteRoom(this.props.room.id);
+      if (this.props.type == TypeConstants.room.conference) {
+        ConferenceActions.deleteRoom(this.props.room.id);
+      } else if (this.props.type == TypeConstants.room.default) {
+        RoomsActions.deleteRoom(this.props.room.id);
+      }
     }
   }
 
@@ -32,7 +36,7 @@ class RoomsCard extends Component {
     if (this.props.editable) {
       return (
         <CardHeader
-          action={() => this.deleteRoomFromConference()}
+          action={() => this.deleteRoom()}
           content={'Room'}
           icon={TypeConstants.icons.delete} />
       );

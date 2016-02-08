@@ -55,6 +55,10 @@ class RoomsPage extends Component {
         content: 'New',
       },
       {
+        action: () => ViewActions.toggleEditability(),
+        content: this.state.editable ? 'Finish' : 'Edit',
+      },
+      {
         content: 'Export',
         route: ApiConstants.csvs.rooms,
       },
@@ -96,6 +100,7 @@ class RoomsPage extends Component {
               title={'Rooms'}
               type={'rooms'} />
             <RoomsGrid
+              editable={this.state.editable}
               media={this.state.media}
               rooms={this.state.rooms}
               type={TypeConstants.room.default} />
