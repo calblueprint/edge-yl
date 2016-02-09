@@ -1,12 +1,19 @@
 (() => {
   class Requester {
 
-    csv(route, resolve, reject) {
+    csv(route, type) {
       var request = this.initialize('GET', route, 'text/csv');
       request.onreadystatechange = () => {
         if (request.readyState === XMLHttpRequest.DONE) {
-          if (request.status === 200 && resolve) {
-            resolve(request.response);
+          if (request.status === 200) {
+            var a = document.createElement('a');
+            var encoding = 'data:attachment/csv';
+            a.href = `${encoding}, ${encodeURIComponent(request.response)}`;
+            a.target = '_blank';
+            a.download = `${type}.csv`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
           }
         }
       };
