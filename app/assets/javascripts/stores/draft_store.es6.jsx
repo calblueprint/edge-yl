@@ -9,7 +9,6 @@
       this.template = {
         attributes: {},
         errors: {},
-        saved: '',
       };
       this.bindListeners({
         handleStoreAttribute: DraftActions.STORE_ATTRIBUTE,
@@ -26,14 +25,15 @@
     }
 
     handleStoreDraft(response) {
-      this.draft = response.email;
+      var draft = response.email;
+      this.draft = draft;
       this.template.attributes = {
-        id: response.email.id,
-        content: response.email.content,
-        subject: response.email.subject,
-        to: response.email.to,
+        id: draft.id,
+        content: draft.content,
+        subject: draft.subject,
+        to: draft.to,
+        updated_at: draft.updated_at,
       };
-      this.template.saved = "Saved Draft at: " + response.email.updated_at;
     }
 
     handleStoreErrors(response) {

@@ -36,26 +36,21 @@ class DraftBody extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
-  renderSave() {
-    if(this.props.template.saved) {
-      return (
-        <span>{this.props.template.saved}</span>
-      );
-    }
-  }
-
   render() {
     var draft = this.props.draft;
     var template = this.props.template;
     return (
       <div style={this.styles.container}>
-        <DraftSubject draft={draft} />
-        <DraftContent draft={draft} />
-        {this.renderSave()}
+        <DraftSubject
+          draft={draft}
+          template={template} />
+        <DraftContent
+          draft={draft}
+          template={template} />
         <FormButton
           action={() => this.sendEmail()}
           content={'Send'}
-          margin={this.props.template.message ? 12 : 24} />
+          margin={12} />
       </div>
     );
   }

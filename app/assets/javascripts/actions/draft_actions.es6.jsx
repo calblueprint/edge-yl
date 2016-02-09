@@ -36,18 +36,18 @@
     }
 
     storeAttribute(key, value, id) {
-      // Fire a request to save the draft on the server.
-      var attributes = { id: id };
+      var attributes = {};
       attributes[key] = value;
       var params = { email: attributes };
-      var reject = (response) => this.storeErrors(response);
       var resolve =  (response) => this.storeDraft(response);
+      var reject = (response) => this.storeErrors(response);
       Requester.update(
         ApiConstants.drafts.update(id),
         params,
         resolve,
         reject,
       );
+      return true;
     }
   }
   this.DraftActions = alt.createActions(DraftActions);

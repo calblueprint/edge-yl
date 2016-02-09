@@ -5,14 +5,7 @@ class DraftSubject extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      draft: React.PropTypes.object.isRequired,
-      errors: React.PropTypes.array,
-    };
-  }
-
-  static get defaultProps() {
-    return {
-      errors: [],
+      template: React.PropTypes.object.isRequired,
     };
   }
 
@@ -26,8 +19,9 @@ class DraftSubject extends Component {
         flexFlow: 'column',
         alignSelf: 'stretch',
       },
-      error: {
-        color: StyleConstants.colors.red,
+      section: {
+        display: 'flex',
+        justifyContent: 'space-between',
       },
     };
   }
@@ -49,27 +43,21 @@ class DraftSubject extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
-  renderError() {
-    var errors = this.props.errors;
-    if (errors && errors.length) {
-      return (
-        <h6 style={this.styles.error}>
-          {errors[0]}
-        </h6>
-      );
-    }
-  }
-
   render() {
+    var template = this.props.template;
+    var attributes = template.attributes ? template.attributes : {};
     return (
       <div style={this.styles.container}>
-        <h6>Subject</h6>
+        <div style={this.styles.section}>
+          <h6>{'Subject'}</h6>
+          <p>{`Draft last updated at: ${attributes.updated_at}`}</p>
+        </div>
         <input
-          defaultValue={this.props.draft.subject}
+          autoFocus={true}
           placeholder={'Subject'}
           ref={'input'}
-          type={'text'} />
-        {this.renderError()}
+          type={'text'}
+          value={attributes.subject} />
       </div>
     );
   }
