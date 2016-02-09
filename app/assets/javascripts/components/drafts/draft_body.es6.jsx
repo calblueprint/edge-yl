@@ -41,12 +41,16 @@ class DraftBody extends Component {
     var template = this.props.template;
     return (
       <div style={this.styles.container}>
-        <DraftSubject draft={draft} />
-        <DraftContent draft={draft} />
+        <DraftSubject
+          draft={draft}
+          template={template} />
+        <DraftContent
+          draft={draft}
+          template={template} />
         <FormButton
           action={() => this.sendEmail()}
           content={'Send'}
-          margin={this.props.template.message ? 12 : 24} />
+          margin={12} />
       </div>
     );
   }

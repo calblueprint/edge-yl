@@ -5,14 +5,7 @@ class DraftContent extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      draft: React.PropTypes.object.isRequired,
-      errors: React.PropTypes.array,
-    };
-  }
-
-  static get defaultProps() {
-    return {
-      errors: [],
+      template: React.PropTypes.object.isRequired,
     };
   }
 
@@ -25,9 +18,6 @@ class DraftContent extends Component {
         display: 'flex',
         flexFlow: 'column',
         alignSelf: 'stretch',
-      },
-      error: {
-        color: StyleConstants.colors.red,
       },
     };
   }
@@ -49,27 +39,17 @@ class DraftContent extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
-  renderError() {
-    var errors = this.props.errors;
-    if (errors && errors.length) {
-      return (
-        <h6 style={this.styles.error}>
-          {errors[0]}
-        </h6>
-      );
-    }
-  }
-
   render() {
+    var template = this.props.template;
+    var attributes = template.attributes ? template.attributes : {};
     return (
       <div style={this.styles.container}>
-        <h6>Content</h6>
+        <h6>{'Content'}</h6>
         <textarea
-          defaultValue={this.props.draft.subject}
           ref={'input'}
           rows={'10'}
-          placeholder="Start typing" />
-        {this.renderError()}
+          placeholder={'Content'}
+          value={attributes.content} />
       </div>
     );
   }

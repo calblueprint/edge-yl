@@ -5,7 +5,7 @@ class DraftSubject extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      draft: React.PropTypes.object.isRequired,
+      template: React.PropTypes.object.isRequired,
     };
   }
 
@@ -44,18 +44,20 @@ class DraftSubject extends Component {
   // Render
   // --------------------------------------------------
   render() {
-    var draft = this.props.draft;
+    var template = this.props.template;
+    var attributes = template.attributes ? template.attributes : {};
     return (
       <div style={this.styles.container}>
         <div style={this.styles.section}>
-          <h6>Subject</h6>
-          <p>{`Draft last updated at: ${draft.updated_at}`}</p>
+          <h6>{'Subject'}</h6>
+          <p>{`Draft last updated at: ${attributes.updated_at}`}</p>
         </div>
         <input
-          defaultValue={this.props.draft.subject}
+          autoFocus={true}
           placeholder={'Subject'}
           ref={'input'}
-          type={'text'} />
+          type={'text'}
+          value={attributes.subject} />
       </div>
     );
   }

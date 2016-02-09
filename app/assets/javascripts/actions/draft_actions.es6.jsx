@@ -47,6 +47,7 @@
         resolve,
         reject,
       );
+      return true;
     }
   }
   this.DraftActions = alt.createActions(DraftActions);
