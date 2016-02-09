@@ -1,6 +1,21 @@
 (() => {
   class Requester {
 
+    csv(route, resolve, reject) {
+      var request = this.initialize('GET', route, 'text/csv');
+      request.onreadystatechange = () => {
+        if (request.readyState === XMLHttpRequest.DONE) {
+          console.log(request.status)
+          if (request.status === 200) {
+            if (resolve) {
+              resolve(request.response);
+            }
+          }
+        }
+      };
+      request.send();
+    }
+
     delete(route, resolve, reject) {
       var request = this.initialize('DELETE', route);
       request.onreadystatechange = () => {
@@ -29,11 +44,11 @@
       request.send();
     }
 
-    initialize(type, route) {
+    initialize(type, route, content='application/json') {
       var request = new XMLHttpRequest();
       request.open(type, route);
-      request.setRequestHeader('Accept', 'application/json');
-      request.setRequestHeader('Content-Type', 'application/json');
+      request.setRequestHeader('Accept', content);
+      request.setRequestHeader('Content-Type', content);
       request.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
       return request;
     }

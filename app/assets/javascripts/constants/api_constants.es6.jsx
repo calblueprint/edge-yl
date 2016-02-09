@@ -22,7 +22,7 @@
         groups: '/api/groups.csv',
         rooms: '/api/rooms.csv',
         schools: '/api/schools.csv',
-        students: '/api/students.csv',
+        students: '/api/students',
       };
     }
 

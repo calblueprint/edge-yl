@@ -31,6 +31,19 @@
       return true;
     }
 
+    exportStudents() {
+      var resolve = (response) => {
+        var a = document.createElement('a');
+        a.href = 'data:attachment/csv,' + encodeURIComponent(response);
+        a.target = '_blank';
+        a.download = 'students.csv';
+        document.body.appendChild(a);
+        a.click();
+      };
+      Requester.csv(ApiConstants.csvs.students, resolve);
+      return true;
+    }
+
     // --------------------------------------------------
     // Stores
     // --------------------------------------------------
