@@ -1,8 +1,7 @@
 class Api::DraftsController < Api::BaseController
 
   def create
-    draft = Email.draft draft_params
-    draft.user = current_user
+    draft = Email.draft draft_params, current_user
     if draft.save
       render json: draft,
              serializer: DraftBaseSerializer,
