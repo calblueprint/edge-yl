@@ -44,7 +44,8 @@ class Api::StudentsController < Api::BaseController
   private
 
   def index_csv
-    students = Student.all
+    puts params[:gender].downcase
+    students = apply_scopes(Student)
     send_data students.to_csv
   end
 
