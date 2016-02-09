@@ -32,7 +32,8 @@
     }
 
     exportStudents() {
-      Requester.csv(ApiConstants.csvs.students, 'students');
+      var query = StudentsStore.getState().query;
+      Requester.csv(ApiConstants.csvs.students(query), 'students');
       return true;
     }
 

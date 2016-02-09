@@ -22,7 +22,14 @@
         groups: '/api/groups.csv',
         rooms: '/api/rooms.csv',
         schools: '/api/schools.csv',
-        students: '/api/students',
+        students: (query={}) => {
+          var route = '/api/students';
+          Object.keys(query).map((key, index) => {
+            route = `${route}${index === 0 ? '?' : '&'}`
+            route = `${route}${key}=${query[key]}`
+          });
+          return route;
+        },
       };
     }
 
