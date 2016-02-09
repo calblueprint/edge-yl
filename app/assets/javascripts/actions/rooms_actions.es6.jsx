@@ -29,14 +29,17 @@
     }
 
     deleteRoom(id) {
-      var attributes = {};
-      attributes['conference_id'] = null;
-      var params = { room: attributes };
-      Requester.update(
-        ApiConstants.rooms.update(id),
-        params,
-      );
-      return id;
+      var response = confirm('This action cannot be undone.');
+      if (response) {
+        var attributes = {};
+        attributes['conference_id'] = null;
+        var params = { room: attributes };
+        Requester.update(
+          ApiConstants.rooms.update(id),
+          params,
+        );
+        return id;
+      }
     }
 
     fetchRooms(conference) {

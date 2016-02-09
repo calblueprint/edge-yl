@@ -19,13 +19,10 @@ class RoomsCard extends Component {
   // Helpers
   // --------------------------------------------------
   deleteRoom() {
-    var response = confirm('This action cannot be undone.');
-    if (response) {
-      if (this.props.type == TypeConstants.room.conference) {
-        ConferenceActions.deleteRoom(this.props.room.id);
-      } else if (this.props.type == TypeConstants.room.default) {
-        RoomsActions.deleteRoom(this.props.room.id);
-      }
+    if (this.props.type == TypeConstants.room.conference) {
+      ConferenceActions.deleteRoom(this.props.room.id);
+    } else if (this.props.type == TypeConstants.room.default) {
+      RoomsActions.deleteRoom(this.props.room.id);
     }
   }
 

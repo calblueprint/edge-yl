@@ -15,14 +15,17 @@
     // Requests
     // --------------------------------------------------
     deleteGroup(id) {
-      var attributes = {};
-      attributes['conference_id'] = null;
-      var params = { group: attributes };
-      Requester.update(
-        ApiConstants.groups.update(id),
-        params,
-      );
-      return id;
+      var response = confirm('This action cannot be undone.');
+      if (response) {
+        var attributes = {};
+        attributes['conference_id'] = null;
+        var params = { group: attributes };
+        Requester.update(
+          ApiConstants.groups.update(id),
+          params,
+        );
+        return id;
+      }
     }
 
     fetchGroups(conference) {

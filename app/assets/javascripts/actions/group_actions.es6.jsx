@@ -19,14 +19,17 @@
     // Requests
     // --------------------------------------------------
     deleteStudent(id) {
-      attributes = {};
-      attributes['group_id'] = null;
-      params = { student: attributes };
-      Requester.update(
-        ApiConstants.students.update(id),
-        params,
-      );
+      var response = confirm('This action cannot be undone.');
+      if (response) {
+        attributes = {};
+        attributes['group_id'] = null;
+        params = { student: attributes };
+        Requester.update(
+          ApiConstants.students.update(id),
+          params,
+        );
       return id;
+      }
     }
 
     fetchGroup(id) {
