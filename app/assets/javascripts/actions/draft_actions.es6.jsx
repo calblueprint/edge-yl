@@ -15,12 +15,12 @@
     }
 
     sendEmail(template) {
+      var params = { email: template.attributes };
       var resolve = (response) => {
       // TODO put real smtp code in
       // SMTP.send(template.email);
       };
-      var params = { email: template.attributes };
-      var reject = (response) => { this.storeErrors(response); }
+      var reject = (response) => this.storeErrors(response);
       Requester.post(
         ApiConstants.drafts.update,
         params,
@@ -35,8 +35,8 @@
       var attributes = { id: id };
       attributes[key] = value;
       var params = { email: attributes };
-      var reject = (response) => { this.storeErrors(response); };
-      var resolve =  (response) => { this.storeDraft(response) };
+      var reject = (response) => this.storeErrors(response);
+      var resolve =  (response) => this.storeDraft(response);
       Requester.update(
         ApiConstants.drafts.update(id),
         params,

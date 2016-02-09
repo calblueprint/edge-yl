@@ -29,6 +29,13 @@ class DraftBody extends Component {
   // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
+  sendEmail() {
+    DraftActions.sendEmail(this.state.template);
+  }
+
+  // --------------------------------------------------
+  // Render
+  // --------------------------------------------------
   renderSave() {
     if(this.props.template.saved) {
       return (
@@ -37,23 +44,16 @@ class DraftBody extends Component {
     }
   }
 
-  send() {
-    DraftActions.sendEmail(this.state.template);
-  }
-
-
   render() {
     var draft = this.props.draft;
     var template = this.props.template;
     return (
       <div style={this.styles.container}>
-        <DraftSubject
-          draft={draft} />
-        <DraftContent
-          draft={draft} />
+        <DraftSubject draft={draft} />
+        <DraftContent draft={draft} />
         {this.renderSave()}
         <FormButton
-          action={() => this.send()}
+          action={() => this.sendEmail()}
           content={'Send'}
           margin={this.props.template.message ? 12 : 24} />
       </div>
