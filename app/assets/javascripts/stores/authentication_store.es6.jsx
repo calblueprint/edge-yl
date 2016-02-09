@@ -1,6 +1,9 @@
 (() => {
   class AuthenticationStore {
 
+    // --------------------------------------------------
+    // Setup
+    // --------------------------------------------------
     constructor() {
       this.template = {
         attributes: {},
@@ -16,6 +19,9 @@
       });
     }
 
+    // --------------------------------------------------
+    // Handlers
+    // --------------------------------------------------
     handleStoreAttribute(attribute) {
       this.template.attributes[attribute.key] = attribute.value;
     }

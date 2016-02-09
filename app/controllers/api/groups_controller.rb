@@ -66,6 +66,7 @@ class Api::GroupsController < Api::BaseController
     params.require(:group).permit(
       :conference_id,
       :letter,
+      leaderships_attributes: [:style, :user_id],
     )
   end
 

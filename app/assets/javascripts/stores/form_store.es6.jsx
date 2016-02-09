@@ -1,6 +1,9 @@
 (() => {
   class FormStore {
 
+    // --------------------------------------------------
+    // Setup
+    // --------------------------------------------------
     constructor() {
       this.form = {};
       this.bindListeners({
@@ -11,6 +14,9 @@
       });
     }
 
+    // --------------------------------------------------
+    // Handlers
+    // --------------------------------------------------
     handleStoreError(response) {
       var errors = response.errors;
       Object.keys(errors).map((key) => {

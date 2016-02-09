@@ -16,7 +16,7 @@ class GroupGrid extends Component {
   // --------------------------------------------------
   render() {
     return (
-      <div style={StyleConstants.containers.grid}>
+      <div style={StyleConstants.grids.wrap}>
         <GroupCard
           editable={this.props.editable}
           group={this.props.group}

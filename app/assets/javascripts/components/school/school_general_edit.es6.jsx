@@ -25,7 +25,7 @@ class SchoolGeneralEdit extends Component {
   render() {
     var template = this.props.template;
     return (
-      <div style={StyleConstants.cards.body}>
+      <div style={StyleConstants.cards.content}>
         <CardInput
           action={this.generateHandler('school_name')}
           errors={template.errors.name}

@@ -1,29 +1,29 @@
-class UsersGrid extends Component {
+class ContactsGrid extends Component {
 
   // --------------------------------------------------
   // Props
   // --------------------------------------------------
   static get propTypes() {
     return {
+      contacts: React.PropTypes.array.isRequired,
       media: React.PropTypes.string.isRequired,
-      users: React.PropTypes.array.isRequired,
     };
   }
 
-  // --------------------------------------------------
+  // -----------------------------w---------------------
   // Render
   // --------------------------------------------------
-  renderCard(user) {
+  renderCard(contact) {
     return (
-      <UsersCard
-        key={user.id}
-        media={this.props.media}
-        user={user} />
+      <ContactsCard
+        contact={contact}
+        key={contact.id}
+        media={this.props.media} />
     );
   }
 
   renderCards() {
-    return this.props.users.map((user) => this.renderCard(user));
+    return this.props.contacts.map((contact) => this.renderCard(contact));
   }
 
   render() {

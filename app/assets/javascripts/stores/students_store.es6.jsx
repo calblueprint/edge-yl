@@ -1,6 +1,9 @@
 (() => {
   class StudentsStore {
 
+    // --------------------------------------------------
+    // Setup
+    // --------------------------------------------------
     constructor() {
       this.filters = this.generateFilters();
       this.query = {};
@@ -18,6 +21,9 @@
       });
     }
 
+    // --------------------------------------------------
+    // Helpers
+    // --------------------------------------------------
     generateFilters() {
       return [
         {
@@ -69,13 +75,13 @@
       Object.keys(this.query).map((key) => {
         if (key === 'order') {
           var pairing = this.query[key].split(' ');
-          var sort = this.sorts.filter((cmp) => cmp.key === pairing[0])[0];
+          var sort = this.sorts.find((cmp) => cmp.key === pairing[0]);
           if (sort) {
             sort.selected = pairing[1];
           }
         } else if (key) {
           var value = this.query[key];
-          var filter = this.filters.filter((cmp) => cmp.key === key)[0];
+          var filter = this.filters.find((cmp) => cmp.key === key);
           if (filter) {
             filter.selected = value;
           }
@@ -83,6 +89,9 @@
       });
     }
 
+    // --------------------------------------------------
+    // Handlers
+    // --------------------------------------------------
     handleRestoreStudents(state) {
       if (state) {
         this.pagination = state.pagination;

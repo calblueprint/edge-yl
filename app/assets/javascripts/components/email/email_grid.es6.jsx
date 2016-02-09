@@ -1,12 +1,11 @@
-class DraftGrid extends Component {
+class EmailGrid extends Component {
 
   // --------------------------------------------------
   // Props
   // --------------------------------------------------
   static get propTypes() {
     return {
-      draft: React.PropTypes.object.isRequired,
-      template: React.PropTypes.object.isRequired,
+      email: React.PropTypes.object.isRequired,
     };
   }
 
@@ -16,12 +15,8 @@ class DraftGrid extends Component {
   render() {
     return (
       <div style={StyleConstants.grids.column}>
-        <DraftHeader
-          draft={this.props.draft}
-          template={this.props.template} />
-        <DraftBody
-          draft={this.props.draft}
-          template={this.props.template} />
+        <EmailHeader email={this.props.email} />
+        <EmailBody email={this.props.email} />
       </div>
     );
   }

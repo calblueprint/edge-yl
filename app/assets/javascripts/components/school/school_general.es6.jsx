@@ -29,7 +29,7 @@ class SchoolGeneral extends Component {
   render() {
     var school = this.props.school;
     return (
-      <div style={StyleConstants.cards.body}>
+      <div style={StyleConstants.cards.content}>
         <CardAttribute
           action={() => this.storePairing('name')}
           editable={this.props.editable}

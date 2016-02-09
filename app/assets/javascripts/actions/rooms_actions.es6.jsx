@@ -1,6 +1,9 @@
 (() => {
   class RoomsActions {
 
+    // --------------------------------------------------
+    // Setup
+    // --------------------------------------------------
     constructor() {
       this.generateActions(
         'closeOverlay',
@@ -9,6 +12,9 @@
       );
     }
 
+    // --------------------------------------------------
+    // Requests
+    // --------------------------------------------------
     createRoom(template) {
       var params = { room: template.attributes };
       var resolve = (response) => this.storeRoom(response);
@@ -28,6 +34,9 @@
       return true;
     }
 
+    // --------------------------------------------------
+    // Stores
+    // --------------------------------------------------
     storeAttribute(key, value) {
       return {
         key: key,

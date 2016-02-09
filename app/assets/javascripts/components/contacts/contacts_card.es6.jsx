@@ -1,12 +1,12 @@
-class UsersCard extends Component {
+class ContactsCard extends Component {
 
   // --------------------------------------------------
   // Props
   // --------------------------------------------------
   static get propTypes() {
     return {
+      contact: React.PropTypes.object.isRequired,
       media: React.PropTypes.string.isRequired,
-      user: React.PropTypes.object.isRequired,
     };
   }
 
@@ -14,23 +14,26 @@ class UsersCard extends Component {
   // Render
   // --------------------------------------------------
   render() {
-    var user = this.props.user;
+    var contact = this.props.contact;
     return (
       <div style={StyleConstants.cards.container(this.props.media)}>
-        <CardHeader content={'Volunteer'} />
+        <CardHeader content={'Contact Information'} />
         <div style={StyleConstants.cards.content}>
+          <h5>{'Secondary'}</h5>
           <CardAttribute
-            clickable={true}
-            label={'Name'}
-            route={RouteConstants.users.show(user.id)}
-            type={'h4'}
-            value={user.full_name} />
+            label={'First name'}
+            value={contact.first_name} />
           <CardAttribute
-            label={'Email'}
-            value={user.email} />
+            label={'Last name'}
+            value={contact.last_name} />
+          <CardAttribute
+            label={'Phone number'}
+            value={contact.phone_number} />
+          <CardAttribute
+            label={'Title'}
+            value={contact.title} />
         </div>
       </div>
     );
   }
 }
-

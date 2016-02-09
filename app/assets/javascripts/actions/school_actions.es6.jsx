@@ -1,6 +1,9 @@
 (() => {
   class SchoolActions {
 
+    // --------------------------------------------------
+    // Setup
+    // --------------------------------------------------
     constructor() {
       this.generateActions(
         'closeOverlay',
@@ -11,6 +14,9 @@
       );
     }
 
+    // --------------------------------------------------
+    // Requests
+    // --------------------------------------------------
     createComment(template) {
       var params = { comment: template.attributes };
       var resolve = (response) => this.storeComment(response);
@@ -30,6 +36,23 @@
       return true;
     }
 
+    updateSchool(template, attributes={}) {
+      attributes[template.key] = template.value;
+      var params = { school: attributes };
+      var resolve = (response) => this.storeSchool(response);
+      var reject = (response) => this.storeError(response);
+      Requester.update(
+        ApiConstants.schools.update(template.id),
+        params,
+        resolve,
+        reject,
+      );
+      return true;
+    }
+
+    // --------------------------------------------------
+    // Stores
+    // --------------------------------------------------
     storeAttribute(key, value) {
       return {
         key: key,
@@ -54,20 +77,6 @@
         errors: {},
         model: model,
       }
-    }
-
-    updateSchool(template, attributes={}) {
-      attributes[template.key] = template.value;
-      var params = { school: attributes };
-      var resolve = (response) => this.storeSchool(response);
-      var reject = (response) => this.storeError(response);
-      Requester.update(
-        ApiConstants.schools.update(template.id),
-        params,
-        resolve,
-        reject,
-      );
-      return true;
     }
   }
   this.SchoolActions = alt.createActions(SchoolActions);

@@ -26,6 +26,7 @@ class AuthenticationPage extends Component {
         display: 'flex',
         flexFlow: 'column',
         alignItems: 'center',
+        flex: '1',
         paddingTop: StyleConstants.heights.header,
       },
       footer: {

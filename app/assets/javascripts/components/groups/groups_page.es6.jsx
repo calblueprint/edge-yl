@@ -67,15 +67,14 @@ class GroupsPage extends Component {
     return (
       <div style={StyleConstants.pages.wrapper}>
       <Header profile={this.selectProfile()} />
+      <Sidebar profile={this.selectProfile()} />
         <div style={StyleConstants.pages.container}>
-          <Sidebar profile={this.selectProfile()} />
           <div style={StyleConstants.pages.content}>
-            <GridHeader
-              label={'Groups'}
-              options={this.generateOptions()} />          
             <PageHeader
               conference={this.props.conference}
               conferences={this.props.conferences}
+              options={this.generateOptions()}
+              title={'Groups'}
               type={'groups'} />
             <GroupsGrid
               media={this.state.media}

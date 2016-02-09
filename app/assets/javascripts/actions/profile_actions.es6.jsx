@@ -1,6 +1,9 @@
 (() => {
   class ProfileActions {
 
+    // --------------------------------------------------
+    // Setup
+    // --------------------------------------------------
     constructor() {
       this.generateActions(
         'closeOverlay',
@@ -10,30 +13,9 @@
       );
     }
 
-    storeTemplate(options) {
-      return {
-        choices: options.choices,
-        errors: {},
-        id: options.id,
-        key: options.key,
-        model: options.model,
-        type: options.type,
-        value: options.value,
-      };
-    }
-
-    toggleSidebar(profile) {
-      var attributes = { has_sidebar: !profile.has_sidebar };
-      var params = { profile: attributes };
-      var resolve = (response) => this.storeProfile(response);
-      Requester.update(
-        ApiConstants.profiles.update(profile.id),
-        params,
-        resolve,
-      );
-      return true;
-    }
-
+    // --------------------------------------------------
+    // Requests
+    // --------------------------------------------------
     updateProfile(template, attributes={}) {
       attributes[template.key] = template.value;
       var params = { user: attributes };
@@ -46,6 +28,34 @@
         reject,
       );
       return true;
+    }
+
+    updateSidebar(profile) {
+      var attributes = { has_sidebar: !profile.has_sidebar };
+      var params = { profile: attributes };
+      var resolve = (response) => this.storeProfile(response);
+      Requester.update(
+        ApiConstants.profiles.update(profile.id),
+        params,
+        resolve,
+      );
+      return true;
+    }
+
+
+    // --------------------------------------------------
+    // Stores
+    // --------------------------------------------------
+    storeTemplate(options) {
+      return {
+        choices: options.choices,
+        errors: {},
+        id: options.id,
+        key: options.key,
+        model: options.model,
+        type: options.type,
+        value: options.value,
+      };
     }
   }
   this.ProfileActions = alt.createActions(ProfileActions);

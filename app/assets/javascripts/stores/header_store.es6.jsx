@@ -1,6 +1,9 @@
 (() => {
   class HeaderStore {
 
+    // --------------------------------------------------
+    // Setup
+    // --------------------------------------------------
     constructor() {
       this.pagination = {
         current: 1,
@@ -17,6 +20,9 @@
       });
     }
 
+    // --------------------------------------------------
+    // Handlers
+    // --------------------------------------------------
     handleStoreResults(response) {
       this.pagination = response.meta.pagination;
       this.results = response.searchables;

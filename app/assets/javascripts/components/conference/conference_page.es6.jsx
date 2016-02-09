@@ -67,6 +67,7 @@ class ConferencePage extends Component {
       return (
         <ConferencePageOverlay
           conference={this.state.conference}
+          groupables={this.state.groupables}
           pairing={this.state.pairing}
           template={this.state.template}
           type={'conference'} />
@@ -80,8 +81,8 @@ class ConferencePage extends Component {
       <div style={StyleConstants.pages.wrapper}>
         {this.renderOverlay()}
         <Header profile={this.selectProfile()} />
+        <Sidebar profile={this.selectProfile()} />
         <div style={StyleConstants.pages.container}>
-          <Sidebar profile={this.selectProfile()} />
           <div style={StyleConstants.pages.content}>
             <GridHeader
               label={'Conference'}

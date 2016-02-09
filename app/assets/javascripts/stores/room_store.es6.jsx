@@ -1,6 +1,9 @@
 (() => {
   class RoomStore {
 
+    // --------------------------------------------------
+    // Setup
+    // --------------------------------------------------
     constructor() {
       this.editable = false;
       this.overlay = false;
@@ -14,6 +17,9 @@
       });
     }
 
+    // --------------------------------------------------
+    // Handlers
+    // --------------------------------------------------
     handleStoreRoom(response) {
       this.overlay = false;
       this.room = response.room;

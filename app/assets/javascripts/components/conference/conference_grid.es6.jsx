@@ -17,16 +17,15 @@ class ConferenceGrid extends Component {
   generateGroupsOptions() {
     return [
       {
-        action: () => ConferenceActions.storeTemplate('group',
-          {
-            conference_id: this.props.conference.id,
-          },
+        action: () => ConferenceActions.storeTemplate(
+          'group',
+          { conference_id: this.props.conference.id },
         ),
         content: 'New',
       },
       {
         content: 'All',
-        route: '',
+        route: RouteConstants.groups.index(this.props.conference.id),
       },
     ];
   }
@@ -52,7 +51,7 @@ class ConferenceGrid extends Component {
   // --------------------------------------------------
   render() {
     return (
-      <div style={StyleConstants.containers.grid}>
+      <div style={StyleConstants.grids.wrap}>
         <ConferenceCard
           conference={this.props.conference}
           editable={this.props.editable}
@@ -69,7 +68,8 @@ class ConferenceGrid extends Component {
         <GroupsGrid
           editable={this.props.editable}
           groups={this.props.conference.groups}
-          media={this.props.media} />
+          media={this.props.media}
+          type={TypeConstants.group.conference} />
         <GridHeader
           label={'Rooms in this conference'}
           options={this.generateRoomsOptions()} />

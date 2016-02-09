@@ -1,6 +1,9 @@
 (() => {
   class ConferencesStore {
 
+    // --------------------------------------------------
+    // Setup
+    // --------------------------------------------------
     constructor() {
       this.conferences = [];
       this.overlay = false;
@@ -19,6 +22,9 @@
       });
     }
 
+    // --------------------------------------------------
+    // Handlers
+    // --------------------------------------------------
     handleCloseOverlay() {
       this.overlay = false;
       this.template = null;

@@ -1,12 +1,18 @@
 (() => {
   class GroupsActions {
 
+    // --------------------------------------------------
+    // Setup
+    // --------------------------------------------------
     constructor() {
       this.generateActions(
         'storeGroups',
       );
     }
 
+    // --------------------------------------------------
+    // Requests
+    // --------------------------------------------------
     fetchGroups(conference) {
       var resolve = (response) => this.storeGroups(response);
       Requester.get(ApiConstants.groups.index(conference.id), resolve);

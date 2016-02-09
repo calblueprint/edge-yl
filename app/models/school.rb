@@ -45,12 +45,12 @@ class School < ActiveRecord::Base
     name
   end
 
-  def other_contacts
-    contacts.where(is_primary: false)
-  end
-
   def primary_contact
     contacts.where(is_primary: true).first
+  end
+
+  def secondary_contacts
+    contacts.where(is_primary: false)
   end
 
 end

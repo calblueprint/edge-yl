@@ -1,6 +1,9 @@
 (() => {
   class ViewActions {
 
+    // --------------------------------------------------
+    // Setup
+    // --------------------------------------------------
     constructor() {
       this.generateActions(
         'storeMedia',
@@ -8,6 +11,9 @@
       );
     }
 
+    // --------------------------------------------------
+    // Listeners
+    // --------------------------------------------------
     attachListener() {
       window.onresize = () => {
         this.storeMedia(document.documentElement.clientWidth);

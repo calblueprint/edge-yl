@@ -1,6 +1,9 @@
 (() => {
   class ConferenceStore {
 
+    // --------------------------------------------------
+    // Setup
+    // --------------------------------------------------
     constructor() {
       this.overlay = false;
       this.conference = {
@@ -17,6 +20,7 @@
         handleStoreConference: ConferenceActions.STORE_CONFERENCE,
         handleStoreError: ConferenceActions.STORE_ERROR,
         handleStoreGroup: ConferenceActions.STORE_GROUP,
+        handleStoreGroupables: ConferenceActions.STORE_GROUPABLES,
         handleStorePairing: ConferenceActions.STORE_PAIRING,
         handleStoreRoom: ConferenceActions.STORE_ROOM,
         handleStoreTemplate: ConferenceActions.STORE_TEMPLATE,
@@ -24,12 +28,14 @@
       });
     }
 
+    // --------------------------------------------------
+    // Handlers
+    // --------------------------------------------------
     handleCloseOverlay() {
       this.overlay = false;
       this.pairing = null;
       this.template = null;
     }
-
 
     handleDeleteGroup(groupId) {
       this.conference.groups = this.conference.groups.filter(function(group) { return group.id != groupId });
@@ -41,12 +47,15 @@
 
     handleStoreAttribute(attribute) {
       this.template.attributes[attribute.key] = attribute.value;
-
     }
 
     handleStoreGroup(response) {
       this.overlay = false;
       this.conference.groups.push(response.group);
+    }
+
+    handleStoreGroupables(response) {
+      this.groupables = response.users;
     }
 
     handleStoreRoom(response) {

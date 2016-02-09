@@ -8,7 +8,7 @@ class SidebarFooter extends Component {
       container: {
         display: 'flex',
         alignItems: 'center',
-        padding: '0px 12px',
+        padding: '0px 12px 12px 12px',
         marginTop: '12px',
       },
     };

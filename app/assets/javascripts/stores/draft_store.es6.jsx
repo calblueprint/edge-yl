@@ -1,6 +1,9 @@
 (() => {
   class DraftStore {
 
+    // --------------------------------------------------
+    // Setup
+    // --------------------------------------------------
     constructor() {
       this.draft = {};
       this.template = {
@@ -15,6 +18,9 @@
       });
     }
 
+    // --------------------------------------------------
+    // Handlers
+    // --------------------------------------------------
     handleStoreAttribute(attribute) {
       this.template.attributes[attribute.key] = attribute.value;
     }
@@ -28,8 +34,6 @@
         to: response.email.to,
       };
       this.template.saved = "Saved Draft at: " + response.email.updated_at;
-
-
     }
 
     handleStoreErrors(response) {

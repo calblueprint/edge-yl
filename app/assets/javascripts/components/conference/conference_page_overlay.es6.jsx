@@ -6,6 +6,7 @@ class ConferencePageOverlay extends PageOverlay {
   static get propTypes() {
     return {
       conference: React.PropTypes.object.isRequired,
+      groupables: React.PropTypes.arrayOf(React.PropTypes.object),
       pairing: React.PropTypes.object,
       template: React.PropTypes.object,
     };
@@ -22,19 +23,22 @@ class ConferencePageOverlay extends PageOverlay {
   // Render
   // --------------------------------------------------
   renderModal() {
-    if (this.props.pairing) {
-      return <ConferenceEditModal pairing={this.props.pairing} />;
-    } else if (this.props.template.model == 'group') {
+    var pairing = this.props.pairing;
+    var template = this.props.template;
+    if (pairing) {
+      return <ConferenceEditModal pairing={pairing} />;
+    } else if (template.model == 'group') {
       return (
         <GroupCreateModal
           conference={this.props.conference}
-          template={this.props.template} />
+          groupables={this.props.groupables}
+          template={template} />
       );
     } else {
       return (
         <RoomCreateModal
           conference={this.props.conference}
-          template={this.props.template}
+          template={template}
           type={'conference'} />
       );
     }

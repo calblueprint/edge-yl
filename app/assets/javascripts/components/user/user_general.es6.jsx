@@ -31,7 +31,7 @@ class UserGeneral extends Component {
   render() {
     var user = this.props.user;
     return (
-      <div style={StyleConstants.cards.body}>
+      <div style={StyleConstants.cards.content}>
         <CardAttribute
           action={() => this.storeTemplate('first_name')}
           editable={this.props.editable}

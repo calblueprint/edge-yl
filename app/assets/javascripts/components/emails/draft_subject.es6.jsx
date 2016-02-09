@@ -7,16 +7,12 @@ class DraftSubject extends Component {
     return {
       draft: React.PropTypes.object.isRequired,
       errors: React.PropTypes.array,
-      margin: React.PropTypes.bool,
     };
   }
 
   static get defaultProps() {
     return {
       errors: [],
-      focus: false,
-      margin: false,
-      value: '',
     };
   }
 
@@ -25,15 +21,11 @@ class DraftSubject extends Component {
   // --------------------------------------------------
   get styles() {
     return {
-      container: Object.assign(
-        {},
-        {
-          display: 'flex',
-          flexFlow: 'column',
-          alignSelf: 'stretch',
-        },
-        this.props.margin && { marginTop: '12px' }
-      ),
+      container: {
+        display: 'flex',
+        flexFlow: 'column',
+        alignSelf: 'stretch',
+      },
       error: {
         color: StyleConstants.colors.red,
       },
@@ -45,9 +37,13 @@ class DraftSubject extends Component {
   // --------------------------------------------------
   componentDidMount() {
     var node = ReactDOM.findDOMNode(this.refs.input);
-    node.oninput = (event) =>
-    DraftActions.storeAttribute('subject', event.target.value,
-                               this.props.draft.id);
+    node.oninput = (event) => {
+      DraftActions.storeAttribute(
+        'subject',
+        event.target.value,
+        this.props.draft.id,
+      );
+    };
   }
 
   // --------------------------------------------------
@@ -70,9 +66,9 @@ class DraftSubject extends Component {
         <h6>Subject</h6>
         <input
           defaultValue={this.props.draft.subject}
-          placeholder="Subject"
+          placeholder={'Subject'}
           ref={'input'}
-          type="text" />
+          type={'text'} />
         {this.renderError()}
       </div>
     );

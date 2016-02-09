@@ -20,7 +20,7 @@ class Contact < ActiveRecord::Base
 
   validates :email, presence: true
   validates :first_name, presence: true
-  validates :is_primary, presence: true
+  validates :is_primary, inclusion: { in: [true, false] }
   validates :last_name, presence: true
   validates :phone_number, presence: true
   validates :title, presence: true

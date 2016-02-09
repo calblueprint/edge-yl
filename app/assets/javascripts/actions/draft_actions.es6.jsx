@@ -1,6 +1,9 @@
 (() => {
   class DraftActions {
 
+    // --------------------------------------------------
+    // Setup
+    // --------------------------------------------------
     constructor() {
       this.generateActions(
         'storeDraft',
@@ -8,6 +11,9 @@
       );
     }
 
+    // --------------------------------------------------
+    // Requests
+    // --------------------------------------------------
     fetchDraft(id) {
       var resolve = (response) => this.storeDraft(response);
       Requester.get(ApiConstants.drafts.show(id), resolve);
@@ -17,8 +23,7 @@
     sendEmail(template) {
       var params = { email: template.attributes };
       var resolve = (response) => {
-      // TODO put real smtp code in
-      // SMTP.send(template.email);
+        // TODO put real smtp code in SMTP.send(template.email).
       };
       var reject = (response) => this.storeErrors(response);
       Requester.post(
@@ -43,12 +48,7 @@
         resolve,
         reject,
       );
-      return {
-        key: key,
-        value: value,
-      };
     }
-
   }
   this.DraftActions = alt.createActions(DraftActions);
 })();

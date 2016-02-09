@@ -15,7 +15,7 @@ class ConferenceStatistic extends Component {
   render() {
     var conference = this.props.conference;
     return (
-      <div style={StyleConstants.cards.body}>
+      <div style={StyleConstants.cards.content}>
         <CardAttribute
           label={'Groups count'}
           value={conference.groups_count} />

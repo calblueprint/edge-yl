@@ -29,7 +29,7 @@ class ProfileGeneral extends Component {
   render() {
     var profile = this.props.profile;
     return (
-      <div style={StyleConstants.cards.body}>
+      <div style={StyleConstants.cards.content}>
         <img
           src={'https://scontent.fsnc1-1.fna.fbcdn.net/hphotos-xfp1/t31.0-8/11856297_10200932572512494_2256826043885795533_o.jpg'}
           style={this.styles.image} />

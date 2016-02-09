@@ -7,16 +7,12 @@ class DraftContent extends Component {
     return {
       draft: React.PropTypes.object.isRequired,
       errors: React.PropTypes.array,
-      margin: React.PropTypes.bool,
     };
   }
 
   static get defaultProps() {
     return {
       errors: [],
-      focus: false,
-      margin: false,
-      value: '',
     };
   }
 
@@ -25,15 +21,11 @@ class DraftContent extends Component {
   // --------------------------------------------------
   get styles() {
     return {
-      container: Object.assign(
-        {},
-        {
-          display: 'flex',
-          flexFlow: 'column',
-          alignSelf: 'stretch',
-        },
-        this.props.margin && { marginTop: '12px' }
-      ),
+      container: {
+        display: 'flex',
+        flexFlow: 'column',
+        alignSelf: 'stretch',
+      },
       error: {
         color: StyleConstants.colors.red,
       },
@@ -45,9 +37,13 @@ class DraftContent extends Component {
   // --------------------------------------------------
   componentDidMount() {
     var node = ReactDOM.findDOMNode(this.refs.input);
-    node.oninput = (event) =>
-    DraftActions.storeAttribute('content', event.target.value,
-                               this.props.draft.id);
+    node.oninput = (event) => {
+      DraftActions.storeAttribute(
+        'content',
+        event.target.value,
+        this.props.draft.id,
+      );
+    };
   }
 
   // --------------------------------------------------

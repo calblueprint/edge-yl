@@ -73,13 +73,14 @@ class SchoolsPage extends Component {
   render() {
     return (
       <div style={StyleConstants.pages.wrapper}>
-      <Header profile={this.selectProfile()} />
+        <Header profile={this.selectProfile()} />
+        <Sidebar profile={this.selectProfile()} />
         <div style={StyleConstants.pages.container}>
-          <Sidebar profile={this.selectProfile()} />
           <div style={StyleConstants.pages.content}>
-            <GridHeader
-              label={'Schools'}
-              options={this.generateOptions()} />
+            <PageHeader
+              options={this.generateOptions()}
+              title={'Schools'}
+              type={'schools'} />
             <SchoolsGrid
               media={this.state.media}
               schools={this.state.schools} />

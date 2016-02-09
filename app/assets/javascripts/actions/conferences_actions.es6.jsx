@@ -1,6 +1,9 @@
 (() => {
   class ConferencesActions {
 
+    // --------------------------------------------------
+    // Setup
+    // --------------------------------------------------
     constructor() {
       this.generateActions(
         'closeOverlay',
@@ -10,6 +13,9 @@
       );
     }
 
+    // --------------------------------------------------
+    // Requests
+    // --------------------------------------------------
     createConference(template) {
       var params = { conference: template.attributes };
       var resolve = (response) => this.storeConference(response);
@@ -29,6 +35,9 @@
       return true;
     }
 
+    // --------------------------------------------------
+    // Stores
+    // --------------------------------------------------
     storeAttribute(key, value) {
       return {
         key: key,

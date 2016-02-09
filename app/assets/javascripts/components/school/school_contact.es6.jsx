@@ -13,22 +13,22 @@ class SchoolContact extends Component {
   // Render
   // --------------------------------------------------
   render() {
-    var primary_leader = this.props.school.primary_contact;
+    var contact = this.props.school.primary_contact;
     return (
-      <div style={StyleConstants.cards.body}>
+      <div style={StyleConstants.cards.content}>
         <h5>{'Primary'}</h5>
-        <CardAttribute
-          label={'First name'}
-          value={primary_leader.first_name} />
-        <CardAttribute
-          label={'Last name'}
-          value={primary_leader.last_name} />
-        <CardAttribute
-          label={'Phone number'}
-          value={primary_leader.phone_number} />
-        <CardAttribute
-          label={'Title'}
-          value={primary_leader.title} />
+          <CardAttribute
+            label={'First name'}
+            value={contact.first_name} />
+          <CardAttribute
+            label={'Last name'}
+            value={contact.last_name} />
+          <CardAttribute
+            label={'Phone number'}
+            value={contact.phone_number} />
+          <CardAttribute
+            label={'Title'}
+            value={contact.title} />
       </div>
     );
   }

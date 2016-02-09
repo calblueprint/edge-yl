@@ -1,13 +1,16 @@
 (() => {
   class SchoolStore {
 
+    // --------------------------------------------------
+    // Setup
+    // --------------------------------------------------
     constructor() {
       this.overlay = false;
       this.school = {
         comments: [],
         contacts: [],
-        other_contacts: [],
         primary_contact: {},
+        secondary_contacts: [],
         students: [],
       };
       this.pairing = null;
@@ -24,6 +27,9 @@
       });
     }
 
+    // --------------------------------------------------
+    // Handlers
+    // --------------------------------------------------
     handleCloseOverlay() {
       this.overlay = false;
       this.pairing = null;
