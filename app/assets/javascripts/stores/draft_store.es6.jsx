@@ -33,7 +33,6 @@
         subject: response.email.subject,
         to: response.email.to,
       };
-      this.template.saved = "Saved Draft at: " + response.email.updated_at;
     }
 
     handleStoreErrors(response) {

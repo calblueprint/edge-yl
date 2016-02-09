@@ -6,13 +6,6 @@ class DraftSubject extends Component {
   static get propTypes() {
     return {
       draft: React.PropTypes.object.isRequired,
-      errors: React.PropTypes.array,
-    };
-  }
-
-  static get defaultProps() {
-    return {
-      errors: [],
     };
   }
 
@@ -26,8 +19,9 @@ class DraftSubject extends Component {
         flexFlow: 'column',
         alignSelf: 'stretch',
       },
-      error: {
-        color: StyleConstants.colors.red,
+      section: {
+        display: 'flex',
+        justifyContent: 'space-between',
       },
     };
   }
@@ -49,27 +43,19 @@ class DraftSubject extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
-  renderError() {
-    var errors = this.props.errors;
-    if (errors && errors.length) {
-      return (
-        <h6 style={this.styles.error}>
-          {errors[0]}
-        </h6>
-      );
-    }
-  }
-
   render() {
+    var draft = this.props.draft;
     return (
       <div style={this.styles.container}>
-        <h6>Subject</h6>
+        <div style={this.styles.section}>
+          <h6>Subject</h6>
+          <p>{`Draft last updated at: ${draft.updated_at}`}</p>
+        </div>
         <input
           defaultValue={this.props.draft.subject}
           placeholder={'Subject'}
           ref={'input'}
           type={'text'} />
-        {this.renderError()}
       </div>
     );
   }
