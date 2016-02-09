@@ -5,11 +5,8 @@
       var request = this.initialize('GET', route, 'text/csv');
       request.onreadystatechange = () => {
         if (request.readyState === XMLHttpRequest.DONE) {
-          console.log(request.status)
-          if (request.status === 200) {
-            if (resolve) {
-              resolve(request.response);
-            }
+          if (request.status === 200 && resolve) {
+            resolve(request.response);
           }
         }
       };
@@ -20,10 +17,8 @@
       var request = this.initialize('DELETE', route);
       request.onreadystatechange = () => {
         if (request.readyState === XMLHttpRequest.DONE) {
-          if (request.status === 204) {
-            if (resolve) {
-              resolve();
-            }
+          if (request.status === 204 && resolve) {
+            resolve();
           }
         }
       };
@@ -34,10 +29,8 @@
       var request = this.initialize('GET', route);
       request.onreadystatechange = () => {
         if (request.readyState === XMLHttpRequest.DONE) {
-          if (request.status === 200) {
-            if (resolve) {
-              resolve(JSON.parse(request.response));
-            }
+          if (request.status === 200 && resolve) {
+            resolve(JSON.parse(request.response));
           }
         }
       };
@@ -57,14 +50,10 @@
       var request = this.initialize('POST', route);
       request.onreadystatechange = () => {
         if (request.readyState === XMLHttpRequest.DONE) {
-          if (request.status === 201) {
-            if (resolve) {
-              resolve(JSON.parse(request.response));
-            }
-          } else if (request.status === 401 || request.status === 422) {
-            if (reject) {
-              reject(JSON.parse(request.response));
-            }
+          if (request.status === 201 && resolve) {
+            resolve(JSON.parse(request.response));
+          } else if (reject) {
+            reject(JSON.parse(request.response));
           }
         }
       };
@@ -75,14 +64,10 @@
       var request = this.initialize('PATCH', route);
       request.onreadystatechange = () => {
         if (request.readyState === XMLHttpRequest.DONE) {
-          if (request.status === 201) {
-            if (resolve) {
-              resolve(JSON.parse(request.response));
-            }
-          } else if (request.status === 401 || request.status === 422) {
-            if (reject) {
-              reject(JSON.parse(request.response));
-            }
+          if (request.status === 201 && resolve) {
+            resolve(JSON.parse(request.response));
+          } else if (reject) {
+            reject(JSON.parse(request.response));
           }
         }
       };
