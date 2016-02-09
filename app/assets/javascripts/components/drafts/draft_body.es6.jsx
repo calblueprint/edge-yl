@@ -48,13 +48,9 @@ class DraftBody extends Component {
     return (
       <div style={this.styles.container}>
         <DraftSubject
-          id={draft.id}
-          label={'Subject'}
-          value={draft.subject} />
+          draft={draft} />
         <DraftContent
-          id={draft.id}
-          label={'Content'}
-          value={draft.content} />
+          draft={draft} />
         {this.renderSave()}
         <FormButton
           action={() => this.send()}

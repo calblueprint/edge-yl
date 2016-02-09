@@ -27,6 +27,12 @@ class Email < ActiveRecord::Base
 
   private
 
+  def self.draft(params)
+    Email.new params.merge(
+      is_draft: :true
+    )
+  end
+
   def set_initials
     self.content ||= ''
     self.subject ||= ''

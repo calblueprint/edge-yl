@@ -6,18 +6,13 @@
       this.template = {
         attributes: {},
         errors: {},
-        saved: "",
+        saved: '',
       };
       this.bindListeners({
-        handleSaveDraft: DraftActions.SAVE_DRAFT,
         handleStoreAttribute: DraftActions.STORE_ATTRIBUTE,
         handleStoreDraft: DraftActions.STORE_DRAFT,
         handleStoreErrors: DraftActions.STORE_ERRORS,
       });
-    }
-
-    handleSaveDraft(response) {
-      this.template.saved = "Saved Draft at: " + response.email.updated_at;
     }
 
     handleStoreAttribute(attribute) {
@@ -32,6 +27,7 @@
         subject: response.email.subject,
         to: response.email.to,
       };
+      this.template.saved = "Saved Draft at: " + response.email.updated_at;
 
 
     }

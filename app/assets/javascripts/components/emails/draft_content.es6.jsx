@@ -5,10 +5,9 @@ class DraftContent extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      id: React.PropTypes.number.isRequired,
+      draft: React.PropTypes.object.isRequired,
       errors: React.PropTypes.array,
       margin: React.PropTypes.bool,
-      value: React.PropTypes.string,
     };
   }
 
@@ -48,7 +47,7 @@ class DraftContent extends Component {
     var node = ReactDOM.findDOMNode(this.refs.input);
     node.oninput = (event) =>
     DraftActions.storeAttribute('content', event.target.value,
-                               this.props.id);
+                               this.props.draft.id);
   }
 
   // --------------------------------------------------
@@ -70,7 +69,7 @@ class DraftContent extends Component {
       <div style={this.styles.container}>
         <h6>Content</h6>
         <textarea
-          defaultValue={this.props.value}
+          defaultValue={this.props.draft.subject}
           ref={'input'}
           rows={'10'}
           placeholder="Start typing" />

@@ -5,10 +5,9 @@ class DraftSubject extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      id: React.PropTypes.number,
+      draft: React.PropTypes.object.isRequired,
       errors: React.PropTypes.array,
       margin: React.PropTypes.bool,
-      value: React.PropTypes.string,
     };
   }
 
@@ -48,7 +47,7 @@ class DraftSubject extends Component {
     var node = ReactDOM.findDOMNode(this.refs.input);
     node.oninput = (event) =>
     DraftActions.storeAttribute('subject', event.target.value,
-                               this.props.id);
+                               this.props.draft.id);
   }
 
   // --------------------------------------------------
@@ -70,7 +69,7 @@ class DraftSubject extends Component {
       <div style={this.styles.container}>
         <h6>Subject</h6>
         <input
-          defaultValue={this.props.value}
+          defaultValue={this.props.draft.subject}
           placeholder="Subject"
           ref={'input'}
           type="text" />

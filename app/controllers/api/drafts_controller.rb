@@ -1,9 +1,7 @@
 class Api::DraftsController < Api::BaseController
 
   def create
-    draft = Email.new draft_params.merge(
-      is_draft: :true
-    )
+    draft = Email.draft draft_params
     draft.user = current_user
     if draft.save
       render json: draft,
@@ -35,9 +33,9 @@ class Api::DraftsController < Api::BaseController
   def draft_params
     params.require(:email).permit(
       :content,
-      :is_draft,
       :emailable_id,
       :emailable_type,
+      :is_draft,
       :subject,
     )
   end
