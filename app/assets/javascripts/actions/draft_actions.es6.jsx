@@ -20,17 +20,12 @@
       return true;
     }
 
-    saveDraft(value) {
-      // TODO save draft as people write.
-    }
-
     sendEmail(template) {
+      var params = { email: template.attributes };
       var resolve = (response) => {
-      // TODO put real smtp code in
-      // SMTP.send(template.email);
-        console.log("Email sent successfully!");
+        // TODO put real smtp code in SMTP.send(template.email).
       };
-      var reject = (response) => { this.storeErrors(response); }
+      var reject = (response) => this.storeErrors(response);
       Requester.post(
         ApiConstants.drafts.update,
         params,
@@ -40,16 +35,20 @@
       return true;
     }
 
-    // --------------------------------------------------
-    // Stores
-    // --------------------------------------------------
-    storeAttribute(key, value) {
-      return {
-        key: key,
-        value: value,
-      };
+    storeAttribute(key, value, id) {
+      // Fire a request to save the draft on the server.
+      var attributes = { id: id };
+      attributes[key] = value;
+      var params = { email: attributes };
+      var reject = (response) => this.storeErrors(response);
+      var resolve =  (response) => this.storeDraft(response);
+      Requester.update(
+        ApiConstants.drafts.update(id),
+        params,
+        resolve,
+        reject,
+      );
     }
-
   }
   this.DraftActions = alt.createActions(DraftActions);
 })();

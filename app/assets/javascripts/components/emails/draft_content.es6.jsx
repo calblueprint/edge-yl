@@ -5,18 +5,14 @@ class DraftContent extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
+      draft: React.PropTypes.object.isRequired,
       errors: React.PropTypes.array,
-      margin: React.PropTypes.bool,
-      value: React.PropTypes.string,
     };
   }
 
   static get defaultProps() {
     return {
       errors: [],
-      focus: false,
-      margin: false,
-      value: '',
     };
   }
 
@@ -25,15 +21,11 @@ class DraftContent extends Component {
   // --------------------------------------------------
   get styles() {
     return {
-      container: Object.assign(
-        {},
-        {
-          display: 'flex',
-          flexFlow: 'column',
-          alignSelf: 'stretch',
-        },
-        this.props.margin && { marginTop: '12px' }
-      ),
+      container: {
+        display: 'flex',
+        flexFlow: 'column',
+        alignSelf: 'stretch',
+      },
       error: {
         color: StyleConstants.colors.red,
       },
@@ -45,8 +37,13 @@ class DraftContent extends Component {
   // --------------------------------------------------
   componentDidMount() {
     var node = ReactDOM.findDOMNode(this.refs.input);
-    node.oninput = (event) =>
-        DraftActions.storeAttribute('content', event.target.value);
+    node.oninput = (event) => {
+      DraftActions.storeAttribute(
+        'content',
+        event.target.value,
+        this.props.draft.id,
+      );
+    };
   }
 
   // --------------------------------------------------
@@ -68,9 +65,9 @@ class DraftContent extends Component {
       <div style={this.styles.container}>
         <h6>Content</h6>
         <textarea
-          defaultValue={this.props.value}
-          rows="10"
+          defaultValue={this.props.draft.subject}
           ref={'input'}
+          rows={'10'}
           placeholder="Start typing" />
         {this.renderError()}
       </div>

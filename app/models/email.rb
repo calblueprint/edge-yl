@@ -25,6 +25,13 @@ class Email < ActiveRecord::Base
 
   before_validation :set_initials, on: :create
 
+  def self.draft(params, user)
+    draft = Email.new params
+    draft[:is_draft] = true
+    draft.user = user
+    draft
+  end
+
   private
 
   def set_initials

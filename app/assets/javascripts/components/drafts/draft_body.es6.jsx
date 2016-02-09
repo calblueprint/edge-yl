@@ -29,24 +29,31 @@ class DraftBody extends Component {
   // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
-  send() {
+  sendEmail() {
     DraftActions.sendEmail(this.state.template);
   }
 
+  // --------------------------------------------------
+  // Render
+  // --------------------------------------------------
+  renderSave() {
+    if(this.props.template.saved) {
+      return (
+        <span>{this.props.template.saved}</span>
+      );
+    }
+  }
 
   render() {
     var draft = this.props.draft;
     var template = this.props.template;
     return (
       <div style={this.styles.container}>
-        <DraftSubject
-          label={'Subject'}
-          value={draft.subject} />
-        <DraftContent
-          label={'Content'}
-          value={draft.content} />
+        <DraftSubject draft={draft} />
+        <DraftContent draft={draft} />
+        {this.renderSave()}
         <FormButton
-          action={() => this.send()}
+          action={() => this.sendEmail()}
           content={'Send'}
           margin={this.props.template.message ? 12 : 24} />
       </div>

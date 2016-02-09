@@ -57,12 +57,12 @@ ActiveRecord::Schema.define(version: 20160203043835) do
   create_table "emails", force: :cascade do |t|
     t.string   "content",                        null: false
     t.string   "from",                           null: false
+    t.boolean  "is_draft",       default: false, null: false
+    t.boolean  "is_unread",      default: true,  null: false
     t.string   "sender",                         null: false
     t.string   "subject",                        null: false
     t.string   "recipient",                      null: false
     t.string   "to",                             null: false
-    t.boolean  "is_draft",       default: false, null: false
-    t.boolean  "is_unread",      default: true,  null: false
     t.integer  "emailable_id"
     t.string   "emailable_type"
     t.integer  "user_id"
