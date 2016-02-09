@@ -44,7 +44,7 @@ class Api::StudentsController < Api::BaseController
   private
 
   def index_csv
-    students = Student.all
+    students = apply_scopes(Student).all
     send_data students.to_csv
   end
 

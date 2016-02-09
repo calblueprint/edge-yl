@@ -31,6 +31,12 @@
       return true;
     }
 
+    exportStudents() {
+      var query = StudentsStore.getState().query;
+      Requester.csv(ApiConstants.csvs.students(query), 'students');
+      return true;
+    }
+
     // --------------------------------------------------
     // Stores
     // --------------------------------------------------

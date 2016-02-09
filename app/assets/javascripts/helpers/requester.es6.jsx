@@ -1,14 +1,31 @@
 (() => {
   class Requester {
 
+    csv(route, type) {
+      var request = this.initialize('GET', route, 'text/csv');
+      request.onreadystatechange = () => {
+        if (request.readyState === XMLHttpRequest.DONE) {
+          if (request.status === 200) {
+            var a = document.createElement('a');
+            var encoding = 'data:attachment/csv';
+            a.href = `${encoding}, ${encodeURIComponent(request.response)}`;
+            a.target = '_blank';
+            a.download = `${type}.csv`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+          }
+        }
+      };
+      request.send();
+    }
+
     delete(route, resolve, reject) {
       var request = this.initialize('DELETE', route);
       request.onreadystatechange = () => {
         if (request.readyState === XMLHttpRequest.DONE) {
-          if (request.status === 204) {
-            if (resolve) {
-              resolve();
-            }
+          if (request.status === 204 && resolve) {
+            resolve();
           }
         }
       };
@@ -19,21 +36,19 @@
       var request = this.initialize('GET', route);
       request.onreadystatechange = () => {
         if (request.readyState === XMLHttpRequest.DONE) {
-          if (request.status === 200) {
-            if (resolve) {
-              resolve(JSON.parse(request.response));
-            }
+          if (request.status === 200 && resolve) {
+            resolve(JSON.parse(request.response));
           }
         }
       };
       request.send();
     }
 
-    initialize(type, route) {
+    initialize(type, route, content='application/json') {
       var request = new XMLHttpRequest();
       request.open(type, route);
-      request.setRequestHeader('Accept', 'application/json');
-      request.setRequestHeader('Content-Type', 'application/json');
+      request.setRequestHeader('Accept', content);
+      request.setRequestHeader('Content-Type', content);
       request.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
       return request;
     }
@@ -42,14 +57,10 @@
       var request = this.initialize('POST', route);
       request.onreadystatechange = () => {
         if (request.readyState === XMLHttpRequest.DONE) {
-          if (request.status === 201) {
-            if (resolve) {
-              resolve(JSON.parse(request.response));
-            }
-          } else if (request.status === 401 || request.status === 422) {
-            if (reject) {
-              reject(JSON.parse(request.response));
-            }
+          if (request.status === 201 && resolve) {
+            resolve(JSON.parse(request.response));
+          } else if (reject) {
+            reject(JSON.parse(request.response));
           }
         }
       };
@@ -60,14 +71,10 @@
       var request = this.initialize('PATCH', route);
       request.onreadystatechange = () => {
         if (request.readyState === XMLHttpRequest.DONE) {
-          if (request.status === 201) {
-            if (resolve) {
-              resolve(JSON.parse(request.response));
-            }
-          } else if (request.status === 401 || request.status === 422) {
-            if (reject) {
-              reject(JSON.parse(request.response));
-            }
+          if (request.status === 201 && resolve) {
+            resolve(JSON.parse(request.response));
+          } else if (reject) {
+            reject(JSON.parse(request.response));
           }
         }
       };
