@@ -13,7 +13,7 @@ class Form < ActiveRecord::Base
 
   enum target: [:school, :student]
 
-  has_many :sections, dependent: :destroy
+  has_many :pages, dependent: :destroy
   has_many :questions, through: :sections
 
 end
