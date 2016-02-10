@@ -4,7 +4,7 @@ class CreateSections < ActiveRecord::Migration
     create_table :sections do |t|
       t.string :title, null: false
 
-      t.references :form, index: true
+      t.references :page, index: true
 
       t.timestamps null: false
     end

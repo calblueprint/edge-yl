@@ -11,13 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160203043835) do
+ActiveRecord::Schema.define(version: 20160210042524) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "pg_trgm"
   enable_extension "fuzzystrmatch"
   enable_extension "unaccent"
+  enable_extension "uuid-ossp"
 
   create_table "comments", force: :cascade do |t|
     t.string   "content",          null: false
@@ -109,6 +110,15 @@ ActiveRecord::Schema.define(version: 20160203043835) do
   add_index "leaderships", ["group_id"], name: "index_leaderships_on_group_id", using: :btree
   add_index "leaderships", ["user_id"], name: "index_leaderships_on_user_id", using: :btree
 
+  create_table "pages", force: :cascade do |t|
+    t.string   "title",      null: false
+    t.integer  "form_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "pages", ["form_id"], name: "index_pages_on_form_id", using: :btree
+
   create_table "pg_search_documents", force: :cascade do |t|
     t.text     "content"
     t.integer  "searchable_id"
@@ -170,12 +180,12 @@ ActiveRecord::Schema.define(version: 20160203043835) do
 
   create_table "sections", force: :cascade do |t|
     t.string   "title",      null: false
-    t.integer  "form_id"
+    t.integer  "page_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_index "sections", ["form_id"], name: "index_sections_on_form_id", using: :btree
+  add_index "sections", ["page_id"], name: "index_sections_on_page_id", using: :btree
 
   create_table "students", force: :cascade do |t|
     t.string   "address_city",                       null: false
@@ -213,6 +223,35 @@ ActiveRecord::Schema.define(version: 20160203043835) do
   add_index "students", ["group_id"], name: "index_students_on_group_id", using: :btree
   add_index "students", ["room_id"], name: "index_students_on_room_id", using: :btree
   add_index "students", ["school_id"], name: "index_students_on_school_id", using: :btree
+
+  create_table "submissions", force: :cascade do |t|
+    t.string  "address_city"
+    t.string  "address_one"
+    t.string  "address_state"
+    t.string  "address_two"
+    t.string  "address_zip"
+    t.date    "birthday"
+    t.string  "cell_phone"
+    t.string  "current_page"
+    t.string  "email"
+    t.string  "first_name"
+    t.integer "gender"
+    t.string  "guardian_email"
+    t.string  "guardian_employer"
+    t.string  "guardian_first_name"
+    t.string  "guardian_job_title"
+    t.string  "guardian_last_name"
+    t.string  "guardian_phone_number"
+    t.integer "guardian_phone_type"
+    t.integer "guardian_relationship"
+    t.string  "home_phone"
+    t.string  "last_name"
+    t.string  "preferred_name"
+    t.integer "registration_status"
+    t.integer "shirt_size"
+    t.integer "total_pages"
+    t.uuid    "uuid",                  default: "uuid_generate_v4()"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "confirmation_token"

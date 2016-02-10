@@ -1,18 +1,17 @@
 # == Schema Information
 #
-# Table name: sections
+# Table name: pages
 #
 #  id         :integer          not null, primary key
 #  title      :string           not null
-#  page_id    :integer
+#  form_id    :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
-class Section < ActiveRecord::Base
-
-	belongs_to :page
-
-  has_many :questions, dependent: :destroy
+FactoryGirl.define do
+  factory :page do
+    
+  end
 
 end

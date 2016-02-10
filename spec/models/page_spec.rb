@@ -1,18 +1,16 @@
 # == Schema Information
 #
-# Table name: sections
+# Table name: pages
 #
 #  id         :integer          not null, primary key
 #  title      :string           not null
-#  page_id    :integer
+#  form_id    :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
-class Section < ActiveRecord::Base
+require 'rails_helper'
 
-	belongs_to :page
-
-  has_many :questions, dependent: :destroy
-
+RSpec.describe Page, type: :model do
+  pending "add some examples to (or delete) #{__FILE__}"
 end
