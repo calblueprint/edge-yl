@@ -16,6 +16,12 @@
       };
     }
 
+    get contacts() {
+      return {
+        update: (id) => `/api/contacts/${id}`,
+      };
+    }
+
     get csvs() {
       return {
         group: (id) => `/api/groups/${id}.csv`,

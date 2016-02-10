@@ -19,6 +19,7 @@
         handleCloseOverlay: SchoolActions.CLOSE_OVERLAY,
         handleStoreAttribute: SchoolActions.STORE_ATTRIBUTE,
         handleStoreComment: SchoolActions.STORE_COMMENT,
+        handleStoreContact: SchoolActions.STORE_CONTACT,
         handleStoreError: SchoolActions.STORE_ERROR,
         handleStorePairing: SchoolActions.STORE_PAIRING,
         handleStoreSchool: SchoolActions.STORE_SCHOOL,
@@ -43,6 +44,11 @@
     handleStoreComment(response) {
       this.overlay = false;
       this.school.comments.push(response.comment);
+    }
+
+    handleStoreContact(response) {
+      this.overlay = false;
+      this.school['primary_contact'] = response.contact;
     }
 
     handleStoreError(response) {

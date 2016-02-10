@@ -23,8 +23,13 @@ class SchoolPageOverlay extends PageOverlay {
   // Render
   // --------------------------------------------------
   renderModal() {
-    if (this.props.pairing) {
-      return <SchoolEditModal pairing={this.props.pairing} />;
+    var pairing = this.props.pairing;
+    if (pairing) {
+      if (pairing.model == TypeConstants.school.contact) {
+        return <ContactEditModal pairing={pairing} />;
+      } else {
+        return <SchoolEditModal pairing={pairing} />;
+      }
     } else if (this.props.template) {
       return (
         <CommentCreateModal

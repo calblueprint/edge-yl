@@ -8,6 +8,7 @@
       this.generateActions(
         'closeOverlay',
         'storeComment',
+        'storeContact',
         'storeError',
         'storeSchool',
         'storeValue',
@@ -33,6 +34,20 @@
     fetchSchool(id) {
       var resolve = (response) => this.storeSchool(response);
       Requester.get(ApiConstants.schools.show(id), resolve);
+      return true;
+    }
+
+    updateContact(pairing, attributes={}) {
+      attributes[pairing.key] = pairing.value;
+      var params = { contact: attributes };
+      var resolve = (response) => this.storeContact(response);
+      var reject = (response) => this.storeError(response)
+      Requester.update(
+        ApiConstants.contacts.update(pairing.id),
+        params,
+        resolve,
+        reject,
+      );
       return true;
     }
 
@@ -66,6 +81,7 @@
         errors: {},
         id: options.id,
         key: options.key,
+        model: options.model,
         type: options.type,
         value: options.value,
       };
