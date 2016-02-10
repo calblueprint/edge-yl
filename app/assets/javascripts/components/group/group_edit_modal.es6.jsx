@@ -43,11 +43,15 @@ class GroupEditModal extends EditModal {
   // --------------------------------------------------
   renderChild(type) {
     var pairing = this.props.pairing;
+    var label = pairing.key;
+    if (pairing.label) {
+      label = pairing.label;
+    }
     if (pairing.type === 'dropdown') {
       return (
         <CardDropdown
           errors={pairing.errors[pairing.key]}
-          label={pairing.key}
+          label={label}
           choices={this.generateChoices()}
           value={pairing.value && pairing.value.full_name} />
       );
@@ -56,7 +60,7 @@ class GroupEditModal extends EditModal {
         <CardInput
           action={(event) => GroupActions.storeValue(event.target.value)}
           errors={pairing.errors[pairing.key]}
-          label={pairing.key}
+          label={label}
           value={pairing.value} />
       );
     }

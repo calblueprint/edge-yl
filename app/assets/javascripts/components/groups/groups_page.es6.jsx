@@ -55,6 +55,12 @@ class GroupsPage extends Component {
         action: () => ViewActions.toggleEditability(),
         content: this.state.editable ? 'Finish' : 'Edit',
       },
+      {
+        action: () => GroupsActions.storeTemplate(
+          'group',
+          { conference_id: this.props.conference.id }),
+        content: 'New',
+      },
     ];
   }
 
@@ -67,9 +73,21 @@ class GroupsPage extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
+  renderOverlay() {
+    if (this.state.overlay) {
+      return (
+        <GroupsPageOverlay
+          conference={this.state.conference}
+          groupables={this.state.groupables}
+          template={this.state.template} />
+      );
+    }
+  }
+
   render() {
     return (
       <div style={StyleConstants.pages.wrapper}>
+      {this.renderOverlay()}
       <Header profile={this.selectProfile()} />
       <Sidebar profile={this.selectProfile()} />
         <div style={StyleConstants.pages.container}>

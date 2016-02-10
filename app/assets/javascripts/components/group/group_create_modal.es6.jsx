@@ -8,6 +8,7 @@ class GroupCreateModal extends CreateModal {
       conference: React.PropTypes.object.isRequired,
       groupables: React.PropTypes.arrayOf(React.PropTypes.object),
       template: React.PropTypes.object.isRequired,
+      type: React.PropTypes.oneOf(['conference', 'groups']).isRequired,
     };
   }
 
@@ -22,7 +23,11 @@ class GroupCreateModal extends CreateModal {
   // --------------------------------------------------
   handleClick(event) {
     if (event.target === this._node) {
-      ConferenceActions.closeOverlay();
+      if (this.props.type == 'conference') {
+        ConferenceActions.closeOverlay();
+      } else if (this.props.type == 'groups') {
+        GroupsActions.closeOverlay();
+      }
     }
   }
 
@@ -30,12 +35,33 @@ class GroupCreateModal extends CreateModal {
   // Helpers
   // --------------------------------------------------
   createGroup() {
-    ConferenceActions.createGroup(this.props.template);
+    var actions;
+    if (this.props.type == 'conference') {
+      actions = ConferenceActions;
+    } else if (this.props.type == 'groups') {
+      actions = GroupsActions;
+    }
+    actions.createGroup(this.props.template);
   }
 
   generateChoice(groupable, type) {
+    var actions;
+    var attributes = this.props.template.attributes;
+    if (this.props.type == 'conference') {
+      actions = ConferenceActions;
+    } else if (this.props.type == 'groups') {
+      actions = GroupsActions;
+    }
+
+    // don't display an already selected leader as a choice for a different leadership position
+    if (attributes['primary_leader'] && groupable.id == attributes['primary_leader']['user_id']) {
+      return;
+    } else if (attributes['secondary_leader'] && groupable.id == attributes['secondary_leader']['user_id']) {
+      return;
+    }
+
     return {
-      action: () => ConferenceActions.storeAttribute(
+      action: () => actions.storeAttribute(
         type === 'primary' ? 'primary_leader' : 'secondary_leader',
         {
           style: type === 'primary' ? 1 : 0,
@@ -48,12 +74,18 @@ class GroupCreateModal extends CreateModal {
 
   generateChoices(type) {
     var groupables = this.props.groupables;
-    return groupables.map((groupable) => this.generateChoice(groupable, type));
+    return groupables.map((groupable) => this.generateChoice(groupable, type)).
+                      filter((groupable) => groupable != null );
+
   }
 
   generateHandler(field) {
     return(event) => {
-      ConferenceActions.storeAttribute(field, event.target.value);
+      if (this.props.type == 'conference') {
+        ConferenceActions.storeAttribute(field, event.target.value);
+      } else if (this.props.type == 'groups') {
+        GroupsActions.storeAttribute(field, event.target.value);
+      }
     };
   }
 

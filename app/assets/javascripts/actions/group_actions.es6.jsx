@@ -79,6 +79,7 @@
         errors: {},
         id: options.id,
         key: options.key,
+        label: options.label,
         model: options.model,
         type: options.type,
         value: options.value,
