@@ -1,19 +1,11 @@
 class FormPage extends Component {
 
   // --------------------------------------------------
-  // Setup
-  // --------------------------------------------------
-  constructor(props) {
-    super(props);
-    this._listener = (state) => this.setState(state);
-  }
-
-  // --------------------------------------------------
   // Props
   // --------------------------------------------------
   static get propTypes() {
     return {
-      target: React.PropTypes.string.isRequired,
+      form: React.PropTypes.object.isRequired,
     };
   }
 
@@ -24,37 +16,50 @@ class FormPage extends Component {
     return {
       container: Object.assign(
         {},
-        StyleConstants.pages.wrapper,
-        { justifyContent: 'center' },
+        StyleConstants.templates.card,
+        {
+          width: '712px',
+          padding: '24px',
+          margin: '48px 0px',
+        }
       ),
+      header: {
+        display: 'flex',
+        justifyContent: 'center',
+        marginBottom: '24px',
+      },
     };
-  }
-
-  // --------------------------------------------------
-  // Lifecycle
-  // --------------------------------------------------
-  componentWillMount() {
-    this.setState(FormStore.getState());
-  }
-
-  componentDidMount() {
-    FormStore.listen(this._listener);
-    FormActions.fetchForm(this.props.target);
-  }
-
-  componentWillUnmount() {
-    FormStore.unlisten(this._listener);
   }
 
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
-  render() {
+  renderSection(section) {
     return (
+      <FormSection
+        key={section.id}
+        section={section} />
+    );
+  }
+
+  renderSections() {
+    var pages = this.props.form.pages;
+    if (pages) {
+      return pages[0].sections.map((section) => this.renderSection(section));
+    }
+  }
+
+  render() {
+    return(
       <div style={this.styles.container}>
-        <FormBody form={this.state.form} />
+        <div style={this.styles.header}>
+          <h1>{this.props.form.title}</h1>
+        </div>
+        {this.renderSections()}
+        <FormButton
+          action={() => FormActions.createObject(this.props.form)}
+          content={'Submit'} />
       </div>
     );
   }
 }
-

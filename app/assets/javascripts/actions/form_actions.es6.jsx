@@ -17,7 +17,7 @@
     // --------------------------------------------------
     createObject(form) {
       var attributes = {};
-      form.sections.map(
+      form.pages[0].sections.map(
         (section) => {
           section.questions.map(
             (question) => {

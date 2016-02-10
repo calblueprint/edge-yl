@@ -2,6 +2,6 @@ class FormShowSerializer < FormIndexSerializer
 
   attributes :target
 
-  has_many :sections, serializer: SectionBaseSerializer
+  has_many :pages, serializer: PageBaseSerializer
 
 end

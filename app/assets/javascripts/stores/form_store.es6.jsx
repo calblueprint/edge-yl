@@ -37,7 +37,6 @@
     }
 
     handleStoreObject(response) {
-      console.log(response);
     }
 
     handleStoreResponse(response) {

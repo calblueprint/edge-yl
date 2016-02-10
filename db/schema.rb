@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 20160210042524) do
     t.string   "content",                        null: false
     t.string   "from",                           null: false
     t.boolean  "is_draft",       default: false, null: false
+    t.boolean  "is_sent",        default: false, null: false
     t.boolean  "is_unread",      default: true,  null: false
     t.string   "sender",                         null: false
     t.string   "subject",                        null: false
