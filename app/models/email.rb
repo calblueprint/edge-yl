@@ -24,6 +24,7 @@ class Email < ActiveRecord::Base
   belongs_to :user
 
   before_validation :set_initials, on: :create
+  before_validation :try_send, on: :update
 
   def self.draft(params, user)
     draft = Email.new params
@@ -52,6 +53,13 @@ class Email < ActiveRecord::Base
 
   def smtp_format_name(name, email)
     "#{name} <#{email}>"
+  end
+
+  def try_send
+    if !is_draft && !is_sent
+      StudentMailer.standard(draft).deliver_now
+      self.is_sent = true
+    end
   end
 
 end
