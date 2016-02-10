@@ -16,3 +16,6 @@ config/database.yml
 
 # Ignore application environment variables.
 config/application.yml
+
+# Ignore vim temporary files.
+*.swp

@@ -29,6 +29,7 @@ class Email < ActiveRecord::Base
   def self.draft(params, user)
     draft = Email.new params
     draft[:is_draft] = true
+    draft[:is_unread] = false
     draft.user = user
     draft
   end
@@ -46,8 +47,8 @@ class Email < ActiveRecord::Base
       self.to = smtp_format_name student.full_name, self.recipient
     elsif self.emailable_type == School.name
       school = School.find self.emailable_id
-      self.recipient = school.email
-      self.to = smtp_format_name school.name, self.recipient
+      self.recipient = school.primary_contact.email
+      self.to = smtp_format_name school.primary_contact.full_name, self.recipient
     end
   end
 

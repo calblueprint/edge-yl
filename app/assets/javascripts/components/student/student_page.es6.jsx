@@ -51,7 +51,7 @@ class StudentPage extends Component {
         content: this.state.editable ? 'Finish' : 'Edit',
       },
       {
-        action: () => StudentActions.createDraft(this.state.student),
+        action: () => StudentActions.createDraft(this.state.student, 'Student'),
         content: 'Email',
       },
     ];

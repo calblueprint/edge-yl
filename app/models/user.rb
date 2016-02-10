@@ -32,6 +32,7 @@ class User < ActiveRecord::Base
          :registerable, :rememberable, :trackable, :validatable
 
   has_many :comments, dependent: :destroy
+  has_many :emails, dependent: :destroy
   has_many :responsibilities, dependent: :destroy
   has_many :visits, dependent: :destroy
 
@@ -62,6 +63,10 @@ class User < ActiveRecord::Base
     if !new_visit.equals(last_visit)
       new_visit.save
     end
+  end
+
+  def unread_emails
+    emails.where(is_unread: :true).count
   end
 
 end

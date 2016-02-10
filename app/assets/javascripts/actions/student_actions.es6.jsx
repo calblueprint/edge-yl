@@ -30,15 +30,14 @@
       return true;
     }
 
-    createDraft(student) {
+    createDraft(emailable, type) {
       var attributes = {
-        emailable_id: student.id,
-        emailable_type: "Student",
+        emailable_id: emailable.id,
+        emailable_type: type,
       };
       var params = { email: attributes };
       var resolve = (response) => {
-        var id = response.email.id;
-        window.location = RouteConstants.drafts.show(id);
+        window.location = RouteConstants.drafts.show(response.email.id);
       };
       Requester.post(
         ApiConstants.drafts.create,
