@@ -44,6 +44,14 @@
           },
           this.templates.card,
         ),
+        empty: {
+          display: 'flex',
+          flexFlow: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
+          width: '100%',
+          padding: '24px 0px',
+        },
         header: (left) => Object.assign(
           {},
           {

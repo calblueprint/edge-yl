@@ -34,10 +34,20 @@ class StudentsGrid extends Component {
     return this.props.students.map((student) => this.renderCard(student));
   }
 
+  renderEmpty() {
+    if (!this.props.students.length) {
+      return (
+        <GridEmpty
+          content={'There are currently no students.'} />
+      );
+    }
+  }
+
   render() {
     return (
       <div style={StyleConstants.grids.wrap}>
         {this.renderCards()}
+        {this.renderEmpty()}
       </div>
     );
   }

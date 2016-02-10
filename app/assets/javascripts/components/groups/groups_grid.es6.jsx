@@ -39,10 +39,20 @@ class GroupsGrid extends Component {
     return this.props.groups.map((group) => this.renderGroup(group));
   }
 
+  renderEmpty() {
+    if (!this.props.groups.length) {
+      return (
+        <GridEmpty
+          content={'There are currently no groups in this conference.'} />
+      );
+    }
+  }
+
   render() {
     return (
       <div style={StyleConstants.grids.wrap}>
         {this.renderGroups()}
+        {this.renderEmpty()}
       </div>
     );
   }

@@ -39,10 +39,20 @@ class RoomsGrid extends Component {
     return this.props.rooms.map((room) => this.renderCard(room));
   }
 
+  renderEmpty() {
+    if (!this.props.rooms.length) {
+      return (
+        <GridEmpty
+          content={'There are currently no rooms in this conference.'} />
+      );
+    }
+  }
+
   render() {
     return (
       <div style={StyleConstants.grids.wrap}>
         {this.renderCards()}
+        {this.renderEmpty()}
       </div>
     );
   }
