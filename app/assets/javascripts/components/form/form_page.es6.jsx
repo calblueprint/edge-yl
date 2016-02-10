@@ -13,7 +13,7 @@ class FormPage extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      id: React.PropTypes.number.isRequired,
+      target: React.PropTypes.string.isRequired,
     };
   }
 
@@ -25,7 +25,7 @@ class FormPage extends Component {
       container: Object.assign(
         {},
         StyleConstants.pages.wrapper,
-        { alignItems: 'center' }
+        { justifyContent: 'center' },
       ),
     };
   }
@@ -39,7 +39,7 @@ class FormPage extends Component {
 
   componentDidMount() {
     FormStore.listen(this._listener);
-    FormActions.fetchForm(this.props.id);
+    FormActions.fetchForm(this.props.target);
   }
 
   componentWillUnmount() {

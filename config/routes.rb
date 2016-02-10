@@ -4,14 +4,14 @@
 
   get 'email', to: 'pages#email'
   get 'feedback', to: 'pages#feedback'
+  get 'forms/:target', to: 'forms#show'
   get 'login', to: 'pages#login'
-  get 'signup', to: 'pages#signup'
   get 'profile', to: 'users#profile'
+  get 'signup', to: 'pages#signup'
 
   resources :conferences, only: [:index, :show]
   resources :drafts, only: [:show]
   resources :emails, only: [:index, :show]
-  resources :forms, only: [:show]
   resources :groups, only: [:index, :show]
   resources :rooms, only: [:index, :show]
   resources :students, only: [:index, :show]
@@ -33,7 +33,7 @@
 
   namespace :api do
     get '/searchables/search', to: 'searchables#search'
-
+    get '/forms/:target', to: 'forms#show'
     get '/users/profile', to: 'users#profile'
     resources :comments, only: [:create]
     resources :conferences, only: [:create, :index, :show, :update]
@@ -41,7 +41,6 @@
     resources :drafts, only: [:create, :show, :update]
     resources :emails, only: [:create, :index, :show]
     resources :feedbacks, only: [:create]
-    resources :forms, only: [:show]
     resources :groups, only: [:create, :index, :show, :update]
     resources :leaderships, only: [:update]
     resources :profiles, only: [:update]

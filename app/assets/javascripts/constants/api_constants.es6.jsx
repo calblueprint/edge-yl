@@ -63,7 +63,7 @@
 
     get forms() {
       return {
-        show: (id) => `/api/forms/${id}`,
+        show: (target) => `/api/forms/${target}`,
       };
     }
 

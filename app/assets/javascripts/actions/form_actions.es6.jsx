@@ -42,9 +42,9 @@
       return true;
     }
 
-    fetchForm(id) {
+    fetchForm(target) {
       var resolve = (response) => this.storeForm(response);
-      Requester.get(ApiConstants.forms.show(id), resolve);
+      Requester.get(ApiConstants.forms.show(target), resolve);
       return true;
     }
 
