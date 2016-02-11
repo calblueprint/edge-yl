@@ -15,26 +15,16 @@
     // --------------------------------------------------
     // Requests
     // --------------------------------------------------
-    createObject(form) {
+    createSubmission(form) {
       var attributes = {};
-      form.pages[0].sections.map(
-        (section) => {
-          section.questions.map(
-            (question) => {
-              attributes[question.key] = question.value;
-            }
-          );
-        }
+      form.pages[0].questions.map(
+        (question) => attributes[question.key] = question.value;
       );
-      var params = {};
-      params[form.target] = attributes;
+      var params = { submission: attributes };
       var resolve = (response) => this.storeObject(response);
       var reject = (response) => this.storeError(response);
-      var route = (form.target === 'school') ?
-                  ApiConstants.schools.create :
-                  ApiConstants.students.create;
       Requester.post(
-        route,
+        ApiConstants.submissions.create,
         params,
         resolve,
         reject,
