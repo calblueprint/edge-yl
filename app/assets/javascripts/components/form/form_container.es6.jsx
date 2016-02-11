@@ -13,6 +13,7 @@ class FormContainer extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
+      page: React.PropTypes.number.isRequired,
       target: React.PropTypes.string.isRequired,
     };
   }
