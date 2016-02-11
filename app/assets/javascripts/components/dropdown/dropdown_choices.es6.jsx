@@ -73,7 +73,7 @@ class DropdownChoices extends Component {
       if (this.props.hide) {
         this.props.hide();
       }
-      choice.action(event)
+      choice.action(event);
     };
     var styles = Object.assign({}, this.props.styles.child);
     if (index > 0) {

@@ -16,10 +16,20 @@ class SearchResults extends Component {
   // --------------------------------------------------
   get styles() {
     return {
-      container: {
-        display: 'flex',
-        flexFlow: 'column',
-      },
+      container: Object.assign(
+        {},
+        {
+          display: 'flex',
+          flexFlow: 'column',
+          position: 'absolute',
+          width: '100%',
+          marginTop: '16px',
+          zIndex: StyleConstants.planes.nine,
+        },
+        (!this.props.search.active ||
+         !this.props.results.length) &&
+         { display: 'none' },
+      ),
     };
   }
 
@@ -37,17 +47,7 @@ class SearchResults extends Component {
           paddingLeft: '4px',
         },
       },
-      container: Object.assign(
-        {},
-        StyleConstants.containers.card,
-        {
-          zIndex: StyleConstants.planes.nine,
-          marginTop: '16px',
-        },
-        (!this.props.search.active ||
-         !this.props.results.length) &&
-         { display: 'none' }
-      ),
+      container: StyleConstants.containers.card,
     };
   }
 
@@ -88,9 +88,11 @@ class SearchResults extends Component {
   // --------------------------------------------------
   render() {
     return (
-      <DropdownChoices
-        choices={this.generateChoices()}
-        styles={this.dropdownStyles} />
+      <div style={this.styles.container}>
+        <DropdownChoices
+          choices={this.generateChoices()}
+          styles={this.dropdownStyles} />
+      </div>
     );
   }
 }
