@@ -8,20 +8,19 @@
       this.generateActions(
         'storeError',
         'storeForm',
-        'storeObject',
+        'storeSubmission',
       );
     }
 
     // --------------------------------------------------
     // Requests
     // --------------------------------------------------
-    createSubmission(form) {
+    createSubmission(page) {
       var attributes = {};
-      form.pages[0].questions.map(
-        (question) => attributes[question.key] = question.value;
-      );
+      var questions = page.questions;
+      questions.map((question) => attributes[question.key] = question.value);
       var params = { submission: attributes };
-      var resolve = (response) => this.storeObject(response);
+      var resolve = (response) => this.storeSubmission(response);
       var reject = (response) => this.storeError(response);
       Requester.post(
         ApiConstants.submissions.create,
@@ -41,10 +40,10 @@
     // --------------------------------------------------
     // Stores
     // --------------------------------------------------
-    storeResponse(section, question, value) {
+    storeResponse(page, question, value) {
       return {
+        page: page,
         question: question,
-        section: section,
         value: value,
       };
     }

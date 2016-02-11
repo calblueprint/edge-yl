@@ -129,6 +129,12 @@
       };
     }
 
+    get submissions() {
+      return {
+        create: '/api/submissions',
+      };
+    }
+
     get users() {
       return {
         create: '/api/users/signup',
