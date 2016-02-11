@@ -13,6 +13,6 @@ class Page < ActiveRecord::Base
 
 	belongs_to :form
 
-	has_many :sections
+  has_many :questions, dependent: :destroy
 
 end

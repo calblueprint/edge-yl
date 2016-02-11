@@ -9,7 +9,7 @@ class CreateQuestions < ActiveRecord::Migration
       t.integer :style, null: false
       t.string  :title, null: false
 
-      t.references :section, index: true
+      t.references :page, index: true
 
       t.timestamps null: false
     end

@@ -18,7 +18,7 @@ class Question < ActiveRecord::Base
 
   enum style: [:dropdown, :input, :textarea]
 
-  belongs_to :section
+  belongs_to :page
 
   validates :key, presence: true
   validates :style, presence: true
