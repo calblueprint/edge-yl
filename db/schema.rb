@@ -137,12 +137,12 @@ ActiveRecord::Schema.define(version: 20160210042524) do
     t.string   "placeholder", default: "",   null: false
     t.integer  "style",                      null: false
     t.string   "title",                      null: false
-    t.integer  "section_id"
+    t.integer  "page_id"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
   end
 
-  add_index "questions", ["section_id"], name: "index_questions_on_section_id", using: :btree
+  add_index "questions", ["page_id"], name: "index_questions_on_page_id", using: :btree
 
   create_table "responsibilities", force: :cascade do |t|
     t.integer  "status",     null: false
@@ -178,15 +178,6 @@ ActiveRecord::Schema.define(version: 20160210042524) do
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
   end
-
-  create_table "sections", force: :cascade do |t|
-    t.string   "title",      null: false
-    t.integer  "page_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "sections", ["page_id"], name: "index_sections_on_page_id", using: :btree
 
   create_table "students", force: :cascade do |t|
     t.string   "address_city",                       null: false
