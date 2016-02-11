@@ -14,14 +14,13 @@ class Header extends Component {
   static get propTypes() {
     return {
       active: React.PropTypes.bool,
-      profile: React.PropTypes.object,
+      profile: React.PropTypes.object.isRequired,
     };
   }
 
   static get defaultProps() {
     return {
       active: true,
-      profile: {},
     };
   }
 
@@ -109,7 +108,9 @@ class Header extends Component {
           pagination={this.state.pagination}
           results={this.state.results}
           search={this.state.search} />
-        <HeaderShortcuts active={this.props.active} />
+        <HeaderShortcuts
+          active={this.props.active}
+          profile={this.props.profile} />
       </div>
     );
   }

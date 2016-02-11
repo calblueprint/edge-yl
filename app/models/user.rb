@@ -65,7 +65,7 @@ class User < ActiveRecord::Base
     end
   end
 
-  def unread_emails
+  def unread_count
     emails.where(is_unread: :true).count
   end
 

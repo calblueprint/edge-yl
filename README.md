@@ -75,6 +75,7 @@ Happy developing!
     padding,
     margin,
     backgroundColor,
+    backgroundImage,
     border,
     borderColor,
     borderRadius,

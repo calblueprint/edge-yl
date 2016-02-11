@@ -23,6 +23,7 @@ admin = User.first
     subject: "#{Faker::Hacker.noun} #{Faker::Hacker.verb} #{Faker::Hacker.noun}".humanize,
     recipient: admin.email,
     to: "#{admin.full_name} <#{admin.email}>",
+    user: admin,
   )
   puts "Create email from #{new_email.from}."
 end

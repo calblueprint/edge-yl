@@ -17,6 +17,7 @@
 class School < ActiveRecord::Base
 
   include PgSearch
+
   multisearchable against: [:name]
 
   has_many :comments, as: :commentable, dependent: :destroy

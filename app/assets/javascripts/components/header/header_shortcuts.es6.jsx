@@ -6,6 +6,7 @@ class HeaderShortcuts extends Component {
   static get propTypes() {
     return {
       active: React.PropTypes.bool.isRequired,
+      profile: React.PropTypes.object.isRequired,
     };
   }
 
@@ -112,11 +113,7 @@ class HeaderShortcuts extends Component {
     if (this.props.active) {
       return (
         <div style={this.styles.shortcuts}>
-          <Clickable
-            icon={TypeConstants.icons.email}
-            route={RouteConstants.emails.index}
-            styles={this.clickableStyles}
-            type={'i'} />
+          <HeaderInbox count={this.props.profile['unread_count']} />
           <Clickable
             action={() => this.setState({ dropdown: !this.state.dropdown })}
             icon={TypeConstants.icons.settings}
