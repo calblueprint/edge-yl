@@ -5,7 +5,11 @@ class Api::SubmissionsController < Api::BaseController
   def create
     submission = Submission.new submission_params
     if submission.save
-      render json: submission, serializer: SubmissionBaseSerializer
+      # TODO(Warren): Is there a better way to set the uuid?
+      response = Submission.find submission.id
+      render json: response,
+             serializer: SubmissionBaseSerializer,
+             status: :created
     else
       unprocessable_response submission
     end
