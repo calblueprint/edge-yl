@@ -12,7 +12,7 @@
       this.template = null;
       this.bindListeners({
         handleCloseOverlay: RoomsActions.CLOSE_OVERLAY,
-        handleDeleteRoom: RoomsActions.DELETE_ROOM,
+        handleRemoveRoom: RoomsActions.REMOVE_ROOM,
         handleStoreRoom: RoomsActions.STORE_ROOM,
         handleStoreRooms: RoomsActions.STORE_ROOMS,
         handleStoreAttribute: RoomsActions.STORE_ATTRIBUTE,
@@ -28,8 +28,9 @@
       this.template = null;
     }
 
-    handleDeleteRoom(roomId) {
-      this.rooms = this.rooms.filter(function(room) { return room.id != roomId });
+    handleRemoveRoom(response) {
+      var id = response.room.id;
+      this.rooms = this.rooms.filter((room) => room.id != id);
     }
 
     handleStoreAttribute(attribute) {

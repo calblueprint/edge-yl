@@ -7,6 +7,7 @@
     constructor() {
       this.generateActions(
         'closeOverlay',
+        'removeRoom',
         'storeRoom',
         'storeRooms',
       );
@@ -34,12 +35,14 @@
         var attributes = {};
         attributes['conference_id'] = null;
         var params = { room: attributes };
+        var resolve = (response) => this.removeRoom(response);
         Requester.update(
           ApiConstants.rooms.update(id),
           params,
+          resolve,
         );
-        return id;
       }
+      return true;
     }
 
     fetchRooms(conference) {

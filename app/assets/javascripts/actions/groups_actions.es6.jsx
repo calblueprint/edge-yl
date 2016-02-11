@@ -7,6 +7,7 @@
     constructor() {
       this.generateActions(
         'closeOverlay',
+        'removeGroup',
         'storeError',
         'storeGroup',
         'storeGroups',
@@ -43,12 +44,14 @@
         var attributes = {};
         attributes['conference_id'] = null;
         var params = { group: attributes };
+        var resolve = (response) => this.removeGroup(response);
         Requester.update(
           ApiConstants.groups.update(id),
           params,
+          resolve,
         );
-        return id;
       }
+      return true;
     }
 
     fetchGroups(conference) {

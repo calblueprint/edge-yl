@@ -7,6 +7,8 @@
     constructor() {
       this.generateActions(
         'closeOverlay',
+        'removeGroup',
+        'removeRoom',
         'storeConference',
         'storeGroup',
         'storeGroupables',
@@ -58,12 +60,14 @@
         var attributes = {};
         attributes['conference_id'] = null;
         var params = { group: attributes };
+        var resolve = (response) => this.removeGroup(response);
         Requester.update(
           ApiConstants.groups.update(id),
           params,
+          resolve,
         );
-        return id;
       }
+      return true;
     }
 
     deleteRoom(id) {
@@ -72,12 +76,14 @@
         var attributes = {};
         attributes['conference_id'] = null;
         var params = { room: attributes };
+        var resolve = (response) => this.removeRoom(response);
         Requester.update(
           ApiConstants.rooms.update(id),
           params,
+          resolve,
         );
-        return id;
       }
+      return true;
     }
 
     fetchConference(id) {
