@@ -5,7 +5,7 @@ class Api::SubmissionsController < Api::BaseController
   def create
     submission = Submission.new submission_params
     if submission.save
-      render json: submission
+      render json: submission, serializer: SubmissionBaseSerializer
     else
       unprocessable_response submission
     end
