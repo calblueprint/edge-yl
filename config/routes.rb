@@ -47,6 +47,7 @@
     resources :rooms, only: [:create, :index, :show, :update]
     resources :schools, only: [:create, :index, :show, :update]
     resources :students, only: [:create, :index, :show, :update]
+    resources :submissions, only: [:create]
     resources :users, only: [:index, :show, :update] do
       get '/groupables', on: :collection, to: 'users#groupables'
     end
