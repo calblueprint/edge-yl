@@ -8,33 +8,22 @@
       this.generateActions(
         'storeError',
         'storeForm',
-        'storeObject',
+        'storeSubmission',
       );
     }
 
     // --------------------------------------------------
     // Requests
     // --------------------------------------------------
-    createObject(form) {
+    createSubmission(page) {
       var attributes = {};
-      form.pages[0].sections.map(
-        (section) => {
-          section.questions.map(
-            (question) => {
-              attributes[question.key] = question.value;
-            }
-          );
-        }
-      );
-      var params = {};
-      params[form.target] = attributes;
-      var resolve = (response) => this.storeObject(response);
+      var questions = page.questions;
+      questions.map((question) => attributes[question.key] = question.value);
+      var params = { submission: attributes };
+      var resolve = (response) => this.storeSubmission(response);
       var reject = (response) => this.storeError(response);
-      var route = (form.target === 'school') ?
-                  ApiConstants.schools.create :
-                  ApiConstants.students.create;
       Requester.post(
-        route,
+        ApiConstants.submissions.create,
         params,
         resolve,
         reject,
@@ -51,10 +40,10 @@
     // --------------------------------------------------
     // Stores
     // --------------------------------------------------
-    storeResponse(section, question, value) {
+    storeResponse(page, question, value) {
       return {
+        page: page,
         question: question,
-        section: section,
         value: value,
       };
     }

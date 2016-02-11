@@ -45,7 +45,7 @@ class FormDropdown extends Component {
   storeResponse(choice) {
     var question = this.props.question;
     FormActions.storeResponse(
-      question.section_id,
+      question['page_id'],
       question.id,
       choice
     );

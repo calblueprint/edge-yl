@@ -9,7 +9,7 @@
       this.bindListeners({
         handleStoreError: FormActions.STORE_ERROR,
         handleStoreForm: FormActions.STORE_FORM,
-        handleStoreObject: FormActions.STORE_OBJECT,
+        handleStoreSubmission: FormActions.STORE_SUBMISSION,
         handleStoreResponse: FormActions.STORE_RESPONSE,
       });
     }
@@ -36,14 +36,15 @@
       this.form = response.form;
     }
 
-    handleStoreObject(response) {
+    handleStoreSubmission(response) {
+      console.log(response.submission);
     }
 
     handleStoreResponse(response) {
-      var sections = this.form.sections;
-      var section = sections.filter((section) => section.id === response.section)[0];
-      var questions = section.questions;
-      var question = questions.filter((question) => question.id === response.question)[0];
+      var pages = this.form.pages;
+      var page = pages.find((page) => page.id === response.page);
+      var questions = page.questions;
+      var question = questions.find((question) => question.id === response.question);
       question.value = response.value;
     }
   }

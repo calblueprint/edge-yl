@@ -13,6 +13,7 @@ class FormContainer extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
+      page: React.PropTypes.number.isRequired,
       target: React.PropTypes.string.isRequired,
     };
   }
@@ -49,10 +50,17 @@ class FormContainer extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
+  renderPage() {
+    var pages = this.state.form.pages;
+    if (pages) {
+      return <FormPage page={pages[0]} />;
+    }
+  }
+
   render() {
     return (
       <div style={this.styles.container}>
-        <FormPage form={this.state.form} />
+        {this.renderPage()}
       </div>
     );
   }

@@ -5,7 +5,7 @@ class FormPage extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      form: React.PropTypes.object.isRequired,
+      page: React.PropTypes.object.isRequired,
     };
   }
 
@@ -19,7 +19,7 @@ class FormPage extends Component {
         StyleConstants.templates.card,
         {
           width: '712px',
-          padding: '24px',
+          padding: '36px',
           margin: '48px 0px',
         }
       ),
@@ -34,31 +34,39 @@ class FormPage extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
-  renderSection(section) {
-    return (
-      <FormSection
-        key={section.id}
-        section={section} />
-    );
-  }
-
-  renderSections() {
-    var pages = this.props.form.pages;
-    if (pages) {
-      return pages[0].sections.map((section) => this.renderSection(section));
+  renderQuestion(question) {
+    switch (question.style) {
+      case 'dropdown':
+        return (
+          <FormDropdown
+            key={question.id}
+            question={question} />
+        );
+      case 'input':
+        return (
+          <FormInput
+            key={question.id}
+            question={question} />
+        );
     }
   }
 
+  renderQuestions() {
+    var questions = this.props.page.questions;
+    return questions.map((question) => this.renderQuestion(question));
+  }
+
   render() {
-    return(
+    var page = this.props.page;
+    return (
       <div style={this.styles.container}>
         <div style={this.styles.header}>
-          <h1>{this.props.form.title}</h1>
+          <h1>{page.title}</h1>
         </div>
-        {this.renderSections()}
+        {this.renderQuestions()}
         <FormButton
-          action={() => FormActions.createObject(this.props.form)}
-          content={'Submit'} />
+          action={() => FormActions.createSubmission(page)}
+          content={'Next page or submit'} />
       </div>
     );
   }

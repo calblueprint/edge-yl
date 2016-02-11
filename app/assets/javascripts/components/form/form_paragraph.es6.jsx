@@ -5,14 +5,8 @@ class FormParagraph extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      title: React.PropTypes.string.isRequired,
-      placeholder: React.PropTypes.string,
-      value: React.PropTypes.string,
+      question: React.PropTypes.object.isRequired,
     };
-  }
-
-  static get defaultProps() {
-    return {};
   }
 
   // --------------------------------------------------
@@ -22,13 +16,12 @@ class FormParagraph extends Component {
     return {
       container: {
         display: 'flex',
-        flexFlow: 'column',
-        alignItems: 'left',
-        marginBottom: '20px',
+        alignItems: 'center',
+        marginBottom: '18px',
       },
-      label: {
-        paddingBottom: '10px',
-        fontSize: StyleConstants.fonts.sizes.smaller,
+      required: {
+        paddingLeft: '4px',
+        color: StyleConstants.colors.red,
       },
     };
   }
@@ -52,16 +45,22 @@ class FormParagraph extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
+  renderRequired() {
+    if (this.props.question.is_required) {
+      return <h6 style={this.styles.required}>{'*'}</h6>;
+    }
+  }
+
   render() {
     return (
       <div style={this.styles.container}>
-        <label style={this.styles.label}>{this.props.title}</label>
+        <h5>{question.title}</h5>
+        {this.renderRequired()}
         <textarea
           cols={'50'}
           placeholder={this.props.placeholder}
           ref={'container'}
-          rows={'8'}>
-        </textarea>
+          rows={'10'} />
       </div>
     )
   }
