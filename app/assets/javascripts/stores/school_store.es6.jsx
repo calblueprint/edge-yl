@@ -17,12 +17,14 @@
       this.template = null;
       this.bindListeners({
         handleCloseOverlay: SchoolActions.CLOSE_OVERLAY,
+        handleDeleteContact: SchoolActions.DELETE_CONTACT,
         handleStoreAttribute: SchoolActions.STORE_ATTRIBUTE,
         handleStoreComment: SchoolActions.STORE_COMMENT,
-        handleStoreContact: SchoolActions.STORE_CONTACT,
         handleStoreError: SchoolActions.STORE_ERROR,
         handleStorePairing: SchoolActions.STORE_PAIRING,
+        handleStorePrimary: SchoolActions.STORE_PRIMARY,
         handleStoreSchool: SchoolActions.STORE_SCHOOL,
+        handleStoreSecondary: SchoolActions.STORE_SECONDARY,
         handleStoreTemplate: SchoolActions.STORE_TEMPLATE,
         handleStoreValue: SchoolActions.STORE_VALUE,
       });
@@ -37,6 +39,10 @@
       this.template = null;
     }
 
+    handleDeleteContact(contactId) {
+      this.school['secondary_contacts'] = this.school['secondary_contacts'].filter(function(contact) { return contact.id != contactId });
+    }
+
     handleStoreAttribute(attribute) {
       this.template.attributes[attribute.key] = attribute.value;
     }
@@ -44,11 +50,6 @@
     handleStoreComment(response) {
       this.overlay = false;
       this.school.comments.push(response.comment);
-    }
-
-    handleStoreContact(response) {
-      this.overlay = false;
-      this.school['primary_contact'] = response.contact;
     }
 
     handleStoreError(response) {
@@ -65,9 +66,19 @@
       this.template = null;
     }
 
+    handleStorePrimary(response) {
+      this.overlay = false;
+      this.school['primary_contact'] = response.contact;
+    }
+
     handleStoreSchool(response) {
       this.overlay = false;
       this.school = response.school;
+    }
+
+    handleStoreSecondary(response) {
+      this.overlay = false;
+      this.school['secondary_contacts'].push(response.contact);
     }
 
     handleStoreTemplate(template) {

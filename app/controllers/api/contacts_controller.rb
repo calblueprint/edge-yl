@@ -1,5 +1,16 @@
 class Api::ContactsController < Api::BaseController
 
+  def create
+    contact = Contact.new contact_params
+    if contact.save
+      render json: contact,
+             serializer: ContactBaseSerializer,
+             status: :created
+    else
+      unprocessable_response room
+    end
+  end
+
   def update
     contact = Contact.find params[:id]
     if contact.update_attributes contact_params
@@ -19,6 +30,7 @@ class Api::ContactsController < Api::BaseController
       :first_name,
       :last_name,
       :phone_number,
+      :school_id,
       :title,
     )
   end

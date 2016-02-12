@@ -8,9 +8,10 @@
       this.generateActions(
         'closeOverlay',
         'storeComment',
-        'storeContact',
         'storeError',
+        'storePrimary',
         'storeSchool',
+        'storeSecondary',
         'storeValue',
       );
     }
@@ -31,6 +32,33 @@
       return true;
     }
 
+    createContact(template) {
+      var params = { contact: template.attributes };
+      var resolve = (response) => this.storeSecondary(response);
+      var reject = (response) => this.storeError(response);
+      Requester.post(
+        ApiConstants.contacts.create,
+        params,
+        resolve,
+        reject,
+      );
+      return true;
+    }
+
+    deleteContact(id) {
+      var response = confirm('This action cannot be undone.');
+      if (response) {
+        var attributes = {};
+        attributes['school_id'] = null;
+        var params = { contact: attributes };
+        Requester.update(
+          ApiConstants.contacts.update(id),
+          params,
+        );
+        return id;
+      }
+    }
+
     fetchSchool(id) {
       var resolve = (response) => this.storeSchool(response);
       Requester.get(ApiConstants.schools.show(id), resolve);
@@ -40,7 +68,7 @@
     updateContact(pairing, attributes={}) {
       attributes[pairing.key] = pairing.value;
       var params = { contact: attributes };
-      var resolve = (response) => this.storeContact(response);
+      var resolve = (response) => this.storePrimary(response);
       var reject = (response) => this.storeError(response)
       Requester.update(
         ApiConstants.contacts.update(pairing.id),

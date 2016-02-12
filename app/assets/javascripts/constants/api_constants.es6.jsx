@@ -18,6 +18,7 @@
 
     get contacts() {
       return {
+        create: '/api/contacts',
         update: (id) => `/api/contacts/${id}`,
       };
     }

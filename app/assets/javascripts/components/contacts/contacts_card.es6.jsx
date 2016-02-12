@@ -6,18 +6,38 @@ class ContactsCard extends Component {
   static get propTypes() {
     return {
       contact: React.PropTypes.object.isRequired,
+      editable: React.PropTypes.bool.isRequired,
       media: React.PropTypes.string.isRequired,
     };
   }
 
   // --------------------------------------------------
+  // Helpers
+  // --------------------------------------------------
+  deleteContact() {
+    SchoolActions.deleteContact(this.props.contact.id)
+  }
+
+  // --------------------------------------------------
   // Render
   // --------------------------------------------------
+  renderHeader() {
+    if (this.props.editable) {
+      return (
+        <CardHeader
+          action={() => this.deleteContact()}
+          content={'Group'}
+          icon={TypeConstants.icons.delete} />
+      );
+    } else {
+      return <CardHeader content={'Content Information'} />;
+    }
+  }
   render() {
     var contact = this.props.contact;
     return (
       <div style={StyleConstants.cards.container(this.props.media)}>
-        <CardHeader content={'Contact Information'} />
+        {this.renderHeader()}
         <div style={StyleConstants.cards.content}>
           <h5>{'Secondary'}</h5>
           <CardAttribute
