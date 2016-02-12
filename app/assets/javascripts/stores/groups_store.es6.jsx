@@ -11,7 +11,7 @@
       this.template = null;
       this.bindListeners({
         handleCloseOverlay: GroupsActions.CLOSE_OVERLAY,
-        handleDeleteGroup: GroupsActions.DELETE_GROUP,
+        handleRemoveGroup: GroupsActions.REMOVE_GROUP,
         handleStoreAttribute: GroupsActions.STORE_ATTRIBUTE,
         handleStoreError: GroupsActions.STORE_ERROR,
         handleStoreGroup: GroupsActions.STORE_GROUP,
@@ -29,8 +29,9 @@
       this.template = null;
     }
 
-    handleDeleteGroup(groupId) {
-      this.groups = this.groups.filter(function(group) { return group.id != groupId });
+    handleRemoveGroup(response) {
+      var id = response.group.id;
+      this.groups = this.groups.filter((group) => group.id != id);
     }
 
     handleStoreAttribute(attribute) {
