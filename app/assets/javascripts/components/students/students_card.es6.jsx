@@ -8,6 +8,11 @@ class StudentsCard extends Component {
       editable: React.PropTypes.bool.isRequired,
       media: React.PropTypes.string.isRequired,
       student: React.PropTypes.object.isRequired,
+      type: React.PropTypes.oneOf([
+        TypeConstants.students.default,
+        TypeConstants.students.group,
+        TypeConstants.students.room,
+      ]).isRequired,
     };
   }
 
@@ -21,6 +26,20 @@ class StudentsCard extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
+  renderGroup() {
+    if (this.props.type !== TypeConstants.students.group) {
+      var group = this.props.student.group;
+      return (
+        <CardAttribute
+          clickable={true}
+          label={'Group'}
+          route={RouteConstants.groups.show(group.id)}
+          type={'h6'}
+          value={group.full_name} />
+      );
+    }
+  }
+
   renderHeader() {
     if (this.props.editable) {
       return (
@@ -47,6 +66,24 @@ class StudentsCard extends Component {
       );
     } else {
       return <CardAttribute label={'School'} />;
+    }
+  }
+
+  renderRoom() {
+    if (this.props.type !== TypeConstants.students.room) {
+      var room = this.props.student.room;
+      if (room) {
+        return (
+          <CardAttribute
+            clickable={true}
+            label={'Room'}
+            route={RouteConstants.rooms.show(room.id)}
+            type={'h6'}
+            value={room.number} />
+        );
+      } else {
+        return <CardAttribute label={'Room'} />;
+      }
     }
   }
 
@@ -78,6 +115,8 @@ class StudentsCard extends Component {
             label={'Status'}
             value={student.registration_status} />
           {this.renderSchool()}
+          {this.renderGroup()}
+          {this.renderRoom()}
         </div>
       </div>
     );

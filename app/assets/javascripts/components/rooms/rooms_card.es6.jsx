@@ -44,14 +44,14 @@ class RoomsCard extends Component {
 
   renderConference() {
     if (this.props.type == TypeConstants.room.default) {
-      var room = this.props.room;
+      var conference = this.props.room.conference;
       return (
         <CardAttribute
           clickable={true}
           label={'Conference'}
-          route={RouteConstants.conferences.show(room.conference.id)}
+          route={RouteConstants.conferences.show(conference.id)}
           type={'h6'}
-          value={room.conference.name} />
+          value={conference.name} />
       );
     }
   }

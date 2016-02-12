@@ -65,6 +65,14 @@
       };
     }
 
+    get students() {
+      return {
+        default: 'students-default',
+        group: 'students-group',
+        room: 'students-room',
+      };
+    }
+
     get user() {
       return {
         general: 'user-general',
