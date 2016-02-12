@@ -1,5 +1,7 @@
 class Api::GroupsController < Api::BaseController
 
+  has_scope :conference_id, only: [:index]
+
   def create
     group = Group.new group_params
     if group.save
@@ -39,7 +41,7 @@ class Api::GroupsController < Api::BaseController
   private
 
   def index_csv
-    groups = Group.all
+    groups = apply_scopes(Group).all
     send_data groups.to_csv
   end
 

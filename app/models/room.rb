@@ -14,6 +14,8 @@
 
 class Room < ActiveRecord::Base
 
+  scope :conference_id, -> conference_id { where(conference_id: conference_id) }
+
   belongs_to :conference
 
   enum gender: [:female, :male, :other]

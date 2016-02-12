@@ -45,6 +45,11 @@
       return true;
     }
 
+    exportRooms(conference_id) {
+      Requester.csv(ApiConstants.csvs.rooms(conference_id), 'rooms');
+      return true;
+    }
+
     fetchRooms(conference) {
       var resolve = (response) => this.storeRooms(response);
       Requester.get(ApiConstants.rooms.index(conference.id), resolve);

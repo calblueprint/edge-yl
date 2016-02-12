@@ -54,6 +54,11 @@
       return true;
     }
 
+    exportGroups(conference_id) {
+      Requester.csv(ApiConstants.csvs.groups(conference_id), 'groups');
+      return true;
+    }
+
     fetchGroups(conference) {
       var resolve = (response) => this.storeGroups(response);
       Requester.get(ApiConstants.groups.index(conference.id), resolve);

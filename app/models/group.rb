@@ -15,6 +15,8 @@ class Group < ActiveRecord::Base
 
   multisearchable against: [:full_name]
 
+  scope :conference_id, -> conference_id { where(conference_id: conference_id) }
+
   belongs_to :conference
 
   has_many :leaderships, dependent: :destroy
