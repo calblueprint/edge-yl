@@ -6,11 +6,21 @@ class Api::EmailsController < Api::BaseController
     custom_params = ActionController::Parameters.new(
       content: params['body-plain'],
       from: params[:from],
+      is_sent: true,
       recipient: params[:recipient],
       sender: params[:sender],
       to: params[:to],
       subject: params[:subject],
     )
+    if (emailable = find_emailable(recipient)) or
+        (emailable = find_emailable(sender))
+      custom_params[:emailable_id] = emailable.id
+      custom_params[:emailable_type] = emailable.class.name
+    end
+    if (user = find_user(recipient)) or
+        (user = find_user(sender))
+      custom_params[:user] = user
+    end
     email = Email.new email_params(custom_params)
     if email.save
       render json: { message: 'Received' }, status: :ok
@@ -26,6 +36,10 @@ class Api::EmailsController < Api::BaseController
 
   def show
     email = Email.find params[:id]
+    if email[:is_unread]
+      email[:is_unread] = false
+      email.save
+    end
     render json: email, serializer: EmailShowSerializer
   end
 
@@ -40,6 +54,20 @@ class Api::EmailsController < Api::BaseController
       :subject,
       :to,
     )
+  end
+
+  def find_emailable(email)
+    emailable = Contact.where(email: email).first
+    if emailable
+      return emailable.school
+    else
+      emailable = Student.where(email: email).first
+      return emailable
+    end
+  end
+
+  def find_user(email)
+    User.where(email: email).first
   end
 
 end

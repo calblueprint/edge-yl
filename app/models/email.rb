@@ -59,7 +59,7 @@ class Email < ActiveRecord::Base
 
   def try_send
     if !is_draft && !is_sent
-      StudentMailer.standard(draft).deliver_now
+      StudentMailer.standard(self).deliver_now
       self.is_sent = true
     end
   end
