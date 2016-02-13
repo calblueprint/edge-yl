@@ -81,7 +81,8 @@ class StudentsPage extends Component {
               type={'students'} />
             <StudentsGrid
               media={this.state.media}
-              students={this.state.students} />
+              students={this.state.students}
+              type={TypeConstants.students.default} />
             <PageNavigator
               action={(page) => StudentsActions.storePage(page)}
               pagination={this.state.pagination} />

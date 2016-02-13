@@ -4,6 +4,7 @@ class StudentIndexSerializer < StudentBaseSerializer
              :is_primary, :registration_status
 
   has_one :group, serializer: GroupBaseSerializer
+  has_one :room, serializer: RoomBaseSerializer
   has_one :school, serializer: SchoolBaseSerializer
 
 end

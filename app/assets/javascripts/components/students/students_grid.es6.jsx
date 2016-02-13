@@ -8,6 +8,11 @@ class StudentsGrid extends Component {
       editable: React.PropTypes.bool,
       media: React.PropTypes.string.isRequired,
       students: React.PropTypes.array.isRequired,
+      type: React.PropTypes.oneOf([
+        TypeConstants.students.default,
+        TypeConstants.students.group,
+        TypeConstants.students.room,
+      ]).isRequired,
     };
   }
 
@@ -26,7 +31,8 @@ class StudentsGrid extends Component {
         editable={this.props.editable}
         key={student.id}
         media={this.props.media}
-        student={student} />
+        student={student}
+        type={this.props.type} />
     );
   }
 

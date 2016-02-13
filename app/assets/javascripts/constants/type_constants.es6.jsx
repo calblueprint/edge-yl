@@ -65,6 +65,15 @@
       };
     }
 
+    get students() {
+      return {
+        default: 'students-default',
+        group: 'students-group',
+        room: 'students-room',
+        school: 'students-school',
+      };
+    }
+
     get user() {
       return {
         general: 'user-general',

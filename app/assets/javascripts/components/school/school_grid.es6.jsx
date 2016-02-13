@@ -56,7 +56,8 @@ class SchoolGrid extends Component {
         <GridHeader label={'Students in this school'} />
         <StudentsGrid
           media={this.props.media}
-          students={this.props.school.students} />
+          students={this.props.school.students}
+          type={TypeConstants.students.school} />
       </div>
     );
   }

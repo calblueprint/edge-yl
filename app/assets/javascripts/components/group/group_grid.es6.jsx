@@ -31,7 +31,8 @@ class GroupGrid extends Component {
         <StudentsGrid
           editable={this.props.editable}
           media={this.props.media}
-          students={this.props.group.students} />
+          students={this.props.group.students}
+          type={TypeConstants.students.group} />
       </div>
     );
   }
