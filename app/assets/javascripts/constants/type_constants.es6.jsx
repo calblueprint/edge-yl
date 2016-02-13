@@ -70,6 +70,7 @@
         default: 'students-default',
         group: 'students-group',
         room: 'students-room',
+        school: 'students-school',
       };
     }
 

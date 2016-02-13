@@ -12,6 +12,7 @@ class StudentsCard extends Component {
         TypeConstants.students.default,
         TypeConstants.students.group,
         TypeConstants.students.room,
+        TypeConstants.students.school,
       ]).isRequired,
     };
   }
@@ -54,18 +55,20 @@ class StudentsCard extends Component {
   }
 
   renderSchool() {
-    var school = this.props.student.school;
-    if (school) {
-      return (
-        <CardAttribute
-          clickable={true}
-          label={'School'}
-          route={RouteConstants.schools.show(school.id)}
-          type={'h6'}
-          value={school.name} />
-      );
-    } else {
-      return <CardAttribute label={'School'} />;
+    if (this.props.type !== TypeConstants.students.school) {
+      var school = this.props.student.school;
+      if (school) {
+        return (
+          <CardAttribute
+            clickable={true}
+            label={'School'}
+            route={RouteConstants.schools.show(school.id)}
+            type={'h6'}
+            value={school.name} />
+        );
+      } else {
+        return <CardAttribute label={'School'} />;
+      }
     }
   }
 
