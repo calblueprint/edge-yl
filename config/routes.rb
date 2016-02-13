@@ -32,9 +32,11 @@
   end
 
   namespace :api do
-    get '/searchables/search', to: 'searchables#search'
     get '/forms/:target', to: 'forms#show'
+    get '/searchables/search', to: 'searchables#search'
+    get '/submissions/:uuid', to: 'submissions#show'
     get '/users/profile', to: 'users#profile'
+
     resources :comments, only: [:create]
     resources :conferences, only: [:create, :index, :show, :update]
     resources :contacts, only: [:create, :update]

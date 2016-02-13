@@ -5,6 +5,7 @@ class FormsController < BaseController
   def show
     @page = params[:page] ? params[:page].to_i : 1
     @target = params[:target]
+    @uuid = params[:uuid]
   end
 
 end

@@ -23,7 +23,12 @@
 
     get forms() {
       return {
-        student: '/forms/1',
+        school: (page, uuid) => {
+          return `/forms/school?page=${page}&uuid=${uuid}`;
+        },
+        student: (page, uuid) => {
+          return `/forms/student?page=${page}&uuid=${uuid}`;
+        },
       };
     }
 

@@ -15,6 +15,13 @@ class FormContainer extends Component {
     return {
       page: React.PropTypes.number.isRequired,
       target: React.PropTypes.string.isRequired,
+      uuid: React.PropTypes.string,
+    };
+  }
+
+  static get defaultProps() {
+    return {
+      uuid: null,
     };
   }
 
@@ -40,7 +47,7 @@ class FormContainer extends Component {
 
   componentDidMount() {
     FormStore.listen(this._listener);
-    FormActions.fetchForm(this.props.target);
+    FormActions.fetchForm(this.props.target, this.props.page, this.props.uuid);
   }
 
   componentWillUnmount() {
@@ -53,7 +60,7 @@ class FormContainer extends Component {
   renderPage() {
     var pages = this.state.form.pages;
     if (pages) {
-      return <FormPage page={pages[0]} />;
+      return <FormPage page={pages[this.props.page - 1]} />;
     }
   }
 

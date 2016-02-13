@@ -1,6 +1,6 @@
 class Api::SubmissionsController < Api::BaseController
 
-  skip_before_filter :authenticate_user, only: [:create]
+  skip_before_filter :authenticate_user, only: [:create, :show]
 
   def create
     submission = Submission.new submission_params
@@ -13,6 +13,11 @@ class Api::SubmissionsController < Api::BaseController
     else
       unprocessable_response submission
     end
+  end
+
+  def show
+    submission = Submission.find_by uuid: params[:uuid]
+    render json: submission, serializer: SubmissionBaseSerializer
   end
 
   private

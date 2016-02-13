@@ -133,6 +133,7 @@
     get submissions() {
       return {
         create: '/api/submissions',
+        show: (uuid) => `/api/submissions/${uuid}`,
       };
     }
 
