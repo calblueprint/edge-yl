@@ -14,13 +14,6 @@ class HeaderInbox extends Component {
   // --------------------------------------------------
   get styles() {
     return {
-      container: {
-        display: 'flex',
-        flexFlow: 'column',
-        justifyContent: 'center',
-        alignSelf: 'stretch',
-        padding: '0px 12px',
-      },
       count: {
         display: 'flex',
         justifyContent: 'center',
@@ -47,6 +40,11 @@ class HeaderInbox extends Component {
   get clickableStyles() {
     return {
       default: {
+        display: 'flex',
+        flexFlow: 'column',
+        justifyContent: 'center',
+        alignSelf: 'stretch',
+        padding: '0px 12px',
         color: StyleConstants.colors.opaque,
       },
       hover: {
@@ -70,14 +68,13 @@ class HeaderInbox extends Component {
 
   render() {
     return (
-      <div style={this.styles.container}>
+      <Clickable
+        icon={TypeConstants.icons.email}
+        route={RouteConstants.emails.index}
+        styles={this.clickableStyles}
+        type={'i'}>
         {this.renderCount()}
-        <Clickable
-          icon={TypeConstants.icons.email}
-          route={RouteConstants.emails.index}
-          styles={this.clickableStyles}
-          type={'i'} />
-      </div>
+      </Clickable>
     );
   }
 }
