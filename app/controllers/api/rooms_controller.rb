@@ -1,5 +1,7 @@
 class Api::RoomsController < Api::BaseController
 
+  has_scope :conference_id, only: [:index]
+
   def create
     room = Room.new room_params
     if room.save
@@ -37,7 +39,7 @@ class Api::RoomsController < Api::BaseController
   private
 
   def index_csv
-    csv_rooms = Room.includes(:students)
+    csv_rooms = apply_scopes(Room).includes(:students)
     send_data csv_rooms.to_csv
   end
 

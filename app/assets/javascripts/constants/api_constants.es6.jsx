@@ -18,16 +18,17 @@
 
     get contacts() {
       return {
+        create: '/api/contacts',
         update: (id) => `/api/contacts/${id}`,
       };
     }
 
     get csvs() {
       return {
-        group: (id) => `/api/groups/${id}.csv`,
-        groups: '/api/groups.csv',
-        rooms: '/api/rooms.csv',
-        schools: '/api/schools.csv',
+        group: (id) => `/api/groups/${id}`,
+        groups: (conference_id) => `/api/groups/?conference_id=${conference_id}`,
+        rooms: (conference_id) => `/api/rooms/?conference_id=${conference_id}`,
+        schools: '/api/schools',
         students: (query={}) => {
           var route = '/api/students';
           Object.keys(query).map((key, index) => {

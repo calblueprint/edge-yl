@@ -59,8 +59,8 @@ class RoomsPage extends Component {
         content: this.state.editable ? 'Finish' : 'Edit',
       },
       {
+        action: () => RoomsActions.exportRooms(this.props.conference.id),
         content: 'Export',
-        route: ApiConstants.csvs.rooms,
       },
     ];
   }

@@ -32,6 +32,11 @@
       }
     }
 
+    exportGroup(id) {
+      Requester.csv(ApiConstants.csvs.group(id), 'group');
+      return true;
+    }
+
     fetchGroup(id) {
       var resolve = (response) => this.storeGroup(response);
       Requester.get(ApiConstants.groups.show(id), resolve);

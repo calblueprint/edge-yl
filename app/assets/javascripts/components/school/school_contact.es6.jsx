@@ -28,7 +28,7 @@ class SchoolContact extends Component {
   // Render
   // --------------------------------------------------
   render() {
-    var contact = this.props.school.primary_contact;
+    var contact = this.props.school['primary_contact'];
     return (
       <div style={StyleConstants.cards.content}>
         <h5>{'Primary'}</h5>

@@ -48,8 +48,8 @@ class GroupsPage extends Component {
   generateOptions() {
     return [
       {
+        action: () => GroupsActions.exportGroups(this.props.conference.id),
         content: 'Export',
-        route: ApiConstants.csvs.groups,
       },
       {
         action: () => ViewActions.toggleEditability(),

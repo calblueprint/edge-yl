@@ -37,7 +37,7 @@
     get '/users/profile', to: 'users#profile'
     resources :comments, only: [:create]
     resources :conferences, only: [:create, :index, :show, :update]
-    resources :contacts, only: [:update]
+    resources :contacts, only: [:create, :update]
     resources :drafts, only: [:create, :show, :update]
     resources :emails, only: [:create, :index, :show]
     resources :feedbacks, only: [:create]

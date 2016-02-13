@@ -50,6 +50,14 @@ class ConferencePage extends Component {
         action: () => ViewActions.toggleEditability(),
         content: this.state.editable ? 'Finish' : 'Edit',
       },
+      {
+        action: () => GroupsActions.exportGroups(this.state.conference.id),
+        content: 'Export',
+      },
+      {
+        action: () => RoomsActions.exportRooms(this.state.conference.id),
+        content: 'Export',
+      },
     ];
   }
 

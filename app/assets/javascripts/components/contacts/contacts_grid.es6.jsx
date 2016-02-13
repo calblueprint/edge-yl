@@ -6,6 +6,7 @@ class ContactsGrid extends Component {
   static get propTypes() {
     return {
       contacts: React.PropTypes.array.isRequired,
+      editable: React.PropTypes.bool.isRequired,
       media: React.PropTypes.string.isRequired,
     };
   }
@@ -17,6 +18,7 @@ class ContactsGrid extends Component {
     return (
       <ContactsCard
         contact={contact}
+        editable={this.props.editable}
         key={contact.id}
         media={this.props.media} />
     );

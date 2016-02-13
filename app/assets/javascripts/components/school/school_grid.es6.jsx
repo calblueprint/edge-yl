@@ -1,6 +1,24 @@
 class SchoolGrid extends Component {
 
- // --------------------------------------------------
+  // --------------------------------------------------
+  // Helpers
+  // --------------------------------------------------
+  generateOptions() {
+    return [
+      {
+        action: () => SchoolActions.storeTemplate(
+          TypeConstants.school.contact,
+          {
+            is_primary: false,
+            school_id: this.props.school.id,
+          },
+        ),
+        content: 'New',
+      },
+    ];
+  }
+
+  // --------------------------------------------------
   // Props
   // --------------------------------------------------
   static get propTypes() {
@@ -28,10 +46,13 @@ class SchoolGrid extends Component {
           media={this.props.media}
           school={school}
           target={TypeConstants.school.contact} />
-        <GridHeader label={'Secondary contacts in this school'} />
+        <GridHeader
+          label={'Secondary contacts in this school'}
+          options={this.generateOptions()} />
         <ContactsGrid
-          media={this.props.media}
-          contacts={school.secondary_contacts} />
+          contacts={school['secondary_contacts']}
+          editable={this.props.editable}
+          media={this.props.media} />
         <GridHeader label={'Students in this school'} />
         <StudentsGrid
           media={this.props.media}
