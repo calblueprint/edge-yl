@@ -56,6 +56,10 @@
       return true;
     }
 
+    updateSubmission(page) {
+      // TODO(Sonia): set up this action and call it when appropriate.
+    }
+
     // --------------------------------------------------
     // Stores
     // --------------------------------------------------
