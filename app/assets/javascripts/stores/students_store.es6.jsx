@@ -112,21 +112,20 @@
     }
 
     handleStoreStudents(response) {
-      this.pagination = response.meta.pagination;
-      this.query = response.meta.query;
+      var pagination = response.meta.pagination;
+      var query = response.meta.query;
+      this.pagination = pagination;
+      this.query = query;
       this.students = response.students;
       this.syncQuery();
-      history.pushState(
+      window.history.pushState(
         {
-          pagination: this.pagination,
-          query: this.query,
+          pagination: pagination,
+          query: query,
           students: this.students,
         },
         null,
-        RouteConstants.students.index(
-          this.pagination.current,
-          this.query,
-        ),
+        RouteConstants.students.index(pagination.current, query),
       );
     }
   }

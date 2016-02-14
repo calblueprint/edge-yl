@@ -21,7 +21,7 @@
       var params = { submission: attributes };
       var resolve = (response) => {
         var submission = response.submission;
-        history.replaceState(
+        window.history.replaceState(
           {},
           null,
           RouteConstants.forms.student(1, submission.uuid),
