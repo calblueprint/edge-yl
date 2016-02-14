@@ -6,7 +6,6 @@
     // --------------------------------------------------
     constructor() {
       this.generateActions(
-        'storeError',
         'storeForm',
         'storeSubmission',
       );
@@ -29,12 +28,10 @@
         );
         window.location = RouteConstants.forms.student(2, submission.uuid);
       };
-      var reject = (response) => this.storeError(response);
       Requester.post(
         ApiConstants.submissions.create,
         params,
         resolve,
-        reject,
       );
       return true;
     }
