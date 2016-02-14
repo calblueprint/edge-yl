@@ -14,14 +14,6 @@ school_form = Form.create(
       title: 'School name',
     )
     Question.create(
-      is_required: false,
-      key: 'website',
-      page: page,
-      placeholder: '...',
-      style: Question.styles[:input],
-      title: 'School website',
-    )
-    Question.create(
       key: 'address_one',
       page: page,
       placeholder: '...',
@@ -58,6 +50,14 @@ school_form = Form.create(
       title: 'Address zip',
     )
     Question.create(
+      is_required: false,
+      key: 'website',
+      page: page,
+      placeholder: '...',
+      style: Question.styles[:input],
+      title: 'School website',
+    )
+    Question.create(
       key: 'contact_first_name',
       page: page,
       placeholder: '...',
@@ -70,6 +70,13 @@ school_form = Form.create(
       placeholder: '...',
       style: Question.styles[:input],
       title: 'Contact last name',
+    )
+    Question.create(
+      key: 'contact_title',
+      page: page,
+      placeholder: '...',
+      style: Question.styles[:input],
+      title: 'Contact title',
     )
     Question.create(
       key: 'contact_email',
@@ -85,12 +92,87 @@ school_form = Form.create(
       style: Question.styles[:input],
       title: 'Contact phone number',
     )
+  end
+  Page.create(
+    form: form,
+    title: 'Primary Student Information',
+  ) do |page|
     Question.create(
-      key: 'contact_title',
+      key: 'student_first_name',
       page: page,
       placeholder: '...',
       style: Question.styles[:input],
-      title: 'Contact title',
+      title: 'Student first name',
+    )
+    Question.create(
+      key: 'student_last_name',
+      page: page,
+      placeholder: '...',
+      style: Question.styles[:input],
+      title: 'Student last name',
+    )
+    Question.create(
+      key: 'student_address_one',
+      page: page,
+      placeholder: '...',
+      style: Question.styles[:input],
+      title: 'Student address one',
+    )
+    Question.create(
+      key: 'student_address_city',
+      page: page,
+      placeholder: 'San Francisco',
+      style: Question.styles[:input],
+      title: 'Student address city',
+    )
+    Question.create(
+      key: 'student_address_state',
+      page: page,
+      placeholder: 'CA',
+      style: Question.styles[:input],
+      title: 'Student address state',
+    )
+    Question.create(
+      key: 'student_address_zip',
+      page: page,
+      placeholder: '90474',
+      style: Question.styles[:input],
+      title: 'Student address zip',
+    )
+    Question.create(
+      key: 'student_home_phone',
+      page: page,
+      placeholder: '...',
+      style: Question.styles[:input],
+      title: 'Student home phone',
+    )
+    Question.create(
+      key: 'student_cell_phone',
+      page: page,
+      placeholder: '...',
+      style: Question.styles[:input],
+      title: 'Student cell phone',
+    )
+    Question.create(
+      key: 'student_gender',
+      options: Student.genders.keys,
+      page: page,
+      style: Question.styles[:dropdown],
+      title: 'Student gender',
+    )
+    Question.create(
+      key: 'student_birthday',
+      page: page,
+      placeholder: '...',
+      style: Question.styles[:input],
+      title: 'Student birthday',
+    )
+    Question.create(
+      key: 'student_shirt_size',
+      options: Student.shirt_sizes.keys,
+      page: page,
+      style: Question.styles[:dropdown],
+      title: 'Student shirt size',
     )
   end
 end
