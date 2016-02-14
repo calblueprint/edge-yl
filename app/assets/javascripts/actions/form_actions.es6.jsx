@@ -22,6 +22,11 @@
       var params = { submission: attributes };
       var resolve = (response) => {
         var submission = response.submission;
+        history.replaceState(
+          {},
+          null,
+          RouteConstants.forms.student(1, submission.uuid),
+        );
         window.location = RouteConstants.forms.student(2, submission.uuid);
       };
       var reject = (response) => this.storeError(response);
@@ -35,8 +40,10 @@
     }
 
     fetchForm(target, page, uuid) {
-      this.fetchSubmission(page, uuid);
-      var resolve = (response) => this.storeForm(response);
+      var resolve = (response) => {
+        this.storeForm(response);
+        this.fetchSubmission(page, uuid);
+      };
       Requester.get(ApiConstants.forms.show(target), resolve);
       return true;
     }
