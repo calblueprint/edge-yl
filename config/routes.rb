@@ -4,7 +4,7 @@
 
   get 'email', to: 'pages#email'
   get 'feedback', to: 'pages#feedback'
-  get 'forms/:target', to: 'forms#show'
+  get 'forms/:target', as: 'forms', to: 'forms#show'
   get 'login', to: 'pages#login'
   get 'profile', to: 'users#profile'
   get 'signup', to: 'pages#signup'
