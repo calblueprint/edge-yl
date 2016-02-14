@@ -51,10 +51,6 @@ class SchoolsPage extends Component {
   generateOptions() {
     return [
       {
-        content: 'New',
-        route: RouteConstants.forms.student,
-      },
-      {
         content: 'Export',
         route: ApiConstants.csvs.schools,
       },

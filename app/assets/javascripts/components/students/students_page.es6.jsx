@@ -49,10 +49,6 @@ class StudentsPage extends Component {
   generateOptions() {
     return [
       {
-        content: 'New',
-        route: RouteConstants.forms.student,
-      },
-      {
         action: () => StudentsActions.exportStudents(),
         content: 'Export',
       },
