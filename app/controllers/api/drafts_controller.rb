@@ -11,6 +11,11 @@ class Api::DraftsController < Api::BaseController
     end
   end
 
+  def index
+    drafts = Email.where is_draft: true
+    render json: drafts, each_serializer: DraftIndexSerializer
+  end
+
   def show
     email = Email.find params[:id]
     render json: email, serializer: DraftShowSerializer

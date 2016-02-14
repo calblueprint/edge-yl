@@ -43,6 +43,7 @@
     get drafts() {
       return {
         create: '/api/drafts',
+        index: '/api/drafts',
         show: (id) => `/api/drafts/${id}`,
         update: (id) => `/api/drafts/${id}`,
       };

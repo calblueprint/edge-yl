@@ -30,7 +30,7 @@ class DraftBody extends Component {
   // Helpers
   // --------------------------------------------------
   sendEmail() {
-    DraftActions.sendEmail(this.state.template);
+    DraftActions.sendEmail(this.props.template);
   }
 
   // --------------------------------------------------

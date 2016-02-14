@@ -25,12 +25,20 @@ class EmailsCard extends Component {
   // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
-  generateRoute(email) {
+  generateEmailRoute(email) {
+    if (email.is_draft) {
+      return RouteConstants.drafts.show(email.id);
+    } else {
+      return RouteConstants.emails.show(email.id);
+    }
+  }
+
+  generateEmailableRoute(email) {
     if (email['emailable_type'] === 'Student') {
       return RouteConstants.students.show(email['emailable_id']);
     } else if (email.emailable_type === 'School') {
       return RouteConstants.schools.show(email['emailable_id']);
-    } else{
+    } else {
       return '#';
     }
   }
@@ -45,11 +53,11 @@ class EmailsCard extends Component {
         <div style={this.styles.container}>
           <Clickable
             content={email.from}
-            route={this.generateRoute(email)}
+            route={this.generateEmailableRoute(email)}
             type={'h6'} />
           <Clickable
             content={`Subject: ${email.subject}`}
-            route={RouteConstants.emails.show(email.id)}
+            route={this.generateEmailRoute(email)}
             type={'p'} />
         </div>
       </div>

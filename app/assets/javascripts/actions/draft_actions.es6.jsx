@@ -22,16 +22,12 @@
 
     sendEmail(template) {
       var params = { email: template.attributes };
+      params.email['is_draft'] = false;
       var resolve = (response) => {
-        // TODO put real smtp code in SMTP.send(template.email).
+        window.location = RouteConstants.emails.index;
       };
       var reject = (response) => this.storeErrors(response);
-      Requester.post(
-        ApiConstants.drafts.update,
-        params,
-        resolve,
-        reject,
-      );
+      this.updateDraft(params.email.id, params, resolve, reject);
       return true;
     }
 
@@ -39,8 +35,22 @@
       var attributes = {};
       attributes[key] = value;
       var params = { email: attributes };
-      var resolve =  (response) => this.storeDraft(response);
-      var reject = (response) => this.storeErrors(response);
+      var state = DraftStore.getState();
+      var template = state.template.attributes;
+      var email = state.draft;
+      if (Math.abs(template.content.length - email.content.length) >= 14) {
+        this.updateDraft(id, params);
+      }
+      return { key: key, value: value };
+    }
+
+    updateDraft(id, params, resolve, reject) {
+      if (!resolve) {
+        resolve = (response) => this.storeDraft(response);
+      }
+      if (!reject) {
+        reject = (response) => this.storeErrors(response);
+      }
       Requester.update(
         ApiConstants.drafts.update(id),
         params,

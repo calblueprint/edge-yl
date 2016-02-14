@@ -10,7 +10,7 @@
   get 'signup', to: 'pages#signup'
 
   resources :conferences, only: [:index, :show]
-  resources :drafts, only: [:show]
+  resources :drafts, only: [:index, :show]
   resources :emails, only: [:index, :show]
   resources :groups, only: [:index, :show]
   resources :rooms, only: [:index, :show]
@@ -40,7 +40,7 @@
     resources :comments, only: [:create]
     resources :conferences, only: [:create, :index, :show, :update]
     resources :contacts, only: [:create, :update]
-    resources :drafts, only: [:create, :show, :update]
+    resources :drafts, only: [:create, :index, :show, :update]
     resources :emails, only: [:create, :index, :show]
     resources :feedbacks, only: [:create]
     resources :groups, only: [:create, :index, :show, :update]
