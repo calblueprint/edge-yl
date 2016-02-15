@@ -47,7 +47,7 @@ class RoomPage extends Component {
   generateOptions() {
     return [
       {
-        action: () => RoomActions.toggleEditability(),
+        action: () => RoomActions.storeEditability(),
         content: this.state.editable ? 'Finish' : 'Edit',
       },
     ];

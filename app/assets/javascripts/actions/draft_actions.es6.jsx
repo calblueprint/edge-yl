@@ -31,19 +31,6 @@
       return true;
     }
 
-    storeAttribute(key, value, id) {
-      var attributes = {};
-      attributes[key] = value;
-      var params = { email: attributes };
-      var state = DraftStore.getState();
-      var template = state.template.attributes;
-      var email = state.draft;
-      if (Math.abs(template.content.length - email.content.length) >= 14) {
-        this.updateDraft(id, params);
-      }
-      return { key: key, value: value };
-    }
-
     updateDraft(id, params, resolve, reject) {
       if (!resolve) {
         resolve = (response) => this.storeDraft(response);
@@ -58,6 +45,25 @@
         reject,
       );
       return true;
+    }
+
+    // --------------------------------------------------
+    // Stores
+    // --------------------------------------------------
+    storeAttribute(key, value, id) {
+      var attributes = {};
+      attributes[key] = value;
+      var params = { email: attributes };
+      var state = DraftStore.getState();
+      var attributes = state.template.attributes;
+      var draft = state.draft;
+      if (Math.abs(attributes.content.length - draft.content.length) > 10) {
+        this.updateDraft(id, params);
+      }
+      return {
+        key: key,
+        value: value,
+      };
     }
   }
   this.DraftActions = alt.createActions(DraftActions);
