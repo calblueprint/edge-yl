@@ -18,19 +18,42 @@ class ContactsCard extends Component {
     SchoolActions.deleteContact(this.props.contact.id)
   }
 
+  generateOptions() {
+    return [
+      {
+        action: () => this.deleteContact(),
+        icon: TypeConstants.icons.delete,
+      },
+      {
+        action: () => this.promoteContact(),
+        icon: TypeConstants.icons.promote,
+      },
+    ];
+  }
+
+  promoteContact() {
+    var contact = this.props.contact
+    var pairing = {
+      id: contact.id,
+      key: 'is_primary',
+      school_id: contact.school_id,
+      value: true,
+    };
+    SchoolActions.promoteContact(pairing);
+  }
+
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
   renderHeader() {
     if (this.props.editable) {
       return (
-        <CardHeader
-          action={() => this.deleteContact()}
-          content={'Group'}
-          icon={TypeConstants.icons.delete} />
+        <ContactHeader
+          options={this.generateOptions()}
+          content={'Contact Information'} />
       );
     } else {
-      return <CardHeader content={'Content Information'} />;
+      return <CardHeader content={'Contact Information'} />;
     }
   }
   render() {
