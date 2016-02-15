@@ -2,7 +2,7 @@ class StudentMailer < ApplicationMailer
 
   def standard(email)
     @email = email
-    if not Rails.env.production?
+    if Rails.env.staging?
       mail subject: email.subject
     else
       mail from: email.from,
