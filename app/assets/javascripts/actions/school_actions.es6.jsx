@@ -65,6 +65,21 @@
       return true;
     }
 
+    promoteContact(pairing) {
+      var attributes = {};
+      attributes[pairing.key] = pairing.value;
+      var params = { contact: attributes };
+      var resolve = (response) => this.fetchSchool(response.contact.school_id);
+      var reject = (response) => this.storeError(response)
+      Requester.update(
+        ApiConstants.contacts.update(pairing.id),
+        params,
+        resolve,
+        reject,
+      );
+      return true;
+    }
+
     updateContact(pairing, attributes={}) {
       attributes[pairing.key] = pairing.value;
       var params = { contact: attributes };

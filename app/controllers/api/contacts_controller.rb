@@ -28,6 +28,7 @@ class Api::ContactsController < Api::BaseController
     params.require(:contact).permit(
       :email,
       :first_name,
+      :is_primary,
       :last_name,
       :phone_number,
       :school_id,
