@@ -7,7 +7,6 @@
     constructor() {
       this.generateActions(
         'storeRoom',
-        'toggleEditability',
       );
     }
 

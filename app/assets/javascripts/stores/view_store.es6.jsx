@@ -9,7 +9,7 @@
       this.media = 'big';
       this.bindListeners({
         handleStoreMedia: ViewActions.STORE_MEDIA,
-        handleToggleEditablity: ViewActions.TOGGLE_EDITABILITY,
+        handleStoreEditablity: ViewActions.STORE_EDITABILITY,
       });
     }
 
@@ -24,7 +24,7 @@
       }
     }
 
-    handleToggleEditablity() {
+    handleStoreEditablity() {
       this.editable = !this.editable;
     }
   }

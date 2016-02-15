@@ -6,8 +6,8 @@
     // --------------------------------------------------
     constructor() {
       this.generateActions(
+        'storeEditability',
         'storeMedia',
-        'toggleEditability',
       );
     }
 

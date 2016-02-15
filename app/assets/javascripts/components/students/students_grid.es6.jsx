@@ -12,6 +12,7 @@ class StudentsGrid extends Component {
         TypeConstants.students.default,
         TypeConstants.students.group,
         TypeConstants.students.room,
+        TypeConstants.students.school,
       ]).isRequired,
     };
   }

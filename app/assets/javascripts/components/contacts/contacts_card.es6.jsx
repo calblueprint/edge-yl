@@ -21,12 +21,12 @@ class ContactsCard extends Component {
   generateOptions() {
     return [
       {
-        action: () => this.deleteContact(),
-        icon: TypeConstants.icons.delete,
-      },
-      {
         action: () => this.promoteContact(),
         icon: TypeConstants.icons.promote,
+      },
+      {
+        action: () => this.deleteContact(),
+        icon: TypeConstants.icons.delete,
       },
     ];
   }
@@ -49,8 +49,8 @@ class ContactsCard extends Component {
     if (this.props.editable) {
       return (
         <ContactHeader
-          options={this.generateOptions()}
-          content={'Contact Information'} />
+          content={'Contact Information'}
+          options={this.generateOptions()} />
       );
     } else {
       return <CardHeader content={'Contact Information'} />;
