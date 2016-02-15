@@ -6,7 +6,6 @@
     // --------------------------------------------------
     constructor() {
       this.generateActions(
-        'storeError',
         'storeForm',
         'storeSubmission',
       );
@@ -22,21 +21,26 @@
       var params = { submission: attributes };
       var resolve = (response) => {
         var submission = response.submission;
+        window.history.replaceState(
+          {},
+          null,
+          RouteConstants.forms.student(1, submission.uuid),
+        );
         window.location = RouteConstants.forms.student(2, submission.uuid);
       };
-      var reject = (response) => this.storeError(response);
       Requester.post(
         ApiConstants.submissions.create,
         params,
         resolve,
-        reject,
       );
       return true;
     }
 
     fetchForm(target, page, uuid) {
-      this.fetchSubmission(page, uuid);
-      var resolve = (response) => this.storeForm(response);
+      var resolve = (response) => {
+        this.storeForm(response);
+        this.fetchSubmission(page, uuid);
+      };
       Requester.get(ApiConstants.forms.show(target), resolve);
       return true;
     }
@@ -50,6 +54,10 @@
         Requester.get(ApiConstants.submissions.show(uuid), resolve);
       }
       return true;
+    }
+
+    updateSubmission(page) {
+      // TODO(Sonia): set up this action and call it when appropriate.
     }
 
     // --------------------------------------------------
