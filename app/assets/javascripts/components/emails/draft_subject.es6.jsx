@@ -32,7 +32,7 @@ class DraftSubject extends Component {
   componentDidMount() {
     var node = ReactDOM.findDOMNode(this.refs.input);
     node.onblur = (event) => {
-      DraftActions.saveDraft(
+      DraftActions.updateDraft(
         this.props.draft.id,
         { email: { subject: event.target.value  } },
       );
