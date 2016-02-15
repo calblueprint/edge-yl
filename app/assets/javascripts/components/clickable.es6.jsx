@@ -72,7 +72,7 @@ class Clickable extends Component {
         this.props.underline && this.props.type !== 'i' &&
         this.props.type !== 'img' && this.props.type !== 'div' &&
         !(this.props.route === '' && this.props.action === null) &&
-        { textDecoration: 'underline' }
+        { textDecoration: 'underline' },
       ),
     };
   }
@@ -175,7 +175,7 @@ class Clickable extends Component {
       {},
       props.styles.default,
       this.state.hover && this.styles.hover,
-      props.route === '' && props.action === null && { cursor: 'default' }
+      props.route === '' && props.action === null && { cursor: 'default' },
     );
     if (props.type === 'i' || props.type === 'img') {
       return (
