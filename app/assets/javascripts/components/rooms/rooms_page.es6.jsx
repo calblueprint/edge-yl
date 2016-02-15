@@ -55,7 +55,7 @@ class RoomsPage extends Component {
         content: 'New',
       },
       {
-        action: () => ViewActions.toggleEditability(),
+        action: () => ViewActions.storeEditability(),
         content: this.state.editable ? 'Finish' : 'Edit',
       },
       {

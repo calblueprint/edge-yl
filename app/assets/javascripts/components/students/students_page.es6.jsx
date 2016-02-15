@@ -65,6 +65,7 @@ class StudentsPage extends Component {
   // Render
   // --------------------------------------------------
   render() {
+    console.log(this.state.toast);
     return (
       <div style={StyleConstants.pages.wrapper}>
         <Header profile={this.selectProfile()} />
