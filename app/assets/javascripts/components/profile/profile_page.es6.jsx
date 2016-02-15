@@ -42,7 +42,7 @@ class ProfilePage extends Component {
   generateOptions() {
     return [
       {
-        action: () => ViewActions.toggleEditability(),
+        action: () => ViewActions.storeEditability(),
         content: this.state.editable ? 'Finish' : 'Edit',
       },
     ];

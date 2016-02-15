@@ -52,7 +52,7 @@ class GroupsPage extends Component {
         content: 'Export',
       },
       {
-        action: () => ViewActions.toggleEditability(),
+        action: () => ViewActions.storeEditability(),
         content: this.state.editable ? 'Finish' : 'Edit',
       },
       {
