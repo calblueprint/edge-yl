@@ -35,6 +35,9 @@ class ContactHeader extends Component {
       },
       section: {
         display: 'flex',
+        position: 'absolute',
+        top: '0px',
+        right: '0px',
       },
     };
   }
@@ -42,15 +45,9 @@ class ContactHeader extends Component {
   get clickableStyles() {
     return {
       default: {
-        display: 'inline',
-        position: 'absolute',
-        top: '0px',
-        right: '8px',
-        lineHeight: '40px',
+        display: 'inline-block',
+        padding: '8px',
       },
-      section: {
-        display: 'inline',
-      }
     };
   }
 
@@ -63,7 +60,8 @@ class ContactHeader extends Component {
         <Clickable
           action={option.action}
           icon={option.icon}
-          style={this.clickableStyles.section}
+          key={index}
+          styles={this.clickableStyles}
           type={'i'} />
       );
     }
@@ -78,7 +76,7 @@ class ContactHeader extends Component {
     return (
       <div style={this.styles.container}>
         <h4>{this.props.content}</h4>
-        <div style={this.clickableStyles.default}>
+        <div style={this.styles.section}>
           {this.renderOptions()}
         </div>
       </div>
