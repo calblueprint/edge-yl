@@ -13,6 +13,7 @@ class EmailsPage extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
+      page: React.PropTypes.number.isRequired,
       profile: React.PropTypes.object.isRequired,
     };
   }
@@ -30,7 +31,7 @@ class EmailsPage extends Component {
     EmailsStore.listen(this._listener);
     StudentsStore.listen(this._listener);
     ViewStore.listen(this._listener);
-    EmailsActions.fetchEmails();
+    EmailsActions.fetchEmails(this.props.page);
     ViewActions.attachListener();
   }
 
@@ -43,6 +44,10 @@ class EmailsPage extends Component {
   // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
+  changePage(page) {
+    window.location = RouteConstants.emails.index(page);
+  }
+
   selectProfile() {
     return this.state.profile ?
            this.state.profile :
@@ -63,6 +68,9 @@ class EmailsPage extends Component {
             <EmailsGrid
               emails={this.state.emails}
               media={this.state.media} />
+            <PageNavigator
+              action={(page) => this.changePage(page)}
+              pagination={this.state.pagination} />
           </div>
         </div>
       </div>

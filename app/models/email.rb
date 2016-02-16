@@ -41,6 +41,7 @@ class Email < ActiveRecord::Base
     self.content ||= ''
     self.subject ||= ''
     self.from ||= smtp_format_name user.full_name, user.email
+    self.to ||= ''
     self.sender ||= user.email
     if self.emailable_type == Student.name
       student = Student.find self.emailable_id

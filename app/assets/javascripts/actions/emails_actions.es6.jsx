@@ -13,9 +13,9 @@
     // --------------------------------------------------
     // Requests
     // --------------------------------------------------
-    fetchEmails() {
+    fetchEmails(page) {
       var resolve = (response) => this.storeEmails(response);
-      Requester.get(ApiConstants.emails.index, resolve);
+      Requester.get(ApiConstants.emails.index(page), resolve);
       return true;
     }
   }
