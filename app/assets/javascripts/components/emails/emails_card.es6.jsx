@@ -17,7 +17,15 @@ class EmailsCard extends Component {
     return {
       container: {
         display: 'flex',
+        flexFlow: 'column',
         padding: '16px',
+      },
+      divider: {
+        padding: '0px 4px',
+      },
+      section: {
+        display: 'flex',
+        textOverflow: 'ellipses',
       },
     };
   }
@@ -26,7 +34,7 @@ class EmailsCard extends Component {
   // Helpers
   // --------------------------------------------------
   generateEmailRoute(email) {
-    if (email.is_draft) {
+    if (email['is_draft']) {
       return RouteConstants.drafts.show(email.id);
     } else {
       return RouteConstants.emails.show(email.id);
@@ -55,10 +63,14 @@ class EmailsCard extends Component {
             content={email.from}
             route={this.generateEmailableRoute(email)}
             type={'h6'} />
-          <Clickable
-            content={`Subject: ${email.subject}`}
-            route={this.generateEmailRoute(email)}
-            type={'p'} />
+          <div style={this.styles.section}>
+            <Clickable
+              content={email.subject}
+              route={this.generateEmailRoute(email)}
+              type={'h6'} />
+            <p style={this.styles.divider}>{'--'}</p>
+            <p>{email.content}</p>
+          </div>
         </div>
       </div>
     );
