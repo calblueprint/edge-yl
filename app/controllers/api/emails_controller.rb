@@ -32,8 +32,10 @@ class Api::EmailsController < Api::BaseController
   end
 
   def index
-    emails = Email.all
-    render json: emails, each_serializer: EmailIndexSerializer
+    emails = Email.page params[:page]
+    render json: emails,
+           serializer: PaginatedSerializer,
+           each_serializer: EmailIndexSerializer
   end
 
   def show

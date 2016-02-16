@@ -13,6 +13,7 @@ class EmailsPage extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
+      page: React.PropTypes.number.isRequired,
       profile: React.PropTypes.object.isRequired,
     };
   }
@@ -30,7 +31,7 @@ class EmailsPage extends Component {
     EmailsStore.listen(this._listener);
     StudentsStore.listen(this._listener);
     ViewStore.listen(this._listener);
-    EmailsActions.fetchEmails();
+    EmailsActions.fetchEmails(this.props.page);
     ViewActions.attachListener();
   }
 

@@ -51,7 +51,7 @@
 
     get emails() {
       return {
-        index: '/api/emails',
+        index: (page) => `/api/emails?page=${page}`,
         show: (id) => `/api/emails/${id}`,
         update: 'api/emails',
       };
