@@ -12,6 +12,8 @@ class Api::EmailsController < Api::BaseController
       to: params[:to],
       subject: params[:subject],
     )
+    recipient = custom_params[:recipient]
+    sender = custom_params[:sender]
     if (emailable = find_emailable(recipient)) or
         (emailable = find_emailable(sender))
       custom_params[:emailable_id] = emailable.id
