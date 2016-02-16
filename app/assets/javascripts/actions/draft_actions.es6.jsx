@@ -24,7 +24,7 @@
       var params = { email: template.attributes };
       params.email['is_draft'] = false;
       var resolve = (response) => {
-        window.location = RouteConstants.emails.index;
+        window.location = RouteConstants.emails.index();
       };
       var reject = (response) => this.storeErrors(response);
       this.updateDraft(params.email.id, params, resolve, reject);
