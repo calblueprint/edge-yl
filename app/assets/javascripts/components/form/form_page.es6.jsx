@@ -20,7 +20,7 @@ class FormPage extends Component {
         {
           width: '712px',
           padding: '36px',
-          margin: '48px 0px',
+          marginTop: '48px',
         }
       ),
       header: {

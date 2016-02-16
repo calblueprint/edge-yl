@@ -21,10 +21,16 @@ class FormFooter extends Component {
   // --------------------------------------------------
   get styles() {
     return {
-      container: {
-        display: 'flex',
-        justifyContent: 'center',
-      },
+      container: Object.assign(
+        {},
+        StyleConstants.templates.card,
+        {
+          display: 'flex',
+          justifyContent: 'center',
+          padding: '36px',
+          margin: '12px 0px 48px',
+        },
+      ),
     };
   }
 
