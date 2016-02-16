@@ -44,6 +44,10 @@ class EmailsPage extends Component {
   // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
+  changePage(page) {
+    window.location = RouteConstants.emails.index(page);
+  }
+
   selectProfile() {
     return this.state.profile ?
            this.state.profile :
@@ -64,6 +68,9 @@ class EmailsPage extends Component {
             <EmailsGrid
               emails={this.state.emails}
               media={this.state.media} />
+            <PageNavigator
+              action={(page) => this.changePage(page)}
+              pagination={this.state.pagination} />
           </div>
         </div>
       </div>
