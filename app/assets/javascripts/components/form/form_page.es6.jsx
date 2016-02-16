@@ -64,9 +64,6 @@ class FormPage extends Component {
           <h1>{page.title}</h1>
         </div>
         {this.renderQuestions()}
-        <FormButton
-          action={() => FormActions.createSubmission(page)}
-          content={'Next page or submit'} />
       </div>
     );
   }

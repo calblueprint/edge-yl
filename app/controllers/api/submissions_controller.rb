@@ -1,6 +1,6 @@
 class Api::SubmissionsController < Api::BaseController
 
-  skip_before_filter :authenticate_user, only: [:create, :show]
+  skip_before_filter :authenticate_user, only: [:create, :show, :update]
 
   def create
     submission = Submission.new submission_params
@@ -20,6 +20,17 @@ class Api::SubmissionsController < Api::BaseController
     render json: submission, serializer: SubmissionBaseSerializer
   end
 
+  def update
+    submission = Submission.find_by uuid: params[:uuid]
+    if submission.update_attributes submission_params
+      render json: submission,
+             serializer: SubmissionBaseSerializer,
+             status: :created
+    else
+      unprocessable_response submission
+    end
+  end
+
   private
 
   def submission_params
@@ -34,6 +45,14 @@ class Api::SubmissionsController < Api::BaseController
       :email,
       :first_name,
       :gender,
+      :guardian_email,
+      :guardian_employer,
+      :guardian_first_name,
+      :guardian_job_title,
+      :guardian_last_name,
+      :guardian_phone_number,
+      :guardian_phone_type,
+      :guardian_relationship,
       :home_phone,
       :last_name,
       :preferred_name,

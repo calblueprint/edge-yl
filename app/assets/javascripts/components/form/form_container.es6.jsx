@@ -33,7 +33,10 @@ class FormContainer extends Component {
       container: Object.assign(
         {},
         StyleConstants.pages.wrapper,
-        { justifyContent: 'center' },
+        {
+          alignItems: 'center',
+          flexDirection: 'column',
+        },
       ),
     };
   }
@@ -57,6 +60,18 @@ class FormContainer extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
+  renderFooter() {
+    var pages = this.state.form.pages;
+    if (pages) {
+      return (
+        <FormFooter
+          uuid={this.props.uuid}
+          page={pages[this.props.page - 1]}
+          pageNumber={this.props.page} />
+      );
+    }
+  }
+
   renderPage() {
     var pages = this.state.form.pages;
     if (pages) {
@@ -68,8 +83,8 @@ class FormContainer extends Component {
     return (
       <div style={this.styles.container}>
         {this.renderPage()}
+        {this.renderFooter()}
       </div>
     );
   }
 }
-

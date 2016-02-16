@@ -35,6 +35,7 @@
     get '/forms/:target', to: 'forms#show'
     get '/searchables/search', to: 'searchables#search'
     get '/submissions/:uuid', to: 'submissions#show'
+    patch 'submissions/:uuid', to: 'submissions#update'
     get '/users/profile', to: 'users#profile'
 
     resources :comments, only: [:create]

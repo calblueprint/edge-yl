@@ -26,7 +26,7 @@
           null,
           RouteConstants.forms.student(1, submission.uuid),
         );
-        window.location = RouteConstants.forms.student(2, submission.uuid);
+        window.location = RouteConstants.forms.student(page.number + 1, submission.uuid);
       };
       Requester.post(
         ApiConstants.submissions.create,
@@ -56,8 +56,21 @@
       return true;
     }
 
-    updateSubmission(page) {
-      // TODO(Sonia): set up this action and call it when appropriate.
+    updateSubmission(page, uuid) {
+      var attributes = {};
+      var questions = page.questions;
+      questions.map((question) => attributes[question.key] = question.value);
+      var params = { submission: attributes };
+      var resolve = (response) => {
+        var submission = response.submission;
+        window.location = RouteConstants.forms.student(page.number + 1, submission.uuid);
+      };
+      Requester.update(
+        ApiConstants.submissions.update(uuid),
+        params,
+        resolve,
+      );
+      return true;
     }
 
     // --------------------------------------------------

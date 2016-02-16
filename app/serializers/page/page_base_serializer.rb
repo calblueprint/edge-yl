@@ -1,6 +1,6 @@
 class PageBaseSerializer < BaseSerializer
 
-  attributes :id, :title
+  attributes :id, :number, :title
 
   has_many :questions, serializer: QuestionBaseSerializer
 

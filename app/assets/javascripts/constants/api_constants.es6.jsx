@@ -135,6 +135,7 @@
       return {
         create: '/api/submissions',
         show: (uuid) => `/api/submissions/${uuid}`,
+        update: (uuid) => `/api/submissions/${uuid}`,
       };
     }
 
