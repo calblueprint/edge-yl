@@ -23,6 +23,11 @@ class DraftBody extends Component {
           marginTop: '12px',
         },
       ),
+      footer: {
+        display: 'flex',
+        justifyContent: 'center',
+        marginTop: '24px',
+      },
     };
   }
 
@@ -47,10 +52,11 @@ class DraftBody extends Component {
         <DraftContent
           draft={draft}
           template={template} />
-        <FormButton
-          action={() => this.sendEmail()}
-          content={'Send'}
-          margin={12} />
+        <div style={this.styles.footer}>
+          <FormButton
+            action={() => this.sendEmail()}
+            content={'Send'} />
+        </div>
       </div>
     );
   }

@@ -27,7 +27,7 @@ class AuthenticationLogin extends Component {
       footer: {
         display: 'flex',
         justifyContent: 'center',
-        marginTop: '12px',
+        marginTop: this.props.template.message ? '12px' : '24px',
       },
     };
   }

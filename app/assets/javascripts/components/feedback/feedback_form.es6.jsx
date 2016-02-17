@@ -25,6 +25,11 @@ class FeedbackForm extends Component {
         color: StyleConstants.colors.red,
         textAlign: 'center',
       },
+      footer: {
+        display: 'flex',
+        justifyContent: 'center',
+        marginTop: '12px',
+      },
     };
   }
 
@@ -85,10 +90,11 @@ class FeedbackForm extends Component {
           type={'text'}
           value={template.content} />
         {this.renderError()}
-        <FormButton
-          action={() => this.createFeedback()}
-          content={'Submit'}
-          margin={this.props.template.message ? 12 : 24} />
+        <div style={this.styles.footer}>
+          <FormButton
+            action={() => this.createFeedback()}
+            content={'Submit'} />
+        </div>
       </div>
     );
   }

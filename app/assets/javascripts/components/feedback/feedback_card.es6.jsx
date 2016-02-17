@@ -27,7 +27,7 @@ class FeedbackCard extends Component {
       header: {
         display: 'flex',
         justifyContent: 'center',
-        marginBottom: '12px',
+        marginBottom: '24px',
       },
     };
   }
