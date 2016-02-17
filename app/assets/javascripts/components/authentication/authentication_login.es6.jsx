@@ -1,4 +1,4 @@
-class LoginForm extends Component {
+class AuthenticationLogin extends Component {
 
   // --------------------------------------------------
   // Props
@@ -23,6 +23,11 @@ class LoginForm extends Component {
         marginTop: '12px',
         color: StyleConstants.colors.red,
         textAlign: 'center',
+      },
+      footer: {
+        display: 'flex',
+        justifyContent: 'center',
+        marginTop: '12px',
       },
     };
   }
@@ -91,10 +96,11 @@ class LoginForm extends Component {
           type={'password'}
           value={template.password} />
         {this.renderError()}
-        <FormButton
-          action={() => this.createSession()}
-          content={'Log in'}
-          margin={this.props.template.message ? 12 : 24} />
+        <div style={this.styles.footer}>
+          <FormButton
+            action={() => this.createSession()}
+            content={'Log in'} />
+        </div>
       </div>
     );
   }

@@ -7,13 +7,6 @@ class FormButton extends Component {
     return {
       action: React.PropTypes.func.isRequired,
       content: React.PropTypes.string.isRequired,
-      margin: React.PropTypes.number,
-    };
-  }
-
-  static get defaultProps() {
-    return {
-      margin: 0,
     };
   }
 
@@ -25,7 +18,6 @@ class FormButton extends Component {
       container: {
         display: 'flex',
         justifyContent: 'center',
-        marginTop: `${this.props.margin}px`,
       },
     };
   }
@@ -49,14 +41,12 @@ class FormButton extends Component {
   // --------------------------------------------------
   render() {
     return (
-      <div style={this.styles.container}>
-        <Clickable
-          action={this.props.action}
-          content={this.props.content}
-          styles={this.clickableStyles}
-          type={'h6'}
-          underline={false} />
-      </div>
+      <Clickable
+        action={this.props.action}
+        content={this.props.content}
+        styles={this.clickableStyles}
+        type={'h6'}
+        underline={false} />
     );
   }
 }
