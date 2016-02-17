@@ -37,9 +37,9 @@ class AuthenticationCard extends Component {
   // --------------------------------------------------
   renderForm() {
     if (this.props.type === 'login') {
-      return <LoginForm template={this.props.template} />;
+      return <AuthenticationLogin template={this.props.template} />;
     } else {
-      return <SignupForm template={this.props.template} />;
+      return <AuthenticationSignup template={this.props.template} />;
     }
   }
 

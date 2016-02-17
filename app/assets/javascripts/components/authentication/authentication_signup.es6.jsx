@@ -1,4 +1,4 @@
-class SignupForm extends Component {
+class AuthenticationSignup extends Component {
 
   // --------------------------------------------------
   // Props
@@ -6,6 +6,23 @@ class SignupForm extends Component {
   static get propTypes() {
     return {
       template: React.PropTypes.object.isRequired,
+    };
+  }
+
+  // --------------------------------------------------
+  // Styles
+  // --------------------------------------------------
+  get styles() {
+    return {
+      container: {
+        display: 'flex',
+        flexFlow: 'column',
+      },
+      footer: {
+        display: 'flex',
+        justifyContent: 'center',
+        marginTop: '24px',
+      },
     };
   }
 
@@ -85,10 +102,11 @@ class SignupForm extends Component {
           placeholder={'password'}
           type={'password'}
           value={template.password_confirmation} />
-        <FormButton
-          action={() => this.createUser()}
-          content={'Sign up'}
-          margin={24} />
+        <div style={this.styles.footer}>
+          <FormButton
+            action={() => this.createUser()}
+            content={'Sign up'} />
+        </div>
       </div>
     );
   }
