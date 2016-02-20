@@ -9,8 +9,8 @@ class GroupsCard extends Component {
       group: React.PropTypes.object.isRequired,
       media: React.PropTypes.string.isRequired,
       type: React.PropTypes.oneOf([
-        TypeConstants.group.conference,
-        TypeConstants.group.default,
+        TypeConstants.groups.conference,
+        TypeConstants.groups.default,
       ]).isRequired,
     };
   }
@@ -19,9 +19,9 @@ class GroupsCard extends Component {
   // Helpers
   // --------------------------------------------------
   deleteGroup() {
-    if (this.props.type == TypeConstants.group.conference) {
+    if (this.props.type == TypeConstants.groups.conference) {
       ConferenceActions.deleteGroup(this.props.group.id);
-    } else if (this.props.type == TypeConstants.group.default) {
+    } else if (this.props.type == TypeConstantss.group.default) {
       GroupsActions.deleteGroup(this.props.group.id);
     }
   }

@@ -1,7 +1,7 @@
 (() => {
   class TypeConstants {
 
-    get comment() {
+    get comments() {
       return {
         school: 'comment-school',
         student: 'comment-student',
@@ -17,10 +17,15 @@
 
     get group() {
       return {
+        leadership: 'group-leadership',
+        general: 'group-general',
+      };
+    }
+
+    get groups() {
+      return {
         conference: 'group-conference',
         default: 'group-default',
-        general: 'group-general',
-        leadership: 'group-leadership',
       };
     }
 

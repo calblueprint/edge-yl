@@ -102,7 +102,7 @@ class GroupsPage extends Component {
               editable={this.state.editable}
               media={this.state.media}
               groups={this.state.groups}
-              type={TypeConstants.group.default} />
+              type={TypeConstants.groups.default} />
           </div>
         </div>
       </div>
