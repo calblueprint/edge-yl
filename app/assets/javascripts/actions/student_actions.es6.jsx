@@ -21,7 +21,7 @@
       var params = { comment: template.attributes };
       var resolve = (response) => {
         this.storeComment(response);
-        ViewActions.storeToast('Comment created!');
+        ViewActions.storeToast(true, 'Comment created!');
       };
       var reject = (response) => this.storeError(response);
       Requester.post(

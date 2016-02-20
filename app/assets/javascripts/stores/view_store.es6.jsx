@@ -7,7 +7,7 @@
     constructor() {
       this.editable = false;
       this.media = 'big';
-      this.toast = null;
+      this.toast = {};
       this.bindListeners({
         handleStoreEditablity: ViewActions.STORE_EDITABILITY,
         handleStoreMedia: ViewActions.STORE_MEDIA,
@@ -30,9 +30,8 @@
       }
     }
 
-    handleStoreToast(message) {
-      this.toast = message;
-      console.log('sup');
+    handleStoreToast(toast) {
+      this.toast = toast;
     }
   }
   this.ViewStore = alt.createStore(ViewStore);

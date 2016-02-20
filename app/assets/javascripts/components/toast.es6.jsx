@@ -5,13 +5,11 @@ class Toast extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      message: React.PropTypes.string,
-    };
-  }
-
-  static get defaultProps() {
-    return {
-      message: null,
+      toast: React.PropTypes.shape({
+        active: React.PropTypes.bool,
+        content: React.PropTypes.string,
+        type: React.PropTypes.string,
+      }).isRequired,
     };
   }
 
@@ -19,6 +17,7 @@ class Toast extends Component {
   // Styles
   // --------------------------------------------------
   get styles() {
+    var toast = this.props.toast;
     return {
       container: Object.assign(
         {},
@@ -26,21 +25,20 @@ class Toast extends Component {
           position: 'fixed',
           bottom: '0px',
           right: '0px',
+          padding: '12px',
         },
-        !this.props.message && { display: 'none' },
+        !toast.active && { display: 'none' },
       ),
     };
   }
-
 
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
   render() {
-    console.log(this.props.message);
     return (
       <div style={this.styles.container}>
-        {this.props.message}
+        {this.props.toast.content}
       </div>
     );
   }

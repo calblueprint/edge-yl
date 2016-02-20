@@ -85,7 +85,7 @@ class StudentPage extends Component {
         {this.renderOverlay()}
         <Header profile={this.selectProfile()} />
         <Sidebar profile={this.selectProfile()} />
-        <Toast message={this.state.toast} />
+        <Toast toast={this.state.toast} />
         <div style={StyleConstants.pages.container}>
           <div style={StyleConstants.pages.content}>
             <GridHeader

@@ -25,12 +25,15 @@
     // --------------------------------------------------
     // Stores
     // --------------------------------------------------
-    storeToast(message) {
-      if (message) {
-        window.setTimeout(() => this.storeToast(null), 3000);
+    storeToast(active, content, type) {
+      if (active) {
+        window.setTimeout(() => this.storeToast(false), 3000);
       }
-      console.log('sup');
-      return message;
+      return {
+        active: active,
+        content: content,
+        type: type,
+      };
     }
   }
   this.ViewActions = alt.createActions(ViewActions);
