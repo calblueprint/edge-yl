@@ -69,7 +69,7 @@ class PageComments extends Component {
           user_id: this.props.profile.id,
         },
       );
-    } else if (this.props.type == TypeConstants.comments.student) {
+    } else if (this.props.type === TypeConstants.comments.student) {
       StudentActions.storeTemplate(
         'comment',
         {
@@ -94,9 +94,9 @@ class PageComments extends Component {
 
   renderComments() {
     var comments;
-    if (this.props.type == TypeConstants.comments.school) {
+    if (this.props.type === TypeConstants.comments.school) {
       comments = this.props.school.comments;
-    } else if (this.props.type == TypeConstants.comments.student) {
+    } else if (this.props.type === TypeConstants.comments.student) {
       comments = this.props.student.comments;
     }
     return comments.map((comment) => this.renderComment(comment));

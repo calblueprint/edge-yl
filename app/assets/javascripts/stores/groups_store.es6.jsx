@@ -31,7 +31,7 @@
 
     handleRemoveGroup(response) {
       var id = response.group.id;
-      this.groups = this.groups.filter((group) => group.id != id);
+      this.groups = this.groups.filter((group) => group.id !== id);
     }
 
     handleStoreAttribute(attribute) {

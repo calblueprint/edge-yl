@@ -36,7 +36,7 @@
     }
 
     handleDeleteStudent(studentId) {
-      this.group.students = this.group.students.filter(function(student) { return student.id != studentId });
+      this.group.students = this.group.students.filter(function(student) { return student.id !== studentId });
     }
 
     handleStoreAttribute(attribute) {

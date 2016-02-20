@@ -19,9 +19,9 @@ class RoomsCard extends Component {
   // Helpers
   // --------------------------------------------------
   deleteRoom() {
-    if (this.props.type == TypeConstants.rooms.conference) {
+    if (this.props.type === TypeConstants.rooms.conference) {
       ConferenceActions.deleteRoom(this.props.room.id);
-    } else if (this.props.type == TypeConstants.rooms.default) {
+    } else if (this.props.type === TypeConstants.rooms.default) {
       RoomsActions.deleteRoom(this.props.room.id);
     }
   }
@@ -43,7 +43,7 @@ class RoomsCard extends Component {
   }
 
   renderConference() {
-    if (this.props.type == TypeConstants.rooms.default) {
+    if (this.props.type === TypeConstants.rooms.default) {
       var conference = this.props.room.conference;
       return (
         <CardAttribute

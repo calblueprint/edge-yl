@@ -40,7 +40,7 @@
     }
 
     handleDeleteContact(contactId) {
-      this.school['secondary_contacts'] = this.school['secondary_contacts'].filter(function(contact) { return contact.id != contactId });
+      this.school['secondary_contacts'] = this.school['secondary_contacts'].filter(function(contact) { return contact.id !== contactId });
     }
 
     handleStoreAttribute(attribute) {

@@ -27,7 +27,7 @@ class ConferencePageOverlay extends PageOverlay {
     var template = this.props.template;
     if (pairing) {
       return <ConferenceEditModal pairing={pairing} />;
-    } else if (template.model == 'group') {
+    } else if (template.model === 'group') {
       return (
         <GroupCreateModal
           conference={this.props.conference}
