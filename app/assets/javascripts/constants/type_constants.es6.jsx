@@ -1,13 +1,6 @@
 (() => {
   class TypeConstants {
 
-    get actions() {
-      return {
-        create: 'create',
-        edit: 'edit',
-      };
-    }
-
     get comment() {
       return {
         school: 'comment-school',
@@ -48,7 +41,6 @@
 
     get school() {
       return {
-        comment: 'school-comment',
         contact: 'school-contact',
         general: 'school-general',
       };
@@ -56,7 +48,6 @@
 
     get student() {
       return {
-        comment: 'student-comment',
         contact: 'student-contact',
         conference: 'student-conference',
         emergency: 'student-emergency',

@@ -100,7 +100,7 @@ class SchoolPage extends Component {
             <PageComments
               profile={this.selectProfile()}
               school={this.state.school}
-              type={TypeConstants.school.comment} />
+              type={TypeConstants.comment.school} />
           </div>
         </div>
       </div>
