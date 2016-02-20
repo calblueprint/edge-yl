@@ -31,7 +31,11 @@
     }
 
     handleStoreToast(toast) {
-      this.toast = toast;
+      if (toast.active) {
+        this.toast = toast;
+      } else {
+        this.toast.active = toast.active;
+      }
     }
   }
   this.ViewStore = alt.createStore(ViewStore);

@@ -25,9 +25,16 @@ class Toast extends Component {
           position: 'fixed',
           bottom: '0px',
           right: '0px',
+          zIndex: StyleConstants.planes.seven,
           padding: '12px',
+          margin: '12px',
+          color: 'white',
+          backgroundColor: 'green',
+          boxShadow: '0px 0px 3px 0px rgba(0, 0, 0, 0.25)',
+          opacity: '1',
+          transition: 'opacity 0.375s ease-out',
         },
-        !toast.active && { display: 'none' },
+        !toast.active && { opacity: '0' },
       ),
     };
   }
