@@ -21,6 +21,16 @@
       this.storeMedia(document.documentElement.clientWidth);
       return true;
     }
+
+    // --------------------------------------------------
+    // Stores
+    // --------------------------------------------------
+    storeToast(message) {
+      if (message) {
+        window.setTimeout(() => this.storeToast(null), 3000);
+      }
+      return message;
+    }
   }
   this.ViewActions = alt.createActions(ViewActions);
 })();
