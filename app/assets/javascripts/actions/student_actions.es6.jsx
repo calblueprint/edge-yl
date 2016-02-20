@@ -19,7 +19,10 @@
     // --------------------------------------------------
     createComment(template) {
       var params = { comment: template.attributes };
-      var resolve = (response) => this.storeComment(response);
+      var resolve = (response) => {
+        this.storeComment(response);
+        ViewActions.storeToast(true, 'Comment created!');
+      };
       var reject = (response) => this.storeError(response);
       Requester.post(
         ApiConstants.comments.create,
