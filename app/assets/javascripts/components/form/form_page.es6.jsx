@@ -18,7 +18,6 @@ class FormPage extends Component {
         {},
         StyleConstants.templates.card,
         {
-          width: '712px',
           padding: '36px',
           marginTop: '48px',
         }

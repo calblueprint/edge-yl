@@ -23,14 +23,24 @@
 #  guardian_phone_type   :integer
 #  guardian_relationship :integer
 #  home_phone            :string
+#  is_draft              :boolean          default(TRUE), not null
 #  last_name             :string
 #  preferred_name        :string
 #  registration_status   :integer
 #  shirt_size            :integer
-#  total_pages           :integer
 #  uuid                  :uuid
 #
 
 class Submission < ActiveRecord::Base
+
+	before_validation :try_submit, on: :update
+
+	private
+
+	def try_submit
+		if !is_draft
+			puts 'try submit'
+		end
+	end
 
 end

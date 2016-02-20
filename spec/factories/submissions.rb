@@ -23,11 +23,11 @@
 #  guardian_phone_type   :integer
 #  guardian_relationship :integer
 #  home_phone            :string
+#  is_draft              :boolean          default(TRUE), not null
 #  last_name             :string
 #  preferred_name        :string
 #  registration_status   :integer
 #  shirt_size            :integer
-#  total_pages           :integer
 #  uuid                  :uuid
 #
 
