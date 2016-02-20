@@ -112,11 +112,12 @@ ActiveRecord::Schema.define(version: 20160210042524) do
   add_index "leaderships", ["user_id"], name: "index_leaderships_on_user_id", using: :btree
 
   create_table "pages", force: :cascade do |t|
-    t.string   "title",      null: false
-    t.integer  "number",     null: false
+    t.boolean  "is_last",    default: false, null: false
+    t.integer  "number",                     null: false
+    t.string   "title",                      null: false
     t.integer  "form_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   add_index "pages", ["form_id"], name: "index_pages_on_form_id", using: :btree
@@ -238,11 +239,11 @@ ActiveRecord::Schema.define(version: 20160210042524) do
     t.integer "guardian_phone_type"
     t.integer "guardian_relationship"
     t.string  "home_phone"
+    t.boolean "is_draft",              default: true,                 null: false
     t.string  "last_name"
     t.string  "preferred_name"
     t.integer "registration_status"
     t.integer "shirt_size"
-    t.integer "total_pages"
     t.uuid    "uuid",                  default: "uuid_generate_v4()"
   end
 

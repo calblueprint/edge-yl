@@ -96,6 +96,7 @@ school_form = Form.create(
   end
   Page.create(
     form: form,
+    is_last: true,
     number: 2,
     title: 'Primary Student Information',
   ) do |page|
@@ -292,6 +293,7 @@ student_form = Form.create(
   end
   Page.create(
     form: form,
+    is_last: true,
     number: 2,
     title: 'Emergency Information',
   ) do |page|

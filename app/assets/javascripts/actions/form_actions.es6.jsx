@@ -60,6 +60,9 @@
       var attributes = {};
       var questions = page.questions;
       questions.map((question) => attributes[question.key] = question.value);
+      if (page['is_last']) {
+        attributes.is_draft = false;
+      }
       var params = { submission: attributes };
       var resolve = (response) => {
         var submission = response.submission;

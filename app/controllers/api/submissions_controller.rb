@@ -54,6 +54,7 @@ class Api::SubmissionsController < Api::BaseController
       :guardian_phone_type,
       :guardian_relationship,
       :home_phone,
+      :is_draft,
       :last_name,
       :preferred_name,
       :shirt_size,

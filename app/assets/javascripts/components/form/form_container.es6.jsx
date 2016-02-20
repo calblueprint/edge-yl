@@ -30,7 +30,12 @@ class FormContainer extends Component {
   // --------------------------------------------------
   get styles() {
     return {
-      container: Object.assign(
+      container: {
+        display: 'flex',
+        flexFlow: 'column',
+        width: '712px',
+      },
+      wrapper: Object.assign(
         {},
         StyleConstants.pages.wrapper,
         {
@@ -81,9 +86,11 @@ class FormContainer extends Component {
 
   render() {
     return (
-      <div style={this.styles.container}>
-        {this.renderPage()}
-        {this.renderFooter()}
+      <div style={this.styles.wrapper}>
+        <div style={this.styles.container}>
+          {this.renderPage()}
+          {this.renderFooter()}
+        </div>
       </div>
     );
   }

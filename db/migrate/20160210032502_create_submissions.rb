@@ -21,11 +21,11 @@ class CreateSubmissions < ActiveRecord::Migration
       t.integer :guardian_phone_type
       t.integer :guardian_relationship
       t.string  :home_phone
+      t.boolean :is_draft, default: true, null: false
       t.string  :last_name
       t.string  :preferred_name
       t.integer :registration_status
       t.integer :shirt_size
-      t.integer :total_pages
       t.uuid    :uuid, default: 'uuid_generate_v4()'
     end
   end
