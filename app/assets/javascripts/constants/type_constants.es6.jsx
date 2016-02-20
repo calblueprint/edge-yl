@@ -29,6 +29,28 @@
       };
     }
 
+    get icons() {
+      return {
+        close: 'fa fa-times fa-2x',
+        conference: 'fa-building',
+        create: 'fa-pencil',
+        delete: 'fa-times',
+        edit: 'fa-pencil-square-o',
+        email: 'fa-envelope',
+        expand: 'fa-angle-down',
+        group: 'fa-star',
+        hamburger: 'fa-bars',
+        promote: 'fa-level-up',
+        room: 'fa-book',
+        save: 'fa-save',
+        school: 'fa-university',
+        search: 'fa-search',
+        settings: 'fa-cog',
+        student: 'fa-graduation-cap',
+        volunteer: 'fa-user',
+      };
+    }
+
     get profile() {
       return {
         credentials: 'profile-credentials',
@@ -77,30 +99,8 @@
 
     get user() {
       return {
-        general: 'user-general',
         leadership: 'user-leadership',
-      };
-    }
-
-    get icons() {
-      return {
-        close: 'fa fa-times fa-2x',
-        conference: 'fa-building',
-        create: 'fa-pencil',
-        delete: 'fa-times',
-        edit: 'fa-pencil-square-o',
-        email: 'fa-envelope',
-        expand: 'fa-angle-down',
-        group: 'fa-star',
-        hamburger: 'fa-bars',
-        promote: 'fa-level-up',
-        room: 'fa-book',
-        save: 'fa-save',
-        school: 'fa-university',
-        search: 'fa-search',
-        settings: 'fa-cog',
-        student: 'fa-graduation-cap',
-        volunteer: 'fa-user',
+        general: 'user-general',
       };
     }
   }
