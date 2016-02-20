@@ -32,6 +32,7 @@
 
     handleStoreToast(message) {
       this.toast = message;
+      console.log('sup');
     }
   }
   this.ViewStore = alt.createStore(ViewStore);

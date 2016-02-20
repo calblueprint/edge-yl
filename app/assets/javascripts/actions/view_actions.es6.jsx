@@ -29,6 +29,7 @@
       if (message) {
         window.setTimeout(() => this.storeToast(null), 3000);
       }
+      console.log('sup');
       return message;
     }
   }
