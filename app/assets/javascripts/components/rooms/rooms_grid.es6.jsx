@@ -9,8 +9,8 @@ class RoomsGrid extends Component {
       media: React.PropTypes.string.isRequired,
       rooms: React.PropTypes.array.isRequired,
       type: React.PropTypes.oneOf([
-        TypeConstants.room.conference,
-        TypeConstants.room.default,
+        TypeConstants.rooms.conference,
+        TypeConstants.rooms.default,
       ]).isRequired,
     };
   }

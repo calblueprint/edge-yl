@@ -77,7 +77,7 @@ class ConferenceGrid extends Component {
           editable={this.props.editable}
           media={this.props.media}
           rooms={this.props.conference.rooms}
-          type={TypeConstants.room.conference} />
+          type={TypeConstants.rooms.conference} />
       </div>
     );
   }

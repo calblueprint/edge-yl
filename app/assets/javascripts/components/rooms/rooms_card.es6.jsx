@@ -9,8 +9,8 @@ class RoomsCard extends Component {
       media: React.PropTypes.string.isRequired,
       room: React.PropTypes.object.isRequired,
       type: React.PropTypes.oneOf([
-        TypeConstants.room.conference,
-        TypeConstants.room.default,
+        TypeConstants.rooms.conference,
+        TypeConstants.rooms.default,
       ]).isRequired,
     };
   }
@@ -19,9 +19,9 @@ class RoomsCard extends Component {
   // Helpers
   // --------------------------------------------------
   deleteRoom() {
-    if (this.props.type == TypeConstants.room.conference) {
+    if (this.props.type == TypeConstants.rooms.conference) {
       ConferenceActions.deleteRoom(this.props.room.id);
-    } else if (this.props.type == TypeConstants.room.default) {
+    } else if (this.props.type == TypeConstants.rooms.default) {
       RoomsActions.deleteRoom(this.props.room.id);
     }
   }
@@ -43,7 +43,7 @@ class RoomsCard extends Component {
   }
 
   renderConference() {
-    if (this.props.type == TypeConstants.room.default) {
+    if (this.props.type == TypeConstants.rooms.default) {
       var conference = this.props.room.conference;
       return (
         <CardAttribute

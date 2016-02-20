@@ -38,9 +38,14 @@
 
     get room() {
       return {
+        general: 'room-general',
+      };
+    }
+
+    get rooms() {
+      return {
         conference: 'room-conference',
         default: 'room-default',
-        general: 'room-general',
       };
     }
 
