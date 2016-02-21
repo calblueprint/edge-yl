@@ -23,9 +23,9 @@ class GroupCreateModal extends CreateModal {
   // --------------------------------------------------
   handleClick(event) {
     if (event.target === this._node) {
-      if (this.props.type == 'conference') {
+      if (this.props.type === 'conference') {
         ConferenceActions.closeOverlay();
-      } else if (this.props.type == 'groups') {
+      } else if (this.props.type === 'groups') {
         GroupsActions.closeOverlay();
       }
     }
@@ -36,9 +36,9 @@ class GroupCreateModal extends CreateModal {
   // --------------------------------------------------
   createGroup() {
     var actions;
-    if (this.props.type == 'conference') {
+    if (this.props.type === 'conference') {
       actions = ConferenceActions;
-    } else if (this.props.type == 'groups') {
+    } else if (this.props.type === 'groups') {
       actions = GroupsActions;
     }
     actions.createGroup(this.props.template);
@@ -47,16 +47,16 @@ class GroupCreateModal extends CreateModal {
   generateChoice(groupable, type) {
     var actions;
     var attributes = this.props.template.attributes;
-    if (this.props.type == 'conference') {
+    if (this.props.type === 'conference') {
       actions = ConferenceActions;
-    } else if (this.props.type == 'groups') {
+    } else if (this.props.type === 'groups') {
       actions = GroupsActions;
     }
 
     // don't display an already selected leader as a choice for a different leadership position
-    if (attributes['primary_leader'] && groupable.id == attributes['primary_leader']['user_id']) {
+    if (attributes['primary_leader'] && groupable.id === attributes['primary_leader']['user_id']) {
       return;
-    } else if (attributes['secondary_leader'] && groupable.id == attributes['secondary_leader']['user_id']) {
+    } else if (attributes['secondary_leader'] && groupable.id === attributes['secondary_leader']['user_id']) {
       return;
     }
 
@@ -75,15 +75,15 @@ class GroupCreateModal extends CreateModal {
   generateChoices(type) {
     var groupables = this.props.groupables;
     return groupables.map((groupable) => this.generateChoice(groupable, type)).
-                      filter((groupable) => groupable != null );
+                      filter((groupable) => groupable !== null );
 
   }
 
   generateHandler(field) {
     return(event) => {
-      if (this.props.type == 'conference') {
+      if (this.props.type === 'conference') {
         ConferenceActions.storeAttribute(field, event.target.value);
-      } else if (this.props.type == 'groups') {
+      } else if (this.props.type === 'groups') {
         GroupsActions.storeAttribute(field, event.target.value);
       }
     };
@@ -94,11 +94,11 @@ class GroupCreateModal extends CreateModal {
     var attributes = this.props.template.attributes;
     if (type === 'primary' && attributes['primary_leader']) {
       var id = attributes['primary_leader']['user_id'];
-      var user = groupables.find((groupable) => groupable.id == id);
+      var user = groupables.find((groupable) => groupable.id === id);
       return user.full_name;
     } else if (type === 'secondary' && attributes['secondary_leader']) {
       var id = attributes['secondary_leader']['user_id'];
-      var user = groupables.find((groupable) => groupable.id == id);
+      var user = groupables.find((groupable) => groupable.id === id);
       return user.full_name;
     }
   }

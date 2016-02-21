@@ -30,7 +30,7 @@
 
     handleRemoveRoom(response) {
       var id = response.room.id;
-      this.rooms = this.rooms.filter((room) => room.id != id);
+      this.rooms = this.rooms.filter((room) => room.id !== id);
     }
 
     handleStoreAttribute(attribute) {

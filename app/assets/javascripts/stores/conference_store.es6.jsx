@@ -40,13 +40,13 @@
     handleRemoveGroup(response) {
       var groups = this.conference.groups;
       var id = response.group.id;
-      this.conference.groups = groups.filter((group) => group.id != id);
+      this.conference.groups = groups.filter((group) => group.id !== id);
     }
 
     handleRemoveRoom(response) {
       var rooms = this.conference.rooms;
       var id = response.room.id;
-      this.conference.rooms = rooms.filter((room) => room.id != id);
+      this.conference.rooms = rooms.filter((room) => room.id !== id);
     }
 
     handleStoreAttribute(attribute) {

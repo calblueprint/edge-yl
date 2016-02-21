@@ -69,7 +69,7 @@ class ConferenceGrid extends Component {
           editable={this.props.editable}
           groups={this.props.conference.groups}
           media={this.props.media}
-          type={TypeConstants.group.conference} />
+          type={TypeConstants.groups.conference} />
         <GridHeader
           label={'Rooms in this conference'}
           options={this.generateRoomsOptions()} />
@@ -77,7 +77,7 @@ class ConferenceGrid extends Component {
           editable={this.props.editable}
           media={this.props.media}
           rooms={this.props.conference.rooms}
-          type={TypeConstants.room.conference} />
+          type={TypeConstants.rooms.conference} />
       </div>
     );
   }

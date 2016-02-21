@@ -1,14 +1,7 @@
 (() => {
   class TypeConstants {
 
-    get actions() {
-      return {
-        create: 'create',
-        edit: 'edit',
-      };
-    }
-
-    get comment() {
+    get comments() {
       return {
         school: 'comment-school',
         student: 'comment-student',
@@ -24,60 +17,15 @@
 
     get group() {
       return {
+        leadership: 'group-leadership',
+        general: 'group-general',
+      };
+    }
+
+    get groups() {
+      return {
         conference: 'group-conference',
         default: 'group-default',
-        general: 'group-general',
-        leadership: 'group-leadership',
-      };
-    }
-
-    get profile() {
-      return {
-        credentials: 'profile-credentials',
-        general: 'profile-general',
-      };
-    }
-
-    get room() {
-      return {
-        conference: 'room-conference',
-        default: 'room-default',
-        general: 'room-general',
-      };
-    }
-
-    get school() {
-      return {
-        comment: 'school-comment',
-        contact: 'school-contact',
-        general: 'school-general',
-      };
-    }
-
-    get student() {
-      return {
-        comment: 'student-comment',
-        contact: 'student-contact',
-        conference: 'student-conference',
-        emergency: 'student-emergency',
-        general: 'student-general',
-        outreach: 'student-outreach',
-      };
-    }
-
-    get students() {
-      return {
-        default: 'students-default',
-        group: 'students-group',
-        room: 'students-room',
-        school: 'students-school',
-      };
-    }
-
-    get user() {
-      return {
-        general: 'user-general',
-        leadership: 'user-leadership',
       };
     }
 
@@ -100,6 +48,59 @@
         settings: 'fa-cog',
         student: 'fa-graduation-cap',
         volunteer: 'fa-user',
+      };
+    }
+
+    get profile() {
+      return {
+        credentials: 'profile-credentials',
+        general: 'profile-general',
+      };
+    }
+
+    get room() {
+      return {
+        general: 'room-general',
+      };
+    }
+
+    get rooms() {
+      return {
+        conference: 'room-conference',
+        default: 'room-default',
+      };
+    }
+
+    get school() {
+      return {
+        contact: 'school-contact',
+        general: 'school-general',
+      };
+    }
+
+    get student() {
+      return {
+        contact: 'student-contact',
+        conference: 'student-conference',
+        emergency: 'student-emergency',
+        general: 'student-general',
+        outreach: 'student-outreach',
+      };
+    }
+
+    get students() {
+      return {
+        default: 'students-default',
+        group: 'students-group',
+        room: 'students-room',
+        school: 'students-school',
+      };
+    }
+
+    get user() {
+      return {
+        leadership: 'user-leadership',
+        general: 'user-general',
       };
     }
   }

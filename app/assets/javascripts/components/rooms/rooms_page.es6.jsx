@@ -103,7 +103,7 @@ class RoomsPage extends Component {
               editable={this.state.editable}
               media={this.state.media}
               rooms={this.state.rooms}
-              type={TypeConstants.room.default} />
+              type={TypeConstants.rooms.default} />
           </div>
         </div>
       </div>

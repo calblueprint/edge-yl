@@ -9,8 +9,8 @@ class GroupsGrid extends Component {
       groups: React.PropTypes.array.isRequired,
       media: React.PropTypes.string.isRequired,
       type: React.PropTypes.oneOf([
-        TypeConstants.group.conference,
-        TypeConstants.group.default,
+        TypeConstants.groups.conference,
+        TypeConstants.groups.default,
       ]).isRequired,
     };
   }
