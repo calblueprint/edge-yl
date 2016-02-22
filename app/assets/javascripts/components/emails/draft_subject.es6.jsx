@@ -47,6 +47,18 @@ class DraftSubject extends Component {
   }
 
   // --------------------------------------------------
+  // Helpers
+  // --------------------------------------------------
+  generateSaveStatus() {
+    if (this.props.template.saving) {
+      return 'Saving...';
+    } else if (this.props.template.attributes){
+      var attributes = this.props.template.attributes;
+      return 'Draft last updated at: ' + attributes.updated_at;
+    }
+  }
+
+  // --------------------------------------------------
   // Render
   // --------------------------------------------------
   render() {
@@ -56,7 +68,7 @@ class DraftSubject extends Component {
       <div style={this.styles.container}>
         <div style={this.styles.section}>
           <h6>{'Subject'}</h6>
-          <p>{`Draft last updated at: ${attributes.updated_at}`}</p>
+          <p>{this.generateSaveStatus()}</p>
         </div>
         <input
           autoFocus={true}

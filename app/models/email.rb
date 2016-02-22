@@ -21,6 +21,8 @@
 
 class Email < ActiveRecord::Base
 
+  self.default_scope { order('updated_at DESC') }
+
   belongs_to :emailable, polymorphic: true
   belongs_to :user
 
@@ -37,25 +39,53 @@ class Email < ActiveRecord::Base
 
   private
 
-  def set_initials
-    self.content ||= ''
-    self.subject ||= ''
-    self.from ||= smtp_format_name user.full_name, user.email
-    self.to ||= ''
-    self.sender ||= user.email
-    if self.emailable_type == Student.name
-      student = Student.find self.emailable_id
-      self.recipient = student.email
-      self.to = smtp_format_name student.full_name, self.recipient
-    elsif self.emailable_type == School.name
-      school = School.find self.emailable_id
-      self.recipient = school.primary_contact.email
-      self.to = smtp_format_name school.primary_contact.full_name, self.recipient
+  def find_emailable(email)
+    emailable = Contact.where(email: email).first
+    if emailable
+      return emailable.school
+    else
+      emailable = Student.where(email: email).first
+      return emailable
     end
   end
 
-  def smtp_format_name(name, email)
-    "#{name} <#{email}>"
+  def find_user(email)
+    User.where(email: email).first
+  end
+
+  # We require sender and recipient to both be set at creation
+  def set_initials
+    self.content ||= ''
+    self.subject ||= ''
+
+    if (emailable = find_emailable(recipient))
+      self.emailable_id = emailable.id
+      self.emailable_type = emailable.class.name
+      self.from = smtp_format_name emailable
+      if (user = find_user(sender))
+        self.user = user
+        self.from = smtp_format_name user
+      end
+    elsif (emailable = find_emailable(sender))
+      self.emailable_id = emailable.id
+      self.emailable_type = emailable.class.name
+      self.from = smtp_format_name emailable
+      if (user = find_user(recipient))
+        self.user = user
+        self.to = smtp_format_name user
+      end
+    end
+
+    self.from ||= self.sender
+    self.to ||= self.recipient
+  end
+
+  def smtp_format_name(model)
+    if model.class.name == Student.name or model.class.name == User.name
+      return "#{model.full_name} <#{model.email}>"
+    elsif model.class.name == School.name
+      return "#{model.primary_contact.full_name} <#{model.primary_contact.email}>"
+    end
   end
 
   def try_send
@@ -64,5 +94,4 @@ class Email < ActiveRecord::Base
       self.is_sent = true
     end
   end
-
 end

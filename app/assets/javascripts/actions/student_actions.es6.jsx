@@ -33,10 +33,10 @@
       return true;
     }
 
-    createDraft(emailable, type) {
+    createDraft(sender, recipient) {
       var attributes = {
-        emailable_id: emailable.id,
-        emailable_type: type,
+        recipient: recipient,
+        sender: sender,
       };
       var params = { email: attributes };
       var resolve = (response) => {

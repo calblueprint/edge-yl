@@ -6,6 +6,7 @@
     // --------------------------------------------------
     constructor() {
       this.generateActions(
+        'initializeDraft',
         'storeDraft',
         'storeErrors',
       );
@@ -15,7 +16,7 @@
     // Requests
     // --------------------------------------------------
     fetchDraft(id) {
-      var resolve = (response) => this.storeDraft(response);
+      var resolve = (response) => this.initializeDraft(response);
       Requester.get(ApiConstants.drafts.show(id), resolve);
       return true;
     }

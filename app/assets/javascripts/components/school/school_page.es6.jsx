@@ -51,7 +51,10 @@ class SchoolPage extends Component {
         content: this.state.editable ? 'Finish' : 'Edit',
       },
       {
-        action: () => StudentActions.createDraft(this.state.school, 'School'),
+        action: () => {
+          var contact = this.props.school.primary_contact;
+          StudentActions.createDraft(this.props.profile.email, contact.email);
+        },
         content: 'Email',
       },
     ];
