@@ -9,7 +9,6 @@ class ProfileCard extends Component {
       media: React.PropTypes.string.isRequired,
       profile: React.PropTypes.object.isRequired,
       type: React.PropTypes.oneOf([
-        TypeConstants.profile.credentials,
         TypeConstants.profile.general,
       ]).isRequired,
     };
@@ -20,12 +19,6 @@ class ProfileCard extends Component {
   // --------------------------------------------------
   renderBody() {
     switch (this.props.type) {
-      case TypeConstants.profile.credentials:
-        return (
-          <ProfileCredentials
-            editable={this.props.editable}
-            profile={this.props.profile} />
-        );
       case TypeConstants.profile.general:
         return (
           <ProfileGeneral
@@ -37,8 +30,6 @@ class ProfileCard extends Component {
 
   renderTitle() {
     switch (this.props.type) {
-      case TypeConstants.profile.credentials:
-        return 'Profile Credentials';
       case TypeConstants.profile.general:
         return 'Profile General';
     };

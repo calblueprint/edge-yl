@@ -9,7 +9,6 @@ if Rails.env.development? || Rails.env.staging?
     'rooms',
     'groups',
     'leaderships',
-    'responsibilities',
     'forms',
     'emails',
   ]

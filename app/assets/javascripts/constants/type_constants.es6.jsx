@@ -53,7 +53,6 @@
 
     get profile() {
       return {
-        credentials: 'profile-credentials',
         general: 'profile-general',
       };
     }

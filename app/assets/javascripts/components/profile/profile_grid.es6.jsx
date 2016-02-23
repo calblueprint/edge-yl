@@ -22,11 +22,6 @@ static get propTypes() {
           media={this.props.media}
           profile={this.props.profile}
           type={TypeConstants.profile.general} />
-        <ProfileCard
-          editable={this.props.editable}
-          media={this.props.media}
-          profile={this.props.profile}
-          type={TypeConstants.profile.credentials} />
       </div>
     );
   }
