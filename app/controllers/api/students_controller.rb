@@ -50,7 +50,8 @@ class Api::StudentsController < Api::BaseController
   end
 
   def index_json
-    students = apply_scopes(Student).includes(:group, :school).page params[:page]
+    students = apply_scopes(Student).includes(:group, :room, :school)
+                                    .page params[:page]
     render json: students,
            serializer: PaginatedSerializer,
            each_serializer: StudentIndexSerializer

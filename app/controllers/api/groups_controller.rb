@@ -28,7 +28,8 @@ class Api::GroupsController < Api::BaseController
   end
 
   def update
-    group = Group.includes(:conference, students: :school).find params[:id]
+    group = Group.includes(:conference, students: :school)
+                 .find params[:id]
     if group.update_attributes group_params
       render json: group,
              serializer: GroupShowSerializer,
@@ -46,7 +47,8 @@ class Api::GroupsController < Api::BaseController
   end
 
   def index_json
-    groups = Group.includes(:conference).where conference_id: params[:conference_id]
+    groups = Group.includes(:conference)
+                  .where conference_id: params[:conference_id]
     render json: groups,
            each_serializer: GroupIndexSerializer
   end
@@ -59,7 +61,8 @@ class Api::GroupsController < Api::BaseController
   def show_json
     group = Group.includes(:conference,
                            leaderships: :user,
-                           students: :school).find params[:id]
+                           students: :school)
+                 .find params[:id]
     current_user.create_visit('Group', params[:id].to_i)
     render json: group, serializer: GroupShowSerializer
   end
