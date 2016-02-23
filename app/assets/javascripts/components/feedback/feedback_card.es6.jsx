@@ -23,12 +23,23 @@ class FeedbackCard extends Component {
           marginTop: '24px',
         }
       ),
+      footer: {
+        display: 'flex',
+        justifyContent: 'center',
+        marginTop: '12px',
+      },
       header: {
         display: 'flex',
         justifyContent: 'center',
-        marginBottom: '24px',
       },
     };
+  }
+
+  // --------------------------------------------------
+  // Helpers
+  // --------------------------------------------------
+  createFeedback() {
+    FeedbackActions.createFeedback(this.props.template, this.props.profile);
   }
 
   // --------------------------------------------------
@@ -38,27 +49,26 @@ class FeedbackCard extends Component {
     if (this.props.template.type === 'entry') {
       return (
         <FeedbackForm
-           template={this.props.template}
-           profile ={this.props.profile} />
+          profile={this.props.profile}
+          template={this.props.template} />
       );
     } else {
       return <span>Thank you for submitting your feedback.</span>;
     }
   }
 
-  renderHeader() {
-    return (
-      <div style={this.styles.header}>
-        <h2>{'Feedback'}</h2>
-      </div>
-    );
-  }
-
   render() {
     return (
       <div style={this.styles.container}>
-        {this.renderHeader()}
+        <div style={this.styles.header}>
+          <h2>{'Feedback'}</h2>
+        </div>
         {this.renderForm()}
+        <div style={this.styles.footer}>
+          <FormButton
+            action={() => this.createFeedback()}
+            content={'Submit'} />
+        </div>
       </div>
     );
   }
