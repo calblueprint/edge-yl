@@ -6,13 +6,11 @@
     // --------------------------------------------------
     constructor() {
       this.template = {
-        content: '',
+        attributes: {},
         errors: {},
-        message: '',
-        type: 'entry',
       };
       this.bindListeners({
-        handleSaveFeedback: FeedbackActions.SAVE_FEEDBACK,
+        handleStoreAttribute: FeedbackActions.STORE_ATTRIBUTE,
         handleStoreFeedback: FeedbackActions.STORE_FEEDBACK,
         handleStoreMessage: FeedbackActions.STORE_MESSAGE,
       });
@@ -21,8 +19,8 @@
     // --------------------------------------------------
     // Handlers
     // --------------------------------------------------
-    handleSaveFeedback(feedback) {
-      this.template.content = feedback;
+    handleStoreAttribute(attribute) {
+      this.template.attributes[attribute.key] = attribute.value;
     }
 
     handleStoreMessage(response) {
@@ -30,7 +28,7 @@
     }
 
     handleStoreFeedback(response) {
-      this.template.type = 'done';
+      window.location = RouteConstants.pages.feedback;
     }
   }
   this.FeedbackStore = alt.createStore(FeedbackStore);

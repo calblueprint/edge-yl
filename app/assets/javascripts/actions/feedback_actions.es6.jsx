@@ -6,7 +6,6 @@
     // --------------------------------------------------
     constructor() {
       this.generateActions(
-        'saveFeedback',
         'storeFeedback',
         'storeMessage',
       );
@@ -15,20 +14,26 @@
     // --------------------------------------------------
     // Requests
     // --------------------------------------------------
-    createFeedback(template, profile) {
-      var params = {
-        content: template.content,
-        user_id: profile.id,
-      };
-      var resolve = (response) => { this.storeFeedback(response); };
-      var reject = (response) => { this.storeMessage(response); }
+    createFeedback(template, attributes={}) {
+      Object.assign(attributes, template.attributes);
+      var params = { feedback: attributes };
+      var resolve = (response) => this.storeFeedback(response);
       Requester.post(
         ApiConstants.feedbacks.create,
         params,
         resolve,
-        reject,
       );
       return true;
+    }
+
+    // --------------------------------------------------
+    // Stores
+    // --------------------------------------------------
+    storeAttribute(key, value) {
+      return {
+        key: key,
+        value: value,
+      };
     }
   }
   this.FeedbackActions = alt.createActions(FeedbackActions);

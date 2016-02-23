@@ -19,47 +19,68 @@ class FeedbackCard extends Component {
         {},
         StyleConstants.containers.card,
         {
-          width: '472px',
           padding: '24px',
           marginTop: '24px',
         }
       ),
+      footer: {
+        display: 'flex',
+        justifyContent: 'center',
+        marginTop: '12px',
+      },
       header: {
         display: 'flex',
         justifyContent: 'center',
-        marginBottom: '24px',
       },
     };
   }
 
   // --------------------------------------------------
-  // Render
+  // Handlers
   // --------------------------------------------------
-  renderForm() {
-    if (this.props.template.type === 'entry') {
-      return (
-        <FeedbackForm
-           template={this.props.template}
-           profile ={this.props.profile} />
-      );
-    } else {
-      return <span>Thank you for submitting your feedback.</span>;
+  handleKeyDown(event) {
+    if (event.keyCode === 13) {
+      this.createFeedback();
     }
   }
 
-  renderHeader() {
-    return (
-      <div style={this.styles.header}>
-        <h2>Feedback</h2>
-      </div>
+  // --------------------------------------------------
+  // Helpers
+  // --------------------------------------------------
+  createFeedback() {
+    FeedbackActions.createFeedback(
+      this.props.template,
+      { user_id: this.props.profile.id },
     );
   }
 
+  storeAttribute(event) {
+    FeedbackActions.storeAttribute('content', event.target.value);
+  }
+
+  // --------------------------------------------------
+  // Render
+  // --------------------------------------------------
   render() {
+    var template = this.props.template;
     return (
-      <div style={this.styles.container}>
-        {this.renderHeader()}
-        {this.renderForm()}
+      <div ref={'container'} style={this.styles.container}>
+        <div style={this.styles.header}>
+          <h2>{'Feedback'}</h2>
+        </div>
+        <CardTextarea
+          action={(event) => this.storeAttribute(event)}
+          errors={template.errors.content}
+          focus={true}
+          label={'Message'}
+          placeholder={'Your feedback here'}
+          type={'text'}
+          value={template.content} />
+        <div style={this.styles.footer}>
+          <FormButton
+            action={() => this.createFeedback()}
+            content={'Submit'} />
+        </div>
       </div>
     );
   }
