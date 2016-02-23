@@ -1,4 +1,5 @@
 class CreateSubmissions < ActiveRecord::Migration
+
   def change
     create_table :submissions do |t|
       t.string  :address_city
@@ -8,7 +9,7 @@ class CreateSubmissions < ActiveRecord::Migration
       t.string  :address_zip
       t.date    :birthday
       t.string  :cell_phone
-      t.string  :current_page
+      t.integer :current_page, default: 0, null: false
       t.string  :email
       t.string  :first_name
       t.integer :gender
@@ -29,5 +30,6 @@ class CreateSubmissions < ActiveRecord::Migration
       t.uuid    :uuid, default: 'uuid_generate_v4()'
     end
   end
+
 end
 

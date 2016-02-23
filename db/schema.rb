@@ -226,7 +226,7 @@ ActiveRecord::Schema.define(version: 20160210042524) do
     t.string  "address_zip"
     t.date    "birthday"
     t.string  "cell_phone"
-    t.string  "current_page"
+    t.integer "current_page",          default: 0,                    null: false
     t.string  "email"
     t.string  "first_name"
     t.integer "gender"

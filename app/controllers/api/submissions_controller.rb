@@ -42,6 +42,7 @@ class Api::SubmissionsController < Api::BaseController
       :address_zip,
       :birthday,
       :cell_phone,
+      :current_page,
       :email,
       :first_name,
       :gender,

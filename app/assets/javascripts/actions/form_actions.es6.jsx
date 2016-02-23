@@ -6,6 +6,7 @@
     // --------------------------------------------------
     constructor() {
       this.generateActions(
+        'storeErrors',
         'storeForm',
         'storeSubmission',
       );
@@ -18,6 +19,7 @@
       var attributes = {};
       var questions = page.questions;
       questions.map((question) => attributes[question.key] = question.value);
+      attributes['current_page'] = page.number;
       var params = { submission: attributes };
       var resolve = (response) => {
         var submission = response.submission;
@@ -28,10 +30,15 @@
         );
         window.location = RouteConstants.forms.student(page.number + 1, submission.uuid);
       };
+      var reject = (response) => this.storeErrors({
+        errors: response.errors,
+        page: page.number,
+      });
       Requester.post(
         ApiConstants.submissions.create,
         params,
         resolve,
+        reject,
       );
       return true;
     }
@@ -60,18 +67,21 @@
       var attributes = {};
       var questions = page.questions;
       questions.map((question) => attributes[question.key] = question.value);
+      attributes['current_page'] = page.number;
       if (page['is_last']) {
-        attributes.is_draft = false;
+        attributes['is_draft'] = false;
       }
       var params = { submission: attributes };
       var resolve = (response) => {
         var submission = response.submission;
         window.location = RouteConstants.forms.student(page.number + 1, submission.uuid);
       };
+      var reject = (response) => this.storeErrors(response);
       Requester.update(
         ApiConstants.submissions.update(uuid),
         params,
         resolve,
+        reject,
       );
       return true;
     }

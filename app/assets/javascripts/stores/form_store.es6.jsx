@@ -7,6 +7,7 @@
     constructor() {
       this.form = {};
       this.bindListeners({
+        handleStoreErrors: FormActions.STORE_ERRORS,
         handleStoreForm: FormActions.STORE_FORM,
         handleStoreSubmission: FormActions.STORE_SUBMISSION,
         handleStoreResponse: FormActions.STORE_RESPONSE,
@@ -16,6 +17,18 @@
     // --------------------------------------------------
     // Handlers
     // --------------------------------------------------
+    handleStoreErrors(response) {
+      var errors = response.errors;
+      var page = response.page;
+      var questions = this.form.pages[page - 1].questions;
+      questions.map((question) => {
+        var key = question.key;
+        if (errors[key]) {
+          question.errors = errors[key];
+        }
+      });
+    }
+
     handleStoreForm(response) {
       this.form = response.form;
     }

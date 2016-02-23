@@ -10,7 +10,7 @@
 #  address_zip           :string
 #  birthday              :date
 #  cell_phone            :string
-#  current_page          :string
+#  current_page          :integer          default(0), not null
 #  email                 :string
 #  first_name            :string
 #  gender                :integer

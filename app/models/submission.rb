@@ -10,7 +10,7 @@
 #  address_zip           :string
 #  birthday              :date
 #  cell_phone            :string
-#  current_page          :string
+#  current_page          :integer          default(0), not null
 #  email                 :string
 #  first_name            :string
 #  gender                :integer
@@ -34,6 +34,7 @@
 class Submission < ActiveRecord::Base
 
 	before_validation :try_submit, on: :update
+  before_validation :validate_page, on: [:create, :update]
 
 	private
 
@@ -42,5 +43,23 @@ class Submission < ActiveRecord::Base
 			puts 'try submit'
 		end
 	end
+
+  def attributes_one
+    {
+      first_name: first_name,
+      last_name: last_name,
+    }
+  end
+
+  def validate_page
+    if current_page == 1
+      validator = StudentValidator.new(attributes_one, current_page)
+      validator.valid?
+      response = validator.errors.to_hash
+      response.each do |attribute, message|
+        self.errors.add(attribute, message)
+      end
+    end
+  end
 
 end

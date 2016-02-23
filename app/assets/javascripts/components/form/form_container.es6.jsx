@@ -70,9 +70,8 @@ class FormContainer extends Component {
     if (pages) {
       return (
         <FormFooter
-          uuid={this.props.uuid}
           page={pages[this.props.page - 1]}
-          pageNumber={this.props.page} />
+          uuid={this.props.uuid} />
       );
     }
   }
