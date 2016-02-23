@@ -36,34 +36,46 @@ class FeedbackCard extends Component {
   }
 
   // --------------------------------------------------
+  // Handlers
+  // --------------------------------------------------
+  handleKeyDown(event) {
+    if (event.keyCode === 13) {
+      this.createFeedback();
+    }
+  }
+
+  // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
   createFeedback() {
-    FeedbackActions.createFeedback(this.props.template, this.props.profile);
+    FeedbackActions.createFeedback(
+      this.props.template,
+      { user_id: this.props.profile.id },
+    );
+  }
+
+  storeAttribute(event) {
+    FeedbackActions.storeAttribute('content', event.target.value);
   }
 
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
-  renderForm() {
-    if (this.props.template.type === 'entry') {
-      return (
-        <FeedbackForm
-          profile={this.props.profile}
-          template={this.props.template} />
-      );
-    } else {
-      return <span>Thank you for submitting your feedback.</span>;
-    }
-  }
-
   render() {
+    var template = this.props.template;
     return (
-      <div style={this.styles.container}>
+      <div ref={'container'} style={this.styles.container}>
         <div style={this.styles.header}>
           <h2>{'Feedback'}</h2>
         </div>
-        {this.renderForm()}
+        <CardTextarea
+          action={(event) => this.storeAttribute(event)}
+          errors={template.errors.content}
+          focus={true}
+          label={'Message'}
+          placeholder={'Your feedback here'}
+          type={'text'}
+          value={template.content} />
         <div style={this.styles.footer}>
           <FormButton
             action={() => this.createFeedback()}
