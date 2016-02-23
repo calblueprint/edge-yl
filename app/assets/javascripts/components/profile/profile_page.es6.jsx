@@ -60,7 +60,8 @@ class ProfilePage extends Component {
   renderOverlay() {
     if (this.state.overlay) {
       return (
-        <ProfilePageOverlay template={this.state.template} />
+        <ProfilePageOverlay
+          template={this.state.template} />
       );
     }
   }

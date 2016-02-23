@@ -7,20 +7,22 @@ class ProfileGeneral extends Component {
     return {
       editable: React.PropTypes.bool.isRequired,
       profile: React.PropTypes.object.isRequired,
-    }
+    };
   }
 
   // --------------------------------------------------
-  // Styles
+  // Helpers
   // --------------------------------------------------
-  get styles() {
-    return {
-      image: {
-        width: '172px',
-        borderRadius: '50%',
-        marginTop: '4%',
-      },
-    };
+  storeTemplate(key, choices) {
+    var profile = this.props.profile;
+    ProfileActions.storeTemplate({
+      choices: choices,
+      id: profile.id,
+      key: key,
+      model: 'profile',
+      type: choices ? 'dropdown' : 'input',
+      value: profile[key],
+    });
   }
 
   // --------------------------------------------------
@@ -30,13 +32,25 @@ class ProfileGeneral extends Component {
     var profile = this.props.profile;
     return (
       <div style={StyleConstants.cards.content}>
-        <img
-          src={'https://scontent.fsnc1-1.fna.fbcdn.net/hphotos-xfp1/t31.0-8/11856297_10200932572512494_2256826043885795533_o.jpg'}
-          style={this.styles.image} />
-        <h2>{profile.full_name}</h2>
-        <h5>{'Volunteer, Recruitment Group'}</h5>
+        <CardAttribute
+          action={() => this.storeTemplate('first_name')}
+          editable={this.props.editable}
+          label={'First name'}
+          value={profile.first_name} />
+        <CardAttribute
+          action={() => this.storeTemplate('last_name')}
+          editable={this.props.editable}
+          label={'Last name'}
+          value={profile.last_name} />
+        <CardAttribute
+          action={() => this.storeTemplate('email')}
+          editable={this.props.editable}
+          label={'Email'}
+          value={profile.email} />
+        <CardAttribute
+          label={'Password'}
+          value={'**********'} />
       </div>
     );
   }
 }
-

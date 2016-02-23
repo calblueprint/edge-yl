@@ -18,11 +18,11 @@
     // --------------------------------------------------
     updateProfile(template, attributes={}) {
       attributes[template.key] = template.value;
-      var params = { user: attributes };
+      var params = { profile: attributes };
       var resolve = (response) => this.storeProfile(response);
       var reject = (response) => this.storeError(response);
       Requester.update(
-        ApiConstants.users.update(template.id),
+        ApiConstants.profiles.update(template.id),
         params,
         resolve,
         reject,
