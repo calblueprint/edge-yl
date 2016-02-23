@@ -74,9 +74,9 @@
       if (selected) {
         var query = StudentsStore.getState().query;
         if (selected !== 'None') {
-          query.order = `${key} ${selected}`;
+          query.sort = `${key} ${selected}`;
         } else if (selected === 'None') {
-          delete query.order;
+          delete query.sort;
         }
         var resolve = (response) => {
           response.meta.query = query;

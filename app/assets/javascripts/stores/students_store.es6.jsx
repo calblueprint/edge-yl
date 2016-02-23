@@ -73,7 +73,7 @@
       this.filters = this.generateFilters();
       this.sorts = this.generateSorts();
       Object.keys(this.query).map((key) => {
-        if (key === 'order') {
+        if (key === 'sort') {
           var pairing = this.query[key].split(' ');
           var sort = this.sorts.find((cmp) => cmp.key === pairing[0]);
           if (sort) {

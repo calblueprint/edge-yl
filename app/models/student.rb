@@ -44,6 +44,7 @@ class Student < ActiveRecord::Base
   scope :gender, -> gender { where(gender: genders[gender.downcase]) }
   scope :is_flagged, -> is_flagged { where(is_flagged: is_flagged) }
   scope :is_primary, -> is_primary { where(is_primary: is_primary) }
+  scope :sort, -> sort { order(sort) }
 
   enum gender: [:female, :male, :other]
   enum guardian_phone_type: [:cell, :home, :work]
