@@ -5,6 +5,7 @@ class Api::StudentsController < Api::BaseController
   has_scope :gender, only: [:index]
   has_scope :is_flagged, only: [:index]
   has_scope :is_primary, only: [:index]
+  has_scope :sort, only: [:index]
 
   def create
     student = Student.new student_params
@@ -50,9 +51,6 @@ class Api::StudentsController < Api::BaseController
 
   def index_json
     students = apply_scopes(Student).includes(:group, :school).page params[:page]
-    if params[:order]
-      students = students.order params[:order]
-    end
     render json: students,
            serializer: PaginatedSerializer,
            each_serializer: StudentIndexSerializer
