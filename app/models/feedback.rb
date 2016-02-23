@@ -11,7 +11,8 @@
 
 class Feedback < ActiveRecord::Base
 
-  belongs_to :user
   validates :content, presence: true
+
+  belongs_to :user
 
 end

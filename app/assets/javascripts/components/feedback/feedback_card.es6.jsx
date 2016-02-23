@@ -19,7 +19,6 @@ class FeedbackCard extends Component {
         {},
         StyleConstants.containers.card,
         {
-          width: '472px',
           padding: '24px',
           marginTop: '24px',
         }
@@ -50,7 +49,7 @@ class FeedbackCard extends Component {
   renderHeader() {
     return (
       <div style={this.styles.header}>
-        <h2>Feedback</h2>
+        <h2>{'Feedback'}</h2>
       </div>
     );
   }
