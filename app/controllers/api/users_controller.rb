@@ -13,13 +13,13 @@ class Api::UsersController < Api::BaseController
   end
 
   def show
-    user = User.includes(:responsibilities).find params[:id]
+    user = User.find params[:id]
     current_user.create_visit('User', params[:id].to_i)
     render json: user, serializer: UserShowSerializer
   end
 
   def update
-    user = User.includes(:responsibilities).find params[:id]
+    user = User.find params[:id]
     if user.update_attributes user_params
       render json: user,
              serializer: UserShowSerializer,

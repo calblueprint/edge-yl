@@ -76,7 +76,7 @@ ActiveRecord::Schema.define(version: 20160210042524) do
   add_index "emails", ["user_id"], name: "index_emails_on_user_id", using: :btree
 
   create_table "feedbacks", force: :cascade do |t|
-    t.text     "content"
+    t.text     "content",    null: false
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -145,17 +145,6 @@ ActiveRecord::Schema.define(version: 20160210042524) do
   end
 
   add_index "questions", ["page_id"], name: "index_questions_on_page_id", using: :btree
-
-  create_table "responsibilities", force: :cascade do |t|
-    t.integer  "status",     null: false
-    t.integer  "student_id"
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "responsibilities", ["student_id"], name: "index_responsibilities_on_student_id", using: :btree
-  add_index "responsibilities", ["user_id"], name: "index_responsibilities_on_user_id", using: :btree
 
   create_table "rooms", force: :cascade do |t|
     t.string   "building",      null: false
