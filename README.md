@@ -93,6 +93,7 @@ Happy developing!
     overflow,
     boxShadow,
     boxSizing,
+    resize,
     transition,
 
 ### Powered by Blueprint
