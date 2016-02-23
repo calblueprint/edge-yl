@@ -35,9 +35,9 @@ class DraftHeader extends Component {
       <div style={this.styles.container}>
         <h6>{'From'}</h6>
         <p>{draft.from}</p>
-        <CardInput
-          action={() => console.log('typing')}
-          label={'To'}
+        <h6>{'To'}</h6>
+        <input
+          ref={'input'}
           type={'text'}
           value={draft.to} />
       </div>
