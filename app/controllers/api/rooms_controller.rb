@@ -44,7 +44,8 @@ class Api::RoomsController < Api::BaseController
   end
 
   def index_json
-    rooms = Room.includes(:conference).where conference_id: params[:conference_id]
+    rooms = Room.includes(:conference)
+                .where conference_id: params[:conference_id]
     render json: rooms,
            each_serializer: RoomIndexSerializer
   end
