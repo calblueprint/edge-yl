@@ -3,7 +3,7 @@
 
     get conferences() {
       return {
-        index: (page) => `/conferences?page=${page ? page : 1}`,
+        index: (page=1) => `/conferences?page=${page}`,
         show: (id) => `/conferences/${id}`,
       };
     }
@@ -16,7 +16,7 @@
 
     get emails() {
       return {
-        index: (page) => `/emails?page=${page}`,
+        index: (page=1) => `/emails?page=${page}`,
         show: (id) => `/emails/${id}`,
       };
     }
@@ -69,7 +69,7 @@
 
     get schools() {
       return {
-        index: (page) => `/schools?page=${page ? page : 1}`,
+        index: (page=1) => `/schools?page=${page}`,
         show: (id) => `/schools/${id}`,
       };
     }
@@ -89,7 +89,7 @@
 
     get users() {
       return {
-        index: (page) => `/users?page=${page ? page : 1}`,
+        index: (page=1) => `/users?page=${page}`,
         show: (id) => `/users/${id}`,
       };
     }
