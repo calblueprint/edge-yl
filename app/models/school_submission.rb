@@ -22,6 +22,10 @@ class SchoolSubmission < ActiveRecord::Base
 
   def attributes_one
     {
+      address_city: address_city,
+      address_one: address_one,
+      address_state: address_state,
+      address_zip: address_zip,
       name: name,
     }
   end
