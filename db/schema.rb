@@ -112,12 +112,13 @@ ActiveRecord::Schema.define(version: 20160210032502) do
   add_index "leaderships", ["user_id"], name: "index_leaderships_on_user_id", using: :btree
 
   create_table "pages", force: :cascade do |t|
-    t.boolean  "is_last",    default: false, null: false
-    t.integer  "number",                     null: false
-    t.string   "title",                      null: false
+    t.text     "description",                 null: false
+    t.boolean  "is_last",     default: false, null: false
+    t.integer  "number",                      null: false
+    t.string   "title",                       null: false
     t.integer  "form_id"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   add_index "pages", ["form_id"], name: "index_pages_on_form_id", using: :btree
@@ -170,44 +171,7 @@ ActiveRecord::Schema.define(version: 20160210032502) do
     t.datetime "updated_at",                 null: false
   end
 
-  create_table "students", force: :cascade do |t|
-    t.string   "address_city",                       null: false
-    t.string   "address_one",                        null: false
-    t.string   "address_state",                      null: false
-    t.string   "address_two",           default: "", null: false
-    t.string   "address_zip",                        null: false
-    t.date     "birthday",                           null: false
-    t.string   "cell_phone",                         null: false
-    t.string   "email",                              null: false
-    t.string   "first_name",                         null: false
-    t.integer  "gender",                             null: false
-    t.string   "guardian_email",                     null: false
-    t.string   "guardian_employer",     default: "", null: false
-    t.string   "guardian_first_name",                null: false
-    t.string   "guardian_job_title",    default: "", null: false
-    t.string   "guardian_last_name",                 null: false
-    t.string   "guardian_phone_number",              null: false
-    t.integer  "guardian_phone_type",                null: false
-    t.integer  "guardian_relationship",              null: false
-    t.string   "home_phone",                         null: false
-    t.boolean  "is_flagged",                         null: false
-    t.boolean  "is_primary",                         null: false
-    t.string   "last_name",                          null: false
-    t.string   "preferred_name",        default: "", null: false
-    t.integer  "registration_status",                null: false
-    t.integer  "shirt_size",                         null: false
-    t.integer  "group_id"
-    t.integer  "room_id"
-    t.integer  "school_id"
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
-  end
-
-  add_index "students", ["group_id"], name: "index_students_on_group_id", using: :btree
-  add_index "students", ["room_id"], name: "index_students_on_room_id", using: :btree
-  add_index "students", ["school_id"], name: "index_students_on_school_id", using: :btree
-
-  create_table "submissions", force: :cascade do |t|
+  create_table "student_submissions", force: :cascade do |t|
     t.string  "address_city"
     t.string  "address_one"
     t.string  "address_state"
@@ -235,6 +199,43 @@ ActiveRecord::Schema.define(version: 20160210032502) do
     t.integer "shirt_size"
     t.uuid    "uuid",                  default: "uuid_generate_v4()"
   end
+
+  create_table "students", force: :cascade do |t|
+    t.string   "address_city",                       null: false
+    t.string   "address_one",                        null: false
+    t.string   "address_state",                      null: false
+    t.string   "address_two",           default: "", null: false
+    t.string   "address_zip",                        null: false
+    t.date     "birthday"
+    t.string   "cell_phone",                         null: false
+    t.string   "email",                              null: false
+    t.string   "first_name",                         null: false
+    t.integer  "gender"
+    t.string   "guardian_email",                     null: false
+    t.string   "guardian_employer",     default: "", null: false
+    t.string   "guardian_first_name",                null: false
+    t.string   "guardian_job_title",    default: "", null: false
+    t.string   "guardian_last_name",                 null: false
+    t.string   "guardian_phone_number",              null: false
+    t.integer  "guardian_phone_type",                null: false
+    t.integer  "guardian_relationship",              null: false
+    t.string   "home_phone",                         null: false
+    t.boolean  "is_flagged",                         null: false
+    t.boolean  "is_primary",                         null: false
+    t.string   "last_name",                          null: false
+    t.string   "preferred_name",        default: "", null: false
+    t.integer  "registration_status",                null: false
+    t.integer  "shirt_size",                         null: false
+    t.integer  "group_id"
+    t.integer  "room_id"
+    t.integer  "school_id"
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+  end
+
+  add_index "students", ["group_id"], name: "index_students_on_group_id", using: :btree
+  add_index "students", ["room_id"], name: "index_students_on_room_id", using: :btree
+  add_index "students", ["school_id"], name: "index_students_on_school_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "confirmation_token"

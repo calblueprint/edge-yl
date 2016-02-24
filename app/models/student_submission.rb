@@ -31,18 +31,42 @@
 #  uuid                  :uuid
 #
 
-class Submission < ActiveRecord::Base
+class StudentSubmission < ActiveRecord::Base
 
-	before_validation :try_submit, on: :update
+  before_validation :try_submit, on: :update
   before_validation :validate_page, on: [:create, :update]
 
-	private
+  private
 
-	def try_submit
-		if !is_draft
-			puts 'try submit'
-		end
-	end
+  def try_submit
+    if !is_draft
+      student = Student.new(
+        address_city: address_city,
+        address_one: address_one,
+        address_state: address_state,
+        address_two: address_two,
+        address_zip: address_zip,
+        birthday: Date.new,
+        cell_phone: cell_phone,
+        email: email,
+        first_name: first_name,
+        gender: 0,
+        guardian_email: guardian_email,
+        guardian_employer: guardian_employer,
+        guardian_first_name: guardian_first_name,
+        guardian_job_title: guardian_job_title,
+        guardian_last_name: guardian_last_name,
+        guardian_phone_type: 0,
+        guardian_phone_number: guardian_phone_number,
+        guardian_relationship: 3,
+        home_phone: home_phone,
+        last_name: last_name,
+        preferred_name: preferred_name,
+        shirt_size: 1,
+      )
+      student.save!
+    end
+  end
 
   def attributes_one
     {

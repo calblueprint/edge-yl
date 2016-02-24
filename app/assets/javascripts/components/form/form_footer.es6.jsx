@@ -50,11 +50,10 @@ class FormFooter extends Component {
   renderPrevious() {
     var page = this.props.page;
     var uuid = this.props.uuid;
-    var action = (page, uuid) => window.location = RouteConstants.forms.student(page, uuid);
     if (page.number > 1) {
       return (
         <FormButton
-          action={() => action(page.number - 1, uuid)}
+          action={() => FormActions.updateSubmission(page, uuid, false)}
           content={'Previous Page'} />
       );
     }
@@ -72,7 +71,7 @@ class FormFooter extends Component {
     if (this.props.uuid) {
       return (
         <FormButton
-          action={() => FormActions.updateSubmission(page, uuid)}
+          action={() => FormActions.updateSubmission(page, uuid, true)}
           content={content} />
       );
     } else {

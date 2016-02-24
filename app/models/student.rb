@@ -73,14 +73,6 @@ class Student < ActiveRecord::Base
   has_one :conference, through: :group
 
   before_validation :set_initials, on: :create
-
-  validates :address_city, presence: true
-  validates :address_one, presence: true
-  validates :address_state, presence: true
-  validates :address_zip, presence: true
-  validates :birthday, presence: true
-  validates :cell_phone, presence: true
-  validates :email, presence: true
   validates :first_name, presence: true
   validates :gender, presence: true
   validates :guardian_email, presence: true
@@ -113,6 +105,7 @@ class Student < ActiveRecord::Base
   def set_initials
     self.is_flagged = false
     self.is_primary = true
+    self.registration_status = 0
   end
 
 end

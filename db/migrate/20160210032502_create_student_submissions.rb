@@ -1,7 +1,7 @@
-class CreateSubmissions < ActiveRecord::Migration
+class CreateStudentSubmissions < ActiveRecord::Migration
 
   def change
-    create_table :submissions do |t|
+    create_table :student_submissions do |t|
       t.string  :address_city
       t.string  :address_one
       t.string  :address_state

@@ -34,8 +34,8 @@
   namespace :api do
     get '/forms/:target', to: 'forms#show'
     get '/searchables/search', to: 'searchables#search'
-    get '/submissions/:uuid', to: 'submissions#show'
-    patch 'submissions/:uuid', to: 'submissions#update'
+    get '/student_submissions/:uuid', to: 'student_submissions#show'
+    patch 'student_submissions/:uuid', to: 'student_submissions#update'
     get '/users/profile', to: 'users#profile'
 
     resources :comments, only: [:create]
@@ -50,7 +50,7 @@
     resources :rooms, only: [:create, :index, :show, :update]
     resources :schools, only: [:create, :index, :show, :update]
     resources :students, only: [:create, :index, :show, :update]
-    resources :submissions, only: [:create]
+    resources :student_submissions, only: [:create]
     resources :users, only: [:index, :show, :update] do
       get '/groupables', on: :collection, to: 'users#groupables'
     end

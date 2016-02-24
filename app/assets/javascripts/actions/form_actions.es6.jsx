@@ -20,9 +20,9 @@
       var questions = page.questions;
       questions.map((question) => attributes[question.key] = question.value);
       attributes['current_page'] = page.number;
-      var params = { submission: attributes };
+      var params = { student_submission: attributes };
       var resolve = (response) => {
-        var submission = response.submission;
+        var submission = response.student_submission;
         window.history.replaceState(
           {},
           null,
@@ -56,25 +56,28 @@
       if (uuid) {
         var resolve = (response) => this.storeSubmission({
           page: page,
-          submission: response.submission,
+          submission: response.student_submission,
         });
         Requester.get(ApiConstants.submissions.show(uuid), resolve);
       }
       return true;
     }
 
-    updateSubmission(page, uuid) {
+    updateSubmission(page, uuid, nextPage) {
       var attributes = {};
       var questions = page.questions;
       questions.map((question) => attributes[question.key] = question.value);
       attributes['current_page'] = page.number;
-      if (page['is_last']) {
+      if (page['is_last'] && nextPage) {
         attributes['is_draft'] = false;
+      } else {
+        attributes['is_draft'] = true;
       }
-      var params = { submission: attributes };
+      var params = { student_submission: attributes };
       var resolve = (response) => {
-        var submission = response.submission;
-        window.location = RouteConstants.forms.student(page.number + 1, submission.uuid);
+        var submission = response.student_submission;
+        newPage = nextPage ? page.number + 1 : page.number - 1;
+        window.location = RouteConstants.forms.student(newPage, submission.uuid);
       };
       var reject = (response) => this.storeErrors(response);
       Requester.update(

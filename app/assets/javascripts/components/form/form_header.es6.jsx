@@ -1,4 +1,4 @@
-class FormPage extends Component {
+class FormHeader extends Component {
 
   // --------------------------------------------------
   // Props
@@ -18,48 +18,25 @@ class FormPage extends Component {
         {},
         StyleConstants.templates.card,
         {
+          display: 'flex',
+          flexFlow: 'column',
+          alignItems: 'center',
           padding: '36px',
           marginTop: '12px',
-        }
+        },
       ),
-      header: {
-        display: 'flex',
-        justifyContent: 'center',
-        marginBottom: '24px',
-      },
     };
   }
 
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
-  renderQuestion(question) {
-    switch (question.style) {
-      case 'dropdown':
-        return (
-          <FormDropdown
-            key={question.id}
-            question={question} />
-        );
-      case 'input':
-        return (
-          <FormInput
-            key={question.id}
-            question={question} />
-        );
-    }
-  }
-
-  renderQuestions() {
-    var questions = this.props.page.questions;
-    return questions.map((question) => this.renderQuestion(question));
-  }
-
   render() {
     var page = this.props.page;
     return (
       <div style={this.styles.container}>
-        {this.renderQuestions()}
+        <h1>{page.title}</h1>
+        <h5>{page.description}</h5>
       </div>
     );
   }

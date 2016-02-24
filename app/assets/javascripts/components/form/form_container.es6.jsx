@@ -76,6 +76,16 @@ class FormContainer extends Component {
     }
   }
 
+  renderHeader() {
+    var pages = this.state.form.pages;
+    if (pages) {
+      return (
+        <FormHeader
+          page={pages[this.props.page - 1]} />
+      );
+    }
+  }
+
   renderPage() {
     var pages = this.state.form.pages;
     if (pages) {
@@ -87,6 +97,7 @@ class FormContainer extends Component {
     return (
       <div style={this.styles.wrapper}>
         <div style={this.styles.container}>
+          {this.renderHeader()}
           {this.renderPage()}
           {this.renderFooter()}
         </div>
