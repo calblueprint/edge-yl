@@ -39,16 +39,6 @@ require 'rails_helper'
 
 RSpec.describe Student, type: :model do
 
-  it "is invalid without a cell_phone" do
-    factory = FactoryGirl.build(:student, cell_phone: nil)
-    expect(factory).to be_invalid
-  end
-
-  it "is invalid without an email" do
-    factory = FactoryGirl.build(:student, email: nil)
-    expect(factory).to be_invalid
-  end
-
   it "is invalid without a first_name" do
     factory = FactoryGirl.build(:student, first_name: nil)
     expect(factory).to be_invalid
