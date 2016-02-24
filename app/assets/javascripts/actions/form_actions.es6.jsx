@@ -69,13 +69,13 @@
     fetchForm(target, page, uuid) {
       var resolve = (response) => {
         this.storeForm(response);
-        this.fetchSubmission(page, uuid);
+        this.fetchSubmission(page, target, uuid);
       };
       Requester.get(ApiConstants.forms.show(target), resolve);
       return true;
     }
 
-    fetchSubmission(page, uuid) {
+    fetchSubmission(page, target, uuid) {
       if (uuid) {
         if (target === 'school') {
           var resolve = (response) => this.storeSubmission({
