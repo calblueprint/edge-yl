@@ -26,10 +26,20 @@ class UsersGrid extends Component {
     return this.props.users.map((user) => this.renderCard(user));
   }
 
+  renderEmpty() {
+    if (!this.props.users.length) {
+      return (
+        <GridEmpty
+          content={'There are currently no users.'} />
+      );
+    }
+  }
+
   render() {
     return (
       <div style={StyleConstants.grids.wrap}>
         {this.renderCards()}
+        {this.renderEmpty()}
       </div>
     );
   }
