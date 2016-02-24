@@ -118,15 +118,27 @@
       this.query = query;
       this.students = response.students;
       this.syncQuery();
-      window.history.pushState(
-        {
-          pagination: pagination,
-          query: query,
-          students: this.students,
-        },
-        null,
-        RouteConstants.students.index(pagination.current, query),
-      );
+      if (response.meta.initial) {
+        window.history.replaceState(
+          {
+            pagination: pagination,
+            query: query,
+            students: this.students,
+          },
+          null,
+          RouteConstants.students.index(pagination.current, query),
+        );
+      } else {
+        window.history.pushState(
+          {
+            pagination: pagination,
+            query: query,
+            students: this.students,
+          },
+          null,
+          RouteConstants.students.index(pagination.current, query),
+        );
+      }
     }
   }
   this.StudentsStore = alt.createStore(StudentsStore);
