@@ -1,4 +1,5 @@
 class CreatePages < ActiveRecord::Migration
+
   def change
     create_table :pages do |t|
     	t.text :description, null: false
@@ -11,4 +12,5 @@ class CreatePages < ActiveRecord::Migration
       t.timestamps null: false
     end
   end
+
 end

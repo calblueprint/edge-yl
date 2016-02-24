@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160210032502) do
+ActiveRecord::Schema.define(version: 20160224064905) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -159,6 +159,16 @@ ActiveRecord::Schema.define(version: 20160210032502) do
 
   add_index "rooms", ["conference_id"], name: "index_rooms_on_conference_id", using: :btree
 
+  create_table "school_submissions", force: :cascade do |t|
+    t.string "address_city"
+    t.string "address_one"
+    t.string "address_state"
+    t.string "address_two"
+    t.string "address_zip"
+    t.string "name"
+    t.string "website"
+  end
+
   create_table "schools", force: :cascade do |t|
     t.string   "address_city",               null: false
     t.string   "address_one",                null: false
@@ -206,11 +216,11 @@ ActiveRecord::Schema.define(version: 20160210032502) do
     t.string   "address_state",                      null: false
     t.string   "address_two",           default: "", null: false
     t.string   "address_zip",                        null: false
-    t.date     "birthday"
+    t.date     "birthday",                           null: false
     t.string   "cell_phone",                         null: false
     t.string   "email",                              null: false
     t.string   "first_name",                         null: false
-    t.integer  "gender"
+    t.integer  "gender",                             null: false
     t.string   "guardian_email",                     null: false
     t.string   "guardian_employer",     default: "", null: false
     t.string   "guardian_first_name",                null: false
