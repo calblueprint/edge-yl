@@ -28,10 +28,20 @@ class ContactsGrid extends Component {
     return this.props.contacts.map((contact) => this.renderCard(contact));
   }
 
+  renderEmpty() {
+    if (!this.props.contacts.length) {
+      return (
+        <GridEmpty
+          content={'There are currently no contacts.'} />
+      );
+    }
+  }
+
   render() {
     return (
       <div style={StyleConstants.grids.wrap}>
         {this.renderCards()}
+        {this.renderEmpty()}
       </div>
     );
   }
