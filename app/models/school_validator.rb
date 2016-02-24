@@ -1,14 +1,13 @@
-class StudentValidator
+class SchoolValidator
 
   extend ActiveModel::Naming
 
   include ActiveModel::Conversion
   include ActiveModel::Validations
 
-  attr_accessor :first_name, :last_name
+  attr_accessor :name
 
-  validates :first_name, if: :page_one?, presence: true
-  validates :last_name, if: :page_one?, presence: true
+  validates :name, if: :page_one?, presence: true
 
   def initialize(attributes={}, page=0)
     @page = page
