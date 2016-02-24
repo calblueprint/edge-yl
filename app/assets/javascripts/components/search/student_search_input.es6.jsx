@@ -1,90 +1,47 @@
-class SearchInput extends Component {
-
+class StudentSearchInput extends SearchInput {
   // --------------------------------------------------
   // Props
   // --------------------------------------------------
   static get propTypes() {
     return {
       pagination: React.PropTypes.object.isRequired,
+      groupId: React.PropTypes.number.isRequired,
       results: React.PropTypes.array.isRequired,
+      savedSearch: React.PropTypes.object.isRequired,
       search: React.PropTypes.object.isRequired,
-    };
-  }
-
-  // --------------------------------------------------
-  // Styles
-  // --------------------------------------------------
-  get styles() {
-    return {
-      container: {
-        display: 'flex',
-        flexFlow: 'column',
-        flex: '1',
-        height: '30px',
-      },
-      header: {
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        width: '48px',
-        backgroundColor: StyleConstants.colors.indigo,
-        borderRadius: '1px',
-        color: StyleConstants.colors.white,
-      },
-      input: {
-        zIndex: StyleConstants.planes.nine,
-        height: '30px',
-        border: 'none',
-        borderRadius: '1px',
-      },
     };
   }
 
   // --------------------------------------------------
   // Handlers
   // --------------------------------------------------
-  handleBlur(event) {
-    HeaderActions.storeSearch(false);
+  handleBlur(event) { // TODO: Make this more general (SearchActions?)
+    GroupActions.storeSearch(false);
   }
 
   handleFocus(event) {
-    HeaderActions.storeSearch(true);
+    GroupActions.storeSearch(true);
   }
 
   handleInput(event) {
-    HeaderActions.storeSearch(true, event.target.value);
+    GroupActions.storeSearch(true, this.props.groupId, event.target.value);
   }
 
   // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
-  /** Generates dropdown options which link to a result's show view. */
   generateChoice(result) {
-    var route;
-    var type = result.searchable_type;
-    var node = <SearchResult label={type} value={result.content} />;
-    if (type === 'Group') {
-      route = RouteConstants.groups.show(result.searchable_id);
-    } else if (type === 'School') {
-      route = RouteConstants.schools.show(result.searchable_id);
-    } else {
-      route = RouteConstants.students.show(result.searchable_id);
-    }
+    var action = () => GroupActions.storeStudentSearch(result);
+    var node = <SearchResult label={"student"} value={result.content} />;
     return {
       children: node,
-      route: route,
+      action: action,
     };
   }
 
   generateChoices() {
     var results = this.props.results;
     var choices = results.map((result) => this.generateChoice(result));
-    var pagination = this.props.pagination;
-    var footer = {
-      content: `Displaying page ${pagination.current} of ${pagination.limit} total`,
-      static: true,
-    };
-    choices.push(footer);
     return choices;
   }
 
@@ -104,11 +61,8 @@ class SearchInput extends Component {
   renderInput() {
     return (
       <div style={{ display: 'flex' }}>
-        <div style={this.styles.header}>
-          <i className={TypeConstants.icons.search} />
-        </div>
         <input
-          placeholder={'Search for a group, school, or student'}
+          placeholder={'Search for a student'}
           ref={'input'}
           style={this.styles.input}
           type={'search'}
@@ -126,7 +80,6 @@ class SearchInput extends Component {
           pagination={this.props.pagination}
           results={this.props.results}
           search={this.props.search} />
-        <PageUnderlay active={this.props.search.active} />
       </div>
     );
   }

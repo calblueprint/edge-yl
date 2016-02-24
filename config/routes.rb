@@ -34,10 +34,13 @@
   namespace :api do
     get '/forms/:target', to: 'forms#show'
     get '/searchables/search', to: 'searchables#search'
+    get '/searchables/students', to: 'searchables#students'
     get '/school_submissions/:uuid', to: 'school_submissions#show'
     get '/school_submissions/:uuid'. to: 'school_submissions#show'
     get '/student_submissions/:uuid', to: 'student_submissions#show'
     patch 'student_submissions/:uuid', to: 'student_submissions#update'
+    get '/submissions/:uuid', to: 'submissions#show'
+    patch 'submissions/:uuid', to: 'submissions#update'
     get '/users/profile', to: 'users#profile'
 
     resources :comments, only: [:create]

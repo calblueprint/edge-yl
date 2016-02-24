@@ -11,6 +11,8 @@
         'storeGroup',
         'storeGroupables',
         'storeLeadership',
+        'storeResults',
+        'storeStudentSearch',
         'storeValue',
       );
     }
@@ -18,6 +20,27 @@
     // --------------------------------------------------
     // Requests
     // --------------------------------------------------
+    /** Sends a request to add the student saved in the
+     *  search to the current group. Also fires a request to
+     *  reload the page contents, which makes the new student
+     *  appear in the group on modal close.
+     */
+    addStudent(groupId, studentId) {
+      if (!studentId) {
+        return false;
+      }
+      var attributes = {};
+      attributes['group_id'] = groupId;
+      var params = { student: attributes };
+      var resolve = (response) => this.fetchGroup(groupId);
+      Requester.update(
+        ApiConstants.students.update(studentId),
+        params,
+        resolve,
+      );
+      return true;
+    }
+
     deleteStudent(id) {
       var response = confirm('This action cannot be undone.');
       if (response) {
@@ -88,6 +111,17 @@
         model: options.model,
         type: options.type,
         value: options.value,
+      };
+    }
+
+    storeSearch(active, groupId, query) {
+      if (query) {
+        var resolve = (response) => this.storeResults(response);
+        Requester.get(ApiConstants.searchables.students(groupId, query), resolve);
+      }
+      return {
+        active: active,
+        query: query,
       };
     }
   }

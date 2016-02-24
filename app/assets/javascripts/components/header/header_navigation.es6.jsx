@@ -6,6 +6,9 @@ class HeaderNavigation extends Component {
   static get propTypes() {
     return {
       active: React.PropTypes.bool.isRequired,
+      pagination: React.PropTypes.object,
+      results: React.PropTypes.array,
+      search: React.PropTypes.object,
     };
   }
 
