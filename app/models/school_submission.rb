@@ -8,6 +8,8 @@
 #  address_state :string
 #  address_two   :string
 #  address_zip   :string
+#  current_page  :integer          default(0), not null
+#  is_draft      :boolean          default(TRUE), not null
 #  name          :string
 #  website       :string
 #
@@ -18,9 +20,20 @@ class SchoolSubmission < ActiveRecord::Base
 
   private
 
+  def attributes_one
+    {
+      name: name,
+    }
+  end
+
   def validate_page
     if current_page == 1
-
+      validator = SchoolValidator.new(attributes_one, current_page)
+      validator.valid?
+      response = validator.errors.to_hash
+      response.each do |attribute, message|
+        self.errors.add(attribute, message)
+      end
     end
   end
 
