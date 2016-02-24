@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: submissions
+# Table name: student_submissions
 #
 #  id                    :integer          not null, primary key
 #  address_city          :string
