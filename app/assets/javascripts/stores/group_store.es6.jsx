@@ -14,13 +14,23 @@
       this.overlay = false;
       this.pairing = null;
       this.template = {};
+      this.results = [];
+      this.search = {
+        active: false,
+        query: '',
+      };
+      this.savedSearch = {};
       this.bindListeners({
+        handleAddStudent: GroupActions.ADD_STUDENT,
         handleCloseOverlay: GroupActions.CLOSE_OVERLAY,
         handleStoreError: GroupActions.STORE_ERROR,
         handleStoreGroup: GroupActions.STORE_GROUP,
         handleStoreGroupables: GroupActions.STORE_GROUPABLES,
         handleStoreLeadership: GroupActions.STORE_LEADERSHIP,
         handleStorePairing: GroupActions.STORE_PAIRING,
+        handleStoreSearch: GroupActions.STORE_SEARCH,
+        handleStoreStudentSearch: GroupActions.STORE_STUDENT_SEARCH,
+        handleStoreResults: GroupActions.STORE_RESULTS,
         handleStoreValue: GroupActions.STORE_VALUE,
         handleDeleteStudent: GroupActions.DELETE_STUDENT,
       });
@@ -29,6 +39,10 @@
     // --------------------------------------------------
     // Handlers
     // --------------------------------------------------
+    handleAddStudent(response) {
+      this.overlay = false;
+    }
+
     handleCloseOverlay() {
       this.overlay = false;
       this.pairing = null;
@@ -72,7 +86,33 @@
     handleStorePairing(pairing) {
       this.overlay = true;
       this.pairing = pairing;
+      this.savedSearch = {};
+      this.search = {
+        active: false,
+        query: '',
+      };
       this.template = null;
+    }
+
+    handleStoreResults(response) {
+      this.results = response.searchables;
+    }
+
+    handleStoreSearch(search) {
+      if (search.query === undefined) {
+        search.query = this.search.query;
+      } else if (search.query === '') {
+        search.active = false;
+      }
+      this.search = search;
+    }
+
+    handleStoreStudentSearch(student) {
+      this.savedSearch = student;
+      this.search = {
+        active: false,
+        query: student.content,
+      };
     }
 
     handleStoreTemplate(template) {

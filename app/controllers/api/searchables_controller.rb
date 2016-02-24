@@ -7,4 +7,15 @@ class Api::SearchablesController < Api::BaseController
            each_serializer: SearchableBaseSerializer
   end
 
+  def students
+    documents = PgSearch.multisearch(params[:query])
+                        .where(searchable_type: 'Student')
+                        .limit(4)
+    documents = documents.select do |document|
+      document.searchable.group_id != params[:group_id].to_i
+    end
+    render json: documents,
+           each_serializer: SearchableBaseSerializer
+  end
+
 end

@@ -113,6 +113,7 @@
     get searchables() {
       return {
         search: (query) => `/api/searchables/search?query=${query}`,
+        students: (groupId, query) => `/api/searchables/students?group_id=${groupId}&query=${query}`,
       };
     }
 
