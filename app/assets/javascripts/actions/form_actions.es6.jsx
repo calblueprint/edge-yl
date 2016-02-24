@@ -63,22 +63,33 @@
       return true;
     }
 
-    updateSubmission(page, uuid, nextPage) {
+    updateSubmission(page, target, uuid, forward) {
       var attributes = {};
       var questions = page.questions;
       questions.map((question) => attributes[question.key] = question.value);
       attributes['current_page'] = page.number;
-      if (page['is_last'] && nextPage) {
+      if (page['is_last'] && forward) {
         attributes['is_draft'] = false;
       } else {
         attributes['is_draft'] = true;
       }
-      var params = { student_submission: attributes };
-      var resolve = (response) => {
-        var submission = response.student_submission;
-        newPage = nextPage ? page.number + 1 : page.number - 1;
-        window.location = RouteConstants.forms.student(newPage, submission.uuid);
-      };
+      var params;
+      var resolve;
+      if (target === 'school') {
+        params = { school_submission: attributes };
+        resolve = (response) => {
+          var submission = response.school_submission;
+          number = forward ? page.number + 1 : page.number - 1;
+          window.location = RouteConstants.forms.school(number, submission.uuid);
+        };
+      } else if (target === 'student') {
+        params = { student_submission: attributes };
+        resolve = (response) => {
+          var submission = response.student_submission;
+          number = forward ? page.number + 1 : page.number - 1;
+          window.location = RouteConstants.forms.student(number, submission.uuid);
+        };
+      }
       var reject = (response) => this.storeErrors(response);
       Requester.update(
         ApiConstants.submissions.update(uuid),

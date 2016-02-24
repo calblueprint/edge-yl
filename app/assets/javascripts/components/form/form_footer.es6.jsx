@@ -6,6 +6,7 @@ class FormFooter extends Component {
   static get propTypes() {
     return {
       page: React.PropTypes.object.isRequired,
+      target: React.PropTypes.string.isRequired,
       uuid: React.PropTypes.string,
     };
   }
@@ -45,40 +46,45 @@ class FormFooter extends Component {
   }
 
   // --------------------------------------------------
+  // Helpers
+  // --------------------------------------------------
+  updateSubmission(forward) {
+    var uuid = this.props.uuid;
+    FormActions.updateSubmission(
+      this.props.page,
+      this.props.target,
+      this.props.uuid,
+      forward,
+    );
+  }
+
+  // --------------------------------------------------
   // Render
   // --------------------------------------------------
   renderPrevious() {
     var page = this.props.page;
-    var uuid = this.props.uuid;
     if (page.number > 1) {
       return (
         <FormButton
-          action={() => FormActions.updateSubmission(page, uuid, false)}
-          content={'Previous Page'} />
+          action={() => this.updateSubmission(false)}
+          content={'Previous'} />
       );
     }
   }
 
   renderNext() {
     var page = this.props.page;
-    var uuid = this.props.uuid;
-    var content = '';
-    if (page['is_last']) {
-      content = 'Submit';
-    } else {
-      content = 'Next Page';
-    }
-    if (this.props.uuid) {
+    if (page.is_last) {
       return (
         <FormButton
-          action={() => FormActions.updateSubmission(page, uuid, true)}
-          content={content} />
+          action={() => this.updateSubmission(true)}
+          content={'Submit'} />
       );
     } else {
       return (
         <FormButton
           action={() => FormActions.createSubmission(page)}
-          content={content} />
+          content={'Next'} />
       );
     }
   }

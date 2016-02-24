@@ -71,6 +71,7 @@ class FormContainer extends Component {
       return (
         <FormFooter
           page={pages[this.props.page - 1]}
+          target={this.props.target}
           uuid={this.props.uuid} />
       );
     }
@@ -79,10 +80,7 @@ class FormContainer extends Component {
   renderHeader() {
     var pages = this.state.form.pages;
     if (pages) {
-      return (
-        <FormHeader
-          page={pages[this.props.page - 1]} />
-      );
+      return <FormHeader page={pages[this.props.page - 1]} />;
     }
   }
 
