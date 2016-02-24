@@ -22,12 +22,12 @@
   devise_scope :user do
     post '/api/users/signup', to: 'api/users/registrations#create'
 
-    post   '/api/users/login', to: 'api/users/sessions#create'
+    post '/api/users/login', to: 'api/users/sessions#create'
     delete '/api/users/logout', to: 'api/users/sessions#destroy'
 
     post '/api/users/confirmations', to: 'api/users/confirmations#create'
 
-    post  '/api/users/password', to: 'api/users/passwords#create'
+    post '/api/users/password', to: 'api/users/passwords#create'
     patch '/api/users/password', to: 'api/users/passwords#update'
   end
 
@@ -35,9 +35,9 @@
     get '/forms/:target', to: 'forms#show'
     get '/searchables/search', to: 'searchables#search'
     get '/school_submissions/:uuid', to: 'school_submissions#show'
-    get '/school_submissions/:uuid'. to: 'school_submissions#show'
+    get '/school_submissions/:uuid', to: 'school_submissions#show'
     get '/student_submissions/:uuid', to: 'student_submissions#show'
-    patch 'student_submissions/:uuid', to: 'student_submissions#update'
+    patch '/student_submissions/:uuid', to: 'student_submissions#update'
     get '/users/profile', to: 'users#profile'
 
     resources :comments, only: [:create]
