@@ -34,6 +34,8 @@
   namespace :api do
     get '/forms/:target', to: 'forms#show'
     get '/searchables/search', to: 'searchables#search'
+    get '/school_submissions/:uuid', to: 'school_submissions#show'
+    get '/school_submissions/:uuid'. to: 'school_submissions#show'
     get '/student_submissions/:uuid', to: 'student_submissions#show'
     patch 'student_submissions/:uuid', to: 'student_submissions#update'
     get '/users/profile', to: 'users#profile'
@@ -49,6 +51,7 @@
     resources :profiles, only: [:update]
     resources :rooms, only: [:create, :index, :show, :update]
     resources :schools, only: [:create, :index, :show, :update]
+    resources :school_submissions, only: [:create]
     resources :students, only: [:create, :index, :show, :update]
     resources :student_submissions, only: [:create]
     resources :users, only: [:index, :show, :update] do
