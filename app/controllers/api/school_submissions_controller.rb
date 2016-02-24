@@ -8,7 +8,7 @@ class Api::SchoolSubmissionsController < Api::BaseController
       # TODO(Warren): Is there a better way to set the uuid?
       response = SchoolSubmission.find school_submission.id
       render json: response,
-             serializer: SubmissionBaseSerializer,
+             serializer: SchoolSubmissionBaseSerializer,
              status: :created
     else
       unprocessable_response school_submission
@@ -17,14 +17,15 @@ class Api::SchoolSubmissionsController < Api::BaseController
 
   def show
     school_submission = SchoolSubmission.find_by uuid: params[:uuid]
-    render json: school_submission, serializer: SubmissionBaseSerializer
+    render json: school_submission,
+           serializer: SchoolSubmissionBaseSerializer
   end
 
   def update
     school_submission = SchoolSubmission.find_by uuid: params[:uuid]
     if school_submission.update_attributes school_submission_params
       render json: school_submission,
-             serializer: SubmissionBaseSerializer,
+             serializer: SchoolSubmissionBaseSerializer,
              status: :created
     else
       unprocessable_response school_submission
@@ -40,6 +41,7 @@ class Api::SchoolSubmissionsController < Api::BaseController
       :address_state,
       :address_two,
       :address_zip,
+      :current_page,
       :name,
       :website,
     )
