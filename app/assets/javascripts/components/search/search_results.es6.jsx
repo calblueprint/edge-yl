@@ -5,6 +5,7 @@ class SearchResults extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
+      choices: React.PropTypes.array.isRequired,
       pagination: React.PropTypes.object.isRequired,
       results: React.PropTypes.array.isRequired,
       search: React.PropTypes.object.isRequired,
@@ -52,45 +53,13 @@ class SearchResults extends Component {
   }
 
   // --------------------------------------------------
-  // Helpers
-  // --------------------------------------------------
-  generateChoice(result) {
-    var route;
-    var type = result.searchable_type;
-    var node = <SearchResult label={type} value={result.content} />;
-    if (type === 'Group') {
-      route = RouteConstants.groups.show(result.searchable_id);
-    } else if (type === 'School') {
-      route = RouteConstants.schools.show(result.searchable_id);
-    } else {
-      route = RouteConstants.students.show(result.searchable_id);
-    }
-    return {
-      children: node,
-      route: route,
-    };
-  }
-
-  generateChoices() {
-    var results = this.props.results;
-    var choices = results.map((result) => this.generateChoice(result));
-    var pagination = this.props.pagination;
-    var footer = {
-      content: `Displaying page ${pagination.current} of ${pagination.limit} total`,
-      static: true,
-    };
-    choices.push(footer);
-    return choices;
-  }
-
-  // --------------------------------------------------
   // Render
   // --------------------------------------------------
   render() {
     return (
       <div style={this.styles.container}>
         <DropdownChoices
-          choices={this.generateChoices()}
+          choices={this.props.choices}
           styles={this.dropdownStyles} />
       </div>
     );

@@ -12,6 +12,31 @@ class GroupGrid extends Component {
   }
 
   // --------------------------------------------------
+  // Helpers
+  // --------------------------------------------------
+  storePairing(key) {
+    if (key == 'student') {
+      var group = this.props.group;
+      GroupActions.storePairing({
+        id: group.id,
+        key: key,
+        model: 'student',
+        type: 'search',
+        value: '',
+      });
+    }
+  }
+
+  StudentsOptions() {
+    return [
+      {
+        action: () => this.storePairing('student'),
+        content: 'Add Student',
+      },
+    ];
+  }
+
+  // --------------------------------------------------
   // Render
   // --------------------------------------------------
   render() {
@@ -27,7 +52,9 @@ class GroupGrid extends Component {
           group={this.props.group}
           media={this.props.media}
           target={TypeConstants.group.leadership} />
-        <GridHeader label={'Students in this group'} />
+        <GridHeader
+          label={'Students in this group'}
+          options={this.StudentsOptions()} />
         <StudentsGrid
           editable={this.props.editable}
           media={this.props.media}

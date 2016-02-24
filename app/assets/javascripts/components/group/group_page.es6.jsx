@@ -71,7 +71,10 @@ class GroupPage extends Component {
       return (
         <GroupPageOverlay
           groupables={this.state.groupables}
-          pairing={this.state.pairing} />
+          pairing={this.state.pairing}
+          results={this.state.results}
+          savedSearch={this.state.savedSearch}
+          search={this.state.search} />
       );
     }
   }

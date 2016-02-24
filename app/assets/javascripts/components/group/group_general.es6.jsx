@@ -18,6 +18,7 @@ class GroupGeneral extends Component {
     GroupActions.storePairing({
       id: group.id,
       key: key,
+      model: 'group',
       type: 'input',
       value: group[key],
     });
