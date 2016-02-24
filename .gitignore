@@ -19,3 +19,6 @@ config/application.yml
 
 # Ignore vim temporary files.
 *.swp
+
+# Ignore csv data files.
+/db/data/*.csv

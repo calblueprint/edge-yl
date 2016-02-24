@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20160210032502) do
   enable_extension "uuid-ossp"
 
   create_table "comments", force: :cascade do |t|
-    t.string   "content",          null: false
+    t.text     "content",          null: false
     t.integer  "commentable_id"
     t.string   "commentable_type"
     t.integer  "user_id"
