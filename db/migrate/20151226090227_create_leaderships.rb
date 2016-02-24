@@ -1,4 +1,5 @@
 class CreateLeaderships < ActiveRecord::Migration
+
   def change
     create_table :leaderships do |t|
       t.integer :style, default: 0, null: false
@@ -9,4 +10,5 @@ class CreateLeaderships < ActiveRecord::Migration
       t.timestamps null: false
     end
   end
+
 end
