@@ -10,6 +10,7 @@ class CreateSchoolSubmissions < ActiveRecord::Migration
       t.integer :current_page, default: 0, null: false
       t.boolean :is_draft, default: true, null: false
       t.string :name
+      t.uuid   :uuid, default: 'uuid_generate_v4()'
       t.string :website
     end
   end
