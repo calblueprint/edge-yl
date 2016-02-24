@@ -29,7 +29,7 @@ class FormFooter extends Component {
           display: 'flex',
           justifyContent: 'center',
           padding: '36px',
-          margin: '12px 0px 48px',
+          margin: '12px 0px 24px',
         },
       ),
       leftButton: {
