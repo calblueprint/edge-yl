@@ -48,8 +48,14 @@ class FormFooter extends Component {
   // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
+  createSubmission() {
+    FormActions.createSubmission(
+      this.props.page,
+      this.props.target,
+    );
+  }
+
   updateSubmission(forward) {
-    var uuid = this.props.uuid;
     FormActions.updateSubmission(
       this.props.page,
       this.props.target,
@@ -83,7 +89,7 @@ class FormFooter extends Component {
     } else {
       return (
         <FormButton
-          action={() => FormActions.createSubmission(page)}
+          action={() => this.createSubmission()}
           content={'Next'} />
       );
     }
