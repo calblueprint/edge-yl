@@ -7,8 +7,13 @@ class FormsController < BaseController
     @target = params[:target]
     @uuid = params[:uuid]
     if @page > 1 && @uuid.nil?
-      redirect_to forms_path(page: 1, target: params[:target])
+      redirect_to forms_path(target: params[:target])
     end
+  end
+
+  def success
+    @target = params[:target]
+    @uuid = params[:uuid]
   end
 
 end
