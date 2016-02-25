@@ -24,6 +24,7 @@
     // --------------------------------------------------
     fetchStudents(page, query) {
       var resolve = (response) => {
+        response.meta.initial = true;
         response.meta.query = query;
         this.storeStudents(response);
       };
