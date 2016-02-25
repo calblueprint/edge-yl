@@ -11,4 +11,9 @@ class FormsController < BaseController
     end
   end
 
+  def success
+    @target = params[:target]
+    @uuid = params[:uuid]
+  end
+
 end
