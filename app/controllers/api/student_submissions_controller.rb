@@ -3,37 +3,38 @@ class Api::StudentSubmissionsController < Api::BaseController
   skip_before_filter :authenticate_user, only: [:create, :show, :update]
 
   def create
-    submission = StudentSubmission.new submission_params
-    if submission.save
+    student_submission = StudentSubmission.new student_submission_params
+    if student_submission.save
       # TODO(Warren): Is there a better way to set the uuid?
-      response = StudentSubmission.find submission.id
+      response = StudentSubmission.find student_submission.id
       render json: response,
-             serializer: SubmissionBaseSerializer,
+             serializer: StudentSubmissionBaseSerializer,
              status: :created
     else
-      unprocessable_response submission
+      unprocessable_response student_submission
     end
   end
 
   def show
-    submission = StudentSubmission.find_by uuid: params[:uuid]
-    render json: submission, serializer: SubmissionBaseSerializer
+    student_submission = StudentSubmission.find_by uuid: params[:uuid]
+    render json: student_submission,
+           serializer: StudentSubmissionBaseSerializer
   end
 
   def update
-    submission = StudentSubmission.find_by uuid: params[:uuid]
-    if submission.update_attributes submission_params
-      render json: submission,
-             serializer: SubmissionBaseSerializer,
+    student_submission = StudentSubmission.find_by uuid: params[:uuid]
+    if student_submission.update_attributes student_submission_params
+      render json: student_submission,
+             serializer: StudentSubmissionBaseSerializer,
              status: :created
     else
-      unprocessable_response submission
+      unprocessable_response student_submission
     end
   end
 
   private
 
-  def submission_params
+  def student_submission_params
     params.require(:student_submission).permit(
       :address_city,
       :address_one,

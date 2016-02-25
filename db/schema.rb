@@ -160,13 +160,16 @@ ActiveRecord::Schema.define(version: 20160224064905) do
   add_index "rooms", ["conference_id"], name: "index_rooms_on_conference_id", using: :btree
 
   create_table "school_submissions", force: :cascade do |t|
-    t.string "address_city"
-    t.string "address_one"
-    t.string "address_state"
-    t.string "address_two"
-    t.string "address_zip"
-    t.string "name"
-    t.string "website"
+    t.string  "address_city"
+    t.string  "address_one"
+    t.string  "address_state"
+    t.string  "address_two"
+    t.string  "address_zip"
+    t.integer "current_page",  default: 0,                    null: false
+    t.boolean "is_draft",      default: true,                 null: false
+    t.string  "name"
+    t.uuid    "uuid",          default: "uuid_generate_v4()"
+    t.string  "website"
   end
 
   create_table "schools", force: :cascade do |t|

@@ -134,9 +134,16 @@
 
     get submissions() {
       return {
-        create: '/api/student_submissions',
-        show: (uuid) => `/api/student_submissions/${uuid}`,
-        update: (uuid) => `/api/student_submissions/${uuid}`,
+        school: {
+          create: '/api/school_submissions',
+          show: (uuid) => `/api/school_submissions/${uuid}`,
+          update: (uuid) => `/api/school_submissions/${uuid}`,
+        },
+        student: {
+          create: '/api/student_submissions',
+          show: (uuid) => `/api/student_submissions/${uuid}`,
+          update: (uuid) => `/api/student_submissions/${uuid}`,
+        },
       };
     }
 

@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: submissions
+# Table name: student_submissions
 #
 #  id                    :integer          not null, primary key
 #  address_city          :string
@@ -38,6 +38,13 @@ class StudentSubmission < ActiveRecord::Base
 
   private
 
+  def attributes_one
+    {
+      first_name: first_name,
+      last_name: last_name,
+    }
+  end
+
   def try_submit
     if !is_draft
       student = Student.new(
@@ -66,13 +73,6 @@ class StudentSubmission < ActiveRecord::Base
       )
       student.save!
     end
-  end
-
-  def attributes_one
-    {
-      first_name: first_name,
-      last_name: last_name,
-    }
   end
 
   def validate_page

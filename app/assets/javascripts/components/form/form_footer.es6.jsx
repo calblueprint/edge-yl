@@ -6,6 +6,7 @@ class FormFooter extends Component {
   static get propTypes() {
     return {
       page: React.PropTypes.object.isRequired,
+      target: React.PropTypes.string.isRequired,
       uuid: React.PropTypes.string,
     };
   }
@@ -28,7 +29,7 @@ class FormFooter extends Component {
           display: 'flex',
           justifyContent: 'center',
           padding: '36px',
-          margin: '12px 0px 48px',
+          margin: '12px 0px 24px',
         },
       ),
       leftButton: {
@@ -45,40 +46,51 @@ class FormFooter extends Component {
   }
 
   // --------------------------------------------------
+  // Helpers
+  // --------------------------------------------------
+  createSubmission() {
+    FormActions.createSubmission(
+      this.props.page,
+      this.props.target,
+    );
+  }
+
+  updateSubmission(forward) {
+    FormActions.updateSubmission(
+      this.props.page,
+      this.props.target,
+      this.props.uuid,
+      forward,
+    );
+  }
+
+  // --------------------------------------------------
   // Render
   // --------------------------------------------------
   renderPrevious() {
     var page = this.props.page;
-    var uuid = this.props.uuid;
     if (page.number > 1) {
       return (
         <FormButton
-          action={() => FormActions.updateSubmission(page, uuid, false)}
-          content={'Previous Page'} />
+          action={() => this.updateSubmission(false)}
+          content={'Previous'} />
       );
     }
   }
 
   renderNext() {
     var page = this.props.page;
-    var uuid = this.props.uuid;
-    var content = '';
-    if (page['is_last']) {
-      content = 'Submit';
-    } else {
-      content = 'Next Page';
-    }
-    if (this.props.uuid) {
+    if (page.is_last) {
       return (
         <FormButton
-          action={() => FormActions.updateSubmission(page, uuid, true)}
-          content={content} />
+          action={() => this.updateSubmission(true)}
+          content={'Submit'} />
       );
     } else {
       return (
         <FormButton
-          action={() => FormActions.createSubmission(page)}
-          content={content} />
+          action={() => this.createSubmission()}
+          content={'Next'} />
       );
     }
   }

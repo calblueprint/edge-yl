@@ -10,12 +10,14 @@ class StudentValidator
   validates :first_name, if: :page_one?, presence: true
   validates :last_name, if: :page_one?, presence: true
 
-  def initialize(attributes={}, page=1)
+  def initialize(attributes={}, page=0)
     @page = page
     attributes.each do |name, value|
       send("#{name}=", value)
     end
   end
+
+  private
 
   def page_one?
     @page == 1

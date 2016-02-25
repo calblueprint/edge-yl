@@ -22,7 +22,7 @@ class FormHeader extends Component {
           flexFlow: 'column',
           alignItems: 'center',
           padding: '36px',
-          marginTop: '12px',
+          marginTop: '24px',
         },
       ),
     };
