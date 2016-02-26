@@ -38,7 +38,7 @@ class ConferenceEditModal extends EditModal {
           icon={TypeConstants.icons.save} />
         <div style={StyleConstants.cards.content}>
           <CardInput
-            action={(event) => ConferenceActions.storeAttribute(event.target.value)}
+            action={(event) => ConferenceActions.storeValue(event.target.value)}
             errors={pairing.errors[pairing.key]}
             focus={true}
             label={Helpers.humanize(pairing.key)}

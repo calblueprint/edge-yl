@@ -52,11 +52,11 @@ class ConferencePage extends Component {
       },
       {
         action: () => GroupsActions.exportGroups(this.state.conference.id),
-        content: 'Export',
+        content: 'Export Groups',
       },
       {
         action: () => RoomsActions.exportRooms(this.state.conference.id),
-        content: 'Export',
+        content: 'Export Rooms',
       },
     ];
   }

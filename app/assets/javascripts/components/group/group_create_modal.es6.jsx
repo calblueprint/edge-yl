@@ -75,8 +75,7 @@ class GroupCreateModal extends CreateModal {
   generateChoices(type) {
     var groupables = this.props.groupables;
     return groupables.map((groupable) => this.generateChoice(groupable, type)).
-                      filter((groupable) => groupable !== null );
-
+                      filter((groupable) => groupable !== undefined );
   }
 
   generateHandler(field) {
