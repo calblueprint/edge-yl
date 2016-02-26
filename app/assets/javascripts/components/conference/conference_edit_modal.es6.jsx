@@ -21,6 +21,15 @@ class ConferenceEditModal extends EditModal {
   // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
+  generateOptions() {
+    return [
+      {
+        action: () => this.updateStudent(),
+        icon: TypeConstants.icons.save,
+      },
+    ];
+  }
+
   updateStudent() {
     ConferenceActions.updateConference(this.props.pairing);
   }
@@ -33,9 +42,8 @@ class ConferenceEditModal extends EditModal {
     return (
       <div style={this.styles.section}>
         <CardHeader
-          action={() => this.updateStudent()}
           content={'General Information'}
-          icon={TypeConstants.icons.save} />
+          options={this.generateOptions()} />
         <div style={StyleConstants.cards.content}>
           <CardInput
             action={(event) => ConferenceActions.storeValue(event.target.value)}

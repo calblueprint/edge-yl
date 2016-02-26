@@ -25,6 +25,15 @@ class ProfileEditModal extends EditModal {
     ProfileActions.updateProfile(this.props.template);
   }
 
+  generateOptions() {
+    return [
+      {
+        action: () => this.updateProfile(),
+        icon: TypeConstants.icons.save,
+      },
+    ];
+  }
+
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
@@ -60,9 +69,8 @@ class ProfileEditModal extends EditModal {
     return (
       <div style={this.styles.section}>
         <CardHeader
-          action={() => this.updateProfile()}
           content={'Profile Preview'}
-          icon={TypeConstants.icons.save} />
+          options={this.generateOptions()} />
         <div style={StyleConstants.cards.content}>
           {this.renderChild()}
         </div>

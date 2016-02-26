@@ -32,6 +32,15 @@ class ContactCreateModal extends CreateModal {
     };
   }
 
+  generateOptions() {
+    return [
+      {
+        action: () => this.createContact(),
+        icon: TypeConstants.icons.save,
+      },
+    ];
+  }
+
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
@@ -41,9 +50,8 @@ class ContactCreateModal extends CreateModal {
     return (
       <div style={this.styles.section}>
         <CardHeader
-          action={() => this.createContact()}
           content={'New Contact'}
-          icon={TypeConstants.icons.save} />
+          options={this.generateOptions()} />
         <div style={StyleConstants.cards.content}>
           <CardInput
             action={this.generateHandler('first_name')}

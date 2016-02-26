@@ -64,6 +64,15 @@ class RoomCreateModal extends CreateModal {
     };
   }
 
+  generateOptions() {
+    return [
+      {
+        action: () => this.createRoom(),
+        icon: TypeConstants.icons.save,
+      },
+    ];
+  }
+
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
@@ -74,9 +83,8 @@ class RoomCreateModal extends CreateModal {
     return (
       <div style={this.styles.section}>
         <CardHeader
-          action={() => this.createRoom()}
           content={'New Room'}
-          icon={TypeConstants.icons.save} />
+          options={this.generateOptions()} />
         <div style={StyleConstants.cards.content}>
           <CardInput
             action={this.generateHandler('number')}

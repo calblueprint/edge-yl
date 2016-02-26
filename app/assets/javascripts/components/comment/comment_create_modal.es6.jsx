@@ -47,6 +47,15 @@ class CommentCreateModal extends CreateModal {
     };
   }
 
+  generateOptions() {
+    return [
+      {
+        action: () => this.createComment(),
+        icon: TypeConstants.icons.save,
+      },
+    ];
+  }
+
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
@@ -55,9 +64,8 @@ class CommentCreateModal extends CreateModal {
     return (
       <div style={this.styles.section}>
         <CardHeader
-          action={() => this.createComment()}
           content={'New Comment'}
-          icon={TypeConstants.icons.save} />
+          options={this.generateOptions()} />
         <div style={StyleConstants.cards.content}>
           <CardInput
             action={this.generateAction()}

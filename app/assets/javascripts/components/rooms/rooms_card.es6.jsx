@@ -26,6 +26,15 @@ class RoomsCard extends Component {
     }
   }
 
+  generateOptions() {
+    return [
+      {
+        action: () => this.deleteRoom(),
+        icon: TypeConstants.icons.delete,
+      },
+    ];
+  }
+
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
@@ -33,9 +42,8 @@ class RoomsCard extends Component {
     if (this.props.editable) {
       return (
         <CardHeader
-          action={() => this.deleteRoom()}
           content={'Room'}
-          icon={TypeConstants.icons.delete} />
+          options={this.generateOptions()} />
       );
     } else {
       return <CardHeader content={'Room'} />;

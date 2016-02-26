@@ -21,6 +21,15 @@ class StudentEditModal extends EditModal {
   // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
+  generateOptions() {
+    return [
+      {
+        action: () => this.updateStudent(),
+        icon: TypeConstants.icons.save,
+      },
+    ];
+  }
+
   updateStudent() {
     StudentActions.updateStudent(this.props.pairing);
   }
@@ -60,9 +69,8 @@ class StudentEditModal extends EditModal {
     return (
       <div style={this.styles.section}>
         <CardHeader
-          action={() => this.updateStudent()}
           content={'Contact Information'}
-          icon={TypeConstants.icons.save} />
+          options={this.generateOptions()} />
         <div style={StyleConstants.cards.content}>
           {this.renderChild()}
         </div>

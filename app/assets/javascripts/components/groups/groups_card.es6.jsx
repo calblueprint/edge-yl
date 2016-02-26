@@ -26,6 +26,15 @@ class GroupsCard extends Component {
     }
   }
 
+  generateOptions() {
+    return [
+      {
+        action: () => this.deleteGroup(),
+        icon: TypeConstants.icons.delete,
+      },
+    ];
+  }
+
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
@@ -33,9 +42,8 @@ class GroupsCard extends Component {
     if (this.props.editable) {
       return (
         <CardHeader
-          action={() => this.deleteGroup()}
           content={'Group'}
-          icon={TypeConstants.icons.delete} />
+          options={this.generateOptions()} />
       );
     } else {
       return <CardHeader content={'Group'} />;

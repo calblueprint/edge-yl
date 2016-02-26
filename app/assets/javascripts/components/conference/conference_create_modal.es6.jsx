@@ -31,6 +31,15 @@ class ConferenceCreateModal extends CreateModal {
     };
   }
 
+  generateOptions() {
+    return [
+      {
+        action: () => this.createConference(),
+        icon: TypeConstants.icons.save,
+      },
+    ];
+  }
+
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
@@ -39,9 +48,8 @@ class ConferenceCreateModal extends CreateModal {
     return (
       <div style={this.styles.section}>
         <CardHeader
-          action={() => this.createConference()}
           content={'New Conference'}
-          icon={TypeConstants.icons.save} />
+          options={this.generateOptions()} />
         <div style={StyleConstants.cards.content}>
           <CardInput
             action={this.generateHandler('name')}

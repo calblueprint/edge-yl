@@ -61,6 +61,15 @@ class ProfileOptionsEdit extends Component {
     };
   }
 
+  generateOptions() {
+    return [
+      {
+        action: () => this.updateProfile(),
+        icon: TypeConstants.icons.save,
+      },
+    ];
+  }
+
   updateProfile() {
     var params = {
       user: {
@@ -80,9 +89,8 @@ class ProfileOptionsEdit extends Component {
     return (
       <div style={this.styles.container}>
         <CardHeader
-          action={(event) => this.updateProfile()}
           content={'Profile'}
-          icon={TypeConstants.icons.save} />
+          options={this.generateOptions()} />
         <div style={this.styles.form}>
           <img
             src={'https://scontent.fsnc1-1.fna.fbcdn.net/hphotos-xfp1/t31.0-8/11856297_10200932572512494_2256826043885795533_o.jpg'}

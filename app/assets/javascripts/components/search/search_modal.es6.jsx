@@ -30,6 +30,15 @@ class SearchModal extends EditModal {
       this.props.savedSearch.searchable_id);
   }
 
+  generateOptions() {
+    return [
+      {
+        action: () => this.addStudent(),
+        icon: TypeConstants.icons.save,
+      },
+    ];
+  }
+
   updateStudent() {
     StudentActions.updateStudent(this.props.pairing);
   }
@@ -50,9 +59,8 @@ class SearchModal extends EditModal {
     var header = null;
     if (this.props.model == 'student') {
         header = <CardHeader
-          action={() => this.addStudent()}
           content={'Add a Student'}
-          icon={TypeConstants.icons.save} />
+          options={this.generateOptions()} />
     }
     return (
       <div style={this.styles.section}>

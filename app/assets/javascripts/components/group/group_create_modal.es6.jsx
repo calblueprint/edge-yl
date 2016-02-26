@@ -88,6 +88,15 @@ class GroupCreateModal extends CreateModal {
     };
   }
 
+  generateOptions() {
+    return [
+      {
+        action: () => this.createGroup(),
+        icon: TypeConstants.icons.save,
+      },
+    ];
+  }
+
   generateValue(type) {
     var groupables = this.props.groupables;
     var attributes = this.props.template.attributes;
@@ -110,9 +119,8 @@ class GroupCreateModal extends CreateModal {
     return (
       <div style={this.styles.section}>
         <CardHeader
-          action={() => this.createGroup()}
           content={'New Group'}
-          icon={TypeConstants.icons.save} />
+          options={this.generateOptions()} />
         <div style={StyleConstants.cards.content}>
           <CardInput
             action={this.generateHandler('letter')}

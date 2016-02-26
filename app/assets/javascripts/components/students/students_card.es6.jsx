@@ -24,6 +24,15 @@ class StudentsCard extends Component {
     GroupActions.deleteStudent(this.props.student.id);
   }
 
+  generateOptions() {
+    return [
+      {
+        action: () => this.deleteStudentFromGroup(),
+        icon: TypeConstants.icons.dekete,
+      },
+    ];
+  }
+
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
@@ -45,9 +54,8 @@ class StudentsCard extends Component {
     if (this.props.editable) {
       return (
         <CardHeader
-          action={() => this.deleteStudentFromGroup()}
           content={'Student'}
-          icon={TypeConstants.icons.delete} />
+          option={this.generateOptions()} />
       );
     } else {
       return <CardHeader content={'Student'} />;

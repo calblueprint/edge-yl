@@ -34,6 +34,15 @@ class GroupEditModal extends EditModal {
     return groupables.map((groupable) => this.generateChoice(groupable));
   }
 
+  generateOption(action) {
+    return [
+      {
+        action: () => action(),
+        icon: TypeConstants.icons.save,
+      },
+    ];
+  }
+
   updateGroup() {
     GroupActions.updateGroup(this.props.pairing);
   }
@@ -86,9 +95,8 @@ class GroupEditModal extends EditModal {
     return (
       <div style={this.styles.section}>
         <CardHeader
-          action={action}
           content={content}
-          icon={TypeConstants.icons.save} />
+          options={this.generateOption(action)} />
         <div style={StyleConstants.cards.content}>
           {this.renderChild(type)}
         </div>

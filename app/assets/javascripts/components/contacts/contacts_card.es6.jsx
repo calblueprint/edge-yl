@@ -48,7 +48,7 @@ class ContactsCard extends Component {
   renderHeader() {
     if (this.props.editable) {
       return (
-        <ContactHeader
+        <CardHeader
           content={'Contact Information'}
           options={this.generateOptions()} />
       );
