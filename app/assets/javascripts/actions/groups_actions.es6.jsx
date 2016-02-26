@@ -76,7 +76,7 @@
     }
 
     storeTemplate(model, attributes={}) {
-      if (model === 'group') {
+      if (model === TypeConstants.models.group) {
         var resolve = (response) => this.storeGroupables(response);
         Requester.get(ApiConstants.users.groupables, resolve);
       }

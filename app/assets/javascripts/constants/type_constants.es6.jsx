@@ -51,6 +51,20 @@
       };
     }
 
+    get models() {
+      return {
+        comment: 'modle-comment',
+        conference: 'model-conference',
+        contact: 'model-contact',
+        group: 'model-group',
+        leadership: 'model-leadership',
+        profile: 'model-profile',
+        room: 'model-room',
+        school: 'model-school',
+        user: 'model-user',
+      };
+    }
+
     get profile() {
       return {
         general: 'profile-general',

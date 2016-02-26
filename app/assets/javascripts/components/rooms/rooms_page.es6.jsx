@@ -49,7 +49,7 @@ class RoomsPage extends Component {
     return [
       {
         action: () => RoomsActions.storeTemplate(
-          'room',
+          TypeConstants.models.room,
           { conference_id: this.props.conference.id },
         ),
         content: 'New',

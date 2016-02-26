@@ -86,6 +86,12 @@ class RoomCreateModal extends CreateModal {
             placeholder={'1'}
             value={attributes.number} />
           <CardInput
+            action={this.generateHandler('building')}
+            errors={errors.building}
+            label={'Building'}
+            placeholder={'critter building'}
+            value={attributes.building} />
+          <CardInput
             action={this.generateHandler('capacity')}
             errors={errors.capacity}
             label={'Capacity'}

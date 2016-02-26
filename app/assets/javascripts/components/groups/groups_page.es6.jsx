@@ -57,7 +57,7 @@ class GroupsPage extends Component {
       },
       {
         action: () => GroupsActions.storeTemplate(
-          'group',
+          TypeConstants.models.group,
           { conference_id: this.props.conference.id }),
         content: 'New',
       },

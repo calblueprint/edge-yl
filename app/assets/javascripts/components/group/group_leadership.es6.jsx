@@ -18,7 +18,7 @@ class GroupLeadership extends Component {
       id: this.props.group.id,
       key: 'user',
       label: label,
-      model: 'leadership',
+      model: TypeConstants.models.leadership,
       type: 'dropdown',
       value: value,
     });

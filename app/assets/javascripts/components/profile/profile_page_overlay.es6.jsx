@@ -20,7 +20,7 @@ class ProfilePageOverlay extends PageOverlay {
   // Render
   // --------------------------------------------------
   renderModal() {
-    if (this.props.template.model === 'profile') {
+    if (this.props.template.model === TypeConstants.models.profile) {
       return (
         <ProfileEditModal
           template={this.props.template} />

@@ -18,7 +18,7 @@ class SchoolContact extends Component {
     SchoolActions.storePairing({
       id: contact.id,
       key: key,
-      model: TypeConstants.school.contact,
+      model: TypeConstants.models.contact,
       type: 'input',
       value: contact[key],
     });

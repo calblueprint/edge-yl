@@ -98,7 +98,7 @@
     // Stores
     // --------------------------------------------------
     storePairing(options) {
-      if (options.model === 'leadership') {
+      if (options.model === TypeConstants.models.leadership) {
         var resolve = (response) => this.storeGroupables(response);
         Requester.get(ApiConstants.users.groupables, resolve);
       }

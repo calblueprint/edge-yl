@@ -19,7 +19,7 @@ class UserGeneral extends Component {
       choices: choices,
       id: user.id,
       key: key,
-      model: 'user',
+      model: TypeConstants.models.user,
       type: choices ? 'dropdown' : 'input',
       value: user[key],
     });

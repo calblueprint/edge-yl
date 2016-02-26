@@ -19,7 +19,7 @@ class SchoolGeneral extends Component {
       id: school.id,
       key: key,
       type: 'input',
-      model: TypeConstants.school.general,
+      model: TypeConstants.models.school,
       value: school[key],
     });
   }

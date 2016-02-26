@@ -19,7 +19,7 @@ class RoomGeneral extends Component {
       choices: choices,
       id: room.id,
       key: key,
-      model: 'room',
+      model: TypeConstants.models.room,
       type: choices ? 'dropdown' : 'input',
       value: room[key],
     });

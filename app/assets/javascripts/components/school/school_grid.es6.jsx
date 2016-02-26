@@ -7,7 +7,7 @@ class SchoolGrid extends Component {
     return [
       {
         action: () => SchoolActions.storeTemplate(
-          TypeConstants.school.contact,
+          TypeConstants.models.contact,
           {
             is_primary: false,
             school_id: this.props.school.id,

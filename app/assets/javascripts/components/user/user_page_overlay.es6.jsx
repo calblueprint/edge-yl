@@ -22,7 +22,7 @@ class UserPageOverlay extends PageOverlay {
   // Render
   // --------------------------------------------------
   renderModal() {
-    if (this.props.template.model === 'user') {
+    if (this.props.template.model === TypeConstants.models.user) {
       return <UserEditModal template={this.props.template} />;
     }
   }

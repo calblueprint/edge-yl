@@ -19,7 +19,7 @@ class ProfileGeneral extends Component {
       choices: choices,
       id: profile.id,
       key: key,
-      model: 'profile',
+      model: TypeConstants.models.profile,
       type: choices ? 'dropdown' : 'input',
       value: profile[key],
     });

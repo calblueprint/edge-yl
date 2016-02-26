@@ -52,6 +52,7 @@ class Api::RoomsController < Api::BaseController
 
   def room_params
     params.require(:room).permit(
+      :building,
       :capacity,
       :conference_id,
       :gender,

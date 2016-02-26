@@ -18,7 +18,7 @@ class ConferenceGrid extends Component {
     return [
       {
         action: () => ConferenceActions.storeTemplate(
-          'group',
+          TypeConstants.models.group,
           { conference_id: this.props.conference.id },
         ),
         content: 'New',
@@ -34,7 +34,7 @@ class ConferenceGrid extends Component {
     return [
       {
         action: () => ConferenceActions.storeTemplate(
-          'room',
+          TypeConstants.models.room,
           { conference_id: this.props.conference.id },
         ),
         content: 'New',

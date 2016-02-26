@@ -62,7 +62,7 @@ class PageComments extends Component {
   handleClick() {
     if (this.props.type === TypeConstants.comments.school) {
       SchoolActions.storeTemplate(
-        'comment',
+        TypeConstants.models.comment,
         {
           commentable_id: this.props.school.id,
           commentable_type: 'School',
@@ -71,7 +71,7 @@ class PageComments extends Component {
       );
     } else if (this.props.type === TypeConstants.comments.student) {
       StudentActions.storeTemplate(
-        'comment',
+        TypeConstants.models.comment,
         {
           commentable_id: this.props.student.id,
           commentable_type: 'Student',
