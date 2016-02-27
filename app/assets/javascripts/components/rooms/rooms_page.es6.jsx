@@ -32,6 +32,7 @@ class RoomsPage extends Component {
     ProfileStore.listen(this._listener);
     RoomsStore.listen(this._listener);
     ViewStore.listen(this._listener);
+    RoomsActions.attachListener();
     RoomsActions.fetchRooms(this.props.conference);
     ViewActions.attachListener();
   }
@@ -78,7 +79,7 @@ class RoomsPage extends Component {
     if (this.state.overlay) {
       return (
         <RoomsPageOverlay
-          conference={this.props.conference}
+          conference={this.state.conference}
           template={this.state.template}
           type={'rooms'} />
       );
@@ -94,7 +95,7 @@ class RoomsPage extends Component {
         <div style={StyleConstants.pages.container}>
           <div style={StyleConstants.pages.content}>
             <PageHeader
-              conference={this.props.conference}
+              conference={this.state.conference}
               conferences={this.props.conferences}
               options={this.generateOptions()}
               title={'Rooms'}

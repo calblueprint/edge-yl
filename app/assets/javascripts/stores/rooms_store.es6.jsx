@@ -7,15 +7,18 @@
     constructor() {
       this.conference = {};
       this.conferences = [];
+      this.firstLoad = true;
       this.overlay = false;
       this.rooms = [];
       this.template = null;
       this.bindListeners({
         handleCloseOverlay: RoomsActions.CLOSE_OVERLAY,
         handleRemoveRoom: RoomsActions.REMOVE_ROOM,
+        handleRestoreRooms: RoomsActions.RESTORE_ROOMS,
+        handleStoreAttribute: RoomsActions.STORE_ATTRIBUTE,
+        handleStoreConference: RoomsActions.STORE_CONFERENCE,
         handleStoreRoom: RoomsActions.STORE_ROOM,
         handleStoreRooms: RoomsActions.STORE_ROOMS,
-        handleStoreAttribute: RoomsActions.STORE_ATTRIBUTE,
         handleStoreTemplate: RoomsActions.STORE_TEMPLATE,
       });
     }
@@ -33,8 +36,37 @@
       this.rooms = this.rooms.filter((room) => room.id !== id);
     }
 
+    handleRestoreRooms(state) {
+      this.rooms = state.rooms;
+      this.conference = state.conference;
+    }
+
     handleStoreAttribute(attribute) {
       this.template.attributes[attribute.key] = attribute.value;
+    }
+
+    handleStoreConference(conference) {
+      this.conference = conference;
+      if (this.firstLoad) {
+        this.firstLoad = false;
+        window.history.replaceState(
+          {
+            conference: this.conference,
+            rooms: this.rooms,
+          },
+          null,
+          RouteConstants.rooms.index(this.conference.id)
+        );
+      } else {
+        window.history.pushState(
+          {
+            conference: this.conference,
+            rooms: this.rooms,
+          },
+          null,
+          RouteConstants.rooms.index(this.conference.id)
+        );
+      }
     }
 
     handleStoreRoom(response) {

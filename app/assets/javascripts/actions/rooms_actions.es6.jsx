@@ -8,9 +8,19 @@
       this.generateActions(
         'closeOverlay',
         'removeRoom',
+        'restoreRooms',
+        'storeConference',
         'storeRoom',
         'storeRooms',
       );
+    }
+
+    // --------------------------------------------------
+    // Listeners
+    // --------------------------------------------------
+    attachListener() {
+      window.onpopstate = (event) => this.restoreRooms(event.state);
+      return true;
     }
 
     // --------------------------------------------------
@@ -51,7 +61,10 @@
     }
 
     fetchRooms(conference) {
-      var resolve = (response) => this.storeRooms(response);
+      var resolve = (response) => {
+        this.storeRooms(response);
+        this.storeConference(conference);
+      };
       Requester.get(ApiConstants.rooms.index(conference.id), resolve);
       return true;
     }
