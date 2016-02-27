@@ -297,7 +297,6 @@ student_form = Form.create(
   Page.create(
     description: 'Emergency Information description',
     form: form,
-    is_last: true,
     number: 2,
     title: 'Emergency Information',
   ) do |page|
@@ -358,6 +357,87 @@ student_form = Form.create(
       placeholder: 'Software Engineer',
       style: Question.styles[:input],
       title: 'Guardian job title',
+    )
+  end
+  Page.create(
+    description: 'Medical Information description',
+    form: form,
+    is_last: true,
+    number: 3,
+    title: 'Medical Information',
+  ) do |page|
+    Question.create(
+      key: 'immunizations',
+      options: Student.booleans.keys,
+      page: page,
+      style: Question.styles[:dropdown],
+      title: 'Have you had all immunizations as required by your school?',
+    )
+    Question.create(
+      key: 'allergies',
+      options: Student.booleans.keys,
+      page: page,
+      style: Question.styles[:dropdown],
+      title: 'Do you (the student attendee) have any allergies to food, medications, insects, etc.?',
+    )
+    Question.create(
+      key: 'health_conditions',
+      options: Student.booleans.keys,
+      page: page,
+      style: Question.styles[:dropdown],
+      title: 'Have you (the student attendee) previously been diagnosed with or currently have any of the following health conditions? (Check all that apply) ',
+    )
+    Question.create(
+      is_required: false,
+      key: 'medications',
+      page: page,
+      placeholder: 'Enter "None" if you do not have any',
+      style: Question.styles[:input],
+      title: 'Please list any medication(s) that you currently take and/or will need to take during the seminar weekend:',
+    )
+    Question.create(
+      key: 'dietary_restrictions',
+      options: Student.dietary_restrictions.keys,
+      page: page,
+      style: Question.styles[:dropdown],
+      title: 'Please select any dietary restrictions that you have:',
+    )
+    Question.create(
+      is_required: false,
+      key: 'other_dietary_restrictions',
+      page: page,
+      placeholder: 'Enter "None" if you do not have any' ,
+      style: Question.styles[:input],
+      title: 'Please list any other dietary restrictions that you have:',
+    )
+    Question.create(
+      is_required: false,
+      key: 'exercise_limitations',
+      page: page,
+      placeholder: 'Enter "None" if you do not have any',
+      style: Question.styles[:input],
+      title: 'Please list any limitations on the amount of physical exeercise you can engage in:',
+    )
+    Question.create(
+      key: 'emergency_consent',
+      options: Student.booleans.keys,
+      page: page,
+      style: Question.styles[:dropdown],
+      title: 'Paragraph about emergency consent',
+    )
+    Question.create(
+      key: 'psychologist_consent',
+      options: Student.booleans.keys,
+      page: page,
+      style: Question.styles[:dropdown],
+      title: 'Paragraph about psychologist consent',
+    )
+    Question.create(
+      key: 'medical_guardian_name',
+      page: page,
+      placeholder: 'Kira Klapper',
+      style: Question.styles[:input],
+      title: 'Guardian Name',
     )
   end
 end

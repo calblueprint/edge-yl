@@ -25,6 +25,7 @@
       return {
         school: (page, uuid) => `/forms/school/${uuid}?page=${page}`,
         student: (page, uuid) => `/forms/student/${uuid}?page=${page}`,
+        success: (target, uuid) => `/forms/${target}/${uuid}/success`,
       };
     }
 

@@ -11,6 +11,7 @@
 #  current_page  :integer          default(0), not null
 #  is_draft      :boolean          default(TRUE), not null
 #  name          :string
+#  uuid          :uuid
 #  website       :string
 #
 

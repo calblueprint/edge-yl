@@ -190,10 +190,14 @@ ActiveRecord::Schema.define(version: 20160224064905) do
     t.string  "address_state"
     t.string  "address_two"
     t.string  "address_zip"
+    t.integer "allergies"
     t.date    "birthday"
     t.string  "cell_phone"
-    t.integer "current_page",          default: 0,                    null: false
+    t.integer "current_page",               default: 0,                    null: false
+    t.integer "dietary_restrictions"
     t.string  "email"
+    t.integer "emergency_consent"
+    t.string  "exercise_limitations"
     t.string  "first_name"
     t.integer "gender"
     t.string  "guardian_email"
@@ -204,46 +208,62 @@ ActiveRecord::Schema.define(version: 20160224064905) do
     t.string  "guardian_phone_number"
     t.integer "guardian_phone_type"
     t.integer "guardian_relationship"
+    t.integer "health_conditions"
     t.string  "home_phone"
-    t.boolean "is_draft",              default: true,                 null: false
+    t.boolean "is_draft",                   default: true,                 null: false
+    t.integer "immunizations"
     t.string  "last_name"
+    t.string  "medical_guardian_name"
+    t.string  "medications"
+    t.string  "other_dietary_restrictions"
     t.string  "preferred_name"
+    t.integer "psychologist_consent"
     t.integer "registration_status"
     t.integer "shirt_size"
-    t.uuid    "uuid",                  default: "uuid_generate_v4()"
+    t.uuid    "uuid",                       default: "uuid_generate_v4()"
   end
 
   create_table "students", force: :cascade do |t|
-    t.string   "address_city",                       null: false
-    t.string   "address_one",                        null: false
-    t.string   "address_state",                      null: false
-    t.string   "address_two",           default: "", null: false
-    t.string   "address_zip",                        null: false
-    t.date     "birthday",                           null: false
-    t.string   "cell_phone",                         null: false
-    t.string   "email",                              null: false
-    t.string   "first_name",                         null: false
-    t.integer  "gender",                             null: false
-    t.string   "guardian_email",                     null: false
-    t.string   "guardian_employer",     default: "", null: false
-    t.string   "guardian_first_name",                null: false
-    t.string   "guardian_job_title",    default: "", null: false
-    t.string   "guardian_last_name",                 null: false
-    t.string   "guardian_phone_number",              null: false
-    t.integer  "guardian_phone_type",                null: false
-    t.integer  "guardian_relationship",              null: false
-    t.string   "home_phone",                         null: false
-    t.boolean  "is_flagged",                         null: false
-    t.boolean  "is_primary",                         null: false
-    t.string   "last_name",                          null: false
-    t.string   "preferred_name",        default: "", null: false
-    t.integer  "registration_status",                null: false
-    t.integer  "shirt_size",                         null: false
+    t.string   "address_city",                            null: false
+    t.string   "address_one",                             null: false
+    t.string   "address_state",                           null: false
+    t.string   "address_two",                default: "", null: false
+    t.string   "address_zip",                             null: false
+    t.integer  "allergies",                               null: false
+    t.date     "birthday",                                null: false
+    t.string   "cell_phone",                              null: false
+    t.integer  "dietary_restrictions",                    null: false
+    t.string   "other_dietary_restrictions",              null: false
+    t.string   "email",                                   null: false
+    t.integer  "emergency_consent",                       null: false
+    t.string   "exercise_limitations",                    null: false
+    t.string   "first_name",                              null: false
+    t.integer  "gender",                                  null: false
+    t.string   "guardian_email",                          null: false
+    t.string   "guardian_employer",          default: "", null: false
+    t.string   "guardian_first_name",                     null: false
+    t.string   "guardian_job_title",         default: "", null: false
+    t.string   "guardian_last_name",                      null: false
+    t.string   "guardian_phone_number",                   null: false
+    t.integer  "guardian_phone_type",                     null: false
+    t.integer  "guardian_relationship",                   null: false
+    t.integer  "health_conditions",                       null: false
+    t.string   "home_phone",                              null: false
+    t.integer  "immunizations",                           null: false
+    t.boolean  "is_flagged",                              null: false
+    t.boolean  "is_primary",                              null: false
+    t.string   "last_name",                               null: false
+    t.string   "medical_guardian_name",                   null: false
+    t.string   "medications",                             null: false
+    t.string   "preferred_name",             default: "", null: false
+    t.integer  "psychologist_consent",                    null: false
+    t.integer  "registration_status",                     null: false
+    t.integer  "shirt_size",                              null: false
     t.integer  "group_id"
     t.integer  "room_id"
     t.integer  "school_id"
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
   end
 
   add_index "students", ["group_id"], name: "index_students_on_group_id", using: :btree

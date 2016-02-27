@@ -117,7 +117,10 @@
           number = forward ? page.number + 1 : page.number - 1;
           window.location = RouteConstants.forms.school(number, submission.uuid);
         };
-        var reject = (response) => this.storeErrors(response);
+        var reject = (response) => this.storeErrors({
+          errors: response.errors,
+          page: page,
+        });
         Requester.update(
           ApiConstants.submissions.school.update(uuid),
           params,
@@ -128,10 +131,17 @@
         var params = { student_submission: attributes };
         var resolve = (response) => {
           var submission = response.student_submission;
-          number = forward ? page.number + 1 : page.number - 1;
-          window.location = RouteConstants.forms.student(number, submission.uuid);
+          if (submission.is_draft) {
+            number = forward ? page.number + 1 : page.number - 1;
+            window.location = RouteConstants.forms.student(number, submission.uuid);
+          } else {
+            window.location = RouteConstants.forms.success(target, uuid);
+          }
         };
-        var reject = (response) => this.storeErrors(response);
+        var reject = (response) => this.storeErrors({
+          errors: response.errors,
+          page: page.number,
+        });
         Requester.update(
           ApiConstants.submissions.student.update(uuid),
           params,

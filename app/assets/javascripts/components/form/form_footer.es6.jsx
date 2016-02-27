@@ -80,18 +80,28 @@ class FormFooter extends Component {
 
   renderNext() {
     var page = this.props.page;
-    if (page.is_last) {
+    var uuid = this.props.uuid;
+    if (page.number === 1 && uuid === null) {
       return (
-        <FormButton
-          action={() => this.updateSubmission(true)}
-          content={'Submit'} />
+          <FormButton
+            action={() => this.createSubmission()}
+            content={'Next'} />
       );
-    } else {
-      return (
-        <FormButton
-          action={() => this.createSubmission()}
-          content={'Next'} />
-      );
+    }
+    else {
+      if (page.is_last) {
+        return (
+          <FormButton
+            action={() => this.updateSubmission(true)}
+            content={'Submit'} />
+        );
+      } else {
+        return (
+          <FormButton
+            action={() => this.updateSubmission(true)}
+            content={'Next'} />
+        );
+      }
     }
   }
 

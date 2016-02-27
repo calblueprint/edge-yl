@@ -1,6 +1,6 @@
 class FormsController < BaseController
 
-  skip_before_filter :authenticate_user, only: [:show]
+  skip_before_filter :authenticate_user, only: [:show, :update]
 
   def show
     @page = params[:page] ? params[:page].to_i : 1
