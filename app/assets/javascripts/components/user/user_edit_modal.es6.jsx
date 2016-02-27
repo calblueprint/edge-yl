@@ -70,7 +70,7 @@ class UserEditModal extends EditModal {
       <div style={this.styles.section}>
         <CardHeader
           content={'Contact Information'}
-          options={this.generateOptions() />
+          options={this.generateOptions()} />
         <div style={StyleConstants.cards.content}>
           {this.renderChild()}
         </div>
