@@ -17,7 +17,7 @@
       this.template = null;
       this.bindListeners({
         handleCloseOverlay: SchoolActions.CLOSE_OVERLAY,
-        handleDeleteContact: SchoolActions.DELETE_CONTACT,
+        handleRemoveContact: SchoolActions.REMOVE_CONTACT,
         handleStoreAttribute: SchoolActions.STORE_ATTRIBUTE,
         handleStoreComment: SchoolActions.STORE_COMMENT,
         handleStoreError: SchoolActions.STORE_ERROR,
@@ -39,8 +39,10 @@
       this.template = null;
     }
 
-    handleDeleteContact(contactId) {
-      this.school['secondary_contacts'] = this.school['secondary_contacts'].filter(function(contact) { return contact.id !== contactId });
+    handleRemoveContact(response) {
+      var contacts = this.school.secondary_contacts;
+      var id = response.contact.id;
+      this.school.secondary_contacts = contacts.filter((contact) => contact.id !== id);
     }
 
     handleStoreAttribute(attribute) {
