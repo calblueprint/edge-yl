@@ -56,7 +56,7 @@ class DropdownButton extends Component {
           padding: '8px',
         },
         hover: {
-          backgroundColor: StyleConstants.colors.turquoise,
+          backgroundColor: StyleConstants.colors.wash,
         },
       },
       container: Object.assign(

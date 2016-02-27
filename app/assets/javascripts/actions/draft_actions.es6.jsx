@@ -23,7 +23,7 @@
 
     sendEmail(template) {
       var params = { email: template.attributes };
-      params.email['is_draft'] = false;
+      params.email.is_draft = false;
       var resolve = (response) => {
         window.location = RouteConstants.emails.index();
       };

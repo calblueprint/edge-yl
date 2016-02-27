@@ -46,7 +46,7 @@ class FormInput extends Component {
   handleChange(event) {
     var question = this.props.question;
     FormActions.storeResponse(
-      question['page_id'],
+      question.page_id,
       question.id,
       event.target.value
     );

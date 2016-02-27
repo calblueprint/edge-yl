@@ -119,7 +119,7 @@ class HeaderShortcuts extends Component {
     if (this.props.active) {
       return (
         <div style={this.styles.shortcuts}>
-          <HeaderInbox count={this.props.profile['unread_count']} />
+          <HeaderInbox count={this.props.profile.unread_count} />
           <Clickable
             action={() => this.setState({ dropdown: !this.state.dropdown })}
             icon={TypeConstants.icons.settings}

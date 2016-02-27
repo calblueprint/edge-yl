@@ -1,11 +1,11 @@
 $ash: #565a5c;
-$azure: #78c1ee;
 $blue: #68b1de;
 $fog: rgba(235, 245, 255, 0.95);
 $gray: #d6d6d6;
-$indigo: #28719e;
+$green: #1abc9c;
+$indigo: #2980b9;
 $opaque: rgba(255, 255, 255, 0.875);
-$turquoise: #c1d6d8;
+$wash: #c1d6d8;
 $white: #ffffff;
 
 $font-family: 'Lato', sans-serif;
@@ -135,14 +135,14 @@ textarea {
   border: 1px solid $gray;
   box-sizing: border-box;
   resize: none;
-  -webkit-transition: border-color, box-shadow 0.375s ease-in-out;
-  -moz-transition: border-color, box-shadow 0.375s ease-in-out;
-  -ms-transition: border-color, box-shadow 0.375s ease-in-out;
-  -o-transition: border-color, box-shadow 0.375s ease-in-out;
+  -webkit-transition: border-color, box-shadow 0.25s ease-in-out;
+  -moz-transition: border-color, box-shadow 0.25s ease-in-out;
+  -ms-transition: border-color, box-shadow 0.25s ease-in-out;
+  -o-transition: border-color, box-shadow 0.25s ease-in-out;
 }
 
 input:focus,
 textarea:focus {
   border: 1px solid $blue;
-  box-shadow: 0 0 3px $blue;
+  box-shadow: 0px 0px 2px 0px $blue;
 }

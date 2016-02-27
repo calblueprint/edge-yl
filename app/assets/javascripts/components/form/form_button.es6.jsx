@@ -31,7 +31,7 @@ class FormButton extends Component {
         color: StyleConstants.colors.white,
       },
       hover: {
-        backgroundColor: StyleConstants.colors.azure,
+        backgroundColor: StyleConstants.colors.indigo,
       },
     };
   }

@@ -62,7 +62,6 @@ class ContactsCard extends Component {
       <div style={StyleConstants.cards.container(this.props.media)}>
         {this.renderHeader()}
         <div style={StyleConstants.cards.content}>
-          <h5>{'Secondary'}</h5>
           <CardAttribute
             label={'First name'}
             value={contact.first_name} />

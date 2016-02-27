@@ -28,30 +28,29 @@ class SchoolContact extends Component {
   // Render
   // --------------------------------------------------
   render() {
-    var contact = this.props.school['primary_contact'];
+    var contact = this.props.school.primary_contact;
     return (
       <div style={StyleConstants.cards.content}>
-        <h5>{'Primary'}</h5>
-          <CardAttribute
-            action={() => this.storePairing('first_name')}
-            editable={this.props.editable}
-            label={'First name'}
-            value={contact.first_name} />
-          <CardAttribute
-            action={() => this.storePairing('last_name')}
-            editable={this.props.editable}
-            label={'Last name'}
-            value={contact.last_name} />
-          <CardAttribute
-            action={() => this.storePairing('phone_number')}
-            editable={this.props.editable}
-            label={'Phone number'}
-            value={contact.phone_number} />
-          <CardAttribute
-            action={() => this.storePairing('title')}
-            editable={this.props.editable}
-            label={'Title'}
-            value={contact.title} />
+        <CardAttribute
+          action={() => this.storePairing('first_name')}
+          editable={this.props.editable}
+          label={'First name'}
+          value={contact.first_name} />
+        <CardAttribute
+          action={() => this.storePairing('last_name')}
+          editable={this.props.editable}
+          label={'Last name'}
+          value={contact.last_name} />
+        <CardAttribute
+          action={() => this.storePairing('phone_number')}
+          editable={this.props.editable}
+          label={'Phone number'}
+          value={contact.phone_number} />
+        <CardAttribute
+          action={() => this.storePairing('title')}
+          editable={this.props.editable}
+          label={'Title'}
+          value={contact.title} />
       </div>
     );
   }

@@ -67,7 +67,7 @@ class CommentCreateModal extends CreateModal {
           content={'New Comment'}
           options={this.generateOptions()} />
         <div style={StyleConstants.cards.content}>
-          <CardInput
+          <CardTextarea
             action={this.generateAction()}
             errors={template.errors.content}
             focus={true}

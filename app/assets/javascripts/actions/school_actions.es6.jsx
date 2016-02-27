@@ -7,6 +7,7 @@
     constructor() {
       this.generateActions(
         'closeOverlay',
+        'removeContact',
         'storeComment',
         'storeError',
         'storePrimary',
@@ -21,7 +22,10 @@
     // --------------------------------------------------
     createComment(template) {
       var params = { comment: template.attributes };
-      var resolve = (response) => this.storeComment(response);
+      var resolve = (response) => {
+        this.storeComment(response);
+        ViewActions.storeToast(true, 'Comment created!');
+      };
       var reject = (response) => this.storeError(response);
       Requester.post(
         ApiConstants.comments.create,
@@ -34,7 +38,10 @@
 
     createContact(template) {
       var params = { contact: template.attributes };
-      var resolve = (response) => this.storeSecondary(response);
+      var resolve = (response) => {
+        this.storeSecondary(response);
+        ViewActions.storeToast(true, 'Contact created!');
+      }
       var reject = (response) => this.storeError(response);
       Requester.post(
         ApiConstants.contacts.create,
@@ -49,14 +56,19 @@
       var response = confirm('This action cannot be undone.');
       if (response) {
         var attributes = {};
-        attributes['school_id'] = null;
+        attributes.school_id = null;
         var params = { contact: attributes };
+        var resolve = (response) => {
+          this.removeContact(response);
+          ViewActions.storeToast(true, 'Contact removed!');
+        };
         Requester.update(
           ApiConstants.contacts.update(id),
           params,
+          resolve,
         );
-        return id;
       }
+      return true;
     }
 
     fetchSchool(id) {
@@ -69,7 +81,10 @@
       var attributes = {};
       attributes[pairing.key] = pairing.value;
       var params = { contact: attributes };
-      var resolve = (response) => this.fetchSchool(response.contact.school_id);
+      var resolve = (response) => {
+        this.fetchSchool(response.contact.school_id);
+        ViewActions.storeToast(true, 'Contact updated!');
+      };
       var reject = (response) => this.storeError(response)
       Requester.update(
         ApiConstants.contacts.update(pairing.id),
@@ -83,7 +98,10 @@
     updateContact(pairing, attributes={}) {
       attributes[pairing.key] = pairing.value;
       var params = { contact: attributes };
-      var resolve = (response) => this.storePrimary(response);
+      var resolve = (response) => {
+        this.storePrimary(response);
+        ViewActions.storeToast(true, 'Contact updated!');
+      };
       var reject = (response) => this.storeError(response)
       Requester.update(
         ApiConstants.contacts.update(pairing.id),
@@ -97,7 +115,10 @@
     updateSchool(template, attributes={}) {
       attributes[template.key] = template.value;
       var params = { school: attributes };
-      var resolve = (response) => this.storeSchool(response);
+      var resolve = (response) => {
+        this.storeSchool(response);
+        ViewActions.storeToast(true, 'School updated!');
+      };
       var reject = (response) => this.storeError(response);
       Requester.update(
         ApiConstants.schools.update(template.id),

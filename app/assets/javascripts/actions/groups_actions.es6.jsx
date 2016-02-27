@@ -33,9 +33,9 @@
         letter: template.attributes.letter,
         leaderships_attributes: [],
       };
-      var leaderships = attributes['leaderships_attributes'];
-      leaderships.push(template.attributes['primary_leader']);
-      leaderships.push(template.attributes['secondary_leader']);
+      var leaderships = attributes.leaderships_attributes;
+      leaderships.push(template.attributes.primary_leader);
+      leaderships.push(template.attributes.secondary_leader);
       var params = { group: attributes };
       var resolve = (response) => this.storeGroup(response);
       var reject = (response) => this.storeError(response);
@@ -52,7 +52,7 @@
       var response = confirm('This action cannot be undone.');
       if (response) {
         var attributes = {};
-        attributes['conference_id'] = null;
+        attributes.conference_id = null;
         var params = { group: attributes };
         var resolve = (response) => this.removeGroup(response);
         Requester.update(

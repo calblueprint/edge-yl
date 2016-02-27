@@ -59,7 +59,10 @@
     updateStudent(pairing, attributes={}) {
       attributes[pairing.key] = pairing.value;
       var params = { student: attributes };
-      var resolve = (response) => this.storeStudent(response);
+      var resolve = (response) => {
+        this.storeStudent(response);
+        ViewActions.storeToast(true, 'Student updated!');
+      };
       var reject = (response) => this.storeError(response);
       Requester.update(
         ApiConstants.students.update(pairing.id),

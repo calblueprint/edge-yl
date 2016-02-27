@@ -62,25 +62,21 @@ class ContactCreateModal extends CreateModal {
           <CardInput
             action={this.generateHandler('last_name')}
             errors={errors.last_name}
-            focus={true}
             label={'Last name'}
             value={template.last_name} />
           <CardInput
             action={this.generateHandler('email')}
             errors={errors.email}
-            focus={true}
             label={'Email'}
             value={template.email} />
           <CardInput
             action={this.generateHandler('phone_number')}
             errors={errors.phone_number}
-            focus={true}
             label={'Phone number'}
             value={template.phone_number} />
           <CardInput
             action={this.generateHandler('title')}
             errors={errors.title}
-            focus={true}
             label={'Title'}
             value={template.title} />
         </div>

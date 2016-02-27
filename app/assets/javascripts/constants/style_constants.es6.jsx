@@ -4,14 +4,14 @@
     get colors() {
       return {
         ash: '#565a5c',
-        azure: '#78c1ee',
         blue: '#68b1de',
         fog: 'rgba(245, 250, 255, 0.95)',
         gray: '#d6d6d6',
-        indigo: '#28719e',
+        green: '#1abc9c',
+        indigo: '#2980b9',
         opaque: 'rgba(255, 255, 255, 0.85)',
-        red: '#ff0000',
-        turquoise: '#c1d6d8',
+        red: '#c0392b',
+        wash: '#c1d6d8',
         white: '#ffffff',
       };
     }
