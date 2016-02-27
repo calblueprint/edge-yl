@@ -50,33 +50,34 @@ class ConferenceGrid extends Component {
   // Render
   // --------------------------------------------------
   render() {
+    var conference = this.props.conference;
     return (
       <div style={StyleConstants.grids.wrap}>
         <ConferenceCard
-          conference={this.props.conference}
+          conference={conference}
           editable={this.props.editable}
           media={this.props.media}
           target={TypeConstants.conference.general} />
         <ConferenceCard
-          conference={this.props.conference}
+          conference={conference}
           editable={this.props.editable}
           media={this.props.media}
           target={TypeConstants.conference.statistic} />
         <GridHeader
-          label={'Groups in this conference'}
+          label={conference.groups.length + ' Groups in this conference'}
           options={this.generateGroupsOptions()} />
         <GroupsGrid
           editable={this.props.editable}
-          groups={this.props.conference.groups}
+          groups={conference.groups.slice(0,2)} // Only display the first 2 groups
           media={this.props.media}
           type={TypeConstants.groups.conference} />
         <GridHeader
-          label={'Rooms in this conference'}
+          label={conference.rooms.length + ' Rooms in this conference'}
           options={this.generateRoomsOptions()} />
         <RoomsGrid
           editable={this.props.editable}
           media={this.props.media}
-          rooms={this.props.conference.rooms}
+          rooms={conference.rooms.slice(0,2)} // Only display the first 2 rooms
           type={TypeConstants.rooms.conference} />
       </div>
     );

@@ -30,6 +30,7 @@
     // --------------------------------------------------
     createGroup(template) {
       var attributes = {
+        conference_id: template.attributes.conference_id,
         letter: template.attributes.letter,
         leaderships_attributes: [],
       };

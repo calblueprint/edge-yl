@@ -6,11 +6,11 @@ class ConferenceShowSerializer < ConferenceIndexSerializer
   has_many :rooms, serializer: RoomConferenceSerializer
 
   def groups
-    object.groups.first(2)
+    object.groups
   end
 
   def rooms
-    object.rooms.first(2)
+    object.rooms
   end
 
 end
