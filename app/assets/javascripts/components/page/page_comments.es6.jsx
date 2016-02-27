@@ -51,7 +51,7 @@ class PageComments extends Component {
         boxSizing: 'border-box',
       },
       hover: {
-        backgroundColor: StyleConstants.colors.turquoise,
+        backgroundColor: StyleConstants.colors.wash,
       }
     };
   }

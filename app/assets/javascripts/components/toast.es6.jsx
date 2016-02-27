@@ -26,16 +26,20 @@ class Toast extends Component {
           bottom: '0px',
           right: '0px',
           zIndex: StyleConstants.planes.seven,
-          padding: '12px',
+          padding: '12px 18px',
           margin: '12px',
           color: 'white',
-          backgroundColor: 'green',
-          boxShadow: '0px 0px 3px 0px rgba(0, 0, 0, 0.25)',
+          backgroundColor: StyleConstants.colors.green,
+          borderRadius: '1px',
+          boxShadow: '0px 0px 2px 0px rgba(0, 0, 0, 0.25)',
           opacity: '1',
-          transition: 'opacity 0.375s ease-out',
+          transition: 'opacity 0.25s ease-out',
         },
         !toast.active && { opacity: '0' },
       ),
+      content: {
+        color: StyleConstants.colors.white,
+      },
     };
   }
 
@@ -45,7 +49,9 @@ class Toast extends Component {
   render() {
     return (
       <div style={this.styles.container}>
-        {this.props.toast.content}
+        <p style={this.styles.content}>
+          {this.props.toast.content}
+        </p>
       </div>
     );
   }

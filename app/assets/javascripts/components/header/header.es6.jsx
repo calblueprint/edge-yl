@@ -40,7 +40,7 @@ class Header extends Component {
         width: '100%',
         height: StyleConstants.heights.header,
         backgroundColor: StyleConstants.colors.blue,
-        boxShadow: '0px 0px 3px 0px rgba(0, 0, 0, 0.25)',
+        boxShadow: '0px 0px 2px 0px rgba(0, 0, 0, 0.25)',
       },
     };
   }
