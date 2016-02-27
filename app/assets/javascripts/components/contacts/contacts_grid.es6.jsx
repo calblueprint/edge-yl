@@ -32,7 +32,7 @@ class ContactsGrid extends Component {
     if (!this.props.contacts.length) {
       return (
         <GridEmpty
-          content={'There are currently no contacts.'} />
+          content={'There are currently no secondary contacts.'} />
       );
     }
   }
