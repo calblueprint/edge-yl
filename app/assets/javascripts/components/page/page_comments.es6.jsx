@@ -27,7 +27,7 @@ class PageComments extends Component {
         top: '0px',
         right: '0px',
         width: StyleConstants.widths.sidebar,
-        paddingRight: '18px',
+        padding: '0px 18px 24px 0px',
         textAlign: 'right',
         boxSizing: 'border-box',
       },

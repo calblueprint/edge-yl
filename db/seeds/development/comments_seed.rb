@@ -2,7 +2,7 @@ def generate_comment(commentable_id, commentable_type)
   new_comment = Comment.create(
     commentable_id: commentable_id,
     commentable_type: commentable_type,
-    content: Faker::Lorem.sentence,
+    content: Faker::Lorem.paragraph,
     user_id: 1 + rand(4),
   )
 end
