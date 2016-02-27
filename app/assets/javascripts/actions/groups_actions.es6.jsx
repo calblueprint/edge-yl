@@ -8,11 +8,21 @@
       this.generateActions(
         'closeOverlay',
         'removeGroup',
+        'restoreGroups',
+        'storeConference',
         'storeError',
         'storeGroup',
         'storeGroups',
         'storeGroupables',
       );
+    }
+
+    // --------------------------------------------------
+    // Listeners
+    // --------------------------------------------------
+    attachListener() {
+      window.onpopstate = (event) => this.restoreGroups(event.state);
+      return true;
     }
 
     // --------------------------------------------------
@@ -60,7 +70,10 @@
     }
 
     fetchGroups(conference) {
-      var resolve = (response) => this.storeGroups(response);
+      var resolve = (response) => {
+        this.storeGroups(response);
+        this.storeConference(conference);
+      };
       Requester.get(ApiConstants.groups.index(conference.id), resolve);
       return true;
     }

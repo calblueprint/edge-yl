@@ -7,12 +7,15 @@
     constructor() {
       this.conference = {};
       this.conferences = [];
+      this.firstLoad = true;
       this.groups = [];
       this.template = null;
       this.bindListeners({
         handleCloseOverlay: GroupsActions.CLOSE_OVERLAY,
         handleRemoveGroup: GroupsActions.REMOVE_GROUP,
+        handleRestoreGroups: GroupsActions.RESTORE_GROUPS,
         handleStoreAttribute: GroupsActions.STORE_ATTRIBUTE,
+        handleStoreConference: GroupsActions.STORE_CONFERENCE,
         handleStoreError: GroupsActions.STORE_ERROR,
         handleStoreGroup: GroupsActions.STORE_GROUP,
         handleStoreGroupables: GroupsActions.STORE_GROUPABLES,
@@ -34,8 +37,37 @@
       this.groups = this.groups.filter((group) => group.id !== id);
     }
 
+    handleRestoreGroups(state) {
+      this.conference = state.conference;
+      this.groups = state.groups;
+    }
+
     handleStoreAttribute(attribute) {
       this.template.attributes[attribute.key] = attribute.value;
+    }
+
+    handleStoreConference(conference) {
+      this.conference = conference;
+      if (this.firstLoad) {
+        this.firstLoad = false;
+        window.history.replaceState(
+          {
+            conference: this.conference,
+            groups: this.groups,
+          },
+          null,
+          RouteConstants.groups.index(this.conference.id)
+        );
+      } else {
+        window.history.pushState(
+          {
+            conference: this.conference,
+            groups: this.groups,
+          },
+          null,
+          RouteConstants.groups.index(this.conference.id)
+        );
+      }
     }
 
     handleStoreGroup(response) {

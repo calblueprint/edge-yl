@@ -29,10 +29,11 @@ class GroupsPage extends Component {
   }
 
   componentDidMount() {
-    GroupsActions.fetchGroups(this.props.conference);
     GroupsStore.listen(this._listener);
     ProfileStore.listen(this._listener);
     ViewStore.listen(this._listener);
+    GroupsActions.attachListener();
+    GroupsActions.fetchGroups(this.props.conference);
     ViewActions.attachListener();
   }
 
@@ -93,7 +94,7 @@ class GroupsPage extends Component {
         <div style={StyleConstants.pages.container}>
           <div style={StyleConstants.pages.content}>
             <PageHeader
-              conference={this.props.conference}
+              conference={this.state.conference}
               conferences={this.props.conferences}
               options={this.generateOptions()}
               title={'Groups'}
