@@ -18,7 +18,10 @@
     // --------------------------------------------------
     createConference(template) {
       var params = { conference: template.attributes };
-      var resolve = (response) => this.storeConference(response);
+      var resolve = (response) => {
+        this.storeConference(response);
+        ViewActions.storeToast(true, 'Conference created!');
+      };
       var reject = (response) => this.storeError(response);
       Requester.post(
         ApiConstants.conferences.create,

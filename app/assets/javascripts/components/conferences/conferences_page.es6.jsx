@@ -78,6 +78,7 @@ class ConferencesPage extends Component {
         {this.renderOverlay()}
         <Header profile={this.selectProfile()} />
         <Sidebar profile={this.selectProfile()} />
+        <Toast toast={this.state.toast} />
         <div style={StyleConstants.pages.container}>
           <div style={StyleConstants.pages.content}>
             <PageHeader

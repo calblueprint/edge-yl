@@ -30,7 +30,10 @@
       leaderships.push(template.attributes.primary_leader);
       leaderships.push(template.attributes.secondary_leader);
       var params = { group: attributes };
-      var resolve = (response) => this.storeGroup(response);
+      var resolve = (response) => {
+        this.storeGroup(response);
+        ViewActions.storeToast(true, 'Group created!');
+      };
       var reject = (response) => this.storeError(response);
       Requester.post(
         ApiConstants.groups.create,
@@ -43,7 +46,10 @@
 
     createRoom(template) {
       var params = { room: template.attributes };
-      var resolve = (response) => this.storeRoom(response);
+      var resolve = (response) => {
+        this.storeRoom(response);
+        ViewActions.storeToast(true, 'Room created!');
+      };
       var reject = (response) => this.storeError(response);
       Requester.post(
         ApiConstants.rooms.create,
@@ -60,7 +66,10 @@
         var attributes = {};
         attributes.conference_id = null;
         var params = { group: attributes };
-        var resolve = (response) => this.removeGroup(response);
+        var resolve = (response) => {
+          this.removeGroup(response);
+          ViewActions.storeToast(true, 'Group removed!');
+        };
         Requester.update(
           ApiConstants.groups.update(id),
           params,
@@ -76,7 +85,10 @@
         var attributes = {};
         attributes.conference_id = null;
         var params = { room: attributes };
-        var resolve = (response) => this.removeRoom(response);
+        var resolve = (response) => {
+          this.removeRoom(response);
+          ViewActions.storeToast(true, 'Room removed!');
+        };
         Requester.update(
           ApiConstants.rooms.update(id),
           params,
@@ -95,7 +107,10 @@
     updateConference(pairing, attributes={}) {
       attributes[pairing.key] = pairing.value;
       var params = { conference: attributes };
-      var resolve = (response) => this.storeConference(response);
+      var resolve = (response) => {
+        this.storeConference(response);
+        ViewActions.storeToast(true, 'Conference updated!');
+      };
       var reject = (response) => this.storeError(response);
       Requester.update(
         ApiConstants.conferences.update(pairing.id),
