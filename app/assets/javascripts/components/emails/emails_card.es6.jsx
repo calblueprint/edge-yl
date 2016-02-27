@@ -34,7 +34,7 @@ class EmailsCard extends Component {
   // Helpers
   // --------------------------------------------------
   generateEmailRoute(email) {
-    if (email['is_draft']) {
+    if (email.is_draft) {
       return RouteConstants.drafts.show(email.id);
     } else {
       return RouteConstants.emails.show(email.id);
@@ -42,10 +42,10 @@ class EmailsCard extends Component {
   }
 
   generateEmailableRoute(email) {
-    if (email['emailable_type'] === 'Student') {
-      return RouteConstants.students.show(email['emailable_id']);
+    if (email.emailable_type === 'Student') {
+      return RouteConstants.students.show(email.emailable_id);
     } else if (email.emailable_type === 'School') {
-      return RouteConstants.schools.show(email['emailable_id']);
+      return RouteConstants.schools.show(email.emailable_id);
     } else {
       return '#';
     }

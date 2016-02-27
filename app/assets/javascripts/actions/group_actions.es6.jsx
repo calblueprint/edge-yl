@@ -30,7 +30,7 @@
         return false;
       }
       var attributes = {};
-      attributes['group_id'] = groupId;
+      attributes.group_id = groupId;
       var params = { student: attributes };
       var resolve = (response) => this.fetchGroup(groupId);
       Requester.update(
@@ -45,7 +45,7 @@
       var response = confirm('This action cannot be undone.');
       if (response) {
         attributes = {};
-        attributes['group_id'] = null;
+        attributes.group_id = null;
         params = { student: attributes };
         Requester.update(
           ApiConstants.students.update(id),

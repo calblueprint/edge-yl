@@ -33,7 +33,7 @@
       var response = confirm('This action cannot be undone.');
       if (response) {
         var attributes = {};
-        attributes['conference_id'] = null;
+        attributes.conference_id = null;
         var params = { room: attributes };
         var resolve = (response) => this.removeRoom(response);
         Requester.update(

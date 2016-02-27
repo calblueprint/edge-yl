@@ -50,7 +50,7 @@ class SchoolGrid extends Component {
           label={'Secondary contacts in this school'}
           options={this.generateOptions()} />
         <ContactsGrid
-          contacts={school['secondary_contacts']}
+          contacts={school.secondary_contacts}
           editable={this.props.editable}
           media={this.props.media} />
         <GridHeader label={'Students in this school'} />

@@ -52,14 +52,13 @@ class GroupCreateModal extends CreateModal {
     } else if (this.props.type === 'groups') {
       actions = GroupsActions;
     }
-
     // don't display an already selected leader as a choice for a different leadership position
-    if (attributes['primary_leader'] && groupable.id === attributes['primary_leader']['user_id']) {
-      return;
-    } else if (attributes['secondary_leader'] && groupable.id === attributes['secondary_leader']['user_id']) {
+    if ((attributes.primary_leader &&
+         groupable.id === attributes.primary_leader.user_id) ||
+        (attributes.secondary_leader &&
+         groupable.id === attributes.secondary_leader.user_id)) {
       return;
     }
-
     return {
       action: () => actions.storeAttribute(
         type === 'primary' ? 'primary_leader' : 'secondary_leader',
@@ -100,12 +99,12 @@ class GroupCreateModal extends CreateModal {
   generateValue(type) {
     var groupables = this.props.groupables;
     var attributes = this.props.template.attributes;
-    if (type === 'primary' && attributes['primary_leader']) {
-      var id = attributes['primary_leader']['user_id'];
+    if (type === 'primary' && attributes.primary_leader) {
+      var id = attributes.primary_leader.user_id;
       var user = groupables.find((groupable) => groupable.id === id);
       return user.full_name;
-    } else if (type === 'secondary' && attributes['secondary_leader']) {
-      var id = attributes['secondary_leader']['user_id'];
+    } else if (type === 'secondary' && attributes.secondary_leader) {
+      var id = attributes.secondary_leader,user_id;
       var user = groupables.find((groupable) => groupable.id === id);
       return user.full_name;
     }
@@ -132,12 +131,12 @@ class GroupCreateModal extends CreateModal {
           <CardDropdown
             action={this.generateHandler('letter')}
             choices={this.generateChoices('primary')}
-            errors={errors['leaderships_attributes']}
+            errors={errors.leaderships_attributes}
             label={'Primary Leader'}
             margin={true}
             value={this.generateValue('primary')} />
           <CardDropdown
-            errors={errors['leaderships_attributes']}
+            errors={errors.leaderships_attributes}
             choices={this.generateChoices('secondary')}
             label={'Secondary Leader'}
             margin={true}

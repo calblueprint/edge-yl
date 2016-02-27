@@ -70,7 +70,7 @@
 
     handleStorePrimary(response) {
       this.overlay = false;
-      this.school['primary_contact'] = response.contact;
+      this.school.primary_contact = response.contact;
     }
 
     handleStoreSchool(response) {
@@ -80,7 +80,7 @@
 
     handleStoreSecondary(response) {
       this.overlay = false;
-      this.school['secondary_contacts'].push(response.contact);
+      this.school.secondary_contacts.push(response.contact);
     }
 
     handleStoreTemplate(template) {
