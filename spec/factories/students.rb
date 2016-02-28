@@ -59,7 +59,7 @@ FactoryGirl.define do
     dietary_restrictions  { 0 }
     email                 { Faker::Internet.email }
     emergency_consent     { 0 }
-    exercise_limitations  { '' }
+    exercise_limitations  { 'None' }
     first_name            { Faker::Name.first_name }
     gender                { rand(3) }
     guardian_email        { Faker::Internet.email }
@@ -76,9 +76,9 @@ FactoryGirl.define do
     is_flagged            { true }
     is_primary            { true }
     last_name             { Faker::Name.last_name }
-    medical_guardian_name { '' }
-    medications           { '' }
-    other_dietary_restrictions { '' }
+    medical_guardian_name { Faker::Name.first_name }
+    medications           { 'None' }
+    other_dietary_restrictions { 'None' }
     preferred_name        { 'sonia' }
     psychologist_consent  { 0 }
     registration_status   { rand(3) }

@@ -113,7 +113,6 @@ class Student < ActiveRecord::Base
   validates :last_name, presence: true
   validates :medical_guardian_name, presence: true
   validates :medications, presence: true
-  validates :preferred_name, presence: true
   validates :psychologist_consent, presence: true
   validates :other_dietary_restrictions, presence: true
   validates :shirt_size, presence: true
