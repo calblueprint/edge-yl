@@ -34,7 +34,7 @@
 #  medical_guardian_name      :string
 #  medications                :string
 #  other_dietary_restrictions :string
-#  preferred_name             :string
+#  preferred_name             :string           default("")
 #  psychologist_consent       :integer
 #  registration_status        :integer
 #  shirt_size                 :integer
