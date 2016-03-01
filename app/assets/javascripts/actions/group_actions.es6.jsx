@@ -32,7 +32,10 @@
       var attributes = {};
       attributes.group_id = groupId;
       var params = { student: attributes };
-      var resolve = (response) => this.fetchGroup(groupId);
+      var resolve = (response) => {
+        this.fetchGroup(groupId);
+        ViewActions.storeToast(true, 'Student added!');
+      };
       Requester.update(
         ApiConstants.students.update(studentId),
         params,

@@ -21,7 +21,7 @@ class GroupsCard extends Component {
   deleteGroup() {
     if (this.props.type === TypeConstants.groups.conference) {
       ConferenceActions.deleteGroup(this.props.group.id);
-    } else if (this.props.type === TypeConstantss.group.default) {
+    } else if (this.props.type === TypeConstants.groups.default) {
       GroupsActions.deleteGroup(this.props.group.id);
     }
   }

@@ -38,7 +38,10 @@
       leaderships.push(template.attributes.primary_leader);
       leaderships.push(template.attributes.secondary_leader);
       var params = { group: attributes };
-      var resolve = (response) => this.storeGroup(response);
+      var resolve = (response) => {
+        this.storeGroup(response);
+        ViewActions.storeToast(true, 'Group created!');
+      };
       var reject = (response) => this.storeError(response);
       Requester.post(
         ApiConstants.groups.create,
@@ -55,7 +58,10 @@
         var attributes = {};
         attributes.conference_id = null;
         var params = { group: attributes };
-        var resolve = (response) => this.removeGroup(response);
+        var resolve = (response) => {
+          this.removeGroup(response);
+          ViewActions.storeToast(true, 'Group removed!');
+        };
         Requester.update(
           ApiConstants.groups.update(id),
           params,
