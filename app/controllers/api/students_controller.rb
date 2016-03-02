@@ -7,17 +7,6 @@ class Api::StudentsController < Api::BaseController
   has_scope :is_primary, only: [:index]
   has_scope :sort, only: [:index]
 
-  def create
-    student = Student.new student_params
-    if student.save
-      render json: student,
-             serializer: StudentBaseSerializer,
-             status: :created
-    else
-      unprocessable_response student
-    end
-  end
-
   def index
     respond_to do |format|
       format.csv { index_csv }

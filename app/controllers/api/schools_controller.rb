@@ -1,19 +1,5 @@
 class Api::SchoolsController < Api::BaseController
 
-  skip_before_filter :authenticate_user, only: [:create]
-
-  def create
-    school = School.new school_params
-    if school.save
-      SchoolMailer.welcome(school).deliver_now
-      render json: school,
-             serializer: SchoolBaseSerializer,
-             status: :created
-    else
-      unprocessable_response school
-    end
-  end
-
   def index
     respond_to do |format|
       format.csv { index_csv }
