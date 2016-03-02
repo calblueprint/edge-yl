@@ -9,6 +9,7 @@
 
     get conferences() {
       return {
+        assignStudentsToGroups: (id) => `/api/conferences/assign_students_to_groups?conference_id=${id}`,
         create: '/api/conferences',
         index: (page) => `/api/conferences?page=${page}`,
         show: (id) => `/api/conferences/${id}`,

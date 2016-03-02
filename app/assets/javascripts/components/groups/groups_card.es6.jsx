@@ -90,6 +90,11 @@ class GroupsCard extends Component {
             type={'h4'}
             value={group.full_name} />
           {this.renderLeaderships()}
+          <CardAttribute
+            clickable={false}
+            label={'Student Count'}
+            type={'h6'}
+            value={group.students_count} />
         </div>
       </div>
     );

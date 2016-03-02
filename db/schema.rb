@@ -259,6 +259,7 @@ ActiveRecord::Schema.define(version: 20160224064905) do
     t.integer  "psychologist_consent",                    null: false
     t.integer  "registration_status",                     null: false
     t.integer  "shirt_size",                              null: false
+    t.integer  "conference_id"
     t.integer  "group_id"
     t.integer  "room_id"
     t.integer  "school_id"
@@ -266,6 +267,7 @@ ActiveRecord::Schema.define(version: 20160224064905) do
     t.datetime "updated_at",                              null: false
   end
 
+  add_index "students", ["conference_id"], name: "index_students_on_conference_id", using: :btree
   add_index "students", ["group_id"], name: "index_students_on_group_id", using: :btree
   add_index "students", ["room_id"], name: "index_students_on_room_id", using: :btree
   add_index "students", ["school_id"], name: "index_students_on_school_id", using: :btree

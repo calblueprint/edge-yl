@@ -1,5 +1,13 @@
 class Api::ConferencesController < Api::BaseController
 
+  def assign_students_to_groups
+    conference = Conference.find(params[:conference_id])
+                           .assign_students_to_groups
+    render json: conference,
+           serializer: ConferenceShowSerializer,
+           status: :created
+  end
+
   def create
     conference = Conference.new conference_params
     if conference.save

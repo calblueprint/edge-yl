@@ -91,7 +91,7 @@ class CardAttribute extends Component {
   }
 
   renderValue() {
-    var value = this.props.value ? this.props.value : 'n/a';
+    var value = this.props.value !== null ? this.props.value : 'n/a';
     if (this.props.clickable) {
       return (
         <Clickable

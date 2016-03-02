@@ -15,7 +15,8 @@ end
 
 Student.all.each do |student|
   group = Group.find(rand(1..4))
+  student.conference_id = group.conference_id
   student.group = group
   student.save
-  puts "Assigned #{student.full_name} to #{group.full_name}."
+  puts "Assigned #{student.full_name} to #{group.full_name} and #{group.conference.name}."
 end

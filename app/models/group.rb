@@ -50,8 +50,12 @@ class Group < ActiveRecord::Base
           row << secondary_leader
         end
         csv << row
-      end 
+      end
     end
+  end
+
+  def students_count
+    students.count
   end
 
   private

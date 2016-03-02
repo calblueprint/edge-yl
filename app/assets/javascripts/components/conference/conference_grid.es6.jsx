@@ -15,17 +15,22 @@ class ConferenceGrid extends Component {
   // Helpers
   // --------------------------------------------------
   generateGroupsOptions() {
+    var conference = this.props.conference;
     return [
       {
         action: () => ConferenceActions.storeTemplate(
           TypeConstants.models.group,
-          { conference_id: this.props.conference.id },
+          { conference_id: conference.id },
         ),
         content: 'New',
       },
       {
+        action: () => ConferenceActions.assignStudentsToGroups(conference.id),
+        content: 'Assign Students to Groups',
+      },
+      {
         content: 'All',
-        route: RouteConstants.groups.index(this.props.conference.id),
+        route: RouteConstants.groups.index(conference.id),
       },
     ];
   }

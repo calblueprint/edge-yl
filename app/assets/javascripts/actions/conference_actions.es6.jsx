@@ -21,6 +21,19 @@
     // --------------------------------------------------
     // Requests
     // --------------------------------------------------
+    assignStudentsToGroups(id){
+      var params = { conference_id: id };
+      var resolve = (response) => this.storeConference(response);
+      var reject = (response) => this.storeError(response);
+      Requester.update(
+        ApiConstants.conferences.assignStudentsToGroups(id),
+        params,
+        resolve,
+        reject,
+      );
+      return true;
+    }
+
     createGroup(template) {
       var attributes = {
         conference_id: template.attributes.conference_id,

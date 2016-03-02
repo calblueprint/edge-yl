@@ -34,6 +34,7 @@
   end
 
   namespace :api do
+    patch '/conferences/assign_students_to_groups', to: 'conferences#assign_students_to_groups'
     get '/forms/:target', to: 'forms#show'
     get '/searchables/search', to: 'searchables#search'
     get '/searchables/students', to: 'searchables#students'
