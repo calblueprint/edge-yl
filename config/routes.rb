@@ -54,9 +54,9 @@
     resources :leaderships, only: [:update]
     resources :profiles, only: [:update]
     resources :rooms, only: [:create, :index, :show, :update]
-    resources :schools, only: [:create, :index, :show, :update]
+    resources :schools, only: [:index, :show, :update]
     resources :school_submissions, only: [:create]
-    resources :students, only: [:create, :index, :show, :update]
+    resources :students, only: [:index, :show, :update]
     resources :student_submissions, only: [:create]
     resources :users, only: [:index, :show, :update] do
       get '/groupables', on: :collection, to: 'users#groupables'

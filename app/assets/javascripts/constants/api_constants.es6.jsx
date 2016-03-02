@@ -104,7 +104,6 @@
 
     get schools() {
       return {
-        create: '/api/schools',
         index: (page) => `/api/schools?page=${page}`,
         show: (id) => `/api/schools/${id}`,
         update: (id) => `/api/schools/${id}`,
@@ -120,7 +119,6 @@
 
     get students() {
       return {
-        create: '/api/students',
         index: (page, query={}) => {
           var route = `/api/students?page=${page}`;
           Object.keys(query).map((key) => {
