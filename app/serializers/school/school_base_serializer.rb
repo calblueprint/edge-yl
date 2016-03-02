@@ -1,5 +1,6 @@
 class SchoolBaseSerializer < BaseSerializer
 
-  attributes :id, :name
+  attributes :id,
+             :name
 
 end

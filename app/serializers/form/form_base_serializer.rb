@@ -1,5 +1,6 @@
 class FormBaseSerializer < BaseSerializer
 
-  attributes :id, :title
+  attributes :id,
+             :title
 
 end

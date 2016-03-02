@@ -1,5 +1,6 @@
 class ConferenceBaseSerializer < BaseSerializer
 
-  attributes :id, :name
+  attributes :id,
+             :name
 
 end
