@@ -39,14 +39,23 @@ class StudentsCard extends Component {
   renderGroup() {
     if (this.props.type !== TypeConstants.students.group) {
       var group = this.props.student.group;
-      return (
-        <CardAttribute
-          clickable={true}
-          label={'Group'}
-          route={RouteConstants.groups.show(group.id)}
-          type={'h6'}
-          value={group.full_name} />
-      );
+      if (group) {
+        return (
+          <CardAttribute
+            clickable={true}
+            label={'Group'}
+            route={RouteConstants.groups.show(group.id)}
+            type={'h6'}
+            value={group.full_name} />
+        );
+      } else {
+        return (
+          <CardAttribute
+            label={'Group'}
+            type={'h6'}
+            value={group} />
+        );
+      }
     }
   }
 

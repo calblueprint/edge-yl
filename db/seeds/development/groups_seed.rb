@@ -16,7 +16,9 @@ end
 Student.all.each do |student|
   group = Group.find(rand(1..4))
   student.conference_id = group.conference_id
-  student.group = group
+  if rand(10) > 2 # Create some students with no group, but a valid conference.
+    student.group = group
+  end
   student.save
   puts "Assigned #{student.full_name} to #{group.full_name} and #{group.conference.name}."
 end

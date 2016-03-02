@@ -59,4 +59,12 @@ class Conference < ActiveRecord::Base
     rooms.count
   end
 
+  def students_count
+    students.count
+  end
+
+  def unassigned_students_count
+    students.where(group_id: nil).count
+  end
+
 end
