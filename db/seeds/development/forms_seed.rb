@@ -4,9 +4,9 @@ school_form = Form.create(
 ) do |form|
   Page.create(
     form: form,
-    description: 'School Information description',
+    description: 'General information about your school.',
     number: 1,
-    title: 'School Information',
+    title: 'Step 1 - School Information',
   ) do |page|
     Question.create(
       key: 'name',
@@ -59,6 +59,13 @@ school_form = Form.create(
       style: Question.styles[:input],
       title: 'School website',
     )
+  end
+  Page.create(
+    form: form,
+    description: 'General information about the primary contact for your school.',
+    number: 2,
+    title: 'Step 2 - Contact Information',
+  ) do |page|
     Question.create(
       key: 'contact_first_name',
       page: page,
@@ -97,10 +104,10 @@ school_form = Form.create(
   end
   Page.create(
     form: form,
-    description: 'Primary Student description',
+    description: 'General information about the primary student from your school.',
     is_last: true,
-    number: 2,
-    title: 'Primary Student Information',
+    number: 3,
+    title: 'Step 3 - Primary Student Information',
   ) do |page|
     Question.create(
       key: 'student_first_name',
@@ -122,6 +129,14 @@ school_form = Form.create(
       placeholder: '...',
       style: Question.styles[:input],
       title: 'Student address one',
+    )
+    Question.create(
+      is_required: false,
+      key: 'student_address_two',
+      page: page,
+      placeholder: '...',
+      style: Question.styles[:input],
+      title: 'Student address two',
     )
     Question.create(
       key: 'student_address_city',
@@ -159,18 +174,18 @@ school_form = Form.create(
       title: 'Student cell phone',
     )
     Question.create(
-      key: 'student_gender',
-      options: Student.genders.keys,
-      page: page,
-      style: Question.styles[:dropdown],
-      title: 'Student gender',
-    )
-    Question.create(
       key: 'student_birthday',
       page: page,
       placeholder: '...',
       style: Question.styles[:input],
       title: 'Student birthday',
+    )
+    Question.create(
+      key: 'student_gender',
+      options: Student.genders.keys,
+      page: page,
+      style: Question.styles[:dropdown],
+      title: 'Student gender',
     )
     Question.create(
       key: 'student_shirt_size',

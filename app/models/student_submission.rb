@@ -6,7 +6,7 @@
 #  address_city               :string
 #  address_one                :string
 #  address_state              :string
-#  address_two                :string
+#  address_two                :string           default("")
 #  address_zip                :string
 #  allergies                  :integer
 #  birthday                   :date
@@ -44,7 +44,7 @@
 class StudentSubmission < ActiveRecord::Base
 
   before_validation :try_submit, on: :update
-  before_validation :validate_page, on: [:create, :update]
+  before_validation :validate_page, on: :update
 
   private
 
@@ -128,16 +128,23 @@ class StudentSubmission < ActiveRecord::Base
         psychologist_consent: 0,
         shirt_size: 1,
       )
-      if student.save!
-        self.is_draft = false
+      if student.save
+        true
+      else
+        self.is_draft = true
         true
       end
     end
   end
 
   def validate_page
-    attributes_hash = { 1 => attributes_one, 2 => attributes_two, 3 => attributes_three }
-    validator = StudentValidator.new(attributes_hash[current_page], current_page)
+    attributes_hash = {
+      1 => attributes_one,
+      2 => attributes_two,
+      3 => attributes_three,
+    }
+    current_attributes = attributes_hash[current_page]
+    validator = StudentValidator.new(current_attributes, current_page)
     validator.valid?
     response = validator.errors.to_hash
     response.each do |attribute, message|

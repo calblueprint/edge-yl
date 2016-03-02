@@ -104,11 +104,9 @@
       var attributes = {};
       var questions = page.questions;
       questions.map((question) => attributes[question.key] = question.value);
-      attributes['current_page'] = page.number;
-      if (page['is_last'] && forward) {
-        attributes['is_draft'] = false;
-      } else {
-        attributes['is_draft'] = true;
+      attributes.current_page = page.number;
+      if (page.is_last && forward) {
+        attributes.is_draft = false;
       }
       if (target === 'school') {
         var params = { school_submission: attributes };
@@ -119,7 +117,7 @@
         };
         var reject = (response) => this.storeErrors({
           errors: response.errors,
-          page: page,
+          page: page.number,
         });
         Requester.update(
           ApiConstants.submissions.school.update(uuid),

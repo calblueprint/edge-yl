@@ -5,7 +5,7 @@ class CreateStudentSubmissions < ActiveRecord::Migration
       t.string  :address_city
       t.string  :address_one
       t.string  :address_state
-      t.string  :address_two
+      t.string  :address_two, default: ''
       t.string  :address_zip
       t.integer :allergies
       t.date    :birthday
@@ -18,9 +18,9 @@ class CreateStudentSubmissions < ActiveRecord::Migration
       t.string  :first_name
       t.integer :gender
       t.string  :guardian_email
-      t.string  :guardian_employer
+      t.string  :guardian_employer, default: ''
       t.string  :guardian_first_name
-      t.string  :guardian_job_title
+      t.string  :guardian_job_title, default: ''
       t.string  :guardian_last_name
       t.string  :guardian_phone_number
       t.integer :guardian_phone_type
