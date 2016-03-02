@@ -28,6 +28,12 @@ class ConferenceStatistic extends Component {
         <CardAttribute
           label={'Males count'}
           value={conference.males_count} />
+        <CardAttribute
+          label={'Students count'}
+          value={conference.students_count} />
+        <CardAttribute
+          label={'Students without a group'}
+          value={conference.unassigned_students_count} />
       </div>
     );
   }
