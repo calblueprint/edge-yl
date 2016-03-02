@@ -15,10 +15,6 @@ class StudentSearchInput extends SearchInput {
   // --------------------------------------------------
   // Handlers
   // --------------------------------------------------
-  handleBlur(event) { // TODO: Make this more general (SearchActions?)
-    GroupActions.storeSearch(false);
-  }
-
   handleFocus(event) {
     GroupActions.storeSearch(true);
   }
@@ -50,7 +46,6 @@ class StudentSearchInput extends SearchInput {
   // --------------------------------------------------
   componentDidMount() {
     var input = ReactDOM.findDOMNode(this.refs.input);
-    input.onblur = (event) => this.handleBlur(event);
     input.onfocus = (event) => this.handleFocus(event);
     input.oninput = (event) => this.handleInput(event);
   }

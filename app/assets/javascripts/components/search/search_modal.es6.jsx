@@ -39,10 +39,6 @@ class SearchModal extends EditModal {
     ];
   }
 
-  updateStudent() {
-    StudentActions.updateStudent(this.props.pairing);
-  }
-
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
