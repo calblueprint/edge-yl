@@ -23,6 +23,12 @@ class SchoolValidator
                 :student_cell_phone,
                 :student_email,
                 :student_first_name,
+                :student_guardian_first_name,
+                :student_guardian_email,
+                :student_guardian_last_name,
+                :student_guardian_phone_number,
+                :student_guardian_phone_type,
+                :student_guardian_relationship,
                 :student_home_phone,
                 :student_gender,
                 :student_last_name,
@@ -48,6 +54,12 @@ class SchoolValidator
   validates :student_cell_phone, if: :page_three?, presence: true
   validates :student_email, if: :page_three?, presence: true
   validates :student_first_name, if: :page_three?, presence: true
+  validates :student_guardian_first_name, if: :page_three?, presence: true
+  validates :student_guardian_email, if: :page_three?, presence: true
+  validates :student_guardian_last_name, if: :page_three?, presence: true
+  validates :student_guardian_phone_number, if: :page_three?, presence: true
+  validates :student_guardian_phone_type, if: :page_three?, presence: true
+  validates :student_guardian_relationship, if: :page_three?, presence: true
   validates :student_home_phone, if: :page_three?, presence: true
   validates :student_gender, if: :page_three?, presence: true
   validates :student_last_name, if: :page_three?, presence: true

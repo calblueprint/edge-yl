@@ -13,6 +13,12 @@ class CreateSchoolSubmissions < ActiveRecord::Migration
       t.string  :contact_phone_number
       t.string  :contact_title
       t.integer :current_page, default: 0, null: false
+      t.string  :student_guardian_first_name
+      t.string  :student_guardian_email
+      t.string  :student_guardian_last_name
+      t.string  :student_guardian_phone_number
+      t.integer :student_guardian_phone_type
+      t.integer :student_guardian_relationship
       t.boolean :is_draft, default: true, null: false
       t.string  :name
       t.string  :student_address_city

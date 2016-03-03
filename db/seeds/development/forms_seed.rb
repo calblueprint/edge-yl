@@ -201,8 +201,51 @@ school_form = Form.create(
       style: Question.styles[:dropdown],
       title: 'Student shirt size',
     )
+        Question.create(
+      key: 'student_guardian_first_name',
+      page: page,
+      placeholder: '...',
+      style: Question.styles[:input],
+      title: 'Parent/Guardian first name',
+    )
+    Question.create(
+      key: 'student_guardian_last_name',
+      page: page,
+      placeholder: '...',
+      style: Question.styles[:input],
+      title: 'Parent/Guardian last name',
+    )
+    Question.create(
+      key: 'student_guardian_email',
+      page: page,
+      placeholder: '...',
+      style: Question.styles[:input],
+      title: 'Parent/Guardian email',
+    )
+    Question.create(
+      key: 'student_guardian_phone_number',
+      page: page,
+      placeholder: '...',
+      style: Question.styles[:input],
+      title: 'Parent/Guardian phone number',
+    )
+    Question.create(
+      key: 'student_guardian_phone_type',
+      options: Student.guardian_phone_types.keys,
+      page: page,
+      style: Question.styles[:dropdown],
+      title: 'Parent/Guardian phone type',
+    )
+    Question.create(
+      key: 'student_guardian_relationship',
+      options: Student.guardian_relationships.keys,
+      page: page,
+      style: Question.styles[:dropdown],
+      title: 'Parent/Guardian relationship',
+    )
   end
 end
+
 puts "Created form #{school_form.title}."
 
 student_form = Form.create(

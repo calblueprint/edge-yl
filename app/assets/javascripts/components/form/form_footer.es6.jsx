@@ -56,6 +56,7 @@ class FormFooter extends Component {
   }
 
   updateSubmission(forward) {
+    console.log('updateSubmission in form_footer called');
     FormActions.updateSubmission(
       this.props.page,
       this.props.target,
@@ -89,19 +90,11 @@ class FormFooter extends Component {
       );
     }
     else {
-      if (page.is_last) {
-        return (
-          <FormButton
-            action={() => this.updateSubmission(true)}
-            content={'Submit'} />
-        );
-      } else {
-        return (
-          <FormButton
-            action={() => this.updateSubmission(true)}
-            content={'Next'} />
-        );
-      }
+      return (
+        <FormButton
+          action={() => this.updateSubmission(true)}
+          content={'Next'} />
+      );
     }
   }
 
