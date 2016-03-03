@@ -5,25 +5,25 @@ class EmailsGrid extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      emails: React.PropTypes.array.isRequired,
       media: React.PropTypes.string.isRequired,
+      threads: React.PropTypes.array.isRequired,
     };
   }
 
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
-  renderCard(email) {
+  renderCard(thread) {
     return (
       <EmailsCard
-        email={email}
-        key={email.id}
+        thread={thread}
+        key={thread.id}
         media={this.props.media} />
     );
   }
 
   renderCards() {
-    return this.props.emails.map((email) => this.renderCard(email));
+    return this.props.threads.map((thread) => this.renderCard(thread));
   }
 
   render() {

@@ -12,6 +12,7 @@ class CreateEmails < ActiveRecord::Migration
       t.string :recipient, null: false
       t.string :to, null: false
 
+      t.references :email_thread, index: true
       t.references :emailable, index: true, polymorphic: true
       t.references :user, index: true
 

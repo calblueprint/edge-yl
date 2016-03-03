@@ -21,19 +21,22 @@ class Api::EmailsController < Api::BaseController
   end
 
   def index
-    emails = Email.page params[:page]
-    render json: emails,
+    threads = EmailThread.page params[:page]
+    render json: threads,
            serializer: PaginatedSerializer,
-           each_serializer: EmailIndexSerializer
+           each_serializer: EmailThreadIndexSerializer
   end
 
   def show
-    email = Email.find params[:id]
-    if email[:is_unread]
-      email[:is_unread] = false
-      email.save
+    thread = EmailThread.find params[:id]
+    thread_emails = Email.where email_thread: thread
+    thread_emails.each do |e|
+      if e[:is_unread]
+        e[:is_unread] = false
+        e.save
+      end
     end
-    render json: email, serializer: EmailShowSerializer
+    render json: thread, serializer: EmailThreadShowSerializer
   end
 
   private

@@ -5,7 +5,7 @@
     // Setup
     // --------------------------------------------------
     constructor() {
-      this.emails = [];
+      this.threads = [];
       this.pagination = {
         current: 1,
         limit: 1,
@@ -19,7 +19,7 @@
     // Handlers
     // --------------------------------------------------
     handleStoreEmails(response) {
-      this.emails = response.emails;
+      this.threads = response.emails;
       this.pagination = response.meta.pagination;
     }
   }

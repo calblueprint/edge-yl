@@ -12,6 +12,7 @@
 #  subject        :string           not null
 #  recipient      :string           not null
 #  to             :string           not null
+#  email_id       :integer
 #  emailable_id   :integer
 #  emailable_type :string
 #  user_id        :integer
@@ -23,11 +24,20 @@ class Email < ActiveRecord::Base
 
   self.default_scope { order('updated_at DESC') }
 
+  belongs_to :email_thread
   belongs_to :emailable, polymorphic: true
   belongs_to :user
 
   before_validation :set_initials, on: :create
   before_validation :try_send, on: :update
+
+  def emailable_name
+    if self.emailable_type == School.name
+      return School.find(self.emailable_id).primary_contact.full_name
+    elsif self.emailable_type == Student.name
+      return Student.find(self.emailable_id).full_name
+    end
+  end
 
   def self.draft(params, user)
     draft = Email.new params
@@ -57,6 +67,7 @@ class Email < ActiveRecord::Base
   def set_initials
     self.content ||= ''
     self.subject ||= ''
+    self.email_thread ||= EmailThread.create
 
     if (emailable = find_emailable(recipient))
       self.emailable_id = emailable.id

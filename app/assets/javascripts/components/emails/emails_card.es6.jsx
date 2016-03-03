@@ -5,8 +5,8 @@ class EmailsCard extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      email: React.PropTypes.object.isRequired,
       media: React.PropTypes.string.isRequired,
+      thread: React.PropTypes.object.isRequired,
     };
   }
 
@@ -51,25 +51,41 @@ class EmailsCard extends Component {
     }
   }
 
+  generateEmailParticipants(thread) {
+    var participants = {};
+    thread.emails.map((email) => {
+      participants[email['emailable_name']] = email;
+    });
+    participants = Object.keys(participants).map((k) => {
+      var email = participants[k];
+      return (
+        <Clickable
+          content={email['emailable_name']}
+          route={this.generateEmailableRoute(email)}
+          type={'h6'} />
+      );
+    });
+    return participants;
+  }
+
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
   render() {
-    var email = this.props.email;
+    var thread = this.props.thread;
     return (
       <div style={StyleConstants.cards.container('small')}>
         <div style={this.styles.container}>
-          <Clickable
-            content={email.from}
-            route={this.generateEmailableRoute(email)}
-            type={'h6'} />
+          <div style={this.styles.section}>
+            {this.generateEmailParticipants(thread)}
+          </div>
           <div style={this.styles.section}>
             <Clickable
-              content={email.subject}
-              route={this.generateEmailRoute(email)}
+              content={thread.subject}
+              route={this.generateEmailRoute(thread)}
               type={'h6'} />
             <p style={this.styles.divider}>{'--'}</p>
-            <p>{email.content}</p>
+            <p>{thread.content}</p>
           </div>
         </div>
       </div>

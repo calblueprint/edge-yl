@@ -46,18 +46,39 @@ class EmailPage extends Component {
            this.props.profile;
   }
 
+  sendReply() {
+    EmailActions.createReply(this.state.thread.emails[0], this.state.thread.id);
+  }
+
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
+  renderEmails() {
+    return this.state.thread.emails.map((email) => {
+      return (<EmailGrid email={email} />);
+    });
+  }
+
+  renderReply() {
+    if(this.state.thread.emails.length > 0 &&
+      this.state.thread.emails[0].sender != this.selectProfile().email) {
+      return (
+        <FormButton
+          action={() => this.sendReply()}
+          content={'Reply'} />
+      );
+    }
+  }
+
   render() {
-    var email = this.state.email;
     return (
       <div style={StyleConstants.pages.wrapper}>
         <Header profile={this.selectProfile()} />
         <Sidebar profile={this.selectProfile()} />
         <div style={StyleConstants.pages.container}>
           <div style={StyleConstants.pages.content}>
-            <EmailGrid email={this.state.email} />
+            {this.renderReply()}
+            {this.renderEmails()}
           </div>
         </div>
       </div>

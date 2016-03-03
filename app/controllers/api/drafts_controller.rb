@@ -37,6 +37,7 @@ class Api::DraftsController < Api::BaseController
   def draft_params
     params.require(:email).permit(
       :content,
+      :email_thread_id,
       :is_draft,
       :recipient,
       :sender,

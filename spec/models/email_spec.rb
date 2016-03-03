@@ -12,6 +12,7 @@
 #  subject        :string           not null
 #  recipient      :string           not null
 #  to             :string           not null
+#  email_id       :integer
 #  emailable_id   :integer
 #  emailable_type :string
 #  user_id        :integer

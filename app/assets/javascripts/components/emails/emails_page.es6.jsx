@@ -66,7 +66,7 @@ class EmailsPage extends Component {
           <div style={StyleConstants.pages.content}>
             <GridHeader label={'Inbox'} />
             <EmailsGrid
-              emails={this.state.emails}
+              threads={this.state.threads}
               media={this.state.media} />
             <PageNavigator
               action={(page) => this.changePage(page)}

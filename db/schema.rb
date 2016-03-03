@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160224064905) do
+ActiveRecord::Schema.define(version: 20160226234324) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,23 +55,30 @@ ActiveRecord::Schema.define(version: 20160224064905) do
 
   add_index "contacts", ["school_id"], name: "index_contacts_on_school_id", using: :btree
 
+  create_table "email_threads", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "emails", force: :cascade do |t|
-    t.string   "content",                        null: false
-    t.string   "from",                           null: false
-    t.boolean  "is_draft",       default: false, null: false
-    t.boolean  "is_sent",        default: false, null: false
-    t.boolean  "is_unread",      default: true,  null: false
-    t.string   "sender",                         null: false
-    t.string   "subject",                        null: false
-    t.string   "recipient",                      null: false
-    t.string   "to",                             null: false
+    t.string   "content",                         null: false
+    t.string   "from",                            null: false
+    t.boolean  "is_draft",        default: false, null: false
+    t.boolean  "is_sent",         default: false, null: false
+    t.boolean  "is_unread",       default: true,  null: false
+    t.string   "sender",                          null: false
+    t.string   "subject",                         null: false
+    t.string   "recipient",                       null: false
+    t.string   "to",                              null: false
+    t.integer  "email_thread_id"
     t.integer  "emailable_id"
     t.string   "emailable_type"
     t.integer  "user_id"
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
   end
 
+  add_index "emails", ["email_thread_id"], name: "index_emails_on_email_thread_id", using: :btree
   add_index "emails", ["emailable_type", "emailable_id"], name: "index_emails_on_emailable_type_and_emailable_id", using: :btree
   add_index "emails", ["user_id"], name: "index_emails_on_user_id", using: :btree
 

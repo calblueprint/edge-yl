@@ -5,7 +5,9 @@
     // Setup
     // --------------------------------------------------
     constructor() {
-      this.email = {};
+      this.thread = {
+        emails: []
+      };
       this.template = {};
       this.bindListeners({
         handleStoreEmail: EmailActions.STORE_EMAIL,
@@ -17,7 +19,7 @@
     // Handlers
     // --------------------------------------------------
     handleStoreEmail(response) {
-      this.email = response.email;
+      this.thread = response.email_thread;
     }
 
     handleStoreError(response) {
