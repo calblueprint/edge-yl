@@ -16,19 +16,21 @@
 #  current_page          :integer          default(0), not null
 #  is_draft              :boolean          default(TRUE), not null
 #  name                  :string
+#  student_address_city  :string
 #  student_address_one   :string
 #  student_address_state :string
 #  student_address_two   :string           default("")
 #  student_address_zip   :string
 #  student_birthday      :date
 #  student_cell_phone    :string
+#  student_email         :string
 #  student_first_name    :string
 #  student_gender        :integer
 #  student_home_phone    :string
 #  student_last_name     :string
 #  student_shirt_size    :integer
 #  uuid                  :uuid
-#  website               :string
+#  website               :string           default("")
 #
 
 class SchoolSubmission < ActiveRecord::Base
@@ -66,6 +68,7 @@ class SchoolSubmission < ActiveRecord::Base
       student_address_zip: student_address_zip,
       student_birthday: student_birthday,
       student_cell_phone: student_cell_phone,
+      student_email: student_email,
       student_first_name: student_first_name,
       student_gender: student_gender,
       student_home_phone: student_home_phone,
@@ -103,6 +106,7 @@ class SchoolSubmission < ActiveRecord::Base
           address_zip: student_address_zip,
           birthday: student_birthday,
           cell_phone: student_cell_phone,
+          email: student_email,
           first_name: student_first_name,
           gender: student_gender,
           home_phone: student_home_phone,
