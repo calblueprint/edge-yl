@@ -46,6 +46,15 @@ class StudentSubmission < ActiveRecord::Base
   before_validation :try_submit, on: :update
   before_validation :validate_page, on: :update
 
+  def form_url
+    # TODO (Warren): !!!
+    "http://localhost:3000/forms/student/#{uuid}"
+  end
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
+
   private
 
   def attributes_one

@@ -115,8 +115,9 @@ class SchoolSubmission < ActiveRecord::Base
         )
         if contact.save && student_submission.save
           # TODO(Warren): Is there a better way to set the uuid?
-          StudentSubmission.find student_submission.id
-          if SchoolMailer.create(school).deliver_now
+          student_submission = StudentSubmission.find student_submission.id
+          if SchoolMailer.create(school).deliver_now &&
+             StudentMailer.create(student_submission).deliver_now
             true
           else
             false

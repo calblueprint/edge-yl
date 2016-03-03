@@ -55,6 +55,7 @@ class Api::SchoolSubmissionsController < Api::BaseController
       :student_address_zip,
       :student_birthday,
       :student_cell_phone,
+      :student_email,
       :student_first_name,
       :student_home_phone,
       :student_gender,
