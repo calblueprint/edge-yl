@@ -21,6 +21,7 @@ class SchoolValidator
                 :student_address_zip,
                 :student_birthday,
                 :student_cell_phone,
+                :student_email,
                 :student_first_name,
                 :student_home_phone,
                 :student_gender,
@@ -45,6 +46,7 @@ class SchoolValidator
   validates :student_address_zip, if: :page_three?, presence: true
   validates :student_birthday, if: :page_three?, presence: true
   validates :student_cell_phone, if: :page_three?, presence: true
+  validates :student_email, if: :page_three?, presence: true
   validates :student_first_name, if: :page_three?, presence: true
   validates :student_home_phone, if: :page_three?, presence: true
   validates :student_gender, if: :page_three?, presence: true

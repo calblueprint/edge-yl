@@ -174,6 +174,13 @@ school_form = Form.create(
       title: 'Student cell phone',
     )
     Question.create(
+      key: 'student_email',
+      page: page,
+      placeholder: '...',
+      style: Question.styles[:input],
+      title: 'Student email',
+    )
+    Question.create(
       key: 'student_birthday',
       page: page,
       placeholder: '...',

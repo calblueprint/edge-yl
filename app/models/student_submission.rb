@@ -19,9 +19,9 @@
 #  first_name                 :string
 #  gender                     :integer
 #  guardian_email             :string
-#  guardian_employer          :string
+#  guardian_employer          :string           default("")
 #  guardian_first_name        :string
-#  guardian_job_title         :string
+#  guardian_job_title         :string           default("")
 #  guardian_last_name         :string
 #  guardian_phone_number      :string
 #  guardian_phone_type        :integer

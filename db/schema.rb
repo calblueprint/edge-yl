@@ -180,6 +180,7 @@ ActiveRecord::Schema.define(version: 20160224064905) do
     t.string  "student_address_zip"
     t.date    "student_birthday"
     t.string  "student_cell_phone"
+    t.string  "student_email"
     t.string  "student_first_name"
     t.integer "student_gender"
     t.string  "student_home_phone"

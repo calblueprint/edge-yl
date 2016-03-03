@@ -1,8 +1,10 @@
 class SchoolMailer < ApplicationMailer
 
-  def welcome(school)
+  def create(school)
     @school = school
-    mail to: school.contact_email, subject: "Welcome #{school.name}!"
+    @primary_contact = school.primary_contact
+    mail to: @primary_contact.email,
+         subject: "EDGE school registration confirmation | #{school.name}"
   end
 
 end
