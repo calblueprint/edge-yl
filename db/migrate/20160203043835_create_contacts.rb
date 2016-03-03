@@ -7,7 +7,7 @@ class CreateContacts < ActiveRecord::Migration
       t.boolean :is_primary, default: false, null: false
       t.string  :last_name, null: false
       t.string  :phone_number, null: false
-      t.string  :title, null: false
+      t.string  :title, default: '', null: true
 
       t.references :school, index: true
 

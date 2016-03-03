@@ -8,7 +8,7 @@
 #  is_primary   :boolean          default(FALSE), not null
 #  last_name    :string           not null
 #  phone_number :string           not null
-#  title        :string           not null
+#  title        :string           default("")
 #  school_id    :integer
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null

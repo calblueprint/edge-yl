@@ -8,7 +8,7 @@
 #  is_primary   :boolean          default(FALSE), not null
 #  last_name    :string           not null
 #  phone_number :string           not null
-#  title        :string           not null
+#  title        :string           default("")
 #  school_id    :integer
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
@@ -27,7 +27,6 @@ class Contact < ActiveRecord::Base
   validates :is_primary, inclusion: { in: [true, false] }
   validates :last_name, presence: true
   validates :phone_number, presence: true
-  validates :title, presence: true
 
   def update_contacts
     all_contacts = Contact.where(school_id: self.school_id)

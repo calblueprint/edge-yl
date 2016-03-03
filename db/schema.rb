@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 20160224064905) do
     t.boolean  "is_primary",   default: false, null: false
     t.string   "last_name",                    null: false
     t.string   "phone_number",                 null: false
-    t.string   "title",                        null: false
+    t.string   "title",        default: ""
     t.integer  "school_id"
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
