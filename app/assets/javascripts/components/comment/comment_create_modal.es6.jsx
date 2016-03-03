@@ -10,7 +10,7 @@ class CommentCreateModal extends CreateModal {
       template: React.PropTypes.object.isRequired,
       type: React.PropTypes.oneOf([
         TypeConstants.pages.school,
-        TypeConstants.pages.student
+        TypeConstants.pages.student,
       ]).isRequired,
     };
   }
