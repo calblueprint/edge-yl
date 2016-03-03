@@ -33,14 +33,14 @@ class ConferencePageOverlay extends PageOverlay {
           conference={this.props.conference}
           groupables={this.props.groupables}
           template={template}
-          type={'conference'} />
+          type={TypeConstants.pages.conference} />
       );
     } else {
       return (
         <RoomCreateModal
           conference={this.props.conference}
           template={template}
-          type={'conference'} />
+          type={TypeConstants.pages.conference} />
       );
     }
   }

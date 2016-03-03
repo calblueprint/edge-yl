@@ -3,7 +3,7 @@ conference = Conference.first
 (1..5).each do |index|
   new_room = Room.create(
     building: "#{Faker::Lorem.word} building",
-    capacity: 3,
+    capacity: 10,
     conference: conference,
     gender: rand(3),
     number: index,
@@ -15,7 +15,7 @@ conference = Conference.last
 
 (6..10).each do |index|
   new_room = Room.create(
-    capacity: 2,
+    capacity: 10,
     conference: conference,
     gender: rand(3),
     number: index,

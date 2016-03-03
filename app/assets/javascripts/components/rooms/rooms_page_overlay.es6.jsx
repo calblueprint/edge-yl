@@ -7,7 +7,10 @@ class RoomsPageOverlay extends PageOverlay {
     return {
       conference: React.PropTypes.object.isRequired,
       template: React.PropTypes.object.isRequired,
-      type: React.PropTypes.oneOf(['conference', 'rooms']).isRequired,
+      type: React.PropTypes.oneOf([
+        TypeConstants.pages.conference,
+        TypeConstants.pages.rooms,
+      ]).isRequired,
     };
   }
 

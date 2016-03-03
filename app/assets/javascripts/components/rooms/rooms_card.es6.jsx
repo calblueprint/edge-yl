@@ -82,6 +82,9 @@ class RoomsCard extends Component {
             label={'Capacity'}
             value={room.capacity} />
           <CardAttribute
+            label={'Available Capacity'}
+            value={room.available_capacity_count} />
+          <CardAttribute
             label={'Gender'}
             value={room.gender} />
           {this.renderConference()}

@@ -66,7 +66,7 @@ class UsersPage extends Component {
           <div style={StyleConstants.pages.content}>
             <PageHeader
               title={'Volunteers'}
-              type={'volunteers'} />
+              type={TypeConstants.pages.users} />
             <UsersGrid
               media={this.state.media}
               users={this.state.users} />

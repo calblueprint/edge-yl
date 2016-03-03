@@ -37,6 +37,12 @@ class RoomGeneral extends Component {
           editable={this.props.editable}
           label={'Number'}
           value={room.number} />
+        <CardAttribute
+          label={'Capacity'}
+          value={room.capacity} />
+        <CardAttribute
+          label={'Available Capacity'}
+          value={room.available_capacity_count} />
       </div>
     );
   }

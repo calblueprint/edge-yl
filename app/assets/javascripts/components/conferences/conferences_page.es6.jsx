@@ -84,7 +84,7 @@ class ConferencesPage extends Component {
             <PageHeader
               options={this.generateOptions()}
               title={'Conferences'}
-              type={'conferences'} />
+              type={TypeConstants.pages.conferences} />
             <ConferencesGrid
               conferences={this.state.conferences}
               media={this.state.media} />

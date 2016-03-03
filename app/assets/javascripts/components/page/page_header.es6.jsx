@@ -19,12 +19,12 @@ class PageHeader extends Component {
       ),
       title: React.PropTypes.string.isRequired,
       type: React.PropTypes.oneOf([
-        'conferences',
-        'groups',
-        'rooms',
-        'schools',
-        'students',
-        'volunteers',
+        TypeConstants.pages.conferences,
+        TypeConstants.pages.groups,
+        TypeConstants.pages.rooms,
+        TypeConstants.pages.schools,
+        TypeConstants.pages.students,
+        TypeConstants.pages.users,
       ]).isRequired,
     };
   }
@@ -73,7 +73,7 @@ class PageHeader extends Component {
 
   renderFilter() {
     var type = this.props.type;
-    if (type === 'groups' || type === 'rooms') {
+    if (type === TypeConstants.pages.groups || type === TypeConstants.pages.rooms) {
       return (
         <PageFilter
           conference={this.props.conference}

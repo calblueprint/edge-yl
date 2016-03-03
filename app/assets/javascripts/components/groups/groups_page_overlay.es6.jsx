@@ -28,7 +28,7 @@ class GroupsPageOverlay extends PageOverlay {
         conference={this.props.conference}
         groupables={this.props.groupables}
         template={template}
-        type={'groups'} />
+        type={TypeConstants.pages.groups} />
     );
   }
 }

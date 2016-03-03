@@ -99,7 +99,7 @@ class GroupsPage extends Component {
               conferences={this.props.conferences}
               options={this.generateOptions()}
               title={'Groups'}
-              type={'groups'} />
+              type={TypeConstants.pages.groups} />
             <GroupsGrid
               editable={this.state.editable}
               media={this.state.media}

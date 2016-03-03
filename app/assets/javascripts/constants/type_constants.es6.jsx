@@ -84,6 +84,19 @@
       };
     }
 
+    get pages() {
+      return {
+        conference: 'pages-conference',
+        groups: 'pages-groups',
+        login: 'pages-login',
+        rooms: 'pages-rooms',
+        schools: 'pages-schools',
+        signup: 'pages-signup',
+        students: 'pages-students',
+        users: 'pages-users',
+      };
+    }
+
     get school() {
       return {
         contact: 'school-contact',

@@ -31,7 +31,7 @@ class StudentPageOverlay extends PageOverlay {
           profile={this.props.profile}
           student={this.props.student}
           template={this.props.template}
-          type={'student'} />
+          type={TypeConstants.pages.student} />
       );
     }
   }

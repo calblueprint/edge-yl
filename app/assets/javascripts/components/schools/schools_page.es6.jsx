@@ -76,7 +76,7 @@ class SchoolsPage extends Component {
             <PageHeader
               options={this.generateOptions()}
               title={'Schools'}
-              type={'schools'} />
+              type={TypeConstants.pages.schools} />
             <SchoolsGrid
               media={this.state.media}
               schools={this.state.schools} />

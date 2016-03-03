@@ -81,7 +81,7 @@ class RoomsPage extends Component {
         <RoomsPageOverlay
           conference={this.state.conference}
           template={this.state.template}
-          type={'rooms'} />
+          type={TypeConstants.pages.rooms} />
       );
     }
   }
@@ -99,7 +99,7 @@ class RoomsPage extends Component {
               conferences={this.props.conferences}
               options={this.generateOptions()}
               title={'Rooms'}
-              type={'rooms'} />
+              type={TypeConstants.pages.rooms} />
             <RoomsGrid
               editable={this.state.editable}
               media={this.state.media}

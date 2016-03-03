@@ -7,7 +7,10 @@ class PageFilter extends Component {
     return {
       conference: React.PropTypes.object.isRequired,
       conferences: React.PropTypes.array.isRequired,
-      type: React.PropTypes.oneOf(['groups', 'rooms']).isRequired,
+      type: React.PropTypes.oneOf([
+        TypeConstants.pages.groups,
+        TypeConstants.pages.rooms,
+      ]).isRequired,
     };
   }
 
@@ -17,10 +20,10 @@ class PageFilter extends Component {
   generateChoice(option) {
     var action = null;
     switch(this.props.type) {
-      case 'groups':
+      case TypeConstants.pages.groups:
         action = () => GroupsActions.fetchGroups(option);
         break;
-      case 'rooms':
+      case TypeConstants.pages.rooms:
         action = () => RoomsActions.fetchRooms(option);
         break;
     }

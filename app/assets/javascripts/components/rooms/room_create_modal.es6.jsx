@@ -6,7 +6,10 @@ class RoomCreateModal extends CreateModal {
   static get propTypes() {
     return {
       template: React.PropTypes.object.isRequired,
-      type: React.PropTypes.oneOf(['conference', 'rooms']).isRequired,
+      type: React.PropTypes.oneOf([
+        TypeConstants.pages.conference,
+        TypeConstants.pages.rooms,
+      ]).isRequired,
     };
   }
 
@@ -15,9 +18,9 @@ class RoomCreateModal extends CreateModal {
   // --------------------------------------------------
   handleClick(event) {
     if (event.target === this._node) {
-      if (this.props.type === 'conference') {
+      if (this.props.type === TypeConstants.pages.conference) {
         ConferenceActions.closeOverlay();
-      } else if (this.props.type === 'rooms') {
+      } else if (this.props.type === TypeConstants.pages.rooms) {
         RoomsActions.closeOverlay();
       }
     }
@@ -27,20 +30,20 @@ class RoomCreateModal extends CreateModal {
   // Helpers
   // --------------------------------------------------
   createRoom() {
-    if (this.props.type === 'conference') {
+    if (this.props.type === TypeConstants.pages.conference) {
       ConferenceActions.createRoom(this.props.template);
-    } else if (this.props.type === 'rooms') {
+    } else if (this.props.type === TypeConstants.pages.rooms) {
       RoomsActions.createRoom(this.props.template);
     }
   }
 
   generateChoice(gender) {
-    if (this.props.type === 'conference') {
+    if (this.props.type === TypeConstants.pages.conference) {
       return {
         action: () => ConferenceActions.storeAttribute('gender', gender),
         content: gender,
       }
-    } else if (this.props.type === 'rooms') {
+    } else if (this.props.type === TypeConstants.pages.rooms) {
       return {
         action: () => RoomsActions.storeAttribute('gender', gender),
         content: gender,
@@ -56,9 +59,9 @@ class RoomCreateModal extends CreateModal {
   generateHandler(field) {
     return(event) => {
       var value = event.target.value;
-      if (this.props.type === 'conference') {
+      if (this.props.type === TypeConstants.pages.conference) {
         ConferenceActions.storeAttribute(field, value);
-      } else if (this.props.type === 'rooms') {
+      } else if (this.props.type === TypeConstants.pages.rooms) {
         RoomsActions.storeAttribute(field, value);
       }
     };

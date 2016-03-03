@@ -8,7 +8,10 @@ class CommentCreateModal extends CreateModal {
       profile: React.PropTypes.object.isRequired,
       student: React.PropTypes.object,
       template: React.PropTypes.object.isRequired,
-      type: React.PropTypes.oneOf(['school', 'student']).isRequired,
+      type: React.PropTypes.oneOf([
+        TypeConstants.pages.school,
+        TypeConstants.pages.student
+      ]).isRequired,
     };
   }
 
@@ -17,9 +20,9 @@ class CommentCreateModal extends CreateModal {
   // --------------------------------------------------
   handleClick(event) {
     if (event.target === this._node) {
-      if (this.props.type === 'student') {
+      if (this.props.type === TypeConstants.pages.student) {
         StudentActions.closeOverlay();
-      } else if (this.props.type === 'school') {
+      } else if (this.props.type === TypeConstants.pages.school) {
         SchoolActions.closeOverlay();
       }
     }
@@ -29,9 +32,9 @@ class CommentCreateModal extends CreateModal {
   // Helpers
   // --------------------------------------------------
   createComment() {
-    if (this.props.type === 'student') {
+    if (this.props.type === TypeConstants.pages.student) {
       StudentActions.createComment(this.props.template);
-    } else if (this.props.type === 'school') {
+    } else if (this.props.type === TypeConstants.pages.school) {
       SchoolActions.createComment(this.props.template);
     }
   }
@@ -39,9 +42,9 @@ class CommentCreateModal extends CreateModal {
   generateAction() {
     return (event) => {
       var value = event.target.value;
-      if (this.props.type === 'student') {
+      if (this.props.type === TypeConstants.pages.student) {
         StudentActions.storeAttribute('content', value);
-      } else if (this.props.type === 'school') {
+      } else if (this.props.type === TypeConstants.pages.school) {
         SchoolActions.storeAttribute('content', value);
       }
     };

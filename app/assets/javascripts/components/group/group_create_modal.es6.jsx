@@ -8,7 +8,10 @@ class GroupCreateModal extends CreateModal {
       conference: React.PropTypes.object.isRequired,
       groupables: React.PropTypes.arrayOf(React.PropTypes.object),
       template: React.PropTypes.object.isRequired,
-      type: React.PropTypes.oneOf(['conference', 'groups']).isRequired,
+      type: React.PropTypes.oneOf([
+        TypeConstants.pages.conference,
+        TypeConstants.pages.groups,
+      ]).isRequired,
     };
   }
 
@@ -23,9 +26,9 @@ class GroupCreateModal extends CreateModal {
   // --------------------------------------------------
   handleClick(event) {
     if (event.target === this._node) {
-      if (this.props.type === 'conference') {
+      if (this.props.type === TypeConstants.pages.conference) {
         ConferenceActions.closeOverlay();
-      } else if (this.props.type === 'groups') {
+      } else if (this.props.type === TypeConstants.pages.groups) {
         GroupsActions.closeOverlay();
       }
     }
@@ -36,9 +39,9 @@ class GroupCreateModal extends CreateModal {
   // --------------------------------------------------
   createGroup() {
     var actions;
-    if (this.props.type === 'conference') {
+    if (this.props.type === TypeConstants.pages.conference) {
       actions = ConferenceActions;
-    } else if (this.props.type === 'groups') {
+    } else if (this.props.type === TypeConstants.pages.groups) {
       actions = GroupsActions;
     }
     actions.createGroup(this.props.template);
@@ -47,9 +50,9 @@ class GroupCreateModal extends CreateModal {
   generateChoice(groupable, type) {
     var actions;
     var attributes = this.props.template.attributes;
-    if (this.props.type === 'conference') {
+    if (this.props.type === TypeConstants.pages.conference) {
       actions = ConferenceActions;
-    } else if (this.props.type === 'groups') {
+    } else if (this.props.type === TypeConstants.pages.groups) {
       actions = GroupsActions;
     }
     // don't display an already selected leader as a choice for a different leadership position
@@ -79,9 +82,9 @@ class GroupCreateModal extends CreateModal {
 
   generateHandler(field) {
     return(event) => {
-      if (this.props.type === 'conference') {
+      if (this.props.type === TypeConstants.pages.conference) {
         ConferenceActions.storeAttribute(field, event.target.value);
-      } else if (this.props.type === 'groups') {
+      } else if (this.props.type === TypeConstants.pages.groups) {
         GroupsActions.storeAttribute(field, event.target.value);
       }
     };

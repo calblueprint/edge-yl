@@ -39,4 +39,8 @@ class Room < ActiveRecord::Base
     end
   end
 
+  def available_capacity_count
+    capacity - students.count
+  end
+
 end
