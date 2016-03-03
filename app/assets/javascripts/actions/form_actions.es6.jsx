@@ -101,6 +101,7 @@
     }
 
     updateSubmission(page, target, uuid, forward) {
+      console.log(forward);
       var attributes = {};
       var questions = page.questions;
       questions.map((question) => attributes[question.key] = question.value);

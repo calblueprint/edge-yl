@@ -29,7 +29,7 @@
           resolve,
         );
       } else if (target === 'student') {
-        var params = { student_submisssion: attributes };
+        var params = { student_submission: attributes };
         Requester.update(
           ApiConstants.submissions.student.update(uuid),
           params,

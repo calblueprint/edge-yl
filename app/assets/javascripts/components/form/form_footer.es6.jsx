@@ -56,6 +56,7 @@ class FormFooter extends Component {
   }
 
   updateSubmission(forward) {
+    console.log(forward);
     console.log('updateSubmission in form_footer called');
     FormActions.updateSubmission(
       this.props.page,
