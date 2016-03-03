@@ -88,7 +88,7 @@ class SchoolSubmission < ActiveRecord::Base
         name: name,
         website: website,
       )
-      if school.save!
+      if school.save
         contact = Contact.new(
           email: contact_email,
           first_name: contact_first_name,
