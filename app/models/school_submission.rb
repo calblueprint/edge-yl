@@ -2,35 +2,40 @@
 #
 # Table name: school_submissions
 #
-#  id                    :integer          not null, primary key
-#  address_city          :string
-#  address_one           :string
-#  address_state         :string
-#  address_two           :string           default("")
-#  address_zip           :string
-#  contact_email         :string
-#  contact_first_name    :string
-#  contact_last_name     :string
-#  contact_phone_number  :string
-#  contact_title         :string
-#  current_page          :integer          default(0), not null
-#  is_draft              :boolean          default(TRUE), not null
-#  name                  :string
-#  student_address_city  :string
-#  student_address_one   :string
-#  student_address_state :string
-#  student_address_two   :string           default("")
-#  student_address_zip   :string
-#  student_birthday      :date
-#  student_cell_phone    :string
-#  student_email         :string
-#  student_first_name    :string
-#  student_gender        :integer
-#  student_home_phone    :string
-#  student_last_name     :string
-#  student_shirt_size    :integer
-#  uuid                  :uuid
-#  website               :string           default("")
+#  id                            :integer          not null, primary key
+#  address_city                  :string
+#  address_one                   :string
+#  address_state                 :string
+#  address_two                   :string           default("")
+#  address_zip                   :string
+#  contact_email                 :string
+#  contact_first_name            :string
+#  contact_last_name             :string
+#  contact_phone_number          :string
+#  contact_title                 :string
+#  current_page                  :integer          default(0), not null
+#  is_draft                      :boolean          default(TRUE), not null
+#  name                          :string
+#  student_address_city          :string
+#  student_address_one           :string
+#  student_address_state         :string
+#  student_address_two           :string           default("")
+#  student_address_zip           :string
+#  student_birthday              :date
+#  student_cell_phone            :string
+#  student_first_name            :string
+#  student_gender                :integer
+#  student_guardian_first_name   :string
+#  student_guardian_email        :string
+#  student_guardian_last_name    :string
+#  student_guardian_phone_number :string
+#  student_guardian_phone_type   :integer
+#  student_guardian_relationship :integer
+#  student_home_phone            :string
+#  student_last_name             :string
+#  student_shirt_size            :integer
+#  uuid                          :uuid
+#  website                       :string           default("")
 #
 
 class SchoolSubmission < ActiveRecord::Base
@@ -71,6 +76,12 @@ class SchoolSubmission < ActiveRecord::Base
       student_email: student_email,
       student_first_name: student_first_name,
       student_gender: student_gender,
+      student_guardian_first_name: student_guardian_first_name,
+      student_guardian_email: student_guardian_email,
+      student_guardian_last_name: student_guardian_last_name,
+      student_guardian_phone_number: student_guardian_phone_number,
+      student_guardian_phone_type: student_guardian_phone_type,
+      student_guardian_relationship: student_guardian_relationship,
       student_home_phone: student_home_phone,
       student_last_name: student_last_name,
       student_shirt_size: student_shirt_size,
@@ -109,6 +120,12 @@ class SchoolSubmission < ActiveRecord::Base
           email: student_email,
           first_name: student_first_name,
           gender: student_gender,
+          guardian_first_name: student_guardian_first_name,
+          guardian_email: student_guardian_email,
+          guardian_last_name: student_guardian_last_name,
+          guardian_phone_number: student_guardian_phone_number,
+          guardian_phone_type: student_guardian_phone_type,
+          guardian_relationship: student_guardian_relationship,
           home_phone: student_home_phone,
           last_name: student_last_name,
           shirt_size: student_shirt_size,

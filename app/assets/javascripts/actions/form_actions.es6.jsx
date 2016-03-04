@@ -104,16 +104,16 @@
       var attributes = {};
       var questions = page.questions;
       questions.map((question) => attributes[question.key] = question.value);
-      attributes.current_page = page.number;
-      if (page.is_last && forward) {
-        attributes.is_draft = false;
-      }
       if (target === 'school') {
         var params = { school_submission: attributes };
         var resolve = (response) => {
           var submission = response.school_submission;
           number = forward ? page.number + 1 : page.number - 1;
-          window.location = RouteConstants.forms.school(number, submission.uuid);
+          if (page.is_last && forward) {
+            window.location = RouteConstants.forms.preview(target, submission.uuid);
+          } else {
+            window.location = RouteConstants.forms.school(number, submission.uuid);
+          }
         };
         var reject = (response) => this.storeErrors({
           errors: response.errors,
@@ -129,11 +129,11 @@
         var params = { student_submission: attributes };
         var resolve = (response) => {
           var submission = response.student_submission;
-          if (submission.is_draft) {
-            number = forward ? page.number + 1 : page.number - 1;
-            window.location = RouteConstants.forms.student(number, submission.uuid);
+          number = forward ? page.number + 1 : page.number - 1;
+          if (page.is_last && forward) {
+            window.location = RouteConstants.forms.preview(target, submission.uuid);
           } else {
-            window.location = RouteConstants.forms.success(target, uuid);
+            window.location = RouteConstants.forms.school(number, submission.uuid);
           }
         };
         var reject = (response) => this.storeErrors({
