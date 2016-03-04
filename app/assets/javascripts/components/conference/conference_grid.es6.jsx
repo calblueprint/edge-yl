@@ -69,7 +69,7 @@ class ConferenceGrid extends Component {
           media={this.props.media}
           target={TypeConstants.conference.statistic} />
         <GridHeader
-          label={conference.groups.length + ' Groups in this conference'}
+          label={`Groups in this conference (${conference.groups_count} total)`}
           options={this.generateGroupsOptions()} />
         <GroupsGrid
           editable={this.props.editable}
@@ -77,7 +77,7 @@ class ConferenceGrid extends Component {
           media={this.props.media}
           type={TypeConstants.groups.conference} />
         <GridHeader
-          label={conference.rooms.length + ' Rooms in this conference'}
+          label={`Rooms in this conference (${conference.rooms_count} total)`}
           options={this.generateRoomsOptions()} />
         <RoomsGrid
           editable={this.props.editable}

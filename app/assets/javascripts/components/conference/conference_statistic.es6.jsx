@@ -17,12 +17,6 @@ class ConferenceStatistic extends Component {
     return (
       <div style={StyleConstants.cards.content}>
         <CardAttribute
-          label={'Groups count'}
-          value={conference.groups_count} />
-        <CardAttribute
-          label={'Rooms count'}
-          value={conference.rooms_count} />
-        <CardAttribute
           label={'Females count'}
           value={conference.females_count} />
         <CardAttribute
