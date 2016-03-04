@@ -101,7 +101,6 @@
     }
 
     updateSubmission(page, target, uuid, forward) {
-      console.log(forward);
       var attributes = {};
       var questions = page.questions;
       questions.map((question) => attributes[question.key] = question.value);
@@ -110,7 +109,7 @@
         var resolve = (response) => {
           var submission = response.school_submission;
           number = forward ? page.number + 1 : page.number - 1;
-          if (page.is_last) {
+          if (page.is_last && forward) {
             window.location = RouteConstants.forms.preview(target, submission.uuid);
           } else {
             window.location = RouteConstants.forms.school(number, submission.uuid);
@@ -131,7 +130,7 @@
         var resolve = (response) => {
           var submission = response.student_submission;
           number = forward ? page.number + 1 : page.number - 1;
-          if (page.is_last) {
+          if (page.is_last && forward) {
             window.location = RouteConstants.forms.preview(target, submission.uuid);
           } else {
             window.location = RouteConstants.forms.school(number, submission.uuid);

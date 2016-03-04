@@ -53,7 +53,7 @@
 
     fetchSubmission(target, uuid) {
         if (target === 'school') {
-        var resolve = (response) => this.storeSubmission(response.school_submisssion);
+        var resolve = (response) => this.storeSubmission(response.school_submission);
         Requester.get(
           ApiConstants.submissions.school.show(uuid),
           resolve,
