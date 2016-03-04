@@ -68,19 +68,11 @@ class PreviewContainer extends Component {
   // --------------------------------------------------
   renderFooter() {
     return (
-        <PreviewFooter
-          target={this.props.target}
-          uuid={this.props.uuid} />
+      <PreviewFooter
+        target={this.props.target}
+        uuid={this.props.uuid} />
     );
   }
-
-
-  // renderHeader() {
-  //   var pages = this.state.form.pages;
-  //   if (pages) {
-  //     return <PreviewHeader />;
-  //   }
-  // }
 
   renderPage(page) {
     return (

@@ -20,7 +20,6 @@
       var resolve = (response) => {
         window.location = RouteConstants.forms.success(target, uuid);
       }
-
       if (target === 'school') {
         var params = { school_submission: attributes };
         Requester.update(

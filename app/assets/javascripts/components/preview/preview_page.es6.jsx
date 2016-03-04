@@ -1,19 +1,19 @@
 class PreviewPage extends Component {
 
-	// --------------------------------------------------
+  // --------------------------------------------------
   // Props
   // --------------------------------------------------
   static get propTypes() {
-  	return {
-  		page: React.PropTypes.object.isRequired,
-  	};
+    return {
+      page: React.PropTypes.object.isRequired,
+    };
   }
 
   // --------------------------------------------------
   // Styles
   // --------------------------------------------------
   get styles() {
-  	return {
+    return {
       container: Object.assign(
         {},
         StyleConstants.templates.card,
