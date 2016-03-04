@@ -23,6 +23,7 @@
         });
       });
     }
+
     handleStoreForm(response) {
     	this.form = response.form;
     }

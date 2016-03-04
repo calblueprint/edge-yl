@@ -20,7 +20,7 @@ class PreviewPage extends Component {
         {
           padding: '36px',
           marginTop: '12px',
-        }
+        },
       ),
     };
   }
@@ -30,11 +30,9 @@ class PreviewPage extends Component {
   // --------------------------------------------------
   renderQuestion(question) {
     return (
-      <div>
-        <PreviewAttribute
-          key={question.key}
-          question={question} />
-      </div>
+      <PreviewAttribute
+        key={question.key}
+        question={question} />
     );
   }
 
@@ -44,9 +42,11 @@ class PreviewPage extends Component {
       return questions.map((question) => this.renderQuestion(question));
     }
   }
-  render(){
+
+  render() {
     return (
       <div style={this.styles.container}>
+        <h4>{this.props.page.title}</h4>
         {this.renderQuestions()}
       </div>
     );

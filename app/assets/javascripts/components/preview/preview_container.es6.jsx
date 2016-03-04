@@ -34,7 +34,7 @@ class PreviewContainer extends Component {
         {
           padding: '36px',
           marginTop: '12px',
-        }
+        },
       ),
       wrapper: Object.assign(
         {},
@@ -66,14 +66,6 @@ class PreviewContainer extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
-  renderFooter() {
-    return (
-      <PreviewFooter
-        target={this.props.target}
-        uuid={this.props.uuid} />
-    );
-  }
-
   renderPage(page) {
     return (
       <PreviewPage
@@ -94,9 +86,11 @@ class PreviewContainer extends Component {
     return (
       <div style={this.styles.wrapper}>
         <div style={this.styles.container}>
-          <PreviewHeader/>
+          <PreviewHeader />
           {this.renderPages()}
-          {this.renderFooter()}
+          <PreviewFooter
+            target={this.props.target}
+            uuid={this.props.uuid} />
         </div>
       </div>
     );

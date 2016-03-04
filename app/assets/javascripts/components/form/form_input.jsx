@@ -17,7 +17,7 @@ class FormInput extends Component {
       container: {
         display: 'flex',
         alignItems: 'center',
-        marginBottom: '18px',
+        marginBottom: '12px',
       },
       errors: {
         color: StyleConstants.colors.red,
@@ -77,7 +77,7 @@ class FormInput extends Component {
     var question = this.props.question;
     return (
       <div style={this.styles.container}>
-        <h5>{question.title}</h5>
+        <h6>{question.title}</h6>
         {this.renderRequired()}
         <input
           ref={'container'}
