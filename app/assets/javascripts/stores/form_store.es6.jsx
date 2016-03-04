@@ -34,8 +34,6 @@
     }
 
     handleStoreSubmission(response) {
-      console.log('submission');
-      console.log(response);
       var page = response.page;
       var submission = response.submission;
       var questions = this.form.pages[page - 1].questions;

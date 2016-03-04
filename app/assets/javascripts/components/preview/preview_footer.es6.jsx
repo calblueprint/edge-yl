@@ -46,7 +46,6 @@ class PreviewFooter extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
-
   render() {
     return (
       <div style={this.styles.container}>

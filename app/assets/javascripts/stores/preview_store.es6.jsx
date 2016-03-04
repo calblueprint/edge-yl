@@ -13,7 +13,6 @@
     }
 
     handleStoreSubmission(submission) {
-      console.log(submission);
       this.form.pages.map((page) => {
         var questions = page.questions;
         questions.map((question) => {

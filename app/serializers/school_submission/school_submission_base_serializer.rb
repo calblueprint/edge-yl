@@ -32,8 +32,3 @@ class SchoolSubmissionBaseSerializer < BaseSerializer
             :uuid
 
 end
-
-
-
-
-

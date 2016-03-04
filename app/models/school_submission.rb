@@ -73,6 +73,7 @@ class SchoolSubmission < ActiveRecord::Base
       student_address_zip: student_address_zip,
       student_birthday: student_birthday,
       student_cell_phone: student_cell_phone,
+      student_email: student_email,
       student_first_name: student_first_name,
       student_gender: student_gender,
       student_guardian_first_name: student_guardian_first_name,
