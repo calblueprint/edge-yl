@@ -33,7 +33,6 @@
     medical_guardian_name: Faker::Name.first_name,
     medications: 'None',
     registration_status: rand(3),
-    room_id: index % 5,
     school_id: index,
     shirt_size: rand(5),
   )

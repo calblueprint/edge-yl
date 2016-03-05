@@ -43,6 +43,37 @@ class Conference < ActiveRecord::Base
     self
   end
 
+  # Randomizes the male, female, and other students before attempting
+  # to assign them to rooms. If there is insufficient space to place all
+  # students, then an error is thrown.
+  def assign_students_to_rooms
+    unassigned_males = students.male.shuffle
+    unassigned_females = students.female.shuffle
+    unassigned_others = students.other.shuffle
+
+    students.each { |student| student.room = nil }
+
+    rooms.each do |room|
+      while room.students.count < room.capacity
+        if !unassigned_males.empty? && room.male?
+          student = unassigned_males.pop()
+        elsif !unassigned_females.empty? && room.female?
+          student = unassigned_females.pop()
+        elsif !unassigned_others.empty? && room.other?
+          student = unassigned_others.pop()
+        else # There are no more students to assign to this room
+          break
+        end
+        student.room = room
+        student.save
+      end
+    end
+    if !(unassigned_others.empty? && unassigned_females.empty? && unassigned_males.empty?)
+      raise "Not enough room space to accomodate students"
+    end
+    self
+  end
+
   def females_count
     students.female.count
   end
@@ -55,6 +86,10 @@ class Conference < ActiveRecord::Base
     students.male.count
   end
 
+  def others_count
+    students.other.count
+  end
+
   def rooms_count
     rooms.count
   end
@@ -63,8 +98,12 @@ class Conference < ActiveRecord::Base
     students.count
   end
 
-  def unassigned_students_count
+  def groupless_students_count
     students.where(group_id: nil).count
+  end
+
+  def roomless_students_count
+    students.where(room_id: nil).count
   end
 
 end

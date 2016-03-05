@@ -8,6 +8,19 @@ class Api::ConferencesController < Api::BaseController
            status: :created
   end
 
+  def assign_students_to_rooms
+    begin
+      conference = Conference.find(params[:conference_id])
+                             .assign_students_to_rooms
+    rescue
+      error_response message: 'Not enough room space in conference', status: 422
+      return
+    end
+    render json: conference,
+           serializer: ConferenceShowSerializer,
+           status: :created
+  end
+
   def create
     conference = Conference.new conference_params
     if conference.save

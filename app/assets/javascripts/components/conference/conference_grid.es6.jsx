@@ -36,17 +36,22 @@ class ConferenceGrid extends Component {
   }
 
   generateRoomsOptions() {
+    var conference = this.props.conference;
     return [
       {
         action: () => ConferenceActions.storeTemplate(
           TypeConstants.models.room,
-          { conference_id: this.props.conference.id },
+          { conference_id: conference.id },
         ),
         content: 'New',
       },
       {
+        action: () => ConferenceActions.assignStudentsToRooms(conference.id),
+        content: 'Assign Students to Rooms',
+      },
+      {
         content: 'All',
-        route: RouteConstants.rooms.index(this.props.conference.id),
+        route: RouteConstants.rooms.index(conference.id),
       },
     ];
   }

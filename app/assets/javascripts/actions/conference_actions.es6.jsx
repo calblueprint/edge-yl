@@ -15,7 +15,7 @@
         'storeError',
         'storeRoom',
         'storeValue',
-      );
+    );
     }
 
     // --------------------------------------------------
@@ -25,13 +25,34 @@
       var params = { conference_id: id };
       var resolve = (response) => this.storeConference(response);
       var reject = (response) => this.storeError(response);
-      Requester.update(
-        ApiConstants.conferences.assignStudentsToGroups(id),
-        params,
-        resolve,
-        reject,
-      );
-      return true;
+      var response = confirm('This will reassign ALL students to new groups. ' +
+                             'This action cannot be undone.');
+      if (response) {
+        Requester.update(
+          ApiConstants.conferences.assignStudentsToGroups(id),
+          params,
+          resolve,
+          reject,
+        );
+        return true;
+      }
+    }
+
+    assignStudentsToRooms(id){
+      var params = { conference_id: id };
+      var resolve = (response) => this.storeConference(response);
+      var reject = (response) => this.storeError(response);
+      var response = confirm('This will reassign ALL students to new rooms. ' +
+                             'This action cannot be undone.');
+      if (response) {
+        Requester.update(
+          ApiConstants.conferences.assignStudentsToRooms(id),
+          params,
+          resolve,
+          reject,
+        );
+        return true;
+      }
     }
 
     createGroup(template) {

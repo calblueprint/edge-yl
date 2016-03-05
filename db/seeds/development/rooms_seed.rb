@@ -11,6 +11,14 @@ conference = Conference.first
   puts "Created room #{new_room.number} for conference #{conference.name}."
 end
 
+conference.students.each do |student|
+  room = Room.find(rand(1..5))
+  if room.students.count < room.capacity and rand(10) > 4
+    student.room = room
+    student.save
+  end
+end
+
 conference = Conference.last
 
 (6..10).each do |index|
