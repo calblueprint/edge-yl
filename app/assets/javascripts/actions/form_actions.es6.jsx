@@ -27,9 +27,9 @@
           window.history.replaceState(
             {},
             null,
-            RouteConstants.forms.school(1, submission.uuid),
+            RouteConstants.forms.school(1, submission.id),
           );
-          window.location = RouteConstants.forms.school(page.number + 1, submission.uuid);
+          window.location = RouteConstants.forms.school(page.number + 1, submission.id);
         };
         var reject = (response) => this.storeErrors({
           errors: response.errors,
@@ -48,9 +48,9 @@
           window.history.replaceState(
             {},
             null,
-            RouteConstants.forms.student(1, submission.uuid),
+            RouteConstants.forms.student(1, submission.id),
           );
-          window.location = RouteConstants.forms.student(page.number + 1, submission.uuid);
+          window.location = RouteConstants.forms.student(page.number + 1, submission.id);
         };
         var reject = (response) => this.storeErrors({
           errors: response.errors,
@@ -66,24 +66,24 @@
       return true;
     }
 
-    fetchForm(target, page, uuid) {
+    fetchForm(target, page, id) {
       var resolve = (response) => {
         this.storeForm(response);
-        this.fetchSubmission(page, target, uuid);
+        this.fetchSubmission(page, target, id);
       };
       Requester.get(ApiConstants.forms.show(target), resolve);
       return true;
     }
 
-    fetchSubmission(page, target, uuid) {
-      if (uuid) {
+    fetchSubmission(page, target, id) {
+      if (id) {
         if (target === 'school') {
           var resolve = (response) => this.storeSubmission({
             page: page,
             submission: response.school_submission,
           });
           Requester.get(
-            ApiConstants.submissions.school.show(uuid),
+            ApiConstants.submissions.school.show(id),
             resolve,
           );
         } else if (target === 'student') {
@@ -92,7 +92,7 @@
             submission: response.student_submission,
           });
           Requester.get(
-            ApiConstants.submissions.student.show(uuid),
+            ApiConstants.submissions.student.show(id),
             resolve,
           );
         }
@@ -100,7 +100,7 @@
       return true;
     }
 
-    updateSubmission(page, target, uuid, forward) {
+    updateSubmission(page, target, id, forward) {
       var attributes = {};
       var questions = page.questions;
       questions.map((question) => attributes[question.key] = question.value);
@@ -110,9 +110,9 @@
           var submission = response.school_submission;
           number = forward ? page.number + 1 : page.number - 1;
           if (page.is_last && forward) {
-            window.location = RouteConstants.forms.preview(target, submission.uuid);
+            window.location = RouteConstants.forms.preview(target, submission.id);
           } else {
-            window.location = RouteConstants.forms.school(number, submission.uuid);
+            window.location = RouteConstants.forms.school(number, submission.id);
           }
         };
         var reject = (response) => this.storeErrors({
@@ -120,7 +120,7 @@
           page: page.number,
         });
         Requester.update(
-          ApiConstants.submissions.school.update(uuid),
+          ApiConstants.submissions.school.update(id),
           params,
           resolve,
           reject,
@@ -131,9 +131,9 @@
           var submission = response.student_submission;
           number = forward ? page.number + 1 : page.number - 1;
           if (page.is_last && forward) {
-            window.location = RouteConstants.forms.preview(target, submission.uuid);
+            window.location = RouteConstants.forms.preview(target, submission.id);
           } else {
-            window.location = RouteConstants.forms.school(number, submission.uuid);
+            window.location = RouteConstants.forms.school(number, submission.id);
           }
         };
         var reject = (response) => this.storeErrors({
@@ -141,7 +141,7 @@
           page: page.number,
         });
         Requester.update(
-          ApiConstants.submissions.student.update(uuid),
+          ApiConstants.submissions.student.update(id),
           params,
           resolve,
           reject,

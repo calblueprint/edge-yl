@@ -13,8 +13,8 @@ class PreviewContainer extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
+      id: React.PropTypes.string.isRequired,
       target: React.PropTypes.string.isRequired,
-      uuid: React.PropTypes.string.isRequired,
     };
   }
 
@@ -56,7 +56,7 @@ class PreviewContainer extends Component {
 
   componentDidMount() {
     PreviewStore.listen(this._listener);
-    PreviewActions.fetchForm(this.props.target, this.props.uuid);
+    PreviewActions.fetchForm(this.props.target, this.props.id);
   }
 
   componentWillUnmount() {
@@ -89,8 +89,8 @@ class PreviewContainer extends Component {
           <PreviewHeader />
           {this.renderPages()}
           <PreviewFooter
-            target={this.props.target}
-            uuid={this.props.uuid} />
+            id={this.props.id}
+            target={this.props.target} />
         </div>
       </div>
     );

@@ -5,9 +5,7 @@ class Api::StudentSubmissionsController < Api::BaseController
   def create
     student_submission = StudentSubmission.new student_submission_params
     if student_submission.save
-      # TODO(Warren): Is there a better way to set the uuid?
-      response = StudentSubmission.find student_submission.id
-      render json: response,
+      render json: student_submission,
              serializer: StudentSubmissionBaseSerializer,
              status: :created
     else
@@ -16,13 +14,13 @@ class Api::StudentSubmissionsController < Api::BaseController
   end
 
   def show
-    student_submission = StudentSubmission.find_by uuid: params[:uuid]
+    student_submission = StudentSubmission.find_by id: params[:id]
     render json: student_submission,
            serializer: StudentSubmissionBaseSerializer
   end
 
   def update
-    student_submission = StudentSubmission.find_by uuid: params[:uuid]
+    student_submission = StudentSubmission.find_by id: params[:id]
     if student_submission.update_attributes student_submission_params
       render json: student_submission,
              serializer: StudentSubmissionBaseSerializer,

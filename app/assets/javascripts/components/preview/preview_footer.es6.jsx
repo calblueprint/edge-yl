@@ -5,8 +5,8 @@ class PreviewFooter extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
+      id: React.PropTypes.string,
       target: React.PropTypes.string.isRequired,
-      uuid: React.PropTypes.string,
     };
   }
 
@@ -39,7 +39,7 @@ class PreviewFooter extends Component {
   submitSubmission() {
     PreviewActions.submitSubmission(
       this.props.target,
-      this.props.uuid,
+      this.props.id,
     );
   }
 

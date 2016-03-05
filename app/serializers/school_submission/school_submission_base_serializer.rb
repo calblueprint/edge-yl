@@ -28,7 +28,6 @@ class SchoolSubmissionBaseSerializer < BaseSerializer
             :student_home_phone,
             :student_gender,
             :student_last_name,
-            :student_shirt_size,
-            :uuid
+            :student_shirt_size
 
 end

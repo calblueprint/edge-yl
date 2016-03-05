@@ -166,7 +166,7 @@ ActiveRecord::Schema.define(version: 20160226234324) do
 
   add_index "rooms", ["conference_id"], name: "index_rooms_on_conference_id", using: :btree
 
-  create_table "school_submissions", force: :cascade do |t|
+  create_table "school_submissions", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.string  "address_city"
     t.string  "address_one"
     t.string  "address_state"
@@ -177,8 +177,8 @@ ActiveRecord::Schema.define(version: 20160226234324) do
     t.string  "contact_last_name"
     t.string  "contact_phone_number"
     t.string  "contact_title"
-    t.integer "current_page",                  default: 0,                    null: false
-    t.boolean "is_draft",                      default: true,                 null: false
+    t.integer "current_page",                  default: 0,    null: false
+    t.boolean "is_draft",                      default: true, null: false
     t.string  "name"
     t.string  "student_address_city"
     t.string  "student_address_one"
@@ -199,7 +199,6 @@ ActiveRecord::Schema.define(version: 20160226234324) do
     t.string  "student_home_phone"
     t.string  "student_last_name"
     t.integer "student_shirt_size"
-    t.uuid    "uuid",                          default: "uuid_generate_v4()"
     t.string  "website",                       default: ""
   end
 
@@ -215,7 +214,7 @@ ActiveRecord::Schema.define(version: 20160226234324) do
     t.datetime "updated_at",                 null: false
   end
 
-  create_table "student_submissions", force: :cascade do |t|
+  create_table "student_submissions", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.string  "address_city"
     t.string  "address_one"
     t.string  "address_state"
@@ -224,7 +223,7 @@ ActiveRecord::Schema.define(version: 20160226234324) do
     t.integer "allergies"
     t.date    "birthday"
     t.string  "cell_phone"
-    t.integer "current_page",               default: 0,                    null: false
+    t.integer "current_page",               default: 0,    null: false
     t.integer "dietary_restrictions"
     t.string  "email"
     t.integer "emergency_consent"
@@ -241,7 +240,7 @@ ActiveRecord::Schema.define(version: 20160226234324) do
     t.integer "guardian_relationship"
     t.integer "health_conditions"
     t.string  "home_phone"
-    t.boolean "is_draft",                   default: true,                 null: false
+    t.boolean "is_draft",                   default: true, null: false
     t.integer "immunizations"
     t.string  "last_name"
     t.string  "medical_guardian_name"
@@ -251,7 +250,6 @@ ActiveRecord::Schema.define(version: 20160226234324) do
     t.integer "psychologist_consent"
     t.integer "registration_status"
     t.integer "shirt_size"
-    t.uuid    "uuid",                       default: "uuid_generate_v4()"
   end
 
   create_table "students", force: :cascade do |t|

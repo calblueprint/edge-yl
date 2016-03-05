@@ -12,7 +12,8 @@
       });
     }
 
-    handleStoreSubmission(submission) {
+    handleStoreSubmission(response) {
+      var submission = response.submission;
       this.form.pages.map((page) => {
         var questions = page.questions;
         questions.map((question) => {

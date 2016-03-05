@@ -2,7 +2,7 @@
 #
 # Table name: school_submissions
 #
-#  id                            :integer          not null, primary key
+#  id                            :uuid             not null, primary key
 #  address_city                  :string
 #  address_one                   :string
 #  address_state                 :string
@@ -23,6 +23,7 @@
 #  student_address_zip           :string
 #  student_birthday              :date
 #  student_cell_phone            :string
+#  student_email                 :string
 #  student_first_name            :string
 #  student_gender                :integer
 #  student_guardian_first_name   :string
@@ -34,7 +35,6 @@
 #  student_home_phone            :string
 #  student_last_name             :string
 #  student_shirt_size            :integer
-#  uuid                          :uuid
 #  website                       :string           default("")
 #
 
@@ -131,8 +131,6 @@ class SchoolSubmission < ActiveRecord::Base
           shirt_size: student_shirt_size,
         )
         if contact.save && student_submission.save
-          # TODO(Warren): Is there a better way to set the uuid?
-          student_submission = StudentSubmission.find student_submission.id
           if SchoolMailer.create(school).deliver_now &&
              StudentMailer.create(student_submission).deliver_now
             true

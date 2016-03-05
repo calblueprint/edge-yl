@@ -5,9 +5,9 @@
   get 'email', to: 'pages#email'
   get 'feedback', to: 'pages#feedback'
   get 'forms/:target', as: 'forms', to: 'forms#show'
-  get 'forms/:target/:uuid', to: 'forms#show'
-  get 'forms/:target/:uuid/preview', to: 'forms#preview'
-  get 'forms/:target/:uuid/success', to: 'forms#success'
+  get 'forms/:target/:id', to: 'forms#show'
+  get 'forms/:target/:id/preview', to: 'forms#preview'
+  get 'forms/:target/:id/success', to: 'forms#success'
   get 'login', to: 'pages#login'
   get 'profile', to: 'users#profile'
   get 'signup', to: 'pages#signup'
@@ -39,10 +39,6 @@
     get '/forms/:target', to: 'forms#show'
     get '/searchables/search', to: 'searchables#search'
     get '/searchables/students', to: 'searchables#students'
-    get '/school_submissions/:uuid', to: 'school_submissions#show'
-    patch '/school_submissions/:uuid', to: 'school_submissions#update'
-    get '/student_submissions/:uuid', to: 'student_submissions#show'
-    patch '/student_submissions/:uuid', to: 'student_submissions#update'
     get '/users/profile', to: 'users#profile'
 
     resources :comments, only: [:create]
@@ -56,9 +52,9 @@
     resources :profiles, only: [:update]
     resources :rooms, only: [:create, :index, :show, :update]
     resources :schools, only: [:index, :show, :update]
-    resources :school_submissions, only: [:create]
+    resources :school_submissions, only: [:create, :show, :update]
     resources :students, only: [:index, :show, :update]
-    resources :student_submissions, only: [:create]
+    resources :student_submissions, only: [:create, :show, :update]
     resources :users, only: [:index, :show, :update] do
       get '/groupables', on: :collection, to: 'users#groupables'
     end

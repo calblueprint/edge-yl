@@ -2,7 +2,7 @@
 #
 # Table name: student_submissions
 #
-#  id                         :integer          not null, primary key
+#  id                         :uuid             not null, primary key
 #  address_city               :string
 #  address_one                :string
 #  address_state              :string
@@ -38,7 +38,6 @@
 #  psychologist_consent       :integer
 #  registration_status        :integer
 #  shirt_size                 :integer
-#  uuid                       :uuid
 #
 
 class StudentSubmission < ActiveRecord::Base
@@ -48,7 +47,7 @@ class StudentSubmission < ActiveRecord::Base
 
   def form_url
     # TODO (Warren): !!!
-    "http://localhost:3000/forms/student/#{uuid}"
+    "http://localhost:3000/forms/student/#{id}"
   end
 
   def full_name

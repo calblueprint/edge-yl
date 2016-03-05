@@ -64,7 +64,7 @@ class FormDropdown extends Component {
     var question = this.props.question;
     return (
       <div style={this.styles.container}>
-        <h5>{question.title}</h5>
+        <h6>{question.title}</h6>
         {this.renderRequired()}
         <DropdownButton
           choices={this.generateChoices()}

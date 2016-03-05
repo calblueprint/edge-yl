@@ -5,8 +5,8 @@ class FormSuccess extends Component {
   // --------------------------------------------------
 	static get propTypes() {
 		return {
+      id: React.PropTypes.string.isRequired,
 			target: React.PropTypes.string.isRequired,
-			uuid: React.PropTypes.string,
 		};
 	}
 

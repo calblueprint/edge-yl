@@ -1,7 +1,7 @@
 class CreateSchoolSubmissions < ActiveRecord::Migration
 
   def change
-    create_table :school_submissions do |t|
+    create_table :school_submissions, id: :uuid, default: 'uuid_generate_v4()' do |t|
       t.string  :address_city
       t.string  :address_one
       t.string  :address_state
@@ -34,7 +34,6 @@ class CreateSchoolSubmissions < ActiveRecord::Migration
       t.string  :student_home_phone
       t.string  :student_last_name
       t.integer :student_shirt_size
-      t.uuid    :uuid, default: 'uuid_generate_v4()'
       t.string  :website, default: ''
     end
   end

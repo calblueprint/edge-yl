@@ -5,15 +5,15 @@ class FormFooter extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
+      id: React.PropTypes.string,
       page: React.PropTypes.object.isRequired,
       target: React.PropTypes.string.isRequired,
-      uuid: React.PropTypes.string,
     };
   }
 
   static get defaultProps() {
     return {
-      uuid: null,
+      id: null,
     };
   }
 
@@ -59,7 +59,7 @@ class FormFooter extends Component {
     FormActions.updateSubmission(
       this.props.page,
       this.props.target,
-      this.props.uuid,
+      this.props.id,
       forward,
     );
   }
@@ -79,9 +79,9 @@ class FormFooter extends Component {
   }
 
   renderNext() {
+    var id = this.props.id;
     var page = this.props.page;
-    var uuid = this.props.uuid;
-    if (page.number === 1 && uuid === null) {
+    if (page.number === 1 && id === null) {
       return (
           <FormButton
             action={() => this.createSubmission()}

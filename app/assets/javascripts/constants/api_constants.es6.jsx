@@ -135,13 +135,13 @@
       return {
         school: {
           create: '/api/school_submissions',
-          show: (uuid) => `/api/school_submissions/${uuid}`,
-          update: (uuid) => `/api/school_submissions/${uuid}`,
+          show: (id) => `/api/school_submissions/${id}`,
+          update: (id) => `/api/school_submissions/${id}`,
         },
         student: {
           create: '/api/student_submissions',
-          show: (uuid) => `/api/student_submissions/${uuid}`,
-          update: (uuid) => `/api/student_submissions/${uuid}`,
+          show: (id) => `/api/student_submissions/${id}`,
+          update: (id) => `/api/student_submissions/${id}`,
         },
       };
     }

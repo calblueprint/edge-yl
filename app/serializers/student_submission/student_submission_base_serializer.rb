@@ -35,7 +35,6 @@ class StudentSubmissionBaseSerializer < BaseSerializer
              :preferred_name,
              :psychologist_consent,
              :registration_status,
-             :shirt_size,
-             :uuid
+             :shirt_size
 
 end

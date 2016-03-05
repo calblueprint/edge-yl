@@ -1,7 +1,7 @@
 class CreateStudentSubmissions < ActiveRecord::Migration
 
   def change
-    create_table :student_submissions do |t|
+    create_table :student_submissions, id: :uuid, default: 'uuid_generate_v4()' do |t|
       t.string  :address_city
       t.string  :address_one
       t.string  :address_state
@@ -37,7 +37,6 @@ class CreateStudentSubmissions < ActiveRecord::Migration
       t.integer :psychologist_consent
       t.integer :registration_status
       t.integer :shirt_size
-      t.uuid    :uuid, default: 'uuid_generate_v4()'
     end
   end
 

@@ -23,10 +23,10 @@
 
     get forms() {
       return {
-        preview: (target, uuid) => `/forms/${target}/${uuid}/preview`,
-        school: (page, uuid) => `/forms/school/${uuid}?page=${page}`,
-        student: (page, uuid) => `/forms/student/${uuid}?page=${page}`,
-        success: (target, uuid) => `/forms/${target}/${uuid}/success`,
+        preview: (target, id) => `/forms/${target}/${id}/preview`,
+        school: (page, id) => `/forms/school/${id}?page=${page}`,
+        student: (page, id) => `/forms/student/${id}?page=${page}`,
+        success: (target, id) => `/forms/${target}/${id}/success`,
       };
     }
 

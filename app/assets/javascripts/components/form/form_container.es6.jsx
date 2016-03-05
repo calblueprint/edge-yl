@@ -13,15 +13,15 @@ class FormContainer extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
+      id: React.PropTypes.string,
       page: React.PropTypes.number.isRequired,
       target: React.PropTypes.string.isRequired,
-      uuid: React.PropTypes.string,
     };
   }
 
   static get defaultProps() {
     return {
-      uuid: null,
+      id: null,
     };
   }
 
@@ -55,7 +55,7 @@ class FormContainer extends Component {
 
   componentDidMount() {
     FormStore.listen(this._listener);
-    FormActions.fetchForm(this.props.target, this.props.page, this.props.uuid);
+    FormActions.fetchForm(this.props.target, this.props.page, this.props.id);
   }
 
   componentWillUnmount() {
@@ -70,9 +70,9 @@ class FormContainer extends Component {
     if (pages) {
       return (
         <FormFooter
+          id={this.props.id}
           page={pages[this.props.page - 1]}
-          target={this.props.target}
-          uuid={this.props.uuid} />
+          target={this.props.target} />
       );
     }
   }
