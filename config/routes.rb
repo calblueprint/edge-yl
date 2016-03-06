@@ -40,6 +40,8 @@
     get '/forms/:target', to: 'forms#show'
     get '/searchables/search', to: 'searchables#search'
     get '/searchables/students', to: 'searchables#students'
+    patch '/school_submissions/:id/submit', to: 'school_submissions#submit'
+    patch '/student_submissions/:id/submit', to: 'student_submissions#submit'
     get '/users/profile', to: 'users#profile'
 
     resources :comments, only: [:create]

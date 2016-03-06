@@ -1,6 +1,6 @@
 class Api::SchoolSubmissionsController < Api::BaseController
 
-  skip_before_filter :authenticate_user, only: [:create, :show, :update]
+  skip_before_filter :authenticate_user
 
   def create
     school_submission = SchoolSubmission.new school_submission_params
@@ -17,6 +17,17 @@ class Api::SchoolSubmissionsController < Api::BaseController
     school_submission = SchoolSubmission.find_by id: params[:id]
     render json: school_submission,
            serializer: SchoolSubmissionBaseSerializer
+  end
+
+  def submit
+    school_submission = SchoolSubmission.find_by id: params[:id]
+    if school_submission.submit_submission
+      render json: school_submission,
+             serializer: SchoolSubmissionBaseSerializer,
+             status: :created
+    else
+      unprocessable_response school_submission
+    end
   end
 
   def update

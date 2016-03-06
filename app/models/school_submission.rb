@@ -40,8 +40,57 @@
 
 class SchoolSubmission < ActiveRecord::Base
 
-  before_validation :try_submit, on: :update
   before_validation :validate_page, on: [:create, :update]
+
+  def submit_submission
+    school = School.new(
+      address_city: address_city,
+      address_one: address_one,
+      address_state: address_state,
+      address_two: address_two,
+      address_zip: address_zip,
+      name: name,
+      website: website,
+    )
+    if school.save
+      contact = Contact.new(
+        email: contact_email,
+        first_name: contact_first_name,
+        last_name: contact_last_name,
+        is_primary: true,
+        phone_number: contact_phone_number,
+        title: contact_title,
+        school: school,
+      )
+      student_submission = StudentSubmission.new(
+        address_city: student_address_city,
+        address_one: student_address_one,
+        address_state: student_address_state,
+        address_two: student_address_two,
+        address_zip: student_address_zip,
+        birthday: student_birthday,
+        cell_phone: student_cell_phone,
+        email: student_email,
+        first_name: student_first_name,
+        gender: student_gender,
+        guardian_first_name: student_guardian_first_name,
+        guardian_email: student_guardian_email,
+        guardian_last_name: student_guardian_last_name,
+        guardian_phone_number: student_guardian_phone_number,
+        guardian_phone_type: student_guardian_phone_type,
+        guardian_relationship: student_guardian_relationship,
+        home_phone: student_home_phone,
+        last_name: student_last_name,
+        shirt_size: student_shirt_size,
+      )
+      if contact.save && student_submission.save
+        SchoolMailer.create(school).deliver_now &&
+        StudentMailer.create(student_submission).deliver_now
+        self.is_draft = false
+        self.save
+      end
+    end
+  end
 
   private
 
@@ -88,78 +137,20 @@ class SchoolSubmission < ActiveRecord::Base
     }
   end
 
-  def try_submit
-    if !is_draft
-      school = School.new(
-        address_city: address_city,
-        address_one: address_one,
-        address_state: address_state,
-        address_two: address_two,
-        address_zip: address_zip,
-        name: name,
-        website: website,
-      )
-      if school.save
-        contact = Contact.new(
-          email: contact_email,
-          first_name: contact_first_name,
-          last_name: contact_last_name,
-          is_primary: true,
-          phone_number: contact_phone_number,
-          title: contact_title,
-          school: school,
-        )
-        student_submission = StudentSubmission.new(
-          address_city: student_address_city,
-          address_one: student_address_one,
-          address_state: student_address_state,
-          address_two: student_address_two,
-          address_zip: student_address_zip,
-          birthday: student_birthday,
-          cell_phone: student_cell_phone,
-          email: student_email,
-          first_name: student_first_name,
-          gender: student_gender,
-          guardian_first_name: student_guardian_first_name,
-          guardian_email: student_guardian_email,
-          guardian_last_name: student_guardian_last_name,
-          guardian_phone_number: student_guardian_phone_number,
-          guardian_phone_type: student_guardian_phone_type,
-          guardian_relationship: student_guardian_relationship,
-          home_phone: student_home_phone,
-          last_name: student_last_name,
-          shirt_size: student_shirt_size,
-        )
-        if contact.save && student_submission.save
-          if SchoolMailer.create(school).deliver_now &&
-             StudentMailer.create(student_submission).deliver_now
-            true
-          else
-            false
-          end
-        else
-          self.is_draft = true
-          false
-        end
-      else
-        self.is_draft = true
-        false
-      end
-    end
-  end
-
   def validate_page
-    attributes_hash = {
-      1 => attributes_one,
-      2 => attributes_two,
-      3 => attributes_three,
-    }
-    current_attributes = attributes_hash[current_page]
-    validator = SchoolValidator.new(current_attributes, current_page)
-    validator.valid?
-    response = validator.errors.to_hash
-    response.each do |attribute, message|
-      self.errors.add(attribute, message)
+    if is_draft
+      attributes_hash = {
+        1 => attributes_one,
+        2 => attributes_two,
+        3 => attributes_three,
+      }
+      current_attributes = attributes_hash[current_page]
+      validator = SchoolValidator.new(current_attributes, current_page)
+      validator.valid?
+      response = validator.errors.to_hash
+      response.each do |attribute, message|
+        self.errors.add(attribute, message)
+      end
     end
   end
 

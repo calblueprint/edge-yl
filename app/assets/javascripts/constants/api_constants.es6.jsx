@@ -137,11 +137,13 @@
         school: {
           create: '/api/school_submissions',
           show: (id) => `/api/school_submissions/${id}`,
+          submit: (id) => `/api/school_submissions/${id}/submit`,
           update: (id) => `/api/school_submissions/${id}`,
         },
         student: {
           create: '/api/student_submissions',
           show: (id) => `/api/student_submissions/${id}`,
+          submit: (id) => `/api/student_submissions/${id}/submit`,
           update: (id) => `/api/student_submissions/${id}`,
         },
       };

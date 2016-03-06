@@ -42,7 +42,6 @@
 
 class StudentSubmission < ActiveRecord::Base
 
-  before_validation :try_submit, on: :update
   before_validation :validate_page, on: :update
 
   def form_url
@@ -52,6 +51,47 @@ class StudentSubmission < ActiveRecord::Base
 
   def full_name
     "#{first_name} #{last_name}"
+  end
+
+  def submit_submission
+    student = Student.new(
+      address_city: address_city,
+      address_one: address_one,
+      address_state: address_state,
+      address_two: address_two,
+      address_zip: address_zip,
+      allergies: 0,
+      birthday: Date.new,
+      cell_phone: cell_phone,
+      dietary_restrictions: 0,
+      exercise_limitations: exercise_limitations,
+      email: email,
+      emergency_consent: 0,
+      first_name: first_name,
+      gender: 0,
+      health_conditions: 0,
+      guardian_email: guardian_email,
+      guardian_employer: guardian_employer,
+      guardian_first_name: guardian_first_name,
+      guardian_job_title: guardian_job_title,
+      guardian_last_name: guardian_last_name,
+      guardian_phone_type: 0,
+      guardian_phone_number: guardian_phone_number,
+      guardian_relationship: 3,
+      home_phone: home_phone,
+      immunizations: 0,
+      last_name: last_name,
+      medical_guardian_name: medical_guardian_name,
+      medications: medications,
+      other_dietary_restrictions: other_dietary_restrictions,
+      preferred_name: preferred_name,
+      psychologist_consent: 0,
+      shirt_size: 1,
+    )
+    if student.save
+      self.is_draft = true
+      self.save
+    end
   end
 
   private
@@ -100,63 +140,20 @@ class StudentSubmission < ActiveRecord::Base
     }
   end
 
-  def try_submit
-    if !is_draft
-      student = Student.new(
-        address_city: address_city,
-        address_one: address_one,
-        address_state: address_state,
-        address_two: address_two,
-        address_zip: address_zip,
-        allergies: 0,
-        birthday: Date.new,
-        cell_phone: cell_phone,
-        dietary_restrictions: 0,
-        exercise_limitations: exercise_limitations,
-        email: email,
-        emergency_consent: 0,
-        first_name: first_name,
-        gender: 0,
-        health_conditions: 0,
-        guardian_email: guardian_email,
-        guardian_employer: guardian_employer,
-        guardian_first_name: guardian_first_name,
-        guardian_job_title: guardian_job_title,
-        guardian_last_name: guardian_last_name,
-        guardian_phone_type: 0,
-        guardian_phone_number: guardian_phone_number,
-        guardian_relationship: 3,
-        home_phone: home_phone,
-        immunizations: 0,
-        last_name: last_name,
-        medical_guardian_name: medical_guardian_name,
-        medications: medications,
-        other_dietary_restrictions: other_dietary_restrictions,
-        preferred_name: preferred_name,
-        psychologist_consent: 0,
-        shirt_size: 1,
-      )
-      if student.save
-        true
-      else
-        self.is_draft = true
-        true
-      end
-    end
-  end
-
   def validate_page
-    attributes_hash = {
-      1 => attributes_one,
-      2 => attributes_two,
-      3 => attributes_three,
-    }
-    current_attributes = attributes_hash[current_page]
-    validator = StudentValidator.new(current_attributes, current_page)
-    validator.valid?
-    response = validator.errors.to_hash
-    response.each do |attribute, message|
-      self.errors.add(attribute, message)
+    if is_draft
+      attributes_hash = {
+        1 => attributes_one,
+        2 => attributes_two,
+        3 => attributes_three,
+      }
+      current_attributes = attributes_hash[current_page]
+      validator = StudentValidator.new(current_attributes, current_page)
+      validator.valid?
+      response = validator.errors.to_hash
+      response.each do |attribute, message|
+        self.errors.add(attribute, message)
+      end
     end
   end
 

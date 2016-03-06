@@ -48,24 +48,19 @@
     }
 
     submitSubmission(target, id) {
-      var attributes = {};
-      attributes.is_draft = false;
       var resolve = (response) => {
         window.location = RouteConstants.forms.success(target, id);
       };
       if (target === 'school') {
-        var params = { school_submission: attributes };
-        var resolve =
         Requester.update(
-          ApiConstants.submissions.school.update(id),
-          params,
+          ApiConstants.submissions.school.submit(id),
+          {},
           resolve,
         );
       } else if (target === 'student') {
-        var params = { student_submission: attributes };
         Requester.update(
-          ApiConstants.submissions.student.update(id),
-          params,
+          ApiConstants.submissions.student.submit(id),
+          {},
           resolve,
         );
       }

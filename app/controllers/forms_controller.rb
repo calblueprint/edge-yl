@@ -1,6 +1,6 @@
 class FormsController < BaseController
 
-  skip_before_filter :authenticate_user, only: [:preview, :show, :success]
+  skip_before_filter :authenticate_user
 
   def preview
     @id = params[:id]
