@@ -1,5 +1,5 @@
 (() => {
-  class EmailsActions {
+  class ThreadsActions {
 
     // --------------------------------------------------
     // Setup
@@ -19,5 +19,5 @@
       return true;
     }
   }
-  this.EmailsActions = alt.createActions(EmailsActions);
+  this.ThreadsActions = alt.createActions(ThreadsActions);
 })();

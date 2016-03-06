@@ -1,13 +1,13 @@
 (() => {
-  class EmailActions {
+  class ThreadActions {
 
     // --------------------------------------------------
     // Setup
     // --------------------------------------------------
     constructor() {
       this.generateActions(
-        'storeEmail',
         'storeError',
+        'storeThread',
       );
     }
 
@@ -33,11 +33,11 @@
       return true;
     }
 
-    fetchEmail(id) {
-      var resolve = (response) => this.storeEmail(response);
+    fetchThread(id) {
+      var resolve = (response) => this.storeThread(response);
       Requester.get(ApiConstants.emails.show(id), resolve);
       return true;
     }
   }
-  this.EmailActions = alt.createActions(EmailActions);
+  this.ThreadActions = alt.createActions(ThreadActions);
 })();

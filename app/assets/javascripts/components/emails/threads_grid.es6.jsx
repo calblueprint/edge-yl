@@ -1,4 +1,4 @@
-class EmailsGrid extends Component {
+class ThreadsGrid extends Component {
 
   // --------------------------------------------------
   // Props
@@ -15,7 +15,7 @@ class EmailsGrid extends Component {
   // --------------------------------------------------
   renderCard(thread) {
     return (
-      <EmailsCard
+      <ThreadsCard
         thread={thread}
         key={thread.id}
         media={this.props.media} />

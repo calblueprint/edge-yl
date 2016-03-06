@@ -1,5 +1,5 @@
 (() => {
-  class EmailStore {
+  class ThreadStore {
 
     // --------------------------------------------------
     // Setup
@@ -10,21 +10,22 @@
       };
       this.template = {};
       this.bindListeners({
-        handleStoreEmail: EmailActions.STORE_EMAIL,
-        handleStoreError: EmailActions.STORE_ERROR,
+        handleStoreError: ThreadActions.STORE_ERROR,
+        handleStoreThread: ThreadActions.STORE_THREAD,
       });
     }
 
     // --------------------------------------------------
     // Handlers
     // --------------------------------------------------
-    handleStoreEmail(response) {
-      this.thread = response.email_thread;
-    }
-
     handleStoreError(response) {
       this.template.errors = response.errors;
     }
+
+    handleStoreThread(response) {
+      this.thread = response.email_thread;
+    }
+
   }
-  this.EmailStore = alt.createStore(EmailStore);
+  this.ThreadStore = alt.createStore(ThreadStore);
 })();

@@ -1,4 +1,4 @@
-class EmailsPage extends Component {
+class ThreadsPage extends Component {
 
   // --------------------------------------------------
   // Setup
@@ -22,22 +22,22 @@ class EmailsPage extends Component {
   // Lifecycle
   // --------------------------------------------------
   componentWillMount() {
-    this.setState(EmailsStore.getState());
     this.setState(ProfileStore.getState());
+    this.setState(ThreadsStore.getState());
     this.setState(ViewStore.getState());
   }
 
   componentDidMount() {
-    EmailsStore.listen(this._listener);
     StudentsStore.listen(this._listener);
+    ThreadsStore.listen(this._listener);
     ViewStore.listen(this._listener);
-    EmailsActions.fetchEmails(this.props.page);
+    ThreadsActions.fetchEmails(this.props.page);
     ViewActions.attachListener();
   }
 
   componentWillUnmount() {
-    EmailsStore.unlisten(this._listener);
     StudentsStore.unlisten(this._listener);
+    ThreadsStore.unlisten(this._listener);
     ViewStore.unlisten(this._listener);
   }
 
@@ -65,7 +65,7 @@ class EmailsPage extends Component {
         <div style={StyleConstants.pages.container}>
           <div style={StyleConstants.pages.content}>
             <GridHeader label={'Inbox'} />
-            <EmailsGrid
+            <ThreadsGrid
               threads={this.state.threads}
               media={this.state.media} />
             <PageNavigator

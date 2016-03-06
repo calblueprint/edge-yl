@@ -1,4 +1,4 @@
-class EmailPage extends Component {
+class ThreadPage extends Component {
 
   // --------------------------------------------------
   // Setup
@@ -22,19 +22,19 @@ class EmailPage extends Component {
   // Lifecycle
   // --------------------------------------------------
   componentWillMount() {
-    this.setState(EmailStore.getState());
     this.setState(ProfileStore.getState());
+    this.setState(ThreadStore.getState());
   }
 
   componentDidMount() {
-    EmailStore.listen(this._listener);
     ProfileStore.listen(this._listener);
-    EmailActions.fetchEmail(this.props.id);
+    ThreadStore.listen(this._listener);
+    ThreadActions.fetchThread(this.props.id);
   }
 
   componentWillUnmount() {
-    EmailStore.unlisten(this._listener);
     ProfileStore.unlisten(this._listener);
+    ThreadStore.unlisten(this._listener);
   }
 
   // --------------------------------------------------
@@ -47,7 +47,7 @@ class EmailPage extends Component {
   }
 
   sendReply() {
-    EmailActions.createReply(this.state.thread.emails[0], this.state.thread.id);
+    ThreadActions.createReply(this.state.thread.emails[0], this.state.thread.id);
   }
 
   // --------------------------------------------------

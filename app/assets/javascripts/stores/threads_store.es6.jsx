@@ -1,5 +1,5 @@
 (() => {
-  class EmailsStore {
+  class ThreadsStore {
 
     // --------------------------------------------------
     // Setup
@@ -11,7 +11,7 @@
         limit: 1,
       };
       this.bindListeners({
-        handleStoreEmails: EmailsActions.STORE_EMAILS,
+        handleStoreEmails: ThreadsActions.STORE_EMAILS,
       });
     }
 
@@ -23,5 +23,5 @@
       this.pagination = response.meta.pagination;
     }
   }
-  this.EmailsStore = alt.createStore(EmailsStore);
+  this.ThreadsStore = alt.createStore(ThreadsStore);
 })();

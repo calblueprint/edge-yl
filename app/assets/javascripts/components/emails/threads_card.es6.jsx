@@ -1,4 +1,4 @@
-class EmailsCard extends Component {
+class ThreadsCard extends Component {
 
   // --------------------------------------------------
   // Props
