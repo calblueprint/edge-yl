@@ -1,6 +1,7 @@
 class ConferenceIndexSerializer < ConferenceBaseSerializer
 
-  attributes :end_date,
+  attributes :active,
+             :end_date,
              :location,
              :start_date
 

@@ -74,8 +74,20 @@ class Conference < ActiveRecord::Base
     self
   end
 
+  def active
+    end_date.future?
+  end
+
   def females_count
     students.female.count
+  end
+
+  # Generates groups_count number of empty groups for a conference.
+  def generate_groups(groups_count)
+    letters = ('A'..'Z').take(groups_count)
+    letters.each do |letter|
+      Group.create(conference: self, letter: letter)
+    end
   end
 
   def groups_count

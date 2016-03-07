@@ -34,6 +34,9 @@ class ConferencesCard extends Component {
           <CardAttribute
             label={'End date'}
             value={conference.end_date} />
+          <CardAttribute
+            label={'Status'}
+            value={conference.active ? 'Active' : 'Not active'} />
         </div>
       </div>
     );

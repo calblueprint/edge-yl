@@ -58,6 +58,12 @@ class ConferenceCreateModal extends CreateModal {
             label={'Name'}
             value={template.name} />
           <CardInput
+            action={this.generateHandler('groups_count')}
+            errors={template.errors.group_count}
+            label={'Number of groups'}
+            margin={true}
+            value={template.group_count} />
+          <CardInput
             action={this.generateHandler('location')}
             errors={template.errors.location}
             label={'Location'}

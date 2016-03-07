@@ -24,6 +24,9 @@ class Api::ConferencesController < Api::BaseController
   def create
     conference = Conference.new conference_params
     if conference.save
+      if params[:conference][:groups_count]
+        conference.generate_groups(params[:conference][:groups_count].to_i)
+      end
       render json: conference,
              serializer: ConferenceIndexSerializer,
              status: :created

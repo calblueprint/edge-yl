@@ -48,8 +48,11 @@ class ConferenceGeneral extends Component {
         <CardAttribute
           action={() => this.storePairing('end_date')}
           editable={this.props.editable}
-          label={'Start date'}
-          value={conference.start_date} />
+          label={'End date'}
+          value={conference.end_date} />
+        <CardAttribute
+          label={'Status'}
+          value={conference.active ? 'Active' : 'Not active'} />
       </div>
     );
   }
