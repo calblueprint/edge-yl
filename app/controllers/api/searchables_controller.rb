@@ -12,7 +12,8 @@ class Api::SearchablesController < Api::BaseController
                         .where(searchable_type: 'Student')
                         .limit(4)
     documents = documents.select do |document|
-      document.searchable.group_id != params[:group_id].to_i
+      document.searchable.conference_id == params[:conference_id].to_i &&
+        document.searchable.group_id != params[:group_id].to_i
     end
     render json: documents,
            each_serializer: SearchableBaseSerializer

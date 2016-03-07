@@ -70,6 +70,7 @@ class GroupPage extends Component {
     if (this.state.overlay) {
       return (
         <GroupPageOverlay
+          group={this.state.group}
           groupables={this.state.groupables}
           pairing={this.state.pairing}
           results={this.state.results}

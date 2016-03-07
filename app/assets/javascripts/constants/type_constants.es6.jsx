@@ -86,7 +86,7 @@
 
     get pages() {
       return {
-        conference: 'pages-conference',
+        conferences: 'pages-conferences',
         groups: 'pages-groups',
         login: 'pages-login',
         rooms: 'pages-rooms',

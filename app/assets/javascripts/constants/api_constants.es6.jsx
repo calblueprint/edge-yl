@@ -9,8 +9,12 @@
 
     get conferences() {
       return {
-        assignStudentsToGroups: (id) => `/api/conferences/assign_students_to_groups?conference_id=${id}`,
-        assignStudentsToRooms: (id) => `/api/conferences/assign_students_to_rooms?conference_id=${id}`,
+        assignStudentsToGroups: (id) => {
+          return `/api/conferences/assign_students_to_groups?conference_id=${id}`;
+        },
+        assignStudentsToRooms: (id) => {
+          return `/api/conferences/assign_students_to_rooms?conference_id=${id}`;
+        },
         create: '/api/conferences',
         index: (page) => `/api/conferences?page=${page}`,
         show: (id) => `/api/conferences/${id}`,
@@ -28,8 +32,8 @@
     get csvs() {
       return {
         group: (id) => `/api/groups/${id}`,
-        groups: (conference_id) => `/api/groups/?conference_id=${conference_id}`,
-        rooms: (conference_id) => `/api/rooms/?conference_id=${conference_id}`,
+        groups: (conferenceId) => `/api/groups/?conference_id=${conferenceId}`,
+        rooms: (conferenceId) => `/api/rooms/?conference_id=${conferenceId}`,
         schools: '/api/schools',
         students: (query={}) => {
           var route = '/api/students';
@@ -74,7 +78,7 @@
     get groups() {
       return {
         create: '/api/groups',
-        index: (conference_id) => `/api/groups?conference_id=${conference_id}`,
+        index: (conferenceId) => `/api/groups?conference_id=${conferenceId}`,
         show: (id) => `/api/groups/${id}`,
         update: (id) => `/api/groups/${id}`,
       };
@@ -96,8 +100,8 @@
       return {
         create: '/api/rooms',
         show: (id) => `/api/rooms/${id}`,
-        index: (conference_id) => {
-          return `/api/rooms?&conference_id=${conference_id}`;
+        index: (conferenceId) => {
+          return `/api/rooms?&conference_id=${conferenceId}`;
         },
         update: (id) => `/api/rooms/${id}`,
       };
@@ -114,7 +118,11 @@
     get searchables() {
       return {
         search: (query) => `/api/searchables/search?query=${query}`,
-        students: (groupId, query) => `/api/searchables/students?group_id=${groupId}&query=${query}`,
+        students: (conferenceId, groupId, query) => {
+          return `/api/searchables/students?conference_id=${conferenceId}`+
+                                           `&group_id=${groupId}` +
+                                           `&query=${query}`;
+        },
       };
     }
 

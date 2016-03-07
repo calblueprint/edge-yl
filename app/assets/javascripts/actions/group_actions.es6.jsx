@@ -117,10 +117,10 @@
       };
     }
 
-    storeSearch(active, groupId, query) {
+    storeSearch(active, conferenceId, groupId, query) {
       if (query) {
         var resolve = (response) => this.storeResults(response);
-        Requester.get(ApiConstants.searchables.students(groupId, query), resolve);
+        Requester.get(ApiConstants.searchables.students(conferenceId, groupId, query), resolve);
       }
       return {
         active: active,

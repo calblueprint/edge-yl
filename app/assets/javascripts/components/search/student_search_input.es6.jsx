@@ -5,6 +5,7 @@ class StudentSearchInput extends SearchInput {
   static get propTypes() {
     return {
       pagination: React.PropTypes.object.isRequired,
+      conferenceId: React.PropTypes.number.isRequired,
       groupId: React.PropTypes.number.isRequired,
       results: React.PropTypes.array.isRequired,
       savedSearch: React.PropTypes.object.isRequired,
@@ -20,7 +21,10 @@ class StudentSearchInput extends SearchInput {
   }
 
   handleInput(event) {
-    GroupActions.storeSearch(true, this.props.groupId, event.target.value);
+    GroupActions.storeSearch(true,
+                             this.props.conferenceId,
+                             this.props.groupId,
+                             event.target.value);
   }
 
   // --------------------------------------------------

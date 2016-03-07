@@ -5,6 +5,7 @@ class SearchModal extends EditModal {
   // --------------------------------------------------
   static get propTypes() {
     return {
+      group: React.PropTypes.object.isRequired,
       model: React.PropTypes.string.isRequired,
       pairing: React.PropTypes.object.isRequired,
       savedSearch: React.PropTypes.object.isRequired,
@@ -69,12 +70,14 @@ class SearchModal extends EditModal {
   }
 
   renderChild() {
+    var group = this.props.group;
     var pairing = this.props.pairing;
     if (pairing.type === 'search') {
       return (
         <CardSearchInput
           errors={pairing.errors[pairing.key]}
-          extras={{groupId: pairing.id}}
+          extras={{conferenceId: group.conference.id,
+                   groupId: group.id}}
           focus={true}
           label={"Add a Student"}
           type={'search'}

@@ -70,6 +70,7 @@ class CardSearchInput extends Component {
       <div style={this.styles.container}>
         <StudentSearchInput
           pagination={{current: 1, limit: 1}}
+          conferenceId={this.props.extras.conferenceId}
           groupId={this.props.extras.groupId}
           results={this.props.results}
           savedSearch={this.props.savedSearch}

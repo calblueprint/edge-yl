@@ -41,7 +41,7 @@
     assignStudentsToRooms(id){
       var params = { conference_id: id };
       var resolve = (response) => this.storeConference(response);
-      var reject = (response) => this.storeError(response);
+      var reject = (response) => ViewActions.storeToast(true, 'Not enough rooms for students!');
       var response = confirm('This will reassign ALL students to new rooms. ' +
                              'This action cannot be undone.');
       if (response) {

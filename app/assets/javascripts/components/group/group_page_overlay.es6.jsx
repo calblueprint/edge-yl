@@ -4,6 +4,7 @@ class GroupPageOverlay extends PageOverlay {
   // --------------------------------------------------
   static get propTypes() {
     return {
+      group: React.PropTypes.object.isRequired,
       groupables: React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
       pairing: React.PropTypes.object.isRequired,
       results: React.PropTypes.array.isRequired,
@@ -32,6 +33,7 @@ class GroupPageOverlay extends PageOverlay {
     } else if (this.props.pairing.model == 'student') {
       return (
         <SearchModal
+          group={this.props.group}
           model={'student'}
           pairing={this.props.pairing}
           savedSearch={this.props.savedSearch}
