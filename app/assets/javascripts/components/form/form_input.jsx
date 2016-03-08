@@ -10,29 +10,6 @@ class FormInput extends Component {
   }
 
   // --------------------------------------------------
-  // Styles
-  // --------------------------------------------------
-  get styles() {
-    return {
-      container: {
-        display: 'flex',
-        alignItems: 'center',
-        marginBottom: '12px',
-      },
-      errors: {
-        color: StyleConstants.colors.red,
-      },
-      input: {
-        marginLeft: '24px',
-      },
-      required: {
-        paddingLeft: '4px',
-        color: StyleConstants.colors.red,
-      },
-    };
-  }
-
-  // --------------------------------------------------
   // Lifecycle
   // --------------------------------------------------
   componentDidMount() {
@@ -48,7 +25,7 @@ class FormInput extends Component {
     FormActions.storeResponse(
       question.page_id,
       question.id,
-      event.target.value
+      event.target.value,
     );
   }
 
@@ -59,7 +36,7 @@ class FormInput extends Component {
     var errors = this.props.question.errors;
     if (errors && errors.length) {
       return (
-        <h6 style={this.styles.errors}>
+        <h6 style={StyleConstants.forms.questions.errors}>
           {errors[0]}
         </h6>
       );
@@ -68,7 +45,11 @@ class FormInput extends Component {
 
   renderRequired() {
     if (this.props.question.is_required) {
-      return <h6 style={this.styles.required}>{'*'}</h6>;
+      return (
+        <p style={StyleConstants.forms.questions.required}>
+          {'*'}
+        </p>
+      );
     }
   }
 
@@ -76,15 +57,18 @@ class FormInput extends Component {
     // TODO(Warren): Configure input with type attribute!
     var question = this.props.question;
     return (
-      <div style={this.styles.container}>
-        <h6>{question.title}</h6>
-        {this.renderRequired()}
-        <input
-          ref={'container'}
-          style={this.styles.input}
-          placeholder={question.placeholder}
-          value={question.value} />
-        {this.renderErrors()}
+      <div style={StyleConstants.forms.questions.container}>
+        <div style={StyleConstants.forms.questions.prompt}>
+          <h6>{question.title}{this.renderRequired()}</h6>
+        </div>
+        <div style={StyleConstants.forms.questions.response}>
+          <textarea
+            ref={'container'}
+            style={this.styles.input}
+            placeholder={question.placeholder}
+            value={question.value} />
+          {this.renderErrors()}
+        </div>
       </div>
     );
   }

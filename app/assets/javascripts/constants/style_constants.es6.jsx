@@ -81,6 +81,35 @@
       };
     }
 
+    get forms() {
+      return {
+        questions: {
+          container: {
+            display: 'flex',
+            marginBottom: '18px',
+          },
+          errors: {
+            color: this.colors.red,
+          },
+          prompt: {
+            display: 'flex',
+            alignItems: 'center',
+            width: '172px',
+            marginRight: '24px',
+          },
+          required: {
+            paddingLeft: '4px',
+            color: this.colors.red,
+          },
+          response: {
+            display: 'flex',
+            flexFlow: 'column',
+            flex: '1',
+          },
+        },
+      };
+    }
+
     get grids() {
       return {
         column: {

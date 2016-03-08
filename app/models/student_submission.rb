@@ -151,8 +151,10 @@ class StudentSubmission < ActiveRecord::Base
       validator = StudentValidator.new(current_attributes, current_page)
       validator.valid?
       response = validator.errors.to_hash
-      response.each do |attribute, message|
-        self.errors.add(attribute, message)
+      response.each do |attribute, messages|
+        messages.each do |message|
+          self.errors.add(attribute, message)
+        end
       end
     end
   end

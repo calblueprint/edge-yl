@@ -20,10 +20,6 @@ class FormDropdown extends Component {
         alignItems: 'center',
         marginBottom: '18px',
       },
-      required: {
-        paddingLeft: '4px',
-        color: StyleConstants.colors.red,
-      },
     };
   }
 
@@ -47,28 +43,47 @@ class FormDropdown extends Component {
     FormActions.storeResponse(
       question.page_id,
       question.id,
-      choice
+      choice,
     );
   }
 
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
+  renderErrors() {
+    var errors = this.props.question.errors;
+    if (errors && errors.length) {
+      return (
+        <h6 style={StyleConstants.forms.questions.errors}>
+          {errors[0]}
+        </h6>
+      );
+    }
+  }
+
   renderRequired() {
     if (this.props.question.is_required) {
-      return <h6 style={this.styles.required}>{'*'}</h6>;
+      return (
+        <p style={StyleConstants.forms.questions.required}>
+          {'*'}
+        </p>
+      );
     }
   }
 
   render() {
     var question = this.props.question;
     return (
-      <div style={this.styles.container}>
-        <h6>{question.title}</h6>
-        {this.renderRequired()}
-        <DropdownButton
-          choices={this.generateChoices()}
-          value={question.value} />
+      <div style={StyleConstants.forms.questions.container}>
+        <div style={StyleConstants.forms.questions.prompt}>
+          <h6>{question.title}{this.renderRequired()}</h6>
+        </div>
+        <div style={StyleConstants.forms.questions.response}>
+          <DropdownButton
+            choices={this.generateChoices()}
+            value={question.value} />
+          {this.renderErrors()}
+        </div>
       </div>
     );
   }

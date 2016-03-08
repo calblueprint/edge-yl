@@ -19,7 +19,7 @@
       var attributes = {};
       var questions = page.questions;
       questions.map((question) => attributes[question.key] = question.value);
-      attributes['current_page'] = page.number;
+      attributes.current_page = page.number;
       if (target === 'school') {
         var params = { school_submission: attributes };
         var resolve = (response) => {
@@ -104,6 +104,7 @@
       var attributes = {};
       var questions = page.questions;
       questions.map((question) => attributes[question.key] = question.value);
+      attributes.current_page = page.number;
       if (target === 'school') {
         var params = { school_submission: attributes };
         var resolve = (response) => {
@@ -133,7 +134,7 @@
           if (page.is_last && forward) {
             window.location = RouteConstants.forms.preview(target, submission.id);
           } else {
-            window.location = RouteConstants.forms.school(number, submission.id);
+            window.location = RouteConstants.forms.student(number, submission.id);
           }
         };
         var reject = (response) => this.storeErrors({
