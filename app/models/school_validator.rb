@@ -9,6 +9,26 @@ class SchoolValidator
                 :address_one,
                 :address_state,
                 :address_zip,
+                :alternate_student,
+                :alternate_student_address_city,
+                :alternate_student_address_one,
+                :alternate_student_address_state,
+                :alternate_student_address_two,
+                :alternate_student_address_zip,
+                :alternate_student_birthday,
+                :alternate_student_cell_phone,
+                :alternate_student_email,
+                :alternate_student_first_name,
+                :alternate_student_gender,
+                :alternate_student_guardian_first_name,
+                :alternate_student_guardian_email,
+                :alternate_student_guardian_last_name,
+                :alternate_student_guardian_phone_number,
+                :alternate_student_guardian_phone_type,
+                :alternate_student_guardian_relationship,
+                :alternate_student_home_phone,
+                :alternate_student_last_name,
+                :alternate_student_shirt_size,
                 :contact_email,
                 :contact_first_name,
                 :contact_last_name,
@@ -63,7 +83,26 @@ class SchoolValidator
   validates :student_home_phone, if: :page_three?, presence: true
   validates :student_gender, if: :page_three?, presence: true
   validates :student_last_name, if: :page_three?, presence: true
-  validates :student_shirt_size,  if: :page_three?, presence: true
+  validates :student_shirt_size, if: :page_three?, presence: true
+
+  validates :alternate_student_address_city, if: :page_four?, presence: true
+  validates :alternate_student_address_one, if: :page_four?, presence: true
+  validates :alternate_student_address_state, if: :page_four?, presence: true
+  validates :alternate_student_address_zip, if: :page_four?, presence: true
+  validates :alternate_student_birthday, if: :page_four?, presence: true
+  validates :alternate_student_cell_phone, if: :page_four?, presence: true
+  validates :alternate_student_email, if: :page_four?, presence: true
+  validates :alternate_student_first_name, if: :page_four?, presence: true
+  validates :alternate_student_guardian_first_name, if: :page_four?, presence: true
+  validates :alternate_student_guardian_email, if: :page_four?, presence: true
+  validates :alternate_student_guardian_last_name, if: :page_four?, presence: true
+  validates :alternate_student_guardian_phone_number, if: :page_four?, presence: true
+  validates :alternate_student_guardian_phone_type, if: :page_four?, presence: true
+  validates :alternate_student_guardian_relationship, if: :page_four?, presence: true
+  validates :alternate_student_home_phone, if: :page_four?, presence: true
+  validates :alternate_student_gender, if: :page_four?, presence: true
+  validates :alternate_student_last_name, if: :page_four?, presence: true
+  validates :alternate_student_shirt_size, if: :page_four?, presence: true
 
   def initialize(attributes={}, page=0)
     @page = page
@@ -84,6 +123,10 @@ class SchoolValidator
 
   def page_three?
     @page == 3
+  end
+
+  def page_four?
+    @page == 4
   end
 
   def persisted?

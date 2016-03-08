@@ -5,7 +5,9 @@ class PreviewPage extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
+      id: React.PropTypes.string.isRequired,
       page: React.PropTypes.object.isRequired,
+      target: React.PropTypes.string.isRequired,
     };
   }
 
@@ -18,11 +20,31 @@ class PreviewPage extends Component {
         {},
         StyleConstants.templates.card,
         {
+          display: 'flex',
+          flexFlow: 'column',
           padding: '36px',
           marginTop: '12px',
         },
       ),
+      button: {
+        alignSelf: 'center',
+        width: '110px',
+      },
     };
+  }
+
+  // --------------------------------------------------
+  // Helpers
+  // --------------------------------------------------
+  jumpPage() {
+    var id = this.props.id;
+    var page = this.props.page;
+    var target = this.props.target;
+    if (target === 'student') {
+      window.location = RouteConstants.forms.student(page.number, id);
+    } else if (target === 'school') {
+      window.location = RouteConstants.forms.school(page.number, id);
+    }
   }
 
   // --------------------------------------------------
@@ -48,6 +70,11 @@ class PreviewPage extends Component {
       <div style={this.styles.container}>
         <h4>{this.props.page.title}</h4>
         {this.renderQuestions()}
+        <div style={this.styles.button}>
+          <FormButton
+            action={() => this.jumpPage()}
+            content={'Edit this Page'} />
+        </div>
       </div>
     );
   }
