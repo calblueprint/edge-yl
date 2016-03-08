@@ -112,6 +112,12 @@ class Header extends Component {
         <HeaderShortcuts
           active={this.props.active}
           profile={this.props.profile} />
+        <div>
+          <form action={'api/import'} method={'post'} encType={'multipart/form-data'}>
+            <input type={'file'} name={'upload'} accept={'*.csv'} />
+            <input type={'submit'} />
+          </form>
+        </div>  
       </div>
     );
   }

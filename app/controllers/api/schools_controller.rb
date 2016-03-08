@@ -1,5 +1,32 @@
 class Api::SchoolsController < Api::BaseController
 
+  skip_before_filter :verify_authenticity_token
+
+  def import
+    file = params[:upload]
+    csv = CSV.parse(file.open, headers: true)
+    csv.each do |row|
+      school = School.create(
+       address_city: row[8],
+       address_one: row[6],
+       address_two: row[7],
+       address_state: row[9],
+       address_zip: row[10],
+       name: row[1],
+      )
+      contact = Contact.create(
+        email: row[11],
+        first_name: row[2],
+        is_primary: true,
+        last_name: row[3],
+        phone_number: row[12],
+        school: school,
+        title: row[4],
+      )
+    end
+    redirect_to schools_path
+  end
+
   def index
     respond_to do |format|
       format.csv { index_csv }
