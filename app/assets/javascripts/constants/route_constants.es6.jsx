@@ -33,13 +33,6 @@
     get groups() {
       return {
         show: (id) => `/groups/${id}`,
-        index: (conference_id) => {
-          var route = '/groups';
-          if (conference_id) {
-            route = `${route}?conference_id=${conference_id}`;
-          }
-          return route;
-        },
       };
     }
 
@@ -55,13 +48,6 @@
 
     get rooms() {
       return {
-        index: (conference_id) => {
-          var route = '/rooms';
-          if (conference_id) {
-            route = `${route}?conference_id=${conference_id}`;
-          }
-          return route;
-        },
         show: (id) => `/rooms/${id}`,
       };
     }

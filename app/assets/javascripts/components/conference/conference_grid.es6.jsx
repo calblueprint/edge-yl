@@ -28,10 +28,6 @@ class ConferenceGrid extends Component {
         action: () => ConferenceActions.assignStudentsToGroups(conference.id),
         content: 'Assign Students to Groups',
       },
-      {
-        content: 'All',
-        route: RouteConstants.groups.index(conference.id),
-      },
     ];
   }
 
@@ -48,10 +44,6 @@ class ConferenceGrid extends Component {
       {
         action: () => ConferenceActions.assignStudentsToRooms(conference.id),
         content: 'Assign Students to Rooms',
-      },
-      {
-        content: 'All',
-        route: RouteConstants.rooms.index(conference.id),
       },
     ];
   }

@@ -16,7 +16,6 @@ class Api::GroupsController < Api::BaseController
   def index
     respond_to do |format|
       format.csv { index_csv }
-      format.json { index_json }
     end
   end
 
@@ -44,13 +43,6 @@ class Api::GroupsController < Api::BaseController
   def index_csv
     groups = apply_scopes(Group).all
     send_data groups.to_csv
-  end
-
-  def index_json
-    groups = Group.includes(:conference)
-                  .where conference_id: params[:conference_id]
-    render json: groups,
-           each_serializer: GroupIndexSerializer
   end
 
   def show_csv

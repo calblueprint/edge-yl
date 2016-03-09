@@ -16,7 +16,6 @@ class Api::RoomsController < Api::BaseController
   def index
     respond_to do |format|
       format.csv { index_csv }
-      format.json { index_json }
     end
   end
 
@@ -41,13 +40,6 @@ class Api::RoomsController < Api::BaseController
   def index_csv
     csv_rooms = apply_scopes(Room).includes(:students)
     send_data csv_rooms.to_csv
-  end
-
-  def index_json
-    rooms = Room.includes(:conference)
-                .where conference_id: params[:conference_id]
-    render json: rooms,
-           each_serializer: RoomIndexSerializer
   end
 
   def room_params
