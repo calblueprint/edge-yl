@@ -46,6 +46,7 @@
     get pages() {
       return {
         feedback: '/feedback',
+        import: '/import',
         login: '/login',
         signup: '/signup',
         profile: '/profile',

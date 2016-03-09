@@ -6,6 +6,9 @@ class PagesController < BaseController
   def feedback
   end
 
+  def import
+  end
+
   def login
   end
 

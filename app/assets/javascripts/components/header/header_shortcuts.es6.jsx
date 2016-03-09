@@ -98,6 +98,10 @@ class HeaderShortcuts extends Component {
           route: RouteConstants.pages.profile,
         },
         {
+          content: 'Import data',
+          route: RouteConstants.pages.import,
+        },
+        {
           content: 'Leave feedback',
           route: RouteConstants.pages.feedback,
         },

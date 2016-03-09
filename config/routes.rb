@@ -10,6 +10,7 @@
   get 'forms/:target/:id/success', to: 'forms#success'
   get 'forms/:target/:uuid', to: 'forms#show'
   get 'forms/:target/:uuid/success', to: 'forms#success'
+  get 'import', to: 'pages#import'
   get 'login', to: 'pages#login'
   get 'profile', to: 'users#profile'
   get 'signup', to: 'pages#signup'

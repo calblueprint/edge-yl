@@ -21,4 +21,4 @@ config/application.yml
 *.swp
 
 # Ignore csv data files.
-/db/data/*.csv
+/db/data/
