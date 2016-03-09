@@ -69,9 +69,11 @@ class PreviewContainer extends Component {
   renderPage(page) {
     return (
       <PreviewPage
+        id={this.props.id}
         key={page.id}
+        page={page}
         style={this.styles.page}
-        page={page} />
+        target={this.props.target} />
     );
   }
 

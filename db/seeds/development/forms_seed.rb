@@ -105,7 +105,6 @@ school_form = Form.create(
   Page.create(
     form: form,
     description: 'General information about the primary student from your school.',
-    is_last: true,
     number: 3,
     title: 'Step 3 - Primary Student Information',
   ) do |page|
@@ -242,6 +241,155 @@ school_form = Form.create(
       page: page,
       style: Question.styles[:dropdown],
       title: 'Parent/Guardian relationship',
+    )
+  end
+  Page.create(
+    form: form,
+    description: 'General information about the alternate student from your school.',
+    is_last: true,
+    number: 4,
+    title: 'Step 4 - Alternate Student Information',
+  ) do |page|
+    Question.create(
+      key: 'alternate_student',
+      options: Student.booleans.keys,
+      page: page,
+      style: Question.styles[:dropdown],
+      title: 'Would you like to enter information about an alternate student?',
+    )
+    Question.create(
+      key: 'alternate_student_first_name',
+      page: page,
+      placeholder: '...',
+      style: Question.styles[:input],
+      title: 'Alternate student first name',
+    )
+    Question.create(
+      key: 'alternate_student_last_name',
+      page: page,
+      placeholder: '...',
+      style: Question.styles[:input],
+      title: 'Alternate student last name',
+    )
+    Question.create(
+      key: 'alternate_student_address_one',
+      page: page,
+      placeholder: '...',
+      style: Question.styles[:input],
+      title: 'Alternate student address one',
+    )
+    Question.create(
+      is_required: false,
+      key: 'alternate_student_address_two',
+      page: page,
+      placeholder: '...',
+      style: Question.styles[:input],
+      title: 'Alternate student address two',
+    )
+    Question.create(
+      key: 'alternate_student_address_city',
+      page: page,
+      placeholder: 'San Francisco',
+      style: Question.styles[:input],
+      title: 'Alternate student address city',
+    )
+    Question.create(
+      key: 'alternate_student_address_state',
+      page: page,
+      placeholder: 'CA',
+      style: Question.styles[:input],
+      title: 'Alternate student address state',
+    )
+    Question.create(
+      key: 'alternate_student_address_zip',
+      page: page,
+      placeholder: '90474',
+      style: Question.styles[:input],
+      title: 'Alternate student address zip',
+    )
+    Question.create(
+      key: 'alternate_student_home_phone',
+      page: page,
+      placeholder: '...',
+      style: Question.styles[:input],
+      title: 'Alternate student home phone',
+    )
+    Question.create(
+      key: 'alternate_student_cell_phone',
+      page: page,
+      placeholder: '...',
+      style: Question.styles[:input],
+      title: 'Alternate student cell phone',
+    )
+    Question.create(
+      key: 'alternate_student_email',
+      page: page,
+      placeholder: '...',
+      style: Question.styles[:input],
+      title: 'Alternate student email',
+    )
+    Question.create(
+      key: 'alternate_student_birthday',
+      page: page,
+      placeholder: '...',
+      style: Question.styles[:input],
+      title: 'Alternate student birthday',
+    )
+    Question.create(
+      key: 'alternate_student_gender',
+      options: Student.genders.keys,
+      page: page,
+      style: Question.styles[:dropdown],
+      title: 'Alternate student gender',
+    )
+    Question.create(
+      key: 'alternate_student_shirt_size',
+      options: Student.shirt_sizes.keys,
+      page: page,
+      style: Question.styles[:dropdown],
+      title: 'Alternate student shirt size',
+    )
+    Question.create(
+      key: 'alternate_student_guardian_first_name',
+      page: page,
+      placeholder: '...',
+      style: Question.styles[:input],
+      title: 'Alternate student\'s parent/guardian first name',
+    )
+    Question.create(
+      key: 'alternate_student_guardian_last_name',
+      page: page,
+      placeholder: '...',
+      style: Question.styles[:input],
+      title: 'Alternate student\'s parent/guardian last name',
+    )
+    Question.create(
+      key: 'alternate_student_guardian_email',
+      page: page,
+      placeholder: '...',
+      style: Question.styles[:input],
+      title: 'Alternate student\'s parent/guardian email',
+    )
+    Question.create(
+      key: 'alternate_student_guardian_phone_number',
+      page: page,
+      placeholder: '...',
+      style: Question.styles[:input],
+      title: 'Alternate student\'s parent/guardian phone number',
+    )
+    Question.create(
+      key: 'alternate_student_guardian_phone_type',
+      options: Student.guardian_phone_types.keys,
+      page: page,
+      style: Question.styles[:dropdown],
+      title: 'Alternate student\'s parent/guardian phone type',
+    )
+    Question.create(
+      key: 'alternate_student_guardian_relationship',
+      options: Student.guardian_relationships.keys,
+      page: page,
+      style: Question.styles[:dropdown],
+      title: 'Alternate student\'s parent/guardian relationship',
     )
   end
 end

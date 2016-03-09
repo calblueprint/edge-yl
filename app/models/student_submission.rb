@@ -42,6 +42,25 @@
 
 class StudentSubmission < ActiveRecord::Base
 
+  enum boolean: [:yes, :no]
+  enum gender: [:female, :male, :other]
+  enum dietary_restriction: [:dairy_free, :gluten_free, :None, :nut_allergy, :vegan, :vegetarian]
+  enum guardian_phone_type: [:cell, :home, :work]
+  enum guardian_relationship: [
+    :mother,
+    :father,
+    :aunt,
+    :uncle,
+    :grandmother,
+    :grandfather,
+    :stepmother,
+    :stepfather,
+    :guardian,
+  ]
+  enum registration_status: [:registered, :selected, :dropped]
+  enum shirt_size: [:S, :M, :L, :XL, :XXL]
+
+
   before_validation :validate_page, on: :update
 
   def form_url

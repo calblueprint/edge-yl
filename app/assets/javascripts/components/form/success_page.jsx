@@ -1,4 +1,4 @@
-class FormSuccess extends Component {
+class SuccessPage extends Component {
 
   // --------------------------------------------------
   // Props

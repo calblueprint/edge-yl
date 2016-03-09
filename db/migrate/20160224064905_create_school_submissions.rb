@@ -7,6 +7,26 @@ class CreateSchoolSubmissions < ActiveRecord::Migration
       t.string  :address_state
       t.string  :address_two, default: ''
       t.string  :address_zip
+      t.integer :alternate_student
+      t.string  :alternate_student_address_city
+      t.string  :alternate_student_address_one
+      t.string  :alternate_student_address_state
+      t.string  :alternate_student_address_two, default: ''
+      t.string  :alternate_student_address_zip
+      t.date    :alternate_student_birthday
+      t.string  :alternate_student_cell_phone
+      t.string  :alternate_student_email
+      t.string  :alternate_student_first_name
+      t.integer :alternate_student_gender
+      t.string  :alternate_student_guardian_first_name
+      t.string  :alternate_student_guardian_email
+      t.string  :alternate_student_guardian_last_name
+      t.string  :alternate_student_guardian_phone_number
+      t.integer :alternate_student_guardian_phone_type
+      t.integer :alternate_student_guardian_relationship
+      t.string  :alternate_student_home_phone
+      t.string  :alternate_student_last_name
+      t.integer :alternate_student_shirt_size
       t.string  :contact_email
       t.string  :contact_first_name
       t.string  :contact_last_name
