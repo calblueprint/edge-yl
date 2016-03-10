@@ -91,7 +91,7 @@ class DropdownButton extends Component {
           action={() => this.setState({ dropdown: true })}
           icon={TypeConstants.icons.expand}
           styles={this.clickableStyles}
-          type={'i'}>
+          type={'i-right'}>
           <p>{Helpers.humanize(this.props.value) || 'Select one'}</p>
         </Clickable>
         {this.renderDropdown()}

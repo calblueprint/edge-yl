@@ -72,7 +72,7 @@ class HeaderInbox extends Component {
         icon={TypeConstants.icons.email}
         route={RouteConstants.emails.index()}
         styles={this.clickableStyles}
-        type={'i'}>
+        type={'i-left'}>
         {this.renderCount()}
       </Clickable>
     );

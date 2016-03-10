@@ -128,7 +128,7 @@ class HeaderShortcuts extends Component {
             action={() => this.setState({ dropdown: !this.state.dropdown })}
             icon={TypeConstants.icons.settings}
             styles={this.clickableStyles}
-            type={'i'} />
+            type={'i-left'} />
         </div>
       );
     }
