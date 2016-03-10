@@ -64,42 +64,42 @@ school_form = Form.create(
     form: form,
     description: 'General information about the primary contact for your school.',
     number: 2,
-    title: 'Step 2 - Contact Information',
+    title: 'Step 2 - School Contact Information',
   ) do |page|
     Question.create(
       key: 'contact_first_name',
       page: page,
       placeholder: '...',
       style: Question.styles[:input],
-      title: 'Contact first name',
+      title: 'School contact first name',
     )
     Question.create(
       key: 'contact_last_name',
       page: page,
       placeholder: '...',
       style: Question.styles[:input],
-      title: 'Contact last name',
+      title: 'School contact last name',
     )
     Question.create(
       key: 'contact_title',
       page: page,
       placeholder: '...',
       style: Question.styles[:input],
-      title: 'Contact title',
+      title: 'School contact title',
     )
     Question.create(
       key: 'contact_email',
       page: page,
       placeholder: '...',
       style: Question.styles[:input],
-      title: 'Contact email',
+      title: 'School contact email',
     )
     Question.create(
       key: 'contact_phone_number',
       page: page,
       placeholder: '...',
       style: Question.styles[:input],
-      title: 'Contact phone number',
+      title: 'School contact phone number',
     )
   end
   Page.create(
