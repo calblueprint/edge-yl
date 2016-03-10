@@ -8,7 +8,6 @@
 #  address_state                           :string
 #  address_two                             :string           default("")
 #  address_zip                             :string
-#  alternate_student                       :integer
 #  alternate_student_address_city          :string
 #  alternate_student_address_one           :string
 #  alternate_student_address_state         :string
@@ -34,6 +33,7 @@
 #  contact_phone_number                    :string
 #  contact_title                           :string
 #  current_page                            :integer          default(0), not null
+#  has_alternate_student                   :integer
 #  is_draft                                :boolean          default(TRUE), not null
 #  name                                    :string
 #  student_address_city                    :string
@@ -60,25 +60,35 @@
 
 class SchoolSubmission < ActiveRecord::Base
 
-  enum alternate_student: [:yes, :no]
-  enum gender: [:female, :male, :other]
-  enum dietary_restriction: [:dairy_free, :gluten_free, :None, :nut_allergy, :vegan, :vegetarian]
-  enum guardian_phone_type: [:cell, :home, :work]
-  enum guardian_relationship: [
-    :mother,
-    :father,
-    :aunt,
-    :uncle,
-    :grandmother,
-    :grandfather,
-    :stepmother,
-    :stepfather,
-    :guardian,
-  ]
-  enum registration_status: [:registered, :selected, :dropped]
-  enum shirt_size: [:S, :M, :L, :XL, :XXL]
+  enum student_gender: [:female, :male, :other]
+  # enum student_dietary_restriction: [:dairy_free, :gluten_free, :None, :nut_allergy, :vegan, :vegetarian]
+  # enum student_guardian_phone_type: [:cell, :home, :work]
+  # enum student_guardian_relationship: [
+  #   :mother,
+  #   :father,
+  #   :aunt,
+  #   :uncle,
+  #   :grandmother,
+  #   :grandfather,
+  #   :stepmother,
+  #   :stepfather,
+  #   :guardian,
+  # ]
+  enum student_shirt_size: [:S, :M, :L, :XL, :XXL]
 
   before_validation :validate_page, on: [:create, :update]
+
+  BOOLEANS = %w(yes no)
+
+  def has_alternate_student
+    if !read_attribute(:has_alternate_student).nil?
+      BOOLEANS[read_attribute(:has_alternate_student)]
+    end
+  end
+
+  def has_alternate_student=(value)
+    write_attribute(:has_alternate_student, BOOLEANS.index(value))
+  end
 
   def submit_submission
     school = School.new(
@@ -121,7 +131,7 @@ class SchoolSubmission < ActiveRecord::Base
         last_name: student_last_name,
         shirt_size: student_shirt_size,
       )
-      if alternate_student == 'yes'
+      if has_alternate_student == BOOLEANS[0]
         alternate_student_submission = StudentSubmission.new(
           address_city: alternate_student_address_city,
           address_one: alternate_student_address_one,
@@ -144,10 +154,10 @@ class SchoolSubmission < ActiveRecord::Base
           shirt_size: alternate_student_shirt_size,
         )
       end
-      if contact.save && student_submission.save && (alternate_student == 'no' || alternate_student_submission.save) &&
+      if contact.save && student_submission.save && (has_alternate_student == BOOLEANS[1] || alternate_student_submission.save) &&
         SchoolMailer.create(school).deliver_now &&
         StudentMailer.create(student_submission).deliver_now &&
-        (alternate_student == 'no' || StudentMailer.create(alternate_student_submission).deliver_now)
+        (has_alternate_student == BOOLEANS[1] || StudentMailer.create(alternate_student_submission).deliver_now)
         self.is_draft = false
         self.save
       end
@@ -230,7 +240,7 @@ class SchoolSubmission < ActiveRecord::Base
         3 => attributes_three,
         4 => attributes_four,
       }
-      if current_page != 4 || alternate_student == 'yes'
+      if current_page != 4 || has_alternate_student == BOOLEANS[0]
         current_attributes = attributes_hash[current_page]
         validator = SchoolValidator.new(current_attributes, current_page)
         validator.valid?

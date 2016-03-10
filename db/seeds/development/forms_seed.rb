@@ -64,42 +64,42 @@ school_form = Form.create(
     form: form,
     description: 'General information about the primary contact for your school.',
     number: 2,
-    title: 'Step 2 - Contact Information',
+    title: 'Step 2 - School Contact Information',
   ) do |page|
     Question.create(
       key: 'contact_first_name',
       page: page,
       placeholder: '...',
       style: Question.styles[:input],
-      title: 'Contact first name',
+      title: 'School contact first name',
     )
     Question.create(
       key: 'contact_last_name',
       page: page,
       placeholder: '...',
       style: Question.styles[:input],
-      title: 'Contact last name',
+      title: 'School contact last name',
     )
     Question.create(
       key: 'contact_title',
       page: page,
       placeholder: '...',
       style: Question.styles[:input],
-      title: 'Contact title',
+      title: 'School contact title',
     )
     Question.create(
       key: 'contact_email',
       page: page,
       placeholder: '...',
       style: Question.styles[:input],
-      title: 'Contact email',
+      title: 'School contact email',
     )
     Question.create(
       key: 'contact_phone_number',
       page: page,
       placeholder: '...',
       style: Question.styles[:input],
-      title: 'Contact phone number',
+      title: 'School contact phone number',
     )
   end
   Page.create(
@@ -251,8 +251,8 @@ school_form = Form.create(
     title: 'Step 4 - Alternate Student Information',
   ) do |page|
     Question.create(
-      key: 'alternate_student',
-      options: Student.booleans.keys,
+      key: 'has_alternate_student',
+      options: SchoolSubmission::BOOLEANS,
       page: page,
       style: Question.styles[:dropdown],
       title: 'Would you like to enter information about an alternate student?',
@@ -598,14 +598,14 @@ student_form = Form.create(
       options: Student.booleans.keys,
       page: page,
       style: Question.styles[:dropdown],
-      title: 'Have you (the student attendee) previously been diagnosed with or currently have any of the following health conditions? (Check all that apply) ',
+      title: 'Have you (the student attendee) previously been diagnosed with or currently have any of the following health conditions (check all that apply)?',
     )
     Question.create(
       is_required: false,
       key: 'medications',
       page: page,
       placeholder: 'Enter "None" if you do not have any',
-      style: Question.styles[:input],
+      style: Question.styles[:textarea],
       title: 'Please list any medication(s) that you currently take and/or will need to take during the seminar weekend:',
     )
     Question.create(
@@ -620,7 +620,7 @@ student_form = Form.create(
       key: 'other_dietary_restrictions',
       page: page,
       placeholder: 'Enter "None" if you do not have any' ,
-      style: Question.styles[:input],
+      style: Question.styles[:textarea],
       title: 'Please list any other dietary restrictions that you have:',
     )
     Question.create(
@@ -628,8 +628,8 @@ student_form = Form.create(
       key: 'exercise_limitations',
       page: page,
       placeholder: 'Enter "None" if you do not have any',
-      style: Question.styles[:input],
-      title: 'Please list any limitations on the amount of physical exeercise you can engage in:',
+      style: Question.styles[:textarea],
+      title: 'Please list any limitations on the amount of physical exercise you can engage in:',
     )
     Question.create(
       key: 'emergency_consent',
