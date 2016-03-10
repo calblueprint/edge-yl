@@ -251,8 +251,8 @@ school_form = Form.create(
     title: 'Step 4 - Alternate Student Information',
   ) do |page|
     Question.create(
-      key: 'alternate_student',
-      options: Student.booleans.keys,
+      key: 'has_alternate_student',
+      options: SchoolSubmission::BOOLEANS,
       page: page,
       style: Question.styles[:dropdown],
       title: 'Would you like to enter information about an alternate student?',

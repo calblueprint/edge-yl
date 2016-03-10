@@ -172,7 +172,6 @@ ActiveRecord::Schema.define(version: 20160226234324) do
     t.string  "address_state"
     t.string  "address_two",                             default: ""
     t.string  "address_zip"
-    t.integer "alternate_student"
     t.string  "alternate_student_address_city"
     t.string  "alternate_student_address_one"
     t.string  "alternate_student_address_state"
@@ -198,6 +197,7 @@ ActiveRecord::Schema.define(version: 20160226234324) do
     t.string  "contact_phone_number"
     t.string  "contact_title"
     t.integer "current_page",                            default: 0,    null: false
+    t.integer "has_alternate_student"
     t.boolean "is_draft",                                default: true, null: false
     t.string  "name"
     t.string  "student_address_city"
