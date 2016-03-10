@@ -60,7 +60,9 @@ class SchoolValidator
   validates :address_zip, if: :page_one?, presence: true
   validates :name, if: :page_one?, presence: true
 
-  validates :contact_email, if: :page_two?, presence: true
+  validates :contact_email, format: { with: /.+@.+\..+/i },
+                            if: :page_two?,
+                            presence: true
   validates :contact_first_name, if: :page_two?, presence: true
   validates :contact_last_name, if: :page_two?, presence: true
   validates :contact_phone_number, if: :page_two?, presence: true
