@@ -5,6 +5,7 @@ class StudentsFilter extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
+      conference: React.PropTypes.object.isRequired,
       filter: React.PropTypes.object.isRequired,
     };
   }
@@ -28,7 +29,12 @@ class StudentsFilter extends Component {
   generateChoice(choice) {
     var filter = this.props.filter;
     return {
-      action: () => StudentsActions.storeFilter(filter.key, false, choice),
+      action: () => StudentsActions.storeFilter(
+        false,
+        this.props.conference,
+        filter.key,
+        choice,
+      ),
       content: choice,
     };
   }

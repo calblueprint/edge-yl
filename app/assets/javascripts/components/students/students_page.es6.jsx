@@ -13,6 +13,8 @@ class StudentsPage extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
+      conference: React.PropTypes.object.isRequired,
+      conferences: React.PropTypes.array.isRequired,
       page: React.PropTypes.number.isRequired,
       profile: React.PropTypes.object.isRequired,
       query: React.PropTypes.object.isRequired,
@@ -33,7 +35,11 @@ class StudentsPage extends Component {
     StudentsStore.listen(this._listener);
     ViewStore.listen(this._listener);
     StudentsActions.attachListener();
-    StudentsActions.fetchStudents(this.props.page, this.props.query);
+    StudentsActions.fetchStudents(
+      this.props.conference,
+      this.props.page,
+      this.props.query,
+    );
     ViewActions.attachListener();
   }
 
@@ -65,6 +71,7 @@ class StudentsPage extends Component {
   // Render
   // --------------------------------------------------
   render() {
+    var conference = this.state.conference;
     return (
       <div style={StyleConstants.pages.wrapper}>
         <Header profile={this.selectProfile()} />
@@ -72,6 +79,8 @@ class StudentsPage extends Component {
         <div style={StyleConstants.pages.container}>
           <div style={StyleConstants.pages.content}>
             <PageHeader
+              conference={conference}
+              conferences={this.props.conferences}
               options={this.generateOptions()}
               title={'Students'}
               type={TypeConstants.pages.students} />
@@ -80,9 +89,10 @@ class StudentsPage extends Component {
               students={this.state.students}
               type={TypeConstants.students.default} />
             <PageNavigator
-              action={(page) => StudentsActions.storePage(page)}
+              action={(page) => StudentsActions.storePage(conference, page)}
               pagination={this.state.pagination} />
             <StudentsSidebar
+              conference={conference}
               filters={this.state.filters}
               sorts={this.state.sorts} />
           </div>

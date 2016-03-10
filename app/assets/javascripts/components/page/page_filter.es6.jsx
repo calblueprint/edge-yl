@@ -10,6 +10,7 @@ class PageFilter extends Component {
       type: React.PropTypes.oneOf([
         TypeConstants.pages.groups,
         TypeConstants.pages.rooms,
+        TypeConstants.pages.students,
       ]).isRequired,
     };
   }
@@ -25,6 +26,9 @@ class PageFilter extends Component {
         break;
       case TypeConstants.pages.rooms:
         action = () => RoomsActions.fetchRooms(option);
+        break;
+      case TypeConstants.pages.students:
+        action = () => StudentsActions.fetchStudents(option);
         break;
     }
     return {

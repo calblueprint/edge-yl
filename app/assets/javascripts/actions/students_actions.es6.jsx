@@ -7,6 +7,7 @@
     constructor() {
       this.generateActions(
         'restoreStudents',
+        'storeConference',
         'storeStudents',
       );
     }
@@ -22,13 +23,14 @@
     // --------------------------------------------------
     // Requests
     // --------------------------------------------------
-    fetchStudents(page, query) {
+    fetchStudents(conference, page=1, query) {
       var resolve = (response) => {
         response.meta.initial = true;
         response.meta.query = query;
+        this.storeConference(conference);
         this.storeStudents(response);
       };
-      Requester.get(ApiConstants.students.index(page, query), resolve);
+      Requester.get(ApiConstants.students.index(conference.id, page, query), resolve);
       return true;
     }
 
@@ -41,7 +43,7 @@
     // --------------------------------------------------
     // Stores
     // --------------------------------------------------
-    storeFilter(key, active, selected) {
+    storeFilter(active, conference, key, selected) {
       if (selected) {
         var query = StudentsStore.getState().query;
         if (selected !== 'None') {
@@ -53,7 +55,7 @@
           response.meta.query = query;
           this.storeStudents(response);
         };
-        Requester.get(ApiConstants.students.index(1, query), resolve);
+        Requester.get(ApiConstants.students.index(conference.id, 1, query), resolve);
       }
       return {
         active: active,
@@ -61,17 +63,17 @@
       };
     }
 
-    storePage(page) {
+    storePage(conference, page) {
       var query = StudentsStore.getState().query;
       var resolve = (response) => {
         response.meta.query = query;
         this.storeStudents(response);
       };
-      Requester.get(ApiConstants.students.index(page, query), resolve);
+      Requester.get(ApiConstants.students.index(conference.id, page, query), resolve);
       return true;
     }
 
-    storeSort(key, active, selected) {
+    storeSort(active, conference, key, selected) {
       if (selected) {
         var query = StudentsStore.getState().query;
         if (selected !== 'None') {
@@ -83,7 +85,7 @@
           response.meta.query = query;
           this.storeStudents(response);
         };
-        Requester.get(ApiConstants.students.index(1, query), resolve);
+        Requester.get(ApiConstants.students.index(conference.id, 1, query), resolve);
       }
       return {
         active: active,

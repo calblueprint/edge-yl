@@ -128,10 +128,12 @@
 
     get students() {
       return {
-        index: (page, query={}) => {
-          var route = `/api/students?page=${page}`;
+        index: (conferenceId, page, query={}) => {
+          var route = `/api/students?conference_id=${conferenceId}&page=${page}`;
           Object.keys(query).map((key) => {
-            route = `${route}&${key}=${query[key]}`
+            if (key !== 'conference_id') {
+              route = `${route}&${key}=${query[key]}`
+            }
           });
           return route;
         },

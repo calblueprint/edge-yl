@@ -73,7 +73,9 @@ class PageHeader extends Component {
 
   renderFilter() {
     var type = this.props.type;
-    if (type === TypeConstants.pages.groups || type === TypeConstants.pages.rooms) {
+    if (type === TypeConstants.pages.groups ||
+        type === TypeConstants.pages.rooms ||
+        type === TypeConstants.pages.students) {
       return (
         <PageFilter
           conference={this.props.conference}

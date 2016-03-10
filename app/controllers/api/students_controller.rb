@@ -2,6 +2,7 @@ class Api::StudentsController < Api::BaseController
 
   skip_before_filter :authenticate_user, only: [:create]
 
+  has_scope :conference_id, only: [:index]
   has_scope :gender, only: [:index]
   has_scope :is_flagged, only: [:index]
   has_scope :is_primary, only: [:index]
@@ -39,7 +40,7 @@ class Api::StudentsController < Api::BaseController
   end
 
   def index_json
-    students = apply_scopes(Student).includes(:group, :room, :school)
+    students = apply_scopes(Student).includes(:conference, :group, :room, :school)
                                     .page params[:page]
     render json: students,
            serializer: PaginatedSerializer,
@@ -55,6 +56,7 @@ class Api::StudentsController < Api::BaseController
       :address_zip,
       :allergies,
       :birthday,
+      :conference_id,
       :cell_phone,
       :dietary_restrictions,
       :exercise_restrictions,

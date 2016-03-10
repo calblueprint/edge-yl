@@ -5,6 +5,7 @@ class StudentsSorts extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
+      conference: React.PropTypes.object.isRequired,
       sorts: React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
     };
   }
@@ -34,6 +35,7 @@ class StudentsSorts extends Component {
   renderSort(sort) {
     return (
       <StudentsSort
+        conference={this.props.conference}
         key={sort.key}
         sort={sort} />
     );

@@ -52,6 +52,7 @@ class Student < ActiveRecord::Base
 
   multisearchable against: [:first_name, :last_name, :email]
 
+  scope :conference_id, -> conference_id { where(conference_id: conference_id) }
   scope :gender, -> gender { where(gender: genders[gender.downcase]) }
   scope :is_flagged, -> is_flagged { where(is_flagged: is_flagged) }
   scope :is_primary, -> is_primary { where(is_primary: is_primary) }

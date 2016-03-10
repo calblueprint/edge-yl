@@ -5,7 +5,10 @@
     // Setup
     // --------------------------------------------------
     constructor() {
+      this.conference = {};
+      this.conferences = {};
       this.filters = this.generateFilters();
+      this.firstLoad = true;
       this.query = {};
       this.sorts = this.generateSorts();
       this.pagination = {
@@ -15,6 +18,7 @@
       this.students = [];
       this.bindListeners({
         handleRestoreStudents: StudentsActions.RESTORE_STUDENTS,
+        handleStoreConference: StudentsActions.STORE_CONFERENCE,
         handleStoreFilter: StudentsActions.STORE_FILTER,
         handleStoreSort: StudentsActions.STORE_SORT,
         handleStoreStudents: StudentsActions.STORE_STUDENTS,
@@ -72,21 +76,25 @@
     syncQuery() {
       this.filters = this.generateFilters();
       this.sorts = this.generateSorts();
-      Object.keys(this.query).map((key) => {
-        if (key === 'sort') {
-          var pairing = this.query[key].split(' ');
-          var sort = this.sorts.find((cmp) => cmp.key === pairing[0]);
-          if (sort) {
-            sort.selected = pairing[1];
+      if (!this.query) {
+        return null;
+      } else {
+        return Object.keys(this.query).map((key) => {
+          if (key === 'sort') {
+            var pairing = this.query[key].split(' ');
+            var sort = this.sorts.find((cmp) => cmp.key === pairing[0]);
+            if (sort) {
+              sort.selected = pairing[1];
+            }
+          } else if (key && key != 'conference_id') {
+            var value = this.query[key];
+            var filter = this.filters.find((cmp) => cmp.key === key);
+            if (filter) {
+              filter.selected = value;
+            }
           }
-        } else if (key) {
-          var value = this.query[key];
-          var filter = this.filters.find((cmp) => cmp.key === key);
-          if (filter) {
-            filter.selected = value;
-          }
-        }
-      });
+        });
+      }
     }
 
     // --------------------------------------------------
@@ -99,6 +107,10 @@
         this.students = state.students;
         this.syncQuery();
       }
+    }
+
+    handleStoreConference(conference) {
+      this.conference = conference;
     }
 
     handleStoreFilter(params) {
@@ -118,25 +130,28 @@
       this.query = query;
       this.students = response.students;
       this.syncQuery();
-      if (response.meta.initial) {
+      if (this.firstLoad) {
+        this.firstLoad = false;
         window.history.replaceState(
           {
+            conference: this.conference,
             pagination: pagination,
             query: query,
             students: this.students,
           },
           null,
-          RouteConstants.students.index(pagination.current, query),
+          RouteConstants.students.index(this.conference.id, pagination.current, query),
         );
       } else {
         window.history.pushState(
           {
+            conference: this.conference,
             pagination: pagination,
             query: query,
             students: this.students,
           },
           null,
-          RouteConstants.students.index(pagination.current, query),
+          RouteConstants.students.index(this.conference.id, pagination.current, query),
         );
       }
     }

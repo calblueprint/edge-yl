@@ -5,6 +5,7 @@ class StudentsSort extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
+      conference: React.PropTypes.object.isRequired,
       sort: React.PropTypes.object.isRequired,
     };
   }
@@ -26,9 +27,15 @@ class StudentsSort extends Component {
   // Helpers
   // --------------------------------------------------
   generateChoice(choice) {
+    var conference = this.props.conference;
     var sort = this.props.sort;
     return {
-      action: () => StudentsActions.storeSort(sort.key, false, choice),
+      action: () => StudentsActions.storeSort(
+        false,
+        conference.id,
+        sort.key,
+        choice,
+      ),
       content: choice,
     };
   }

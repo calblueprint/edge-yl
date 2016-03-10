@@ -5,6 +5,7 @@ class StudentsSidebar extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
+      conference: React.PropTypes.object.isRequired,
       filters: React.PropTypes.array.isRequired,
       sorts: React.PropTypes.array.isRequired,
     };
@@ -36,10 +37,11 @@ class StudentsSidebar extends Component {
   // Render
   // --------------------------------------------------
   render() {
+    var conference = this.props.conference;
     return (
       <div style={this.styles.container}>
-        <StudentsSorts sorts={this.props.sorts} />
-        <StudentsFilters filters={this.props.filters} />
+        <StudentsSorts conference={conference} sorts={this.props.sorts} />
+        <StudentsFilters conference={conference} filters={this.props.filters} />
       </div>
     );
   }
