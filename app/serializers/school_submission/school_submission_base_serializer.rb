@@ -4,6 +4,7 @@ class SchoolSubmissionBaseSerializer < BaseSerializer
             :address_city,
             :address_one,
             :address_state,
+            :address_two,
             :address_zip,
             :alternate_student,
             :alternate_student_address_city,
@@ -34,6 +35,7 @@ class SchoolSubmissionBaseSerializer < BaseSerializer
             :student_address_city,
             :student_address_one,
             :student_address_state,
+            :student_address_two,
             :student_address_zip,
             :student_birthday,
             :student_cell_phone,
@@ -48,6 +50,7 @@ class SchoolSubmissionBaseSerializer < BaseSerializer
             :student_home_phone,
             :student_gender,
             :student_last_name,
-            :student_shirt_size
+            :student_shirt_size,
+            :website
 
 end

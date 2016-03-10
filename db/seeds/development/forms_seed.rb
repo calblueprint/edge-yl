@@ -598,14 +598,14 @@ student_form = Form.create(
       options: Student.booleans.keys,
       page: page,
       style: Question.styles[:dropdown],
-      title: 'Have you (the student attendee) previously been diagnosed with or currently have any of the following health conditions? (Check all that apply) ',
+      title: 'Have you (the student attendee) previously been diagnosed with or currently have any of the following health conditions (check all that apply)?',
     )
     Question.create(
       is_required: false,
       key: 'medications',
       page: page,
       placeholder: 'Enter "None" if you do not have any',
-      style: Question.styles[:input],
+      style: Question.styles[:textarea],
       title: 'Please list any medication(s) that you currently take and/or will need to take during the seminar weekend:',
     )
     Question.create(
@@ -620,7 +620,7 @@ student_form = Form.create(
       key: 'other_dietary_restrictions',
       page: page,
       placeholder: 'Enter "None" if you do not have any' ,
-      style: Question.styles[:input],
+      style: Question.styles[:textarea],
       title: 'Please list any other dietary restrictions that you have:',
     )
     Question.create(
@@ -628,8 +628,8 @@ student_form = Form.create(
       key: 'exercise_limitations',
       page: page,
       placeholder: 'Enter "None" if you do not have any',
-      style: Question.styles[:input],
-      title: 'Please list any limitations on the amount of physical exeercise you can engage in:',
+      style: Question.styles[:textarea],
+      title: 'Please list any limitations on the amount of physical exercise you can engage in:',
     )
     Question.create(
       key: 'emergency_consent',
