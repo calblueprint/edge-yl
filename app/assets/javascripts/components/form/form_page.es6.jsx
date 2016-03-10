@@ -47,6 +47,12 @@ class FormPage extends Component {
             key={question.id}
             question={question} />
         );
+      case 'textarea':
+        return (
+          <FormTextarea
+            key={question.id}
+            question={question} />
+        );
     }
   }
 

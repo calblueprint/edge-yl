@@ -1,4 +1,4 @@
-class FormInput extends Component {
+class FormTextarea extends Component {
 
   // --------------------------------------------------
   // Props
@@ -62,7 +62,7 @@ class FormInput extends Component {
           <h6>{question.title}{this.renderRequired()}</h6>
         </div>
         <div style={StyleConstants.forms.questions.response}>
-          <input
+          <textarea
             ref={'container'}
             style={this.styles.input}
             placeholder={question.placeholder}
