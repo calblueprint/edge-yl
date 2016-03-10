@@ -41,6 +41,7 @@ class SchoolSubmissionBaseSerializer < BaseSerializer
             :student_cell_phone,
             :student_email,
             :student_first_name,
+            :student_gender,
             :student_guardian_first_name,
             :student_guardian_email,
             :student_guardian_last_name,
@@ -48,7 +49,6 @@ class SchoolSubmissionBaseSerializer < BaseSerializer
             :student_guardian_phone_type,
             :student_guardian_relationship,
             :student_home_phone,
-            :student_gender,
             :student_last_name,
             :student_shirt_size,
             :website

@@ -61,22 +61,21 @@
 class SchoolSubmission < ActiveRecord::Base
 
   enum alternate_student: [:yes, :no]
-  enum gender: [:female, :male, :other]
-  enum dietary_restriction: [:dairy_free, :gluten_free, :None, :nut_allergy, :vegan, :vegetarian]
-  enum guardian_phone_type: [:cell, :home, :work]
-  enum guardian_relationship: [
-    :mother,
-    :father,
-    :aunt,
-    :uncle,
-    :grandmother,
-    :grandfather,
-    :stepmother,
-    :stepfather,
-    :guardian,
-  ]
-  enum registration_status: [:registered, :selected, :dropped]
-  enum shirt_size: [:S, :M, :L, :XL, :XXL]
+  enum student_gender: [:female, :male, :other]
+  # enum student_dietary_restriction: [:dairy_free, :gluten_free, :None, :nut_allergy, :vegan, :vegetarian]
+  # enum student_guardian_phone_type: [:cell, :home, :work]
+  # enum student_guardian_relationship: [
+  #   :mother,
+  #   :father,
+  #   :aunt,
+  #   :uncle,
+  #   :grandmother,
+  #   :grandfather,
+  #   :stepmother,
+  #   :stepfather,
+  #   :guardian,
+  # ]
+  enum student_shirt_size: [:S, :M, :L, :XL, :XXL]
 
   before_validation :validate_page, on: [:create, :update]
 
