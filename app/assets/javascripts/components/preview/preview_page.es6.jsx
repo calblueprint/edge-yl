@@ -26,9 +26,10 @@ class PreviewPage extends Component {
           marginTop: '12px',
         },
       ),
-      button: {
-        alignSelf: 'center',
-        width: '110px',
+      footer: {
+        display: 'flex',
+        justifyContent: 'flex-end',
+        marginTop: '12px',
       },
     };
   }
@@ -36,7 +37,7 @@ class PreviewPage extends Component {
   // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
-  jumpPage() {
+  editPage() {
     var id = this.props.id;
     var page = this.props.page;
     var target = this.props.target;
@@ -70,10 +71,10 @@ class PreviewPage extends Component {
       <div style={this.styles.container}>
         <h4>{this.props.page.title}</h4>
         {this.renderQuestions()}
-        <div style={this.styles.button}>
+        <div style={this.styles.footer}>
           <FormButton
-            action={() => this.jumpPage()}
-            content={'Edit this Page'} />
+            action={() => this.editPage()}
+            content={'Edit this page'} />
         </div>
       </div>
     );

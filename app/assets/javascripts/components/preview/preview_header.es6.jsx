@@ -25,7 +25,7 @@ class PreviewHeader extends Component {
   render() {
     return (
       <div style={this.styles.container}>
-        <h1>{'TITLE'}</h1>
+        <h1>{'Submission Preview'}</h1>
         <h5>{'DESCRIPTION'}</h5>
       </div>
     );
