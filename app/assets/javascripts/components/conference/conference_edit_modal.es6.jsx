@@ -49,7 +49,7 @@ class ConferenceEditModal extends EditModal {
             action={(event) => ConferenceActions.storeValue(event.target.value)}
             errors={pairing.errors[pairing.key]}
             focus={true}
-            label={Helpers.humanize(pairing.key)}
+            label={pairing.key}
             value={pairing.value} />
         </div>
       </div>

@@ -71,7 +71,7 @@ class StudentGeneral extends Component {
           action={() => this.storePairing('gender', student.gender_choices)}
           editable={this.props.editable}
           label={'Gender'}
-          value={Helpers.humanize(student.gender)} />
+          value={student.gender} />
         <CardAttribute
           action={() => this.storePairing('shirt_size', student.shirt_sizes)}
           editable={this.props.editable}

@@ -45,7 +45,7 @@ class ProfileEditModal extends EditModal {
           action={(event) => ProfileActions.storeAttribute(event.target.value)}
           errors={template.errors[template.key]}
           focus={true}
-          label={Helpers.humanize(template.key)}
+          label={template.key}
           type={template.key === 'birthday' ? 'date' : 'text'}
           value={template.value} />
       );
@@ -53,14 +53,14 @@ class ProfileEditModal extends EditModal {
       var choices = template.choices.map((choice) =>{
       return {
         action: () => ProfileActions.storeAttribute(choice),
-        content: Helpers.humanize(choice),
+        content: choice,
       }});
       return (
         <CardDropdown
           errors={template.errors[template.key]}
           label={template.key}
           choices={choices}
-          value={Helpers.humanize(template.value)} />
+          value={template.value} />
       );
     }
   }

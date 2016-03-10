@@ -43,8 +43,9 @@ class DropdownButton extends Component {
     return {
       default: {
         display: 'flex',
+        justifyContent: 'space-between',
         alignItems: 'center',
-        padding: '8px 10px 8px 8px',
+        padding: '8px',
       },
     };
   }
@@ -91,7 +92,7 @@ class DropdownButton extends Component {
           icon={TypeConstants.icons.expand}
           styles={this.clickableStyles}
           type={'i'}>
-          <h6>{this.props.value || 'Select one'}</h6>
+          <p>{Helpers.humanize(this.props.value) || 'Select one'}</p>
         </Clickable>
         {this.renderDropdown()}
       </div>

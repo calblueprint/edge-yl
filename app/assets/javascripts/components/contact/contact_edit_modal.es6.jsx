@@ -49,7 +49,7 @@ class ContactEditModal extends EditModal {
             action={(event) => SchoolActions.storeValue(event.target.value)}
             errors={pairing.errors[pairing.key]}
             focus={true}
-            label={Helpers.humanize(pairing.key)}
+            label={pairing.key}
             value={pairing.value} />
         </div>
       </div>

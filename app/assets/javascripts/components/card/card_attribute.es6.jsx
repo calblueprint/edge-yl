@@ -77,7 +77,7 @@ class CardAttribute extends Component {
   }
 
   renderLabel() {
-    var label = this.props.label;
+    var label = Helpers.humanize(this.props.label);
     switch (this.props.type) {
       case 'h4':
         return <h4>{label}</h4>;
@@ -91,7 +91,9 @@ class CardAttribute extends Component {
   }
 
   renderValue() {
-    var value = this.props.value !== undefined ? this.props.value : 'n/a';
+    var value = this.props.value !== undefined ?
+                Helpers.humanize(this.props.value) :
+                'n/a';
     if (this.props.clickable) {
       return (
         <Clickable

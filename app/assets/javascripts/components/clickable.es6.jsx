@@ -183,8 +183,8 @@ class Clickable extends Component {
           href={this.props.route}
           ref={'container'}
           style={style}>
-          {this.renderContent()}
           {this.renderChildren()}
+          {this.renderContent()}
         </a>
       );
     } else if (props.type === 'div') {
