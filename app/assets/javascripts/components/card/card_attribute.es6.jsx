@@ -91,8 +91,7 @@ class CardAttribute extends Component {
   }
 
   renderValue() {
-    var valid = this.props.value !== null && this.props.value !== undefined;
-    var value = valid ? this.props.value : 'n/a';
+    var value = this.props.value !== undefined ? this.props.value : 'n/a';
     if (this.props.clickable) {
       return (
         <Clickable
