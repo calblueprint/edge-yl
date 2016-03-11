@@ -71,13 +71,13 @@ class CardAttribute extends Component {
           action={this.props.action}
           icon={TypeConstants.icons.edit}
           styles={this.clickableStyles}
-          type={'i'} />
+          type={'i-left'} />
       );
     }
   }
 
   renderLabel() {
-    var label = this.props.label;
+    var label = Helpers.humanize(this.props.label);
     switch (this.props.type) {
       case 'h4':
         return <h4>{label}</h4>;
@@ -91,8 +91,11 @@ class CardAttribute extends Component {
   }
 
   renderValue() {
-    var valid = this.props.value !== null && this.props.value !== undefined;
-    var value = valid ? this.props.value : 'n/a';
+    var value = (this.props.value !== null &&
+                 this.props.value !== undefined &&
+                 this.props.value !== '') ?
+                Helpers.humanize(this.props.value) :
+                'n/a';
     if (this.props.clickable) {
       return (
         <Clickable

@@ -45,7 +45,7 @@ class UserEditModal extends EditModal {
           action={(event) => UserActions.storeAttribute(event.target.value)}
           errors={template.errors[template.key]}
           focus={true}
-          label={Helpers.humanize(template.key)}
+          label={template.key}
           type={template.key === 'birthday' ? 'date' : 'text'}
           value={template.value} />
       );
@@ -53,14 +53,14 @@ class UserEditModal extends EditModal {
       var choices = template.choices.map((choice) =>{
       return {
         action: () => StudentActions.storeAttribute(choice),
-        content: Helpers.humanize(choice),
+        content: choice,
       }});
       return (
         <CardDropdown
           errors={template.errors[template.key]}
           label={template.key}
           choices={choices}
-          value={Helpers.humanize(template.value)} />
+          value={template.value} />
       );
     }
   }

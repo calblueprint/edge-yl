@@ -45,7 +45,7 @@ class StudentEditModal extends EditModal {
           action={(event) => StudentActions.storeValue(event.target.value)}
           errors={pairing.errors[pairing.key]}
           focus={true}
-          label={Helpers.humanize(pairing.key)}
+          label={pairing.key}
           type={pairing.key === 'birthday' ? 'date' : 'text'}
           value={pairing.value} />
       );
@@ -53,14 +53,14 @@ class StudentEditModal extends EditModal {
       var choices = pairing.choices.map((choice) =>{
       return {
         action: () => StudentActions.storeValue(choice),
-        content: Helpers.humanize(choice),
+        content: choice,
       }});
       return (
         <CardDropdown
           choices={choices}
           errors={pairing.errors[pairing.key]}
           label={pairing.key}
-          value={Helpers.humanize(pairing.value)} />
+          value={pairing.value} />
       );
     }
   }

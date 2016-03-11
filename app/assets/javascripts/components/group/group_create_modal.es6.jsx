@@ -70,7 +70,7 @@ class GroupCreateModal extends CreateModal {
           user_id: groupable.id,
         },
       ),
-      content: Helpers.humanize(groupable.full_name),
+      content: groupable.full_name,
     };
   }
 

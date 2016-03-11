@@ -93,7 +93,7 @@ class Header extends Component {
           action={() => this.updateSidebar()}
           icon={TypeConstants.icons.hamburger}
           styles={this.clickableStyles}
-          type={'i'} />
+          type={'i-left'} />
       );
     }
   }

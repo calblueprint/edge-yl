@@ -97,11 +97,11 @@ class DropdownChoices extends Component {
       <Clickable
         action={action}
         children={choice.children}
-        content={choice.content}
+        content={Helpers.humanize(choice.content)}
         key={index}
         route={choice.route}
         styles={styles}
-        type={choice.children ? 'div' : 'h6'}
+        type={choice.children ? 'div' : 'p'}
         underline={false} />
     );
   }

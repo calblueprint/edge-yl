@@ -72,7 +72,7 @@ class CardTextarea extends Component {
   render() {
     return (
       <div style={this.styles.container}>
-        <h6>{this.props.label}</h6>
+        <h6>{Helpers.humanize(this.props.label)}</h6>
         <textarea
           autoFocus={this.props.focus}
           defaultValue={this.props.value}

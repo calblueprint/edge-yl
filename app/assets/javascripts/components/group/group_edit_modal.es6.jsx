@@ -25,7 +25,7 @@ class GroupEditModal extends EditModal {
   generateChoice(groupable) {
     return {
       action: () => GroupActions.storeValue(groupable),
-      content: Helpers.humanize(groupable.full_name),
+      content: groupable.full_name,
     }
   }
 

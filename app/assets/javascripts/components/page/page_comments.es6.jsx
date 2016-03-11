@@ -111,7 +111,7 @@ class PageComments extends Component {
           action={() => this.handleClick(event)}
           icon={TypeConstants.icons.create}
           styles={this.clickableStyles}
-          type={'i'}>
+          type={'i-left'}>
           <h6>{'Add comment'}</h6>
         </Clickable>
       </div>

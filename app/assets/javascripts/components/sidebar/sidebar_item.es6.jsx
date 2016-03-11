@@ -50,7 +50,7 @@ class SidebarItem extends Component {
         icon={this.props.icon}
         route={this.props.route}
         styles={this.clickableStyles}
-        type={'i'}>
+        type={'i-left'}>
         <h6 style={this.styles.content}>
           {this.props.label}
         </h6>

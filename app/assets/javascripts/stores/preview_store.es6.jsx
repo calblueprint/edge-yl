@@ -18,7 +18,7 @@
         var questions = page.questions;
         questions.map((question) => {
           var key = question.key;
-          if (submission[key]) {
+          if (submission[key] !== undefined) {
             question.value = submission[key];
           }
         });

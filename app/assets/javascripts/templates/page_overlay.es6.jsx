@@ -78,7 +78,7 @@ class PageOverlay extends Component {
           action={() => this.closeOverlay()}
           icon={TypeConstants.icons.close}
           styles={this.clickableStyles}
-          type={'i'} />
+          type={'i-left'} />
         {this.renderModal()}
       </div>
     );

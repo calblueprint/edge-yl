@@ -27,7 +27,8 @@ class Clickable extends Component {
         'h4',
         'h5',
         'h6',
-        'i',
+        'i-left',
+        'i-right',
         'img',
         'p',
       ]).isRequired,
@@ -69,8 +70,9 @@ class Clickable extends Component {
       hover: Object.assign(
         {},
         this.props.styles.hover,
-        this.props.underline && this.props.type !== 'i' &&
-        this.props.type !== 'img' && this.props.type !== 'div' &&
+        this.props.underline && this.props.type !== 'i-left' &&
+        this.props.type !== 'i-right' && this.props.type !== 'img' &&
+        this.props.type !== 'div' &&
         !(this.props.route === '' && this.props.action === null) &&
         { textDecoration: 'underline' },
       ),
@@ -143,7 +145,7 @@ class Clickable extends Component {
       {
         color: 'inherit',
         backgroundColor: 'inherit',
-      }
+      },
     );
     if (content || icon || source) {
       switch (this.props.type) {
@@ -159,7 +161,8 @@ class Clickable extends Component {
           return <h5 style={style}>{content}</h5>;
         case 'h6':
           return <h6 style={style}>{content}</h6>;
-        case 'i':
+        case 'i-left':
+        case 'i-right':
           return <i className={icon} style={style} />;
         case 'img':
           return <img style={style} src={source} />;
@@ -177,7 +180,7 @@ class Clickable extends Component {
       this.state.hover && this.styles.hover,
       props.route === '' && props.action === null && { cursor: 'default' },
     );
-    if (props.type === 'i' || props.type === 'img') {
+    if (props.type === 'i-left') {
       return (
         <a
           href={this.props.route}
@@ -185,6 +188,16 @@ class Clickable extends Component {
           style={style}>
           {this.renderContent()}
           {this.renderChildren()}
+        </a>
+      );
+    } else if (props.type === 'i-right') {
+      return (
+        <a
+          href={props.route}
+          ref={'container'}
+          style={style}>
+          {this.renderChildren()}
+          {this.renderContent()}
         </a>
       );
     } else if (props.type === 'div') {

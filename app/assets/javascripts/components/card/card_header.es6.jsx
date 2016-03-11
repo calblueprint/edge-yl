@@ -62,7 +62,7 @@ class CardHeader extends Component {
           icon={option.icon}
           key={index}
           styles={this.clickableStyles}
-          type={'i'} />
+          type={'i-left'} />
       );
     }
   }
