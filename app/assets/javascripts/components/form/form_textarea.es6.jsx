@@ -54,7 +54,6 @@ class FormTextarea extends Component {
   }
 
   render() {
-    // TODO(Warren): Configure input with type attribute!
     var question = this.props.question;
     return (
       <div style={StyleConstants.forms.questions.container}>
