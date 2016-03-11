@@ -16,6 +16,7 @@
 
 class Question < ActiveRecord::Base
 
+  enum format: [:date, :text]
   enum style: [:dropdown, :input, :textarea]
 
   belongs_to :page
