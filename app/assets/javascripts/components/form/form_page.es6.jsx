@@ -64,9 +64,9 @@ class FormPage extends Component {
   render() {
     var page = this.props.page;
     return (
-      <div style={this.styles.container}>
+      <form style={this.styles.container}>
         {this.renderQuestions()}
-      </div>
+      </form>
     );
   }
 }
