@@ -63,9 +63,10 @@ class FormInput extends Component {
         </div>
         <div style={StyleConstants.forms.questions.response}>
           <input
+            placeholder={question.placeholder}
             ref={'container'}
             style={this.styles.input}
-            placeholder={question.placeholder}
+            type={question.format}
             value={question.value} />
           {this.renderErrors()}
         </div>

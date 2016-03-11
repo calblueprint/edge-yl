@@ -141,11 +141,12 @@ ActiveRecord::Schema.define(version: 20160226234324) do
   add_index "pg_search_documents", ["searchable_type", "searchable_id"], name: "index_pg_search_documents_on_searchable_type_and_searchable_id", using: :btree
 
   create_table "questions", force: :cascade do |t|
+    t.integer  "format",      default: 1,    null: false
     t.boolean  "is_required", default: true, null: false
     t.string   "key",                        null: false
     t.string   "options",     default: [],   null: false, array: true
     t.string   "placeholder", default: "",   null: false
-    t.integer  "style",                      null: false
+    t.integer  "style",       default: 1,    null: false
     t.string   "title",                      null: false
     t.integer  "page_id"
     t.datetime "created_at",                 null: false

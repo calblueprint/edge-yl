@@ -65,7 +65,9 @@ class SchoolValidator
                             presence: true
   validates :contact_first_name, if: :page_two?, presence: true
   validates :contact_last_name, if: :page_two?, presence: true
-  validates :contact_phone_number, if: :page_two?, presence: true
+  validates :contact_phone_number, format: { with: /\A\d\d\d-\d\d\d-\d\d\d\d\z/ },
+                                   if: :page_two?,
+                                   presence: true
   validates :contact_title, if: :page_two?, presence: true
 
   validates :student_address_city, if: :page_three?, presence: true
