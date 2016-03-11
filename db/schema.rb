@@ -170,7 +170,7 @@ ActiveRecord::Schema.define(version: 20160226234324) do
   create_table "school_submissions", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.string  "address_city"
     t.string  "address_one"
-    t.string  "address_state"
+    t.integer "address_state"
     t.string  "address_two",                             default: ""
     t.string  "address_zip"
     t.string  "alternate_student_address_city"
