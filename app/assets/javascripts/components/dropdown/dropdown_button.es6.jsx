@@ -64,7 +64,9 @@ class DropdownButton extends Component {
         {},
         StyleConstants.templates.card,
         {
+          maxHeight: '172px',
           zIndex: StyleConstants.planes.two,
+          overflow: 'scroll',
         },
       ),
     };
