@@ -103,7 +103,7 @@ class SchoolValidator
   validates :student_last_name, if: :page_three?, presence: true
   validates :student_shirt_size, if: :page_three?, presence: true
 
-  validates :alternate_student_address_city, if: :page_four?, presence: true
+  validates :alternate_student_address_city, if: :page_four?, if: :alternate_student?, presence: true
   validates :alternate_student_address_one, if: :page_four?, presence: true
   validates :alternate_student_address_state, if: :page_four?, presence: true
   validates :alternate_student_address_zip, format: { with: /\A\d{5}(-\d{4})?\z/ },
@@ -141,6 +141,9 @@ class SchoolValidator
 
   private
 
+  def alternate_student?
+    :alternate_student == true
+  end
   def page_one?
     @page == 1
   end
@@ -156,6 +159,7 @@ class SchoolValidator
   def page_four?
     @page == 4
   end
+
 
   def persisted?
     false

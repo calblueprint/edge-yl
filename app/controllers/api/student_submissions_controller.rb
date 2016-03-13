@@ -71,7 +71,7 @@ class Api::StudentSubmissionsController < Api::BaseController
       :health_conditions,
       :home_phone,
       :immunizations,
-      :is_draft,
+      :is_active,
       :last_name,
       :medical_guardian_name,
       :medications,

@@ -34,7 +34,7 @@
 #  contact_title                           :string
 #  current_page                            :integer          default(0), not null
 #  has_alternate_student                   :integer
-#  is_draft                                :boolean          default(TRUE), not null
+#  is_active                               :boolean          default(TRUE), not null
 #  name                                    :string
 #  student_address_city                    :string
 #  student_address_one                     :string
@@ -174,7 +174,7 @@ class SchoolSubmission < ActiveRecord::Base
         SchoolMailer.create(school).deliver_now &&
         StudentMailer.create(student_submission).deliver_now &&
         (has_alternate_student == BOOLEANS[1] || StudentMailer.create(alternate_student_submission).deliver_now)
-        self.is_draft = false
+        self.is_active = false
         self.save
       end
     end
@@ -249,7 +249,7 @@ class SchoolSubmission < ActiveRecord::Base
   end
 
   def validate_page
-    if is_draft
+    if is_active
       attributes_hash = {
         1 => attributes_one,
         2 => attributes_two,

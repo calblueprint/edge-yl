@@ -28,7 +28,7 @@
 #  guardian_relationship      :integer
 #  health_conditions          :integer
 #  home_phone                 :string
-#  is_draft                   :boolean          default(TRUE), not null
+#  is_active                  :boolean          default(TRUE), not null
 #  immunizations              :integer
 #  last_name                  :string
 #  medical_guardian_name      :string
@@ -108,7 +108,7 @@ class StudentSubmission < ActiveRecord::Base
       shirt_size: 1,
     )
     if student.save
-      self.is_draft = true
+      self.is_active = true
       self.save
     end
   end
@@ -160,7 +160,7 @@ class StudentSubmission < ActiveRecord::Base
   end
 
   def validate_page
-    if is_draft
+    if is_active
       attributes_hash = {
         1 => attributes_one,
         2 => attributes_two,
