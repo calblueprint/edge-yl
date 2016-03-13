@@ -94,7 +94,7 @@
           prompt: {
             display: 'flex',
             alignItems: 'center',
-            width: '128px',
+            width: '172px',
             marginRight: '24px',
           },
           required: {

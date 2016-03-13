@@ -77,18 +77,9 @@ class SchoolSubmission < ActiveRecord::Base
 
   before_validation :validate_page, on: [:create, :update]
 
-  BOOLEANS = %w(yes no)
-  STATES = %w(
-    AL AK AZ AR CA CO CT DE FL GA
-    HI ID IL IN IA KS KY LA ME MD
-    MA MI MN MS MO MT NE NV NH NJ
-    NM NY NC ND OH OK OR PA RI SC
-    SD TN TX UT VT VA WA WV WI WY
-  )
-
   def address_state
     if !read_attribute(:address_state).nil?
-      STATES[read_attribute(:address_state)]
+      EnumConstants::STATES[read_attribute(:address_state)]
     end
   end
 
@@ -98,7 +89,7 @@ class SchoolSubmission < ActiveRecord::Base
 
   def has_alternate_student
     if !read_attribute(:has_alternate_student).nil?
-      BOOLEANS[read_attribute(:has_alternate_student)]
+      EnumConstants::BOOLEANS[read_attribute(:has_alternate_student)]
     end
   end
 
@@ -116,68 +107,84 @@ class SchoolSubmission < ActiveRecord::Base
       name: name,
       website: website,
     )
-    if school.save
-      contact = Contact.new(
-        email: contact_email,
-        first_name: contact_first_name,
-        last_name: contact_last_name,
-        is_primary: true,
-        phone_number: contact_phone_number,
-        title: contact_title,
-        school: school,
+    unless school.save
+      raise 'Could not create school from submission'
+    end
+    contact = Contact.new(
+      email: contact_email,
+      first_name: contact_first_name,
+      last_name: contact_last_name,
+      is_primary: true,
+      phone_number: contact_phone_number,
+      title: contact_title,
+      school: school,
+    )
+    unless contant.save
+      raise 'Could not create contact from submission'
+    end
+    student_submission = StudentSubmission.new(
+      address_city: student_address_city,
+      address_one: student_address_one,
+      address_state: student_address_state,
+      address_two: student_address_two,
+      address_zip: student_address_zip,
+      birthday: student_birthday,
+      cell_phone: student_cell_phone,
+      email: student_email,
+      first_name: student_first_name,
+      gender: student_gender,
+      guardian_first_name: student_guardian_first_name,
+      guardian_email: student_guardian_email,
+      guardian_last_name: student_guardian_last_name,
+      guardian_phone_number: student_guardian_phone_number,
+      guardian_phone_type: student_guardian_phone_type,
+      guardian_relationship: student_guardian_relationship,
+      home_phone: student_home_phone,
+      last_name: student_last_name,
+      shirt_size: student_shirt_size,
+    )
+    unless student_submission.save
+      raise 'Could not create student from submission'
+    end
+    if has_alternate_student == EnumConstants::BOOLEANS[0]
+      alternate_student_submission = StudentSubmission.new(
+        address_city: alternate_student_address_city,
+        address_one: alternate_student_address_one,
+        address_state: alternate_student_address_state,
+        address_two: alternate_student_address_two,
+        address_zip: alternate_student_address_zip,
+        birthday: alternate_student_birthday,
+        cell_phone: alternate_student_cell_phone,
+        email: alternate_student_email,
+        first_name: alternate_student_first_name,
+        gender: alternate_student_gender,
+        guardian_first_name: alternate_student_guardian_first_name,
+        guardian_email: alternate_student_guardian_email,
+        guardian_last_name: alternate_student_guardian_last_name,
+        guardian_phone_number: alternate_student_guardian_phone_number,
+        guardian_phone_type: alternate_student_guardian_phone_type,
+        guardian_relationship: alternate_student_guardian_relationship,
+        home_phone: alternate_student_home_phone,
+        last_name: alternate_student_last_name,
+        shirt_size: alternate_student_shirt_size,
       )
-      student_submission = StudentSubmission.new(
-        address_city: student_address_city,
-        address_one: student_address_one,
-        address_state: student_address_state,
-        address_two: student_address_two,
-        address_zip: student_address_zip,
-        birthday: student_birthday,
-        cell_phone: student_cell_phone,
-        email: student_email,
-        first_name: student_first_name,
-        gender: student_gender,
-        guardian_first_name: student_guardian_first_name,
-        guardian_email: student_guardian_email,
-        guardian_last_name: student_guardian_last_name,
-        guardian_phone_number: student_guardian_phone_number,
-        guardian_phone_type: student_guardian_phone_type,
-        guardian_relationship: student_guardian_relationship,
-        home_phone: student_home_phone,
-        last_name: student_last_name,
-        shirt_size: student_shirt_size,
-      )
-      if has_alternate_student == BOOLEANS[0]
-        alternate_student_submission = StudentSubmission.new(
-          address_city: alternate_student_address_city,
-          address_one: alternate_student_address_one,
-          address_state: alternate_student_address_state,
-          address_two: alternate_student_address_two,
-          address_zip: alternate_student_address_zip,
-          birthday: alternate_student_birthday,
-          cell_phone: alternate_student_cell_phone,
-          email: alternate_student_email,
-          first_name: alternate_student_first_name,
-          gender: alternate_student_gender,
-          guardian_first_name: alternate_student_guardian_first_name,
-          guardian_email: alternate_student_guardian_email,
-          guardian_last_name: alternate_student_guardian_last_name,
-          guardian_phone_number: alternate_student_guardian_phone_number,
-          guardian_phone_type: alternate_student_guardian_phone_type,
-          guardian_relationship: alternate_student_guardian_relationship,
-          home_phone: alternate_student_home_phone,
-          last_name: alternate_student_last_name,
-          shirt_size: alternate_student_shirt_size,
-        )
+      unless alternate_student_submission.save
+        raise 'Could not create alternate student form submission'
       end
-      if contact.save && student_submission.save && (has_alternate_student == BOOLEANS[1] || alternate_student_submission.save) &&
-        SchoolMailer.create(school).deliver_now &&
-        StudentMailer.create(student_submission).deliver_now &&
-        (has_alternate_student == BOOLEANS[1] || StudentMailer.create(alternate_student_submission).deliver_now)
-        self.is_active = false
-        self.save
+      begin
+        StudentMailer.create(alternate_student_submission).deliver_now
+      rescue
+        raise 'Could not deliver appropriate emails'
       end
     end
+    begin
+      SchoolMailer.create(school).deliver_now
+      StudentMailer.create(student_submission).deliver_now
+    rescue
+      raise 'Could not deliver appropriate emails'
+    end
+    self.is_draft = false
+    self.save
   end
 
   private

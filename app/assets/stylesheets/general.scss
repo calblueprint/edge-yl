@@ -146,3 +146,7 @@ textarea:focus {
   border: 1px solid $blue;
   box-shadow: 0px 0px 2px 0px $blue;
 }
+
+input {
+  max-height: 42px;
+}
