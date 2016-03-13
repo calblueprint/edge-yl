@@ -5,7 +5,7 @@
 #  id                                      :uuid             not null, primary key
 #  address_city                            :string
 #  address_one                             :string
-#  address_state                           :string
+#  address_state                           :integer
 #  address_two                             :string           default("")
 #  address_zip                             :string
 #  alternate_student_address_city          :string
@@ -78,6 +78,23 @@ class SchoolSubmission < ActiveRecord::Base
   before_validation :validate_page, on: [:create, :update]
 
   BOOLEANS = %w(yes no)
+  STATES = %w(
+    AL AK AZ AR CA CO CT DE FL GA
+    HI ID IL IN IA KS KY LA ME MD
+    MA MI MN MS MO MT NE NV NH NJ
+    NM NY NC ND OH OK OR PA RI SC
+    SD TN TX UT VT VA WA WV WI WY
+  )
+
+  def address_state
+    if !read_attribute(:address_state).nil?
+      STATES[read_attribute(:address_state)]
+    end
+  end
+
+  def address_state=(value)
+    write_attribute(:address_state, STATES.index(value))
+  end
 
   def has_alternate_student
     if !read_attribute(:has_alternate_student).nil?

@@ -35,7 +35,9 @@ school_form = Form.create(
     )
     Question.create(
       key: 'address_state',
+      options: SchoolSubmission::STATES,
       page: page,
+      style: Question.styles[:dropdown],
       placeholder: '...',
       title: 'Address state',
     )
