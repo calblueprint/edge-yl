@@ -84,7 +84,7 @@ class SchoolSubmission < ActiveRecord::Base
   end
 
   def address_state=(value)
-    write_attribute(:address_state, STATES.index(value))
+    write_attribute(:address_state, EnumConstants::STATES.index(value))
   end
 
   def has_alternate_student
@@ -94,7 +94,7 @@ class SchoolSubmission < ActiveRecord::Base
   end
 
   def has_alternate_student=(value)
-    write_attribute(:has_alternate_student, BOOLEANS.index(value))
+    write_attribute(:has_alternate_student, EnumConstants::BOOLEANS.index(value))
   end
 
   def submit_submission
