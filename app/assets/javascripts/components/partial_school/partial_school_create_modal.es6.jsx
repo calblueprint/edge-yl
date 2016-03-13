@@ -76,12 +76,6 @@ class PartialSchoolCreateModal extends CreateModal {
             margin={true}
             value={template.contact_last_name} />
           <CardInput
-            action={this.generateHandler('contact_title')}
-            errors={template.errors.contact_title}
-            label={'Contact title'}
-            margin={true}
-            value={template.contact_title} />
-          <CardInput
             action={this.generateHandler('contact_email')}
             errors={template.errors.contact_email}
             label={'Contact email'}

@@ -34,7 +34,6 @@ class Api::PartialSchoolsController < Api::BaseController
       :contact_email,
       :contact_first_name,
       :contact_last_name,
-      :contact_title,
       :name,
       :website,
     )

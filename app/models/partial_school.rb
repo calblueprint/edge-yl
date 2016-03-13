@@ -18,7 +18,6 @@ class PartialSchool < ActiveRecord::Base
   validates :contact_email, presence: true
   validates :contact_first_name, presence: true
   validates :contact_last_name, presence: true
-  validates :contact_title, presence: true
   validates :name, presence: true
 
 end

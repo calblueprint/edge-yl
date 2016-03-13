@@ -135,7 +135,6 @@ ActiveRecord::Schema.define(version: 20160308042713) do
     t.string   "contact_email",                   null: false
     t.string   "contact_first_name",              null: false
     t.string   "contact_last_name",               null: false
-    t.string   "contact_title",                   null: false
     t.string   "website",            default: "", null: false
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
