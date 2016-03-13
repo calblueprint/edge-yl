@@ -35,7 +35,7 @@ school_form = Form.create(
     )
     Question.create(
       key: 'address_state',
-      options: SchoolSubmission::STATES,
+      options: EnumConstants::STATES,
       page: page,
       style: Question.styles[:dropdown],
       placeholder: '...',
@@ -228,7 +228,7 @@ school_form = Form.create(
   ) do |page|
     Question.create(
       key: 'has_alternate_student',
-      options: SchoolSubmission::BOOLEANS,
+      options: EnumConstants::BOOLEANS,
       page: page,
       style: Question.styles[:dropdown],
       title: 'Would you like to enter information about an alternate student?',
