@@ -33,7 +33,7 @@ class CreateSchoolSubmissions < ActiveRecord::Migration
       t.string  :contact_title
       t.integer :current_page, default: 0, null: false
       t.integer :has_alternate_student
-      t.boolean :is_draft, default: true, null: false
+      t.boolean :is_active, default: true, null: false
       t.string  :name
       t.string  :student_address_city
       t.string  :student_address_one

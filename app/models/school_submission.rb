@@ -34,7 +34,7 @@
 #  contact_title                           :string
 #  current_page                            :integer          default(0), not null
 #  has_alternate_student                   :integer
-#  is_draft                                :boolean          default(TRUE), not null
+#  is_active                               :boolean          default(TRUE), not null
 #  name                                    :string
 #  student_address_city                    :string
 #  student_address_one                     :string
@@ -256,7 +256,7 @@ class SchoolSubmission < ActiveRecord::Base
   end
 
   def validate_page
-    if is_draft
+    if is_active
       attributes_hash = {
         1 => attributes_one,
         2 => attributes_two,

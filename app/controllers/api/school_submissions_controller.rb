@@ -76,7 +76,7 @@ class Api::SchoolSubmissionsController < Api::BaseController
       :contact_title,
       :current_page,
       :has_alternate_student,
-      :is_draft,
+      :is_active,
       :student_address_city,
       :student_address_one,
       :student_address_state,

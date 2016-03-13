@@ -27,7 +27,7 @@ class CreateStudentSubmissions < ActiveRecord::Migration
       t.integer :guardian_relationship
       t.integer :health_conditions
       t.string  :home_phone
-      t.boolean :is_draft, default: true, null: false
+      t.boolean :is_active, default: true, null: false
       t.integer :immunizations
       t.string  :last_name
       t.string  :medical_guardian_name
