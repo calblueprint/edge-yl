@@ -46,6 +46,12 @@
       };
     }
 
+    get partial_schools() {
+      return {
+        index: (page=1) => `/partial_schools?page=${page}`,
+      };
+    }
+
     get rooms() {
       return {
         show: (id) => `/rooms/${id}`,

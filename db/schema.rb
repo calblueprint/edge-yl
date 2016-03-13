@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160226234324) do
+ActiveRecord::Schema.define(version: 20160308042713) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -129,6 +129,17 @@ ActiveRecord::Schema.define(version: 20160226234324) do
   end
 
   add_index "pages", ["form_id"], name: "index_pages_on_form_id", using: :btree
+
+  create_table "partial_schools", force: :cascade do |t|
+    t.string   "name",                            null: false
+    t.string   "contact_email",                   null: false
+    t.string   "contact_first_name",              null: false
+    t.string   "contact_last_name",               null: false
+    t.string   "contact_title",                   null: false
+    t.string   "website",            default: "", null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+  end
 
   create_table "pg_search_documents", force: :cascade do |t|
     t.text     "content"

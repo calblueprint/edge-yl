@@ -5,7 +5,6 @@ class CreateSchools < ActiveRecord::Migration
       t.string :address_city, null: false
       t.string :address_one, null: false
       t.string :address_state, null: false
-      t.string :address_state, null: false
       t.string :address_two, default: '', null: false
       t.string :address_zip, null: false
       t.string :name, null: false

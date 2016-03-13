@@ -1,5 +1,6 @@
 if Rails.env.development? || Rails.env.staging?
   seeds = [
+    'partial_schools',
     'users',
     'schools',
     'students',

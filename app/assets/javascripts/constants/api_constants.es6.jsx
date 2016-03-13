@@ -90,6 +90,14 @@
       };
     }
 
+    get partial_schools() {
+      return {
+        create: '/api/partial_schools',
+        delete: (id) => `/api/partial_schools/${id}`,
+        index: (page) => `/api/partial_schools?page=${page}`,
+      }
+    }
+
     get profiles() {
       return {
         update: (id) => `/api/profiles/${id}`,

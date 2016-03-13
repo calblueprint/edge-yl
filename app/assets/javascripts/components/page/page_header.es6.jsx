@@ -21,6 +21,7 @@ class PageHeader extends Component {
       type: React.PropTypes.oneOf([
         TypeConstants.pages.conferences,
         TypeConstants.pages.groups,
+        TypeConstants.pages.partial_schools,
         TypeConstants.pages.rooms,
         TypeConstants.pages.schools,
         TypeConstants.pages.students,
