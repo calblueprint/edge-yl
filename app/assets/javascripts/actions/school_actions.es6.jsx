@@ -12,7 +12,6 @@
         'storeError',
         'storePrimary',
         'storeSchool',
-        'storeSecondary',
         'storeValue',
       );
     }
@@ -39,7 +38,7 @@
     createContact(template) {
       var params = { contact: template.attributes };
       var resolve = (response) => {
-        this.storeSecondary(response);
+        this.fetchSchool(response.contact.school_id);
         ViewActions.storeToast(true, 'Contact created!');
       }
       var reject = (response) => this.storeError(response);
@@ -77,17 +76,16 @@
       return true;
     }
 
-    promoteContact(pairing) {
+    promoteContact(id, school_id) {
       var attributes = {};
-      attributes[pairing.key] = pairing.value;
       var params = { contact: attributes };
       var resolve = (response) => {
-        this.fetchSchool(response.contact.school_id);
+        this.fetchSchool(school_id);
         ViewActions.storeToast(true, 'Contact updated!');
       };
       var reject = (response) => this.storeError(response)
       Requester.update(
-        ApiConstants.contacts.update(pairing.id),
+        ApiConstants.contacts.promote(id),
         params,
         resolve,
         reject,

@@ -24,7 +24,6 @@
         handleStorePairing: SchoolActions.STORE_PAIRING,
         handleStorePrimary: SchoolActions.STORE_PRIMARY,
         handleStoreSchool: SchoolActions.STORE_SCHOOL,
-        handleStoreSecondary: SchoolActions.STORE_SECONDARY,
         handleStoreTemplate: SchoolActions.STORE_TEMPLATE,
         handleStoreValue: SchoolActions.STORE_VALUE,
       });
@@ -76,11 +75,6 @@
     handleStoreSchool(response) {
       this.overlay = false;
       this.school = response.school;
-    }
-
-    handleStoreSecondary(response) {
-      this.overlay = false;
-      this.school.secondary_contacts.push(response.contact);
     }
 
     handleStoreTemplate(template) {

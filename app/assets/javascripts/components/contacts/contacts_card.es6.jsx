@@ -33,13 +33,7 @@ class ContactsCard extends Component {
 
   promoteContact() {
     var contact = this.props.contact
-    var pairing = {
-      id: contact.id,
-      key: 'is_primary',
-      school_id: contact.school_id,
-      value: true,
-    };
-    SchoolActions.promoteContact(pairing);
+    SchoolActions.promoteContact(contact.id, contact.school_id);
   }
 
   // --------------------------------------------------

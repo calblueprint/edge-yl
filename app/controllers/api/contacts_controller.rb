@@ -11,6 +11,15 @@ class Api::ContactsController < Api::BaseController
     end
   end
 
+  def promote
+    contact = Contact.find params[:id]
+    if contact.promote
+      render json: contact,
+             serializer: ContactBaseSerializer,
+             status: :created
+    end
+  end
+
   def update
     contact = Contact.find params[:id]
     if contact.update_attributes contact_params

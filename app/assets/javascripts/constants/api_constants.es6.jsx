@@ -25,6 +25,7 @@
     get contacts() {
       return {
         create: '/api/contacts',
+        promote: (id) => `/api/contacts/promote/${id}`,
         update: (id) => `/api/contacts/${id}`,
       };
     }

@@ -41,6 +41,7 @@
   namespace :api do
     patch '/conferences/assign_students_to_groups', to: 'conferences#assign_students_to_groups'
     patch '/conferences/assign_students_to_rooms', to: 'conferences#assign_students_to_rooms'
+    patch '/contacts/promote/:id', to: 'contacts#promote'
     get '/forms/:target', to: 'forms#show'
     post '/import', to: 'schools#import'
     get '/searchables/search', to: 'searchables#search'
@@ -48,7 +49,6 @@
     patch '/school_submissions/:id/submit', to: 'school_submissions#submit'
     patch '/student_submissions/:id/submit', to: 'student_submissions#submit'
     get '/users/profile', to: 'users#profile'
-
 
     resources :comments, only: [:create]
     resources :conferences, only: [:create, :index, :show, :update]
