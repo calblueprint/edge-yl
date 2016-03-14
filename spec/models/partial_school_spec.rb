@@ -7,7 +7,6 @@
 #  contact_email      :string           not null
 #  contact_first_name :string           not null
 #  contact_last_name  :string           not null
-#  contact_title      :string           not null
 #  website            :string           default(""), not null
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
