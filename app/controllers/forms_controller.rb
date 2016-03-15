@@ -9,11 +9,15 @@ class FormsController < BaseController
       school_submission = SchoolSubmission.find_by id: @id
       if school_submission.nil?
         error_404
+      elsif !school_submission.nil? && !school_submission.is_active
+        redirect_to forms_success_path(id: @id, target: @target)
       end
     elsif @target == 'student'
       student_submission = StudentSubmission.find_by id: @id
       if student_submission.nil?
         error_404
+      elsif !student_submission.nil? && !student_submission.is_active
+        redirect_to forms_success_path(id: @id, target: @target)
       end
     else
       error_404
@@ -30,12 +34,16 @@ class FormsController < BaseController
         redirect_to forms_path(target: @target)
       elsif school_submission.nil? && !@id.nil?
         redirect_to forms_path(target: @target)
+      elsif !school_submission.nil? && !school_submission.is_active
+        redirect_to forms_success_path(id: @id, target: @target)
       end
     elsif @target == 'student'
       student_submission = StudentSubmission.find_by id: @id
       if student_submission.nil?
         error_404
       end
+      elsif !student_submission.nil? && !student_submission.is_active
+        redirect_to forms_success_path(id: @id, target: @target)
     else
       error_404
     end

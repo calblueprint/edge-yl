@@ -5,7 +5,7 @@
 #  id                         :uuid             not null, primary key
 #  address_city               :string
 #  address_one                :string
-#  address_state              :string
+#  address_state              :integer
 #  address_two                :string           default("")
 #  address_zip                :string
 #  allergies                  :integer
@@ -42,26 +42,117 @@
 
 class StudentSubmission < ActiveRecord::Base
 
-  enum boolean: [:yes, :no]
-  enum gender: [:female, :male, :other]
-  enum dietary_restriction: [:dairy_free, :gluten_free, :None, :nut_allergy, :vegan, :vegetarian]
-  enum guardian_phone_type: [:cell, :home, :work]
-  enum guardian_relationship: [
-    :mother,
-    :father,
-    :aunt,
-    :uncle,
-    :grandmother,
-    :grandfather,
-    :stepmother,
-    :stepfather,
-    :guardian,
-  ]
-  enum registration_status: [:registered, :selected, :dropped]
-  enum shirt_size: [:S, :M, :L, :XL, :XXL]
-
-
   before_validation :validate_page, on: :update
+
+  def address_state
+    if !read_attribute(:address_state).nil?
+      EnumConstants::STATES[read_attribute(:address_state)]
+    end
+  end
+
+  def address_state=(value)
+    write_attribute(:address_state, EnumConstants::STATES.index(value))
+  end
+
+  def allergies
+    if !read_attribute(:allergies).nil?
+      EnumConstants::BOOLEANS[read_attribute(:allergies)]
+    end
+  end
+
+  def allergies=(value)
+    write_attribute(:allergies, EnumConstants::BOOLEANS.index(value))
+  end
+
+  def dietary_restrictions
+    if !read_attribute(:dietary_restrictions).nil?
+      EnumConstants::BOOLEANS[read_attribute(:dietary_restrictions)]
+    end
+  end
+
+  def dietary_restrictions=(value)
+    write_attribute(:dietary_restrictions, EnumConstants::BOOLEANS.index(value))
+  end
+
+  def emergency_consent
+    if !read_attribute(:emergency_consent).nil?
+      EnumConstants::BOOLEANS[read_attribute(:emergency_consent)]
+    end
+  end
+
+  def emergency_consent=(value)
+    write_attribute(:emergency_consent, EnumConstants::BOOLEANS.index(value))
+  end
+
+  def gender
+    if !read_attribute(:gender).nil?
+      EnumConstants::GENDERS[read_attribute(:gender)]
+    end
+  end
+
+  def gender=(value)
+    write_attribute(:primary_gender, EnumConstants::GENDERS.index(value))
+  end
+
+  def guardian_phone_type
+    if !read_attribute(:guardian_phone_type).nil?
+      EnumConstants::PHONE_TYPES[read_attribute(:guardian_phone_type)]
+    end
+  end
+
+  def guardian_phone_type=(value)
+    write_attribute(:guardian_phone_type, EnumConstants::PHONE_TYPES.index(value))
+  end
+
+  def guardian_relationship
+    if !read_attribute(:guardian_relationship).nil?
+      EnumConstants::GUARDIAN_RELATIONSHIPS[read_attribute(:guardian_relationship)]
+    end
+  end
+
+  def guardian_relationship=(value)
+    write_attribute(:guardian_relationship, EnumConstants::GUARDIAN_RELATIONSHIPS.index(value))
+  end
+
+  def health_conditions
+    if !read_attribute(:health_conditions).nil?
+      EnumConstants::BOOLEANS[read_attribute(:health_conditions)]
+    end
+  end
+
+  def health_conditions=(value)
+    write_attribute(:health_conditions, EnumConstants::BOOLEANS.index(value))
+  end
+
+  def immunizations
+    if !read_attribute(:immunizations).nil?
+      EnumConstants::BOOLEANS[read_attribute(:immunizations)]
+    end
+  end
+
+  def immunizations=(value)
+    write_attribute(:immunizations, EnumConstants::BOOLEANS.index(value))
+  end
+
+  def psychologist_consent
+    if !read_attribute(:psychologist_consent).nil?
+      EnumConstants::BOOLEANS[read_attribute(:psychologist_consent)]
+    end
+  end
+
+  def psychologist_consent=(value)
+    write_attribute(:psychologist_consent, EnumConstants::BOOLEANS.index(value))
+  end
+
+  def shirt_size
+    if !read_attribute(:shirt_size).nil?
+      EnumConstants::SHIRT_SIZES[read_attribute(:shirt_size)]
+    end
+  end
+
+  def psychologist_consent=(value)
+    write_attribute(:shirt_size, EnumConstants::SHIRT_SIZES.index(value))
+  end
 
   def form_url
     # TODO (Warren): !!!

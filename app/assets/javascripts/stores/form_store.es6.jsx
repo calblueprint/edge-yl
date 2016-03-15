@@ -25,6 +25,8 @@
         var key = question.key;
         if (errors[key]) {
           question.errors = errors[key];
+        } else {
+          delete question.errors;
         }
       });
     }
