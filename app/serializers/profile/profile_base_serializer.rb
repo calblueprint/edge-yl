@@ -7,7 +7,8 @@ class ProfileBaseSerializer < BaseSerializer
              :has_sidebar,
              :is_admin,
              :last_name,
-             :unread_count
+             :unread_count,
+             :username
 
   has_many :visits, serializer: VisitBaseSerializer
 

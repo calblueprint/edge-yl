@@ -53,7 +53,8 @@ class StudentPage extends Component {
       {
         action: () => {
           var student = this.state.student;
-          StudentActions.createDraft(this.props.profile.email, student.email);
+          var username = this.props.profile.username
+          StudentActions.createDraft(TypeConstants.emails.email(username), student.email);
         },
         content: 'Email',
       },

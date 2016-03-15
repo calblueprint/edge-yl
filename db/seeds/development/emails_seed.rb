@@ -20,10 +20,10 @@ admin = User.first
     emailable_type: type,
     from: "#{name} <#{email}>",
     is_sent: true,
+    recipient: "#{admin.username}@test.edge.org",
     sender: email,
     subject: "#{Faker::Hacker.noun} #{Faker::Hacker.verb} #{Faker::Hacker.noun}".humanize,
-    recipient: admin.email,
-    to: "#{admin.full_name} <#{admin.email}>",
+    to: "#{admin.full_name} <#{admin.username}@test.edge.org>",
     user: admin,
   )
   puts "Create email from #{new_email.from}."

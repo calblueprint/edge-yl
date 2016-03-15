@@ -19,9 +19,13 @@ class ThreadsCard extends Component {
         display: 'flex',
         flexFlow: 'column',
         padding: '16px',
+        backgroundColor: this.props.thread.is_unread ? '#ffffff' : '#f6f6f6',
       },
       divider: {
         padding: '0px 4px',
+      },
+      icon: {
+        color: StyleConstants.colors.blue,
       },
       section: {
         display: 'flex',
@@ -71,6 +75,14 @@ class ThreadsCard extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
+  renderNewIcon() {
+    if (this.props.thread.is_unread) {
+      return (
+        <i className={'fa-circle'} style={this.styles.icon} />
+      );
+    }
+  }
+
   render() {
     var thread = this.props.thread;
     return (
@@ -80,6 +92,7 @@ class ThreadsCard extends Component {
             {this.generateEmailParticipants(thread)}
           </div>
           <div style={this.styles.section}>
+            {this.renderNewIcon()}
             <Clickable
               content={thread.subject}
               route={this.generateEmailRoute(thread)}

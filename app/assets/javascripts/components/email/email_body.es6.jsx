@@ -24,18 +24,39 @@ class EmailBody extends Component {
       ),
     };
   }
+  // --------------------------------------------------
+  // Helpers
+  // --------------------------------------------------
+  showDraft(id) {
+    window.location = RouteConstants.drafts.show(id);
+  }
 
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
+  renderDraftEdit(email) {
+    if (email.is_draft) {
+      return (
+        <FormButton
+          action={() => this.showDraft(email.id)}
+          content={'Edit'} />
+      );
+    }
+  }
+
   render() {
     var email = this.props.email;
+    var subject = 'Subject';
+    if (email.is_draft) {
+      subject += ' (Draft)';
+    }
     return (
       <div style={this.styles.container}>
-        <h6>{'Subject'}</h6>
+        <h6>{subject}</h6>
         <p>{email.subject}</p>
         <h6>{'Content'}</h6>
         <p>{email.content}</p>
+        {this.renderDraftEdit(email)}
       </div>
     );
   }

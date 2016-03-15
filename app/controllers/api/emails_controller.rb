@@ -21,7 +21,7 @@ class Api::EmailsController < Api::BaseController
   end
 
   def index
-    threads = EmailThread.page params[:page]
+    threads = EmailThread.where(user: current_user).page params[:page]
     render json: threads,
            serializer: PaginatedSerializer,
            each_serializer: EmailThreadIndexSerializer
@@ -29,13 +29,7 @@ class Api::EmailsController < Api::BaseController
 
   def show
     thread = EmailThread.find params[:id]
-    thread_emails = Email.where email_thread: thread
-    thread_emails.each do |e|
-      if e[:is_unread]
-        e[:is_unread] = false
-        e.save
-      end
-    end
+    thread.mark_as_read
     render json: thread, serializer: EmailThreadShowSerializer
   end
 
@@ -45,6 +39,7 @@ class Api::EmailsController < Api::BaseController
     params.permit(
       :content,
       :from,
+      :is_sent,
       :recipient,
       :sender,
       :subject,

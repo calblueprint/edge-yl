@@ -49,6 +49,11 @@ class Email < ActiveRecord::Base
 
   private
 
+  def assign_thread(subject, user)
+    self.email_thread ||= find_thread(self.subject, self.user)
+    self.email_thread ||= EmailThread.create subject: self.subject, user: self.user
+  end
+
   def find_emailable(email)
     emailable = Contact.where(email: email).first
     if emailable
@@ -59,15 +64,21 @@ class Email < ActiveRecord::Base
     end
   end
 
+  def find_thread(subject, user)
+    m = /([Rr][Ee]:\s*)*(?<subj>.*)/.match(subject)
+    real_subj = m['subj']
+    EmailThread.where(user: user).where('lower(subject) = lower(?)', real_subj).first
+  end
+
   def find_user(email)
-    User.where(email: email).first
+    m = /(?<name>\S*)@/.match(email)
+    User.where('lower(first_name) || lower(last_name) = ?', m['name']).first
   end
 
   # We require sender and recipient to both be set at creation
   def set_initials
     self.content ||= ''
     self.subject ||= ''
-    self.email_thread ||= EmailThread.create
 
     if (emailable = find_emailable(recipient))
       self.emailable_id = emailable.id
@@ -86,14 +97,19 @@ class Email < ActiveRecord::Base
         self.to = smtp_format_name user
       end
     end
-
+    self.user ||= find_user(recipient)
+    if self.is_sent
+      assign_thread self.subject, self.user
+    end
     self.from ||= self.sender
     self.to ||= self.recipient
   end
 
   def smtp_format_name(model)
-    if model.class.name == Student.name or model.class.name == User.name
+    if model.class.name == Student.name
       return "#{model.full_name} <#{model.email}>"
+    elsif model.class.name == User.name
+      return "#{model.full_name} <#{model.username}@#{ENV['email_domain']}>"
     elsif model.class.name == School.name
       return "#{model.primary_contact.full_name} <#{model.primary_contact.email}>"
     end
@@ -103,6 +119,11 @@ class Email < ActiveRecord::Base
     if !is_draft && !is_sent
       StudentMailer.standard(self).deliver_now
       self.is_sent = true
+      assign_thread(self.subject, self.user)
+      if self.email_thread.subject == ""
+        self.email_thread.subject = self.subject
+        self.email_thread.save
+      end
     end
   end
 end
