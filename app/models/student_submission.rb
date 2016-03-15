@@ -91,7 +91,7 @@ class StudentSubmission < ActiveRecord::Base
   end
 
   def gender=(value)
-    write_attribute(:primary_gender, EnumConstants::GENDERS.index(value))
+    write_attribute(:gender, EnumConstants::GENDERS.index(value))
   end
 
   def guardian_phone_type

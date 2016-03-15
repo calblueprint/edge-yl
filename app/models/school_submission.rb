@@ -184,7 +184,7 @@ class SchoolSubmission < ActiveRecord::Base
       title: contact_title,
       school: school,
     )
-    unless contant.save
+    unless contact.save
       raise 'Could not create contact from submission'
     end
     primary_submission = StudentSubmission.new(
@@ -208,7 +208,7 @@ class SchoolSubmission < ActiveRecord::Base
       last_name: primary_last_name,
       shirt_size: primary_shirt_size,
     )
-    if has_alternate_student == BOOLEANS[0]
+    if has_alternate_student == EnumConstants::BOOLEANS[0]
       alternate_submission = StudentSubmission.new(
         address_city: alternate_address_city,
         address_one: alternate_address_one,
@@ -245,7 +245,7 @@ class SchoolSubmission < ActiveRecord::Base
     rescue
       raise 'Could not deliver appropriate emails'
     end
-    self.is_draft = false
+    self.is_active = false
     self.save
   end
 

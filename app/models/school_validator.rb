@@ -72,36 +72,36 @@ class SchoolValidator
                                    presence: true
   validates :contact_title, if: :page_two?, presence: true
 
-  validates :student_address_city, if: :page_three?, presence: true
-  validates :student_address_one, if: :page_three?, presence: true
-  validates :student_address_state, if: :page_three?, presence: true
-  validates :student_address_zip, format: { with: /\A\d{5}(-\d{4})?\z/ },
+  validates :primary_address_city, if: :page_three?, presence: true
+  validates :primary_address_one, if: :page_three?, presence: true
+  validates :primary_address_state, if: :page_three?, presence: true
+  validates :primary_address_zip, format: { with: /\A\d{5}(-\d{4})?\z/ },
                                   if: :page_three?,
                                   presence: true
-  validates :student_birthday, if: :page_three?, presence: true
-  validates :student_cell_phone, format: { with: /\A\d{3}-\d{3}-\d{4}\z/ },
+  validates :primary_birthday, if: :page_three?, presence: true
+  validates :primary_cell_phone, format: { with: /\A\d{3}-\d{3}-\d{4}\z/ },
                                  if: :page_three?,
                                  presence: true
-  validates :student_email, format: { with: /.+@.+\..+/ },
+  validates :primary_email, format: { with: /.+@.+\..+/ },
                             if: :page_three?,
                             presence: true
-  validates :student_first_name, if: :page_three?, presence: true
-  validates :student_guardian_first_name, if: :page_three?, presence: true
-  validates :student_guardian_email, format: { with: /.+@.+\..+/ },
+  validates :primary_first_name, if: :page_three?, presence: true
+  validates :primary_guardian_first_name, if: :page_three?, presence: true
+  validates :primary_guardian_email, format: { with: /.+@.+\..+/ },
                                      if: :page_three?,
                                      presence: true
-  validates :student_guardian_last_name, if: :page_three?, presence: true
-  validates :student_guardian_phone_number, format: { with: /\A\d{3}-\d{3}-\d{4}\z/ },
+  validates :primary_guardian_last_name, if: :page_three?, presence: true
+  validates :primary_guardian_phone_number, format: { with: /\A\d{3}-\d{3}-\d{4}\z/ },
                                             if: :page_three?,
                                             presence: true
-  validates :student_guardian_phone_type, if: :page_three?, presence: true
-  validates :student_guardian_relationship, if: :page_three?, presence: true
-  validates :student_home_phone, format: { with: /\A\d{3}-\d{3}-\d{4}\z/ },
+  validates :primary_guardian_phone_type, if: :page_three?, presence: true
+  validates :primary_guardian_relationship, if: :page_three?, presence: true
+  validates :primary_home_phone, format: { with: /\A\d{3}-\d{3}-\d{4}\z/ },
                                  if: :page_three?,
                                  presence: true
-  validates :student_gender, if: :page_three?, presence: true
-  validates :student_last_name, if: :page_three?, presence: true
-  validates :student_shirt_size, if: :page_three?, presence: true
+  validates :primary_gender, if: :page_three?, presence: true
+  validates :primary_last_name, if: :page_three?, presence: true
+  validates :primary_shirt_size, if: :page_three?, presence: true
 
   validates :alternate_address_city, if: :page_four?, presence: true
   validates :alternate_address_one, if: :page_four?, presence: true
@@ -154,7 +154,7 @@ class SchoolValidator
   end
 
   def page_four?
-    @page == 4 && has_alternate_student == SchoolSubmission::BOOLEANS[0]
+    @page == 4 && has_alternate_student == EnumConstants::BOOLEANS[0]
   end
 
   def persisted?
