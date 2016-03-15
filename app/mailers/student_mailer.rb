@@ -9,7 +9,12 @@ class StudentMailer < ApplicationMailer
   def standard(email)
     @email = email
     if Rails.env.staging?
-      mail subject: email.subject
+      mail body-plain: email.content
+           from: email.from,
+           recipient: email.recipient
+           sender: email.sender,
+           subject: email.subject,
+           to: email.to
     else
       mail from: email.from,
            to: email.to,
