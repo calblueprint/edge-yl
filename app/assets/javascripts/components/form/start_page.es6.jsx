@@ -1,37 +1,36 @@
-class SuccessPage extends Component {
+class StartPage extends Component {
 
   // --------------------------------------------------
   // Props
   // --------------------------------------------------
-	static get propTypes() {
-		return {
+  static get propTypes() {
+    return {
       id: React.PropTypes.string.isRequired,
-			target: React.PropTypes.string.isRequired,
-		};
-	}
+      target: React.PropTypes.string.isRequired,
+    };
+  }
 
   // --------------------------------------------------
   // Styles
   // --------------------------------------------------
   get styles() {
-  	return {
-      container: Object.assign(
+    return {
+      container: {
+        display: 'flex',
+        flexFlow: 'column',
+        width: '712px',
+      },
+      header: Object.assign(
         {},
-        StyleConstants.containers.card,
+        StyleConstants.templates.card,
         {
+          display: 'flex',
+          flexFlow: 'column',
           alignItems: 'center',
-          width: '712px',
-          padding: '20px',
-          marginTop: '20px',
-          textAlign: 'center',
+          padding: '36px',
+          marginTop: '24px',
         },
       ),
-      icon: {
-        width: '100%',
-      },
-      text: {
-        marginTop: '10px',
-      },
       wrapper: Object.assign(
         {},
         StyleConstants.pages.wrapper,
@@ -47,14 +46,14 @@ class SuccessPage extends Component {
   // Render
   // --------------------------------------------------
   render() {
-  	return (
+    return (
       <div style={this.styles.wrapper}>
-    		<div style={this.styles.container}>
-          <i style={this.styles.icon} className="fa fa-check-circle fa-5x"></i>
-    			<p style={this.styles.text}>{`You have successfully completed the ${this.props.target}
-            form for EDGE 2016. You should be receiving a confirmation email shortly.`} </p>
-    		</div>
+        <div style={this.styles.container}>
+          <div style={this.styles.header}>
+            <h1>{'EDGE Registration - School'}</h1>
+          </div>
+        </div>
       </div>
-  	);
+    );
   }
 }
