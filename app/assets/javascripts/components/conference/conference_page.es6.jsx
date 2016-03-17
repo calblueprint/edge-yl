@@ -108,8 +108,8 @@ class ConferencePage extends Component {
           <div style={StyleConstants.pages.content}>
             <GridHeader
               choices={this.generateChoices()}
-              title={`Conference: ${conference.name}`}
-              options={this.generateOptions()} />
+              options={this.generateOptions()}
+              title={`Conference: ${conference.name}`} />
             <ConferenceGrid
               conference={conference}
               editable={this.state.editable}
