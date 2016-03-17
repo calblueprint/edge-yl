@@ -5,6 +5,7 @@ class StartPage extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
+      id: React.PropTypes.string,
       target: React.PropTypes.string.isRequired,
     };
   }
@@ -79,7 +80,7 @@ class StartPage extends Component {
     if (target == 'school') {
       window.location = RouteConstants.forms.school.start;
     } else if (target == 'student') {
-      window.location = RouteConstants.forms.student.start;
+      window.location = RouteConstants.forms.student(1, id);
     }
   }
 
@@ -122,7 +123,7 @@ class StartPage extends Component {
           <p><b>Step 5:</b> Your student will then receive further information about how to confirm his/her registration via
           email.  We may ask for your assistance in helping the student confirm their registration.</p>
         </div>
-        <p style={this.styles.questions}><b>Questions? Please contact Gabriela Medina or Jocelyne Alva at registration@edgeyl.org or 510-408-6606.</b></p>
+        <p style={this.styles.questions}><b>Questions? Please contact us at registration@edgeyl.org</b></p>
       </div>
     );
   }
@@ -141,7 +142,7 @@ class StartPage extends Component {
             <h1>{`EDGE Registration - ${this.props.target}`}</h1>
           </div>
           <div style={this.styles.body}>
-          {this.renderBody()}
+            {this.renderBody()}
             <div style={this.styles.button}>
               <FormButton
                 action={() => this.startForms()}
