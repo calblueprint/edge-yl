@@ -228,7 +228,7 @@ school_form = Form.create(
     title: 'Step 4 - Alternate Student Information',
   ) do |page|
     Question.create(
-      key: 'has_alternate',
+      key: 'has_alternate_student',
       options: EnumConstants::BOOLEANS,
       page: page,
       style: Question.styles[:dropdown],
