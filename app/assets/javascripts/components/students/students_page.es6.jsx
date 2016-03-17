@@ -90,6 +90,7 @@ class StudentsPage extends Component {
               pagination={this.state.pagination} />
             <StudentsSidebar
               conference={conference}
+              conferences={this.props.conferences}
               filters={this.state.filters}
               sorts={this.state.sorts} />
           </div>

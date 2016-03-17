@@ -39,9 +39,6 @@ class GridHeader extends Component {
         width: '100%',
         marginTop: '12px',
       },
-      divider: {
-        padding: '0px 6px',
-      },
       section: {
         display: 'flex',
       },
@@ -70,19 +67,9 @@ class GridHeader extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
-  // renderFilter() {
-  //   var type = this.props.type;
-  //   if (type === TypeConstants.pages.groups ||
-  //       type === TypeConstants.pages.rooms ||
-  //       type === TypeConstants.pages.students) {
-  //     return (
-  //       <PageFilter
-  //         conference={this.props.conference}
-  //         conferences={this.props.conferences}
-  //         type={this.props.type} />
-  //     );
-  //   }
-  // }
+  renderChoices() {
+
+  }
 
   renderOption(option, index) {
     return (
@@ -101,6 +88,10 @@ class GridHeader extends Component {
     return options.map((option, index) => this.renderOption(option, index));
   }
 
+  renderSection() {
+
+  }
+
   render() {
     return (
       <div style={this.styles.container}>
@@ -109,9 +100,7 @@ class GridHeader extends Component {
         </h4>
         <div style={this.styles.section}>
           {this.renderOptions()}
-          <DropdownButton
-            choices={this.props.choices}
-            value={'Special actions'} />
+          {this.renderChoices()}
         </div>
       </div>
     );
