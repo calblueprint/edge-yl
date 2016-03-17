@@ -93,9 +93,8 @@ class StudentPage extends Component {
         <div style={StyleConstants.pages.container}>
           <div style={StyleConstants.pages.content}>
             <GridHeader
-              label={'Student'}
               options={this.generateOptions()}
-              value={student.full_name} />
+              title={`Student: ${student.full_name}`} />
             <StudentGrid
               editable={this.state.editable}
               media={this.state.media}

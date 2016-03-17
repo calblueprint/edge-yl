@@ -59,7 +59,7 @@ class DraftsPage extends Component {
         <Sidebar profile={this.selectProfile()} />
         <div style={StyleConstants.pages.container}>
           <div style={StyleConstants.pages.content}>
-            <GridHeader label={'Drafts'} />
+            <GridHeader title={'Drafts'} />
             <EmailsGrid
               emails={this.state.drafts}
               media={this.state.media} />

@@ -23,7 +23,7 @@ class RoomGrid extends Component {
           media={this.props.media}
           room={room}
           type={TypeConstants.room.general} />
-        <GridHeader label={'Students in this room'} />
+        <GridHeader title={'Students in this room'} />
         <StudentsGrid
           media={this.props.media}
           students={room.students}

@@ -91,9 +91,8 @@ class GroupPage extends Component {
         <div style={StyleConstants.pages.container}>
           <div style={StyleConstants.pages.content}>
             <GridHeader
-              label={'Group'}
               options={this.generateOptions()}
-              value={group.full_name} />
+              title={`Group: ${group.full_name}`} />
             <GroupGrid
               editable={this.state.editable}
               group={group}

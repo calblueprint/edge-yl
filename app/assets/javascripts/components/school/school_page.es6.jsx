@@ -92,11 +92,8 @@ class SchoolPage extends Component {
         <div style={StyleConstants.pages.container}>
           <div style={StyleConstants.pages.content}>
             <GridHeader
-              clickable={true}
-              content={'Edit'}
-              label={'School'}
               options={this.generateOptions()}
-              value={school.name} />
+              title={`School: ${school.name}`} />
             <SchoolGrid
               editable={this.state.editable}
               media={this.state.media}

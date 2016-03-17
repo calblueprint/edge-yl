@@ -64,7 +64,7 @@ class ThreadsPage extends Component {
         <Sidebar profile={this.selectProfile()} />
         <div style={StyleConstants.pages.container}>
           <div style={StyleConstants.pages.content}>
-            <GridHeader label={'Inbox'} />
+            <GridHeader title={'Inbox'} />
             <ThreadsGrid
               threads={this.state.threads}
               media={this.state.media} />

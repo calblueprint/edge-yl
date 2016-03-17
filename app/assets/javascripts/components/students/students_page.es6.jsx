@@ -78,12 +78,9 @@ class StudentsPage extends Component {
         <Sidebar profile={this.selectProfile()} />
         <div style={StyleConstants.pages.container}>
           <div style={StyleConstants.pages.content}>
-            <PageHeader
-              conference={conference}
-              conferences={this.props.conferences}
+            <GridHeader
               options={this.generateOptions()}
-              title={'Students'}
-              type={TypeConstants.pages.students} />
+              title={'Students'} />
             <StudentsGrid
               media={this.state.media}
               students={this.state.students}

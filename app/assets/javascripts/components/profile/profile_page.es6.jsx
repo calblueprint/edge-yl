@@ -76,8 +76,8 @@ class ProfilePage extends Component {
         <div style={StyleConstants.pages.container}>
           <div style={StyleConstants.pages.content}>
             <GridHeader
-              label={'Profile'}
-              options={this.generateOptions()} />
+              options={this.generateOptions()}
+              title={'Profile'} />
             <ProfileGrid
               editable={this.state.editable}
               media={this.state.media}

@@ -86,10 +86,9 @@ class PartialSchoolsPage extends Component {
         <Sidebar profile={this.selectProfile()} />
         <div style={StyleConstants.pages.container}>
           <div style={StyleConstants.pages.content}>
-            <PageHeader
+            <GridHeader
               options={this.generateOptions()}
-              title={'Partial Schools'}
-              type={TypeConstants.pages.partial_schools} />
+              title={'Partial Schools'} />
             <PartialSchoolsGrid
               editable={this.state.editable}
               media={this.state.media}
