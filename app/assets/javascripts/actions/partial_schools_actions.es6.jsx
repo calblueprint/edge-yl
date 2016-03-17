@@ -7,7 +7,6 @@
     constructor() {
       this.generateActions(
         'closeOverlay',
-        'removePartialSchool',
         'storeError',
         'storePartialSchool',
         'storePartialSchools',
@@ -36,7 +35,7 @@
     deletePartialSchool(id) {
       var response = confirm('This action cannot be undone.');
       if (response) {
-        var resolve = (response) => this.removePartialSchool(response);
+        var resolve = () => this.fetchPartialSchools();
         Requester.delete(
           ApiConstants.partial_schools.delete(id),
           resolve,
@@ -45,7 +44,7 @@
       return true;
     }
 
-    fetchPartialSchools(page) {
+    fetchPartialSchools(page=1) {
       var resolve = (response) => this.storePartialSchools(response);
       Requester.get(ApiConstants.partial_schools.index(page), resolve);
       return true;

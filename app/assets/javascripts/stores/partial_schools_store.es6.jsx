@@ -14,7 +14,6 @@
       this.template = null;
       this.bindListeners({
         handleCloseOverlay: PartialSchoolsActions.CLOSE_OVERLAY,
-        handleRemovePartialSchool: PartialSchoolsActions.REMOVE_PARTIAL_SCHOOL,
         handleStoreAttribute: PartialSchoolsActions.STORE_ATTRIBUTE,
         handleStoreError: PartialSchoolsActions.STORE_ERROR,
         handleStorePartialSchool: PartialSchoolsActions.STORE_PARTIAL_SCHOOL,
@@ -47,11 +46,6 @@
     handleStorePartialSchools(response) {
       this.pagination = response.meta.pagination;
       this.partial_schools = response.partial_schools;
-    }
-
-    handleRemovePartialSchool(response) {
-      var id = response.partial_school.id;
-      this.partial_schools = this.partial_schools.filter((school) => school.id !== id);
     }
 
     handleStoreTemplate(template) {

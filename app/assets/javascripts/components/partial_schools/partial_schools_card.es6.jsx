@@ -58,9 +58,6 @@ class PartialSchoolsCard extends Component {
             label={'Contact name'}
             value={`${school.contact_first_name} ${school.contact_last_name}`} />
           <CardAttribute
-            label={'Contact title'}
-            value={`${school.contact_title}`} />
-          <CardAttribute
             label={'Contact email'}
             value={school.contact_email} />
           </div>
