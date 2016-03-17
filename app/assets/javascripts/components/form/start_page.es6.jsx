@@ -24,6 +24,11 @@ class StartPage extends Component {
           marginTop: '12px',
         },
       ),
+      button: {
+        display: 'flex',
+        alignSelf: 'center',
+        paddingTop: '20px',
+      },
       container: {
         display: 'flex',
         flexFlow: 'column',
@@ -65,6 +70,19 @@ class StartPage extends Component {
     };
   }
 
+
+  // --------------------------------------------------
+  // Helpers
+  // --------------------------------------------------
+  startForms() {
+    var target = this.props.target;
+    if (target == 'school') {
+      window.location = RouteConstants.forms.school.start;
+    } else if (target == 'student') {
+      window.location = RouteConstants.forms.student.start;
+    }
+  }
+
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
@@ -79,7 +97,7 @@ class StartPage extends Component {
 
   renderSchoolForm() {
     return (
-      <div style={this.styles.body}>
+      <div>
         <div>
           <p style={this.styles.introduction}>Signing up for EDGE is a two-step process.  First, the school advisor or teacher will
           select a student and submit the school information and student contact information to us
@@ -122,10 +140,14 @@ class StartPage extends Component {
           <div style={this.styles.header}>
             <h1>{`EDGE Registration - ${this.props.target}`}</h1>
           </div>
+          <div style={this.styles.body}>
           {this.renderBody()}
-          <FormButton
-            action={() => this.startForms(this.props.target)}
-            content={'START HERE'} />
+            <div style={this.styles.button}>
+              <FormButton
+                action={() => this.startForms()}
+                content={'START HERE'} />
+            </div>
+          </div>
         </div>
       </div>
     );
