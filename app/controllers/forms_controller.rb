@@ -49,6 +49,14 @@ class FormsController < BaseController
     end
   end
 
+  def start
+    @id = params[:id]
+    @target = params[:target]
+    if @target != 'school'
+      error_404
+    end
+  end
+
   def success
     @id = params[:id]
     @target = params[:target]

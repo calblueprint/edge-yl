@@ -5,6 +5,7 @@
   get 'email', to: 'pages#email'
   get 'feedback', to: 'pages#feedback'
   get 'forms/:target', as: 'forms', to: 'forms#show'
+  get 'forms/:target/start', to: 'forms#start'
   get 'forms/:target/:id', to: 'forms#show'
   get 'forms/:target/:id/preview', to: 'forms#preview'
   get 'forms/:target/:id/success', as: 'forms_success', to: 'forms#success'

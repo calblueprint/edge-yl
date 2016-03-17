@@ -79,7 +79,6 @@ class Email < ActiveRecord::Base
   def set_initials
     self.content ||= ''
     self.subject ||= ''
-
     if (emailable = find_emailable(recipient))
       self.emailable_id = emailable.id
       self.emailable_type = emailable.class.name
