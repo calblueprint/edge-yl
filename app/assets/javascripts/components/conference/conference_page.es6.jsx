@@ -106,7 +106,7 @@ class ConferencePage extends Component {
         <Toast toast={this.state.toast} />
         <div style={StyleConstants.pages.container}>
           <div style={StyleConstants.pages.content}>
-            <PageHeader
+            <GridHeader
               choices={this.generateChoices()}
               title={`Conference: ${conference.name}`}
               options={this.generateOptions()} />

@@ -81,10 +81,9 @@ class ConferencesPage extends Component {
         <Toast toast={this.state.toast} />
         <div style={StyleConstants.pages.container}>
           <div style={StyleConstants.pages.content}>
-            <PageHeader
+            <GridHeader
               options={this.generateOptions()}
-              title={'Conferences'}
-              type={TypeConstants.pages.conferences} />
+              title={'Conferences'} />
             <ConferencesGrid
               conferences={this.state.conferences}
               media={this.state.media} />
