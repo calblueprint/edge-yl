@@ -7,39 +7,22 @@ class PageFilter extends Component {
     return {
       conference: React.PropTypes.object.isRequired,
       conferences: React.PropTypes.array.isRequired,
-      type: React.PropTypes.oneOf([
-        TypeConstants.pages.groups,
-        TypeConstants.pages.rooms,
-        TypeConstants.pages.students,
-      ]).isRequired,
     };
   }
 
   // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
-  generateChoice(option) {
-    var action = null;
-    switch(this.props.type) {
-      case TypeConstants.pages.groups:
-        action = () => GroupsActions.fetchGroups(option);
-        break;
-      case TypeConstants.pages.rooms:
-        action = () => RoomsActions.fetchRooms(option);
-        break;
-      case TypeConstants.pages.students:
-        action = () => StudentsActions.fetchStudents(option);
-        break;
-    }
+  generateChoice(conference) {
     return {
-      action: action,
-      content: option.name,
+      action: () => StudentsActions.fetchStudents(conference),
+      content: conference.name,
     };
   }
 
   generateChoices() {
     var conferences = this.props.conferences;
-    return conferences.map((option) => this.generateChoice(option));
+    return conferences.map((conference) => this.generateChoice(conference));
   }
 
   render() {
