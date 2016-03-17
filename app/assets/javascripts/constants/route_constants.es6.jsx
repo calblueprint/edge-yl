@@ -25,10 +25,7 @@
       return {
         preview: (target, id) => `/forms/${target}/${id}/preview`,
         school: (page, id) => `/forms/school/${id}?page=${page}`,
-        start: {
-          school: `/forms/school`,
-          student: `/forms/student`,
-        },
+        start: '/forms/school',
         student: (page, id) => `/forms/student/${id}?page=${page}`,
         success: (target, id) => `/forms/${target}/${id}/success`,
       };
