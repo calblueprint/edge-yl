@@ -45,7 +45,7 @@ class DropdownButton extends Component {
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
-        padding: '8px',
+        padding: '6px 8px 6px 16px',
       },
     };
   }

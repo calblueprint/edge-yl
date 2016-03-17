@@ -44,19 +44,32 @@ class ConferencePage extends Component {
   // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
+  generateChoices() {
+    return [
+      {
+        action: () => GroupsActions.exportGroups(this.state.conference.id),
+        content: 'Export groups',
+      },
+      {
+        action: () => RoomsActions.exportRooms(this.state.conference.id),
+        content: 'Export rooms',
+      },
+      {
+        action: () => ConferenceActions.assignStudentsToGroups(conference.id),
+        content: 'Assign students to groups',
+      },
+      {
+        action: () => ConferenceActions.assignStudentsToRooms(conference.id),
+        content: 'Assign students to rooms',
+      },
+    ];
+  }
+
   generateOptions() {
     return [
       {
         action: () => ViewActions.storeEditability(),
         content: this.state.editable ? 'Finish' : 'Edit',
-      },
-      {
-        action: () => GroupsActions.exportGroups(this.state.conference.id),
-        content: 'Export Groups',
-      },
-      {
-        action: () => RoomsActions.exportRooms(this.state.conference.id),
-        content: 'Export Rooms',
       },
     ];
   }
@@ -93,10 +106,10 @@ class ConferencePage extends Component {
         <Toast toast={this.state.toast} />
         <div style={StyleConstants.pages.container}>
           <div style={StyleConstants.pages.content}>
-            <GridHeader
-              label={'Conference'}
-              options={this.generateOptions()}
-              value={conference.name} />
+            <PageHeader
+              choices={this.generateChoices()}
+              title={`Conference: ${conference.name}`}
+              options={this.generateOptions()} />
             <ConferenceGrid
               conference={conference}
               editable={this.state.editable}

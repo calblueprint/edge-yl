@@ -5,8 +5,7 @@ class PageHeader extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      conference: React.PropTypes.object,
-      conferences: React.PropTypes.array,
+      choices: React.PropTypes.array,
       options: React.PropTypes.arrayOf(
         React.PropTypes.shape({
           action: React.PropTypes.func,
@@ -18,22 +17,12 @@ class PageHeader extends Component {
         })
       ),
       title: React.PropTypes.string.isRequired,
-      type: React.PropTypes.oneOf([
-        TypeConstants.pages.conferences,
-        TypeConstants.pages.groups,
-        TypeConstants.pages.partial_schools,
-        TypeConstants.pages.rooms,
-        TypeConstants.pages.schools,
-        TypeConstants.pages.students,
-        TypeConstants.pages.users,
-      ]).isRequired,
     };
   }
 
   static get defaultProps() {
     return {
-      conference: null,
-      conferences: [],
+      choices: [],
       options: [],
     };
   }
@@ -63,15 +52,24 @@ class PageHeader extends Component {
     };
   }
 
+  get clickableStyles() {
+    return {
+      default: Object.assign(
+        {},
+        StyleConstants.templates.card,
+        {
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          padding: '6px 12px',
+        },
+      ),
+    };
+  }
+
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
-  renderDivider(index, length) {
-    if (index < this.props.options.length - 1) {
-      return <h4 style={this.styles.divider}>{'|'}</h4>;
-    }
-  }
-
   renderFilter() {
     var type = this.props.type;
     if (type === TypeConstants.pages.groups ||
@@ -85,16 +83,16 @@ class PageHeader extends Component {
       );
     }
   }
-  renderOption(option, index, length) {
+
+  renderOption(option, index) {
     return (
-      <div key={index} style={this.styles.section}>
-        <Clickable
-          action={option.action}
-          content={option.content}
-          route={option.route}
-          type={'h4'} />
-        {this.renderDivider(index)}
-      </div>
+      <Clickable
+        action={option.action}
+        content={option.content}
+        key={index}
+        route={option.route}
+        styles={this.clickableStyles}
+        type={'p'} />
     );
   }
 
@@ -114,6 +112,9 @@ class PageHeader extends Component {
         </div>
         <div style={this.styles.section}>
           {this.renderOptions()}
+          <DropdownButton
+            choices={this.props.choices}
+            value={'Special actions'} />
         </div>
       </div>
     );

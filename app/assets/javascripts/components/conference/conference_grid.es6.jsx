@@ -24,10 +24,6 @@ class ConferenceGrid extends Component {
         ),
         content: 'New',
       },
-      {
-        action: () => ConferenceActions.assignStudentsToGroups(conference.id),
-        content: 'Assign Students to Groups',
-      },
     ];
   }
 
@@ -40,10 +36,6 @@ class ConferenceGrid extends Component {
           { conference_id: conference.id },
         ),
         content: 'New',
-      },
-      {
-        action: () => ConferenceActions.assignStudentsToRooms(conference.id),
-        content: 'Assign Students to Rooms',
       },
     ];
   }
