@@ -66,12 +66,12 @@ class StudentSubmission < ActiveRecord::Base
 
   def dietary_restrictions
     if !read_attribute(:dietary_restrictions).nil?
-      EnumConstants::BOOLEANS[read_attribute(:dietary_restrictions)]
+      EnumConstants::DIETARY_RESTRICTIONS[read_attribute(:dietary_restrictions)]
     end
   end
 
   def dietary_restrictions=(value)
-    write_attribute(:dietary_restrictions, EnumConstants::BOOLEANS.index(value))
+    write_attribute(:dietary_restrictions, EnumConstants::DIETARY_RESTRICTIONS.index(value))
   end
 
   def emergency_consent
@@ -150,7 +150,7 @@ class StudentSubmission < ActiveRecord::Base
     end
   end
 
-  def psychologist_consent=(value)
+  def shirt_size=(value)
     write_attribute(:shirt_size, EnumConstants::SHIRT_SIZES.index(value))
   end
 
@@ -198,10 +198,11 @@ class StudentSubmission < ActiveRecord::Base
       psychologist_consent: 0,
       shirt_size: 1,
     )
-    if student.save
-      self.is_active = true
-      self.save
+    unless student.save
+      raise 'Could not create student from submission'
     end
+    self.is_active = false
+    self.save
   end
 
   private
@@ -216,7 +217,6 @@ class StudentSubmission < ActiveRecord::Base
       cell_phone: cell_phone,
       home_phone: home_phone,
       address_one: address_one,
-      address_two: address_two,
       address_city: address_city,
       address_state: address_state,
       address_zip: address_zip,
