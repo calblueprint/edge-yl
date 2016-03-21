@@ -50,12 +50,21 @@ class FormDropdown extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
-  renderErrors() {
-    var errors = this.props.question.errors;
-    if (errors && errors.length) {
+  renderDropdown() {
+    var question = this.props.question;
+    return (
+      <DropdownButton
+        choices={this.generateChoices()}
+        value={question.value} />
+    );
+  }
+
+  renderError() {
+    var error = this.props.question.error;
+    if (error) {
       return (
         <h6 style={StyleConstants.forms.questions.errors}>
-          {errors[0]}
+          {error}
         </h6>
       );
     }
@@ -72,17 +81,14 @@ class FormDropdown extends Component {
   }
 
   render() {
-    var question = this.props.question;
     return (
       <div style={StyleConstants.forms.questions.container}>
         <div style={StyleConstants.forms.questions.prompt}>
-          <h6>{question.title}{this.renderRequired()}</h6>
+          <h6>{this.props.question.title}{this.renderRequired()}</h6>
         </div>
         <div style={StyleConstants.forms.questions.response}>
-          <DropdownButton
-            choices={this.generateChoices()}
-            value={question.value} />
-          {this.renderErrors()}
+          {this.renderDropdown()}
+          {this.renderError()}
         </div>
       </div>
     );

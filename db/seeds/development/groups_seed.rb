@@ -20,5 +20,5 @@ Student.all.each do |student|
     student.group = group
   end
   student.save
-  puts "Assigned #{student.full_name} to #{group.full_name} and #{group.conference.name}."
+  puts "Assigned student #{student.full_name} to group #{group.full_name} of conference #{group.conference.name}."
 end

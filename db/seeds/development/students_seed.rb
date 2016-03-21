@@ -1,4 +1,4 @@
-(1..25).each do |index|
+(1..20).each do |index|
   new_student = Student.create(
     address_city: "#{Faker::Address.city}",
     address_one: "#{Faker::Address.street_address}",
@@ -33,8 +33,8 @@
     medical_guardian_name: Faker::Name.first_name,
     medications: 'None',
     registration_status: rand(3),
-    school_id: index,
+    school: School.find(rand(10) + 1),
     shirt_size: rand(5),
   )
-  puts "Created student #{new_student.full_name}"
+  puts "Created student #{new_student.full_name}."
 end

@@ -91,6 +91,14 @@
           errors: {
             color: this.colors.red,
           },
+          input: (error) => {
+            if (error) {
+              return {
+                border: `1px solid ${this.colors.red}`,
+                boxShadow: `0px 0px 1px 0px ${this.colors.red}`,
+              };
+            }
+          },
           prompt: {
             display: 'flex',
             alignItems: 'center',

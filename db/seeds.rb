@@ -1,17 +1,17 @@
 if Rails.env.development? || Rails.env.staging?
   seeds = [
-    'partial_schools',
     'users',
+    'conferences',
     'schools',
+    'contacts',
     'students',
     'comments',
-    'conferences',
-    'contacts',
-    'rooms',
     'groups',
+    'rooms',
     'leaderships',
     'forms',
     'emails',
+    'partial_schools',
   ]
   seeds.each do |seed|
     load File.join(Rails.root, 'db/seeds/development', "#{seed}_seed.rb")

@@ -35,11 +35,11 @@
     }
 
     handleStoreSession(response) {
-      window.location = RouteConstants.students.index();
+      window.location = RouteConstants.conferences.index();
     }
 
     handleStoreUser(response) {
-      window.location = RouteConstants.students.index();
+      window.location = RouteConstants.conferences.index();
     }
   }
   this.AuthenticationStore = alt.createStore(AuthenticationStore);

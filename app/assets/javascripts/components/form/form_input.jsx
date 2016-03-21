@@ -32,15 +32,27 @@ class FormInput extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
-  renderErrors() {
-    var errors = this.props.question.errors;
-    if (errors && errors.length) {
+  renderError() {
+    var error = this.props.question.error;
+    if (error) {
       return (
         <h6 style={StyleConstants.forms.questions.errors}>
-          {errors[0]}
+          {error}
         </h6>
       );
     }
+  }
+
+  renderInput() {
+    var question = this.props.question;
+    return (
+      <input
+        placeholder={question.placeholder}
+        ref={'container'}
+        style={StyleConstants.forms.questions.input(question.error)}
+        type={question.format}
+        value={question.value} />
+    );
   }
 
   renderRequired() {
@@ -54,20 +66,14 @@ class FormInput extends Component {
   }
 
   render() {
-    var question = this.props.question;
     return (
       <div style={StyleConstants.forms.questions.container}>
         <div style={StyleConstants.forms.questions.prompt}>
-          <h6>{question.title}{this.renderRequired()}</h6>
+          <h6>{this.props.question.title}{this.renderRequired()}</h6>
         </div>
         <div style={StyleConstants.forms.questions.response}>
-          <input
-            placeholder={question.placeholder}
-            ref={'container'}
-            style={this.styles.input}
-            type={question.format}
-            value={question.value} />
-          {this.renderErrors()}
+          {this.renderInput()}
+          {this.renderError()}
         </div>
       </div>
     );

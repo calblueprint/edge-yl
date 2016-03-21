@@ -5,6 +5,7 @@ class FormFooter extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
+      errors: React.PropTypes.bool.isRequired,
       id: React.PropTypes.string,
       page: React.PropTypes.object.isRequired,
       target: React.PropTypes.string.isRequired,
@@ -32,12 +33,18 @@ class FormFooter extends Component {
           margin: '12px 0px',
         },
       ),
-      leftButton: {
+      left: {
         display: 'flex',
         flex: '1',
         justifyContent: 'flex-start',
       },
-      rightButton: {
+      middle: {
+        display: 'flex',
+        flex: '1',
+        justifyContent: 'center',
+        alignItems: 'center',
+      },
+      right: {
         display: 'flex',
         flex: '1',
         justifyContent: 'flex-end',
@@ -67,6 +74,16 @@ class FormFooter extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
+  renderErrors() {
+    if (this.props.errors) {
+      return (
+        <h6 style={StyleConstants.forms.questions.errors}>
+          {'Please correct the errors above.'}
+        </h6>
+      );
+    }
+  }
+
   renderPrevious() {
     var page = this.props.page;
     if (page.number > 1) {
@@ -89,10 +106,13 @@ class FormFooter extends Component {
   render() {
     return (
       <div style={this.styles.container}>
-        <div style={this.styles.leftButton}>
+        <div style={this.styles.left}>
           {this.renderPrevious()}
         </div>
-        <div style={this.styles.rightButton}>
+        <div style={this.styles.middle}>
+          {this.renderErrors()}
+        </div>
+        <div style={this.styles.right}>
           {this.renderNext()}
         </div>
       </div>
