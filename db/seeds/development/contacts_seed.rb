@@ -8,7 +8,7 @@ def generate_contact(school, is_primary)
     title: 'Principal',
     school: school,
   )
-  puts "Created contact #{new_contact.first_name} #{new_contact.last_name} for #{school.name}."
+  puts "Created contact #{new_contact.full_name} for school #{school.name}."
 end
 
 School.all.each do |school|

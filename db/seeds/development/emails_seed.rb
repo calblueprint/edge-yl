@@ -26,5 +26,5 @@ admin = User.first
     to: "#{admin.full_name} <#{admin.username}@test.edge.org>",
     user: admin,
   )
-  puts "Create email from #{new_email.from}."
+  puts "Create email from admin #{new_email.from}."
 end
