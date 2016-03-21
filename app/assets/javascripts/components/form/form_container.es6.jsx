@@ -70,6 +70,7 @@ class FormContainer extends Component {
     if (pages) {
       return (
         <FormFooter
+          errors={this.state.errors}
           id={this.props.id}
           page={pages[this.props.page - 1]}
           target={this.props.target} />

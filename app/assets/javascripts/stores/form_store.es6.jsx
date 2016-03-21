@@ -5,6 +5,7 @@
     // Setup
     // --------------------------------------------------
     constructor() {
+      this.errors = false;
       this.form = {};
       this.bindListeners({
         handleStoreErrors: FormActions.STORE_ERRORS,
@@ -19,7 +20,6 @@
     // --------------------------------------------------
     handleStoreErrors(response) {
       var errors = response.errors;
-      console.log(errors);
       var page = response.page;
       var questions = this.form.pages[page - 1].questions;
       questions.map((question) => {
@@ -30,6 +30,7 @@
           delete question.error;
         }
       });
+      this.errors = true;
     }
 
     handleStoreForm(response) {
