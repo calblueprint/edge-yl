@@ -46,17 +46,13 @@ class StartPage extends Component {
           marginTop: '24px',
         },
       ),
-      introduction: {
+      paragraph: {
         paddingBottom: '20px',
       },
       questions: {
         paddingTop: '20px',
       },
-      register: {
-        paddingBottom: '10px',
-        alignSelf: 'center',
-      },
-      steps: {
+      section: {
         display: 'flex',
         flexFlow: 'column',
       },
@@ -99,38 +95,51 @@ class StartPage extends Component {
   renderSchoolForm() {
     return (
       <div>
-        <div>
-          <p style={this.styles.introduction}>Signing up for EDGE is a two-step process.  First, the school advisor or teacher will
-          select a student and submit the school information and student contact information to us
-          via this form.  Then, we will reach out to the student directly to confirm their registration
-          and obtain needed emergency contact, medical, transportation, newspaper announcement, and waiver information.</p>
-          <p style={this.styles.introduction}>Below are instructions on how to fill out the selection form.  All selections must be made through the school
-          or through one of our non-profit partners.  Please contact us if you are interested in signing up, but are unsure
-          of who to contact at your school.</p>
+        <div style={this.styles.section}>
+          <p style={this.styles.paragraph}>
+            Signing up for EDGE is a two-step process. First, a school advisor or teacher will
+            select a student and submit school information and student contact information to us
+            via this form. Then, we will reach out to the student directly to confirm their registration
+            and obtain needed emergency contact, medical, transportation, newspaper announcement, and waiver information.
+          </p>
+          <p style={this.styles.paragraph}>
+            Below are instructions on how to fill out the selection form.  All selections must be made through the school
+            or through one of our non-profit partners.  Please contact us if you are interested in signing up, but are unsure
+            of who to contact at your school.
+          </p>
         </div>
-        <h3 style={this.styles.register}>To register your selected student:</h3>
-        <div style={this.styles.steps}>
-          <p><b>START:</b> Click the giant START HERE button</p>
+        <div style={this.styles.section}>
+          <h3>To register your selected student:</h3>
+          <br />
+          <p><b>START:</b> Click the giant START HERE button.</p>
+          <p><b>Step 1:</b> Fill in your school information on the next page and click NEXT.</p>
           <p><b>Step 1:</b> Fill in your contact information on the next page and click NEXT.</p>
           <p><b>Step 2:</b> Fill in your student's contact information and click NEXT.</p>
-          <p><b>Step 3:</b> If you have an alternate student, fill in his/her information, if not, click CONFIRM AND SUBMIT.</p>
-          <p><b>Step 4a:</b> You will receive a confirmation email at the email address you provided.</p>
-          <p><b>Step 4b:</b> Your student will receive a notification email at the email address (of the student)
-          provided - please be sure it is an email that is valid and one they check frequently.  They will be
-          receiving instructions on how to confirm their registration via that email.</p>
-          <p><b>IMPORTANT!  Please do not use the same email address for you and your student.
-          If your student does not have an email, please contact us.</b></p>
-          <p><b>Step 5:</b> Your student will then receive further information about how to confirm his/her registration via
-          email.  We may ask for your assistance in helping the student confirm their registration.</p>
+          <p><b>Step 3a:</b> If you have an alternate student, select YES, fill in his/her information, and click NEXT.</p>
+          <p><b>Step 3b:</b> If you do not have an alternate student if not, select NO and click NEXT.</p>
+          <p><b>Step 4:</b> Review the information you have provided and when ready click SUBMIT.</p>
+          <p><b>Step 5a:</b> You will receive a confirmation email at the email address you provided.</p>
+          <p>
+            <b>Step 5b:</b> Your student will receive a notification email at the email address (of the student)
+            provided - please be sure the email is valid and one they check frequently. They will be
+            receiving instructions on how to confirm/finish their registration via that email.
+            We may ask for your assistance in helping the student confirm their registration.
+          </p>
+          <p style={this.styles.paragraph}>
+            <b>IMPORTANT! Please do not use the same email address for you and your student.
+            If your student does not have an email, please contact us.</b>
+          </p>
         </div>
-        <p style={this.styles.questions}><b>Questions? Please contact us at registration@edgeyl.org</b></p>
+        <div style={this.styles.section}>
+          <p><b>Questions? Please contact us at registration@edgeyl.org.</b></p>
+        </div>
       </div>
     );
   }
 
   renderStudentForm() {
     return (
-      <div> </div>
+      <div></div>
     );
   }
 
@@ -139,7 +148,7 @@ class StartPage extends Component {
       <div style={this.styles.wrapper}>
         <div style={this.styles.container}>
           <div style={this.styles.header}>
-            <h1>{`EDGE Registration - ${this.props.target}`}</h1>
+            <h1>{`EDGE Registration - ${Helpers.humanize(this.props.target)}`}</h1>
           </div>
           <div style={this.styles.body}>
             {this.renderBody()}
