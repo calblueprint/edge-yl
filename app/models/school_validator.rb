@@ -57,17 +57,17 @@ class SchoolValidator
   validates :address_city, if: :page_one?, presence: true
   validates :address_one, if: :page_one?, presence: true
   validates :address_state, if: :page_one?, presence: true
-  validates :address_zip, format: EnumConstants::ZIP_FORMAT,
+  validates :address_zip, format: ValidationConstants::ZIP_FORMAT,
                           if: :page_one?,
                           presence: true
   validates :name, if: :page_one?, presence: true
 
-  validates :contact_email, format: EnumConstants::EMAIL_FORMAT,
+  validates :contact_email, format: ValidationConstants::EMAIL_FORMAT,
                             if: :page_two?,
                             presence: true
   validates :contact_first_name, if: :page_two?, presence: true
   validates :contact_last_name, if: :page_two?, presence: true
-  validates :contact_phone_number, format: EnumConstants::PHONE_FORMAT,
+  validates :contact_phone_number, format: ValidationConstants::PHONE_FORMAT,
                                    if: :page_two?,
                                    presence: true
   validates :contact_title, if: :page_two?, presence: true
@@ -75,14 +75,14 @@ class SchoolValidator
   validates :primary_address_city, if: :page_three?, presence: true
   validates :primary_address_one, if: :page_three?, presence: true
   validates :primary_address_state, if: :page_three?, presence: true
-  validates :primary_address_zip, format: EnumConstants::ZIP_FORMAT,
+  validates :primary_address_zip, format: ValidationConstants::ZIP_FORMAT,
                                   if: :page_three?,
                                   presence: true
   validates :primary_birthday, if: :page_three?, presence: true
-  validates :primary_cell_phone, format: EnumConstants::PHONE_FORMAT,
+  validates :primary_cell_phone, format: ValidationConstants::PHONE_FORMAT,
                                  if: :page_three?,
                                  presence: true
-  validates :primary_email, format: EnumConstants::EMAIL_FORMAT,
+  validates :primary_email, format: ValidationConstants::EMAIL_FORMAT,
                             if: :page_three?,
                             presence: true
   validates :primary_first_name, if: :page_three?, presence: true
@@ -91,12 +91,12 @@ class SchoolValidator
                                      if: :page_three?,
                                      presence: true
   validates :primary_guardian_last_name, if: :page_three?, presence: true
-  validates :primary_guardian_phone_number, format: EnumConstants::PHONE_FORMAT,
+  validates :primary_guardian_phone_number, format: ValidationConstants::PHONE_FORMAT,
                                             if: :page_three?,
                                             presence: true
   validates :primary_guardian_phone_type, if: :page_three?, presence: true
   validates :primary_guardian_relationship, if: :page_three?, presence: true
-  validates :primary_home_phone, format: EnumConstants::PHONE_FORMAT,
+  validates :primary_home_phone, format: ValidationConstants::PHONE_FORMAT,
                                  if: :page_three?,
                                  presence: true
   validates :primary_gender, if: :page_three?, presence: true
@@ -107,26 +107,26 @@ class SchoolValidator
   validates :alternate_address_city, if: :has_alternate?, presence: true
   validates :alternate_address_one, if: :has_alternate?, presence: true
   validates :alternate_address_state, if: :has_alternate?, presence: true
-  validates :alternate_address_zip, format: EnumConstants::ZIP_FORMAT,
+  validates :alternate_address_zip, format: ValidationConstants::ZIP_FORMAT,
                                             if: :has_alternate?,
                                             presence: true
   validates :alternate_birthday, if: :has_alternate?, presence: true
-  validates :alternate_cell_phone, format: EnumConstants::PHONE_FORMAT,
+  validates :alternate_cell_phone, format: ValidationConstants::PHONE_FORMAT,
                                            if: :has_alternate?,
                                            presence: true
-  validates :alternate_email, format: EnumConstants::EMAIL_FORMAT,
+  validates :alternate_email, format: ValidationConstants::EMAIL_FORMAT,
                                       if: :has_alternate?,
                                       presence: true
   validates :alternate_first_name, if: :has_alternate?, presence: true
   validates :alternate_guardian_first_name, if: :has_alternate?, presence: true
   validates :alternate_guardian_email, if: :has_alternate?, presence: true
   validates :alternate_guardian_last_name, if: :has_alternate?, presence: true
-  validates :alternate_guardian_phone_number, format: EnumConstants::PHONE_FORMAT,
+  validates :alternate_guardian_phone_number, format: ValidationConstants::PHONE_FORMAT,
                                                       if: :has_alternate?,
                                                       presence: true
   validates :alternate_guardian_phone_type, if: :has_alternate?, presence: true
   validates :alternate_guardian_relationship, if: :has_alternate?, presence: true
-  validates :alternate_home_phone, format: EnumConstants::PHONE_FORMAT,
+  validates :alternate_home_phone, format: ValidationConstants::PHONE_FORMAT,
                                            if: :has_alternate?,
                                            presence: true
   validates :alternate_gender, if: :has_alternate?, presence: true
