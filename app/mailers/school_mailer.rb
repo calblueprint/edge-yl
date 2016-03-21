@@ -4,7 +4,7 @@ class SchoolMailer < ApplicationMailer
     @school = school
     @primary_contact = school.primary_contact
     mail to: @primary_contact.email,
-         subject: "EDGE school registration confirmation | #{school.name}"
+         subject: "EDGE School Registration Confirmation | #{school.name}"
   end
 
 end
