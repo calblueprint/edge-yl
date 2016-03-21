@@ -8,6 +8,7 @@
   get 'forms/:target/start', to: 'forms#start'
   get 'forms/:target/:id', to: 'forms#show'
   get 'forms/:target/:id/preview', to: 'forms#preview'
+  get 'forms/:target/:id/start', to: 'forms#start'
   get 'forms/:target/:id/success', as: 'forms_success', to: 'forms#success'
   get 'forms/:target/:uuid', to: 'forms#show'
   get 'forms/:target/:uuid/success', to: 'forms#success'

@@ -411,41 +411,6 @@ primary_form = Form.create(
       title: 'Preferred name',
     )
     Question.create(
-      key: 'gender',
-      options: EnumConstants::GENDERS,
-      page: page,
-      style: Question.styles[:dropdown],
-      title: 'Gender',
-    )
-    Question.create(
-      key: 'birthday',
-      page: page,
-      placeholder: '01/01/96',
-      style: Question.styles[:input],
-      title: 'Birthday',
-    )
-    Question.create(
-      key: 'email',
-      page: page,
-      placeholder: 'kiraklapper@gmail.com',
-      style: Question.styles[:input],
-      title: 'Email',
-    )
-    Question.create(
-      key: 'cell_phone',
-      page: page,
-      placeholder: '(555) 555-5555',
-      style: Question.styles[:input],
-      title: 'Cell phone',
-    )
-    Question.create(
-      key: 'home_phone',
-      page: page,
-      placeholder: '(555) 555-5555',
-      style: Question.styles[:input],
-      title: 'Home phone',
-    )
-    Question.create(
       key: 'address_one',
       page: page,
       placeholder: '213 Queen Street',
@@ -482,11 +447,46 @@ primary_form = Form.create(
       title: 'Address zip',
     )
     Question.create(
+      key: 'email',
+      page: page,
+      placeholder: 'kiraklapper@gmail.com',
+      style: Question.styles[:input],
+      title: 'Email',
+    )
+    Question.create(
+      key: 'home_phone',
+      page: page,
+      placeholder: '(555) 555-5555',
+      style: Question.styles[:input],
+      title: 'Home phone',
+    )
+    Question.create(
+      key: 'cell_phone',
+      page: page,
+      placeholder: '(555) 555-5555',
+      style: Question.styles[:input],
+      title: 'Cell phone',
+    )
+    Question.create(
+      key: 'gender',
+      options: EnumConstants::GENDERS,
+      page: page,
+      style: Question.styles[:dropdown],
+      title: 'Gender',
+    )
+    Question.create(
+      key: 'birthday',
+      page: page,
+      placeholder: '01/01/96',
+      style: Question.styles[:input],
+      title: 'Birthday',
+    )
+    Question.create(
       key: 'shirt_size',
       options: EnumConstants::SHIRT_SIZES,
       page: page,
       style: Question.styles[:dropdown],
-      title: 'Shirt size',
+      title: 'T-shirt size',
     )
   end
   Page.create(

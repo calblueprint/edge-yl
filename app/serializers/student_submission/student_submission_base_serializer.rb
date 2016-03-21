@@ -26,7 +26,7 @@ class StudentSubmissionBaseSerializer < BaseSerializer
              :guardian_relationship,
              :health_conditions,
              :home_phone,
-             :is_draft,
+             :is_active,
              :immunizations,
              :last_name,
              :medical_guardian_name,

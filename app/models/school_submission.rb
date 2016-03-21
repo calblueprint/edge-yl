@@ -218,6 +218,9 @@ class SchoolSubmission < ActiveRecord::Base
       last_name: primary_last_name,
       shirt_size: primary_shirt_size,
     )
+    unless primary_submission.save
+      raise 'Could not create primary student from submission'
+    end
     if has_alternate_student == EnumConstants::BOOLEANS[0]
       alternate_submission = StudentSubmission.new(
         address_city: alternate_address_city,
@@ -241,7 +244,7 @@ class SchoolSubmission < ActiveRecord::Base
         shirt_size: alternate_shirt_size,
       )
       unless alternate_submission.save
-        raise 'Could not create alternate student form submission'
+        raise 'Could not create alternate student from submission'
       end
       begin
         StudentMailer.create(alternate_submission).deliver_now
