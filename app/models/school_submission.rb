@@ -162,6 +162,16 @@ class SchoolSubmission < ActiveRecord::Base
     write_attribute(:primary_address_state, EnumConstants::STATES.index(value))
   end
 
+  def primary_shirt_size
+    if !read_attribute(:primary_shirt_size).nil?
+      EnumConstants::SHIRT_SIZES[read_attribute(:primary_shirt_size)]
+    end
+  end
+
+  def primary_shirt_size=(value)
+    write_attribute(:primary_shirt_size, EnumConstants::SHIRT_SIZES.index(value))
+  end
+
   def submit_submission
     school = School.new(
       address_city: address_city,
