@@ -321,6 +321,7 @@ class SchoolSubmission < ActiveRecord::Base
   def validate_page
     if is_active
       attributes_hash = {
+        0 => {},
         1 => attributes_one,
         2 => attributes_two,
         3 => attributes_three,

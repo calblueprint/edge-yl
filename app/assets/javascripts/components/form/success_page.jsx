@@ -28,9 +28,7 @@ class SuccessPage extends Component {
       ),
       icon: {
         width: '100%',
-      },
-      text: {
-        marginTop: '10px',
+        paddingBottom: '20px',
       },
       wrapper: Object.assign(
         {},
@@ -51,8 +49,8 @@ class SuccessPage extends Component {
       <div style={this.styles.wrapper}>
     		<div style={this.styles.container}>
           <i style={this.styles.icon} className="fa fa-check-circle fa-5x"></i>
-    			<p style={this.styles.text}>{`You have successfully completed the ${this.props.target}
-            form for EDGE 2016. You should be receiving a confirmation email shortly.`} </p>
+    			<p>{`You have successfully completed the ${this.props.target} form for EDGE 2016.`}</p>
+          <p>{'You should be receiving a confirmation email shortly.'}</p>
     		</div>
       </div>
   	);

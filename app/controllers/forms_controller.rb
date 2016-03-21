@@ -30,10 +30,8 @@ class FormsController < BaseController
     @target = params[:target]
     if @target == 'school'
       school_submission = SchoolSubmission.find_by id: @id
-      if @page > 1 && school_submission.nil?
-        redirect_to forms_path(target: @target)
-      elsif school_submission.nil? && !@id.nil?
-        redirect_to forms_path(target: @target)
+      if school_submission.nil?
+        error_404
       elsif !school_submission.nil? && !school_submission.is_active
         redirect_to forms_success_path(id: @id, target: @target)
       end
@@ -41,9 +39,9 @@ class FormsController < BaseController
       student_submission = StudentSubmission.find_by id: @id
       if student_submission.nil?
         error_404
-      end
       elsif !student_submission.nil? && !student_submission.is_active
         redirect_to forms_success_path(id: @id, target: @target)
+      end
     else
       error_404
     end
