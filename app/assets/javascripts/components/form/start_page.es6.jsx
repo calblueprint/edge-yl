@@ -25,15 +25,15 @@ class StartPage extends Component {
           marginTop: '12px',
         },
       ),
-      button: {
-        display: 'flex',
-        alignSelf: 'center',
-        paddingTop: '20px',
-      },
       container: {
         display: 'flex',
         flexFlow: 'column',
         width: '712px',
+      },
+      footer: {
+        display: 'flex',
+        alignSelf: 'center',
+        paddingTop: '20px',
       },
       header: Object.assign(
         {},
@@ -71,13 +71,32 @@ class StartPage extends Component {
   // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
-  startForms() {
-    var target = this.props.target;
-    if (target == 'school') {
-      window.location = RouteConstants.forms.school.start;
-    } else if (target == 'student') {
-      window.location = RouteConstants.forms.student(1, id);
+  createSubmission() {
+    var attributes = { current_page: 0 };
+    if (this.props.target === 'school') {
+      var params = { school_submission: attributes };
+      var resolve = (response) => {
+        var submission = response.school_submission;
+        window.location = RouteConstants.forms.school(1, submission.id);
+      };
+      Requester.post(
+        ApiConstants.submissions.school.create,
+        params,
+        resolve,
+      );
+    } else if (this.props.target === 'student') {
+      var params = { student_submission: attributes };
+      var resolve = (response) => {
+        var submission = response.student_submission;
+        window.location = RouteConstants.forms.student(1, submission.id);
+      };
+      Requester.post(
+        ApiConstants.submissions.student.create,
+        params,
+        resolve,
+      );
     }
+    return true;
   }
 
   // --------------------------------------------------
@@ -152,9 +171,9 @@ class StartPage extends Component {
           </div>
           <div style={this.styles.body}>
             {this.renderBody()}
-            <div style={this.styles.button}>
+            <div style={this.styles.footer}>
               <FormButton
-                action={() => this.startForms()}
+                action={() => this.createSubmission()}
                 content={'START HERE'} />
             </div>
           </div>
