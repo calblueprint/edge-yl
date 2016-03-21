@@ -13,7 +13,6 @@ class StudentValidator
                 :cell_phone,
                 :home_phone,
                 :address_one,
-                :address_two,
                 :address_city,
                 :address_state,
                 :address_zip,
@@ -38,7 +37,6 @@ class StudentValidator
   validates :address_city, if: :page_one?, presence: true
   validates :address_one, if: :page_one?, presence: true
   validates :address_state, if: :page_one?, presence: true
-  validates :address_two, if: :page_one?, presence: true
   validates :address_zip, if: :page_one?, presence: true
   validates :birthday, if: :page_one?, presence: true
   validates :cell_phone, if: :page_one?, presence: true
