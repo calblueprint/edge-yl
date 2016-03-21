@@ -145,7 +145,7 @@
           display: 'flex',
           flexFlow: 'column',
           flex: '1',
-          padding: '0px 184px 12px 12px',
+          padding: '0px 184px 72px 12px',
           overflow: 'scroll',
         },
         wrapper: {

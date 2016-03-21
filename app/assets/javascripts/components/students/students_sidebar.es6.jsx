@@ -40,6 +40,10 @@ class StudentsSidebar extends Component {
     var conference = this.props.conference;
     return (
       <div style={this.styles.container}>
+        <PageFilter
+          conference={this.props.conference}
+          conferences={this.props.conferences}
+          type={this.props.type} />
         <StudentsSorts conference={conference} sorts={this.props.sorts} />
         <StudentsFilters conference={conference} filters={this.props.filters} />
       </div>

@@ -24,10 +24,6 @@ class ConferenceGrid extends Component {
         ),
         content: 'New',
       },
-      {
-        action: () => ConferenceActions.assignStudentsToGroups(conference.id),
-        content: 'Assign Students to Groups',
-      },
     ];
   }
 
@@ -40,10 +36,6 @@ class ConferenceGrid extends Component {
           { conference_id: conference.id },
         ),
         content: 'New',
-      },
-      {
-        action: () => ConferenceActions.assignStudentsToRooms(conference.id),
-        content: 'Assign Students to Rooms',
       },
     ];
   }
@@ -66,20 +58,20 @@ class ConferenceGrid extends Component {
           media={this.props.media}
           target={TypeConstants.conference.statistic} />
         <GridHeader
-          label={`Groups in this conference (${conference.groups_count} total)`}
-          options={this.generateGroupsOptions()} />
+          options={this.generateGroupsOptions()}
+          title={`Groups in this conference (${conference.groups_count} total)`} />
         <GroupsGrid
           editable={this.props.editable}
-          groups={conference.groups.slice(0,2)} // Only display the first 2 groups
+          groups={conference.groups}
           media={this.props.media}
           type={TypeConstants.groups.conference} />
         <GridHeader
-          label={`Rooms in this conference (${conference.rooms_count} total)`}
-          options={this.generateRoomsOptions()} />
+          options={this.generateRoomsOptions()}
+          title={`Rooms in this conference (${conference.rooms_count} total)`} />
         <RoomsGrid
           editable={this.props.editable}
           media={this.props.media}
-          rooms={conference.rooms.slice(0,2)} // Only display the first 2 rooms
+          rooms={conference.rooms}
           type={TypeConstants.rooms.conference} />
       </div>
     );

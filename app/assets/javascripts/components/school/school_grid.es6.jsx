@@ -47,13 +47,13 @@ class SchoolGrid extends Component {
           school={school}
           target={TypeConstants.school.contact} />
         <GridHeader
-          label={'Secondary contacts in this school'}
-          options={this.generateOptions()} />
+          options={this.generateOptions()}
+          title={'Secondary contacts in this school'} />
         <ContactsGrid
           contacts={school.secondary_contacts}
           editable={this.props.editable}
           media={this.props.media} />
-        <GridHeader label={'Students in this school'} />
+        <GridHeader title={'Students in this school'} />
         <StudentsGrid
           media={this.props.media}
           students={this.props.school.students}

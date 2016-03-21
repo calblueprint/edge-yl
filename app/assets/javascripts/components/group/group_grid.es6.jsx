@@ -53,8 +53,8 @@ class GroupGrid extends Component {
           media={this.props.media}
           target={TypeConstants.group.leadership} />
         <GridHeader
-          label={'Students in this group'}
-          options={this.StudentsOptions()} />
+          options={this.StudentsOptions()}
+          title={'Students in this group'} />
         <StudentsGrid
           editable={this.props.editable}
           media={this.props.media}

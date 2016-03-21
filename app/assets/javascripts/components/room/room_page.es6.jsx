@@ -1,4 +1,4 @@
-class RoomsPage extends Component {
+class RoomPage extends Component {
 
   // --------------------------------------------------
   // Setup
@@ -13,8 +13,7 @@ class RoomsPage extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      conference: React.PropTypes.object.isRequired,
-      conferences: React.PropTypes.array.isRequired,
+      id: React.PropTypes.number.isRequired,
       profile: React.PropTypes.object.isRequired,
     };
   }
@@ -24,22 +23,21 @@ class RoomsPage extends Component {
   // --------------------------------------------------
   componentWillMount() {
     this.setState(ProfileStore.getState());
-    this.setState(RoomsStore.getState());
+    this.setState(RoomStore.getState());
     this.setState(ViewStore.getState());
   }
 
   componentDidMount() {
     ProfileStore.listen(this._listener);
-    RoomsStore.listen(this._listener);
+    RoomStore.listen(this._listener);
     ViewStore.listen(this._listener);
-    RoomsActions.attachListener();
-    RoomsActions.fetchRooms(this.props.conference);
+    RoomActions.fetchRoom(this.props.id);
     ViewActions.attachListener();
   }
 
   componentWillUnmount() {
     ProfileStore.unlisten(this._listener);
-    RoomsStore.unlisten(this._listener);
+    RoomStore.unlisten(this._listener);
     ViewStore.unlisten(this._listener);
   }
 
@@ -49,19 +47,8 @@ class RoomsPage extends Component {
   generateOptions() {
     return [
       {
-        action: () => RoomsActions.storeTemplate(
-          TypeConstants.models.room,
-          { conference_id: this.props.conference.id },
-        ),
-        content: 'New',
-      },
-      {
-        action: () => ViewActions.storeEditability(),
+        action: () => RoomActions.storeEditability(),
         content: this.state.editable ? 'Finish' : 'Edit',
-      },
-      {
-        action: () => RoomsActions.exportRooms(this.props.conference.id),
-        content: 'Export',
       },
     ];
   }
@@ -75,36 +62,21 @@ class RoomsPage extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
-  renderOverlay() {
-    if (this.state.overlay) {
-      return (
-        <RoomsPageOverlay
-          conference={this.state.conference}
-          template={this.state.template}
-          type={TypeConstants.pages.rooms} />
-      );
-    }
-  }
-
   render() {
+    var room = this.state.room;
     return (
       <div style={StyleConstants.pages.wrapper}>
-        {this.renderOverlay()}
         <Header profile={this.selectProfile()} />
         <Sidebar profile={this.selectProfile()} />
         <div style={StyleConstants.pages.container}>
           <div style={StyleConstants.pages.content}>
-            <PageHeader
-              conference={this.state.conference}
-              conferences={this.props.conferences}
+            <GridHeader
               options={this.generateOptions()}
-              title={'Rooms'}
-              type={TypeConstants.pages.rooms} />
-            <RoomsGrid
+              title={`Room: ${room.number}`} />
+            <RoomGrid
               editable={this.state.editable}
               media={this.state.media}
-              rooms={this.state.rooms}
-              type={TypeConstants.rooms.default} />
+              room={room} />
           </div>
         </div>
       </div>

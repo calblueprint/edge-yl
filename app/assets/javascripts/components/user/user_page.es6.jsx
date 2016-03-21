@@ -83,9 +83,8 @@ class UserPage extends Component {
         <div style={StyleConstants.pages.container}>
           <div style={StyleConstants.pages.content}>
             <GridHeader
-              label={'Volunteer'}
               options={this.generateOptions()}
-              value={user.full_name} />
+              title={`Volunteer: ${user.full_name}`} />
             <UserGrid
               editable={this.state.editable}
               media={this.state.media}
