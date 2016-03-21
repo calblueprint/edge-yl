@@ -1,8 +1,14 @@
-<h4>Hi <%= @student_submission.first_name %>,</h4>
+<div style="width: 100%; background-color: #ebeef2;">
+  <div style="width: 600px; padding: 0px 24px; margin: auto; background-color: #ffffff;">
+    <h4>Hi <%= @student_submission.first_name %>,</h4>
 
-We are excited to meet you in June!
+    <p>We are excited to meet you in June!</p>
 
-The final step to confirm your attendance is to fill out our registration forms here: <%= @student_submission.form_url %>
+    <p>The final step to confirm your attendance is to fill out our registration forms here: <%= @student_submission.form_url %></p>
 
-Best,
-The EDGE Recruitment Team
+    <p>Best,</p>
+    <h4>The EDGE Recruitment Team</h4>
+    <img style="max-height: 72px;" src="https://9c404004ce0d907890fa-fbe50a01167c9238a8e63220e2af5ab8.ssl.cf1.rackcdn.com/user_photo-561f019532d91.jpg">
+  </div>
+</div>
+

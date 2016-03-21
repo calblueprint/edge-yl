@@ -3,7 +3,7 @@ class StudentMailer < ApplicationMailer
   def create(student_submission)
     @student_submission = student_submission
     mail to: student_submission.email,
-         subject: "EDGE student registration | #{student_submission.full_name}"
+         subject: "EDGE Student Registration | #{student_submission.full_name}"
   end
 
   def standard(email)

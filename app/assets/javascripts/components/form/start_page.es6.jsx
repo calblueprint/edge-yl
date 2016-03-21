@@ -132,14 +132,14 @@ class StartPage extends Component {
           <br />
           <p><b>START:</b> Click the giant START HERE button.</p>
           <p><b>Step 1:</b> Fill in your school information on the next page and click NEXT.</p>
-          <p><b>Step 1:</b> Fill in your contact information on the next page and click NEXT.</p>
-          <p><b>Step 2:</b> Fill in your student's contact information and click NEXT.</p>
-          <p><b>Step 3a:</b> If you have an alternate student, select YES, fill in his/her information, and click NEXT.</p>
-          <p><b>Step 3b:</b> If you do not have an alternate student if not, select NO and click NEXT.</p>
-          <p><b>Step 4:</b> Review the information you have provided and when ready click SUBMIT.</p>
-          <p><b>Step 5a:</b> You will receive a confirmation email at the email address you provided.</p>
+          <p><b>Step 2:</b> Fill in your contact information on the next page and click NEXT.</p>
+          <p><b>Step 3:</b> Fill in your student's contact information and click NEXT.</p>
+          <p><b>Step 4a:</b> If you have an alternate student, select YES, fill in his/her information, and click NEXT.</p>
+          <p><b>Step 4b:</b> If you do not have an alternate student if not, select NO and click NEXT.</p>
+          <p><b>Step 5:</b> Review the information you have provided and when ready click SUBMIT.</p>
+          <p><b>Step 6a:</b> You will receive a confirmation email at the email address you provided.</p>
           <p>
-            <b>Step 5b:</b> Your student will receive a notification email at the email address (of the student)
+            <b>Step 6b:</b> Your student will receive a notification email at the email address (of the student)
             provided - please be sure the email is valid and one they check frequently. They will be
             receiving instructions on how to confirm/finish their registration via that email.
             We may ask for your assistance in helping the student confirm their registration.
