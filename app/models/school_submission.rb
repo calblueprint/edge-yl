@@ -94,7 +94,7 @@ class SchoolSubmission < ActiveRecord::Base
 
   def alternate_guardian_relationship
     if !read_attribute(:alternate_guardian_relationship).nil?
-      EnumConstants::GURADIAN_RELATIONSHIPS[read_attribute(:alternate_guardian_relationship)]
+      EnumConstants::GUARDIAN_RELATIONSHIPS[read_attribute(:alternate_guardian_relationship)]
     end
   end
 
@@ -114,12 +114,12 @@ class SchoolSubmission < ActiveRecord::Base
 
   def has_alternate_student
     if !read_attribute(:has_alternate_student).nil?
-      BOOLEANS[read_attribute(:has_alternate_student)]
+      EnumConstants::BOOLEANS[read_attribute(:has_alternate_student)]
     end
   end
 
   def has_alternate_student=(value)
-    write_attribute(:has_alternate_student, BOOLEANS.index(value))
+    write_attribute(:has_alternate_student, EnumConstants::BOOLEANS.index(value))
   end
 
   def primary_gender
@@ -321,6 +321,7 @@ class SchoolSubmission < ActiveRecord::Base
   def validate_page
     if is_active
       attributes_hash = {
+        0 => {},
         1 => attributes_one,
         2 => attributes_two,
         3 => attributes_three,

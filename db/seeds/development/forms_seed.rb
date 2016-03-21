@@ -228,25 +228,28 @@ school_form = Form.create(
     title: 'Step 4 - Alternate Student Information',
   ) do |page|
     Question.create(
-      key: 'has_alternate',
+      key: 'has_alternate_student',
       options: EnumConstants::BOOLEANS,
       page: page,
       style: Question.styles[:dropdown],
       title: 'Would you like to enter information about an alternate student?',
     )
     Question.create(
+      is_required: false,
       key: 'alternate_first_name',
       page: page,
       placeholder: '...',
       title: 'Alternate student first name',
     )
     Question.create(
+      is_required: false,
       key: 'alternate_last_name',
       page: page,
       placeholder: '...',
       title: 'Alternate student last name',
     )
     Question.create(
+      is_required: false,
       key: 'alternate_address_one',
       page: page,
       placeholder: '...',
@@ -260,12 +263,14 @@ school_form = Form.create(
       title: 'Alternate student address two',
     )
     Question.create(
+      is_required: false,
       key: 'alternate_address_city',
       page: page,
       placeholder: 'San Francisco',
       title: 'Alternate student address city',
     )
     Question.create(
+      is_required: false,
       key: 'alternate_address_state',
       options: EnumConstants::STATES,
       page: page,
@@ -273,30 +278,35 @@ school_form = Form.create(
       title: 'Alternate student address state',
     )
     Question.create(
+      is_required: false,
       key: 'alternate_address_zip',
       page: page,
       placeholder: '90474',
       title: 'Alternate student address zip',
     )
     Question.create(
+      is_required: false,
       key: 'alternate_home_phone',
       page: page,
       placeholder: '...',
       title: 'Alternate student home phone',
     )
     Question.create(
+      is_required: false,
       key: 'alternate_cell_phone',
       page: page,
       placeholder: '...',
       title: 'Alternate student cell phone',
     )
     Question.create(
+      is_required: false,
       key: 'alternate_email',
       page: page,
       placeholder: '...',
       title: 'Alternate student email',
     )
     Question.create(
+      is_required: false,
       format: Question.formats[:date],
       key: 'alternate_birthday',
       page: page,
@@ -304,6 +314,7 @@ school_form = Form.create(
       title: 'Alternate student birthday',
     )
     Question.create(
+      is_required: false,
       key: 'alternate_gender',
       options: EnumConstants::GENDERS,
       page: page,
@@ -311,6 +322,7 @@ school_form = Form.create(
       title: 'Alternate student gender',
     )
     Question.create(
+      is_required: false,
       key: 'alternate_shirt_size',
       options: EnumConstants::SHIRT_SIZES,
       page: page,
@@ -318,30 +330,35 @@ school_form = Form.create(
       title: 'Alternate student shirt size',
     )
     Question.create(
+      is_required: false,
       key: 'alternate_guardian_first_name',
       page: page,
       placeholder: '...',
       title: 'Alternate student\'s parent/guardian first name',
     )
     Question.create(
+      is_required: false,
       key: 'alternate_guardian_last_name',
       page: page,
       placeholder: '...',
       title: 'Alternate student\'s parent/guardian last name',
     )
     Question.create(
+      is_required: false,
       key: 'alternate_guardian_email',
       page: page,
       placeholder: '...',
       title: 'Alternate student\'s parent/guardian email',
     )
     Question.create(
+      is_required: false,
       key: 'alternate_guardian_phone_number',
       page: page,
       placeholder: '...',
       title: 'Alternate student\'s parent/guardian phone number',
     )
     Question.create(
+      is_required: false,
       key: 'alternate_guardian_phone_type',
       options: EnumConstants::PHONE_TYPES,
       page: page,
@@ -349,6 +366,7 @@ school_form = Form.create(
       title: 'Alternate student\'s parent/guardian phone type',
     )
     Question.create(
+      is_required: false,
       key: 'alternate_guardian_relationship',
       options: EnumConstants::GUARDIAN_RELATIONSHIPS,
       page: page,

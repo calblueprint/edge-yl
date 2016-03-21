@@ -15,57 +15,6 @@
     // --------------------------------------------------
     // Requests
     // --------------------------------------------------
-    createSubmission(page, target) {
-      var attributes = {};
-      var questions = page.questions;
-      questions.map((question) => attributes[question.key] = question.value);
-      attributes.current_page = page.number;
-      if (target === 'school') {
-        var params = { school_submission: attributes };
-        var resolve = (response) => {
-          var submission = response.school_submission;
-          window.history.replaceState(
-            {},
-            null,
-            RouteConstants.forms.school(1, submission.id),
-          );
-          window.location = RouteConstants.forms.school(page.number + 1, submission.id);
-        };
-        var reject = (response) => this.storeErrors({
-          errors: response.errors,
-          page: page.number,
-        });
-        Requester.post(
-          ApiConstants.submissions.school.create,
-          params,
-          resolve,
-          reject,
-        );
-      } else if (target === 'student') {
-        var params = { student_submission: attributes };
-        var resolve = (response) => {
-          var submission = response.student_submission;
-          window.history.replaceState(
-            {},
-            null,
-            RouteConstants.forms.student(1, submission.id),
-          );
-          window.location = RouteConstants.forms.student(page.number + 1, submission.id);
-        };
-        var reject = (response) => this.storeErrors({
-          errors: response.errors,
-          page: page.number,
-        });
-        Requester.post(
-          ApiConstants.submissions.student.create,
-          params,
-          resolve,
-          reject,
-        );
-      }
-      return true;
-    }
-
     fetchForm(target, page, id) {
       var resolve = (response) => {
         this.storeForm(response);
