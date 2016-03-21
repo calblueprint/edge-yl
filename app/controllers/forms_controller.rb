@@ -50,7 +50,12 @@ class FormsController < BaseController
   def start
     @id = params[:id]
     @target = params[:target]
-    if @target != 'school'
+    if @target == 'student'
+      student_submission = StudentSubmission.find_by id: @id
+      if student_submission.nil?
+        error_404
+      end
+    elsif @target != 'school' || !@id.nil?
       error_404
     end
   end
