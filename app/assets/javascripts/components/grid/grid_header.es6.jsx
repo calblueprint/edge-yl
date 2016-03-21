@@ -68,7 +68,13 @@ class GridHeader extends Component {
   // Render
   // --------------------------------------------------
   renderChoices() {
-
+    if (this.props.choices.length) {
+      return (
+        <DropdownButton
+          choices={this.props.choices}
+          value={'Special actions'} />
+      );
+    }
   }
 
   renderOption(option, index) {
@@ -86,10 +92,6 @@ class GridHeader extends Component {
   renderOptions() {
     var options = this.props.options;
     return options.map((option, index) => this.renderOption(option, index));
-  }
-
-  renderSection() {
-
   }
 
   render() {

@@ -93,7 +93,7 @@ class GroupsCard extends Component {
           <CardAttribute
             clickable={false}
             label={'Students count'}
-            type={'h6'}
+            type={'p'}
             value={group.students_count} />
         </div>
       </div>
