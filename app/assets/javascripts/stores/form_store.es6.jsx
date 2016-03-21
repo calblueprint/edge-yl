@@ -19,14 +19,15 @@
     // --------------------------------------------------
     handleStoreErrors(response) {
       var errors = response.errors;
+      console.log(errors);
       var page = response.page;
       var questions = this.form.pages[page - 1].questions;
       questions.map((question) => {
         var key = question.key;
         if (errors[key]) {
-          question.errors = errors[key];
+          question.error = errors[key][0];
         } else {
-          delete question.errors;
+          delete question.error;
         }
       });
     }

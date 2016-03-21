@@ -32,12 +32,12 @@ class FormTextarea extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
-  renderErrors() {
-    var errors = this.props.question.errors;
-    if (errors && errors.length) {
+  renderError() {
+    var error = this.props.question.error;
+    if (error) {
       return (
         <h6 style={StyleConstants.forms.questions.errors}>
-          {errors[0]}
+          {error}
         </h6>
       );
     }
@@ -53,20 +53,26 @@ class FormTextarea extends Component {
     }
   }
 
-  render() {
+  renderTextarea() {
     var question = this.props.question;
+    return (
+      <textarea
+        ref={'container'}
+        style={StyleConstants.forms.questions.input(question.error)}
+        placeholder={question.placeholder}
+        value={question.value} />
+    );
+  }
+
+  render() {
     return (
       <div style={StyleConstants.forms.questions.container}>
         <div style={StyleConstants.forms.questions.prompt}>
-          <h6>{question.title}{this.renderRequired()}</h6>
+          <h6>{this.props.question.title}{this.renderRequired()}</h6>
         </div>
         <div style={StyleConstants.forms.questions.response}>
-          <textarea
-            ref={'container'}
-            style={this.styles.input}
-            placeholder={question.placeholder}
-            value={question.value} />
-          {this.renderErrors()}
+          {this.renderTextarea()}
+          {this.renderError()}
         </div>
       </div>
     );
