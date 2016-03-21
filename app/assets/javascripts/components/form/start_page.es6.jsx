@@ -10,6 +10,12 @@ class StartPage extends Component {
     };
   }
 
+  static get defaultProps() {
+    return {
+      id: null,
+    };
+  }
+
   // --------------------------------------------------
   // Styles
   // --------------------------------------------------
@@ -85,16 +91,7 @@ class StartPage extends Component {
         resolve,
       );
     } else if (this.props.target === 'student') {
-      var params = { student_submission: attributes };
-      var resolve = (response) => {
-        var submission = response.student_submission;
-        window.location = RouteConstants.forms.student(1, submission.id);
-      };
-      Requester.post(
-        ApiConstants.submissions.student.create,
-        params,
-        resolve,
-      );
+      window.location = RouteConstants.forms.student(1, this.props.id);
     }
     return true;
   }
