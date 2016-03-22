@@ -12,6 +12,7 @@ if Rails.env.development? || Rails.env.staging?
     'forms',
     'emails',
     'prospects',
+    'submissions',
   ]
   seeds.each do |seed|
     load File.join(Rails.root, 'db/seeds/development', "#{seed}_seed.rb")
