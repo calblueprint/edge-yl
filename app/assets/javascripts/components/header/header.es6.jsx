@@ -13,14 +13,12 @@ class Header extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      active: React.PropTypes.bool,
       profile: React.PropTypes.object,
     };
   }
 
   static get defaultProps() {
     return {
-      active: true,
       profile: null,
     };
   }
@@ -105,13 +103,10 @@ class Header extends Component {
           {this.renderToggler()}
         </div>
         <HeaderNavigation
-          active={this.props.active}
           pagination={this.state.pagination}
           results={this.state.results}
           search={this.state.search} />
-        <HeaderShortcuts
-          active={this.props.active}
-          profile={this.props.profile} />
+        <HeaderShortcuts profile={this.props.profile} />
       </div>
     );
   }
