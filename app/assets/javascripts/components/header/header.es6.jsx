@@ -84,23 +84,15 @@ class Header extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
-  renderToggler() {
-    if (this.props.active) {
-      return (
-        <Clickable
-          action={() => this.updateSidebar()}
-          icon={TypeConstants.icons.hamburger}
-          styles={this.clickableStyles}
-          type={'i-left'} />
-      );
-    }
-  }
-
   render() {
     return (
       <div style={this.styles.container}>
         <div style={StyleConstants.containers.header(true)}>
-          {this.renderToggler()}
+          <Clickable
+            action={() => this.updateSidebar()}
+            icon={TypeConstants.icons.hamburger}
+            styles={this.clickableStyles}
+            type={'i-left'} />
         </div>
         <HeaderNavigation
           pagination={this.state.pagination}
