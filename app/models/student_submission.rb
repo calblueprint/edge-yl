@@ -37,13 +37,10 @@
 #  other_dietary_restrictions :string
 #  preferred_name             :string           default("")
 #  psychologist_consent       :integer
-#  registration_status        :integer
 #  shirt_size                 :integer
 #
 
 class StudentSubmission < ActiveRecord::Base
-
-  before_validation :validate_page, on: :update
 
   validates :current_page, presence: true
   validates :is_active, inclusion: { in: [false, true] }
@@ -168,6 +165,29 @@ class StudentSubmission < ActiveRecord::Base
     "#{first_name} #{last_name}"
   end
 
+  def custom_update(update_params)
+    if is_active
+      validator = StudentValidator.new(update_params)
+      validator.valid?
+      error_response = validator.errors.to_hash
+      valid_params = {}
+      update_params.each do |attribute, value|
+        if !error_response.key?(attribute.to_sym)
+          valid_params[attribute] = value
+        end
+      end
+      if valid_params.size > 0
+        self.update_attributes(valid_params)
+      end
+      error_response.each do |attribute, messages|
+        messages.each do |message|
+          self.errors.add(attribute, message)
+        end
+      end
+      self.errors.size == 0
+    end
+  end
+
   def submit_submission
     student = Student.new(
       address_city: address_city,
@@ -209,71 +229,6 @@ class StudentSubmission < ActiveRecord::Base
     end
     self.is_active = false
     self.save
-  end
-
-  private
-
-  def attributes_one
-    {
-      first_name: first_name,
-      last_name: last_name,
-      gender: gender,
-      birthday: Date.new,
-      email: email,
-      cell_phone: cell_phone,
-      home_phone: home_phone,
-      address_one: address_one,
-      address_city: address_city,
-      address_state: address_state,
-      address_zip: address_zip,
-      shirt_size: shirt_size,
-    }
-  end
-
-  def attributes_two
-    {
-      guardian_first_name: guardian_first_name,
-      guardian_last_name: guardian_last_name,
-      guardian_email: guardian_email,
-      guardian_relationship: guardian_relationship,
-      guardian_phone_number: guardian_phone_number,
-      guardian_phone_type: guardian_phone_type,
-    }
-  end
-
-  def attributes_three
-    {
-      immunizations: immunizations,
-      allergies: allergies,
-      health_conditions: health_conditions,
-      medications: medications,
-      dietary_restrictions: dietary_restrictions,
-      other_dietary_restrictions: other_dietary_restrictions,
-      exercise_limitations: exercise_limitations,
-      emergency_consent: emergency_consent,
-      psychologist_consent: psychologist_consent,
-      medical_guardian_name: medical_guardian_name,
-    }
-  end
-
-  def validate_page
-    if is_active
-      attributes_hash = {
-        0 => {},
-        1 => attributes_one,
-        2 => attributes_two,
-        3 => attributes_three,
-      }
-      current_attributes = attributes_hash[current_page]
-      validator = StudentValidator.new(current_attributes, current_page)
-      validator.valid?
-      response = validator.errors.to_hash
-      response.each do |attribute, messages|
-        messages.each do |message|
-          self.errors.add(attribute, message)
-        end
-      end
-    end
   end
 
 end

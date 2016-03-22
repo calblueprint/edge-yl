@@ -20,6 +20,7 @@
     // --------------------------------------------------
     handleStoreErrors(response) {
       var errors = response.errors;
+      console.log(errors);
       var page = response.page;
       var questions = this.form.pages[page - 1].questions;
       questions.map((question) => {

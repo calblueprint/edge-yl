@@ -36,7 +36,6 @@ class CreateStudentSubmissions < ActiveRecord::Migration
       t.string  :other_dietary_restrictions
       t.string  :preferred_name, default: ''
       t.integer :psychologist_consent
-      t.integer :registration_status
       t.integer :shirt_size
     end
   end

@@ -32,7 +32,7 @@ class Api::SchoolSubmissionsController < Api::BaseController
 
   def update
     school_submission = SchoolSubmission.find_by id: params[:id]
-    if school_submission.update_attributes school_submission_params
+    if school_submission.custom_update school_submission_params
       render json: school_submission,
              serializer: SchoolSubmissionBaseSerializer,
              status: :created
