@@ -26,9 +26,10 @@ class PreviewPage extends Component {
           marginTop: '12px',
         },
       ),
-      footer: {
+      header: {
         display: 'flex',
-        justifyContent: 'flex-end',
+        justifyContent: 'space-between',
+        alignItems: 'center',
         marginTop: '12px',
       },
     };
@@ -69,13 +70,13 @@ class PreviewPage extends Component {
   render() {
     return (
       <div style={this.styles.container}>
-        <h4>{this.props.page.title}</h4>
-        {this.renderQuestions()}
-        <div style={this.styles.footer}>
+        <div style={this.styles.header}>
+          <h4>{this.props.page.title}</h4>
           <FormButton
             action={() => this.editPage()}
-            content={'Edit this page'} />
+            content={'Edit'} />
         </div>
+        {this.renderQuestions()}
       </div>
     );
   }
