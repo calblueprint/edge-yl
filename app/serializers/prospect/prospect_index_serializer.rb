@@ -1,4 +1,4 @@
-class PartialSchoolIndexSerializer < PartialSchoolBaseSerializer
+class ProspectIndexSerializer < ProspectBaseSerializer
 
   attributes :contact_email,
              :contact_first_name,

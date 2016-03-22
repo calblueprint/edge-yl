@@ -1,4 +1,4 @@
-class PartialSchoolsPage extends Component {
+class ProspectsPage extends Component {
 
   // --------------------------------------------------
   // Setup
@@ -23,21 +23,21 @@ class PartialSchoolsPage extends Component {
   // --------------------------------------------------
   componentWillMount() {
     this.setState(ProfileStore.getState());
-    this.setState(PartialSchoolsStore.getState());
+    this.setState(ProspectsStore.getState());
     this.setState(ViewStore.getState());
   }
 
   componentDidMount() {
     ProfileStore.listen(this._listener);
-    PartialSchoolsStore.listen(this._listener);
+    ProspectsStore.listen(this._listener);
     ViewStore.listen(this._listener);
-    PartialSchoolsActions.fetchPartialSchools(this.props.page);
+    ProspectsActions.fetchProspects(this.props.page);
     ViewActions.attachListener();
   }
 
   componentWillUnmount() {
     ProfileStore.unlisten(this._listener);
-    PartialSchoolsStore.unlisten(this._listener);
+    ProspectsStore.unlisten(this._listener);
     ViewStore.unlisten(this._listener);
   }
 
@@ -45,15 +45,13 @@ class PartialSchoolsPage extends Component {
   // Helpers
   // --------------------------------------------------
   changePage(page) {
-    window.location = RouteConstants.partial_schools.index(page);
+    window.location = RouteConstants.prospects.index(page);
   }
 
   generateOptions() {
     return [
       {
-        action: () => PartialSchoolsActions.storeTemplate(
-          TypeConstants.models.partial_schools
-        ),
+        action: () => ProspectsActions.storeTemplate(TypeConstants.models.prospects),
         content: 'New',
       },
       {
@@ -74,7 +72,7 @@ class PartialSchoolsPage extends Component {
   // --------------------------------------------------
   renderOverlay() {
     if (this.state.overlay) {
-      return <PartialSchoolsPageOverlay template={this.state.template} />;
+      return <ProspectsPageOverlay template={this.state.template} />;
     }
   }
 
@@ -88,11 +86,11 @@ class PartialSchoolsPage extends Component {
           <div style={StyleConstants.pages.content}>
             <GridHeader
               options={this.generateOptions()}
-              title={'Partial Schools'} />
-            <PartialSchoolsGrid
+              title={'Prospects'} />
+            <ProspectsGrid
               editable={this.state.editable}
               media={this.state.media}
-              schools={this.state.partial_schools} />
+              prospects={this.state.prospects} />
             <PageNavigator
               action={(page) => this.changePage(page)}
               pagination={this.state.pagination} />

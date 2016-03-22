@@ -47,9 +47,9 @@
       };
     }
 
-    get partial_schools() {
+    get prospects() {
       return {
-        index: (page=1) => `/partial_schools?page=${page}`,
+        index: (page=1) => `/prospects?page=${page}`,
       };
     }
 

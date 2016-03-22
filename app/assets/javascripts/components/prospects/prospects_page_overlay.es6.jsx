@@ -1,4 +1,4 @@
-class PartialSchoolsPageOverlay extends PageOverlay {
+class ProspectsPageOverlay extends PageOverlay {
 
   // --------------------------------------------------
   // Props
@@ -13,13 +13,13 @@ class PartialSchoolsPageOverlay extends PageOverlay {
   // Helpers
   // --------------------------------------------------
   closeOverlay() {
-    PartialSchoolsActions.closeOverlay();
+    ProspectsActions.closeOverlay();
   }
 
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
   renderModal() {
-    return <PartialSchoolCreateModal template={this.props.template} />;
+    return <ProspectCreateModal template={this.props.template} />;
   }
 }

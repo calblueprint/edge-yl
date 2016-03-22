@@ -1,4 +1,4 @@
-class PartialSchoolsGrid extends Component {
+class ProspectsGrid extends Component {
 
   // --------------------------------------------------
   // Props
@@ -7,7 +7,7 @@ class PartialSchoolsGrid extends Component {
     return {
       editable: React.PropTypes.bool,
       media: React.PropTypes.string.isRequired,
-      schools: React.PropTypes.array.isRequired,
+      prospects: React.PropTypes.array.isRequired,
     };
   }
 
@@ -20,25 +20,25 @@ class PartialSchoolsGrid extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
-  renderCard(school) {
+  renderCard(prospect) {
     return (
-      <PartialSchoolsCard
+      <ProspectsCard
         editable={this.props.editable}
-        key={school.id}
+        key={prospect.id}
         media={this.props.media}
-        school={school} />
+        prospect={prospect} />
     );
   }
 
   renderCards() {
-    return this.props.schools.map((school) => this.renderCard(school));
+    return this.props.prospects.map((prospect) => this.renderCard(prospect));
   }
 
   renderEmpty() {
-    if (!this.props.schools.length) {
+    if (!this.props.prospects.length) {
       return (
         <GridEmpty
-          content={'There are currently no schools.'} />
+          content={'There are currently no prospects.'} />
       );
     }
   }

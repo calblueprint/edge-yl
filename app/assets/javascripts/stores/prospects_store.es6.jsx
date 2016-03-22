@@ -1,5 +1,5 @@
 (() => {
-  class PartialSchoolsStore {
+  class ProspectsStore {
 
     // --------------------------------------------------
     // Setup
@@ -10,15 +10,15 @@
         current: 1,
         limit: 1,
       };
-      this.partial_schools = [];
+      this.prospects = [];
       this.template = null;
       this.bindListeners({
-        handleCloseOverlay: PartialSchoolsActions.CLOSE_OVERLAY,
-        handleStoreAttribute: PartialSchoolsActions.STORE_ATTRIBUTE,
-        handleStoreError: PartialSchoolsActions.STORE_ERROR,
-        handleStorePartialSchool: PartialSchoolsActions.STORE_PARTIAL_SCHOOL,
-        handleStorePartialSchools: PartialSchoolsActions.STORE_PARTIAL_SCHOOLS,
-        handleStoreTemplate: PartialSchoolsActions.STORE_TEMPLATE,
+        handleCloseOverlay: ProspectsActions.CLOSE_OVERLAY,
+        handleStoreAttribute: ProspectsActions.STORE_ATTRIBUTE,
+        handleStoreError: ProspectsActions.STORE_ERROR,
+        handleStoreProspect: ProspectsActions.STORE_PROSPECT,
+        handleStoreProspects: ProspectsActions.STORE_PROSPECTS,
+        handleStoreTemplate: ProspectsActions.STORE_TEMPLATE,
       });
     }
 
@@ -38,14 +38,14 @@
       this.template.errors = response.errors;
     }
 
-    handleStorePartialSchool(response) {
+    handleStoreProspect(response) {
       this.overlay = false;
-      this.partial_schools.push(response.partial_school);
+      this.prospects.push(response.prospect);
     }
 
-    handleStorePartialSchools(response) {
+    handleStoreProspects(response) {
       this.pagination = response.meta.pagination;
-      this.partial_schools = response.partial_schools;
+      this.prospects = response.prospects;
     }
 
     handleStoreTemplate(template) {
@@ -53,5 +53,5 @@
       this.template = template;
     }
   }
-  this.PartialSchoolsStore = alt.createStore(PartialSchoolsStore);
+  this.ProspectsStore = alt.createStore(ProspectsStore);
 })();

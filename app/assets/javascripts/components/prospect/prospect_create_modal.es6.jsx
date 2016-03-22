@@ -1,4 +1,4 @@
-class PartialSchoolCreateModal extends CreateModal {
+class ProspectCreateModal extends CreateModal {
 
   // --------------------------------------------------
   // Props
@@ -14,27 +14,27 @@ class PartialSchoolCreateModal extends CreateModal {
   // --------------------------------------------------
   handleClick(event) {
     if (event.target === this._node) {
-      PartialSchoolsActions.closeOverlay(false);
+      ProspectsActions.closeOverlay(false);
     }
   }
 
   // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
-  createPartialSchool() {
-    PartialSchoolsActions.createPartialSchool(this.props.template);
+  createProspect() {
+    ProspectsActions.createProspect(this.props.template);
   }
 
   generateHandler(field) {
     return(event) => {
-      PartialSchoolsActions.storeAttribute(field, event.target.value);
+      ProspectsActions.storeAttribute(field, event.target.value);
     };
   }
 
   generateOptions() {
     return [
       {
-        action: () => this.createPartialSchool(),
+        action: () => this.createProspect(),
         icon: TypeConstants.icons.save,
       },
     ];
@@ -48,7 +48,7 @@ class PartialSchoolCreateModal extends CreateModal {
     return (
       <div style={this.styles.section}>
         <CardHeader
-          content={'New Partial School'}
+          content={'New Prospect'}
           options={this.generateOptions()} />
         <div style={StyleConstants.cards.content}>
           <CardInput
@@ -63,6 +63,12 @@ class PartialSchoolCreateModal extends CreateModal {
             label={'Website'}
             margin={true}
             value={template.website} />
+          <CardInput
+            action={this.generateHandler('priority')}
+            errors={template.errors.priority}
+            label={'Priority'}
+            margin={true}
+            value={template.priority} />
           <CardInput
             action={this.generateHandler('contact_first_name')}
             errors={template.errors.contact_first_name}
@@ -81,6 +87,12 @@ class PartialSchoolCreateModal extends CreateModal {
             label={'Contact email'}
             margin={true}
             value={template.contact_email} />
+          <CardInput
+            action={this.generateHandler('contact_phone')}
+            errors={template.errors.contact_phone}
+            label={'Contact phone'}
+            margin={true}
+            value={template.contact_phone} />
         </div>
       </div>
     );
