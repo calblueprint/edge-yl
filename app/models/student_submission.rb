@@ -42,8 +42,6 @@
 
 class StudentSubmission < ActiveRecord::Base
 
-  before_validation :validate_page, on: :update
-
   validates :current_page, presence: true
   validates :is_active, inclusion: { in: [false, true] }
   validates :is_primary, inclusion: { in: [false, true] }
