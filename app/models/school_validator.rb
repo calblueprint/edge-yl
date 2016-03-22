@@ -8,10 +8,12 @@ class SchoolValidator
   attr_accessor :address_city,
                 :address_one,
                 :address_state,
+                :address_two,
                 :address_zip,
                 :alternate_address_city,
                 :alternate_address_one,
                 :alternate_address_state,
+                :alternate_address_two,
                 :alternate_address_two,
                 :alternate_address_zip,
                 :alternate_birthday,
@@ -33,11 +35,13 @@ class SchoolValidator
                 :contact_last_name,
                 :contact_phone_number,
                 :contact_title,
+                :current_page,
                 :has_alternate_student,
                 :name,
                 :primary_address_city,
                 :primary_address_one,
                 :primary_address_state,
+                :primary_address_two,
                 :primary_address_zip,
                 :primary_birthday,
                 :primary_cell_phone,
@@ -52,7 +56,10 @@ class SchoolValidator
                 :primary_home_phone,
                 :primary_gender,
                 :primary_last_name,
-                :primary_shirt_size
+                :primary_shirt_size,
+                :website
+
+  validates :current_page, presence: true
 
   validates :address_city, if: :page_one?, presence: true
   validates :address_one, if: :page_one?, presence: true
@@ -133,8 +140,7 @@ class SchoolValidator
   validates :alternate_last_name, if: :has_alternate?, presence: true
   validates :alternate_shirt_size, if: :has_alternate?, presence: true
 
-  def initialize(attributes={}, page=0)
-    @page = page
+  def initialize(attributes={})
     attributes.each do |name, value|
       send("#{name}=", value)
     end
@@ -147,19 +153,19 @@ class SchoolValidator
   end
 
   def page_one?
-    @page == 1
+    current_page == 1
   end
 
   def page_two?
-    @page == 2
+    current_page == 2
   end
 
   def page_three?
-    @page == 3
+    current_page == 3
   end
 
   def page_four?
-    @page == 4
+    current_page == 4
   end
 
   def persisted?
