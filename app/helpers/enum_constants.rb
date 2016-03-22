@@ -9,7 +9,8 @@ module EnumConstants
   GUARDIAN_RELATIONSHIPS = %w(
   	mother father aunt uncle
   	grandmother grandfather
-  	stepmother stepfather guardian)
+  	stepmother stepfather guardian
+  )
 
   PHONE_TYPES = %w(cell home work)
 
