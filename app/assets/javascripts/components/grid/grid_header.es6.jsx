@@ -72,7 +72,7 @@ class GridHeader extends Component {
       return (
         <DropdownButton
           choices={this.props.choices}
-          value={'Special actions'} />
+          value={'Additional actions'} />
       );
     }
   }

@@ -27,18 +27,6 @@ class DropdownButton extends Component {
   // --------------------------------------------------
   // Styles
   // --------------------------------------------------
-  get styles() {
-    return {
-      container: Object.assign(
-        {},
-        StyleConstants.templates.card,
-        {
-          maxHeight: '40px',
-        },
-      ),
-    };
-  }
-
   get clickableStyles() {
     return {
       default: {
@@ -64,8 +52,13 @@ class DropdownButton extends Component {
         {},
         StyleConstants.templates.card,
         {
+          position: 'absolute',
           maxHeight: '172px',
+          top: '36px',
+          left: '0px',
           zIndex: StyleConstants.planes.two,
+          width: '100%',
+          boxSizing: 'border-box',
           overflow: 'scroll',
         },
       ),
@@ -88,7 +81,7 @@ class DropdownButton extends Component {
 
   render() {
     return (
-      <div style={this.styles.container}>
+      <div style={StyleConstants.templates.card}>
         <Clickable
           action={() => this.setState({ dropdown: true })}
           icon={TypeConstants.icons.expand}

@@ -22,9 +22,8 @@ class AuthenticationCard extends Component {
         {},
         StyleConstants.containers.card,
         {
-          width: '472px',
+          alignSelf: 'stretch',
           padding: '24px',
-          marginTop: '24px',
         }
       ),
       header: {

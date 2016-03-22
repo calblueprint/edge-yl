@@ -29,8 +29,8 @@ class AuthenticationPage extends Component {
         display: 'flex',
         flexFlow: 'column',
         alignItems: 'center',
-        flex: '1',
-        paddingTop: StyleConstants.heights.header,
+        width: '412px',
+        paddingTop: '72px',
       },
       footer: {
         display: 'flex',
@@ -81,8 +81,7 @@ class AuthenticationPage extends Component {
 
   render() {
     return (
-      <div style={StyleConstants.pages.wrapper}>
-        <Header active={false} />
+      <div style={StyleConstants.wrappers.center}>
         <div style={this.styles.container}>
           <AuthenticationCard
             template={this.state.template}
