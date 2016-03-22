@@ -64,6 +64,12 @@ class ProspectCreateModal extends CreateModal {
             margin={true}
             value={template.website} />
           <CardInput
+            action={this.generateHandler('priority')}
+            errors={template.errors.priority}
+            label={'Priority'}
+            margin={true}
+            value={template.priority} />
+          <CardInput
             action={this.generateHandler('contact_first_name')}
             errors={template.errors.contact_first_name}
             label={'Contact first name'}
@@ -81,6 +87,12 @@ class ProspectCreateModal extends CreateModal {
             label={'Contact email'}
             margin={true}
             value={template.contact_email} />
+          <CardInput
+            action={this.generateHandler('contact_phone')}
+            errors={template.errors.contact_phone}
+            label={'Contact phone'}
+            margin={true}
+            value={template.contact_phone} />
         </div>
       </div>
     );

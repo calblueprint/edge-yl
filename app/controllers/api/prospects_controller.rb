@@ -34,7 +34,9 @@ class Api::ProspectsController < Api::BaseController
       :contact_email,
       :contact_first_name,
       :contact_last_name,
+      :contact_phone,
       :name,
+      :priority,
       :website,
     )
   end
