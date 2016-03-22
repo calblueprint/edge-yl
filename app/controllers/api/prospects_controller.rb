@@ -4,7 +4,7 @@ class Api::ProspectsController < Api::BaseController
     prospects = Prospect.page params[:page]
     render json: prospects,
            serializer: PaginatedSerializer,
-           each_serializer: PartialSchoolIndexSerializer
+           each_serializer: ProspectIndexSerializer
 
   end
 
@@ -12,7 +12,7 @@ class Api::ProspectsController < Api::BaseController
     prospect = Prospect.new prospect_params
     if prospect.save
       render json: prospect,
-             serializer: PartialSchoolIndexSerializer,
+             serializer: ProspectIndexSerializer,
              status: :created
     else
       unprocessable_response prospect
