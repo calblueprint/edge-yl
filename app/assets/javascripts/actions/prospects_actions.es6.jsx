@@ -1,5 +1,5 @@
 (() => {
-  class PartialSchoolsActions {
+  class ProspectsActions {
 
     // --------------------------------------------------
     // Setup
@@ -8,23 +8,23 @@
       this.generateActions(
         'closeOverlay',
         'storeError',
-        'storePartialSchool',
-        'storePartialSchools',
+        'storeProspect',
+        'storeProspects',
       );
     }
 
     // --------------------------------------------------
     // Requests
     // --------------------------------------------------
-    createPartialSchool(template) {
-      var params = { partial_school: template.attributes };
+    createProspect(template) {
+      var params = { prospect: template.attributes };
       var resolve = (response) => {
-        this.storePartialSchool(response);
-        ViewActions.storeToast(true, 'Partial School created!');
+        this.storeProspect(response);
+        ViewActions.storeToast(true, 'Prospect created!');
       };
       var reject = (response) => this.storeError(response);
       Requester.post(
-        ApiConstants.partial_schools.create,
+        ApiConstants.prospects.create,
         params,
         resolve,
         reject,
@@ -32,21 +32,21 @@
       return true;
     }
 
-    deletePartialSchool(id) {
+    deleteProspect(id) {
       var response = confirm('This action cannot be undone.');
       if (response) {
-        var resolve = () => this.fetchPartialSchools();
+        var resolve = () => this.fetchProspects();
         Requester.delete(
-          ApiConstants.partial_schools.delete(id),
+          ApiConstants.prospects.delete(id),
           resolve,
         );
       }
       return true;
     }
 
-    fetchPartialSchools(page=1) {
-      var resolve = (response) => this.storePartialSchools(response);
-      Requester.get(ApiConstants.partial_schools.index(page), resolve);
+    fetchProspects(page=1) {
+      var resolve = (response) => this.storeProspects(response);
+      Requester.get(ApiConstants.prospects.index(page), resolve);
       return true;
     }
 
@@ -68,5 +68,5 @@
       };
     }
   }
-  this.PartialSchoolsActions = alt.createActions(PartialSchoolsActions);
+  this.ProspectsActions = alt.createActions(ProspectsActions);
 })();

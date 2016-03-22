@@ -1,4 +1,4 @@
-class PartialSchoolsCard extends Component {
+class ProspectsCard extends Component {
 
   // --------------------------------------------------
   // Props
@@ -6,21 +6,21 @@ class PartialSchoolsCard extends Component {
   static get propTypes() {
     return {
       media: React.PropTypes.string.isRequired,
-      school: React.PropTypes.object.isRequired,
+      prospect: React.PropTypes.object.isRequired,
     };
   }
 
   // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
-  deletePartialSchool() {
-    PartialSchoolsActions.deletePartialSchool(this.props.school.id);
+  deleteProspect() {
+    ProspectsActions.deleteProspect(this.props.prospect.id);
   }
 
   generateOptions() {
     return [
       {
-        action: () => this.deletePartialSchool(),
+        action: () => this.deleteProspect(),
         icon: TypeConstants.icons.delete,
       },
     ];
@@ -33,16 +33,16 @@ class PartialSchoolsCard extends Component {
     if (this.props.editable) {
       return (
         <CardHeader
-          content={'Partial School'}
+          content={'Prospect'}
           options={this.generateOptions()} />
       );
     } else {
-      return <CardHeader content={'Partial School'} />;
+      return <CardHeader content={'Prospect'} />;
     }
   }
 
   render() {
-    var school = this.props.school;
+    var prospect = this.props.prospect;
     return (
       <div style={StyleConstants.cards.container(this.props.media)}>
         {this.renderHeader()}
@@ -50,16 +50,16 @@ class PartialSchoolsCard extends Component {
           <CardAttribute
             label={'Name'}
             type={'h4'}
-            value={school.name} />
+            value={prospect.name} />
           <CardAttribute
             label={'Website'}
-            value={school.website} />
+            value={prospect.website} />
           <CardAttribute
             label={'Contact name'}
-            value={`${school.contact_first_name} ${school.contact_last_name}`} />
+            value={`${prospect.contact_first_name} ${prospect.contact_last_name}`} />
           <CardAttribute
             label={'Contact email'}
-            value={school.contact_email} />
+            value={prospect.contact_email} />
           </div>
       </div>
     );

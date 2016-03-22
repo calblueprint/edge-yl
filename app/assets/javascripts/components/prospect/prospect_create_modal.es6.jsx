@@ -1,4 +1,4 @@
-class PartialSchoolCreateModal extends CreateModal {
+class ProspectCreateModal extends CreateModal {
 
   // --------------------------------------------------
   // Props
@@ -14,27 +14,27 @@ class PartialSchoolCreateModal extends CreateModal {
   // --------------------------------------------------
   handleClick(event) {
     if (event.target === this._node) {
-      PartialSchoolsActions.closeOverlay(false);
+      ProspectsActions.closeOverlay(false);
     }
   }
 
   // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
-  createPartialSchool() {
-    PartialSchoolsActions.createPartialSchool(this.props.template);
+  createProspect() {
+    ProspectsActions.createProspect(this.props.template);
   }
 
   generateHandler(field) {
     return(event) => {
-      PartialSchoolsActions.storeAttribute(field, event.target.value);
+      ProspectsActions.storeAttribute(field, event.target.value);
     };
   }
 
   generateOptions() {
     return [
       {
-        action: () => this.createPartialSchool(),
+        action: () => this.createProspect(),
         icon: TypeConstants.icons.save,
       },
     ];
@@ -48,7 +48,7 @@ class PartialSchoolCreateModal extends CreateModal {
     return (
       <div style={this.styles.section}>
         <CardHeader
-          content={'New Partial School'}
+          content={'New Prospect'}
           options={this.generateOptions()} />
         <div style={StyleConstants.cards.content}>
           <CardInput
