@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: partial_schools
+# Table name: prospects
 #
 #  id                 :integer          not null, primary key
 #  name               :string           not null
@@ -12,13 +12,14 @@
 #  updated_at         :datetime         not null
 #
 
-require 'rails_helper'
+FactoryGirl.define do
 
-RSpec.describe PartialSchool, type: :model do
-
-  it "is invalid without a name" do
-    factory = FactoryGirl.build(:partial_school, name: nil)
-    expect(factory).to be_invalid
+  factory :prospect do
+    contact_email         { Faker::Internet.email }
+    contact_first_name    { Faker::Name.first_name }
+    contact_last_name     { Faker::Name.last_name }
+    name                  { "#{Faker::Name.first_name} High School" }
+    website               { Faker::Internet.url('schoolweb.com') }
   end
 
 end

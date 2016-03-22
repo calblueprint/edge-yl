@@ -1,7 +1,7 @@
-class CreatePartialSchools < ActiveRecord::Migration
+class CreateProspects < ActiveRecord::Migration
 
   def change
-    create_table :partial_schools do |t|
+    create_table :prospects do |t|
       t.string :name, null: false
       t.string :contact_email, null: false
       t.string :contact_first_name, null: false

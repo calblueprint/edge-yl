@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: partial_schools
+# Table name: prospects
 #
 #  id                 :integer          not null, primary key
 #  name               :string           not null
@@ -12,11 +12,13 @@
 #  updated_at         :datetime         not null
 #
 
-class PartialSchool < ActiveRecord::Base
+require 'rails_helper'
 
-  validates :contact_email, presence: true
-  validates :contact_first_name, presence: true
-  validates :contact_last_name, presence: true
-  validates :name, presence: true
+RSpec.describe Prospect, type: :model do
+
+  it "is invalid without a name" do
+    factory = FactoryGirl.build(:partial_school, name: nil)
+    expect(factory).to be_invalid
+  end
 
 end

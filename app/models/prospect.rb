@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: partial_schools
+# Table name: prospects
 #
 #  id                 :integer          not null, primary key
 #  name               :string           not null
@@ -12,14 +12,11 @@
 #  updated_at         :datetime         not null
 #
 
-FactoryGirl.define do
+class Prospect < ActiveRecord::Base
 
-  factory :partial_school do
-    contact_email         { Faker::Internet.email }
-    contact_first_name    { Faker::Name.first_name }
-    contact_last_name     { Faker::Name.last_name }
-    name                  { "#{Faker::Name.first_name} High School" }
-    website               { Faker::Internet.url('schoolweb.com') }
-  end
+  validates :contact_email, presence: true
+  validates :contact_first_name, presence: true
+  validates :contact_last_name, presence: true
+  validates :name, presence: true
 
 end
