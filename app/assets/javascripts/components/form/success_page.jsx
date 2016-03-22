@@ -20,9 +20,8 @@ class SuccessPage extends Component {
         StyleConstants.containers.card,
         {
           alignItems: 'center',
-          width: '712px',
-          padding: '20px',
-          marginTop: '20px',
+          padding: '24px',
+          marginTop: '24px',
           textAlign: 'center',
         },
       ),
@@ -30,14 +29,6 @@ class SuccessPage extends Component {
         width: '100%',
         paddingBottom: '20px',
       },
-      wrapper: Object.assign(
-        {},
-        StyleConstants.pages.wrapper,
-        {
-          alignItems: 'center',
-          flexDirection: 'column',
-        },
-      ),
     };
   }
 
@@ -46,11 +37,13 @@ class SuccessPage extends Component {
   // --------------------------------------------------
   render() {
   	return (
-      <div style={this.styles.wrapper}>
-    		<div style={this.styles.container}>
-          <i style={this.styles.icon} className="fa fa-check-circle fa-5x"></i>
-    			<p>{`You have successfully completed the ${this.props.target} form for EDGE 2016.`}</p>
-          <p>{'You should be receiving a confirmation email shortly.'}</p>
+      <div style={StyleConstants.wrappers.center}>
+    		<div style={StyleConstants.pages.center}>
+          <div style={this.styles.container}>
+            <i style={this.styles.icon} className="fa fa-check-circle fa-5x"></i>
+      			<p>{`You have successfully completed the ${this.props.target} form for EDGE.`}</p>
+            <p>{'You should be receiving a confirmation email shortly.'}</p>
+          </div>
     		</div>
       </div>
   	);
