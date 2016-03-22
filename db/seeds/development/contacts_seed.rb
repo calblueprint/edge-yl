@@ -4,7 +4,7 @@ def generate_contact(school, is_primary)
     first_name: Faker::Name.first_name,
     is_primary: is_primary,
     last_name: Faker::Name.last_name,
-    phone_number: Faker::PhoneNumber.phone_number,
+    phone_number: Faker::PhoneNumber.short_phone_number,
     title: 'Principal',
     school: school,
   )

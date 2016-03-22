@@ -583,7 +583,6 @@ primary_form = Form.create(
       title: 'Have you (the student attendee) previously been diagnosed with or currently have any of the following health conditions (check all that apply)?',
     )
     Question.create(
-      is_required: false,
       key: 'medications',
       page: page,
       placeholder: 'Enter "None" if you do not have any',
@@ -606,7 +605,6 @@ primary_form = Form.create(
       title: 'Please list any other dietary restrictions that you have:',
     )
     Question.create(
-      is_required: false,
       key: 'exercise_limitations',
       page: page,
       placeholder: 'Enter "None" if you do not have any',

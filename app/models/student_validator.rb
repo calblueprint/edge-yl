@@ -37,20 +37,32 @@ class StudentValidator
   validates :address_city, if: :page_one?, presence: true
   validates :address_one, if: :page_one?, presence: true
   validates :address_state, if: :page_one?, presence: true
-  validates :address_zip, if: :page_one?, presence: true
+  validates :address_zip, format: ValidationConstants::ZIP_FORMAT,
+                          if: :page_one?,
+                          presence: true
   validates :birthday, if: :page_one?, presence: true
-  validates :cell_phone, if: :page_one?, presence: true
-  validates :email, if: :page_one?, presence: true
+  validates :cell_phone, format: ValidationConstants::PHONE_FORMAT,
+                         if: :page_one?,
+                         presence: true
+  validates :email, format: ValidationConstants::EMAIL_FORMAT,
+                    if: :page_one?,
+                    presence: true
   validates :first_name, if: :page_one?, presence: true
   validates :gender, if: :page_one?, presence: true
-  validates :home_phone, if: :page_one?, presence: true
+  validates :home_phone, format: ValidationConstants::PHONE_FORMAT,
+                         if: :page_one?,
+                         presence: true
   validates :last_name, if: :page_one?, presence: true
   validates :shirt_size, if: :page_one?, presence: true
 
   validates :guardian_first_name, if: :page_two?, presence: true
-  validates :guardian_email, if: :page_two?, presence: true
+  validates :guardian_email, format: ValidationConstants::EMAIL_FORMAT,
+                             if: :page_two?,
+                             presence: true
   validates :guardian_last_name, if: :page_two?, presence: true
-  validates :guardian_phone_number, if: :page_two?, presence: true
+  validates :guardian_phone_number, format: ValidationConstants::PHONE_FORMAT,
+                                    if: :page_two?,
+                                    presence: true
   validates :guardian_phone_type, if: :page_two?, presence: true
   validates :guardian_relationship, if: :page_two?, presence: true
 
