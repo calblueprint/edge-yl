@@ -5,14 +5,7 @@ class HeaderShortcuts extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      active: React.PropTypes.bool.isRequired,
-      profile: React.PropTypes.object,
-    };
-  }
-
-  static get defaultProps() {
-    return {
-      profile: null,
+      profile: React.PropTypes.object.isRequired,
     };
   }
 
@@ -119,9 +112,9 @@ class HeaderShortcuts extends Component {
     }
   }
 
-  renderShortcuts() {
-    if (this.props.active) {
-      return (
+  render() {
+    return (
+      <div style={this.styles.container}>
         <div style={this.styles.shortcuts}>
           <HeaderInbox count={this.props.profile.unread_count} />
           <Clickable
@@ -130,14 +123,6 @@ class HeaderShortcuts extends Component {
             styles={this.clickableStyles}
             type={'i-left'} />
         </div>
-      );
-    }
-  }
-
-  render() {
-    return (
-      <div style={this.styles.container}>
-        {this.renderShortcuts()}
         {this.renderDropdown()}
       </div>
     );

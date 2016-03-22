@@ -5,7 +5,6 @@ class HeaderNavigation extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      active: React.PropTypes.bool.isRequired,
       pagination: React.PropTypes.object,
       results: React.PropTypes.array,
       search: React.PropTypes.object,
@@ -39,17 +38,6 @@ class HeaderNavigation extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
-  renderSearch() {
-    if (this.props.active) {
-      return (
-        <SearchInput
-          pagination={this.props.pagination}
-          results={this.props.results}
-          search={this.props.search} />
-      );
-    }
-  }
-
   render() {
     return (
       <div style={this.styles.container}>
@@ -59,7 +47,10 @@ class HeaderNavigation extends Component {
           styles={this.clickableStyles}
           type={'h2'}
           underline={false} />
-        {this.renderSearch()}
+        <SearchInput
+          pagination={this.props.pagination}
+          results={this.props.results}
+          search={this.props.search} />
       </div>
     );
   }

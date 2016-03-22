@@ -13,15 +13,7 @@ class Header extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      active: React.PropTypes.bool,
-      profile: React.PropTypes.object,
-    };
-  }
-
-  static get defaultProps() {
-    return {
-      active: true,
-      profile: null,
+      profile: React.PropTypes.object.isRequired,
     };
   }
 
@@ -86,32 +78,21 @@ class Header extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
-  renderToggler() {
-    if (this.props.active) {
-      return (
-        <Clickable
-          action={() => this.updateSidebar()}
-          icon={TypeConstants.icons.hamburger}
-          styles={this.clickableStyles}
-          type={'i-left'} />
-      );
-    }
-  }
-
   render() {
     return (
       <div style={this.styles.container}>
         <div style={StyleConstants.containers.header(true)}>
-          {this.renderToggler()}
+          <Clickable
+            action={() => this.updateSidebar()}
+            icon={TypeConstants.icons.hamburger}
+            styles={this.clickableStyles}
+            type={'i-left'} />
         </div>
         <HeaderNavigation
-          active={this.props.active}
           pagination={this.state.pagination}
           results={this.state.results}
           search={this.state.search} />
-        <HeaderShortcuts
-          active={this.props.active}
-          profile={this.props.profile} />
+        <HeaderShortcuts profile={this.props.profile} />
       </div>
     );
   }
