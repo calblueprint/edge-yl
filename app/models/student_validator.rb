@@ -5,34 +5,39 @@ class StudentValidator
   include ActiveModel::Conversion
   include ActiveModel::Validations
 
-  attr_accessor :first_name,
-                :last_name,
-                :gender,
-                :birthday,
-                :email,
-                :cell_phone,
-                :home_phone,
-                :address_one,
+  attr_accessor :address_zip,
                 :address_city,
+                :address_one,
                 :address_state,
-                :address_zip,
-                :shirt_size,
-                :guardian_first_name,
-                :guardian_last_name,
+                :address_two,
+                :allergies,
+                :birthday,
+                :cell_phone,
+                :current_page,
+                :dietary_restrictions,
+                :email,
+                :emergency_consent,
+                :exercise_limitations,
+                :first_name,
+                :gender,
                 :guardian_email,
-                :guardian_relationship,
+                :guardian_employer,
+                :guardian_first_name,
+                :guardian_job_title,
+                :guardian_last_name,
                 :guardian_phone_number,
                 :guardian_phone_type,
-                :immunizations,
-                :allergies,
+                :guardian_relationship,
                 :health_conditions,
+                :home_phone,
+                :immunizations,
+                :last_name,
+                :medical_guardian_name,
                 :medications,
-                :dietary_restrictions,
                 :other_dietary_restrictions,
-                :exercise_limitations,
-                :emergency_consent,
+                :preferred_name,
                 :psychologist_consent,
-                :medical_guardian_name
+                :shirt_size
 
   validates :address_city, if: :page_one?, presence: true
   validates :address_one, if: :page_one?, presence: true
@@ -77,8 +82,7 @@ class StudentValidator
   validates :other_dietary_restrictions, if: :page_three?, presence: true
   validates :psychologist_consent, if: :page_three?, presence: true
 
-  def initialize(attributes={}, page=0)
-    @page = page
+  def initialize(attributes={})
     attributes.each do |name, value|
       send("#{name}=", value)
     end
