@@ -278,6 +278,7 @@ ActiveRecord::Schema.define(version: 20160308042713) do
     t.integer "health_conditions"
     t.string  "home_phone"
     t.boolean "is_active",                  default: true, null: false
+    t.boolean "is_primary",                                null: false
     t.integer "immunizations"
     t.string  "last_name"
     t.string  "medical_guardian_name"

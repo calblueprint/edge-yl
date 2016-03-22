@@ -62,7 +62,10 @@ class SchoolSubmission < ActiveRecord::Base
 
   before_validation :validate_page, on: [:create, :update]
 
- def address_state
+  validates :current_page, presence: true
+  validates :is_active, inclusion: { in: [false, true] }
+
+  def address_state
     if !read_attribute(:address_state).nil?
       EnumConstants::STATES[read_attribute(:address_state)]
     end
@@ -215,6 +218,7 @@ class SchoolSubmission < ActiveRecord::Base
       guardian_phone_type: primary_guardian_phone_type,
       guardian_relationship: primary_guardian_relationship,
       home_phone: primary_home_phone,
+      is_primary: true,
       last_name: primary_last_name,
       shirt_size: primary_shirt_size,
     )
@@ -240,6 +244,7 @@ class SchoolSubmission < ActiveRecord::Base
         guardian_phone_type: alternate_guardian_phone_type,
         guardian_relationship: alternate_guardian_relationship,
         home_phone: alternate_home_phone,
+        is_primary: false,
         last_name: alternate_last_name,
         shirt_size: alternate_shirt_size,
       )

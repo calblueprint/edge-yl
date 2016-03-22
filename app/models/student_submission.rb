@@ -29,6 +29,7 @@
 #  health_conditions          :integer
 #  home_phone                 :string
 #  is_active                  :boolean          default(TRUE), not null
+#  is_primary                 :boolean          not null
 #  immunizations              :integer
 #  last_name                  :string
 #  medical_guardian_name      :string
@@ -43,6 +44,10 @@
 class StudentSubmission < ActiveRecord::Base
 
   before_validation :validate_page, on: :update
+
+  validates :current_page, presence: true
+  validates :is_active, inclusion: { in: [false, true] }
+  validates :is_primary, inclusion: { in: [false, true] }
 
   def address_state
     if !read_attribute(:address_state).nil?
@@ -190,6 +195,7 @@ class StudentSubmission < ActiveRecord::Base
       guardian_relationship: 3,
       home_phone: home_phone,
       immunizations: 0,
+      is_primary: is_primary,
       last_name: last_name,
       medical_guardian_name: medical_guardian_name,
       medications: medications,
