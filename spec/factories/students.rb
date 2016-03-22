@@ -56,7 +56,7 @@ FactoryGirl.define do
     address_zip           { Faker::Address.zip }
     allergies             { 0 }
     birthday              { Faker::Date.between(33.days.ago, Date.today) }
-    cell_phone            { Faker::PhoneNumber.short_phone_number }
+    cell_phone            { Faker::Base.numerify('###-###-####') }
     dietary_restrictions  { 0 }
     email                 { Faker::Internet.email }
     emergency_consent     { 0 }
@@ -68,11 +68,11 @@ FactoryGirl.define do
     guardian_first_name   { Faker::Name.first_name }
     guardian_job_title    { 'Software Engineer' }
     guardian_last_name    { Faker::Name.last_name }
-    guardian_phone_number { Faker::PhoneNumber.short_phone_number }
+    guardian_phone_number { Faker::Base.numerify('###-###-####') }
     guardian_phone_type   { rand(3) }
     guardian_relationship { rand(9) }
     health_conditions     { 0 }
-    home_phone            { Faker::PhoneNumber.short_phone_number }
+    home_phone            { Faker::Base.numerify('###-###-####') }
     immunizations         { 0 }
     is_flagged            { true }
     is_primary            { true }
