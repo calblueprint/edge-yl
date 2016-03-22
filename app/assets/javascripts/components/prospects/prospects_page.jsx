@@ -82,7 +82,7 @@ class ProspectsPage extends Component {
         {this.renderOverlay()}
         <Header profile={this.selectProfile()} />
         <Sidebar profile={this.selectProfile()} />
-        <div style={StyleConstants.pages.container}>
+        <div style={StyleConstants.pages.default}>
           <div style={StyleConstants.pages.content}>
             <GridHeader
               options={this.generateOptions()}

@@ -31,11 +31,6 @@ class StartPage extends Component {
           marginTop: '12px',
         },
       ),
-      container: {
-        display: 'flex',
-        flexFlow: 'column',
-        width: '712px',
-      },
       footer: {
         display: 'flex',
         alignSelf: 'center',
@@ -62,14 +57,6 @@ class StartPage extends Component {
         display: 'flex',
         flexFlow: 'column',
       },
-      wrapper: Object.assign(
-        {},
-        StyleConstants.pages.wrapper,
-        {
-          alignItems: 'center',
-          flexDirection: 'column',
-        },
-      ),
     };
   }
 
@@ -161,8 +148,8 @@ class StartPage extends Component {
 
   render() {
     return (
-      <div style={this.styles.wrapper}>
-        <div style={this.styles.container}>
+      <div style={StyleConstants.wrappers.center}>
+        <div style={StyleConstants.pages.center}>
           <div style={this.styles.header}>
             <h1>{`EDGE Registration - ${Helpers.humanize(this.props.target)}`}</h1>
           </div>

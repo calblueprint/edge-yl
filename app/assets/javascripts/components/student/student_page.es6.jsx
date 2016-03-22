@@ -90,7 +90,7 @@ class StudentPage extends Component {
         <Header profile={this.selectProfile()} />
         <Sidebar profile={this.selectProfile()} />
         <Toast toast={this.state.toast} />
-        <div style={StyleConstants.pages.container}>
+        <div style={StyleConstants.pages.default}>
           <div style={StyleConstants.pages.content}>
             <GridHeader
               options={this.generateOptions()}

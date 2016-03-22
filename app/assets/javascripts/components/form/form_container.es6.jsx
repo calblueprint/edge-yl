@@ -26,27 +26,6 @@ class FormContainer extends Component {
   }
 
   // --------------------------------------------------
-  // Styles
-  // --------------------------------------------------
-  get styles() {
-    return {
-      container: {
-        display: 'flex',
-        flexFlow: 'column',
-        width: '712px',
-      },
-      wrapper: Object.assign(
-        {},
-        StyleConstants.pages.wrapper,
-        {
-          alignItems: 'center',
-          flexDirection: 'column',
-        },
-      ),
-    };
-  }
-
-  // --------------------------------------------------
   // Lifecycle
   // --------------------------------------------------
   componentWillMount() {
@@ -94,8 +73,8 @@ class FormContainer extends Component {
 
   render() {
     return (
-      <div style={this.styles.wrapper}>
-        <div style={this.styles.container}>
+      <div style={StyleConstants.wrappers.center}>
+        <div style={StyleConstants.pages.center}>
           {this.renderHeader()}
           {this.renderPage()}
           {this.renderFooter()}

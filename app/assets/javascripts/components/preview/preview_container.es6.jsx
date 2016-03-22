@@ -19,35 +19,6 @@ class PreviewContainer extends Component {
   }
 
   // --------------------------------------------------
-  // Styles
-  // --------------------------------------------------
-  get styles() {
-    return {
-      container: {
-        display: 'flex',
-        flexFlow: 'column',
-        width: '712px',
-      },
-      page: Object.assign(
-        {},
-        StyleConstants.templates.card,
-        {
-          padding: '36px',
-          marginTop: '12px',
-        },
-      ),
-      wrapper: Object.assign(
-        {},
-        StyleConstants.pages.wrapper,
-        {
-          alignItems: 'center',
-          flexDirection: 'column',
-        },
-      ),
-    };
-  }
-
-  // --------------------------------------------------
   // Lifecycle
   // --------------------------------------------------
   componentWillMount() {
@@ -72,7 +43,6 @@ class PreviewContainer extends Component {
         id={this.props.id}
         key={page.id}
         page={page}
-        style={this.styles.page}
         target={this.props.target} />
     );
   }
@@ -86,8 +56,8 @@ class PreviewContainer extends Component {
 
   render() {
     return (
-      <div style={this.styles.wrapper}>
-        <div style={this.styles.container}>
+      <div style={StyleConstants.wrappers.center}>
+        <div style={StyleConstants.pages.center}>
           <PreviewHeader />
           {this.renderPages()}
           <PreviewFooter

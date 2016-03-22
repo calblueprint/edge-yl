@@ -143,11 +143,18 @@
 
     get pages() {
       return {
-        container: {
+        center: {
+          display: 'flex',
+          flexFlow: 'column',
+          width: '712px',
+          paddingBottom: '72px',
+        },
+        default: {
           display: 'flex',
           flex: '1',
           paddingTop: this.heights.header,
           paddingLeft: this.widths.sidebar,
+          paddingBottom: '72px',
         },
         content: {
           display: 'flex',
@@ -155,10 +162,6 @@
           flex: '1',
           padding: '0px 184px 72px 12px',
           overflow: 'scroll',
-        },
-        wrapper: {
-          display: 'flex',
-          minHeight: '100vh',
         },
       };
     }
@@ -191,6 +194,22 @@
     get widths() {
       return {
         sidebar: '172px',
+      };
+    }
+
+    get wrappers() {
+      return {
+        center: {
+          display: 'flex',
+          minHeight: '100vh',
+          justifyContent: 'center',
+        },
+        default: {
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          minHeight: '100vh',
+        },
       };
     }
   }

@@ -19,7 +19,7 @@ class AuthenticationLogin extends Component {
         flexFlow: 'column',
       },
       error: {
-        flex: 1,
+        flex: '1',
         marginTop: '12px',
         color: StyleConstants.colors.red,
         textAlign: 'center',
