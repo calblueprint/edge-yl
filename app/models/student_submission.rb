@@ -174,7 +174,7 @@ class StudentSubmission < ActiveRecord::Base
       error_response = validator.errors.to_hash
       valid_params = {}
       update_params.each do |attribute, value|
-        if !error_response.key?(attribute)
+        if !error_response.key?(attribute.to_sym)
           valid_params[attribute] = value
         end
       end
