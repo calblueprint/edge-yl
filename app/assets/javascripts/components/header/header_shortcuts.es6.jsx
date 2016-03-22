@@ -5,13 +5,7 @@ class HeaderShortcuts extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      profile: React.PropTypes.object,
-    };
-  }
-
-  static get defaultProps() {
-    return {
-      profile: null,
+      profile: React.PropTypes.object.isRequired,
     };
   }
 
