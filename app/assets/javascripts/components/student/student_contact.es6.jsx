@@ -44,6 +44,7 @@ class StudentContact extends Component {
           action={() => this.storePairing('email')}
           editable={this.props.editable}
           label={'Email'}
+          humanize={false}
           value={student.email} />
         <CardAttribute
           action={() => this.storePairing('address_one')}

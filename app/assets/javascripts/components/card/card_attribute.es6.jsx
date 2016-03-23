@@ -8,6 +8,7 @@ class CardAttribute extends Component {
       action: React.PropTypes.func,
       editable: React.PropTypes.bool,
       clickable: React.PropTypes.bool,
+      humanize: React.PropTypes.bool,
       label: React.PropTypes.string.isRequired,
       route: React.PropTypes.string,
       type: React.PropTypes.oneOf([
@@ -27,6 +28,7 @@ class CardAttribute extends Component {
     return {
       editable: false,
       clickable: false,
+      humanize: true,
       route: '',
       type: 'p',
       value: null,
@@ -94,8 +96,11 @@ class CardAttribute extends Component {
     var value = (this.props.value !== null &&
                  this.props.value !== undefined &&
                  this.props.value !== '') ?
-                Helpers.humanize(this.props.value) :
+                this.props.value :
                 'n/a';
+    if (this.props.humanize && value !== 'n/a') {
+      value = Helpers.humanize(value);
+    }
     if (this.props.clickable) {
       return (
         <Clickable

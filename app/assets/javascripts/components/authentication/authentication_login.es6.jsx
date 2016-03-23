@@ -85,14 +85,12 @@ class AuthenticationLogin extends Component {
           action={this.generateHandler('email')}
           focus={true}
           label={'Email'}
-          placeholder={'admin@edgeyl.org'}
           type={'email'}
           value={template.email} />
         <CardInput
           action={this.generateHandler('password')}
           label={'Password'}
           margin={true}
-          placeholder={'password'}
           type={'password'}
           value={template.password} />
         {this.renderError()}

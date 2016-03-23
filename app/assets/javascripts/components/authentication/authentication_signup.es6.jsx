@@ -69,21 +69,18 @@ class AuthenticationSignup extends Component {
           errors={template.errors.first_name}
           focus={true}
           label={'First name'}
-          placeholder={'Kira'}
           value={template.first_name} />
         <CardInput
           action={this.generateHandler('last_name')}
           errors={template.errors.last_name}
           label={'Last name'}
           margin={true}
-          placeholder={'Klapper'}
           value={template.last_name} />
         <CardInput
           action={this.generateHandler('email')}
           errors={template.errors.email}
           label={'Email'}
           margin={true}
-          placeholder={'volunteer@edgeyl.com'}
           type={'email'}
           value={template.email} />
         <CardInput
@@ -91,7 +88,6 @@ class AuthenticationSignup extends Component {
           errors={template.errors.password}
           label={'Password'}
           margin={true}
-          placeholder={'password'}
           type={'password'}
           value={template.password} />
         <CardInput
@@ -99,7 +95,6 @@ class AuthenticationSignup extends Component {
           errors={template.errors.password_confirmation}
           label={'Password confirmation'}
           margin={true}
-          placeholder={'password'}
           type={'password'}
           value={template.password_confirmation} />
         <div style={this.styles.footer}>
