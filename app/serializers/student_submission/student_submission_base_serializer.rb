@@ -34,7 +34,6 @@ class StudentSubmissionBaseSerializer < BaseSerializer
              :other_dietary_restrictions,
              :preferred_name,
              :psychologist_consent,
-             :registration_status,
              :shirt_size
 
 end
