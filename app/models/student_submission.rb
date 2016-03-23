@@ -188,6 +188,24 @@ class StudentSubmission < ActiveRecord::Base
     end
   end
 
+  def page_progress
+    attributes_pages = {
+      0 => {},
+      1 => attributes_one,
+      2 => attributes_two,
+      3 => attributes_three,
+    }
+    attributes_pages.each do |index, attributes_page|
+      attributes_page[:current_page] = index
+      validator = StudentValidator.new(attributes_page)
+      validator.valid?
+      if validator.errors.size > 0
+        return index
+      end
+    end
+    return attributes_pages.size - 1
+  end
+
   def submit_submission
     student = Student.new(
       address_city: address_city,
@@ -195,40 +213,88 @@ class StudentSubmission < ActiveRecord::Base
       address_state: address_state,
       address_two: address_two,
       address_zip: address_zip,
-      allergies: 0,
-      birthday: Date.new,
+      allergies: allergies,
+      birthday: birthday,
       cell_phone: cell_phone,
-      dietary_restrictions: 0,
+      dietary_restrictions: dietary_restrictions,
       exercise_limitations: exercise_limitations,
       email: email,
-      emergency_consent: 0,
+      emergency_consent: emergency_consent,
       first_name: first_name,
-      gender: 0,
-      health_conditions: 0,
+      gender: gender,
+      health_conditions: health_conditions,
       guardian_email: guardian_email,
       guardian_employer: guardian_employer,
       guardian_first_name: guardian_first_name,
       guardian_job_title: guardian_job_title,
       guardian_last_name: guardian_last_name,
-      guardian_phone_type: 0,
+      guardian_phone_type: guardian_phone_type,
       guardian_phone_number: guardian_phone_number,
-      guardian_relationship: 3,
+      guardian_relationship: guardian_relationship,
       home_phone: home_phone,
-      immunizations: 0,
+      immunizations: immunizations,
       is_primary: is_primary,
       last_name: last_name,
       medical_guardian_name: medical_guardian_name,
       medications: medications,
       other_dietary_restrictions: other_dietary_restrictions,
       preferred_name: preferred_name,
-      psychologist_consent: 0,
-      shirt_size: 1,
+      psychologist_consent: psychologist_consent,
+      shirt_size: shirt_size,
     )
     unless student.save
       raise 'Could not create student from submission'
     end
     self.is_active = false
     self.save
+  end
+
+  private
+
+  def attributes_one
+    {
+      address_city: address_city,
+      address_one: address_one,
+      address_state: address_state,
+      address_two: address_two,
+      address_zip: address_zip,
+      birthday: birthday,
+      cell_phone: cell_phone,
+      email: email,
+      first_name: first_name,
+      gender: gender,
+      home_phone: home_phone,
+      last_name: last_name,
+      shirt_size: shirt_size,
+    }
+  end
+
+  def attributes_two
+    {
+      guardian_email: guardian_email,
+      guardian_employer: guardian_employer,
+      guardian_first_name: guardian_first_name,
+      guardian_job_title: guardian_job_title,
+      guardian_last_name: guardian_last_name,
+      guardian_phone_number: guardian_phone_number,
+      guardian_phone_type: guardian_phone_type,
+      guardian_relationship: guardian_relationship,
+    }
+  end
+
+  def attributes_three
+    {
+      allergies: allergies,
+      dietary_restrictions: dietary_restrictions,
+      emergency_consent: emergency_consent,
+      exercise_limitations: exercise_limitations,
+      health_conditions: health_conditions,
+      immunizations: immunizations,
+      medical_guardian_name: medical_guardian_name,
+      medications: medications,
+      other_dietary_restrictions: other_dietary_restrictions,
+      psychologist_consent: psychologist_consent,
+    }
   end
 
 end
