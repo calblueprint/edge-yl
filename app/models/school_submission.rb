@@ -196,6 +196,25 @@ class SchoolSubmission < ActiveRecord::Base
     end
   end
 
+  def page_progress
+    attributes_pages = {
+      0 => {},
+      1 => attributes_one,
+      2 => attributes_two,
+      3 => attributes_three,
+      4 => attributes_four,
+    }
+    attributes_pages.each do |index, attributes_page|
+      attributes_page[:current_page] = index
+      validator = SchoolValidator.new(attributes_page)
+      validator.valid?
+      if validator.errors.size > 0
+        return index
+      end
+    end
+    return attributes_pages.size - 1
+  end
+
   def submit_submission
     school = School.new(
       address_city: address_city,
@@ -286,6 +305,79 @@ class SchoolSubmission < ActiveRecord::Base
     end
     self.is_active = false
     self.save
+  end
+
+  private
+
+  def attributes_one
+    {
+      address_city: address_city,
+      address_one: address_one,
+      address_state: address_state,
+      address_two: address_two,
+      address_zip: address_zip,
+      name: name,
+      website: website,
+    }
+  end
+
+  def attributes_two
+    {
+      contact_email: contact_email,
+      contact_first_name: contact_first_name,
+      contact_last_name: contact_last_name,
+      contact_phone_number: contact_phone_number,
+      contact_title: contact_title,
+    }
+  end
+
+  def attributes_three
+    {
+      primary_address_city: primary_address_city,
+      primary_address_one: primary_address_one,
+      primary_address_state: primary_address_state,
+      primary_address_two: primary_address_two,
+      primary_address_zip: primary_address_zip,
+      primary_birthday: primary_birthday,
+      primary_cell_phone: primary_cell_phone,
+      primary_email: primary_email,
+      primary_first_name: primary_first_name,
+      primary_gender: primary_gender,
+      primary_guardian_first_name: primary_guardian_first_name,
+      primary_guardian_email: primary_guardian_email,
+      primary_guardian_last_name: primary_guardian_last_name,
+      primary_guardian_phone_number: primary_guardian_phone_number,
+      primary_guardian_phone_type: primary_guardian_phone_type,
+      primary_guardian_relationship: primary_guardian_relationship,
+      primary_home_phone: primary_home_phone,
+      primary_last_name: primary_last_name,
+      primary_shirt_size: primary_shirt_size,
+    }
+  end
+
+  def attributes_four
+    {
+      alternate_address_city: alternate_address_city,
+      alternate_address_one: alternate_address_one,
+      alternate_address_state: alternate_address_state,
+      alternate_address_two: alternate_address_two,
+      alternate_address_zip: alternate_address_zip,
+      alternate_birthday: alternate_birthday,
+      alternate_cell_phone: alternate_cell_phone,
+      alternate_email: alternate_email,
+      alternate_first_name: alternate_first_name,
+      alternate_gender: alternate_gender,
+      alternate_guardian_first_name: alternate_guardian_first_name,
+      alternate_guardian_email: alternate_guardian_email,
+      alternate_guardian_last_name: alternate_guardian_last_name,
+      alternate_guardian_phone_number: alternate_guardian_phone_number,
+      alternate_guardian_phone_type: alternate_guardian_phone_type,
+      alternate_guardian_relationship: alternate_guardian_relationship,
+      alternate_home_phone: alternate_home_phone,
+      alternate_last_name: alternate_last_name,
+      alternate_shirt_size: alternate_shirt_size,
+      has_alternate_student: has_alternate_student,
+    }
   end
 
 end

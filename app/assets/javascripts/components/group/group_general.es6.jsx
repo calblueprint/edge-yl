@@ -11,20 +11,6 @@ class GroupGeneral extends Component {
   }
 
   // --------------------------------------------------
-  // Helpers
-  // --------------------------------------------------
-  storePairing(key) {
-    var group = this.props.group;
-    GroupActions.storePairing({
-      id: group.id,
-      key: key,
-      model: 'group',
-      type: 'input',
-      value: group[key],
-    });
-  }
-
-  // --------------------------------------------------
   // Render
   // --------------------------------------------------
   render() {
@@ -32,8 +18,6 @@ class GroupGeneral extends Component {
     return (
       <div style={StyleConstants.cards.content}>
         <CardAttribute
-          action={() => this.storePairing('letter')}
-          editable={this.props.editable}
           label={'Letter'}
           value={group.letter} />
         <CardAttribute
