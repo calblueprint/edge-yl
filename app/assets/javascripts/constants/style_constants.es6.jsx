@@ -147,14 +147,18 @@
           display: 'flex',
           flexFlow: 'column',
           width: '712px',
+          minHeight: '100vh',
           paddingBottom: '72px',
+          boxSizing: 'border-box',
         },
         default: {
           display: 'flex',
           flex: '1',
+          minHeight: '100vh',
           paddingTop: this.heights.header,
           paddingLeft: this.widths.sidebar,
           paddingBottom: '72px',
+          boxSizing: 'border-box',
         },
         content: {
           display: 'flex',
