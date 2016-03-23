@@ -5,8 +5,4 @@ class LeadershipBaseSerializer < BaseSerializer
 
   has_one :group, serializer: GroupBaseSerializer
 
-  def style
-    object.style.humanize
-  end
-
 end
