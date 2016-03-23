@@ -26,6 +26,7 @@ class UsersCard extends Component {
             type={'h4'}
             value={user.full_name} />
           <CardAttribute
+            humanize={false}
             label={'Email'}
             value={user.email} />
         </div>

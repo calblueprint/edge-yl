@@ -30,6 +30,7 @@ class StudentEmergency extends Component {
           label={'Phone type'}
           value={student.guardian_phone_type} />
         <CardAttribute
+          humanize={false}
           label={'Email'}
           value={student.guardian_email} />
         <CardAttribute

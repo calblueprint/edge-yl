@@ -45,6 +45,7 @@ class ProfileGeneral extends Component {
         <CardAttribute
           action={() => this.storeTemplate('email')}
           editable={this.props.editable}
+          humanize={false}
           label={'Email'}
           value={profile.email} />
         <CardAttribute

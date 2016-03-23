@@ -123,6 +123,7 @@ class StudentsCard extends Component {
             label={'Cell phone'}
             value={student.cell_phone} />
           <CardAttribute
+            humanize={false}
             label={'Email'}
             value={student.email} />
           <CardAttribute
