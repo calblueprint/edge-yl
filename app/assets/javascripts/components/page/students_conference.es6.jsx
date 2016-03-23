@@ -1,4 +1,4 @@
-class PageFilter extends Component {
+class StudentsConference extends Component {
 
   // --------------------------------------------------
   // Props
@@ -7,6 +7,25 @@ class PageFilter extends Component {
     return {
       conference: React.PropTypes.object.isRequired,
       conferences: React.PropTypes.array.isRequired,
+    };
+  }
+
+  // --------------------------------------------------
+  // Styles
+  // --------------------------------------------------
+  get styles() {
+    return {
+      container: Object.assign(
+        {},
+        StyleConstants.containers.card,
+        {
+          flexFlow: 'column',
+          marginTop: '12px',
+        },
+      ),
+      title: {
+        padding: '12px',
+      },
     };
   }
 
@@ -27,9 +46,12 @@ class PageFilter extends Component {
 
   render() {
     return (
-      <DropdownButton
-        choices={this.generateChoices()}
-        value={this.props.conference.name} />
+      <div style={this.styles.container}>
+        <h5 style={this.styles.title}>{'Conference'}</h5>
+        <DropdownButton
+          choices={this.generateChoices()}
+          value={this.props.conference.name} />
+      </div>
     );
   }
 }

@@ -43,8 +43,9 @@
     // --------------------------------------------------
     // Stores
     // --------------------------------------------------
-    storeFilter(active, conference, key, selected) {
+    storeFilter(active, key, selected) {
       if (selected) {
+        var conference = StudentsStore.getState().conference;
         var query = StudentsStore.getState().query;
         if (selected !== 'None') {
           query[key] = selected;
@@ -55,7 +56,10 @@
           response.meta.query = query;
           this.storeStudents(response);
         };
-        Requester.get(ApiConstants.students.index(conference.id, 1, query), resolve);
+        Requester.get(
+          ApiConstants.students.index(conference.id, 1, query),
+          resolve,
+        );
       }
       return {
         active: active,
@@ -63,18 +67,23 @@
       };
     }
 
-    storePage(conference, page) {
+    storePage(page) {
+      var conference = StudentsStore.getState().conference;
       var query = StudentsStore.getState().query;
       var resolve = (response) => {
         response.meta.query = query;
         this.storeStudents(response);
       };
-      Requester.get(ApiConstants.students.index(conference.id, page, query), resolve);
+      Requester.get(
+        ApiConstants.students.index(conference.id, page, query),
+        resolve,
+      );
       return true;
     }
 
-    storeSort(active, conference, key, selected) {
+    storeSort(active, key, selected) {
       if (selected) {
+        var conference = StudentsStore.getState().conference;
         var query = StudentsStore.getState().query;
         if (selected !== 'None') {
           query.sort = `${key} ${selected}`;
@@ -85,7 +94,10 @@
           response.meta.query = query;
           this.storeStudents(response);
         };
-        Requester.get(ApiConstants.students.index(conference.id, 1, query), resolve);
+        Requester.get(
+          ApiConstants.students.index(conference.id, 1, query),
+          resolve,
+        );
       }
       return {
         active: active,
