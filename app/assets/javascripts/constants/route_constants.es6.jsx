@@ -68,14 +68,18 @@
 
     get students() {
       return {
-        index: (conferenceId=1, page=1, query={}) => {
-          var route = `/students?conference_id=${conferenceId}&page=${page}`;
-          Object.keys(query).map((key) => {
-            if (key !== 'conference_id') {
-              route = `${route}&${key}=${query[key]}`
-            }
-          });
-          return route;
+        index: (conferenceId, page, query={}) => {
+          if (conferenceId === undefined) {
+            return '/students';
+          } else {
+            var route = `/students?conference_id=${conferenceId}&page=${page}`;
+            Object.keys(query).map((key) => {
+              if (key !== 'conference_id') {
+                route = `${route}&${key}=${query[key]}`
+              }
+            });
+            return route;
+          }
         },
         show: (id) => `/students/${id}`,
       };
