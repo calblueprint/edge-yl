@@ -45,7 +45,7 @@ class StudentsGrid extends Component {
     if (!this.props.students.length) {
       return (
         <GridEmpty
-          content={'There are currently no students.'} />
+          content={'There are currently no students in this conference.'} />
       );
     }
   }

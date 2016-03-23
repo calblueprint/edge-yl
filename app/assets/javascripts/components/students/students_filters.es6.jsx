@@ -5,7 +5,6 @@ class StudentsFilters extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      conference: React.PropTypes.object.isRequired,
       filters: React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
     };
   }
@@ -21,7 +20,7 @@ class StudentsFilters extends Component {
         {
           flexFlow: 'column',
           marginTop: '12px',
-        }
+        },
       ),
       title: {
         padding: '12px',
@@ -35,7 +34,6 @@ class StudentsFilters extends Component {
   renderFilter(filter) {
     return (
       <StudentsFilter
-        conference={this.props.conference}
         filter={filter}
         key={filter.key} />
     );

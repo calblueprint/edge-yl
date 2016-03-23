@@ -6,6 +6,7 @@ class StudentsSidebar extends Component {
   static get propTypes() {
     return {
       conference: React.PropTypes.object.isRequired,
+      conferences: React.PropTypes.array.isRequired,
       filters: React.PropTypes.array.isRequired,
       sorts: React.PropTypes.array.isRequired,
     };
@@ -40,12 +41,11 @@ class StudentsSidebar extends Component {
     var conference = this.props.conference;
     return (
       <div style={this.styles.container}>
-        <PageFilter
+        <StudentsConference
           conference={this.props.conference}
-          conferences={this.props.conferences}
-          type={this.props.type} />
-        <StudentsSorts conference={conference} sorts={this.props.sorts} />
-        <StudentsFilters conference={conference} filters={this.props.filters} />
+          conferences={this.props.conferences} />
+        <StudentsSorts sorts={this.props.sorts} />
+        <StudentsFilters filters={this.props.filters} />
       </div>
     );
   }

@@ -31,7 +31,7 @@ class GroupGrid extends Component {
     return [
       {
         action: () => this.storePairing('student'),
-        content: 'Add Student',
+        content: 'Add student',
       },
     ];
   }
