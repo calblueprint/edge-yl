@@ -35,6 +35,10 @@ class FormsController < BaseController
       elsif !school_submission.nil? && !school_submission.is_active
         redirect_to forms_success_path(id: @id, target: @target)
       end
+      page_progress = school_submission.page_progress
+      if @page > page_progress
+        redirect_to forms_path(id: @id, target: @target, page: page_progress)
+      end
     elsif @target == 'student'
       student_submission = StudentSubmission.find_by id: @id
       if student_submission.nil?
