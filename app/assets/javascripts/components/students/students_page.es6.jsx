@@ -86,7 +86,7 @@ class StudentsPage extends Component {
               students={this.state.students}
               type={TypeConstants.students.default} />
             <PageNavigator
-              action={(page) => StudentsActions.storePage(conference, page)}
+              action={(page) => StudentsActions.storePage(page)}
               pagination={this.state.pagination} />
             <StudentsSidebar
               conference={conference}

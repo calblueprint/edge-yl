@@ -34,7 +34,11 @@ class StudentsConference extends Component {
   // --------------------------------------------------
   generateChoice(conference) {
     return {
-      action: () => StudentsActions.fetchStudents(conference),
+      action: () => StudentsActions.fetchStudents(
+        conference,
+        1,
+        {},
+      ),
       content: conference.name,
     };
   }

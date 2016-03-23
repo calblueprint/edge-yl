@@ -23,14 +23,17 @@
     // --------------------------------------------------
     // Requests
     // --------------------------------------------------
-    fetchStudents(conference, page=1, query) {
+    fetchStudents(conference, page, query) {
       var resolve = (response) => {
         response.meta.initial = true;
         response.meta.query = query;
         this.storeConference(conference);
         this.storeStudents(response);
       };
-      Requester.get(ApiConstants.students.index(conference.id, page, query), resolve);
+      Requester.get(
+        ApiConstants.students.index(conference.id, page, query),
+        resolve,
+      );
       return true;
     }
 
