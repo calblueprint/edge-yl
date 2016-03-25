@@ -7,14 +7,14 @@ class FormsController < BaseController
     @target = params[:target]
     if @target == 'school'
       school_submission = SchoolSubmission.find_by id: @id
-      if school_submission.nil?
+      if school_submission.nil? || !school_submission.is_previewable?
         error_404
       elsif !school_submission.is_active
         redirect_to forms_success_path(id: @id, target: @target)
       end
     elsif @target == 'student'
       student_submission = StudentSubmission.find_by id: @id
-      if student_submission.nil?
+      if student_submission.nil? || !student_submission.is_previewable?
         error_404
       elsif !student_submission.is_active
         redirect_to forms_success_path(id: @id, target: @target)
