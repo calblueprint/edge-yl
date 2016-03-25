@@ -116,7 +116,7 @@ class Email < ActiveRecord::Base
 
   def try_send
     if !is_draft && !is_sent
-      StudentMailer.standard(self).deliver_now
+      ApplicationMailer.standard(self).deliver_now
       self.is_sent = true
       assign_thread(self.subject, self.user)
       if self.email_thread.subject == ""

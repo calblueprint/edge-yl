@@ -292,14 +292,14 @@ class SchoolSubmission < ActiveRecord::Base
         raise 'Could not create alternate student from submission'
       end
       begin
-        StudentMailer.create(alternate_submission).deliver_now
+        SubmissionsMailer.create_student(alternate_submission).deliver_now
       rescue
         raise 'Could not deliver appropriate emails'
       end
     end
     begin
-      SchoolMailer.create(school).deliver_now
-      StudentMailer.create(primary_submission).deliver_now
+      SubmissionsMailer.submit_school(self).deliver_now
+      SubmissionsMailer.create_student(primary_submission).deliver_now
     rescue
       raise 'Could not deliver appropriate emails'
     end
