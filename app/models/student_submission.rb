@@ -188,13 +188,28 @@ class StudentSubmission < ActiveRecord::Base
     end
   end
 
-  def page_progress
-    attributes_pages = {
+  def attributes_pages
+    {
       0 => {},
       1 => attributes_one,
       2 => attributes_two,
       3 => attributes_three,
     }
+  end
+
+  def is_previewable?
+    attributes_pages.each do |index, attributes_page|
+      attributes_page[:current_page] = index
+      validator = StudentValidator.new(attributes_page)
+      validator.valid?
+      if validator.errors.size > 0
+        return false
+      end
+    end
+    true
+  end
+
+  def page_progress
     attributes_pages.each do |index, attributes_page|
       attributes_page[:current_page] = index
       validator = StudentValidator.new(attributes_page)
@@ -203,7 +218,7 @@ class StudentSubmission < ActiveRecord::Base
         return index
       end
     end
-    return attributes_pages.size - 1
+    attributes_pages.size - 1
   end
 
   def submit_submission
