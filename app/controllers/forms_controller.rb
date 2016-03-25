@@ -26,7 +26,7 @@ class FormsController < BaseController
 
   def show
     @id = params[:id]
-    @page = params[:page] ? params[:page].to_i : 1
+    @page = params[:page] ? params[:page].to_i : nil
     @target = params[:target]
     if @target == 'school'
       school_submission = SchoolSubmission.find_by id: @id
@@ -36,6 +36,9 @@ class FormsController < BaseController
         redirect_to forms_success_path(id: @id, target: @target)
       end
       page_progress = school_submission.page_progress
+      if @page.nil?
+        @page = page_progress
+      end
       if @page > page_progress
         redirect_to forms_path(id: @id, target: @target, page: page_progress)
       end
@@ -47,6 +50,9 @@ class FormsController < BaseController
         redirect_to forms_success_path(id: @id, target: @target)
       end
       page_progress = student_submission.page_progress
+      if @page.nil?
+        @page = page_progress
+      end
       if @page > page_progress
         redirect_to forms_path(id: @id, target: @target, page: page_progress)
       end
