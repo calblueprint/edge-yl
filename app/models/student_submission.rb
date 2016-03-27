@@ -5,7 +5,7 @@
 #  id                         :uuid             not null, primary key
 #  address_city               :string
 #  address_one                :string
-#  address_state              :integer
+#  address_state              :integer          default(4)
 #  address_two                :string           default("")
 #  address_zip                :string
 #  allergies                  :integer

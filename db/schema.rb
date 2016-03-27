@@ -186,12 +186,12 @@ ActiveRecord::Schema.define(version: 20160308042713) do
   create_table "school_submissions", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.string  "address_city"
     t.string  "address_one"
-    t.integer "address_state"
+    t.integer "address_state",                   default: 4
     t.string  "address_two",                     default: ""
     t.string  "address_zip"
     t.string  "alternate_address_city"
     t.string  "alternate_address_one"
-    t.integer "alternate_address_state"
+    t.integer "alternate_address_state",         default: 4
     t.string  "alternate_address_two",           default: ""
     t.string  "alternate_address_zip"
     t.date    "alternate_birthday"
@@ -219,7 +219,7 @@ ActiveRecord::Schema.define(version: 20160308042713) do
     t.string  "name"
     t.string  "primary_address_city"
     t.string  "primary_address_one"
-    t.integer "primary_address_state"
+    t.integer "primary_address_state",           default: 4
     t.string  "primary_address_two",             default: ""
     t.string  "primary_address_zip"
     t.date    "primary_birthday"
@@ -254,7 +254,7 @@ ActiveRecord::Schema.define(version: 20160308042713) do
   create_table "student_submissions", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.string  "address_city"
     t.string  "address_one"
-    t.integer "address_state"
+    t.integer "address_state",              default: 4
     t.string  "address_two",                default: ""
     t.string  "address_zip"
     t.integer "allergies"

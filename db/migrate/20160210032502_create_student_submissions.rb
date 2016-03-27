@@ -4,7 +4,7 @@ class CreateStudentSubmissions < ActiveRecord::Migration
     create_table :student_submissions, id: :uuid, default: 'uuid_generate_v4()' do |t|
       t.string  :address_city
       t.string  :address_one
-      t.integer :address_state
+      t.integer :address_state, default: 4
       t.string  :address_two, default: ''
       t.string  :address_zip
       t.integer :allergies
