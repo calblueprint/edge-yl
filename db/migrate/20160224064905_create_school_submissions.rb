@@ -4,12 +4,12 @@ class CreateSchoolSubmissions < ActiveRecord::Migration
     create_table :school_submissions, id: :uuid, default: 'uuid_generate_v4()' do |t|
       t.string  :address_city
       t.string  :address_one
-      t.integer :address_state
+      t.integer :address_state, default: 4
       t.string  :address_two, default: ''
       t.string  :address_zip
       t.string  :alternate_address_city
       t.string  :alternate_address_one
-      t.integer :alternate_address_state
+      t.integer :alternate_address_state, default: 4
       t.string  :alternate_address_two, default: ''
       t.string  :alternate_address_zip
       t.date    :alternate_birthday
@@ -37,7 +37,7 @@ class CreateSchoolSubmissions < ActiveRecord::Migration
       t.string  :name
       t.string  :primary_address_city
       t.string  :primary_address_one
-      t.integer :primary_address_state
+      t.integer :primary_address_state, default: 4
       t.string  :primary_address_two, default: ''
       t.string  :primary_address_zip
       t.date    :primary_birthday

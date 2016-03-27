@@ -5,12 +5,12 @@
 #  id                              :uuid             not null, primary key
 #  address_city                    :string
 #  address_one                     :string
-#  address_state                   :integer
+#  address_state                   :integer          default(4)
 #  address_two                     :string           default("")
 #  address_zip                     :string
 #  alternate_address_city          :string
 #  alternate_address_one           :string
-#  alternate_address_state         :integer
+#  alternate_address_state         :integer          default(4)
 #  alternate_address_two           :string           default("")
 #  alternate_address_zip           :string
 #  alternate_birthday              :date
@@ -38,7 +38,7 @@
 #  name                            :string
 #  primary_address_city            :string
 #  primary_address_one             :string
-#  primary_address_state           :integer
+#  primary_address_state           :integer          default(4)
 #  primary_address_two             :string           default("")
 #  primary_address_zip             :string
 #  primary_birthday                :date
