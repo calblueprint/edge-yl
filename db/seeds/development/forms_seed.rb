@@ -185,39 +185,39 @@ school_form = Form.create(
       key: 'primary_guardian_first_name',
       page: page,
       placeholder: '...',
-      title: 'Parent/Guardian first name',
+      title: 'Parent/guardian first name',
     )
     Question.create(
       key: 'primary_guardian_last_name',
       page: page,
       placeholder: '...',
-      title: 'Parent/Guardian last name',
+      title: 'Parent/guardian last name',
     )
     Question.create(
       key: 'primary_guardian_email',
       page: page,
       placeholder: '...',
-      title: 'Parent/Guardian email',
+      title: 'Parent/guardian email',
     )
     Question.create(
       key: 'primary_guardian_phone_number',
       page: page,
       placeholder: '...',
-      title: 'Parent/Guardian phone number',
+      title: 'Parent/guardian phone number',
     )
     Question.create(
       key: 'primary_guardian_phone_type',
       options: EnumConstants::PHONE_TYPES,
       page: page,
       style: Question.styles[:dropdown],
-      title: 'Parent/Guardian phone type',
+      title: 'Parent/guardian phone type',
     )
     Question.create(
       key: 'primary_guardian_relationship',
       options: EnumConstants::GUARDIAN_RELATIONSHIPS,
       page: page,
       style: Question.styles[:dropdown],
-      title: 'Parent/Guardian relationship',
+      title: 'Parent/guardian relationship',
     )
   end
   Page.create(

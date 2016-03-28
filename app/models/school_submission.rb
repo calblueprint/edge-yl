@@ -306,11 +306,11 @@ class SchoolSubmission < ActiveRecord::Base
       unless alternate_submission.save
         raise 'Could not create alternate student from submission'
       end
-      begin
-        SubmissionsMailer.create_student(alternate_submission).deliver_now
-      rescue
-        raise 'Could not deliver appropriate emails'
-      end
+      # begin
+      #   SubmissionsMailer.create_student(alternate_submission).deliver_now
+      # rescue
+      #   raise 'Could not deliver appropriate emails'
+      # end
     end
     begin
       SubmissionsMailer.submit_school(self).deliver_now
