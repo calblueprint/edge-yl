@@ -3,6 +3,7 @@
 # Table name: questions
 #
 #  id          :integer          not null, primary key
+#  description :string
 #  format      :integer          default(1), not null
 #  is_required :boolean          default(TRUE), not null
 #  key         :string           not null
@@ -18,7 +19,7 @@
 class Question < ActiveRecord::Base
 
   enum format: [:date, :text]
-  enum style: [:dropdown, :input, :textarea, :waiver]
+  enum style: [:dropdown, :information, :input, :textarea, :waiver]
 
   belongs_to :page
 

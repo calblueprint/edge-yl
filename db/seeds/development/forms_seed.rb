@@ -612,31 +612,44 @@ primary_form = Form.create(
       title: 'Please list any limitations on the amount of physical exercise you can engage in:',
     )
     Question.create(
-      description: '',
+      description: 'If, in the judgment of the staff of the EDGE Youth Leadership Seminar, the child named above needs immediate care and treatment as a result of ' +
+                   'any injury or sickness, I hereby give permission to the staff to secure proper treatment for my child. I do hereby consent to whatever x-ray, ' +
+                   'examination, anesthetic, medical, surgical or dental diagnosis or treatment and hospital care are considered necessary in the best judgment of ' +
+                   'the attending physician, surgeon or dentist and performed by or under the supervision of the medical staff of the hospital or facility furnishing ' + 
+                   'medical or dental services. It is further understood that the undersigned will assume full responsibility for any such action, including payment of costs. ' +
+                   'I do hereby agree to indemnify and hold harmless the EDGE Youth Leadership (including its officers, directors, members and/or volunteers) '+
+                   'from any claim by any person whomsoever on account of such care and treatment of said child.',
+      key: 'emergency_consent_info',
+      options: EnumConstants::BOOLEANS,
+      page: page,
+      style: Question.styles[:information],
+      title: 'Consent to Treat in Case of Emergency',
+    )
+    Question.create(
       key: 'emergency_consent',
       options: EnumConstants::BOOLEANS,
       page: page,
-      style: Question.styles[:waiver],
-      title: 'If, in the judgment of the staff of the EDGE Youth Leadership Seminar, the child named above needs immediate care and treatment as a result of ' +
-             'any injury or sickness, I hereby give permission to the staff to secure proper treatment for my child. I do hereby consent to whatever x-ray, ' +
-             'examination, anesthetic, medical, surgical or dental diagnosis or treatment and hospital care are considered necessary in the best judgment of ' +
-             'the attending physician, surgeon or dentist and performed by or under the supervision of the medical staff of the hospital or facility furnishing ' + 
-             'medical or dental services. It is further understood that the undersigned will assume full responsibility for any such action, including payment of costs. ' +
-             'I do hereby agree to indemnify and hold harmless the EDGE Youth Leadership (including its officers, directors, members and/or volunteers) '+
-             'from any claim by any person whomsoever on account of such care and treatment of said child.',
+      style: Question.styles[:dropdown],
+      title: 'Do you consent?',
     )
     Question.create(
-      description: '',
-      key: 'psychologist_consent',
+      description: 'Becoming a leader requires self-reflection and challenging oneself to work through the internal barriers to leadership development. Our seminar ' +
+                   'encourages and guides this self-reflection through interactive activities and experiential processes. At times this can be emotionally difficult, ' +
+                   'and the student may need additional support to process their experience. In light of this, we will have an on-site Licensed Psychologist available ' +
+                   'to talk to the students if a request is made. In order for student participants to talk with the Psychologist, we need guardian consent. By signing ' +
+                   'below you are consenting for your student to speak with a Licensed Psychologist during the EDGE conference.',
+      key: 'psychologist_consent_info',
       options: EnumConstants::BOOLEANS,
       page: page,
-      style: Question.styles[:waiver],
-      title: 'Becoming a leader requires self-reflection and challenging oneself to work through the internal barriers to leadership development. Our seminar ' +
-             'encourages and guides this self-reflection through interactive activities and experiential processes. At times this can be emotionally difficult, ' +
-             'and the student may need additional support to process their experience. In light of this, we will have an on-site Licensed Psychologist available ' +
-             'to talk to the students if a request is made. In order for student participants to talk with the Psychologist, we need guardian consent. By signing ' +
-             'below you are consenting for your student to speak with a Licensed Psychologist during the EDGE conference.',
+      style: Question.styles[:information],
+      title: 'Consent to Speak to a Licensed Psychologist if in Need',
     )
+    Question.create(
+      key: 'psychologist_consent',
+      page: page,
+      style: Question.styles[:dropdown],
+      title: 'Do you consent?',
+      )
     Question.create(
       key: 'medical_guardian_name',
       page: page,

@@ -41,6 +41,12 @@ class FormPage extends Component {
             key={question.id}
             question={question} />
         );
+      case 'information':
+        return (
+          <FormInformation
+            key={question.id}
+            question={question} />
+        );
       case 'input':
         return (
           <FormInput

@@ -2,7 +2,7 @@ class CreateQuestions < ActiveRecord::Migration
 
   def change
     create_table :questions do |t|
-      t.string  :description,
+      t.string  :description
       t.integer :format, default: 1, null: false
       t.boolean :is_required, default: true, null: false
       t.string  :key, null: false
