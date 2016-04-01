@@ -53,6 +53,12 @@ class FormPage extends Component {
             key={question.id}
             question={question} />
         );
+      case 'waiver':
+        return (
+          <FormWaiver
+            key={question.id}
+            question={question} />
+        );
     }
   }
 

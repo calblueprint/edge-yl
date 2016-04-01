@@ -565,21 +565,21 @@ primary_form = Form.create(
       key: 'immunizations',
       options: EnumConstants::BOOLEANS,
       page: page,
-      style: Question.styles[:dropdown],
+      style: Question.styles[:waiver],
       title: 'Have you had all immunizations as required by your school?',
     )
     Question.create(
       key: 'allergies',
       options: EnumConstants::BOOLEANS,
       page: page,
-      style: Question.styles[:dropdown],
+      style: Question.styles[:waiver],
       title: 'Do you (the student attendee) have any allergies to food, medications, insects, etc.?',
     )
     Question.create(
       key: 'health_conditions',
       options: EnumConstants::BOOLEANS,
       page: page,
-      style: Question.styles[:dropdown],
+      style: Question.styles[:waiver],
       title: 'Have you (the student attendee) previously been diagnosed with or currently have any of the following health conditions (check all that apply)?',
     )
     Question.create(
@@ -615,14 +615,17 @@ primary_form = Form.create(
       key: 'emergency_consent',
       options: EnumConstants::BOOLEANS,
       page: page,
-      style: Question.styles[:dropdown],
-      title: 'Paragraph about emergency consent',
+      style: Question.styles[:waiver],
+      title: 'If, in the judgment of the staff of the EDGE Youth Leadership Seminar, the child named above needs immediate care and treatment as a result of any injury or sickness, I hereby give permission to the staff to secure proper treatment for my child.'+ 
+             'I do hereby consent to whatever x-ray, examination, anesthetic, medical, surgical or dental diagnosis or treatment and hospital care are considered necessary in the best judgment of the attending physician, surgeon or dentist and performed by or under the supervision of the medical staff of the hospital or facility furnishing medical or dental services.' + 
+             'It is further understood that the undersigned will assume full responsibility for any such action, including payment of costs.' +
+             'I do hereby agree to indemnify and hold harmless the EDGE Youth Leadership (including its officers, directors, members and/or volunteers) from any claim by any person whomsoever on account of such care and treatment of said child.',
     )
     Question.create(
       key: 'psychologist_consent',
       options: EnumConstants::BOOLEANS,
       page: page,
-      style: Question.styles[:dropdown],
+      style: Question.styles[:waiver],
       title: 'Paragraph about psychologist consent',
     )
     Question.create(
