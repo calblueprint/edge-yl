@@ -33,6 +33,7 @@ class Email < ActiveRecord::Base
   def assign_thread
     self.email_thread ||= find_thread(self.subject, self.user)
     self.email_thread ||= EmailThread.create subject: self.subject, user: self.user
+    self.save
   end
 
   def do_send(update_params)
@@ -114,7 +115,7 @@ class Email < ActiveRecord::Base
     end
     self.user ||= find_user(recipient)
     if self.is_sent
-      assign_thread self.subject, self.user
+      assign_thread
     end
     self.from ||= self.sender
     self.to ||= self.recipient

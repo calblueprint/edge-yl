@@ -45,6 +45,10 @@ class User < ActiveRecord::Base
   validates :has_sidebar, inclusion: { in: [true, false] }
   validates :is_admin, inclusion: { in: [true, false] }
 
+  def drafts
+    emails.where(is_draft: false)
+  end
+
   def self.groupable
     self.includes(:leadership).where(leaderships: { id: nil })
   end

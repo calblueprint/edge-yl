@@ -18,7 +18,7 @@ class EmailThread < ActiveRecord::Base
   has_many :emails, dependent: :destroy
 
   def content
-    Email.where(email_thread: self).first.content
+    emails.first.content
   end
 
   def is_unread
