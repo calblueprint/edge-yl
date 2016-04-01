@@ -21,7 +21,7 @@ class Api::EmailsController < Api::BaseController
   end
 
   def index
-    threads = EmailThread.where(user: current_user).page params[:page]
+    threads = current_user.email_threads.page params[:page]
     render json: threads,
            serializer: PaginatedSerializer,
            each_serializer: EmailThreadIndexSerializer

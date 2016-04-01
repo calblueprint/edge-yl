@@ -1,11 +1,10 @@
 class Api::ProspectsController < Api::BaseController
 
   def index
-    prospects = Prospect.page params[:page]
-    render json: prospects,
-           serializer: PaginatedSerializer,
-           each_serializer: ProspectIndexSerializer
-
+    respond_to do |format|
+      format.csv { index_csv }
+      format.json { index_json }
+    end
   end
 
   def create
@@ -28,6 +27,18 @@ class Api::ProspectsController < Api::BaseController
   end
 
   private
+
+  def index_csv
+    prospects = Prospect.all
+    send_data prospects.to_csv
+  end
+
+  def index_json
+    prospects = Prospect.page params[:page]
+    render json: prospects,
+           serializer: PaginatedSerializer,
+           each_serializer: ProspectIndexSerializer
+  end
 
   def prospect_params
     params.require(:prospect).permit(

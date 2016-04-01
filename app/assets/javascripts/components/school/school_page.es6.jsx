@@ -52,8 +52,9 @@ class SchoolPage extends Component {
       },
       {
         action: () => {
-          var contact = this.props.school.primary_contact;
-          StudentActions.createDraft(this.props.profile.email, contact.email);
+          var contact = this.state.school.primary_contact;
+          var username = this.props.profile.username;
+          SchoolActions.createDraft(TypeConstants.emails.email(username), contact.email);
         },
         content: 'Email',
       },

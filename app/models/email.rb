@@ -29,7 +29,25 @@ class Email < ActiveRecord::Base
   belongs_to :user
 
   before_validation :set_initials, on: :create
-  before_validation :try_send, on: :update
+
+  def assign_thread
+    self.email_thread ||= find_thread(self.subject, self.user)
+    self.email_thread ||= EmailThread.create subject: self.subject, user: self.user
+    self.save
+  end
+
+  def do_send(update_params)
+    update_params[:is_draft] = false
+    update_params[:is_sent] = true
+    if update_attributes update_params
+      self.assign_thread
+      if self.email_thread.subject == ""
+        self.email_thread.subject = self.subject
+        self.email_thread.save
+      end
+      ApplicationMailer.standard(self).deliver_now
+    end
+  end
 
   def emailable_name
     if self.emailable_type == School.name
@@ -49,11 +67,6 @@ class Email < ActiveRecord::Base
 
   private
 
-  def assign_thread(subject, user)
-    self.email_thread ||= find_thread(self.subject, self.user)
-    self.email_thread ||= EmailThread.create subject: self.subject, user: self.user
-  end
-
   def find_emailable(email)
     emailable = Contact.where(email: email).first
     if emailable
@@ -72,7 +85,11 @@ class Email < ActiveRecord::Base
 
   def find_user(email)
     m = /(?<name>\S*)@/.match(email)
-    User.where('lower(first_name) || lower(last_name) = ?', m['name']).first
+    if m
+      User.where('lower(first_name) || lower(last_name) = ?', m['name']).first
+    else
+      nil
+    end
   end
 
   # We require sender and recipient to both be set at creation
@@ -82,7 +99,7 @@ class Email < ActiveRecord::Base
     if (emailable = find_emailable(recipient))
       self.emailable_id = emailable.id
       self.emailable_type = emailable.class.name
-      self.from = smtp_format_name emailable
+      self.to = smtp_format_name emailable
       if (user = find_user(sender))
         self.user = user
         self.from = smtp_format_name user
@@ -98,7 +115,7 @@ class Email < ActiveRecord::Base
     end
     self.user ||= find_user(recipient)
     if self.is_sent
-      assign_thread self.subject, self.user
+      assign_thread
     end
     self.from ||= self.sender
     self.to ||= self.recipient
@@ -111,18 +128,6 @@ class Email < ActiveRecord::Base
       return "#{model.full_name} <#{model.username}@#{ENV['email_domain']}>"
     elsif model.class.name == School.name
       return "#{model.primary_contact.full_name} <#{model.primary_contact.email}>"
-    end
-  end
-
-  def try_send
-    if !is_draft && !is_sent
-      ApplicationMailer.standard(self).deliver_now
-      self.is_sent = true
-      assign_thread(self.subject, self.user)
-      if self.email_thread.subject == ""
-        self.email_thread.subject = self.subject
-        self.email_thread.save
-      end
     end
   end
 end
