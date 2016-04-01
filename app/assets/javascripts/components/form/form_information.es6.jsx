@@ -21,9 +21,6 @@ class FormInformation extends Component {
           flexFlow: 'column',
         },
       ),
-      description: {
-        fontWeight: 'normal',
-      },
       title: Object.assign(
         {},
         StyleConstants.forms.questions.prompt,
@@ -35,52 +32,8 @@ class FormInformation extends Component {
   }
 
   // --------------------------------------------------
-  // Helpers
-  // --------------------------------------------------
-  generateChoice(choice) {
-    return {
-      action: () => this.storeResponse(choice),
-      content: choice,
-    };
-  }
-
-  generateChoices() {
-    var options = this.props.question.options;
-    return options.map((choice) => this.generateChoice(choice));
-  }
-
-  storeResponse(choice) {
-    var question = this.props.question;
-    FormActions.storeResponse(
-      question.page_id,
-      question.id,
-      choice,
-    );
-  }
-
-  // --------------------------------------------------
   // Render
   // --------------------------------------------------
-  renderDropdown() {
-    var question = this.props.question;
-    return (
-      <DropdownButton
-        choices={this.generateChoices()}
-        value={question.value} />
-    );
-  }
-
-  renderError() {
-    var error = this.props.question.error;
-    if (error) {
-      return (
-        <h6 style={StyleConstants.forms.questions.errors}>
-          {error}
-        </h6>
-      );
-    }
-  }
-
   renderRequired() {
     if (this.props.question.is_required) {
       return (
