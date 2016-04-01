@@ -58,6 +58,10 @@ class ProspectsPage extends Component {
         action: () => ViewActions.storeEditability(),
         content: this.state.editable ? 'Finish' : 'Edit',
       },
+      {
+        content: 'Export',
+        route: ApiConstants.csvs.prospects,
+      },
     ];
   }
 
