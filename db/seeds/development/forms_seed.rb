@@ -176,7 +176,7 @@ school_form = Form.create(
     )
     Question.create(
       key: 'primary_shirt_size',
-      options: Student.shirt_sizes.keys,
+      options: EnumConstants::SHIRT_SIZES,
       page: page,
       style: Question.styles[:dropdown],
       title: 'Student shirt size',
