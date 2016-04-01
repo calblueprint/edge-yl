@@ -24,6 +24,9 @@
       var request = this.initialize('DELETE', route);
       request.onreadystatechange = () => {
         if (request.readyState === XMLHttpRequest.DONE) {
+          if (request.status === 200 && resolve) {
+            resolve(JSON.parse(request.response));
+          }
           if (request.status === 204 && resolve) {
             resolve();
           }

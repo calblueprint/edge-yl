@@ -41,6 +41,12 @@ class FormPage extends Component {
             key={question.id}
             question={question} />
         );
+      case 'information':
+        return (
+          <FormInformation
+            key={question.id}
+            question={question} />
+        );
       case 'input':
         return (
           <FormInput
@@ -50,6 +56,12 @@ class FormPage extends Component {
       case 'textarea':
         return (
           <FormTextarea
+            key={question.id}
+            question={question} />
+        );
+      case 'waiver':
+        return (
+          <FormWaiver
             key={question.id}
             question={question} />
         );

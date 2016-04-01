@@ -50,6 +50,10 @@ class RoomPage extends Component {
         action: () => RoomActions.storeEditability(),
         content: this.state.editable ? 'Finish' : 'Edit',
       },
+      {
+        action: () => RoomActions.exportRoom(this.state.room.id),
+        content: 'Export',
+      },
     ];
   }
 

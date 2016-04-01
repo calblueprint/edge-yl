@@ -45,13 +45,14 @@ class ConferencePage extends Component {
   // Helpers
   // --------------------------------------------------
   generateChoices() {
+    var conference = this.state.conference;
     return [
       {
-        action: () => GroupsActions.exportGroups(this.state.conference.id),
+        action: () => GroupsActions.exportGroups(conference.id),
         content: 'Export groups',
       },
       {
-        action: () => RoomsActions.exportRooms(this.state.conference.id),
+        action: () => RoomsActions.exportRooms(conference.id),
         content: 'Export rooms',
       },
       {

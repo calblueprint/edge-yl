@@ -1,24 +1,18 @@
-def generate_group(conference)
+def generate_group(alphabet, conference)
   new_group = Group.create(
     conference: conference,
-    letter: @alphabet.shift,
+    letter: alphabet.shift,
   )
-  puts "Created #{new_group.full_name} for conference #{@conference.name}."
+  puts "Created #{new_group.full_name} for conference #{conference.name}."
 end
 
-@alphabet = ('A'..'Z').to_a
-@conference = Conference.first
-
-(1..4).each do
-  generate_group(@conference)
-end
-
-Student.all.each do |student|
-  group = Group.find(rand(1..4))
-  student.conference_id = group.conference_id
-  if rand(10) > 2 # Create some students with no group, but a valid conference.
-    student.group = group
+Conference.all.each do |conference|
+  alphabet = ('A'..'Z').to_a
+  (1..4).each do
+    generate_group(alphabet, conference)
   end
-  student.save
-  puts "Assigned student #{student.full_name} to group #{group.full_name} of conference #{group.conference.name}."
 end
+
+@conference = Conference.last
+@conference.assign_students_to_groups
+puts "Assigned students to groups in #{@conference.name}"

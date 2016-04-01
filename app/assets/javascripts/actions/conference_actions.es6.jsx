@@ -98,17 +98,16 @@
     deleteGroup(id) {
       var response = confirm('This action cannot be undone.');
       if (response) {
-        var attributes = {};
-        attributes.conference_id = null;
-        var params = { group: attributes };
+        var reject = (response) => this.storeError(response);
         var resolve = (response) => {
           this.removeGroup(response);
+          this.fetchConference(response.group.conference_id)
           ViewActions.storeToast(true, 'Group removed!');
         };
-        Requester.update(
-          ApiConstants.groups.update(id),
-          params,
+        Requester.delete(
+          ApiConstants.groups.delete(id),
           resolve,
+          reject,
         );
       }
       return true;
@@ -117,22 +116,31 @@
     deleteRoom(id) {
       var response = confirm('This action cannot be undone.');
       if (response) {
-        var attributes = {};
-        attributes.conference_id = null;
-        var params = { room: attributes };
+        var reject = (response) => this.storeError(response);
         var resolve = (response) => {
           this.removeRoom(response);
+          this.fetchConference(response.room.conference_id)
           ViewActions.storeToast(true, 'Room removed!');
         };
-        Requester.update(
-          ApiConstants.rooms.update(id),
-          params,
+        Requester.delete(
+          ApiConstants.rooms.delete(id),
           resolve,
+          reject,
         );
       }
       return true;
     }
 
+    exportGroups(conference_id) {
+      Requester.csv(ApiConstants.csvs.groups(conference_id), 'groups');
+      return true;
+    }
+
+    exportRooms(conference_id) {
+      Requester.csv(ApiConstants.csvs.rooms(conference_id), 'rooms');
+      return true;
+    }
+    
     fetchConference(id) {
       var resolve = (response) => this.storeConference(response);
       Requester.get(ApiConstants.conferences.show(id), resolve);
@@ -191,4 +199,3 @@
   }
   this.ConferenceActions = alt.createActions(ConferenceActions);
 })();
-

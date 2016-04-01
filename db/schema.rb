@@ -104,7 +104,7 @@ ActiveRecord::Schema.define(version: 20160308042713) do
 
   create_table "groups", force: :cascade do |t|
     t.string   "letter",        null: false
-    t.integer  "conference_id"
+    t.integer  "conference_id", null: false
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
   end
@@ -157,6 +157,7 @@ ActiveRecord::Schema.define(version: 20160308042713) do
   end
 
   create_table "questions", force: :cascade do |t|
+    t.string   "description"
     t.integer  "format",      default: 1,    null: false
     t.boolean  "is_required", default: true, null: false
     t.string   "key",                        null: false
@@ -176,7 +177,7 @@ ActiveRecord::Schema.define(version: 20160308042713) do
     t.integer  "capacity",      null: false
     t.integer  "gender",        null: false
     t.integer  "number",        null: false
-    t.integer  "conference_id"
+    t.integer  "conference_id", null: false
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
   end

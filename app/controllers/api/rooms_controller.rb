@@ -13,6 +13,18 @@ class Api::RoomsController < Api::BaseController
     end
   end
 
+  def destroy
+    room = Room.find params[:id]
+    room.remove_students
+    if room.destroy
+      render json: room,
+             serializer: RoomShowSerializer,
+             status: :ok
+    else
+      unprocessable_response room
+    end
+  end
+
   def index
     respond_to do |format|
       format.csv { index_csv }
@@ -20,8 +32,10 @@ class Api::RoomsController < Api::BaseController
   end
 
   def show
-    room = Room.find params[:id]
-    render json: room, serializer: RoomShowSerializer
+    respond_to do |format|
+      format.csv { show_csv }
+      format.json { show_json }
+    end
   end
 
   def update
@@ -50,6 +64,16 @@ class Api::RoomsController < Api::BaseController
       :gender,
       :number,
     )
+  end
+
+  def show_csv
+    room = Room.find params[:id]
+    send_data room.students.to_csv
+  end
+
+  def show_json
+    room = Room.find params[:id]
+    render json: room, serializer: RoomShowSerializer
   end
 
 end
