@@ -157,7 +157,7 @@ ActiveRecord::Schema.define(version: 20160308042713) do
   end
 
   create_table "questions", force: :cascade do |t|
-    t.string   "description"
+    t.string   "description", default: "",   null: false
     t.integer  "format",      default: 1,    null: false
     t.boolean  "is_required", default: true, null: false
     t.string   "key",                        null: false
@@ -332,7 +332,7 @@ ActiveRecord::Schema.define(version: 20160308042713) do
     t.integer  "psychologist_consent",                    null: false
     t.integer  "registration_status",                     null: false
     t.integer  "shirt_size",                              null: false
-    t.integer  "conference_id"
+    t.integer  "conference_id",                           null: false
     t.integer  "group_id"
     t.integer  "room_id"
     t.integer  "school_id"

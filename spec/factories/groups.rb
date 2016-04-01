@@ -4,7 +4,7 @@
 #
 #  id            :integer          not null, primary key
 #  letter        :string           not null
-#  conference_id :integer
+#  conference_id :integer          not null
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #
