@@ -41,6 +41,7 @@ class StartPage extends Component {
       },
       footer: {
         display: 'flex',
+        justifyContent: 'center',
         paddingTop: '24px',
       },
       header: Object.assign(
@@ -114,6 +115,17 @@ class StartPage extends Component {
     }
   }
 
+  renderConferencesDropdown() {
+    if (this.props.target === 'school') {
+      return (
+        <div style={this.styles.dropdown}>
+          <DropdownButton
+            choices={this.generateChoices()} />
+        </div>
+      );
+    }
+  }
+
   renderSchoolForm() {
     return (
       <div>
@@ -183,11 +195,7 @@ class StartPage extends Component {
           <div style={this.styles.body}>
             {this.renderBody()}
             <div style={this.styles.footer}>
-              <div style={this.styles.dropdown}>
-                <DropdownButton
-                  choices={this.generateChoices()}
-                  />
-              </div>
+              {this.renderConferencesDropdown()}
               <FormButton
                 action={() => this.createSubmission()}
                 content={'START HERE'} />
