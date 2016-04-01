@@ -82,6 +82,7 @@
     get groups() {
       return {
         create: '/api/groups',
+        delete: (id) => `/api/groups/${id}`,
         index: (conferenceId) => `/api/groups?conference_id=${conferenceId}`,
         show: (id) => `/api/groups/${id}`,
         update: (id) => `/api/groups/${id}`,
@@ -112,6 +113,7 @@
     get rooms() {
       return {
         create: '/api/rooms',
+        delete: (id) => `/api/rooms/${id}`,
         show: (id) => `/api/rooms/${id}`,
         index: (conferenceId) => {
           return `/api/rooms?&conference_id=${conferenceId}`;

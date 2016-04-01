@@ -7,7 +7,7 @@ class CreateRooms < ActiveRecord::Migration
       t.integer :gender, null: false
       t.integer :number, null: false
 
-      t.references :conference, index: true
+      t.references :conference, index: true, null: false
 
       t.timestamps null: false
     end

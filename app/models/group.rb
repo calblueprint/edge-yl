@@ -4,7 +4,7 @@
 #
 #  id            :integer          not null, primary key
 #  letter        :string           not null
-#  conference_id :integer
+#  conference_id :integer          not null
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #
@@ -51,6 +51,13 @@ class Group < ActiveRecord::Base
         end
         csv << row
       end
+    end
+  end
+
+  def remove_students
+    self.students.each do |student|
+      student.group = nil
+      student.save
     end
   end
 

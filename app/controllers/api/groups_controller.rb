@@ -13,6 +13,18 @@ class Api::GroupsController < Api::BaseController
     end
   end
 
+  def destroy
+    group = Group.find params[:id]
+    group.remove_students
+    if group.destroy
+      render json: group,
+             serializer: GroupShowSerializer,
+             status: :ok
+    else
+      unprocessable_response group
+    end
+  end
+
   def index
     respond_to do |format|
       format.csv { index_csv }

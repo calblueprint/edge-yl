@@ -13,6 +13,18 @@ class Api::RoomsController < Api::BaseController
     end
   end
 
+  def destroy
+    room = Room.find params[:id]
+    room.remove_students
+    if room.destroy
+      render json: room,
+             serializer: RoomShowSerializer,
+             status: :ok
+    else
+      unprocessable_response room
+    end
+  end
+
   def index
     respond_to do |format|
       format.csv { index_csv }

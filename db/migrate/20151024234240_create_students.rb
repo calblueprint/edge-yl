@@ -38,7 +38,7 @@ class CreateStudents < ActiveRecord::Migration
       t.integer :registration_status, null: false
       t.integer :shirt_size, null: false
 
-      t.references :conference, index: true
+      t.references :conference, index: true, null: false
       t.references :group, index: true
       t.references :room, index: true
       t.references :school, index: true

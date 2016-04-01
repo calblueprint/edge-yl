@@ -4,7 +4,7 @@ class CreateGroups < ActiveRecord::Migration
     create_table :groups do |t|
       t.string :letter, null: false
 
-      t.references :conference, index: true
+      t.references :conference, index: true, null: false
 
       t.timestamps null: false
     end

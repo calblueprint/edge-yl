@@ -7,7 +7,7 @@
 #  capacity      :integer          not null
 #  gender        :integer          not null
 #  number        :integer          not null
-#  conference_id :integer
+#  conference_id :integer          not null
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #
@@ -36,6 +36,13 @@ class Room < ActiveRecord::Base
         students.map { |student| row << student.full_name }
         csv << row
       end
+    end
+  end
+
+  def remove_students
+    self.students.each do |student|
+      student.room = nil
+      student.save
     end
   end
 
