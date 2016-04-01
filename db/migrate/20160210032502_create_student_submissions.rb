@@ -37,6 +37,8 @@ class CreateStudentSubmissions < ActiveRecord::Migration
       t.string  :preferred_name, default: ''
       t.integer :psychologist_consent
       t.integer :shirt_size
+
+      t.references :conference, index: true, null: false
     end
   end
 

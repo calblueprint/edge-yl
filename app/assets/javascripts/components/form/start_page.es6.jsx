@@ -1,10 +1,19 @@
 class StartPage extends Component {
 
   // --------------------------------------------------
+  // Setup
+  // --------------------------------------------------
+  constructor(props) {
+    super(props);
+    this._listener = (state) => this.setState(state);
+  }
+
+  // --------------------------------------------------
   // Props
   // --------------------------------------------------
   static get propTypes() {
     return {
+      conferences: React.PropTypes.array,
       id: React.PropTypes.string,
       target: React.PropTypes.string.isRequired,
     };
@@ -12,8 +21,24 @@ class StartPage extends Component {
 
   static get defaultProps() {
     return {
+      conferences: [],
       id: null,
     };
+  }
+
+  // --------------------------------------------------
+  // Lifecycle
+  // --------------------------------------------------
+  componentWillMount() {
+    this.setState(StartStore.getState());
+  }
+
+  componentDidMount() {
+    StartStore.listen(this._listener);
+  }
+
+  componentWillUnmount() {
+    StartStore.unlisten(this._listener);
   }
 
   // --------------------------------------------------
@@ -31,10 +56,16 @@ class StartPage extends Component {
           marginTop: '12px',
         },
       ),
+      dropdown: {
+        display: 'flex',
+        flexFlow: 'column',
+        flex: '1',
+        marginRight: '24px',
+      },
       footer: {
         display: 'flex',
-        alignSelf: 'center',
-        paddingTop: '20px',
+        justifyContent: 'center',
+        paddingTop: '24px',
       },
       header: Object.assign(
         {},
@@ -65,22 +96,23 @@ class StartPage extends Component {
   // Helpers
   // --------------------------------------------------
   createSubmission() {
-    var attributes = { current_page: 0 };
     if (this.props.target === 'school') {
-      var params = { school_submission: attributes };
-      var resolve = (response) => {
-        var submission = response.school_submission;
-        window.location = RouteConstants.forms.school(1, submission.id);
-      };
-      Requester.post(
-        ApiConstants.submissions.school.create,
-        params,
-        resolve,
-      );
+      StartActions.createSubmission(this.state.conference);
     } else if (this.props.target === 'student') {
       window.location = RouteConstants.forms.student(1, this.props.id);
     }
-    return true;
+  }
+
+  generateChoice(conference) {
+    return {
+      action: () => StartActions.storeConference(conference),
+      content: conference.name,
+    };
+  }
+
+  generateChoices() {
+    var conferences = this.props.conferences;
+    return conferences.map((conference) => this.generateChoice(conference));
   }
 
   // --------------------------------------------------
@@ -92,6 +124,19 @@ class StartPage extends Component {
       return this.renderSchoolForm();
     } else if (target == 'student') {
       return this.renderStudentForm();
+    }
+  }
+
+  renderConferencesDropdown() {
+    if (this.props.target === 'school') {
+      var conference = this.state.conference;
+      return (
+        <div style={this.styles.dropdown}>
+          <DropdownButton
+            choices={this.generateChoices()}
+            value={conference ? conference.name : null} />
+        </div>
+      );
     }
   }
 
@@ -164,6 +209,7 @@ class StartPage extends Component {
           <div style={this.styles.body}>
             {this.renderBody()}
             <div style={this.styles.footer}>
+              {this.renderConferencesDropdown()}
               <FormButton
                 action={() => this.createSubmission()}
                 content={'START HERE'} />

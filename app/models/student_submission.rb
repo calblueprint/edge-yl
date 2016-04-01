@@ -38,6 +38,7 @@
 #  preferred_name             :string           default("")
 #  psychologist_consent       :integer
 #  shirt_size                 :integer
+#  conference_id              :integer          not null
 #
 
 class StudentSubmission < ActiveRecord::Base
@@ -231,6 +232,7 @@ class StudentSubmission < ActiveRecord::Base
       allergies: allergies,
       birthday: birthday,
       cell_phone: cell_phone,
+      conference_id: conference_id,
       dietary_restrictions: dietary_restrictions,
       exercise_limitations: exercise_limitations,
       email: email,

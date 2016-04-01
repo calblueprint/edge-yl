@@ -157,7 +157,7 @@ ActiveRecord::Schema.define(version: 20160308042713) do
   end
 
   create_table "questions", force: :cascade do |t|
-    t.string   "description"
+    t.string   "description", default: "",   null: false
     t.integer  "format",      default: 1,    null: false
     t.boolean  "is_required", default: true, null: false
     t.string   "key",                        null: false
@@ -238,7 +238,10 @@ ActiveRecord::Schema.define(version: 20160308042713) do
     t.string  "primary_last_name"
     t.integer "primary_shirt_size"
     t.string  "website",                         default: ""
+    t.integer "conference_id",                                  null: false
   end
+
+  add_index "school_submissions", ["conference_id"], name: "index_school_submissions_on_conference_id", using: :btree
 
   create_table "schools", force: :cascade do |t|
     t.string   "address_city",               null: false
@@ -288,7 +291,10 @@ ActiveRecord::Schema.define(version: 20160308042713) do
     t.string  "preferred_name",             default: ""
     t.integer "psychologist_consent"
     t.integer "shirt_size"
+    t.integer "conference_id",                             null: false
   end
+
+  add_index "student_submissions", ["conference_id"], name: "index_student_submissions_on_conference_id", using: :btree
 
   create_table "students", force: :cascade do |t|
     t.string   "address_city",                            null: false
@@ -326,7 +332,7 @@ ActiveRecord::Schema.define(version: 20160308042713) do
     t.integer  "psychologist_consent",                    null: false
     t.integer  "registration_status",                     null: false
     t.integer  "shirt_size",                              null: false
-    t.integer  "conference_id"
+    t.integer  "conference_id",                           null: false
     t.integer  "group_id"
     t.integer  "room_id"
     t.integer  "school_id"

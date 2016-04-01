@@ -56,6 +56,7 @@
 #  primary_last_name               :string
 #  primary_shirt_size              :integer
 #  website                         :string           default("")
+#  conference_id                   :integer          not null
 #
 
 class SchoolSubmission < ActiveRecord::Base
@@ -263,6 +264,7 @@ class SchoolSubmission < ActiveRecord::Base
       address_zip: primary_address_zip,
       birthday: primary_birthday,
       cell_phone: primary_cell_phone,
+      conference_id: conference_id,
       email: primary_email,
       first_name: primary_first_name,
       gender: primary_gender,
@@ -289,6 +291,7 @@ class SchoolSubmission < ActiveRecord::Base
         address_zip: alternate_address_zip,
         birthday: alternate_birthday,
         cell_phone: alternate_cell_phone,
+        conference_id: conference_id,
         email: alternate_email,
         first_name: alternate_first_name,
         gender: alternate_gender,

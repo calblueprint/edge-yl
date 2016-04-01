@@ -24,6 +24,12 @@ class Conference < ActiveRecord::Base
   validates :name, presence: true
   validates :start_date, presence: true
 
+  def self.active
+    active_conferences = []
+    all.each { |conference| active_conferences << conference if conference.active }
+    active_conferences
+  end
+
   # Assigns all students of a conference into the conference's groups
   # evenly, students from each gender are assigned to a group one at a time
   # to spread out the gender.

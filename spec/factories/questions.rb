@@ -3,7 +3,7 @@
 # Table name: questions
 #
 #  id          :integer          not null, primary key
-#  description :string
+#  description :string           default(""), not null
 #  format      :integer          default(1), not null
 #  is_required :boolean          default(TRUE), not null
 #  key         :string           not null

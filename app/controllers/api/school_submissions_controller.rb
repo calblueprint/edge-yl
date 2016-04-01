@@ -74,6 +74,7 @@ class Api::SchoolSubmissionsController < Api::BaseController
       :contact_last_name,
       :contact_phone_number,
       :contact_title,
+      :conference_id,
       :current_page,
       :has_alternate_student,
       :is_active,

@@ -7,7 +7,7 @@
 #  capacity      :integer          not null
 #  gender        :integer          not null
 #  number        :integer          not null
-#  conference_id :integer
+#  conference_id :integer          not null
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #

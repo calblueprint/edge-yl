@@ -38,7 +38,7 @@
 #  psychologist_consent       :integer          not null
 #  registration_status        :integer          not null
 #  shirt_size                 :integer          not null
-#  conference_id              :integer
+#  conference_id              :integer          not null
 #  group_id                   :integer
 #  room_id                    :integer
 #  school_id                  :integer

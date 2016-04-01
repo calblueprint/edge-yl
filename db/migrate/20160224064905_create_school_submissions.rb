@@ -55,6 +55,8 @@ class CreateSchoolSubmissions < ActiveRecord::Migration
       t.string  :primary_last_name
       t.integer :primary_shirt_size
       t.string  :website, default: ''
+
+      t.references :conference, index: true, null: false
     end
   end
 

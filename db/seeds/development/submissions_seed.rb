@@ -4,6 +4,7 @@ school_submission = SchoolSubmission.create(
   address_state: EnumConstants::STATES.sample,
   address_two: "#{Faker::Address.street_address}",
   address_zip: "#{Faker::Address.zip}",
+  conference_id: Conference.active.first.id,
   contact_email: Faker::Internet.email,
   contact_first_name: Faker::Name.first_name,
   contact_last_name: Faker::Name.last_name,
