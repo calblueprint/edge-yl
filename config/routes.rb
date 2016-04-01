@@ -43,6 +43,7 @@
     patch '/conferences/assign_students_to_groups', to: 'conferences#assign_students_to_groups'
     patch '/conferences/assign_students_to_rooms', to: 'conferences#assign_students_to_rooms'
     patch '/contacts/promote/:id', to: 'contacts#promote'
+    patch '/drafts/send/:id', to: 'drafts#send_draft'
     get '/forms/:target', to: 'forms#show'
     post '/import', to: 'schools#import'
     get '/searchables/search', to: 'searchables#search'

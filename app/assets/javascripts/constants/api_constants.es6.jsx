@@ -51,6 +51,7 @@
       return {
         create: '/api/drafts',
         index: '/api/drafts',
+        send: (id) => `/api/drafts/send/${id}`,
         show: (id) => `/api/drafts/${id}`,
         update: (id) => `/api/drafts/${id}`,
       };
