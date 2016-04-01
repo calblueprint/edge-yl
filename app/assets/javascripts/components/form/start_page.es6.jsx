@@ -33,8 +33,7 @@ class StartPage extends Component {
       ),
       footer: {
         display: 'flex',
-        alignSelf: 'center',
-        paddingTop: '20px',
+        paddingTop: '24px',
       },
       header: Object.assign(
         {},
@@ -164,6 +163,8 @@ class StartPage extends Component {
           <div style={this.styles.body}>
             {this.renderBody()}
             <div style={this.styles.footer}>
+              <DropdownButton
+                />
               <FormButton
                 action={() => this.createSubmission()}
                 content={'START HERE'} />
