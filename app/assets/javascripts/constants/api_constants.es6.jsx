@@ -35,6 +35,7 @@
         group: (id) => `/api/groups/${id}`,
         groups: (conferenceId) => `/api/groups/?conference_id=${conferenceId}`,
         prospects: 'api/prospects.csv',
+        room: (id) => `/api/rooms/${id}`,
         rooms: (conferenceId) => `/api/rooms/?conference_id=${conferenceId}`,
         schools: '/api/schools.csv',
         students: (query={}) => {

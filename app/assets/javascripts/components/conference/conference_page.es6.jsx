@@ -47,11 +47,11 @@ class ConferencePage extends Component {
   generateChoices() {
     return [
       {
-        action: () => GroupsActions.exportGroups(this.state.conference.id),
+        action: () => ConferenceActions.exportGroups(this.state.conference.id),
         content: 'Export groups',
       },
       {
-        action: () => RoomsActions.exportRooms(this.state.conference.id),
+        action: () => ConferenceActions.exportRooms(this.state.conference.id),
         content: 'Export rooms',
       },
       {
