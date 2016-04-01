@@ -26,6 +26,7 @@ class FormsController < BaseController
 
   def show_school
     @id = params[:id]
+    @conferences = Conference.active
     @page = params[:page] ? params[:page].to_i : nil
     @target = 'school'
     school_submission = SchoolSubmission.find_by id: @id

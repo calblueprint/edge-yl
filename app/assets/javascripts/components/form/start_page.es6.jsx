@@ -5,6 +5,7 @@ class StartPage extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
+      conferences: React.PropTypes.array,
       id: React.PropTypes.string,
       target: React.PropTypes.string.isRequired,
     };
@@ -12,6 +13,7 @@ class StartPage extends Component {
 
   static get defaultProps() {
     return {
+      conferences: [],
       id: null,
     };
   }
