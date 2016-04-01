@@ -35,6 +35,23 @@
       return true;
     }
 
+    createDraft(sender, recipient) {
+      var attributes = {
+        recipient: recipient,
+        sender: sender,
+      };
+      var params = { email: attributes };
+      var resolve = (response) => {
+        window.location = RouteConstants.drafts.show(response.email.id);
+      };
+      Requester.post(
+        ApiConstants.drafts.create,
+        params,
+        resolve,
+      );
+      return true;
+    }
+
     createContact(template) {
       var params = { contact: template.attributes };
       var resolve = (response) => {
