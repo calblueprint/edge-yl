@@ -33,7 +33,6 @@ class Email < ActiveRecord::Base
   def assign_thread
     self.email_thread ||= find_thread(self.subject, self.user)
     self.email_thread ||= EmailThread.create subject: self.subject, user: self.user
-    self.save
   end
 
   def do_send(update_params)
@@ -41,6 +40,7 @@ class Email < ActiveRecord::Base
     update_params[:is_sent] = true
     if update_attributes update_params
       self.assign_thread
+      self.save
       if self.email_thread.subject == ""
         self.email_thread.subject = self.subject
         self.email_thread.save
