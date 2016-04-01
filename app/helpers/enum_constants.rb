@@ -2,7 +2,11 @@ module EnumConstants
 
   BOOLEANS = %w(yes no)
 
-  DIETARY_RESTRICTIONS = %w(dairy-free gluten-free none nut-allergy vegan vegetarian)
+  DIETARY_RESTRICTIONS = %w(
+    dairy-free gluten-free
+    none nut-allergy
+    vegan vegetarian
+  )
 
   GENDERS = %w(female male other)
 
@@ -14,7 +18,7 @@ module EnumConstants
 
   PHONE_TYPES = %w(cell home work)
 
-  SHIRT_SIZES = %w(S M L XL XXL)
+  SHIRT_SIZES = %w(S M L XL XXL other)
 
   STATES = %w(
     AL AK AZ AR CA CO CT DE FL GA
