@@ -33,6 +33,12 @@ class StartPage extends Component {
           marginTop: '12px',
         },
       ),
+      dropdown: {
+        display: 'flex',
+        flexFlow: 'column',
+        flex: '1',
+        marginRight: '24px',
+      },
       footer: {
         display: 'flex',
         paddingTop: '24px',
@@ -82,6 +88,18 @@ class StartPage extends Component {
       window.location = RouteConstants.forms.student(1, this.props.id);
     }
     return true;
+  }
+
+  generateChoice(conference) {
+    return {
+      action: null,
+      content: conference.name,
+    };
+  }
+
+  generateChoices() {
+    var conferences = this.props.conferences;
+    return conferences.map((conference) => this.generateChoice(conference));
   }
 
   // --------------------------------------------------
@@ -165,8 +183,11 @@ class StartPage extends Component {
           <div style={this.styles.body}>
             {this.renderBody()}
             <div style={this.styles.footer}>
-              <DropdownButton
-                />
+              <div style={this.styles.dropdown}>
+                <DropdownButton
+                  choices={this.generateChoices()}
+                  />
+              </div>
               <FormButton
                 action={() => this.createSubmission()}
                 content={'START HERE'} />
