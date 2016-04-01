@@ -91,15 +91,15 @@ class StudentValidator
   private
 
   def page_one?
-    @page == 1
+    current_page == 1
   end
 
   def page_two?
-    @page == 2
+    current_page == 2
   end
 
   def page_three?
-    @page == 3
+    current_page == 3
   end
 
   def persisted?
