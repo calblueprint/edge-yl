@@ -50,9 +50,7 @@ class FormInformation extends Component {
         <div style={this.styles.title}>
           <h6>{this.props.question.title}{this.renderRequired()}</h6>
         </div>
-        <div>
-          <p>{this.props.question.description}</p>
-        </div>
+        <p>{this.props.question.description}</p>
       </div>
     );
   }
