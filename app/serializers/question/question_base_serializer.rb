@@ -1,7 +1,7 @@
 class QuestionBaseSerializer < BaseSerializer
 
   attributes :id,
-  			 :description,
+             :description,
              :format,
              :is_required,
              :key,
