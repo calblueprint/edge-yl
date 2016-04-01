@@ -237,7 +237,10 @@ ActiveRecord::Schema.define(version: 20160308042713) do
     t.string  "primary_last_name"
     t.integer "primary_shirt_size"
     t.string  "website",                         default: ""
+    t.integer "conference_id",                                  null: false
   end
+
+  add_index "school_submissions", ["conference_id"], name: "index_school_submissions_on_conference_id", using: :btree
 
   create_table "schools", force: :cascade do |t|
     t.string   "address_city",               null: false
@@ -287,7 +290,10 @@ ActiveRecord::Schema.define(version: 20160308042713) do
     t.string  "preferred_name",             default: ""
     t.integer "psychologist_consent"
     t.integer "shirt_size"
+    t.integer "conference_id",                             null: false
   end
+
+  add_index "student_submissions", ["conference_id"], name: "index_student_submissions_on_conference_id", using: :btree
 
   create_table "students", force: :cascade do |t|
     t.string   "address_city",                            null: false
