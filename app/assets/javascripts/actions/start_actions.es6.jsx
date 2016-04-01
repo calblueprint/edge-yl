@@ -13,18 +13,17 @@
     // --------------------------------------------------
     // Requests
     // --------------------------------------------------
-    createComment(template) {
-      var params = { comment: template.attributes };
+    createSubmission(conference) {
+      var attributes = { conference_id: conference.id };
+      var params = { school_submission: attributes };
       var resolve = (response) => {
-        this.storeComment(response);
-        ViewActions.storeToast(true, 'Comment created!');
+        var submission = response.school_submission;
+        window.location = RouteConstants.forms.school(1, submission.id);
       };
-      var reject = (response) => this.storeError(response);
       Requester.post(
-        ApiConstants.comments.create,
+        ApiConstants.submissions.school.create,
         params,
         resolve,
-        reject,
       );
       return true;
     }

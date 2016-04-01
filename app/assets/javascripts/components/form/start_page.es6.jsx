@@ -96,27 +96,16 @@ class StartPage extends Component {
   // Helpers
   // --------------------------------------------------
   createSubmission() {
-    var attributes = { current_page: 0 };
     if (this.props.target === 'school') {
-      var params = { school_submission: attributes };
-      var resolve = (response) => {
-        var submission = response.school_submission;
-        window.location = RouteConstants.forms.school(1, submission.id);
-      };
-      Requester.post(
-        ApiConstants.submissions.school.create,
-        params,
-        resolve,
-      );
+      StartActions.createSubmission(this.state.conference);
     } else if (this.props.target === 'student') {
       window.location = RouteConstants.forms.student(1, this.props.id);
     }
-    return true;
   }
 
   generateChoice(conference) {
     return {
-      action: null,
+      action: () => StartActions.storeConference(conference),
       content: conference.name,
     };
   }
@@ -140,10 +129,12 @@ class StartPage extends Component {
 
   renderConferencesDropdown() {
     if (this.props.target === 'school') {
+      var conference = this.state.conference;
       return (
         <div style={this.styles.dropdown}>
           <DropdownButton
-            choices={this.generateChoices()} />
+            choices={this.generateChoices()}
+            value={conference ? conference.name : null} />
         </div>
       );
     }
