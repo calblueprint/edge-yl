@@ -1,6 +1,14 @@
 class StartPage extends Component {
 
   // --------------------------------------------------
+  // Setup
+  // --------------------------------------------------
+  constructor(props) {
+    super(props);
+    this._listener = (state) => this.setState(state);
+  }
+
+  // --------------------------------------------------
   // Props
   // --------------------------------------------------
   static get propTypes() {
@@ -16,6 +24,21 @@ class StartPage extends Component {
       conferences: [],
       id: null,
     };
+  }
+
+  // --------------------------------------------------
+  // Lifecycle
+  // --------------------------------------------------
+  componentWillMount() {
+    this.setState(StartStore.getState());
+  }
+
+  componentDidMount() {
+    StartStore.listen(this._listener);
+  }
+
+  componentWillUnmount() {
+    StartStore.unlisten(this._listener);
   }
 
   // --------------------------------------------------
