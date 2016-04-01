@@ -23,4 +23,14 @@ class Prospect < ActiveRecord::Base
   validates :name, presence: true
   validates :priority, presence: true
 
+  def self.to_csv
+    attributes = Prospect.attribute_names
+    CSV.generate(headers: true) do |csv|
+      csv << attributes
+      all.each do |prospect|
+        csv << attributes.map{ |attr| prospect.send(attr) }
+      end
+    end
+  end
+
 end
