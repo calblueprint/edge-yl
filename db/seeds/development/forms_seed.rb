@@ -12,12 +12,14 @@ school_form = Form.create(
       key: 'name',
       page: page,
       placeholder: '...',
+      style: Question.styles[:input],
       title: 'School name',
     )
     Question.create(
       key: 'address_one',
       page: page,
       placeholder: '...',
+      style: Question.styles[:input],
       title: 'Address one',
     )
     Question.create(
@@ -25,26 +27,29 @@ school_form = Form.create(
       key: 'address_two',
       page: page,
       placeholder: '...',
+      style: Question.styles[:input],
       title: 'Address two',
     )
     Question.create(
       key: 'address_city',
       page: page,
       placeholder: '...',
+      style: Question.styles[:input],
       title: 'Address city',
     )
     Question.create(
       key: 'address_state',
       options: EnumConstants::STATES,
       page: page,
-      style: Question.styles[:dropdown],
       placeholder: '...',
+      style: Question.styles[:dropdown],
       title: 'Address state',
     )
     Question.create(
       key: 'address_zip',
       page: page,
       placeholder: '...',
+      style: Question.styles[:input],
       title: 'Address zip',
     )
     Question.create(
@@ -52,6 +57,7 @@ school_form = Form.create(
       key: 'website',
       page: page,
       placeholder: '...',
+      style: Question.styles[:input],
       title: 'School website',
     )
   end
@@ -65,30 +71,35 @@ school_form = Form.create(
       key: 'contact_first_name',
       page: page,
       placeholder: '...',
+      style: Question.styles[:input],
       title: 'School contact first name',
     )
     Question.create(
       key: 'contact_last_name',
       page: page,
       placeholder: '...',
+      style: Question.styles[:input],
       title: 'School contact last name',
     )
     Question.create(
       key: 'contact_title',
       page: page,
       placeholder: '...',
+      style: Question.styles[:input],
       title: 'School contact title',
     )
     Question.create(
       key: 'contact_email',
       page: page,
       placeholder: '...',
+      style: Question.styles[:input],
       title: 'School contact email',
     )
     Question.create(
       key: 'contact_phone_number',
       page: page,
       placeholder: '...',
+      style: Question.styles[:input],
       title: 'School contact phone number',
     )
   end
@@ -102,18 +113,21 @@ school_form = Form.create(
       key: 'primary_first_name',
       page: page,
       placeholder: '...',
+      style: Question.styles[:input],
       title: 'Student first name',
     )
     Question.create(
       key: 'primary_last_name',
       page: page,
       placeholder: '...',
+      style: Question.styles[:input],
       title: 'Student last name',
     )
     Question.create(
       key: 'primary_address_one',
       page: page,
       placeholder: '...',
+      style: Question.styles[:input],
       title: 'Student address one',
     )
     Question.create(
@@ -121,12 +135,14 @@ school_form = Form.create(
       key: 'primary_address_two',
       page: page,
       placeholder: '...',
+      style: Question.styles[:input],
       title: 'Student address two',
     )
     Question.create(
       key: 'primary_address_city',
       page: page,
       placeholder: 'San Francisco',
+      style: Question.styles[:input],
       title: 'Student address city',
     )
     Question.create(
@@ -140,24 +156,28 @@ school_form = Form.create(
       key: 'primary_address_zip',
       page: page,
       placeholder: '90474',
+      style: Question.styles[:input],
       title: 'Student address zip',
     )
     Question.create(
       key: 'primary_home_phone',
       page: page,
       placeholder: '...',
+      style: Question.styles[:input],
       title: 'Student home phone',
     )
     Question.create(
       key: 'primary_cell_phone',
       page: page,
       placeholder: '...',
+      style: Question.styles[:input],
       title: 'Student cell phone',
     )
     Question.create(
       key: 'primary_email',
       page: page,
       placeholder: '...',
+      style: Question.styles[:input],
       title: 'Student email',
     )
     Question.create(
@@ -165,6 +185,7 @@ school_form = Form.create(
       key: 'primary_birthday',
       page: page,
       placeholder: '...',
+      style: Question.styles[:input],
       title: 'Student birthday',
     )
     Question.create(
@@ -185,24 +206,28 @@ school_form = Form.create(
       key: 'primary_guardian_first_name',
       page: page,
       placeholder: '...',
+      style: Question.styles[:input],
       title: 'Parent/guardian first name',
     )
     Question.create(
       key: 'primary_guardian_last_name',
       page: page,
       placeholder: '...',
+      style: Question.styles[:input],
       title: 'Parent/guardian last name',
     )
     Question.create(
       key: 'primary_guardian_email',
       page: page,
       placeholder: '...',
+      style: Question.styles[:input],
       title: 'Parent/guardian email',
     )
     Question.create(
       key: 'primary_guardian_phone_number',
       page: page,
       placeholder: '...',
+      style: Question.styles[:input],
       title: 'Parent/guardian phone number',
     )
     Question.create(
@@ -239,6 +264,7 @@ school_form = Form.create(
       key: 'alternate_first_name',
       page: page,
       placeholder: '...',
+      style: Question.styles[:input],
       title: 'Alternate student first name',
     )
     Question.create(
@@ -246,6 +272,7 @@ school_form = Form.create(
       key: 'alternate_last_name',
       page: page,
       placeholder: '...',
+      style: Question.styles[:input],
       title: 'Alternate student last name',
     )
     Question.create(
@@ -253,6 +280,7 @@ school_form = Form.create(
       key: 'alternate_address_one',
       page: page,
       placeholder: '...',
+      style: Question.styles[:input],
       title: 'Alternate student address one',
     )
     Question.create(
@@ -260,6 +288,7 @@ school_form = Form.create(
       key: 'alternate_address_two',
       page: page,
       placeholder: '...',
+      style: Question.styles[:input],
       title: 'Alternate student address two',
     )
     Question.create(
@@ -267,6 +296,7 @@ school_form = Form.create(
       key: 'alternate_address_city',
       page: page,
       placeholder: 'San Francisco',
+      style: Question.styles[:input],
       title: 'Alternate student address city',
     )
     Question.create(
@@ -282,6 +312,7 @@ school_form = Form.create(
       key: 'alternate_address_zip',
       page: page,
       placeholder: '90474',
+      style: Question.styles[:input],
       title: 'Alternate student address zip',
     )
     Question.create(
@@ -289,6 +320,7 @@ school_form = Form.create(
       key: 'alternate_home_phone',
       page: page,
       placeholder: '...',
+      style: Question.styles[:input],
       title: 'Alternate student home phone',
     )
     Question.create(
@@ -296,6 +328,7 @@ school_form = Form.create(
       key: 'alternate_cell_phone',
       page: page,
       placeholder: '...',
+      style: Question.styles[:input],
       title: 'Alternate student cell phone',
     )
     Question.create(
@@ -303,6 +336,7 @@ school_form = Form.create(
       key: 'alternate_email',
       page: page,
       placeholder: '...',
+      style: Question.styles[:input],
       title: 'Alternate student email',
     )
     Question.create(
@@ -311,6 +345,7 @@ school_form = Form.create(
       key: 'alternate_birthday',
       page: page,
       placeholder: '...',
+      style: Question.styles[:input],
       title: 'Alternate student birthday',
     )
     Question.create(
@@ -334,6 +369,7 @@ school_form = Form.create(
       key: 'alternate_guardian_first_name',
       page: page,
       placeholder: '...',
+      style: Question.styles[:input],
       title: 'Alternate student\'s parent/guardian first name',
     )
     Question.create(
@@ -341,6 +377,7 @@ school_form = Form.create(
       key: 'alternate_guardian_last_name',
       page: page,
       placeholder: '...',
+      style: Question.styles[:input],
       title: 'Alternate student\'s parent/guardian last name',
     )
     Question.create(
@@ -348,6 +385,7 @@ school_form = Form.create(
       key: 'alternate_guardian_email',
       page: page,
       placeholder: '...',
+      style: Question.styles[:input],
       title: 'Alternate student\'s parent/guardian email',
     )
     Question.create(
@@ -355,6 +393,7 @@ school_form = Form.create(
       key: 'alternate_guardian_phone_number',
       page: page,
       placeholder: '...',
+      style: Question.styles[:input],
       title: 'Alternate student\'s parent/guardian phone number',
     )
     Question.create(
