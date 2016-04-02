@@ -57,7 +57,7 @@
     resources :conferences, only: [:create, :index, :show, :update]
     resources :contacts, only: [:create, :update]
     resources :drafts, only: [:create, :index, :show, :update]
-    resources :emails, only: [:create, :index, :show]
+    resources :emails, only: [:create, :destroy, :index, :show]
     resources :feedbacks, only: [:create]
     resources :groups, only: [:create, :destroy, :index, :show, :update]
     resources :leaderships, only: [:update]

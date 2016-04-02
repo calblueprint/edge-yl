@@ -61,6 +61,7 @@
 
     get emails() {
       return {
+        delete: (id) => `/api/emails/${id}`,
         index: (page) => `/api/emails?page=${page}`,
         show: (id) => `/api/emails/${id}`,
         update: 'api/emails',

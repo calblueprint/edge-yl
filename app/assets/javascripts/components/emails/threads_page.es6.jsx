@@ -62,6 +62,7 @@ class ThreadsPage extends Component {
       <div style={StyleConstants.pages.wrapper}>
         <Header profile={this.selectProfile()} />
         <Sidebar profile={this.selectProfile()} />
+        <Toast toast={this.state.toast} />
         <div style={StyleConstants.pages.default}>
           <div style={StyleConstants.pages.content}>
             <GridHeader title={'Inbox'} />

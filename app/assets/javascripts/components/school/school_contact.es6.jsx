@@ -42,6 +42,11 @@ class SchoolContact extends Component {
           label={'Last name'}
           value={contact.last_name} />
         <CardAttribute
+          action={() => this.storePairing('email')}
+          editable={this.props.editable}
+          label={'Email'}
+          value={contact.email} />
+        <CardAttribute
           action={() => this.storePairing('phone_number')}
           editable={this.props.editable}
           label={'Phone number'}
