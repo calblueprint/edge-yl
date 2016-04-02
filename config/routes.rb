@@ -2,6 +2,7 @@
 
   root 'pages#login'
 
+  get 'check_in/:conference', to: 'pages#check_in'
   get 'email', to: 'pages#email'
   get 'feedback', to: 'pages#feedback'
   get 'forms/school/start', to: 'forms#start_school'
@@ -47,9 +48,12 @@
     patch '/drafts/send/:id', to: 'drafts#send_draft'
     get '/forms/:target', to: 'forms#show'
     post '/import', to: 'schools#import'
+    get '/searchables/check_in', to: 'searchables#check_in'
     get '/searchables/search', to: 'searchables#search'
     get '/searchables/students', to: 'searchables#students'
     patch '/school_submissions/:id/submit', to: 'school_submissions#submit'
+    patch '/students/check_in/:id', to: 'students#check_in'
+    patch '/students/check_out/:id', to: 'students#check_out'
     patch '/student_submissions/:id/submit', to: 'student_submissions#submit'
     get '/users/profile', to: 'users#profile'
 

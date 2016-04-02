@@ -24,9 +24,14 @@ class SidebarCategories extends Component {
   // Render
   // --------------------------------------------------
   render() {
+    first_conference = 1
     return (
       <div style={this.styles.container}>
         <h5 style={this.styles.title}>{'General'}</h5>
+        <SidebarItem
+          label={'Check In'}
+          icon={TypeConstants.icons.check}
+          route={RouteConstants.pages.check_in(first_conference)} />
         <SidebarItem
           label={'Conferences'}
           icon={TypeConstants.icons.conference}

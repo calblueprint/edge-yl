@@ -39,6 +39,7 @@
 
     get pages() {
       return {
+        check_in: (conference_id) => `/check_in/${conference_id}`,
         feedback: '/feedback',
         import: '/import',
         login: '/login',

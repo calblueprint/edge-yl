@@ -26,8 +26,7 @@
         if (request.readyState === XMLHttpRequest.DONE) {
           if (request.status === 200 && resolve) {
             resolve(JSON.parse(request.response));
-          }
-          if (request.status === 204 && resolve) {
+          } else if (request.status === 204 && resolve) {
             resolve();
           }
         }

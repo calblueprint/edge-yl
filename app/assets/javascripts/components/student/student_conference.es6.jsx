@@ -24,7 +24,23 @@ class StudentConference extends Component {
           value={group.full_name} />
       );
     } else {
-      return <CardAttribute label={'Group'} />
+      return <CardAttribute label={'Group'} />;
+    }
+  }
+
+  renderRoom() {
+    var room = this.props.student.room;
+    if (room) {
+      return (
+        <CardAttribute
+          clickable={true}
+          label={'Room'}
+          route={RouteConstants.rooms.show(room.id)}
+          type={'h5'}
+          value={`Room ${room.number} - ${room.building}`} />
+      );
+    } else {
+      return <CardAttribute label={'Room'} />;
     }
   }
 
@@ -35,7 +51,7 @@ class StudentConference extends Component {
         <br />
         {this.renderGroup()}
         <br />
-        <h5>{'Rooming'}</h5>
+        {this.renderRoom()}
       </div>
     );
   }

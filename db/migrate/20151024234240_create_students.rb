@@ -10,6 +10,7 @@ class CreateStudents < ActiveRecord::Migration
       t.integer :allergies, null: false
       t.date    :birthday, null: false
       t.string  :cell_phone, null: false
+      t.boolean :is_checked_in, default: false, null: false
       t.integer :dietary_restrictions, null: false
       t.string  :other_dietary_restrictions, null: false
       t.string  :email, null: false
