@@ -10,12 +10,25 @@ class ThreadGrid extends Component {
   }
 
   // --------------------------------------------------
+  // Helpers
+  // --------------------------------------------------
+  sendReply() {
+    ThreadActions.createReply(
+      this.props.thread.emails[0],
+      this.props.thread.id,
+    );
+  }
+
+  // --------------------------------------------------
   // Render
   // --------------------------------------------------
   render() {
     return (
       <div style={StyleConstants.grids.column}>
-
+        <EmailsCard emails={this.props.thread.emails} />
+        <FormButton
+          action={() => this.sendReply()}
+          content={'Reply'} />
       </div>
     );
   }

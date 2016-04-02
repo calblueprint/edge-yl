@@ -46,13 +46,6 @@ class ThreadPage extends Component {
            this.props.profile;
   }
 
-  sendReply() {
-    ThreadActions.createReply(
-      this.state.thread.emails[0],
-      this.state.thread.id,
-    );
-  }
-
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
@@ -64,9 +57,6 @@ class ThreadPage extends Component {
         <div style={StyleConstants.pages.default}>
           <div style={StyleConstants.pages.content}>
             <ThreadGrid thread={this.state.thread} />
-            <FormButton
-              action={() => this.sendReply()}
-              content={'Reply'} />
           </div>
         </div>
       </div>
