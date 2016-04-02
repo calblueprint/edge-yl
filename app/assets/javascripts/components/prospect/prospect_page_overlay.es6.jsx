@@ -28,7 +28,17 @@ class ProspectPageOverlay extends PageOverlay {
     if (pairing) {
       return <ProspectEditModal pairing={pairing} />
     } else if (template) {
-      return <ProspectCreateModal template={template} />;
+      if (template.model === TypeConstants.models.prospect) {
+        return (
+          <CommentCreateModal
+            profile={this.props.profile}
+            prospect={this.props.prospect}
+            template={this.props.template}
+            type={TypeConstants.comments.prospect} />
+        );
+      } else {
+        return <ProspectCreateModal template={template} />;
+      }
     }
   }
 }

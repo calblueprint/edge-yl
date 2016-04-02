@@ -9,6 +9,7 @@ class PageComments extends Component {
       school: React.PropTypes.object,
       student: React.PropTypes.object,
       type: React.PropTypes.oneOf([
+        TypeConstants.comments.prospect,
         TypeConstants.comments.school,
         TypeConstants.comments.student,
       ]).isRequired,
@@ -60,7 +61,16 @@ class PageComments extends Component {
   // Handlers
   // --------------------------------------------------
   handleClick() {
-    if (this.props.type === TypeConstants.comments.school) {
+    if (this.props.type === TypeConstants.comments.prospect) {
+      ProspectActions.storeTemplate(
+        TypeConstants.models.prospect,
+        {
+          commentable_id: this.props.prospect.id,
+          commentable_type: 'Prospect',
+          user_id: this.props.profile.id,
+        },
+      );
+    } else if (this.props.type === TypeConstants.comments.school) {
       SchoolActions.storeTemplate(
         TypeConstants.models.comment,
         {
@@ -94,7 +104,9 @@ class PageComments extends Component {
 
   renderComments() {
     var comments;
-    if (this.props.type === TypeConstants.comments.school) {
+    if (this.props.type === TypeConstants.comments.prospect) {
+      comments = this.props.prospect.comments;
+    } else if (this.props.type === TypeConstants.comments.school) {
       comments = this.props.school.comments;
     } else if (this.props.type === TypeConstants.comments.student) {
       comments = this.props.student.comments;

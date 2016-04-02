@@ -3,6 +3,7 @@
 
     get comments() {
       return {
+        prospect: 'comment-prospect',
         school: 'comment-school',
         student: 'comment-student',
       };
@@ -47,6 +48,7 @@
         group: 'fa-star',
         hamburger: 'fa-bars',
         promote: 'fa-level-up',
+        prospect: 'fa-folder',
         room: 'fa-book',
         save: 'fa-save',
         school: 'fa-university',

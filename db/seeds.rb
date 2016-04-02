@@ -5,13 +5,13 @@ if Rails.env.development? || Rails.env.staging?
     'schools',
     'contacts',
     'students',
-    'comments',
     'groups',
     'rooms',
     'leaderships',
     'forms',
     'emails',
     'prospects',
+    'comments',
     'submissions',
   ]
   seeds.each do |seed|
