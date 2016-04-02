@@ -1,11 +1,11 @@
-class EmailGrid extends Component {
+class ThreadGrid extends Component {
 
   // --------------------------------------------------
   // Props
   // --------------------------------------------------
   static get propTypes() {
     return {
-      email: React.PropTypes.object.isRequired,
+      thread: React.PropTypes.object.isRequired,
     };
   }
 
@@ -15,8 +15,7 @@ class EmailGrid extends Component {
   render() {
     return (
       <div style={StyleConstants.grids.column}>
-        <EmailHeader email={this.props.email} />
-        <EmailBody email={this.props.email} />
+
       </div>
     );
   }
