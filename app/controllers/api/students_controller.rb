@@ -16,7 +16,7 @@ class Api::StudentsController < Api::BaseController
   end
 
   def show
-    student = Student.includes(comments: :user).find params[:id]
+    student = Student.find params[:id]
     current_user.create_visit('Student', params[:id].to_i)
     render json: student, serializer: StudentShowSerializer
   end
