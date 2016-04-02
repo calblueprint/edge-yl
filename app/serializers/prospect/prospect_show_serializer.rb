@@ -1,0 +1,3 @@
+class ProspectShowSerializer < ProspectIndexSerializer
+
+end

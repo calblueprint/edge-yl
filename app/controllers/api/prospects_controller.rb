@@ -26,6 +26,22 @@ class Api::ProspectsController < Api::BaseController
            status: 204
   end
 
+  def show
+    prospect = Prospect.find params[:id]
+    render json: prospect, serializer: ProspectShowSerializer
+  end
+
+  def update
+    prospect = Prospect.find params[:id]
+    if prospect.update_attributes prospect_params
+      render json: prospect,
+             serializer: ProspectShowSerializer,
+             status: :created
+    else
+      unprocessable_response prospect
+    end
+  end
+
   private
 
   def index_csv

@@ -50,6 +50,7 @@
     get prospects() {
       return {
         index: (page=1) => `/prospects?page=${page}`,
+        show: (id) => `/prospects/${id}`,
       };
     }
 

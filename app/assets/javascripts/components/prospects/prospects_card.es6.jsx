@@ -48,7 +48,9 @@ class ProspectsCard extends Component {
         {this.renderHeader()}
         <div style={StyleConstants.cards.content}>
           <CardAttribute
+            clickable={true}
             label={'Name'}
+            route={RouteConstants.prospects.show(prospect.id)}
             type={'h4'}
             value={prospect.name} />
           <CardAttribute

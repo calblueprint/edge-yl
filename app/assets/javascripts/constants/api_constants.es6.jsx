@@ -106,6 +106,8 @@
         create: '/api/prospects',
         delete: (id) => `/api/prospects/${id}`,
         index: (page) => `/api/prospects?page=${page}`,
+        show: (id) => `/api/prospects/${id}`,
+        update: (id) => `/api/prospects/${id}`,
       }
     }
 
