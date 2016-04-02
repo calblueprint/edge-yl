@@ -659,7 +659,6 @@ primary_form = Form.create(
                    'I do hereby agree to indemnify and hold harmless the EDGE Youth Leadership (including its officers, directors, members and/or volunteers) '+
                    'from any claim by any person whomsoever on account of such care and treatment of said child.',
       key: 'emergency_consent_info',
-      options: EnumConstants::BOOLEANS,
       page: page,
       style: Question.styles[:information],
       title: 'Consent to Treat in Case of Emergency',
@@ -678,13 +677,13 @@ primary_form = Form.create(
                    'to talk to the students if a request is made. In order for student participants to talk with the Psychologist, we need guardian consent. By signing ' +
                    'below you are consenting for your student to speak with a Licensed Psychologist during the EDGE conference.',
       key: 'psychologist_consent_info',
-      options: EnumConstants::BOOLEANS,
       page: page,
       style: Question.styles[:information],
       title: 'Consent to Speak to a Licensed Psychologist if in Need',
     )
     Question.create(
       key: 'psychologist_consent',
+      options: EnumConstants::BOOLEANS,
       page: page,
       style: Question.styles[:dropdown],
       title: 'Do you consent?',

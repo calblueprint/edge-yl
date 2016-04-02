@@ -73,7 +73,7 @@ class FormsController < BaseController
 
   def start_student
     @id = params[:id]
-    @target = params[:target]
+    @target = 'student'
     student_submission = StudentSubmission.find_by id: @id
     if student_submission.nil?
       error_404
