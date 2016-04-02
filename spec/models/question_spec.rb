@@ -4,12 +4,12 @@
 #
 #  id          :integer          not null, primary key
 #  description :string           default(""), not null
-#  format      :integer          default(1), not null
+#  format      :integer          not null
 #  is_required :boolean          default(TRUE), not null
 #  key         :string           not null
 #  options     :string           default([]), not null, is an Array
 #  placeholder :string           default(""), not null
-#  style       :integer          default(1), not null
+#  style       :integer          not null
 #  title       :string           not null
 #  page_id     :integer
 #  created_at  :datetime         not null

@@ -4,12 +4,12 @@
 #
 #  id          :integer          not null, primary key
 #  description :string           default(""), not null
-#  format      :integer          default(1), not null
+#  format      :integer          not null
 #  is_required :boolean          default(TRUE), not null
 #  key         :string           not null
 #  options     :string           default([]), not null, is an Array
 #  placeholder :string           default(""), not null
-#  style       :integer          default(1), not null
+#  style       :integer          not null
 #  title       :string           not null
 #  page_id     :integer
 #  created_at  :datetime         not null
@@ -17,6 +17,8 @@
 #
 
 class Question < ActiveRecord::Base
+
+  before_validation :set_initials, on: :create
 
   enum format: [:date, :text]
   enum style: [:dropdown, :information, :input, :textarea, :waiver]
@@ -37,6 +39,12 @@ class Question < ActiveRecord::Base
 
   def is_input?
     style == Question.styles[:input]
+  end
+
+  private
+
+  def set_initials
+    self.format ||= Question.formats[:text]
   end
 
 end
