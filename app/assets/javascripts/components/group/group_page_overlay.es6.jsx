@@ -24,17 +24,17 @@ class GroupPageOverlay extends PageOverlay {
   // Render
   // --------------------------------------------------
   renderModal() {
-    if (this.props.pairing.model == 'group') {
+    if (this.props.pairing.model == TypeConstants.models.leadership) {
       return (
         <GroupEditModal
           groupables={this.props.groupables}
           pairing={this.props.pairing} />
       );
-    } else if (this.props.pairing.model == 'student') {
+    } else if (this.props.pairing.model == TypeConstants.models.student) {
       return (
         <SearchModal
           group={this.props.group}
-          model={'student'}
+          model={TypeConstants.models.student}
           pairing={this.props.pairing}
           savedSearch={this.props.savedSearch}
           search={this.props.search}
