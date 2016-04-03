@@ -76,7 +76,7 @@ class RoomPage extends Component {
           <div style={StyleConstants.pages.content}>
             <GridHeader
               options={this.generateOptions()}
-              title={`Room: ${room.number}`} />
+              title={`Room: ${room.full_name}`} />
             <RoomGrid
               editable={this.state.editable}
               media={this.state.media}
