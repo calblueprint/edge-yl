@@ -48,11 +48,11 @@ class ConferencePage extends Component {
     var conference = this.state.conference;
     return [
       {
-        action: () => GroupsActions.exportGroups(conference.id),
+        action: () => ConferenceActions.exportGroups(conference.id),
         content: 'Export groups',
       },
       {
-        action: () => RoomsActions.exportRooms(conference.id),
+        action: () => ConferenceActions.exportRooms(conference.id),
         content: 'Export rooms',
       },
       {
