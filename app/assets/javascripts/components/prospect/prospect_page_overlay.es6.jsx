@@ -6,7 +6,7 @@ class ProspectPageOverlay extends PageOverlay {
   static get propTypes() {
     return {
       pairing: React.PropTypes.object,
-      profile: React.PropTypes.object.isRequired,
+      profile: React.PropTypes.object,
       prospect: React.PropTypes.object,
       template: React.PropTypes.object,
     };
@@ -16,7 +16,7 @@ class ProspectPageOverlay extends PageOverlay {
   // Helpers
   // --------------------------------------------------
   closeOverlay() {
-    ProspectsActions.closeOverlay();
+    ProspectActions.closeOverlay();
   }
 
   // --------------------------------------------------
@@ -36,8 +36,6 @@ class ProspectPageOverlay extends PageOverlay {
             template={this.props.template}
             type={TypeConstants.comments.prospect} />
         );
-      } else {
-        return <ProspectCreateModal template={template} />;
       }
     }
   }

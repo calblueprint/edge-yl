@@ -35,7 +35,10 @@
     deleteProspect(id) {
       var response = confirm('This action cannot be undone.');
       if (response) {
-        var resolve = () => this.fetchProspects();
+        var resolve = () => {
+          this.fetchProspects();
+          ViewActions.storeToast(true, 'Prospect removed!');
+        };
         Requester.delete(
           ApiConstants.prospects.delete(id),
           resolve,
