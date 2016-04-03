@@ -99,7 +99,7 @@ class StudentsCard extends Component {
             label={'Room'}
             route={RouteConstants.rooms.show(room.id)}
             type={'h6'}
-            value={room.number} />
+            value={room.full_name} />
         );
       } else {
         return <CardAttribute label={'Room'} />;

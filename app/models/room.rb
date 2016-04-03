@@ -50,4 +50,8 @@ class Room < ActiveRecord::Base
     capacity - students.count
   end
 
+  def full_name
+    "#{building} #{number}"
+  end
+
 end

@@ -5,6 +5,7 @@ class RoomBaseSerializer < BaseSerializer
              :building,
              :capacity,
              :conference_id,
+             :full_name,
              :gender,
              :number
 

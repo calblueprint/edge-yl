@@ -71,13 +71,10 @@ class RoomsCard extends Component {
         <div style={StyleConstants.cards.content}>
           <CardAttribute
             clickable={true}
-            label={'Number'}
+            label={'Name'}
             route={RouteConstants.rooms.show(room.id)}
             type={'h4'}
-            value={room.number} />
-          <CardAttribute
-            label={'Building'}
-            value={room.building} />
+            value={room.full_name} />
           <CardAttribute
             label={'Capacity'}
             value={room.capacity} />

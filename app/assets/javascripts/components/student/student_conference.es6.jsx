@@ -37,7 +37,7 @@ class StudentConference extends Component {
           label={'Room'}
           route={RouteConstants.rooms.show(room.id)}
           type={'h5'}
-          value={`Room ${room.number} - ${room.building}`} />
+          value={room.full_name} />
       );
     } else {
       return <CardAttribute label={'Room'} />;
