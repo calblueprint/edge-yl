@@ -22,7 +22,6 @@
 
     handleStoreErrors() {
       this.errors = true;
-      console.log(this.errors);
     }
   }
   this.StartStore = alt.createStore(StartStore);
