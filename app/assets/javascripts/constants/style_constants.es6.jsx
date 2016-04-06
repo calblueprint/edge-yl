@@ -102,11 +102,11 @@
           prompt: {
             display: 'flex',
             alignItems: 'center',
-            width: '172px',
+            width: '196px',
             marginRight: '24px',
           },
           required: {
-            paddingLeft: '4px',
+            paddingLeft: '3px',
             color: this.colors.red,
           },
           response: {
