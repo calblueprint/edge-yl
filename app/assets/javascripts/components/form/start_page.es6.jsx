@@ -197,7 +197,7 @@ class StartPage extends Component {
       <div style={StyleConstants.wrappers.center}>
         <div style={StyleConstants.pages.center}>
           <div style={this.styles.header}>
-            <h1>{`EDGE Registration - School}`}</h1>
+            <h1>{`EDGE Registration - School`}</h1>
           </div>
           <div style={this.styles.body}>
             {this.renderSchoolForm()}
