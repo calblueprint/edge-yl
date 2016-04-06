@@ -15,7 +15,6 @@ class StartPage extends Component {
     return {
       conferences: React.PropTypes.array,
       id: React.PropTypes.string,
-      target: React.PropTypes.string.isRequired,
     };
   }
 
@@ -101,11 +100,7 @@ class StartPage extends Component {
   // Helpers
   // --------------------------------------------------
   createSubmission() {
-    if (this.props.target === 'school') {
-      StartActions.createSubmission(this.state.conference);
-    } else if (this.props.target === 'student') {
-      window.location = RouteConstants.forms.student(1, this.props.id);
-    }
+    StartActions.createSubmission(this.state.conference);
   }
 
   generateChoice(conference) {
@@ -124,16 +119,14 @@ class StartPage extends Component {
   // Render
   // --------------------------------------------------
   renderConferencesDropdown() {
-    if (this.props.target === 'school') {
-      var conference = this.state.conference;
-      return (
-        <div style={this.styles.dropdown}>
-          <DropdownButton
-            choices={this.generateChoices()}
-            value={conference ? conference.name : null} />
-        </div>
-      );
-    }
+    var conference = this.state.conference;
+    return (
+      <div style={this.styles.dropdown}>
+        <DropdownButton
+          choices={this.generateChoices()}
+          value={conference ? conference.name : null} />
+      </div>
+    );
   }
 
   renderErrors() {
@@ -204,7 +197,7 @@ class StartPage extends Component {
       <div style={StyleConstants.wrappers.center}>
         <div style={StyleConstants.pages.center}>
           <div style={this.styles.header}>
-            <h1>{`EDGE Registration - ${Helpers.humanize(this.props.target)}`}</h1>
+            <h1>{`EDGE Registration - School}`}</h1>
           </div>
           <div style={this.styles.body}>
             {this.renderSchoolForm()}

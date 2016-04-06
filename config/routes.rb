@@ -9,7 +9,6 @@
   get 'forms/school/:id', to: 'forms#show_school'
   get 'forms/student/:id', to: 'forms#show_student'
   get 'forms/:target/:id/preview', to: 'forms#preview'
-  get 'forms/student/:id/start', to: 'forms#start_student'
   get 'forms/:target/:id/success', as: 'forms_success', to: 'forms#success'
   get 'forms/:target/:uuid', to: 'forms#show'
   get 'forms/:target/:uuid/success', to: 'forms#success'
