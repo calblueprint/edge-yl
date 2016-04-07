@@ -10,6 +10,19 @@ class ThreadGrid extends Component {
   }
 
   // --------------------------------------------------
+  // Styles
+  // --------------------------------------------------
+  get styles() {
+    return {
+      footer: {
+        display: 'flex',
+        justifyContent: 'center',
+        marginTop: '12px',
+      },
+    };
+  }
+
+  // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
   sendReply() {
@@ -22,13 +35,28 @@ class ThreadGrid extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
+  renderEmail(email) {
+    return (
+      <EmailsCard
+        email={email}
+        key={email.id} />
+    );
+  }
+
+  renderEmails() {
+    var thread = this.props.thread;
+    return thread.emails.map((email) => this.renderEmail(email));
+  }
+
   render() {
     return (
       <div style={StyleConstants.grids.column}>
-        <EmailsCard emails={this.props.thread.emails} />
-        <FormButton
-          action={() => this.sendReply()}
-          content={'Reply'} />
+        {this.renderEmails()}
+        <div style={this.styles.footer}>
+          <FormButton
+            action={() => this.sendReply()}
+            content={'Reply'} />
+        </div>
       </div>
     );
   }
