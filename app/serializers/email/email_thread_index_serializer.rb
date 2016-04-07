@@ -6,4 +6,5 @@ class EmailThreadIndexSerializer < EmailThreadBaseSerializer
              :subject
 
   has_many :emails, serializer: EmailNameSerializer
+
 end
