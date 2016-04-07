@@ -502,62 +502,117 @@ student_form = Form.create(
     description: 'Emergency Information description',
     form: form,
     number: 2,
-    title: 'Emergency Information',
+    title: 'Emergency Contact Information',
   ) do |page|
     Question.create(
-      key: 'guardian_first_name',
+      key: 'guardian_one_first_name',
       page: page,
       style: Question.styles[:input],
-      title: 'Guardian First Name',
+      title: 'Parent/Guardian 1 First Name',
     )
     Question.create(
-      key: 'guardian_last_name',
+      key: 'guardian_one_last_name',
       page: page,
       style: Question.styles[:input],
-      title: 'Guardian Last Name',
+      title: 'Parent/Guardian 1 Last Name',
     )
     Question.create(
       description: StringConstants::EMAIL_FORMAT,
-      key: 'guardian_email',
+      key: 'guardian_one_email',
       page: page,
       style: Question.styles[:input],
-      title: 'Guardian Email',
+      title: 'Parent/Guardian 1 Email',
     )
     Question.create(
-      key: 'guardian_relationship',
+      key: 'guardian_one_relationship',
       options: EnumConstants::GUARDIAN_RELATIONSHIPS,
       page: page,
       style: Question.styles[:dropdown],
-      title: 'Guardian Relationship',
+      title: 'Parent/Guardian 1 Relationship',
     )
     Question.create(
       description: StringConstants::PHONE_FORMAT,
-      key: 'guardian_phone_number',
+      key: 'guardian_one_phone_number',
       page: page,
       style: Question.styles[:input],
-      title: 'Guardian Phone Number',
+      title: 'Parent/Guardian 1 Phone Number',
     )
     Question.create(
       description: StringConstants::PHONE_FORMAT,
-      key: 'guardian_phone_type',
+      key: 'guardian_one_phone_type',
       options: EnumConstants::PHONE_TYPES,
       page: page,
       style: Question.styles[:dropdown],
-      title: 'Guardian Phone Type',
+      title: 'Parent/Guardian 1 Phone Type',
     )
     Question.create(
       is_required: false,
-      key: 'guardian_employer',
+      key: 'guardian_one_employer',
       page: page,
       style: Question.styles[:input],
-      title: 'Guardian Employer',
+      title: 'Parent/Guardian 1 Employer',
     )
     Question.create(
       is_required: false,
-      key: 'guardian_job_title',
+      key: 'guardian_one_job_title',
       page: page,
       style: Question.styles[:input],
-      title: 'Guardian Job Title',
+      title: 'Parent/Guardian 1 Job Title',
+    )
+    Question.create(
+      key: 'guardian_two_first_name',
+      page: page,
+      style: Question.styles[:input],
+      title: 'Parent/Guardian 2 First Name',
+    )
+    Question.create(
+      key: 'guardian_two_last_name',
+      page: page,
+      style: Question.styles[:input],
+      title: 'Parent/Guardian 2 Last Name',
+    )
+    Question.create(
+      description: StringConstants::EMAIL_FORMAT,
+      key: 'guardian_two_email',
+      page: page,
+      style: Question.styles[:input],
+      title: 'Parent/Guardian 2 Email',
+    )
+    Question.create(
+      key: 'guardian_two_relationship',
+      options: EnumConstants::GUARDIAN_RELATIONSHIPS,
+      page: page,
+      style: Question.styles[:dropdown],
+      title: 'Parent/Guardian 2 Relationship',
+    )
+    Question.create(
+      description: StringConstants::PHONE_FORMAT,
+      key: 'guardian_two_phone_number',
+      page: page,
+      style: Question.styles[:input],
+      title: 'Parent/Guardian 2 Phone Number',
+    )
+    Question.create(
+      description: StringConstants::PHONE_FORMAT,
+      key: 'guardian_two_phone_type',
+      options: EnumConstants::PHONE_TYPES,
+      page: page,
+      style: Question.styles[:dropdown],
+      title: 'Parent/Guardian 2 Phone Type',
+    )
+    Question.create(
+      is_required: false,
+      key: 'guardian_two_employer',
+      page: page,
+      style: Question.styles[:input],
+      title: 'Parent/Guardian 2 Employer',
+    )
+    Question.create(
+      is_required: false,
+      key: 'guardian_two_job_title',
+      page: page,
+      style: Question.styles[:input],
+      title: 'Parent/Guardian 2 Job Title',
     )
   end
   Page.create(
