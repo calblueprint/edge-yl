@@ -84,6 +84,16 @@ class SchoolSubmission < ActiveRecord::Base
     write_attribute(:alternate_address_state, EnumConstants::STATES.index(value))
   end
 
+  def alternate_gender
+    if !read_attribute(:alternate_gender).nil?
+      EnumConstants::GENDERS[read_attribute(:alternate_gender)]
+    end
+  end
+
+  def alternate_gender=(value)
+    write_attribute(:alternate_gender, EnumConstants::GENDERS.index(value))
+  end
+
   def alternate_guardian_phone_type
     if !read_attribute(:alternate_guardian_phone_type).nil?
       EnumConstants::PHONE_TYPES[read_attribute(:alternate_guardian_phone_type)]
@@ -124,6 +134,16 @@ class SchoolSubmission < ActiveRecord::Base
     write_attribute(:has_alternate_student, EnumConstants::BOOLEANS.index(value))
   end
 
+  def primary_address_state
+    if !read_attribute(:primary_address_state).nil?
+      EnumConstants::STATES[read_attribute(:primary_address_state)]
+    end
+  end
+
+  def primary_address_state=(value)
+    write_attribute(:primary_address_state, EnumConstants::STATES.index(value))
+  end
+
   def primary_gender
     if !read_attribute(:primary_gender).nil?
       EnumConstants::GENDERS[read_attribute(:primary_gender)]
@@ -152,16 +172,6 @@ class SchoolSubmission < ActiveRecord::Base
 
   def primary_guardian_relationship=(value)
     write_attribute(:primary_guardian_relationship, EnumConstants::GUARDIAN_RELATIONSHIPS.index(value))
-  end
-
-  def primary_address_state
-    if !read_attribute(:primary_address_state).nil?
-      EnumConstants::STATES[read_attribute(:primary_address_state)]
-    end
-  end
-
-  def primary_address_state=(value)
-    write_attribute(:primary_address_state, EnumConstants::STATES.index(value))
   end
 
   def primary_shirt_size

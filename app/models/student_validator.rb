@@ -28,6 +28,14 @@ class StudentValidator
                 :guardian_one_phone_number,
                 :guardian_one_phone_type,
                 :guardian_one_relationship,
+                :guardian_two_email,
+                :guardian_two_employer,
+                :guardian_two_first_name,
+                :guardian_two_job_title,
+                :guardian_two_last_name,
+                :guardian_two_phone_number,
+                :guardian_two_phone_type,
+                :guardian_two_relationship,
                 :health_conditions,
                 :home_phone,
                 :immunizations,
@@ -70,6 +78,16 @@ class StudentValidator
                                     presence: true
   validates :guardian_one_phone_type, if: :page_two?, presence: true
   validates :guardian_one_relationship, if: :page_two?, presence: true
+  validates :guardian_two_first_name, if: :page_two?, presence: true
+  validates :guardian_two_email, format: ValidationConstants::EMAIL_FORMAT,
+                             if: :page_two?,
+                             presence: true
+  validates :guardian_two_last_name, if: :page_two?, presence: true
+  validates :guardian_two_phone_number, format: ValidationConstants::PHONE_FORMAT,
+                                    if: :page_two?,
+                                    presence: true
+  validates :guardian_two_phone_type, if: :page_two?, presence: true
+  validates :guardian_two_relationship, if: :page_two?, presence: true
 
   validates :allergies, if: :page_three?, presence: true
   validates :dietary_restrictions, if: :page_three?, presence: true

@@ -125,6 +125,26 @@ class StudentSubmission < ActiveRecord::Base
     write_attribute(:guardian_one_relationship, EnumConstants::GUARDIAN_RELATIONSHIPS.index(value))
   end
 
+  def guardian_two_phone_type
+    if !read_attribute(:guardian_two_phone_type).nil?
+      EnumConstants::PHONE_TYPES[read_attribute(:guardian_two_phone_type)]
+    end
+  end
+
+  def guardian_two_phone_type=(value)
+    write_attribute(:guardian_two_phone_type, EnumConstants::PHONE_TYPES.index(value))
+  end
+
+  def guardian_two_relationship
+    if !read_attribute(:guardian_two_relationship).nil?
+      EnumConstants::GUARDIAN_RELATIONSHIPS[read_attribute(:guardian_two_relationship)]
+    end
+  end
+
+  def guardian_two_relationship=(value)
+    write_attribute(:guardian_two_relationship, EnumConstants::GUARDIAN_RELATIONSHIPS.index(value))
+  end
+
   def health_conditions
     if !read_attribute(:health_conditions).nil?
       EnumConstants::BOOLEANS[read_attribute(:health_conditions)]
@@ -309,6 +329,14 @@ class StudentSubmission < ActiveRecord::Base
       guardian_one_phone_number: guardian_one_phone_number,
       guardian_one_phone_type: guardian_one_phone_type,
       guardian_one_relationship: guardian_one_relationship,
+      guardian_two_email: guardian_two_email,
+      guardian_two_employer: guardian_two_employer,
+      guardian_two_first_name: guardian_two_first_name,
+      guardian_two_job_title: guardian_two_job_title,
+      guardian_two_last_name: guardian_two_last_name,
+      guardian_two_phone_number: guardian_two_phone_number,
+      guardian_two_phone_type: guardian_two_phone_type,
+      guardian_two_relationship: guardian_two_relationship,
     }
   end
 
