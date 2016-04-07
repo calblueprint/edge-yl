@@ -1,17 +1,17 @@
 Conference.all.each do |conference|
-  (1..5).each do |index|
+  (81..89).each do |index|
     new_room = Room.create(
-      building: "#{Faker::Lorem.word} building",
-      capacity: 20,
+      building: "#{Faker::Lorem.word}",
+      capacity: 3 + rand(2),
       conference: conference,
       gender: index % 3,
       number: index,
     )
-    puts "Created room #{new_room.number} for conference #{conference.name}."
+    puts "Created room #{new_room.full_name} for conference #{conference.name}."
   end
 end
 
 conference = Conference.last
 
 conference.assign_students_to_rooms
-puts "Assigned students to rooms in #{conference.name}"
+puts "Assigned students to rooms in #{conference.name}."

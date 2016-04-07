@@ -34,13 +34,15 @@ class FormsController < BaseController
       error_404
     elsif !school_submission.is_active
       redirect_to forms_success_path(id: @id, target: @target)
+      return
     end
     page_progress = school_submission.page_progress
     if @page.nil?
       @page = page_progress
     end
     if @page > page_progress
-      redirect_to forms_path(id: @id, target: @target, page: page_progress)
+      redirect_to forms_school_path(id: @id, page: page_progress)
+      return
     end
     render 'show'
   end
@@ -54,31 +56,34 @@ class FormsController < BaseController
       error_404
     elsif !student_submission.is_active
       redirect_to forms_success_path(id: @id, target: @target)
+      return
     end
     page_progress = student_submission.page_progress
     if @page.nil?
       @page = page_progress
     end
     if @page > page_progress
-      redirect_to forms_path(id: @id, target: @target, page: page_progress)
+      redirect_to forms_student_path(id: @id, page: page_progress)
+      return
     end
     render 'show'
   end
 
   def start_school
-    @conferences = Conference.all
-    @target = 'school'
+    @conferences = Conference.active
+    if @conferences.size == 0
+      error_404
+    end
     render 'start'
   end
 
   def start_student
     @id = params[:id]
-    @target = 'student'
     student_submission = StudentSubmission.find_by id: @id
     if student_submission.nil?
       error_404
     end
-    render 'start'
+    redirect_to forms_student_path(id: @id, page: 1)
   end
 
   def success

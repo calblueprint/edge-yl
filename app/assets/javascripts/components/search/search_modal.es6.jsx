@@ -54,7 +54,7 @@ class SearchModal extends EditModal {
 
   renderBody() {
     var header = null;
-    if (this.props.model == 'student') {
+    if (this.props.model == TypeConstants.models.student) {
         header = <CardHeader
           content={'Add a Student'}
           options={this.generateOptions()} />

@@ -37,6 +37,10 @@ class ThreadsCard extends Component {
   // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
+  deleteThread() {
+    ThreadsActions.deleteThread(this.props.thread.id);
+  }
+
   generateEmailRoute(email) {
     if (email.is_draft) {
       return RouteConstants.drafts.show(email.id);
@@ -101,6 +105,10 @@ class ThreadsCard extends Component {
             <p>{thread.content}</p>
           </div>
         </div>
+        <Clickable
+          action={() => this.deleteThread()}
+          icon={'fa-trash'}
+          type={'i-left'} />
       </div>
     );
   }

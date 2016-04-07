@@ -140,7 +140,7 @@
       Requester.csv(ApiConstants.csvs.rooms(conference_id), 'rooms');
       return true;
     }
-    
+
     fetchConference(id) {
       var resolve = (response) => this.storeConference(response);
       Requester.get(ApiConstants.conferences.show(id), resolve);

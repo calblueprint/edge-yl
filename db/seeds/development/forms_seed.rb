@@ -11,54 +11,48 @@ school_form = Form.create(
     Question.create(
       key: 'name',
       page: page,
-      placeholder: '...',
       style: Question.styles[:input],
-      title: 'School name',
+      title: 'School Name',
     )
     Question.create(
       key: 'address_one',
       page: page,
-      placeholder: '...',
       style: Question.styles[:input],
-      title: 'Address one',
+      title: 'School Address One',
     )
     Question.create(
       is_required: false,
       key: 'address_two',
       page: page,
-      placeholder: '...',
       style: Question.styles[:input],
-      title: 'Address two',
+      title: 'School Address Two',
     )
     Question.create(
       key: 'address_city',
       page: page,
-      placeholder: '...',
       style: Question.styles[:input],
-      title: 'Address city',
+      title: 'School Address City',
     )
     Question.create(
       key: 'address_state',
       options: EnumConstants::STATES,
       page: page,
-      placeholder: '...',
       style: Question.styles[:dropdown],
-      title: 'Address state',
+      title: 'School Address State',
     )
     Question.create(
+      description: StringConstants::ZIP_FORMAT,
       key: 'address_zip',
       page: page,
-      placeholder: '...',
       style: Question.styles[:input],
-      title: 'Address zip',
+      title: 'School Address Zip',
     )
     Question.create(
       is_required: false,
       key: 'website',
       page: page,
-      placeholder: '...',
       style: Question.styles[:input],
-      title: 'School website',
+      title: 'School Website',
     )
   end
   Page.create(
@@ -70,184 +64,174 @@ school_form = Form.create(
     Question.create(
       key: 'contact_first_name',
       page: page,
-      placeholder: '...',
       style: Question.styles[:input],
-      title: 'School contact first name',
+      title: 'School Contact First Name',
     )
     Question.create(
       key: 'contact_last_name',
       page: page,
-      placeholder: '...',
       style: Question.styles[:input],
-      title: 'School contact last name',
+      title: 'School Contact Last Name',
     )
     Question.create(
       key: 'contact_title',
       page: page,
-      placeholder: '...',
       style: Question.styles[:input],
-      title: 'School contact title',
+      title: 'School Contact Title',
     )
     Question.create(
+      description: StringConstants::EMAIL_FORMAT,
       key: 'contact_email',
       page: page,
-      placeholder: '...',
       style: Question.styles[:input],
-      title: 'School contact email',
+      title: 'School Contact Email',
     )
     Question.create(
+      description: StringConstants::PHONE_FORMAT,
       key: 'contact_phone_number',
       page: page,
-      placeholder: '...',
       style: Question.styles[:input],
-      title: 'School contact phone number',
+      title: 'School Contact Phone Number',
     )
   end
   Page.create(
     form: form,
-    description: 'General information about the primary student from your school.',
+    description: 'General information about the primary Student from your school.',
     number: 3,
     title: 'Step 3 - Primary Student Information',
   ) do |page|
     Question.create(
       key: 'primary_first_name',
       page: page,
-      placeholder: '...',
       style: Question.styles[:input],
-      title: 'Student first name',
+      title: 'Primary Student First Name',
     )
     Question.create(
       key: 'primary_last_name',
       page: page,
-      placeholder: '...',
       style: Question.styles[:input],
-      title: 'Student last name',
+      title: 'Primary Student Last Name',
     )
     Question.create(
       key: 'primary_address_one',
       page: page,
-      placeholder: '...',
       style: Question.styles[:input],
-      title: 'Student address one',
+      title: 'Primary Student Address One',
     )
     Question.create(
       is_required: false,
       key: 'primary_address_two',
       page: page,
-      placeholder: '...',
       style: Question.styles[:input],
-      title: 'Student address two',
+      title: 'Primary Student Address Two',
     )
     Question.create(
       key: 'primary_address_city',
       page: page,
-      placeholder: 'San Francisco',
       style: Question.styles[:input],
-      title: 'Student address city',
+      title: 'Primary Student Address City',
     )
     Question.create(
       key: 'primary_address_state',
       options: EnumConstants::STATES,
       page: page,
       style: Question.styles[:dropdown],
-      title: 'Student address state',
+      title: 'Primary Student Address State',
     )
     Question.create(
+      description: StringConstants::ZIP_FORMAT,
       key: 'primary_address_zip',
       page: page,
-      placeholder: '90474',
       style: Question.styles[:input],
-      title: 'Student address zip',
+      title: 'Primary Student Address Zip',
     )
     Question.create(
+      description: StringConstants::PHONE_FORMAT,
       key: 'primary_home_phone',
       page: page,
-      placeholder: '...',
       style: Question.styles[:input],
-      title: 'Student home phone',
+      title: 'Primary Student Home Phone',
     )
     Question.create(
+      description: StringConstants::PHONE_FORMAT,
       key: 'primary_cell_phone',
       page: page,
-      placeholder: '...',
       style: Question.styles[:input],
-      title: 'Student cell phone',
+      title: 'Primary Student Cell Phone',
     )
     Question.create(
+      description: StringConstants::EMAIL_FORMAT,
       key: 'primary_email',
       page: page,
-      placeholder: '...',
       style: Question.styles[:input],
-      title: 'Student email',
+      title: 'Primary Student Email',
     )
     Question.create(
       format: Question.formats[:date],
       key: 'primary_birthday',
       page: page,
-      placeholder: '...',
       style: Question.styles[:input],
-      title: 'Student birthday',
+      title: 'Primary Student Birthday',
     )
     Question.create(
       key: 'primary_gender',
       options: Student.genders.keys,
       page: page,
       style: Question.styles[:dropdown],
-      title: 'Student gender',
+      title: 'Primary Student Gender',
     )
     Question.create(
       key: 'primary_shirt_size',
       options: EnumConstants::SHIRT_SIZES,
       page: page,
       style: Question.styles[:dropdown],
-      title: 'Student shirt size',
+      title: 'Primary Student Shirt Size',
     )
         Question.create(
       key: 'primary_guardian_first_name',
       page: page,
-      placeholder: '...',
       style: Question.styles[:input],
-      title: 'Parent/guardian first name',
+      title: 'Primary Student Parent/Guardian First Name',
     )
     Question.create(
       key: 'primary_guardian_last_name',
       page: page,
-      placeholder: '...',
       style: Question.styles[:input],
-      title: 'Parent/guardian last name',
+      title: 'Primary Student Parent/Guardian Last Name',
     )
     Question.create(
+      description: StringConstants::EMAIL_FORMAT,
       key: 'primary_guardian_email',
       page: page,
-      placeholder: '...',
       style: Question.styles[:input],
-      title: 'Parent/guardian email',
+      title: 'Primary Student Parent/Guardian Email',
     )
     Question.create(
+      description: StringConstants::PHONE_FORMAT,
       key: 'primary_guardian_phone_number',
       page: page,
-      placeholder: '...',
       style: Question.styles[:input],
-      title: 'Parent/guardian phone number',
+      title: 'Primary Student Parent/Guardian Phone Number',
     )
     Question.create(
+      description: StringConstants::PHONE_FORMAT,
       key: 'primary_guardian_phone_type',
       options: EnumConstants::PHONE_TYPES,
       page: page,
       style: Question.styles[:dropdown],
-      title: 'Parent/guardian phone type',
+      title: 'Primary Student Parent/Guardian Phone Type',
     )
     Question.create(
       key: 'primary_guardian_relationship',
       options: EnumConstants::GUARDIAN_RELATIONSHIPS,
       page: page,
       style: Question.styles[:dropdown],
-      title: 'Parent/guardian relationship',
+      title: 'Primary Student Parent/Guardian Relationship',
     )
   end
   Page.create(
     form: form,
-    description: 'General information about the alternate student from your school.',
+    description: 'General information about the alternate Student from your school.',
     is_last: true,
     number: 4,
     title: 'Step 4 - Alternate Student Information',
@@ -257,47 +241,42 @@ school_form = Form.create(
       options: EnumConstants::BOOLEANS,
       page: page,
       style: Question.styles[:dropdown],
-      title: 'Would you like to enter information about an alternate student?',
+      title: 'Do you have an alternate student?',
     )
     Question.create(
       is_required: false,
       key: 'alternate_first_name',
       page: page,
-      placeholder: '...',
       style: Question.styles[:input],
-      title: 'Alternate student first name',
+      title: 'Alternate Student First Name',
     )
     Question.create(
       is_required: false,
       key: 'alternate_last_name',
       page: page,
-      placeholder: '...',
       style: Question.styles[:input],
-      title: 'Alternate student last name',
+      title: 'Alternate Student Last Name',
     )
     Question.create(
       is_required: false,
       key: 'alternate_address_one',
       page: page,
-      placeholder: '...',
       style: Question.styles[:input],
-      title: 'Alternate student address one',
+      title: 'Alternate Student Address One',
     )
     Question.create(
       is_required: false,
       key: 'alternate_address_two',
       page: page,
-      placeholder: '...',
       style: Question.styles[:input],
-      title: 'Alternate student address two',
+      title: 'Alternate Student Address Two',
     )
     Question.create(
       is_required: false,
       key: 'alternate_address_city',
       page: page,
-      placeholder: 'San Francisco',
       style: Question.styles[:input],
-      title: 'Alternate student address city',
+      title: 'Alternate Student Address City',
     )
     Question.create(
       is_required: false,
@@ -305,48 +284,47 @@ school_form = Form.create(
       options: EnumConstants::STATES,
       page: page,
       style: Question.styles[:dropdown],
-      title: 'Alternate student address state',
+      title: 'Alternate Student Address State',
     )
     Question.create(
+      description: StringConstants::ZIP_FORMAT,
       is_required: false,
       key: 'alternate_address_zip',
       page: page,
-      placeholder: '90474',
       style: Question.styles[:input],
-      title: 'Alternate student address zip',
+      title: 'Alternate Student Address Zip',
     )
     Question.create(
+      description: StringConstants::PHONE_FORMAT,
       is_required: false,
       key: 'alternate_home_phone',
       page: page,
-      placeholder: '...',
       style: Question.styles[:input],
-      title: 'Alternate student home phone',
+      title: 'Alternate Student Home Phone',
     )
     Question.create(
+      description: StringConstants::PHONE_FORMAT,
       is_required: false,
       key: 'alternate_cell_phone',
       page: page,
-      placeholder: '...',
       style: Question.styles[:input],
-      title: 'Alternate student cell phone',
+      title: 'Alternate Student Cell Phone',
     )
     Question.create(
+      description: StringConstants::EMAIL_FORMAT,
       is_required: false,
       key: 'alternate_email',
       page: page,
-      placeholder: '...',
       style: Question.styles[:input],
-      title: 'Alternate student email',
+      title: 'Alternate Student Email',
     )
     Question.create(
       is_required: false,
       format: Question.formats[:date],
       key: 'alternate_birthday',
       page: page,
-      placeholder: '...',
       style: Question.styles[:input],
-      title: 'Alternate student birthday',
+      title: 'Alternate Student Birthday',
     )
     Question.create(
       is_required: false,
@@ -354,7 +332,7 @@ school_form = Form.create(
       options: EnumConstants::GENDERS,
       page: page,
       style: Question.styles[:dropdown],
-      title: 'Alternate student gender',
+      title: 'Alternate Student Gender',
     )
     Question.create(
       is_required: false,
@@ -362,47 +340,46 @@ school_form = Form.create(
       options: EnumConstants::SHIRT_SIZES,
       page: page,
       style: Question.styles[:dropdown],
-      title: 'Alternate student shirt size',
+      title: 'Alternate Student Shirt Size',
     )
     Question.create(
       is_required: false,
       key: 'alternate_guardian_first_name',
       page: page,
-      placeholder: '...',
       style: Question.styles[:input],
-      title: 'Alternate student\'s parent/guardian first name',
+      title: 'Alternate Student Parent/Guardian First Name',
     )
     Question.create(
       is_required: false,
       key: 'alternate_guardian_last_name',
       page: page,
-      placeholder: '...',
       style: Question.styles[:input],
-      title: 'Alternate student\'s parent/guardian last name',
+      title: 'Alternate Student Parent/Guardian Last Name',
     )
     Question.create(
+      description: StringConstants::EMAIL_FORMAT,
       is_required: false,
       key: 'alternate_guardian_email',
       page: page,
-      placeholder: '...',
       style: Question.styles[:input],
-      title: 'Alternate student\'s parent/guardian email',
+      title: 'Alternate Student Parent/Guardian Email',
     )
     Question.create(
+      description: StringConstants::PHONE_FORMAT,
       is_required: false,
       key: 'alternate_guardian_phone_number',
       page: page,
-      placeholder: '...',
       style: Question.styles[:input],
-      title: 'Alternate student\'s parent/guardian phone number',
+      title: 'Alternate Student Parent/Guardian Phone Number',
     )
     Question.create(
+      description: StringConstants::PHONE_FORMAT,
       is_required: false,
       key: 'alternate_guardian_phone_type',
       options: EnumConstants::PHONE_TYPES,
       page: page,
       style: Question.styles[:dropdown],
-      title: 'Alternate student\'s parent/guardian phone type',
+      title: 'Alternate Student Parent/Guardian Phone Type',
     )
     Question.create(
       is_required: false,
@@ -410,14 +387,14 @@ school_form = Form.create(
       options: EnumConstants::GUARDIAN_RELATIONSHIPS,
       page: page,
       style: Question.styles[:dropdown],
-      title: 'Alternate student\'s parent/guardian relationship',
+      title: 'Alternate Student Parent/Guardian Relationship',
     )
   end
 end
 
 puts "Created form #{school_form.title}."
 
-primary_form = Form.create(
+student_form = Form.create(
   target: Form.targets[:student],
   title: 'Student Form',
 ) do |form|
@@ -430,81 +407,74 @@ primary_form = Form.create(
     Question.create(
       key: 'first_name',
       page: page,
-      placeholder: 'Kira',
       style: Question.styles[:input],
-      title: 'First name',
+      title: 'First Name',
     )
     Question.create(
       key: 'last_name',
       page: page,
-      placeholder: 'Klapper',
       style: Question.styles[:input],
-      title: 'Last name',
+      title: 'Last Name',
     )
     Question.create(
       is_required: false,
       key: 'preferred_name',
       page: page,
-      placeholder: 'Kira',
       style: Question.styles[:input],
-      title: 'Preferred name',
+      title: 'Preferred Name',
     )
     Question.create(
       key: 'address_one',
       page: page,
-      placeholder: '213 Queen Street',
       style: Question.styles[:input],
-      title: 'Address one',
+      title: 'Address One',
     )
     Question.create(
       is_required: false,
       key: 'address_two',
       page: page,
-      placeholder: '213 Queen Street',
       style: Question.styles[:input],
-      title: 'Address two',
+      title: 'Address Two',
     )
     Question.create(
       key: 'address_city',
       page: page,
-      placeholder: 'San Francisco',
       style: Question.styles[:input],
-      title: 'Address city',
+      title: 'Address City',
     )
     Question.create(
       key: 'address_state',
       page: page,
-      placeholder: 'CA',
       style: Question.styles[:input],
-      title: 'Address state',
+      title: 'Address State',
     )
     Question.create(
+      description: StringConstants::ZIP_FORMAT,
       key: 'address_zip',
       page: page,
-      placeholder: '90474',
       style: Question.styles[:input],
-      title: 'Address zip',
+      title: 'Address Zip',
     )
     Question.create(
+      description: StringConstants::EMAIL_FORMAT,
       key: 'email',
       page: page,
-      placeholder: 'kiraklapper@gmail.com',
       style: Question.styles[:input],
       title: 'Email',
     )
     Question.create(
+      description: StringConstants::PHONE_FORMAT,
       key: 'home_phone',
       page: page,
-      placeholder: '(555) 555-5555',
       style: Question.styles[:input],
-      title: 'Home phone',
+      title: 'Home Phone',
     )
     Question.create(
+      description: StringConstants::PHONE_FORMAT,
       key: 'cell_phone',
       page: page,
-      placeholder: '(555) 555-5555',
       style: Question.styles[:input],
-      title: 'Cell phone',
+      title: 'Cell Phone',
     )
     Question.create(
       key: 'gender',
@@ -516,7 +486,6 @@ primary_form = Form.create(
     Question.create(
       key: 'birthday',
       page: page,
-      placeholder: '01/01/96',
       style: Question.styles[:input],
       title: 'Birthday',
     )
@@ -525,7 +494,7 @@ primary_form = Form.create(
       options: EnumConstants::SHIRT_SIZES,
       page: page,
       style: Question.styles[:dropdown],
-      title: 'T-shirt size',
+      title: 'Shirt Size',
     )
   end
   Page.create(
@@ -537,60 +506,57 @@ primary_form = Form.create(
     Question.create(
       key: 'guardian_first_name',
       page: page,
-      placeholder: 'Kira',
       style: Question.styles[:input],
-      title: 'Guardian first name',
+      title: 'Guardian First Name',
     )
     Question.create(
       key: 'guardian_last_name',
       page: page,
-      placeholder: 'Klapper',
       style: Question.styles[:input],
-      title: 'Guardian last name',
+      title: 'Guardian Last Name',
     )
     Question.create(
+      description: StringConstants::EMAIL_FORMAT,
       key: 'guardian_email',
       page: page,
-      placeholder: 'kiraklapper@gmail.com',
       style: Question.styles[:input],
-      title: 'Guardian email',
+      title: 'Guardian Email',
     )
     Question.create(
       key: 'guardian_relationship',
       options: EnumConstants::GUARDIAN_RELATIONSHIPS,
       page: page,
       style: Question.styles[:dropdown],
-      title: 'Guardian relationship',
+      title: 'Guardian Relationship',
     )
     Question.create(
+      description: StringConstants::PHONE_FORMAT,
       key: 'guardian_phone_number',
       page: page,
-      placeholder: '(555) 555-5555',
       style: Question.styles[:input],
-      title: 'Guardian phone number',
+      title: 'Guardian Phone Number',
     )
     Question.create(
+      description: StringConstants::PHONE_FORMAT,
       key: 'guardian_phone_type',
       options: EnumConstants::PHONE_TYPES,
       page: page,
       style: Question.styles[:dropdown],
-      title: 'Guardian phone type',
+      title: 'Guardian Phone Type',
     )
     Question.create(
       is_required: false,
       key: 'guardian_employer',
       page: page,
-      placeholder: 'EDGE Youth Leadership',
       style: Question.styles[:input],
-      title: 'Guardian employer',
+      title: 'Guardian Employer',
     )
     Question.create(
       is_required: false,
       key: 'guardian_job_title',
       page: page,
-      placeholder: 'Software Engineer',
       style: Question.styles[:input],
-      title: 'Guardian job title',
+      title: 'Guardian Job Title',
     )
   end
   Page.create(
@@ -691,10 +657,9 @@ primary_form = Form.create(
     Question.create(
       key: 'medical_guardian_name',
       page: page,
-      placeholder: 'Kira Klapper',
       style: Question.styles[:input],
       title: 'Guardian Name',
     )
   end
 end
-puts "Created form #{primary_form.title}."
+puts "Created form #{student_form.title}."

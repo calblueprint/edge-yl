@@ -8,6 +8,30 @@ class Api::StudentsController < Api::BaseController
   has_scope :is_primary, only: [:index]
   has_scope :sort, only: [:index]
 
+  def check_in
+    student = Student.find(params[:id])
+    student.is_checked_in = true
+    if student.save
+      render json: student,
+             serializer: StudentShowSerializer,
+             status: :created
+    else
+      unprocessable_response student
+    end
+  end
+
+  def check_out
+    student = Student.find(params[:id])
+    student.is_checked_in = false
+    if student.save
+      render json: student,
+             serializer: StudentShowSerializer,
+             status: :created
+    else
+      unprocessable_response student
+    end
+  end
+
   def index
     respond_to do |format|
       format.csv { index_csv }
@@ -16,7 +40,7 @@ class Api::StudentsController < Api::BaseController
   end
 
   def show
-    student = Student.includes(comments: :user).find params[:id]
+    student = Student.find params[:id]
     current_user.create_visit('Student', params[:id].to_i)
     render json: student, serializer: StudentShowSerializer
   end

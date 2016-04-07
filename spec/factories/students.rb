@@ -11,6 +11,7 @@
 #  allergies                  :integer          not null
 #  birthday                   :date             not null
 #  cell_phone                 :string           not null
+#  is_checked_in              :boolean          default(FALSE), not null
 #  dietary_restrictions       :integer          not null
 #  other_dietary_restrictions :string           not null
 #  email                      :string           not null

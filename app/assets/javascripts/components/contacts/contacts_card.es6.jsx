@@ -63,6 +63,9 @@ class ContactsCard extends Component {
             label={'Last name'}
             value={contact.last_name} />
           <CardAttribute
+            label={'Email'}
+            value={contact.email} />
+          <CardAttribute
             label={'Phone number'}
             value={contact.phone_number} />
           <CardAttribute

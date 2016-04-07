@@ -1,4 +1,4 @@
-class RoomPage extends Component {
+class CheckInPage extends Component {
 
   // --------------------------------------------------
   // Setup
@@ -13,9 +13,28 @@ class RoomPage extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      id: React.PropTypes.number.isRequired,
+      conferenceId: React.PropTypes.number.isRequired,
+      conferences: React.PropTypes.array.isRequired,
       profile: React.PropTypes.object.isRequired,
     };
+  }
+
+  // --------------------------------------------------
+  // Props
+  // --------------------------------------------------
+  generateStudentGrid() {
+    if (this.state.student) {
+      return (
+        <CheckInStudentGrid
+          media={this.state.media}
+          student={this.state.student} />
+      );
+    } else {
+      return (
+        <GridEmpty
+          content={'Please search for a student to check-in.'}/>
+      );
+    }
   }
 
   // --------------------------------------------------
@@ -23,38 +42,21 @@ class RoomPage extends Component {
   // --------------------------------------------------
   componentWillMount() {
     this.setState(ProfileStore.getState());
-    this.setState(RoomStore.getState());
+    this.setState(CheckInStore.getState());
     this.setState(ViewStore.getState());
   }
 
   componentDidMount() {
     ProfileStore.listen(this._listener);
-    RoomStore.listen(this._listener);
+    CheckInStore.listen(this._listener);
     ViewStore.listen(this._listener);
-    RoomActions.fetchRoom(this.props.id);
     ViewActions.attachListener();
   }
 
   componentWillUnmount() {
     ProfileStore.unlisten(this._listener);
-    RoomStore.unlisten(this._listener);
+    CheckInStore.unlisten(this._listener);
     ViewStore.unlisten(this._listener);
-  }
-
-  // --------------------------------------------------
-  // Helpers
-  // --------------------------------------------------
-  generateOptions() {
-    return [
-      {
-        action: () => RoomActions.storeEditability(),
-        content: this.state.editable ? 'Finish' : 'Edit',
-      },
-      {
-        action: () => RoomActions.exportRoom(this.state.room.id),
-        content: 'Export',
-      },
-    ];
   }
 
   selectProfile() {
@@ -67,7 +69,6 @@ class RoomPage extends Component {
   // Render
   // --------------------------------------------------
   render() {
-    var room = this.state.room;
     return (
       <div style={StyleConstants.pages.wrapper}>
         <Header profile={this.selectProfile()} />
@@ -75,12 +76,14 @@ class RoomPage extends Component {
         <div style={StyleConstants.pages.default}>
           <div style={StyleConstants.pages.content}>
             <GridHeader
-              options={this.generateOptions()}
-              title={`Room: ${room.full_name}`} />
-            <RoomGrid
-              editable={this.state.editable}
-              media={this.state.media}
-              room={room} />
+              title={'Check In'} />
+            <CheckInSearch
+              pagination={{current: 1, limit: 1}}
+              conferenceId={this.props.conferenceId}
+              results={this.state.results}
+              savedSearch={this.state.savedSearch}
+              search={this.state.search} />
+            {this.generateStudentGrid()}
           </div>
         </div>
       </div>

@@ -7,18 +7,12 @@ class ApplicationMailer < ActionMailer::Base
 
   def standard(email)
     @email = email
-    if Rails.env.staging?
-      mail from: email.from,
-           recipient: email.recipient,
-           sender: email.sender,
-           subject: email.subject,
-           to: email.to
-    else
-      mail from: email.from,
-           to: email.to,
-           subject: email.subject,
-           template_path: 'mails'
-    end
+    mail from: email.from,
+         recipient: email.recipient,
+         sender: email.sender,
+         subject: email.subject,
+         template_path: 'mails',
+         to: email.to
   end
 
 end

@@ -20,7 +20,7 @@ class GroupGrid extends Component {
       GroupActions.storePairing({
         id: group.id,
         key: key,
-        model: 'student',
+        model: TypeConstants.models.student,
         type: 'search',
         value: '',
       });

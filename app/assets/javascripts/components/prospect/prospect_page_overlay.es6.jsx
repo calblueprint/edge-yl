@@ -6,7 +6,7 @@ class ProspectPageOverlay extends PageOverlay {
   static get propTypes() {
     return {
       pairing: React.PropTypes.object,
-      profile: React.PropTypes.object.isRequired,
+      profile: React.PropTypes.object,
       prospect: React.PropTypes.object,
       template: React.PropTypes.object,
     };
@@ -16,7 +16,7 @@ class ProspectPageOverlay extends PageOverlay {
   // Helpers
   // --------------------------------------------------
   closeOverlay() {
-    ProspectsActions.closeOverlay();
+    ProspectActions.closeOverlay();
   }
 
   // --------------------------------------------------
@@ -28,7 +28,15 @@ class ProspectPageOverlay extends PageOverlay {
     if (pairing) {
       return <ProspectEditModal pairing={pairing} />
     } else if (template) {
-      return <ProspectCreateModal template={template} />;
+      if (template.model === TypeConstants.models.prospect) {
+        return (
+          <CommentCreateModal
+            profile={this.props.profile}
+            prospect={this.props.prospect}
+            template={this.props.template}
+            type={TypeConstants.comments.prospect} />
+        );
+      }
     }
   }
 }

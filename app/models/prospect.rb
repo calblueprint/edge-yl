@@ -16,6 +16,8 @@
 
 class Prospect < ActiveRecord::Base
 
+  has_many :comments, as: :commentable, dependent: :destroy
+
   validates :contact_email, presence: true
   validates :contact_first_name, presence: true
   validates :contact_last_name, presence: true

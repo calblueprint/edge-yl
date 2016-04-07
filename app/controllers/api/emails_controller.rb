@@ -20,6 +20,15 @@ class Api::EmailsController < Api::BaseController
     end
   end
 
+  def destroy
+    thread = EmailThread.find params[:id]
+    if thread.destroy
+      render json: thread, serializer: EmailThreadBaseSerializer
+    else
+      unprocessable_response thread
+    end
+  end
+
   def index
     threads = current_user.email_threads.page params[:page]
     render json: threads,

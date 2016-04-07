@@ -18,6 +18,7 @@ class StudentShowSerializer < StudentIndexSerializer
              :guardian_phone_type,
              :guardian_relationship,
              :home_phone,
+             :is_checked_in,
              :last_name,
              :preferred_name,
              :shirt_size,

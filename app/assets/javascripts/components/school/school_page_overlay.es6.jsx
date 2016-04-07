@@ -40,7 +40,7 @@ class SchoolPageOverlay extends PageOverlay {
             profile={this.props.profile}
             school={this.props.school}
             template={this.props.template}
-            type={TypeConstants.pages.school} />
+            type={TypeConstants.comments.school} />
         );
       }
     }
