@@ -32,6 +32,13 @@ class FormInput extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
+  renderDescription() {
+    var question = this.props.question;
+    if (question.description) {
+      return <p>{question.description}</p>;
+    }
+  }
+
   renderError() {
     var error = this.props.question.error;
     if (error) {
@@ -70,6 +77,7 @@ class FormInput extends Component {
       <div style={StyleConstants.forms.questions.container}>
         <div style={StyleConstants.forms.questions.prompt}>
           <h6>{this.props.question.title}{this.renderRequired()}</h6>
+          {this.renderDescription()}
         </div>
         <div style={StyleConstants.forms.questions.response}>
           {this.renderInput()}

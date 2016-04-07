@@ -41,6 +41,7 @@ school_form = Form.create(
       title: 'School Address State',
     )
     Question.create(
+      description: 'Format: ##### or #####-####',
       key: 'address_zip',
       page: page,
       style: Question.styles[:input],

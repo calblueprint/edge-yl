@@ -159,7 +159,7 @@ class StudentSubmission < ActiveRecord::Base
 
   def form_url
     # TODO (Warren): !!!
-    "http://edge-yl-staging.herokuapp.com/forms/student/#{id}/start"
+    "http://edge-yl-staging.herokuapp.com/forms/student/#{id}"
   end
 
   def full_name

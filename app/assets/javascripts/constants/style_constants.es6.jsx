@@ -101,7 +101,8 @@
           },
           prompt: {
             display: 'flex',
-            alignItems: 'center',
+            flexFlow: 'column',
+            justifyContent: 'center',
             width: '196px',
             marginRight: '24px',
           },
