@@ -2,48 +2,69 @@
   <div style="width: 600px; padding: 24px; margin: auto; background-color: #ffffff;">
     <h4>Hi <%= @school_submission.contact_first_name %>,</h4>
 
-    <p>Thank you for your student selection. We can't wait to meet your student at the upcoming conference!</p>
+    <p>Thank you for your student selection. We can't wait to meet your student at the upcoming conference! For the next step, your student was sent a link to confirm the rest of their registration process.</p>
 
-    <p>Your student was sent a link to confirm the rest of their registration process.</p>
-
-    <p>Please review the information below for accuracy. Please email any corrections to registration@edgeyl.org.</p>
+    <p>Please review the information below for accuracy. Please Email any corrections or questions to registration@edgeyl.org.</p>
 
     <h4>School Information</h4>
-    <p>School name: <%= @school_submission.name %></p>
-    <p>Address one: <%= @school_submission.address_one %></p>
-    <p>Address two: <%= @school_submission.address_two || 'n/a' %></p>
-    <p>Address city: <%= @school_submission.address_city %></p>
-    <p>Address state: <%= @school_submission.address_state %></p>
-    <p>Address zip: <%= @school_submission.address_zip %></p>
-    <p>Website: <%= @school_submission.website || 'n/a' %></p>
+    <p>School Name: <%= @school_submission.name %></p>
+    <p>School Address One: <%= @school_submission.address_one %></p>
+    <p>School Address Two: <%= @school_submission.address_two || 'n/a' %></p>
+    <p>School Address City: <%= @school_submission.address_city %></p>
+    <p>School Address State: <%= @school_submission.address_state %></p>
+    <p>School Address Zip: <%= @school_submission.address_zip %></p>
+    <p>School Website: <%= @school_submission.website || 'n/a' %></p>
 
     <h4>School Contact Information</h4>
-    <p>School contact first name: <%= @school_submission.contact_first_name %></p>
-    <p>School contact last name: <%= @school_submission.contact_last_name %></p>
-    <p>School contact title: <%= @school_submission.contact_title %></p>
-    <p>School contact email: <%= @school_submission.contact_email %></p>
-    <p>School contact phone number <%= @school_submission.contact_phone_number %></p>
+    <p>School Contact First Name: <%= @school_submission.contact_first_name %></p>
+    <p>School Contact Last Name: <%= @school_submission.contact_last_name %></p>
+    <p>School Contact Title: <%= @school_submission.contact_title %></p>
+    <p>School Contact Email: <%= @school_submission.contact_email %></p>
+    <p>School Contact Phone Number <%= @school_submission.contact_phone_number %></p>
 
     <h4>Primary Student Information</h4>
-    <p>Student first name: <%= @school_submission.primary_first_name %></p>
-    <p>Student last name: <%= @school_submission.primary_last_name %></p>
-    <p>Student address one: <%= @school_submission.primary_address_one %></p>
-    <p>Student address two: <%= @school_submission.primary_address_two %></p>
-    <p>Student address city: <%= @school_submission.primary_address_city %></p>
-    <p>Student address state: <%= @school_submission.primary_address_state %></p>
-    <p>Student address zip: <%= @school_submission.primary_address_zip %></p>
-    <p>Student home phone: <%= @school_submission.primary_home_phone %></p>
-    <p>Student cell phone: <%= @school_submission.primary_cell_phone %></p>
-    <p>Student email: <%= @school_submission.primary_email %></p>
-    <p>Student birthday: <%= @school_submission.primary_birthday %></p>
-    <p>Student gender: <%= @school_submission.primary_gender %></p>
-    <p>Student shirt size: <%= @school_submission.primary_shirt_size %></p>
-    <p>Parent/guardian first name: <%= @school_submission.primary_guardian_first_name %></p>
-    <p>Parent/guardian last name: <%= @school_submission.primary_guardian_last_name %></p>
-    <p>Parent/guardian email: <%= @school_submission.primary_guardian_email %></p>
-    <p>Parent/guardian phone number: <%= @school_submission.primary_guardian_phone_number %></p>
-    <p>Parent/guardian phone type: <%= @school_submission.primary_guardian_phone_type %></p>
-    <p>Parent/guardian relationship: <%= @school_submission.primary_guardian_relationship %></p>
+    <p>Primary Student First Name: <%= @school_submission.primary_first_name %></p>
+    <p>Primary Student Last Name: <%= @school_submission.primary_last_name %></p>
+    <p>Primary Student Address One: <%= @school_submission.primary_address_one %></p>
+    <p>Primary Student Address Two: <%= @school_submission.primary_address_two %></p>
+    <p>Primary Student Address City: <%= @school_submission.primary_address_city %></p>
+    <p>Primary Student Address State: <%= @school_submission.primary_address_state %></p>
+    <p>Primary Student Address Zip: <%= @school_submission.primary_address_zip %></p>
+    <p>Primary Student Home Phone: <%= @school_submission.primary_home_phone %></p>
+    <p>Primary Student Cell Phone: <%= @school_submission.primary_cell_phone %></p>
+    <p>Primary Student Email: <%= @school_submission.primary_email %></p>
+    <p>Primary Student Birthday: <%= @school_submission.primary_birthday %></p>
+    <p>Primary Student Gender: <%= @school_submission.primary_gender %></p>
+    <p>Primary Student Shirt Size: <%= @school_submission.primary_shirt_size %></p>
+    <p>Primary Student Parent/Guardian First Name: <%= @school_submission.primary_guardian_first_name %></p>
+    <p>Primary Student Parent/Guardian Last Name: <%= @school_submission.primary_guardian_last_name %></p>
+    <p>Primary Student Parent/Guardian Email: <%= @school_submission.primary_guardian_email %></p>
+    <p>Primary Student Parent/Guardian Phone Number: <%= @school_submission.primary_guardian_phone_number %></p>
+    <p>Primary Student Parent/Guardian Phone Type: <%= @school_submission.primary_guardian_phone_type %></p>
+    <p>Primary Student Parent/Guardian Relationship: <%= @school_submission.primary_guardian_relationship %></p>
+
+    <% if @school_submission.has_alternate_student %>
+      <h4>Alternate Student Information</h4>
+      <p>Alternate Student First Name: <%= @school_submission.alternate_first_name %></p>
+      <p>Alternate Student Last Name: <%= @school_submission.alternate_last_name %></p>
+      <p>Alternate Student Address One: <%= @school_submission.alternate_address_one %></p>
+      <p>Alternate Student Address Two: <%= @school_submission.alternate_address_two %></p>
+      <p>Alternate Student Address City: <%= @school_submission.alternate_address_city %></p>
+      <p>Alternate Student Address State: <%= @school_submission.alternate_address_state %></p>
+      <p>Alternate Student Address Zip: <%= @school_submission.alternate_address_zip %></p>
+      <p>Alternate Student Home Phone: <%= @school_submission.alternate_home_phone %></p>
+      <p>Alternate Student Cell Phone: <%= @school_submission.alternate_cell_phone %></p>
+      <p>Alternate Student Email: <%= @school_submission.alternate_email %></p>
+      <p>Alternate Student Birthday: <%= @school_submission.alternate_birthday %></p>
+      <p>Alternate Student Gender: <%= @school_submission.alternate_gender %></p>
+      <p>Alternate Student Shirt Size: <%= @school_submission.alternate_shirt_size %></p>
+      <p>Alternate Student Parent/Guardian First Name: <%= @school_submission.alternate_guardian_first_name %></p>
+      <p>Alternate Student Parent/Guardian Last Name: <%= @school_submission.alternate_guardian_last_name %></p>
+      <p>Alternate Student Parent/Guardian Email: <%= @school_submission.primary_guardian_email %></p>
+      <p>Alternate Student Parent/Guardian Phone Number: <%= @school_submission.alternate_guardian_phone_number %></p>
+      <p>Alternate Student Parent/Guardian Phone Type: <%= @school_submission.alternate_guardian_phone_type %></p>
+      <p>Alternate Student Parent/Guardian Relationship: <%= @school_submission.alternate_guardian_relationship %></p>
+    <% end %>
 
     <p>Best,</p>
     <h4>The EDGE Recruitment Team</h4>
