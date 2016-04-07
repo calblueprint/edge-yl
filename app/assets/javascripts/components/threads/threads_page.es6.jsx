@@ -48,6 +48,15 @@ class ThreadsPage extends Component {
     window.location = RouteConstants.emails.index(page);
   }
 
+  generateOptions() {
+    return [
+      {
+        action: () => ViewActions.storeEditability(),
+        content: this.state.editable ? 'Finish' : 'Edit',
+      },
+    ];
+  }
+
   selectProfile() {
     return this.state.profile ?
            this.state.profile :
@@ -65,10 +74,13 @@ class ThreadsPage extends Component {
         <Toast toast={this.state.toast} />
         <div style={StyleConstants.pages.default}>
           <div style={StyleConstants.pages.content}>
-            <GridHeader title={'Inbox'} />
+            <GridHeader
+              options={this.generateOptions()}
+              title={'Inbox'} />
             <ThreadsGrid
-              threads={this.state.threads}
-              media={this.state.media} />
+              editable={this.state.editable}
+              media={this.state.media}
+              threads={this.state.threads} />
             <PageNavigator
               action={(page) => this.changePage(page)}
               pagination={this.state.pagination} />

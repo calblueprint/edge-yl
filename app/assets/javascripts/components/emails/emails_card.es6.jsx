@@ -22,6 +22,14 @@ class EmailsCard extends Component {
           marginTop: '12px',
         },
       ),
+      header: {
+        display: 'flex',
+        justifyContent: 'space-between',
+      },
+      section: {
+        display: 'flex',
+        flexFlow: 'column',
+      },
     };
   }
 
@@ -32,10 +40,15 @@ class EmailsCard extends Component {
     var email = this.props.email;
     return (
       <div style={this.styles.container}>
-        <h6>{'From'}</h6>
-        <p>{email.from}</p>
-        <h6>{'To'}</h6>
-        <p>{email.to}</p>
+        <div style={this.styles.header}>
+          <div style={this.styles.section}>
+            <h6>{'From'}</h6>
+            <p>{email.from}</p>
+            <h6>{'To'}</h6>
+            <p>{email.to}</p>
+          </div>
+          <p>{email.updated_at}</p>
+        </div>
         <h6>{'Content'}</h6>
         <p>{email.content}</p>
       </div>

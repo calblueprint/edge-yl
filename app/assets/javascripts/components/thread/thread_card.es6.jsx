@@ -1,11 +1,11 @@
-class EmailHeader extends Component {
+class ThreadCard extends Component {
 
   // --------------------------------------------------
   // Props
   // --------------------------------------------------
   static get propTypes() {
     return {
-      email: React.PropTypes.object.isRequired,
+      thread: React.PropTypes.object.isRequired,
     };
   }
 
@@ -29,11 +29,10 @@ class EmailHeader extends Component {
   // Render
   // --------------------------------------------------
   render() {
-    var email = this.props.email;
     return (
       <div style={this.styles.container}>
-        <h6>{'From'}</h6>
-        <p>{email.from}</p>
+        <h6>{'Subject'}</h6>
+        <p>{this.props.thread.subject}</p>
       </div>
     );
   }

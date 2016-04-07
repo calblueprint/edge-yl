@@ -5,6 +5,7 @@ class ThreadsGrid extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
+      editable: React.PropTypes.bool.isRequired,
       media: React.PropTypes.string.isRequired,
       threads: React.PropTypes.array.isRequired,
     };
@@ -16,9 +17,10 @@ class ThreadsGrid extends Component {
   renderCard(thread) {
     return (
       <ThreadsCard
-        thread={thread}
+        editable={this.props.editable}
         key={thread.id}
-        media={this.props.media} />
+        media={this.props.media}
+        thread={thread} />
     );
   }
 
