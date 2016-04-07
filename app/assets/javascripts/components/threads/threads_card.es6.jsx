@@ -5,6 +5,7 @@ class ThreadsCard extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
+      editable: React.PropTypes.bool.isRequired,
       media: React.PropTypes.string.isRequired,
       thread: React.PropTypes.object.isRequired,
     };
@@ -76,9 +77,30 @@ class ThreadsCard extends Component {
     return participants;
   }
 
+  generateOptions() {
+    return [
+      {
+        action: () => this.deleteThread(),
+        icon: TypeConstants.icons.delete,
+      },
+    ];
+  }
+
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
+  renderHeader() {
+    if (this.props.editable) {
+      return (
+        <CardHeader
+          content={'Thread'}
+          options={this.generateOptions()} />
+      );
+    } else {
+      return <CardHeader content={'Thread'} />
+    }
+  }
+
   renderNewIcon() {
     if (this.props.thread.is_unread) {
       return (
@@ -91,6 +113,7 @@ class ThreadsCard extends Component {
     var thread = this.props.thread;
     return (
       <div style={StyleConstants.cards.container('small')}>
+        {this.renderHeader()}
         <div style={this.styles.container}>
           <div style={this.styles.section}>
             {this.generateEmailParticipants(thread)}
@@ -105,10 +128,6 @@ class ThreadsCard extends Component {
             <p>{thread.content}</p>
           </div>
         </div>
-        <Clickable
-          action={() => this.deleteThread()}
-          icon={'fa-trash'}
-          type={'i-left'} />
       </div>
     );
   }
