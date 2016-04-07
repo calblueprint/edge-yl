@@ -20,14 +20,14 @@ class StudentValidator
                 :exercise_limitations,
                 :first_name,
                 :gender,
-                :guardian_email,
-                :guardian_employer,
-                :guardian_first_name,
-                :guardian_job_title,
-                :guardian_last_name,
-                :guardian_phone_number,
-                :guardian_phone_type,
-                :guardian_relationship,
+                :guardian_one_email,
+                :guardian_one_employer,
+                :guardian_one_first_name,
+                :guardian_one_job_title,
+                :guardian_one_last_name,
+                :guardian_one_phone_number,
+                :guardian_one_phone_type,
+                :guardian_one_relationship,
                 :health_conditions,
                 :home_phone,
                 :immunizations,
@@ -60,16 +60,16 @@ class StudentValidator
   validates :last_name, if: :page_one?, presence: true
   validates :shirt_size, if: :page_one?, presence: true
 
-  validates :guardian_first_name, if: :page_two?, presence: true
-  validates :guardian_email, format: ValidationConstants::EMAIL_FORMAT,
+  validates :guardian_one_first_name, if: :page_two?, presence: true
+  validates :guardian_one_email, format: ValidationConstants::EMAIL_FORMAT,
                              if: :page_two?,
                              presence: true
-  validates :guardian_last_name, if: :page_two?, presence: true
-  validates :guardian_phone_number, format: ValidationConstants::PHONE_FORMAT,
+  validates :guardian_one_last_name, if: :page_two?, presence: true
+  validates :guardian_one_phone_number, format: ValidationConstants::PHONE_FORMAT,
                                     if: :page_two?,
                                     presence: true
-  validates :guardian_phone_type, if: :page_two?, presence: true
-  validates :guardian_relationship, if: :page_two?, presence: true
+  validates :guardian_one_phone_type, if: :page_two?, presence: true
+  validates :guardian_one_relationship, if: :page_two?, presence: true
 
   validates :allergies, if: :page_three?, presence: true
   validates :dietary_restrictions, if: :page_three?, presence: true

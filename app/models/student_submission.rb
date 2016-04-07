@@ -105,24 +105,24 @@ class StudentSubmission < ActiveRecord::Base
     write_attribute(:gender, EnumConstants::GENDERS.index(value))
   end
 
-  def guardian_phone_type
-    if !read_attribute(:guardian_phone_type).nil?
-      EnumConstants::PHONE_TYPES[read_attribute(:guardian_phone_type)]
+  def guardian_one_phone_type
+    if !read_attribute(:guardian_one_phone_type).nil?
+      EnumConstants::PHONE_TYPES[read_attribute(:guardian_one_phone_type)]
     end
   end
 
-  def guardian_phone_type=(value)
-    write_attribute(:guardian_phone_type, EnumConstants::PHONE_TYPES.index(value))
+  def guardian_one_phone_type=(value)
+    write_attribute(:guardian_one_phone_type, EnumConstants::PHONE_TYPES.index(value))
   end
 
-  def guardian_relationship
-    if !read_attribute(:guardian_relationship).nil?
-      EnumConstants::GUARDIAN_RELATIONSHIPS[read_attribute(:guardian_relationship)]
+  def guardian_one_relationship
+    if !read_attribute(:guardian_one_relationship).nil?
+      EnumConstants::GUARDIAN_RELATIONSHIPS[read_attribute(:guardian_one_relationship)]
     end
   end
 
-  def guardian_relationship=(value)
-    write_attribute(:guardian_relationship, EnumConstants::GUARDIAN_RELATIONSHIPS.index(value))
+  def guardian_one_relationship=(value)
+    write_attribute(:guardian_one_relationship, EnumConstants::GUARDIAN_RELATIONSHIPS.index(value))
   end
 
   def health_conditions
@@ -248,14 +248,14 @@ class StudentSubmission < ActiveRecord::Base
       first_name: first_name,
       gender: gender,
       health_conditions: health_conditions,
-      guardian_email: guardian_email,
-      guardian_employer: guardian_employer,
-      guardian_first_name: guardian_first_name,
-      guardian_job_title: guardian_job_title,
-      guardian_last_name: guardian_last_name,
-      guardian_phone_type: guardian_phone_type,
-      guardian_phone_number: guardian_phone_number,
-      guardian_relationship: guardian_relationship,
+      guardian_one_email: guardian_email,
+      guardian_one_employer: guardian_employer,
+      guardian_one_first_name: guardian_first_name,
+      guardian_one_job_title: guardian_job_title,
+      guardian_one_last_name: guardian_last_name,
+      guardian_one_phone_type: guardian_phone_type,
+      guardian_one_phone_number: guardian_phone_number,
+      guardian_one_relationship: guardian_relationship,
       home_phone: home_phone,
       immunizations: immunizations,
       is_primary: is_primary,
@@ -301,14 +301,14 @@ class StudentSubmission < ActiveRecord::Base
 
   def attributes_two
     {
-      guardian_email: guardian_email,
-      guardian_employer: guardian_employer,
-      guardian_first_name: guardian_first_name,
-      guardian_job_title: guardian_job_title,
-      guardian_last_name: guardian_last_name,
-      guardian_phone_number: guardian_phone_number,
-      guardian_phone_type: guardian_phone_type,
-      guardian_relationship: guardian_relationship,
+      guardian_one_email: guardian_one_email,
+      guardian_one_employer: guardian_one_employer,
+      guardian_one_first_name: guardian_one_first_name,
+      guardian_one_job_title: guardian_one_job_title,
+      guardian_one_last_name: guardian_one_last_name,
+      guardian_one_phone_number: guardian_one_phone_number,
+      guardian_one_phone_type: guardian_one_phone_type,
+      guardian_one_relationship: guardian_one_relationship,
     }
   end
 
