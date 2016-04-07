@@ -51,6 +51,7 @@ class ThreadGrid extends Component {
   render() {
     return (
       <div style={StyleConstants.grids.column}>
+        <ThreadCard thread={this.props.thread} />
         {this.renderEmails()}
         <div style={this.styles.footer}>
           <FormButton
