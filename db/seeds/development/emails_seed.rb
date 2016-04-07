@@ -1,6 +1,6 @@
 admin = User.first
 
-(1..10).each do |index|
+(1..3).each do |index|
   if [true,false].sample
     school = School.offset(rand(School.count)).first
     email = school.primary_contact.email
