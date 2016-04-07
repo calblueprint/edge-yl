@@ -15,7 +15,6 @@ class StartPage extends Component {
     return {
       conferences: React.PropTypes.array,
       id: React.PropTypes.string,
-      target: React.PropTypes.string.isRequired,
     };
   }
 
@@ -81,6 +80,11 @@ class StartPage extends Component {
       paragraph: {
         paddingBottom: '20px',
       },
+      prompt: {
+        display: 'flex',
+        flexFlow: 'column',
+        flex: '1',
+      },
       questions: {
         paddingTop: '20px',
       },
@@ -96,11 +100,7 @@ class StartPage extends Component {
   // Helpers
   // --------------------------------------------------
   createSubmission() {
-    if (this.props.target === 'school') {
-      StartActions.createSubmission(this.state.conference);
-    } else if (this.props.target === 'student') {
-      window.location = RouteConstants.forms.student(1, this.props.id);
-    }
+    StartActions.createSubmission(this.state.conference);
   }
 
   generateChoice(conference) {
@@ -118,24 +118,23 @@ class StartPage extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
-  renderBody() {
-    var target = this.props.target;
-    if (target == 'school') {
-      return this.renderSchoolForm();
-    } else if (target == 'student') {
-      return this.renderStudentForm();
-    }
+  renderConferencesDropdown() {
+    var conference = this.state.conference;
+    return (
+      <div style={this.styles.dropdown}>
+        <DropdownButton
+          choices={this.generateChoices()}
+          value={conference ? conference.name : null} />
+      </div>
+    );
   }
 
-  renderConferencesDropdown() {
-    if (this.props.target === 'school') {
-      var conference = this.state.conference;
+  renderErrors() {
+    if (this.state.errors) {
       return (
-        <div style={this.styles.dropdown}>
-          <DropdownButton
-            choices={this.generateChoices()}
-            value={conference ? conference.name : null} />
-        </div>
+        <h6 style={StyleConstants.forms.questions.errors}>
+          {'Conference selection must be valid'}
+        </h6>
       );
     }
   }
@@ -193,23 +192,26 @@ class StartPage extends Component {
     );
   }
 
-  renderStudentForm() {
-    return (
-      <div></div>
-    );
-  }
-
   render() {
     return (
       <div style={StyleConstants.wrappers.center}>
         <div style={StyleConstants.pages.center}>
           <div style={this.styles.header}>
-            <h1>{`EDGE Registration - ${Helpers.humanize(this.props.target)}`}</h1>
+            <h1>{`EDGE Registration - School`}</h1>
           </div>
           <div style={this.styles.body}>
-            {this.renderBody()}
+            {this.renderSchoolForm()}
             <div style={this.styles.footer}>
-              {this.renderConferencesDropdown()}
+              <div style={this.styles.prompt}>
+                <h6>
+                  {'Please select a conference:'}
+                  <p style={StyleConstants.forms.questions.required}>
+                    {'*'}
+                  </p>
+                </h6>
+                {this.renderConferencesDropdown()}
+                {this.renderErrors()}
+              </div>
               <FormButton
                 action={() => this.createSubmission()}
                 content={'START HERE'} />

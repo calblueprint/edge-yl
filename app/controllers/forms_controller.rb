@@ -66,16 +66,8 @@ class FormsController < BaseController
   end
 
   def start_school
-    @conferences = Conference.all
-    @target = 'school'
-    render 'start'
-  end
-
-  def start_student
-    @id = params[:id]
-    @target = 'student'
-    student_submission = StudentSubmission.find_by id: @id
-    if student_submission.nil?
+    @conferences = Conference.active
+    if @conferences.size == 0
       error_404
     end
     render 'start'
