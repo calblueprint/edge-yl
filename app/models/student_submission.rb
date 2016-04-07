@@ -262,6 +262,11 @@ class StudentSubmission < ActiveRecord::Base
     unless student.save
       raise 'Could not create student from submission'
     end
+    begin
+      SubmissionsMailer.submit_student(self).deliver_now
+    rescue
+      raise 'Could not deliver appropriate emails'
+    end
     self.is_active = false
     self.save
   end
