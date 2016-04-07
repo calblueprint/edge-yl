@@ -484,6 +484,7 @@ student_form = Form.create(
       title: 'Gender',
     )
     Question.create(
+      format: Question.formats[:date],
       key: 'birthday',
       page: page,
       style: Question.styles[:input],
