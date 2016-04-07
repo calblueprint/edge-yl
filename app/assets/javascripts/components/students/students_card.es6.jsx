@@ -49,12 +49,7 @@ class StudentsCard extends Component {
             value={group.full_name} />
         );
       } else {
-        return (
-          <CardAttribute
-            label={'Group'}
-            type={'h6'}
-            value={group} />
-        );
+        return <CardAttribute label={'Group'} />;
       }
     }
   }

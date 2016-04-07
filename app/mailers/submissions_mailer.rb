@@ -8,6 +8,11 @@ class SubmissionsMailer < ApplicationMailer
          template_path: 'mails'
   end
 
+  def create_parent(student_submission)
+    @student_submission = student_submission
+    # mail to: student_submission.
+  end
+
   def submit_school(school_submission)
     @school_submission = school_submission
     name = school_submission.name

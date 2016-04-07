@@ -84,6 +84,16 @@ class SchoolSubmission < ActiveRecord::Base
     write_attribute(:alternate_address_state, EnumConstants::STATES.index(value))
   end
 
+  def alternate_gender
+    if !read_attribute(:alternate_gender).nil?
+      EnumConstants::GENDERS[read_attribute(:alternate_gender)]
+    end
+  end
+
+  def alternate_gender=(value)
+    write_attribute(:alternate_gender, EnumConstants::GENDERS.index(value))
+  end
+
   def alternate_guardian_phone_type
     if !read_attribute(:alternate_guardian_phone_type).nil?
       EnumConstants::PHONE_TYPES[read_attribute(:alternate_guardian_phone_type)]
@@ -124,6 +134,16 @@ class SchoolSubmission < ActiveRecord::Base
     write_attribute(:has_alternate_student, EnumConstants::BOOLEANS.index(value))
   end
 
+  def primary_address_state
+    if !read_attribute(:primary_address_state).nil?
+      EnumConstants::STATES[read_attribute(:primary_address_state)]
+    end
+  end
+
+  def primary_address_state=(value)
+    write_attribute(:primary_address_state, EnumConstants::STATES.index(value))
+  end
+
   def primary_gender
     if !read_attribute(:primary_gender).nil?
       EnumConstants::GENDERS[read_attribute(:primary_gender)]
@@ -152,16 +172,6 @@ class SchoolSubmission < ActiveRecord::Base
 
   def primary_guardian_relationship=(value)
     write_attribute(:primary_guardian_relationship, EnumConstants::GUARDIAN_RELATIONSHIPS.index(value))
-  end
-
-  def primary_address_state
-    if !read_attribute(:primary_address_state).nil?
-      EnumConstants::STATES[read_attribute(:primary_address_state)]
-    end
-  end
-
-  def primary_address_state=(value)
-    write_attribute(:primary_address_state, EnumConstants::STATES.index(value))
   end
 
   def primary_shirt_size
@@ -268,12 +278,12 @@ class SchoolSubmission < ActiveRecord::Base
       email: primary_email,
       first_name: primary_first_name,
       gender: primary_gender,
-      guardian_first_name: primary_guardian_first_name,
-      guardian_email: primary_guardian_email,
-      guardian_last_name: primary_guardian_last_name,
-      guardian_phone_number: primary_guardian_phone_number,
-      guardian_phone_type: primary_guardian_phone_type,
-      guardian_relationship: primary_guardian_relationship,
+      guardian_one_email: primary_guardian_email,
+      guardian_one_first_name: primary_guardian_first_name,
+      guardian_one_last_name: primary_guardian_last_name,
+      guardian_one_phone_number: primary_guardian_phone_number,
+      guardian_one_phone_type: primary_guardian_phone_type,
+      guardian_one_relationship: primary_guardian_relationship,
       home_phone: primary_home_phone,
       is_primary: true,
       last_name: primary_last_name,
@@ -295,12 +305,12 @@ class SchoolSubmission < ActiveRecord::Base
         email: alternate_email,
         first_name: alternate_first_name,
         gender: alternate_gender,
-        guardian_first_name: alternate_guardian_first_name,
-        guardian_email: alternate_guardian_email,
-        guardian_last_name: alternate_guardian_last_name,
-        guardian_phone_number: alternate_guardian_phone_number,
-        guardian_phone_type: alternate_guardian_phone_type,
-        guardian_relationship: alternate_guardian_relationship,
+        guardian_one_email: alternate_guardian_email,
+        guardian_one_first_name: alternate_guardian_first_name,
+        guardian_one_last_name: alternate_guardian_last_name,
+        guardian_one_phone_number: alternate_guardian_phone_number,
+        guardian_one_phone_type: alternate_guardian_phone_type,
+        guardian_one_relationship: alternate_guardian_relationship,
         home_phone: alternate_home_phone,
         is_primary: false,
         last_name: alternate_last_name,
@@ -318,6 +328,7 @@ class SchoolSubmission < ActiveRecord::Base
     begin
       SubmissionsMailer.submit_school(self).deliver_now
       SubmissionsMailer.create_student(primary_submission).deliver_now
+      SubmissionsMailer.create_parent(primary_submission).deliver_now
     rescue
       raise 'Could not deliver appropriate emails'
     end
