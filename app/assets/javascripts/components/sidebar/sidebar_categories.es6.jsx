@@ -37,6 +37,10 @@ class SidebarCategories extends Component {
           icon={TypeConstants.icons.conference}
           route={RouteConstants.conferences.index()} />
         <SidebarItem
+          label={'Prospects'}
+          icon={TypeConstants.icons.prospect}
+          route={RouteConstants.prospects.index()} />
+        <SidebarItem
           label={'Students'}
           icon={TypeConstants.icons.student}
           route={RouteConstants.students.index()} />
@@ -44,10 +48,6 @@ class SidebarCategories extends Component {
           label={'Schools'}
           icon={TypeConstants.icons.school}
           route={RouteConstants.schools.index()} />
-        <SidebarItem
-          label={'Prospects'}
-          icon={TypeConstants.icons.prospect}
-          route={RouteConstants.prospects.index()} />
         <SidebarItem
           label={'Volunteers'}
           icon={TypeConstants.icons.volunteer}
