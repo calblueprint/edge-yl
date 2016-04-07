@@ -48,7 +48,6 @@ class DraftContent extends Component {
         <textarea
           ref={'input'}
           rows={'10'}
-          placeholder={'Content'}
           value={attributes.content} />
       </div>
     );
