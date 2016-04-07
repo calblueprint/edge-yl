@@ -41,6 +41,7 @@ school_form = Form.create(
       title: 'School Address State',
     )
     Question.create(
+      description: StringConstants::ZIP_FORMAT,
       key: 'address_zip',
       page: page,
       style: Question.styles[:input],
@@ -79,12 +80,14 @@ school_form = Form.create(
       title: 'School Contact Title',
     )
     Question.create(
+      description: StringConstants::EMAIL_FORMAT,
       key: 'contact_email',
       page: page,
       style: Question.styles[:input],
       title: 'School Contact Email',
     )
     Question.create(
+      description: StringConstants::PHONE_FORMAT,
       key: 'contact_phone_number',
       page: page,
       style: Question.styles[:input],
@@ -136,24 +139,28 @@ school_form = Form.create(
       title: 'Primary Student Address State',
     )
     Question.create(
+      description: StringConstants::ZIP_FORMAT,
       key: 'primary_address_zip',
       page: page,
       style: Question.styles[:input],
       title: 'Primary Student Address Zip',
     )
     Question.create(
+      description: StringConstants::PHONE_FORMAT,
       key: 'primary_home_phone',
       page: page,
       style: Question.styles[:input],
       title: 'Primary Student Home Phone',
     )
     Question.create(
+      description: StringConstants::PHONE_FORMAT,
       key: 'primary_cell_phone',
       page: page,
       style: Question.styles[:input],
       title: 'Primary Student Cell Phone',
     )
     Question.create(
+      description: StringConstants::EMAIL_FORMAT,
       key: 'primary_email',
       page: page,
       style: Question.styles[:input],
@@ -193,19 +200,21 @@ school_form = Form.create(
       title: 'Primary Student Parent/Guardian Last Name',
     )
     Question.create(
+      description: StringConstants::EMAIL_FORMAT,
       key: 'primary_guardian_email',
       page: page,
       style: Question.styles[:input],
       title: 'Primary Student Parent/Guardian Email',
     )
     Question.create(
+      description: StringConstants::PHONE_FORMAT,
       key: 'primary_guardian_phone_number',
       page: page,
-      placeholder: '...',
       style: Question.styles[:input],
       title: 'Primary Student Parent/Guardian Phone Number',
     )
     Question.create(
+      description: StringConstants::PHONE_FORMAT,
       key: 'primary_guardian_phone_type',
       options: EnumConstants::PHONE_TYPES,
       page: page,
@@ -238,7 +247,6 @@ school_form = Form.create(
       is_required: false,
       key: 'alternate_first_name',
       page: page,
-      placeholder: '...',
       style: Question.styles[:input],
       title: 'Alternate Student First Name',
     )
@@ -246,7 +254,6 @@ school_form = Form.create(
       is_required: false,
       key: 'alternate_last_name',
       page: page,
-      placeholder: '...',
       style: Question.styles[:input],
       title: 'Alternate Student Last Name',
     )
@@ -254,7 +261,6 @@ school_form = Form.create(
       is_required: false,
       key: 'alternate_address_one',
       page: page,
-      placeholder: '...',
       style: Question.styles[:input],
       title: 'Alternate Student Address One',
     )
@@ -262,7 +268,6 @@ school_form = Form.create(
       is_required: false,
       key: 'alternate_address_two',
       page: page,
-      placeholder: '...',
       style: Question.styles[:input],
       title: 'Alternate Student Address Two',
     )
@@ -270,7 +275,6 @@ school_form = Form.create(
       is_required: false,
       key: 'alternate_address_city',
       page: page,
-      placeholder: 'San Francisco',
       style: Question.styles[:input],
       title: 'Alternate Student Address City',
     )
@@ -283,34 +287,34 @@ school_form = Form.create(
       title: 'Alternate Student Address State',
     )
     Question.create(
+      description: StringConstants::ZIP_FORMAT,
       is_required: false,
       key: 'alternate_address_zip',
       page: page,
-      placeholder: '90474',
       style: Question.styles[:input],
       title: 'Alternate Student Address Zip',
     )
     Question.create(
+      description: StringConstants::PHONE_FORMAT,
       is_required: false,
       key: 'alternate_home_phone',
       page: page,
-      placeholder: '...',
       style: Question.styles[:input],
       title: 'Alternate Student Home Phone',
     )
     Question.create(
+      description: StringConstants::PHONE_FORMAT,
       is_required: false,
       key: 'alternate_cell_phone',
       page: page,
-      placeholder: '...',
       style: Question.styles[:input],
       title: 'Alternate Student Cell Phone',
     )
     Question.create(
+      description: StringConstants::EMAIL_FORMAT,
       is_required: false,
       key: 'alternate_email',
       page: page,
-      placeholder: '...',
       style: Question.styles[:input],
       title: 'Alternate Student Email',
     )
@@ -319,7 +323,6 @@ school_form = Form.create(
       format: Question.formats[:date],
       key: 'alternate_birthday',
       page: page,
-      placeholder: '...',
       style: Question.styles[:input],
       title: 'Alternate Student Birthday',
     )
@@ -343,7 +346,6 @@ school_form = Form.create(
       is_required: false,
       key: 'alternate_guardian_first_name',
       page: page,
-      placeholder: '...',
       style: Question.styles[:input],
       title: 'Alternate Student Parent/Guardian First Name',
     )
@@ -351,27 +353,27 @@ school_form = Form.create(
       is_required: false,
       key: 'alternate_guardian_last_name',
       page: page,
-      placeholder: '...',
       style: Question.styles[:input],
       title: 'Alternate Student Parent/Guardian Last Name',
     )
     Question.create(
+      description: StringConstants::EMAIL_FORMAT,
       is_required: false,
       key: 'alternate_guardian_email',
       page: page,
-      placeholder: '...',
       style: Question.styles[:input],
       title: 'Alternate Student Parent/Guardian Email',
     )
     Question.create(
+      description: StringConstants::PHONE_FORMAT,
       is_required: false,
       key: 'alternate_guardian_phone_number',
       page: page,
-      placeholder: '...',
       style: Question.styles[:input],
       title: 'Alternate Student Parent/Guardian Phone Number',
     )
     Question.create(
+      description: StringConstants::PHONE_FORMAT,
       is_required: false,
       key: 'alternate_guardian_phone_type',
       options: EnumConstants::PHONE_TYPES,
@@ -447,24 +449,28 @@ student_form = Form.create(
       title: 'Address State',
     )
     Question.create(
+      description: StringConstants::ZIP_FORMAT,
       key: 'address_zip',
       page: page,
       style: Question.styles[:input],
       title: 'Address Zip',
     )
     Question.create(
+      description: StringConstants::EMAIL_FORMAT,
       key: 'email',
       page: page,
       style: Question.styles[:input],
       title: 'Email',
     )
     Question.create(
+      description: StringConstants::PHONE_FORMAT,
       key: 'home_phone',
       page: page,
       style: Question.styles[:input],
       title: 'Home Phone',
     )
     Question.create(
+      description: StringConstants::PHONE_FORMAT,
       key: 'cell_phone',
       page: page,
       style: Question.styles[:input],
@@ -510,6 +516,7 @@ student_form = Form.create(
       title: 'Guardian Last Name',
     )
     Question.create(
+      description: StringConstants::EMAIL_FORMAT,
       key: 'guardian_email',
       page: page,
       style: Question.styles[:input],
@@ -523,12 +530,14 @@ student_form = Form.create(
       title: 'Guardian Relationship',
     )
     Question.create(
+      description: StringConstants::PHONE_FORMAT,
       key: 'guardian_phone_number',
       page: page,
       style: Question.styles[:input],
       title: 'Guardian Phone Number',
     )
     Question.create(
+      description: StringConstants::PHONE_FORMAT,
       key: 'guardian_phone_type',
       options: EnumConstants::PHONE_TYPES,
       page: page,
