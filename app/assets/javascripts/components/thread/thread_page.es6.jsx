@@ -46,30 +46,9 @@ class ThreadPage extends Component {
            this.props.profile;
   }
 
-  sendReply() {
-    ThreadActions.createReply(this.state.thread.emails[0], this.state.thread.id);
-  }
-
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
-  renderEmails() {
-    return this.state.thread.emails.map((email) => {
-      return (<EmailGrid email={email} />);
-    });
-  }
-
-  renderReply() {
-    if(this.state.thread.emails.length > 0 &&
-      this.state.thread.emails[0].sender != this.selectProfile().email) {
-      return (
-        <FormButton
-          action={() => this.sendReply()}
-          content={'Reply'} />
-      );
-    }
-  }
-
   render() {
     return (
       <div style={StyleConstants.pages.wrapper}>
@@ -77,12 +56,10 @@ class ThreadPage extends Component {
         <Sidebar profile={this.selectProfile()} />
         <div style={StyleConstants.pages.default}>
           <div style={StyleConstants.pages.content}>
-            {this.renderReply()}
-            {this.renderEmails()}
+            <ThreadGrid thread={this.state.thread} />
           </div>
         </div>
       </div>
     );
   }
 }
-
