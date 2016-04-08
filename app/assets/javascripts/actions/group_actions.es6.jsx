@@ -29,8 +29,7 @@
       if (!studentId) {
         return false;
       }
-      var attributes = {};
-      attributes.group_id = groupId;
+      var attributes = { group_id: groupId };
       var params = { student: attributes };
       var resolve = (response) => {
         this.fetchGroup(groupId);
