@@ -9,6 +9,7 @@ class CreateStudentSubmissions < ActiveRecord::Migration
       t.string  :address_zip
       t.integer :allergies
       t.date    :birthday
+      t.integer :carpool
       t.string  :cell_phone
       t.integer :current_page, default: 0, null: false
       t.integer :dietary_restrictions
@@ -42,6 +43,7 @@ class CreateStudentSubmissions < ActiveRecord::Migration
       t.string  :insurance_address
       t.string  :insurance_address_city
       t.integer :insurance_address_state
+      t.integer :insurance_address_zip
       t.string  :insurance_id
       t.string  :insurance_other, default: ''
       t.string  :insurance_phone_number
@@ -49,11 +51,18 @@ class CreateStudentSubmissions < ActiveRecord::Migration
       t.string  :last_name
       t.string  :medical_guardian_name
       t.string  :medications
-      t.string  :other_dietary_restrictions
+      t.string  :other_dietary_restrictions, default: ''
       t.string  :preferred_name, default: ''
       t.integer :psychologist_consent
       t.integer :shirt_size
-
+      t.integer :transportation
+      t.date    :transportation_arrival_date
+      t.string  :transportation_arrival_time
+      t.string  :transportation_carrier
+      t.date    :transportation_departure_date
+      t.string  :transportation_departure_time
+      t.string  :transportation_name
+      t.string  :transportation_number
       t.references :conference, index: true, null: false
     end
   end

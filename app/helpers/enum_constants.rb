@@ -2,6 +2,12 @@ module EnumConstants
 
   BOOLEANS = %w(yes no)
 
+  CARPOOL = %w(
+    Not\ interested
+    Interested\ -\ I\ can\ provide\ a\ ride
+    Interested\ -\ I\ can't\ provide\ a\ ride
+  )
+
   DIETARY_RESTRICTIONS = %w(
     dairy-free gluten-free
     none nut-allergy
@@ -26,6 +32,14 @@ module EnumConstants
     MA MI MN MS MO MT NE NV NH NJ
     NM NY NC ND OH OK OR PA RI SC
     SD TN TX UT VT VA WA WV WI WY
+  )
+
+  TRANSPORTATION = %w(
+    Parent/Guardian\ Driving\ Me
+    Driving\ Myself
+    Public\ Transportation\ -\ Plane
+    Public\ Transportation\ -\ Train
+    Public\ Transportation\ -\ Bus
   )
 
 end

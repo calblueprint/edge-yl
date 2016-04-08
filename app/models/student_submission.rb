@@ -2,51 +2,69 @@
 #
 # Table name: student_submissions
 #
-#  id                         :uuid             not null, primary key
-#  address_city               :string
-#  address_one                :string
-#  address_state              :integer          default(4)
-#  address_two                :string           default("")
-#  address_zip                :string
-#  allergies                  :integer
-#  birthday                   :date
-#  cell_phone                 :string
-#  current_page               :integer          default(0), not null
-#  dietary_restrictions       :integer
-#  email                      :string
-#  emergency_consent          :integer
-#  exercise_limitations       :string
-#  first_name                 :string
-#  gender                     :integer
-#  guardian_one_email         :string
-#  guardian_one_employer      :string           default("")
-#  guardian_one_first_name    :string
-#  guardian_one_job_title     :string           default("")
-#  guardian_one_last_name     :string
-#  guardian_one_phone_number  :string
-#  guardian_one_phone_type    :integer
-#  guardian_one_relationship  :integer
-#  guardian_two_email         :string
-#  guardian_two_employer      :string           default("")
-#  guardian_two_first_name    :string
-#  guardian_two_job_title     :string           default("")
-#  guardian_two_last_name     :string
-#  guardian_two_phone_number  :string
-#  guardian_two_phone_type    :integer
-#  guardian_two_relationship  :integer
-#  health_conditions          :integer
-#  home_phone                 :string
-#  is_active                  :boolean          default(TRUE), not null
-#  is_primary                 :boolean          not null
-#  immunizations              :integer
-#  last_name                  :string
-#  medical_guardian_name      :string
-#  medications                :string
-#  other_dietary_restrictions :string
-#  preferred_name             :string           default("")
-#  psychologist_consent       :integer
-#  shirt_size                 :integer
-#  conference_id              :integer          not null
+#  id                            :uuid             not null, primary key
+#  address_city                  :string
+#  address_one                   :string
+#  address_state                 :integer          default(4)
+#  address_two                   :string           default("")
+#  address_zip                   :string
+#  allergies                     :integer
+#  birthday                      :date
+#  carpool                       :integer
+#  cell_phone                    :string
+#  current_page                  :integer          default(0), not null
+#  dietary_restrictions          :integer
+#  email                         :string
+#  emergency_consent             :integer
+#  exercise_limitations          :string
+#  first_name                    :string
+#  gender                        :integer
+#  guardian_one_email            :string
+#  guardian_one_employer         :string           default("")
+#  guardian_one_first_name       :string
+#  guardian_one_job_title        :string           default("")
+#  guardian_one_last_name        :string
+#  guardian_one_phone_number     :string
+#  guardian_one_phone_type       :integer
+#  guardian_one_relationship     :integer
+#  guardian_two_email            :string
+#  guardian_two_employer         :string           default("")
+#  guardian_two_first_name       :string
+#  guardian_two_job_title        :string           default("")
+#  guardian_two_last_name        :string
+#  guardian_two_phone_number     :string
+#  guardian_two_phone_type       :integer
+#  guardian_two_relationship     :integer
+#  health_conditions             :integer
+#  home_phone                    :string
+#  is_active                     :boolean          default(TRUE), not null
+#  is_primary                    :boolean          not null
+#  immunizations                 :integer
+#  insurance                     :integer
+#  insurance_address             :string
+#  insurance_address_city        :string
+#  insurance_address_state       :integer
+#  insurance_address_zip         :integer
+#  insurance_id                  :string
+#  insurance_other               :string           default("")
+#  insurance_phone_number        :string
+#  insurance_provider            :string
+#  last_name                     :string
+#  medical_guardian_name         :string
+#  medications                   :string
+#  other_dietary_restrictions    :string           default("")
+#  preferred_name                :string           default("")
+#  psychologist_consent          :integer
+#  shirt_size                    :integer
+#  transportation                :integer
+#  transportation_arrival_date   :date
+#  transportation_arrival_time   :string
+#  transportation_carrier        :string
+#  transportation_departure_date :date
+#  transportation_departure_time :string
+#  transportation_name           :string
+#  transportation_number         :string
+#  conference_id                 :integer          not null
 #
 
 class StudentSubmission < ActiveRecord::Base
@@ -73,6 +91,16 @@ class StudentSubmission < ActiveRecord::Base
 
   def allergies=(value)
     write_attribute(:allergies, EnumConstants::BOOLEANS.index(value))
+  end
+
+  def carpool
+    if !read_attribute(:carpool).nil?
+      EnumConstants::CARPOOL[read_attribute(:carpool)]
+    end
+  end
+
+  def carpool=(value)
+    write_attribute(:carpool, EnumConstants::CARPOOL.index(value))
   end
 
   def dietary_restrictions
@@ -182,7 +210,7 @@ class StudentSubmission < ActiveRecord::Base
   end
 
   def insurance_address_state=(value)
-    write_attribute(:insurance_address_state, EnumConstants::BOOLEANS.index(value))
+    write_attribute(:insurance_address_state, EnumConstants::STATES.index(value))
   end
 
   def psychologist_consent
@@ -203,6 +231,16 @@ class StudentSubmission < ActiveRecord::Base
 
   def shirt_size=(value)
     write_attribute(:shirt_size, EnumConstants::SHIRT_SIZES.index(value))
+  end
+
+  def transportation
+    if !read_attribute(:transportation).nil?
+      EnumConstants::TRANSPORTATION[read_attribute(:transportation)]
+    end
+  end
+
+  def transportation=(value)
+    write_attribute(:transportation, EnumConstants::TRANSPORTATION.index(value))
   end
 
   def form_url
@@ -244,6 +282,7 @@ class StudentSubmission < ActiveRecord::Base
       2 => attributes_two,
       3 => attributes_three,
       4 => attributes_four,
+      5 => attributes_five,
     }
   end
 
@@ -382,11 +421,25 @@ class StudentSubmission < ActiveRecord::Base
       insurance_address: insurance_address,
       insurance_address_city: insurance_address_city,
       insurance_address_state: insurance_address_state,
-      insurance_address_zip: insurance_address_city,
+      insurance_address_zip: insurance_address_zip,
       insurance_id: insurance_id,
       insurance_other: insurance_other,
       insurance_phone_number: insurance_phone_number,
       insurance_provider: insurance_provider,
+    }
+  end
+
+  def attributes_five
+    {
+      carpool: carpool,
+      transportation: transportation,
+      transportation_arrival_date: transportation_arrival_date,
+      transportation_arrival_time: transportation_arrival_time,
+      transportation_carrier: transportation_carrier,
+      transportation_departure_date: transportation_departure_date,
+      transportation_departure_time: transportation_departure_time,
+      transportation_name: transportation_name,
+      transportation_number: transportation_number,
     }
   end
 end

@@ -12,6 +12,7 @@ class StudentValidator
                 :address_two,
                 :allergies,
                 :birthday,
+                :carpool,
                 :cell_phone,
                 :current_page,
                 :dietary_restrictions,
@@ -55,6 +56,14 @@ class StudentValidator
                 :preferred_name,
                 :psychologist_consent,
                 :shirt_size,
+                :transportation,
+                :transportation_arrival_date,
+                :transportation_arrival_time,
+                :transportation_carrier,
+                :transportation_departure_date,
+                :transportation_departure_time,
+                :transportation_name,
+                :transportation_number
 
   validates :address_city, if: :page_one?, presence: true
   validates :address_one, if: :page_one?, presence: true
@@ -106,18 +115,25 @@ class StudentValidator
   validates :immunizations, if: :page_three?, presence: true
   validates :medical_guardian_name, if: :page_three?, presence: true
   validates :medications, if: :page_three?, presence: true
-  validates :other_dietary_restrictions, if: :page_three?, presence: true
   validates :psychologist_consent, if: :page_three?, presence: true
 
-  validates :insurance, if: :has_insurance?, if: :page_four?, presence: true
-  validates :insurance_address, if: :has_insurance?, if: :page_four?, presence: true
-  validates :insurance_address_city, if: :has_insurance?, if: :page_four?, presence: true
-  validates :insurance_address_state, if: :has_insurance?, if: :page_four?, presence: true
-  validates :insurance_id, if: :has_insurance?, if: :page_four?, presence: true
-  validates :insurance_phone_number, if: :has_insurance?, if: :page_four?, presence: true
-  validates :insurance_provider, if: :has_insurance?, if: :page_four?, presence: true
-  validates :insurance_other, if: :has_insurance?, if: :page_four?, presence: true
+  validates :insurance, if: :page_four?, presence: true
+  validates :insurance_address, if: :has_insurance?, presence: true
+  validates :insurance_address_city, if: :has_insurance?, presence: true
+  validates :insurance_address_state, if: :has_insurance?, presence: true
+  validates :insurance_address_zip, if: :has_insurance?, presence: true
+  validates :insurance_id, if: :has_insurance?, presence: true
+  validates :insurance_phone_number, if: :has_insurance?, presence: true
+  validates :insurance_provider, if: :has_insurance?, presence: true
 
+  validates :transportation, if: :page_five?, presence: true
+  validates :transportation_arrival_date, if: :public_transportation?, presence: true
+  validates :transportation_arrival_time, if: :public_transportation?, presence: true
+  validates :transportation_carrier, if: :public_transportation?, presence: true
+  validates :transportation_departure_date, if: :public_transportation?, presence: true
+  validates :transportation_departure_time, if: :public_transportation?, presence: true
+  validates :transportation_name, if: :public_transportation?, presence: true
+  validates :transportation_number, if: :public_transportation?, presence: true
 
   def initialize(attributes={})
     attributes.each do |name, value|
@@ -147,8 +163,18 @@ class StudentValidator
     current_page == 4
   end
 
+  def page_five?
+    current_page == 5
+  end
+
   def persisted?
     false
+  end
+
+  def public_transportation?
+    transportation == EnumConstants::TRANSPORTATION[2] || 
+    transportation == EnumConstants::TRANSPORTATION[3] ||
+    transportation == EnumConstants::TRANSPORTATION[4]
   end
 
 end

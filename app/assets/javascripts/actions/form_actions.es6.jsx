@@ -50,8 +50,6 @@
     }
 
     updateSubmission(page, target, id, forward) {
-      debugger
-      console.log(page);
       var attributes = {};
       var questions = page.questions;
       questions.map((question) => attributes[question.key] = question.value);
@@ -90,6 +88,8 @@
       } else if (target === 'student') {
         var params = { student_submission: attributes };
         var resolve = (response) => {
+          debugger;
+          
           number = forward ? page.number + 1 : page.number - 1;
           if (page.is_last && forward) {
             window.location = RouteConstants.forms.preview(target, id);

@@ -719,7 +719,6 @@ student_form = Form.create(
   Page.create(
     description: 'Insurance Information description',
     form: form,
-    is_last: true,
     number: 4,
     title: 'Insurance Information',
   ) do |page|
@@ -781,6 +780,77 @@ student_form = Form.create(
       page: page,
       style: Question.styles[:textarea],
       title: 'Other relevant information on the card',
+    )
+  end
+  Page.create(
+    description: 'Transportation Information description',
+    form: form,
+    is_last: true,
+    number: 5,
+    title: 'Transportation Information',
+  ) do |page|
+    Question.create(
+      description: 'An approved and insured staff memeber will be able to pick you up from a Public Transporation System',
+      key: 'transportation',
+      options: EnumConstants::TRANSPORTATION,
+      page: page,
+      style: Question.styles[:dropdown],
+      title: 'How will you be getting to and from the seminar?',
+    )
+    Question.create(
+      description: 'Rockridge BART, Downtown Berkeley BART, College Avenue and Parker Street Bus Stop, Warring Street and Parker Street Bus Stop, Oakland International Airport',
+      key: 'transportation_name',
+      page: page,
+      style: Question.styles[:input],
+      title: 'Station/Airport Name',
+    )
+    Question.create(
+      description: 'Southwest, BART, AC Transit, etc.',
+      key: 'transportation_carrier',
+      page: page,
+      style: Question.styles[:input],
+      title: 'Flight/Train/Bus Carrier',
+    )
+    Question.create(
+      key: 'transportation_number',
+      page: page,
+      style: Question.styles[:input],
+      title: 'Flight/Train/Bus Number',
+    )
+    Question.create(
+      key: 'transportation_arrival_date',
+      format: Question.formats[:date],
+      page: page,
+      style: Question.styles[:input],
+      title: 'Arrival Date',
+    )
+    Question.create(
+      description: 'You must arrive by 8am',
+      key: 'transportation_arrival_time',
+      page: page,
+      style: Question.styles[:input],
+      title: 'Arrival Time',
+    )
+    Question.create(
+      key: 'transportation_departure_date',
+     format: Question.formats[:date],
+      page: page,
+      style: Question.styles[:input],
+      title: 'Departure Date',
+    )
+    Question.create(
+      description: 'Do not plan to leave earlier than 3pm',
+      key: 'transportation_departure_time',
+      page: page,
+      style: Question.styles[:input],
+      title: 'Departure Time',
+    )
+    Question.create(
+      key: 'carpool',
+      options: EnumConstants::CARPOOL,
+      page: page,
+      style: Question.styles[:dropdown],
+      title: 'Are you interested in carpooling?',
     )
   end
 end
