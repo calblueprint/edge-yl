@@ -39,19 +39,19 @@ class Room < ActiveRecord::Base
     end
   end
 
-  def remove_students
-    self.students.each do |student|
-      student.room = nil
-      student.save
-    end
-  end
-
   def available_capacity_count
     capacity - students.count
   end
 
   def full_name
     "#{building} #{number}"
+  end
+
+  def remove_students
+    self.students.each do |student|
+      student.room = nil
+      student.save
+    end
   end
 
 end

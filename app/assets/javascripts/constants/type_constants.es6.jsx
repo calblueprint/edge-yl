@@ -26,6 +26,7 @@
       return {
         leadership: 'group-leadership',
         general: 'group-general',
+        statistic: 'group-statistic',
       };
     }
 

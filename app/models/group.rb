@@ -30,6 +30,10 @@ class Group < ActiveRecord::Base
   validates :letter, presence: true
   validates_uniqueness_of :letter, scope: :conference_id
 
+  def females_count
+    students.female.count
+  end
+
   def full_name
     "Group #{letter}"
   end
@@ -52,6 +56,14 @@ class Group < ActiveRecord::Base
         csv << row
       end
     end
+  end
+
+  def males_count
+    students.male.count
+  end
+
+  def others_count
+    students.other.count
   end
 
   def remove_students
