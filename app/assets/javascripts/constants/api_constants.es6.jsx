@@ -81,6 +81,13 @@
       };
     }
 
+    get imports() {
+      return {
+        schools: '/api/imports/schools',
+        students: '/api/imports/students',
+      };
+    }
+
     get leaderships() {
       return {
         update: (id) => `/api/leaderships/${id}`,
@@ -102,7 +109,6 @@
         update: (id) => `/api/prospects/${id}`,
       }
     }
-
 
     get rooms() {
       return {
