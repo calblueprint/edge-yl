@@ -15,22 +15,25 @@ class ThreadsCard extends Component {
   // Styles
   // --------------------------------------------------
   get styles() {
+    var thread = this.props.thread;
     return {
-      container: {
-        display: 'flex',
-        flexFlow: 'column',
-        padding: '16px',
-        backgroundColor: this.props.thread.is_unread ? '#ffffff' : '#f6f6f6',
-      },
+      container: Object.assign(
+        {},
+        StyleConstants.cards.container('small'),
+        {
+          padding: '16px',
+          backgroundColor: thread.is_unread ? '#ffffff' : '#f6f6f6',
+        },
+      ),
       divider: {
         padding: '0px 4px',
       },
+      header: {
+        display: 'flex',
+        justifyContent: 'space-between',
+      },
       icon: {
         color: StyleConstants.colors.blue,
-      },
-      section: {
-        display: 'flex',
-        textOverflow: 'ellipses',
       },
     };
   }
@@ -49,10 +52,6 @@ class ThreadsCard extends Component {
     }
   }
 
-  generateThreadRoute(thread) {
-      return RouteConstants.threads.show(thread.id);
-  }
-
   generateEmailableRoute(email) {
     if (email.emailable_type === 'Student') {
       return RouteConstants.students.show(email.emailable_id);
@@ -63,16 +62,8 @@ class ThreadsCard extends Component {
     }
   }
 
-  generateOptions() {
-    return [
-      {
-        action: () => this.deleteThread(),
-        icon: TypeConstants.icons.delete,
-      },
-    ];
-  }
-
-  generateThreadParticipant(thread) {
+  generateThreadParticipant() {
+    var thread = this.props.thread;
     return (
       <Clickable
         content={thread['emailable_name']}
@@ -81,18 +72,21 @@ class ThreadsCard extends Component {
     );
   }
 
+  generateThreadRoute() {
+    return RouteConstants.threads.show(this.props.thread.id);
+  }
+
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
-  renderHeader() {
+  renderOptions() {
     if (this.props.editable) {
       return (
-        <CardHeader
-          content={'Thread'}
-          options={this.generateOptions()} />
+        <Clickable
+          action={() => this.deleteThread()}
+          icon={TypeConstants.icons.delete}
+          type={'i-left'} />
       );
-    } else {
-      return <CardHeader content={'Thread'} />
     }
   }
 
@@ -107,22 +101,21 @@ class ThreadsCard extends Component {
   render() {
     var thread = this.props.thread;
     return (
-      <div style={StyleConstants.cards.container('small')}>
-        {this.renderHeader()}
-        <div style={this.styles.container}>
-          <div style={this.styles.section}>
-            {this.generateThreadParticipant(thread)}
-          </div>
+      <div style={this.styles.container}>
+        <div style={this.styles.header}>
+          <h6>{this.generateThreadParticipant()}</h6>
+          {this.renderOptions()}
+        </div>
+        <Clickable
+          route={this.generateThreadRoute()}
+          type={'div'}>
           <div style={this.styles.section}>
             {this.renderNewIcon()}
-            <Clickable
-              content={thread.subject + this.emailsCount()}
-              route={this.generateThreadRoute(thread)}
-              type={'h6'} />
+            <h6>{`${thread.subject} ${this.emailsCount()}`}</h6>
             <p style={this.styles.divider}>{'--'}</p>
             <p>{thread.content}</p>
           </div>
-        </div>
+        </Clickable>
       </div>
     );
   }
