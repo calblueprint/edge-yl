@@ -13,6 +13,6 @@ Conference.all.each do |conference|
   end
 end
 
-conference = Conference.last
+conference = Conference.first
 conference.assign_students_to_groups
 puts "Assigned students to groups in #{conference.name}."

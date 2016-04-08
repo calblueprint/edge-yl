@@ -1,8 +1,8 @@
 Conference.all.each do |conference|
-  (81..89).each do |index|
+  (81..99).each do |index|
     new_room = Room.create(
       building: "#{Faker::Lorem.word}",
-      capacity: 3 + rand(2),
+      capacity: 9 + rand(4),
       conference: conference,
       gender: index % 3,
       number: index,
@@ -11,7 +11,7 @@ Conference.all.each do |conference|
   end
 end
 
-conference = Conference.last
+conference = Conference.first
 
 conference.assign_students_to_rooms
 puts "Assigned students to rooms in #{conference.name}."

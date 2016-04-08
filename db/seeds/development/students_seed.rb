@@ -15,7 +15,7 @@ Conference.all.each do |conference|
       emergency_consent: 0,
       exercise_limitations: 'None',
       first_name: Faker::Name.first_name,
-      gender: rand(3),
+      gender: index % 3,
       guardian_email: Faker::Internet.email,
       guardian_employer: Faker::Name.name,
       guardian_first_name: Faker::Name.first_name,
