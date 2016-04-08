@@ -213,6 +213,16 @@ class StudentSubmission < ActiveRecord::Base
     write_attribute(:insurance_address_state, EnumConstants::STATES.index(value))
   end
 
+  def media_participation
+    if !read_attribute(:media_participation).nil?
+      EnumConstants::BOOLEANS[read_attribute(:media_participation)]
+    end
+  end
+
+  def media_participation=(value)
+    write_attribute(:media_participation, EnumConstants::BOOLEANS.index(value))
+  end
+
   def psychologist_consent
     if !read_attribute(:psychologist_consent).nil?
       EnumConstants::BOOLEANS[read_attribute(:psychologist_consent)]
@@ -283,6 +293,7 @@ class StudentSubmission < ActiveRecord::Base
       3 => attributes_three,
       4 => attributes_four,
       5 => attributes_five,
+      6 => attributes_six,
     }
   end
 
@@ -442,4 +453,11 @@ class StudentSubmission < ActiveRecord::Base
       transportation_number: transportation_number,
     }
   end
+
+  def attributes_six
+    {
+      media_information: media_information,
+      media_newspaper: media_newspaper,
+      media_participation: media_participation
+    }
 end

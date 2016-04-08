@@ -50,6 +50,9 @@ class StudentValidator
                 :insurance_provider,
                 :insurance_other,
                 :last_name,
+                :media_information,
+                :media_newspaper,
+                :media_participation,
                 :medical_guardian_name,
                 :medications,
                 :other_dietary_restrictions,
@@ -135,6 +138,9 @@ class StudentValidator
   validates :transportation_name, if: :public_transportation?, presence: true
   validates :transportation_number, if: :public_transportation?, presence: true
 
+  validates :media_newspaper, if: :media_consent?, presence: true
+  validates :media_participation, if: :page_six?, presence: true
+
   def initialize(attributes={})
     attributes.each do |name, value|
       send("#{name}=", value)
@@ -145,6 +151,10 @@ class StudentValidator
 
   def has_insurance?
     insurance == EnumConstants::BOOLEANS[0]
+  end
+
+  def media_consent?
+    media_participation == EnumConstants::BOOLEANS[0]
   end
 
   def page_one?
@@ -165,6 +175,10 @@ class StudentValidator
 
   def page_five?
     current_page == 5
+  end
+
+  def page_six?
+    current_page == 6
   end
 
   def persisted?

@@ -785,7 +785,6 @@ student_form = Form.create(
   Page.create(
     description: 'Transportation Information description',
     form: form,
-    is_last: true,
     number: 5,
     title: 'Transportation Information',
   ) do |page|
@@ -833,7 +832,7 @@ student_form = Form.create(
     )
     Question.create(
       key: 'transportation_departure_date',
-     format: Question.formats[:date],
+      format: Question.formats[:date],
       page: page,
       style: Question.styles[:input],
       title: 'Departure Date',
@@ -851,6 +850,43 @@ student_form = Form.create(
       page: page,
       style: Question.styles[:dropdown],
       title: 'Are you interested in carpooling?',
+    )
+  end
+  Page.create(
+    description: 'Media Consent description',
+    form: form,
+    is_last: true,
+    number: 6,
+    title: 'Media Participation',
+  ) do |page|
+    Question.create(
+      description: 'We send press releases to your local paper announcing the student’s participation ' +
+                   'in the seminar.  Please indicate the name of your newspaper and desire to be included ' +
+                   'in the press release process.  All information is due by May 4th.',
+      key: 'media_consent_info',
+      page: page,
+      style: Question.styles[:information],
+      title: 'Media Information',
+    )
+    Question.create(
+      key: 'media_participation',
+      options: EnumConstants::BOOLEANS,
+      page: page,
+      style: Question.styles[:dropdown],
+      title: 'I would like to have my participation announced',
+    )
+    Question.create(
+      key: 'media_newspaper',
+      page: page,
+      style: Question.styles[:input],
+      title: 'Newspaper Name',
+    )
+    Question.create(
+      is_required: false,
+      key: 'media_information',
+      page: page,
+      style: Question.styles[:textarea],
+      title: 'Additional information you would like included in the release.',
     )
   end
 end
