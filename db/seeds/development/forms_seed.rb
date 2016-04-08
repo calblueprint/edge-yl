@@ -618,7 +618,6 @@ student_form = Form.create(
   Page.create(
     description: 'Medical Information description',
     form: form,
-    is_last: true,
     number: 3,
     title: 'Medical Information',
   ) do |page|
@@ -715,6 +714,73 @@ student_form = Form.create(
       page: page,
       style: Question.styles[:input],
       title: 'Guardian Name',
+    )
+  end
+  Page.create(
+    description: 'Insurance Information description',
+    form: form,
+    is_last: true,
+    number: 4,
+    title: 'Insurance Information',
+  ) do |page|
+    Question.create(
+      key: 'insurance',
+      options: EnumConstants::BOOLEANS,
+      page: page,
+      style: Question.styles[:dropdown],
+      title: 'Does your child have health insurance?',
+    )
+    Question.create(
+      description: '(e.g. Anthem Blue Cross, Kaiser Permanente, Health Net, etc.)',
+      key: 'insurance_provider',
+      page: page,
+      style: Question.styles[:input],
+      title: 'Insurance Provider',
+    )
+    Question.create(
+      key: 'insurance_address',
+      page: page,
+      style: Question.styles[:input],
+      title: 'Insurance Provider Address',
+    )
+    Question.create(
+      key: 'insurance_address_city',
+      page: page,
+      style: Question.styles[:input],
+      title: 'Insurance Provider City',
+    )
+    Question.create(
+      key: 'insurance_address_state',
+      options: EnumConstants::STATES,
+      page: page,
+      style: Question.styles[:dropdown],
+      title: 'Insurance Provider State',
+    )
+    Question.create(
+      key: 'insurance_address_zip',
+      page: page,
+      style: Question.styles[:input],
+      title: 'Insurance Provider Zip',
+    )
+    Question.create(
+      description: StringConstants::PHONE_FORMAT,
+      key: 'insurance_phone_number',
+      page: page,
+      style: Question.styles[:input],
+      title: 'Insurance Provider Phone',
+    )
+    Question.create(
+      key: 'insurance_id',
+      page: page,
+      style: Question.styles[:input],
+      title: 'Group # or ID #',
+    )
+    Question.create(
+      is_required: false,
+      key: 'insurance_other',
+      page: page,
+      style: Question.styles[:textarea],
+      title: 'Other relevant information on the card',
     )
   end
 end

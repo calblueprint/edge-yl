@@ -39,13 +39,22 @@ class StudentValidator
                 :health_conditions,
                 :home_phone,
                 :immunizations,
+                :insurance,
+                :insurance_address,
+                :insurance_address_city,
+                :insurance_address_state,
+                :insurance_address_zip,
+                :insurance_id,
+                :insurance_phone_number,
+                :insurance_provider,
+                :insurance_other,
                 :last_name,
                 :medical_guardian_name,
                 :medications,
                 :other_dietary_restrictions,
                 :preferred_name,
                 :psychologist_consent,
-                :shirt_size
+                :shirt_size,
 
   validates :address_city, if: :page_one?, presence: true
   validates :address_one, if: :page_one?, presence: true
@@ -100,6 +109,16 @@ class StudentValidator
   validates :other_dietary_restrictions, if: :page_three?, presence: true
   validates :psychologist_consent, if: :page_three?, presence: true
 
+  validates :insurance, if: :has_insurance?, if: :page_four?, presence: true
+  validates :insurance_address, if: :has_insurance?, if: :page_four?, presence: true
+  validates :insurance_address_city, if: :has_insurance?, if: :page_four?, presence: true
+  validates :insurance_address_state, if: :has_insurance?, if: :page_four?, presence: true
+  validates :insurance_id, if: :has_insurance?, if: :page_four?, presence: true
+  validates :insurance_phone_number, if: :has_insurance?, if: :page_four?, presence: true
+  validates :insurance_provider, if: :has_insurance?, if: :page_four?, presence: true
+  validates :insurance_other, if: :has_insurance?, if: :page_four?, presence: true
+
+
   def initialize(attributes={})
     attributes.each do |name, value|
       send("#{name}=", value)
@@ -107,6 +126,10 @@ class StudentValidator
   end
 
   private
+
+  def has_insurance?
+    insurance == EnumConstants::BOOLEANS[0]
+  end
 
   def page_one?
     current_page == 1
@@ -118,6 +141,10 @@ class StudentValidator
 
   def page_three?
     current_page == 3
+  end
+
+  def page_four?
+    current_page == 4
   end
 
   def persisted?

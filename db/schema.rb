@@ -292,6 +292,14 @@ ActiveRecord::Schema.define(version: 20160308042713) do
     t.boolean "is_active",                  default: true, null: false
     t.boolean "is_primary",                                null: false
     t.integer "immunizations"
+    t.integer "insurance"
+    t.string  "insurance_address"
+    t.string  "insurance_address_city"
+    t.integer "insurance_address_state"
+    t.string  "insurance_id"
+    t.string  "insurance_other"
+    t.string  "insurance_phone_number"
+    t.string  "insurance_provider"
     t.string  "last_name"
     t.string  "medical_guardian_name"
     t.string  "medications"

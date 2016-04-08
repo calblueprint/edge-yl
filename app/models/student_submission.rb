@@ -165,6 +165,26 @@ class StudentSubmission < ActiveRecord::Base
     write_attribute(:immunizations, EnumConstants::BOOLEANS.index(value))
   end
 
+  def insurance
+    if !read_attribute(:insurance).nil?
+      EnumConstants::BOOLEANS[read_attribute(:insurance)]
+    end
+  end
+
+  def insurance=(value)
+    write_attribute(:insurance, EnumConstants::BOOLEANS.index(value))
+  end
+
+  def insurance_address_state
+    if !read_attribute(:insurance_address_state).nil?
+      EnumConstants::STATES[read_attribute(:insurance_address_state)]
+    end
+  end
+
+  def insurance_address_state=(value)
+    write_attribute(:insurance_address_state, EnumConstants::BOOLEANS.index(value))
+  end
+
   def psychologist_consent
     if !read_attribute(:psychologist_consent).nil?
       EnumConstants::BOOLEANS[read_attribute(:psychologist_consent)]
@@ -223,6 +243,7 @@ class StudentSubmission < ActiveRecord::Base
       1 => attributes_one,
       2 => attributes_two,
       3 => attributes_three,
+      4 => attributes_four,
     }
   end
 
@@ -355,4 +376,17 @@ class StudentSubmission < ActiveRecord::Base
     }
   end
 
+  def attributes_four
+    {
+      insurance: insurance,
+      insurance_address: insurance_address,
+      insurance_address_city: insurance_address_city,
+      insurance_address_state: insurance_address_state,
+      insurance_address_zip: insurance_address_city,
+      insurance_id: insurance_id,
+      insurance_other: insurance_other,
+      insurance_phone_number: insurance_phone_number,
+      insurance_provider: insurance_provider,
+    }
+  end
 end

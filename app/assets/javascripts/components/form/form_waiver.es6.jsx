@@ -89,8 +89,12 @@ class FormWaiver extends Component {
   }
 
   render() {
+    var question = this.props.question;
+    question.options = ['yes', 'no'];
+    question.title = 'Do you consent?';
     return (
       <div style={this.styles.container}>
+        <FormDropdown question = {this.question} />
         <div style={this.styles.prompt}>
           <h6>{this.props.question.title}{this.renderRequired()}</h6>
         </div>

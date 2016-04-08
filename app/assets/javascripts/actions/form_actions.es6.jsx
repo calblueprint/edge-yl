@@ -50,6 +50,8 @@
     }
 
     updateSubmission(page, target, id, forward) {
+      debugger
+      console.log(page);
       var attributes = {};
       var questions = page.questions;
       questions.map((question) => attributes[question.key] = question.value);
