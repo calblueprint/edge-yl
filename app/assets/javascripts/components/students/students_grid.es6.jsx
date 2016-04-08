@@ -14,6 +14,7 @@ class StudentsGrid extends Component {
         TypeConstants.students.room,
         TypeConstants.students.school,
       ]).isRequired,
+      typeId: React.PropTypes.number.isRequired,
     };
   }
 
@@ -33,7 +34,8 @@ class StudentsGrid extends Component {
         key={student.id}
         media={this.props.media}
         student={student}
-        type={this.props.type} />
+        type={this.props.type}
+        typeId={this.props.typeId} />
     );
   }
 

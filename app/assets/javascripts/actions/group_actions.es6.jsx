@@ -43,17 +43,22 @@
       return true;
     }
 
-    deleteStudent(id) {
-      var response = confirm('This action cannot be undone.');
+    deleteStudent(groupId, studentId) {
+      var response = confirm('This action removes the student from the group. ' +
+                              'It does not delete the student.');
       if (response) {
-        attributes = {};
-        attributes.group_id = null;
-        params = { student: attributes };
+        var attributes = { group_id : null };
+        var params = { student: attributes };
+        var resolve = (response) => {
+          this.fetchGroup(groupId);
+          ViewActions.storeToast(true, 'Student removed!');
+        };
         Requester.update(
-          ApiConstants.students.update(id),
+          ApiConstants.students.update(studentId),
           params,
+          resolve,
         );
-      return id;
+      return studentId;
       }
     }
 

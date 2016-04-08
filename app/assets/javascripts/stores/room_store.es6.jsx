@@ -19,6 +19,11 @@
     // --------------------------------------------------
     // Handlers
     // --------------------------------------------------
+    handleDeleteStudent(studentId) {
+      this.room.students = this.room.students.filter(
+        (student) => student.id !== studentId);
+    }
+
     handleStoreRoom(response) {
       this.overlay = false;
       this.room = response.room;
