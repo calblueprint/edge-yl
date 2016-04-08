@@ -20,12 +20,12 @@
 
   resources :conferences, only: [:index, :show]
   resources :drafts, only: [:index, :show]
-  resources :emails, only: [:index, :show]
   resources :groups, only: [:index, :show]
   resources :prospects, only: [:index, :show]
   resources :rooms, only: [:index, :show]
   resources :students, only: [:index, :show]
   resources :schools, only: [:index, :show]
+  resources :threads, only: [:index, :show]
   resources :users, only: [:index, :show]
 
   devise_for :users, only: []
@@ -61,7 +61,6 @@
     resources :conferences, only: [:create, :index, :show, :update]
     resources :contacts, only: [:create, :update]
     resources :drafts, only: [:create, :index, :show, :update]
-    resources :emails, only: [:create, :destroy, :index, :show]
     resources :feedbacks, only: [:create]
     resources :groups, only: [:create, :destroy, :index, :show, :update]
     resources :leaderships, only: [:update]
@@ -72,6 +71,7 @@
     resources :school_submissions, only: [:create, :show, :update]
     resources :students, only: [:index, :show, :update]
     resources :student_submissions, only: [:create, :show, :update]
+    resources :threads, only: [:create, :destroy, :index, :show]
     resources :users, only: [:index, :show, :update] do
       get '/groupables', on: :collection, to: 'users#groupables'
     end

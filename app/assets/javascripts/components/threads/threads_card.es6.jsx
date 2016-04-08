@@ -42,12 +42,15 @@ class ThreadsCard extends Component {
     ThreadsActions.deleteThread(this.props.thread.id);
   }
 
-  generateEmailRoute(email) {
-    if (email.is_draft) {
-      return RouteConstants.drafts.show(email.id);
-    } else {
-      return RouteConstants.emails.show(email.id);
+  emailsCount() {
+    var count = this.props.thread.emails_count;
+    if(count > 1) {
+      return ` (${count})`;
     }
+  }
+
+  generateThreadRoute(thread) {
+      return RouteConstants.threads.show(thread.id);
   }
 
   generateEmailableRoute(email) {
@@ -60,23 +63,6 @@ class ThreadsCard extends Component {
     }
   }
 
-  generateEmailParticipants(thread) {
-    var participants = {};
-    thread.emails.map((email) => {
-      participants[email['emailable_name']] = email;
-    });
-    participants = Object.keys(participants).map((k) => {
-      var email = participants[k];
-      return (
-        <Clickable
-          content={email['emailable_name']}
-          route={this.generateEmailableRoute(email)}
-          type={'h6'} />
-      );
-    });
-    return participants;
-  }
-
   generateOptions() {
     return [
       {
@@ -84,6 +70,15 @@ class ThreadsCard extends Component {
         icon: TypeConstants.icons.delete,
       },
     ];
+  }
+
+  generateThreadParticipant(thread) {
+    return (
+      <Clickable
+        content={thread['emailable_name']}
+        route={this.generateEmailableRoute(thread)}
+        type={'h6'} />
+    );
   }
 
   // --------------------------------------------------
@@ -116,13 +111,13 @@ class ThreadsCard extends Component {
         {this.renderHeader()}
         <div style={this.styles.container}>
           <div style={this.styles.section}>
-            {this.generateEmailParticipants(thread)}
+            {this.generateThreadParticipant(thread)}
           </div>
           <div style={this.styles.section}>
             {this.renderNewIcon()}
             <Clickable
-              content={thread.subject}
-              route={this.generateEmailRoute(thread)}
+              content={thread.subject + this.emailsCount()}
+              route={this.generateThreadRoute(thread)}
               type={'h6'} />
             <p style={this.styles.divider}>{'--'}</p>
             <p>{thread.content}</p>

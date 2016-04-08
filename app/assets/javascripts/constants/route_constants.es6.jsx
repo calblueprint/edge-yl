@@ -14,13 +14,6 @@
       };
     }
 
-    get emails() {
-      return {
-        index: (page=1) => `/emails?page=${page}`,
-        show: (id) => `/emails/${id}`,
-      };
-    }
-
     get forms() {
       return {
         preview: (target, id) => `/forms/${target}/${id}/preview`,
@@ -84,6 +77,13 @@
           }
         },
         show: (id) => `/students/${id}`,
+      };
+    }
+
+    get threads() {
+      return {
+        index: (page=1) => `/threads?page=${page}`,
+        show: (id) => `/threads/${id}`,
       };
     }
 

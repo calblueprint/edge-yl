@@ -31,8 +31,7 @@ class ThreadCard extends Component {
   render() {
     return (
       <div style={this.styles.container}>
-        <h6>{'Subject'}</h6>
-        <p>{this.props.thread.subject}</p>
+        <h3>{this.props.thread.subject}</h3>
       </div>
     );
   }

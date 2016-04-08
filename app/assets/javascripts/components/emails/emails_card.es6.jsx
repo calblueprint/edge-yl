@@ -30,12 +30,31 @@ class EmailsCard extends Component {
         display: 'flex',
         flexFlow: 'column',
       },
+      draft: {
+        color: 'red',
+      },
     };
   }
 
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
+  renderDraftEdit(email) {
+    if (email.is_draft) {
+      return (
+        <FormButton
+          action={() => this.showDraft(email.id)}
+          content={'Edit'} />
+      );
+    }
+  }
+
+  renderIsDraft(email) {
+    if (email.is_draft) {
+      return <span style={this.styles.draft}> (Draft)</span>;
+    }
+  }
+
   render() {
     var email = this.props.email;
     return (

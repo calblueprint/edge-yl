@@ -59,15 +59,6 @@
       };
     }
 
-    get emails() {
-      return {
-        delete: (id) => `/api/emails/${id}`,
-        index: (page) => `/api/emails?page=${page}`,
-        show: (id) => `/api/emails/${id}`,
-        update: 'api/emails',
-      };
-    }
-
     get feedbacks() {
       return {
         create: '/api/feedbacks'
@@ -180,6 +171,15 @@
           submit: (id) => `/api/student_submissions/${id}/submit`,
           update: (id) => `/api/student_submissions/${id}`,
         },
+      };
+    }
+
+    get threads() {
+      return {
+        delete: (id) => `/api/threads/${id}`,
+        index: (page) => `/api/threads?page=${page}`,
+        show: (id) => `/api/threads/${id}`,
+        update: 'api/threads',
       };
     }
 

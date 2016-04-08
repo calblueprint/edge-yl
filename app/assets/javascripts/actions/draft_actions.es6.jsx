@@ -24,7 +24,7 @@
     sendEmail(template) {
       var params = { email: template.attributes };
       var resolve = (response) => {
-        window.location = RouteConstants.emails.index();
+        window.location = RouteConstants.threads.index();
       };
       var reject = (response) => this.storeErrors(response);
       Requester.update(
