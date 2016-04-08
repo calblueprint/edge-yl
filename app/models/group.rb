@@ -19,6 +19,8 @@ class Group < ActiveRecord::Base
 
   belongs_to :conference
 
+  before_create :assign_letter
+
   has_many :leaderships, dependent: :destroy
   has_many :students
   has_many :visits, dependent: :destroy, as: :visitable
@@ -78,6 +80,10 @@ class Group < ActiveRecord::Base
   end
 
   private
+
+  def assign_letter
+    self.letter = self.conference.next_letter
+  end
 
   def generate_leaderships
     if (self.leaderships.where(style: Leadership.styles['primary_leader']).count == 0)

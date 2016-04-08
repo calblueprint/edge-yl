@@ -104,6 +104,11 @@ class Conference < ActiveRecord::Base
     students.male.count
   end
 
+  def next_letter
+    used_letters = self.used_letters
+    ('A'..'Z').select {|letter| !used_letters.include? letter}.first
+  end
+
   def others_count
     students.other.count
   end
@@ -122,6 +127,10 @@ class Conference < ActiveRecord::Base
 
   def roomless_students_count
     students.where(room_id: nil).count
+  end
+
+  def used_letters
+    self.groups.map {|group| group.letter}
   end
 
 end
