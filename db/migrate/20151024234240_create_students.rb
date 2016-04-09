@@ -18,14 +18,22 @@ class CreateStudents < ActiveRecord::Migration
       t.string  :exercise_limitations, null: false
       t.string  :first_name, null: false
       t.integer :gender, null: false
-      t.string  :guardian_email, null: false
-      t.string  :guardian_employer, default: '', null: false
-      t.string  :guardian_first_name, null: false
-      t.string  :guardian_job_title, default: '', null: false
-      t.string  :guardian_last_name, null: false
-      t.string  :guardian_phone_number, null: false
-      t.integer :guardian_phone_type, null: false
-      t.integer :guardian_relationship, null: false
+      t.string  :guardian_one_email
+      t.string  :guardian_one_employer, default: ''
+      t.string  :guardian_one_first_name
+      t.string  :guardian_one_job_title, default: ''
+      t.string  :guardian_one_last_name
+      t.string  :guardian_one_phone_number
+      t.integer :guardian_one_phone_type
+      t.integer :guardian_one_relationship
+      t.string  :guardian_two_email
+      t.string  :guardian_two_employer, default: ''
+      t.string  :guardian_two_first_name
+      t.string  :guardian_two_job_title, default: ''
+      t.string  :guardian_two_last_name
+      t.string  :guardian_two_phone_number
+      t.integer :guardian_two_phone_type
+      t.integer :guardian_two_relationship
       t.integer :health_conditions, null: false
       t.string  :home_phone, null: false
       t.integer :immunizations, null: false
