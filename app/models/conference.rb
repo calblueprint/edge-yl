@@ -59,7 +59,7 @@ class Conference < ActiveRecord::Base
 
     students.each { |student| student.room = nil }
 
-    rooms.each do |room|
+    rooms.student.each do |room|
       while room.students.count < room.capacity
         if !unassigned_males.empty? && room.male?
           student = unassigned_males.pop()

@@ -7,6 +7,7 @@
 #  capacity      :integer          not null
 #  gender        :integer          not null
 #  number        :integer          not null
+#  style         :integer          not null
 #  conference_id :integer          not null
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
@@ -15,10 +16,12 @@
 class Room < ActiveRecord::Base
 
   scope :conference_id, -> conference_id { where(conference_id: conference_id) }
+  scope :style, -> style { where(style: styles[style]) }
 
   belongs_to :conference
 
   enum gender: [:female, :male, :other]
+  enum style: [:staff, :student]
 
   has_many :students
 

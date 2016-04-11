@@ -37,7 +37,7 @@ class RoomCreateModal extends CreateModal {
     }
   }
 
-  generateChoice(gender) {
+  generateGenderChoice(gender) {
     if (this.props.type === TypeConstants.pages.conference) {
       return {
         action: () => ConferenceActions.storeAttribute('gender', gender),
@@ -51,9 +51,28 @@ class RoomCreateModal extends CreateModal {
     }
   }
 
-  generateChoices() {
+  generateGenderChoices() {
     var genders = ['female', 'male', 'other'];
-    return genders.map((gender) => this.generateChoice(gender));
+    return genders.map((gender) => this.generateGenderChoice(gender));
+  }
+
+  generateStyleChoice(style) {
+    if (this.props.type === TypeConstants.pages.conference) {
+      return {
+        action: () => ConferenceActions.storeAttribute('style', style),
+        content: style,
+      };
+    } else if (this.props.type === TypeConstants.pages.rooms) {
+      return {
+        action: () => RoomsActions.storeAttribute('style', style),
+        content: style,
+      };
+    }
+  }
+
+  generateStyleChoices() {
+    var styles = ['staff', 'student'];
+    return styles.map((style) => this.generateStyleChoice(style));
   }
 
   generateHandler(field) {
@@ -109,10 +128,15 @@ class RoomCreateModal extends CreateModal {
             placeholder={'50'}
             value={attributes.capacity} />
           <CardDropdown
-            choices={this.generateChoices()}
+            choices={this.generateGenderChoices()}
             errors={errors.gender}
             label={'Gender'}
             value={attributes.gender} />
+          <CardDropdown
+            choices={this.generateStyleChoices()}
+            errors={errors.style}
+            label={'Occupant Type'}
+            value={attributes.style} />
         </div>
       </div>
     );

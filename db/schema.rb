@@ -177,6 +177,7 @@ ActiveRecord::Schema.define(version: 20160308042713) do
     t.integer  "capacity",      null: false
     t.integer  "gender",        null: false
     t.integer  "number",        null: false
+    t.integer  "style",         null: false
     t.integer  "conference_id", null: false
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false

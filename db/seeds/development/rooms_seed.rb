@@ -6,9 +6,18 @@ Conference.all.each do |conference|
       conference: conference,
       gender: index % 3,
       number: index,
+      style: Room.styles[:student],
     )
     puts "Created room #{new_room.full_name} for conference #{conference.name}."
   end
+  staff_room = Room.create(
+      building: "#{Faker::Lorem.word}",
+      capacity: 2,
+      conference: conference,
+      gender: Room.gender[:other],
+      number: 1337,
+      style: Room.styles[:staff],
+    )
 end
 
 conference = Conference.first
