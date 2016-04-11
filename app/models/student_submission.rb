@@ -103,6 +103,16 @@ class StudentSubmission < ActiveRecord::Base
     write_attribute(:carpool, EnumConstants::CARPOOL.index(value))
   end
 
+  def ceremony_attendance
+    if !read_attribute(:ceremony_attendance).nil?
+      EnumConstants::CEREMONY[read_attribute(:ceremony_attendance)]
+    end
+  end
+
+  def ceremony_attendance=(value)
+    write_attribute(:ceremony_attendance, EnumConstants::CEREMONY.index(value))
+  end
+
   def dietary_restrictions
     if !read_attribute(:dietary_restrictions).nil?
       EnumConstants::DIETARY_RESTRICTIONS[read_attribute(:dietary_restrictions)]
@@ -294,6 +304,7 @@ class StudentSubmission < ActiveRecord::Base
       4 => attributes_four,
       5 => attributes_five,
       6 => attributes_six,
+      7 => attributes_seven,
     }
   end
 
@@ -460,4 +471,13 @@ class StudentSubmission < ActiveRecord::Base
       media_newspaper: media_newspaper,
       media_participation: media_participation
     }
+  end
+
+  def attributes_seven
+    {
+      ceremony_attendance: ceremony_attendance,
+      ceremony_attendance_number: ceremony_attendance_number,
+    }
+  end
 end
+

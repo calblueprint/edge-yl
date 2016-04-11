@@ -9,6 +9,8 @@ class StudentSubmissionBaseSerializer < BaseSerializer
              :allergies,
              :birthday,
              :cell_phone,
+             :ceremony_attendance,
+             :ceremony_attendance_number,
              :current_page,
              :dietary_restrictions,
              :email,

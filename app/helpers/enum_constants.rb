@@ -8,6 +8,13 @@ module EnumConstants
     Interested\ -\ I\ can't\ provide\ a\ ride
   )
 
+  CEREMONY = %w( 
+    My\ family\ will\ be\ attending\ the\ Parents'\ Program\ and\ Closing\ Ceremonies
+    My\ family\ will\ only\ be\ attending\ Closing\ Ceremonies
+    My\ family\ will\ only\ be\ picking\ up\ after\ Closing\ Ceremonies
+    My\ family\ is\ unable\ to\ attend
+  )
+
   DIETARY_RESTRICTIONS = %w(
     dairy-free gluten-free
     none nut-allergy

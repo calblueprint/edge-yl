@@ -265,6 +265,8 @@ ActiveRecord::Schema.define(version: 20160308042713) do
     t.date    "birthday"
     t.integer "carpool"
     t.string  "cell_phone"
+    t.integer "ceremony_attendance"
+    t.string  "ceremony_attendance_number"
     t.integer "current_page",                  default: 0,    null: false
     t.integer "dietary_restrictions"
     t.string  "email"
@@ -303,6 +305,9 @@ ActiveRecord::Schema.define(version: 20160308042713) do
     t.string  "insurance_phone_number"
     t.string  "insurance_provider"
     t.string  "last_name"
+    t.string  "media_information"
+    t.string  "media_newspaper"
+    t.integer "media_participation"
     t.string  "medical_guardian_name"
     t.string  "medications"
     t.string  "other_dietary_restrictions",    default: ""

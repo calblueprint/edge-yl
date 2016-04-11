@@ -14,6 +14,8 @@ class StudentValidator
                 :birthday,
                 :carpool,
                 :cell_phone,
+                :ceremony_attendance,
+                :ceremony_attendance_number,
                 :current_page,
                 :dietary_restrictions,
                 :email,
@@ -141,6 +143,9 @@ class StudentValidator
   validates :media_newspaper, if: :media_consent?, presence: true
   validates :media_participation, if: :page_six?, presence: true
 
+  validates :ceremony_attendance, if: :page_seven?, presence: true
+  validates :ceremony_attendance, if: :parent_attending?, presence: true
+
   def initialize(attributes={})
     attributes.each do |name, value|
       send("#{name}=", value)
@@ -179,6 +184,15 @@ class StudentValidator
 
   def page_six?
     current_page == 6
+  end
+
+  def page_seven?
+    current_page == 7
+  end
+
+  def parent_attending?
+    ceremony_attendance == EnumConstants::CEREMONY[0] ||
+    ceremony_attendance == EnumConstants::CEREMONY[1]
   end
 
   def persisted?

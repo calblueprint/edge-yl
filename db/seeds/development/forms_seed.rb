@@ -855,7 +855,6 @@ student_form = Form.create(
   Page.create(
     description: 'Media Consent description',
     form: form,
-    is_last: true,
     number: 6,
     title: 'Media Participation',
   ) do |page|
@@ -887,6 +886,56 @@ student_form = Form.create(
       page: page,
       style: Question.styles[:textarea],
       title: 'Additional information you would like included in the release.',
+    )
+  end
+  Page.create(
+    description: 'Closing ceremony description',
+    form: form,
+    is_last: true,
+    number: 7,
+    title: 'Closing Ceremony',
+  ) do |page|
+    Question.create(
+      description: "Parents and family members are invited to attend the Parents' Program and Closing Ceremonies of the seminar. " +
+                   'It is a fantastic chance to learn more what the seminar is about and see firsthand the excitement and energy ' +
+                   'created by the participants.',
+      key: 'ceremony_info_1',
+      page: page,
+      style: Question.styles[:information],
+      title: 'Closing Ceremony',
+    )
+    Question.create(
+      description: "Please arrive at UC Berkeley, Clark Kerr Campus on Sunday June 3rd, 2016 by 11:15AM for the Parents' " +
+                   'Program (will begin at 11:30AM) or by 1:20 PM for the Closing Ceremonies. See directions and maps in ' +
+                   'the information packet that was e-mailed to your student or refer to the web site HERE.',
+      key: 'ceremony_info_2',
+      page: page,
+      style: Question.styles[:information],
+      title: ' ',
+    )
+    Question.create(
+      description: 'Check-out will begin after Closing Ceremonies, around 2:30 pm.  As the time it takes to pack and check out ' +
+                   'varies, please do not plan on leaving the Clark Kerr campus with your student before 3:00 pm.  If you are not ' +
+                   'attending Closing Ceremonies and will not be present to help your student pack and check out, please plan to pick ' +
+                   'up your student after 3:00 pm, but no later than 3:30 pm.',
+      key: 'ceremony_info_3',
+      page: page,
+      style: Question.styles[:information],
+      title: ' ',
+    )
+    Question.create(
+      key: 'ceremony_attendance',
+      options: EnumConstants::CEREMONY,
+      page: page,
+      style: Question.styles[:dropdown],
+      title: 'Will you join us on Sunday?',
+    )
+    Question.create(
+      is_required: false,
+      key: 'ceremony_atendance_number',
+      page: page,
+      style: Question.styles[:input],
+      title: 'Number of Additional Family Members Attending',
     )
   end
 end
