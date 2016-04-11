@@ -7,8 +7,10 @@
     constructor() {
       this.overlay = false;
       this.conference = {
+        checked_in_count: {},
         groups: [],
         rooms: [],
+        students_count: {},
       };
       this.pairing = null;
       this.template = null;

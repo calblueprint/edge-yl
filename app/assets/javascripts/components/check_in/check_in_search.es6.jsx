@@ -4,7 +4,7 @@ class CheckInSearch extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      conferenceId: React.PropTypes.number.isRequired,
+      conference: React.PropTypes.object.isRequired,
       pagination: React.PropTypes.object.isRequired,
       results: React.PropTypes.array.isRequired,
       savedSearch: React.PropTypes.object.isRequired,
@@ -21,7 +21,7 @@ class CheckInSearch extends Component {
 
   handleInput(event) {
     CheckInActions.storeSearch(true,
-      this.props.conferenceId,
+      this.props.conference.id,
       event.target.value);
   }
 

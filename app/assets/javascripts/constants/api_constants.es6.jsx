@@ -133,7 +133,7 @@
     get searchables() {
       return {
         search: (query) => `/api/searchables/search?query=${query}`,
-        check_in: (conferenceId, query) => {
+        checkIn: (conferenceId, query) => {
           return `/api/searchables/check_in?conference_id=${conferenceId}`+
                                           `&query=${query}`;
         },
@@ -147,8 +147,8 @@
 
     get students() {
       return {
-        check_in: (id) => `/api/students/check_in/${id}`,
-        check_out: (id) => `/api/students/check_out/${id}`,
+        checkIn: (id) => `/api/students/check_in/${id}`,
+        checkOut: (id) => `/api/students/check_out/${id}`,
         index: (conferenceId, page, query={}) => {
           var route = `/api/students?conference_id=${conferenceId}&page=${page}`;
           Object.keys(query).map((key) => {

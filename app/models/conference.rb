@@ -84,8 +84,13 @@ class Conference < ActiveRecord::Base
     end_date.future?
   end
 
-  def females_count
-    students.female.count
+  def checked_in_count
+    {
+      females: students.female.is_checked_in(1).count,
+      males: students.male.is_checked_in(1).count,
+      others: students.other.is_checked_in(1).count,
+      total: students.is_checked_in(1).count,
+    }
   end
 
   # Generates groups_count number of empty groups for a conference.
@@ -100,17 +105,9 @@ class Conference < ActiveRecord::Base
     groups.count
   end
 
-  def males_count
-    students.male.count
-  end
-
   def next_letter
     used_letters = self.used_letters
     ('A'..'Z').select {|letter| !used_letters.include? letter}.first
-  end
-
-  def others_count
-    students.other.count
   end
 
   def rooms_count
@@ -118,7 +115,12 @@ class Conference < ActiveRecord::Base
   end
 
   def students_count
-    students.count
+    {
+      females: students.female.count,
+      males: students.male.count,
+      others: students.other.count,
+      total: students.count,
+    }
   end
 
   def groupless_students_count

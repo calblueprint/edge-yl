@@ -63,6 +63,7 @@ class Student < ActiveRecord::Base
 
   scope :conference_id, -> conference_id { where(conference_id: conference_id) }
   scope :gender, -> gender { where(gender: genders[gender.downcase]) }
+  scope :is_checked_in, -> is_checked_in { where(is_checked_in: is_checked_in) }
   scope :is_flagged, -> is_flagged { where(is_flagged: is_flagged) }
   scope :is_primary, -> is_primary { where(is_primary: is_primary) }
   scope :sort, -> sort { order(sort) }
@@ -85,6 +86,7 @@ class Student < ActiveRecord::Base
   enum registration_status: [:registered, :selected, :dropped]
   enum shirt_size: [:S, :M, :L, :XL, :XXL]
 
+  belongs_to :conference
   belongs_to :group
   belongs_to :school
   belongs_to :room
@@ -92,8 +94,6 @@ class Student < ActiveRecord::Base
   has_many :comments, as: :commentable, dependent: :destroy
   has_many :emails, dependent: :destroy, as: :emailable
   has_many :visits, dependent: :destroy, as: :visitable
-
-  has_one :conference, through: :group
 
   before_validation :set_initials, on: :create
   validates :address_city, presence: true
