@@ -19,14 +19,22 @@
 #  exercise_limitations       :string           not null
 #  first_name                 :string           not null
 #  gender                     :integer          not null
-#  guardian_email             :string           not null
-#  guardian_employer          :string           default(""), not null
-#  guardian_first_name        :string           not null
-#  guardian_job_title         :string           default(""), not null
-#  guardian_last_name         :string           not null
-#  guardian_phone_number      :string           not null
-#  guardian_phone_type        :integer          not null
-#  guardian_relationship      :integer          not null
+#  guardian_one_email         :string
+#  guardian_one_employer      :string           default("")
+#  guardian_one_first_name    :string
+#  guardian_one_job_title     :string           default("")
+#  guardian_one_last_name     :string
+#  guardian_one_phone_number  :string
+#  guardian_one_phone_type    :integer
+#  guardian_one_relationship  :integer
+#  guardian_two_email         :string
+#  guardian_two_employer      :string           default("")
+#  guardian_two_first_name    :string
+#  guardian_two_job_title     :string           default("")
+#  guardian_two_last_name     :string
+#  guardian_two_phone_number  :string
+#  guardian_two_phone_type    :integer
+#  guardian_two_relationship  :integer
 #  health_conditions          :integer          not null
 #  home_phone                 :string           not null
 #  immunizations              :integer          not null
@@ -101,12 +109,18 @@ class Student < ActiveRecord::Base
   validates :exercise_limitations, presence: true
   validates :first_name, presence: true
   validates :gender, presence: true
-  validates :guardian_email, presence: true
-  validates :guardian_first_name, presence: true
-  validates :guardian_last_name, presence: true
-  validates :guardian_phone_number, presence: true
-  validates :guardian_phone_type, presence: true
-  validates :guardian_relationship, presence: true
+  validates :guardian_one_email, presence: true
+  validates :guardian_one_first_name, presence: true
+  validates :guardian_one_last_name, presence: true
+  validates :guardian_one_phone_number, presence: true
+  validates :guardian_one_phone_type, presence: true
+  validates :guardian_one_relationship, presence: true
+  validates :guardian_two_email, presence: true
+  validates :guardian_two_first_name, presence: true
+  validates :guardian_two_last_name, presence: true
+  validates :guardian_two_phone_number, presence: true
+  validates :guardian_two_phone_type, presence: true
+  validates :guardian_two_relationship, presence: true
   validates :health_conditions, presence: true
   validates :home_phone, presence: true
   validates :immunizations, presence: true
