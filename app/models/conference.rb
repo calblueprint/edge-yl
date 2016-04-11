@@ -16,6 +16,7 @@ class Conference < ActiveRecord::Base
   self.default_scope { order('created_at DESC') }
 
   has_many :groups, dependent: :destroy
+  has_many :responsibilities, dependent: :destroy
   has_many :rooms, dependent: :destroy
   has_many :students
 
@@ -23,6 +24,8 @@ class Conference < ActiveRecord::Base
   validates :location, presence: true
   validates :name, presence: true
   validates :start_date, presence: true
+
+  after_create :create_responsibilities
 
   def self.active
     active_conferences = []
@@ -91,6 +94,12 @@ class Conference < ActiveRecord::Base
       others: students.other.is_checked_in(1).count,
       total: students.is_checked_in(1).count,
     }
+  end
+
+  def create_responsibilities
+    School.all.each do |school|
+      responsibility = Responsibility.create(conference: self, school: school)
+    end
   end
 
   # Generates groups_count number of empty groups for a conference.

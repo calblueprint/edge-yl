@@ -9,6 +9,7 @@ class ConferenceShowSerializer < ConferenceIndexSerializer
 
   has_many :groups, serializer: GroupIndexSerializer
   has_many :rooms, serializer: RoomConferenceSerializer
+  has_many :responsibilities, serializer: ResponsibilityIndexSerializer
 
   def groups
     object.groups

@@ -14,7 +14,7 @@ Conference.all.each do |conference|
       building: "#{Faker::Lorem.word}",
       capacity: 2,
       conference: conference,
-      gender: Room.gender[:other],
+      gender: Room.genders[:other],
       number: 1337,
       style: Room.styles[:staff],
     )
