@@ -1,10 +1,18 @@
 AllCops:
   Exclude:
+    - 'bin/*'
+    - 'config/environments/*'
     - 'db/schema.rb'
+    - 'spec/rails_helper.rb'
+    - 'spec/spec_helper.rb'
   TargetRubyVersion: 2.2
 
 Documentation:
     Enabled: false
+
+Metrics/ClassLength:
+  CountComments: false
+  Max: 200
 
 Metrics/LineLength:
   Max: 100
@@ -16,7 +24,13 @@ Metrics/MethodLength:
 Rails:
   Enabled: true
 
+Rails/Output:
+  Enabled: false
+
 Style/EmptyLinesAroundClassBody:
+  EnforcedStyle: empty_lines
+
+Style/EmptyLinesAroundModuleBody:
   EnforcedStyle: empty_lines
 
 Style/TrailingCommaInArguments:
