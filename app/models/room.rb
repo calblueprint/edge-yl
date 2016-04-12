@@ -30,7 +30,7 @@ class Room < ActiveRecord::Base
   validates :number, presence: true, uniqueness: { scope: :conference_id }
 
   def self.to_csv
-    attributes = %w{number}
+    attributes = %w(number)
     CSV.generate(headers: true) do |csv|
       csv << attributes
       all.each do |room|
@@ -51,7 +51,7 @@ class Room < ActiveRecord::Base
   end
 
   def remove_students
-    self.students.each do |student|
+    students.each do |student|
       student.room = nil
       student.save
     end

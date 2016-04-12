@@ -30,6 +30,7 @@ group :development, :test do
   gem 'quiet_assets'
   gem 'factory_girl_rails'
   gem 'rspec-rails'
+  gem 'rubocop'
 end
 
 group :development do

@@ -41,7 +41,7 @@ class Contact < ActiveRecord::Base
         other_contact.update_attributes(is_primary: false)
       end
     end
-    self.save
+    save
   end
 
 end

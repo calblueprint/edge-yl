@@ -51,7 +51,7 @@ class User < ActiveRecord::Base
   end
 
   def self.groupable
-    self.includes(:leadership).where(leaderships: { id: nil })
+    includes(:leadership).where(leaderships: { id: nil })
   end
 
   def full_name

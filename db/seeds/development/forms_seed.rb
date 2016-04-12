@@ -187,7 +187,7 @@ school_form = Form.create(
       style: Question.styles[:dropdown],
       title: 'Primary Student Shirt Size',
     )
-        Question.create(
+    Question.create(
       key: 'primary_guardian_first_name',
       page: page,
       style: Question.styles[:input],
@@ -231,7 +231,7 @@ school_form = Form.create(
   end
   Page.create(
     form: form,
-    description: 'General information about the alternate Student from your school.',
+    description: 'General information about the alternate student from your school.',
     is_last: true,
     number: 4,
     title: 'Step 4 - Alternate Student Information',
@@ -661,7 +661,7 @@ student_form = Form.create(
       is_required: false,
       key: 'other_dietary_restrictions',
       page: page,
-      placeholder: 'Enter "None" if you do not have any' ,
+      placeholder: 'Enter "None" if you do not have any',
       style: Question.styles[:textarea],
       title: 'Please list any other dietary restrictions that you have:',
     )
@@ -673,13 +673,19 @@ student_form = Form.create(
       title: 'Please list any limitations on the amount of physical exercise you can engage in:',
     )
     Question.create(
-      description: 'If, in the judgment of the staff of the EDGE Youth Leadership Seminar, the child named above needs immediate care and treatment as a result of ' +
-                   'any injury or sickness, I hereby give permission to the staff to secure proper treatment for my child. I do hereby consent to whatever x-ray, ' +
-                   'examination, anesthetic, medical, surgical or dental diagnosis or treatment and hospital care are considered necessary in the best judgment of ' +
-                   'the attending physician, surgeon or dentist and performed by or under the supervision of the medical staff of the hospital or facility furnishing ' +
-                   'medical or dental services. It is further understood that the undersigned will assume full responsibility for any such action, including payment of costs. ' +
-                   'I do hereby agree to indemnify and hold harmless the EDGE Youth Leadership (including its officers, directors, members and/or volunteers) '+
-                   'from any claim by any person whomsoever on account of such care and treatment of said child.',
+      description: %s(
+        If, in the judgment of the staff of the EDGE Youth Leadership Seminar, the child named
+        above needs immediate care and treatment as a result of any injury or sickness, I hereby
+        give permission to the staff to secure proper treatment for my child. I do hereby consent
+        to whatever x-ray, examination, anesthetic, medical, surgical or dental diagnosis or
+        treatment and hospital care are considerednecessary in the best judgment of the attending
+        physician, surgeon or dentist and performed by or under the supervision of the medical
+        staff of the hospital or facility furnishing medical or dental services. It is further
+        understood that the undersigned will assume full responsibility for any such action,
+        including payment of costs. I do hereby agree to indemnify and hold harmless the EDGE
+        Youth Leadership (including its officers, directors, members and/or volunteers) from any
+        claim by any person whomsoever on account of such care and treatment of said child.
+      ),
       key: 'emergency_consent_info',
       page: page,
       style: Question.styles[:information],

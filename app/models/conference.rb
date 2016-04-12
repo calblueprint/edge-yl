@@ -13,7 +13,7 @@
 
 class Conference < ActiveRecord::Base
 
-  self.default_scope { order('created_at DESC') }
+  default_scope { order('created_at DESC') }
 
   has_many :groups, dependent: :destroy
   has_many :responsibilities, dependent: :destroy
@@ -141,7 +141,7 @@ class Conference < ActiveRecord::Base
   end
 
   def used_letters
-    self.groups.map {|group| group.letter}
+    groups.map {|group| group.letter}
   end
 
 end

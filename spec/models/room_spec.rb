@@ -16,10 +16,8 @@
 require 'rails_helper'
 
 RSpec.describe Room, type: :model do
-
-  it "is invalid without a number" do
+  it 'is invalid without a number' do
     factory = FactoryGirl.build(:room, number: nil)
     expect(factory).to be_invalid
   end
-
 end

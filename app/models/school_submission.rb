@@ -196,14 +196,14 @@ class SchoolSubmission < ActiveRecord::Base
         end
       end
       if valid_params.size > 0
-        self.update_attributes(valid_params)
+        update_attributes(valid_params)
       end
       error_response.each do |attribute, messages|
         messages.each do |message|
-          self.errors.add(attribute, message)
+          errors.add(attribute, message)
         end
       end
-      self.errors.size == 0
+      errors.size == 0
     end
   end
 
@@ -333,7 +333,7 @@ class SchoolSubmission < ActiveRecord::Base
       raise 'Could not deliver appropriate emails'
     end
     self.is_active = false
-    self.save
+    save
   end
 
   private

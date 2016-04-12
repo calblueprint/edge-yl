@@ -69,7 +69,7 @@ class Group < ActiveRecord::Base
   end
 
   def remove_students
-    self.students.each do |student|
+    students.each do |student|
       student.group = nil
       student.save
     end
@@ -82,16 +82,16 @@ class Group < ActiveRecord::Base
   private
 
   def assign_letter
-    self.letter = self.conference.next_letter
+    self.letter = conference.next_letter
   end
 
   def generate_leaderships
-    if (self.leaderships.where(style: Leadership.styles['primary_leader']).count == 0)
+    if leaderships.where(style: Leadership.styles['primary_leader']).count == 0
       Leadership.create(
         group: self,
       )
     end
-    if (self.leaderships.where(style: Leadership.styles['secondary_leader']).count == 0)
+    if leaderships.where(style: Leadership.styles['secondary_leader']).count == 0
       Leadership.create(
         group: self,
         style: Leadership.styles['secondary_leader'],
