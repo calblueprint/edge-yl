@@ -67,7 +67,7 @@ class User < ActiveRecord::Base
     new_visit = Visit.new(
       user_id: id,
       visitable_id: visitable_id,
-      visitable_type: visitable_type
+      visitable_type: visitable_type,
     )
     if !new_visit.equals(last_visit)
       new_visit.save

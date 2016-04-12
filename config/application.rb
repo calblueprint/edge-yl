@@ -8,7 +8,9 @@ require 'rails/all'
 Bundler.require(*Rails.groups)
 
 module EdgeYl
+
   class Application < Rails::Application
+
     # Configuration for generators.
     config.generators do |g|
       g.test_framework :rspec,
@@ -18,7 +20,7 @@ module EdgeYl
         routing_specs: false,
         controller_specs: true,
         request_specs: true
-      g.fixture_replacement :factory_girl, :dir => 'spec/factories'
+      g.fixture_replacement :factory_girl, dir: 'spec/factories'
     end
 
     # Settings in config/environments/* take precedence over those specified here.
@@ -38,5 +40,7 @@ module EdgeYl
 
     # Autoload all serializers within serializers directory
     config.autoload_paths += Dir[Rails.root.join('app', 'serializers', '**/')]
+
   end
+
 end

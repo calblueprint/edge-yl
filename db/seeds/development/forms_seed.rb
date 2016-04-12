@@ -96,7 +96,7 @@ school_form = Form.create(
   end
   Page.create(
     form: form,
-    description: 'General information about the primary Student from your school.',
+    description: 'General information about the primary student from your school.',
     number: 3,
     title: 'Step 3 - Primary Student Information',
   ) do |page|
@@ -634,21 +634,30 @@ student_form = Form.create(
       options: EnumConstants::BOOLEANS,
       page: page,
       style: Question.styles[:dropdown],
-      title: 'Do you (the student attendee) have any allergies to food, medications, insects, etc.?',
+      title: %s(
+        Do you (the student attendee) have any
+        allergies to food, medications, insects, etc.?
+      ),
     )
     Question.create(
       key: 'health_conditions',
       options: EnumConstants::BOOLEANS,
       page: page,
       style: Question.styles[:dropdown],
-      title: 'Have you (the student attendee) previously been diagnosed with or currently have any of the following health conditions (check all that apply)?',
+      title: %s(
+        Have you (the student attendee) previously been diagnosed with or currently
+        have any of the following health conditions (check all that apply)?
+      ),
     )
     Question.create(
       key: 'medications',
       page: page,
       placeholder: 'Enter "None" if you do not have any',
       style: Question.styles[:textarea],
-      title: 'Please list any medication(s) that you currently take and/or will need to take during the seminar weekend:',
+      title: %s(
+        Please list any medication(s) that you currently take
+        and/or will need to take during the seminar weekend:
+      ),
     )
     Question.create(
       key: 'dietary_restrictions',
@@ -699,11 +708,16 @@ student_form = Form.create(
       title: 'Do you consent?',
     )
     Question.create(
-      description: 'Becoming a leader requires self-reflection and challenging oneself to work through the internal barriers to leadership development. Our seminar ' +
-                   'encourages and guides this self-reflection through interactive activities and experiential processes. At times this can be emotionally difficult, ' +
-                   'and the student may need additional support to process their experience. In light of this, we will have an on-site Licensed Psychologist available ' +
-                   'to talk to the students if a request is made. In order for student participants to talk with the Psychologist, we need guardian consent. By signing ' +
-                   'below you are consenting for your student to speak with a Licensed Psychologist during the EDGE conference.',
+      description: %s(
+        Becoming a leader requires self-reflection and challenging oneself to work through the
+        internal barriers to leadership development. Our seminar encourages and guides this
+        self-reflection through interactive activities and experiential processes. At times this
+        can be emotionally difficult, and the student may need additional support to process their
+        experience. In light of this, we will have an on-site Licensed Psychologist available to
+        talk to the students if a request is made. In order for student participants to talk with
+        the Psychologist, we need guardian consent. By signing below you are consenting for your
+        student to speak with a Licensed Psychologist during the EDGE conference.
+      ),
       key: 'psychologist_consent_info',
       page: page,
       style: Question.styles[:information],

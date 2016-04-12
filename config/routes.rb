@@ -1,5 +1,4 @@
-  Rails.application.routes.draw do
-
+Rails.application.routes.draw do
   root 'pages#login'
 
   get 'check_in/:conference', to: 'pages#check_in'
