@@ -247,7 +247,9 @@ class SchoolSubmission < ActiveRecord::Base
       name: name,
       website: website,
     )
-    fail 'Could not create school from submission' unless school.save
+    unless school.save
+      fail 'Could not create school from submission'
+    end
     contact = Contact.new(
       email: contact_email,
       first_name: contact_first_name,
@@ -257,7 +259,9 @@ class SchoolSubmission < ActiveRecord::Base
       title: contact_title,
       school: school,
     )
-    fail 'Could not create contact from submission' unless contact.save
+    unless contact.save
+      fail 'Could not create contact from submission'
+    end
     primary_submission = StudentSubmission.new(
       address_city: primary_address_city,
       address_one: primary_address_one,
@@ -281,7 +285,9 @@ class SchoolSubmission < ActiveRecord::Base
       last_name: primary_last_name,
       shirt_size: primary_shirt_size,
     )
-    fail 'Could not create primary student from submission' unless primary_submission.save
+    unless primary_submission.save
+      fail 'Could not create primary student from submission'
+    end
     if has_alternate_student == EnumConstants::BOOLEANS[0]
       alternate_submission = StudentSubmission.new(
         address_city: alternate_address_city,
@@ -306,7 +312,9 @@ class SchoolSubmission < ActiveRecord::Base
         last_name: alternate_last_name,
         shirt_size: alternate_shirt_size,
       )
-      fail 'Could not create alternate student from submission' unless alternate_submission.save
+      unless alternate_submission.save
+        fail 'Could not create alternate student from submission'
+      end
     end
     begin
       SubmissionsMailer.submit_school(self).deliver_now

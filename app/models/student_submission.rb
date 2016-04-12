@@ -231,7 +231,9 @@ class StudentSubmission < ActiveRecord::Base
       attributes_page[:current_page] = index
       validator = StudentValidator.new(attributes_page)
       validator.valid?
-      return false if validator.errors.size > 0
+      if validator.errors.size > 0
+        return false
+      end
     end
     true
   end
@@ -241,7 +243,9 @@ class StudentSubmission < ActiveRecord::Base
       attributes_page[:current_page] = index
       validator = StudentValidator.new(attributes_page)
       validator.valid?
-      return index if validator.errors.size > 0
+      if validator.errors.size > 0
+        return index
+      end
     end
     attributes_pages.size - 1
   end
@@ -291,7 +295,9 @@ class StudentSubmission < ActiveRecord::Base
       psychologist_consent: psychologist_consent,
       shirt_size: shirt_size,
     )
-    fail 'Could not create student from submission' unless student.save
+    unless student.save
+      fail 'Could not create student from submission'
+    end
     begin
       SubmissionsMailer.submit_student(self).deliver_now
     rescue
