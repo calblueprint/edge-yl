@@ -57,13 +57,28 @@ class CreateStudentSubmissions < ActiveRecord::Migration
       t.string  :medical_guardian_name
       t.string  :medications
       t.string  :other_dietary_restrictions, default: ''
+      t.integer :participation_guardian_consent
+      t.string  :participation_guardian_name
+      t.integer :participation_student_consent
+      t.string  :participation_student_name
       t.string  :preferred_name, default: ''
       t.integer :psychologist_consent
+      t.integer :risk_guardian_consent
+      t.date    :risk_guardian_date
+      t.string  :risk_guardian_email
+      t.string  :risk_guardian_name
+      t.integer :risk_guardian_relationship
+      t.integer :risk_student_consent
+      t.date    :risk_student_date
+      t.string  :risk_student_email
+      t.string  :risk_student_name
       t.integer :shirt_size
       t.integer :transportation
       t.date    :transportation_arrival_date
       t.string  :transportation_arrival_time
       t.string  :transportation_carrier
+      t.integer :transportation_consent
+      t.string  :transportation_consent_name
       t.date    :transportation_departure_date
       t.string  :transportation_departure_time
       t.string  :transportation_name

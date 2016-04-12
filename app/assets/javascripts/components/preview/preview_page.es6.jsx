@@ -53,11 +53,13 @@ class PreviewPage extends Component {
   // Render
   // --------------------------------------------------
   renderQuestion(question) {
-    return (
-      <PreviewAttribute
-        key={question.key}
-        question={question} />
-    );
+    if (question.style!='information') {
+      return (
+        <PreviewAttribute
+          key={question.key}
+          question={question} />
+      );
+    }
   }
 
   renderQuestions() {

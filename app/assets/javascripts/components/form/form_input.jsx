@@ -34,8 +34,13 @@ class FormInput extends Component {
   // --------------------------------------------------
   renderDescription() {
     var question = this.props.question;
+    console.log(StyleConstants.forms.questions.description);
     if (question.description) {
-      return <p>{question.description}</p>;
+      return (
+        <p style={StyleConstants.forms.questions.description}>
+          {question.description}
+        </p>
+      );
     }
   }
 
@@ -76,7 +81,7 @@ class FormInput extends Component {
     return (
       <div style={StyleConstants.forms.questions.container}>
         <div style={StyleConstants.forms.questions.prompt}>
-          <h6>{this.props.question.title}{this.renderRequired()}</h6>
+          <h5>{this.props.question.title}{this.renderRequired()}</h5>
           {this.renderDescription()}
         </div>
         <div style={StyleConstants.forms.questions.response}>

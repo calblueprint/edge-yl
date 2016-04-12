@@ -58,13 +58,28 @@ class StudentValidator
                 :medical_guardian_name,
                 :medications,
                 :other_dietary_restrictions,
+                :participation_guardian_consent,
+                :participation_guardian_name,
+                :participation_student_consent,
+                :participation_student_name,
                 :preferred_name,
                 :psychologist_consent,
+                :risk_guardian_consent,
+                :risk_guardian_date,
+                :risk_guardian_email,
+                :risk_guardian_name,
+                :risk_guardian_relationship,
+                :risk_student_consent,
+                :risk_student_date,
+                :risk_student_email,
+                :risk_student_name,
                 :shirt_size,
                 :transportation,
                 :transportation_arrival_date,
                 :transportation_arrival_time,
                 :transportation_carrier,
+                :transportation_consent,
+                :transportation_consent_name,
                 :transportation_departure_date,
                 :transportation_departure_time,
                 :transportation_name,
@@ -135,6 +150,8 @@ class StudentValidator
   validates :transportation_arrival_date, if: :public_transportation?, presence: true
   validates :transportation_arrival_time, if: :public_transportation?, presence: true
   validates :transportation_carrier, if: :public_transportation?, presence: true
+  validates :transportation_consent, if: :page_five?, presence: true
+  validates :transportation_consent_name, if: :page_five?, presence: true
   validates :transportation_departure_date, if: :public_transportation?, presence: true
   validates :transportation_departure_time, if: :public_transportation?, presence: true
   validates :transportation_name, if: :public_transportation?, presence: true
@@ -144,8 +161,23 @@ class StudentValidator
   validates :media_participation, if: :page_six?, presence: true
 
   validates :ceremony_attendance, if: :page_seven?, presence: true
-  validates :ceremony_attendance, if: :parent_attending?, presence: true
+  validates :ceremony_attendance_number, if: :parent_attending?, presence: true
 
+  validates :risk_guardian_consent, if: :page_eight?, presence: true
+  validates :risk_guardian_date, if: :page_eight?, presence: true
+  validates :risk_guardian_email, if: :page_eight?, presence: true
+  validates :risk_guardian_name, if: :page_eight?, presence: true
+  validates :risk_guardian_relationship, if: :page_eight?, presence: true
+  validates :risk_student_consent, if: :page_eight?, presence: true
+  validates :risk_student_date, if: :page_eight?, presence: true
+  validates :risk_student_email, if: :page_eight?, presence: true
+  validates :risk_student_name, if: :page_eight?, presence: true
+
+  validates :participation_guardian_consent, if: :page_nine?, presence: true
+  validates :participation_guardian_name, if: :page_nine?, presence: true
+  validates :participation_student_consent, if: :page_nine?, presence: true
+  validates :participation_student_name, if: :page_nine?, presence: true
+  
   def initialize(attributes={})
     attributes.each do |name, value|
       send("#{name}=", value)
@@ -188,6 +220,14 @@ class StudentValidator
 
   def page_seven?
     current_page == 7
+  end
+
+  def page_eight?
+    current_page == 8
+  end
+
+  def page_nine?
+    current_page == 9
   end
 
   def parent_attending?

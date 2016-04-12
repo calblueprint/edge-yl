@@ -233,6 +233,26 @@ class StudentSubmission < ActiveRecord::Base
     write_attribute(:media_participation, EnumConstants::BOOLEANS.index(value))
   end
 
+  def participation_guardian_consent
+    if !read_attribute(:participation_guardian_consent).nil?
+      EnumConstants::AGREEMENT[read_attribute(:participation_guardian_consent)]
+    end
+  end
+
+  def participation_guardian_consent=(value)
+    write_attribute(:participation_guardian_consent, EnumConstants::AGREEMENT.index(value))
+  end
+
+  def participation_student_consent
+    if !read_attribute(:participation_student_consent).nil?
+      EnumConstants::AGREEMENT[read_attribute(:participation_student_consent)]
+    end
+  end
+
+  def participation_student_consent=(value)
+    write_attribute(:participation_student_consent, EnumConstants::AGREEMENT.index(value))
+  end
+
   def psychologist_consent
     if !read_attribute(:psychologist_consent).nil?
       EnumConstants::BOOLEANS[read_attribute(:psychologist_consent)]
@@ -241,6 +261,36 @@ class StudentSubmission < ActiveRecord::Base
 
   def psychologist_consent=(value)
     write_attribute(:psychologist_consent, EnumConstants::BOOLEANS.index(value))
+  end
+
+  def risk_student_consent
+    if !read_attribute(:risk_student_consent).nil?
+      EnumConstants::AGREEMENT[read_attribute(:risk_student_consent)]
+    end
+  end
+
+  def risk_student_consent=(value)
+    write_attribute(:risk_student_consent, EnumConstants::AGREEMENT.index(value))
+  end
+
+  def risk_guardian_relationship
+    if !read_attribute(:risk_guardian_relationship).nil?
+      EnumConstants::GUARDIAN_RELATIONSHIPS[read_attribute(:risk_guardian_relationship)]
+    end
+  end
+
+  def risk_guardian_relationship=(value)
+    write_attribute(:risk_guardian_relationship, EnumConstants::GUARDIAN_RELATIONSHIPS.index(value))
+  end
+
+  def risk_guardian_consent
+    if !read_attribute(:risk_guardian_consent).nil?
+      EnumConstants::AGREEMENT[read_attribute(:risk_guardian_consent)]
+    end
+  end
+
+  def risk_guardian_consent=(value)
+    write_attribute(:risk_guardian_consent, EnumConstants::AGREEMENT.index(value))
   end
 
   def shirt_size
@@ -261,6 +311,16 @@ class StudentSubmission < ActiveRecord::Base
 
   def transportation=(value)
     write_attribute(:transportation, EnumConstants::TRANSPORTATION.index(value))
+  end
+
+  def transportation_consent
+    if !read_attribute(:transportation_consent).nil?
+      EnumConstants::AGREEMENT[read_attribute(:transportation_consent)]
+    end
+  end
+
+  def transportation_consent=(value)
+    write_attribute(:transportation_consent, EnumConstants::AGREEMENT.index(value))
   end
 
   def form_url
@@ -305,6 +365,8 @@ class StudentSubmission < ActiveRecord::Base
       5 => attributes_five,
       6 => attributes_six,
       7 => attributes_seven,
+      8 => attributes_eight,
+      9 => attributes_nine,
     }
   end
 
@@ -458,6 +520,8 @@ class StudentSubmission < ActiveRecord::Base
       transportation_arrival_date: transportation_arrival_date,
       transportation_arrival_time: transportation_arrival_time,
       transportation_carrier: transportation_carrier,
+      transportation_consent: transportation_consent,
+      transportation_consent_name: transportation_consent_name,
       transportation_departure_date: transportation_departure_date,
       transportation_departure_time: transportation_departure_time,
       transportation_name: transportation_name,
@@ -477,6 +541,29 @@ class StudentSubmission < ActiveRecord::Base
     {
       ceremony_attendance: ceremony_attendance,
       ceremony_attendance_number: ceremony_attendance_number,
+    }
+  end
+
+  def attributes_eight
+    {
+      risk_guardian_consent: risk_guardian_consent,
+      risk_guardian_date: risk_guardian_date,
+      risk_guardian_email: risk_guardian_email,
+      risk_guardian_name: risk_guardian_name,
+      risk_guardian_relationship: risk_guardian_relationship,
+      risk_student_consent: risk_student_consent,
+      risk_student_date: risk_student_date,
+      risk_student_email: risk_student_email,
+      risk_student_name: risk_student_name,
+    }
+  end
+
+  def attributes_nine 
+    {
+      participation_guardian_consent: participation_guardian_consent,
+      participation_guardian_name: participation_guardian_name,
+      participation_student_consent: participation_student_consent,
+      participation_student_name: participation_student_name,
     }
   end
 end

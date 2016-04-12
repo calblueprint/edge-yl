@@ -68,7 +68,7 @@ class FormTextarea extends Component {
     return (
       <div style={StyleConstants.forms.questions.container}>
         <div style={StyleConstants.forms.questions.prompt}>
-          <h6>{this.props.question.title}{this.renderRequired()}</h6>
+          <h5>{this.props.question.title}{this.renderRequired()}</h5>
         </div>
         <div style={StyleConstants.forms.questions.response}>
           {this.renderTextarea()}

@@ -1,5 +1,7 @@
 module EnumConstants
 
+  AGREEMENT = %w(yes)
+
   BOOLEANS = %w(yes no)
 
   CARPOOL = %w(
