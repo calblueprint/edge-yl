@@ -1,0 +1,26 @@
+AllCops:
+  Exclude:
+    - 'db/schema.rb'
+  TargetRubyVersion: 2.2
+
+Documentation:
+    Enabled: false
+
+Metrics/LineLength:
+  Max: 100
+
+Metrics/MethodLength:
+  CountComments: false
+  Max: 100
+
+Rails:
+  Enabled: true
+
+Style/EmptyLinesAroundClassBody:
+  EnforcedStyle: empty_lines
+
+Style/TrailingCommaInArguments:
+  EnforcedStyleForMultiline: comma
+
+Style/TrailingCommaInLiteral:
+  EnforcedStyleForMultiline: comma
