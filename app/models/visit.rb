@@ -19,8 +19,8 @@ class Visit < ActiveRecord::Base
 
   def equals(visit)
     !visit.nil? &&
-    visit.visitable_id == visitable_id &&
-    visit.visitable_type == visitable_type
+      visit.visitable_id == visitable_id &&
+      visit.visitable_type == visitable_type
   end
 
 end

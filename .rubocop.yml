@@ -1,6 +1,7 @@
 AllCops:
   Exclude:
     - 'bin/*'
+    - 'config/application.rb'
     - 'config/environments/*'
     - 'config/initializers/*'
     - 'db/schema.rb'
@@ -11,9 +12,12 @@ AllCops:
 Documentation:
     Enabled: false
 
+Metrics/AbcSize:
+  Max: 100
+
 Metrics/ClassLength:
   CountComments: false
-  Max: 200
+  Max: 500
 
 Metrics/LineLength:
   Max: 100
@@ -27,6 +31,9 @@ Rails:
 
 Rails/Output:
   Enabled: false
+
+Style/ClassAndModuleChildren:
+  EnforcedStyle: compact
 
 Style/EmptyLinesAroundClassBody:
   EnforcedStyle: empty_lines

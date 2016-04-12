@@ -41,8 +41,8 @@ class Group < ActiveRecord::Base
   end
 
   def self.to_csv
-    attributes = %w{letter}
-    headers = %w{Letter Primary_leader Secondary_leader}
+    attributes = %w(letter)
+    headers = %w(Letter Primary\ leader Secondary\ leader)
     CSV.generate(headers: true) do |csv|
       csv << headers
       all.each do |group|

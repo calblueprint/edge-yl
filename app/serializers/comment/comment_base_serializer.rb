@@ -13,4 +13,3 @@ class CommentBaseSerializer < BaseSerializer
   end
 
 end
-

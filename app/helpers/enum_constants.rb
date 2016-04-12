@@ -11,9 +11,9 @@ module EnumConstants
   GENDERS = %w(female male other).freeze
 
   GUARDIAN_RELATIONSHIPS = %w(
-  	mother father aunt uncle
-  	grandmother grandfather
-  	stepmother stepfather guardian
+    mother father aunt uncle
+    grandmother grandfather
+    stepmother stepfather guardian
   ).freeze
 
   PHONE_TYPES = %w(cell home work).freeze

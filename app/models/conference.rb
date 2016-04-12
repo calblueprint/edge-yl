@@ -65,11 +65,11 @@ class Conference < ActiveRecord::Base
     rooms.student.each do |room|
       while room.students.count < room.capacity
         if !unassigned_males.empty? && room.male?
-          student = unassigned_males.pop()
+          student = unassigned_males.pop
         elsif !unassigned_females.empty? && room.female?
-          student = unassigned_females.pop()
+          student = unassigned_females.pop
         elsif !unassigned_others.empty? && room.other?
-          student = unassigned_others.pop()
+          student = unassigned_others.pop
         else # There are no more students to assign to this room
           break
         end
@@ -116,7 +116,7 @@ class Conference < ActiveRecord::Base
 
   def next_letter
     used_letters = self.used_letters
-    ('A'..'Z').select {|letter| !used_letters.include? letter}.first
+    ('A'..'Z').select { |letter| !used_letters.include? letter }.first
   end
 
   def rooms_count
@@ -141,7 +141,7 @@ class Conference < ActiveRecord::Base
   end
 
   def used_letters
-    groups.map {|group| group.letter}
+    groups.map { |group| group.letter }
   end
 
 end

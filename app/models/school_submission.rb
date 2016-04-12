@@ -65,7 +65,7 @@ class SchoolSubmission < ActiveRecord::Base
   validates :is_active, inclusion: { in: [false, true] }
 
   def address_state
-    if !read_attribute(:address_state).nil?
+    unless read_attribute(:address_state).nil?
       EnumConstants::STATES[read_attribute(:address_state)]
     end
   end
@@ -75,7 +75,7 @@ class SchoolSubmission < ActiveRecord::Base
   end
 
   def alternate_address_state
-    if !read_attribute(:alternate_address_state).nil?
+    unless read_attribute(:alternate_address_state).nil?
       EnumConstants::STATES[read_attribute(:alternate_address_state)]
     end
   end
@@ -85,7 +85,7 @@ class SchoolSubmission < ActiveRecord::Base
   end
 
   def alternate_gender
-    if !read_attribute(:alternate_gender).nil?
+    unless read_attribute(:alternate_gender).nil?
       EnumConstants::GENDERS[read_attribute(:alternate_gender)]
     end
   end
@@ -95,7 +95,7 @@ class SchoolSubmission < ActiveRecord::Base
   end
 
   def alternate_guardian_phone_type
-    if !read_attribute(:alternate_guardian_phone_type).nil?
+    unless read_attribute(:alternate_guardian_phone_type).nil?
       EnumConstants::PHONE_TYPES[read_attribute(:alternate_guardian_phone_type)]
     end
   end
@@ -105,7 +105,7 @@ class SchoolSubmission < ActiveRecord::Base
   end
 
   def alternate_guardian_relationship
-    if !read_attribute(:alternate_guardian_relationship).nil?
+    unless read_attribute(:alternate_guardian_relationship).nil?
       EnumConstants::GUARDIAN_RELATIONSHIPS[read_attribute(:alternate_guardian_relationship)]
     end
   end
@@ -115,7 +115,7 @@ class SchoolSubmission < ActiveRecord::Base
   end
 
   def alternate_shirt_size
-    if !read_attribute(:alternate_shirt_size).nil?
+    unless read_attribute(:alternate_shirt_size).nil?
       EnumConstants::SHIRT_SIZES[read_attribute(:alternate_shirt_size)]
     end
   end
@@ -125,7 +125,7 @@ class SchoolSubmission < ActiveRecord::Base
   end
 
   def has_alternate_student
-    if !read_attribute(:has_alternate_student).nil?
+    unless read_attribute(:has_alternate_student).nil?
       EnumConstants::BOOLEANS[read_attribute(:has_alternate_student)]
     end
   end
@@ -135,7 +135,7 @@ class SchoolSubmission < ActiveRecord::Base
   end
 
   def primary_address_state
-    if !read_attribute(:primary_address_state).nil?
+    unless read_attribute(:primary_address_state).nil?
       EnumConstants::STATES[read_attribute(:primary_address_state)]
     end
   end
@@ -145,7 +145,7 @@ class SchoolSubmission < ActiveRecord::Base
   end
 
   def primary_gender
-    if !read_attribute(:primary_gender).nil?
+    unless read_attribute(:primary_gender).nil?
       EnumConstants::GENDERS[read_attribute(:primary_gender)]
     end
   end
@@ -155,7 +155,7 @@ class SchoolSubmission < ActiveRecord::Base
   end
 
   def primary_guardian_phone_type
-    if !read_attribute(:primary_guardian_phone_type).nil?
+    unless read_attribute(:primary_guardian_phone_type).nil?
       EnumConstants::PHONE_TYPES[read_attribute(:primary_guardian_phone_type)]
     end
   end
@@ -165,7 +165,7 @@ class SchoolSubmission < ActiveRecord::Base
   end
 
   def primary_guardian_relationship
-    if !read_attribute(:primary_guardian_relationship).nil?
+    unless read_attribute(:primary_guardian_relationship).nil?
       EnumConstants::GUARDIAN_RELATIONSHIPS[read_attribute(:primary_guardian_relationship)]
     end
   end
@@ -175,7 +175,7 @@ class SchoolSubmission < ActiveRecord::Base
   end
 
   def primary_shirt_size
-    if !read_attribute(:primary_shirt_size).nil?
+    unless read_attribute(:primary_shirt_size).nil?
       EnumConstants::SHIRT_SIZES[read_attribute(:primary_shirt_size)]
     end
   end
@@ -191,7 +191,7 @@ class SchoolSubmission < ActiveRecord::Base
       error_response = validator.errors.to_hash
       valid_params = {}
       update_params.each do |attribute, value|
-        if !error_response.key?(attribute.to_sym)
+        unless error_response.key?(attribute.to_sym)
           valid_params[attribute] = value
         end
       end

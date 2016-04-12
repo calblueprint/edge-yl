@@ -56,7 +56,7 @@ class StudentSubmission < ActiveRecord::Base
   validates :is_primary, inclusion: { in: [false, true] }
 
   def address_state
-    if !read_attribute(:address_state).nil?
+    unless read_attribute(:address_state).nil?
       EnumConstants::STATES[read_attribute(:address_state)]
     end
   end
@@ -66,7 +66,7 @@ class StudentSubmission < ActiveRecord::Base
   end
 
   def allergies
-    if !read_attribute(:allergies).nil?
+    unless read_attribute(:allergies).nil?
       EnumConstants::BOOLEANS[read_attribute(:allergies)]
     end
   end
@@ -76,7 +76,7 @@ class StudentSubmission < ActiveRecord::Base
   end
 
   def dietary_restrictions
-    if !read_attribute(:dietary_restrictions).nil?
+    unless read_attribute(:dietary_restrictions).nil?
       EnumConstants::DIETARY_RESTRICTIONS[read_attribute(:dietary_restrictions)]
     end
   end
@@ -86,7 +86,7 @@ class StudentSubmission < ActiveRecord::Base
   end
 
   def emergency_consent
-    if !read_attribute(:emergency_consent).nil?
+    unless read_attribute(:emergency_consent).nil?
       EnumConstants::BOOLEANS[read_attribute(:emergency_consent)]
     end
   end
@@ -96,7 +96,7 @@ class StudentSubmission < ActiveRecord::Base
   end
 
   def gender
-    if !read_attribute(:gender).nil?
+    unless read_attribute(:gender).nil?
       EnumConstants::GENDERS[read_attribute(:gender)]
     end
   end
@@ -106,7 +106,7 @@ class StudentSubmission < ActiveRecord::Base
   end
 
   def guardian_one_phone_type
-    if !read_attribute(:guardian_one_phone_type).nil?
+    unless read_attribute(:guardian_one_phone_type).nil?
       EnumConstants::PHONE_TYPES[read_attribute(:guardian_one_phone_type)]
     end
   end
@@ -116,7 +116,7 @@ class StudentSubmission < ActiveRecord::Base
   end
 
   def guardian_one_relationship
-    if !read_attribute(:guardian_one_relationship).nil?
+    unless read_attribute(:guardian_one_relationship).nil?
       EnumConstants::GUARDIAN_RELATIONSHIPS[read_attribute(:guardian_one_relationship)]
     end
   end
@@ -126,7 +126,7 @@ class StudentSubmission < ActiveRecord::Base
   end
 
   def guardian_two_phone_type
-    if !read_attribute(:guardian_two_phone_type).nil?
+    unless read_attribute(:guardian_two_phone_type).nil?
       EnumConstants::PHONE_TYPES[read_attribute(:guardian_two_phone_type)]
     end
   end
@@ -136,7 +136,7 @@ class StudentSubmission < ActiveRecord::Base
   end
 
   def guardian_two_relationship
-    if !read_attribute(:guardian_two_relationship).nil?
+    unless read_attribute(:guardian_two_relationship).nil?
       EnumConstants::GUARDIAN_RELATIONSHIPS[read_attribute(:guardian_two_relationship)]
     end
   end
@@ -146,7 +146,7 @@ class StudentSubmission < ActiveRecord::Base
   end
 
   def health_conditions
-    if !read_attribute(:health_conditions).nil?
+    unless read_attribute(:health_conditions).nil?
       EnumConstants::BOOLEANS[read_attribute(:health_conditions)]
     end
   end
@@ -156,7 +156,7 @@ class StudentSubmission < ActiveRecord::Base
   end
 
   def immunizations
-    if !read_attribute(:immunizations).nil?
+    unless read_attribute(:immunizations).nil?
       EnumConstants::BOOLEANS[read_attribute(:immunizations)]
     end
   end
@@ -166,7 +166,7 @@ class StudentSubmission < ActiveRecord::Base
   end
 
   def psychologist_consent
-    if !read_attribute(:psychologist_consent).nil?
+    unless read_attribute(:psychologist_consent).nil?
       EnumConstants::BOOLEANS[read_attribute(:psychologist_consent)]
     end
   end
@@ -176,7 +176,7 @@ class StudentSubmission < ActiveRecord::Base
   end
 
   def shirt_size
-    if !read_attribute(:shirt_size).nil?
+    unless read_attribute(:shirt_size).nil?
       EnumConstants::SHIRT_SIZES[read_attribute(:shirt_size)]
     end
   end
@@ -201,7 +201,7 @@ class StudentSubmission < ActiveRecord::Base
       error_response = validator.errors.to_hash
       valid_params = {}
       update_params.each do |attribute, value|
-        if !error_response.key?(attribute.to_sym)
+        unless error_response.key?(attribute.to_sym)
           valid_params[attribute] = value
         end
       end

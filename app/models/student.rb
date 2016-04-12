@@ -61,12 +61,12 @@ class Student < ActiveRecord::Base
 
   multisearchable against: [:first_name, :last_name, :email]
 
-  scope :conference_id, -> conference_id { where(conference_id: conference_id) }
-  scope :gender, -> gender { where(gender: genders[gender.downcase]) }
-  scope :is_checked_in, -> is_checked_in { where(is_checked_in: is_checked_in) }
-  scope :is_flagged, -> is_flagged { where(is_flagged: is_flagged) }
-  scope :is_primary, -> is_primary { where(is_primary: is_primary) }
-  scope :sort, -> sort { order(sort) }
+  scope :conference_id, -> (conference_id) { where(conference_id: conference_id) }
+  scope :gender, -> (gender) { where(gender: genders[gender.downcase]) }
+  scope :is_checked_in, -> (is_checked_in) { where(is_checked_in: is_checked_in) }
+  scope :is_flagged, -> (is_flagged) { where(is_flagged: is_flagged) }
+  scope :is_primary, -> (is_primary) { where(is_primary: is_primary) }
+  scope :sort, -> (sort) { order(sort) }
 
   enum boolean: [:yes, :no]
   enum gender: [:female, :male, :other]
