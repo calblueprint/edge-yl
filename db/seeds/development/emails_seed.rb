@@ -15,14 +15,15 @@ admin = User.first
     type = Student.name
   end
   new_email = Email.create(
-    content: Faker::Lorem.sentence,
+    content: Faker::Lorem.paragraph(4, true),
     emailable_id: id,
     emailable_type: type,
     from: "#{name} <#{email}>",
     is_sent: true,
     recipient: "#{admin.username}@test.edge.org",
     sender: email,
-    subject: "#{Faker::Hacker.noun} #{Faker::Hacker.verb} #{Faker::Hacker.noun}".humanize,
+    subject: [true, false].sample ? "#{Faker::Company.catch_phrase}".humanize :
+    Faker::Commerce.department,
     to: "#{admin.full_name} <#{admin.username}@test.edge.org>",
     user: admin,
   )
