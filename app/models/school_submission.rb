@@ -71,7 +71,7 @@ class SchoolSubmission < ActiveRecord::Base
   end
 
   def address_state=(value)
-    write_attribute(:address_state, EnumConstants::STATES.index(value))
+    self[:address_state] = EnumConstants::STATES.index(value)
   end
 
   def alternate_address_state
@@ -81,7 +81,7 @@ class SchoolSubmission < ActiveRecord::Base
   end
 
   def alternate_address_state=(value)
-    write_attribute(:alternate_address_state, EnumConstants::STATES.index(value))
+    self[:alternate_address_state] = EnumConstants::STATES.index(value)
   end
 
   def alternate_gender
@@ -91,7 +91,7 @@ class SchoolSubmission < ActiveRecord::Base
   end
 
   def alternate_gender=(value)
-    write_attribute(:alternate_gender, EnumConstants::GENDERS.index(value))
+    self[:alternate_gender] = EnumConstants::GENDERS.index(value)
   end
 
   def alternate_guardian_phone_type
@@ -101,7 +101,7 @@ class SchoolSubmission < ActiveRecord::Base
   end
 
   def alternate_guardian_phone_type=(value)
-    write_attribute(:alternate_guardian_phone_type, EnumConstants::PHONE_TYPES.index(value))
+    self[:alternate_guardian_phone_type] = EnumConstants::PHONE_TYPES.index(value)
   end
 
   def alternate_guardian_relationship
@@ -111,7 +111,7 @@ class SchoolSubmission < ActiveRecord::Base
   end
 
   def alternate_guardian_relationship=(value)
-    write_attribute(:alternate_guardian_relationship, EnumConstants::GUARDIAN_RELATIONSHIPS.index(value))
+    self[:alternate_guardian_relationship] = EnumConstants::GUARDIAN_RELATIONSHIPS.index(value)
   end
 
   def alternate_shirt_size
@@ -121,7 +121,7 @@ class SchoolSubmission < ActiveRecord::Base
   end
 
   def alternate_shirt_size=(value)
-    write_attribute(:alternate_shirt_size, EnumConstants::SHIRT_SIZES.index(value))
+    self[:alternate_shirt_size] = EnumConstants::SHIRT_SIZES.index(value)
   end
 
   def has_alternate_student
@@ -131,7 +131,7 @@ class SchoolSubmission < ActiveRecord::Base
   end
 
   def has_alternate_student=(value)
-    write_attribute(:has_alternate_student, EnumConstants::BOOLEANS.index(value))
+    self[:has_alternate_student] = EnumConstants::BOOLEANS.index(value)
   end
 
   def primary_address_state
@@ -141,7 +141,7 @@ class SchoolSubmission < ActiveRecord::Base
   end
 
   def primary_address_state=(value)
-    write_attribute(:primary_address_state, EnumConstants::STATES.index(value))
+    self[:primary_address_state] = EnumConstants::STATES.index(value)
   end
 
   def primary_gender
@@ -151,7 +151,7 @@ class SchoolSubmission < ActiveRecord::Base
   end
 
   def primary_gender=(value)
-    write_attribute(:primary_gender, EnumConstants::GENDERS.index(value))
+    self[:primary_gender] = EnumConstants::GENDERS.index(value)
   end
 
   def primary_guardian_phone_type
@@ -161,7 +161,7 @@ class SchoolSubmission < ActiveRecord::Base
   end
 
   def primary_guardian_phone_type=(value)
-    write_attribute(:primary_guardian_phone_type, EnumConstants::PHONE_TYPES.index(value))
+    self[:primary_guardian_phone_type] = EnumConstants::PHONE_TYPES.index(value)
   end
 
   def primary_guardian_relationship
@@ -171,7 +171,7 @@ class SchoolSubmission < ActiveRecord::Base
   end
 
   def primary_guardian_relationship=(value)
-    write_attribute(:primary_guardian_relationship, EnumConstants::GUARDIAN_RELATIONSHIPS.index(value))
+    self[:primary_guardian_relationship] = EnumConstants::GUARDIAN_RELATIONSHIPS.index(value)
   end
 
   def primary_shirt_size
@@ -181,7 +181,7 @@ class SchoolSubmission < ActiveRecord::Base
   end
 
   def primary_shirt_size=(value)
-    write_attribute(:primary_shirt_size, EnumConstants::SHIRT_SIZES.index(value))
+    self[:primary_shirt_size] = EnumConstants::SHIRT_SIZES.index(value)
   end
 
   def custom_update(update_params)
@@ -222,9 +222,7 @@ class SchoolSubmission < ActiveRecord::Base
       attributes_page[:current_page] = index
       validator = SchoolValidator.new(attributes_page)
       validator.valid?
-      if validator.errors.size > 0
-        return false
-      end
+      return false if validator.errors.size > 0
     end
     true
   end
@@ -234,9 +232,7 @@ class SchoolSubmission < ActiveRecord::Base
       attributes_page[:current_page] = index
       validator = SchoolValidator.new(attributes_page)
       validator.valid?
-      if validator.errors.size > 0
-        return index
-      end
+      return index if validator.errors.size > 0
     end
     attributes_pages.size - 1
   end
@@ -251,9 +247,7 @@ class SchoolSubmission < ActiveRecord::Base
       name: name,
       website: website,
     )
-    unless school.save
-      raise 'Could not create school from submission'
-    end
+    fail 'Could not create school from submission' unless school.save
     contact = Contact.new(
       email: contact_email,
       first_name: contact_first_name,
@@ -263,9 +257,7 @@ class SchoolSubmission < ActiveRecord::Base
       title: contact_title,
       school: school,
     )
-    unless contact.save
-      raise 'Could not create contact from submission'
-    end
+    fail 'Could not create contact from submission' unless contact.save
     primary_submission = StudentSubmission.new(
       address_city: primary_address_city,
       address_one: primary_address_one,
@@ -289,9 +281,7 @@ class SchoolSubmission < ActiveRecord::Base
       last_name: primary_last_name,
       shirt_size: primary_shirt_size,
     )
-    unless primary_submission.save
-      raise 'Could not create primary student from submission'
-    end
+    fail 'Could not create primary student from submission' unless primary_submission.save
     if has_alternate_student == EnumConstants::BOOLEANS[0]
       alternate_submission = StudentSubmission.new(
         address_city: alternate_address_city,
@@ -316,14 +306,7 @@ class SchoolSubmission < ActiveRecord::Base
         last_name: alternate_last_name,
         shirt_size: alternate_shirt_size,
       )
-      unless alternate_submission.save
-        raise 'Could not create alternate student from submission'
-      end
-      # begin
-      #   SubmissionsMailer.create_student(alternate_submission).deliver_now
-      # rescue
-      #   raise 'Could not deliver appropriate emails'
-      # end
+      fail 'Could not create alternate student from submission' unless alternate_submission.save
     end
     begin
       SubmissionsMailer.submit_school(self).deliver_now

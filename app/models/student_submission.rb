@@ -62,7 +62,7 @@ class StudentSubmission < ActiveRecord::Base
   end
 
   def address_state=(value)
-    write_attribute(:address_state, EnumConstants::STATES.index(value))
+    self[:address_state] = EnumConstants::STATES.index(value)
   end
 
   def allergies
@@ -72,7 +72,7 @@ class StudentSubmission < ActiveRecord::Base
   end
 
   def allergies=(value)
-    write_attribute(:allergies, EnumConstants::BOOLEANS.index(value))
+    self[:allergies] = EnumConstants::BOOLEANS.index(value)
   end
 
   def dietary_restrictions
@@ -82,7 +82,7 @@ class StudentSubmission < ActiveRecord::Base
   end
 
   def dietary_restrictions=(value)
-    write_attribute(:dietary_restrictions, EnumConstants::DIETARY_RESTRICTIONS.index(value))
+    self[:dietary_restrictions] = EnumConstants::DIETARY_RESTRICTIONS.index(value)
   end
 
   def emergency_consent
@@ -92,7 +92,7 @@ class StudentSubmission < ActiveRecord::Base
   end
 
   def emergency_consent=(value)
-    write_attribute(:emergency_consent, EnumConstants::BOOLEANS.index(value))
+    self[:emergency_consent] = EnumConstants::BOOLEANS.index(value)
   end
 
   def gender
@@ -102,7 +102,7 @@ class StudentSubmission < ActiveRecord::Base
   end
 
   def gender=(value)
-    write_attribute(:gender, EnumConstants::GENDERS.index(value))
+    self[:gender] = EnumConstants::GENDERS.index(value)
   end
 
   def guardian_one_phone_type
@@ -112,7 +112,7 @@ class StudentSubmission < ActiveRecord::Base
   end
 
   def guardian_one_phone_type=(value)
-    write_attribute(:guardian_one_phone_type, EnumConstants::PHONE_TYPES.index(value))
+    self[:guardian_one_phone_type] = EnumConstants::PHONE_TYPES.index(value)
   end
 
   def guardian_one_relationship
@@ -122,7 +122,7 @@ class StudentSubmission < ActiveRecord::Base
   end
 
   def guardian_one_relationship=(value)
-    write_attribute(:guardian_one_relationship, EnumConstants::GUARDIAN_RELATIONSHIPS.index(value))
+    self[:guardian_one_relationship] = EnumConstants::GUARDIAN_RELATIONSHIPS.index(value)
   end
 
   def guardian_two_phone_type
@@ -132,7 +132,7 @@ class StudentSubmission < ActiveRecord::Base
   end
 
   def guardian_two_phone_type=(value)
-    write_attribute(:guardian_two_phone_type, EnumConstants::PHONE_TYPES.index(value))
+    self[:guardian_two_phone_type] = EnumConstants::PHONE_TYPES.index(value)
   end
 
   def guardian_two_relationship
@@ -142,7 +142,7 @@ class StudentSubmission < ActiveRecord::Base
   end
 
   def guardian_two_relationship=(value)
-    write_attribute(:guardian_two_relationship, EnumConstants::GUARDIAN_RELATIONSHIPS.index(value))
+    self[:guardian_two_relationship] = EnumConstants::GUARDIAN_RELATIONSHIPS.index(value)
   end
 
   def health_conditions
@@ -152,7 +152,7 @@ class StudentSubmission < ActiveRecord::Base
   end
 
   def health_conditions=(value)
-    write_attribute(:health_conditions, EnumConstants::BOOLEANS.index(value))
+    self[:health_conditions] = EnumConstants::BOOLEANS.index(value)
   end
 
   def immunizations
@@ -162,7 +162,7 @@ class StudentSubmission < ActiveRecord::Base
   end
 
   def immunizations=(value)
-    write_attribute(:immunizations, EnumConstants::BOOLEANS.index(value))
+    self[:immunizations] = EnumConstants::BOOLEANS.index(value)
   end
 
   def psychologist_consent
@@ -172,7 +172,7 @@ class StudentSubmission < ActiveRecord::Base
   end
 
   def psychologist_consent=(value)
-    write_attribute(:psychologist_consent, EnumConstants::BOOLEANS.index(value))
+    self[:psychologist_consent] = EnumConstants::BOOLEANS.index(value)
   end
 
   def shirt_size
@@ -182,7 +182,7 @@ class StudentSubmission < ActiveRecord::Base
   end
 
   def shirt_size=(value)
-    write_attribute(:shirt_size, EnumConstants::SHIRT_SIZES.index(value))
+    self[:shirt_size] = EnumConstants::SHIRT_SIZES.index(value)
   end
 
   def form_url
@@ -231,9 +231,7 @@ class StudentSubmission < ActiveRecord::Base
       attributes_page[:current_page] = index
       validator = StudentValidator.new(attributes_page)
       validator.valid?
-      if validator.errors.size > 0
-        return false
-      end
+      return false if validator.errors.size > 0
     end
     true
   end
@@ -243,9 +241,7 @@ class StudentSubmission < ActiveRecord::Base
       attributes_page[:current_page] = index
       validator = StudentValidator.new(attributes_page)
       validator.valid?
-      if validator.errors.size > 0
-        return index
-      end
+      return index if validator.errors.size > 0
     end
     attributes_pages.size - 1
   end
@@ -295,9 +291,7 @@ class StudentSubmission < ActiveRecord::Base
       psychologist_consent: psychologist_consent,
       shirt_size: shirt_size,
     )
-    unless student.save
-      raise 'Could not create student from submission'
-    end
+    fail 'Could not create student from submission' unless student.save
     begin
       SubmissionsMailer.submit_student(self).deliver_now
     rescue
