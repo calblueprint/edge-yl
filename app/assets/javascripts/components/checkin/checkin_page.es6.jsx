@@ -1,4 +1,4 @@
-class CheckInPage extends Component {
+class CheckinPage extends Component {
 
   // --------------------------------------------------
   // Setup
@@ -17,25 +17,6 @@ class CheckInPage extends Component {
       conferences: React.PropTypes.array.isRequired,
       profile: React.PropTypes.object.isRequired,
     };
-  }
-
-  // --------------------------------------------------
-  // Props
-  // --------------------------------------------------
-  generateStudentGrid() {
-    if (this.state.student) {
-      return (
-        <CheckInStudentGrid
-          conference={this.state.conference}
-          media={this.state.media}
-          student={this.state.student} />
-      );
-    } else {
-      return (
-        <GridEmpty
-          content={'Please search for a student to check-in.'}/>
-      );
-    }
   }
 
   // --------------------------------------------------
@@ -71,26 +52,23 @@ class CheckInPage extends Component {
   // Render
   // --------------------------------------------------
   render() {
+    var conference = this.state.conference;
     return (
       <div style={StyleConstants.pages.wrapper}>
         <Header profile={this.selectProfile()} />
         <Sidebar profile={this.selectProfile()} />
         <div style={StyleConstants.pages.default}>
           <div style={StyleConstants.pages.content}>
-            <CheckInConferenceGrid
-              conference={this.state.conference}
+            <GridHeader title={`Check-in: ${conference.name}`} />
+            <CheckinGrid
+              conference={conference}
               editable={false}
-              media={this.state.media} />
-            <GridHeader
-              title={'Check-in'} />
-            <CheckInSearch
-              pagination={{current: 1, limit: 1}}
-              conference={this.state.conference}
+              media={this.state.media}
+              pagination={this.state.pagination}
               results={this.state.results}
               savedSearch={this.state.savedSearch}
               search={this.state.search} />
-            {this.generateStudentGrid()}
-            <CheckInSidebar
+            <CheckinSidebar
               conference={this.state.conference}
               conferences={this.props.conferences} />
           </div>

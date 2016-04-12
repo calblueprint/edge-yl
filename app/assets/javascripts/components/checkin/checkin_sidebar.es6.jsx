@@ -1,4 +1,4 @@
-class CheckInSidebar extends Component {
+class CheckinSidebar extends Component {
 
   // --------------------------------------------------
   // Props

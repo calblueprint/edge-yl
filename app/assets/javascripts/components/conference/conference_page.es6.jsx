@@ -118,7 +118,8 @@ class ConferencePage extends Component {
             <ConferenceGrid
               conference={conference}
               editable={this.state.editable}
-              media={this.state.media} />
+              media={this.state.media}
+              type={TypeConstants.conference.default} />
           </div>
         </div>
       </div>
