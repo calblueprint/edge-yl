@@ -16,7 +16,7 @@
       var submission = response.submission;
       this.form.pages.map((page) => {
         var infoQuestions = new Set();
-        var questions = page.questions;
+        var questions = page.questions;   
         //fix rendering waiver/information-type questions with the right title
         questions.map((question) => {
           if (question.style === 'information') {

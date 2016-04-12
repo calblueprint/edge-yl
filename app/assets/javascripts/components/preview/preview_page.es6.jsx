@@ -53,12 +53,24 @@ class PreviewPage extends Component {
   // Render
   // --------------------------------------------------
   renderQuestion(question) {
+    var questions = this.props.page.questions;
     if (question.style!='information') {
-      return (
-        <PreviewAttribute
-          key={question.key}
-          question={question} />
-      );
+      var render = true;
+      if (question.enabler_key) {
+        for (var i = 0; i < questions.length; i++) {
+          if (question.enabler_key == questions[i].key && question.enabler_value != questions[i].value) {
+            render = false;
+            break;
+          }
+        }
+      }
+      if (render) {
+        return (
+          <PreviewAttribute
+            key={question.key}
+            question={question} />
+        );
+      }
     }
   }
 
