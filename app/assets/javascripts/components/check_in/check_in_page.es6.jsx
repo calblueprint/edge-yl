@@ -82,7 +82,7 @@ class CheckInPage extends Component {
               editable={false}
               media={this.state.media} />
             <GridHeader
-              title={'Check In'} />
+              title={'Check-in'} />
             <CheckInSearch
               pagination={{current: 1, limit: 1}}
               conference={this.state.conference}
