@@ -65,8 +65,8 @@ class SchoolSubmission < ActiveRecord::Base
   validates :is_active, inclusion: { in: [false, true] }
 
   def address_state
-    unless read_attribute(:address_state).nil?
-      EnumConstants::STATES[read_attribute(:address_state)]
+    unless self[:address_state].nil?
+      EnumConstants::STATES[self[:address_state]]
     end
   end
 
@@ -75,8 +75,8 @@ class SchoolSubmission < ActiveRecord::Base
   end
 
   def alternate_address_state
-    unless read_attribute(:alternate_address_state).nil?
-      EnumConstants::STATES[read_attribute(:alternate_address_state)]
+    unless self[:alternate_address_state].nil?
+      EnumConstants::STATES[self[:alternate_address_state]]
     end
   end
 
@@ -85,8 +85,8 @@ class SchoolSubmission < ActiveRecord::Base
   end
 
   def alternate_gender
-    unless read_attribute(:alternate_gender).nil?
-      EnumConstants::GENDERS[read_attribute(:alternate_gender)]
+    unless self[:alternate_gender].nil?
+      EnumConstants::GENDERS[self[:alternate_gender]]
     end
   end
 
@@ -95,8 +95,8 @@ class SchoolSubmission < ActiveRecord::Base
   end
 
   def alternate_guardian_phone_type
-    unless read_attribute(:alternate_guardian_phone_type).nil?
-      EnumConstants::PHONE_TYPES[read_attribute(:alternate_guardian_phone_type)]
+    unless self[:alternate_guardian_phone_type].nil?
+      EnumConstants::PHONE_TYPES[self[:alternate_guardian_phone_type]]
     end
   end
 
@@ -105,8 +105,8 @@ class SchoolSubmission < ActiveRecord::Base
   end
 
   def alternate_guardian_relationship
-    unless read_attribute(:alternate_guardian_relationship).nil?
-      EnumConstants::GUARDIAN_RELATIONSHIPS[read_attribute(:alternate_guardian_relationship)]
+    unless self[:alternate_guardian_relationship].nil?
+      EnumConstants::GUARDIAN_RELATIONSHIPS[self[:alternate_guardian_relationship]]
     end
   end
 
@@ -115,8 +115,8 @@ class SchoolSubmission < ActiveRecord::Base
   end
 
   def alternate_shirt_size
-    unless read_attribute(:alternate_shirt_size).nil?
-      EnumConstants::SHIRT_SIZES[read_attribute(:alternate_shirt_size)]
+    unless self[:alternate_shirt_size].nil?
+      EnumConstants::SHIRT_SIZES[self[:alternate_shirt_size]]
     end
   end
 
@@ -125,8 +125,8 @@ class SchoolSubmission < ActiveRecord::Base
   end
 
   def has_alternate_student
-    unless read_attribute(:has_alternate_student).nil?
-      EnumConstants::BOOLEANS[read_attribute(:has_alternate_student)]
+    unless self[:has_alternate_student].nil?
+      EnumConstants::BOOLEANS[self[:has_alternate_student]]
     end
   end
 
@@ -135,8 +135,8 @@ class SchoolSubmission < ActiveRecord::Base
   end
 
   def primary_address_state
-    unless read_attribute(:primary_address_state).nil?
-      EnumConstants::STATES[read_attribute(:primary_address_state)]
+    unless self[:primary_address_state].nil?
+      EnumConstants::STATES[self[:primary_address_state]]
     end
   end
 
@@ -145,8 +145,8 @@ class SchoolSubmission < ActiveRecord::Base
   end
 
   def primary_gender
-    unless read_attribute(:primary_gender).nil?
-      EnumConstants::GENDERS[read_attribute(:primary_gender)]
+    unless self[:primary_gender].nil?
+      EnumConstants::GENDERS[self[:primary_gender]]
     end
   end
 
@@ -155,8 +155,8 @@ class SchoolSubmission < ActiveRecord::Base
   end
 
   def primary_guardian_phone_type
-    unless read_attribute(:primary_guardian_phone_type).nil?
-      EnumConstants::PHONE_TYPES[read_attribute(:primary_guardian_phone_type)]
+    unless self[:primary_guardian_phone_type].nil?
+      EnumConstants::PHONE_TYPES[self[:primary_guardian_phone_type]]
     end
   end
 
@@ -165,8 +165,8 @@ class SchoolSubmission < ActiveRecord::Base
   end
 
   def primary_guardian_relationship
-    unless read_attribute(:primary_guardian_relationship).nil?
-      EnumConstants::GUARDIAN_RELATIONSHIPS[read_attribute(:primary_guardian_relationship)]
+    unless self[:primary_guardian_relationship].nil?
+      EnumConstants::GUARDIAN_RELATIONSHIPS[self[:primary_guardian_relationship]]
     end
   end
 
@@ -175,8 +175,8 @@ class SchoolSubmission < ActiveRecord::Base
   end
 
   def primary_shirt_size
-    unless read_attribute(:primary_shirt_size).nil?
-      EnumConstants::SHIRT_SIZES[read_attribute(:primary_shirt_size)]
+    unless self[:primary_shirt_size].nil?
+      EnumConstants::SHIRT_SIZES[self[:primary_shirt_size]]
     end
   end
 

@@ -70,7 +70,6 @@ class User < ActiveRecord::Base
       visitable_type: visitable_type,
     )
     new_visit.save unless new_visit.equals(last_visit)
-    end
   end
 
   def unread_count

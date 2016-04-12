@@ -56,8 +56,8 @@ class StudentSubmission < ActiveRecord::Base
   validates :is_primary, inclusion: { in: [false, true] }
 
   def address_state
-    unless read_attribute(:address_state).nil?
-      EnumConstants::STATES[read_attribute(:address_state)]
+    unless self[:address_state].nil?
+      EnumConstants::STATES[self[:address_state]]
     end
   end
 
@@ -66,8 +66,8 @@ class StudentSubmission < ActiveRecord::Base
   end
 
   def allergies
-    unless read_attribute(:allergies).nil?
-      EnumConstants::BOOLEANS[read_attribute(:allergies)]
+    unless self[:allergies].nil?
+      EnumConstants::BOOLEANS[self[:allergies]]
     end
   end
 
@@ -76,8 +76,8 @@ class StudentSubmission < ActiveRecord::Base
   end
 
   def dietary_restrictions
-    unless read_attribute(:dietary_restrictions).nil?
-      EnumConstants::DIETARY_RESTRICTIONS[read_attribute(:dietary_restrictions)]
+    unless self[:dietary_restrictions].nil?
+      EnumConstants::DIETARY_RESTRICTIONS[self[:dietary_restrictions]]
     end
   end
 
@@ -86,8 +86,8 @@ class StudentSubmission < ActiveRecord::Base
   end
 
   def emergency_consent
-    unless read_attribute(:emergency_consent).nil?
-      EnumConstants::BOOLEANS[read_attribute(:emergency_consent)]
+    unless self[:emergency_consent].nil?
+      EnumConstants::BOOLEANS[self[:emergency_consent]]
     end
   end
 
@@ -96,8 +96,8 @@ class StudentSubmission < ActiveRecord::Base
   end
 
   def gender
-    unless read_attribute(:gender).nil?
-      EnumConstants::GENDERS[read_attribute(:gender)]
+    unless self[:gender].nil?
+      EnumConstants::GENDERS[self[:gender]]
     end
   end
 
@@ -106,8 +106,8 @@ class StudentSubmission < ActiveRecord::Base
   end
 
   def guardian_one_phone_type
-    unless read_attribute(:guardian_one_phone_type).nil?
-      EnumConstants::PHONE_TYPES[read_attribute(:guardian_one_phone_type)]
+    unless self[:guardian_one_phone_type].nil?
+      EnumConstants::PHONE_TYPES[self[:guardian_one_phone_type]]
     end
   end
 
@@ -116,8 +116,8 @@ class StudentSubmission < ActiveRecord::Base
   end
 
   def guardian_one_relationship
-    unless read_attribute(:guardian_one_relationship).nil?
-      EnumConstants::GUARDIAN_RELATIONSHIPS[read_attribute(:guardian_one_relationship)]
+    unless self[:guardian_one_relationship].nil?
+      EnumConstants::GUARDIAN_RELATIONSHIPS[self[:guardian_one_relationship]]
     end
   end
 
@@ -126,8 +126,8 @@ class StudentSubmission < ActiveRecord::Base
   end
 
   def guardian_two_phone_type
-    unless read_attribute(:guardian_two_phone_type).nil?
-      EnumConstants::PHONE_TYPES[read_attribute(:guardian_two_phone_type)]
+    unless self[:guardian_two_phone_type].nil?
+      EnumConstants::PHONE_TYPES[self[:guardian_two_phone_type]]
     end
   end
 
@@ -136,8 +136,8 @@ class StudentSubmission < ActiveRecord::Base
   end
 
   def guardian_two_relationship
-    unless read_attribute(:guardian_two_relationship).nil?
-      EnumConstants::GUARDIAN_RELATIONSHIPS[read_attribute(:guardian_two_relationship)]
+    unless self[:guardian_two_relationship].nil?
+      EnumConstants::GUARDIAN_RELATIONSHIPS[self[:guardian_two_relationship]]
     end
   end
 
@@ -146,8 +146,8 @@ class StudentSubmission < ActiveRecord::Base
   end
 
   def health_conditions
-    unless read_attribute(:health_conditions).nil?
-      EnumConstants::BOOLEANS[read_attribute(:health_conditions)]
+    unless self[:health_conditions].nil?
+      EnumConstants::BOOLEANS[self[:health_conditions]]
     end
   end
 
@@ -156,8 +156,8 @@ class StudentSubmission < ActiveRecord::Base
   end
 
   def immunizations
-    unless read_attribute(:immunizations).nil?
-      EnumConstants::BOOLEANS[read_attribute(:immunizations)]
+    unless self[:immunizations].nil?
+      EnumConstants::BOOLEANS[self[:immunizations]]
     end
   end
 
@@ -166,8 +166,8 @@ class StudentSubmission < ActiveRecord::Base
   end
 
   def psychologist_consent
-    unless read_attribute(:psychologist_consent).nil?
-      EnumConstants::BOOLEANS[read_attribute(:psychologist_consent)]
+    unless self[:psychologist_consent].nil?
+      EnumConstants::BOOLEANS[self[:psychologist_consent]]
     end
   end
 
@@ -176,8 +176,8 @@ class StudentSubmission < ActiveRecord::Base
   end
 
   def shirt_size
-    unless read_attribute(:shirt_size).nil?
-      EnumConstants::SHIRT_SIZES[read_attribute(:shirt_size)]
+    unless self[:shirt_size].nil?
+      EnumConstants::SHIRT_SIZES[self[:shirt_size]]
     end
   end
 
