@@ -756,6 +756,7 @@ student_form = Form.create(
       title: 'Insurance Provider State',
     )
     Question.create(
+      description: StringConstants::ZIP_FORMAT,
       key: 'insurance_address_zip',
       page: page,
       style: Question.styles[:input],
@@ -1028,6 +1029,7 @@ student_form = Form.create(
       title: 'Student Name',
     )
     Question.create(
+      description: StringConstants::EMAIL_FORMAT,
       description: "If the student does not have an email, please put the parent/guardian's email.",
       key: 'risk_student_email',
       page: page,
@@ -1065,6 +1067,7 @@ student_form = Form.create(
       title: 'Parent/Guardian Relationship',
     )
     Question.create(
+      description: StringConstants::EMAIL_FORMAT,
       key: 'risk_guardian_email',
       page: page,
       style: Question.styles[:input],
