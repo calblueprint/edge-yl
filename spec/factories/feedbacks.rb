@@ -11,5 +11,6 @@
 
 FactoryGirl.define do
   factory :feedback do
+    content { Faker::Lorem.sentence }
   end
 end

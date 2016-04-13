@@ -30,7 +30,7 @@ class Group < ActiveRecord::Base
   after_create :generate_leaderships
 
   validates :letter, presence: true
-  validates :letter, scope: :conference_id, uniqueness: true
+  validates :letter, uniqueness: { scope: :conference_id }
 
   def females_count
     students.female.count

@@ -11,5 +11,6 @@
 
 FactoryGirl.define do
   factory :group do
+    letter { 'A' }
   end
 end
