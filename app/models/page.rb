@@ -14,9 +14,9 @@
 
 class Page < ActiveRecord::Base
 
-	self.default_scope { order('number ASC') }
+  default_scope { order('number ASC') }
 
-	belongs_to :form
+  belongs_to :form
 
   has_many :questions, dependent: :destroy
 

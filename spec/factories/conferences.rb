@@ -12,12 +12,10 @@
 #
 
 FactoryGirl.define do
-
   factory :conference do
     name       { 'EDGE 2015' }
     end_date   { Faker::Date.backward(1) }
     location   { 'University of California, Berkeley' }
     start_date { Faker::Date.forward(2) }
   end
-
 end

@@ -61,12 +61,12 @@ class Student < ActiveRecord::Base
 
   multisearchable against: [:first_name, :last_name, :email]
 
-  scope :conference_id, -> conference_id { where(conference_id: conference_id) }
-  scope :gender, -> gender { where(gender: genders[gender.downcase]) }
-  scope :is_checked_in, -> is_checked_in { where(is_checked_in: is_checked_in) }
-  scope :is_flagged, -> is_flagged { where(is_flagged: is_flagged) }
-  scope :is_primary, -> is_primary { where(is_primary: is_primary) }
-  scope :sort, -> sort { order(sort) }
+  scope :conference_id, -> (conference_id) { where(conference_id: conference_id) }
+  scope :gender, -> (gender) { where(gender: genders[gender.downcase]) }
+  scope :is_checked_in, -> (is_checked_in) { where(is_checked_in: is_checked_in) }
+  scope :is_flagged, -> (is_flagged) { where(is_flagged: is_flagged) }
+  scope :is_primary, -> (is_primary) { where(is_primary: is_primary) }
+  scope :sort, -> (sort) { order(sort) }
 
   enum boolean: [:yes, :no]
   enum gender: [:female, :male, :other]
@@ -137,8 +137,8 @@ class Student < ActiveRecord::Base
     attributes = Student.attribute_names
     CSV.generate(headers: true) do |csv|
       csv << attributes
-      all.each do |student|
-        csv << attributes.map{ |attr| student.send(attr) }
+      all.find_each do |student|
+        csv << attributes.map { |attr| student.send(attr) }
       end
     end
   end

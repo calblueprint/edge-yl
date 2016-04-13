@@ -1,6 +1,6 @@
 class Api::StudentSubmissionsController < Api::BaseController
 
-  skip_before_filter :authenticate_user
+  skip_before_action :authenticate_user
 
   def create
     student_submission = StudentSubmission.new student_submission_params

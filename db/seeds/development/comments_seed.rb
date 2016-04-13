@@ -1,5 +1,5 @@
 def generate_comment(commentable_id, commentable_type)
-  new_comment = Comment.create(
+  Comment.create(
     commentable_id: commentable_id,
     commentable_type: commentable_type,
     content: Faker::Lorem.paragraph,

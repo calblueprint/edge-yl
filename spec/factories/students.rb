@@ -56,7 +56,6 @@
 #
 
 FactoryGirl.define do
-
   factory :student do
     address_city          { Faker::Address.city }
     address_one           { Faker::Address.street_address }
@@ -64,7 +63,7 @@ FactoryGirl.define do
     address_two           { Faker::Address.street_address }
     address_zip           { Faker::Address.zip }
     allergies             { 0 }
-    birthday              { Faker::Date.between(33.days.ago, Date.today) }
+    birthday              { Faker::Date.between(33.days.ago, Time.zone.today) }
     cell_phone            { Faker::Base.numerify('###-###-####') }
     dietary_restrictions  { 0 }
     email                 { Faker::Internet.email }
@@ -102,5 +101,4 @@ FactoryGirl.define do
     registration_status   { rand(3) }
     shirt_size            { rand(5) }
   end
-
 end

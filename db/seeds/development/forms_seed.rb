@@ -96,7 +96,7 @@ school_form = Form.create(
   end
   Page.create(
     form: form,
-    description: 'General information about the primary Student from your school.',
+    description: 'General information about the primary student from your school.',
     number: 3,
     title: 'Step 3 - Primary Student Information',
   ) do |page|
@@ -187,7 +187,7 @@ school_form = Form.create(
       style: Question.styles[:dropdown],
       title: 'Primary Student Shirt Size',
     )
-        Question.create(
+    Question.create(
       key: 'primary_guardian_first_name',
       page: page,
       style: Question.styles[:input],
@@ -231,7 +231,7 @@ school_form = Form.create(
   end
   Page.create(
     form: form,
-    description: 'General information about the alternate Student from your school.',
+    description: 'General information about the alternate student from your school.',
     is_last: true,
     number: 4,
     title: 'Step 4 - Alternate Student Information',
@@ -633,21 +633,30 @@ student_form = Form.create(
       options: EnumConstants::BOOLEANS,
       page: page,
       style: Question.styles[:dropdown],
-      title: 'Do you (the student attendee) have any allergies to food, medications, insects, etc.?',
+      title: %s(
+        Do you (the student attendee) have any
+        allergies to food, medications, insects, etc.?
+      ),
     )
     Question.create(
       key: 'health_conditions',
       options: EnumConstants::BOOLEANS,
       page: page,
       style: Question.styles[:dropdown],
-      title: 'Have you (the student attendee) previously been diagnosed with or currently have any of the following health conditions (check all that apply)?',
+      title: %s(
+        Have you (the student attendee) previously been diagnosed with or currently
+        have any of the following health conditions (check all that apply)?
+      ),
     )
     Question.create(
       key: 'medications',
       page: page,
       placeholder: 'Enter "None" if you do not have any',
       style: Question.styles[:textarea],
-      title: 'Please list any medication(s) that you currently take and/or will need to take during the seminar weekend:',
+      title: %s(
+        Please list any medication(s) that you currently take
+        and/or will need to take during the seminar weekend:
+      ),
     )
     Question.create(
       key: 'dietary_restrictions',
@@ -660,7 +669,7 @@ student_form = Form.create(
       is_required: false,
       key: 'other_dietary_restrictions',
       page: page,
-      placeholder: 'Enter "None" if you do not have any' ,
+      placeholder: 'Enter "None" if you do not have any',
       style: Question.styles[:textarea],
       title: 'Please list any other dietary restrictions that you have:',
     )
@@ -672,13 +681,19 @@ student_form = Form.create(
       title: 'Please list any limitations on the amount of physical exercise you can engage in:',
     )
     Question.create(
-      description: 'If, in the judgment of the staff of the EDGE Youth Leadership Seminar, the child named above needs immediate care and treatment as a result of ' +
-                   'any injury or sickness, I hereby give permission to the staff to secure proper treatment for my child. I do hereby consent to whatever x-ray, ' +
-                   'examination, anesthetic, medical, surgical or dental diagnosis or treatment and hospital care are considered necessary in the best judgment of ' +
-                   'the attending physician, surgeon or dentist and performed by or under the supervision of the medical staff of the hospital or facility furnishing ' +
-                   'medical or dental services. It is further understood that the undersigned will assume full responsibility for any such action, including payment of costs. ' +
-                   'I do hereby agree to indemnify and hold harmless the EDGE Youth Leadership (including its officers, directors, members and/or volunteers) '+
-                   'from any claim by any person whomsoever on account of such care and treatment of said child.',
+      description: %s(
+        If, in the judgment of the staff of the EDGE Youth Leadership Seminar, the child named
+        above needs immediate care and treatment as a result of any injury or sickness, I hereby
+        give permission to the staff to secure proper treatment for my child. I do hereby consent
+        to whatever x-ray, examination, anesthetic, medical, surgical or dental diagnosis or
+        treatment and hospital care are considerednecessary in the best judgment of the attending
+        physician, surgeon or dentist and performed by or under the supervision of the medical
+        staff of the hospital or facility furnishing medical or dental services. It is further
+        understood that the undersigned will assume full responsibility for any such action,
+        including payment of costs. I do hereby agree to indemnify and hold harmless the EDGE
+        Youth Leadership (including its officers, directors, members and/or volunteers) from any
+        claim by any person whomsoever on account of such care and treatment of said child.
+      ),
       key: 'emergency_consent_info',
       page: page,
       style: Question.styles[:information],
@@ -692,11 +707,16 @@ student_form = Form.create(
       title: 'Do you consent?',
     )
     Question.create(
-      description: 'Becoming a leader requires self-reflection and challenging oneself to work through the internal barriers to leadership development. Our seminar ' +
-                   'encourages and guides this self-reflection through interactive activities and experiential processes. At times this can be emotionally difficult, ' +
-                   'and the student may need additional support to process their experience. In light of this, we will have an on-site Licensed Psychologist available ' +
-                   'to talk to the students if a request is made. In order for student participants to talk with the Psychologist, we need guardian consent. By signing ' +
-                   'below you are consenting for your student to speak with a Licensed Psychologist during the EDGE conference.',
+      description: %s(
+        Becoming a leader requires self-reflection and challenging oneself to work through the
+        internal barriers to leadership development. Our seminar encourages and guides this
+        self-reflection through interactive activities and experiential processes. At times this
+        can be emotionally difficult, and the student may need additional support to process their
+        experience. In light of this, we will have an on-site Licensed Psychologist available to
+        talk to the students if a request is made. In order for student participants to talk with
+        the Psychologist, we need guardian consent. By signing below you are consenting for your
+        student to speak with a Licensed Psychologist during the EDGE conference.
+      ),
       key: 'psychologist_consent_info',
       page: page,
       style: Question.styles[:information],

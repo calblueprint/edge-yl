@@ -1,6 +1,6 @@
 class Api::ThreadsController < Api::BaseController
 
-  skip_before_filter :authenticate_user, only: [:create]
+  skip_before_action :authenticate_user, only: [:create]
 
   def create
     custom_params = ActionController::Parameters.new(
@@ -55,4 +55,5 @@ class Api::ThreadsController < Api::BaseController
       :to,
     )
   end
+
 end

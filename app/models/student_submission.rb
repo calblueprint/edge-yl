@@ -74,23 +74,23 @@ class StudentSubmission < ActiveRecord::Base
   validates :is_primary, inclusion: { in: [false, true] }
 
   def address_state
-    if !read_attribute(:address_state).nil?
-      EnumConstants::STATES[read_attribute(:address_state)]
+    unless self[:address_state].nil?
+      EnumConstants::STATES[self[:address_state]]
     end
   end
 
   def address_state=(value)
-    write_attribute(:address_state, EnumConstants::STATES.index(value))
+    self[:address_state] = EnumConstants::STATES.index(value)
   end
 
   def allergies
-    if !read_attribute(:allergies).nil?
-      EnumConstants::BOOLEANS[read_attribute(:allergies)]
+    unless self[:allergies].nil?
+      EnumConstants::BOOLEANS[self[:allergies]]
     end
   end
 
   def allergies=(value)
-    write_attribute(:allergies, EnumConstants::BOOLEANS.index(value))
+    self[:allergies] = EnumConstants::BOOLEANS.index(value)
   end
 
   def carpool
@@ -114,93 +114,93 @@ class StudentSubmission < ActiveRecord::Base
   end
 
   def dietary_restrictions
-    if !read_attribute(:dietary_restrictions).nil?
-      EnumConstants::DIETARY_RESTRICTIONS[read_attribute(:dietary_restrictions)]
+    unless self[:dietary_restrictions].nil?
+      EnumConstants::DIETARY_RESTRICTIONS[self[:dietary_restrictions]]
     end
   end
 
   def dietary_restrictions=(value)
-    write_attribute(:dietary_restrictions, EnumConstants::DIETARY_RESTRICTIONS.index(value))
+    self[:dietary_restrictions] = EnumConstants::DIETARY_RESTRICTIONS.index(value)
   end
 
   def emergency_consent
-    if !read_attribute(:emergency_consent).nil?
-      EnumConstants::BOOLEANS[read_attribute(:emergency_consent)]
+    unless self[:emergency_consent].nil?
+      EnumConstants::BOOLEANS[self[:emergency_consent]]
     end
   end
 
   def emergency_consent=(value)
-    write_attribute(:emergency_consent, EnumConstants::BOOLEANS.index(value))
+    self[:emergency_consent] = EnumConstants::BOOLEANS.index(value)
   end
 
   def gender
-    if !read_attribute(:gender).nil?
-      EnumConstants::GENDERS[read_attribute(:gender)]
+    unless self[:gender].nil?
+      EnumConstants::GENDERS[self[:gender]]
     end
   end
 
   def gender=(value)
-    write_attribute(:gender, EnumConstants::GENDERS.index(value))
+    self[:gender] = EnumConstants::GENDERS.index(value)
   end
 
   def guardian_one_phone_type
-    if !read_attribute(:guardian_one_phone_type).nil?
-      EnumConstants::PHONE_TYPES[read_attribute(:guardian_one_phone_type)]
+    unless self[:guardian_one_phone_type].nil?
+      EnumConstants::PHONE_TYPES[self[:guardian_one_phone_type]]
     end
   end
 
   def guardian_one_phone_type=(value)
-    write_attribute(:guardian_one_phone_type, EnumConstants::PHONE_TYPES.index(value))
+    self[:guardian_one_phone_type] = EnumConstants::PHONE_TYPES.index(value)
   end
 
   def guardian_one_relationship
-    if !read_attribute(:guardian_one_relationship).nil?
-      EnumConstants::GUARDIAN_RELATIONSHIPS[read_attribute(:guardian_one_relationship)]
+    unless self[:guardian_one_relationship].nil?
+      EnumConstants::GUARDIAN_RELATIONSHIPS[self[:guardian_one_relationship]]
     end
   end
 
   def guardian_one_relationship=(value)
-    write_attribute(:guardian_one_relationship, EnumConstants::GUARDIAN_RELATIONSHIPS.index(value))
+    self[:guardian_one_relationship] = EnumConstants::GUARDIAN_RELATIONSHIPS.index(value)
   end
 
   def guardian_two_phone_type
-    if !read_attribute(:guardian_two_phone_type).nil?
-      EnumConstants::PHONE_TYPES[read_attribute(:guardian_two_phone_type)]
+    unless self[:guardian_two_phone_type].nil?
+      EnumConstants::PHONE_TYPES[self[:guardian_two_phone_type]]
     end
   end
 
   def guardian_two_phone_type=(value)
-    write_attribute(:guardian_two_phone_type, EnumConstants::PHONE_TYPES.index(value))
+    self[:guardian_two_phone_type] = EnumConstants::PHONE_TYPES.index(value)
   end
 
   def guardian_two_relationship
-    if !read_attribute(:guardian_two_relationship).nil?
-      EnumConstants::GUARDIAN_RELATIONSHIPS[read_attribute(:guardian_two_relationship)]
+    unless self[:guardian_two_relationship].nil?
+      EnumConstants::GUARDIAN_RELATIONSHIPS[self[:guardian_two_relationship]]
     end
   end
 
   def guardian_two_relationship=(value)
-    write_attribute(:guardian_two_relationship, EnumConstants::GUARDIAN_RELATIONSHIPS.index(value))
+    self[:guardian_two_relationship] = EnumConstants::GUARDIAN_RELATIONSHIPS.index(value)
   end
 
   def health_conditions
-    if !read_attribute(:health_conditions).nil?
-      EnumConstants::BOOLEANS[read_attribute(:health_conditions)]
+    unless self[:health_conditions].nil?
+      EnumConstants::BOOLEANS[self[:health_conditions]]
     end
   end
 
   def health_conditions=(value)
-    write_attribute(:health_conditions, EnumConstants::BOOLEANS.index(value))
+    self[:health_conditions] = EnumConstants::BOOLEANS.index(value)
   end
 
   def immunizations
-    if !read_attribute(:immunizations).nil?
-      EnumConstants::BOOLEANS[read_attribute(:immunizations)]
+    unless self[:immunizations].nil?
+      EnumConstants::BOOLEANS[self[:immunizations]]
     end
   end
 
   def immunizations=(value)
-    write_attribute(:immunizations, EnumConstants::BOOLEANS.index(value))
+    self[:immunizations] = EnumConstants::BOOLEANS.index(value)
   end
 
   def insurance
@@ -254,13 +254,13 @@ class StudentSubmission < ActiveRecord::Base
   end
 
   def psychologist_consent
-    if !read_attribute(:psychologist_consent).nil?
-      EnumConstants::BOOLEANS[read_attribute(:psychologist_consent)]
+    unless self[:psychologist_consent].nil?
+      EnumConstants::BOOLEANS[self[:psychologist_consent]]
     end
   end
 
   def psychologist_consent=(value)
-    write_attribute(:psychologist_consent, EnumConstants::BOOLEANS.index(value))
+    self[:psychologist_consent] = EnumConstants::BOOLEANS.index(value)
   end
 
   def risk_student_consent
@@ -294,13 +294,13 @@ class StudentSubmission < ActiveRecord::Base
   end
 
   def shirt_size
-    if !read_attribute(:shirt_size).nil?
-      EnumConstants::SHIRT_SIZES[read_attribute(:shirt_size)]
+    unless self[:shirt_size].nil?
+      EnumConstants::SHIRT_SIZES[self[:shirt_size]]
     end
   end
 
   def shirt_size=(value)
-    write_attribute(:shirt_size, EnumConstants::SHIRT_SIZES.index(value))
+    self[:shirt_size] = EnumConstants::SHIRT_SIZES.index(value)
   end
 
   def transportation
@@ -324,7 +324,7 @@ class StudentSubmission < ActiveRecord::Base
   end
 
   def form_url
-    # TODO (Warren): !!!
+    # TODO: (Warren) !!!
     "http://edge-yl-staging.herokuapp.com/forms/student/#{id}/start"
   end
 
@@ -339,19 +339,19 @@ class StudentSubmission < ActiveRecord::Base
       error_response = validator.errors.to_hash
       valid_params = {}
       update_params.each do |attribute, value|
-        if !error_response.key?(attribute.to_sym)
+        unless error_response.key?(attribute.to_sym)
           valid_params[attribute] = value
         end
       end
       if valid_params.size > 0
-        self.update_attributes(valid_params)
+        update_attributes(valid_params)
       end
       error_response.each do |attribute, messages|
         messages.each do |message|
-          self.errors.add(attribute, message)
+          errors.add(attribute, message)
         end
       end
-      self.errors.size == 0
+      errors.size == 0
     end
   end
 
@@ -440,7 +440,7 @@ class StudentSubmission < ActiveRecord::Base
       shirt_size: shirt_size,
     )
     unless student.save
-      raise 'Could not create student from submission'
+      fail 'Could not create student from submission'
     end
     begin
       SubmissionsMailer.submit_student(self).deliver_now
@@ -448,7 +448,7 @@ class StudentSubmission < ActiveRecord::Base
       raise 'Could not deliver appropriate emails'
     end
     self.is_active = false
-    self.save
+    save
   end
 
   private
