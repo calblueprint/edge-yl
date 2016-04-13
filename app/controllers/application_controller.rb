@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :null_session
 
   def error_404
-    raise ActionController::RoutingError.new('404')
+    fail ActionController::RoutingError.new('404')
   end
 
   def error_response(object: nil, message: nil, status: nil)

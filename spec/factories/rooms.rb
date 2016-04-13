@@ -14,12 +14,10 @@
 #
 
 FactoryGirl.define do
-
   factory :room do
     building { "#{Faker::Lorem.word} building" }
     capacity { 50 }
     sequence(:number) { |n| n }
     gender { rand(3) }
   end
-
 end

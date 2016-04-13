@@ -79,4 +79,3 @@ class Api::GroupsController < Api::BaseController
   end
 
 end
-

@@ -37,7 +37,7 @@ class Api::UsersController < Api::BaseController
       :first_name,
       :has_sidebar,
       :last_name,
-      :password
+      :password,
     )
   end
 

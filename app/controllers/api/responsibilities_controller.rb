@@ -11,7 +11,7 @@ class Api::ResponsibilitiesController < Api::BaseController
     end
   end
 
-private
+  private
 
   def responsibility_params
     params.require(:responsibility).permit(
@@ -20,4 +20,5 @@ private
       :user_id,
     )
   end
+
 end

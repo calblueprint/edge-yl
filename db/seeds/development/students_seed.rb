@@ -1,13 +1,13 @@
 Conference.all.each do |conference|
   (1..20).each do |index|
     new_student = Student.create(
-      address_city: "#{Faker::Address.city}",
-      address_one: "#{Faker::Address.street_address}",
-      address_state: "#{Faker::Address.state}",
-      address_two: "#{Faker::Address.street_address}",
-      address_zip: "#{Faker::Address.zip}",
+      address_city: Faker::Address.city,
+      address_one: Faker::Address.street_address,
+      address_state: Faker::Address.state,
+      address_two: Faker::Address.street_address,
+      address_zip: Faker::Address.zip,
       allergies: rand(2),
-      birthday: Faker::Date.between(33.days.ago, Date.today),
+      birthday: Faker::Date.between(33.days.ago, Time.zone.today),
       conference_id: conference.id,
       cell_phone: Faker::Base.numerify('###-###-####'),
       dietary_restrictions: 0,

@@ -13,7 +13,7 @@
 
 class Conference < ActiveRecord::Base
 
-  self.default_scope { order('created_at DESC') }
+  default_scope { order('created_at DESC') }
 
   has_many :groups, dependent: :destroy
   has_many :responsibilities, dependent: :destroy
@@ -29,7 +29,7 @@ class Conference < ActiveRecord::Base
 
   def self.active
     active_conferences = []
-    all.each { |conference| active_conferences << conference if conference.active }
+    find_each.each { |conference| active_conferences << conference if conference.active }
     active_conferences
   end
 
@@ -37,10 +37,10 @@ class Conference < ActiveRecord::Base
   # evenly, students from each gender are assigned to a group one at a time
   # to spread out the gender.
   def assign_students_to_groups
-    group_ids = groups.map {|group| group.id}
+    group_ids = groups.map(&:id)
     gender_groups = [students.male, students.female, students.other]
     assigned_student_count = 0
-    mod_to_group_index = lambda { |index| index % group_ids.length }
+    mod_to_group_index = -> (index) { index % group_ids.length }
 
     gender_groups.each do |gender|
       gender.each do |student|
@@ -65,11 +65,11 @@ class Conference < ActiveRecord::Base
     rooms.student.each do |room|
       while room.students.count < room.capacity
         if !unassigned_males.empty? && room.male?
-          student = unassigned_males.pop()
+          student = unassigned_males.pop
         elsif !unassigned_females.empty? && room.female?
-          student = unassigned_females.pop()
+          student = unassigned_females.pop
         elsif !unassigned_others.empty? && room.other?
-          student = unassigned_others.pop()
+          student = unassigned_others.pop
         else # There are no more students to assign to this room
           break
         end
@@ -77,8 +77,8 @@ class Conference < ActiveRecord::Base
         student.save
       end
     end
-    if !(unassigned_others.empty? && unassigned_females.empty? && unassigned_males.empty?)
-      raise "Not enough room space to accomodate students"
+    unless unassigned_others.empty? && unassigned_females.empty? && unassigned_males.empty?
+      fail 'Not enough room space to accomodate students'
     end
     self
   end
@@ -97,8 +97,8 @@ class Conference < ActiveRecord::Base
   end
 
   def create_responsibilities
-    School.all.each do |school|
-      responsibility = Responsibility.create(conference: self, school: school)
+    School.all.find_each do |school|
+      Responsibility.create(conference: self, school: school)
     end
   end
 
@@ -116,7 +116,7 @@ class Conference < ActiveRecord::Base
 
   def next_letter
     used_letters = self.used_letters
-    ('A'..'Z').select {|letter| !used_letters.include? letter}.first
+    ('A'..'Z').select { |letter| !used_letters.include? letter }.first
   end
 
   def rooms_count
@@ -141,7 +141,7 @@ class Conference < ActiveRecord::Base
   end
 
   def used_letters
-    self.groups.map {|group| group.letter}
+    groups.map(&:letter)
   end
 
 end

@@ -1,9 +1,9 @@
 module StringConstants
 
-  EMAIL_FORMAT = 'ex. x@x.x'
+  EMAIL_FORMAT = 'ex. x@x.x'.freeze
 
-  PHONE_FORMAT = 'ex. ###-###-####'
+  PHONE_FORMAT = 'ex. ###-###-####'.freeze
 
-  ZIP_FORMAT = 'ex. ##### or #####-####'
+  ZIP_FORMAT = 'ex. ##### or #####-####'.freeze
 
 end

@@ -14,10 +14,8 @@
 require 'rails_helper'
 
 RSpec.describe Comment, type: :model do
-
-  it "is invalid without content" do
+  it 'is invalid without content' do
     factory = FactoryGirl.build(:comment, content: nil)
     expect(factory).to be_invalid
   end
-
 end
