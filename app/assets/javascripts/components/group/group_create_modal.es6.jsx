@@ -124,13 +124,6 @@ class GroupCreateModal extends CreateModal {
           content={'New Group'}
           options={this.generateOptions()} />
         <div style={StyleConstants.cards.content}>
-          <CardInput
-            action={this.generateHandler('letter')}
-            errors={errors.letter}
-            focus={true}
-            label={'Group Letter'}
-            placeholder={'A'}
-            value={''} />
           <CardDropdown
             action={this.generateHandler('letter')}
             choices={this.generateChoices('primary')}

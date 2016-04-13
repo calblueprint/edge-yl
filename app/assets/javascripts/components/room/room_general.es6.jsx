@@ -13,15 +13,14 @@ class RoomGeneral extends Component {
   // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
-  storeTemplate(key, choices) {
+  storePairing(key, choices) {
     var room = this.props.room;
-    RoomActions.storeTemplate({
+    RoomActions.storePairing({
       choices: choices,
       id: room.id,
       key: key,
-      model: TypeConstants.models.room,
       type: choices ? 'dropdown' : 'input',
-      value: room[key],
+      value: String(room[key]),
     });
   }
 
@@ -33,11 +32,19 @@ class RoomGeneral extends Component {
     return (
       <div style={StyleConstants.cards.content}>
         <CardAttribute
-          action={() => this.storeTemplate('number')}
+          action={() => this.storePairing('number')}
           editable={this.props.editable}
           label={'Number'}
           value={room.number} />
         <CardAttribute
+          label={'Gender'}
+          value={room.gender} />
+        <CardAttribute
+          label={'Occupant Type'}
+          value={room.style} />
+        <CardAttribute
+          action={() => this.storePairing('capacity')}
+          editable={this.props.editable}
           label={'Capacity'}
           value={room.capacity} />
         <CardAttribute

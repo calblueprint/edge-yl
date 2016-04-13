@@ -543,13 +543,6 @@ student_form = Form.create(
       title: 'Parent/Guardian 1 Email',
     )
     Question.create(
-      key: 'guardian_one_relationship',
-      options: EnumConstants::GUARDIAN_RELATIONSHIPS,
-      page: page,
-      style: Question.styles[:dropdown],
-      title: 'Parent/Guardian 1 Relationship',
-    )
-    Question.create(
       description: StringConstants::PHONE_FORMAT,
       key: 'guardian_one_phone_number',
       page: page,
@@ -563,6 +556,13 @@ student_form = Form.create(
       page: page,
       style: Question.styles[:dropdown],
       title: 'Parent/Guardian 1 Phone Type',
+    )
+    Question.create(
+      key: 'guardian_one_relationship',
+      options: EnumConstants::GUARDIAN_RELATIONSHIPS,
+      page: page,
+      style: Question.styles[:dropdown],
+      title: 'Parent/Guardian 1 Relationship',
     )
     Question.create(
       is_required: false,
@@ -598,13 +598,6 @@ student_form = Form.create(
       title: 'Parent/Guardian 2 Email',
     )
     Question.create(
-      key: 'guardian_two_relationship',
-      options: EnumConstants::GUARDIAN_RELATIONSHIPS,
-      page: page,
-      style: Question.styles[:dropdown],
-      title: 'Parent/Guardian 2 Relationship',
-    )
-    Question.create(
       description: StringConstants::PHONE_FORMAT,
       key: 'guardian_two_phone_number',
       page: page,
@@ -618,6 +611,13 @@ student_form = Form.create(
       page: page,
       style: Question.styles[:dropdown],
       title: 'Parent/Guardian 2 Phone Type',
+    )
+    Question.create(
+      key: 'guardian_two_relationship',
+      options: EnumConstants::GUARDIAN_RELATIONSHIPS,
+      page: page,
+      style: Question.styles[:dropdown],
+      title: 'Parent/Guardian 2 Relationship',
     )
     Question.create(
       is_required: false,

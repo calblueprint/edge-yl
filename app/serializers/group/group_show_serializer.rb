@@ -1,6 +1,9 @@
 class GroupShowSerializer < GroupIndexSerializer
 
-  attributes :letter
+  attributes :females_count,
+             :letter,
+             :males_count,
+             :others_count
 
   has_many :students, serializer: StudentGroupSerializer
 

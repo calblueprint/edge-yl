@@ -12,7 +12,7 @@
       };
       this.bindListeners({
         handleRemoveThread: ThreadsActions.REMOVE_THREAD,
-        handleStoreEmails: ThreadsActions.STORE_EMAILS,
+        handleStoreThreads: ThreadsActions.STORE_THREADS,
       });
     }
 
@@ -25,8 +25,8 @@
       });
     }
 
-    handleStoreEmails(response) {
-      this.threads = response.emails;
+    handleStoreThreads(response) {
+      this.threads = response.threads;
       this.pagination = response.meta.pagination;
     }
   }

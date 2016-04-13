@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160308042713) do
+ActiveRecord::Schema.define(version: 20160408025358) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -174,11 +174,24 @@ ActiveRecord::Schema.define(version: 20160308042713) do
 
   add_index "questions", ["page_id"], name: "index_questions_on_page_id", using: :btree
 
+  create_table "responsibilities", force: :cascade do |t|
+    t.integer  "conference_id", null: false
+    t.integer  "school_id",     null: false
+    t.integer  "user_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "responsibilities", ["conference_id"], name: "index_responsibilities_on_conference_id", using: :btree
+  add_index "responsibilities", ["school_id"], name: "index_responsibilities_on_school_id", using: :btree
+  add_index "responsibilities", ["user_id"], name: "index_responsibilities_on_user_id", using: :btree
+
   create_table "rooms", force: :cascade do |t|
     t.string   "building",      null: false
     t.integer  "capacity",      null: false
     t.integer  "gender",        null: false
     t.integer  "number",        null: false
+    t.integer  "style",         null: false
     t.integer  "conference_id", null: false
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
@@ -361,14 +374,22 @@ ActiveRecord::Schema.define(version: 20160308042713) do
     t.string   "exercise_limitations",                       null: false
     t.string   "first_name",                                 null: false
     t.integer  "gender",                                     null: false
-    t.string   "guardian_email",                             null: false
-    t.string   "guardian_employer",          default: "",    null: false
-    t.string   "guardian_first_name",                        null: false
-    t.string   "guardian_job_title",         default: "",    null: false
-    t.string   "guardian_last_name",                         null: false
-    t.string   "guardian_phone_number",                      null: false
-    t.integer  "guardian_phone_type",                        null: false
-    t.integer  "guardian_relationship",                      null: false
+    t.string   "guardian_one_email",                         null: false
+    t.string   "guardian_one_employer",      default: "",    null: false
+    t.string   "guardian_one_first_name",                    null: false
+    t.string   "guardian_one_job_title",     default: "",    null: false
+    t.string   "guardian_one_last_name",                     null: false
+    t.string   "guardian_one_phone_number",                  null: false
+    t.integer  "guardian_one_phone_type",                    null: false
+    t.integer  "guardian_one_relationship",                  null: false
+    t.string   "guardian_two_email",                         null: false
+    t.string   "guardian_two_employer",      default: "",    null: false
+    t.string   "guardian_two_first_name",                    null: false
+    t.string   "guardian_two_job_title",     default: "",    null: false
+    t.string   "guardian_two_last_name",                     null: false
+    t.string   "guardian_two_phone_number",                  null: false
+    t.integer  "guardian_two_phone_type",                    null: false
+    t.integer  "guardian_two_relationship",                  null: false
     t.integer  "health_conditions",                          null: false
     t.string   "home_phone",                                 null: false
     t.integer  "immunizations",                              null: false

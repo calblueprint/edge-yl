@@ -63,6 +63,7 @@ class Api::RoomsController < Api::BaseController
       :conference_id,
       :gender,
       :number,
+      :style,
     )
   end
 

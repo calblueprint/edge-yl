@@ -14,6 +14,7 @@ class StudentsCard extends Component {
         TypeConstants.students.room,
         TypeConstants.students.school,
       ]).isRequired,
+      typeId: React.PropTypes.number.isRequired,
     };
   }
 
@@ -21,14 +22,33 @@ class StudentsCard extends Component {
   // Helpers
   // --------------------------------------------------
   deleteStudentFromGroup() {
-    GroupActions.deleteStudent(this.props.student.id);
+    GroupActions.deleteStudent(
+      this.props.typeId,
+      this.props.student.id,
+    );
+  }
+
+  deleteStudentFromRoom() {
+    RoomsActions.deleteStudent(
+      this.props.typeId,
+      this.props.student.id,
+    );
   }
 
   generateOptions() {
+    var action;
+    switch(this.props.type) {
+      case TypeConstants.students.group:
+        action = () => this.deleteStudentFromGroup();
+        break;
+      case TypeConstants.students.room:
+        action = () => this.deleteStudentFromRoom();
+        break;
+    }
     return [
       {
-        action: () => this.deleteStudentFromGroup(),
-        icon: TypeConstants.icons.dekete,
+        action: action,
+        icon: TypeConstants.icons.delete,
       },
     ];
   }
@@ -59,7 +79,7 @@ class StudentsCard extends Component {
       return (
         <CardHeader
           content={'Student'}
-          option={this.generateOptions()} />
+          options={this.generateOptions()} />
       );
     } else {
       return <CardHeader content={'Student'} />;

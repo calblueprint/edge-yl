@@ -11,6 +11,7 @@
 
     get conference() {
       return {
+        checkIn: 'conference-checkIn',
         general: 'conference-general',
         statistic: 'conference-statistic',
       };
@@ -26,6 +27,7 @@
       return {
         leadership: 'group-leadership',
         general: 'group-general',
+        statistic: 'group-statistic',
       };
     }
 

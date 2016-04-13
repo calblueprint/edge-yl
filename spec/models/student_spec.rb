@@ -19,14 +19,22 @@
 #  exercise_limitations       :string           not null
 #  first_name                 :string           not null
 #  gender                     :integer          not null
-#  guardian_email             :string           not null
-#  guardian_employer          :string           default(""), not null
-#  guardian_first_name        :string           not null
-#  guardian_job_title         :string           default(""), not null
-#  guardian_last_name         :string           not null
-#  guardian_phone_number      :string           not null
-#  guardian_phone_type        :integer          not null
-#  guardian_relationship      :integer          not null
+#  guardian_one_email         :string           not null
+#  guardian_one_employer      :string           default(""), not null
+#  guardian_one_first_name    :string           not null
+#  guardian_one_job_title     :string           default(""), not null
+#  guardian_one_last_name     :string           not null
+#  guardian_one_phone_number  :string           not null
+#  guardian_one_phone_type    :integer          not null
+#  guardian_one_relationship  :integer          not null
+#  guardian_two_email         :string           not null
+#  guardian_two_employer      :string           default(""), not null
+#  guardian_two_first_name    :string           not null
+#  guardian_two_job_title     :string           default(""), not null
+#  guardian_two_last_name     :string           not null
+#  guardian_two_phone_number  :string           not null
+#  guardian_two_phone_type    :integer          not null
+#  guardian_two_relationship  :integer          not null
 #  health_conditions          :integer          not null
 #  home_phone                 :string           not null
 #  immunizations              :integer          not null

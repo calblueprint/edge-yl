@@ -19,14 +19,22 @@
 #  exercise_limitations       :string           not null
 #  first_name                 :string           not null
 #  gender                     :integer          not null
-#  guardian_email             :string           not null
-#  guardian_employer          :string           default(""), not null
-#  guardian_first_name        :string           not null
-#  guardian_job_title         :string           default(""), not null
-#  guardian_last_name         :string           not null
-#  guardian_phone_number      :string           not null
-#  guardian_phone_type        :integer          not null
-#  guardian_relationship      :integer          not null
+#  guardian_one_email         :string           not null
+#  guardian_one_employer      :string           default(""), not null
+#  guardian_one_first_name    :string           not null
+#  guardian_one_job_title     :string           default(""), not null
+#  guardian_one_last_name     :string           not null
+#  guardian_one_phone_number  :string           not null
+#  guardian_one_phone_type    :integer          not null
+#  guardian_one_relationship  :integer          not null
+#  guardian_two_email         :string           not null
+#  guardian_two_employer      :string           default(""), not null
+#  guardian_two_first_name    :string           not null
+#  guardian_two_job_title     :string           default(""), not null
+#  guardian_two_last_name     :string           not null
+#  guardian_two_phone_number  :string           not null
+#  guardian_two_phone_type    :integer          not null
+#  guardian_two_relationship  :integer          not null
 #  health_conditions          :integer          not null
 #  home_phone                 :string           not null
 #  immunizations              :integer          not null
@@ -64,14 +72,22 @@ FactoryGirl.define do
     exercise_limitations  { 'None' }
     first_name            { Faker::Name.first_name }
     gender                { rand(3) }
-    guardian_email        { Faker::Internet.email }
-    guardian_employer     { Faker::Name.name }
-    guardian_first_name   { Faker::Name.first_name }
-    guardian_job_title    { 'Software Engineer' }
-    guardian_last_name    { Faker::Name.last_name }
-    guardian_phone_number { Faker::Base.numerify('###-###-####') }
-    guardian_phone_type   { rand(3) }
-    guardian_relationship { rand(9) }
+    guardian_one_email        { Faker::Internet.email }
+    guardian_one_employer     { Faker::Name.name }
+    guardian_one_first_name   { Faker::Name.first_name }
+    guardian_one_job_title    { 'Software Engineer' }
+    guardian_one_last_name    { Faker::Name.last_name }
+    guardian_one_phone_number { Faker::Base.numerify('###-###-####') }
+    guardian_one_phone_type   { rand(3) }
+    guardian_one_relationship { rand(9) }
+    guardian_two_email        { Faker::Internet.email }
+    guardian_two_employer     { Faker::Name.name }
+    guardian_two_first_name   { Faker::Name.first_name }
+    guardian_two_job_title    { 'Software Engineer' }
+    guardian_two_last_name    { Faker::Name.last_name }
+    guardian_two_phone_number { Faker::Base.numerify('###-###-####') }
+    guardian_two_phone_type   { rand(3) }
+    guardian_two_relationship { rand(9) }
     health_conditions     { 0 }
     home_phone            { Faker::Base.numerify('###-###-####') }
     immunizations         { 0 }

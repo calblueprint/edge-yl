@@ -33,9 +33,20 @@
       return true;
     }
 
+    deleteThread(id) {
+      var resolve = (response) => {
+        window.location = RouteConstants.threads.index();
+      };
+      Requester.delete(
+        ApiConstants.threads.delete(id),
+        resolve,
+      );
+      return true;
+    }
+
     fetchThread(id) {
       var resolve = (response) => this.storeThread(response);
-      Requester.get(ApiConstants.emails.show(id), resolve);
+      Requester.get(ApiConstants.threads.show(id), resolve);
       return true;
     }
   }

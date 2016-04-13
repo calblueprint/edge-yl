@@ -16,6 +16,8 @@ class RoomGrid extends Component {
   // --------------------------------------------------
   render() {
     var room = this.props.room;
+    // TODO: Handle empty state correctly. This is hacky
+    var roomId = room.id ? room.id : 0;
     return (
       <div style={StyleConstants.grids.wrap}>
         <RoomCard
@@ -27,7 +29,8 @@ class RoomGrid extends Component {
         <StudentsGrid
           media={this.props.media}
           students={room.students}
-          type={TypeConstants.students.room} />
+          type={TypeConstants.students.room}
+          typeId={roomId} />
       </div>
     );
   }

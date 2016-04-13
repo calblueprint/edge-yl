@@ -22,7 +22,7 @@
 
 class Email < ActiveRecord::Base
 
-  self.default_scope { order('updated_at DESC') }
+  self.default_scope { order('updated_at ASC') }
 
   belongs_to :email_thread
   belongs_to :emailable, polymorphic: true

@@ -16,6 +16,7 @@ class Conference < ActiveRecord::Base
   self.default_scope { order('created_at DESC') }
 
   has_many :groups, dependent: :destroy
+  has_many :responsibilities, dependent: :destroy
   has_many :rooms, dependent: :destroy
   has_many :students
 
@@ -23,6 +24,8 @@ class Conference < ActiveRecord::Base
   validates :location, presence: true
   validates :name, presence: true
   validates :start_date, presence: true
+
+  after_create :create_responsibilities
 
   def self.active
     active_conferences = []
@@ -59,7 +62,7 @@ class Conference < ActiveRecord::Base
 
     students.each { |student| student.room = nil }
 
-    rooms.each do |room|
+    rooms.student.each do |room|
       while room.students.count < room.capacity
         if !unassigned_males.empty? && room.male?
           student = unassigned_males.pop()
@@ -84,8 +87,19 @@ class Conference < ActiveRecord::Base
     end_date.future?
   end
 
-  def females_count
-    students.female.count
+  def checked_in_count
+    {
+      females: students.female.is_checked_in(1).count,
+      males: students.male.is_checked_in(1).count,
+      others: students.other.is_checked_in(1).count,
+      total: students.is_checked_in(1).count,
+    }
+  end
+
+  def create_responsibilities
+    School.all.each do |school|
+      responsibility = Responsibility.create(conference: self, school: school)
+    end
   end
 
   # Generates groups_count number of empty groups for a conference.
@@ -100,12 +114,9 @@ class Conference < ActiveRecord::Base
     groups.count
   end
 
-  def males_count
-    students.male.count
-  end
-
-  def others_count
-    students.other.count
+  def next_letter
+    used_letters = self.used_letters
+    ('A'..'Z').select {|letter| !used_letters.include? letter}.first
   end
 
   def rooms_count
@@ -113,7 +124,12 @@ class Conference < ActiveRecord::Base
   end
 
   def students_count
-    students.count
+    {
+      females: students.female.count,
+      males: students.male.count,
+      others: students.other.count,
+      total: students.count,
+    }
   end
 
   def groupless_students_count
@@ -122,6 +138,10 @@ class Conference < ActiveRecord::Base
 
   def roomless_students_count
     students.where(room_id: nil).count
+  end
+
+  def used_letters
+    self.groups.map {|group| group.letter}
   end
 
 end

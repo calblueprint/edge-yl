@@ -71,7 +71,7 @@ class DraftSubject extends Component {
           <p>{this.generateSaveStatus()}</p>
         </div>
         <input
-          autoFocus={true}
+          autoFocus={!attributes.subject}
           placeholder={'Subject'}
           ref={'input'}
           type={'text'}
