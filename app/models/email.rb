@@ -41,7 +41,7 @@ class Email < ActiveRecord::Base
     if update_attributes update_params
       assign_thread
       save
-      if email_thread.subject == ""
+      if email_thread.subject == ''
         self.email_thread.subject = subject
         email_thread.save
       end
@@ -128,4 +128,5 @@ class Email < ActiveRecord::Base
       return "#{model.primary_contact.full_name} <#{model.primary_contact.email}>"
     end
   end
+
 end

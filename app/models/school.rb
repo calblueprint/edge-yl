@@ -36,8 +36,8 @@ class School < ActiveRecord::Base
     attributes = School.attribute_names
     CSV.generate(headers: true) do |csv|
       csv << attributes
-      all.each do |school|
-        csv << attributes.map{ |attr| school.send(attr) }
+      all.find_each do |school|
+        csv << attributes.map { |attr| school.send(attr) }
       end
     end
   end

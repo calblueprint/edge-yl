@@ -15,8 +15,8 @@
 
 class Room < ActiveRecord::Base
 
-  scope :conference_id, -> conference_id { where(conference_id: conference_id) }
-  scope :style, -> style { where(style: styles[style]) }
+  scope :conference_id, -> (conference_id) { where(conference_id: conference_id) }
+  scope :style, -> (style) { where(style: styles[style]) }
 
   belongs_to :conference
 
@@ -33,9 +33,9 @@ class Room < ActiveRecord::Base
     attributes = %w(number)
     CSV.generate(headers: true) do |csv|
       csv << attributes
-      all.each do |room|
+      all.find_each do |room|
         students = room.students
-        row = attributes.map{ |attr| room.send(attr) }
+        row = attributes.map { |attr| room.send(attr) }
         students.map { |student| row << student.full_name }
         csv << row
       end

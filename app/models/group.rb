@@ -15,7 +15,7 @@ class Group < ActiveRecord::Base
 
   multisearchable against: [:full_name]
 
-  scope :conference_id, -> conference_id { where(conference_id: conference_id) }
+  scope :conference_id, -> (conference_id) { where(conference_id: conference_id) }
 
   belongs_to :conference
 
@@ -30,7 +30,7 @@ class Group < ActiveRecord::Base
   after_create :generate_leaderships
 
   validates :letter, presence: true
-  validates_uniqueness_of :letter, scope: :conference_id
+  validates :letter, scope: :conference_id, uniqueness: true
 
   def females_count
     students.female.count
@@ -45,8 +45,8 @@ class Group < ActiveRecord::Base
     headers = %w(Letter Primary\ leader Secondary\ leader)
     CSV.generate(headers: true) do |csv|
       csv << headers
-      all.each do |group|
-        row = attributes.map{ |attr| group.send(attr) }
+      all.find_each do |group|
+        row = attributes.map { |attr| group.send(attr) }
         if group.leaderships.first.user
           primary_leader = group.leaderships.first.user.full_name
           row << primary_leader
