@@ -4,7 +4,6 @@ class Api::StudentSubmissionsController < Api::BaseController
 
   def create
     student_submission = StudentSubmission.new student_submission_params
-    puts 'hello'
     if student_submission.save!
       render json: student_submission,
              serializer: StudentSubmissionBaseSerializer,

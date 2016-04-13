@@ -89,8 +89,8 @@
             marginBottom: '18px',
           },
           description: {
-            lineHeight: '15px',
             fontWeight: '200',
+            lineHeight: '15px',
           },
           errors: {
             color: this.colors.red,

@@ -22,5 +22,5 @@ end
 
 conference = Conference.first
 
-# conference.assign_students_to_rooms
+conference.assign_students_to_rooms
 puts "Assigned students to rooms in #{conference.name}."

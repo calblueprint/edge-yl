@@ -103,7 +103,7 @@ student_submission = StudentSubmission.create(
   insurance_phone_number: Faker::Base.numerify('###-###-####'),
   insurance_provider: Faker::Name.first_name,
   insurance_other: Faker::Name.first_name,
-  is_primary: false, 
+  is_primary: true, 
   last_name: Faker::Name.last_name,
   media_information: Faker::Name.first_name,
   media_newspaper: Faker::Name.first_name,

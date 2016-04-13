@@ -53,7 +53,7 @@ class PreviewPage extends Component {
   // Render
   // --------------------------------------------------
   renderQuestion(question) {
-    if (question.style!='information') {
+    if (question.style !== 'information') {
       return (
         <PreviewAttribute
           key={question.key}
