@@ -18,16 +18,16 @@ class ConferenceStatistic extends Component {
       <div style={StyleConstants.cards.content}>
         <CardAttribute
           label={'Females count'}
-          value={conference.females_count} />
+          value={conference.students_count.females} />
         <CardAttribute
           label={'Males count'}
-          value={conference.males_count} />
+          value={conference.students_count.males} />
         <CardAttribute
           label={'Others count'}
-          value={conference.others_count} />
+          value={conference.students_count.others} />
         <CardAttribute
           label={'Students count'}
-          value={conference.students_count} />
+          value={conference.students_count.total} />
         <CardAttribute
           label={'Students without a group'}
           value={conference.groupless_students_count} />

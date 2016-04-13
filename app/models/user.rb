@@ -34,6 +34,7 @@ class User < ActiveRecord::Base
   has_many :comments, dependent: :destroy
   has_many :emails, dependent: :destroy
   has_many :email_threads, dependent: :destroy
+  has_many :responsibilities
   has_many :visits, dependent: :destroy
 
   has_one :leadership, dependent: :destroy

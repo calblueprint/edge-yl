@@ -11,7 +11,7 @@ class EmailIndexSerializer < EmailBaseSerializer
              :updated_at
 
   def updated_at
-    object.updated_at.to_formatted_s(:long_ordinal)
+    object.updated_at.strftime('%b %e, %Y %-I:%M:%S %p')
   end
 
 end

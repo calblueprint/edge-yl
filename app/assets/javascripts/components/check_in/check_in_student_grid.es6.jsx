@@ -5,6 +5,7 @@ class CheckInStudentGrid extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
+      conference: React.PropTypes.object.isRequired,
       media: React.PropTypes.string.isRequired,
       student: React.PropTypes.object.isRequired,
     };
@@ -15,22 +16,28 @@ class CheckInStudentGrid extends Component {
   // --------------------------------------------------
   checkIn(studentId) {
     var params = {};
-    var resolve = (response) => CheckInActions.storeStudent(response);
+    var resolve = (response) => {
+      CheckInActions.storeStudent(response);
+      CheckInActions.fetchConference(this.props.conference.id);
+    };
     var reject = (response) => CheckInActions.storeError(response);
     Requester.update(
-      ApiConstants.students.check_in(studentId),
+      ApiConstants.students.checkIn(studentId),
       params,
       resolve,
       reject,
     );
   }
 
-  checkOut(studentId) {
+  cancelCheckIn(studentId) {
     var params = {};
-    var resolve = (response) => CheckInActions.storeStudent(response);
+    var resolve = (response) => {
+      CheckInActions.storeStudent(response);
+      CheckInActions.fetchConference(this.props.conference.id);
+    };
     var reject = (response) => CheckInActions.storeError(response);
     Requester.update(
-      ApiConstants.students.check_out(studentId),
+      ApiConstants.students.checkOut(studentId),
       params,
       resolve,
       reject,
@@ -40,9 +47,9 @@ class CheckInStudentGrid extends Component {
   generateCheckIn() {
     var student = this.props.student
     if (student.is_checked_in) {
-      action = () => this.checkOut(student.id);
+      action = () => this.cancelCheckIn(student.id);
       content = `${student.first_name} Checked In`;
-      style = this.clickableStyles.checkOut
+      style = this.clickableStyles.cancelCheckIn
     } else {
       action = () => this.checkIn(student.id);
       content = `Check ${student.first_name} In`;
@@ -74,7 +81,7 @@ class CheckInStudentGrid extends Component {
           color: StyleConstants.colors.white,
         },
       },
-      checkOut: {
+      cancelCheckIn: {
         default: {
           flex: '1',
           display: 'flex',

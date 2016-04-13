@@ -15,22 +15,25 @@ class ThreadsCard extends Component {
   // Styles
   // --------------------------------------------------
   get styles() {
+    var thread = this.props.thread;
     return {
-      container: {
-        display: 'flex',
-        flexFlow: 'column',
-        padding: '16px',
-        backgroundColor: this.props.thread.is_unread ? '#ffffff' : '#f6f6f6',
-      },
+      container: Object.assign(
+        {},
+        StyleConstants.cards.container('small'),
+        {
+          padding: '16px',
+          backgroundColor: thread.is_unread ? '#ffffff' : '#f6f6f6',
+        },
+      ),
       divider: {
         padding: '0px 4px',
       },
+      header: {
+        display: 'flex',
+        justifyContent: 'space-between',
+      },
       icon: {
         color: StyleConstants.colors.blue,
-      },
-      section: {
-        display: 'flex',
-        textOverflow: 'ellipses',
       },
     };
   }
@@ -42,11 +45,12 @@ class ThreadsCard extends Component {
     ThreadsActions.deleteThread(this.props.thread.id);
   }
 
-  generateEmailRoute(email) {
-    if (email.is_draft) {
-      return RouteConstants.drafts.show(email.id);
+  emailsCount() {
+    var count = this.props.thread.emails_count;
+    if(count > 1) {
+      return ` (${count})`;
     } else {
-      return RouteConstants.emails.show(email.id);
+      return '';
     }
   }
 
@@ -60,44 +64,31 @@ class ThreadsCard extends Component {
     }
   }
 
-  generateEmailParticipants(thread) {
-    var participants = {};
-    thread.emails.map((email) => {
-      participants[email['emailable_name']] = email;
-    });
-    participants = Object.keys(participants).map((k) => {
-      var email = participants[k];
-      return (
-        <Clickable
-          content={email['emailable_name']}
-          route={this.generateEmailableRoute(email)}
-          type={'h6'} />
-      );
-    });
-    return participants;
+  generateThreadParticipant() {
+    var thread = this.props.thread;
+    return (
+      <Clickable
+        content={thread['emailable_name']}
+        route={this.generateEmailableRoute(thread)}
+        type={'h6'} />
+    );
   }
 
-  generateOptions() {
-    return [
-      {
-        action: () => this.deleteThread(),
-        icon: TypeConstants.icons.delete,
-      },
-    ];
+  generateThreadRoute() {
+    return RouteConstants.threads.show(this.props.thread.id);
   }
 
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
-  renderHeader() {
+  renderOptions() {
     if (this.props.editable) {
       return (
-        <CardHeader
-          content={'Thread'}
-          options={this.generateOptions()} />
+        <Clickable
+          action={() => this.deleteThread()}
+          icon={TypeConstants.icons.delete}
+          type={'i-left'} />
       );
-    } else {
-      return <CardHeader content={'Thread'} />
     }
   }
 
@@ -112,22 +103,21 @@ class ThreadsCard extends Component {
   render() {
     var thread = this.props.thread;
     return (
-      <div style={StyleConstants.cards.container('small')}>
-        {this.renderHeader()}
-        <div style={this.styles.container}>
-          <div style={this.styles.section}>
-            {this.generateEmailParticipants(thread)}
-          </div>
+      <div style={this.styles.container}>
+        <div style={this.styles.header}>
+          <h6>{this.generateThreadParticipant()}</h6>
+          {this.renderOptions()}
+        </div>
+        <Clickable
+          route={this.generateThreadRoute()}
+          type={'div'}>
           <div style={this.styles.section}>
             {this.renderNewIcon()}
-            <Clickable
-              content={thread.subject}
-              route={this.generateEmailRoute(thread)}
-              type={'h6'} />
+            <h6>{`${thread.subject} ${this.emailsCount()}`}</h6>
             <p style={this.styles.divider}>{'--'}</p>
-            <p>{thread.content}</p>
+            <p>{thread.content_preview}</p>
           </div>
-        </div>
+        </Clickable>
       </div>
     );
   }

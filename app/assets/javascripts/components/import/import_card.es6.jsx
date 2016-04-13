@@ -41,16 +41,29 @@ class ImportCard extends Component {
   render() {
     var template = this.props.template;
     return (
-      <div ref={'container'} style={this.styles.container}>
-        <div style={this.styles.header}>
-          <h2>{'Import schools'}</h2>
+      <div>
+        <div ref={'container'} style={this.styles.container}>
+          <div style={this.styles.header}>
+            <h2>{'Import Schools'}</h2>
+          </div>
+          <div>
+            <form action={ApiConstants.imports.schools} method={'post'} encType={'multipart/form-data'}>
+              <input type={'file'} name={'upload'} accept={'*.csv'} />
+              <input type={'submit'} />
+            </form>
+          </div>
         </div>
-        <div>
-          <form action={'api/import'} method={'post'} encType={'multipart/form-data'}>
-            <input type={'file'} name={'upload'} accept={'*.csv'} />
-            <input type={'submit'} />
-          </form>
-        </div>  
+        <div ref={'container'} style={this.styles.container}>
+          <div style={this.styles.header}>
+            <h2>{'Import Students and their Schools'}</h2>
+          </div>
+          <div>
+            <form action={ApiConstants.imports.students} method={'post'} encType={'multipart/form-data'}>
+              <input type={'file'} name={'upload'} accept={'*.csv'} />
+              <input type={'submit'} />
+            </form>
+          </div>  
+        </div>
       </div>
     );
   }

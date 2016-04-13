@@ -7,6 +7,7 @@ class RoomBaseSerializer < BaseSerializer
              :conference_id,
              :full_name,
              :gender,
+             :style,
              :number
 
 end

@@ -12,6 +12,7 @@ if Rails.env.development? || Rails.env.staging?
     'emails',
     'prospects',
     'comments',
+    'responsibilities',
     'submissions',
   ]
   seeds.each do |seed|

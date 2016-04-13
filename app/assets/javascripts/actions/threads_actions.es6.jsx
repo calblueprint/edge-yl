@@ -7,7 +7,7 @@
     constructor() {
       this.generateActions(
         'removeThread',
-        'storeEmails',
+        'storeThreads',
       );
     }
 
@@ -19,16 +19,21 @@
         this.removeThread(response);
         ViewActions.storeToast(true, 'Thread deleted!');
       };
-      Requester.delete(
-        ApiConstants.emails.delete(tid),
-        resolve,
-      );
+
+      var confirmation = confirm('Are you sure you want to delete this thread?' +
+                                'This action cannot be undone.');
+      if(confirmation) {
+        Requester.delete(
+          ApiConstants.threads.delete(tid),
+          resolve,
+        );
+      }
       return true;
     }
 
-    fetchEmails(page) {
-      var resolve = (response) => this.storeEmails(response);
-      Requester.get(ApiConstants.emails.index(page), resolve);
+    fetchThreads(page) {
+      var resolve = (response) => this.storeThreads(response);
+      Requester.get(ApiConstants.threads.index(page), resolve);
       return true;
     }
   }

@@ -11,6 +11,7 @@ class GroupCard extends Component {
       target: React.PropTypes.oneOf([
         TypeConstants.group.general,
         TypeConstants.group.leadership,
+        TypeConstants.group.statistic,
       ]).isRequired,
     };
   }
@@ -32,6 +33,12 @@ class GroupCard extends Component {
             editable={this.props.editable}
             group={this.props.group} />
         );
+      case TypeConstants.group.statistic:
+        return (
+          <GroupStatistic
+            editable={this.props.editable}
+            group={this.props.group} />
+        );
     };
   }
 
@@ -41,6 +48,8 @@ class GroupCard extends Component {
         return 'General Information';
       case TypeConstants.group.leadership:
         return 'Leadership Information';
+      case TypeConstants.group.statistic:
+        return 'Statistic Information';
     };
   }
 

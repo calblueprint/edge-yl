@@ -46,6 +46,7 @@ class DraftContent extends Component {
       <div style={this.styles.container}>
         <h6>{'Content'}</h6>
         <textarea
+          autoFocus={attributes.subject}
           ref={'input'}
           rows={'10'}
           value={attributes.content} />

@@ -14,6 +14,7 @@ class StudentsGrid extends Component {
         TypeConstants.students.room,
         TypeConstants.students.school,
       ]).isRequired,
+      typeId: React.PropTypes.number.isRequired,
     };
   }
 
@@ -33,7 +34,8 @@ class StudentsGrid extends Component {
         key={student.id}
         media={this.props.media}
         student={student}
-        type={this.props.type} />
+        type={this.props.type}
+        typeId={this.props.typeId} />
     );
   }
 
@@ -42,10 +44,25 @@ class StudentsGrid extends Component {
   }
 
   renderEmpty() {
+    var type;
+    switch (this.props.type) {
+      case TypeConstants.students.group:
+        type = 'group';
+        break;
+      case TypeConstants.students.room:
+        type = 'room';
+        break;
+      case TypeConstants.students.school:
+        type = 'school';
+        break;
+      default:
+        type = 'conference';
+        break;
+    }
     if (!this.props.students.length) {
       return (
         <GridEmpty
-          content={'There are currently no students in this conference.'} />
+          content={`There are currently no students in this ${type}.`} />
       );
     }
   }

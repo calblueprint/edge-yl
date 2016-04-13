@@ -19,6 +19,8 @@ class Group < ActiveRecord::Base
 
   belongs_to :conference
 
+  before_create :assign_letter
+
   has_many :leaderships, dependent: :destroy
   has_many :students
   has_many :visits, dependent: :destroy, as: :visitable
@@ -29,6 +31,10 @@ class Group < ActiveRecord::Base
 
   validates :letter, presence: true
   validates_uniqueness_of :letter, scope: :conference_id
+
+  def females_count
+    students.female.count
+  end
 
   def full_name
     "Group #{letter}"
@@ -54,6 +60,14 @@ class Group < ActiveRecord::Base
     end
   end
 
+  def males_count
+    students.male.count
+  end
+
+  def others_count
+    students.other.count
+  end
+
   def remove_students
     self.students.each do |student|
       student.group = nil
@@ -66,6 +80,10 @@ class Group < ActiveRecord::Base
   end
 
   private
+
+  def assign_letter
+    self.letter = self.conference.next_letter
+  end
 
   def generate_leaderships
     if (self.leaderships.where(style: Leadership.styles['primary_leader']).count == 0)
