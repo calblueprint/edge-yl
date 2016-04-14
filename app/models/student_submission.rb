@@ -94,23 +94,23 @@ class StudentSubmission < ActiveRecord::Base
   end
 
   def carpool
-    if !read_attribute(:carpool).nil?
-      EnumConstants::CARPOOL[read_attribute(:carpool)]
+    unless self[:carpool].nil?
+      EnumConstants::CARPOOL[self[:carpool]]
     end
   end
 
   def carpool=(value)
-    write_attribute(:carpool, EnumConstants::CARPOOL.index(value))
+    self[:carpool] = EnumConstants::CARPOOL.index(value)
   end
 
   def ceremony_attendance
-    if !read_attribute(:ceremony_attendance).nil?
-      EnumConstants::CEREMONY[read_attribute(:ceremony_attendance)]
+    unless self[:ceremony_attendance].nil?
+      EnumConstants::CEREMONY[self[:ceremony_attendance]]
     end
   end
 
   def ceremony_attendance=(value)
-    write_attribute(:ceremony_attendance, EnumConstants::CEREMONY.index(value))
+    self[:ceremony_attendance] = EnumConstants::CEREMONY.index(value)
   end
 
   def dietary_restrictions
@@ -204,53 +204,53 @@ class StudentSubmission < ActiveRecord::Base
   end
 
   def insurance
-    if !read_attribute(:insurance).nil?
-      EnumConstants::BOOLEANS[read_attribute(:insurance)]
+    unless self[:insurance].nil?
+      EnumConstants::BOOLEANS[self[:insurance]]
     end
   end
 
   def insurance=(value)
-    write_attribute(:insurance, EnumConstants::BOOLEANS.index(value))
+    self[:insurance] = EnumConstants::BOOLEANS.index(value)
   end
 
   def insurance_address_state
-    if !read_attribute(:insurance_address_state).nil?
-      EnumConstants::STATES[read_attribute(:insurance_address_state)]
+    unless self[:insurance_address_state].nil?
+      EnumConstants::STATES[self[:insurance_address_state]]
     end
   end
 
   def insurance_address_state=(value)
-    write_attribute(:insurance_address_state, EnumConstants::STATES.index(value))
+    self[:insurance_address_state] = EnumConstants::STATES.index(value)
   end
 
   def media_participation
-    if !read_attribute(:media_participation).nil?
-      EnumConstants::BOOLEANS[read_attribute(:media_participation)]
+    unless self[:media_participation].nil?
+      EnumConstants::BOOLEANS[self[:media_participation]]
     end
   end
 
   def media_participation=(value)
-    write_attribute(:media_participation, EnumConstants::BOOLEANS.index(value))
+    self[:media_participation] = EnumConstants::BOOLEANS.index(value)
   end
 
   def participation_guardian_consent
-    if !read_attribute(:participation_guardian_consent).nil?
-      EnumConstants::AGREEMENT[read_attribute(:participation_guardian_consent)]
+    unless self[:participation_guardian_consent].nil?
+      EnumConstants::AGREEMENT[self[:participation_guardian_consent]]
     end
   end
 
   def participation_guardian_consent=(value)
-    write_attribute(:participation_guardian_consent, EnumConstants::AGREEMENT.index(value))
+    self[:participation_guardian_consent] = EnumConstants::AGREEMENT.index(value)
   end
 
   def participation_student_consent
-    if !read_attribute(:participation_student_consent).nil?
-      EnumConstants::AGREEMENT[read_attribute(:participation_student_consent)]
+    unless self[:participation_student_consent].nil?
+      EnumConstants::AGREEMENT[self[:participation_student_consent]]
     end
   end
 
   def participation_student_consent=(value)
-    write_attribute(:participation_student_consent, EnumConstants::AGREEMENT.index(value))
+    self[:participation_student_consent] = EnumConstants::AGREEMENT.index(value)
   end
 
   def psychologist_consent
@@ -264,33 +264,33 @@ class StudentSubmission < ActiveRecord::Base
   end
 
   def risk_student_consent
-    if !read_attribute(:risk_student_consent).nil?
-      EnumConstants::AGREEMENT[read_attribute(:risk_student_consent)]
+    unless self[:risk_student_consent].nil?
+      EnumConstants::AGREEMENT[self[:risk_student_consent]]
     end
   end
 
   def risk_student_consent=(value)
-    write_attribute(:risk_student_consent, EnumConstants::AGREEMENT.index(value))
+    self[:risk_student_consent] = EnumConstants::AGREEMENT.index(value)
   end
 
   def risk_guardian_relationship
-    if !read_attribute(:risk_guardian_relationship).nil?
-      EnumConstants::GUARDIAN_RELATIONSHIPS[read_attribute(:risk_guardian_relationship)]
+    unless self[:risk_guardian_relationship].nil?
+      EnumConstants::GUARDIAN_RELATIONSHIPS[self[:risk_guardian_relationship]]
     end
   end
 
   def risk_guardian_relationship=(value)
-    write_attribute(:risk_guardian_relationship, EnumConstants::GUARDIAN_RELATIONSHIPS.index(value))
+    self[:risk_guardian_relationship] = EnumConstants::GUARDIAN_RELATIONSHIPS.index(value)
   end
 
   def risk_guardian_consent
-    if !read_attribute(:risk_guardian_consent).nil?
-      EnumConstants::AGREEMENT[read_attribute(:risk_guardian_consent)]
+    unless self[:risk_guardian_consent].nil?
+      EnumConstants::AGREEMENT[self[:risk_guardian_consent]]
     end
   end
 
   def risk_guardian_consent=(value)
-    write_attribute(:risk_guardian_consent, EnumConstants::AGREEMENT.index(value))
+    self[:risk_guardian_consent] = EnumConstants::AGREEMENT.index(value)
   end
 
   def shirt_size
@@ -304,23 +304,23 @@ class StudentSubmission < ActiveRecord::Base
   end
 
   def transportation
-    if !read_attribute(:transportation).nil?
-      EnumConstants::TRANSPORTATION[read_attribute(:transportation)]
+    unless self[:transportation].nil?
+      EnumConstants::TRANSPORTATION[self[:transportation]]
     end
   end
 
   def transportation=(value)
-    write_attribute(:transportation, EnumConstants::TRANSPORTATION.index(value))
+    self[:transportation] = EnumConstants::TRANSPORTATION.index(value)
   end
 
   def transportation_consent
-    if !read_attribute(:transportation_consent).nil?
-      EnumConstants::AGREEMENT[read_attribute(:transportation_consent)]
+    unless self[:transportation_consent].nil?
+      EnumConstants::AGREEMENT[self[:transportation_consent]]
     end
   end
 
   def transportation_consent=(value)
-    write_attribute(:transportation_consent, EnumConstants::AGREEMENT.index(value))
+    self[:transportation_consent] = EnumConstants::AGREEMENT.index(value)
   end
 
   def form_url
@@ -541,7 +541,7 @@ class StudentSubmission < ActiveRecord::Base
     {
       media_information: media_information,
       media_newspaper: media_newspaper,
-      media_participation: media_participation
+      media_participation: media_participation,
     }
   end
 
@@ -566,7 +566,7 @@ class StudentSubmission < ActiveRecord::Base
     }
   end
 
-  def attributes_nine 
+  def attributes_nine
     {
       participation_guardian_consent: participation_guardian_consent,
       participation_guardian_name: participation_guardian_name,
@@ -574,5 +574,5 @@ class StudentSubmission < ActiveRecord::Base
       participation_student_name: participation_student_name,
     }
   end
-end
 
+end

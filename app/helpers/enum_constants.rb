@@ -8,14 +8,14 @@ module EnumConstants
     Not\ interested
     Interested\ -\ I\ can\ provide\ a\ ride
     Interested\ -\ I\ can't\ provide\ a\ ride
-  )
+  ).freeze
 
   CEREMONY = %w(
     My\ family\ will\ be\ attending\ the\ Parents'\ Program\ and\ Closing\ Ceremonies
     My\ family\ will\ only\ be\ attending\ Closing\ Ceremonies
     My\ family\ will\ only\ be\ picking\ up\ after\ Closing\ Ceremonies
     My\ family\ is\ unable\ to\ attend
-  )
+  ).freeze
 
   DIETARY_RESTRICTIONS = %w(
     dairy-free gluten-free
@@ -49,6 +49,6 @@ module EnumConstants
     Public\ Transportation\ -\ Plane
     Public\ Transportation\ -\ Train
     Public\ Transportation\ -\ Bus
-  )
+  ).freeze
 
 end

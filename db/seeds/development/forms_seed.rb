@@ -833,7 +833,10 @@ student_form = Form.create(
       title: 'Travel Information',
     )
     Question.create(
-      description: 'An approved and insured staff memeber will be able to pick you up from a Public Transporation System',
+      description: %s(
+        An approved and insured staff memeber will be able
+        to pick you up from a Public Transporation System
+      ),
       key: 'transportation',
       options: EnumConstants::TRANSPORTATION,
       page: page,

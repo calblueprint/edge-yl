@@ -140,4 +140,3 @@ student_submission = StudentSubmission.create(
 )
 
 puts "Created student submission #{student_submission.id}."
-

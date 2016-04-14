@@ -177,7 +177,7 @@ class StudentValidator
   validates :participation_guardian_name, if: :page_nine?, presence: true
   validates :participation_student_consent, if: :page_nine?, presence: true
   validates :participation_student_name, if: :page_nine?, presence: true
-  
+
   def initialize(attributes={})
     attributes.each do |name, value|
       send("#{name}=", value)
@@ -232,7 +232,7 @@ class StudentValidator
 
   def parent_attending?
     ceremony_attendance == EnumConstants::CEREMONY[0] ||
-    ceremony_attendance == EnumConstants::CEREMONY[1]
+      ceremony_attendance == EnumConstants::CEREMONY[1]
   end
 
   def persisted?
@@ -240,9 +240,9 @@ class StudentValidator
   end
 
   def public_transportation?
-    transportation == EnumConstants::TRANSPORTATION[2] || 
-    transportation == EnumConstants::TRANSPORTATION[3] ||
-    transportation == EnumConstants::TRANSPORTATION[4]
+    transportation == EnumConstants::TRANSPORTATION[2] ||
+      transportation == EnumConstants::TRANSPORTATION[3] ||
+      transportation == EnumConstants::TRANSPORTATION[4]
   end
 
 end
