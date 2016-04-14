@@ -71,8 +71,7 @@
     deleteContact(id) {
       var response = confirm('This action cannot be undone.');
       if (response) {
-        var attributes = {};
-        attributes.school_id = null;
+        var attributes = { school_id: null };
         var params = { contact: attributes };
         var resolve = (response) => {
           this.removeContact(response);

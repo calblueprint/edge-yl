@@ -15,9 +15,11 @@ class Group < ActiveRecord::Base
 
   multisearchable against: [:full_name]
 
-  scope :conference_id, -> conference_id { where(conference_id: conference_id) }
+  scope :conference_id, -> (conference_id) { where(conference_id: conference_id) }
 
   belongs_to :conference
+
+  before_create :assign_letter
 
   has_many :leaderships, dependent: :destroy
   has_many :students
@@ -28,19 +30,23 @@ class Group < ActiveRecord::Base
   after_create :generate_leaderships
 
   validates :letter, presence: true
-  validates_uniqueness_of :letter, scope: :conference_id
+  validates :letter, uniqueness: { scope: :conference_id }
+
+  def females_count
+    students.female.count
+  end
 
   def full_name
     "Group #{letter}"
   end
 
   def self.to_csv
-    attributes = %w{letter}
-    headers = %w{Letter Primary_leader Secondary_leader}
+    attributes = %w(letter)
+    headers = %w(Letter Primary\ leader Secondary\ leader)
     CSV.generate(headers: true) do |csv|
       csv << headers
-      all.each do |group|
-        row = attributes.map{ |attr| group.send(attr) }
+      all.find_each do |group|
+        row = attributes.map { |attr| group.send(attr) }
         if group.leaderships.first.user
           primary_leader = group.leaderships.first.user.full_name
           row << primary_leader
@@ -54,8 +60,16 @@ class Group < ActiveRecord::Base
     end
   end
 
+  def males_count
+    students.male.count
+  end
+
+  def others_count
+    students.other.count
+  end
+
   def remove_students
-    self.students.each do |student|
+    students.each do |student|
       student.group = nil
       student.save
     end
@@ -67,13 +81,17 @@ class Group < ActiveRecord::Base
 
   private
 
+  def assign_letter
+    self.letter = conference.next_letter
+  end
+
   def generate_leaderships
-    if (self.leaderships.where(style: Leadership.styles['primary_leader']).count == 0)
+    if leaderships.where(style: Leadership.styles['primary_leader']).count == 0
       Leadership.create(
         group: self,
       )
     end
-    if (self.leaderships.where(style: Leadership.styles['secondary_leader']).count == 0)
+    if leaderships.where(style: Leadership.styles['secondary_leader']).count == 0
       Leadership.create(
         group: self,
         style: Leadership.styles['secondary_leader'],

@@ -57,6 +57,11 @@ class ConferenceGrid extends Component {
           editable={this.props.editable}
           media={this.props.media}
           target={TypeConstants.conference.statistic} />
+        <ConferenceCard
+          conference={conference}
+          editable={this.props.editable}
+          media={this.props.media}
+          target={TypeConstants.conference.checkIn} />
         <GridHeader
           options={this.generateGroupsOptions()}
           title={`Groups in this conference (${conference.groups_count} total)`} />

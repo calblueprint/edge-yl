@@ -40,6 +40,7 @@ class GroupGrid extends Component {
   // Render
   // --------------------------------------------------
   render() {
+    var groupId = this.props.group.id ? this.props.group.id : 0;
     return (
       <div style={StyleConstants.grids.wrap}>
         <GroupCard
@@ -52,6 +53,11 @@ class GroupGrid extends Component {
           group={this.props.group}
           media={this.props.media}
           target={TypeConstants.group.leadership} />
+        <GroupCard
+          editable={this.props.editable}
+          group={this.props.group}
+          media={this.props.media}
+          target={TypeConstants.group.statistic} />
         <GridHeader
           options={this.StudentsOptions()}
           title={'Students in this group'} />
@@ -59,7 +65,8 @@ class GroupGrid extends Component {
           editable={this.props.editable}
           media={this.props.media}
           students={this.props.group.students}
-          type={TypeConstants.students.group} />
+          type={TypeConstants.students.group}
+          typeId={groupId} />
       </div>
     );
   }

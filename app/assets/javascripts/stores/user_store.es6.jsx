@@ -8,6 +8,7 @@
       this.overlay = false;
       this.user = {
         leadership: {},
+        responsibilities: [],
       };
       this.template = {};
       this.bindListeners({

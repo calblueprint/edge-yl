@@ -38,8 +38,22 @@
     // --------------------------------------------------
     // Handlers
     // --------------------------------------------------
-    handleStoreConference(conference) {
-      this.conference = conference;
+    handleStoreConference(response) {
+      this.conference = response.conference;
+      if (this.firstLoad) {
+        this.firstLoad = false;
+        window.history.replaceState(
+          { conference: this.conference, },
+          null,
+          RouteConstants.pages.checkIn(this.conference.id),
+        );
+      } else {
+        window.history.pushState(
+          { conference: this.conference, },
+          null,
+          RouteConstants.pages.checkIn(this.conference.id),
+        );
+      }
     }
 
     handleStoreResults(response) {

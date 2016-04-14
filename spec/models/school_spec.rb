@@ -17,15 +17,13 @@
 require 'rails_helper'
 
 RSpec.describe School, type: :model do
-
-  it "is invalid without an address_one" do
+  it 'is invalid without an address_one' do
     factory = FactoryGirl.build(:school, address_one: nil)
     expect(factory).to be_invalid
   end
 
-  it "is invalid without a name" do
+  it 'is invalid without a name' do
     factory = FactoryGirl.build(:school, name: nil)
     expect(factory).to be_invalid
   end
-
 end

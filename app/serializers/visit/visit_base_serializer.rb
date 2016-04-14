@@ -10,4 +10,3 @@ class VisitBaseSerializer < BaseSerializer
   end
 
 end
-

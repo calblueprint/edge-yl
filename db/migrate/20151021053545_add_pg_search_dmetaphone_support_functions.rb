@@ -1,7 +1,7 @@
 class AddPgSearchDmetaphoneSupportFunctions < ActiveRecord::Migration
 
   def self.up
-    say_with_time("Adding support functions for pg_search :dmetaphone") do
+    say_with_time('Adding support functions for pg_search :dmetaphone') do
       if ActiveRecord::Base.connection.send(:postgresql_version) < 80400
         execute <<-'SQL'
 CREATE OR REPLACE FUNCTION unnest(anyarray)
@@ -24,7 +24,7 @@ $function$;
   end
 
   def self.down
-    say_with_time("Dropping support functions for pg_search :dmetaphone") do
+    say_with_time('Dropping support functions for pg_search :dmetaphone') do
       execute <<-'SQL'
 DROP FUNCTION pg_search_dmetaphone(text);
       SQL

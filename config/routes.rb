@@ -1,5 +1,4 @@
-  Rails.application.routes.draw do
-
+Rails.application.routes.draw do
   root 'pages#login'
 
   get 'check_in/:conference', to: 'pages#check_in'
@@ -20,12 +19,12 @@
 
   resources :conferences, only: [:index, :show]
   resources :drafts, only: [:index, :show]
-  resources :emails, only: [:index, :show]
   resources :groups, only: [:index, :show]
   resources :prospects, only: [:index, :show]
   resources :rooms, only: [:index, :show]
   resources :students, only: [:index, :show]
   resources :schools, only: [:index, :show]
+  resources :threads, only: [:index, :show]
   resources :users, only: [:index, :show]
 
   devise_for :users, only: []
@@ -47,7 +46,8 @@
     patch '/contacts/promote/:id', to: 'contacts#promote'
     patch '/drafts/send/:id', to: 'drafts#send_draft'
     get '/forms/:target', to: 'forms#show'
-    post '/import', to: 'schools#import'
+    post '/imports/schools', to: 'imports#schools'
+    post '/imports/students', to: 'imports#students'
     get '/searchables/check_in', to: 'searchables#check_in'
     get '/searchables/search', to: 'searchables#search'
     get '/searchables/students', to: 'searchables#students'
@@ -61,7 +61,6 @@
     resources :conferences, only: [:create, :index, :show, :update]
     resources :contacts, only: [:create, :update]
     resources :drafts, only: [:create, :index, :show, :update]
-    resources :emails, only: [:create, :destroy, :index, :show]
     resources :feedbacks, only: [:create]
     resources :groups, only: [:create, :destroy, :index, :show, :update]
     resources :leaderships, only: [:update]
@@ -72,6 +71,7 @@
     resources :school_submissions, only: [:create, :show, :update]
     resources :students, only: [:index, :show, :update]
     resources :student_submissions, only: [:create, :show, :update]
+    resources :threads, only: [:create, :destroy, :index, :show]
     resources :users, only: [:index, :show, :update] do
       get '/groupables', on: :collection, to: 'users#groupables'
     end

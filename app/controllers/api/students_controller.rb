@@ -1,6 +1,6 @@
 class Api::StudentsController < Api::BaseController
 
-  skip_before_filter :authenticate_user, only: [:create]
+  skip_before_action :authenticate_user, only: [:create]
 
   has_scope :conference_id, only: [:index]
   has_scope :gender, only: [:index]

@@ -15,7 +15,6 @@
 #
 
 FactoryGirl.define do
-
   factory :prospect do
     contact_email         { Faker::Internet.email }
     contact_first_name    { Faker::Name.first_name }
@@ -25,5 +24,4 @@ FactoryGirl.define do
     priority              { rand(5) + 1 }
     website               { Faker::Internet.url('schoolweb.com') }
   end
-
 end

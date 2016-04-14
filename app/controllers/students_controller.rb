@@ -1,9 +1,8 @@
 class StudentsController < BaseController
 
   def index
-    @conference = params[:conference_id] ?
-                  Conference.where(id: params[:conference_id]).first :
-                  Conference.first
+    @conference = Conference.where(id: params[:conference_id]).first if params[:conference_id]
+    @conference ||= Conference.first
     @conferences = Conference.all
     @page = params[:page] ? params[:page].to_i : 1
     @query = request.query_parameters.except('page')

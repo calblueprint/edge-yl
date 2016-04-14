@@ -59,15 +59,6 @@
       };
     }
 
-    get emails() {
-      return {
-        delete: (id) => `/api/emails/${id}`,
-        index: (page) => `/api/emails?page=${page}`,
-        show: (id) => `/api/emails/${id}`,
-        update: 'api/emails',
-      };
-    }
-
     get feedbacks() {
       return {
         create: '/api/feedbacks'
@@ -87,6 +78,13 @@
         index: (conferenceId) => `/api/groups?conference_id=${conferenceId}`,
         show: (id) => `/api/groups/${id}`,
         update: (id) => `/api/groups/${id}`,
+      };
+    }
+
+    get imports() {
+      return {
+        schools: '/api/imports/schools',
+        students: '/api/imports/students',
       };
     }
 
@@ -112,7 +110,6 @@
       }
     }
 
-
     get rooms() {
       return {
         create: '/api/rooms',
@@ -136,7 +133,7 @@
     get searchables() {
       return {
         search: (query) => `/api/searchables/search?query=${query}`,
-        check_in: (conferenceId, query) => {
+        checkIn: (conferenceId, query) => {
           return `/api/searchables/check_in?conference_id=${conferenceId}`+
                                           `&query=${query}`;
         },
@@ -150,8 +147,8 @@
 
     get students() {
       return {
-        check_in: (id) => `/api/students/check_in/${id}`,
-        check_out: (id) => `/api/students/check_out/${id}`,
+        checkIn: (id) => `/api/students/check_in/${id}`,
+        checkOut: (id) => `/api/students/check_out/${id}`,
         index: (conferenceId, page, query={}) => {
           var route = `/api/students?conference_id=${conferenceId}&page=${page}`;
           Object.keys(query).map((key) => {
@@ -180,6 +177,15 @@
           submit: (id) => `/api/student_submissions/${id}/submit`,
           update: (id) => `/api/student_submissions/${id}`,
         },
+      };
+    }
+
+    get threads() {
+      return {
+        delete: (id) => `/api/threads/${id}`,
+        index: (page) => `/api/threads?page=${page}`,
+        show: (id) => `/api/threads/${id}`,
+        update: 'api/threads',
       };
     }
 

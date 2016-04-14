@@ -96,7 +96,7 @@ school_form = Form.create(
   end
   Page.create(
     form: form,
-    description: 'General information about the primary Student from your school.',
+    description: 'General information about the primary student from your school.',
     number: 3,
     title: 'Step 3 - Primary Student Information',
   ) do |page|
@@ -187,7 +187,7 @@ school_form = Form.create(
       style: Question.styles[:dropdown],
       title: 'Primary Student Shirt Size',
     )
-        Question.create(
+    Question.create(
       key: 'primary_guardian_first_name',
       page: page,
       style: Question.styles[:input],
@@ -231,7 +231,7 @@ school_form = Form.create(
   end
   Page.create(
     form: form,
-    description: 'General information about the alternate Student from your school.',
+    description: 'General information about the alternate student from your school.',
     is_last: true,
     number: 4,
     title: 'Step 4 - Alternate Student Information',
@@ -543,13 +543,6 @@ student_form = Form.create(
       title: 'Parent/Guardian 1 Email',
     )
     Question.create(
-      key: 'guardian_one_relationship',
-      options: EnumConstants::GUARDIAN_RELATIONSHIPS,
-      page: page,
-      style: Question.styles[:dropdown],
-      title: 'Parent/Guardian 1 Relationship',
-    )
-    Question.create(
       description: StringConstants::PHONE_FORMAT,
       key: 'guardian_one_phone_number',
       page: page,
@@ -563,6 +556,13 @@ student_form = Form.create(
       page: page,
       style: Question.styles[:dropdown],
       title: 'Parent/Guardian 1 Phone Type',
+    )
+    Question.create(
+      key: 'guardian_one_relationship',
+      options: EnumConstants::GUARDIAN_RELATIONSHIPS,
+      page: page,
+      style: Question.styles[:dropdown],
+      title: 'Parent/Guardian 1 Relationship',
     )
     Question.create(
       is_required: false,
@@ -598,13 +598,6 @@ student_form = Form.create(
       title: 'Parent/Guardian 2 Email',
     )
     Question.create(
-      key: 'guardian_two_relationship',
-      options: EnumConstants::GUARDIAN_RELATIONSHIPS,
-      page: page,
-      style: Question.styles[:dropdown],
-      title: 'Parent/Guardian 2 Relationship',
-    )
-    Question.create(
       description: StringConstants::PHONE_FORMAT,
       key: 'guardian_two_phone_number',
       page: page,
@@ -618,6 +611,13 @@ student_form = Form.create(
       page: page,
       style: Question.styles[:dropdown],
       title: 'Parent/Guardian 2 Phone Type',
+    )
+    Question.create(
+      key: 'guardian_two_relationship',
+      options: EnumConstants::GUARDIAN_RELATIONSHIPS,
+      page: page,
+      style: Question.styles[:dropdown],
+      title: 'Parent/Guardian 2 Relationship',
     )
     Question.create(
       is_required: false,
@@ -652,21 +652,30 @@ student_form = Form.create(
       options: EnumConstants::BOOLEANS,
       page: page,
       style: Question.styles[:dropdown],
-      title: 'Do you (the student attendee) have any allergies to food, medications, insects, etc.?',
+      title: %s(
+        Do you (the student attendee) have any
+        allergies to food, medications, insects, etc.?
+      ),
     )
     Question.create(
       key: 'health_conditions',
       options: EnumConstants::BOOLEANS,
       page: page,
       style: Question.styles[:dropdown],
-      title: 'Have you (the student attendee) previously been diagnosed with or currently have any of the following health conditions (check all that apply)?',
+      title: %s(
+        Have you (the student attendee) previously been diagnosed with or currently
+        have any of the following health conditions (check all that apply)?
+      ),
     )
     Question.create(
       key: 'medications',
       page: page,
       placeholder: 'Enter "None" if you do not have any',
       style: Question.styles[:textarea],
-      title: 'Please list any medication(s) that you currently take and/or will need to take during the seminar weekend:',
+      title: %s(
+        Please list any medication(s) that you currently take
+        and/or will need to take during the seminar weekend:
+      ),
     )
     Question.create(
       key: 'dietary_restrictions',
@@ -679,7 +688,7 @@ student_form = Form.create(
       is_required: false,
       key: 'other_dietary_restrictions',
       page: page,
-      placeholder: 'Enter "None" if you do not have any' ,
+      placeholder: 'Enter "None" if you do not have any',
       style: Question.styles[:textarea],
       title: 'Please list any other dietary restrictions that you have:',
     )
@@ -691,13 +700,19 @@ student_form = Form.create(
       title: 'Please list any limitations on the amount of physical exercise you can engage in:',
     )
     Question.create(
-      description: 'If, in the judgment of the staff of the EDGE Youth Leadership Seminar, the child named above needs immediate care and treatment as a result of ' +
-                   'any injury or sickness, I hereby give permission to the staff to secure proper treatment for my child. I do hereby consent to whatever x-ray, ' +
-                   'examination, anesthetic, medical, surgical or dental diagnosis or treatment and hospital care are considered necessary in the best judgment of ' +
-                   'the attending physician, surgeon or dentist and performed by or under the supervision of the medical staff of the hospital or facility furnishing ' +
-                   'medical or dental services. It is further understood that the undersigned will assume full responsibility for any such action, including payment of costs. ' +
-                   'I do hereby agree to indemnify and hold harmless the EDGE Youth Leadership (including its officers, directors, members and/or volunteers) '+
-                   'from any claim by any person whomsoever on account of such care and treatment of said child.',
+      description: %s(
+        If, in the judgment of the staff of the EDGE Youth Leadership Seminar, the child named
+        above needs immediate care and treatment as a result of any injury or sickness, I hereby
+        give permission to the staff to secure proper treatment for my child. I do hereby consent
+        to whatever x-ray, examination, anesthetic, medical, surgical or dental diagnosis or
+        treatment and hospital care are considerednecessary in the best judgment of the attending
+        physician, surgeon or dentist and performed by or under the supervision of the medical
+        staff of the hospital or facility furnishing medical or dental services. It is further
+        understood that the undersigned will assume full responsibility for any such action,
+        including payment of costs. I do hereby agree to indemnify and hold harmless the EDGE
+        Youth Leadership (including its officers, directors, members and/or volunteers) from any
+        claim by any person whomsoever on account of such care and treatment of said child.
+      ),
       key: 'emergency_consent_info',
       page: page,
       style: Question.styles[:information],
@@ -711,11 +726,16 @@ student_form = Form.create(
       title: 'Do you consent?',
     )
     Question.create(
-      description: 'Becoming a leader requires self-reflection and challenging oneself to work through the internal barriers to leadership development. Our seminar ' +
-                   'encourages and guides this self-reflection through interactive activities and experiential processes. At times this can be emotionally difficult, ' +
-                   'and the student may need additional support to process their experience. In light of this, we will have an on-site Licensed Psychologist available ' +
-                   'to talk to the students if a request is made. In order for student participants to talk with the Psychologist, we need guardian consent. By signing ' +
-                   'below you are consenting for your student to speak with a Licensed Psychologist during the EDGE conference.',
+      description: %s(
+        Becoming a leader requires self-reflection and challenging oneself to work through the
+        internal barriers to leadership development. Our seminar encourages and guides this
+        self-reflection through interactive activities and experiential processes. At times this
+        can be emotionally difficult, and the student may need additional support to process their
+        experience. In light of this, we will have an on-site Licensed Psychologist available to
+        talk to the students if a request is made. In order for student participants to talk with
+        the Psychologist, we need guardian consent. By signing below you are consenting for your
+        student to speak with a Licensed Psychologist during the EDGE conference.
+      ),
       key: 'psychologist_consent_info',
       page: page,
       style: Question.styles[:information],
@@ -775,6 +795,7 @@ student_form = Form.create(
       title: 'Insurance Provider State',
     )
     Question.create(
+      description: StringConstants::ZIP_FORMAT,
       key: 'insurance_address_zip',
       page: page,
       style: Question.styles[:input],
@@ -808,23 +829,33 @@ student_form = Form.create(
     title: 'Transportation Information',
   ) do |page|
     Question.create(
-      description: 'Students are not allowed to leave the UC Berkeley, Clark Kerr campus for the duration of ' +
-                   'the weekend, unless authorized and released to a parent/guardian and/or accompanied by adult ' +
-                   'staff members according to our conduct policy.<br /> If, in the rare circumstance, a student ' +
-                   'must leave the conference for a period of time, students will only be released to authorized ' +
-                   'parent(s)/guardian(s).  Arrangements must be approved of and made on a case-by-case basis before ' +
-                   'the conference for these situations. Please contact Sri Ramesh and Ali Iwashita at registration@edgeyl.org ' +
-                   'or 510-408-6606 as soon as possible if you expect that your student will need to leave for a period ' +
-                   'of time during the seminar. <br /> <b>Students who drive to the UC Berkeley, Clark Kerr Campus turn ' +
-                   'over their car keys to EDGE Youth Leadership staff upon arrival at student registration on Friday ' +
-                   'morning. Staff will return car keys to the student at Student Checkout on Sunday afternoon.</b></br>',
+      description: %s(
+        Students are not allowed to leave the UC Berkeley, Clark Kerr campus for the duration of
+        the weekend, unless authorized and released to a parent/guardian and/or accompanied by
+        adult staff members according to our conduct policy.
+        <br />
+        If, in the rare circumstance, a student must leave the conference for a period of time,
+        students will only be released to authorized parent(s)/guardian(s). Arrangements must be
+        approved of and made on a case-by-case basis before the conference for these situations.
+        Please contact Sri Ramesh and Ali Iwashita at registration@edgeyl.org or 510-408-6606 as
+        soon as possible if you expect that your student will need to leave for a period of time
+        during the seminar.
+        <br />
+        <b>Students who drive to the UC Berkeley, Clark Kerr Campus turn over their car keys to
+        EDGE Youth Leadership staff upon arrival at student registration on Friday morning. Staff
+        will return car keys to the student at Student Checkout on Sunday afternoon.</b>
+        </br>
+      ),
       key: 'transportation_info',
       page: page,
       style: Question.styles[:information],
       title: 'Travel Information',
     )
     Question.create(
-      description: 'An approved and insured staff memeber will be able to pick you up from a Public Transporation System',
+      description: %s(
+        An approved and insured staff memeber will be able
+        to pick you up from a Public Transporation System
+      ),
       key: 'transportation',
       options: EnumConstants::TRANSPORTATION,
       page: page,
@@ -832,7 +863,10 @@ student_form = Form.create(
       title: 'How will you be getting to and from the seminar?',
     )
     Question.create(
-      description: 'Rockridge BART, Downtown Berkeley BART, College Avenue and Parker Street Bus Stop, Warring Street and Parker Street Bus Stop, Oakland International Airport',
+      description: %s(
+        Rockridge BART, Downtown Berkeley BART, College Avenue and Parker Street Bus Stop,
+        Warring Street and Parker Street Bus Stop, Oakland International Airport
+      ),
       key: 'transportation_name',
       page: page,
       style: Question.styles[:input],
@@ -880,8 +914,10 @@ student_form = Form.create(
       title: 'Departure Time',
     )
     Question.create(
-      description: 'For some students transportation to the seminar site can be challenging. We do our best ' +
-                   'to organize carpools for students who need them.',
+      description: %s(
+        For some students transportation to the seminar site can be challenging.
+        We do our best to organize carpools for students who need them.
+      ),
       key: 'carpool_info',
       page: page,
       style: Question.styles[:information],
@@ -895,12 +931,14 @@ student_form = Form.create(
       title: 'Are you interested in carpooling?',
     )
     Question.create(
-      description: 'I, the undersigned, understand that my child will be transported in a private automobile, ' +
-                   'bus, plane, train, subway, etc. and assume such risk on behalf of my child. I/we agree not ' +
-                   'to hold EDGE Youth Leadership or any of its volunteers liable for any sum which I/we might ' +
-                   'claim as a result of injury, or property damage arising out of, or caused by any accident ' +
-                   'or occurrence during the time said student is being transported by me, or driving himself/herself, ' +
-                   'or driving with another adult to or from the youth leadership seminar.',
+      description: %s(
+        I, the undersigned, understand that my child will be transported in a private automobile,
+        bus, plane, train, subway, etc. and assume such risk on behalf of my child. I/we agree not
+        to hold EDGE Youth Leadership or any of its volunteers liable for any sum which I/we might
+        claim as a result of injury, or property damage arising out of, or caused by any accident
+        or occurrence during the time said student is being transported by me, or driving
+        himself/herself, or driving with another adult to or from the youth leadership seminar.
+      ),
       key: 'transportation_waiver_info',
       page: page,
       style: Question.styles[:information],
@@ -928,9 +966,11 @@ student_form = Form.create(
     title: 'Media Participation',
   ) do |page|
     Question.create(
-      description: 'We send press releases to your local paper announcing the student’s participation ' +
-                   'in the seminar.  Please indicate the name of your newspaper and desire to be included ' +
-                   'in the press release process.  All information is due by May 4th.',
+      description: %s(
+        We send press releases to your local paper announcing the student’s participation
+        in the seminar.  Please indicate the name of your newspaper and desire to be
+        included in the press release process.  All information is due by May 4th.
+      ),
       key: 'media_consent_info',
       page: page,
       style: Question.styles[:information],
@@ -964,17 +1004,22 @@ student_form = Form.create(
     title: 'Closing Ceremony',
   ) do |page|
     Question.create(
-      description: "Parents and family members are invited to attend the Parents' Program and Closing Ceremonies of the seminar. " +
-                   'It is a fantastic chance to learn more what the seminar is about and see firsthand the excitement and energy ' +
-                   'created by the participants. <br /> ' +
-                   "Please arrive at UC Berkeley, Clark Kerr Campus on Sunday June 3rd, 2016 by 11:15AM for the Parents' " +
-                   'Program (will begin at 11:30AM) or by 1:20 PM for the Closing Ceremonies. <b>See directions and maps in ' +
-                   'the information packet that was e-mailed to your student or refer to the web site ' +
-                   '<a href="http://www.edgeyl.org/2016reginfo">HERE.</a></b> <br />' +
-                   'Check-out will begin after Closing Ceremonies, around 2:30 pm.  As the time it takes to pack and check out ' +
-                   'varies, please do not plan on leaving the Clark Kerr campus with your student before 3:00 pm.  If you are not ' +
-                   'attending Closing Ceremonies and will not be present to help your student pack and check out, please plan to pick ' +
-                   'up your student after 3:00 pm, <b> but no later than 3:30 pm.</b>',
+      description: %s(
+        Parents and family members are invited to attend the Parents' Program and Closing
+        Ceremonies of the seminar. It is a fantastic chance to learn more what the seminar
+        is about and see firsthand the excitement and energy created by the participants.
+        <br />
+        Please arrive at UC Berkeley, Clark Kerr Campus on Sunday June 3rd, 2016 by 11:15AM
+        for the Parents' Program (will begin at 11:30AM) or by 1:20 PM for the Closing Ceremonies.
+        <b>See directions and maps in the information packet that was e-mailed to your student or
+        refer to the web site <a href="http://www.edgeyl.org/2016reginfo">HERE.</a></b>
+        <br />
+        Check-out will begin after Closing Ceremonies, around 2:30 pm.  As the time it takes
+        to pack and check out varies, please do not plan on leaving the Clark Kerr campus with
+        your student before 3:00 pm.  If you are not attending Closing Ceremonies and will not be
+        present to help your student pack and check out, please plan to pick up your student after
+        3:00 pm, <b> but no later than 3:30 pm.</b>'
+      ),
       key: 'ceremony_info_1',
       page: page,
       style: Question.styles[:information],
@@ -1001,32 +1046,46 @@ student_form = Form.create(
     title: 'Risk Waiver',
   ) do |page|
     Question.create(
-      description: 'Activities: <b>EDGE Youth Leadership Seminar</b><br />' +
-                   'Dates: <b>June 3-5, 2016</b><br />' +
-                   'Location: <b>UC Berkeley, Berkeley, CA</b><br />' +
-                   'IN CONSIDERATION of the right to attend and participate in the aforementioned Activities, ' +
-                   'the Participant (and, if the Participant is a minor, his or her parent or legal guardian) hereby:<br />' +
-                   '1. Agrees to abide by all rules and regulations established by the EDGE Youth Leadership Seminar.<br />' +
-                   '2. Grants to EDGE for any purpose connected with promoting the purposes and goals of EDGE, but not for commercial ' +
-                   'exploitation, the right to use the Participant’s name, voice, quotes, and likeness in any writings, photographs, ' +
-                   'films, and recordings of the Participant while he or she is participating in the Activities, and any biographical ' +
-                   'information submitted by the Participant to EDGE, and to use, reproduce, publish, and distribute the same;<br />' +
-                   '3. Understands that every effort is made to provide participants with a safe, enjoyable, and memorable experience; ' +
-                   'attest and verify that the Participant is physically, mentally and emotionally capable of attending and participating ' +
-                   'in all activities offered at the EDGE Youth Leadership Seminar; acknowledges that there are inherent risks in any ' +
-                   "activity involving travel outside of one's own home or community, including, travel to and from the site, and, " +
-                   'knowing the risks, nevertheless, agree to assume all risks of personal injury and any other losses and damage to ' +
-                   'person or property sustained while participating in, attending, and preparing for or traveling to and from the EDGE ' +
-                   'Youth Leadership; releases, waives and hold harmless the EDGE Youth Leadership Seminar, the sponsors, the volunteers, ' +
-                   'and officers, employees, agents, representatives, successors, and assigns from any and all liability or responsibility for ' +
-                   'injuries and/or property damage which Participant may sustain during the event or during travel to or from the event; ' +
-                   'understands that this waiver and release covers Participant (including all heirs, executors, or administrators) and is ' +
-                   'given in consideration of the EDGE Youth Leadership Seminar’s acceptance of registration/entry into EDGE 2016. This ' +
-                   'Consent and Acknowledgment of Risk shall not be amended, supplemented, or abrogated without the written consent of ' +
-                   'EDGE Board of Directors, San Leandro, CA.<br />' +
-                   '4. Agrees to defend and indemnify the EDGE Youth Leadership Seminar from any claim or action filed by a third party ' +
-                   "(against EDGE) due to their (the participant's) actions in this event.<br />" +
-                   'By signing below, the Parent/Guardian confirms that they have read, understand, and consent to the terms of this waiver agreement.',
+      description: %s(
+        Activities: <b>EDGE Youth Leadership Seminar</b><br /
+        Dates: <b>June 3-5, 2016</b><br /
+        Location: <b>UC Berkeley, Berkeley, CA</b><br /
+        IN CONSIDERATION of the right to attend and participate in
+        the aforementioned Activities, the Participant (and, if the Participant
+        is a minor, his or her parent or legal guardian) hereby:
+        <br />
+        1. Agrees to abide by all rules and regulations
+        established by the EDGE Youth Leadership Seminar.
+        <br />
+        2. Grants to EDGE for any purpose connected with promoting the purposes
+        and goals of EDGE, but not for commercial exploitation, the right to use the
+        Participant’s name, voice, quotes, and likeness in any writings, photographs,
+        films, and recordings of the Participant while he or she is participating in
+        the Activities, and any biographical information submitted by the Participant
+        to EDGE, and to use, reproduce, publish, and distribute the same.
+        <br />
+        3. Understands that every effort is made to provide participants with a safe, enjoyable,
+        and memorable experience; attest and verify that the Participant is physically, mentally
+        and emotionally capable of attending and participating in all activities offered at the
+        EDGE Youth Leadership Seminar; acknowledges that there are inherent risks in any activity
+        involving travel outside of one's own home or community, including, travel to and from the
+        site, and, knowing the risks, nevertheless, agree to assume all risks of personal injury
+        and any other losses and damage to person or property sustained while participating in,
+        attending, and preparing for or traveling to and from the EDGE Youth Leadership; releases,
+        waives and hold harmless the EDGE Youth Leadership Seminar, the sponsors, the volunteers,
+        and officers, employees, agents, representatives, successors, and assigns from any and all
+        liability or responsibility for injuries and/or property damage which Participant may
+        sustain during the event or during travel to or from the event; understands that this
+        waiver and release covers Participant (including all heirs, executors, or administrators)
+        and is given in consideration of the EDGE Youth Leadership Seminar’s acceptance of
+        registration/entry into EDGE 2016. This Consent and Acknowledgment of Risk shall not be
+        amended, supplemented, or abrogated without the written consent of EDGE Board of
+        Directors, San Leandro, CA.<br /> 4. Agrees to defend and indemnify the EDGE Youth
+        Leadership Seminar from any claim or action filed by a third party (against EDGE) due to
+        their (the participant's) actions in this event.<br /> By signing below, the
+        Parent/Guardian confirms that they have read, understand, and consent to the terms
+        of this waiver agreement.
+      ),
       key: 'risk_info',
       page: page,
       style: Question.styles[:information],
@@ -1047,7 +1106,7 @@ student_form = Form.create(
       title: 'Student Name',
     )
     Question.create(
-      description: "If the student does not have an email, please put the parent/guardian's email.",
+      description: StringConstants::EMAIL_FORMAT,
       key: 'risk_student_email',
       page: page,
       style: Question.styles[:input],
@@ -1062,8 +1121,11 @@ student_form = Form.create(
       title: 'Date',
     )
     Question.create(
-      description: 'I have read the Acknowledgement of Risk above and accept the terms. This release, its significance, ' +
-             'and assumption of risk have been explained to and are understood by the minor.',
+      description: %s(
+        I have read the Acknowledgement of Risk above and accept the terms.
+        This release, its significance and assumption of risk have been
+        explained to and are understood by the minor.'
+      ),
       key: 'risk_guardian_consent',
       options: EnumConstants::AGREEMENT,
       page: page,
@@ -1084,6 +1146,7 @@ student_form = Form.create(
       title: 'Parent/Guardian Relationship',
     )
     Question.create(
+      description: StringConstants::EMAIL_FORMAT,
       key: 'risk_guardian_email',
       page: page,
       style: Question.styles[:input],
@@ -1099,22 +1162,32 @@ student_form = Form.create(
     )
   end
   Page.create(
-    description: 'Dear Participant, <br />' +
-                 'Being selected to participate in the EDGE experience is a great honor.  It’s a fantastic opportunity to discover ' +
-                 'who you are, your potential as a leader, as well as make friends with others in your unique peer group.  The ' +
-                 'entire EDGE weekend is a seamless event—if you miss even the smallest part; it detracts from the entire experience.<br />' +
-                 'If for any reason you think you can’t participate in the entire seminar, please contact us immediately. No student ' +
-                 'has ever regretted missing a sports event, musical recital, PSATs or any other kind of event for EDGE. The seminar ' +
-                 'is literally a once-in-a-lifetime experience and can have a profound impact on your outlook on life.<br />' +
-                 'We ask you to make the decision to participate in this challenging and fun weekend, regardless of other activities ' +
-                 'that may conflict with it.  Exceptions include family emergencies and final exams that cannot be rescheduled, but ' +
-                 'do not include studying for exams.<br />' +
-                 '<b>Even if it means missing or postponing an important event or extracurricular activity, if you make the commitment, ' +
-                 'we expect that you will join us for the entire weekend.</b> That includes no early departures on Sunday and requests ' +
-                 'to attend off-campus religious services.<br />' +
-                 'If you feel you have an extenuating circumstance that should be considered, please contact <b>Jocelyne Alva</b> and <b>Gabriela</b> ' +
-                 'Medina at <b>510-408-6606 (e-mail registration@edgeyl.org)</b> immediately.  Notify all your family, friends, teachers and ' +
-                 'coaches right away that you are already booked for a life-changing experience on <b>June 3-5, 2016!</b>',
+    description: %s(
+      Dear Participant, <br />
+      Being selected to participate in the EDGE experience is a great honor. It’s a fantastic
+      opportunity to discover who you are, your potential as a leader, as well as make friends
+      with others in your unique peer group. The entire EDGE weekend is a seamless event—if you
+      miss even the smallest part; it detracts from the entire experience.
+      <br />
+      If for any reason you think you can’t participate in the entire seminar, please contact
+      us immediately. No student has ever regretted missing a sports event, musical recital,
+      PSATs or any other kind of event for EDGE. The seminar is literally a once-in-a-lifetime
+      experience and can have a profound impact on your outlook on life.
+      <br />
+      We ask you to make the decision to participate in this challenging and fun weekend,
+      regardless of other activities that may conflict with it. Exceptions include family
+      emergencies and final exams that cannot be rescheduled, but do not include studying for exams.
+      <br />
+      <b>Even if it means missing or postponing an important event or extracurricular activity, if
+      you make the commitment, we expect that you will join us for the entire weekend.</b> That
+      includes no early departures on Sunday and requests to attend off-campus religious services.
+      <br />
+      If you feel you have an extenuating circumstance that should be considered, please contact
+      <b>Jocelyne Alva</b> and <b>Gabriela</b> Medina at
+      <b>510-408-6606 (e-mail registration@edgeyl.org)</b> immediately. Notify all your family,
+      friends, teachers and coaches right away that you are already booked for a life-changing
+      experience on <b>June 3-5, 2016!</b>
+    ),
     form: form,
     is_last: true,
     number: 9,
@@ -1128,8 +1201,10 @@ student_form = Form.create(
       title: 'Participation Commitment',
     )
     Question.create(
-      description: 'I have read the Participation Commitment above and accept the terms. Please indicate your ' +
-                   'commitment to join us by inputting your name below.',
+      description: %s(
+        I have read the Participation Commitment above and accept the terms.
+        Please indicate your commitment to join us by inputting your name below.
+      ),
       key: 'participation_student_consent',
       options: EnumConstants::AGREEMENT,
       page: page,
@@ -1143,8 +1218,10 @@ student_form = Form.create(
       title: 'Student Name',
     )
     Question.create(
-      description: 'I have read the Participation Commitment above and accept the terms. Please indicate your ' +
-                   'commitment to join us by inputting your name below.',
+      description: %s(
+        I have read the Participation Commitment above and accept the terms.
+        Please indicate your commitment to join us by inputting your name below.
+      ),
       key: 'participation_guardian_consent',
       options: EnumConstants::AGREEMENT,
       page: page,

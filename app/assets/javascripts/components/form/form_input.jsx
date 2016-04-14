@@ -34,7 +34,6 @@ class FormInput extends Component {
   // --------------------------------------------------
   renderDescription() {
     var question = this.props.question;
-    console.log(StyleConstants.forms.questions.description);
     if (question.description) {
       return (
         <p style={StyleConstants.forms.questions.description}>

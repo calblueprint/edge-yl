@@ -60,7 +60,17 @@ class ProspectCard extends Component {
             editable={this.props.editable}
             label={'Contact email'}
             value={prospect.contact_email} />
-      </div>
+          <CardAttribute
+            action={() => this.storePairing('contact_phone')}
+            editable={this.props.editable}
+            label={'Contact phone'}
+            value={prospect.contact_phone} />
+          <CardAttribute
+            action={() => this.storePairing('priority')}
+            editable={this.props.editable}
+            label={'priority'}
+            value={prospect.priority} />
+        </div>
       </div>
     );
   }

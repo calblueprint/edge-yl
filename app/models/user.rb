@@ -34,6 +34,7 @@ class User < ActiveRecord::Base
   has_many :comments, dependent: :destroy
   has_many :emails, dependent: :destroy
   has_many :email_threads, dependent: :destroy
+  has_many :responsibilities
   has_many :visits, dependent: :destroy
 
   has_one :leadership, dependent: :destroy
@@ -50,7 +51,7 @@ class User < ActiveRecord::Base
   end
 
   def self.groupable
-    self.includes(:leadership).where(leaderships: { id: nil })
+    includes(:leadership).where(leaderships: { id: nil })
   end
 
   def full_name
@@ -66,11 +67,9 @@ class User < ActiveRecord::Base
     new_visit = Visit.new(
       user_id: id,
       visitable_id: visitable_id,
-      visitable_type: visitable_type
+      visitable_type: visitable_type,
     )
-    if !new_visit.equals(last_visit)
-      new_visit.save
-    end
+    new_visit.save unless new_visit.equals(last_visit)
   end
 
   def unread_count

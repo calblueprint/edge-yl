@@ -31,7 +31,7 @@ class ThreadsPage extends Component {
     StudentsStore.listen(this._listener);
     ThreadsStore.listen(this._listener);
     ViewStore.listen(this._listener);
-    ThreadsActions.fetchEmails(this.props.page);
+    ThreadsActions.fetchThreads(this.props.page);
     ViewActions.attachListener();
   }
 
@@ -45,7 +45,7 @@ class ThreadsPage extends Component {
   // Helpers
   // --------------------------------------------------
   changePage(page) {
-    window.location = RouteConstants.emails.index(page);
+    window.location = RouteConstants.threads.index(page);
   }
 
   generateOptions() {

@@ -15,17 +15,23 @@ class UserGrid extends Component {
   // Render
   // --------------------------------------------------
   render() {
+    user = this.props.user;
     return (
       <div style={StyleConstants.grids.wrap}>
         <UserCard
           editable={this.props.editable}
           media={this.props.media}
           type={TypeConstants.user.general}
-          user={this.props.user} />
+          user={user} />
         <UserCard
           media={this.props.media}
           type={TypeConstants.user.leadership}
-          user={this.props.user} />
+          user={user} />
+        <GridHeader
+          title={'Responsibilities'} />
+        <ResponsibilitiesGrid
+          media={this.props.media}
+          responsibilities={user.responsibilities} />
       </div>
     );
   }

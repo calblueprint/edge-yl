@@ -47,7 +47,7 @@ class RoomPage extends Component {
   generateOptions() {
     return [
       {
-        action: () => RoomActions.storeEditability(),
+        action: () => ViewActions.storeEditability(),
         content: this.state.editable ? 'Finish' : 'Edit',
       },
       {
@@ -66,10 +66,21 @@ class RoomPage extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
+  renderOverlay() {
+    if (this.state.overlay) {
+      return (
+        <RoomPageOverlay
+          pairing={this.state.pairing}
+          template={this.state.template} />
+      );
+    }
+  }
+
   render() {
     var room = this.state.room;
     return (
       <div style={StyleConstants.pages.wrapper}>
+        {this.renderOverlay()}
         <Header profile={this.selectProfile()} />
         <Sidebar profile={this.selectProfile()} />
         <div style={StyleConstants.pages.default}>

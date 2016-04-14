@@ -57,7 +57,8 @@ class SchoolGrid extends Component {
         <StudentsGrid
           media={this.props.media}
           students={this.props.school.students}
-          type={TypeConstants.students.school} />
+          type={TypeConstants.students.school}
+          typeId={this.props.school.id} />
       </div>
     );
   }

@@ -9,6 +9,7 @@ class ConferenceCard extends Component {
       editable: React.PropTypes.bool.isRequired,
       media: React.PropTypes.string.isRequired,
       target: React.PropTypes.oneOf([
+        TypeConstants.conference.checkIn,
         TypeConstants.conference.general,
         TypeConstants.conference.statistic,
       ]).isRequired,
@@ -28,8 +29,11 @@ class ConferenceCard extends Component {
         );
       case TypeConstants.conference.statistic:
         return (
-          <ConferenceStatistic
-            conference={this.props.conference} />
+          <ConferenceStatistic conference={this.props.conference} />
+        );
+      case TypeConstants.conference.checkIn:
+        return (
+          <ConferenceCheckIn conference={this.props.conference} />
         );
     }
   }
@@ -40,6 +44,8 @@ class ConferenceCard extends Component {
         return 'General Information';
       case TypeConstants.conference.statistic:
         return 'Statistic Information';
+      case TypeConstants.conference.checkIn:
+        return 'Check-in Information';
     };
   }
 
