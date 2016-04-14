@@ -67,7 +67,8 @@ class CheckinPage extends Component {
               pagination={this.state.pagination}
               results={this.state.results}
               savedSearch={this.state.savedSearch}
-              search={this.state.search} />
+              search={this.state.search}
+              student={this.state.student} />
             <CheckinSidebar
               conference={this.state.conference}
               conferences={this.props.conferences} />

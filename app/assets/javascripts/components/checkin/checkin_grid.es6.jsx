@@ -11,6 +11,13 @@ class CheckinGrid extends Component {
       results: React.PropTypes.array.isRequired,
       savedSearch: React.PropTypes.object.isRequired,
       search: React.PropTypes.object.isRequired,
+      student: React.PropTypes.object,
+    };
+  }
+
+  static get defaultProps() {
+    return {
+      student: null,
     };
   }
 
@@ -18,12 +25,12 @@ class CheckinGrid extends Component {
   // Render
   // --------------------------------------------------
   renderStudent() {
-    if (this.state.student) {
+    if (this.props.student) {
       return (
         <CheckInStudentGrid
           conference={this.state.conference}
           media={this.state.media}
-          student={this.state.student} />
+          student={this.props.student} />
       );
     } else {
       return (
