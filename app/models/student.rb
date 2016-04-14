@@ -67,6 +67,16 @@ class Student < ActiveRecord::Base
   scope :is_primary, -> (is_primary) { where(is_primary: is_primary) }
   scope :sort, -> (sort) { order(sort) }
 
+  def allergies
+    unless self[:allergies].nil?
+      EnumConstants::BOOLEANS[self[:allergies]]
+    end
+  end
+
+  def allergies=(value)
+    self[:allergies] = EnumConstants::BOOLEANS.index(value)
+  end
+
   def dietary_restrictions
     unless self[:dietary_restrictions].nil?
       EnumConstants::DIETARY_RESTRICTIONS[self[:dietary_restrictions]]
@@ -125,6 +135,26 @@ class Student < ActiveRecord::Base
 
   def guardian_two_relationship=(value)
     self[:guardian_two_relationship] = EnumConstants::GUARDIAN_RELATIONSHIPS.index(value)
+  end
+
+  def health_conditions
+    unless self[:health_conditions].nil?
+      EnumConstants::BOOLEANS[self[:health_conditions]]
+    end
+  end
+
+  def health_conditions=(value)
+    self[:health_conditions] = EnumConstants::BOOLEANS.index(value)
+  end
+
+  def immunizations
+    unless self[:immunizations].nil?
+      EnumConstants::BOOLEANS[self[:immunizations]]
+    end
+  end
+
+  def immunizations=(value)
+    self[:immunizations] = EnumConstants::BOOLEANS.index(value)
   end
 
   def shirt_size
