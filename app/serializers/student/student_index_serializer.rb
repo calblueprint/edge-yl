@@ -3,8 +3,7 @@ class StudentIndexSerializer < StudentBaseSerializer
   attributes :cell_phone,
              :email,
              :is_flagged,
-             :is_primary,
-             :registration_status
+             :is_primary
 
   has_one :conference, serializer: ConferenceBaseSerializer
   has_one :group, serializer: GroupBaseSerializer
