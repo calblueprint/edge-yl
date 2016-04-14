@@ -1,4 +1,4 @@
-class CheckInSearch extends Component {
+class CheckinSearch extends Component {
   // --------------------------------------------------
   // Props
   // --------------------------------------------------
@@ -9,6 +9,17 @@ class CheckInSearch extends Component {
       results: React.PropTypes.array.isRequired,
       savedSearch: React.PropTypes.object.isRequired,
       search: React.PropTypes.object.isRequired,
+    };
+  }
+
+  // --------------------------------------------------
+  // Styles
+  // --------------------------------------------------
+  get styles() {
+    return {
+      container: {
+        marginTop: '12px',
+      },
     };
   }
 

@@ -1,4 +1,4 @@
-class ConferenceCheckIn extends Component {
+class ConferenceCheckin extends Component {
 
   // --------------------------------------------------
   // Props
@@ -23,25 +23,25 @@ class ConferenceCheckIn extends Component {
     return (
       <div style={StyleConstants.cards.content}>
         <CardAttribute
-          label={'Females Checked-In'}
+          label={'Females checked-in'}
           value={checked_in.females} />
         <CardAttribute
           label={'Females remaining'}
           value={students_count.females - checked_in.females} />
         <CardAttribute
-          label={'Males Checked-In'}
+          label={'Males checked-in'}
           value={checked_in.males} />
         <CardAttribute
           label={'Males remaining'}
           value={students_count.males - checked_in.males} />
         <CardAttribute
-          label={'Others Checked-In'}
+          label={'Others checked-in'}
           value={checked_in.others} />
         <CardAttribute
           label={'Others Remaining'}
           value={students_count.others - checked_in.others} />
         <CardAttribute
-          label={'Total Checked-In'}
+          label={'Total checked-in'}
           value={checked_in.total} />
         <CardAttribute
           label={'Total Remaining'}

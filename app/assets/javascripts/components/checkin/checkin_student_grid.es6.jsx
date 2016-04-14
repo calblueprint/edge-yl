@@ -1,4 +1,4 @@
-class CheckInStudentGrid extends Component {
+class CheckinStudentGrid extends Component {
 
   // --------------------------------------------------
   // Props
