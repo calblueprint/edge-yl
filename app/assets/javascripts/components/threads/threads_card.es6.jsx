@@ -35,6 +35,9 @@ class ThreadsCard extends Component {
       icon: {
         color: StyleConstants.colors.blue,
       },
+      section: {
+        display: 'flex',
+      },
     };
   }
 
@@ -106,7 +109,10 @@ class ThreadsCard extends Component {
       <div style={this.styles.container}>
         <div style={this.styles.header}>
           <h6>{this.generateThreadParticipant()}</h6>
-          {this.renderOptions()}
+          <div style={this.styles.section}>
+            <p>{thread.updated_at}</p>
+            {this.renderOptions()}
+          </div>
         </div>
         <Clickable
           route={this.generateThreadRoute()}

@@ -65,6 +65,8 @@ class SearchInput extends Component {
     var node = <SearchResult label={type} value={result.content} />;
     if (type === 'Group') {
       route = RouteConstants.groups.show(result.searchable_id);
+    } else if (type === 'Email') {
+      route = RouteConstants.threads.show(result.searchable_id);
     } else if (type === 'School') {
       route = RouteConstants.schools.show(result.searchable_id);
     } else {

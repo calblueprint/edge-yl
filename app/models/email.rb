@@ -22,6 +22,10 @@
 
 class Email < ActiveRecord::Base
 
+  include PgSearch
+
+  multisearchable against: [:to, :from, :subject, :content]
+
   default_scope { order('updated_at ASC') }
 
   belongs_to :email_thread

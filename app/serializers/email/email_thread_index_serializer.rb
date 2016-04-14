@@ -1,13 +1,13 @@
 class EmailThreadIndexSerializer < EmailThreadBaseSerializer
 
   attributes :content_preview,
-             :created_at,
              :emailable_id,
              :emailable_name,
              :emailable_type,
              :emails_count,
              :is_unread,
-             :subject
+             :subject,
+             :updated_at
 
   def content_preview
     cutoff = 200
@@ -16,6 +16,10 @@ class EmailThreadIndexSerializer < EmailThreadBaseSerializer
     else
       object.content
     end
+  end
+
+  def updated_at
+    object.emails.last.updated_at.strftime('%D %-I:%M:%S %p')
   end
 
 end
