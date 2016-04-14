@@ -77,9 +77,34 @@
       };
     }
 
+    get pages() {
+      return {
+        conference: 'pages-conference',
+        conferences: 'pages-conferences',
+        groups: 'pages-groups',
+        login: 'pages-login',
+        prospects: 'pages-prospects',
+        rooms: 'pages-rooms',
+        schools: 'pages-schools',
+        signup: 'pages-signup',
+        students: 'pages-students',
+        users: 'pages-users',
+      };
+    }
+
     get profile() {
       return {
         general: 'profile-general',
+      };
+    }
+
+    get questions() {
+      return {
+        dropdown: 'dropdown',
+        information: 'information',
+        input: 'input',
+        textarea: 'textarea',
+        waiver: 'waiver',
       };
     }
 
@@ -93,21 +118,6 @@
       return {
         conference: 'room-conference',
         default: 'room-default',
-      };
-    }
-
-    get pages() {
-      return {
-        conference: 'pages-conference',
-        conferences: 'pages-conferences',
-        groups: 'pages-groups',
-        login: 'pages-login',
-        prospects: 'pages-prospects',
-        rooms: 'pages-rooms',
-        schools: 'pages-schools',
-        signup: 'pages-signup',
-        students: 'pages-students',
-        users: 'pages-users',
       };
     }
 

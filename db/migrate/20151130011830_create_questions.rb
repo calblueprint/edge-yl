@@ -3,6 +3,8 @@ class CreateQuestions < ActiveRecord::Migration
   def change
     create_table :questions do |t|
       t.string  :description, default: '', null: false
+      t.string  :enabler_key
+      t.string  :enabler_value
       t.integer :format, null: false
       t.boolean :is_required, default: true, null: false
       t.string  :key, null: false

@@ -2,69 +2,89 @@
 #
 # Table name: student_submissions
 #
-#  id                            :uuid             not null, primary key
-#  address_city                  :string
-#  address_one                   :string
-#  address_state                 :integer          default(4)
-#  address_two                   :string           default("")
-#  address_zip                   :string
-#  allergies                     :integer
-#  birthday                      :date
-#  carpool                       :integer
-#  cell_phone                    :string
-#  current_page                  :integer          default(0), not null
-#  dietary_restrictions          :integer
-#  email                         :string
-#  emergency_consent             :integer
-#  exercise_limitations          :string
-#  first_name                    :string
-#  gender                        :integer
-#  guardian_one_email            :string
-#  guardian_one_employer         :string           default("")
-#  guardian_one_first_name       :string
-#  guardian_one_job_title        :string           default("")
-#  guardian_one_last_name        :string
-#  guardian_one_phone_number     :string
-#  guardian_one_phone_type       :integer
-#  guardian_one_relationship     :integer
-#  guardian_two_email            :string
-#  guardian_two_employer         :string           default("")
-#  guardian_two_first_name       :string
-#  guardian_two_job_title        :string           default("")
-#  guardian_two_last_name        :string
-#  guardian_two_phone_number     :string
-#  guardian_two_phone_type       :integer
-#  guardian_two_relationship     :integer
-#  health_conditions             :integer
-#  home_phone                    :string
-#  is_active                     :boolean          default(TRUE), not null
-#  is_primary                    :boolean          not null
-#  immunizations                 :integer
-#  insurance                     :integer
-#  insurance_address             :string
-#  insurance_address_city        :string
-#  insurance_address_state       :integer
-#  insurance_address_zip         :integer
-#  insurance_id                  :string
-#  insurance_other               :string           default("")
-#  insurance_phone_number        :string
-#  insurance_provider            :string
-#  last_name                     :string
-#  medical_guardian_name         :string
-#  medications                   :string
-#  other_dietary_restrictions    :string           default("")
-#  preferred_name                :string           default("")
-#  psychologist_consent          :integer
-#  shirt_size                    :integer
-#  transportation                :integer
-#  transportation_arrival_date   :date
-#  transportation_arrival_time   :string
-#  transportation_carrier        :string
-#  transportation_departure_date :date
-#  transportation_departure_time :string
-#  transportation_name           :string
-#  transportation_number         :string
-#  conference_id                 :integer          not null
+#  id                             :uuid             not null, primary key
+#  address_city                   :string
+#  address_one                    :string
+#  address_state                  :integer          default(4)
+#  address_two                    :string           default("")
+#  address_zip                    :string
+#  allergies                      :integer
+#  birthday                       :date
+#  carpool                        :integer
+#  cell_phone                     :string
+#  ceremony_attendance            :integer
+#  ceremony_attendance_number     :string
+#  current_page                   :integer          default(0), not null
+#  dietary_restrictions           :integer
+#  email                          :string
+#  emergency_consent              :integer
+#  exercise_limitations           :string
+#  first_name                     :string
+#  gender                         :integer
+#  guardian_one_email             :string
+#  guardian_one_employer          :string           default("")
+#  guardian_one_first_name        :string
+#  guardian_one_job_title         :string           default("")
+#  guardian_one_last_name         :string
+#  guardian_one_phone_number      :string
+#  guardian_one_phone_type        :integer
+#  guardian_one_relationship      :integer
+#  guardian_two_email             :string
+#  guardian_two_employer          :string           default("")
+#  guardian_two_first_name        :string
+#  guardian_two_job_title         :string           default("")
+#  guardian_two_last_name         :string
+#  guardian_two_phone_number      :string
+#  guardian_two_phone_type        :integer
+#  guardian_two_relationship      :integer
+#  health_conditions              :integer
+#  home_phone                     :string
+#  is_active                      :boolean          default(TRUE), not null
+#  is_primary                     :boolean          not null
+#  immunizations                  :integer
+#  insurance                      :integer
+#  insurance_address              :string
+#  insurance_address_city         :string
+#  insurance_address_state        :integer
+#  insurance_address_zip          :integer
+#  insurance_id                   :string
+#  insurance_other                :string           default("")
+#  insurance_phone_number         :string
+#  insurance_provider             :string
+#  last_name                      :string
+#  media_information              :string
+#  media_newspaper                :string
+#  media_participation            :integer
+#  medical_guardian_name          :string
+#  medications                    :string
+#  other_dietary_restrictions     :string           default("")
+#  participation_guardian_consent :integer
+#  participation_guardian_name    :string
+#  participation_student_consent  :integer
+#  participation_student_name     :string
+#  preferred_name                 :string           default("")
+#  psychologist_consent           :integer
+#  risk_guardian_consent          :integer
+#  risk_guardian_date             :date
+#  risk_guardian_email            :string
+#  risk_guardian_name             :string
+#  risk_guardian_relationship     :integer
+#  risk_student_consent           :integer
+#  risk_student_date              :date
+#  risk_student_email             :string
+#  risk_student_name              :string
+#  shirt_size                     :integer
+#  transportation                 :integer
+#  transportation_arrival_date    :date
+#  transportation_arrival_time    :string
+#  transportation_carrier         :string
+#  transportation_consent         :integer
+#  transportation_consent_name    :string
+#  transportation_departure_date  :date
+#  transportation_departure_time  :string
+#  transportation_name            :string
+#  transportation_number          :string
+#  conference_id                  :integer          not null
 #
 
 class StudentSubmission < ActiveRecord::Base
