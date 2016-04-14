@@ -35,11 +35,11 @@ class StudentShowSerializer < StudentIndexSerializer
   has_many :comments, serializer: CommentBaseSerializer
 
   def gender_choices
-    Student.genders.keys
+    EnumConstants::GENDERS
   end
 
   def shirt_sizes
-    Student.shirt_sizes.keys
+    EnumConstants::SHIRT_SIZES
   end
 
 end
