@@ -175,7 +175,7 @@ school_form = Form.create(
     )
     Question.create(
       key: 'primary_gender',
-      options: Student.genders.keys,
+      options: EnumConstants::GENDERS,
       page: page,
       style: Question.styles[:dropdown],
       title: 'Primary Student Gender',

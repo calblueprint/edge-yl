@@ -45,7 +45,6 @@
 #  medications                :string           not null
 #  preferred_name             :string           default(""), not null
 #  psychologist_consent       :integer          not null
-#  registration_status        :integer          not null
 #  shirt_size                 :integer          not null
 #  conference_id              :integer          not null
 #  group_id                   :integer
@@ -68,23 +67,105 @@ class Student < ActiveRecord::Base
   scope :is_primary, -> (is_primary) { where(is_primary: is_primary) }
   scope :sort, -> (sort) { order(sort) }
 
-  enum boolean: [:yes, :no]
-  enum gender: [:female, :male, :other]
-  enum dietary_restriction: [:dairy_free, :gluten_free, :None, :nut_allergy, :vegan, :vegetarian]
-  enum guardian_phone_type: [:cell, :home, :work]
-  enum guardian_relationship: [
-    :mother,
-    :father,
-    :aunt,
-    :uncle,
-    :grandmother,
-    :grandfather,
-    :stepmother,
-    :stepfather,
-    :guardian,
-  ]
-  enum registration_status: [:registered, :selected, :dropped]
-  enum shirt_size: [:S, :M, :L, :XL, :XXL]
+  def allergies
+    unless self[:allergies].nil?
+      EnumConstants::BOOLEANS[self[:allergies]]
+    end
+  end
+
+  def allergies=(value)
+    self[:allergies] = EnumConstants::BOOLEANS.index(value)
+  end
+
+  def dietary_restrictions
+    unless self[:dietary_restrictions].nil?
+      EnumConstants::DIETARY_RESTRICTIONS[self[:dietary_restrictions]]
+    end
+  end
+
+  def dietary_restrictions=(value)
+    self[:dietary_restrictions] = EnumConstants::DIETARY_RESTRICTIONS.index(value)
+  end
+
+  def gender
+    unless self[:gender].nil?
+      EnumConstants::GENDERS[self[:gender]]
+    end
+  end
+
+  def gender=(value)
+    self[:gender] = EnumConstants::GENDERS.index(value)
+  end
+
+  def guardian_one_phone_type
+    unless self[:guardian_one_phone_type].nil?
+      EnumConstants::PHONE_TYPES[self[:guardian_one_phone_type]]
+    end
+  end
+
+  def guardian_one_phone_type=(value)
+    self[:guardian_one_phone_type] = EnumConstants::PHONE_TYPES.index(value)
+  end
+
+  def guardian_one_relationship
+    unless self[:guardian_one_relationship].nil?
+      EnumConstants::GUARDIAN_RELATIONSHIPS[self[:guardian_one_relationship]]
+    end
+  end
+
+  def guardian_one_relationship=(value)
+    self[:guardian_one_relationship] = EnumConstants::GUARDIAN_RELATIONSHIPS.index(value)
+  end
+
+  def guardian_two_phone_type
+    unless self[:guardian_two_phone_type].nil?
+      EnumConstants::PHONE_TYPES[self[:guardian_two_phone_type]]
+    end
+  end
+
+  def guardian_two_phone_type=(value)
+    self[:guardian_two_phone_type] = EnumConstants::PHONE_TYPES.index(value)
+  end
+
+  def guardian_two_relationship
+    unless self[:guardian_two_relationship].nil?
+      EnumConstants::GUARDIAN_RELATIONSHIPS[self[:guardian_two_relationship]]
+    end
+  end
+
+  def guardian_two_relationship=(value)
+    self[:guardian_two_relationship] = EnumConstants::GUARDIAN_RELATIONSHIPS.index(value)
+  end
+
+  def health_conditions
+    unless self[:health_conditions].nil?
+      EnumConstants::BOOLEANS[self[:health_conditions]]
+    end
+  end
+
+  def health_conditions=(value)
+    self[:health_conditions] = EnumConstants::BOOLEANS.index(value)
+  end
+
+  def immunizations
+    unless self[:immunizations].nil?
+      EnumConstants::BOOLEANS[self[:immunizations]]
+    end
+  end
+
+  def immunizations=(value)
+    self[:immunizations] = EnumConstants::BOOLEANS.index(value)
+  end
+
+  def shirt_size
+    unless self[:shirt_size].nil?
+      EnumConstants::SHIRT_SIZES[self[:shirt_size]]
+    end
+  end
+
+  def shirt_size=(value)
+    self[:shirt_size] = EnumConstants::SHIRT_SIZES.index(value)
+  end
 
   belongs_to :conference
   belongs_to :group
@@ -96,6 +177,7 @@ class Student < ActiveRecord::Base
   has_many :visits, dependent: :destroy, as: :visitable
 
   before_validation :set_initials, on: :create
+
   validates :address_city, presence: true
   validates :address_one, presence: true
   validates :address_state, presence: true
@@ -147,12 +229,23 @@ class Student < ActiveRecord::Base
     "#{first_name} #{last_name}"
   end
 
+  def self.female
+    where(gender: 0)
+  end
+
+  def self.male
+    where(gender: 1)
+  end
+
+  def self.other
+    where(gender: 2)
+  end
+
   private
 
   def set_initials
     self.is_flagged = false
-    self.is_primary = true
-    self.registration_status = 0
+    true
   end
 
 end

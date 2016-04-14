@@ -147,9 +147,6 @@ class StudentsCard extends Component {
           <CardAttribute
             label={'Flagged?'}
             value={student.is_flagged ? 'Yes' : 'No'} />
-          <CardAttribute
-            label={'Status'}
-            value={student.registration_status} />
           {this.renderSchool()}
           {this.renderGroup()}
           {this.renderRoom()}
