@@ -39,7 +39,7 @@ class CheckinSidebar extends Component {
     var conference = this.props.conference;
     return (
       <div style={this.styles.container}>
-        <CheckInConference
+        <CheckinConference
           conference={this.props.conference}
           conferences={this.props.conferences} />
       </div>

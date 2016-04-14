@@ -36,6 +36,7 @@ class StudentConference extends Component {
           clickable={true}
           label={'Group'}
           route={RouteConstants.groups.show(group.id)}
+          type={'h5'}
           value={group.full_name} />
       );
     } else {
@@ -51,6 +52,7 @@ class StudentConference extends Component {
           clickable={true}
           label={'Room'}
           route={RouteConstants.rooms.show(room.id)}
+          type={'h5'}
           value={room.full_name} />
       );
     } else {

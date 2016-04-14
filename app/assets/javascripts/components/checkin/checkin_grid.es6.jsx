@@ -27,9 +27,9 @@ class CheckinGrid extends Component {
   renderStudent() {
     if (this.props.student) {
       return (
-        <CheckInStudentGrid
-          conference={this.state.conference}
-          media={this.state.media}
+        <CheckinStudentGrid
+          conference={this.props.conference}
+          media={this.props.media}
           student={this.props.student} />
       );
     } else {
