@@ -88,6 +88,10 @@
             display: 'flex',
             marginBottom: '18px',
           },
+          description: {
+            fontWeight: '200',
+            lineHeight: '15px',
+          },
           errors: {
             color: this.colors.red,
           },

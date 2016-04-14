@@ -1,6 +1,21 @@
 module EnumConstants
 
+  AGREEMENT = %w(yes).freeze
+
   BOOLEANS = %w(yes no).freeze
+
+  CARPOOL = %w(
+    Not\ interested
+    Interested\ -\ I\ can\ provide\ a\ ride
+    Interested\ -\ I\ can't\ provide\ a\ ride
+  ).freeze
+
+  CEREMONY = %w(
+    My\ family\ will\ be\ attending\ the\ Parents'\ Program\ and\ Closing\ Ceremonies
+    My\ family\ will\ only\ be\ attending\ Closing\ Ceremonies
+    My\ family\ will\ only\ be\ picking\ up\ after\ Closing\ Ceremonies
+    My\ family\ is\ unable\ to\ attend
+  ).freeze
 
   DIETARY_RESTRICTIONS = %w(
     dairy-free gluten-free
@@ -26,6 +41,14 @@ module EnumConstants
     MA MI MN MS MO MT NE NV NH NJ
     NM NY NC ND OH OK OR PA RI SC
     SD TN TX UT VT VA WA WV WI WY
+  ).freeze
+
+  TRANSPORTATION = %w(
+    Parent/Guardian\ Driving\ Me
+    Driving\ Myself
+    Public\ Transportation\ -\ Plane
+    Public\ Transportation\ -\ Train
+    Public\ Transportation\ -\ Bus
   ).freeze
 
 end

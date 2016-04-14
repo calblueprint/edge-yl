@@ -50,6 +50,17 @@ class FormDropdown extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
+  renderDescription() {
+    var question = this.props.question;
+    if (question.description) {
+      return (
+        <p style={StyleConstants.forms.questions.description}>
+          {question.description}
+        </p>
+      );
+    }
+  }
+  
   renderDropdown() {
     var question = this.props.question;
     return (
@@ -84,7 +95,8 @@ class FormDropdown extends Component {
     return (
       <div style={StyleConstants.forms.questions.container}>
         <div style={StyleConstants.forms.questions.prompt}>
-          <h6>{this.props.question.title}{this.renderRequired()}</h6>
+          <h5>{this.props.question.title}{this.renderRequired()}</h5>
+          {this.renderDescription()}
         </div>
         <div style={StyleConstants.forms.questions.response}>
           {this.renderDropdown()}
