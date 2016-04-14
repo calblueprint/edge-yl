@@ -1,6 +1,6 @@
 Conference.all.each do |conference|
-  (1..20).each do |index|
-    new_student = Student.create!(
+  (1..20).each do
+    new_student = Student.create(
       address_city: Faker::Address.city,
       address_one: Faker::Address.street_address,
       address_state: Faker::Address.state,
