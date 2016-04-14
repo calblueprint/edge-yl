@@ -45,7 +45,6 @@
 #  medications                :string           not null
 #  preferred_name             :string           default(""), not null
 #  psychologist_consent       :integer          not null
-#  registration_status        :integer          not null
 #  shirt_size                 :integer          not null
 #  conference_id              :integer          not null
 #  group_id                   :integer
@@ -98,7 +97,6 @@ FactoryGirl.define do
     other_dietary_restrictions { 'None' }
     preferred_name        { 'sonia' }
     psychologist_consent  { 0 }
-    registration_status   { rand(3) }
     shirt_size            { rand(5) }
   end
 end
