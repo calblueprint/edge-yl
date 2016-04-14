@@ -2,51 +2,89 @@
 #
 # Table name: student_submissions
 #
-#  id                         :uuid             not null, primary key
-#  address_city               :string
-#  address_one                :string
-#  address_state              :integer          default(4)
-#  address_two                :string           default("")
-#  address_zip                :string
-#  allergies                  :integer
-#  birthday                   :date
-#  cell_phone                 :string
-#  current_page               :integer          default(0), not null
-#  dietary_restrictions       :integer
-#  email                      :string
-#  emergency_consent          :integer
-#  exercise_limitations       :string
-#  first_name                 :string
-#  gender                     :integer
-#  guardian_one_email         :string
-#  guardian_one_employer      :string           default("")
-#  guardian_one_first_name    :string
-#  guardian_one_job_title     :string           default("")
-#  guardian_one_last_name     :string
-#  guardian_one_phone_number  :string
-#  guardian_one_phone_type    :integer
-#  guardian_one_relationship  :integer
-#  guardian_two_email         :string
-#  guardian_two_employer      :string           default("")
-#  guardian_two_first_name    :string
-#  guardian_two_job_title     :string           default("")
-#  guardian_two_last_name     :string
-#  guardian_two_phone_number  :string
-#  guardian_two_phone_type    :integer
-#  guardian_two_relationship  :integer
-#  health_conditions          :integer
-#  home_phone                 :string
-#  is_active                  :boolean          default(TRUE), not null
-#  is_primary                 :boolean          not null
-#  immunizations              :integer
-#  last_name                  :string
-#  medical_guardian_name      :string
-#  medications                :string
-#  other_dietary_restrictions :string
-#  preferred_name             :string           default("")
-#  psychologist_consent       :integer
-#  shirt_size                 :integer
-#  conference_id              :integer          not null
+#  id                             :uuid             not null, primary key
+#  address_city                   :string
+#  address_one                    :string
+#  address_state                  :integer          default(4)
+#  address_two                    :string           default("")
+#  address_zip                    :string
+#  allergies                      :integer
+#  birthday                       :date
+#  carpool                        :integer
+#  cell_phone                     :string
+#  ceremony_attendance            :integer
+#  ceremony_attendance_number     :string
+#  current_page                   :integer          default(0), not null
+#  dietary_restrictions           :integer
+#  email                          :string
+#  emergency_consent              :integer
+#  exercise_limitations           :string
+#  first_name                     :string
+#  gender                         :integer
+#  guardian_one_email             :string
+#  guardian_one_employer          :string           default("")
+#  guardian_one_first_name        :string
+#  guardian_one_job_title         :string           default("")
+#  guardian_one_last_name         :string
+#  guardian_one_phone_number      :string
+#  guardian_one_phone_type        :integer
+#  guardian_one_relationship      :integer
+#  guardian_two_email             :string
+#  guardian_two_employer          :string           default("")
+#  guardian_two_first_name        :string
+#  guardian_two_job_title         :string           default("")
+#  guardian_two_last_name         :string
+#  guardian_two_phone_number      :string
+#  guardian_two_phone_type        :integer
+#  guardian_two_relationship      :integer
+#  health_conditions              :integer
+#  home_phone                     :string
+#  is_active                      :boolean          default(TRUE), not null
+#  is_primary                     :boolean          not null
+#  immunizations                  :integer
+#  insurance                      :integer
+#  insurance_address              :string
+#  insurance_address_city         :string
+#  insurance_address_state        :integer
+#  insurance_address_zip          :integer
+#  insurance_id                   :string
+#  insurance_other                :string           default("")
+#  insurance_phone_number         :string
+#  insurance_provider             :string
+#  last_name                      :string
+#  media_information              :string
+#  media_newspaper                :string
+#  media_participation            :integer
+#  medical_guardian_name          :string
+#  medications                    :string
+#  other_dietary_restrictions     :string           default("")
+#  participation_guardian_consent :integer
+#  participation_guardian_name    :string
+#  participation_student_consent  :integer
+#  participation_student_name     :string
+#  preferred_name                 :string           default("")
+#  psychologist_consent           :integer
+#  risk_guardian_consent          :integer
+#  risk_guardian_date             :date
+#  risk_guardian_email            :string
+#  risk_guardian_name             :string
+#  risk_guardian_relationship     :integer
+#  risk_student_consent           :integer
+#  risk_student_date              :date
+#  risk_student_email             :string
+#  risk_student_name              :string
+#  shirt_size                     :integer
+#  transportation                 :integer
+#  transportation_arrival_date    :date
+#  transportation_arrival_time    :string
+#  transportation_carrier         :string
+#  transportation_consent         :integer
+#  transportation_consent_name    :string
+#  transportation_departure_date  :date
+#  transportation_departure_time  :string
+#  transportation_name            :string
+#  transportation_number          :string
+#  conference_id                  :integer          not null
 #
 
 class StudentSubmission < ActiveRecord::Base
@@ -56,137 +94,257 @@ class StudentSubmission < ActiveRecord::Base
   validates :is_primary, inclusion: { in: [false, true] }
 
   def address_state
-    if !read_attribute(:address_state).nil?
-      EnumConstants::STATES[read_attribute(:address_state)]
+    unless self[:address_state].nil?
+      EnumConstants::STATES[self[:address_state]]
     end
   end
 
   def address_state=(value)
-    write_attribute(:address_state, EnumConstants::STATES.index(value))
+    self[:address_state] = EnumConstants::STATES.index(value)
   end
 
   def allergies
-    if !read_attribute(:allergies).nil?
-      EnumConstants::BOOLEANS[read_attribute(:allergies)]
+    unless self[:allergies].nil?
+      EnumConstants::BOOLEANS[self[:allergies]]
     end
   end
 
   def allergies=(value)
-    write_attribute(:allergies, EnumConstants::BOOLEANS.index(value))
+    self[:allergies] = EnumConstants::BOOLEANS.index(value)
+  end
+
+  def carpool
+    unless self[:carpool].nil?
+      EnumConstants::CARPOOL[self[:carpool]]
+    end
+  end
+
+  def carpool=(value)
+    self[:carpool] = EnumConstants::CARPOOL.index(value)
+  end
+
+  def ceremony_attendance
+    unless self[:ceremony_attendance].nil?
+      EnumConstants::CEREMONY[self[:ceremony_attendance]]
+    end
+  end
+
+  def ceremony_attendance=(value)
+    self[:ceremony_attendance] = EnumConstants::CEREMONY.index(value)
   end
 
   def dietary_restrictions
-    if !read_attribute(:dietary_restrictions).nil?
-      EnumConstants::DIETARY_RESTRICTIONS[read_attribute(:dietary_restrictions)]
+    unless self[:dietary_restrictions].nil?
+      EnumConstants::DIETARY_RESTRICTIONS[self[:dietary_restrictions]]
     end
   end
 
   def dietary_restrictions=(value)
-    write_attribute(:dietary_restrictions, EnumConstants::DIETARY_RESTRICTIONS.index(value))
+    self[:dietary_restrictions] = EnumConstants::DIETARY_RESTRICTIONS.index(value)
   end
 
   def emergency_consent
-    if !read_attribute(:emergency_consent).nil?
-      EnumConstants::BOOLEANS[read_attribute(:emergency_consent)]
+    unless self[:emergency_consent].nil?
+      EnumConstants::BOOLEANS[self[:emergency_consent]]
     end
   end
 
   def emergency_consent=(value)
-    write_attribute(:emergency_consent, EnumConstants::BOOLEANS.index(value))
+    self[:emergency_consent] = EnumConstants::BOOLEANS.index(value)
   end
 
   def gender
-    if !read_attribute(:gender).nil?
-      EnumConstants::GENDERS[read_attribute(:gender)]
+    unless self[:gender].nil?
+      EnumConstants::GENDERS[self[:gender]]
     end
   end
 
   def gender=(value)
-    write_attribute(:gender, EnumConstants::GENDERS.index(value))
+    self[:gender] = EnumConstants::GENDERS.index(value)
   end
 
   def guardian_one_phone_type
-    if !read_attribute(:guardian_one_phone_type).nil?
-      EnumConstants::PHONE_TYPES[read_attribute(:guardian_one_phone_type)]
+    unless self[:guardian_one_phone_type].nil?
+      EnumConstants::PHONE_TYPES[self[:guardian_one_phone_type]]
     end
   end
 
   def guardian_one_phone_type=(value)
-    write_attribute(:guardian_one_phone_type, EnumConstants::PHONE_TYPES.index(value))
+    self[:guardian_one_phone_type] = EnumConstants::PHONE_TYPES.index(value)
   end
 
   def guardian_one_relationship
-    if !read_attribute(:guardian_one_relationship).nil?
-      EnumConstants::GUARDIAN_RELATIONSHIPS[read_attribute(:guardian_one_relationship)]
+    unless self[:guardian_one_relationship].nil?
+      EnumConstants::GUARDIAN_RELATIONSHIPS[self[:guardian_one_relationship]]
     end
   end
 
   def guardian_one_relationship=(value)
-    write_attribute(:guardian_one_relationship, EnumConstants::GUARDIAN_RELATIONSHIPS.index(value))
+    self[:guardian_one_relationship] = EnumConstants::GUARDIAN_RELATIONSHIPS.index(value)
   end
 
   def guardian_two_phone_type
-    if !read_attribute(:guardian_two_phone_type).nil?
-      EnumConstants::PHONE_TYPES[read_attribute(:guardian_two_phone_type)]
+    unless self[:guardian_two_phone_type].nil?
+      EnumConstants::PHONE_TYPES[self[:guardian_two_phone_type]]
     end
   end
 
   def guardian_two_phone_type=(value)
-    write_attribute(:guardian_two_phone_type, EnumConstants::PHONE_TYPES.index(value))
+    self[:guardian_two_phone_type] = EnumConstants::PHONE_TYPES.index(value)
   end
 
   def guardian_two_relationship
-    if !read_attribute(:guardian_two_relationship).nil?
-      EnumConstants::GUARDIAN_RELATIONSHIPS[read_attribute(:guardian_two_relationship)]
+    unless self[:guardian_two_relationship].nil?
+      EnumConstants::GUARDIAN_RELATIONSHIPS[self[:guardian_two_relationship]]
     end
   end
 
   def guardian_two_relationship=(value)
-    write_attribute(:guardian_two_relationship, EnumConstants::GUARDIAN_RELATIONSHIPS.index(value))
+    self[:guardian_two_relationship] = EnumConstants::GUARDIAN_RELATIONSHIPS.index(value)
   end
 
   def health_conditions
-    if !read_attribute(:health_conditions).nil?
-      EnumConstants::BOOLEANS[read_attribute(:health_conditions)]
+    unless self[:health_conditions].nil?
+      EnumConstants::BOOLEANS[self[:health_conditions]]
     end
   end
 
   def health_conditions=(value)
-    write_attribute(:health_conditions, EnumConstants::BOOLEANS.index(value))
+    self[:health_conditions] = EnumConstants::BOOLEANS.index(value)
   end
 
   def immunizations
-    if !read_attribute(:immunizations).nil?
-      EnumConstants::BOOLEANS[read_attribute(:immunizations)]
+    unless self[:immunizations].nil?
+      EnumConstants::BOOLEANS[self[:immunizations]]
     end
   end
 
   def immunizations=(value)
-    write_attribute(:immunizations, EnumConstants::BOOLEANS.index(value))
+    self[:immunizations] = EnumConstants::BOOLEANS.index(value)
+  end
+
+  def insurance
+    unless self[:insurance].nil?
+      EnumConstants::BOOLEANS[self[:insurance]]
+    end
+  end
+
+  def insurance=(value)
+    self[:insurance] = EnumConstants::BOOLEANS.index(value)
+  end
+
+  def insurance_address_state
+    unless self[:insurance_address_state].nil?
+      EnumConstants::STATES[self[:insurance_address_state]]
+    end
+  end
+
+  def insurance_address_state=(value)
+    self[:insurance_address_state] = EnumConstants::STATES.index(value)
+  end
+
+  def media_participation
+    unless self[:media_participation].nil?
+      EnumConstants::BOOLEANS[self[:media_participation]]
+    end
+  end
+
+  def media_participation=(value)
+    self[:media_participation] = EnumConstants::BOOLEANS.index(value)
+  end
+
+  def participation_guardian_consent
+    unless self[:participation_guardian_consent].nil?
+      EnumConstants::AGREEMENT[self[:participation_guardian_consent]]
+    end
+  end
+
+  def participation_guardian_consent=(value)
+    self[:participation_guardian_consent] = EnumConstants::AGREEMENT.index(value)
+  end
+
+  def participation_student_consent
+    unless self[:participation_student_consent].nil?
+      EnumConstants::AGREEMENT[self[:participation_student_consent]]
+    end
+  end
+
+  def participation_student_consent=(value)
+    self[:participation_student_consent] = EnumConstants::AGREEMENT.index(value)
   end
 
   def psychologist_consent
-    if !read_attribute(:psychologist_consent).nil?
-      EnumConstants::BOOLEANS[read_attribute(:psychologist_consent)]
+    unless self[:psychologist_consent].nil?
+      EnumConstants::BOOLEANS[self[:psychologist_consent]]
     end
   end
 
   def psychologist_consent=(value)
-    write_attribute(:psychologist_consent, EnumConstants::BOOLEANS.index(value))
+    self[:psychologist_consent] = EnumConstants::BOOLEANS.index(value)
+  end
+
+  def risk_student_consent
+    unless self[:risk_student_consent].nil?
+      EnumConstants::AGREEMENT[self[:risk_student_consent]]
+    end
+  end
+
+  def risk_student_consent=(value)
+    self[:risk_student_consent] = EnumConstants::AGREEMENT.index(value)
+  end
+
+  def risk_guardian_relationship
+    unless self[:risk_guardian_relationship].nil?
+      EnumConstants::GUARDIAN_RELATIONSHIPS[self[:risk_guardian_relationship]]
+    end
+  end
+
+  def risk_guardian_relationship=(value)
+    self[:risk_guardian_relationship] = EnumConstants::GUARDIAN_RELATIONSHIPS.index(value)
+  end
+
+  def risk_guardian_consent
+    unless self[:risk_guardian_consent].nil?
+      EnumConstants::AGREEMENT[self[:risk_guardian_consent]]
+    end
+  end
+
+  def risk_guardian_consent=(value)
+    self[:risk_guardian_consent] = EnumConstants::AGREEMENT.index(value)
   end
 
   def shirt_size
-    if !read_attribute(:shirt_size).nil?
-      EnumConstants::SHIRT_SIZES[read_attribute(:shirt_size)]
+    unless self[:shirt_size].nil?
+      EnumConstants::SHIRT_SIZES[self[:shirt_size]]
     end
   end
 
   def shirt_size=(value)
-    write_attribute(:shirt_size, EnumConstants::SHIRT_SIZES.index(value))
+    self[:shirt_size] = EnumConstants::SHIRT_SIZES.index(value)
+  end
+
+  def transportation
+    unless self[:transportation].nil?
+      EnumConstants::TRANSPORTATION[self[:transportation]]
+    end
+  end
+
+  def transportation=(value)
+    self[:transportation] = EnumConstants::TRANSPORTATION.index(value)
+  end
+
+  def transportation_consent
+    unless self[:transportation_consent].nil?
+      EnumConstants::AGREEMENT[self[:transportation_consent]]
+    end
+  end
+
+  def transportation_consent=(value)
+    self[:transportation_consent] = EnumConstants::AGREEMENT.index(value)
   end
 
   def form_url
-    # TODO (Warren): !!!
+    # TODO: (Warren) !!!
     "http://edge-yl-staging.herokuapp.com/forms/student/#{id}/start"
   end
 
@@ -201,19 +359,19 @@ class StudentSubmission < ActiveRecord::Base
       error_response = validator.errors.to_hash
       valid_params = {}
       update_params.each do |attribute, value|
-        if !error_response.key?(attribute.to_sym)
+        unless error_response.key?(attribute.to_sym)
           valid_params[attribute] = value
         end
       end
       if valid_params.size > 0
-        self.update_attributes(valid_params)
+        update_attributes(valid_params)
       end
       error_response.each do |attribute, messages|
         messages.each do |message|
-          self.errors.add(attribute, message)
+          errors.add(attribute, message)
         end
       end
-      self.errors.size == 0
+      errors.size == 0
     end
   end
 
@@ -223,6 +381,12 @@ class StudentSubmission < ActiveRecord::Base
       1 => attributes_one,
       2 => attributes_two,
       3 => attributes_three,
+      4 => attributes_four,
+      5 => attributes_five,
+      6 => attributes_six,
+      7 => attributes_seven,
+      8 => attributes_eight,
+      9 => attributes_nine,
     }
   end
 
@@ -296,7 +460,7 @@ class StudentSubmission < ActiveRecord::Base
       shirt_size: shirt_size,
     )
     unless student.save
-      raise 'Could not create student from submission'
+      fail 'Could not create student from submission'
     end
     begin
       SubmissionsMailer.submit_student(self).deliver_now
@@ -304,7 +468,7 @@ class StudentSubmission < ActiveRecord::Base
       raise 'Could not deliver appropriate emails'
     end
     self.is_active = false
-    self.save
+    save
   end
 
   private
@@ -360,6 +524,74 @@ class StudentSubmission < ActiveRecord::Base
       medications: medications,
       other_dietary_restrictions: other_dietary_restrictions,
       psychologist_consent: psychologist_consent,
+    }
+  end
+
+  def attributes_four
+    {
+      insurance: insurance,
+      insurance_address: insurance_address,
+      insurance_address_city: insurance_address_city,
+      insurance_address_state: insurance_address_state,
+      insurance_address_zip: insurance_address_zip,
+      insurance_id: insurance_id,
+      insurance_other: insurance_other,
+      insurance_phone_number: insurance_phone_number,
+      insurance_provider: insurance_provider,
+    }
+  end
+
+  def attributes_five
+    {
+      carpool: carpool,
+      transportation: transportation,
+      transportation_arrival_date: transportation_arrival_date,
+      transportation_arrival_time: transportation_arrival_time,
+      transportation_carrier: transportation_carrier,
+      transportation_consent: transportation_consent,
+      transportation_consent_name: transportation_consent_name,
+      transportation_departure_date: transportation_departure_date,
+      transportation_departure_time: transportation_departure_time,
+      transportation_name: transportation_name,
+      transportation_number: transportation_number,
+    }
+  end
+
+  def attributes_six
+    {
+      media_information: media_information,
+      media_newspaper: media_newspaper,
+      media_participation: media_participation,
+    }
+  end
+
+  def attributes_seven
+    {
+      ceremony_attendance: ceremony_attendance,
+      ceremony_attendance_number: ceremony_attendance_number,
+    }
+  end
+
+  def attributes_eight
+    {
+      risk_guardian_consent: risk_guardian_consent,
+      risk_guardian_date: risk_guardian_date,
+      risk_guardian_email: risk_guardian_email,
+      risk_guardian_name: risk_guardian_name,
+      risk_guardian_relationship: risk_guardian_relationship,
+      risk_student_consent: risk_student_consent,
+      risk_student_date: risk_student_date,
+      risk_student_email: risk_student_email,
+      risk_student_name: risk_student_name,
+    }
+  end
+
+  def attributes_nine
+    {
+      participation_guardian_consent: participation_guardian_consent,
+      participation_guardian_name: participation_guardian_name,
+      participation_student_consent: participation_student_consent,
+      participation_student_name: participation_student_name,
     }
   end
 

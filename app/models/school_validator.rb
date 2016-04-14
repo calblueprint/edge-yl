@@ -115,27 +115,27 @@ class SchoolValidator
   validates :alternate_address_one, if: :has_alternate?, presence: true
   validates :alternate_address_state, if: :has_alternate?, presence: true
   validates :alternate_address_zip, format: ValidationConstants::ZIP_FORMAT,
-                                            if: :has_alternate?,
-                                            presence: true
+                                    if: :has_alternate?,
+                                    presence: true
   validates :alternate_birthday, if: :has_alternate?, presence: true
   validates :alternate_cell_phone, format: ValidationConstants::PHONE_FORMAT,
-                                           if: :has_alternate?,
-                                           presence: true
+                                   if: :has_alternate?,
+                                   presence: true
   validates :alternate_email, format: ValidationConstants::EMAIL_FORMAT,
-                                      if: :has_alternate?,
-                                      presence: true
+                              if: :has_alternate?,
+                              presence: true
   validates :alternate_first_name, if: :has_alternate?, presence: true
   validates :alternate_guardian_first_name, if: :has_alternate?, presence: true
   validates :alternate_guardian_email, if: :has_alternate?, presence: true
   validates :alternate_guardian_last_name, if: :has_alternate?, presence: true
   validates :alternate_guardian_phone_number, format: ValidationConstants::PHONE_FORMAT,
-                                                      if: :has_alternate?,
-                                                      presence: true
+                                              if: :has_alternate?,
+                                              presence: true
   validates :alternate_guardian_phone_type, if: :has_alternate?, presence: true
   validates :alternate_guardian_relationship, if: :has_alternate?, presence: true
   validates :alternate_home_phone, format: ValidationConstants::PHONE_FORMAT,
-                                           if: :has_alternate?,
-                                           presence: true
+                                   if: :has_alternate?,
+                                   presence: true
   validates :alternate_gender, if: :has_alternate?, presence: true
   validates :alternate_last_name, if: :has_alternate?, presence: true
   validates :alternate_shirt_size, if: :has_alternate?, presence: true

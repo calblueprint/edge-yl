@@ -1,4 +1,4 @@
-(1..10).each do |index|
+(1..10).each do
   new_prospect = Prospect.create(
     contact_email: Faker::Internet.email,
     contact_first_name: Faker::Name.first_name,

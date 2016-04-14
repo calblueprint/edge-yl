@@ -88,6 +88,10 @@
             display: 'flex',
             marginBottom: '18px',
           },
+          description: {
+            fontWeight: '200',
+            lineHeight: '15px',
+          },
           errors: {
             color: this.colors.red,
           },
@@ -107,7 +111,7 @@
             marginRight: '24px',
           },
           required: {
-            paddingLeft: '3px',
+            paddingLeft: '1px',
             color: this.colors.red,
           },
           response: {

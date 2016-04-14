@@ -15,7 +15,6 @@
 #
 
 FactoryGirl.define do
-
   factory :contact do
     email        { Faker::Internet.email }
     first_name   { Faker::Name.first_name }
@@ -24,5 +23,4 @@ FactoryGirl.define do
     phone_number { Faker::Base.numerify('###-###-####') }
     title        { 'Software Engineer' }
   end
-
 end

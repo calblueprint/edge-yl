@@ -49,6 +49,8 @@ class ThreadsCard extends Component {
     var count = this.props.thread.emails_count;
     if(count > 1) {
       return ` (${count})`;
+    } else {
+      return '';
     }
   }
 
@@ -113,7 +115,7 @@ class ThreadsCard extends Component {
             {this.renderNewIcon()}
             <h6>{`${thread.subject} ${this.emailsCount()}`}</h6>
             <p style={this.styles.divider}>{'--'}</p>
-            <p>{thread.content}</p>
+            <p>{thread.content_preview}</p>
           </div>
         </Clickable>
       </div>

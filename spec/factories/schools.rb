@@ -15,7 +15,6 @@
 #
 
 FactoryGirl.define do
-
   factory :school do
     address_city          { Faker::Address.city }
     address_one           { Faker::Address.street_address }
@@ -25,5 +24,4 @@ FactoryGirl.define do
     name                  { "#{Faker::Name.first_name} High School" }
     website               { Faker::Internet.url('schoolweb.com') }
   end
-
 end

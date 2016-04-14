@@ -18,7 +18,7 @@ class FormPage extends Component {
         {},
         StyleConstants.templates.card,
         {
-          padding: '36px',
+          padding: '36px 36px 24px',
           marginTop: '12px',
         }
       ),
@@ -34,37 +34,48 @@ class FormPage extends Component {
   // Render
   // --------------------------------------------------
   renderQuestion(question) {
-    switch (question.style) {
-      case 'dropdown':
-        return (
-          <FormDropdown
-            key={question.id}
-            question={question} />
-        );
-      case 'information':
-        return (
-          <FormInformation
-            key={question.id}
-            question={question} />
-        );
-      case 'input':
-        return (
-          <FormInput
-            key={question.id}
-            question={question} />
-        );
-      case 'textarea':
-        return (
-          <FormTextarea
-            key={question.id}
-            question={question} />
-        );
-      case 'waiver':
-        return (
-          <FormWaiver
-            key={question.id}
-            question={question} />
-        );
+    var render = true;
+    if (question.enabler_key) {
+      this.props.page.questions.map((element) => {
+        if (question.enabler_key === element.key &&
+            question.enabler_value !== element.value) {
+          render = false;
+        }
+      });
+    }
+    if (render) {
+      switch (question.style) {
+        case TypeConstants.questions.dropdown:
+          return (
+            <FormDropdown
+              key={question.id}
+              question={question} />
+          );
+        case TypeConstants.questions.information:
+          return (
+            <FormInformation
+              key={question.id}
+              question={question} />
+          );
+        case TypeConstants.questions.input:
+          return (
+            <FormInput
+              key={question.id}
+              question={question} />
+          );
+        case TypeConstants.questions.textarea:
+          return (
+            <FormTextarea
+              key={question.id}
+              question={question} />
+          );
+        case TypeConstants.questions.waiver:
+          return (
+            <FormWaiver
+              key={question.id}
+              question={question} />
+          );
+      }
     }
   }
 

@@ -44,7 +44,6 @@ class CreateStudents < ActiveRecord::Migration
       t.string  :medications, null: false
       t.string  :preferred_name, default: '', null: false
       t.integer :psychologist_consent, null: false
-      t.integer :registration_status, null: false
       t.integer :shirt_size, null: false
 
       t.references :conference, index: true, null: false

@@ -1,20 +1,20 @@
 class Api::ImportsController < Api::BaseController
 
-  skip_before_filter :verify_authenticity_token
+  skip_before_action :verify_authenticity_token
 
   def schools
     file = params[:upload]
     csv = CSV.parse(file.open, headers: true)
     csv.each do |row|
-      school = School.create(
-       address_city: row[8],
-       address_one: row[6],
-       address_two: row[7],
-       address_state: row[9],
-       address_zip: row[10],
-       name: row[1],
+      School.create(
+        address_city: row[8],
+        address_one: row[6],
+        address_two: row[7],
+        address_state: row[9],
+        address_zip: row[10],
+        name: row[1],
       )
-      contact = Contact.create(
+      Contact.create(
         email: row[11],
         first_name: row[2],
         is_primary: true,
@@ -48,33 +48,33 @@ class Api::ImportsController < Api::BaseController
       #   school: school,
       #   title: row[4],
       # )
-      student = Student.create!(
+      Student.create!(
         address_city: row[22].blank? ? 'n/a' : row[22],
         address_one: row[20].blank? ? 'n/a' : row[20],
         address_state: row[23].blank? ? 'n/a' : row[23],
         address_two: row[21].blank? ? 'n/a' : row[21],
         address_zip: row[24] .blank? ? 'n/a' : row[24],
-        allergies: 0, #row55
-        birthday: '2001-12-31', #row29
+        allergies: 0, # row55
+        birthday: '2001-12-31', # row29
         cell_phone: row[27] || 'n/a',
-        dietary_restrictions: 0, #row70
+        dietary_restrictions: 0, # row70
         other_dietary_restrictions: 'Nut allergy',
         email: row[25] || 'n/a',
         emergency_consent: 0,
         exercise_limitations: 'None',
         first_name: row[17] || 'n/a',
-        gender: 0, #row28
+        gender: 0, # row28
         guardian_email: row[35] || 'n/a',
         guardian_employer: row[37] || 'n/a',
         guardian_first_name: row[31] || 'n/a',
         guardian_job_title: row[38] || 'n/a',
         guardian_last_name: row[32] || 'n/a',
         guardian_phone_number: row[36] || 'n/a',
-        guardian_phone_type: 0, #row36
-        guardian_relationship: 0, #row33
+        guardian_phone_type: 0, # row36
+        guardian_relationship: 0, # row33
         health_conditions: 0,
         home_phone: row[26] || 'n/a',
-        immunizations: 0, #row54,
+        immunizations: 0, # row54,
         is_flagged: 0,
         is_primary: 0,
         last_name: row[18] || 'n/a',
@@ -84,8 +84,8 @@ class Api::ImportsController < Api::BaseController
         psychologist_consent: 0,
         registration_status: 0,
         # school: school,
-        shirt_size: 0, #row30 
-        conference_id:0,
+        shirt_size: 0, # row30
+        conference_id: 0,
       )
     end
     redirect_to schools_path

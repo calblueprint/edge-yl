@@ -18,20 +18,38 @@ class EmailsCard extends Component {
         {},
         StyleConstants.containers.card,
         {
-          padding: '24px',
-          marginTop: '12px',
+          backgroundColor: this.props.email.is_unread ? "#ffffff" : "#f6f6f6",
+          padding: '15px',
+          marginTop: '3px',
         },
       ),
+      content: {
+        fontSize: '14px',
+      },
       header: {
         display: 'flex',
+        flexFlow: 'column',
         justifyContent: 'space-between',
+      },
+      from: {
+        textOverflow: 'ellipsis',
+        whiteSpace: 'nowrap',
+        overflow: 'hidden',
       },
       section: {
         display: 'flex',
-        flexFlow: 'column',
+        flexFlow: 'row',
+      },
+      to: {
+        fontSize: '12px',
       },
       draft: {
         color: 'red',
+      },
+      timeHeader: {
+        display: 'flex',
+        flexFlow: 'row',
+        justifyContent: 'space-between',
       },
     };
   }
@@ -60,16 +78,19 @@ class EmailsCard extends Component {
     return (
       <div style={this.styles.container}>
         <div style={this.styles.header}>
-          <div style={this.styles.section}>
-            <h6>{'From'}</h6>
-            <p>{email.from}</p>
-            <h6>{'To'}</h6>
-            <p>{email.to}</p>
+          <div style={this.styles.timeHeader}>
+            <div style={this.styles.section}>
+              <h6>{'From:'}</h6>{' '}
+              <h6 style={this.styles.from}>{email.from}</h6>
+            </div>
+            <p>{email.updated_at}</p>
           </div>
-          <p>{email.updated_at}</p>
+          <div style={this.styles.section}>
+            <p style={this.styles.to}>{'To:'}</p>
+            <p style={this.styles.name}>{email.to}</p>
+          </div>
         </div>
-        <h6>{'Content'}</h6>
-        <p>{email.content}</p>
+        <p style={this.styles.content}>{email.content}</p>
       </div>
     );
   }

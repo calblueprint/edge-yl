@@ -9,7 +9,10 @@ class CreateStudentSubmissions < ActiveRecord::Migration
       t.string  :address_zip
       t.integer :allergies
       t.date    :birthday
+      t.integer :carpool
       t.string  :cell_phone
+      t.integer :ceremony_attendance
+      t.string  :ceremony_attendance_number
       t.integer :current_page, default: 0, null: false
       t.integer :dietary_restrictions
       t.string  :email
@@ -38,17 +41,50 @@ class CreateStudentSubmissions < ActiveRecord::Migration
       t.boolean :is_active, default: true, null: false
       t.boolean :is_primary, null: false
       t.integer :immunizations
+      t.integer :insurance
+      t.string  :insurance_address
+      t.string  :insurance_address_city
+      t.integer :insurance_address_state
+      t.integer :insurance_address_zip
+      t.string  :insurance_id
+      t.string  :insurance_other, default: ''
+      t.string  :insurance_phone_number
+      t.string  :insurance_provider
       t.string  :last_name
+      t.string  :media_information
+      t.string  :media_newspaper
+      t.integer :media_participation
       t.string  :medical_guardian_name
       t.string  :medications
-      t.string  :other_dietary_restrictions
+      t.string  :other_dietary_restrictions, default: ''
+      t.integer :participation_guardian_consent
+      t.string  :participation_guardian_name
+      t.integer :participation_student_consent
+      t.string  :participation_student_name
       t.string  :preferred_name, default: ''
       t.integer :psychologist_consent
+      t.integer :risk_guardian_consent
+      t.date    :risk_guardian_date
+      t.string  :risk_guardian_email
+      t.string  :risk_guardian_name
+      t.integer :risk_guardian_relationship
+      t.integer :risk_student_consent
+      t.date    :risk_student_date
+      t.string  :risk_student_email
+      t.string  :risk_student_name
       t.integer :shirt_size
-
+      t.integer :transportation
+      t.date    :transportation_arrival_date
+      t.string  :transportation_arrival_time
+      t.string  :transportation_carrier
+      t.integer :transportation_consent
+      t.string  :transportation_consent_name
+      t.date    :transportation_departure_date
+      t.string  :transportation_departure_time
+      t.string  :transportation_name
+      t.string  :transportation_number
       t.references :conference, index: true, null: false
     end
   end
 
 end
-

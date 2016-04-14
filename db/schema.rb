@@ -157,17 +157,19 @@ ActiveRecord::Schema.define(version: 20160408025358) do
   end
 
   create_table "questions", force: :cascade do |t|
-    t.string   "description", default: "",   null: false
-    t.integer  "format",                     null: false
-    t.boolean  "is_required", default: true, null: false
-    t.string   "key",                        null: false
-    t.string   "options",     default: [],   null: false, array: true
-    t.string   "placeholder", default: "",   null: false
-    t.integer  "style",                      null: false
-    t.string   "title",                      null: false
+    t.string   "description",   default: "",   null: false
+    t.string   "enabler_key"
+    t.string   "enabler_value"
+    t.integer  "format",                       null: false
+    t.boolean  "is_required",   default: true, null: false
+    t.string   "key",                          null: false
+    t.string   "options",       default: [],   null: false, array: true
+    t.string   "placeholder",   default: "",   null: false
+    t.integer  "style",                        null: false
+    t.string   "title",                        null: false
     t.integer  "page_id"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
   end
 
   add_index "questions", ["page_id"], name: "index_questions_on_page_id", using: :btree
@@ -271,13 +273,16 @@ ActiveRecord::Schema.define(version: 20160408025358) do
   create_table "student_submissions", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.string  "address_city"
     t.string  "address_one"
-    t.integer "address_state",              default: 4
-    t.string  "address_two",                default: ""
+    t.integer "address_state",                  default: 4
+    t.string  "address_two",                    default: ""
     t.string  "address_zip"
     t.integer "allergies"
     t.date    "birthday"
+    t.integer "carpool"
     t.string  "cell_phone"
-    t.integer "current_page",               default: 0,    null: false
+    t.integer "ceremony_attendance"
+    t.string  "ceremony_attendance_number"
+    t.integer "current_page",                   default: 0,    null: false
     t.integer "dietary_restrictions"
     t.string  "email"
     t.integer "emergency_consent"
@@ -285,34 +290,69 @@ ActiveRecord::Schema.define(version: 20160408025358) do
     t.string  "first_name"
     t.integer "gender"
     t.string  "guardian_one_email"
-    t.string  "guardian_one_employer",      default: ""
+    t.string  "guardian_one_employer",          default: ""
     t.string  "guardian_one_first_name"
-    t.string  "guardian_one_job_title",     default: ""
+    t.string  "guardian_one_job_title",         default: ""
     t.string  "guardian_one_last_name"
     t.string  "guardian_one_phone_number"
     t.integer "guardian_one_phone_type"
     t.integer "guardian_one_relationship"
     t.string  "guardian_two_email"
-    t.string  "guardian_two_employer",      default: ""
+    t.string  "guardian_two_employer",          default: ""
     t.string  "guardian_two_first_name"
-    t.string  "guardian_two_job_title",     default: ""
+    t.string  "guardian_two_job_title",         default: ""
     t.string  "guardian_two_last_name"
     t.string  "guardian_two_phone_number"
     t.integer "guardian_two_phone_type"
     t.integer "guardian_two_relationship"
     t.integer "health_conditions"
     t.string  "home_phone"
-    t.boolean "is_active",                  default: true, null: false
-    t.boolean "is_primary",                                null: false
+    t.boolean "is_active",                      default: true, null: false
+    t.boolean "is_primary",                                    null: false
     t.integer "immunizations"
+    t.integer "insurance"
+    t.string  "insurance_address"
+    t.string  "insurance_address_city"
+    t.integer "insurance_address_state"
+    t.integer "insurance_address_zip"
+    t.string  "insurance_id"
+    t.string  "insurance_other",                default: ""
+    t.string  "insurance_phone_number"
+    t.string  "insurance_provider"
     t.string  "last_name"
+    t.string  "media_information"
+    t.string  "media_newspaper"
+    t.integer "media_participation"
     t.string  "medical_guardian_name"
     t.string  "medications"
-    t.string  "other_dietary_restrictions"
-    t.string  "preferred_name",             default: ""
+    t.string  "other_dietary_restrictions",     default: ""
+    t.integer "participation_guardian_consent"
+    t.string  "participation_guardian_name"
+    t.integer "participation_student_consent"
+    t.string  "participation_student_name"
+    t.string  "preferred_name",                 default: ""
     t.integer "psychologist_consent"
+    t.integer "risk_guardian_consent"
+    t.date    "risk_guardian_date"
+    t.string  "risk_guardian_email"
+    t.string  "risk_guardian_name"
+    t.integer "risk_guardian_relationship"
+    t.integer "risk_student_consent"
+    t.date    "risk_student_date"
+    t.string  "risk_student_email"
+    t.string  "risk_student_name"
     t.integer "shirt_size"
-    t.integer "conference_id",                             null: false
+    t.integer "transportation"
+    t.date    "transportation_arrival_date"
+    t.string  "transportation_arrival_time"
+    t.string  "transportation_carrier"
+    t.integer "transportation_consent"
+    t.string  "transportation_consent_name"
+    t.date    "transportation_departure_date"
+    t.string  "transportation_departure_time"
+    t.string  "transportation_name"
+    t.string  "transportation_number"
+    t.integer "conference_id",                                 null: false
   end
 
   add_index "student_submissions", ["conference_id"], name: "index_student_submissions_on_conference_id", using: :btree
@@ -360,7 +400,6 @@ ActiveRecord::Schema.define(version: 20160408025358) do
     t.string   "medications",                                null: false
     t.string   "preferred_name",             default: "",    null: false
     t.integer  "psychologist_consent",                       null: false
-    t.integer  "registration_status",                        null: false
     t.integer  "shirt_size",                                 null: false
     t.integer  "conference_id",                              null: false
     t.integer  "group_id"

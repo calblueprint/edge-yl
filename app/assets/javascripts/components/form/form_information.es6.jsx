@@ -31,6 +31,11 @@ class FormInformation extends Component {
     };
   }
 
+  unescapeHTML(html) {
+    var escapeEl = document.createElement('textarea');
+    escapeEl.innerHTML = html;
+    return escapeEl;
+}
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
@@ -50,7 +55,7 @@ class FormInformation extends Component {
         <div style={this.styles.title}>
           <h6>{this.props.question.title}{this.renderRequired()}</h6>
         </div>
-        <p>{this.props.question.description}</p>
+        <p dangerouslySetInnerHTML={{__html: this.props.question.description}}></p>
       </div>
     );
   }

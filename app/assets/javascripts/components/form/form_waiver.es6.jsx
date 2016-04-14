@@ -91,6 +91,7 @@ class FormWaiver extends Component {
   render() {
     return (
       <div style={this.styles.container}>
+        <FormDropdown question={this.question} />
         <div style={this.styles.prompt}>
           <h6>{this.props.question.title}{this.renderRequired()}</h6>
         </div>
