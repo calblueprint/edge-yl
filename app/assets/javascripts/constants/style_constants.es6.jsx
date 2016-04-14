@@ -111,7 +111,7 @@
             marginRight: '24px',
           },
           required: {
-            paddingLeft: '3px',
+            paddingLeft: '1px',
             color: this.colors.red,
           },
           response: {
