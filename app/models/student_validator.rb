@@ -20,6 +20,7 @@ class StudentValidator
                 :dietary_restrictions,
                 :email,
                 :emergency_consent,
+                :emergency_consent_name,
                 :exercise_limitations,
                 :first_name,
                 :gender,
@@ -55,7 +56,6 @@ class StudentValidator
                 :media_information,
                 :media_newspaper,
                 :media_participation,
-                :medical_guardian_name,
                 :medications,
                 :other_dietary_restrictions,
                 :participation_guardian_consent,
@@ -64,6 +64,7 @@ class StudentValidator
                 :participation_student_name,
                 :preferred_name,
                 :psychologist_consent,
+                :psychologist_consent_name,
                 :risk_guardian_consent,
                 :risk_guardian_date,
                 :risk_guardian_email,
@@ -130,12 +131,13 @@ class StudentValidator
   validates :allergies, if: :page_three?, presence: true
   validates :dietary_restrictions, if: :page_three?, presence: true
   validates :emergency_consent, if: :page_three?, presence: true
+  validates :emergency_consent_name, if: :emergency_consent?, presence: true
   validates :exercise_limitations, if: :page_three?, presence: true
   validates :health_conditions, if: :page_three?, presence: true
   validates :immunizations, if: :page_three?, presence: true
-  validates :medical_guardian_name, if: :page_three?, presence: true
   validates :medications, if: :page_three?, presence: true
   validates :psychologist_consent, if: :page_three?, presence: true
+  validates :psychologist_consent_name, if: :psychologist_consent?, presence: true
 
   validates :insurance, if: :page_four?, presence: true
   validates :insurance_address, if: :has_insurance?, presence: true
@@ -185,6 +187,10 @@ class StudentValidator
   end
 
   private
+
+  def emergency_consent?
+    emergency_consent == EnumConstants::BOOLEANS[0]
+  end
 
   def has_insurance?
     insurance == EnumConstants::BOOLEANS[0]
@@ -237,6 +243,10 @@ class StudentValidator
 
   def persisted?
     false
+  end
+
+  def psychologist_consent?
+    psychologist_consent == EnumConstants::BOOLEANS[0]
   end
 
   def public_transportation?

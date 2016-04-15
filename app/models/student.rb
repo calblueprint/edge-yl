@@ -41,7 +41,6 @@
 #  is_flagged                 :boolean          not null
 #  is_primary                 :boolean          not null
 #  last_name                  :string           not null
-#  medical_guardian_name      :string           not null
 #  medications                :string           not null
 #  preferred_name             :string           default(""), not null
 #  psychologist_consent       :integer          not null
@@ -127,9 +126,9 @@ class Student < ActiveRecord::Base
   validates :is_flagged, inclusion: { in: [false, true] }
   validates :is_primary, inclusion: { in: [false, true] }
   validates :last_name, presence: true
-  validates :medical_guardian_name, presence: true
   validates :medications, presence: true
   validates :psychologist_consent, presence: true
+  validates :psychologist_consent_name, presence: true
   validates :other_dietary_restrictions, presence: true
   validates :shirt_size, presence: true
 

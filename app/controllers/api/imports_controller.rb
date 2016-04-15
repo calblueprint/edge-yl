@@ -78,10 +78,10 @@ class Api::ImportsController < Api::BaseController
         is_flagged: 0,
         is_primary: 0,
         last_name: row[18] || 'n/a',
-        medical_guardian_name: 'Warren',
         medications: 'Warren',
         preferred_name: 'Warren',
         psychologist_consent: 0,
+        psychologist_consent_name: 'Warren',
         registration_status: 0,
         # school: school,
         shirt_size: 0, #row30 

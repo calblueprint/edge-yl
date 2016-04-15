@@ -54,11 +54,14 @@ class PreviewPage extends Component {
   // --------------------------------------------------
   renderQuestion(question) {
     var questions = this.props.page.questions;
+      console.log(question.enabler_key);
+
     if (question.style!='information') {
+      var questions = this.props.page.questions;
       var render = true;
       if (question.enabler_key) {
         for (var i = 0; i < questions.length; i++) {
-          if (question.enabler_key == questions[i].key && question.enabler_value != questions[i].value) {
+          if (question.enabler_key == questions[i].key && question.enabler_value.indexOf(questions[i].value) == -1) {
             render = false;
             break;
           }

@@ -17,6 +17,7 @@ class CreateStudentSubmissions < ActiveRecord::Migration
       t.integer :dietary_restrictions
       t.string  :email
       t.integer :emergency_consent
+      t.string  :emergency_consent_name
       t.string  :exercise_limitations
       t.string  :first_name
       t.integer :gender
@@ -54,7 +55,6 @@ class CreateStudentSubmissions < ActiveRecord::Migration
       t.string  :media_information
       t.string  :media_newspaper
       t.integer :media_participation
-      t.string  :medical_guardian_name
       t.string  :medications
       t.string  :other_dietary_restrictions, default: ''
       t.integer :participation_guardian_consent
@@ -63,6 +63,7 @@ class CreateStudentSubmissions < ActiveRecord::Migration
       t.string  :participation_student_name
       t.string  :preferred_name, default: ''
       t.integer :psychologist_consent
+      t.string  :psychologist_consent_name
       t.integer :risk_guardian_consent
       t.date    :risk_guardian_date
       t.string  :risk_guardian_email

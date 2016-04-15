@@ -38,12 +38,14 @@ class FormPage extends Component {
     var render = true;
     if (question.enabler_key) {
       for (var i = 0; i < questions.length; i++) {
-        if (question.enabler_key == questions[i].key && question.enabler_value != questions[i].value) {
+        if (question.enabler_key == questions[i].key && question.enabler_value.indexOf(questions[i].value) == -1) {
+          console.log('hello');
           render = false;
           break;
         }
       }
     }
+    
     if (render) {
       switch (question.style) {
         case 'dropdown':

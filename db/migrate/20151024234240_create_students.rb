@@ -40,13 +40,12 @@ class CreateStudents < ActiveRecord::Migration
       t.boolean :is_flagged, null: false
       t.boolean :is_primary, null: false
       t.string  :last_name, null: false
-      t.string  :medical_guardian_name, null: false
       t.string  :medications, null: false
       t.string  :preferred_name, default: '', null: false
       t.integer :psychologist_consent, null: false
+      t.string  :psychologist_consent_name, null: false
       t.integer :registration_status, null: false
       t.integer :shirt_size, null: false
-
       t.references :conference, index: true, null: false
       t.references :group, index: true
       t.references :room, index: true

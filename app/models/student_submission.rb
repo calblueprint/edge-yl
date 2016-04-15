@@ -34,7 +34,7 @@
 #  guardian_two_last_name        :string
 #  guardian_two_phone_number     :string
 #  guardian_two_phone_type       :integer
-#  guardian_two_relationship     :integer
+#  guardian_two_relationship     :integer 
 #  health_conditions             :integer
 #  home_phone                    :string
 #  is_active                     :boolean          default(TRUE), not null
@@ -50,7 +50,6 @@
 #  insurance_phone_number        :string
 #  insurance_provider            :string
 #  last_name                     :string
-#  medical_guardian_name         :string
 #  medications                   :string
 #  other_dietary_restrictions    :string           default("")
 #  preferred_name                :string           default("")
@@ -432,11 +431,11 @@ class StudentSubmission < ActiveRecord::Base
       immunizations: immunizations,
       is_primary: is_primary,
       last_name: last_name,
-      medical_guardian_name: medical_guardian_name,
       medications: medications,
       other_dietary_restrictions: other_dietary_restrictions,
       preferred_name: preferred_name,
       psychologist_consent: psychologist_consent,
+      psychologist_consent_name: psychologist_consent_name,
       shirt_size: shirt_size,
     )
     unless student.save
@@ -497,13 +496,14 @@ class StudentSubmission < ActiveRecord::Base
       allergies: allergies,
       dietary_restrictions: dietary_restrictions,
       emergency_consent: emergency_consent,
+      emergency_consent_name: emergency_consent_name,
       exercise_limitations: exercise_limitations,
       health_conditions: health_conditions,
       immunizations: immunizations,
-      medical_guardian_name: medical_guardian_name,
       medications: medications,
       other_dietary_restrictions: other_dietary_restrictions,
       psychologist_consent: psychologist_consent,
+      psychologist_consent_name: psychologist_consent_name,
     }
   end
 

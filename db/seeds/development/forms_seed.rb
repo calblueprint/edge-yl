@@ -711,6 +711,14 @@ student_form = Form.create(
       title: 'Do you consent?',
     )
     Question.create(
+      enabler_key: 'emergency_consent',
+      enabler_value: 'yes',
+      key: 'emergency_consent_name',
+      page: page,
+      style: Question.styles[:input],
+      title: 'Parent/Guardian Name',
+    )
+    Question.create(
       description: 'Becoming a leader requires self-reflection and challenging oneself to work through the internal barriers to leadership development. Our seminar ' +
                    'encourages and guides this self-reflection through interactive activities and experiential processes. At times this can be emotionally difficult, ' +
                    'and the student may need additional support to process their experience. In light of this, we will have an on-site Licensed Psychologist available ' +
@@ -729,7 +737,9 @@ student_form = Form.create(
       title: 'Do you consent?',
     )
     Question.create(
-      key: 'medical_guardian_name',
+      enabler_key: 'psychologist_consent',
+      enabler_value: 'yes',
+      key: 'psychologist_consent_name',
       page: page,
       style: Question.styles[:input],
       title: 'Guardian Name',
@@ -749,6 +759,8 @@ student_form = Form.create(
       title: 'Does your child have health insurance?',
     )
     Question.create(
+      enabler_key: 'insurance',
+      enabler_value: 'yes',
       description: '(e.g. Anthem Blue Cross, Kaiser Permanente, Health Net, etc.)',
       key: 'insurance_provider',
       page: page,
@@ -756,18 +768,24 @@ student_form = Form.create(
       title: 'Insurance Provider',
     )
     Question.create(
+      enabler_key: 'insurance',
+      enabler_value: 'yes',
       key: 'insurance_address',
       page: page,
       style: Question.styles[:input],
       title: 'Insurance Provider Address',
     )
     Question.create(
+      enabler_key: 'insurance',
+      enabler_value: 'yes',
       key: 'insurance_address_city',
       page: page,
       style: Question.styles[:input],
       title: 'Insurance Provider City',
     )
     Question.create(
+      enabler_key: 'insurance',
+      enabler_value: 'yes',
       key: 'insurance_address_state',
       options: EnumConstants::STATES,
       page: page,
@@ -775,12 +793,16 @@ student_form = Form.create(
       title: 'Insurance Provider State',
     )
     Question.create(
+      enabler_key: 'insurance',
+      enabler_value: 'yes',
       key: 'insurance_address_zip',
       page: page,
       style: Question.styles[:input],
       title: 'Insurance Provider Zip',
     )
     Question.create(
+      enabler_key: 'insurance',
+      enabler_value: 'yes',
       description: StringConstants::PHONE_FORMAT,
       key: 'insurance_phone_number',
       page: page,
@@ -788,12 +810,16 @@ student_form = Form.create(
       title: 'Insurance Provider Phone',
     )
     Question.create(
+      enabler_key: 'insurance',
+      enabler_value: 'yes',
       key: 'insurance_id',
       page: page,
       style: Question.styles[:input],
       title: 'Group # or ID #',
     )
     Question.create(
+      enabler_key: 'insurance',
+      enabler_value: 'yes',
       is_required: false,
       key: 'insurance_other',
       page: page,
@@ -832,6 +858,8 @@ student_form = Form.create(
       title: 'How will you be getting to and from the seminar?',
     )
     Question.create(
+      enabler_key: 'transportation',
+      enabler_value: 'Public Transportation - Plane,Public Transportation - Train,Public Transportation - Bus',
       description: 'Rockridge BART, Downtown Berkeley BART, College Avenue and Parker Street Bus Stop, Warring Street and Parker Street Bus Stop, Oakland International Airport',
       key: 'transportation_name',
       page: page,
@@ -839,6 +867,8 @@ student_form = Form.create(
       title: 'Station/Airport Name',
     )
     Question.create(
+      enabler_key: 'transportation',
+      enabler_value: 'Public Transportation - Plane,Public Transportation - Train,Public Transportation - Bus',
       description: 'Southwest, BART, AC Transit, etc.',
       key: 'transportation_carrier',
       page: page,
@@ -846,12 +876,16 @@ student_form = Form.create(
       title: 'Flight/Train/Bus Carrier',
     )
     Question.create(
+      enabler_key: 'transportation',
+      enabler_value: 'Public Transportation - Plane,Public Transportation - Train,Public Transportation - Bus',
       key: 'transportation_number',
       page: page,
       style: Question.styles[:input],
       title: 'Flight/Train/Bus Number',
     )
     Question.create(
+      enabler_key: 'transportation',
+      enabler_value: 'Public Transportation - Plane,Public Transportation - Train,Public Transportation - Bus',
       key: 'transportation_arrival_date',
       format: Question.formats[:date],
       page: page,
@@ -859,6 +893,8 @@ student_form = Form.create(
       title: 'Arrival Date',
     )
     Question.create(
+      enabler_key: 'transportation',
+      enabler_value: 'Public Transportation - Plane,Public Transportation - Train,Public Transportation - Bus',
       description: 'You must arrive by 8am',
       key: 'transportation_arrival_time',
       page: page,
@@ -866,6 +902,8 @@ student_form = Form.create(
       title: 'Arrival Time',
     )
     Question.create(
+      enabler_key: 'transportation',
+      enabler_value: 'Public Transportation - Plane,Public Transportation - Train,Public Transportation - Bus',
       key: 'transportation_departure_date',
       format: Question.formats[:date],
       page: page,
@@ -873,6 +911,8 @@ student_form = Form.create(
       title: 'Departure Date',
     )
     Question.create(
+      enabler_key: 'transportation',
+      enabler_value: 'Public Transportation - Plane,Public Transportation - Train,Public Transportation - Bus',
       description: 'Do not plan to leave earlier than 3pm',
       key: 'transportation_departure_time',
       page: page,
@@ -880,6 +920,8 @@ student_form = Form.create(
       title: 'Departure Time',
     )
     Question.create(
+      enabler_key: 'transportation',
+      enabler_value: 'Public Transportation - Plane,Public Transportation - Train,Public Transportation - Bus',
       description: 'For some students transportation to the seminar site can be challenging. We do our best ' +
                    'to organize carpools for students who need them.',
       key: 'carpool_info',
@@ -915,6 +957,8 @@ student_form = Form.create(
       title: 'Waiver Agreement',
     )
     Question.create(
+      enabler_key: 'transportation_consent',
+      enabler_value: 'yes',
       key: 'transportation_consent_name',
       page: page,
       style: Question.styles[:input],
@@ -944,12 +988,16 @@ student_form = Form.create(
       title: 'I would like to have my participation announced',
     )
     Question.create(
+      enabler_key: 'media_participation',
+      enabler_value: 'yes',
       key: 'media_newspaper',
       page: page,
       style: Question.styles[:input],
       title: 'Newspaper Name',
     )
     Question.create(
+      enabler_key: 'media_participation',
+      enabler_value: 'yes',
       is_required: false,
       key: 'media_information',
       page: page,
@@ -988,6 +1036,8 @@ student_form = Form.create(
       title: 'Will you join us on Sunday?',
     )
     Question.create(
+      enabler_key: 'ceremony_attendance',
+      enabler_value: "My family will be attending the Parents' Program and Closing Ceremonies,My family will only be attending Closing Ceremonies",
       key: 'ceremony_attendance_number',
       page: page,
       style: Question.styles[:input],

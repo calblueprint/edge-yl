@@ -41,7 +41,7 @@
 #  is_flagged                 :boolean          not null
 #  is_primary                 :boolean          not null
 #  last_name                  :string           not null
-#  medical_guardian_name      :string           not null
+#  psychologist_consent_name  :string           not null
 #  medications                :string           not null
 #  preferred_name             :string           default(""), not null
 #  psychologist_consent       :integer          not null
@@ -94,11 +94,11 @@ FactoryGirl.define do
     is_flagged            { true }
     is_primary            { true }
     last_name             { Faker::Name.last_name }
-    medical_guardian_name { Faker::Name.first_name }
     medications           { 'None' }
     other_dietary_restrictions { 'None' }
     preferred_name        { 'sonia' }
     psychologist_consent  { 0 }
+    psychologist_consent_name { Faker::Name.first_name }
     registration_status   { rand(3) }
     shirt_size            { rand(5) }
   end
