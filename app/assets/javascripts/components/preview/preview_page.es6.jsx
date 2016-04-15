@@ -53,7 +53,6 @@ class PreviewPage extends Component {
   // Render
   // --------------------------------------------------
   renderQuestion(question) {
-    var questions = this.props.page.questions;
     if (question.style !== TypeConstants.questions.information) {
       var questions = this.props.page.questions;
       var render = true;
@@ -65,7 +64,7 @@ class PreviewPage extends Component {
               render = false;
               break loop;
           }
-        });
+        }
       }
       if (render) {
         return (
