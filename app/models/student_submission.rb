@@ -15,7 +15,7 @@
 #  ceremony_attendance            :integer
 #  ceremony_attendance_number     :string
 #  current_page                   :integer          default(0), not null
-#  dietary_restrictions           :integer
+#  dietary_restrictions           :string
 #  email                          :string
 #  emergency_consent              :integer
 #  exercise_limitations           :string
@@ -131,16 +131,6 @@ class StudentSubmission < ActiveRecord::Base
 
   def ceremony_attendance=(value)
     self[:ceremony_attendance] = EnumConstants::CEREMONY.index(value)
-  end
-
-  def dietary_restrictions
-    unless self[:dietary_restrictions].nil?
-      EnumConstants::DIETARY_RESTRICTIONS[self[:dietary_restrictions]]
-    end
-  end
-
-  def dietary_restrictions=(value)
-    self[:dietary_restrictions] = EnumConstants::DIETARY_RESTRICTIONS.index(value)
   end
 
   def emergency_consent
@@ -354,6 +344,11 @@ class StudentSubmission < ActiveRecord::Base
 
   def custom_update(update_params)
     if is_active
+      if update_params[:dietary_restrictions]
+        update_params[:dietary_restrictions].sort!
+        dietary_restrictions = update_params[:dietary_restrictions].join(',')
+        update_params[:dietary_restrictions] = dietary_restrictions
+      end
       validator = StudentValidator.new(update_params)
       validator.valid?
       error_response = validator.errors.to_hash

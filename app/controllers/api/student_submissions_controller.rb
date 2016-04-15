@@ -57,7 +57,6 @@ class Api::StudentSubmissionsController < Api::BaseController
       :ceremony_attendance,
       :ceremony_attendance_number,
       :current_page,
-      :dietary_restrictions,
       :email,
       :emergency_consent,
       :exercise_limitations,
@@ -125,6 +124,7 @@ class Api::StudentSubmissionsController < Api::BaseController
       :transportation_departure_time,
       :transportation_name,
       :transportation_number,
+      dietary_restrictions: [],
     )
   end
 

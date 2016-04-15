@@ -27,8 +27,9 @@ class Api::ImportsController < Api::BaseController
     redirect_to schools_path
   end
 
-  def students # if student's shchool is a propect we delete prospect and make a school
-               # if school is already there, append a new contact.
+  def students
+    # if student's shchool is a propect we delete prospect and make a school
+    # if school is already there, append a new contact.
     file = params[:upload]
     csv = CSV.parse(file.open, headers: true)
     csv.each do |row|
@@ -49,7 +50,7 @@ class Api::ImportsController < Api::BaseController
       #   school: school,
       #   title: row[4],
       # )
-      Student.create!(
+      Student.create(
         address_city: row[22].blank? ? 'n/a' : row[22],
         address_one: row[20].blank? ? 'n/a' : row[20],
         address_state: row[23].blank? ? 'n/a' : row[23],
@@ -87,8 +88,8 @@ class Api::ImportsController < Api::BaseController
         # school: school,
         shirt_size: 0, # row30
         conference_id: 0,
-        # -1, 'unknown'
       )
+      # -1, 'unknown'
       # if school exiists, don't create new one
     end
     redirect_to schools_path
