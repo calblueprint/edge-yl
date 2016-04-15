@@ -48,6 +48,18 @@ class ConferencePage extends Component {
     var conference = this.state.conference;
     return [
       {
+        action: () => ConferenceActions.assignStudentsToGroups(conference.id),
+        content: 'Assign groups',
+      },
+      {
+        action: () => ConferenceActions.assignStudentsToRooms(conference.id),
+        content: 'Assign rooms',
+      },
+      {
+        route: RouteConstants.pages.checkIn(conference.id),
+        content: 'Check-in students',
+      },
+      {
         action: () => ConferenceActions.exportGroups(conference.id),
         content: 'Export groups',
       },
@@ -56,12 +68,8 @@ class ConferencePage extends Component {
         content: 'Export rooms',
       },
       {
-        action: () => ConferenceActions.assignStudentsToGroups(conference.id),
-        content: 'Assign students to groups',
-      },
-      {
-        action: () => ConferenceActions.assignStudentsToRooms(conference.id),
-        content: 'Assign students to rooms',
+        action: () => ConferenceActions.exportStudents(conference.id),
+        content: 'Export students',
       },
     ];
   }
@@ -114,7 +122,8 @@ class ConferencePage extends Component {
             <ConferenceGrid
               conference={conference}
               editable={this.state.editable}
-              media={this.state.media} />
+              media={this.state.media}
+              type={TypeConstants.conference.default} />
           </div>
         </div>
       </div>

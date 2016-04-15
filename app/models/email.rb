@@ -22,7 +22,11 @@
 
 class Email < ActiveRecord::Base
 
-  self.default_scope { order('updated_at ASC') }
+  include PgSearch
+
+  multisearchable against: [:to, :from, :subject, :content]
+
+  default_scope { order('updated_at ASC') }
 
   belongs_to :email_thread
   belongs_to :emailable, polymorphic: true
@@ -31,29 +35,29 @@ class Email < ActiveRecord::Base
   before_validation :set_initials, on: :create
 
   def assign_thread
-    self.email_thread ||= find_thread(self.subject, self.user)
-    self.email_thread ||= EmailThread.create subject: self.subject, user: self.user
+    self.email_thread ||= find_thread(subject, user)
+    self.email_thread ||= EmailThread.create subject: subject, user: user
   end
 
   def do_send(update_params)
     update_params[:is_draft] = false
     update_params[:is_sent] = true
     if update_attributes update_params
-      self.assign_thread
-      self.save
-      if self.email_thread.subject == ""
-        self.email_thread.subject = self.subject
-        self.email_thread.save
+      assign_thread
+      save
+      if email_thread.subject == ''
+        self.email_thread.subject = subject
+        email_thread.save
       end
       ApplicationMailer.standard(self).deliver_now
     end
   end
 
   def emailable_name
-    if self.emailable_type == School.name
-      return School.find(self.emailable_id).primary_contact.full_name
-    elsif self.emailable_type == Student.name
-      return Student.find(self.emailable_id).full_name
+    if emailable_type == School.name
+      return School.find(emailable_id).primary_contact.full_name
+    elsif emailable_type == Student.name
+      return Student.find(emailable_id).full_name
     end
   end
 
@@ -87,8 +91,6 @@ class Email < ActiveRecord::Base
     m = /(?<name>\S*)@/.match(email)
     if m
       User.where('lower(first_name) || lower(last_name) = ?', m['name']).first
-    else
-      nil
     end
   end
 
@@ -114,11 +116,11 @@ class Email < ActiveRecord::Base
       end
     end
     self.user ||= find_user(recipient)
-    if self.is_sent
+    if is_sent
       assign_thread
     end
-    self.from ||= self.sender
-    self.to ||= self.recipient
+    self.from ||= sender
+    self.to ||= recipient
   end
 
   def smtp_format_name(model)
@@ -130,4 +132,5 @@ class Email < ActiveRecord::Base
       return "#{model.primary_contact.full_name} <#{model.primary_contact.email}>"
     end
   end
+
 end

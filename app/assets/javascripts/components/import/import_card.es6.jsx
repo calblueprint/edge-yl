@@ -47,8 +47,14 @@ class ImportCard extends Component {
             <h2>{'Import Schools'}</h2>
           </div>
           <div>
-            <form action={ApiConstants.imports.schools} method={'post'} encType={'multipart/form-data'}>
-              <input type={'file'} name={'upload'} accept={'*.csv'} />
+            <form
+              action={ApiConstants.imports.schools}
+              encType={'multipart/form-data'}
+              method={'post'}>
+              <input
+                accept={'*.csv'}
+                name={'upload'}
+                type={'file'} />
               <input type={'submit'} />
             </form>
           </div>
@@ -58,11 +64,17 @@ class ImportCard extends Component {
             <h2>{'Import Students and their Schools'}</h2>
           </div>
           <div>
-            <form action={ApiConstants.imports.students} method={'post'} encType={'multipart/form-data'}>
-              <input type={'file'} name={'upload'} accept={'*.csv'} />
+            <form
+              action={ApiConstants.imports.students}
+              encType={'multipart/form-data'}
+              method={'post'}>
+              <input
+                accept={'*.csv'}
+                name={'upload'}
+                type={'file'} />
               <input type={'submit'} />
             </form>
-          </div>  
+          </div>
         </div>
       </div>
     );

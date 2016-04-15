@@ -26,6 +26,7 @@ class SchoolsCard extends Component {
             type={'h4'}
             value={school.name} />
           <CardAttribute
+            humanize={false}
             label={'Website'}
             value={school.website} />
           <CardAttribute
@@ -35,6 +36,7 @@ class SchoolsCard extends Component {
             label={'Contact phone number'}
             value={school.primary_contact.phone_number} />
           <CardAttribute
+            humanize={false}
             label={'Contact email'}
             value={school.primary_contact.email} />
           </div>

@@ -53,7 +53,7 @@ class FormInformation extends Component {
     return (
       <div style={this.styles.container}>
         <div style={this.styles.title}>
-          <h5>{this.props.question.title}{this.renderRequired()}</h5>
+          <h6>{this.props.question.title}{this.renderRequired()}</h6>
         </div>
         <p dangerouslySetInnerHTML={{__html: this.props.question.description}}></p>
       </div>

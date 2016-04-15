@@ -1,9 +1,9 @@
 class PagesController < BaseController
 
-  before_filter :poll_authentication, only: [:login, :signup]
-  skip_before_filter :authenticate_user, only: [:login, :signup]
+  before_action :poll_authentication, only: [:login, :signup]
+  skip_before_action :authenticate_user, only: [:login, :signup]
 
-  def check_in
+  def checkin
     @conference_id = params[:conference].to_i
     @conferences = Conference.all
   end

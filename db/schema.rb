@@ -401,7 +401,6 @@ ActiveRecord::Schema.define(version: 20160408025358) do
     t.string   "preferred_name",             default: "",    null: false
     t.integer  "psychologist_consent",                       null: false
     t.string   "psychologist_consent_name",                  null: false
-    t.integer  "registration_status",                        null: false
     t.integer  "shirt_size",                                 null: false
     t.integer  "conference_id",                              null: false
     t.integer  "group_id"

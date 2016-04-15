@@ -11,7 +11,5 @@
 
 FactoryGirl.define do
   factory :email_thread do
-    
   end
-
 end

@@ -43,7 +43,7 @@ class HeaderNavigation extends Component {
       <div style={this.styles.container}>
         <Clickable
           content={'EDGE'}
-          route={RouteConstants.students.index()}
+          route={RouteConstants.conferences.index()}
           styles={this.clickableStyles}
           type={'h2'}
           underline={false} />

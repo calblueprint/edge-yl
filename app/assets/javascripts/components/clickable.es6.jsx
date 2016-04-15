@@ -135,7 +135,7 @@ class Clickable extends Component {
     }
   }
 
-  renderContent(style) {
+  renderContent() {
     var content = this.props.content;
     var icon = this.props.icon;
     var source = this.props.source;

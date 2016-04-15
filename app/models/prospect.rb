@@ -29,8 +29,8 @@ class Prospect < ActiveRecord::Base
     attributes = Prospect.attribute_names
     CSV.generate(headers: true) do |csv|
       csv << attributes
-      all.each do |prospect|
-        csv << attributes.map{ |attr| prospect.send(attr) }
+      all.find_each do |prospect|
+        csv << attributes.map { |attr| prospect.send(attr) }
       end
     end
   end

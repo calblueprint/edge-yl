@@ -41,10 +41,10 @@
 #  is_flagged                 :boolean          not null
 #  is_primary                 :boolean          not null
 #  last_name                  :string           not null
-#  psychologist_consent_name  :string           not null
 #  medications                :string           not null
 #  preferred_name             :string           default(""), not null
 #  psychologist_consent       :integer          not null
+#  psychologist_consent_name  :string           not null
 #  registration_status        :integer          not null
 #  shirt_size                 :integer          not null
 #  conference_id              :integer          not null
@@ -58,15 +58,13 @@
 require 'rails_helper'
 
 RSpec.describe Student, type: :model do
-
-  it "is invalid without a first_name" do
+  it 'is invalid without a first_name' do
     factory = FactoryGirl.build(:student, first_name: nil)
     expect(factory).to be_invalid
   end
 
-  it "is invalid without a last_name" do
+  it 'is invalid without a last_name' do
     factory = FactoryGirl.build(:student, last_name: nil)
     expect(factory).to be_invalid
   end
-
 end

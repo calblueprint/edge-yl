@@ -11,7 +11,7 @@
 
 class EmailThread < ActiveRecord::Base
 
-  self.default_scope { order('updated_at DESC') }
+  default_scope { order('updated_at DESC') }
 
   belongs_to :user
 
@@ -43,11 +43,12 @@ class EmailThread < ActiveRecord::Base
 
   def mark_as_read
     thread_emails = Email.where(email_thread: self, is_sent: :true)
-    thread_emails.each do |e|
-      if e[:is_unread]
-        e[:is_unread] = false
-        e.save
+    thread_emails.each do |email|
+      if email[:is_unread]
+        email[:is_unread] = false
+        email.save
       end
     end
   end
+
 end

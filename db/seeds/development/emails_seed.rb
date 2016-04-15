@@ -1,7 +1,7 @@
 admin = User.first
 
-(1..3).each do |index|
-  if [true,false].sample
+(1..3).each do
+  if [true, false].sample
     school = School.offset(rand(School.count)).first
     email = school.primary_contact.email
     id = school.id
@@ -14,6 +14,8 @@ admin = User.first
     name = student.full_name
     type = Student.name
   end
+  bool = [true, false].sample
+  subject = bool ? Faker::Company.catch_phrase.humanize : Faker::Commerce.department
   new_email = Email.create(
     content: Faker::Lorem.paragraph(4, true),
     emailable_id: id,
@@ -22,8 +24,7 @@ admin = User.first
     is_sent: true,
     recipient: "#{admin.username}@test.edge.org",
     sender: email,
-    subject: [true, false].sample ? "#{Faker::Company.catch_phrase}".humanize :
-    Faker::Commerce.department,
+    subject: subject,
     to: "#{admin.full_name} <#{admin.username}@test.edge.org>",
     user: admin,
   )

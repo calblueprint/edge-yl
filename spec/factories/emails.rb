@@ -21,10 +21,8 @@
 #
 
 FactoryGirl.define do
-
   factory :email do
     from   { '' }
     sender { '' }
   end
-
 end

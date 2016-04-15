@@ -57,6 +57,19 @@ class EmailsCard extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
+  renderContent() {
+    return this.props.email.content.split('\n').map(
+      (item, i) => {
+        return (
+          <span key={i}>
+            {item}
+            <br/>
+          </span>
+        );
+      }
+    );
+  }
+
   renderDraftEdit(email) {
     if (email.is_draft) {
       return (
@@ -64,12 +77,6 @@ class EmailsCard extends Component {
           action={() => this.showDraft(email.id)}
           content={'Edit'} />
       );
-    }
-  }
-
-  renderIsDraft(email) {
-    if (email.is_draft) {
-      return <span style={this.styles.draft}> (Draft)</span>;
     }
   }
 
@@ -90,7 +97,9 @@ class EmailsCard extends Component {
             <p style={this.styles.name}>{email.to}</p>
           </div>
         </div>
-        <p style={this.styles.content}>{email.content}</p>
+        <p style={this.styles.content}>
+          {this.renderContent()}
+        </p>
       </div>
     );
   }

@@ -12,7 +12,7 @@
 
 class Leadership < ActiveRecord::Base
 
-  self.default_scope { order('style ASC') }
+  default_scope { order('style ASC') }
 
   enum style: [:primary_leader, :secondary_leader]
 

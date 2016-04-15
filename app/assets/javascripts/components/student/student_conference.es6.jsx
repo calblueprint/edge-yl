@@ -36,6 +36,7 @@ class StudentConference extends Component {
           clickable={true}
           label={'Group'}
           route={RouteConstants.groups.show(group.id)}
+          type={'h5'}
           value={group.full_name} />
       );
     } else {
@@ -51,6 +52,7 @@ class StudentConference extends Component {
           clickable={true}
           label={'Room'}
           route={RouteConstants.rooms.show(room.id)}
+          type={'h5'}
           value={room.full_name} />
       );
     } else {
@@ -58,45 +60,14 @@ class StudentConference extends Component {
     }
   }
 
-  renderStatus() {
-    var status = this.props.student.is_checked_in;
-    if (status) {
-      return (
-        <CardAttribute
-          clickable={false}
-          label={'Status'}
-          type={'p'}
-          value={this.props.student.is_checked_in ? 'Checked In' : 'Not Checked In'} />
-      );
-    } else {
-      return <CardAttribute label={'Status'} />;
-    }
-  }
-
-  renderStudent() {
-    var student = this.props.student;
-    return (
-      <CardAttribute
-        clickable={true}
-        label={'Student'}
-        route={RouteConstants.students.show(student.id)}
-        type={'h5'}
-        value={`${student.first_name} ${student.last_name}`} />
-    );
-  }
-
   render() {
     return (
       <div style={StyleConstants.cards.content}>
-        {this.renderStatus()}
-        <br />
         {this.renderConference()}
         <br />
         {this.renderGroup()}
         <br />
         {this.renderRoom()}
-        <br />
-        {this.renderStudent()}
       </div>
     );
   }

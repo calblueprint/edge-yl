@@ -8,6 +8,10 @@
       this.conference = {};
       this.conferences = {};
       this.firstLoad = true;
+      this.pagination = {
+        current: 1,
+        limit: 1,
+      };
       this.query = {};
       this.savedSearch = {};
       this.search = {

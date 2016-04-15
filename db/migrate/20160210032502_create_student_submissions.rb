@@ -89,4 +89,3 @@ class CreateStudentSubmissions < ActiveRecord::Migration
   end
 
 end
-

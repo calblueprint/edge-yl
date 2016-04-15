@@ -41,10 +41,10 @@
 #  is_flagged                 :boolean          not null
 #  is_primary                 :boolean          not null
 #  last_name                  :string           not null
-#  psychologist_consent_name  :string           not null
 #  medications                :string           not null
 #  preferred_name             :string           default(""), not null
 #  psychologist_consent       :integer          not null
+#  psychologist_consent_name  :string           not null
 #  registration_status        :integer          not null
 #  shirt_size                 :integer          not null
 #  conference_id              :integer          not null
@@ -56,7 +56,6 @@
 #
 
 FactoryGirl.define do
-
   factory :student do
     address_city          { Faker::Address.city }
     address_one           { Faker::Address.street_address }
@@ -99,8 +98,6 @@ FactoryGirl.define do
     preferred_name        { 'sonia' }
     psychologist_consent  { 0 }
     psychologist_consent_name { Faker::Name.first_name }
-    registration_status   { rand(3) }
     shirt_size            { rand(5) }
   end
-
 end

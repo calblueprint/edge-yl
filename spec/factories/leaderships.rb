@@ -12,7 +12,5 @@
 
 FactoryGirl.define do
   factory :leadership do
-    
   end
-
 end

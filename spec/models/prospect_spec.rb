@@ -17,10 +17,8 @@
 require 'rails_helper'
 
 RSpec.describe Prospect, type: :model do
-
-  it "is invalid without a name" do
+  it 'is invalid without a name' do
     factory = FactoryGirl.build(:prospect, name: nil)
     expect(factory).to be_invalid
   end
-
 end

@@ -109,22 +109,22 @@ class StudentValidator
 
   validates :guardian_one_first_name, if: :page_two?, presence: true
   validates :guardian_one_email, format: ValidationConstants::EMAIL_FORMAT,
-                             if: :page_two?,
-                             presence: true
+                                 if: :page_two?,
+                                 presence: true
   validates :guardian_one_last_name, if: :page_two?, presence: true
   validates :guardian_one_phone_number, format: ValidationConstants::PHONE_FORMAT,
-                                    if: :page_two?,
-                                    presence: true
+                                        if: :page_two?,
+                                        presence: true
   validates :guardian_one_phone_type, if: :page_two?, presence: true
   validates :guardian_one_relationship, if: :page_two?, presence: true
   validates :guardian_two_first_name, if: :page_two?, presence: true
   validates :guardian_two_email, format: ValidationConstants::EMAIL_FORMAT,
-                             if: :page_two?,
-                             presence: true
+                                 if: :page_two?,
+                                 presence: true
   validates :guardian_two_last_name, if: :page_two?, presence: true
   validates :guardian_two_phone_number, format: ValidationConstants::PHONE_FORMAT,
-                                    if: :page_two?,
-                                    presence: true
+                                        if: :page_two?,
+                                        presence: true
   validates :guardian_two_phone_type, if: :page_two?, presence: true
   validates :guardian_two_relationship, if: :page_two?, presence: true
 
@@ -179,7 +179,7 @@ class StudentValidator
   validates :participation_guardian_name, if: :page_nine?, presence: true
   validates :participation_student_consent, if: :page_nine?, presence: true
   validates :participation_student_name, if: :page_nine?, presence: true
-  
+
   def initialize(attributes={})
     attributes.each do |name, value|
       send("#{name}=", value)
@@ -238,7 +238,7 @@ class StudentValidator
 
   def parent_attending?
     ceremony_attendance == EnumConstants::CEREMONY[0] ||
-    ceremony_attendance == EnumConstants::CEREMONY[1]
+      ceremony_attendance == EnumConstants::CEREMONY[1]
   end
 
   def persisted?
@@ -250,9 +250,9 @@ class StudentValidator
   end
 
   def public_transportation?
-    transportation == EnumConstants::TRANSPORTATION[2] || 
-    transportation == EnumConstants::TRANSPORTATION[3] ||
-    transportation == EnumConstants::TRANSPORTATION[4]
+    transportation == EnumConstants::TRANSPORTATION[2] ||
+      transportation == EnumConstants::TRANSPORTATION[3] ||
+      transportation == EnumConstants::TRANSPORTATION[4]
   end
 
 end

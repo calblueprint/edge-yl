@@ -35,6 +35,12 @@ class ThreadsCard extends Component {
       icon: {
         color: StyleConstants.colors.blue,
       },
+      section: {
+        display: 'flex',
+      },
+      subject: {
+        paddingRight: '8px',
+      },
     };
   }
 
@@ -47,7 +53,7 @@ class ThreadsCard extends Component {
 
   emailsCount() {
     var count = this.props.thread.emails_count;
-    if(count > 1) {
+    if (count > 1) {
       return ` (${count})`;
     } else {
       return '';
@@ -92,29 +98,24 @@ class ThreadsCard extends Component {
     }
   }
 
-  renderNewIcon() {
-    if (this.props.thread.is_unread) {
-      return (
-        <i className={'fa-circle'} style={this.styles.icon} />
-      );
-    }
-  }
-
   render() {
     var thread = this.props.thread;
     return (
       <div style={this.styles.container}>
         <div style={this.styles.header}>
           <h6>{this.generateThreadParticipant()}</h6>
-          {this.renderOptions()}
+          <div style={this.styles.section}>
+            <p>{thread.updated_at}</p>
+            {this.renderOptions()}
+          </div>
         </div>
         <Clickable
           route={this.generateThreadRoute()}
           type={'div'}>
           <div style={this.styles.section}>
-            {this.renderNewIcon()}
-            <h6>{`${thread.subject} ${this.emailsCount()}`}</h6>
-            <p style={this.styles.divider}>{'--'}</p>
+            <h6 style={this.styles.subject}>
+              {`${thread.subject} ${this.emailsCount()}`}
+            </h6>
             <p>{thread.content_preview}</p>
           </div>
         </Clickable>

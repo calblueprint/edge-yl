@@ -1,4 +1,4 @@
-class CheckInConference extends Component {
+class CheckinConference extends Component {
 
   // --------------------------------------------------
   // Props

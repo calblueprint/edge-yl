@@ -18,7 +18,7 @@ class FormPage extends Component {
         {},
         StyleConstants.templates.card,
         {
-          padding: '36px',
+          padding: '36px 36px 24px',
           marginTop: '12px',
         }
       ),
@@ -34,45 +34,45 @@ class FormPage extends Component {
   // Render
   // --------------------------------------------------
   renderQuestion(question) {
-    var questions = this.props.page.questions;
     var render = true;
     if (question.enabler_key) {
+      loop:
       for (var i = 0; i < questions.length; i++) {
-        if (question.enabler_key == questions[i].key && question.enabler_value.indexOf(questions[i].value) == -1) {
-          console.log('hello');
-          render = false;
-          break;
+        if (question.enabler_key == questions[i].key && 
+            question.enabler_value.indexOf(questions[i].value) == -1) {
+              render = false;
+              break loop;
         }
-      }
+      });
     }
     
     if (render) {
       switch (question.style) {
-        case 'dropdown':
+        case TypeConstants.questions.dropdown:
           return (
             <FormDropdown
               key={question.id}
               question={question} />
           );
-        case 'information':
+        case TypeConstants.questions.information:
           return (
             <FormInformation
               key={question.id}
               question={question} />
           );
-        case 'input':
+        case TypeConstants.questions.input:
           return (
             <FormInput
               key={question.id}
               question={question} />
           );
-        case 'textarea':
+        case TypeConstants.questions.textarea:
           return (
             <FormTextarea
               key={question.id}
               question={question} />
           );
-        case 'waiver':
+        case TypeConstants.questions.waiver:
           return (
             <FormWaiver
               key={question.id}

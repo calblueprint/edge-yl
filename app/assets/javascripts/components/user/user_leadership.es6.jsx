@@ -19,6 +19,7 @@ class UserLeadership extends Component {
         return (
           <CardAttribute
             label={'Group'}
+            type={'h5'}
             value={leadership.group.full_name} />
         );
       }

@@ -65,123 +65,123 @@ class SchoolSubmission < ActiveRecord::Base
   validates :is_active, inclusion: { in: [false, true] }
 
   def address_state
-    if !read_attribute(:address_state).nil?
-      EnumConstants::STATES[read_attribute(:address_state)]
+    unless self[:address_state].nil?
+      EnumConstants::STATES[self[:address_state]]
     end
   end
 
   def address_state=(value)
-    write_attribute(:address_state, EnumConstants::STATES.index(value))
+    self[:address_state] = EnumConstants::STATES.index(value)
   end
 
   def alternate_address_state
-    if !read_attribute(:alternate_address_state).nil?
-      EnumConstants::STATES[read_attribute(:alternate_address_state)]
+    unless self[:alternate_address_state].nil?
+      EnumConstants::STATES[self[:alternate_address_state]]
     end
   end
 
   def alternate_address_state=(value)
-    write_attribute(:alternate_address_state, EnumConstants::STATES.index(value))
+    self[:alternate_address_state] = EnumConstants::STATES.index(value)
   end
 
   def alternate_gender
-    if !read_attribute(:alternate_gender).nil?
-      EnumConstants::GENDERS[read_attribute(:alternate_gender)]
+    unless self[:alternate_gender].nil?
+      EnumConstants::GENDERS[self[:alternate_gender]]
     end
   end
 
   def alternate_gender=(value)
-    write_attribute(:alternate_gender, EnumConstants::GENDERS.index(value))
+    self[:alternate_gender] = EnumConstants::GENDERS.index(value)
   end
 
   def alternate_guardian_phone_type
-    if !read_attribute(:alternate_guardian_phone_type).nil?
-      EnumConstants::PHONE_TYPES[read_attribute(:alternate_guardian_phone_type)]
+    unless self[:alternate_guardian_phone_type].nil?
+      EnumConstants::PHONE_TYPES[self[:alternate_guardian_phone_type]]
     end
   end
 
   def alternate_guardian_phone_type=(value)
-    write_attribute(:alternate_guardian_phone_type, EnumConstants::PHONE_TYPES.index(value))
+    self[:alternate_guardian_phone_type] = EnumConstants::PHONE_TYPES.index(value)
   end
 
   def alternate_guardian_relationship
-    if !read_attribute(:alternate_guardian_relationship).nil?
-      EnumConstants::GUARDIAN_RELATIONSHIPS[read_attribute(:alternate_guardian_relationship)]
+    unless self[:alternate_guardian_relationship].nil?
+      EnumConstants::GUARDIAN_RELATIONSHIPS[self[:alternate_guardian_relationship]]
     end
   end
 
   def alternate_guardian_relationship=(value)
-    write_attribute(:alternate_guardian_relationship, EnumConstants::GUARDIAN_RELATIONSHIPS.index(value))
+    self[:alternate_guardian_relationship] = EnumConstants::GUARDIAN_RELATIONSHIPS.index(value)
   end
 
   def alternate_shirt_size
-    if !read_attribute(:alternate_shirt_size).nil?
-      EnumConstants::SHIRT_SIZES[read_attribute(:alternate_shirt_size)]
+    unless self[:alternate_shirt_size].nil?
+      EnumConstants::SHIRT_SIZES[self[:alternate_shirt_size]]
     end
   end
 
   def alternate_shirt_size=(value)
-    write_attribute(:alternate_shirt_size, EnumConstants::SHIRT_SIZES.index(value))
+    self[:alternate_shirt_size] = EnumConstants::SHIRT_SIZES.index(value)
   end
 
   def has_alternate_student
-    if !read_attribute(:has_alternate_student).nil?
-      EnumConstants::BOOLEANS[read_attribute(:has_alternate_student)]
+    unless self[:has_alternate_student].nil?
+      EnumConstants::BOOLEANS[self[:has_alternate_student]]
     end
   end
 
   def has_alternate_student=(value)
-    write_attribute(:has_alternate_student, EnumConstants::BOOLEANS.index(value))
+    self[:has_alternate_student] = EnumConstants::BOOLEANS.index(value)
   end
 
   def primary_address_state
-    if !read_attribute(:primary_address_state).nil?
-      EnumConstants::STATES[read_attribute(:primary_address_state)]
+    unless self[:primary_address_state].nil?
+      EnumConstants::STATES[self[:primary_address_state]]
     end
   end
 
   def primary_address_state=(value)
-    write_attribute(:primary_address_state, EnumConstants::STATES.index(value))
+    self[:primary_address_state] = EnumConstants::STATES.index(value)
   end
 
   def primary_gender
-    if !read_attribute(:primary_gender).nil?
-      EnumConstants::GENDERS[read_attribute(:primary_gender)]
+    unless self[:primary_gender].nil?
+      EnumConstants::GENDERS[self[:primary_gender]]
     end
   end
 
   def primary_gender=(value)
-    write_attribute(:primary_gender, EnumConstants::GENDERS.index(value))
+    self[:primary_gender] = EnumConstants::GENDERS.index(value)
   end
 
   def primary_guardian_phone_type
-    if !read_attribute(:primary_guardian_phone_type).nil?
-      EnumConstants::PHONE_TYPES[read_attribute(:primary_guardian_phone_type)]
+    unless self[:primary_guardian_phone_type].nil?
+      EnumConstants::PHONE_TYPES[self[:primary_guardian_phone_type]]
     end
   end
 
   def primary_guardian_phone_type=(value)
-    write_attribute(:primary_guardian_phone_type, EnumConstants::PHONE_TYPES.index(value))
+    self[:primary_guardian_phone_type] = EnumConstants::PHONE_TYPES.index(value)
   end
 
   def primary_guardian_relationship
-    if !read_attribute(:primary_guardian_relationship).nil?
-      EnumConstants::GUARDIAN_RELATIONSHIPS[read_attribute(:primary_guardian_relationship)]
+    unless self[:primary_guardian_relationship].nil?
+      EnumConstants::GUARDIAN_RELATIONSHIPS[self[:primary_guardian_relationship]]
     end
   end
 
   def primary_guardian_relationship=(value)
-    write_attribute(:primary_guardian_relationship, EnumConstants::GUARDIAN_RELATIONSHIPS.index(value))
+    self[:primary_guardian_relationship] = EnumConstants::GUARDIAN_RELATIONSHIPS.index(value)
   end
 
   def primary_shirt_size
-    if !read_attribute(:primary_shirt_size).nil?
-      EnumConstants::SHIRT_SIZES[read_attribute(:primary_shirt_size)]
+    unless self[:primary_shirt_size].nil?
+      EnumConstants::SHIRT_SIZES[self[:primary_shirt_size]]
     end
   end
 
   def primary_shirt_size=(value)
-    write_attribute(:primary_shirt_size, EnumConstants::SHIRT_SIZES.index(value))
+    self[:primary_shirt_size] = EnumConstants::SHIRT_SIZES.index(value)
   end
 
   def custom_update(update_params)
@@ -191,19 +191,19 @@ class SchoolSubmission < ActiveRecord::Base
       error_response = validator.errors.to_hash
       valid_params = {}
       update_params.each do |attribute, value|
-        if !error_response.key?(attribute.to_sym)
+        unless error_response.key?(attribute.to_sym)
           valid_params[attribute] = value
         end
       end
       if valid_params.size > 0
-        self.update_attributes(valid_params)
+        update_attributes(valid_params)
       end
       error_response.each do |attribute, messages|
         messages.each do |message|
-          self.errors.add(attribute, message)
+          errors.add(attribute, message)
         end
       end
-      self.errors.size == 0
+      errors.size == 0
     end
   end
 
@@ -222,9 +222,7 @@ class SchoolSubmission < ActiveRecord::Base
       attributes_page[:current_page] = index
       validator = SchoolValidator.new(attributes_page)
       validator.valid?
-      if validator.errors.size > 0
-        return false
-      end
+      return false if validator.errors.size > 0
     end
     true
   end
@@ -234,9 +232,7 @@ class SchoolSubmission < ActiveRecord::Base
       attributes_page[:current_page] = index
       validator = SchoolValidator.new(attributes_page)
       validator.valid?
-      if validator.errors.size > 0
-        return index
-      end
+      return index if validator.errors.size > 0
     end
     attributes_pages.size - 1
   end
@@ -252,7 +248,7 @@ class SchoolSubmission < ActiveRecord::Base
       website: website,
     )
     unless school.save
-      raise 'Could not create school from submission'
+      fail 'Could not create school from submission'
     end
     contact = Contact.new(
       email: contact_email,
@@ -264,7 +260,7 @@ class SchoolSubmission < ActiveRecord::Base
       school: school,
     )
     unless contact.save
-      raise 'Could not create contact from submission'
+      fail 'Could not create contact from submission'
     end
     primary_submission = StudentSubmission.new(
       address_city: primary_address_city,
@@ -290,7 +286,7 @@ class SchoolSubmission < ActiveRecord::Base
       shirt_size: primary_shirt_size,
     )
     unless primary_submission.save
-      raise 'Could not create primary student from submission'
+      fail 'Could not create primary student from submission'
     end
     if has_alternate_student == EnumConstants::BOOLEANS[0]
       alternate_submission = StudentSubmission.new(
@@ -317,13 +313,8 @@ class SchoolSubmission < ActiveRecord::Base
         shirt_size: alternate_shirt_size,
       )
       unless alternate_submission.save
-        raise 'Could not create alternate student from submission'
+        fail 'Could not create alternate student from submission'
       end
-      # begin
-      #   SubmissionsMailer.create_student(alternate_submission).deliver_now
-      # rescue
-      #   raise 'Could not deliver appropriate emails'
-      # end
     end
     begin
       SubmissionsMailer.submit_school(self).deliver_now
@@ -333,7 +324,7 @@ class SchoolSubmission < ActiveRecord::Base
       raise 'Could not deliver appropriate emails'
     end
     self.is_active = false
-    self.save
+    save
   end
 
   private

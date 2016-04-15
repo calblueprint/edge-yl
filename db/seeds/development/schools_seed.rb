@@ -1,4 +1,4 @@
-(1..10).each do |index|
+(1..10).each do
   new_school = School.create(
     address_city: Faker::Address.city,
     address_one: Faker::Address.street_address,
