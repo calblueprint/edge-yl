@@ -80,12 +80,6 @@ class EmailsCard extends Component {
     }
   }
 
-  renderIsDraft(email) {
-    if (email.is_draft) {
-      return <span style={this.styles.draft}> (Draft)</span>;
-    }
-  }
-
   render() {
     var email = this.props.email;
     return (
@@ -103,7 +97,9 @@ class EmailsCard extends Component {
             <p style={this.styles.name}>{email.to}</p>
           </div>
         </div>
-        <p style={this.styles.content}>{this.renderContent()}</p>
+        <p style={this.styles.content}>
+          {this.renderContent()}
+        </p>
       </div>
     );
   }
