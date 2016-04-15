@@ -38,8 +38,8 @@
         room: (id) => `/api/rooms/${id}`,
         rooms: (conferenceId) => `/api/rooms/?conference_id=${conferenceId}`,
         schools: '/api/schools.csv',
-        students: (query={}) => {
-          var route = '/api/students';
+        students: (conferenceId, query={}) => {
+          var route = `/api/students/?conference_id=${conferenceId}`;
           Object.keys(query).map((key, index) => {
             route = `${route}${index === 0 ? '?' : '&'}`
             route = `${route}${key}=${query[key]}`

@@ -30,7 +30,7 @@ class Room < ActiveRecord::Base
   validates :number, presence: true, uniqueness: { scope: :conference_id }
 
   def self.to_csv
-    attributes = %w(number)
+    attributes = %w(building number style)
     CSV.generate(headers: true) do |csv|
       csv << attributes
       all.find_each do |room|

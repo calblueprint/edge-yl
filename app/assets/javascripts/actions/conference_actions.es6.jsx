@@ -141,6 +141,11 @@
       return true;
     }
 
+    exportStudents(conference_id) {
+      Requester.csv(ApiConstants.csvs.students(conference_id), 'students');
+      return true;
+    }
+
     fetchConference(id) {
       var resolve = (response) => this.storeConference(response);
       Requester.get(ApiConstants.conferences.show(id), resolve);

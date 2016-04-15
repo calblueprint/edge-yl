@@ -67,6 +67,10 @@ class ConferencePage extends Component {
         action: () => ConferenceActions.exportRooms(conference.id),
         content: 'Export rooms',
       },
+      {
+        action: () => ConferenceActions.exportStudents(conference.id),
+        content: 'Export students',
+      },
     ];
   }
 
