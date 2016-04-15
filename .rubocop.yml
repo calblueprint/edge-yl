@@ -44,6 +44,9 @@ Rails:
 Rails/Delegate:
   Enabled: false
 
+Rails/FindEach:
+  Enabled: false
+
 Rails/Output:
   Enabled: false
 
