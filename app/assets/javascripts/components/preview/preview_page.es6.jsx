@@ -53,10 +53,7 @@ class PreviewPage extends Component {
   // Render
   // --------------------------------------------------
   renderQuestion(question) {
-<<<<<<< HEAD
     var questions = this.props.page.questions;
-      console.log(question.enabler_key);
-
     if (question.style !== TypeConstants.questions.information) {
       var questions = this.props.page.questions;
       var render = true;

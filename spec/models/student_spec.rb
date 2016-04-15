@@ -45,7 +45,6 @@
 #  preferred_name             :string           default(""), not null
 #  psychologist_consent       :integer          not null
 #  psychologist_consent_name  :string           not null
-#  registration_status        :integer          not null
 #  shirt_size                 :integer          not null
 #  conference_id              :integer          not null
 #  group_id                   :integer
