@@ -16,14 +16,7 @@ class FormCheckbox extends Component {
     var options = this.props.question.options;
     options.map((option) => {
       var node = ReactDOM.findDOMNode(this.refs[option]);
-      node.onchange = (event) => {
-        var value = event.target.value;
-        if (event.target.checked) {
-          console.log(value);
-        } else {
-          console.log(value);
-        }
-      }
+      node.onchange = (event) => this.handleChange(event);
     });
   }
 
@@ -65,9 +58,12 @@ class FormCheckbox extends Component {
   }
 
   renderOption(option, index) {
+    var value = this.props.question.value;
+    var checked = value ? value.indexOf(option) !== -1 : false;
     return (
       <div key={index}>
         <input
+          checked={checked}
           ref={option}
           type={'checkbox'}
           value={option} />
