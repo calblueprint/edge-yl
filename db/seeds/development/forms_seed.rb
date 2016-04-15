@@ -681,7 +681,7 @@ student_form = Form.create(
       key: 'dietary_restrictions',
       options: EnumConstants::DIETARY_RESTRICTIONS,
       page: page,
-      style: Question.styles[:dropdown],
+      style: Question.styles[:checkbox],
       title: 'Please select any dietary restrictions that you have:',
     )
     Question.create(
