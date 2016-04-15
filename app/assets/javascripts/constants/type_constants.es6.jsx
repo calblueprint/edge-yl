@@ -101,6 +101,7 @@
 
     get questions() {
       return {
+        checkbox: 'checkbox',
         dropdown: 'dropdown',
         information: 'information',
         input: 'input',

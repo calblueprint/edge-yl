@@ -45,6 +45,12 @@ class FormPage extends Component {
     }
     if (render) {
       switch (question.style) {
+        case TypeConstants.questions.checkbox:
+          return (
+            <FormCheckbox
+              key={question.id}
+              question={question} />
+          );
         case TypeConstants.questions.dropdown:
           return (
             <FormDropdown
