@@ -13,24 +13,30 @@ class FormCheckbox extends Component {
   // Lifecycle
   // --------------------------------------------------
   componentDidMount() {
-    // var node = ReactDOM.findDOMNode(this.refs.container);
-    // node.oninput = (event) => this.handleChange(event);
-    //     categories.map((category) => {
-    //   var node = ReactDOM.findDOMNode(this.refs[category]);
-    //   node.onchange = (event) => {
-    //     var value = event.target.value;
-    //     var creationCategories = this.state.creationCategories;
-    //     if (event.target.checked) {
-    //       if (creationCategories.indexOf(value) === -1) {
-    //         creationCategories.push(value);
-    //         this.setState({ creationCategories: creationCategories });
-    //       }
-    //     } else {
-    //       creationCategories = creationCategories.filter((category) => category !== value);
-    //       this.setState({ creationCategories: creationCategories });
-    //     }
-    //   }
-    // });
+    var options = this.props.question.options;
+    options.map((option) => {
+      var node = ReactDOM.findDOMNode(this.refs[option]);
+      node.onchange = (event) => {
+        var value = event.target.value;
+        if (event.target.checked) {
+          console.log(value);
+        } else {
+          console.log(value);
+        }
+      }
+    });
+  }
+
+  // --------------------------------------------------
+  // Handlers
+  // --------------------------------------------------
+  handleChange(event) {
+    var question = this.props.question;
+    FormActions.storeResponse(
+      question.page_id,
+      question.id,
+      event.target.value,
+    );
   }
 
   // --------------------------------------------------
@@ -63,7 +69,7 @@ class FormCheckbox extends Component {
       <div key={index}>
         <input
           ref={option}
-          type={"checkbox"}
+          type={'checkbox'}
           value={option} />
         <label>{option}</label>
       </div>
