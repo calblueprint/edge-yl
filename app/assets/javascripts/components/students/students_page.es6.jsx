@@ -52,11 +52,15 @@ class StudentsPage extends Component {
   // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
-  generateOptions() {
+  generateChoices() {
     return [
       {
+        action: () => StudentsActions.exportAllStudents(),
+        content: 'Export all',
+      },
+      {
         action: () => StudentsActions.exportStudents(),
-        content: 'Export',
+        content: 'Export filtered students',
       },
     ];
   }
@@ -79,7 +83,7 @@ class StudentsPage extends Component {
         <div style={StyleConstants.pages.default}>
           <div style={StyleConstants.pages.content}>
             <GridHeader
-              options={this.generateOptions()}
+              choices={this.generateChoices()}
               title={'Students'} />
             <StudentsGrid
               media={this.state.media}
