@@ -37,9 +37,15 @@
       return true;
     }
 
+    exportAllStudents() {
+      Requester.csv(ApiConstants.csvs.students_all, 'students');
+      return true;
+    }
+
     exportStudents() {
       var query = StudentsStore.getState().query;
-      Requester.csv(ApiConstants.csvs.students(query), 'students');
+      var conference = StudentsStore.getState().conference;
+      Requester.csv(ApiConstants.csvs.students(conference.id, query), 'students');
       return true;
     }
 

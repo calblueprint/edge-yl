@@ -32,6 +32,7 @@
 
     get csvs() {
       return {
+        students_all: '/api/students.csv',
         group: (id) => `/api/groups/${id}`,
         groups: (conferenceId) => `/api/groups/?conference_id=${conferenceId}`,
         prospects: 'api/prospects.csv',
@@ -39,7 +40,7 @@
         rooms: (conferenceId) => `/api/rooms/?conference_id=${conferenceId}`,
         schools: '/api/schools.csv',
         students: (conferenceId, query={}) => {
-          var route = `/api/students/?conference_id=${conferenceId}`;
+          var route = `/api/students/?conference_id=${conferenceId}`
           Object.keys(query).map((key, index) => {
             route = `${route}${index === 0 ? '?' : '&'}`
             route = `${route}${key}=${query[key]}`
