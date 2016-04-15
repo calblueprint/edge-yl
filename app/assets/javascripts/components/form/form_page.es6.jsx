@@ -43,9 +43,8 @@ class FormPage extends Component {
               render = false;
               break loop;
         }
-      });
+      }
     }
-    
     if (render) {
       switch (question.style) {
         case TypeConstants.questions.dropdown:
