@@ -368,8 +368,7 @@ ActiveRecord::Schema.define(version: 20160408025358) do
     t.date     "birthday",                                   null: false
     t.string   "cell_phone",                                 null: false
     t.boolean  "is_checked_in",              default: false, null: false
-    t.integer  "dietary_restrictions",                       null: false
-    t.string   "other_dietary_restrictions",                 null: false
+    t.string   "dietary_restrictions",                       null: false
     t.string   "email",                                      null: false
     t.integer  "emergency_consent",                          null: false
     t.string   "exercise_limitations",                       null: false
@@ -398,6 +397,7 @@ ActiveRecord::Schema.define(version: 20160408025358) do
     t.boolean  "is_primary",                                 null: false
     t.string   "last_name",                                  null: false
     t.string   "medications",                                null: false
+    t.string   "other_dietary_restrictions",                 null: false
     t.string   "preferred_name",             default: "",    null: false
     t.integer  "psychologist_consent",                       null: false
     t.string   "psychologist_consent_name",                  null: false
