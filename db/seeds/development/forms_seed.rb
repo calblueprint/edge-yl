@@ -726,6 +726,14 @@ student_form = Form.create(
       title: 'Do you consent?',
     )
     Question.create(
+      enabler_key: 'emergency_consent',
+      enabler_value: EnumConstants::BOOLEANS[0],
+      key: 'emergency_consent_name',
+      page: page,
+      style: Question.styles[:input],
+      title: 'Parent/Guardian Name',
+    )
+    Question.create(
       description: %s(
         Becoming a leader requires self-reflection and challenging oneself to work through the
         internal barriers to leadership development. Our seminar encourages and guides this
@@ -749,7 +757,9 @@ student_form = Form.create(
       title: 'Do you consent?',
     )
     Question.create(
-      key: 'medical_guardian_name',
+      enabler_key: 'psychologist_consent',
+      enabler_value: EnumConstants::BOOLEANS[0],
+      key: 'psychologist_consent_name',
       page: page,
       style: Question.styles[:input],
       title: 'Guardian Name',
@@ -770,24 +780,32 @@ student_form = Form.create(
     )
     Question.create(
       description: '(e.g. Anthem Blue Cross, Kaiser Permanente, Health Net, etc.)',
+      enabler_key: 'insurance',
+      enabler_value: EnumConstants::BOOLEANS[0],
       key: 'insurance_provider',
       page: page,
       style: Question.styles[:input],
       title: 'Insurance Provider',
     )
     Question.create(
+      enabler_key: 'insurance',
+      enabler_value: EnumConstants::BOOLEANS[0],
       key: 'insurance_address',
       page: page,
       style: Question.styles[:input],
       title: 'Insurance Provider Address',
     )
     Question.create(
+      enabler_key: 'insurance',
+      enabler_value: EnumConstants::BOOLEANS[0],
       key: 'insurance_address_city',
       page: page,
       style: Question.styles[:input],
       title: 'Insurance Provider City',
     )
     Question.create(
+      enabler_key: 'insurance',
+      enabler_value: EnumConstants::BOOLEANS[0],
       key: 'insurance_address_state',
       options: EnumConstants::STATES,
       page: page,
@@ -796,6 +814,8 @@ student_form = Form.create(
     )
     Question.create(
       description: StringConstants::ZIP_FORMAT,
+      enabler_key: 'insurance',
+      enabler_value: EnumConstants::BOOLEANS[0],
       key: 'insurance_address_zip',
       page: page,
       style: Question.styles[:input],
@@ -803,18 +823,24 @@ student_form = Form.create(
     )
     Question.create(
       description: StringConstants::PHONE_FORMAT,
+      enabler_key: 'insurance',
+      enabler_value: EnumConstants::BOOLEANS[0],
       key: 'insurance_phone_number',
       page: page,
       style: Question.styles[:input],
       title: 'Insurance Provider Phone',
     )
     Question.create(
+      enabler_key: 'insurance',
+      enabler_value: EnumConstants::BOOLEANS[0],
       key: 'insurance_id',
       page: page,
       style: Question.styles[:input],
       title: 'Group # or ID #',
     )
     Question.create(
+      enabler_key: 'insurance',
+      enabler_value: EnumConstants::BOOLEANS[0],
       is_required: false,
       key: 'insurance_other',
       page: page,
@@ -867,6 +893,8 @@ student_form = Form.create(
         Rockridge BART, Downtown Berkeley BART, College Avenue and Parker Street Bus Stop,
         Warring Street and Parker Street Bus Stop, Oakland International Airport
       ),
+      enabler_key: 'transportation',
+      enabler_value: "#{EnumConstants::TRANSPORTATION[2]} #{EnumConstants::TRANSPORTATION[3]} #{EnumConstants::TRANSPORTATION[4]}",
       key: 'transportation_name',
       page: page,
       style: Question.styles[:input],
@@ -874,25 +902,33 @@ student_form = Form.create(
     )
     Question.create(
       description: 'Southwest, BART, AC Transit, etc.',
+      enabler_key: 'transportation',
+      enabler_value: "#{EnumConstants::TRANSPORTATION[2]} #{EnumConstants::TRANSPORTATION[3]} #{EnumConstants::TRANSPORTATION[4]}",
       key: 'transportation_carrier',
       page: page,
       style: Question.styles[:input],
       title: 'Flight/Train/Bus Carrier',
     )
     Question.create(
+      enabler_key: 'transportation',
+      enabler_value: "#{EnumConstants::TRANSPORTATION[2]} #{EnumConstants::TRANSPORTATION[3]} #{EnumConstants::TRANSPORTATION[4]}",      
       key: 'transportation_number',
       page: page,
       style: Question.styles[:input],
       title: 'Flight/Train/Bus Number',
     )
     Question.create(
-      key: 'transportation_arrival_date',
+      enabler_key: 'transportation',
+      enabler_value: "#{EnumConstants::TRANSPORTATION[2]} #{EnumConstants::TRANSPORTATION[3]} #{EnumConstants::TRANSPORTATION[4]}",
       format: Question.formats[:date],
+      key: 'transportation_arrival_date',
       page: page,
       style: Question.styles[:input],
       title: 'Arrival Date',
     )
     Question.create(
+      enabler_key: 'transportation',
+      enabler_value: "#{EnumConstants::TRANSPORTATION[2]} #{EnumConstants::TRANSPORTATION[3]} #{EnumConstants::TRANSPORTATION[4]}",
       description: 'You must arrive by 8am',
       key: 'transportation_arrival_time',
       page: page,
@@ -900,14 +936,18 @@ student_form = Form.create(
       title: 'Arrival Time',
     )
     Question.create(
-      key: 'transportation_departure_date',
+      enabler_key: 'transportation',
+      enabler_value: "#{EnumConstants::TRANSPORTATION[2]} #{EnumConstants::TRANSPORTATION[3]} #{EnumConstants::TRANSPORTATION[4]}",
       format: Question.formats[:date],
+      key: 'transportation_departure_date',
       page: page,
       style: Question.styles[:input],
       title: 'Departure Date',
     )
     Question.create(
       description: 'Do not plan to leave earlier than 3pm',
+      enabler_key: 'transportation',
+      enabler_value: "#{EnumConstants::TRANSPORTATION[2]} #{EnumConstants::TRANSPORTATION[3]} #{EnumConstants::TRANSPORTATION[4]}",
       key: 'transportation_departure_time',
       page: page,
       style: Question.styles[:input],
@@ -918,6 +958,8 @@ student_form = Form.create(
         For some students transportation to the seminar site can be challenging.
         We do our best to organize carpools for students who need them.
       ),
+      enabler_key: 'transportation',
+      enabler_value: "#{EnumConstants::TRANSPORTATION[2]} #{EnumConstants::TRANSPORTATION[3]} #{EnumConstants::TRANSPORTATION[4]}",
       key: 'carpool_info',
       page: page,
       style: Question.styles[:information],
@@ -953,6 +995,8 @@ student_form = Form.create(
       title: 'Waiver Agreement',
     )
     Question.create(
+      enabler_key: 'transportation_consent',
+      enabler_value: EnumConstants::BOOLEANS[0],
       key: 'transportation_consent_name',
       page: page,
       style: Question.styles[:input],
@@ -984,12 +1028,16 @@ student_form = Form.create(
       title: 'I would like to have my participation announced',
     )
     Question.create(
+      enabler_key: 'media_participation',
+      enabler_value: EnumConstants::BOOLEANS[0],
       key: 'media_newspaper',
       page: page,
       style: Question.styles[:input],
       title: 'Newspaper Name',
     )
     Question.create(
+      enabler_key: 'media_participation',
+      enabler_value: EnumConstants::BOOLEANS[0],
       is_required: false,
       key: 'media_information',
       page: page,
@@ -1033,6 +1081,8 @@ student_form = Form.create(
       title: 'Will you join us on Sunday?',
     )
     Question.create(
+      enabler_key: 'ceremony_attendance',
+      enabler_value: "#{EnumConstants::CEREMONY[0]} #{EnumConstants::CEREMONY[1]}",
       key: 'ceremony_attendance_number',
       page: page,
       style: Question.styles[:input],

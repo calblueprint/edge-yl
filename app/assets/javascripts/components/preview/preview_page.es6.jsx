@@ -54,14 +54,17 @@ class PreviewPage extends Component {
   // --------------------------------------------------
   renderQuestion(question) {
     if (question.style !== TypeConstants.questions.information) {
+      var questions = this.props.page.questions;
       var render = true;
       if (question.enabler_key) {
-        this.props.page.questions.map((element) => {
-          if (question.enabler_key === element.key &&
-              question.enabler_value !== element.value) {
-            render = false;
+        loop:
+        for (var i = 0; i < questions.length; i++) {
+          if (question.enabler_key == questions[i].key && 
+              question.enabler_value.indexOf(questions[i].value) == -1) {
+              render = false;
+              break loop;
           }
-        });
+        }
       }
       if (render) {
         return (

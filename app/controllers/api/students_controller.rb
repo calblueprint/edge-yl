@@ -103,11 +103,11 @@ class Api::StudentsController < Api::BaseController
       :is_flagged,
       :is_primary,
       :last_name,
-      :medical_guardian_name,
       :medications,
       :other_dietary_restrictions,
       :preferred_name,
       :psychologist_consent,
+      :psychologist_consent_name,
       :shirt_size,
     )
   end

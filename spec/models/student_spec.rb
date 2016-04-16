@@ -41,10 +41,10 @@
 #  is_flagged                 :boolean          not null
 #  is_primary                 :boolean          not null
 #  last_name                  :string           not null
-#  medical_guardian_name      :string           not null
 #  medications                :string           not null
 #  preferred_name             :string           default(""), not null
 #  psychologist_consent       :integer          not null
+#  psychologist_consent_name  :string           not null
 #  shirt_size                 :integer          not null
 #  conference_id              :integer          not null
 #  group_id                   :integer

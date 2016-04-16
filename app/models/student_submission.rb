@@ -18,6 +18,7 @@
 #  dietary_restrictions           :string
 #  email                          :string
 #  emergency_consent              :integer
+#  emergency_consent_name         :string
 #  exercise_limitations           :string
 #  first_name                     :string
 #  gender                         :integer
@@ -55,7 +56,6 @@
 #  media_information              :string
 #  media_newspaper                :string
 #  media_participation            :integer
-#  medical_guardian_name          :string
 #  medications                    :string
 #  other_dietary_restrictions     :string           default("")
 #  participation_guardian_consent :integer
@@ -64,6 +64,7 @@
 #  participation_student_name     :string
 #  preferred_name                 :string           default("")
 #  psychologist_consent           :integer
+#  psychologist_consent_name      :string
 #  risk_guardian_consent          :integer
 #  risk_guardian_date             :date
 #  risk_guardian_email            :string
@@ -447,11 +448,11 @@ class StudentSubmission < ActiveRecord::Base
       immunizations: immunizations,
       is_primary: is_primary,
       last_name: last_name,
-      medical_guardian_name: medical_guardian_name,
       medications: medications,
       other_dietary_restrictions: other_dietary_restrictions,
       preferred_name: preferred_name,
       psychologist_consent: psychologist_consent,
+      psychologist_consent_name: psychologist_consent_name,
       shirt_size: shirt_size,
     )
     unless student.save
@@ -512,13 +513,14 @@ class StudentSubmission < ActiveRecord::Base
       allergies: allergies,
       dietary_restrictions: dietary_restrictions,
       emergency_consent: emergency_consent,
+      emergency_consent_name: emergency_consent_name,
       exercise_limitations: exercise_limitations,
       health_conditions: health_conditions,
       immunizations: immunizations,
-      medical_guardian_name: medical_guardian_name,
       medications: medications,
       other_dietary_restrictions: other_dietary_restrictions,
       psychologist_consent: psychologist_consent,
+      psychologist_consent_name: psychologist_consent_name,
     }
   end
 
