@@ -293,36 +293,36 @@ school_form = Form.create(
       title: 'Alternate Student Address State',
     )
     Question.create(
+      description: StringConstants::ZIP_FORMAT,
       enabler_key: 'has_alternate_student',
       enabler_value: EnumConstants::BOOLEANS[0],
-      description: StringConstants::ZIP_FORMAT,
       key: 'alternate_address_zip',
       page: page,
       style: Question.styles[:input],
       title: 'Alternate Student Address Zip',
     )
     Question.create(
+      description: StringConstants::PHONE_FORMAT,
       enabler_key: 'has_alternate_student',
       enabler_value: EnumConstants::BOOLEANS[0],
-      description: StringConstants::PHONE_FORMAT,
       key: 'alternate_home_phone',
       page: page,
       style: Question.styles[:input],
       title: 'Alternate Student Home Phone',
     )
     Question.create(
+      description: StringConstants::PHONE_FORMAT,
       enabler_key: 'has_alternate_student',
       enabler_value: EnumConstants::BOOLEANS[0],
-      description: StringConstants::PHONE_FORMAT,
       key: 'alternate_cell_phone',
       page: page,
       style: Question.styles[:input],
       title: 'Alternate Student Cell Phone',
     )
     Question.create(
+      description: StringConstants::EMAIL_FORMAT,
       enabler_key: 'has_alternate_student',
       enabler_value: EnumConstants::BOOLEANS[0],
-      description: StringConstants::EMAIL_FORMAT,
       key: 'alternate_email',
       page: page,
       style: Question.styles[:input],
@@ -911,7 +911,8 @@ student_form = Form.create(
     )
     Question.create(
       enabler_key: 'transportation',
-      enabler_value: "#{EnumConstants::TRANSPORTATION[2]} #{EnumConstants::TRANSPORTATION[3]} #{EnumConstants::TRANSPORTATION[4]}",      key: 'transportation_number',
+      enabler_value: "#{EnumConstants::TRANSPORTATION[2]} #{EnumConstants::TRANSPORTATION[3]} #{EnumConstants::TRANSPORTATION[4]}",      
+      key: 'transportation_number',
       page: page,
       style: Question.styles[:input],
       title: 'Flight/Train/Bus Number',
