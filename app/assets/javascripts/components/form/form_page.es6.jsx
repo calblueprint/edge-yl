@@ -34,6 +34,7 @@ class FormPage extends Component {
   // Render
   // --------------------------------------------------
   renderQuestion(question) {
+    var questions = this.props.page.questions;
     var render = true;
     if (question.enabler_key) {
       loop:
