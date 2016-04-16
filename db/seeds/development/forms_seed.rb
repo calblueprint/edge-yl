@@ -214,7 +214,6 @@ school_form = Form.create(
       title: 'Primary Student Parent/Guardian Phone Number',
     )
     Question.create(
-      description: StringConstants::PHONE_FORMAT,
       key: 'primary_guardian_phone_type',
       options: EnumConstants::PHONE_TYPES,
       page: page,
@@ -390,7 +389,6 @@ school_form = Form.create(
       title: 'Alternate Student Parent/Guardian Phone Number',
     )
     Question.create(
-      description: StringConstants::PHONE_FORMAT,
       enabler_key: 'has_alternate_student',
       enabler_value: EnumConstants::BOOLEANS[0],
       key: 'alternate_guardian_phone_type',
@@ -550,7 +548,6 @@ student_form = Form.create(
       title: 'Parent/Guardian 1 Phone Number',
     )
     Question.create(
-      description: StringConstants::PHONE_FORMAT,
       key: 'guardian_one_phone_type',
       options: EnumConstants::PHONE_TYPES,
       page: page,
@@ -605,7 +602,6 @@ student_form = Form.create(
       title: 'Parent/Guardian 2 Phone Number',
     )
     Question.create(
-      description: StringConstants::PHONE_FORMAT,
       key: 'guardian_two_phone_type',
       options: EnumConstants::PHONE_TYPES,
       page: page,
@@ -911,7 +907,7 @@ student_form = Form.create(
     )
     Question.create(
       enabler_key: 'transportation',
-      enabler_value: "#{EnumConstants::TRANSPORTATION[2]} #{EnumConstants::TRANSPORTATION[3]} #{EnumConstants::TRANSPORTATION[4]}",      
+      enabler_value: "#{EnumConstants::TRANSPORTATION[2]} #{EnumConstants::TRANSPORTATION[3]} #{EnumConstants::TRANSPORTATION[4]}",
       key: 'transportation_number',
       page: page,
       style: Question.styles[:input],
