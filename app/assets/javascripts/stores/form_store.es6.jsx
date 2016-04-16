@@ -46,7 +46,11 @@
       questions.map((question) => {
         var key = question.key;
         if (submission[key] !== undefined) {
-          question.value = submission[key];
+          if (question.style === TypeConstants.questions.checkbox) {
+            question.value = submission[key].split(',');
+          } else {
+            question.value = submission[key];
+          }
         }
       });
     }
@@ -56,7 +60,20 @@
       var page = pages.find((page) => page.id === response.page);
       var questions = page.questions;
       var question = questions.find((question) => question.id === response.question);
-      question.value = response.value;
+      var value = response.value;
+      if (question.style === TypeConstants.questions.checkbox) {
+        if (question.value === null) {
+          question.value = [value];
+        } else {
+          if (question.value.indexOf(value) === -1) {
+            question.value.push(value);
+          } else {
+            question.value = question.value.filter((option) => option !== value);
+          }
+        }
+      } else {
+        question.value = response.value;
+      }
     }
   }
   this.FormStore = alt.createStore(FormStore);

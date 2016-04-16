@@ -26,7 +26,7 @@ class GroupEditModal extends EditModal {
     return {
       action: () => GroupActions.storeValue(groupable),
       content: groupable.full_name,
-    }
+    };
   }
 
   generateChoices() {

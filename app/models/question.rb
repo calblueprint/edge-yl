@@ -23,7 +23,14 @@ class Question < ActiveRecord::Base
   before_validation :set_initials, on: :create
 
   enum format: [:date, :text]
-  enum style: [:dropdown, :information, :input, :textarea, :waiver]
+  enum style: [
+    :checkbox,
+    :dropdown,
+    :information,
+    :input,
+    :textarea,
+    :waiver,
+  ]
 
   belongs_to :page
 

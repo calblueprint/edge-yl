@@ -18,9 +18,12 @@ module EnumConstants
   ).freeze
 
   DIETARY_RESTRICTIONS = %w(
-    dairy-free gluten-free
-    none nut-allergy
-    vegan vegetarian
+    None
+    Dairy\ Free
+    Gluten\ Free
+    Nut Allergy
+    Vegan
+    Vegetarian
   ).freeze
 
   GENDERS = %w(female male other).freeze
