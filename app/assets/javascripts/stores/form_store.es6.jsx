@@ -47,7 +47,11 @@
         var key = question.key;
         if (submission[key] !== undefined) {
           if (question.style === TypeConstants.questions.checkbox) {
-            question.value = submission[key].split(',');
+            if (submission[key] === null || submission[key] === undefined) {
+              question.value = [];
+            } else {
+              question.value = submission[key].split(',');
+            }
           } else {
             question.value = submission[key];
           }

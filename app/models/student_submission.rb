@@ -455,7 +455,7 @@ class StudentSubmission < ActiveRecord::Base
       psychologist_consent_name: psychologist_consent_name,
       shirt_size: shirt_size,
     )
-    unless student.save
+    unless student.save!
       fail 'Could not create student from submission'
     end
     begin
