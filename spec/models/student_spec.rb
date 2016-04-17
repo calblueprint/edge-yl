@@ -12,8 +12,7 @@
 #  birthday                   :date             not null
 #  cell_phone                 :string           not null
 #  is_checked_in              :boolean          default(FALSE), not null
-#  dietary_restrictions       :integer          not null
-#  other_dietary_restrictions :string           not null
+#  dietary_restrictions       :string           not null
 #  email                      :string           not null
 #  emergency_consent          :integer          not null
 #  exercise_limitations       :string           not null
@@ -35,13 +34,14 @@
 #  guardian_two_phone_number  :string           not null
 #  guardian_two_phone_type    :integer          not null
 #  guardian_two_relationship  :integer          not null
-#  health_conditions          :integer          not null
+#  health_conditions          :string           not null
 #  home_phone                 :string           not null
 #  immunizations              :integer          not null
 #  is_flagged                 :boolean          not null
 #  is_primary                 :boolean          not null
 #  last_name                  :string           not null
 #  medications                :string           not null
+#  other_dietary_restrictions :string           not null
 #  preferred_name             :string           default(""), not null
 #  psychologist_consent       :integer          not null
 #  psychologist_consent_name  :string           not null

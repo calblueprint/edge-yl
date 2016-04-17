@@ -12,8 +12,7 @@
 #  birthday                   :date             not null
 #  cell_phone                 :string           not null
 #  is_checked_in              :boolean          default(FALSE), not null
-#  dietary_restrictions       :integer          not null
-#  other_dietary_restrictions :string           not null
+#  dietary_restrictions       :string           not null
 #  email                      :string           not null
 #  emergency_consent          :integer          not null
 #  exercise_limitations       :string           not null
@@ -35,13 +34,14 @@
 #  guardian_two_phone_number  :string           not null
 #  guardian_two_phone_type    :integer          not null
 #  guardian_two_relationship  :integer          not null
-#  health_conditions          :integer          not null
+#  health_conditions          :string           not null
 #  home_phone                 :string           not null
 #  immunizations              :integer          not null
 #  is_flagged                 :boolean          not null
 #  is_primary                 :boolean          not null
 #  last_name                  :string           not null
 #  medications                :string           not null
+#  other_dietary_restrictions :string           not null
 #  preferred_name             :string           default(""), not null
 #  psychologist_consent       :integer          not null
 #  psychologist_consent_name  :string           not null
@@ -75,16 +75,6 @@ class Student < ActiveRecord::Base
 
   def allergies=(value)
     self[:allergies] = EnumConstants::BOOLEANS.index(value)
-  end
-
-  def dietary_restrictions
-    unless self[:dietary_restrictions].nil?
-      EnumConstants::DIETARY_RESTRICTIONS[self[:dietary_restrictions]]
-    end
-  end
-
-  def dietary_restrictions=(value)
-    self[:dietary_restrictions] = EnumConstants::DIETARY_RESTRICTIONS.index(value)
   end
 
   def gender
@@ -137,16 +127,6 @@ class Student < ActiveRecord::Base
     self[:guardian_two_relationship] = EnumConstants::GUARDIAN_RELATIONSHIPS.index(value)
   end
 
-  def health_conditions
-    unless self[:health_conditions].nil?
-      EnumConstants::BOOLEANS[self[:health_conditions]]
-    end
-  end
-
-  def health_conditions=(value)
-    self[:health_conditions] = EnumConstants::BOOLEANS.index(value)
-  end
-
   def immunizations
     unless self[:immunizations].nil?
       EnumConstants::BOOLEANS[self[:immunizations]]
@@ -175,8 +155,6 @@ class Student < ActiveRecord::Base
   has_many :comments, as: :commentable, dependent: :destroy
   has_many :emails, dependent: :destroy, as: :emailable
   has_many :visits, dependent: :destroy, as: :visitable
-
-  before_validation :set_initials, on: :create
 
   validates :address_city, presence: true
   validates :address_one, presence: true
@@ -239,13 +217,6 @@ class Student < ActiveRecord::Base
 
   def self.other
     where(gender: 2)
-  end
-
-  private
-
-  def set_initials
-    self.is_flagged = false
-    true
   end
 
 end

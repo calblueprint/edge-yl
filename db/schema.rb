@@ -281,7 +281,7 @@ ActiveRecord::Schema.define(version: 20160408025358) do
     t.integer "carpool"
     t.string  "cell_phone"
     t.integer "ceremony_attendance"
-    t.string  "ceremony_attendance_number"
+    t.integer "ceremony_attendance_number"
     t.integer "current_page",                   default: 0,    null: false
     t.string  "dietary_restrictions"
     t.string  "email"
@@ -306,7 +306,7 @@ ActiveRecord::Schema.define(version: 20160408025358) do
     t.string  "guardian_two_phone_number"
     t.integer "guardian_two_phone_type"
     t.integer "guardian_two_relationship"
-    t.integer "health_conditions"
+    t.string  "health_conditions"
     t.string  "home_phone"
     t.boolean "is_active",                      default: true, null: false
     t.boolean "is_primary",                                    null: false
@@ -345,12 +345,12 @@ ActiveRecord::Schema.define(version: 20160408025358) do
     t.integer "shirt_size"
     t.integer "transportation"
     t.date    "transportation_arrival_date"
-    t.string  "transportation_arrival_time"
+    t.time    "transportation_arrival_time"
     t.string  "transportation_carrier"
     t.integer "transportation_consent"
     t.string  "transportation_consent_name"
     t.date    "transportation_departure_date"
-    t.string  "transportation_departure_time"
+    t.time    "transportation_departure_time"
     t.string  "transportation_name"
     t.string  "transportation_number"
     t.integer "conference_id",                                 null: false
@@ -368,8 +368,7 @@ ActiveRecord::Schema.define(version: 20160408025358) do
     t.date     "birthday",                                   null: false
     t.string   "cell_phone",                                 null: false
     t.boolean  "is_checked_in",              default: false, null: false
-    t.integer  "dietary_restrictions",                       null: false
-    t.string   "other_dietary_restrictions",                 null: false
+    t.string   "dietary_restrictions",                       null: false
     t.string   "email",                                      null: false
     t.integer  "emergency_consent",                          null: false
     t.string   "exercise_limitations",                       null: false
@@ -391,13 +390,14 @@ ActiveRecord::Schema.define(version: 20160408025358) do
     t.string   "guardian_two_phone_number",                  null: false
     t.integer  "guardian_two_phone_type",                    null: false
     t.integer  "guardian_two_relationship",                  null: false
-    t.integer  "health_conditions",                          null: false
+    t.string   "health_conditions",                          null: false
     t.string   "home_phone",                                 null: false
     t.integer  "immunizations",                              null: false
     t.boolean  "is_flagged",                                 null: false
     t.boolean  "is_primary",                                 null: false
     t.string   "last_name",                                  null: false
     t.string   "medications",                                null: false
+    t.string   "other_dietary_restrictions",                 null: false
     t.string   "preferred_name",             default: "",    null: false
     t.integer  "psychologist_consent",                       null: false
     t.string   "psychologist_consent_name",                  null: false

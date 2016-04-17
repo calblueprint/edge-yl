@@ -13,7 +13,7 @@
 #  carpool                        :integer
 #  cell_phone                     :string
 #  ceremony_attendance            :integer
-#  ceremony_attendance_number     :string
+#  ceremony_attendance_number     :integer
 #  current_page                   :integer          default(0), not null
 #  dietary_restrictions           :string
 #  email                          :string
@@ -38,7 +38,7 @@
 #  guardian_two_phone_number      :string
 #  guardian_two_phone_type        :integer
 #  guardian_two_relationship      :integer
-#  health_conditions              :integer
+#  health_conditions              :string
 #  home_phone                     :string
 #  is_active                      :boolean          default(TRUE), not null
 #  is_primary                     :boolean          not null
@@ -77,12 +77,12 @@
 #  shirt_size                     :integer
 #  transportation                 :integer
 #  transportation_arrival_date    :date
-#  transportation_arrival_time    :string
+#  transportation_arrival_time    :time
 #  transportation_carrier         :string
 #  transportation_consent         :integer
 #  transportation_consent_name    :string
 #  transportation_departure_date  :date
-#  transportation_departure_time  :string
+#  transportation_departure_time  :time
 #  transportation_name            :string
 #  transportation_number          :string
 #  conference_id                  :integer          not null
@@ -116,22 +116,22 @@ class StudentSubmission < ActiveRecord::Base
 
   def carpool
     unless self[:carpool].nil?
-      EnumConstants::CARPOOL[self[:carpool]]
+      EnumConstants::CARPOOL_OPTIONS[self[:carpool]]
     end
   end
 
   def carpool=(value)
-    self[:carpool] = EnumConstants::CARPOOL.index(value)
+    self[:carpool] = EnumConstants::CARPOOL_OPTIONS.index(value)
   end
 
   def ceremony_attendance
     unless self[:ceremony_attendance].nil?
-      EnumConstants::CEREMONY[self[:ceremony_attendance]]
+      EnumConstants::CEREMONY_OPTIONS[self[:ceremony_attendance]]
     end
   end
 
   def ceremony_attendance=(value)
-    self[:ceremony_attendance] = EnumConstants::CEREMONY.index(value)
+    self[:ceremony_attendance] = EnumConstants::CEREMONY_OPTIONS.index(value)
   end
 
   def emergency_consent
@@ -194,16 +194,6 @@ class StudentSubmission < ActiveRecord::Base
     self[:guardian_two_relationship] = EnumConstants::GUARDIAN_RELATIONSHIPS.index(value)
   end
 
-  def health_conditions
-    unless self[:health_conditions].nil?
-      EnumConstants::BOOLEANS[self[:health_conditions]]
-    end
-  end
-
-  def health_conditions=(value)
-    self[:health_conditions] = EnumConstants::BOOLEANS.index(value)
-  end
-
   def immunizations
     unless self[:immunizations].nil?
       EnumConstants::BOOLEANS[self[:immunizations]]
@@ -246,22 +236,22 @@ class StudentSubmission < ActiveRecord::Base
 
   def participation_guardian_consent
     unless self[:participation_guardian_consent].nil?
-      EnumConstants::AGREEMENT[self[:participation_guardian_consent]]
+      EnumConstants::AGREEMENTS[self[:participation_guardian_consent]]
     end
   end
 
   def participation_guardian_consent=(value)
-    self[:participation_guardian_consent] = EnumConstants::AGREEMENT.index(value)
+    self[:participation_guardian_consent] = EnumConstants::AGREEMENTS.index(value)
   end
 
   def participation_student_consent
     unless self[:participation_student_consent].nil?
-      EnumConstants::AGREEMENT[self[:participation_student_consent]]
+      EnumConstants::AGREEMENTS[self[:participation_student_consent]]
     end
   end
 
   def participation_student_consent=(value)
-    self[:participation_student_consent] = EnumConstants::AGREEMENT.index(value)
+    self[:participation_student_consent] = EnumConstants::AGREEMENTS.index(value)
   end
 
   def psychologist_consent
@@ -276,12 +266,12 @@ class StudentSubmission < ActiveRecord::Base
 
   def risk_student_consent
     unless self[:risk_student_consent].nil?
-      EnumConstants::AGREEMENT[self[:risk_student_consent]]
+      EnumConstants::AGREEMENTS[self[:risk_student_consent]]
     end
   end
 
   def risk_student_consent=(value)
-    self[:risk_student_consent] = EnumConstants::AGREEMENT.index(value)
+    self[:risk_student_consent] = EnumConstants::AGREEMENTS.index(value)
   end
 
   def risk_guardian_relationship
@@ -296,12 +286,12 @@ class StudentSubmission < ActiveRecord::Base
 
   def risk_guardian_consent
     unless self[:risk_guardian_consent].nil?
-      EnumConstants::AGREEMENT[self[:risk_guardian_consent]]
+      EnumConstants::AGREEMENTS[self[:risk_guardian_consent]]
     end
   end
 
   def risk_guardian_consent=(value)
-    self[:risk_guardian_consent] = EnumConstants::AGREEMENT.index(value)
+    self[:risk_guardian_consent] = EnumConstants::AGREEMENTS.index(value)
   end
 
   def shirt_size
@@ -316,22 +306,22 @@ class StudentSubmission < ActiveRecord::Base
 
   def transportation
     unless self[:transportation].nil?
-      EnumConstants::TRANSPORTATION[self[:transportation]]
+      EnumConstants::TRANSPORTATION_OPTIONS[self[:transportation]]
     end
   end
 
   def transportation=(value)
-    self[:transportation] = EnumConstants::TRANSPORTATION.index(value)
+    self[:transportation] = EnumConstants::TRANSPORTATION_OPTIONS.index(value)
   end
 
   def transportation_consent
     unless self[:transportation_consent].nil?
-      EnumConstants::AGREEMENT[self[:transportation_consent]]
+      EnumConstants::AGREEMENTS[self[:transportation_consent]]
     end
   end
 
   def transportation_consent=(value)
-    self[:transportation_consent] = EnumConstants::AGREEMENT.index(value)
+    self[:transportation_consent] = EnumConstants::AGREEMENTS.index(value)
   end
 
   def form_url
@@ -345,10 +335,25 @@ class StudentSubmission < ActiveRecord::Base
 
   def custom_update(update_params)
     if is_active
-      if update_params[:dietary_restrictions]
-        update_params[:dietary_restrictions].sort!
-        dietary_restrictions = update_params[:dietary_restrictions].join(',')
-        update_params[:dietary_restrictions] = dietary_restrictions
+      checkbox_keys = [
+        :dietary_restrictions,
+        :medical_conditions,
+      ]
+      checkbox_keys.each do |checkbox_key|
+        if update_params[checkbox_key]
+          update_params[checkbox_key].sort!
+          update_params[checkbox_key] = update_params[checkbox_key].join(',')
+        end
+      end
+      time_keys = [
+        :transportation_arrival_time,
+        :transportation_departure_time,
+      ]
+      time_keys.each do |time_key|
+        if update_params[time_key]
+          update_params[time_key] = Time.zone.parse(update_params[time_key])
+          puts update_params[time_key]
+        end
       end
       validator = StudentValidator.new(update_params)
       validator.valid?
@@ -446,6 +451,7 @@ class StudentSubmission < ActiveRecord::Base
       guardian_two_relationship: guardian_two_relationship,
       home_phone: home_phone,
       immunizations: immunizations,
+      is_flagged: false,
       is_primary: is_primary,
       last_name: last_name,
       medications: medications,
@@ -455,7 +461,7 @@ class StudentSubmission < ActiveRecord::Base
       psychologist_consent_name: psychologist_consent_name,
       shirt_size: shirt_size,
     )
-    unless student.save
+    unless student.save!
       fail 'Could not create student from submission'
     end
     begin

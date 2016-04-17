@@ -11,8 +11,7 @@ class CreateStudents < ActiveRecord::Migration
       t.date    :birthday, null: false
       t.string  :cell_phone, null: false
       t.boolean :is_checked_in, default: false, null: false
-      t.integer :dietary_restrictions, null: false
-      t.string  :other_dietary_restrictions, null: false
+      t.string  :dietary_restrictions, null: false
       t.string  :email, null: false
       t.integer :emergency_consent, null: false
       t.string  :exercise_limitations, null: false
@@ -34,13 +33,14 @@ class CreateStudents < ActiveRecord::Migration
       t.string  :guardian_two_phone_number, null: false
       t.integer :guardian_two_phone_type, null: false
       t.integer :guardian_two_relationship, null: false
-      t.integer :health_conditions, null: false
+      t.string  :health_conditions, null: false
       t.string  :home_phone, null: false
       t.integer :immunizations, null: false
       t.boolean :is_flagged, null: false
       t.boolean :is_primary, null: false
       t.string  :last_name, null: false
       t.string  :medications, null: false
+      t.string  :other_dietary_restrictions, null: false
       t.string  :preferred_name, default: '', null: false
       t.integer :psychologist_consent, null: false
       t.string  :psychologist_consent_name, null: false

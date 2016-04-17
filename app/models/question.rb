@@ -22,7 +22,7 @@ class Question < ActiveRecord::Base
 
   before_validation :set_initials, on: :create
 
-  enum format: [:date, :text]
+  enum format: [:date, :text, :time]
   enum style: [
     :checkbox,
     :dropdown,
