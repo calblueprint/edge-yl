@@ -1145,45 +1145,51 @@ student_form = Form.create(
   ) do |page|
     Question.create(
       description: %s(
-          Activities: <b>EDGE Youth Leadership Seminar</b><br /
-          Dates: <b>June 3-5, 2016</b><br /
-          Location: <b>UC Berkeley, Berkeley, CA</b><br /
-          IN CONSIDERATION of the right to attend and participate in
-          the aforementioned Activities, the Participant (and, if the Participant
-          is a minor, his or her parent or legal guardian) hereby:
-          <br />
-          1. Agrees to abide by all rules and regulations
-          established by the EDGE Youth Leadership Seminar.
-          <br />
-          2. Grants to EDGE for any purpose connected with promoting the purposes
-          and goals of EDGE, but not for commercial exploitation, the right to use the
-          Participant’s name, voice, quotes, and likeness in any writings, photographs,
-          films, and recordings of the Participant while he or she is participating in
-          the Activities, and any biographical information submitted by the Participant
-          to EDGE, and to use, reproduce, publish, and distribute the same.
-          <br />
-          3. Understands that every effort is made to provide participants with a safe, enjoyable,
-          and memorable experience; attest and verify that the Participant is physically, mentally
-          and emotionally capable of attending and participating in all activities offered at the
-          EDGE Youth Leadership Seminar; acknowledges that there are inherent risks in any activity
-          involving travel outside of one's own home or community, including, travel to and from the
-          site, and, knowing the risks, nevertheless, agree to assume all risks of personal injury
-          and any other losses and damage to person or property sustained while participating in,
-          attending, and preparing for or traveling to and from the EDGE Youth Leadership; releases,
-          waives and hold harmless the EDGE Youth Leadership Seminar, the sponsors, the volunteers,
-          and officers, employees, agents, representatives, successors, and assigns from any and all
-          liability or responsibility for injuries and/or property damage which Participant may
-          sustain during the event or during travel to or from the event; understands that this
-          waiver and release covers Participant (including all heirs, executors, or administrators)
-          and is given in consideration of the EDGE Youth Leadership Seminar’s acceptance of
-          registration/entry into EDGE 2016. This Consent and Acknowledgment of Risk shall not be
-          amended, supplemented, or abrogated without the written consent of EDGE Board of
-          Directors, San Leandro, CA.<br /> 4. Agrees to defend and indemnify the EDGE Youth
-          Leadership Seminar from any claim or action filed by a third party (against EDGE) due to
-          their (the participant's) actions in this event.<br /> By signing below, the
-          Parent/Guardian confirms that they have read, understand, and consent to the terms
-          of this waiver agreement.
-        ),
+        Activities: <b>EDGE Youth Leadership Seminar</b>
+        <br />
+        Dates: <b>June 3-5, 2016</b><br />
+        Location: <b>UC Berkeley, Berkeley, CA</b>
+        <br />
+        IN CONSIDERATION of the right to attend and participate in
+        the aforementioned Activities, the Participant (and, if the Participant
+        is a minor, his or her parent or legal guardian) hereby:
+        <br />
+        1. Agrees to abide by all rules and regulations
+        established by the EDGE Youth Leadership Seminar.
+        <br />
+        2. Grants to EDGE for any purpose connected with promoting the purposes
+        and goals of EDGE, but not for commercial exploitation, the right to use the
+        Participant’s name, voice, quotes, and likeness in any writings, photographs,
+        films, and recordings of the Participant while he or she is participating in
+        the Activities, and any biographical information submitted by the Participant
+        to EDGE, and to use, reproduce, publish, and distribute the same.
+        <br />
+        3. Understands that every effort is made to provide participants with a safe, enjoyable,
+        and memorable experience; attest and verify that the Participant is physically, mentally
+        and emotionally capable of attending and participating in all activities offered at the
+        EDGE Youth Leadership Seminar; acknowledges that there are inherent risks in any activity
+        involving travel outside of one's own home or community, including, travel to and from the
+        site, and, knowing the risks, nevertheless, agree to assume all risks of personal injury
+        and any other losses and damage to person or property sustained while participating in,
+        attending, and preparing for or traveling to and from the EDGE Youth Leadership; releases,
+        waives and hold harmless the EDGE Youth Leadership Seminar, the sponsors, the volunteers,
+        and officers, employees, agents, representatives, successors, and assigns from any and all
+        liability or responsibility for injuries and/or property damage which Participant may
+        sustain during the event or during travel to or from the event; understands that this
+        waiver and release covers Participant (including all heirs, executors, or administrators)
+        and is given in consideration of the EDGE Youth Leadership Seminar’s acceptance of
+        registration/entry into EDGE 2016. This Consent and Acknowledgment of Risk shall not be
+        amended, supplemented, or abrogated without the written consent of EDGE Board of
+        Directors, San Leandro, CA.
+        <br /> 
+        4. Agrees to defend and indemnify the EDGE Youth
+        Leadership Seminar from any claim or action filed by a third party (against EDGE) due to
+        their (the participant's) actions in this event.
+        <br /> 
+        By signing below, the
+        Parent/Guardian confirms that they have read, understand, and consent to the terms
+        of this waiver agreement.
+      ),
       key: 'risk_info',
       page: page,
       style: Question.styles[:information],
