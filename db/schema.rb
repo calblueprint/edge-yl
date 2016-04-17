@@ -281,7 +281,7 @@ ActiveRecord::Schema.define(version: 20160408025358) do
     t.integer "carpool"
     t.string  "cell_phone"
     t.integer "ceremony_attendance"
-    t.string  "ceremony_attendance_number"
+    t.integer "ceremony_attendance_number"
     t.integer "current_page",                   default: 0,    null: false
     t.string  "dietary_restrictions"
     t.string  "email"
