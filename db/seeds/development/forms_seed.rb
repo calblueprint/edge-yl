@@ -655,9 +655,9 @@ student_form = Form.create(
     )
     Question.create(
       key: 'health_conditions',
-      options: EnumConstants::BOOLEANS,
+      options: EnumConstants::HEALTH_CONDITIONS,
       page: page,
-      style: Question.styles[:dropdown],
+      style: Question.styles[:checkbox],
       title: %s(
         Have you (the student attendee) previously been diagnosed with or currently
         have any of the following health conditions (check all that apply)?

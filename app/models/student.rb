@@ -34,7 +34,7 @@
 #  guardian_two_phone_number  :string           not null
 #  guardian_two_phone_type    :integer          not null
 #  guardian_two_relationship  :integer          not null
-#  health_conditions          :integer          not null
+#  health_conditions          :string           not null
 #  home_phone                 :string           not null
 #  immunizations              :integer          not null
 #  is_flagged                 :boolean          not null
@@ -127,16 +127,6 @@ class Student < ActiveRecord::Base
     self[:guardian_two_relationship] = EnumConstants::GUARDIAN_RELATIONSHIPS.index(value)
   end
 
-  def health_conditions
-    unless self[:health_conditions].nil?
-      EnumConstants::BOOLEANS[self[:health_conditions]]
-    end
-  end
-
-  def health_conditions=(value)
-    self[:health_conditions] = EnumConstants::BOOLEANS.index(value)
-  end
-
   def immunizations
     unless self[:immunizations].nil?
       EnumConstants::BOOLEANS[self[:immunizations]]
@@ -165,8 +155,6 @@ class Student < ActiveRecord::Base
   has_many :comments, as: :commentable, dependent: :destroy
   has_many :emails, dependent: :destroy, as: :emailable
   has_many :visits, dependent: :destroy, as: :visitable
-
-  before_validation :set_initials, on: :create
 
   validates :address_city, presence: true
   validates :address_one, presence: true
@@ -229,13 +217,6 @@ class Student < ActiveRecord::Base
 
   def self.other
     where(gender: 2)
-  end
-
-  private
-
-  def set_initials
-    self.is_flagged = false
-    true
   end
 
 end

@@ -34,7 +34,7 @@
 #  guardian_two_phone_number  :string           not null
 #  guardian_two_phone_type    :integer          not null
 #  guardian_two_relationship  :integer          not null
-#  health_conditions          :integer          not null
+#  health_conditions          :string           not null
 #  home_phone                 :string           not null
 #  immunizations              :integer          not null
 #  is_flagged                 :boolean          not null

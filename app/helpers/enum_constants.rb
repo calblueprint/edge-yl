@@ -26,6 +26,19 @@ module EnumConstants
     Vegetarian
   ).freeze
 
+  HEALTH_CONDITIONS = %w(
+    None
+    Asthma
+    Attention\ Deficit-Hyperactivity
+    Chronic\ Ear\ Infections
+    Diabetes
+    Epilepsy/Seizure\ Disorder
+    Frequent\ Migraine\ Headaches
+    Heart\ Problems
+    Stomach\ Aches/Issues
+    Vision/Hearing\ Problems
+  ).freeze
+
   GENDERS = %w(female male other).freeze
 
   GUARDIAN_RELATIONSHIPS = %w(

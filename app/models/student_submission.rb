@@ -38,7 +38,7 @@
 #  guardian_two_phone_number      :string
 #  guardian_two_phone_type        :integer
 #  guardian_two_relationship      :integer
-#  health_conditions              :integer
+#  health_conditions              :string
 #  home_phone                     :string
 #  is_active                      :boolean          default(TRUE), not null
 #  is_primary                     :boolean          not null
@@ -194,16 +194,6 @@ class StudentSubmission < ActiveRecord::Base
     self[:guardian_two_relationship] = EnumConstants::GUARDIAN_RELATIONSHIPS.index(value)
   end
 
-  def health_conditions
-    unless self[:health_conditions].nil?
-      EnumConstants::BOOLEANS[self[:health_conditions]]
-    end
-  end
-
-  def health_conditions=(value)
-    self[:health_conditions] = EnumConstants::BOOLEANS.index(value)
-  end
-
   def immunizations
     unless self[:immunizations].nil?
       EnumConstants::BOOLEANS[self[:immunizations]]
@@ -345,6 +335,16 @@ class StudentSubmission < ActiveRecord::Base
 
   def custom_update(update_params)
     if is_active
+      checkbox_keys = [
+        :allergies,
+        :dietary_restrictions,
+      ]
+      checkbox_keys.each do |checkbox_key|
+        if update_params[checkbox_key]
+          update_params[checkbox_key].sort!
+          update_params[checkbox_key] = update_params[checkbox_key].join(',')
+        end
+      end
       if update_params[:dietary_restrictions]
         update_params[:dietary_restrictions].sort!
         dietary_restrictions = update_params[:dietary_restrictions].join(',')
@@ -446,6 +446,7 @@ class StudentSubmission < ActiveRecord::Base
       guardian_two_relationship: guardian_two_relationship,
       home_phone: home_phone,
       immunizations: immunizations,
+      is_flagged: false,
       is_primary: is_primary,
       last_name: last_name,
       medications: medications,
