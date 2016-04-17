@@ -890,7 +890,11 @@ student_form = Form.create(
         Warring Street and Parker Street Bus Stop, Oakland International Airport
       ),
       enabler_key: 'transportation',
-      enabler_value: "#{EnumConstants::TRANSPORTATION_OPTIONS[2]} #{EnumConstants::TRANSPORTATION_OPTIONS[3]} #{EnumConstants::TRANSPORTATION_OPTIONS[4]}",
+      enabler_value: %(
+        #{EnumConstants::TRANSPORTATION_OPTIONS[2]}
+        #{EnumConstants::TRANSPORTATION_OPTIONS[3]}
+        #{EnumConstants::TRANSPORTATION_OPTIONS[4]}
+      ),
       key: 'transportation_name',
       page: page,
       style: Question.styles[:input],
@@ -899,7 +903,7 @@ student_form = Form.create(
     Question.create(
       description: 'Southwest, BART, AC Transit, etc.',
       enabler_key: 'transportation',
-      enabler_value: %Q(
+      enabler_value: %(
         #{EnumConstants::TRANSPORTATION_OPTIONS[2]}
         #{EnumConstants::TRANSPORTATION_OPTIONS[3]}
         #{EnumConstants::TRANSPORTATION_OPTIONS[4]}
@@ -911,7 +915,11 @@ student_form = Form.create(
     )
     Question.create(
       enabler_key: 'transportation',
-      enabler_value: "#{EnumConstants::TRANSPORTATION_OPTIONS[2]} #{EnumConstants::TRANSPORTATION_OPTIONS[3]} #{EnumConstants::TRANSPORTATION_OPTIONS[4]}",
+      enabler_value: %(
+        #{EnumConstants::TRANSPORTATION_OPTIONS[2]}
+        #{EnumConstants::TRANSPORTATION_OPTIONS[3]}
+        #{EnumConstants::TRANSPORTATION_OPTIONS[4]}
+      ),
       key: 'transportation_number',
       page: page,
       style: Question.styles[:input],
@@ -919,7 +927,11 @@ student_form = Form.create(
     )
     Question.create(
       enabler_key: 'transportation',
-      enabler_value: "#{EnumConstants::TRANSPORTATION_OPTIONS[2]} #{EnumConstants::TRANSPORTATION_OPTIONS[3]} #{EnumConstants::TRANSPORTATION_OPTIONS[4]}",
+      enabler_value: %(
+        #{EnumConstants::TRANSPORTATION_OPTIONS[2]}
+        #{EnumConstants::TRANSPORTATION_OPTIONS[3]}
+        #{EnumConstants::TRANSPORTATION_OPTIONS[4]}
+      ),
       format: Question.formats[:date],
       key: 'transportation_arrival_date',
       page: page,
@@ -928,7 +940,11 @@ student_form = Form.create(
     )
     Question.create(
       enabler_key: 'transportation',
-      enabler_value: "#{EnumConstants::TRANSPORTATION_OPTIONS[2]} #{EnumConstants::TRANSPORTATION_OPTIONS[3]} #{EnumConstants::TRANSPORTATION_OPTIONS[4]}",
+      enabler_value: %(
+        #{EnumConstants::TRANSPORTATION_OPTIONS[2]}
+        #{EnumConstants::TRANSPORTATION_OPTIONS[3]}
+        #{EnumConstants::TRANSPORTATION_OPTIONS[4]}
+      ),
       description: 'You must arrive by 8am',
       format: Question.formats[:time],
       key: 'transportation_arrival_time',
@@ -938,7 +954,11 @@ student_form = Form.create(
     )
     Question.create(
       enabler_key: 'transportation',
-      enabler_value: "#{EnumConstants::TRANSPORTATION_OPTIONS[2]} #{EnumConstants::TRANSPORTATION_OPTIONS[3]} #{EnumConstants::TRANSPORTATION_OPTIONS[4]}",
+      enabler_value: %(
+        #{EnumConstants::TRANSPORTATION_OPTIONS[2]}
+        #{EnumConstants::TRANSPORTATION_OPTIONS[3]}
+        #{EnumConstants::TRANSPORTATION_OPTIONS[4]}
+      ),
       format: Question.formats[:date],
       key: 'transportation_departure_date',
       page: page,
@@ -948,7 +968,11 @@ student_form = Form.create(
     Question.create(
       description: 'Do not plan to leave earlier than 3pm',
       enabler_key: 'transportation',
-      enabler_value: "#{EnumConstants::TRANSPORTATION_OPTIONS[2]} #{EnumConstants::TRANSPORTATION_OPTIONS[3]} #{EnumConstants::TRANSPORTATION_OPTIONS[4]}",
+      enabler_value: %(
+        #{EnumConstants::TRANSPORTATION_OPTIONS[2]}
+        #{EnumConstants::TRANSPORTATION_OPTIONS[3]}
+        #{EnumConstants::TRANSPORTATION_OPTIONS[4]}
+      ),
       format: Question.formats[:time],
       key: 'transportation_departure_time',
       page: page,
@@ -961,7 +985,11 @@ student_form = Form.create(
         We do our best to organize carpools for students who need them.
       ),
       enabler_key: 'transportation',
-      enabler_value: "#{EnumConstants::TRANSPORTATION_OPTIONS[2]} #{EnumConstants::TRANSPORTATION_OPTIONS[3]} #{EnumConstants::TRANSPORTATION_OPTIONS[4]}",
+      enabler_value: %(
+        #{EnumConstants::TRANSPORTATION_OPTIONS[2]}
+        #{EnumConstants::TRANSPORTATION_OPTIONS[3]}
+        #{EnumConstants::TRANSPORTATION_OPTIONS[4]}
+      ),
       key: 'carpool_info',
       page: page,
       style: Question.styles[:information],
@@ -1084,7 +1112,10 @@ student_form = Form.create(
     )
     Question.create(
       enabler_key: 'ceremony_attendance',
-      enabler_value: "#{EnumConstants::CEREMONY_OPTIONS[0]} #{EnumConstants::CEREMONY_OPTIONS[1]}",
+      enabler_value: %(
+        #{EnumConstants::CEREMONY_OPTIONS[0]}
+        #{EnumConstants::CEREMONY_OPTIONS[1]}
+      ),
       key: 'ceremony_attendance_number',
       page: page,
       style: Question.styles[:input],
