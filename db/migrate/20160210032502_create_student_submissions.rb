@@ -38,6 +38,7 @@ class CreateStudentSubmissions < ActiveRecord::Migration
       t.integer :guardian_two_phone_type
       t.integer :guardian_two_relationship
       t.string  :health_conditions
+      t.string  :health_conditions_description
       t.string  :home_phone
       t.boolean :is_active, default: true, null: false
       t.boolean :is_primary, null: false

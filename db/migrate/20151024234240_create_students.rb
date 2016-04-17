@@ -34,6 +34,7 @@ class CreateStudents < ActiveRecord::Migration
       t.integer :guardian_two_phone_type, null: false
       t.integer :guardian_two_relationship, null: false
       t.string  :health_conditions, null: false
+      t.string  :health_conditions_description, default: '', null: false
       t.string  :home_phone, null: false
       t.integer :immunizations, null: false
       t.boolean :is_flagged, null: false
