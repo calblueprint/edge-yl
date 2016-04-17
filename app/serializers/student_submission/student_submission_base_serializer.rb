@@ -83,12 +83,4 @@ class StudentSubmissionBaseSerializer < BaseSerializer
              :transportation_name,
              :transportation_number
 
-  def transportation_arrival_time
-    object.transportation_arrival_time.strftime('%H:%M:%S')
-  end
-
-  def transportation_departure_time
-    object.transportation_departure_time.strftime('%H:%M:%S')
-  end
-
 end
