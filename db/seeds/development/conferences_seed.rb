@@ -1,7 +1,7 @@
 inactive_conference = Conference.create(
   end_date: Faker::Date.backward(3),
   location: 'University of California, Berkeley',
-  name: "EDGE #{Time.zone.today.year}",
+  name: "EDGE #{Time.zone.today.year - 1}",
   start_date: Faker::Date.backward(1),
 )
 puts "Created inactive conference #{inactive_conference.name}."
