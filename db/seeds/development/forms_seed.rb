@@ -1098,7 +1098,7 @@ student_form = Form.create(
         present to help your student pack and check out, please plan to pick up your student after
         3:00 pm, <b> but no later than 3:30 pm.</b>'
       ),
-      key: 'ceremony_info_1',
+      key: 'ceremony_info',
       page: page,
       style: Question.styles[:information],
       title: 'Closing Ceremony',
