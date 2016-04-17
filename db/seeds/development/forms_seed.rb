@@ -576,12 +576,14 @@ student_form = Form.create(
       title: 'Parent/Guardian 1 Job Title',
     )
     Question.create(
+      is_required: false,
       key: 'guardian_two_first_name',
       page: page,
       style: Question.styles[:input],
       title: 'Parent/Guardian 2 First Name',
     )
     Question.create(
+      is_required: false,
       key: 'guardian_two_last_name',
       page: page,
       style: Question.styles[:input],
@@ -589,6 +591,7 @@ student_form = Form.create(
     )
     Question.create(
       description: StringConstants::EMAIL_FORMAT,
+      is_required: false,
       key: 'guardian_two_email',
       page: page,
       style: Question.styles[:input],
@@ -596,12 +599,14 @@ student_form = Form.create(
     )
     Question.create(
       description: StringConstants::PHONE_FORMAT,
+      is_required: false,
       key: 'guardian_two_phone_number',
       page: page,
       style: Question.styles[:input],
       title: 'Parent/Guardian 2 Phone Number',
     )
     Question.create(
+      is_required: false,
       key: 'guardian_two_phone_type',
       options: EnumConstants::PHONE_TYPES,
       page: page,
@@ -609,6 +614,7 @@ student_form = Form.create(
       title: 'Parent/Guardian 2 Phone Type',
     )
     Question.create(
+      is_required: false,
       key: 'guardian_two_relationship',
       options: EnumConstants::GUARDIAN_RELATIONSHIPS,
       page: page,
@@ -662,6 +668,13 @@ student_form = Form.create(
         Have you (the student attendee) previously been diagnosed with or currently
         have any of the following health conditions (check all that apply)?
       ),
+    )
+    Question.create(
+      is_required: false,
+      key: 'health_conditions_description',
+      page: page,
+      style: Question.styles[:textarea],
+      title: 'Please briefly describe all conditions selected',
     )
     Question.create(
       key: 'medications',
@@ -996,6 +1009,7 @@ student_form = Form.create(
       title: 'Carpool Information',
     )
     Question.create(
+      is_required: false,
       key: 'carpool',
       options: EnumConstants::CARPOOL_OPTIONS,
       page: page,
@@ -1116,6 +1130,7 @@ student_form = Form.create(
         #{EnumConstants::CEREMONY_OPTIONS[0]}
         #{EnumConstants::CEREMONY_OPTIONS[1]}
       ),
+      is_required: false,
       key: 'ceremony_attendance_number',
       page: page,
       style: Question.styles[:input],
@@ -1130,9 +1145,11 @@ student_form = Form.create(
   ) do |page|
     Question.create(
       description: %s(
-        Activities: <b>EDGE Youth Leadership Seminar</b><br /
-        Dates: <b>June 3-5, 2016</b><br /
-        Location: <b>UC Berkeley, Berkeley, CA</b><br /
+        Activities: <b>EDGE Youth Leadership Seminar</b>
+        <br />
+        Dates: <b>June 3-5, 2016</b><br />
+        Location: <b>UC Berkeley, Berkeley, CA</b>
+        <br />
         IN CONSIDERATION of the right to attend and participate in
         the aforementioned Activities, the Participant (and, if the Participant
         is a minor, his or her parent or legal guardian) hereby:
@@ -1163,9 +1180,13 @@ student_form = Form.create(
         and is given in consideration of the EDGE Youth Leadership Seminar’s acceptance of
         registration/entry into EDGE 2016. This Consent and Acknowledgment of Risk shall not be
         amended, supplemented, or abrogated without the written consent of EDGE Board of
-        Directors, San Leandro, CA.<br /> 4. Agrees to defend and indemnify the EDGE Youth
+        Directors, San Leandro, CA.
+        <br /> 
+        4. Agrees to defend and indemnify the EDGE Youth
         Leadership Seminar from any claim or action filed by a third party (against EDGE) due to
-        their (the participant's) actions in this event.<br /> By signing below, the
+        their (the participant's) actions in this event.
+        <br /> 
+        By signing below, the
         Parent/Guardian confirms that they have read, understand, and consent to the terms
         of this waiver agreement.
       ),
@@ -1245,7 +1266,14 @@ student_form = Form.create(
     )
   end
   Page.create(
-    description: %s(
+    description: 'Particpation Description',
+    form: form,
+    is_last: true,
+    number: 9,
+    title: 'Participation Commitment',
+  ) do |page|
+    Question.create(
+      description: %s(
       Dear Participant, <br />
       Being selected to participate in the EDGE experience is a great honor. It’s a fantastic
       opportunity to discover who you are, your potential as a leader, as well as make friends
@@ -1270,14 +1298,7 @@ student_form = Form.create(
       <b>510-408-6606 (e-mail registration@edgeyl.org)</b> immediately. Notify all your family,
       friends, teachers and coaches right away that you are already booked for a life-changing
       experience on <b>June 3-5, 2016!</b>
-    ),
-    form: form,
-    is_last: true,
-    number: 9,
-    title: 'Participation Commitment',
-  ) do |page|
-    Question.create(
-      description: 'descriptoinadflkdsjfadslf',
+      ),
       key: 'participation_info',
       page: page,
       style: Question.styles[:information],

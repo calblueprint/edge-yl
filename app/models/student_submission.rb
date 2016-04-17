@@ -39,6 +39,7 @@
 #  guardian_two_phone_type        :integer
 #  guardian_two_relationship      :integer
 #  health_conditions              :string
+#  health_conditions_description  :string
 #  home_phone                     :string
 #  is_active                      :boolean          default(TRUE), not null
 #  is_primary                     :boolean          not null
@@ -433,6 +434,7 @@ class StudentSubmission < ActiveRecord::Base
       first_name: first_name,
       gender: gender,
       health_conditions: health_conditions,
+      health_conditions_description: health_conditions_description,
       guardian_one_email: guardian_one_email,
       guardian_one_employer: guardian_one_employer,
       guardian_one_first_name: guardian_one_first_name,
@@ -522,6 +524,7 @@ class StudentSubmission < ActiveRecord::Base
       emergency_consent_name: emergency_consent_name,
       exercise_limitations: exercise_limitations,
       health_conditions: health_conditions,
+      health_conditions_description: health_conditions_description,
       immunizations: immunizations,
       medications: medications,
       other_dietary_restrictions: other_dietary_restrictions,

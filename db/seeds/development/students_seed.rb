@@ -34,6 +34,7 @@ Conference.all.each do |conference|
       guardian_two_relationship: EnumConstants::GUARDIAN_RELATIONSHIPS.sample,
       home_phone: Faker::Base.numerify('###-###-####'),
       health_conditions: EnumConstants::BOOLEANS.sample,
+      health_conditions_description: 'None',
       immunizations: EnumConstants::BOOLEANS.sample,
       is_flagged: true,
       is_primary: true,
