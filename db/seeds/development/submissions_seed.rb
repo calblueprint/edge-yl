@@ -72,6 +72,7 @@ student_submission = StudentSubmission.create(
   dietary_restrictions: EnumConstants::DIETARY_RESTRICTIONS.sample,
   email: Faker::Internet.email,
   emergency_consent: EnumConstants::BOOLEANS.sample,
+  emergency_consent_name: Faker::Name.first_name,
   exercise_limitations: Faker::Name.first_name,
   first_name: Faker::Name.first_name,
   gender: EnumConstants::GENDERS.sample,
@@ -129,14 +130,14 @@ student_submission = StudentSubmission.create(
   shirt_size: EnumConstants::SHIRT_SIZES.sample,
   transportation: EnumConstants::TRANSPORTATION.sample,
   transportation_arrival_date: Faker::Date.between(33.days.ago, Time.zone.today),
-  transportation_arrival_time: 'time',
-  transportation_carrier: 'sdf',
+  transportation_arrival_time: Time.zone.now,
+  transportation_carrier: 'Bart',
   transportation_consent: EnumConstants::AGREEMENT.sample,
-  transportation_consent_name: 'sdf',
+  transportation_consent_name: Faker::Name.first_name,
   transportation_departure_date: Faker::Date.between(33.days.ago, Time.zone.today),
-  transportation_departure_time: 'time',
-  transportation_name: 'sdf',
-  transportation_number: 'sdf',
+  transportation_departure_time: Time.zone.now,
+  transportation_name: Faker::Name.first_name,
+  transportation_number: 777,
 )
 
 puts "Created student submission #{student_submission.id}."

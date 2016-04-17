@@ -336,8 +336,8 @@ class StudentSubmission < ActiveRecord::Base
   def custom_update(update_params)
     if is_active
       checkbox_keys = [
-        :allergies,
         :dietary_restrictions,
+        :medical_conditions,
       ]
       checkbox_keys.each do |checkbox_key|
         if update_params[checkbox_key]
