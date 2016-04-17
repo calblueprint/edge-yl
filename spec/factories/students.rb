@@ -26,14 +26,14 @@
 #  guardian_one_phone_number     :string           not null
 #  guardian_one_phone_type       :integer          not null
 #  guardian_one_relationship     :integer          not null
-#  guardian_two_email            :string           not null
+#  guardian_two_email            :string           default(""), not null
 #  guardian_two_employer         :string           default(""), not null
-#  guardian_two_first_name       :string           not null
+#  guardian_two_first_name       :string           default(""), not null
 #  guardian_two_job_title        :string           default(""), not null
-#  guardian_two_last_name        :string           not null
-#  guardian_two_phone_number     :string           not null
-#  guardian_two_phone_type       :integer          not null
-#  guardian_two_relationship     :integer          not null
+#  guardian_two_last_name        :string           default(""), not null
+#  guardian_two_phone_number     :string           default(""), not null
+#  guardian_two_phone_type       :integer
+#  guardian_two_relationship     :integer
 #  health_conditions             :string           not null
 #  health_conditions_description :string           default(""), not null
 #  home_phone                    :string           not null

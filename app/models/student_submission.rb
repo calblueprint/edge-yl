@@ -477,13 +477,13 @@ class StudentSubmission < ActiveRecord::Base
 
   def transportation_arrival_time
     unless self[:transportation_arrival_time].nil?
-      transportation_arrival_time.strftime('%H:%M:%S')
+      self[:transportation_arrival_time].strftime('%H:%M:%S')
     end
   end
 
   def transportation_departure_time
     unless self[:transportation_departure_time].nil?
-      transportation_departure_time.strftime('%H:%M:%S')
+      self[:transportation_departure_time].strftime('%H:%M:%S')
     end
   end
 
