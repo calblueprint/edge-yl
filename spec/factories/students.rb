@@ -88,7 +88,7 @@ FactoryGirl.define do
     guardian_two_phone_type    { EnumConstants::PHONE_TYPES.sample }
     guardian_two_relationship  { EnumConstants::GUARDIAN_RELATIONSHIPS.sample }
     health_conditions          { EnumConstants::BOOLEANS.sample }
-    health_conditions_other    { 'NONE' }
+    health_conditions_description { 'None' }
     home_phone                 { Faker::Base.numerify('###-###-####') }
     immunizations              { EnumConstants::BOOLEANS.sample }
     is_flagged                 { true }
