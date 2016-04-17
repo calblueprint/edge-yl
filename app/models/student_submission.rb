@@ -77,12 +77,12 @@
 #  shirt_size                     :integer
 #  transportation                 :integer
 #  transportation_arrival_date    :date
-#  transportation_arrival_time    :string
+#  transportation_arrival_time    :time
 #  transportation_carrier         :string
 #  transportation_consent         :integer
 #  transportation_consent_name    :string
 #  transportation_departure_date  :date
-#  transportation_departure_time  :string
+#  transportation_departure_time  :time
 #  transportation_name            :string
 #  transportation_number          :string
 #  conference_id                  :integer          not null
@@ -345,10 +345,15 @@ class StudentSubmission < ActiveRecord::Base
           update_params[checkbox_key] = update_params[checkbox_key].join(',')
         end
       end
-      if update_params[:dietary_restrictions]
-        update_params[:dietary_restrictions].sort!
-        dietary_restrictions = update_params[:dietary_restrictions].join(',')
-        update_params[:dietary_restrictions] = dietary_restrictions
+      time_keys = [
+        :transportation_arrival_time,
+        :transportation_departure_time,
+      ]
+      time_keys.each do |time_key|
+        if update_params[time_key]
+          update_params[time_key] = Time.zone.parse(update_params[time_key])
+          puts update_params[time_key]
+        end
       end
       validator = StudentValidator.new(update_params)
       validator.valid?

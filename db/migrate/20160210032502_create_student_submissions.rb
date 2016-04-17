@@ -76,12 +76,12 @@ class CreateStudentSubmissions < ActiveRecord::Migration
       t.integer :shirt_size
       t.integer :transportation
       t.date    :transportation_arrival_date
-      t.string  :transportation_arrival_time
+      t.time    :transportation_arrival_time
       t.string  :transportation_carrier
       t.integer :transportation_consent
       t.string  :transportation_consent_name
       t.date    :transportation_departure_date
-      t.string  :transportation_departure_time
+      t.time    :transportation_departure_time
       t.string  :transportation_name
       t.string  :transportation_number
       t.references :conference, index: true, null: false
