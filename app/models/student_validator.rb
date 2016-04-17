@@ -237,8 +237,8 @@ class StudentValidator
   end
 
   def parent_attending?
-    ceremony_attendance == EnumConstants::CEREMONY[0] ||
-      ceremony_attendance == EnumConstants::CEREMONY[1]
+    ceremony_attendance == EnumConstants::CEREMONY_OPTIONS[0] ||
+      ceremony_attendance == EnumConstants::CEREMONY_OPTIONS[1]
   end
 
   def persisted?
@@ -250,9 +250,9 @@ class StudentValidator
   end
 
   def public_transportation?
-    transportation == EnumConstants::TRANSPORTATION[2] ||
-      transportation == EnumConstants::TRANSPORTATION[3] ||
-      transportation == EnumConstants::TRANSPORTATION[4]
+    transportation == EnumConstants::TRANSPORTATION_OPTIONS[2] ||
+      transportation == EnumConstants::TRANSPORTATION_OPTIONS[3] ||
+      transportation == EnumConstants::TRANSPORTATION_OPTIONS[4]
   end
 
 end

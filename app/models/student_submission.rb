@@ -13,7 +13,7 @@
 #  carpool                        :integer
 #  cell_phone                     :string
 #  ceremony_attendance            :integer
-#  ceremony_attendance_number     :string
+#  ceremony_attendance_number     :integer
 #  current_page                   :integer          default(0), not null
 #  dietary_restrictions           :string
 #  email                          :string
@@ -116,22 +116,22 @@ class StudentSubmission < ActiveRecord::Base
 
   def carpool
     unless self[:carpool].nil?
-      EnumConstants::CARPOOL[self[:carpool]]
+      EnumConstants::CARPOOL_OPTIONS[self[:carpool]]
     end
   end
 
   def carpool=(value)
-    self[:carpool] = EnumConstants::CARPOOL.index(value)
+    self[:carpool] = EnumConstants::CARPOOL_OPTIONS.index(value)
   end
 
   def ceremony_attendance
     unless self[:ceremony_attendance].nil?
-      EnumConstants::CEREMONY[self[:ceremony_attendance]]
+      EnumConstants::CEREMONY_OPTIONS[self[:ceremony_attendance]]
     end
   end
 
   def ceremony_attendance=(value)
-    self[:ceremony_attendance] = EnumConstants::CEREMONY.index(value)
+    self[:ceremony_attendance] = EnumConstants::CEREMONY_OPTIONS.index(value)
   end
 
   def emergency_consent
@@ -236,22 +236,22 @@ class StudentSubmission < ActiveRecord::Base
 
   def participation_guardian_consent
     unless self[:participation_guardian_consent].nil?
-      EnumConstants::AGREEMENT[self[:participation_guardian_consent]]
+      EnumConstants::AGREEMENTS[self[:participation_guardian_consent]]
     end
   end
 
   def participation_guardian_consent=(value)
-    self[:participation_guardian_consent] = EnumConstants::AGREEMENT.index(value)
+    self[:participation_guardian_consent] = EnumConstants::AGREEMENTS.index(value)
   end
 
   def participation_student_consent
     unless self[:participation_student_consent].nil?
-      EnumConstants::AGREEMENT[self[:participation_student_consent]]
+      EnumConstants::AGREEMENTS[self[:participation_student_consent]]
     end
   end
 
   def participation_student_consent=(value)
-    self[:participation_student_consent] = EnumConstants::AGREEMENT.index(value)
+    self[:participation_student_consent] = EnumConstants::AGREEMENTS.index(value)
   end
 
   def psychologist_consent
@@ -266,12 +266,12 @@ class StudentSubmission < ActiveRecord::Base
 
   def risk_student_consent
     unless self[:risk_student_consent].nil?
-      EnumConstants::AGREEMENT[self[:risk_student_consent]]
+      EnumConstants::AGREEMENTS[self[:risk_student_consent]]
     end
   end
 
   def risk_student_consent=(value)
-    self[:risk_student_consent] = EnumConstants::AGREEMENT.index(value)
+    self[:risk_student_consent] = EnumConstants::AGREEMENTS.index(value)
   end
 
   def risk_guardian_relationship
@@ -286,12 +286,12 @@ class StudentSubmission < ActiveRecord::Base
 
   def risk_guardian_consent
     unless self[:risk_guardian_consent].nil?
-      EnumConstants::AGREEMENT[self[:risk_guardian_consent]]
+      EnumConstants::AGREEMENTS[self[:risk_guardian_consent]]
     end
   end
 
   def risk_guardian_consent=(value)
-    self[:risk_guardian_consent] = EnumConstants::AGREEMENT.index(value)
+    self[:risk_guardian_consent] = EnumConstants::AGREEMENTS.index(value)
   end
 
   def shirt_size
@@ -306,22 +306,22 @@ class StudentSubmission < ActiveRecord::Base
 
   def transportation
     unless self[:transportation].nil?
-      EnumConstants::TRANSPORTATION[self[:transportation]]
+      EnumConstants::TRANSPORTATION_OPTIONS[self[:transportation]]
     end
   end
 
   def transportation=(value)
-    self[:transportation] = EnumConstants::TRANSPORTATION.index(value)
+    self[:transportation] = EnumConstants::TRANSPORTATION_OPTIONS.index(value)
   end
 
   def transportation_consent
     unless self[:transportation_consent].nil?
-      EnumConstants::AGREEMENT[self[:transportation_consent]]
+      EnumConstants::AGREEMENTS[self[:transportation_consent]]
     end
   end
 
   def transportation_consent=(value)
-    self[:transportation_consent] = EnumConstants::AGREEMENT.index(value)
+    self[:transportation_consent] = EnumConstants::AGREEMENTS.index(value)
   end
 
   def form_url

@@ -1,16 +1,16 @@
 module EnumConstants
 
-  AGREEMENT = %w(yes).freeze
+  AGREEMENTS = %w(yes).freeze
 
   BOOLEANS = %w(yes no).freeze
 
-  CARPOOL = %w(
+  CARPOOL_OPTIONS = %w(
     Not\ interested
     Interested\ -\ I\ can\ provide\ a\ ride
     Interested\ -\ I\ can't\ provide\ a\ ride
   ).freeze
 
-  CEREMONY = %w(
+  CEREMONY_OPTIONS = %w(
     My\ family\ will\ be\ attending\ the\ Parents'\ Program\ and\ Closing\ Ceremonies
     My\ family\ will\ only\ be\ attending\ Closing\ Ceremonies
     My\ family\ will\ only\ be\ picking\ up\ after\ Closing\ Ceremonies
@@ -59,7 +59,7 @@ module EnumConstants
     SD TN TX UT VT VA WA WV WI WY
   ).freeze
 
-  TRANSPORTATION = %w(
+  TRANSPORTATION_OPTIONS = %w(
     Parent/Guardian\ Driving\ Me
     Driving\ Myself
     Public\ Transportation\ -\ Plane
