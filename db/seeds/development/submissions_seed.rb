@@ -93,6 +93,7 @@ student_submission = StudentSubmission.create(
   guardian_two_phone_type: EnumConstants::PHONE_TYPES.sample,
   guardian_two_relationship: EnumConstants::GUARDIAN_RELATIONSHIPS.sample,
   health_conditions: EnumConstants::HEALTH_CONDITIONS.sample,
+  health_conditions_description: Faker::Name.first_name,
   home_phone: Faker::Base.numerify('###-###-####'),
   immunizations: EnumConstants::BOOLEANS.sample,
   insurance: EnumConstants::BOOLEANS.sample,

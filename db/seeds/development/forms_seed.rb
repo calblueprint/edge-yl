@@ -1011,6 +1011,7 @@ student_form = Form.create(
       title: 'Carpool Information',
     )
     Question.create(
+      is_required: false,
       key: 'carpool',
       options: EnumConstants::CARPOOL_OPTIONS,
       page: page,
@@ -1126,6 +1127,7 @@ student_form = Form.create(
       title: 'Will you join us on Sunday?',
     )
     Question.create(
+      is_required: false,
       enabler_key: 'ceremony_attendance',
       enabler_value: %(
         #{EnumConstants::CEREMONY_OPTIONS[0]}

@@ -39,6 +39,7 @@
 #  guardian_two_phone_type        :integer
 #  guardian_two_relationship      :integer
 #  health_conditions              :string
+#  health_conditions_description  :string
 #  home_phone                     :string
 #  is_active                      :boolean          default(TRUE), not null
 #  is_primary                     :boolean          not null
