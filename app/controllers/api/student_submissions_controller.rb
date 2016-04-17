@@ -79,6 +79,8 @@ class Api::StudentSubmissionsController < Api::BaseController
       :guardian_two_phone_number,
       :guardian_two_phone_type,
       :guardian_two_relationship,
+      :health_conditions,
+      :health_conditions_description,
       :home_phone,
       :immunizations,
       :insurance,

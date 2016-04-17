@@ -576,18 +576,21 @@ student_form = Form.create(
       title: 'Parent/Guardian 1 Job Title',
     )
     Question.create(
+      is_required: false,
       key: 'guardian_two_first_name',
       page: page,
       style: Question.styles[:input],
       title: 'Parent/Guardian 2 First Name',
     )
     Question.create(
+      is_required: false,
       key: 'guardian_two_last_name',
       page: page,
       style: Question.styles[:input],
       title: 'Parent/Guardian 2 Last Name',
     )
     Question.create(
+      is_required: false,
       description: StringConstants::EMAIL_FORMAT,
       key: 'guardian_two_email',
       page: page,
@@ -595,6 +598,7 @@ student_form = Form.create(
       title: 'Parent/Guardian 2 Email',
     )
     Question.create(
+      is_required: false,
       description: StringConstants::PHONE_FORMAT,
       key: 'guardian_two_phone_number',
       page: page,
@@ -602,6 +606,7 @@ student_form = Form.create(
       title: 'Parent/Guardian 2 Phone Number',
     )
     Question.create(
+      is_required: false,
       key: 'guardian_two_phone_type',
       options: EnumConstants::PHONE_TYPES,
       page: page,
@@ -609,6 +614,7 @@ student_form = Form.create(
       title: 'Parent/Guardian 2 Phone Type',
     )
     Question.create(
+      is_required: false,
       key: 'guardian_two_relationship',
       options: EnumConstants::GUARDIAN_RELATIONSHIPS,
       page: page,
@@ -661,6 +667,15 @@ student_form = Form.create(
       title: %s(
         Have you (the student attendee) previously been diagnosed with or currently
         have any of the following health conditions (check all that apply)?
+      ),
+    )
+    Question.create(
+      is_required: false,
+      key: 'health_conditions_description',
+      page: page,
+      style: Question.styles[:textarea],
+      title: %s(
+        Please briefly describe all conditions selected 
       ),
     )
     Question.create(
@@ -1245,7 +1260,14 @@ student_form = Form.create(
     )
   end
   Page.create(
-    description: %s(
+    description: 'Particpation Description',
+    form: form,
+    is_last: true,
+    number: 9,
+    title: 'Participation Commitment',
+  ) do |page|
+    Question.create(
+      description: %s(
       Dear Participant, <br />
       Being selected to participate in the EDGE experience is a great honor. It’s a fantastic
       opportunity to discover who you are, your potential as a leader, as well as make friends
@@ -1270,14 +1292,7 @@ student_form = Form.create(
       <b>510-408-6606 (e-mail registration@edgeyl.org)</b> immediately. Notify all your family,
       friends, teachers and coaches right away that you are already booked for a life-changing
       experience on <b>June 3-5, 2016!</b>
-    ),
-    form: form,
-    is_last: true,
-    number: 9,
-    title: 'Participation Commitment',
-  ) do |page|
-    Question.create(
-      description: 'descriptoinadflkdsjfadslf',
+      ),
       key: 'participation_info',
       page: page,
       style: Question.styles[:information],
