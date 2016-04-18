@@ -37,10 +37,7 @@ class FormsController < BaseController
       return
     end
     page_progress = school_submission.page_progress
-    if @page.nil?
-      @page = page_progress
-    end
-    if @page > page_progress
+    if @page.nil? || @page < 1 || @page > page_progress
       redirect_to forms_school_path(id: @id, page: page_progress)
       return
     end
@@ -59,10 +56,7 @@ class FormsController < BaseController
       return
     end
     page_progress = student_submission.page_progress
-    if @page.nil?
-      @page = page_progress
-    end
-    if @page > page_progress
+    if @page.nil? || @page < 1 || @page > page_progress
       redirect_to forms_student_path(id: @id, page: page_progress)
       return
     end
