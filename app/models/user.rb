@@ -46,22 +46,6 @@ class User < ActiveRecord::Base
   validates :has_sidebar, inclusion: { in: [true, false] }
   validates :is_admin, inclusion: { in: [true, false] }
 
-  def drafts
-    emails.where(is_draft: false)
-  end
-
-  def self.groupable
-    includes(:leadership).where(leaderships: { id: nil })
-  end
-
-  def full_name
-    "#{first_name} #{last_name}"
-  end
-
-  def username
-    "#{first_name}#{last_name}".downcase
-  end
-
   def create_visit(visitable_type, visitable_id)
     last_visit = visits.first
     new_visit = Visit.new(
@@ -70,6 +54,26 @@ class User < ActiveRecord::Base
       visitable_type: visitable_type,
     )
     new_visit.save unless new_visit.equals(last_visit)
+  end
+
+  def drafts
+    emails.where(is_draft: false)
+  end
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
+
+  def self.groupable
+    includes(:leadership).where(leaderships: { id: nil })
+  end
+
+  def self.schoolable
+    includes(:responsibilities).where(responsibilities: { user_id: nil })
+  end
+
+  def username
+    "#{first_name}#{last_name}".downcase
   end
 
   def unread_count

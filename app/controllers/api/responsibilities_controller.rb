@@ -11,6 +11,17 @@ class Api::ResponsibilitiesController < Api::BaseController
     end
   end
 
+  def update
+    responsibility = Responsibility.find params[:id]
+    if responsibility.update_attributes responsibility_params
+      render json: responsibility,
+             serializer: ResponsibilityIndexSerializer,
+             status: :created
+    else
+      unprocessable_response
+    end
+  end
+
   private
 
   def responsibility_params

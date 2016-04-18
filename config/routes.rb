@@ -67,6 +67,7 @@ Rails.application.routes.draw do
     resources :prospects, only: [:create, :destroy, :index, :show, :update]
     resources :profiles, only: [:update]
     resources :rooms, only: [:create, :destroy, :index, :show, :update]
+    resources :responsibilities, only: [:update]
     resources :schools, only: [:index, :show, :update]
     resources :school_submissions, only: [:create, :show, :update]
     resources :students, only: [:index, :show, :update]
@@ -74,6 +75,7 @@ Rails.application.routes.draw do
     resources :threads, only: [:create, :destroy, :index, :show]
     resources :users, only: [:index, :show, :update] do
       get '/groupables', on: :collection, to: 'users#groupables'
+      get '/schoolables', on: :collection, to: 'users#schoolables'
     end
   end
 end

@@ -18,6 +18,11 @@ class Api::UsersController < Api::BaseController
     render json: user, serializer: UserShowSerializer
   end
 
+  def schoolables
+    users = User.schoolable
+    render json: users, each_serializer: UserBaseSerializer
+  end
+
   def update
     user = User.find params[:id]
     if user.update_attributes user_params

@@ -11,7 +11,9 @@
         'storeComment',
         'storeError',
         'storePrimary',
+        'storeResponsibility',
         'storeSchool',
+        'storeSchoolables',
         'storeValue',
       );
     }
@@ -126,6 +128,23 @@
       return true;
     }
 
+    updateResponsibility(pairing, attributes={}) {
+      attributes[pairing.key] = pairing.value.id;
+      var params = { responsibility: attributes };
+      var resolve = (response) => {
+        this.storeResponsibility(response);
+        ViewActions.storeToast(true, 'Responsibility assigned!');
+      };
+      var reject = (response) => this.storeError(response)
+      Requester.update(
+        ApiConstants.responsibilities.update(pairing.id),
+        params,
+        resolve,
+        reject,
+      );
+      return true;
+    }
+
     updateSchool(template, attributes={}) {
       attributes[template.key] = template.value;
       var params = { school: attributes };
@@ -154,6 +173,10 @@
     }
 
     storePairing(options) {
+      if (options.model === TypeConstants.models.responsibility) {
+        var resolve = (response) => this.storeSchoolables(response);
+        Requester.get(ApiConstants.users.schoolables, resolve);
+      }
       return {
         choices: options.choices,
         errors: {},

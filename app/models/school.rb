@@ -23,6 +23,7 @@ class School < ActiveRecord::Base
   has_many :comments, as: :commentable, dependent: :destroy
   has_many :contacts, dependent: :destroy
   has_many :emails, dependent: :destroy, as: :emailable
+  has_many :responsibilities, dependent: :destroy
   has_many :students
   has_many :visits, dependent: :destroy, as: :visitable
 

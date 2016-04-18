@@ -8,6 +8,7 @@ class SchoolPageOverlay extends PageOverlay {
       pairing: React.PropTypes.object,
       profile: React.PropTypes.object.isRequired,
       school: React.PropTypes.object.isRequired,
+      schoolables: React.PropTypes.arrayOf(React.PropTypes.object),
       template: React.PropTypes.object,
     };
   }
@@ -28,6 +29,12 @@ class SchoolPageOverlay extends PageOverlay {
     if (pairing) {
       if (pairing.model === TypeConstants.models.contact) {
         return <ContactEditModal pairing={pairing} />;
+      } else if (pairing.model === TypeConstants.models.responsibility) {
+        return (
+          <ResponsibilityEditModal
+            pairing={pairing}
+            schoolables={this.props.schoolables} />
+        );
       } else {
         return <SchoolEditModal pairing={pairing} />;
       }

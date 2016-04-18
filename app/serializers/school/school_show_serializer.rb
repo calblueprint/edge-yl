@@ -7,6 +7,7 @@ class SchoolShowSerializer < SchoolIndexSerializer
              :address_zip
 
   has_many :comments, serializer: CommentBaseSerializer
+  has_many :responsibilities, serializer: SchoolResponsibilitySerializer
   has_many :secondary_contacts, serializer: ContactBaseSerializer
   has_many :students, serializer: StudentSchoolSerializer
 

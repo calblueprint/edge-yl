@@ -5,8 +5,13 @@ class ResponsibilitiesGrid extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
+      editable: React.PropTypes.bool.isRequired,
       media: React.PropTypes.string.isRequired,
       responsibilities: React.PropTypes.array.isRequired,
+      type: React.PropTypes.oneOf([
+        TypeConstants.pages.school,
+        TypeConstants.pages.user,
+      ]).isRequired,
     };
   }
 
@@ -16,9 +21,11 @@ class ResponsibilitiesGrid extends Component {
   renderCard(responsibility) {
     return (
       <ResponsibilitiesCard
+        editable={this.props.editable}
         key={responsibility.id}
         media={this.props.media}
-        responsibility={responsibility} />
+        responsibility={responsibility}
+        type={this.props.type} />
     );
   }
 

@@ -56,9 +56,15 @@ class SchoolGrid extends Component {
         <GridHeader title={'Students in this school'} />
         <StudentsGrid
           media={this.props.media}
-          students={this.props.school.students}
+          students={school.students}
           type={TypeConstants.students.school}
-          typeId={this.props.school.id} />
+          typeId={school.id} />
+        <GridHeader title={'Responsibilities'} />
+        <ResponsibilitiesGrid
+          editable={this.props.editable}
+          media={this.props.media}
+          responsibilities={school.responsibilities}
+          type={TypeConstants.pages.school} />
       </div>
     );
   }

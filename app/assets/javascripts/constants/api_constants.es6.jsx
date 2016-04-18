@@ -108,7 +108,13 @@
         index: (page) => `/api/prospects?page=${page}`,
         show: (id) => `/api/prospects/${id}`,
         update: (id) => `/api/prospects/${id}`,
-      }
+      };
+    }
+
+    get responsibilities() {
+      return {
+        update: (id) => `/api/responsibilities/${id}`,
+      };
     }
 
     get rooms() {
@@ -198,6 +204,7 @@
         login: '/api/users/login',
         logout: '/api/users/logout',
         profile: '/api/users/profile',
+        schoolables: '/api/users/schoolables',
         show: (id) => `/api/users/${id}`,
         signout: '/api/users/signout',
         update: (id) => `/api/users/${id}`,

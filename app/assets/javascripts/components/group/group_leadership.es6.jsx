@@ -13,7 +13,7 @@ class GroupLeadership extends Component {
   // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
-    storePairing(id, label, value) {
+  storePairing(id, label, value) {
     GroupActions.storePairing({
       id: this.props.group.id,
       key: 'user',

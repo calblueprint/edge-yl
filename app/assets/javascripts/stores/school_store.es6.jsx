@@ -10,20 +10,24 @@
         comments: [],
         contacts: [],
         primary_contact: {},
+        responsibilities: [],
         secondary_contacts: [],
         students: [],
       };
       this.pairing = null;
+      this.schoolables = [];
       this.template = null;
       this.bindListeners({
         handleCloseOverlay: SchoolActions.CLOSE_OVERLAY,
-        handleRemoveContact: SchoolActions.REMOVE_CONTACT,
+      handleRemoveContact: SchoolActions.REMOVE_CONTACT,
         handleStoreAttribute: SchoolActions.STORE_ATTRIBUTE,
         handleStoreComment: SchoolActions.STORE_COMMENT,
         handleStoreError: SchoolActions.STORE_ERROR,
         handleStorePairing: SchoolActions.STORE_PAIRING,
         handleStorePrimary: SchoolActions.STORE_PRIMARY,
+        handleStoreResponsibility: SchoolActions.STORE_RESPONSIBILITY,
         handleStoreSchool: SchoolActions.STORE_SCHOOL,
+        handleStoreSchoolables: SchoolActions.STORE_SCHOOLABLES,
         handleStoreTemplate: SchoolActions.STORE_TEMPLATE,
         handleStoreValue: SchoolActions.STORE_VALUE,
       });
@@ -72,9 +76,21 @@
       this.school.primary_contact = response.contact;
     }
 
+    handleStoreResponsibility(response) {
+      this.overlay = false;
+      var id = response.responsibility.id
+      var responsibilities = this.school.responsibilities;
+      this.school.responsibilities = responsibilities.filter((responsibility) => responsibility.id !== id);
+      this.school.responsibilities.push(response.responsibility);
+    }
+
     handleStoreSchool(response) {
       this.overlay = false;
       this.school = response.school;
+    }
+
+    handleStoreSchoolables(response) {
+      this.schoolables = response.users;
     }
 
     handleStoreTemplate(template) {

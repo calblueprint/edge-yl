@@ -72,6 +72,7 @@
         leadership: 'model-leadership',
         profile: 'model-profile',
         prospect: 'model-prospect',
+        responsibility: 'model-responsibility',
         room: 'model-room',
         school: 'model-school',
         user: 'model-user',
@@ -86,9 +87,11 @@
         login: 'pages-login',
         prospects: 'pages-prospects',
         rooms: 'pages-rooms',
+        school: 'pages-school',
         schools: 'pages-schools',
         signup: 'pages-signup',
         students: 'pages-students',
+        user: 'pages-user',
         users: 'pages-users',
       };
     }

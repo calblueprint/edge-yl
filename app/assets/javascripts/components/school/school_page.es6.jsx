@@ -77,6 +77,7 @@ class SchoolPage extends Component {
           pairing={this.state.pairing}
           profile={this.selectProfile()}
           school={this.state.school}
+          schoolables={this.state.schoolables}
           template={this.state.template} />
       );
     }

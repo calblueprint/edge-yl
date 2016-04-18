@@ -30,8 +30,10 @@ class UserGrid extends Component {
         <GridHeader
           title={'Responsibilities'} />
         <ResponsibilitiesGrid
+          editable={this.props.editable}
           media={this.props.media}
-          responsibilities={user.responsibilities} />
+          responsibilities={user.responsibilities}
+          type={TypeConstants.pages.user} />
       </div>
     );
   }
