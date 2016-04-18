@@ -269,6 +269,7 @@ school_form = Form.create(
     Question.create(
       enabler_key: 'has_alternate_student',
       enabler_value: EnumConstants::BOOLEANS[0],
+      is_required: false,
       key: 'alternate_address_two',
       page: page,
       style: Question.styles[:input],

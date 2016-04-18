@@ -154,6 +154,7 @@ class StudentValidator
   validates :media_participation, if: :page_six?, presence: true
 
   validates :ceremony_attendance, if: :page_seven?, presence: true
+  validates :ceremony_attendance_number, numericality: { only_integer: true }
 
   validates :risk_guardian_consent, if: :page_eight?, presence: true
   validates :risk_guardian_date, if: :page_eight?, presence: true
