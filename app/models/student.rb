@@ -26,14 +26,14 @@
 #  guardian_one_phone_number     :string           not null
 #  guardian_one_phone_type       :integer          not null
 #  guardian_one_relationship     :integer          not null
-#  guardian_two_email            :string           not null
+#  guardian_two_email            :string           default(""), not null
 #  guardian_two_employer         :string           default(""), not null
-#  guardian_two_first_name       :string           not null
+#  guardian_two_first_name       :string           default(""), not null
 #  guardian_two_job_title        :string           default(""), not null
-#  guardian_two_last_name        :string           not null
-#  guardian_two_phone_number     :string           not null
-#  guardian_two_phone_type       :integer          not null
-#  guardian_two_relationship     :integer          not null
+#  guardian_two_last_name        :string           default(""), not null
+#  guardian_two_phone_number     :string           default(""), not null
+#  guardian_two_phone_type       :integer
+#  guardian_two_relationship     :integer
 #  health_conditions             :string           not null
 #  health_conditions_description :string           default(""), not null
 #  home_phone                    :string           not null
@@ -176,12 +176,6 @@ class Student < ActiveRecord::Base
   validates :guardian_one_phone_number, presence: true
   validates :guardian_one_phone_type, presence: true
   validates :guardian_one_relationship, presence: true
-  validates :guardian_two_email, presence: true
-  validates :guardian_two_first_name, presence: true
-  validates :guardian_two_last_name, presence: true
-  validates :guardian_two_phone_number, presence: true
-  validates :guardian_two_phone_type, presence: true
-  validates :guardian_two_relationship, presence: true
   validates :health_conditions, presence: true
   validates :health_conditions_description, presence: true
   validates :home_phone, presence: true

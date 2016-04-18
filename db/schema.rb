@@ -383,14 +383,14 @@ ActiveRecord::Schema.define(version: 20160408025358) do
     t.string   "guardian_one_phone_number",                     null: false
     t.integer  "guardian_one_phone_type",                       null: false
     t.integer  "guardian_one_relationship",                     null: false
-    t.string   "guardian_two_email",                            null: false
+    t.string   "guardian_two_email",            default: "",    null: false
     t.string   "guardian_two_employer",         default: "",    null: false
-    t.string   "guardian_two_first_name",                       null: false
+    t.string   "guardian_two_first_name",       default: "",    null: false
     t.string   "guardian_two_job_title",        default: "",    null: false
-    t.string   "guardian_two_last_name",                        null: false
-    t.string   "guardian_two_phone_number",                     null: false
-    t.integer  "guardian_two_phone_type",                       null: false
-    t.integer  "guardian_two_relationship",                     null: false
+    t.string   "guardian_two_last_name",        default: "",    null: false
+    t.string   "guardian_two_phone_number",     default: "",    null: false
+    t.integer  "guardian_two_phone_type"
+    t.integer  "guardian_two_relationship"
     t.string   "health_conditions",                             null: false
     t.string   "health_conditions_description", default: "",    null: false
     t.string   "home_phone",                                    null: false
