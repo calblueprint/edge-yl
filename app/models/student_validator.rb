@@ -154,7 +154,7 @@ class StudentValidator
   validates :media_participation, if: :page_six?, presence: true
 
   validates :ceremony_attendance, if: :page_seven?, presence: true
-  validates :ceremony_attendance_number, numericality: { only_integer: true }
+  validates :ceremony_attendance_number, if: :parent_attendance?, numericality: { only_integer: true }
 
   validates :risk_guardian_consent, if: :page_eight?, presence: true
   validates :risk_guardian_date, if: :page_eight?, presence: true
@@ -225,6 +225,11 @@ class StudentValidator
 
   def page_nine?
     current_page == 9
+  end
+
+  def parent_attendance? 
+    ceremony_attendance == EnumConstants::CEREMONY_OPTIONS[0] || 
+      ceremony_attendance == EnumConstants::CEREMONY_OPTIONS[1]
   end
 
   def persisted?
