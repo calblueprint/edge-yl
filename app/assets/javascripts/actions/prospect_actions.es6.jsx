@@ -83,7 +83,7 @@
         attributes: attributes,
         errors: {},
         model: model,
-      }
+      };
     }
   }
   this.ProspectActions = alt.createActions(ProspectActions);

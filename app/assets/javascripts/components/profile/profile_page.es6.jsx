@@ -61,6 +61,7 @@ class ProfilePage extends Component {
     if (this.state.overlay) {
       return (
         <ProfilePageOverlay
+          pairing={this.state.pairing}
           template={this.state.template} />
       );
     }
@@ -73,6 +74,7 @@ class ProfilePage extends Component {
         {this.renderOverlay()}
         <Header profile={this.selectProfile()} />
         <Sidebar profile={this.selectProfile()} />
+        <Toast toast={this.state.toast} />
         <div style={StyleConstants.pages.default}>
           <div style={StyleConstants.pages.content}>
             <GridHeader

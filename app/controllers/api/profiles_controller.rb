@@ -1,6 +1,7 @@
 class Api::ProfilesController < Api::BaseController
 
   def update
+    puts params
     profile = User.find params[:id]
     if profile.update_attributes profile_params
       render json: profile,

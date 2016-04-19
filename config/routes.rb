@@ -37,7 +37,7 @@ Rails.application.routes.draw do
     post '/api/users/confirmations', to: 'api/users/confirmations#create'
 
     post '/api/users/password', to: 'api/users/passwords#create'
-    patch '/api/users/password', to: 'api/users/passwords#update'
+    patch '/api/users/password/:id', to: 'api/users/passwords#update'
   end
 
   namespace :api do

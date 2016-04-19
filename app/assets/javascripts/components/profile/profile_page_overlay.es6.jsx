@@ -5,7 +5,8 @@ class ProfilePageOverlay extends PageOverlay {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      template: React.PropTypes.object.isRequired,
+      pairing: React.PropTypes.object,
+      template: React.PropTypes.object,
     };
   }
 
@@ -20,10 +21,18 @@ class ProfilePageOverlay extends PageOverlay {
   // Render
   // --------------------------------------------------
   renderModal() {
-    if (this.props.template.model === TypeConstants.models.profile) {
+    var pairing = this.props.pairing;
+    var profile = this.props.profile;
+    var template = this.props.template;
+    if (template.key === TypeConstants.profile.password) {
+      return (
+        <ProfilePasswordEditModal
+          template={template} />
+      );
+    } else {
       return (
         <ProfileEditModal
-          template={this.props.template} />
+          pairing={pairing} />
       );
     }
   }

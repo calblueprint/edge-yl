@@ -5,7 +5,7 @@ class ProfileEditModal extends EditModal {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      template: React.PropTypes.object.isRequired,
+      pairing: React.PropTypes.object.isRequired,
     };
   }
 
@@ -22,7 +22,7 @@ class ProfileEditModal extends EditModal {
   // Helpers
   // --------------------------------------------------
   updateProfile() {
-    ProfileActions.updateProfile(this.props.template);
+    ProfileActions.updateProfile(this.props.pairing);
   }
 
   generateOptions() {
@@ -38,29 +38,16 @@ class ProfileEditModal extends EditModal {
   // Render
   // --------------------------------------------------
   renderChild() {
-    var template = this.props.template;
-    if (template.type === 'input') {
+    var pairing = this.props.pairing;
+    if (pairing.type === 'input') {
       return (
         <CardInput
-          action={(event) => ProfileActions.storeAttribute(event.target.value)}
-          errors={template.errors[template.key]}
+          action={(event) => ProfileActions.storeValue(event.target.value)}
+          errors={pairing.errors[pairing.key]}
           focus={true}
-          label={template.key}
-          type={template.key === 'birthday' ? 'date' : 'text'}
-          value={template.value} />
-      );
-    } else {
-      var choices = template.choices.map((choice) =>{
-      return {
-        action: () => ProfileActions.storeAttribute(choice),
-        content: choice,
-      }});
-      return (
-        <CardDropdown
-          errors={template.errors[template.key]}
-          label={template.key}
-          choices={choices}
-          value={template.value} />
+          label={pairing.key}
+          type={pairing.key === 'birthday' ? 'date' : 'text'}
+          value={pairing.value} />
       );
     }
   }

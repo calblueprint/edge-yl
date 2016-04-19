@@ -13,16 +13,27 @@ class ProfileGeneral extends Component {
   // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
-  storeTemplate(key, choices) {
+  storePairing(key) {
     var profile = this.props.profile;
-    ProfileActions.storeTemplate({
-      choices: choices,
+    ProfileActions.storePairing({
       id: profile.id,
       key: key,
-      model: TypeConstants.models.profile,
-      type: choices ? 'dropdown' : 'input',
+      type: 'input',
       value: profile[key],
     });
+  }
+
+  storeTemplate(key) {
+    var profile = this.props.profile;
+    ProfileActions.storeTemplate(
+      {
+        attributes: {},
+        errors: {},
+        id: profile.id,
+        key: key,
+        type: TypeConstants.models.profile,
+      }
+    );
   }
 
   // --------------------------------------------------
@@ -33,24 +44,27 @@ class ProfileGeneral extends Component {
     return (
       <div style={StyleConstants.cards.content}>
         <CardAttribute
-          action={() => this.storeTemplate('first_name')}
+          action={() => this.storePairing('first_name')}
           editable={this.props.editable}
           label={'First name'}
           value={profile.first_name} />
         <CardAttribute
-          action={() => this.storeTemplate('last_name')}
+          action={() => this.storePairing('last_name')}
           editable={this.props.editable}
           label={'Last name'}
           value={profile.last_name} />
         <CardAttribute
-          action={() => this.storeTemplate('email')}
+          action={() => this.storePairing('email')}
           editable={this.props.editable}
           humanize={false}
           label={'Email'}
           value={profile.email} />
         <CardAttribute
+          action={() => this.storeTemplate(TypeConstants.profile.password)}
+          editable={this.props.editable}
+          humanize={false}
           label={'Password'}
-          value={'**********'} />
+          value={'********'} />
       </div>
     );
   }

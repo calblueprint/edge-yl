@@ -99,6 +99,7 @@
     get profile() {
       return {
         general: 'profile-general',
+        password: 'profile-password',
       };
     }
 

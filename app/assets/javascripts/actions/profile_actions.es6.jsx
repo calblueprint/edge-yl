@@ -8,21 +8,65 @@
       this.generateActions(
         'closeOverlay',
         'storeAttribute',
-        'storeError',
         'storeProfile',
+        'storeTemplate',
+        'storeValue',
       );
     }
 
     // --------------------------------------------------
     // Requests
     // --------------------------------------------------
-    updateProfile(template, attributes={}) {
-      attributes[template.key] = template.value;
-      var params = { profile: attributes };
-      var resolve = (response) => this.storeProfile(response);
+    /**
+     * This handles the special case of a single message sent as an error
+     * because it cannot be tied to an object.
+     */
+    storeError(response) {
+      if (response.errors) {
+        return response;
+      } else if (response.message) {
+        return { errors: { current_password: ['Incorrect Password!'] } };
+      }
+      return true;
+    }
+
+    storePairing(options) {
+      return {
+        choices: options.choices,
+        errors: {},
+        id: options.id,
+        key: options.key,
+        type: options.type,
+        value: options.value,
+      };
+    }
+
+    updatePassword(template) {
+      var params = { password: template.attributes };
+      var resolve = (response) => {
+        this.closeOverlay();
+        ViewActions.storeToast(true, 'Password changed!');
+      }
       var reject = (response) => this.storeError(response);
       Requester.update(
-        ApiConstants.profiles.update(template.id),
+        ApiConstants.users.updatePassword(template.id),
+        params,
+        resolve,
+        reject,
+      );
+      return true;
+    }
+
+    updateProfile(pairing, attributes={}) {
+      attributes[pairing.key] = pairing.value;
+      var params = { profile: attributes };
+      var resolve = (response) => {
+        this.storeProfile(response);
+        ViewActions.storeToast(true, 'Profile updated!');
+      };
+      var reject = (response) => this.storeError(response);
+      Requester.update(
+        ApiConstants.profiles.update(pairing.id),
         params,
         resolve,
         reject,
@@ -40,22 +84,6 @@
         resolve,
       );
       return true;
-    }
-
-
-    // --------------------------------------------------
-    // Stores
-    // --------------------------------------------------
-    storeTemplate(options) {
-      return {
-        choices: options.choices,
-        errors: {},
-        id: options.id,
-        key: options.key,
-        model: options.model,
-        type: options.type,
-        value: options.value,
-      };
     }
   }
   this.ProfileActions = alt.createActions(ProfileActions);
