@@ -14,6 +14,7 @@ class Api::ThreadsController < Api::BaseController
     )
     email = Email.new email_params(custom_params)
     if email.save
+      email.try_send_notification_email
       render json: { message: 'Received' }, status: :ok
     else
       unprocessable_response email

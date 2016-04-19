@@ -13,6 +13,7 @@ class EmailThread < ActiveRecord::Base
 
   default_scope { order('updated_at DESC') }
 
+  belongs_to :emailable, polymorphic: true
   belongs_to :user
 
   has_many :emails, dependent: :destroy
@@ -21,16 +22,8 @@ class EmailThread < ActiveRecord::Base
     emails.first.content
   end
 
-  def emailable_id
-    emails.first.emailable_id
-  end
-
   def emailable_name
     emails.first.emailable_name
-  end
-
-  def emailable_type
-    emails.first.emailable_type
   end
 
   def emails_count

@@ -36,7 +36,9 @@ class Email < ActiveRecord::Base
 
   def assign_thread
     self.email_thread ||= find_thread(subject, user)
-    self.email_thread ||= EmailThread.create subject: subject, user: user
+    self.email_thread ||= EmailThread.create emailable: emailable,
+                                             subject: subject,
+                                             user: user
   end
 
   def do_send(update_params)
@@ -69,6 +71,12 @@ class Email < ActiveRecord::Base
     draft
   end
 
+  def try_send_notification_email
+    if user
+      ApplicationMailer.new_mail(self).deliver_now
+    end
+  end
+
   private
 
   def find_emailable(email)
@@ -84,7 +92,8 @@ class Email < ActiveRecord::Base
   def find_thread(subject, user)
     m = /([Rr][Ee]:\s*)*(?<subj>.*)/.match(subject)
     real_subj = m['subj']
-    EmailThread.where(user: user).where('lower(subject) = lower(?)', real_subj).first
+    EmailThread.where(emailable: emailable, user: user)
+               .where('lower(subject) = lower(?)', real_subj).first
   end
 
   def find_user(email)

@@ -18,12 +18,6 @@
       };
     }
 
-    get emails() {
-      return {
-        email: (username) => `${username}@test.edge.com`,
-      };
-    }
-
     get group() {
       return {
         leadership: 'group-leadership',

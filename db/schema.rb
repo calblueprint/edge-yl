@@ -56,12 +56,15 @@ ActiveRecord::Schema.define(version: 20160408025358) do
   add_index "contacts", ["school_id"], name: "index_contacts_on_school_id", using: :btree
 
   create_table "email_threads", force: :cascade do |t|
-    t.string   "subject",    null: false
+    t.string   "subject",        null: false
+    t.integer  "emailable_id"
+    t.string   "emailable_type"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
+  add_index "email_threads", ["emailable_type", "emailable_id"], name: "index_email_threads_on_emailable_type_and_emailable_id", using: :btree
   add_index "email_threads", ["user_id"], name: "index_email_threads_on_user_id", using: :btree
 
   create_table "emails", force: :cascade do |t|

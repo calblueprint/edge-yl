@@ -1,5 +1,5 @@
 new_admin = User.new(
-  email: 'admin@edgeyl.org',
+  email: 'registration@edgeyl.org',
   first_name: Faker::Name.first_name,
   is_admin: true,
   last_name: Faker::Name.last_name,
