@@ -43,7 +43,7 @@
     <p>Primary Student Parent/Guardian Phone Type: <%= @school_submission.primary_guardian_phone_type %></p>
     <p>Primary Student Parent/Guardian Relationship: <%= @school_submission.primary_guardian_relationship %></p>
 
-    <% if @school_submission.has_alternate_student %>
+    <% if @school_submission.has_alternate_student == EnumConstants::BOOLEANS[0] %>
       <h4>Alternate Student Information</h4>
       <p>Alternate Student First Name: <%= @school_submission.alternate_first_name %></p>
       <p>Alternate Student Last Name: <%= @school_submission.alternate_last_name %></p>
