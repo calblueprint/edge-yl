@@ -711,7 +711,7 @@ student_form = Form.create(
     )
     Question.create(
       description: %s(
-        If, in the judgment of the staff of the EDGE Youth Leadership Seminar, the child named
+        If, in the judgment of the staff of the EDGE Youth Leadership, the child named
         above needs immediate care and treatment as a result of any injury or sickness, I hereby
         give permission to the staff to secure proper treatment for my child. I do hereby consent
         to whatever x-ray, examination, anesthetic, medical, surgical or dental diagnosis or
@@ -746,13 +746,12 @@ student_form = Form.create(
     Question.create(
       description: %s(
         Becoming a leader requires self-reflection and challenging oneself to work through the
-        internal barriers to leadership development. Our seminar encourages and guides this
+        internal barriers to leadership development. Our conference encourages and guides this
         self-reflection through interactive activities and experiential processes. At times this
         can be emotionally difficult, and the student may need additional support to process their
         experience. In light of this, we will have an on-site Licensed Psychologist available to
         talk to the students if a request is made. In order for student participants to talk with
-        the Psychologist, we need guardian consent. By signing below you are consenting for your
-        student to speak with a Licensed Psychologist during the EDGE conference.
+        the Psychologist, we need guardian consent.
       ),
       key: 'psychologist_consent_info',
       page: page,
