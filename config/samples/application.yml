@@ -11,5 +11,6 @@ development:
   test_email: ''
 
 test:
+  application_domain: 'localhost:3000'
   secret_key_base: '378980e58b8e616553bd06187c8f99c402919e3ab3b0349772419b700a8ee6a059f64b2fd7300be46fbc22761ed37d31857304d1554a5f6dcd4dc0f4995898cc'
   secret_key_devise: 'f98e14c4ee6a0110caacd6139d60edf57dc9fe2433d3f4d75b6e740063f80d8e746526147f099cbaaf1c70a894c9a69596a59ac55b5ae37a296c397c1325a083'
