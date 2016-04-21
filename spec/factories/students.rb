@@ -63,6 +63,7 @@ FactoryGirl.define do
     address_two                { Faker::Address.street_address }
     address_zip                { Faker::Address.zip }
     allergies                  { EnumConstants::BOOLEANS.sample }
+    allergies_other            { 'None' }
     birthday                   { Faker::Date.between(33.days.ago, Time.zone.today) }
     cell_phone                 { Faker::Base.numerify('###-###-####') }
     dietary_restrictions       { EnumConstants::DIETARY_RESTRICTIONS.sample }

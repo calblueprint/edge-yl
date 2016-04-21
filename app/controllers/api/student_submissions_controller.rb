@@ -51,6 +51,7 @@ class Api::StudentSubmissionsController < Api::BaseController
       :address_two,
       :address_zip,
       :allergies,
+      :allergies_other,
       :birthday,
       :carpool,
       :cell_phone,

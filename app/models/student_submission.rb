@@ -424,6 +424,7 @@ class StudentSubmission < ActiveRecord::Base
       address_two: address_two,
       address_zip: address_zip,
       allergies: allergies,
+      allergies_other: allergies_other,
       birthday: birthday,
       cell_phone: cell_phone,
       conference_id: conference_id,
@@ -531,6 +532,7 @@ class StudentSubmission < ActiveRecord::Base
   def attributes_three
     {
       allergies: allergies,
+      allergies_other: allergies_other,
       dietary_restrictions: dietary_restrictions,
       emergency_consent: emergency_consent,
       emergency_consent_name: emergency_consent_name,

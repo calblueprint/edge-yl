@@ -11,6 +11,7 @@ class StudentValidator
                 :address_state,
                 :address_two,
                 :allergies,
+                :allergies_other,
                 :birthday,
                 :carpool,
                 :cell_phone,
@@ -120,6 +121,7 @@ class StudentValidator
   validates :guardian_one_relationship, if: :page_two?, presence: true
 
   validates :allergies, if: :page_three?, presence: true
+  validates :allergies_other, if: :allergies?, presence: true
   validates :dietary_restrictions, if: :page_three?, presence: true
   validates :emergency_consent, if: :page_three?, presence: true
   validates :emergency_consent_name, if: :emergency_consent?, presence: true
@@ -178,6 +180,10 @@ class StudentValidator
   end
 
   private
+
+  def allergies?
+    allergies == EnumConstants::BOOLEANS[0]
+  end
 
   def emergency_consent?
     emergency_consent == EnumConstants::BOOLEANS[0]
