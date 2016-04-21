@@ -280,6 +280,7 @@ ActiveRecord::Schema.define(version: 20160408025358) do
     t.string  "address_two",                    default: ""
     t.string  "address_zip"
     t.integer "allergies"
+    t.string  "allergies_other"
     t.date    "birthday"
     t.integer "carpool"
     t.string  "cell_phone"
@@ -369,6 +370,7 @@ ActiveRecord::Schema.define(version: 20160408025358) do
     t.string   "address_two",                   default: "",    null: false
     t.string   "address_zip",                                   null: false
     t.integer  "allergies",                                     null: false
+    t.string   "allergies_other",               default: "",    null: false
     t.date     "birthday",                                      null: false
     t.string   "cell_phone",                                    null: false
     t.boolean  "is_checked_in",                 default: false, null: false

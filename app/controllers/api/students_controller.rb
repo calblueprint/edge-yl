@@ -79,6 +79,7 @@ class Api::StudentsController < Api::BaseController
       :address_two,
       :address_zip,
       :allergies,
+      :allergies_other,
       :birthday,
       :conference_id,
       :cell_phone,

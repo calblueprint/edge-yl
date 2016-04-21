@@ -7,6 +7,7 @@ class StudentSubmissionBaseSerializer < BaseSerializer
              :address_two,
              :address_zip,
              :allergies,
+             :allergies_other,
              :birthday,
              :cell_phone,
              :ceremony_attendance,

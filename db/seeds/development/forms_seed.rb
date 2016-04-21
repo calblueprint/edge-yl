@@ -661,6 +661,14 @@ student_form = Form.create(
       ),
     )
     Question.create(
+      enabler_key: 'allergies',
+      enabler_value: EnumConstants::BOOLEANS[0],
+      key: 'allergies_other',
+      page: page,
+      style: Question.styles[:textarea],
+      title: 'Allergies - Please Specify',
+    )
+    Question.create(
       key: 'health_conditions',
       options: EnumConstants::HEALTH_CONDITIONS,
       page: page,

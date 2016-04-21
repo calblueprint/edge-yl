@@ -8,6 +8,7 @@ class CreateStudentSubmissions < ActiveRecord::Migration
       t.string  :address_two, default: ''
       t.string  :address_zip
       t.integer :allergies
+      t.string  :allergies_other
       t.date    :birthday
       t.integer :carpool
       t.string  :cell_phone
