@@ -1,6 +1,7 @@
 # Generate secret keys with the command `rake secret` and
 # populate the development environment secret keys below.
 development:
+  application_domain: 'localhost:3000'
   secret_key_base: ''
   secret_key_devise: ''
   smtp_address: ''
