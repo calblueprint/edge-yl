@@ -55,9 +55,6 @@ class StudentValidator
                 :insurance_provider,
                 :insurance_other,
                 :last_name,
-                :media_information,
-                :media_newspaper,
-                :media_participation,
                 :medications,
                 :other_dietary_restrictions,
                 :participation_guardian_consent,
@@ -152,21 +149,18 @@ class StudentValidator
   validates :transportation_name, if: :public_transportation?, presence: true
   validates :transportation_number, if: :public_transportation?, presence: true
 
-  validates :media_newspaper, if: :media_consent?, presence: true
-  validates :media_participation, if: :page_six?, presence: true
-
-  validates :ceremony_attendance, if: :page_seven?, presence: true
+  validates :ceremony_attendance, if: :page_six?, presence: true
   validates :ceremony_attendance_number, if: :parent_attendance?, numericality: { only_integer: true }
 
-  validates :risk_guardian_consent, if: :page_eight?, presence: true
-  validates :risk_guardian_date, if: :page_eight?, presence: true
-  validates :risk_guardian_email, if: :page_eight?, presence: true
-  validates :risk_guardian_name, if: :page_eight?, presence: true
-  validates :risk_guardian_relationship, if: :page_eight?, presence: true
-  validates :risk_student_consent, if: :page_eight?, presence: true
-  validates :risk_student_date, if: :page_eight?, presence: true
-  validates :risk_student_email, if: :page_eight?, presence: true
-  validates :risk_student_name, if: :page_eight?, presence: true
+  validates :risk_guardian_consent, if: :page_seven?, presence: true
+  validates :risk_guardian_date, if: :page_seven?, presence: true
+  validates :risk_guardian_email, if: :page_seven?, presence: true
+  validates :risk_guardian_name, if: :page_seven?, presence: true
+  validates :risk_guardian_relationship, if: :page_seven?, presence: true
+  validates :risk_student_consent, if: :page_seven?, presence: true
+  validates :risk_student_date, if: :page_seven?, presence: true
+  validates :risk_student_email, if: :page_seven?, presence: true
+  validates :risk_student_name, if: :page_seven?, presence: true
 
   validates :participation_guardian_consent, if: :page_nine?, presence: true
   validates :participation_guardian_name, if: :page_nine?, presence: true
@@ -191,10 +185,6 @@ class StudentValidator
 
   def has_insurance?
     insurance == EnumConstants::BOOLEANS[0]
-  end
-
-  def media_consent?
-    media_participation == EnumConstants::BOOLEANS[0]
   end
 
   def page_one?
@@ -227,10 +217,6 @@ class StudentValidator
 
   def page_eight?
     current_page == 8
-  end
-
-  def page_nine?
-    current_page == 9
   end
 
   def parent_attendance? 
