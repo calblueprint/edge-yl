@@ -13,6 +13,7 @@
       this.template = null;
       this.bindListeners({
         handleCloseOverlay: ProspectActions.CLOSE_OVERLAY,
+        handleRemoveComment: ProspectActions.REMOVE_COMMENT,
         handleStoreAttribute: ProspectActions.STORE_ATTRIBUTE,
         handleStoreComment: ProspectActions.STORE_COMMENT,
         handleStoreError: ProspectActions.STORE_ERROR,
@@ -30,6 +31,12 @@
       this.overlay = false;
       this.pairing = null;
       this.template = null;
+    }
+
+    handleRemoveComment(response) {
+      var comments = this.prospect.comments;
+      var id = response.comment.id;
+      this.prospect.comments = comments.filter((comment) => comment.id !== id);
     }
 
     handleStoreAttribute(attribute) {

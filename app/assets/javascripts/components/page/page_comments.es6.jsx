@@ -5,6 +5,7 @@ class PageComments extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
+      editable: React.PropTypes.bool.isRequired,
       profile: React.PropTypes.object.isRequired,
       school: React.PropTypes.object,
       student: React.PropTypes.object,
@@ -98,17 +99,20 @@ class PageComments extends Component {
     return (
       <PageComment
         comment={comment}
-        key={comment.id} />
+        editable={this.props.editable}
+        key={comment.id}
+        type={this.props.type} />
     );
   }
 
   renderComments() {
     var comments;
-    if (this.props.type === TypeConstants.comments.prospect) {
+    var type = this.props.type;
+    if (type === TypeConstants.comments.prospect) {
       comments = this.props.prospect.comments;
-    } else if (this.props.type === TypeConstants.comments.school) {
+    } else if (type === TypeConstants.comments.school) {
       comments = this.props.school.comments;
-    } else if (this.props.type === TypeConstants.comments.student) {
+    } else if (type === TypeConstants.comments.student) {
       comments = this.props.student.comments;
     }
     return comments.map((comment) => this.renderComment(comment));

@@ -4,6 +4,7 @@
     get comments() {
       return {
         create: '/api/comments',
+        delete: (id) => `/api/comments/${id}`,
       };
     }
 
