@@ -62,7 +62,7 @@ class Student < ActiveRecord::Base
   multisearchable against: [:first_name, :last_name, :email]
 
   scope :conference_id, -> (conference_id) { where(conference_id: conference_id) }
-  scope :gender, -> (gender) { where(gender: genders[gender.downcase]) }
+  scope :gender, -> (gender) { where(gender: genders(gender.downcase)) }
   scope :is_checked_in, -> (is_checked_in) { where(is_checked_in: is_checked_in) }
   scope :is_flagged, -> (is_flagged) { where(is_flagged: is_flagged) }
   scope :is_primary, -> (is_primary) { where(is_primary: is_primary) }
@@ -86,6 +86,10 @@ class Student < ActiveRecord::Base
 
   def gender=(value)
     self[:gender] = EnumConstants::GENDERS.index(value)
+  end
+
+  def self.genders(value)
+    EnumConstants::GENDERS.index(value)
   end
 
   def guardian_one_phone_type
