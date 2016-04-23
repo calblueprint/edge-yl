@@ -1,16 +1,6 @@
 class ClosedPage extends Component {
 
   // --------------------------------------------------
-  // Props
-  // --------------------------------------------------
-	static get propTypes() {
-		return {
-      id: React.PropTypes.string.isRequired,
-			target: React.PropTypes.string.isRequired,
-		};
-	}
-
-  // --------------------------------------------------
   // Styles
   // --------------------------------------------------
   get styles() {
