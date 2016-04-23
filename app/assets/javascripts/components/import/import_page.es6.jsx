@@ -46,17 +46,14 @@ class ImportPage extends Component {
   // --------------------------------------------------
   componentWillMount() {
     this.setState(ProfileStore.getState());
-    this.setState(FeedbackStore.getState());
   }
 
   componentDidMount() {
     ProfileStore.listen(this._listener);
-    FeedbackStore.listen(this._listener);
   }
 
   componentWillUnmount() {
     ProfileStore.unlisten(this._listener);
-    FeedbackStore.unlisten(this._listener);
   }
 
   // --------------------------------------------------

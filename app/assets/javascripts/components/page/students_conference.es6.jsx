@@ -48,6 +48,9 @@ class StudentsConference extends Component {
     return conferences.map((conference) => this.generateChoice(conference));
   }
 
+  // --------------------------------------------------
+  // Render
+  // --------------------------------------------------
   render() {
     return (
       <div style={this.styles.container}>
