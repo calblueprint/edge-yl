@@ -377,7 +377,6 @@ class StudentSubmission < ActiveRecord::Base
       6 => attributes_six,
       7 => attributes_seven,
       8 => attributes_eight,
-      9 => attributes_nine,
     }
   end
 
