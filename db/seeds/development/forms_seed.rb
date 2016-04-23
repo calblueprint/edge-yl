@@ -723,7 +723,7 @@ student_form = Form.create(
         above needs immediate care and treatment as a result of any injury or sickness, I hereby
         give permission to the staff to secure proper treatment for my child. I do hereby consent
         to whatever x-ray, examination, anesthetic, medical, surgical or dental diagnosis or
-        treatment and hospital care are considerednecessary in the best judgment of the attending
+        treatment and hospital care are considered necessary in the best judgment of the attending
         physician, surgeon or dentist and performed by or under the supervision of the medical
         staff of the hospital or facility furnishing medical or dental services. It is further
         understood that the undersigned will assume full responsibility for any such action,
@@ -873,18 +873,18 @@ student_form = Form.create(
   ) do |page|
     Question.create(
       description: %s(
-        Students are not allowed to leave the UC Berkeley, Clark Kerr campus for the duration of
+        Students are not allowed to leave the campus site for the duration of
         the weekend, unless authorized and released to a parent/guardian and/or accompanied by
         adult staff members according to our conduct policy.
         <br />
         If, in the rare circumstance, a student must leave the conference for a period of time,
         students will only be released to authorized parent(s)/guardian(s). Arrangements must be
         approved of and made on a case-by-case basis before the conference for these situations.
-        Please contact Sri Ramesh and Ali Iwashita at registration@edgeyl.org or 510-408-6606 as
+        Please contact our recruitment directors at registration@edgeyl.org or 510-408-6606 as
         soon as possible if you expect that your student will need to leave for a period of time
         during the seminar.
         <br />
-        <b>Students who drive to the UC Berkeley, Clark Kerr Campus turn over their car keys to
+        <b>Students who drive to the EDGE conference turn over their car keys to
         EDGE Youth Leadership staff upon arrival at student registration on Friday morning. Staff
         will return car keys to the student at Student Checkout on Sunday afternoon.</b>
         </br>
@@ -896,8 +896,8 @@ student_form = Form.create(
     )
     Question.create(
       description: %s(
-        An approved and insured staff memeber will be able
-        to pick you up from a Public Transportation System
+        Note: If you take public transportation, an approved 
+        and insured staff memeber will be able to pick you up.
       ),
       key: 'transportation',
       options: EnumConstants::TRANSPORTATION_OPTIONS,
@@ -1026,12 +1026,12 @@ student_form = Form.create(
     )
     Question.create(
       description: %s(
-        I, the undersigned, understand that my child will be transported in a private automobile,
-        bus, plane, train, subway, etc. and assume such risk on behalf of my child. I/we agree not
-        to hold EDGE Youth Leadership or any of its volunteers liable for any sum which I/we might
-        claim as a result of injury, or property damage arising out of, or caused by any accident
-        or occurrence during the time said student is being transported by me, or driving
-        himself/herself, or driving with another adult to or from the youth leadership seminar.
+        I, the undersigned, understand that my child will be transported to the EDGE conference 
+        in a private automobile, bus, plane, train, subway, etc. and assume such risk on behalf 
+        of my child. I/we agree not to hold EDGE Youth Leadership or any of its volunteers liable 
+        for any sum which I/we might claim as a result of injury, or property damage arising out of, 
+        or caused by any accident or occurrence during the time said student is being transported 
+        by me, or driving himself/herself, or driving with another adult to or from the youth leadership seminar.
       ),
       key: 'transportation_waiver_info',
       page: page,
@@ -1056,61 +1056,20 @@ student_form = Form.create(
     )
   end
   Page.create(
-    description: 'Media Consent description',
+    description: 'Closing ceremonies description',
     form: form,
     number: 6,
-    title: 'Media Participation',
+    title: 'Closing Ceremonies',
   ) do |page|
     Question.create(
       description: %s(
-        We send press releases to your local paper announcing the student’s participation
-        in the seminar.  Please indicate the name of your newspaper and desire to be
-        included in the press release process.  All information is due by May 4th.
-      ),
-      key: 'media_consent_info',
-      page: page,
-      style: Question.styles[:information],
-      title: 'Media Information',
-    )
-    Question.create(
-      key: 'media_participation',
-      options: EnumConstants::BOOLEANS,
-      page: page,
-      style: Question.styles[:dropdown],
-      title: 'I would like to have my participation announced',
-    )
-    Question.create(
-      enabler_key: 'media_participation',
-      enabler_value: EnumConstants::BOOLEANS[0],
-      key: 'media_newspaper',
-      page: page,
-      style: Question.styles[:input],
-      title: 'Newspaper Name',
-    )
-    Question.create(
-      enabler_key: 'media_participation',
-      enabler_value: EnumConstants::BOOLEANS[0],
-      is_required: false,
-      key: 'media_information',
-      page: page,
-      style: Question.styles[:textarea],
-      title: 'Additional information you would like included in the release.',
-    )
-  end
-  Page.create(
-    description: 'Closing ceremony description',
-    form: form,
-    number: 7,
-    title: 'Closing Ceremony',
-  ) do |page|
-    Question.create(
-      description: %s(
-        Parents and family members are invited to attend the Parents' Program and Closing
-        Ceremonies of the seminar. It is a fantastic chance to learn more what the seminar
+        Family and friends are invited to attend the Family and Friends Program at the end 
+        of the conference. It is a fantastic chance to learn more what the seminar
         is about and see firsthand the excitement and energy created by the participants.
         <br />
-        Please arrive at UC Berkeley, Clark Kerr Campus on Sunday June 3rd, 2016 by 11:15AM
-        for the Parents' Program (will begin at 11:30AM) or by 1:20 PM for the Closing Ceremonies.
+        Please see this year's information packet <a href="http://www.edgeyl.org/2016reginfo">HERE.</a> 
+        for details on the timing and location of the Closing Ceremonies, and also the timing of when 
+        you can expect to check out your student and depart from the conference. 
         <b>See directions and maps in the information packet that was e-mailed to your student or
         refer to the web site <a href="http://www.edgeyl.org/2016reginfo">HERE.</a></b>
         <br />
@@ -1123,7 +1082,7 @@ student_form = Form.create(
       key: 'ceremony_info',
       page: page,
       style: Question.styles[:information],
-      title: 'Closing Ceremony',
+      title: 'Closing Ceremonies',
     )
     Question.create(
       key: 'ceremony_attendance',
@@ -1142,23 +1101,23 @@ student_form = Form.create(
       key: 'ceremony_attendance_number',
       page: page,
       style: Question.styles[:input],
-      title: 'Number of Additional Family Members Attending',
+      title: 'Number of family members/friends attending (not including the student)',
     )
   end
   Page.create(
     description: 'Risk Waiver description',
     form: form,
-    number: 8,
+    number: 7,
     title: 'Risk Waiver',
   ) do |page|
     Question.create(
       description: %s(
-        Activities: <b>EDGE Youth Leadership Seminar</b>
+        Activities: <b>EDGE Youth Leadership Conference</b>
         <br />
         Dates: <b>June 3-5, 2016</b><br />
         Location: <b>UC Berkeley, Berkeley, CA</b>
         <br />
-        IN CONSIDERATION of the right to attend and participate in
+        In consideration of the right to attend and participate in
         the aforementioned Activities, the Participant (and, if the Participant
         is a minor, his or her parent or legal guardian) hereby:
         <br />
@@ -1277,7 +1236,7 @@ student_form = Form.create(
     description: 'Particpation Description',
     form: form,
     is_last: true,
-    number: 9,
+    number: 8,
     title: 'Participation Commitment',
   ) do |page|
     Question.create(
@@ -1288,7 +1247,7 @@ student_form = Form.create(
       with others in your unique peer group. The entire EDGE weekend is a seamless event—if you
       miss even the smallest part; it detracts from the entire experience.
       <br />
-      If for any reason you think you can’t participate in the entire seminar, please contact
+      If for any reason you think you can’t participate in the entire conference, please contact
       us immediately. No student has ever regretted missing a sports event, musical recital,
       PSATs or any other kind of event for EDGE. The seminar is literally a once-in-a-lifetime
       experience and can have a profound impact on your outlook on life.
@@ -1299,13 +1258,13 @@ student_form = Form.create(
       <br />
       <b>Even if it means missing or postponing an important event or extracurricular activity, if
       you make the commitment, we expect that you will join us for the entire weekend.</b> That
-      includes no early departures on Sunday and requests to attend off-campus religious services.
+      includes no early departures on Sunday.
       <br />
       If you feel you have an extenuating circumstance that should be considered, please contact
-      <b>Jocelyne Alva</b> and <b>Gabriela</b> Medina at
-      <b>510-408-6606 (e-mail registration@edgeyl.org)</b> immediately. Notify all your family,
+      our recruitment directors at
+      <b>510-408-6606 (e-mail registration@edgeyl.org)</b> immediately. Otherwise, notify all your family,
       friends, teachers and coaches right away that you are already booked for a life-changing
-      experience on <b>June 3-5, 2016!</b>
+      experience during the Friday-Sunday of the EDGE conference!</b>
       ),
       key: 'participation_info',
       page: page,

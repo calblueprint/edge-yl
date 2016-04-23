@@ -11,10 +11,9 @@ module EnumConstants
   ).freeze
 
   CEREMONY_OPTIONS = %w(
-    My\ family\ will\ be\ attending\ the\ Parents'\ Program\ and\ Closing\ Ceremonies
-    My\ family\ will\ only\ be\ attending\ Closing\ Ceremonies
-    My\ family\ will\ only\ be\ picking\ up\ after\ Closing\ Ceremonies
-    My\ family\ is\ unable\ to\ attend
+    My\ family/friends\ will\ be\ attending\ the\ Family\ and\ Friends\ Program\ and\ Closing\ Ceremonies
+    My\ family/friends\ will\ only\ be\ attending\ Closing\ Ceremonies
+    My\ family/friends\ will\ not\ attend\ either\ event
   ).freeze
 
   DIETARY_RESTRICTIONS = %w(
@@ -37,6 +36,7 @@ module EnumConstants
     Heart\ Problems
     Stomach\ Aches/Issues
     Vision/Hearing\ Problems
+    Other
   ).freeze
 
   GENDERS = %w(female male other).freeze

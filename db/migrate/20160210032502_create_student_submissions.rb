@@ -54,9 +54,6 @@ class CreateStudentSubmissions < ActiveRecord::Migration
       t.string  :insurance_phone_number
       t.string  :insurance_provider
       t.string  :last_name
-      t.string  :media_information
-      t.string  :media_newspaper
-      t.integer :media_participation
       t.string  :medications
       t.string  :other_dietary_restrictions, default: ''
       t.integer :participation_guardian_consent
