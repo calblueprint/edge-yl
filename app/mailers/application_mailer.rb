@@ -3,7 +3,6 @@ class ApplicationMailer < ActionMailer::Base
   layout 'mailer'
 
   default from: ENV['smtp_username']
-  default to: ENV['test_email']
 
   def new_mail(email)
     @email = email

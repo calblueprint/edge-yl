@@ -8,7 +8,6 @@ development:
   smtp_domain: ''
   smtp_password: ''
   smtp_username: ''
-  test_email: ''
 
 test:
   application_domain: 'localhost:3000'
