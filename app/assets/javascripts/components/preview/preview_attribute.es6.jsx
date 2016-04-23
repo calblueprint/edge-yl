@@ -28,6 +28,9 @@ class PreviewAttribute extends Component {
   renderValue() {
     var question = this.props.question;
     var value = question.value ? question.value : 'n/a';
+    if (question.style === TypeConstants.questions.dropdown && value !== 'n/a') {
+      value = Helpers.humanize(value);
+    }
     return <p>{value}</p>;
   }
 
