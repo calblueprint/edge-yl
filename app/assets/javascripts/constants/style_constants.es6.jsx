@@ -104,20 +104,38 @@
             }
           },
           prompt: {
-            display: 'flex',
-            flexFlow: 'column',
-            justifyContent: 'center',
-            width: '196px',
-            marginRight: '24px',
+            default: {
+              display: 'flex',
+              flexFlow: 'column',
+              justifyContent: 'center',
+              width: '196px',
+              marginRight: '24px',
+            },
+            preview: {
+              display: 'flex',
+              flexFlow: 'column',
+              justifyContent: 'center',
+              width: '312px',
+              marginRight: '24px',
+            },
           },
           required: {
             paddingLeft: '1px',
             color: this.colors.red,
           },
           response: {
-            display: 'flex',
-            flexFlow: 'column',
-            flex: '1',
+            default: {
+              display: 'flex',
+              flexFlow: 'column',
+              flex: '1',
+            },
+            preview: {
+              display: 'flex',
+              flexFlow: 'column',
+              alignItems: 'flex-end',
+              flex: '1',
+              textAlign: 'right',
+            },
           },
         },
       };

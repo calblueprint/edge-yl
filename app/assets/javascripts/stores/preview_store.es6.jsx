@@ -26,9 +26,16 @@
         questions.map((question) => {
           var key = question.key;
           if (submission[key] !== undefined) {
-            question.value = submission[key];
             if (infoQuestions.has(question.key + '_info')) {
               question.title = question.description;
+            } else if (question.style === TypeConstants.questions.checkbox) {
+              if (submission[key] === null || submission[key] === undefined) {
+                question.value = [];
+              } else {
+                question.value = submission[key].split(',').join(', ');
+              }
+            } else {
+              question.value = submission[key];
             }
           }
         });

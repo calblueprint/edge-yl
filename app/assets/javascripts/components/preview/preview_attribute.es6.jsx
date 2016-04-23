@@ -34,8 +34,12 @@ class PreviewAttribute extends Component {
   render() {
     return (
       <div style={this.styles.container}>
-        <h6>{this.props.question.title}</h6>
-        {this.renderValue()}
+        <div style={StyleConstants.forms.questions.prompt.preview}>
+          <h6>{this.props.question.title}</h6>
+        </div>
+        <div style={StyleConstants.forms.questions.response.preview}>
+          {this.renderValue()}
+        </div>
       </div>
     );
   }

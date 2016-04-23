@@ -79,11 +79,11 @@ class FormInput extends Component {
   render() {
     return (
       <div style={StyleConstants.forms.questions.container}>
-        <div style={StyleConstants.forms.questions.prompt}>
+        <div style={StyleConstants.forms.questions.prompt.default}>
           <h6>{this.props.question.title}{this.renderRequired()}</h6>
           {this.renderDescription()}
         </div>
-        <div style={StyleConstants.forms.questions.response}>
+        <div style={StyleConstants.forms.questions.response.default}>
           {this.renderInput()}
           {this.renderError()}
         </div>
