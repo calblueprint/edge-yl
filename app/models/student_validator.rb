@@ -162,10 +162,10 @@ class StudentValidator
   validates :risk_student_email, if: :page_seven?, presence: true
   validates :risk_student_name, if: :page_seven?, presence: true
 
-  validates :participation_guardian_consent, if: :page_nine?, presence: true
-  validates :participation_guardian_name, if: :page_nine?, presence: true
-  validates :participation_student_consent, if: :page_nine?, presence: true
-  validates :participation_student_name, if: :page_nine?, presence: true
+  validates :participation_guardian_consent, if: :page_eight?, presence: true
+  validates :participation_guardian_name, if: :page_eight?, presence: true
+  validates :participation_student_consent, if: :page_eight?, presence: true
+  validates :participation_student_name, if: :page_eight?, presence: true
 
   def initialize(attributes={})
     attributes.each do |name, value|
