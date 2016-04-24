@@ -45,7 +45,7 @@ class Group < ActiveRecord::Base
     headers = %w(Letter Primary\ leader Secondary\ leader)
     CSV.generate(headers: true) do |csv|
       csv << headers
-      all.find_each do |group|
+      all.each do |group|
         row = attributes.map { |attr| group.send(attr) }
         if group.leaderships.first.user
           primary_leader = group.leaderships.first.user.full_name

@@ -150,7 +150,8 @@ class StudentValidator
   validates :transportation_number, if: :public_transportation?, presence: true
 
   validates :ceremony_attendance, if: :page_six?, presence: true
-  validates :ceremony_attendance_number, if: :parent_attendance?, numericality: { only_integer: true }
+  validates :ceremony_attendance_number, if: :parent_attendance?,
+                                         numericality: { only_integer: true }
 
   validates :risk_guardian_consent, if: :page_seven?, presence: true
   validates :risk_guardian_date, if: :page_seven?, presence: true
@@ -219,8 +220,8 @@ class StudentValidator
     current_page == 8
   end
 
-  def parent_attendance? 
-    ceremony_attendance == EnumConstants::CEREMONY_OPTIONS[0] || 
+  def parent_attendance?
+    ceremony_attendance == EnumConstants::CEREMONY_OPTIONS[0] ||
       ceremony_attendance == EnumConstants::CEREMONY_OPTIONS[1]
   end
 
