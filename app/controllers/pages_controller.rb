@@ -27,6 +27,13 @@ class PagesController < BaseController
   end
 
   def login
+    confirmation_token = params[:confirmation_token]
+    if confirmation_token
+      user = User.where(confirmation_token: confirmation_token).first
+      if user
+        user.confirm
+      end
+    end
   end
 
   def profile

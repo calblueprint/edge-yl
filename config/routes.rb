@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get 'forms/:target/:uuid/success', to: 'forms#success'
   get 'import', to: 'pages#import'
   get 'login', to: 'pages#login'
+  get 'login', to: 'pages#login', as: 'user_confirmation'
   get 'reset_password', to: 'pages#reset_password', as: 'edit_user_password'
   get 'profile', to: 'users#profile'
   get 'signup', to: 'pages#signup'
