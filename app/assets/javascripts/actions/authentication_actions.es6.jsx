@@ -6,7 +6,6 @@
     // --------------------------------------------------
     constructor() {
       this.generateActions(
-        'storeError',
         'storeMessage',
         'storeSession',
         'storeUser',
@@ -45,6 +44,49 @@
     destroySession() {
       var resolve = (response) => window.location = RouteConstants.pages.login;
       Requester.delete(ApiConstants.users.logout, resolve);
+      return true;
+    }
+
+    resetPassword(template) {
+      var params = template.attributes;
+      var resolve = (response) => {
+        window.location = RouteConstants.pages.login;
+      }
+      var reject = (response) => this.storeError(response);
+      Requester.post(
+        ApiConstants.users.passwords.reset,
+        params,
+        resolve,
+        reject,
+      );
+      return true;
+    }
+
+    sendResetEmail(template) {
+      var params = template.attributes;
+      var resolve = (response) => {
+        window.location = RouteConstants.pages.login;
+      };
+      var reject = (response) => this.storeError(response);
+      Requester.post(
+        ApiConstants.users.passwords.requestReset,
+        params,
+        resolve,
+        reject,
+      );
+      return true;
+    }
+
+    /**
+    * This handles the special case of a single message sent as an error
+    * because it cannot be tied to an object.
+    */
+    storeError(response) {
+      if (response.errors) {
+        return response;
+      } else if (response.message) {
+        return { errors: { email: [response.message] } };
+      }
       return true;
     }
 

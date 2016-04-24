@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'check_in/:conference', to: 'pages#checkin'
   get 'email', to: 'pages#email'
   get 'feedback', to: 'pages#feedback'
+  get 'forgot_password', to: 'pages#forgot_password'
   get 'forms/school/start', to: 'forms#start_school'
   get 'forms/school/:id', as: 'forms_school', to: 'forms#show_school'
   get 'forms/student/:id', as: 'forms_student', to: 'forms#show_student'
@@ -14,6 +15,7 @@ Rails.application.routes.draw do
   get 'forms/:target/:uuid/success', to: 'forms#success'
   get 'import', to: 'pages#import'
   get 'login', to: 'pages#login'
+  get 'reset_password', to: 'pages#reset_password', as: 'edit_user_password'
   get 'profile', to: 'users#profile'
   get 'signup', to: 'pages#signup'
 
@@ -38,6 +40,8 @@ Rails.application.routes.draw do
 
     post '/api/users/password', to: 'api/users/passwords#create'
     patch '/api/users/password/:id', to: 'api/users/passwords#update'
+    post '/api/users/passwords/request_reset', to: 'api/users/passwords#request_reset'
+    post '/api/users/passwords/reset', to: 'api/users/passwords#reset'
   end
 
   namespace :api do

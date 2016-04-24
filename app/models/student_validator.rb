@@ -84,6 +84,7 @@ class StudentValidator
                 :transportation_departure_time,
                 :transportation_name,
                 :transportation_number
+  validates :current_page, presence: true
 
   validates :address_city, if: :page_one?, presence: true
   validates :address_one, if: :page_one?, presence: true
@@ -91,82 +92,78 @@ class StudentValidator
   validates :address_zip, format: ValidationConstants::ZIP_FORMAT,
                           if: :page_one?,
                           presence: true
-  validates :birthday, if: :page_one?, presence: true
-  validates :cell_phone, format: ValidationConstants::PHONE_FORMAT,
-                         if: :page_one?,
-                         presence: true
-  validates :email, format: ValidationConstants::EMAIL_FORMAT,
-                    if: :page_one?,
-                    presence: true
-  validates :first_name, if: :page_one?, presence: true
-  validates :gender, if: :page_one?, presence: true
-  validates :home_phone, format: ValidationConstants::PHONE_FORMAT,
-                         if: :page_one?,
-                         presence: true
-  validates :last_name, if: :page_one?, presence: true
-  validates :shirt_size, if: :page_one?, presence: true
+  validates :name, if: :page_one?, presence: true
 
-  validates :guardian_one_first_name, if: :page_two?, presence: true
-  validates :guardian_one_email, format: ValidationConstants::EMAIL_FORMAT,
-                                 if: :page_two?,
+  validates :contact_email, format: ValidationConstants::EMAIL_FORMAT,
+                            if: :page_two?,
+                            presence: true
+  validates :contact_first_name, if: :page_two?, presence: true
+  validates :contact_last_name, if: :page_two?, presence: true
+  validates :contact_phone_number, format: ValidationConstants::PHONE_FORMAT,
+                                   if: :page_two?,
+                                   presence: true
+  validates :contact_title, if: :page_two?, presence: true
+
+  validates :primary_address_city, if: :page_three?, presence: true
+  validates :primary_address_one, if: :page_three?, presence: true
+  validates :primary_address_state, if: :page_three?, presence: true
+  validates :primary_address_zip, format: ValidationConstants::ZIP_FORMAT,
+                                  if: :page_three?,
+                                  presence: true
+  validates :primary_birthday, if: :page_three?, presence: true
+  validates :primary_cell_phone, format: ValidationConstants::PHONE_FORMAT,
+                                 if: :page_three?,
                                  presence: true
-  validates :guardian_one_last_name, if: :page_two?, presence: true
-  validates :guardian_one_phone_number, format: ValidationConstants::PHONE_FORMAT,
-                                        if: :page_two?,
-                                        presence: true
-  validates :guardian_one_phone_type, if: :page_two?, presence: true
-  validates :guardian_one_relationship, if: :page_two?, presence: true
+  validates :primary_email, format: ValidationConstants::EMAIL_FORMAT,
+                            if: :page_three?,
+                            presence: true
+  validates :primary_first_name, if: :page_three?, presence: true
+  validates :primary_guardian_first_name, if: :page_three?, presence: true
+  validates :primary_guardian_email, format: { with: /.+@.+\..+/ },
+                                     if: :page_three?,
+                                     presence: true
+  validates :primary_guardian_last_name, if: :page_three?, presence: true
+  validates :primary_guardian_phone_number, format: ValidationConstants::PHONE_FORMAT,
+                                            if: :page_three?,
+                                            presence: true
+  validates :primary_guardian_phone_type, if: :page_three?, presence: true
+  validates :primary_guardian_relationship, if: :page_three?, presence: true
+  validates :primary_home_phone, format: ValidationConstants::PHONE_FORMAT,
+                                 if: :page_three?,
+                                 presence: true
+  validates :primary_gender, if: :page_three?, presence: true
+  validates :primary_last_name, if: :page_three?, presence: true
+  validates :primary_shirt_size, if: :page_three?, presence: true
 
-  validates :allergies, if: :page_three?, presence: true
-  validates :allergies_other, if: :allergies?, presence: true
-  validates :dietary_restrictions, if: :page_three?, presence: true
-  validates :emergency_consent, if: :page_three?, presence: true
-  validates :emergency_consent_name, if: :emergency_consent?, presence: true
-  validates :exercise_limitations, if: :page_three?, presence: true
-  validates :health_conditions, if: :page_three?, presence: true
-  validates :immunizations, if: :page_three?, presence: true
-  validates :medications, if: :page_three?, presence: true
-  validates :psychologist_consent, if: :page_three?, presence: true
-  validates :psychologist_consent_name, if: :psychologist_consent?, presence: true
-
-  validates :insurance, if: :page_four?, presence: true
-  validates :insurance_address, if: :has_insurance?, presence: true
-  validates :insurance_address_city, if: :has_insurance?, presence: true
-  validates :insurance_address_state, if: :has_insurance?, presence: true
-  validates :insurance_address_zip, if: :has_insurance?, presence: true
-  validates :insurance_id, if: :has_insurance?, presence: true
-  validates :insurance_phone_number, if: :has_insurance?, presence: true
-  validates :insurance_provider, if: :has_insurance?, presence: true
-
-  validates :transportation, if: :page_five?, presence: true
-  validates :transportation_arrival_date, if: :public_transportation?, presence: true
-  validates :transportation_arrival_time, if: :public_transportation?, presence: true
-  validates :transportation_carrier, if: :public_transportation?, presence: true
-  validates :transportation_consent, if: :page_five?, presence: true
-  validates :transportation_consent_name, if: :page_five?, presence: true
-  validates :transportation_departure_date, if: :public_transportation?, presence: true
-  validates :transportation_departure_time, if: :public_transportation?, presence: true
-  validates :transportation_name, if: :public_transportation?, presence: true
-  validates :transportation_number, if: :public_transportation?, presence: true
-
-  validates :ceremony_attendance, if: :page_six?, presence: true
-  validates :ceremony_attendance_number, if: :parent_attendance?,
-                                         numericality: { only_integer: true }
-
-  validates :risk_guardian_consent, if: :page_seven?, presence: true
-  validates :risk_guardian_date, if: :page_seven?, presence: true
-  validates :risk_guardian_email, if: :page_seven?, presence: true
-  validates :risk_guardian_name, if: :page_seven?, presence: true
-  validates :risk_guardian_relationship, if: :page_seven?, presence: true
-  validates :risk_student_consent, if: :page_seven?, presence: true
-  validates :risk_student_date, if: :page_seven?, presence: true
-  validates :risk_student_email, if: :page_seven?, presence: true
-  validates :risk_student_name, if: :page_seven?, presence: true
-
-  validates :participation_guardian_consent, if: :page_eight?, presence: true
-  validates :participation_guardian_name, if: :page_eight?, presence: true
-  validates :participation_student_consent, if: :page_eight?, presence: true
-  validates :participation_student_name, if: :page_eight?, presence: true
+  validates :has_alternate_student, if: :page_four?, presence: true
+  validates :alternate_address_city, if: :has_alternate?, presence: true
+  validates :alternate_address_one, if: :has_alternate?, presence: true
+  validates :alternate_address_state, if: :has_alternate?, presence: true
+  validates :alternate_address_zip, format: ValidationConstants::ZIP_FORMAT,
+                                    if: :has_alternate?,
+                                    presence: true
+  validates :alternate_birthday, if: :has_alternate?, presence: true
+  validates :alternate_cell_phone, format: ValidationConstants::PHONE_FORMAT,
+                                   if: :has_alternate?,
+                                   presence: true
+  validates :alternate_email, format: ValidationConstants::EMAIL_FORMAT,
+                              if: :has_alternate?,
+                              presence: true
+  validates :alternate_first_name, if: :has_alternate?, presence: true
+  validates :alternate_guardian_first_name, if: :has_alternate?, presence: true
+  validates :alternate_guardian_email, if: :has_alternate?, presence: true
+  validates :alternate_guardian_last_name, if: :has_alternate?, presence: true
+  validates :alternate_guardian_phone_number, format: ValidationConstants::PHONE_FORMAT,
+                                              if: :has_alternate?,
+                                              presence: true
+  validates :alternate_guardian_phone_type, if: :has_alternate?, presence: true
+  validates :alternate_guardian_relationship, if: :has_alternate?, presence: true
+  validates :alternate_home_phone, format: ValidationConstants::PHONE_FORMAT,
+                                   if: :has_alternate?,
+                                   presence: true
+  validates :alternate_gender, if: :has_alternate?, presence: true
+  validates :alternate_last_name, if: :has_alternate?, presence: true
+  validates :alternate_shirt_size, if: :has_alternate?, presence: true
 
   def initialize(attributes={})
     attributes.each do |name, value|
@@ -218,6 +215,10 @@ class StudentValidator
 
   def page_eight?
     current_page == 8
+  end
+
+  def page_nine?
+    current_page == 9
   end
 
   def parent_attendance?

@@ -1,4 +1,4 @@
-class AuthenticationPage extends Component {
+class ResetPasswordPage extends Component {
 
   // --------------------------------------------------
   // Setup
@@ -13,10 +13,7 @@ class AuthenticationPage extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      type: React.PropTypes.oneOf([
-        TypeConstants.pages.login,
-        TypeConstants.pages.signup,
-      ]).isRequired,
+      token: React.PropTypes.string.isRequired,
     };
   }
 
@@ -63,38 +60,14 @@ class AuthenticationPage extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
-  renderFooter() {
-    var bool = this.props.type === TypeConstants.pages.login;
-    var content = bool ? 'Sign up' : 'Log in';
-    var label = bool ? 'Don\'t have an account?' : 'Already have an account?';
-    var route = bool ? RouteConstants.pages.signup : RouteConstants.pages.login;
-    return (
-      <div>
-        <div style={this.styles.footer}>
-          <p style={this.styles.label}>{label}</p>
-          <Clickable
-            content={content}
-            route={route}
-            type={'h6'} />
-        </div>
-        <div style={this.styles.footer}>
-          <Clickable
-            content={'Forgot Password?'}
-            route={RouteConstants.pages.forgotPassword}
-            type={'h6'} />
-        </div>
-      </div>
-    );
-  }
 
   render() {
     return (
       <div style={StyleConstants.wrappers.center}>
         <div style={this.styles.container}>
-          <AuthenticationCard
+          <ResetPasswordCard
             template={this.state.template}
-            type={this.props.type} />
-          {this.renderFooter()}
+            token={this.props.token} />
         </div>
       </div>
     );

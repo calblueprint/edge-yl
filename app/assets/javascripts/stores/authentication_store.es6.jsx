@@ -27,7 +27,9 @@
     }
 
     handleStoreError(response) {
-      this.template.errors = response.errors;
+      if (response.errors) {
+        this.template.errors = response.errors;
+      }
     }
 
     handleStoreMessage(response) {

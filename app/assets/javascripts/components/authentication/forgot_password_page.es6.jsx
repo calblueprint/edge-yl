@@ -1,4 +1,4 @@
-class AuthenticationPage extends Component {
+class ForgotPasswordPage extends Component {
 
   // --------------------------------------------------
   // Setup
@@ -6,18 +6,6 @@ class AuthenticationPage extends Component {
   constructor(props) {
     super(props);
     this._listener = (state) => this.setState(state);
-  }
-
-  // --------------------------------------------------
-  // Props
-  // --------------------------------------------------
-  static get propTypes() {
-    return {
-      type: React.PropTypes.oneOf([
-        TypeConstants.pages.login,
-        TypeConstants.pages.signup,
-      ]).isRequired,
-    };
   }
 
   // --------------------------------------------------
@@ -64,25 +52,12 @@ class AuthenticationPage extends Component {
   // Render
   // --------------------------------------------------
   renderFooter() {
-    var bool = this.props.type === TypeConstants.pages.login;
-    var content = bool ? 'Sign up' : 'Log in';
-    var label = bool ? 'Don\'t have an account?' : 'Already have an account?';
-    var route = bool ? RouteConstants.pages.signup : RouteConstants.pages.login;
     return (
-      <div>
-        <div style={this.styles.footer}>
-          <p style={this.styles.label}>{label}</p>
-          <Clickable
-            content={content}
-            route={route}
-            type={'h6'} />
-        </div>
-        <div style={this.styles.footer}>
-          <Clickable
-            content={'Forgot Password?'}
-            route={RouteConstants.pages.forgotPassword}
-            type={'h6'} />
-        </div>
+      <div style={this.styles.footer}>
+        <Clickable
+          content={'Log in'}
+          route={RouteConstants.pages.login}
+          type={'h6'} />
       </div>
     );
   }
@@ -91,9 +66,8 @@ class AuthenticationPage extends Component {
     return (
       <div style={StyleConstants.wrappers.center}>
         <div style={this.styles.container}>
-          <AuthenticationCard
-            template={this.state.template}
-            type={this.props.type} />
+          <ForgotPasswordCard
+            template={this.state.template} />
           {this.renderFooter()}
         </div>
       </div>

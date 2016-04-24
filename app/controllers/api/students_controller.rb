@@ -1,4 +1,4 @@
-  class Api::StudentsController < Api::BaseController
+class Api::StudentsController < Api::BaseController
 
   skip_before_action :authenticate_user, only: [:create]
 

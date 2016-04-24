@@ -96,6 +96,13 @@
       };
     }
 
+    get passwords() {
+      return {
+        requestReset: `/api/users/passwords/request_reset`,
+        reset: (id) => `/api/users/passwords/reset`,
+      };
+    }
+
     get profiles() {
       return {
         update: (id) => `/api/profiles/${id}`,
@@ -204,13 +211,16 @@
         index: (page) => `/api/users?=${page}`,
         login: '/api/users/login',
         logout: '/api/users/logout',
+        passwords: {
+          requestReset: `/api/users/passwords/request_reset`,
+          reset: `/api/users/passwords/reset`,
+          update: (id) => `/api/users/password/${id}`,
+        },
         profile: '/api/users/profile',
         schoolables: '/api/users/schoolables',
         show: (id) => `/api/users/${id}`,
-        resetPassword: (id) => `/api/users/passwords/reset_password`,
         signout: '/api/users/signout',
         update: (id) => `/api/users/${id}`,
-        updatePassword: (id) => `/api/users/password/${id}`,
       };
     }
 
