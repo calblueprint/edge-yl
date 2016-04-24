@@ -56,42 +56,43 @@ class Api::ImportsController < Api::BaseController
         address_state: row[23].blank? ? 'n/a' : row[23],
         address_two: row[21].blank? ? 'n/a' : row[21],
         address_zip: row[24] .blank? ? 'n/a' : row[24],
-        allergies: 0, # row55
+        allergies: EnumConstants::BOOLEANS.sample, # row55
         birthday: '2001-12-31', # row29
         cell_phone: row[27] || 'n/a',
+        conference_id: params[:conference_id].to_i,
         dietary_restrictions: 0, # row70
         other_dietary_restrictions: 'Nut allergy',
         email: row[25] || 'n/a',
         emergency_consent: 0,
         exercise_limitations: 'None',
         first_name: row[17] || 'n/a',
-        gender: 0, # row28
-        guardian_email: row[35] || 'n/a',
-        guardian_employer: row[37] || 'n/a',
-        guardian_first_name: row[31] || 'n/a',
-        guardian_job_title: row[38] || 'n/a',
-        guardian_last_name: row[32] || 'n/a',
-        guardian_phone_number: row[36] || 'n/a',
-        guardian_phone_type: 0, # row36
-        guardian_relationship: 0, # row33
-        health_conditions: 0,
+        gender: EnumConstants::GENDERS.sample, # row28
+        guardian_one_email: row[35] || 'n/a',
+        guardian_one_employer: row[37] || 'n/a',
+        guardian_one_first_name: row[31] || 'n/a',
+        guardian_one_job_title: row[38] || 'n/a',
+        guardian_one_last_name: row[32] || 'n/a',
+        guardian_one_phone_number: row[36] || 'n/a',
+        guardian_one_phone_type: EnumConstants::PHONE_TYPES.sample, # row36
+        guardian_one_relationship: EnumConstants::GUARDIAN_RELATIONSHIPS.sample, # row33
+        health_conditions: EnumConstants::BOOLEANS.sample,
+        health_conditions_description: 'None',
         home_phone: row[26] || 'n/a',
-        immunizations: 0, # row54,
+        immunizations: EnumConstants::BOOLEANS.sample, # row54,
         is_flagged: 0,
         is_primary: 0,
         last_name: row[18] || 'n/a',
         medications: 'Warren',
         preferred_name: 'Warren',
         psychologist_consent: 0,
-        psychologist_consent_name: 'Warren',
+        psychologist_consent_name: 'Doctor',
         # school: school,
-        shirt_size: 0, # row30
-        conference_id: 0,
+        shirt_size: EnumConstants::SHIRT_SIZES.sample, # row30
       )
       # -1, 'unknown'
       # if school exiists, don't create new one
+      redirect_to schools_path
     end
-    redirect_to schools_path
   end
 
 end

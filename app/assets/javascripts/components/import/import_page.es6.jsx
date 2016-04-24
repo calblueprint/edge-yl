@@ -13,6 +13,7 @@ class ImportPage extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
+      conferences: React.PropTypes.array.isRequired,
       profile: React.PropTypes.object.isRequired,
     };
   }
@@ -45,14 +46,17 @@ class ImportPage extends Component {
   // Lifecycle
   // --------------------------------------------------
   componentWillMount() {
+    this.setState(ImportStore.getState());
     this.setState(ProfileStore.getState());
   }
 
   componentDidMount() {
+    ImportStore.listen(this._listener);
     ProfileStore.listen(this._listener);
   }
 
   componentWillUnmount() {
+    ImportStore.unlisten(this._listener);
     ProfileStore.unlisten(this._listener);
   }
 
@@ -76,8 +80,9 @@ class ImportPage extends Component {
         <div style={StyleConstants.pages.default}>
           <div style={StyleConstants.pages.content}>
             <ImportCard
-              profile={this.props.profile}
-              template={this.state.template} />
+              conference={this.state.conference}
+              conferences={this.props.conferences}
+              profile={this.props.profile} />
           </div>
         </div>
       </div>

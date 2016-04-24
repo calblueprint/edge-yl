@@ -5,8 +5,15 @@ class ImportCard extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
+      conference: React.PropTypes.object,
+      conferences: React.PropTypes.array.isRequired,
       profile: React.PropTypes.object.isRequired,
-      template: React.PropTypes.object.isRequired,
+    };
+  }
+
+  static get defaultProps() {
+    return {
+      conference: null,
     };
   }
 
@@ -36,10 +43,25 @@ class ImportCard extends Component {
   }
 
   // --------------------------------------------------
+  // Helpers
+  // --------------------------------------------------
+  generateChoice(conference) {
+    return {
+      action: () => ImportActions.storeConference(conference),
+      content: conference.name,
+    };
+  }
+
+  generateChoices() {
+    var conferences = this.props.conferences;
+    return conferences.map((conference) => this.generateChoice(conference));
+  }
+
+  // --------------------------------------------------
   // Render
   // --------------------------------------------------
   render() {
-    var template = this.props.template;
+    var conference = this.props.conference;
     return (
       <div>
         <div ref={'container'} style={this.styles.container}>
@@ -63,9 +85,12 @@ class ImportCard extends Component {
           <div style={this.styles.header}>
             <h2>{'Import Students and their Schools'}</h2>
           </div>
+          <DropdownButton
+            choices={this.generateChoices()}
+            value={conference ? conference.name : null} />
           <div>
             <form
-              action={ApiConstants.imports.students}
+              action={ApiConstants.imports.students(1)}
               encType={'multipart/form-data'}
               method={'post'}>
               <input

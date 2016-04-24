@@ -12,6 +12,7 @@ class PagesController < BaseController
   end
 
   def import
+    @conferences = Conference.all
   end
 
   def login

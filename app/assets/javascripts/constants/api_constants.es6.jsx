@@ -86,7 +86,7 @@
     get imports() {
       return {
         schools: '/api/imports/schools',
-        students: '/api/imports/students',
+        students: (conferenceId) => `/api/imports/students/?conference_id=${conferenceId}`,
       };
     }
 
