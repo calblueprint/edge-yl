@@ -55,7 +55,7 @@ class CreateStudentSubmissions < ActiveRecord::Migration
       t.string  :insurance_provider
       t.string  :last_name
       t.string  :medications
-      t.string  :other_dietary_restrictions
+      t.string  :other_dietary_restrictions, default: '', null: false
       t.integer :participation_guardian_consent
       t.string  :participation_guardian_name
       t.integer :participation_student_consent
