@@ -66,7 +66,7 @@ class FormsController < BaseController
   def start_school
     @conferences = Conference.active
     if @conferences.size == 0
-      error_404
+      render 'closed'
     end
     render 'start'
   end
