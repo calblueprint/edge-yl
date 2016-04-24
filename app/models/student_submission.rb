@@ -6,10 +6,10 @@
 #  address_city                   :string
 #  address_one                    :string
 #  address_state                  :integer          default(4)
-#  address_two                    :string
+#  address_two                    :string           default(""), not null
 #  address_zip                    :string
 #  allergies                      :integer
-#  allergies_other                :string
+#  allergies_other                :string           default(""), not null
 #  birthday                       :date
 #  carpool                        :integer
 #  cell_phone                     :string
@@ -24,23 +24,23 @@
 #  first_name                     :string
 #  gender                         :integer
 #  guardian_one_email             :string
-#  guardian_one_employer          :string
+#  guardian_one_employer          :string           default(""), not null
 #  guardian_one_first_name        :string
-#  guardian_one_job_title         :string
+#  guardian_one_job_title         :string           default(""), not null
 #  guardian_one_last_name         :string
 #  guardian_one_phone_number      :string
 #  guardian_one_phone_type        :integer
 #  guardian_one_relationship      :integer
-#  guardian_two_email             :string
-#  guardian_two_employer          :string
-#  guardian_two_first_name        :string
-#  guardian_two_job_title         :string
-#  guardian_two_last_name         :string
-#  guardian_two_phone_number      :string
+#  guardian_two_email             :string           default(""), not null
+#  guardian_two_employer          :string           default(""), not null
+#  guardian_two_first_name        :string           default(""), not null
+#  guardian_two_job_title         :string           default(""), not null
+#  guardian_two_last_name         :string           default(""), not null
+#  guardian_two_phone_number      :string           default(""), not null
 #  guardian_two_phone_type        :integer
 #  guardian_two_relationship      :integer
 #  health_conditions              :string
-#  health_conditions_description  :string
+#  health_conditions_description  :string           default(""), not null
 #  home_phone                     :string
 #  is_active                      :boolean          default(TRUE), not null
 #  is_primary                     :boolean          not null
@@ -56,12 +56,12 @@
 #  insurance_provider             :string
 #  last_name                      :string
 #  medications                    :string
-#  other_dietary_restrictions     :string
+#  other_dietary_restrictions     :string           default(""), not null
 #  participation_guardian_consent :integer
 #  participation_guardian_name    :string
 #  participation_student_consent  :integer
 #  participation_student_name     :string
-#  preferred_name                 :string
+#  preferred_name                 :string           default(""), not null
 #  psychologist_consent           :integer
 #  psychologist_consent_name      :string
 #  risk_guardian_consent          :integer
