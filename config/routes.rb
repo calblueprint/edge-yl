@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get 'login', to: 'pages#login'
   get 'profile', to: 'users#profile'
   get 'signup', to: 'pages#signup'
+  get 'students/:id/submission', to: 'students#submission'
 
   resources :conferences, only: [:index, :show]
   resources :drafts, only: [:index, :show]

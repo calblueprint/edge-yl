@@ -1,4 +1,4 @@
-class PreviewContainer extends Component {
+class StudentSubmissionContainer extends Component {
 
   // --------------------------------------------------
   // Setup
@@ -13,8 +13,7 @@ class PreviewContainer extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      id: React.PropTypes.string.isRequired,
-      target: React.PropTypes.string.isRequired,
+      student: React.PropTypes.object.isRequired,
     };
   }
 
@@ -22,16 +21,39 @@ class PreviewContainer extends Component {
   // Lifecycle
   // --------------------------------------------------
   componentWillMount() {
-    this.setState(PreviewStore.getState());
+    this.setState(SubmissionStore.getState());
   }
 
   componentDidMount() {
-    PreviewStore.listen(this._listener);
-    PreviewActions.fetchForm(this.props.target, this.props.id);
+    SubmissionStore.listen(this._listener);
+    SubmissionActions.fetchForm(this.props.student.submission_id);
   }
 
   componentWillUnmount() {
-    PreviewStore.unlisten(this._listener);
+    SubmissionStore.unlisten(this._listener);
+  }
+  // --------------------------------------------------
+  // Styles
+  // --------------------------------------------------
+  get styles() {
+    return {
+      container: Object.assign(
+        {},
+        StyleConstants.templates.card,
+        {
+          display: 'flex',
+          flexFlow: 'column',
+          padding: '36px',
+          marginTop: '12px',
+        },
+      ),
+      header: {
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginTop: '12px',
+      },
+    };
   }
 
   // --------------------------------------------------
@@ -39,11 +61,9 @@ class PreviewContainer extends Component {
   // --------------------------------------------------
   renderPage(page) {
     return (
-      <PreviewPage
-        id={this.props.id}
+      <StudentSubmissionPage
         key={page.id}
-        page={page}
-        target={this.props.target} />
+        page={page} />
     );
   }
 
@@ -58,11 +78,7 @@ class PreviewContainer extends Component {
     return (
       <div style={StyleConstants.wrappers.center}>
         <div style={StyleConstants.pages.center}>
-          <PreviewHeader />
           {this.renderPages()}
-          <PreviewFooter
-            id={this.props.id}
-            target={this.props.target} />
         </div>
       </div>
     );

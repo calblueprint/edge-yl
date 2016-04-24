@@ -5,6 +5,7 @@ if Rails.env.development? || Rails.env.staging?
     schools
     contacts
     students
+    submissions
     groups
     rooms
     leaderships
@@ -13,7 +14,6 @@ if Rails.env.development? || Rails.env.staging?
     prospects
     comments
     responsibilities
-    submissions
   )
   seeds.each do |seed|
     load File.join(Rails.root, 'db/seeds/development', "#{seed}_seed.rb")
