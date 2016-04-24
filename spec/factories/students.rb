@@ -9,6 +9,7 @@
 #  address_two                   :string           default(""), not null
 #  address_zip                   :string           not null
 #  allergies                     :integer          not null
+#  allergies_other               :string           default(""), not null
 #  birthday                      :date             not null
 #  cell_phone                    :string           not null
 #  is_checked_in                 :boolean          default(FALSE), not null

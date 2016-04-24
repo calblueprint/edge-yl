@@ -9,6 +9,7 @@
 #  address_two                    :string           default("")
 #  address_zip                    :string
 #  allergies                      :integer
+#  allergies_other                :string
 #  birthday                       :date
 #  carpool                        :integer
 #  cell_phone                     :string
@@ -54,9 +55,6 @@
 #  insurance_phone_number         :string
 #  insurance_provider             :string
 #  last_name                      :string
-#  media_information              :string
-#  media_newspaper                :string
-#  media_participation            :integer
 #  medications                    :string
 #  other_dietary_restrictions     :string           default("")
 #  participation_guardian_consent :integer
