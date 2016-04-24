@@ -26,8 +26,11 @@ class ClosedPage extends Component {
       <div style={StyleConstants.wrappers.center}>
     		<div style={StyleConstants.pages.center}>
           <div style={this.styles.container}>
-      			<p>{`The form application period is currently closed. Please email _______ for more information 
-                 or check back again in ______`}</p>
+      			<p>{`
+              The form application period is currently closed.
+              Please email _______ for more information
+              or check back again in ______
+            `}</p>
           </div>
     		</div>
       </div>
