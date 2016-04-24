@@ -9,6 +9,7 @@
 #  address_two                   :string           default(""), not null
 #  address_zip                   :string           not null
 #  allergies                     :integer          not null
+#  allergies_other               :string           default(""), not null
 #  birthday                      :date             not null
 #  cell_phone                    :string           not null
 #  is_checked_in                 :boolean          default(FALSE), not null
@@ -181,7 +182,6 @@ class Student < ActiveRecord::Base
   validates :guardian_one_phone_type, presence: true
   validates :guardian_one_relationship, presence: true
   validates :health_conditions, presence: true
-  validates :health_conditions_description, presence: true
   validates :home_phone, presence: true
   validates :immunizations, presence: true
   validates :is_flagged, inclusion: { in: [false, true] }
@@ -190,7 +190,6 @@ class Student < ActiveRecord::Base
   validates :medications, presence: true
   validates :psychologist_consent, presence: true
   validates :psychologist_consent_name, presence: true
-  validates :other_dietary_restrictions, presence: true
   validates :shirt_size, presence: true
 
   def self.to_csv

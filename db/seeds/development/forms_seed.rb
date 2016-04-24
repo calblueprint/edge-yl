@@ -706,7 +706,6 @@ student_form = Form.create(
       is_required: false,
       key: 'other_dietary_restrictions',
       page: page,
-      placeholder: 'Enter "None" if you do not have any',
       style: Question.styles[:textarea],
       title: 'Please list any other dietary restrictions that you have:',
     )
