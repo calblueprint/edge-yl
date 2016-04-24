@@ -1,3 +1,3 @@
 <p>You have a new message on EDGE from <%= @email.emailable_name %>:</p>
 <blockquote><%= @email.content %></blockquote>
-<p><%= link_to "Click here", controller: "threads", action: "show", id: @email.email_thread %> to view the message.  Please do not reply to this email.</p>
+<p><%= link_to "Click here", controller: "threads", action: "show", id: @email.email_thread, host: ENV['application_domain'] %> to view the message.  Please do not reply to this email.</p>

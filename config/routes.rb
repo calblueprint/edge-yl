@@ -57,7 +57,7 @@ Rails.application.routes.draw do
     patch '/student_submissions/:id/submit', to: 'student_submissions#submit'
     get '/users/profile', to: 'users#profile'
 
-    resources :comments, only: [:create]
+    resources :comments, only: [:create, :destroy]
     resources :conferences, only: [:create, :index, :show, :update]
     resources :contacts, only: [:create, :update]
     resources :drafts, only: [:create, :index, :show, :update]

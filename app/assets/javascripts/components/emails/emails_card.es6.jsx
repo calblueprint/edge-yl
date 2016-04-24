@@ -26,10 +26,18 @@ class EmailsCard extends Component {
       content: {
         fontSize: '14px',
       },
+      draft: {
+        color: 'red',
+        fontWeight: 'bold',
+      },
       header: {
         display: 'flex',
         flexFlow: 'column',
         justifyContent: 'space-between',
+      },
+      line: {
+        marginTop: '2px',
+        marginBottom: '5px',
       },
       from: {
         textOverflow: 'ellipsis',
@@ -57,6 +65,13 @@ class EmailsCard extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
+  showDraft(id) {
+    window.location = RouteConstants.drafts.show(id);
+  }
+
+  // --------------------------------------------------
+  // Render
+  // --------------------------------------------------
   renderContent() {
     return this.props.email.content.split('\n').map(
       (item, i) => {
@@ -70,12 +85,17 @@ class EmailsCard extends Component {
     );
   }
 
-  renderDraftEdit(email) {
+  renderDraftEdit() {
+    var email = this.props.email;
     if (email.is_draft) {
       return (
-        <FormButton
-          action={() => this.showDraft(email.id)}
-          content={'Edit'} />
+        <div style={this.styles.section}>
+          <p style={this.styles.draft}>This is a draft. </p>
+          <Clickable
+              action={() => this.showDraft(email.id)}
+              content={'Edit'}
+              type={'p'} />
+        </div>
       );
     }
   }
@@ -97,6 +117,8 @@ class EmailsCard extends Component {
             <p style={this.styles.name}>{email.to}</p>
           </div>
         </div>
+        <hr style={this.styles.line} />
+        {this.renderDraftEdit()}
         <p style={this.styles.content}>
           {this.renderContent()}
         </p>

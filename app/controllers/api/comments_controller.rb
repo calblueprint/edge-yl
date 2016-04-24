@@ -11,6 +11,17 @@ class Api::CommentsController < Api::BaseController
     end
   end
 
+  def destroy
+    comment = Comment.find params[:id]
+    if comment.destroy
+      render json: comment,
+             serializer: CommentBaseSerializer,
+             status: :ok
+    else
+      unprocessable_response comment
+    end
+  end
+
   private
 
   def comment_params

@@ -82,7 +82,7 @@
 
     get threads() {
       return {
-        index: (page=1) => `/threads?page=${page}`,
+        index: (page=1, sent=false) => `/threads?page=${page}&sent=${sent}`,
         show: (id) => `/threads/${id}`,
       };
     }

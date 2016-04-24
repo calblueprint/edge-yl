@@ -92,6 +92,7 @@ class ProspectPage extends Component {
             media={this.state.media}
             prospect={prospect} />
           <PageComments
+            editable={this.state.editable}
             profile={this.selectProfile()}
             prospect={this.state.prospect}
             type={TypeConstants.comments.prospect} />

@@ -6,6 +6,12 @@ class PageComment extends Component {
   static get propTypes() {
     return {
       comment: React.PropTypes.object.isRequired,
+      editable: React.PropTypes.bool.isRequired,
+      type: React.PropTypes.oneOf([
+        TypeConstants.comments.prospect,
+        TypeConstants.comments.school,
+        TypeConstants.comments.student,
+      ]).isRequired,
     };
   }
 
@@ -31,11 +37,33 @@ class PageComment extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
+  renderClickable() {
+    if (this.props.editable) {
+      var action;
+      var type = this.props.type;
+      if (type === TypeConstants.comments.prospect) {
+        action = ProspectActions.deleteComment;
+      } else if (type === TypeConstants.comments.school) {
+        action = SchoolActions.deleteComment;
+      } else if (type === TypeConstants.comments.student) {
+        action = StudentActions.deleteComment;
+      }
+      return (
+        <Clickable
+          action={() => action(this.props.comment.id)}
+          icon={TypeConstants.icons.delete}
+          styles={this.clickableStyles}
+          type={'i-left'} />
+      );
+    }
+  }
+
   render() {
     var comment = this.props.comment;
     var user = comment.user;
     return (
       <div style={this.styles.container}>
+        {this.renderClickable()}
         <p>{comment.content}</p>
         <p>{comment.updated_at}</p>
         <Clickable

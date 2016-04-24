@@ -7,6 +7,7 @@
     constructor() {
       this.generateActions(
         'closeOverlay',
+        'removeComment',
         'removeContact',
         'storeComment',
         'storeError',
@@ -67,6 +68,23 @@
         resolve,
         reject,
       );
+      return true;
+    }
+
+    deleteComment(id) {
+      var response = confirm('This action cannot be undone.');
+      if (response) {
+        var resolve = (response) => {
+          this.removeComment(response);
+          ViewActions.storeToast(true, 'Comment removed!');
+        };
+        var reject = (response) => this.storeError(response);
+        Requester.delete(
+          ApiConstants.comments.delete(id),
+          resolve,
+          reject,
+        );
+      }
       return true;
     }
 

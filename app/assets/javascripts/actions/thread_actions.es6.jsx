@@ -14,11 +14,11 @@
     // --------------------------------------------------
     // Requests
     // --------------------------------------------------
-    createReply(email, tid) {
+    createReply(email, tid, sender) {
       var attributes = {
         email_thread_id: tid,
         recipient: email.sender,
-        sender: email.recipient,
+        sender: sender,
         subject: "Re: " + email.subject,
       };
       var params = { email: attributes };

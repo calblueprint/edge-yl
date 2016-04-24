@@ -18,7 +18,7 @@ class ThreadCard extends Component {
         {},
         StyleConstants.containers.card,
         {
-          padding: '24px',
+          padding: '16px',
           marginBottom: '9px',
           marginTop: '12px',
         },

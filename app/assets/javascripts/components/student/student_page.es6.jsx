@@ -100,6 +100,7 @@ class StudentPage extends Component {
               media={this.state.media}
               student={student} />
             <PageComments
+              editable={this.state.editable}
               profile={this.selectProfile()}
               student={this.state.student}
               type={TypeConstants.comments.student} />

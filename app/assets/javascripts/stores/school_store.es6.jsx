@@ -19,7 +19,8 @@
       this.template = null;
       this.bindListeners({
         handleCloseOverlay: SchoolActions.CLOSE_OVERLAY,
-      handleRemoveContact: SchoolActions.REMOVE_CONTACT,
+        handleRemoveComment: SchoolActions.REMOVE_COMMENT,
+        handleRemoveContact: SchoolActions.REMOVE_CONTACT,
         handleStoreAttribute: SchoolActions.STORE_ATTRIBUTE,
         handleStoreComment: SchoolActions.STORE_COMMENT,
         handleStoreError: SchoolActions.STORE_ERROR,
@@ -40,6 +41,12 @@
       this.overlay = false;
       this.pairing = null;
       this.template = null;
+    }
+
+    handleRemoveComment(response) {
+      var comments = this.school.comments;
+      var id = response.comment.id;
+      this.school.comments = comments.filter((comment) => comment.id !== id);
     }
 
     handleRemoveContact(response) {

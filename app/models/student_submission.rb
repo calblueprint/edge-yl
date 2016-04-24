@@ -225,16 +225,6 @@ class StudentSubmission < ActiveRecord::Base
     self[:insurance_address_state] = EnumConstants::STATES.index(value)
   end
 
-  def media_participation
-    unless self[:media_participation].nil?
-      EnumConstants::BOOLEANS[self[:media_participation]]
-    end
-  end
-
-  def media_participation=(value)
-    self[:media_participation] = EnumConstants::BOOLEANS.index(value)
-  end
-
   def participation_guardian_consent
     unless self[:participation_guardian_consent].nil?
       EnumConstants::AGREEMENTS[self[:participation_guardian_consent]]
@@ -387,7 +377,6 @@ class StudentSubmission < ActiveRecord::Base
       6 => attributes_six,
       7 => attributes_seven,
       8 => attributes_eight,
-      9 => attributes_nine,
     }
   end
 
@@ -578,20 +567,12 @@ class StudentSubmission < ActiveRecord::Base
 
   def attributes_six
     {
-      media_information: media_information,
-      media_newspaper: media_newspaper,
-      media_participation: media_participation,
-    }
-  end
-
-  def attributes_seven
-    {
       ceremony_attendance: ceremony_attendance,
       ceremony_attendance_number: ceremony_attendance_number,
     }
   end
 
-  def attributes_eight
+  def attributes_seven
     {
       risk_guardian_consent: risk_guardian_consent,
       risk_guardian_date: risk_guardian_date,
@@ -605,7 +586,7 @@ class StudentSubmission < ActiveRecord::Base
     }
   end
 
-  def attributes_nine
+  def attributes_eight
     {
       participation_guardian_consent: participation_guardian_consent,
       participation_guardian_name: participation_guardian_name,

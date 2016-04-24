@@ -39,6 +39,7 @@ class Email < ActiveRecord::Base
     self.email_thread ||= EmailThread.create emailable: emailable,
                                              subject: subject,
                                              user: user
+    email_thread.touch
   end
 
   def do_send(update_params)
@@ -60,6 +61,8 @@ class Email < ActiveRecord::Base
       return School.find(emailable_id).primary_contact.full_name
     elsif emailable_type == Student.name
       return Student.find(emailable_id).full_name
+    else
+      return from
     end
   end
 
@@ -107,24 +110,27 @@ class Email < ActiveRecord::Base
   def set_initials
     self.content ||= ''
     self.subject ||= ''
+
     if (emailable = find_emailable(recipient))
       self.emailable_id = emailable.id
       self.emailable_type = emailable.class.name
       self.to = smtp_format_name emailable
-      if (user = find_user(sender))
-        self.user = user
-        self.from = smtp_format_name user
-      end
     elsif (emailable = find_emailable(sender))
       self.emailable_id = emailable.id
       self.emailable_type = emailable.class.name
       self.from = smtp_format_name emailable
-      if (user = find_user(recipient))
-        self.user = user
-        self.to = smtp_format_name user
-      end
     end
-    self.user ||= find_user(recipient)
+
+    if (user = find_user(sender))
+      self.user = user
+      self.from ||= smtp_format_name user
+    elsif (user = find_user(recipient))
+      self.user = user
+      self.to ||= smtp_format_name user
+    else
+      self.user = User.first
+    end
+
     if is_sent
       assign_thread
     end

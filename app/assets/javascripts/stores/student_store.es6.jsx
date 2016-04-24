@@ -13,6 +13,7 @@
       this.template = null;
       this.bindListeners({
         handleCloseOverlay: StudentActions.CLOSE_OVERLAY,
+        handleRemoveComment: StudentActions.REMOVE_COMMENT,
         handleStoreAttribute: StudentActions.STORE_ATTRIBUTE,
         handleStoreComment: StudentActions.STORE_COMMENT,
         handleStoreError: StudentActions.STORE_ERROR,
@@ -30,6 +31,12 @@
       this.overlay = false;
       this.pairing = null;
       this.template = null;
+    }
+
+    handleRemoveComment(response) {
+      var comments = this.student.comments;
+      var id = response.comment.id;
+      this.student.comments = comments.filter((comment) => comment.id !== id);
     }
 
     handleStoreAttribute(attribute) {

@@ -1,6 +1,6 @@
 Conference.all.each do |conference|
   School.all.each do |school|
-    Responsibility.new(
+    Responsibility.create(
       conference: conference,
       school: school,
     )
