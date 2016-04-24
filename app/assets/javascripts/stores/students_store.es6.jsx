@@ -47,6 +47,20 @@
         {
           active: false,
           choices: ['True', 'False', 'None'],
+          key: 'has_group',
+          name: 'Has Group?',
+          selected: 'None',
+        },
+        {
+          active: false,
+          choices: ['True', 'False', 'None'],
+          key: 'has_room',
+          name: 'Has Room?',
+          selected: 'None',
+        },
+        {
+          active: false,
+          choices: ['True', 'False', 'None'],
           key: 'is_primary',
           name: 'Primary?',
           selected: 'None',
