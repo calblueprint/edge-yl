@@ -15,6 +15,7 @@ class ThreadsPage extends Component {
     return {
       page: React.PropTypes.number.isRequired,
       profile: React.PropTypes.object.isRequired,
+      toast: React.PropTypes.string,
     };
   }
 
@@ -32,7 +33,7 @@ class ThreadsPage extends Component {
     ThreadsStore.listen(this._listener);
     ViewStore.listen(this._listener);
     ThreadsActions.fetchThreads(this.props.page);
-    ViewActions.attachListener();
+    ViewActions.attachListener(this.props.toast);
   }
 
   componentWillUnmount() {

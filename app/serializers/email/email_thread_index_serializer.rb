@@ -11,10 +11,11 @@ class EmailThreadIndexSerializer < EmailThreadBaseSerializer
 
   def content_preview
     cutoff = 200
-    if object.content.length > cutoff
-      "#{object.content.slice(0, cutoff)}..."
+    content = object.emails.last.content
+    if content.length > cutoff
+      "#{content.slice(0, cutoff)}..."
     else
-      object.content
+      content
     end
   end
 

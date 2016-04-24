@@ -14,11 +14,14 @@
     // --------------------------------------------------
     // Listeners
     // --------------------------------------------------
-    attachListener() {
+    attachListener(toast) {
       window.onresize = () => {
         this.storeMedia(document.documentElement.clientWidth);
       };
       this.storeMedia(document.documentElement.clientWidth);
+      if (toast) {
+        this.storeToast(true, toast);
+      }
       return true;
     }
 
