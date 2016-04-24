@@ -13,7 +13,7 @@ class Group < ActiveRecord::Base
 
   include PgSearch
 
-  multisearchable against: [:full_name]
+  multisearchable against: [:full_name, :conference_name]
 
   scope :conference_id, -> (conference_id) { where(conference_id: conference_id) }
 
@@ -31,6 +31,10 @@ class Group < ActiveRecord::Base
 
   validates :letter, presence: true
   validates :letter, uniqueness: { scope: :conference_id }
+
+  def conference_name
+    conference.name
+  end
 
   def females_count
     students.female.count
