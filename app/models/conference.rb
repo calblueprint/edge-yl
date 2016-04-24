@@ -29,7 +29,7 @@ class Conference < ActiveRecord::Base
 
   def self.active
     active_conferences = []
-    find_each.each { |conference| active_conferences << conference if conference.active }
+    all.each { |conference| active_conferences << conference if conference.active }
     active_conferences
   end
 
@@ -97,7 +97,7 @@ class Conference < ActiveRecord::Base
   end
 
   def create_responsibilities
-    School.all.find_each do |school|
+    School.all.each do |school|
       Responsibility.create(conference: self, school: school)
     end
   end

@@ -9,7 +9,7 @@ class Api::Users::PasswordsController < Api::BaseController
     end
 
     if current_user.update(update_params.except!(:current_password))
-      sign_in current_user, :bypass => true
+      sign_in current_user, bypass: true
       render json: current_user,
              serializer: ProfileBaseSerializer,
              status: :created

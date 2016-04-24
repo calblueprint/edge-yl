@@ -33,7 +33,7 @@ class Room < ActiveRecord::Base
     attributes = %w(building number style)
     CSV.generate(headers: true) do |csv|
       csv << attributes
-      all.find_each do |room|
+      all.each do |room|
         students = room.students
         row = attributes.map { |attr| room.send(attr) }
         students.map { |student| row << student.full_name }
