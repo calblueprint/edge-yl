@@ -71,7 +71,7 @@ class ResetPasswordForm extends Component {
         <CardInput
           action={this.generateHandler('password')}
           errors={template.errors.password}
-          label={'New Password'}
+          label={'New password'}
           margin={true}
           type={'password'}
           value={template.password} />
@@ -85,7 +85,7 @@ class ResetPasswordForm extends Component {
         <div style={this.styles.footer}>
           <FormButton
             action={() => this.resetPassword()}
-            content={'Reset Password'} />
+            content={'Reset password'} />
         </div>
       </div>
     );

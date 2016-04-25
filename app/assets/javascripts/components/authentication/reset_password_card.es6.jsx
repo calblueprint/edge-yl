@@ -37,7 +37,7 @@ class ResetPasswordCard extends Component {
   renderHeader() {
     return (
       <div style={this.styles.header}>
-        <h2>{'Reset Password'}</h2>
+        <h2>{'Reset password'}</h2>
       </div>
     );
   }

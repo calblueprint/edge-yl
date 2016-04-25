@@ -36,7 +36,7 @@ class ForgotPasswordCard extends Component {
   renderHeader() {
     return (
       <div style={this.styles.header}>
-        <h2>{'Send Reset Email'}</h2>
+        <h2>{'Forgot password'}</h2>
       </div>
     );
   }

@@ -34,13 +34,19 @@ class AuthenticationPage extends Component {
       },
       footer: {
         display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'flex-end',
+        flexFlow: 'column',
         alignSelf: 'stretch',
-        margin: '12px 0px',
+        paddingTop: '6px',
       },
       label: {
         paddingRight: '4px',
+      },
+      section: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'flex-end',
+        alignSelf: 'stretch',
+        paddingTop: '6px',
       },
     };
   }
@@ -69,22 +75,33 @@ class AuthenticationPage extends Component {
     var label = bool ? 'Don\'t have an account?' : 'Already have an account?';
     var route = bool ? RouteConstants.pages.signup : RouteConstants.pages.login;
     return (
-      <div>
-        <div style={this.styles.footer}>
+      <div style={this.styles.footer}>
+        {this.renderForgot()}
+        <div style={this.styles.section}>
           <p style={this.styles.label}>{label}</p>
           <Clickable
             content={content}
             route={route}
             type={'h6'} />
         </div>
-        <div style={this.styles.footer}>
+      </div>
+    );
+  }
+
+  renderForgot() {
+    if (this.props.type === TypeConstants.pages.login) {
+      return (
+        <div style={this.styles.section}>
+          <p style={this.styles.label}>
+            {'Forgot your password?'}
+          </p>
           <Clickable
-            content={'Forgot Password?'}
+            content={'Reset'}
             route={RouteConstants.pages.forgotPassword}
             type={'h6'} />
         </div>
-      </div>
-    );
+      );
+    }
   }
 
   render() {

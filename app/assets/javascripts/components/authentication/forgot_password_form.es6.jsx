@@ -80,7 +80,7 @@ class ForgotPasswordForm extends Component {
         <div style={this.styles.footer}>
           <FormButton
             action={() => this.sendResetEmail()}
-            content={'Send Reset Email'} />
+            content={'Send email'} />
         </div>
       </div>
     );
