@@ -46,9 +46,10 @@ class AuthenticationCard extends Component {
   }
 
   renderHeader() {
+    var bool = this.props.type === TypeConstants.pages.login;
     return (
       <div style={this.styles.header}>
-        <h2>{this.props.type === TypeConstants.pages.login ? 'Login' : 'Signup'}</h2>
+        <h2>{bool ? 'Log in' : 'Sign up'}</h2>
       </div>
     );
   }
