@@ -17,7 +17,7 @@
     fetchForm(id) {
       var resolve = (response) => {
         this.storeForm(response);
-        this.fetchSubmission('student', id);
+        this.fetchSubmission(id);
       }
       Requester.get(
         ApiConstants.forms.show('student'),
