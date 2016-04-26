@@ -37,6 +37,8 @@ class RoomGeneral extends Component {
           label={'Number'}
           value={room.number} />
         <CardAttribute
+          action={() => this.storePairing('gender', room.gender_choices)}
+          editable={this.props.editable}
           label={'Gender'}
           value={room.gender} />
         <CardAttribute

@@ -20,7 +20,7 @@ class Room < ActiveRecord::Base
 
   belongs_to :conference
 
-  enum gender: [:female, :male, :other]
+  enum gender: [:female, :male]
   enum style: [:staff, :student]
 
   has_many :students

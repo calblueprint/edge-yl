@@ -34,46 +34,59 @@ class RoomEditModal extends EditModal {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
-  renderChild(type) {
+  renderChild() {
     var pairing = this.props.pairing;
     var label = pairing.key;
-    if (pairing.label) {
-      label = pairing.label;
+    if (pairing.type === 'input') {
+      if (pairing.label) {
+        label = pairing.label;
+      }
+      return (
+        <CardInput
+          action={(event) => RoomActions.storeValue(event.target.value)}
+          errors={pairing.errors[pairing.key]}
+          label={label}
+          value={pairing.value} />
+      );
+    } else {
+      var choices = pairing.choices.map((choice) =>{
+      return {
+        action: () =>  RoomActions.storeValue(choice),
+        content: choice,
+      }});
+      return (
+        <CardDropdown
+          choices={choices}
+          errors={pairing.errors[pairing.key]}
+          label={pairing.key}
+          value={pairing.value} />
+      );
     }
-
-    return (
-      <CardInput
-        action={(event) => RoomActions.storeValue(event.target.value)}
-        errors={pairing.errors[pairing.key]}
-        label={label}
-        value={pairing.value} />
-    );
   }
 
   renderBody() {
-    var action;
+    var action = () => RoomActions.updateRoom(pairing);
     var content;
-    var type;
     var pairing = this.props.pairing;
     switch (pairing.key) {
       case 'number':
-        action = () => RoomActions.updateRoom(pairing);
         content = 'Change Number';
-        type = 'input';
         break;
       case 'capacity':
-        action = () => RoomActions.updateRoom(pairing);
         content = 'Change Capacity';
-        type = 'input';
+        break;
+      case 'gender':
+        content = 'Change Gender';
         break;
     }
+
     return (
       <div style={this.styles.section}>
         <CardHeader
           content={content}
           options={this.generateOption(action)} />
         <div style={StyleConstants.cards.content}>
-          {this.renderChild(type)}
+          {this.renderChild()}
         </div>
       </div>
     );
