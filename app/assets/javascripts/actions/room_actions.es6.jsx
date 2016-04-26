@@ -31,6 +31,8 @@
         Requester.update(
           ApiConstants.students.update(studentId),
           params,
+          resolve,
+          reject,
         );
         return studentId;
       }

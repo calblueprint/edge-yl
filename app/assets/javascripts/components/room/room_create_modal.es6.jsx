@@ -52,7 +52,7 @@ class RoomCreateModal extends CreateModal {
   }
 
   generateGenderChoices() {
-    var genders = ['female', 'male', 'other'];
+    var genders = ['female', 'male'];
     return genders.map((gender) => this.generateGenderChoice(gender));
   }
 

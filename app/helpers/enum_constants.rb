@@ -4,6 +4,8 @@ module EnumConstants
 
   BOOLEANS = %w(yes no).freeze
 
+  BINARY_GENDERS = %w(female male).freeze
+
   CARPOOL_OPTIONS = %w(
     Not\ interested
     Interested\ -\ I\ can\ provide\ a\ ride

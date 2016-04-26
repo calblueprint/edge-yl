@@ -2,9 +2,9 @@ Conference.all.each do |conference|
   (83..95).each do |index|
     new_room = Room.create(
       building: Faker::Commerce.color.camelcase,
-      capacity: 2 + rand(2),
+      capacity: 4 + rand(2),
       conference: conference,
-      gender: index % 3,
+      gender: index % 2,
       number: index,
       style: Room.styles[:student],
     )
@@ -14,7 +14,7 @@ Conference.all.each do |conference|
     building: Faker::Commerce.color.camelcase,
     capacity: 2,
     conference: conference,
-    gender: Room.genders[:other],
+    gender: Room.genders[:female],
     number: 1337,
     style: Room.styles[:staff],
   )

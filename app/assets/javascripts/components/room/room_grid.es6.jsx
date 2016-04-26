@@ -27,6 +27,7 @@ class RoomGrid extends Component {
           type={TypeConstants.room.general} />
         <GridHeader title={'Students in this room'} />
         <StudentsGrid
+          editable={this.props.editable}
           media={this.props.media}
           students={room.students}
           type={TypeConstants.students.room}

@@ -58,18 +58,15 @@ class Conference < ActiveRecord::Base
   def assign_students_to_rooms
     unassigned_males = students.male.shuffle
     unassigned_females = students.female.shuffle
-    unassigned_others = students.other.shuffle
 
     students.each { |student| student.room = nil }
 
-    rooms.student.each do |room|
+    rooms.each do |room|
       while room.students.count < room.capacity
         if !unassigned_males.empty? && room.male?
           student = unassigned_males.pop
         elsif !unassigned_females.empty? && room.female?
           student = unassigned_females.pop
-        elsif !unassigned_others.empty? && room.other?
-          student = unassigned_others.pop
         else # There are no more students to assign to this room
           break
         end
@@ -77,7 +74,7 @@ class Conference < ActiveRecord::Base
         student.save
       end
     end
-    unless unassigned_others.empty? && unassigned_females.empty? && unassigned_males.empty?
+    unless unassigned_females.empty? && unassigned_males.empty?
       fail 'Not enough room space to accomodate students'
     end
     self

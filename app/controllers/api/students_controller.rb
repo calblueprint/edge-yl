@@ -111,6 +111,7 @@ class Api::StudentsController < Api::BaseController
       :preferred_name,
       :psychologist_consent,
       :psychologist_consent_name,
+      :room_id,
       :shirt_size,
     )
   end
