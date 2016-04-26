@@ -6,7 +6,9 @@ Rails.application.configure do
   config.react.addons = true
 
   config.action_mailer.default charset: 'utf-8'
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.default_url_options = {
+    host: ENV['application_domain'],
+  }
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {

@@ -142,7 +142,7 @@ class Email < ActiveRecord::Base
     if model.class.name == Student.name
       return "#{model.full_name} <#{model.email}>"
     elsif model.class.name == User.name
-      return "#{model.full_name} <#{model.username}@#{ENV['email_domain']}>"
+      return "#{model.full_name} <#{model.username}@#{ENV['smtp_domain']}>"
     elsif model.class.name == School.name
       return "#{model.primary_contact.full_name} <#{model.primary_contact.email}>"
     end
