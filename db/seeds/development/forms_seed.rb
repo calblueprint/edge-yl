@@ -896,7 +896,7 @@ student_form = Form.create(
     )
     Question.create(
       description: %s(
-        Note: If you take public transportation, an approved 
+        Note: If you take public transportation, an approved
         and insured staff memeber will be able to pick you up.
       ),
       key: 'transportation',
@@ -1026,12 +1026,13 @@ student_form = Form.create(
     )
     Question.create(
       description: %s(
-        I, the undersigned, understand that my child will be transported to the EDGE conference 
-        in a private automobile, bus, plane, train, subway, etc. and assume such risk on behalf 
-        of my child. I/we agree not to hold EDGE Youth Leadership or any of its volunteers liable 
-        for any sum which I/we might claim as a result of injury, or property damage arising out of, 
-        or caused by any accident or occurrence during the time said student is being transported 
-        by me, or driving himself/herself, or driving with another adult to or from the youth leadership seminar.
+        I, the undersigned, understand that my child will be transported to the EDGE conference
+        in a private automobile, bus, plane, train, subway, etc. and assume such risk on behalf
+        of my child. I/we agree not to hold EDGE Youth Leadership or any of its volunteers liable
+        for any sum which I/we might claim as a result of injury, or property damage arising out of,
+        or caused by any accident or occurrence during the time said student is being transported
+        by me, or driving himself/herself, or driving with another adult to or from the youth
+        leadership seminar.
       ),
       key: 'transportation_waiver_info',
       page: page,
@@ -1063,13 +1064,15 @@ student_form = Form.create(
   ) do |page|
     Question.create(
       description: %s(
-        Family and friends are invited to attend the Family and Friends Program at the end 
+        Family and friends are invited to attend the Family and Friends Program at the end
         of the conference. It is a fantastic chance to learn more what the seminar
         is about and see firsthand the excitement and energy created by the participants.
         <br />
-        Please see this year's information packet <a href="http://www.edgeyl.org/2016reginfo">HERE.</a> 
-        for details on the timing and location of the Closing Ceremonies, and also the timing of when 
-        you can expect to check out your student and depart from the conference. 
+        Please see this year's information packet
+        <a href="http://www.edgeyl.org/2016reginfo">HERE.</a>
+        for details on the timing and location of the Closing Ceremonies, and
+        also the timing of when you can expect to check out your student and depart from the
+        conference.
         <b>See directions and maps in the information packet that was e-mailed to your student or
         refer to the web site <a href="http://www.edgeyl.org/2016reginfo">HERE.</a></b>
         <br />
@@ -1148,11 +1151,11 @@ student_form = Form.create(
         registration/entry into EDGE 2016. This Consent and Acknowledgment of Risk shall not be
         amended, supplemented, or abrogated without the written consent of EDGE Board of
         Directors, San Leandro, CA.
-        <br /> 
+        <br />
         4. Agrees to defend and indemnify the EDGE Youth
         Leadership Seminar from any claim or action filed by a third party (against EDGE) due to
         their (the participant's) actions in this event.
-        <br /> 
+        <br />
         By signing below, the
         Parent/Guardian confirms that they have read, understand, and consent to the terms
         of this waiver agreement.
@@ -1262,9 +1265,9 @@ student_form = Form.create(
       <br />
       If you feel you have an extenuating circumstance that should be considered, please contact
       our recruitment directors at
-      <b>510-408-6606 (e-mail registration@edgeyl.org)</b> immediately. Otherwise, notify all your family,
-      friends, teachers and coaches right away that you are already booked for a life-changing
-      experience during the Friday-Sunday of the EDGE conference!</b>
+      <b>510-408-6606 (e-mail registration@edgeyl.org)</b> immediately. Otherwise, notify all
+      your family, friends, teachers and coaches right away that you are already booked
+      for a life-changing experience during the Friday-Sunday of the EDGE conference!</b>
       ),
       key: 'participation_info',
       page: page,

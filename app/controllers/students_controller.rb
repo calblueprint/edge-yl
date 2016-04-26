@@ -13,7 +13,7 @@ class StudentsController < BaseController
   end
 
   def submission
-    @student = Student.find params[:id].to_i 
+    @student = Student.find params[:id].to_i
   end
 
 end

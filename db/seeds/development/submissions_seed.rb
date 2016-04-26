@@ -54,5 +54,3 @@ school_submission = SchoolSubmission.create(
   website: Faker::Internet.url('schoolweb.com'),
 )
 puts "Created school submission #{school_submission.id}."
-
-
