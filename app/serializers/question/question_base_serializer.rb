@@ -12,5 +12,6 @@ class QuestionBaseSerializer < BaseSerializer
              :placeholder,
              :style,
              :title
+             :value
 
 end
