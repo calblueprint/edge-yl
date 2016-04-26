@@ -21,16 +21,16 @@ class StudentSubmissionContainer extends Component {
   // Lifecycle
   // --------------------------------------------------
   componentWillMount() {
-    this.setState(SubmissionStore.getState());
+    this.setState(StudentSubmissionStore.getState());
   }
 
   componentDidMount() {
-    SubmissionStore.listen(this._listener);
-    SubmissionActions.fetchForm(this.props.student.submission_id);
+    StudentSubmissionStore.listen(this._listener);
+    StudentSubmissionActions.fetchForm(this.props.student.submission_id);
   }
 
   componentWillUnmount() {
-    SubmissionStore.unlisten(this._listener);
+    StudentSubmissionStore.unlisten(this._listener);
   }
   // --------------------------------------------------
   // Styles

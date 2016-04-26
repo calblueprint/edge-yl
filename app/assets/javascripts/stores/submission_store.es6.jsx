@@ -1,5 +1,5 @@
 (() => {
-  class SubmissionStore {
+  class StudentSubmissionStore {
 
     // --------------------------------------------------
     // Setup
@@ -7,8 +7,8 @@
     constructor() {
       this.form = {};
       this.bindListeners({
-        handleStoreForm: SubmissionActions.STORE_FORM,
-        handleStoreSubmission: SubmissionActions.STORE_SUBMISSION,
+        handleStoreForm: StudentSubmissionActions.STORE_FORM,
+        handleStoreSubmission: StudentSubmissionActions.STORE_SUBMISSION,
       });
     }
 
@@ -45,5 +45,5 @@
       this.form = response.form;
     }
   }
-  this.SubmissionStore = alt.createStore(SubmissionStore);
+  this.StudentSubmissionStore = alt.createStore(StudentSubmissionStore);
 })();

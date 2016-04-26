@@ -14,7 +14,6 @@ class StudentsController < BaseController
 
   def submission
     @student = Student.find params[:id].to_i 
-    puts @student
   end
 
 end

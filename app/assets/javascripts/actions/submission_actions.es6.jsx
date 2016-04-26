@@ -1,5 +1,5 @@
 (() => {
-  class SubmissionActions {
+  class StudentSubmissionActions {
 
     // --------------------------------------------------
     // Setup
@@ -37,5 +37,5 @@
       return true;
     }
   }
-  this.SubmissionActions = alt.createActions(SubmissionActions);
+  this.StudentSubmissionActions = alt.createActions(StudentSubmissionActions);
 })();

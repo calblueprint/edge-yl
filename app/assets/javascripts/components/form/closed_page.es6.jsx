@@ -4,7 +4,7 @@ class ClosedPage extends Component {
   // Styles
   // --------------------------------------------------
   get styles() {
-  	return {
+    return {
       container: Object.assign(
         {},
         StyleConstants.containers.card,

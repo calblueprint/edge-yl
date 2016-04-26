@@ -64,7 +64,7 @@
     get student() {
       return {
         submission: (id) => `/students/${id}/submission`,
-      }
+      };
     }
 
     get students() {
