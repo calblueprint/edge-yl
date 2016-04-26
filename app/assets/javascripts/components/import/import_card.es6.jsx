@@ -7,7 +7,6 @@ class ImportCard extends Component {
     return {
       conference: React.PropTypes.object,
       conferences: React.PropTypes.array.isRequired,
-      profile: React.PropTypes.object.isRequired,
     };
   }
 
@@ -43,25 +42,9 @@ class ImportCard extends Component {
   }
 
   // --------------------------------------------------
-  // Helpers
-  // --------------------------------------------------
-  generateChoice(conference) {
-    return {
-      action: () => ImportActions.storeConference(conference),
-      content: conference.name,
-    };
-  }
-
-  generateChoices() {
-    var conferences = this.props.conferences;
-    return conferences.map((conference) => this.generateChoice(conference));
-  }
-
-  // --------------------------------------------------
   // Render
   // --------------------------------------------------
   render() {
-    var conference = this.props.conference;
     return (
       <div>
         <div ref={'container'} style={this.styles.container}>
@@ -81,26 +64,9 @@ class ImportCard extends Component {
             </form>
           </div>
         </div>
-        <div ref={'container'} style={this.styles.container}>
-          <div style={this.styles.header}>
-            <h2>{'Import Students and their Schools'}</h2>
-          </div>
-          <DropdownButton
-            choices={this.generateChoices()}
-            value={conference ? conference.name : null} />
-          <div>
-            <form
-              action={ApiConstants.imports.students(1)}
-              encType={'multipart/form-data'}
-              method={'post'}>
-              <input
-                accept={'*.csv'}
-                name={'upload'}
-                type={'file'} />
-              <input type={'submit'} />
-            </form>
-          </div>
-        </div>
+        <ImportStudents
+          conference={this.props.conference}
+          conferences={this.props.conferences} />
       </div>
     );
   }
