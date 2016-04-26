@@ -1,13 +1,68 @@
 Hi <%= @school_submission.contact_first_name %>,
 
-Thank you for your student selection. We can't wait to meet your student at the upcoming conference!
+Thank you for your student selection. We can't wait to meet your student at the upcoming conference! Your student was sent a link to confirm the rest of their registration process.
 
-Your student was sent a link to confirm the rest of their registration process.
-
-Please review the information below for accuracy. Please email any corrections to registration@edgeyl.org.
+Please review the information below for accuracy. Please email any corrections or questions to registration@edgeyl.org.
 
 School Information:
-CONFIRMATION DATA
+School Name: <%= @school_submission.name %>
+School Address One: <%= @school_submission.address_one %>
+School Address Two: <%= @school_submission.address_two || 'n/a' %>
+School Address City: <%= @school_submission.address_city %>
+School Address State: <%= @school_submission.address_state %>
+School Address Zip: <%= @school_submission.address_zip %>
+School Website: <%= @school_submission.website || 'n/a' %>
+
+School Contact Information
+School Contact First Name: <%= @school_submission.contact_first_name %>
+School Contact Last Name: <%= @school_submission.contact_last_name %>
+School Contact Title: <%= @school_submission.contact_title %>
+School Contact Email: <%= @school_submission.contact_email %>
+School Contact Phone Number <%= @school_submission.contact_phone_number %>
+
+Primary Student Information<
+Primary Student First Name: <%= @school_submission.primary_first_name %>
+Primary Student Last Name: <%= @school_submission.primary_last_name %>
+Primary Student Address One: <%= @school_submission.primary_address_one %>
+Primary Student Address Two: <%= @school_submission.primary_address_two %>
+Primary Student Address City: <%= @school_submission.primary_address_city %>
+Primary Student Address State: <%= @school_submission.primary_address_state %>
+Primary Student Address Zip: <%= @school_submission.primary_address_zip %>
+Primary Student Home Phone: <%= @school_submission.primary_home_phone %>
+Primary Student Cell Phone: <%= @school_submission.primary_cell_phone %>
+Primary Student Email: <%= @school_submission.primary_email %>
+Primary Student Birthday: <%= @school_submission.primary_birthday %>
+Primary Student Gender: <%= @school_submission.primary_gender %>
+Primary Student Shirt Size: <%= @school_submission.primary_shirt_size %>
+Primary Student Parent/Guardian First Name: <%= @school_submission.primary_guardian_first_name %>
+Primary Student Parent/Guardian Last Name: <%= @school_submission.primary_guardian_last_name %>
+Primary Student Parent/Guardian Email: <%= @school_submission.primary_guardian_email %>
+Primary Student Parent/Guardian Phone Number: <%= @school_submission.primary_guardian_phone_number %>
+Primary Student Parent/Guardian Phone Type: <%= @school_submission.primary_guardian_phone_type %>
+Primary Student Parent/Guardian Relationship: <%= @school_submission.primary_guardian_relationship %>
+
+<% if @school_submission.has_alternate_student == EnumConstants::BOOLEANS[0] %>
+  Alternate Student Information
+  Alternate Student First Name: <%= @school_submission.alternate_first_name %>
+  Alternate Student Last Name: <%= @school_submission.alternate_last_name %>
+  Alternate Student Address One: <%= @school_submission.alternate_address_one %>
+  Alternate Student Address Two: <%= @school_submission.alternate_address_two %>
+  Alternate Student Address City: <%= @school_submission.alternate_address_city %>
+  Alternate Student Address State: <%= @school_submission.alternate_address_state %>
+  Alternate Student Address Zip: <%= @school_submission.alternate_address_zip %>
+  Alternate Student Home Phone: <%= @school_submission.alternate_home_phone %>
+  Alternate Student Cell Phone: <%= @school_submission.alternate_cell_phone %>
+  Alternate Student Email: <%= @school_submission.alternate_email %>
+  Alternate Student Birthday: <%= @school_submission.alternate_birthday %>
+  Alternate Student Gender: <%= @school_submission.alternate_gender %>
+  Alternate Student Shirt Size: <%= @school_submission.alternate_shirt_size %>
+  Alternate Student Parent/Guardian First Name: <%= @school_submission.alternate_guardian_first_name %>
+  Alternate Student Parent/Guardian Last Name: <%= @school_submission.alternate_guardian_last_name %>
+  Alternate Student Parent/Guardian Email: <%= @school_submission.primary_guardian_email %>
+  Alternate Student Parent/Guardian Phone Number: <%= @school_submission.alternate_guardian_phone_number %>
+  Alternate Student Parent/Guardian Phone Type: <%= @school_submission.alternate_guardian_phone_type %>
+  Alternate Student Parent/Guardian Relationship: <%= @school_submission.alternate_guardian_relationship %>
+<% end %>
 
 Best,
-EDGE 2016 Recruitment Team
+The EDGE Recruitment Team
