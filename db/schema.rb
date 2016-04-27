@@ -162,7 +162,7 @@ ActiveRecord::Schema.define(version: 20160408025358) do
   create_table "questions", force: :cascade do |t|
     t.string   "description",   default: "",   null: false
     t.string   "enabler_key"
-    t.string   "enabler_value"
+    t.string   "enabler_values"
     t.integer  "format",                       null: false
     t.boolean  "is_required",   default: true, null: false
     t.string   "key",                          null: false

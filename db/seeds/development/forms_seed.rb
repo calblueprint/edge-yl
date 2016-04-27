@@ -244,7 +244,7 @@ school_form = Form.create(
     )
     Question.create(
       enabler_key: 'has_alternate_student',
-      enabler_value: EnumConstants::BOOLEANS[0],
+      enabler_values: EnumConstants::BOOLEANS[0],
       key: 'alternate_first_name',
       page: page,
       style: Question.styles[:input],
@@ -252,7 +252,7 @@ school_form = Form.create(
     )
     Question.create(
       enabler_key: 'has_alternate_student',
-      enabler_value: EnumConstants::BOOLEANS[0],
+      enabler_values: EnumConstants::BOOLEANS[0],
       key: 'alternate_last_name',
       page: page,
       style: Question.styles[:input],
@@ -260,7 +260,7 @@ school_form = Form.create(
     )
     Question.create(
       enabler_key: 'has_alternate_student',
-      enabler_value: EnumConstants::BOOLEANS[0],
+      enabler_values: EnumConstants::BOOLEANS[0],
       key: 'alternate_address_one',
       page: page,
       style: Question.styles[:input],
@@ -268,7 +268,7 @@ school_form = Form.create(
     )
     Question.create(
       enabler_key: 'has_alternate_student',
-      enabler_value: EnumConstants::BOOLEANS[0],
+      enabler_values: EnumConstants::BOOLEANS[0],
       is_required: false,
       key: 'alternate_address_two',
       page: page,
@@ -277,7 +277,7 @@ school_form = Form.create(
     )
     Question.create(
       enabler_key: 'has_alternate_student',
-      enabler_value: EnumConstants::BOOLEANS[0],
+      enabler_values: EnumConstants::BOOLEANS[0],
       key: 'alternate_address_city',
       page: page,
       style: Question.styles[:input],
@@ -285,7 +285,7 @@ school_form = Form.create(
     )
     Question.create(
       enabler_key: 'has_alternate_student',
-      enabler_value: EnumConstants::BOOLEANS[0],
+      enabler_values: EnumConstants::BOOLEANS[0],
       key: 'alternate_address_state',
       options: EnumConstants::STATES,
       page: page,
@@ -295,7 +295,7 @@ school_form = Form.create(
     Question.create(
       description: StringConstants::ZIP_FORMAT,
       enabler_key: 'has_alternate_student',
-      enabler_value: EnumConstants::BOOLEANS[0],
+      enabler_values: EnumConstants::BOOLEANS[0],
       key: 'alternate_address_zip',
       page: page,
       style: Question.styles[:input],
@@ -304,7 +304,7 @@ school_form = Form.create(
     Question.create(
       description: StringConstants::PHONE_FORMAT,
       enabler_key: 'has_alternate_student',
-      enabler_value: EnumConstants::BOOLEANS[0],
+      enabler_values: EnumConstants::BOOLEANS[0],
       key: 'alternate_home_phone',
       page: page,
       style: Question.styles[:input],
@@ -313,7 +313,7 @@ school_form = Form.create(
     Question.create(
       description: StringConstants::PHONE_FORMAT,
       enabler_key: 'has_alternate_student',
-      enabler_value: EnumConstants::BOOLEANS[0],
+      enabler_values: EnumConstants::BOOLEANS[0],
       key: 'alternate_cell_phone',
       page: page,
       style: Question.styles[:input],
@@ -322,7 +322,7 @@ school_form = Form.create(
     Question.create(
       description: StringConstants::EMAIL_FORMAT,
       enabler_key: 'has_alternate_student',
-      enabler_value: EnumConstants::BOOLEANS[0],
+      enabler_values: EnumConstants::BOOLEANS[0],
       key: 'alternate_email',
       page: page,
       style: Question.styles[:input],
@@ -330,7 +330,7 @@ school_form = Form.create(
     )
     Question.create(
       enabler_key: 'has_alternate_student',
-      enabler_value: EnumConstants::BOOLEANS[0],
+      enabler_values: EnumConstants::BOOLEANS[0],
       format: Question.formats[:date],
       key: 'alternate_birthday',
       page: page,
@@ -339,7 +339,7 @@ school_form = Form.create(
     )
     Question.create(
       enabler_key: 'has_alternate_student',
-      enabler_value: EnumConstants::BOOLEANS[0],
+      enabler_values: EnumConstants::BOOLEANS[0],
       key: 'alternate_gender',
       options: EnumConstants::GENDERS,
       page: page,
@@ -348,7 +348,7 @@ school_form = Form.create(
     )
     Question.create(
       enabler_key: 'has_alternate_student',
-      enabler_value: EnumConstants::BOOLEANS[0],
+      enabler_values: EnumConstants::BOOLEANS[0],
       key: 'alternate_shirt_size',
       options: EnumConstants::SHIRT_SIZES,
       page: page,
@@ -357,7 +357,7 @@ school_form = Form.create(
     )
     Question.create(
       enabler_key: 'has_alternate_student',
-      enabler_value: EnumConstants::BOOLEANS[0],
+      enabler_values: EnumConstants::BOOLEANS[0],
       key: 'alternate_guardian_first_name',
       page: page,
       style: Question.styles[:input],
@@ -365,7 +365,7 @@ school_form = Form.create(
     )
     Question.create(
       enabler_key: 'has_alternate_student',
-      enabler_value: EnumConstants::BOOLEANS[0],
+      enabler_values: EnumConstants::BOOLEANS[0],
       key: 'alternate_guardian_last_name',
       page: page,
       style: Question.styles[:input],
@@ -374,7 +374,7 @@ school_form = Form.create(
     Question.create(
       description: StringConstants::EMAIL_FORMAT,
       enabler_key: 'has_alternate_student',
-      enabler_value: EnumConstants::BOOLEANS[0],
+      enabler_values: EnumConstants::BOOLEANS[0],
       key: 'alternate_guardian_email',
       page: page,
       style: Question.styles[:input],
@@ -383,7 +383,7 @@ school_form = Form.create(
     Question.create(
       description: StringConstants::PHONE_FORMAT,
       enabler_key: 'has_alternate_student',
-      enabler_value: EnumConstants::BOOLEANS[0],
+      enabler_values: EnumConstants::BOOLEANS[0],
       key: 'alternate_guardian_phone_number',
       page: page,
       style: Question.styles[:input],
@@ -391,7 +391,7 @@ school_form = Form.create(
     )
     Question.create(
       enabler_key: 'has_alternate_student',
-      enabler_value: EnumConstants::BOOLEANS[0],
+      enabler_values: EnumConstants::BOOLEANS[0],
       key: 'alternate_guardian_phone_type',
       options: EnumConstants::PHONE_TYPES,
       page: page,
@@ -400,7 +400,7 @@ school_form = Form.create(
     )
     Question.create(
       enabler_key: 'has_alternate_student',
-      enabler_value: EnumConstants::BOOLEANS[0],
+      enabler_values: EnumConstants::BOOLEANS[0],
       key: 'alternate_guardian_relationship',
       options: EnumConstants::GUARDIAN_RELATIONSHIPS,
       page: page,
@@ -662,7 +662,7 @@ student_form = Form.create(
     )
     Question.create(
       enabler_key: 'allergies',
-      enabler_value: EnumConstants::BOOLEANS[0],
+      enabler_values: EnumConstants::BOOLEANS[0],
       key: 'allergies_other',
       page: page,
       style: Question.styles[:textarea],
@@ -745,7 +745,7 @@ student_form = Form.create(
     )
     Question.create(
       enabler_key: 'emergency_consent',
-      enabler_value: EnumConstants::BOOLEANS[0],
+      enabler_values: EnumConstants::BOOLEANS[0],
       key: 'emergency_consent_name',
       page: page,
       style: Question.styles[:input],
@@ -776,7 +776,7 @@ student_form = Form.create(
     )
     Question.create(
       enabler_key: 'psychologist_consent',
-      enabler_value: EnumConstants::BOOLEANS[0],
+      enabler_values: EnumConstants::BOOLEANS[0],
       key: 'psychologist_consent_name',
       page: page,
       style: Question.styles[:input],
@@ -799,7 +799,7 @@ student_form = Form.create(
     Question.create(
       description: '(e.g. Anthem Blue Cross, Kaiser Permanente, Health Net, etc.)',
       enabler_key: 'insurance',
-      enabler_value: EnumConstants::BOOLEANS[0],
+      enabler_values: EnumConstants::BOOLEANS[0],
       key: 'insurance_provider',
       page: page,
       style: Question.styles[:input],
@@ -807,7 +807,7 @@ student_form = Form.create(
     )
     Question.create(
       enabler_key: 'insurance',
-      enabler_value: EnumConstants::BOOLEANS[0],
+      enabler_values: EnumConstants::BOOLEANS[0],
       key: 'insurance_address',
       page: page,
       style: Question.styles[:input],
@@ -815,7 +815,7 @@ student_form = Form.create(
     )
     Question.create(
       enabler_key: 'insurance',
-      enabler_value: EnumConstants::BOOLEANS[0],
+      enabler_values: EnumConstants::BOOLEANS[0],
       key: 'insurance_address_city',
       page: page,
       style: Question.styles[:input],
@@ -823,7 +823,7 @@ student_form = Form.create(
     )
     Question.create(
       enabler_key: 'insurance',
-      enabler_value: EnumConstants::BOOLEANS[0],
+      enabler_values: EnumConstants::BOOLEANS[0],
       key: 'insurance_address_state',
       options: EnumConstants::STATES,
       page: page,
@@ -833,7 +833,7 @@ student_form = Form.create(
     Question.create(
       description: StringConstants::ZIP_FORMAT,
       enabler_key: 'insurance',
-      enabler_value: EnumConstants::BOOLEANS[0],
+      enabler_values: EnumConstants::BOOLEANS[0],
       key: 'insurance_address_zip',
       page: page,
       style: Question.styles[:input],
@@ -842,7 +842,7 @@ student_form = Form.create(
     Question.create(
       description: StringConstants::PHONE_FORMAT,
       enabler_key: 'insurance',
-      enabler_value: EnumConstants::BOOLEANS[0],
+      enabler_values: EnumConstants::BOOLEANS[0],
       key: 'insurance_phone_number',
       page: page,
       style: Question.styles[:input],
@@ -850,7 +850,7 @@ student_form = Form.create(
     )
     Question.create(
       enabler_key: 'insurance',
-      enabler_value: EnumConstants::BOOLEANS[0],
+      enabler_values: EnumConstants::BOOLEANS[0],
       key: 'insurance_id',
       page: page,
       style: Question.styles[:input],
@@ -858,7 +858,7 @@ student_form = Form.create(
     )
     Question.create(
       enabler_key: 'insurance',
-      enabler_value: EnumConstants::BOOLEANS[0],
+      enabler_values: EnumConstants::BOOLEANS[0],
       is_required: false,
       key: 'insurance_other',
       page: page,
@@ -912,7 +912,7 @@ student_form = Form.create(
         Warring Street and Parker Street Bus Stop, Oakland International Airport
       ),
       enabler_key: 'transportation',
-      enabler_value: %(
+      enabler_values: %(
         #{EnumConstants::TRANSPORTATION_OPTIONS[2]}
         #{EnumConstants::TRANSPORTATION_OPTIONS[3]}
         #{EnumConstants::TRANSPORTATION_OPTIONS[4]}
@@ -925,7 +925,7 @@ student_form = Form.create(
     Question.create(
       description: 'Southwest, BART, AC Transit, etc.',
       enabler_key: 'transportation',
-      enabler_value: %(
+      enabler_values: %(
         #{EnumConstants::TRANSPORTATION_OPTIONS[2]}
         #{EnumConstants::TRANSPORTATION_OPTIONS[3]}
         #{EnumConstants::TRANSPORTATION_OPTIONS[4]}
@@ -937,7 +937,7 @@ student_form = Form.create(
     )
     Question.create(
       enabler_key: 'transportation',
-      enabler_value: %(
+      enabler_values: %(
         #{EnumConstants::TRANSPORTATION_OPTIONS[2]}
         #{EnumConstants::TRANSPORTATION_OPTIONS[3]}
         #{EnumConstants::TRANSPORTATION_OPTIONS[4]}
@@ -949,7 +949,7 @@ student_form = Form.create(
     )
     Question.create(
       enabler_key: 'transportation',
-      enabler_value: %(
+      enabler_values: %(
         #{EnumConstants::TRANSPORTATION_OPTIONS[2]}
         #{EnumConstants::TRANSPORTATION_OPTIONS[3]}
         #{EnumConstants::TRANSPORTATION_OPTIONS[4]}
@@ -962,7 +962,7 @@ student_form = Form.create(
     )
     Question.create(
       enabler_key: 'transportation',
-      enabler_value: %(
+      enabler_values: %(
         #{EnumConstants::TRANSPORTATION_OPTIONS[2]}
         #{EnumConstants::TRANSPORTATION_OPTIONS[3]}
         #{EnumConstants::TRANSPORTATION_OPTIONS[4]}
@@ -976,7 +976,7 @@ student_form = Form.create(
     )
     Question.create(
       enabler_key: 'transportation',
-      enabler_value: %(
+      enabler_values: %(
         #{EnumConstants::TRANSPORTATION_OPTIONS[2]}
         #{EnumConstants::TRANSPORTATION_OPTIONS[3]}
         #{EnumConstants::TRANSPORTATION_OPTIONS[4]}
@@ -990,7 +990,7 @@ student_form = Form.create(
     Question.create(
       description: 'Do not plan to leave earlier than 3pm',
       enabler_key: 'transportation',
-      enabler_value: %(
+      enabler_values: %(
         #{EnumConstants::TRANSPORTATION_OPTIONS[2]}
         #{EnumConstants::TRANSPORTATION_OPTIONS[3]}
         #{EnumConstants::TRANSPORTATION_OPTIONS[4]}
@@ -1044,7 +1044,7 @@ student_form = Form.create(
     )
     Question.create(
       enabler_key: 'transportation_consent',
-      enabler_value: EnumConstants::BOOLEANS[0],
+      enabler_values: EnumConstants::BOOLEANS[0],
       key: 'transportation_consent_name',
       page: page,
       style: Question.styles[:input],
@@ -1100,7 +1100,7 @@ student_form = Form.create(
     )
     Question.create(
       enabler_key: 'ceremony_attendance',
-      enabler_value: %(
+      enabler_values: %(
         #{EnumConstants::CEREMONY_OPTIONS[0]}
         #{EnumConstants::CEREMONY_OPTIONS[1]}
       ),

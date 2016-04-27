@@ -43,7 +43,7 @@ class StudentSubmissionPage extends Component {
       if (question.enabler_key) {
         enablers = questions.filter((q) => {
           return question.enabler_key === q.key &&
-                 question.enabler_value.indexOf(q.value) !== -1;
+                 question.enabler_values.indexOf(q.value) !== -1;
         });
       }
       if (!question.enabler_key || enablers.length > 0) {
