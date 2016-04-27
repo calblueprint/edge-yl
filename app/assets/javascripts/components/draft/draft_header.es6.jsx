@@ -36,10 +36,7 @@ class DraftHeader extends Component {
         <h6>{'From'}</h6>
         <p>{draft.from}</p>
         <h6>{'To'}</h6>
-        <input
-          ref={'input'}
-          type={'text'}
-          value={draft.to} />
+        <p>{draft.to}</p>
       </div>
     );
   }
