@@ -145,11 +145,11 @@ class StartPage extends Component {
         <div style={this.styles.section}>
           <p style={this.styles.paragraph}>
             Signing up for EDGE is a two-step process. First, a school
-            advisoror teacher will select a student and submit school
+            advisor or teacher will select a student and submit school
             information and student contact information to us via this form.
             Then, we will reach out to the student directly to confirm their
             registration and obtain needed emergency contact, medical,
-            transportation, newspaper announcement, and waiver information.
+            transportation, and waiver information.
           </p>
           <p style={this.styles.paragraph}>
             Below are instructions on how to fill out the selection form. All
@@ -161,7 +161,7 @@ class StartPage extends Component {
         <div style={this.styles.section}>
           <h3>To register your selected student:</h3>
           <br />
-          <p><b>START:</b> Click the START HERE button below.</p>
+          <p><b>START:</b> Choose the upcoming conference from the drop-down menu below and click the START HERE buttons.</p>
           <p><b>Step 1:</b> Fill in your school information on the next page and click NEXT.</p>
           <p><b>Step 2:</b> Fill in your contact information on the next page and click NEXT.</p>
           <p><b>Step 3:</b> Fill in your student's contact information and click NEXT.</p>

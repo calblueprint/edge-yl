@@ -4,7 +4,7 @@ school_form = Form.create(
 ) do |form|
   Page.create(
     form: form,
-    description: 'General information about your school.',
+    description: 'Please provide the following information about your school.',
     number: 1,
     title: 'Step 1 - School Information',
   ) do |page|
@@ -57,7 +57,7 @@ school_form = Form.create(
   end
   Page.create(
     form: form,
-    description: 'General information about the primary contact for your school.',
+    description: 'Please provide the following information about the School Contact with whom EDGE should communicate.',
     number: 2,
     title: 'Step 2 - School Contact Information',
   ) do |page|
@@ -96,7 +96,7 @@ school_form = Form.create(
   end
   Page.create(
     form: form,
-    description: 'General information about the primary student from your school.',
+    description: 'Please provide the following information about the student you have chosen to attend EDGE.',
     number: 3,
     title: 'Step 3 - Primary Student Information',
   ) do |page|
@@ -230,7 +230,11 @@ school_form = Form.create(
   end
   Page.create(
     form: form,
-    description: 'General information about the alternate student from your school.',
+    description: %s(
+        Please provide the following information about your alternate student (if applicable).
+        The alternate student will be invited to attend EDGE if the primary student becomes
+        unable to participate.
+      ),
     is_last: true,
     number: 4,
     title: 'Step 4 - Alternate Student Information',
