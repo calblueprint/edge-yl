@@ -706,7 +706,6 @@ student_form = Form.create(
       is_required: false,
       key: 'other_dietary_restrictions',
       page: page,
-      placeholder: 'Enter "None" if you do not have any',
       style: Question.styles[:textarea],
       title: 'Please list any other dietary restrictions that you have:',
     )
@@ -1068,6 +1067,7 @@ student_form = Form.create(
         of the conference. It is a fantastic chance to learn more what the seminar
         is about and see firsthand the excitement and energy created by the participants.
         <br />
+<<<<<<< HEAD
         Please see this year's information packet
         <a href="http://www.edgeyl.org/2016reginfo">HERE.</a>
         for details on the timing and location of the Closing Ceremonies, and
@@ -1075,6 +1075,14 @@ student_form = Form.create(
         conference.
         <b>See directions and maps in the information packet that was e-mailed to your student or
         refer to the web site <a href="http://www.edgeyl.org/2016reginfo">HERE.</a></b>
+=======
+        Please see this year's information packet <a href="http://www.edgeyl.org/2016reginfo">
+        HERE</a> for details on the timing and location of the Closing Ceremonies,
+        and also the timing of when you can expect to check out your student and depart from
+        the conference. <b>See directions and maps in the information packet that was e-mailed
+        to your student or refer to the web site <a href="http://www.edgeyl.org/2016reginfo">
+        HERE</a></b>.
+>>>>>>> master
         <br />
         Check-out will begin after Closing Ceremonies, around 2:30 pm.  As the time it takes
         to pack and check out varies, please do not plan on leaving the Clark Kerr campus with
@@ -1244,6 +1252,7 @@ student_form = Form.create(
   ) do |page|
     Question.create(
       description: %s(
+<<<<<<< HEAD
       Dear Participant, <br />
       Being selected to participate in the EDGE experience is a great honor. It’s a fantastic
       opportunity to discover who you are, your potential as a leader, as well as make friends
@@ -1268,6 +1277,33 @@ student_form = Form.create(
       <b>510-408-6606 (e-mail registration@edgeyl.org)</b> immediately. Otherwise, notify all
       your family, friends, teachers and coaches right away that you are already booked
       for a life-changing experience during the Friday-Sunday of the EDGE conference!</b>
+=======
+        Dear Participant, <br />
+        Being selected to participate in the EDGE experience is a great honor. It’s a fantastic
+        opportunity to discover who you are, your potential as a leader, as well as make friends
+        with others in your unique peer group. The entire EDGE weekend is a seamless event—if you
+        miss even the smallest part; it detracts from the entire experience.
+        <br />
+        If for any reason you think you can’t participate in the entire conference, please contact
+        us immediately. No student has ever regretted missing a sports event, musical recital,
+        PSATs or any other kind of event for EDGE. The seminar is literally a once-in-a-lifetime
+        experience and can have a profound impact on your outlook on life.
+        <br />
+        We ask you to make the decision to participate in this challenging and
+        fun weekend, regardless of other activities that may conflict with it.
+        Exceptions include family emergencies and final exams that cannot be
+        rescheduled, but do not include studying for exams.
+        <br />
+        <b>Even if it means missing or postponing an important event or extracurricular activity, if
+        you make the commitment, we expect that you will join us for the entire weekend.</b> That
+        includes no early departures on Sunday.
+        <br />
+        If you feel you have an extenuating circumstance that should be considered, please contact
+        our recruitment directors at
+        <b>510-408-6606 (e-mail registration@edgeyl.org)</b> immediately. Otherwise, notify all
+        your family, friends, teachers and coaches right away that you are already booked for a
+        life-changing experience during the Friday-Sunday of the EDGE conference!</b>
+>>>>>>> master
       ),
       key: 'participation_info',
       page: page,

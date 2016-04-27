@@ -4,6 +4,8 @@ class Api::StudentsController < Api::BaseController
 
   has_scope :conference_id, only: [:index]
   has_scope :gender, only: [:index]
+  has_scope :has_group, only: [:index]
+  has_scope :has_room, only: [:index]
   has_scope :is_flagged, only: [:index]
   has_scope :is_primary, only: [:index]
   has_scope :sort, only: [:index]
@@ -109,6 +111,7 @@ class Api::StudentsController < Api::BaseController
       :preferred_name,
       :psychologist_consent,
       :psychologist_consent_name,
+      :room_id,
       :shirt_size,
     )
   end

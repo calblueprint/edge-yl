@@ -34,8 +34,10 @@
       return {
         checkIn: (conference_id) => `/check_in/${conference_id}`,
         feedback: '/feedback',
+        forgotPassword: '/forgot_password',
         import: '/import',
         login: '/login',
+        resetPassword: '/reset',
         signup: '/signup',
         profile: '/profile',
       };
@@ -88,7 +90,7 @@
 
     get threads() {
       return {
-        index: (page=1) => `/threads?page=${page}`,
+        index: (page=1, sent=false) => `/threads?page=${page}&sent=${sent}`,
         show: (id) => `/threads/${id}`,
       };
     }

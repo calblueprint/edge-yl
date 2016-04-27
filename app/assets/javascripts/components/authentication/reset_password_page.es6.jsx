@@ -1,4 +1,4 @@
-class ImportPage extends Component {
+class ResetPasswordPage extends Component {
 
   // --------------------------------------------------
   // Setup
@@ -13,8 +13,7 @@ class ImportPage extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      conferences: React.PropTypes.array.isRequired,
-      profile: React.PropTypes.object.isRequired,
+      token: React.PropTypes.string.isRequired,
     };
   }
 
@@ -27,7 +26,8 @@ class ImportPage extends Component {
         display: 'flex',
         flexFlow: 'column',
         alignItems: 'center',
-        paddingTop: StyleConstants.heights.header,
+        width: '412px',
+        paddingTop: '72px',
       },
       footer: {
         display: 'flex',
@@ -46,43 +46,28 @@ class ImportPage extends Component {
   // Lifecycle
   // --------------------------------------------------
   componentWillMount() {
-    this.setState(ImportStore.getState());
-    this.setState(ProfileStore.getState());
+    this.setState(AuthenticationStore.getState());
   }
 
   componentDidMount() {
-    ImportStore.listen(this._listener);
-    ProfileStore.listen(this._listener);
+    AuthenticationStore.listen(this._listener);
   }
 
   componentWillUnmount() {
-    ImportStore.unlisten(this._listener);
-    ProfileStore.unlisten(this._listener);
-  }
-
-  // --------------------------------------------------
-  // Helpers
-  // --------------------------------------------------
-  selectProfile() {
-    return this.state.profile ?
-           this.state.profile :
-           this.props.profile;
+    AuthenticationStore.unlisten(this._listener);
   }
 
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
+
   render() {
     return (
-      <div style={StyleConstants.pages.wrapper}>
-        <Header profile={this.selectProfile()} />
-        <Sidebar profile={this.selectProfile()} />
-        <div style={StyleConstants.pages.default}>
-          <div style={StyleConstants.pages.content}>
-            <ImportCard
-              conference={this.state.conference}
-              conferences={this.props.conferences} />
-          </div>
+      <div style={StyleConstants.wrappers.center}>
+        <div style={this.styles.container}>
+          <ResetPasswordCard
+            template={this.state.template}
+            token={this.props.token} />
         </div>
       </div>
     );

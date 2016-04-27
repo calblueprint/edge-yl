@@ -29,7 +29,7 @@ class StudentsCard extends Component {
   }
 
   deleteStudentFromRoom() {
-    RoomsActions.deleteStudent(
+    RoomActions.deleteStudent(
       this.props.typeId,
       this.props.student.id,
     );

@@ -5,8 +5,14 @@ class ImportCard extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      profile: React.PropTypes.object.isRequired,
-      template: React.PropTypes.object.isRequired,
+      conference: React.PropTypes.object,
+      conferences: React.PropTypes.array.isRequired,
+    };
+  }
+
+  static get defaultProps() {
+    return {
+      conference: null,
     };
   }
 
@@ -39,7 +45,6 @@ class ImportCard extends Component {
   // Render
   // --------------------------------------------------
   render() {
-    var template = this.props.template;
     return (
       <div>
         <div ref={'container'} style={this.styles.container}>
@@ -59,23 +64,9 @@ class ImportCard extends Component {
             </form>
           </div>
         </div>
-        <div ref={'container'} style={this.styles.container}>
-          <div style={this.styles.header}>
-            <h2>{'Import Students and their Schools'}</h2>
-          </div>
-          <div>
-            <form
-              action={ApiConstants.imports.students}
-              encType={'multipart/form-data'}
-              method={'post'}>
-              <input
-                accept={'*.csv'}
-                name={'upload'}
-                type={'file'} />
-              <input type={'submit'} />
-            </form>
-          </div>
-        </div>
+        <ImportStudents
+          conference={this.props.conference}
+          conferences={this.props.conferences} />
       </div>
     );
   }

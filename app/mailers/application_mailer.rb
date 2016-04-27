@@ -6,8 +6,8 @@ class ApplicationMailer < ActionMailer::Base
 
   def new_mail(email)
     @email = email
-    mail from: "EDGE Youth Leadership <notification-no-reply@#{ENV['email_domain']}>",
-         sender: "notification-no-reply@#{ENV['email_domain']}",
+    mail from: "EDGE Youth Leadership <notification@#{ENV['smtp_domain']}>",
+         sender: "notificationy@#{ENV['smtp_domain']}",
          recipient: email.user.email,
          subject: "New EDGE email from #{email.emailable_name}",
          template_path: 'mails',

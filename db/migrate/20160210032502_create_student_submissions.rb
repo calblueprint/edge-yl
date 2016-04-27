@@ -5,10 +5,10 @@ class CreateStudentSubmissions < ActiveRecord::Migration
       t.string  :address_city
       t.string  :address_one
       t.integer :address_state, default: 4
-      t.string  :address_two, default: ''
+      t.string  :address_two, default: '', null: false
       t.string  :address_zip
       t.integer :allergies
-      t.string  :allergies_other
+      t.string  :allergies_other, default: '', null: false
       t.date    :birthday
       t.integer :carpool
       t.string  :cell_phone
@@ -23,23 +23,23 @@ class CreateStudentSubmissions < ActiveRecord::Migration
       t.string  :first_name
       t.integer :gender
       t.string  :guardian_one_email
-      t.string  :guardian_one_employer, default: ''
+      t.string  :guardian_one_employer, default: '', null: false
       t.string  :guardian_one_first_name
-      t.string  :guardian_one_job_title, default: ''
+      t.string  :guardian_one_job_title, default: '', null: false
       t.string  :guardian_one_last_name
       t.string  :guardian_one_phone_number
       t.integer :guardian_one_phone_type
       t.integer :guardian_one_relationship
-      t.string  :guardian_two_email
-      t.string  :guardian_two_employer, default: ''
-      t.string  :guardian_two_first_name
-      t.string  :guardian_two_job_title, default: ''
-      t.string  :guardian_two_last_name
-      t.string  :guardian_two_phone_number
+      t.string  :guardian_two_email, default: '', null: false
+      t.string  :guardian_two_employer, default: '', null: false
+      t.string  :guardian_two_first_name, default: '', null: false
+      t.string  :guardian_two_job_title, default: '', null: false
+      t.string  :guardian_two_last_name, default: '', null: false
+      t.string  :guardian_two_phone_number, default: '', null: false
       t.integer :guardian_two_phone_type
       t.integer :guardian_two_relationship
       t.string  :health_conditions
-      t.string  :health_conditions_description
+      t.string  :health_conditions_description, default: '', null: false
       t.string  :home_phone
       t.boolean :is_active, default: true, null: false
       t.boolean :is_primary, null: false
@@ -50,17 +50,17 @@ class CreateStudentSubmissions < ActiveRecord::Migration
       t.integer :insurance_address_state
       t.integer :insurance_address_zip
       t.string  :insurance_id
-      t.string  :insurance_other, default: ''
+      t.string  :insurance_other
       t.string  :insurance_phone_number
       t.string  :insurance_provider
       t.string  :last_name
       t.string  :medications
-      t.string  :other_dietary_restrictions, default: ''
+      t.string  :other_dietary_restrictions, default: '', null: false
       t.integer :participation_guardian_consent
       t.string  :participation_guardian_name
       t.integer :participation_student_consent
       t.string  :participation_student_name
-      t.string  :preferred_name, default: ''
+      t.string  :preferred_name, default: '', null: false
       t.integer :psychologist_consent
       t.string  :psychologist_consent_name
       t.integer :risk_guardian_consent
@@ -83,6 +83,7 @@ class CreateStudentSubmissions < ActiveRecord::Migration
       t.time    :transportation_departure_time
       t.string  :transportation_name
       t.string  :transportation_number
+
       t.references :conference, index: true, null: false
     end
   end

@@ -5,11 +5,11 @@ class StudentValidator
   include ActiveModel::Conversion
   include ActiveModel::Validations
 
-  attr_accessor :address_zip,
-                :address_city,
+  attr_accessor :address_city,
                 :address_one,
                 :address_state,
                 :address_two,
+                :address_zip,
                 :allergies,
                 :allergies_other,
                 :birthday,
@@ -151,7 +151,8 @@ class StudentValidator
 
   validates :ceremony_attendance, if: :page_six?, presence: true
   validates :ceremony_attendance_number, if: :parent_attendance?,
-                                         numericality: { only_integer: true }
+                                         numericality: { allow_blank: true,
+                                                         only_integer: true }
 
   validates :risk_guardian_consent, if: :page_seven?, presence: true
   validates :risk_guardian_date, if: :page_seven?, presence: true

@@ -6,6 +6,7 @@ class ThreadGrid extends Component {
   static get propTypes() {
     return {
       thread: React.PropTypes.object.isRequired,
+      userEmail: React.PropTypes.string.isRequired,
     };
   }
 
@@ -29,6 +30,7 @@ class ThreadGrid extends Component {
     ThreadActions.createReply(
       this.props.thread.emails[0],
       this.props.thread.id,
+      this.props.userEmail,
     );
   }
 

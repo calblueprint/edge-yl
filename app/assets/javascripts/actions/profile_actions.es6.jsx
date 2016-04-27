@@ -49,7 +49,7 @@
       }
       var reject = (response) => this.storeError(response);
       Requester.update(
-        ApiConstants.users.updatePassword(template.id),
+        ApiConstants.users.passwords.update(template.id),
         params,
         resolve,
         reject,

@@ -1,11 +1,11 @@
-class ThreadCard extends Component {
+class ForgotPasswordCard extends Component {
 
   // --------------------------------------------------
   // Props
   // --------------------------------------------------
   static get propTypes() {
     return {
-      thread: React.PropTypes.object.isRequired,
+      template: React.PropTypes.object.isRequired,
     };
   }
 
@@ -18,21 +18,34 @@ class ThreadCard extends Component {
         {},
         StyleConstants.containers.card,
         {
-          padding: '16px',
-          marginBottom: '9px',
-          marginTop: '12px',
+          alignSelf: 'stretch',
+          padding: '24px',
         },
       ),
+      header: {
+        display: 'flex',
+        justifyContent: 'center',
+        marginBottom: '12px',
+      },
     };
   }
 
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
+  renderHeader() {
+    return (
+      <div style={this.styles.header}>
+        <h2>{'Forgot password'}</h2>
+      </div>
+    );
+  }
+
   render() {
     return (
       <div style={this.styles.container}>
-        <h3>{this.props.thread.subject}</h3>
+        {this.renderHeader()}
+        <ForgotPasswordForm template={this.props.template} />
       </div>
     );
   }

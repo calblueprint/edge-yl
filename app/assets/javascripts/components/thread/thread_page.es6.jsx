@@ -56,7 +56,9 @@ class ThreadPage extends Component {
         <Sidebar profile={this.selectProfile()} />
         <div style={StyleConstants.pages.default}>
           <div style={StyleConstants.pages.content}>
-            <ThreadGrid thread={this.state.thread} />
+            <ThreadGrid
+              thread={this.state.thread}
+              userEmail={this.props.profile.app_email}/>
           </div>
         </div>
       </div>

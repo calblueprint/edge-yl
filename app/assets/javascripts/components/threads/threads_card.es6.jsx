@@ -72,6 +72,9 @@ class ThreadsCard extends Component {
 
   generateThreadParticipant() {
     var thread = this.props.thread;
+    if (!thread.emailable_type) {
+      return thread.emailable_name;
+    }
     return (
       <Clickable
         content={thread['emailable_name']}

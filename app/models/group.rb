@@ -13,7 +13,7 @@ class Group < ActiveRecord::Base
 
   include PgSearch
 
-  multisearchable against: [:full_name]
+  multisearchable against: [:full_name, :conference_name]
 
   scope :conference_id, -> (conference_id) { where(conference_id: conference_id) }
 
@@ -32,6 +32,10 @@ class Group < ActiveRecord::Base
   validates :letter, presence: true
   validates :letter, uniqueness: { scope: :conference_id }
 
+  def conference_name
+    conference.name
+  end
+
   def females_count
     students.female.count
   end
@@ -45,7 +49,7 @@ class Group < ActiveRecord::Base
     headers = %w(Letter Primary\ leader Secondary\ leader)
     CSV.generate(headers: true) do |csv|
       csv << headers
-      all.find_each do |group|
+      all.each do |group|
         row = attributes.map { |attr| group.send(attr) }
         if group.leaderships.first.user
           primary_leader = group.leaderships.first.user.full_name
