@@ -102,7 +102,7 @@ class Email < ActiveRecord::Base
   def find_user(email)
     m = /(?<name>\S*)@/.match(email)
     if m
-      User.where('lower(first_name) || lower(last_name) = ?', m['name']).first
+      User.where(username: m['name']).first
     end
   end
 

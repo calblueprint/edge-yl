@@ -19,6 +19,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string   :reset_password_token # recoverable
       t.datetime :reset_password_sent_at # recoverable
       t.integer  :sign_in_count, default: 0, null: false # trackable
+      t.string   :username, null: false
 
       t.timestamps null: false
     end

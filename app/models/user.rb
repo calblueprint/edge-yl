@@ -31,6 +31,8 @@ class User < ActiveRecord::Base
   devise :confirmable, :database_authenticatable, :recoverable,
          :registerable, :rememberable, :trackable, :validatable
 
+  after_validation :create_username, on: :create
+
   has_many :comments, dependent: :destroy
   has_many :emails, dependent: :destroy
   has_many :email_threads, dependent: :destroy
@@ -72,12 +74,19 @@ class User < ActiveRecord::Base
     includes(:responsibilities).where(responsibilities: { user_id: nil })
   end
 
-  def username
-    "#{first_name}#{last_name}".downcase
-  end
-
   def unread_count
     emails.where(is_unread: :true).count
+  end
+
+  private
+
+  def create_username
+    name = "#{first_name}#{last_name}".downcase
+    num_existing = User.where('lower(first_name) || lower(last_name) = ?', name).count
+    if num_existing > 0
+      name = "#{name}#{existing}"
+    end
+    self.username = name
   end
 
 end
