@@ -3,7 +3,7 @@ class QuestionBaseSerializer < BaseSerializer
   attributes :id,
              :description,
              :enabler_key,
-             :enabler_value,
+             :enabler_values,
              :format,
              :is_required,
              :key,
