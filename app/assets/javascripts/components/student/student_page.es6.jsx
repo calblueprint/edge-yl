@@ -58,6 +58,10 @@ class StudentPage extends Component {
         },
         content: 'Email',
       },
+      {
+        action: () => window.location = RouteConstants.student.submission(student.id),
+        content: 'Form submission',
+      },
     ];
   }
 
@@ -104,9 +108,6 @@ class StudentPage extends Component {
               profile={this.selectProfile()}
               student={this.state.student}
               type={TypeConstants.comments.student} />
-            <FormButton
-              action={() => window.location = RouteConstants.student.submission(student.id)}
-              content={'See student\'s full form submission'} />
           </div>
         </div>
       </div>
