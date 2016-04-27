@@ -30,9 +30,6 @@ class Api::ImportsController < Api::BaseController
     # if student's shchool is a propect we delete prospect and make a school
     # if school is already there, append a new contact.
     file = params[:file]
-    render json: { message: 'What is good?' },
-           status: :created
-    return
     csv = CSV.parse(file.open, headers: true)
     csv.each do |row|
       # school = School.create(
