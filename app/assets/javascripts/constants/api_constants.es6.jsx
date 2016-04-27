@@ -54,6 +54,7 @@
     get drafts() {
       return {
         create: '/api/drafts',
+        delete: (id) => `/api/drafts/${id}`,
         index: '/api/drafts',
         send: (id) => `/api/drafts/send/${id}`,
         show: (id) => `/api/drafts/${id}`,

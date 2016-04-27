@@ -65,6 +65,10 @@ class EmailsCard extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
+  deleteDraft(id) {
+    ThreadActions.deleteDraft(id);
+  }
+
   showDraft(id) {
     window.location = RouteConstants.drafts.show(id);
   }
@@ -94,6 +98,10 @@ class EmailsCard extends Component {
           <Clickable
               action={() => this.showDraft(email.id)}
               content={'Edit'}
+              type={'p'} />
+          <Clickable
+              action={() => this.deleteDraft(email.id)}
+              content={'Delete'}
               type={'p'} />
         </div>
       );

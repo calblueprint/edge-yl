@@ -15,6 +15,15 @@ class Api::DraftsController < Api::BaseController
     render json: current_user.drafts, each_serializer: DraftIndexSerializer
   end
 
+  def destroy
+    draft = Email.find params[:id]
+    if draft.destroy
+      render json: draft, serializer: EmailBaseSerializer
+    else
+      unprocessable_response draft
+    end
+  end
+
   def send_draft
     draft = Email.find params[:id]
     if draft.do_send draft_params

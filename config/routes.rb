@@ -67,7 +67,7 @@ Rails.application.routes.draw do
     resources :comments, only: [:create, :destroy]
     resources :conferences, only: [:create, :index, :show, :update]
     resources :contacts, only: [:create, :update]
-    resources :drafts, only: [:create, :index, :show, :update]
+    resources :drafts, only: [:create, :destroy, :index, :show, :update]
     resources :feedbacks, only: [:create]
     resources :groups, only: [:create, :destroy, :index, :show, :update]
     resources :leaderships, only: [:update]

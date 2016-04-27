@@ -6,6 +6,7 @@
     // --------------------------------------------------
     constructor() {
       this.generateActions(
+        'removeDraft',
         'storeError',
         'storeThread',
       );
@@ -15,9 +16,10 @@
     // Requests
     // --------------------------------------------------
     createReply(email, tid, sender) {
+      var replyTo = email.sender === sender ? email.recipient : email.sender;
       var attributes = {
         email_thread_id: tid,
-        recipient: email.sender,
+        recipient: replyTo,
         sender: sender,
         subject: "Re: " + email.subject,
       };
@@ -30,6 +32,21 @@
         params,
         resolve,
       );
+      return true;
+    }
+
+    deleteDraft(id) {
+      var resolve = (response) => {
+        this.removeDraft(response);
+        ViewActions.storeToast(true, 'Draft deleted.');
+      };
+      var confirmation = confirm('Delete draft?');
+      if (confirmation) {
+        Requester.delete(
+          ApiConstants.drafts.delete(id),
+          resolve,
+        );
+      }
       return true;
     }
 

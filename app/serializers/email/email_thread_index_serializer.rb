@@ -20,7 +20,7 @@ class EmailThreadIndexSerializer < EmailThreadBaseSerializer
   end
 
   def updated_at
-    object.emails.last.updated_at.strftime('%D %-I:%M:%S %p')
+    object.emails.where(is_draft: false).last.updated_at.strftime('%D %-I:%M:%S %p')
   end
 
 end
