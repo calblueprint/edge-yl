@@ -5,7 +5,7 @@
 #  id            :integer          not null, primary key
 #  description   :string           default(""), not null
 #  enabler_key   :string
-#  enabler_values :string
+#  enabler_value :string
 #  format        :integer          not null
 #  is_required   :boolean          default(TRUE), not null
 #  key           :string           not null
