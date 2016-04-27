@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root 'pages#login'
 
+  get 'check_in', to: 'pages#checkin'
   get 'check_in/:conference', to: 'pages#checkin'
   get 'email', to: 'pages#email'
   get 'feedback', to: 'pages#feedback'

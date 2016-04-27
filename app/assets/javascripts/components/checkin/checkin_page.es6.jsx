@@ -1,4 +1,4 @@
-class CheckinPage extends Component {
+class CheckInPage extends Component {
 
   // --------------------------------------------------
   // Setup
