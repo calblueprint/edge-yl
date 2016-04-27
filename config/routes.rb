@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   get 'reset_password', to: 'pages#reset_password', as: 'edit_user_password'
   get 'profile', to: 'users#profile'
   get 'signup', to: 'pages#signup'
+  get 'students/:id/submission', to: 'students#submission'
 
   resources :conferences, only: [:index, :show]
   resources :drafts, only: [:index, :show]

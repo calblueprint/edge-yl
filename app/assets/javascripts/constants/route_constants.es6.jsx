@@ -63,6 +63,12 @@
       };
     }
 
+    get student() {
+      return {
+        submission: (id) => `/students/${id}/submission`,
+      };
+    }
+
     get students() {
       return {
         index: (conferenceId, page, query={}) => {
