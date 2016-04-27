@@ -11,6 +11,7 @@ class QuestionBaseSerializer < BaseSerializer
              :page_id,
              :placeholder,
              :style,
-             :title
+             :title,
+             :value
 
 end

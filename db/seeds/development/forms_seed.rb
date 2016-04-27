@@ -736,6 +736,7 @@ student_form = Form.create(
       title: 'Consent to Treat in Case of Emergency',
     )
     Question.create(
+      description: 'Consent to Treat in Case of Emergency',
       key: 'emergency_consent',
       options: EnumConstants::BOOLEANS,
       page: page,
@@ -766,6 +767,7 @@ student_form = Form.create(
       title: 'Consent to Speak to a Licensed Psychologist if in Need',
     )
     Question.create(
+      description: 'Consent to Speak to a Licensed Psychologist if in Need',
       key: 'psychologist_consent',
       options: EnumConstants::BOOLEANS,
       page: page,
@@ -888,7 +890,7 @@ student_form = Form.create(
         will return car keys to the student at Student Checkout on Sunday afternoon.</b>
         </br>
       ),
-      key: 'transportation_info',
+      key: 'transportation_information',
       page: page,
       style: Question.styles[:information],
       title: 'Travel Information',
@@ -1004,13 +1006,7 @@ student_form = Form.create(
         For some students transportation to the seminar site can be challenging.
         We do our best to organize carpools for students who need them.
       ),
-      enabler_key: 'transportation',
-      enabler_value: %(
-        #{EnumConstants::TRANSPORTATION_OPTIONS[2]}
-        #{EnumConstants::TRANSPORTATION_OPTIONS[3]}
-        #{EnumConstants::TRANSPORTATION_OPTIONS[4]}
-      ),
-      key: 'carpool_info',
+      key: 'carpool_information',
       page: page,
       style: Question.styles[:information],
       title: 'Carpool Information',
@@ -1319,7 +1315,7 @@ student_form = Form.create(
       options: EnumConstants::AGREEMENTS,
       page: page,
       style: Question.styles[:dropdown],
-      title: 'Student Participation agreement',
+      title: 'Student Participation Agreement',
     )
     Question.create(
       key: 'participation_student_name',
@@ -1336,7 +1332,7 @@ student_form = Form.create(
       options: EnumConstants::AGREEMENTS,
       page: page,
       style: Question.styles[:dropdown],
-      title: 'Parent/Guardian Participation agreement',
+      title: 'Parent/Guardian Participation Agreement',
     )
     Question.create(
       key: 'participation_guardian_name',

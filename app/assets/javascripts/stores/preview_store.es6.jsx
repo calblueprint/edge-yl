@@ -28,6 +28,7 @@
           if (submission[key] !== undefined) {
             if (infoQuestions.has(question.key + '_info')) {
               question.title = question.description;
+              question.value = submission[key];
             } else if (question.style === TypeConstants.questions.checkbox) {
               if (submission[key] === null || submission[key] === undefined) {
                 question.value = [];

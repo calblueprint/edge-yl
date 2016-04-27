@@ -390,19 +390,7 @@ class StudentSubmission < ActiveRecord::Base
     true
   end
 
-  def page_progress
-    attributes_pages.each do |index, attributes_page|
-      attributes_page[:current_page] = index
-      validator = StudentValidator.new(attributes_page)
-      validator.valid?
-      if validator.errors.size > 0
-        return index
-      end
-    end
-    attributes_pages.size - 1
-  end
-
-  def submit_submission
+  def initialize_student
     student = Student.new(
       address_city: address_city,
       address_one: address_one,
@@ -451,6 +439,32 @@ class StudentSubmission < ActiveRecord::Base
       shirt_size: shirt_size,
       submission_id: id,
     )
+    student
+  end
+
+  def page_progress
+    attributes_pages.each do |index, attributes_page|
+      attributes_page[:current_page] = index
+      validator = StudentValidator.new(attributes_page)
+      validator.valid?
+      if validator.errors.size > 0
+        return index
+      end
+    end
+    attributes_pages.size - 1
+  end
+
+  def seed_submission
+    student = initialize_student
+    unless student.save
+      fail 'Could not create student from submission'
+    end
+    self.is_active = false
+    save
+  end
+
+  def submit_submission
+    student = initialize_student
     unless student.save
       fail 'Could not create student from submission'
     end
