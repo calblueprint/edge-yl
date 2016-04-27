@@ -82,6 +82,17 @@
       };
       request.send(JSON.stringify(params));
     }
+
+    upload(route, data, resolve, reject) {
+      $.ajax({
+        data : data,
+        contentType: false,
+        processData: false,
+        success: resolve,
+        type : 'POST',
+        url : route,
+      });
+    }
   }
   this.Requester = new Requester();
 })();

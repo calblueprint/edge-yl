@@ -59,11 +59,11 @@ class ImportStudents extends Component {
 
   importData() {
     var conference = this.props.conference;
-    var data = new FormData();
     var input = ReactDOM.findDOMNode(this.refs.input);
+    var data = new FormData();
     data.append('file', input.files[0]);
     var resolve = (response) => console.log(response);
-    Requester.post(
+    Requester.upload(
       ApiConstants.imports.students(conference.id),
       data,
       resolve,
