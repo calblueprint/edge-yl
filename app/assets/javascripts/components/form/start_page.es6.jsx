@@ -161,7 +161,7 @@ class StartPage extends Component {
         <div style={this.styles.section}>
           <h3>To register your selected student:</h3>
           <br />
-          <p><b>START:</b> Choose the upcoming conference from the drop-down menu below and click the START HERE buttons.</p>
+          <p><b>START:</b> Choose the upcoming conference from the drop-down menu below and click the START HERE button.</p>
           <p><b>Step 1:</b> Fill in your school information on the next page and click NEXT.</p>
           <p><b>Step 2:</b> Fill in your contact information on the next page and click NEXT.</p>
           <p><b>Step 3:</b> Fill in your student's contact information and click NEXT.</p>
