@@ -3,7 +3,7 @@ class Api::ImportsController < Api::BaseController
   skip_before_action :verify_authenticity_token
 
   def schools
-    file = params[:upload]
+    file = params[:file]
     csv = CSV.parse(file.open, headers: true)
     csv.each do |row|
       School.create(
@@ -24,13 +24,15 @@ class Api::ImportsController < Api::BaseController
         title: row[4],
       )
     end
-    redirect_to schools_path
   end
 
   def students
     # if student's shchool is a propect we delete prospect and make a school
     # if school is already there, append a new contact.
-    file = params[:upload]
+    file = params[:file]
+    render json: { message: 'What is good?' },
+           status: :created
+    return
     csv = CSV.parse(file.open, headers: true)
     csv.each do |row|
       # school = School.create(
@@ -91,7 +93,6 @@ class Api::ImportsController < Api::BaseController
       )
       # -1, 'unknown'
       # if school exiists, don't create new one
-      redirect_to schools_path
     end
   end
 

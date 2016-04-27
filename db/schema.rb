@@ -406,6 +406,7 @@ ActiveRecord::Schema.define(version: 20160408025358) do
     t.integer  "psychologist_consent",                          null: false
     t.string   "psychologist_consent_name",                     null: false
     t.integer  "shirt_size",                                    null: false
+    t.uuid     "submission_id",                                 null: false
     t.integer  "conference_id",                                 null: false
     t.integer  "group_id"
     t.integer  "room_id"
@@ -437,6 +438,7 @@ ActiveRecord::Schema.define(version: 20160408025358) do
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.integer  "sign_in_count",          default: 0,     null: false
+    t.string   "username",                               null: false
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
   end

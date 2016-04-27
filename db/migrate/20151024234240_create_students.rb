@@ -47,6 +47,7 @@ class CreateStudents < ActiveRecord::Migration
       t.integer :psychologist_consent, null: false
       t.string  :psychologist_consent_name, null: false
       t.integer :shirt_size, null: false
+      t.uuid    :submission_id, null: false
       t.references :conference, index: true, null: false
       t.references :group, index: true
       t.references :room, index: true

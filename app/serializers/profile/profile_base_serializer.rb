@@ -13,7 +13,7 @@ class ProfileBaseSerializer < BaseSerializer
   has_many :visits, serializer: VisitBaseSerializer
 
   def app_email
-    "#{object.username}@#{ENV['email_domain']}"
+    "#{object.username}@#{ENV['smtp_domain']}"
   end
 
   def visits

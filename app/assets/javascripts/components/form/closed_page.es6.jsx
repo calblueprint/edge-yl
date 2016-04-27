@@ -4,7 +4,7 @@ class ClosedPage extends Component {
   // Styles
   // --------------------------------------------------
   get styles() {
-  	return {
+    return {
       container: Object.assign(
         {},
         StyleConstants.containers.card,
@@ -29,7 +29,7 @@ class ClosedPage extends Component {
       			<p>{`
               The form application period is currently closed.
               Please email _______ for more information
-              or check back again in ______
+              or check back again in ______.
             `}</p>
           </div>
     		</div>

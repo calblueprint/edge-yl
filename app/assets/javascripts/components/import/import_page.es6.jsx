@@ -81,8 +81,7 @@ class ImportPage extends Component {
           <div style={StyleConstants.pages.content}>
             <ImportCard
               conference={this.state.conference}
-              conferences={this.props.conferences}
-              profile={this.props.profile} />
+              conferences={this.props.conferences} />
           </div>
         </div>
       </div>

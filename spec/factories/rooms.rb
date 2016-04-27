@@ -15,9 +15,9 @@
 
 FactoryGirl.define do
   factory :room do
-    building { "#{Faker::Lorem.word} building" }
-    capacity { 50 }
+    building          { "#{Faker::Lorem.word} building" }
+    capacity          { 50 }
+    gender            { EnumConstants::BINARY_GENDERS.sample }
     sequence(:number) { |n| n }
-    gender { rand(3) }
   end
 end
