@@ -17,6 +17,7 @@ class SubmissionsMailer < ApplicationMailer
   end
 
   def submit_school(school_submission)
+    @conference = Conference.find school_submission.conference_id
     @school_submission = school_submission
     name = school_submission.name
     mail subject: "EDGE School Registration Confirmation | #{name}",

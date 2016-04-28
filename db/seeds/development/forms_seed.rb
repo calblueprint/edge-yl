@@ -436,10 +436,14 @@ student_form = Form.create(
   title: 'Student Form',
 ) do |form|
   Page.create(
-    description: 'Please review your personal student information below and make any necessary changes.',
+    description: %s(
+      Please confirm or update your information below. This information is used
+      to communicate with you about the conference and should be emails and phone
+      numbers that you check frequently
+    ),
     form: form,
     number: 1,
-    title: 'General Student Information',
+    title: 'Student Contact Information',
   ) do |page|
     Question.create(
       key: 'first_name',
@@ -536,7 +540,11 @@ student_form = Form.create(
     )
   end
   Page.create(
-    description: 'Please list at least one parent or guardian who we can contact in case of an emergency.',
+    description: %s(
+      Please enter in the emergency contact information for one or more family
+      members.  We encourage entering the information of both parents or another
+      family member in case the first cannot be reached in an emergency.
+    ),
     form: form,
     number: 2,
     title: 'Emergency Contact Information',
@@ -657,7 +665,10 @@ student_form = Form.create(
     )
   end
   Page.create(
-    description: 'Please answer the following questions about the participating student\'s medical background.',
+    description: %s(
+      Please let us know about any medical conditions, food allergies, or physical
+      limitations that we should be aware of during the conference.
+    ),
     form: form,
     number: 3,
     title: 'Student Medical Information',
@@ -711,7 +722,7 @@ student_form = Form.create(
       style: Question.styles[:textarea],
       title: %s(
         Please list any medication(s) that you currently take
-        and/or will need to take during the seminar weekend:
+        and/or will need to take during the conference weekend:
       ),
     )
     Question.create(
@@ -762,11 +773,18 @@ student_form = Form.create(
       title: 'Do you consent? (Consent must be declared by a parent/guardian)',
     )
     Question.create(
-      description: 'Please type your name',
+      description: %s(
+        By entering your name it is considered a valid e-signature to indicate
+        your acceptance of the terms of the waiver.
+      ),
       enabler_key: 'emergency_consent',
-      enabler_values: EnumConstants::BOOLEANS[0],
+      enabler_values: %(
+        #{EnumConstants::BOOLEANS[0]}
+        #{EnumConstants::BOOLEANS[1]}
+      ),
       key: 'emergency_consent_name',
       page: page,
+      placeholder: 'Please type your name',
       style: Question.styles[:input],
       title: 'Parent/Guardian Digital Signature',
     )
@@ -793,17 +811,29 @@ student_form = Form.create(
       title: 'Do you consent? (Consent must be declared by a parent/guardian)',
     )
     Question.create(
-      description: 'Please type your name',
+      description: %s(
+        By entering your name it is considered a valid e-signature to indicate
+        your acceptance of the terms of the waiver.
+      ),
       enabler_key: 'psychologist_consent',
-      enabler_values: EnumConstants::BOOLEANS[0],
+      enabler_values: %(
+        #{EnumConstants::BOOLEANS[0]}
+        #{EnumConstants::BOOLEANS[1]}
+      ),
       key: 'psychologist_consent_name',
       page: page,
+      placeholder: 'Please type your name',
       style: Question.styles[:input],
       title: 'Parent/Guardian Digital Signature',
     )
   end
   Page.create(
-    description: 'Insurance Information Description',
+    description: %s(
+      In case of emergency, we will provide insurance information to the medical
+      care provider on your child's behalf.  Please enter in your information
+      below or indicate if your child does not have insurance.  This information
+      will only be used in case of emergency.
+    ),
     form: form,
     number: 4,
     title: 'Insurance Information',
@@ -900,16 +930,19 @@ student_form = Form.create(
         the weekend, unless authorized and released to a parent/guardian and/or accompanied by
         adult staff members according to our conduct policy.
         <br />
+        <br />
         If, in the rare circumstance, a student must leave the conference for a period of time,
-        students will only be released to authorized parent(s)/guardian(s). Arrangements for these
-        situations must be approved of and made on a case-by-case basis before the conference
-        for these situations. Please contact our recruitment directors at registration@edgeyl.org
+        students will only be released to authorized parent(s)/guardian(s). Arrangements are made
+        on a case-by-case basis and must be approved before the conference.
+        <br />
+        <br />
+        Please contact our recruitment directors at registration@edgeyl.org
         or 510-408-6606 as soon as possible if you expect that thestudent will need to leave
         for a period of time during the conference.
         <br />
-        <b>Students who drive to the EDGE conference turn over their car keys to
-        EDGE Youth Leadership staff upon arrival at student registration. Staff
-        will return car keys to the student at Student Checkout.</b>
+        <b>Students who drive to the EDGE conference will be required to turn over their
+        car keys to EDGE Youth Leadership staff upon arrival Friday morning. Staff will
+        return car keys to the student at Student Checkout on Sunday afternoon.</b>
         </br>
       ),
       key: 'transportation_information',
@@ -1032,7 +1065,6 @@ student_form = Form.create(
       title: 'Carpool Information',
     )
     Question.create(
-      is_required: false,
       key: 'carpool',
       options: EnumConstants::CARPOOL_OPTIONS,
       page: page,
@@ -1066,11 +1098,15 @@ student_form = Form.create(
       title: 'Waiver Agreement',
     )
     Question.create(
-      description: 'Please type your name',
+      description: %s(
+        By entering your name it is considered a valid e-signature to indicate
+        your acceptance of the terms of the waiver.
+      ),
       enabler_key: 'transportation_consent',
       enabler_values: EnumConstants::BOOLEANS[0],
       key: 'transportation_consent_name',
       page: page,
+      placeholder: 'Please type your name',
       style: Question.styles[:input],
       title: 'Parent/Guardian Digital Signature',
     )
@@ -1091,10 +1127,12 @@ student_form = Form.create(
         of the conference. It is a fantastic chance to meet with our conference staff and
         learn more about what EDGE Youth Leadership is about before rejoining with your student.
         <br />
+        <br />
         Following the Family and Friends Program, families, friends, students, and EDGE staff
         will gather at Closing Ceremonies, where we'll hear from some of the EDGE organization's
         leaders as well as student speakers. Closing Ceremonies is a great opportunity to see
         firsthand the excitement and energy of the participating EDGE students.
+        <br />
         <br />
         Following Closing Ceremonies, students will say their goodbyes, pack-up their belongings,
         and formally check out from EDGE.
@@ -1141,6 +1179,7 @@ student_form = Form.create(
       description: %s(
         Activities: <b>EDGE Youth Leadership Conference</b>
         <br />
+        <br />
         Dates: <b>June 3-5, 2016</b><br />
         Location: <b>UC Berkeley, Berkeley, CA</b>
         <br />
@@ -1148,8 +1187,10 @@ student_form = Form.create(
         the aforementioned Activities, the Participant (and, if the Participant
         is a minor, his or her parent or legal guardian) hereby:
         <br />
+        <br />
         1. Agrees to abide by all rules and regulations
         established by the EDGE Youth Leadership Conference.
+        <br />
         <br />
         2. Grants to EDGE for any purpose connected with promoting the purposes
         and goals of EDGE, but not for commercial exploitation, the right to use the
@@ -1157,6 +1198,7 @@ student_form = Form.create(
         films, and recordings of the Participant while he or she is participating in
         the Activities, and any biographical information submitted by the Participant
         to EDGE, and to use, reproduce, publish, and distribute the same.
+        <br />
         <br />
         3. Understands that every effort is made to provide participants with a safe, enjoyable,
         and memorable experience; attest and verify that the Participant is physically, mentally
@@ -1175,6 +1217,7 @@ student_form = Form.create(
         registration/entry into EDGE 2016. This Consent and Acknowledgment of Risk shall not be
         amended, supplemented, or abrogated without the written consent of EDGE Board of
         Directors, San Leandro, CA.
+        <br />
         <br />
         4. Agrees to defend and indemnify the EDGE Youth
         Leadership Conference from any claim or action filed by a third party (against EDGE) due to
@@ -1198,9 +1241,13 @@ student_form = Form.create(
       title: 'Student Acknowledgement of Risk Agreement',
     )
     Question.create(
-      description: 'Please type your name',
+      description: %s(
+        By entering your name it is considered a valid e-signature to indicate
+        your acceptance of the terms of the waiver.
+      ),
       key: 'risk_student_name',
       page: page,
+      placeholder: 'Please type your name',
       style: Question.styles[:input],
       title: 'Student Digital Signature',
     )
@@ -1232,9 +1279,13 @@ student_form = Form.create(
       title: 'Parent/Guardian Acknowledgement of Risk Agreement',
     )
     Question.create(
-      description: 'Please type your name',
+      description: %s(
+        By entering your name it is considered a valid e-signature to indicate
+        your acceptance of the terms of the waiver.
+      ),
       key: 'risk_guardian_name',
       page: page,
+      placeholder: 'Please type your name',
       style: Question.styles[:input],
       title: 'Parent/Guardian Digital Signature',
     )
@@ -1279,19 +1330,23 @@ student_form = Form.create(
         with others in your unique peer group. The entire EDGE weekend is a seamless event—if you
         miss even the smallest part, it detracts from the entire experience.
         <br />
+        <br />
         If for any reason you think you can’t participate in the entire conference, please contact
         us immediately. No student has ever regretted missing a sports event, musical recital,
         PSATs or any other kind of event for EDGE. The conference is literally a once-in-a-lifetime
         experience and can have a profound impact on your outlook on life.
+        <br />
         <br />
         We ask you to make the decision to participate in this challenging and
         fun weekend, regardless of other activities that may conflict with it.
         Exceptions include family emergencies and final exams that cannot be
         rescheduled, but do not include studying for exams.
         <br />
+        <br />
         <b>Even if it means missing or postponing an important event or extracurricular activity, if
         you make the commitment, we expect that you will join us for the entire weekend.</b> This
         includes no late arrivals, early departures, or periods of absense from the conference.
+        <br />
         <br />
         If you feel you have an extenuating circumstance that should be considered, please contact
         our recruitment directors at
