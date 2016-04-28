@@ -67,6 +67,42 @@
     <% end %>
 
     <h4>Transportation Information</h4>
+    <p>How will you be getting to and from the conference?: <%= @student_submission.transportation %></p>
+    <% if @student_submission.insurance == EnumConstants::TRANSPORTATION_OPTIONS[2] ||
+          @student_submission.insurance == EnumConstants::TRANSPORTATION_OPTIONS[3] ||
+          @student_submission.insurance == EnumConstants::TRANSPORTATION_OPTIONS[4] %>
+      <p>Name of Station/Airport where you will arrive: <%= @student_submission.transportation_name %></p>
+      <p>Flight/Train/Bus Carrier: <%= @student_submission.transportation_carrier %></p>
+      <p>Flight/Train/Bus Number: <%= @student_submission.transportation_number %></p>
+      <p>Arrival Date: <%= @student_submission.transportation_arrival_date %></p>
+      <p>Arrival Time: <%= @student_submission.transportation_arrival_time %></p>
+      <p>Departure Date: <%= @student_submission.transportation_departure_date %></p>
+      <p>Departure Time: <%= @student_submission.transportation_departure_time %></p>
+    <% end %>
+    <p>Are you interested in carpooling?: <%= @student_submission.carpool || 'n/a' %></p>
+    <p>Transportation Waiver Agreement: <%= @student_submission.transportation_consent %></p>
+
+    <h4>Family and Friends Program & Closing Ceremonies</h4>
+    <p>Which of the following end-of-conference programs would you like to attend?: <%= @student_submission.ceremony_attendance %></p>
+    <% if @student_submission.ceremony_attendance == EnumConstants::CEREMONY_OPTIONS[0] ||
+          @student_submission.ceremony_attendance == EnumConstants::CEREMONY_OPTIONS[1] %>
+      <p>Number of family members/friends attending (not including the student): <%= @student_submission.ceremony_attendance_number %></p>
+    <% end %>
+
+    <h4>Risk Waiver</h4>
+    <p>Student Acknowledgement of Risk Agreement: <%= @student_submission.risk_student_consent %></p>
+    <p>Student Email: <%= @student_submission.risk_student_email %></p>
+    <p>Date: <%= @student_submission.risk_student_date %></p>
+    <p>Parent/Guardian Acknowledgement of Risk Agreement: <%= @student_submission.risk_guardian_consent %></p>
+    <p>Parent/Guardian Relationship: <%= @student_submission.risk_guardian_relationship %></p>
+    <p>Parent/Guardian Email: <%= @student_submission.risk_guardian_email %></p>
+    <p>Date: <%= @student_submission.risk_guardian_date %></p>
+
+    <h4>Participation Commitment</h4>
+    <p>Student Participation Agreement: <%= @student_submission.participation_student_consent %></p>
+    <p>Student Name: <%= @student_submission.participation_student_name %></p>
+    <p>Parent/Guardian Participation Agreement: <%= @student_submission.participation_guardian_consent %></p>
+    <p>Parent/Guardian Name: <%= @student_submission.participation_guardian_name %></p>
 
     <p>Best,</p>
     <h4>The EDGE Recruitment Team</h4>
