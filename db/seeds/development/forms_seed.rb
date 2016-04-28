@@ -788,7 +788,7 @@ student_form = Form.create(
     )
   end
   Page.create(
-    description: 'Insurance Information description',
+    description: 'Insurance Information Description',
     form: form,
     number: 4,
     title: 'Insurance Information',
@@ -1165,7 +1165,7 @@ student_form = Form.create(
         Leadership Conference from any claim or action filed by a third party (against EDGE) due to
         their (the participant's) actions in this event.
         <br />
-        By signing below, the particiapte and the 
+        By signing below, the participant and the
         Parent/Guardian confirms that they have read, understand, and consent to the terms
         of this waiver agreement.
       ),
