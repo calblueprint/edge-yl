@@ -15,8 +15,8 @@ class GroupLeadership extends Component {
   // --------------------------------------------------
   storePairing(id, label, value) {
     GroupActions.storePairing({
-      id: this.props.group.id,
-      key: 'user',
+      id: id,
+      key: 'leadershipable',
       label: label,
       model: TypeConstants.models.leadership,
       type: 'dropdown',
@@ -28,18 +28,24 @@ class GroupLeadership extends Component {
   // Render
   // --------------------------------------------------
   renderLeadership(leadership) {
-    var user = leadership.user;
-    if (user) {
+    var leadershipable = leadership.leadershipable;
+    if (leadershipable) {
+      var route;
+      if (leadership.leadershipable_type == 'User') {
+        route = RouteConstants.users.show(leadershipable.id);
+      } else {
+        route = RouteConstants.volunteers.show(leadershipable.id);
+      }
       return (
         <CardAttribute
-          action={() => this.storePairing(leadership.id, leadership.style, user)}
+          action={() => this.storePairing(leadership.id, leadership.style, leadershipable)}
           clickable={true}
           editable={this.props.editable}
           key={leadership.id}
           label={leadership.style}
-          route={RouteConstants.users.show(user.id)}
+          route={route}
           type={'h6'}
-          value={user.full_name} />
+          value={leadershipable.full_name} />
       );
     } else {
       return (

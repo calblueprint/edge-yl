@@ -1,4 +1,4 @@
-class UsersCard extends Component {
+class VolunteersCard extends Component {
 
   // --------------------------------------------------
   // Props
@@ -6,7 +6,7 @@ class UsersCard extends Component {
   static get propTypes() {
     return {
       media: React.PropTypes.string.isRequired,
-      user: React.PropTypes.object.isRequired,
+      volunteer: React.PropTypes.object.isRequired,
     };
   }
 
@@ -14,21 +14,21 @@ class UsersCard extends Component {
   // Render
   // --------------------------------------------------
   render() {
-    var user = this.props.user;
+    var volunteer = this.props.volunteer;
     return (
       <div style={StyleConstants.cards.container(this.props.media)}>
-        <CardHeader content={'User'} />
+        <CardHeader content={'Volunteer'} />
         <div style={StyleConstants.cards.content}>
           <CardAttribute
             clickable={true}
             label={'Name'}
-            route={RouteConstants.users.show(user.id)}
+            route={RouteConstants.volunteers.show(volunteer.id)}
             type={'h4'}
-            value={user.full_name} />
+            value={volunteer.full_name} />
           <CardAttribute
             humanize={false}
             label={'Email'}
-            value={user.email} />
+            value={volunteer.email} />
         </div>
       </div>
     );

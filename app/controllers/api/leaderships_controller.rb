@@ -1,7 +1,7 @@
 class Api::LeadershipsController < Api::BaseController
 
   def update
-    leadership = Leadership.includes(:user).find params[:id]
+    leadership = Leadership.includes(:leadershipable).find params[:id]
     if leadership.update_attributes leadership_params
       render json: leadership,
              serializer: LeadershipGroupSerializer,
@@ -15,7 +15,8 @@ class Api::LeadershipsController < Api::BaseController
 
   def leadership_params
     params.require(:leadership).permit(
-      :user_id,
+      :leadershipable_id,
+      :leadershipable_type,
     )
   end
 

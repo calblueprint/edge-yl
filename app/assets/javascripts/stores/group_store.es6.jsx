@@ -10,28 +10,30 @@
         leaderships: [],
         students: [],
       };
-      this.groupables = [];
+      this.groupablesUser = [];
+      this.groupablesVolunteer = [];
       this.overlay = false;
       this.pairing = null;
-      this.template = {};
       this.results = [];
+      this.savedSearch = {};
       this.search = {
         active: false,
         query: '',
       };
-      this.savedSearch = {};
+      this.template = {};
       this.bindListeners({
         handleAddStudent: GroupActions.ADD_STUDENT,
         handleCloseOverlay: GroupActions.CLOSE_OVERLAY,
         handleStoreError: GroupActions.STORE_ERROR,
         handleStoreGroup: GroupActions.STORE_GROUP,
-        handleStoreGroupables: GroupActions.STORE_GROUPABLES,
         handleStoreLeadership: GroupActions.STORE_LEADERSHIP,
         handleStorePairing: GroupActions.STORE_PAIRING,
         handleStoreSearch: GroupActions.STORE_SEARCH,
         handleStoreStudentSearch: GroupActions.STORE_STUDENT_SEARCH,
         handleStoreResults: GroupActions.STORE_RESULTS,
+        handleStoreUserGroupables: GroupActions.STORE_USER_GROUPABLES,
         handleStoreValue: GroupActions.STORE_VALUE,
+        handleStoreVolunteerGroupables: GroupActions.STORE_VOLUNTEER_GROUPABLES,
         handleDeleteStudent: GroupActions.DELETE_STUDENT,
       });
     }
@@ -71,14 +73,10 @@
       this.overlay = false;
     }
 
-    handleStoreGroupables(response) {
-      this.groupables = response.users;
-    }
-
     handleStoreLeadership(response) {
       this.group.leaderships.map((leadership) => {
         if (leadership.id === response.leadership.id) {
-          leadership.user = response.leadership.user;
+          leadership.leadershipable = response.leadership.leadershipable;
         }
       });
       this.overlay = false;
@@ -122,8 +120,16 @@
       this.template = template;
     }
 
+    handleStoreUserGroupables(response) {
+      this.groupablesUser = response.users;
+    }
+
     handleStoreValue(value) {
       this.pairing.value = value;
+    }
+
+    handleStoreVolunteerGroupables(response) {
+      this.groupablesVolunteer = response.volunteers;
     }
   }
   this.GroupStore = alt.createStore(GroupStore);

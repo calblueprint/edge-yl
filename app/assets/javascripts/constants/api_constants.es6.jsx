@@ -225,6 +225,15 @@
       };
     }
 
+    get volunteers() {
+      return {
+        create: '/api/volunteers',
+        groupables: '/api/volunteers/groupables',
+        index: (page) => `/api/volunteers?=${page}`,
+        show: (id) => `/api/volunteers/${id}`,
+        update: (id) => `/api/volunteers/${id}`,
+      };
+    }
   }
   this.ApiConstants = new ApiConstants();
 })();

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160408025358) do
+ActiveRecord::Schema.define(version: 20160423215812) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -115,15 +115,16 @@ ActiveRecord::Schema.define(version: 20160408025358) do
   add_index "groups", ["conference_id"], name: "index_groups_on_conference_id", using: :btree
 
   create_table "leaderships", force: :cascade do |t|
-    t.integer  "style",      default: 0, null: false
+    t.integer  "style",               default: 0, null: false
     t.integer  "group_id"
-    t.integer  "user_id"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.integer  "leadershipable_id"
+    t.string   "leadershipable_type"
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
   end
 
   add_index "leaderships", ["group_id"], name: "index_leaderships_on_group_id", using: :btree
-  add_index "leaderships", ["user_id"], name: "index_leaderships_on_user_id", using: :btree
+  add_index "leaderships", ["leadershipable_type", "leadershipable_id"], name: "index_leaderships_on_leadershipable_type_and_leadershipable_id", using: :btree
 
   create_table "pages", force: :cascade do |t|
     t.text     "description",                 null: false
@@ -457,5 +458,13 @@ ActiveRecord::Schema.define(version: 20160408025358) do
 
   add_index "visits", ["user_id"], name: "index_visits_on_user_id", using: :btree
   add_index "visits", ["visitable_type", "visitable_id"], name: "index_visits_on_visitable_type_and_visitable_id", using: :btree
+
+  create_table "volunteers", force: :cascade do |t|
+    t.string   "email",      default: "", null: false
+    t.string   "first_name",              null: false
+    t.string   "last_name",               null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
 
 end

@@ -39,7 +39,7 @@ class User < ActiveRecord::Base
   has_many :responsibilities
   has_many :visits, dependent: :destroy
 
-  has_one :leadership, dependent: :destroy
+  has_one :leadership, as: :leadershipable
 
   validates :email, presence: true
   validates :first_name, presence: true
@@ -47,6 +47,14 @@ class User < ActiveRecord::Base
 
   validates :has_sidebar, inclusion: { in: [true, false] }
   validates :is_admin, inclusion: { in: [true, false] }
+
+  def create_volunteer
+    Volunteer.create(
+      email: self.email,
+      first_name: self.first_name,
+      last_name: self.last_name,
+    )
+  end
 
   def create_visit(visitable_type, visitable_id)
     last_visit = visits.first

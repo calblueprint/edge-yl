@@ -1,7 +1,8 @@
 def assign_leadership(leadership_id, user_id)
   leadership = Leadership.find(leadership_id)
   user = User.find(user_id)
-  leadership.user = user
+  leadership.leadershipable_id = user.id
+  leadership.leadershipable_type = 'User'
   leadership.save
   group = leadership.group
   puts "Assigned leadership of #{group.full_name} to #{user.full_name}."

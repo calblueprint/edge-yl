@@ -53,7 +53,7 @@
         search: 'fa-search',
         settings: 'fa-cog',
         student: 'fa-graduation-cap',
-        volunteer: 'fa-user',
+        user: 'fa-user',
       };
     }
 
@@ -70,6 +70,7 @@
         room: 'model-room',
         school: 'model-school',
         user: 'model-user',
+        volunteer: 'model-volunteer',
       };
     }
 
@@ -151,6 +152,13 @@
       return {
         leadership: 'user-leadership',
         general: 'user-general',
+      };
+    }
+
+    get volunteer() {
+      return {
+        leadership: 'volunteer-leadership',
+        general: 'volunteer-general',
       };
     }
   }

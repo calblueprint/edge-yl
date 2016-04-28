@@ -5,7 +5,8 @@ class GroupEditModal extends EditModal {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      groupables: React.PropTypes.arrayOf(React.PropTypes.object),
+      groupablesUser: React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
+      groupablesVolunteer: React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
       pairing: React.PropTypes.object.isRequired,
     };
   }
@@ -30,7 +31,8 @@ class GroupEditModal extends EditModal {
   }
 
   generateChoices() {
-    var groupables = this.props.groupables;
+    var groupablesUser = this.props.groupablesUser;
+    var groupables = groupablesUser.concat(this.props.groupablesVolunteer)
     return groupables.map((groupable) => this.generateChoice(groupable));
   }
 
@@ -43,8 +45,14 @@ class GroupEditModal extends EditModal {
     ];
   }
 
-  updateGroup() {
-    GroupActions.updateGroup(this.props.pairing);
+  updateLeadership(pairing) {
+    var type;
+    if (this.props.groupablesUser.indexOf(pairing.value) >= 0) {
+      type = 'User';
+    } else {
+      type = 'Volunteer';
+    }
+    GroupActions.updateLeadership(pairing, type);
   }
 
   // --------------------------------------------------
@@ -81,8 +89,8 @@ class GroupEditModal extends EditModal {
     var type;
     var pairing = this.props.pairing;
     switch (pairing.key) {
-      case 'user':
-        action = () => GroupActions.updateLeadership(pairing);
+      case 'leadershipable':
+        action = () => this.updateLeadership(pairing);
         content = 'Change Leadership';
         type = 'dropdown';
         break;

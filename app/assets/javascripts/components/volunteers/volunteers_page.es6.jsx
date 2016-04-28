@@ -1,4 +1,4 @@
-class UserPage extends Component {
+class VolunteersPage extends Component {
 
   // --------------------------------------------------
   // Setup
@@ -13,7 +13,7 @@ class UserPage extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      id: React.PropTypes.number.isRequired,
+      page: React.PropTypes.number.isRequired,
       profile: React.PropTypes.object.isRequired,
     };
   }
@@ -23,32 +23,36 @@ class UserPage extends Component {
   // --------------------------------------------------
   componentWillMount() {
     this.setState(ProfileStore.getState());
-    this.setState(UserStore.getState());
+    this.setState(VolunteersStore.getState());
     this.setState(ViewStore.getState());
   }
 
   componentDidMount() {
     ProfileStore.listen(this._listener);
-    UserStore.listen(this._listener);
+    VolunteersStore.listen(this._listener);
     ViewStore.listen(this._listener);
-    UserActions.fetchUser(this.props.id);
+    VolunteersActions.fetchVolunteers(this.props.page);
     ViewActions.attachListener();
   }
 
   componentWillUnmount() {
-    ProfileStore.unlisten(this._listner);
-    UserStore.unlisten(this._listener);
+    ProfileStore.unlisten(this._listener);
+    VolunteersStore.unlisten(this._listener);
     ViewStore.unlisten(this._listener);
   }
 
   // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
+  changePage(page) {
+    window.location = RouteConstants.conferences.index(page);
+  }
+
   generateOptions() {
     return [
       {
-        action: () => ViewActions.storeEditability(),
-        content: this.state.editable ? 'Finish' : 'Edit',
+        action: () => VolunteersActions.storeTemplate(TypeConstants.models.volunteer),
+        content: 'New',
       },
     ];
   }
@@ -64,17 +68,11 @@ class UserPage extends Component {
   // --------------------------------------------------
   renderOverlay() {
     if (this.state.overlay) {
-      return (
-        <UserPageOverlay
-          profile={this.selectProfile()}
-          user={this.state.user}
-          template={this.state.template} />
-      );
+      return <VolunteersPageOverlay template={this.state.template} />;
     }
   }
 
   render() {
-    var user = this.state.user;
     return (
       <div style={StyleConstants.pages.wrapper}>
         {this.renderOverlay()}
@@ -84,15 +82,16 @@ class UserPage extends Component {
           <div style={StyleConstants.pages.content}>
             <GridHeader
               options={this.generateOptions()}
-              title={`User: ${user.full_name}`} />
-            <UserGrid
-              editable={this.state.editable}
+              title={'Volunteers'} />
+            <VolunteersGrid
               media={this.state.media}
-              user={user} />
+              volunteers={this.state.volunteers} />
+            <PageNavigator
+              action={(page) => this.changePage(page)}
+              pagination={this.state.pagination} />
           </div>
         </div>
       </div>
     );
   }
 }
-

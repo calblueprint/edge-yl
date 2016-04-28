@@ -1,4 +1,4 @@
-class UsersPage extends Component {
+class VolunteerPage extends Component {
 
   // --------------------------------------------------
   // Setup
@@ -13,7 +13,7 @@ class UsersPage extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      page: React.PropTypes.number.isRequired,
+      id: React.PropTypes.number.isRequired,
       profile: React.PropTypes.object.isRequired,
     };
   }
@@ -23,29 +23,34 @@ class UsersPage extends Component {
   // --------------------------------------------------
   componentWillMount() {
     this.setState(ProfileStore.getState());
-    this.setState(UsersStore.getState());
+    this.setState(VolunteerStore.getState());
     this.setState(ViewStore.getState());
   }
 
   componentDidMount() {
     ProfileStore.listen(this._listener);
-    UsersStore.listen(this._listener);
+    VolunteerStore.listen(this._listener);
     ViewStore.listen(this._listener);
-    UsersActions.fetchUsers(this.props.page);
+    VolunteerActions.fetchVolunteer(this.props.id);
     ViewActions.attachListener();
   }
 
   componentWillUnmount() {
-    ProfileStore.unlisten(this._listener);
-    UsersStore.unlisten(this._listener);
+    ProfileStore.unlisten(this._listner);
+    VolunteerStore.unlisten(this._listener);
     ViewStore.unlisten(this._listener);
   }
 
   // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
-  changePage(page) {
-    window.location = RouteConstants.conferences.index(page);
+  generateOptions() {
+    return [
+      {
+        action: () => ViewActions.storeEditability(),
+        content: this.state.editable ? 'Finish' : 'Edit',
+      },
+    ];
   }
 
   selectProfile() {
@@ -57,23 +62,37 @@ class UsersPage extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
+  renderOverlay() {
+    if (this.state.overlay) {
+      return (
+        <VolunteerPageOverlay
+          profile={this.selectProfile()}
+          volunteer={this.state.volunteer}
+          template={this.state.template} />
+      );
+    }
+  }
+
   render() {
+    var volunteer = this.state.volunteer;
     return (
       <div style={StyleConstants.pages.wrapper}>
+        {this.renderOverlay()}
         <Header profile={this.selectProfile()} />
         <Sidebar profile={this.selectProfile()} />
         <div style={StyleConstants.pages.default}>
           <div style={StyleConstants.pages.content}>
-            <GridHeader title={'Volunteers'} />
-            <UsersGrid
+            <GridHeader
+              options={this.generateOptions()}
+              title={`Volunteer: ${volunteer.full_name}`} />
+            <VolunteerGrid
+              editable={this.state.editable}
               media={this.state.media}
-              users={this.state.users} />
-            <PageNavigator
-              action={(page) => this.changePage(page)}
-              pagination={this.state.pagination} />
+              volunteer={volunteer} />
           </div>
         </div>
       </div>
     );
   }
 }
+

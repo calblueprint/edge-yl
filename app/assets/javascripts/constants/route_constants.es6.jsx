@@ -102,6 +102,13 @@
         show: (id) => `/users/${id}`,
       };
     }
+
+    get volunteers() {
+      return {
+        index: (page=1) => `/volunteers?page=${page}`,
+        show: (id) => `/volunteers/${id}`,
+      };
+    }
   }
   this.RouteConstants = new RouteConstants();
 })();

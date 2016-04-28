@@ -9,11 +9,12 @@
         'closeOverlay',
         'storeError',
         'storeGroup',
-        'storeGroupables',
         'storeLeadership',
         'storeResults',
         'storeStudentSearch',
+        'storeUserGroupables',
         'storeValue',
+        'storeVolunteerGroupables',
       );
     }
 
@@ -87,8 +88,11 @@
       return true;
     }
 
-    updateLeadership(pairing, attributes={}) {
-      attributes = { user_id: pairing.value.id };
+    updateLeadership(pairing, type, attributes={}) {
+      attributes = {
+        leadershipable_id: pairing.value.id,
+        leadershipable_type: type,
+      };
       var params = { leadership: attributes };
       var resolve = (response) => this.storeLeadership(response);
       var reject = (response) => this.storeError(response);
@@ -106,8 +110,11 @@
     // --------------------------------------------------
     storePairing(options) {
       if (options.model === TypeConstants.models.leadership) {
-        var resolve = (response) => this.storeGroupables(response);
-        Requester.get(ApiConstants.users.groupables, resolve);
+        var resolve;
+        resolveUsers = (response) => this.storeUserGroupables(response);
+        Requester.get(ApiConstants.users.groupables, resolveUsers);
+        resolveVolunteers = (response) => this.storeVolunteerGroupables(response);
+        Requester.get(ApiConstants.volunteers.groupables, resolveVolunteers);
       }
       return {
         choices: options.choices,

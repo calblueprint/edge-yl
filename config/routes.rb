@@ -31,6 +31,7 @@ Rails.application.routes.draw do
   resources :schools, only: [:index, :show]
   resources :threads, only: [:index, :show]
   resources :users, only: [:index, :show]
+  resources :volunteers, only: [:index, :show]
 
   devise_for :users, only: []
   devise_scope :user do
@@ -83,6 +84,9 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :show, :update] do
       get '/groupables', on: :collection, to: 'users#groupables'
       get '/schoolables', on: :collection, to: 'users#schoolables'
+    end
+    resources :volunteers, only: [:create, :index, :show, :update] do
+      get '/groupables', on: :collection, to: 'volunteers#groupables'
     end
   end
 end

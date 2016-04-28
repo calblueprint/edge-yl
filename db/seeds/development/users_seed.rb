@@ -20,5 +20,5 @@ puts "Created admin #{new_admin.full_name}"
   )
   new_user.skip_confirmation!
   new_user.save
-  puts "Created volunteer #{new_user.full_name}."
+  puts "Created user #{new_user.full_name}."
 end
