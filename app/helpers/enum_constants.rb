@@ -47,6 +47,7 @@ module EnumConstants
     mother father aunt uncle
     grandmother grandfather
     stepmother stepfather guardian
+    other
   ).freeze
 
   PHONE_TYPES = %w(cell home work).freeze

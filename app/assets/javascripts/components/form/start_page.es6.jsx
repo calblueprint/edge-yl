@@ -171,9 +171,9 @@ class StartPage extends Component {
           <p><b>Step 6a:</b> You will receive a confirmation email at the email address you provided.</p>
           <p>
             <b>Step 6b:</b> Your student will receive a notification email at the
-            email address (of the student) provided - please be sure the email is valid
+            email address (of the student) provided - <b>please be sure the email is valid
             and one they check frequently. They will be receiving instructions on how to
-            confirm/finish their registration via that email. We may ask for your assistance
+            confirm/finish their registration via that email.</b> We may ask for your assistance
             in helping the student confirm their registration.
           </p>
           <p style={this.styles.paragraph}><b>

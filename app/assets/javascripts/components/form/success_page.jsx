@@ -22,7 +22,6 @@ class SuccessPage extends Component {
           alignItems: 'center',
           padding: '24px',
           marginTop: '24px',
-          textAlign: 'center',
         },
       ),
       icon: {
@@ -41,8 +40,24 @@ class SuccessPage extends Component {
     		<div style={StyleConstants.pages.center}>
           <div style={this.styles.container}>
             <i style={this.styles.icon} className="fa fa-check-circle fa-5x"></i>
-      			<p>{`You have successfully completed the ${this.props.target} form for EDGE.`}</p>
-            <p>{'You should be receiving a confirmation email shortly.'}</p>
+      			<h3>{`You have successfully completed the ${this.props.target} form for EDGE!`}</h3>
+            <br />
+            <p>{`
+              You should be receiving a confirmation email to the email address provided
+              shortly. Your student will also be receiving instructions on how to confirm/finish
+              their registration via that email. We may ask for your assistance in helping the student
+              confirm their registration.
+              `}
+            </p>
+            <br />
+            <p>{`
+              Questions? Please contact us at registration@edgeyl.org. You may also leave us
+              a message at (510) 408-6606, but please not that we generally response much faster
+              to emails`}
+            </p>
+            <br />
+            <br />
+            <a href='http://www.edgeyl.org/'><h4>Go back to the EDGE website</h4></a>
           </div>
     		</div>
       </div>

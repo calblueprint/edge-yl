@@ -156,8 +156,23 @@ school_form = Form.create(
       description: StringConstants::PHONE_FORMAT,
       key: 'primary_cell_phone',
       page: page,
+      placeholder: 'If student does not have a cell phone, please re-enter their home phone'
       style: Question.styles[:input],
       title: 'Primary Student Cell Phone',
+    )
+    Question.create(
+      description: %s(
+        Your student will receive a notification email at the email address
+        (of the student) provided - please be sure the email is valid and one they
+        check frequently. They will be receiving instructions on how to confirm/finish
+        their registration via that email. Please do not use the same email as the
+        school contact - if a student does not have an email, please contact us at
+        registration@edgeyl.org or 510-408-6606.
+      ),
+      key: 'primary_email_information',
+      page: page,
+      style: Question.styles[:information],
+      title: 'Important!',
     )
     Question.create(
       description: StringConstants::EMAIL_FORMAT,
