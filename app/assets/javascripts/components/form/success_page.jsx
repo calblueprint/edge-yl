@@ -52,7 +52,7 @@ class SuccessPage extends Component {
             <br />
             <p>{`
               Questions? Please contact us at registration@edgeyl.org. You may also leave us
-              a message at (510) 408-6606, but please not that we generally response much faster
+              a message at (510) 408-6606, but please note that we generally response much faster
               to emails`}
             </p>
             <br />
