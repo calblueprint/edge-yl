@@ -13,6 +13,7 @@
     <p>Address One: <%= @student_submission.address_one %></p>
     <p>Address Two: <%= @student_submission.address_two || 'n/a' %></p>
     <p>Address City: <%= @student_submission.address_city %></p>
+    <p>Address State: <%= @student_submission.address_state %></p>
     <p>Address Zip: <%= @student_submission.address_zip %></p>
     <p>Email: <%= @student_submission.email %></p>
     <p>Home Phone: <%= @student_submission.home_phone %></p>
@@ -28,9 +29,8 @@
     <p>Parent/Guardian 1 Phone Number: <%= @student_submission.guardian_one_phone_number %></p>
     <p>Parent/Guardian 1 Phone Type: <%= @student_submission.guardian_one_phone_type %></p>
     <p>Parent/Guardian 1 Relationship: <%= @student_submission.guardian_one_relationship %></p>
-    <p>Parent/Guardian 1 Employer: <%= @student_submission.guardian_one_employter || 'n/a' %></p>
+    <p>Parent/Guardian 1 Employer: <%= @student_submission.guardian_one_employer || 'n/a' %></p>
     <p>Parent/Guardian 1 Job Title: <%= @student_submission.guardian_one_job_title || 'n/a' %></p>
-
     <p>Parent/Guardian 2 First Name: <%= @student_submission.guardian_two_first_name || 'n/a' %></p>
     <p>Parent/Guardian 2 Last Name: <%= @student_submission.guardian_two_last_name || 'n/a' %></p>
     <p>Parent/Guardian 2 Email: <%= @student_submission.guardian_two_email || 'n/a' %></p>
@@ -51,17 +51,19 @@
     <p>Please list any other dietary restrictions that you have: <%= student_submission.other_dietary_restrictions || 'n/a' %></p>
     <p>Please list any limitations on the amount of physical exercise you can engage in: <%= @student_submission.exercise_limitations %></p>
     <p>Consent to Treat in Case of Emergency: <%= @student_submission.emergency_consent %></p>
+    <p>Parent/Guardian Digital Signature <%= @student_submission.emergency_consent_name %></p>
     <p>Consent to Speak to a Licensed Psychologist if in Need: <%= student_submission.psychologist_consent %></p>
+    <p>Parent/Guardian Digital Signature <%= @student_submission.psychologist_consent_name %></p>
 
     <h4>Insurance Information</h4>
     <p>Does your child have health insurance?: <%= @student_submission.insurance %></p>
     <% if @student_submission.insurance == EnumConstants::BOOLEANS[0] %>
       <p>Insurance Provider: <%= @student_submission.insurance_provider %></p>
       <p>Insurance Provider Address: <%= @student_submission.insurance_address %></p>
-      <p>Insurance Provider City: <%= student_submission.insurance_provider_city %></p>
-      <p>Insurance Provider State: <%= student_submission.insurance_provider_state %></p>
-      <p>Insurance Provider Zip: <%= student_submission.insurance_provider_zip %></p>
-      <p>Insurance Provider Phone: <%= student_submission.insurance_provider_phone %></p>
+      <p>Insurance Provider City: <%= student_submission.insurance_address_city %></p>
+      <p>Insurance Provider State: <%= student_submission.insurance_address_state %></p>
+      <p>Insurance Provider Zip: <%= student_submission.insurance_address_zip %></p>
+      <p>Insurance Provider Phone: <%= student_submission.insurance_phone_number %></p>
       <p>Group # or ID #: <%= student_submission.insurance_id %></p>
       <p>Other relevant information on the card: <%= @student_submission.insurance_other || 'n/a' %></p>
     <% end %>
@@ -81,19 +83,22 @@
     <% end %>
     <p>Are you interested in carpooling?: <%= @student_submission.carpool || 'n/a' %></p>
     <p>Transportation Waiver Agreement: <%= @student_submission.transportation_consent %></p>
+    <p>Parent/Guardian Digital Signature <%= @student_submission.transportation_consent_name %></p>
 
     <h4>Family and Friends Program & Closing Ceremonies</h4>
     <p>Which of the following end-of-conference programs would you like to attend?: <%= @student_submission.ceremony_attendance %></p>
     <% if @student_submission.ceremony_attendance == EnumConstants::CEREMONY_OPTIONS[0] ||
           @student_submission.ceremony_attendance == EnumConstants::CEREMONY_OPTIONS[1] %>
-      <p>Number of family members/friends attending (not including the student): <%= @student_submission.ceremony_attendance_number %></p>
+      <p>Number of family members/friends attending (not including the student): <%= @student_submission.ceremony_attendance_number || 'n/a' %></p>
     <% end %>
 
     <h4>Risk Waiver</h4>
     <p>Student Acknowledgement of Risk Agreement: <%= @student_submission.risk_student_consent %></p>
+    <p>Student Digital Signature <%= @student_submission.risk_student_name %></p>
     <p>Student Email: <%= @student_submission.risk_student_email %></p>
     <p>Date: <%= @student_submission.risk_student_date %></p>
     <p>Parent/Guardian Acknowledgement of Risk Agreement: <%= @student_submission.risk_guardian_consent %></p>
+    <p>Parent/Guardian Digital Signature <%= @student_submission.risk_guardian_name %></p>
     <p>Parent/Guardian Relationship: <%= @student_submission.risk_guardian_relationship %></p>
     <p>Parent/Guardian Email: <%= @student_submission.risk_guardian_email %></p>
     <p>Date: <%= @student_submission.risk_guardian_date %></p>
