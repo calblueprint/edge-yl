@@ -27,7 +27,7 @@
           var key = question.key;
           if (submission[key] !== undefined) {
             if (infoQuestions[question.key + '_info'] !== undefined) {
-              question.title = infoQuestions[question.key + '_info']
+              question.title = infoQuestions[question.key + '_info'];
               question.value = submission[key];
             } else if (question.style === TypeConstants.questions.checkbox) {
               if (submission[key] === null || submission[key] === undefined) {
