@@ -59,7 +59,10 @@ class StudentPage extends Component {
         content: 'Email',
       },
       {
-        action: () => window.location = RouteConstants.student.submission(student.id),
+        action: () => {
+          var student = this.state.student;
+          window.location = RouteConstants.student.submission(student.id);
+        },
         content: 'Form submission',
       },
     ];

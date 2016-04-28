@@ -15,19 +15,19 @@
     handleStoreSubmission(response) {
       var submission = response.submission;
       this.form.pages.map((page) => {
-        var infoQuestions = new Set();
+        var infoQuestions = {};
         var questions = page.questions;
         // fix rendering waiver/information-type questions with the right title
         questions.map((question) => {
           if (question.style === TypeConstants.questions.information) {
-            infoQuestions.add(question.key);
+            infoQuestions[question.key] = question.title;
           }
         });
         questions.map((question) => {
           var key = question.key;
           if (submission[key] !== undefined) {
-            if (infoQuestions.has(question.key + '_info')) {
-              question.title = question.description;
+            if (infoQuestions[question.key + '_info'] !== undefined) {
+              question.title = infoQuestions[question.key + '_info']
               question.value = submission[key];
             } else if (question.style === TypeConstants.questions.checkbox) {
               if (submission[key] === null || submission[key] === undefined) {

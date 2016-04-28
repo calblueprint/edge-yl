@@ -740,7 +740,6 @@ student_form = Form.create(
       title: 'Consent to Treat in Case of Emergency',
     )
     Question.create(
-      description: 'Consent to Treat in Case of Emergency',
       key: 'emergency_consent',
       options: EnumConstants::BOOLEANS,
       page: page,
@@ -772,7 +771,6 @@ student_form = Form.create(
       title: 'Consent to Speak to a Licensed Psychologist if in Need',
     )
     Question.create(
-      description: 'Consent to Speak to a Licensed Psychologist if in Need',
       key: 'psychologist_consent',
       options: EnumConstants::BOOLEANS,
       page: page,
@@ -1053,12 +1051,13 @@ student_form = Form.create(
       title: 'Waiver Agreement',
     )
     Question.create(
+      description: 'Please type your name',
       enabler_key: 'transportation_consent',
       enabler_values: EnumConstants::BOOLEANS[0],
       key: 'transportation_consent_name',
       page: page,
       style: Question.styles[:input],
-      title: 'Parent/Guardian digital signature (please type your name)',
+      title: 'Parent/Guardian Digital Signature',
     )
   end
   Page.create(
@@ -1087,7 +1086,7 @@ student_form = Form.create(
         <br />
         For details on the timing and location of the Family and Friends Program, Closing
         Ceremonies, and student check-out for the upcoming conference, please see our information
-        packet: <a href="http://www.edgeyl.org/reginfo">HERE</a>
+        packet: <a href="http://www.edgeyl.org/reginfo"><b>HERE</b></a>
       ),
       key: 'ceremony_info',
       page: page,
@@ -1184,10 +1183,11 @@ student_form = Form.create(
       title: 'Student Acknowledgement of Risk Agreement',
     )
     Question.create(
+      description: 'Please type your name',
       key: 'risk_student_name',
       page: page,
       style: Question.styles[:input],
-      title: 'Student digital signature (please type your name)',
+      title: 'Student Digital Signature',
     )
     Question.create(
       description: StringConstants::EMAIL_FORMAT,
@@ -1217,10 +1217,11 @@ student_form = Form.create(
       title: 'Parent/Guardian Acknowledgement of Risk Agreement',
     )
     Question.create(
+      description: 'Please type your name',
       key: 'risk_guardian_name',
       page: page,
       style: Question.styles[:input],
-      title: 'Parent/Guardian digital signature (please type your name)',
+      title: 'Parent/Guardian Digital Signature',
     )
     Question.create(
       key: 'risk_guardian_relationship',

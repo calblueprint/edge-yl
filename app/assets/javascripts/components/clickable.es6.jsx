@@ -176,6 +176,9 @@ class Clickable extends Component {
     var props = this.props;
     var style = Object.assign(
       {},
+      {
+        display: 'flex',
+      },
       props.styles.default,
       this.state.hover && this.styles.hover,
       props.route === '' && props.action === null && { cursor: 'default' },
