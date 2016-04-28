@@ -37,7 +37,7 @@
     <p>Parent/Guardian 2 Phone Number: <%= @student_submission.guardian_two_phone_number || 'n/a' %></p>
     <p>Parent/Guardian 2 Phone Type: <%= @student_submission.guardian_two_phone_type || 'n/a' %></p>
     <p>Parent/Guardian 2 Relationship: <%= @student_submission.guardian_two_relationship || 'n/a' %></p>
-    <p>Parent/Guardian 2 Employer: <%= @student_submission.guardian_two_employter || 'n/a' %></p>
+    <p>Parent/Guardian 2 Employer: <%= @student_submission.guardian_two_employer || 'n/a' %></p>
     <p>Parent/Guardian 2 Job Title: <%= @student_submission.guardian_two_job_title || 'n/a' %></p>
 
     <h4>Student Medical Information</h4>
@@ -48,11 +48,11 @@
     <p>Please briefly describe all conditions selected: <%= @student_submission.health_conditions_description || 'n/a' %></p>
     <p>Please list any medication(s) that you currently take and/or will need to take during the seminar weekend: <%= @student_submission.medications %></p>
     <p>Please select any dietary restrictions that you have: <%= @student_submission.dietary_restrictions %></p>
-    <p>Please list any other dietary restrictions that you have: <%= student_submission.other_dietary_restrictions || 'n/a' %></p>
+    <p>Please list any other dietary restrictions that you have: <%= @student_submission.other_dietary_restrictions || 'n/a' %></p>
     <p>Please list any limitations on the amount of physical exercise you can engage in: <%= @student_submission.exercise_limitations %></p>
     <p>Consent to Treat in Case of Emergency: <%= @student_submission.emergency_consent %></p>
     <p>Parent/Guardian Digital Signature <%= @student_submission.emergency_consent_name %></p>
-    <p>Consent to Speak to a Licensed Psychologist if in Need: <%= student_submission.psychologist_consent %></p>
+    <p>Consent to Speak to a Licensed Psychologist if in Need: <%= @student_submission.psychologist_consent %></p>
     <p>Parent/Guardian Digital Signature <%= @student_submission.psychologist_consent_name %></p>
 
     <h4>Insurance Information</h4>
@@ -60,11 +60,11 @@
     <% if @student_submission.insurance == EnumConstants::BOOLEANS[0] %>
       <p>Insurance Provider: <%= @student_submission.insurance_provider %></p>
       <p>Insurance Provider Address: <%= @student_submission.insurance_address %></p>
-      <p>Insurance Provider City: <%= student_submission.insurance_address_city %></p>
-      <p>Insurance Provider State: <%= student_submission.insurance_address_state %></p>
-      <p>Insurance Provider Zip: <%= student_submission.insurance_address_zip %></p>
-      <p>Insurance Provider Phone: <%= student_submission.insurance_phone_number %></p>
-      <p>Group # or ID #: <%= student_submission.insurance_id %></p>
+      <p>Insurance Provider City: <%= @student_submission.insurance_address_city %></p>
+      <p>Insurance Provider State: <%= @student_submission.insurance_address_state %></p>
+      <p>Insurance Provider Zip: <%= @student_submission.insurance_address_zip %></p>
+      <p>Insurance Provider Phone: <%= @student_submission.insurance_phone_number %></p>
+      <p>Group # or ID #: <%= @student_submission.insurance_id %></p>
       <p>Other relevant information on the card: <%= @student_submission.insurance_other || 'n/a' %></p>
     <% end %>
 
