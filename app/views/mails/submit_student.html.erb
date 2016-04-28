@@ -51,9 +51,9 @@
     <p>Please list any other dietary restrictions that you have: <%= @student_submission.other_dietary_restrictions || 'n/a' %></p>
     <p>Please list any limitations on the amount of physical exercise you can engage in: <%= @student_submission.exercise_limitations %></p>
     <p>Consent to Treat in Case of Emergency: <%= @student_submission.emergency_consent %></p>
-    <p>Parent/Guardian Digital Signature <%= @student_submission.emergency_consent_name %></p>
+    <p>Parent/Guardian Digital Signature: <%= @student_submission.emergency_consent_name %></p>
     <p>Consent to Speak to a Licensed Psychologist if in Need: <%= @student_submission.psychologist_consent %></p>
-    <p>Parent/Guardian Digital Signature <%= @student_submission.psychologist_consent_name %></p>
+    <p>Parent/Guardian Digital Signature: <%= @student_submission.psychologist_consent_name %></p>
 
     <h4>Insurance Information</h4>
     <p>Does your child have health insurance?: <%= @student_submission.insurance %></p>
@@ -83,7 +83,7 @@
     <% end %>
     <p>Are you interested in carpooling?: <%= @student_submission.carpool || 'n/a' %></p>
     <p>Transportation Waiver Agreement: <%= @student_submission.transportation_consent %></p>
-    <p>Parent/Guardian Digital Signature <%= @student_submission.transportation_consent_name %></p>
+    <p>Parent/Guardian Digital Signature: <%= @student_submission.transportation_consent_name %></p>
 
     <h4>Family and Friends Program & Closing Ceremonies</h4>
     <p>Which of the following end-of-conference programs would you like to attend?: <%= @student_submission.ceremony_attendance %></p>
@@ -94,11 +94,11 @@
 
     <h4>Risk Waiver</h4>
     <p>Student Acknowledgement of Risk Agreement: <%= @student_submission.risk_student_consent %></p>
-    <p>Student Digital Signature <%= @student_submission.risk_student_name %></p>
+    <p>Student Digital Signature: <%= @student_submission.risk_student_name %></p>
     <p>Student Email: <%= @student_submission.risk_student_email %></p>
     <p>Date: <%= @student_submission.risk_student_date %></p>
     <p>Parent/Guardian Acknowledgement of Risk Agreement: <%= @student_submission.risk_guardian_consent %></p>
-    <p>Parent/Guardian Digital Signature <%= @student_submission.risk_guardian_name %></p>
+    <p>Parent/Guardian Digital Signature: <%= @student_submission.risk_guardian_name %></p>
     <p>Parent/Guardian Relationship: <%= @student_submission.risk_guardian_relationship %></p>
     <p>Parent/Guardian Email: <%= @student_submission.risk_guardian_email %></p>
     <p>Date: <%= @student_submission.risk_guardian_date %></p>

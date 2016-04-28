@@ -2,10 +2,110 @@ Hi <%= @student_submission.first_name %>,
 
 Thank you for completing your registration.
 
-Please review the information below for accuracy. Please email any corrections or questions to registration@edgeyl.org.</p>
+Please review the information below for accuracy. Please email any corrections or questions to registration@edgeyl.org.
 
-General Information
-...
+General Student Information
+First Name: <%= @student_submission.first_name %>
+Last Name: <%= @student_submission.last_name %>
+Preferred Name: <%= @student_submission.preferred_name || 'n/a' %>
+Address One: <%= @student_submission.address_one %>
+Address Two: <%= @student_submission.address_two || 'n/a' %>
+Address City: <%= @student_submission.address_city %>
+Address State: <%= @student_submission.address_state %>
+Address Zip: <%= @student_submission.address_zip %>
+Email: <%= @student_submission.email %>
+Home Phone: <%= @student_submission.home_phone %>
+Cell Phone: <%= @student_submission.cell_phone %>
+Gender: <%= @student_submission.gender %>
+Birthday: <%= @student_submission.birthday.to_formatted_s(:long_ordinal) %>
+Shirt size: <%= @student_submission.shirt_size %>
+
+Emergency Contact Information
+Parent/Guardian 1 First Name: <%= @student_submission.guardian_one_first_name %>
+Parent/Guardian 1 Last Name: <%= @student_submission.guardian_one_last_name %>
+Parent/Guardian 1 Email: <%= @student_submission.guardian_one_email %>
+Parent/Guardian 1 Phone Number: <%= @student_submission.guardian_one_phone_number %>
+Parent/Guardian 1 Phone Type: <%= @student_submission.guardian_one_phone_type %>
+Parent/Guardian 1 Relationship: <%= @student_submission.guardian_one_relationship %>
+Parent/Guardian 1 Employer: <%= @student_submission.guardian_one_employer || 'n/a' %>
+Parent/Guardian 1 Job Title: <%= @student_submission.guardian_one_job_title || 'n/a' %>
+Parent/Guardian 2 First Name: <%= @student_submission.guardian_two_first_name || 'n/a' %>
+Parent/Guardian 2 Last Name: <%= @student_submission.guardian_two_last_name || 'n/a' %>
+Parent/Guardian 2 Email: <%= @student_submission.guardian_two_email || 'n/a' %>
+Parent/Guardian 2 Phone Number: <%= @student_submission.guardian_two_phone_number || 'n/a' %>
+Parent/Guardian 2 Phone Type: <%= @student_submission.guardian_two_phone_type || 'n/a' %>
+Parent/Guardian 2 Relationship: <%= @student_submission.guardian_two_relationship || 'n/a' %>
+Parent/Guardian 2 Employer: <%= @student_submission.guardian_two_employer || 'n/a' %>
+Parent/Guardian 2 Job Title: <%= @student_submission.guardian_two_job_title || 'n/a' %>
+
+Student Medical Information
+Have you had all immunizations as required by your school?: <%= @student_submission.immunizations %>
+Do you have any allergies to food, medications, insects, etc.?: <%= @student_submission.allergies %>
+Allergies - Please Specify: <%= @student_submission.allergies_other %>
+Have you previously been diagnosed with or currently have any of the following health conditions (check all that apply)?: <%= @student_submission.health_conditions %>
+Please briefly describe all conditions selected: <%= @student_submission.health_conditions_description || 'n/a' %>
+Please list any medication(s) that you currently take and/or will need to take during the seminar weekend: <%= @student_submission.medications %>
+Please select any dietary restrictions that you have: <%= @student_submission.dietary_restrictions %>
+Please list any other dietary restrictions that you have: <%= @student_submission.other_dietary_restrictions || 'n/a' %>
+Please list any limitations on the amount of physical exercise you can engage in: <%= @student_submission.exercise_limitations %>
+Consent to Treat in Case of Emergency: <%= @student_submission.emergency_consent %>
+Parent/Guardian Digital Signature: <%= @student_submission.emergency_consent_name %>
+Consent to Speak to a Licensed Psychologist if in Need: <%= @student_submission.psychologist_consent %>
+Parent/Guardian Digital Signature: <%= @student_submission.psychologist_consent_name %>
+
+Insurance Information
+Does your child have health insurance?: <%= @student_submission.insurance %>
+<% if @student_submission.insurance == EnumConstants::BOOLEANS[0] %>
+  Insurance Provider: <%= @student_submission.insurance_provider %>
+  Insurance Provider Address: <%= @student_submission.insurance_address %>
+  Insurance Provider City: <%= @student_submission.insurance_address_city %>
+  Insurance Provider State: <%= @student_submission.insurance_address_state %>
+  Insurance Provider Zip: <%= @student_submission.insurance_address_zip %>
+  Insurance Provider Phone: <%= @student_submission.insurance_phone_number %>
+  Group # or ID #: <%= @student_submission.insurance_id %>
+  Other relevant information on the card: <%= @student_submission.insurance_other || 'n/a' %>
+<% end %>
+
+Transportation Information
+How will you be getting to and from the conference?: <%= @student_submission.transportation %>
+<% if @student_submission.insurance == EnumConstants::TRANSPORTATION_OPTIONS[2] ||
+      @student_submission.insurance == EnumConstants::TRANSPORTATION_OPTIONS[3] ||
+      @student_submission.insurance == EnumConstants::TRANSPORTATION_OPTIONS[4] %>
+  Name of Station/Airport where you will arrive: <%= @student_submission.transportation_name %>
+  Flight/Train/Bus Carrier: <%= @student_submission.transportation_carrier %>
+  Flight/Train/Bus Number: <%= @student_submission.transportation_number %>
+  Arrival Date: <%= @student_submission.transportation_arrival_date %>
+  Arrival Time: <%= @student_submission.transportation_arrival_time %>
+  Departure Date: <%= @student_submission.transportation_departure_date %>
+  Departure Time: <%= @student_submission.transportation_departure_time %>
+<% end %>
+Are you interested in carpooling?: <%= @student_submission.carpool || 'n/a' %>
+Transportation Waiver Agreement: <%= @student_submission.transportation_consent %>
+Parent/Guardian Digital Signature: <%= @student_submission.transportation_consent_name %>
+
+Family and Friends Program & Closing Ceremonies
+Which of the following end-of-conference programs would you like to attend?: <%= @student_submission.ceremony_attendance %>
+<% if @student_submission.ceremony_attendance == EnumConstants::CEREMONY_OPTIONS[0] ||
+      @student_submission.ceremony_attendance == EnumConstants::CEREMONY_OPTIONS[1] %>
+  Number of family members/friends attending (not including the student): <%= @student_submission.ceremony_attendance_number || 'n/a' %>
+<% end %>
+
+Risk Waiver
+Student Acknowledgement of Risk Agreement: <%= @student_submission.risk_student_consent %>
+Student Digital Signature: <%= @student_submission.risk_student_name %>
+Student Email: <%= @student_submission.risk_student_email %>
+Date: <%= @student_submission.risk_student_date %>
+Parent/Guardian Acknowledgement of Risk Agreement: <%= @student_submission.risk_guardian_consent %>
+Parent/Guardian Digital Signature: <%= @student_submission.risk_guardian_name %>
+Parent/Guardian Relationship: <%= @student_submission.risk_guardian_relationship %>
+Parent/Guardian Email: <%= @student_submission.risk_guardian_email %>
+Date: <%= @student_submission.risk_guardian_date %>
+
+Participation Commitment
+Student Participation Agreement: <%= @student_submission.participation_student_consent %>
+Student Name: <%= @student_submission.participation_student_name %>
+Parent/Guardian Participation Agreement: <%= @student_submission.participation_guardian_consent %>
+Parent/Guardian Name: <%= @student_submission.participation_guardian_name %>
 
 Best,
 The EDGE Recruitment Team
