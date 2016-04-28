@@ -156,7 +156,7 @@ school_form = Form.create(
       description: StringConstants::PHONE_FORMAT,
       key: 'primary_cell_phone',
       page: page,
-      placeholder: 'If student does not have a cell phone, please re-enter their home phone'
+      placeholder: 'If student does not have a cell phone, please re-enter their home phone',
       style: Question.styles[:input],
       title: 'Primary Student Cell Phone',
     )

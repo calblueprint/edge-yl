@@ -115,15 +115,16 @@ ActiveRecord::Schema.define(version: 20160423215812) do
   add_index "groups", ["conference_id"], name: "index_groups_on_conference_id", using: :btree
 
   create_table "leaderships", force: :cascade do |t|
-    t.integer  "style",      default: 0, null: false
+    t.integer  "style",               default: 0, null: false
     t.integer  "group_id"
-    t.integer  "user_id"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.integer  "leadershipable_id"
+    t.string   "leadershipable_type"
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
   end
 
   add_index "leaderships", ["group_id"], name: "index_leaderships_on_group_id", using: :btree
-  add_index "leaderships", ["user_id"], name: "index_leaderships_on_user_id", using: :btree
+  add_index "leaderships", ["leadershipable_type", "leadershipable_id"], name: "index_leaderships_on_leadershipable_type_and_leadershipable_id", using: :btree
 
   create_table "pages", force: :cascade do |t|
     t.text     "description",                 null: false
