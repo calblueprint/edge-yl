@@ -48,6 +48,7 @@
 #  psychologist_consent          :integer          not null
 #  psychologist_consent_name     :string           not null
 #  shirt_size                    :integer          not null
+#  submission_id                 :uuid             not null
 #  conference_id                 :integer          not null
 #  group_id                      :integer
 #  room_id                       :integer
