@@ -161,19 +161,19 @@ ActiveRecord::Schema.define(version: 20160423215812) do
   end
 
   create_table "questions", force: :cascade do |t|
-    t.string   "description",   default: "",   null: false
+    t.string   "description",    default: "",   null: false
     t.string   "enabler_key"
     t.string   "enabler_values"
-    t.integer  "format",                       null: false
-    t.boolean  "is_required",   default: true, null: false
-    t.string   "key",                          null: false
-    t.string   "options",       default: [],   null: false, array: true
-    t.string   "placeholder",   default: "",   null: false
-    t.integer  "style",                        null: false
-    t.string   "title",                        null: false
+    t.integer  "format",                        null: false
+    t.boolean  "is_required",    default: true, null: false
+    t.string   "key",                           null: false
+    t.string   "options",        default: [],   null: false, array: true
+    t.string   "placeholder",    default: "",   null: false
+    t.integer  "style",                         null: false
+    t.string   "title",                         null: false
     t.integer  "page_id"
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
   end
 
   add_index "questions", ["page_id"], name: "index_questions_on_page_id", using: :btree

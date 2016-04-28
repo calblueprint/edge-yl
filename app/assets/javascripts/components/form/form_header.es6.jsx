@@ -25,6 +25,10 @@ class FormHeader extends Component {
           marginTop: '24px',
         },
       ),
+      description: {
+        marginTop: '10px',
+        textAlign: 'center',
+      },
     };
   }
 
@@ -35,8 +39,8 @@ class FormHeader extends Component {
     var page = this.props.page;
     return (
       <div style={this.styles.container}>
-        <h1>{page.title}</h1>
-        <h5>{page.description}</h5>
+        <h2>{page.title}</h2>
+        <p style={this.styles.description}>{page.description}</p>
       </div>
     );
   }
