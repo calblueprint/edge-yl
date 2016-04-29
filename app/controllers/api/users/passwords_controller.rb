@@ -30,7 +30,12 @@ class Api::Users::PasswordsController < Api::BaseController
 
   def update
     unless current_user.valid_password?(update_params[:current_password])
-      error_response(message: 'Incorrect Password!', status: 400)
+      error_response(message: 'Incorrect password!', status: 400)
+      return
+    end
+
+    unless update_params[:password] && update_params[:password_confirmation]
+      error_response(message: 'New password cannot be blank!', status: 400)
       return
     end
 

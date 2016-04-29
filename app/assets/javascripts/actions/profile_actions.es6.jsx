@@ -25,7 +25,7 @@
       if (response.errors) {
         return response;
       } else if (response.message) {
-        return { errors: { current_password: ['Incorrect Password!'] } };
+        return { errors: { current_password: [response.message] } };
       }
       return true;
     }
