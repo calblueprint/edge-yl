@@ -5,7 +5,7 @@
 #  id                            :integer          not null, primary key
 #  address_city                  :string           not null
 #  address_one                   :string           not null
-#  address_state                 :string           not null
+#  address_state                 :integer          not null
 #  address_two                   :string           default(""), not null
 #  address_zip                   :string           not null
 #  allergies                     :integer          not null
@@ -61,7 +61,7 @@ FactoryGirl.define do
   factory :student do
     address_city               { Faker::Address.city }
     address_one                { Faker::Address.street_address }
-    address_state              { Faker::Address.state }
+    address_state              { EnumConstants::STATES.sample }
     address_two                { Faker::Address.street_address }
     address_zip                { Faker::Address.zip }
     allergies                  { EnumConstants::BOOLEANS.sample }

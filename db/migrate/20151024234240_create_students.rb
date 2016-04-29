@@ -4,7 +4,7 @@ class CreateStudents < ActiveRecord::Migration
     create_table :students do |t|
       t.string  :address_city, null: false
       t.string  :address_one, null: false
-      t.string  :address_state, null: false
+      t.integer :address_state, null: false
       t.string  :address_two, default: '', null: false
       t.string  :address_zip, null: false
       t.integer :allergies, null: false
