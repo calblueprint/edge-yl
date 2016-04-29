@@ -33,6 +33,7 @@ class ThreadsPage extends Component {
     ThreadsStore.listen(this._listener);
     ViewStore.listen(this._listener);
     ThreadsActions.fetchThreads(this.props.page);
+    ThreadsActions.updateHistory(this.props.page, this.props.toast);
     ViewActions.attachListener(this.props.toast);
   }
 

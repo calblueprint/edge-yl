@@ -36,6 +36,17 @@
       Requester.get(ApiConstants.threads.index(page), resolve);
       return true;
     }
+
+    updateHistory(page, toast) {
+      if(toast) {
+        window.history.replaceState(
+            {},
+            null,
+            RouteConstants.threads.index(page),
+        );
+      }
+      return true;
+    }
   }
   this.ThreadsActions = alt.createActions(ThreadsActions);
 })();
