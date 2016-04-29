@@ -2,61 +2,63 @@
 #
 # Table name: school_submissions
 #
-#  id                              :uuid             not null, primary key
-#  address_city                    :string
-#  address_one                     :string
-#  address_state                   :integer          default(4)
-#  address_two                     :string           default("")
-#  address_zip                     :string
-#  alternate_address_city          :string
-#  alternate_address_one           :string
-#  alternate_address_state         :integer          default(4)
-#  alternate_address_two           :string           default("")
-#  alternate_address_zip           :string
-#  alternate_birthday              :date
-#  alternate_cell_phone            :string
-#  alternate_email                 :string
-#  alternate_first_name            :string
-#  alternate_gender                :integer
-#  alternate_guardian_first_name   :string
-#  alternate_guardian_email        :string
-#  alternate_guardian_last_name    :string
-#  alternate_guardian_phone_number :string
-#  alternate_guardian_phone_type   :integer
-#  alternate_guardian_relationship :integer
-#  alternate_home_phone            :string
-#  alternate_last_name             :string
-#  alternate_shirt_size            :integer
-#  contact_email                   :string
-#  contact_first_name              :string
-#  contact_last_name               :string
-#  contact_phone_number            :string
-#  contact_title                   :string
-#  current_page                    :integer          default(0), not null
-#  has_alternate_student           :integer
-#  is_active                       :boolean          default(TRUE), not null
-#  name                            :string
-#  primary_address_city            :string
-#  primary_address_one             :string
-#  primary_address_state           :integer          default(4)
-#  primary_address_two             :string           default("")
-#  primary_address_zip             :string
-#  primary_birthday                :date
-#  primary_cell_phone              :string
-#  primary_email                   :string
-#  primary_first_name              :string
-#  primary_gender                  :integer
-#  primary_guardian_first_name     :string
-#  primary_guardian_email          :string
-#  primary_guardian_last_name      :string
-#  primary_guardian_phone_number   :string
-#  primary_guardian_phone_type     :integer
-#  primary_guardian_relationship   :integer
-#  primary_home_phone              :string
-#  primary_last_name               :string
-#  primary_shirt_size              :integer
-#  website                         :string           default("")
-#  conference_id                   :integer          not null
+#  id                                  :uuid             not null, primary key
+#  address_city                        :string
+#  address_one                         :string
+#  address_state                       :integer          default(4)
+#  address_two                         :string           default("")
+#  address_zip                         :string
+#  alternate_address_city              :string
+#  alternate_address_one               :string
+#  alternate_address_state             :integer          default(4)
+#  alternate_address_two               :string           default("")
+#  alternate_address_zip               :string
+#  alternate_birthday                  :date
+#  alternate_cell_phone                :string
+#  alternate_email                     :string
+#  alternate_first_name                :string
+#  alternate_gender                    :integer
+#  alternate_guardian_first_name       :string
+#  alternate_guardian_email            :string
+#  alternate_guardian_last_name        :string
+#  alternate_guardian_phone_number     :string
+#  alternate_guardian_phone_number_ext :string
+#  alternate_guardian_phone_type       :integer
+#  alternate_guardian_relationship     :integer
+#  alternate_home_phone                :string
+#  alternate_last_name                 :string
+#  alternate_shirt_size                :integer
+#  contact_email                       :string
+#  contact_first_name                  :string
+#  contact_last_name                   :string
+#  contact_phone_number                :string
+#  contact_title                       :string
+#  current_page                        :integer          default(0), not null
+#  has_alternate_student               :integer
+#  is_active                           :boolean          default(TRUE), not null
+#  name                                :string
+#  primary_address_city                :string
+#  primary_address_one                 :string
+#  primary_address_state               :integer          default(4)
+#  primary_address_two                 :string           default("")
+#  primary_address_zip                 :string
+#  primary_birthday                    :date
+#  primary_cell_phone                  :string
+#  primary_email                       :string
+#  primary_first_name                  :string
+#  primary_gender                      :integer
+#  primary_guardian_first_name         :string
+#  primary_guardian_email              :string
+#  primary_guardian_last_name          :string
+#  primary_guardian_phone_number       :string
+#  primary_guardian_phone_number_ext   :string
+#  primary_guardian_phone_type         :integer
+#  primary_guardian_relationship       :integer
+#  primary_home_phone                  :string
+#  primary_last_name                   :string
+#  primary_shirt_size                  :integer
+#  website                             :string           default("")
+#  conference_id                       :integer          not null
 #
 
 class SchoolSubmission < ActiveRecord::Base
