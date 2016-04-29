@@ -2,8 +2,11 @@
   <div style="width: 600px; padding: 24px; margin: auto; background-color: #ffffff;">
     <h4>Hi <%= @school_submission.contact_first_name %>,</h4>
 
-    <p>Thank you for your student selection. We can't wait to meet your student at the upcoming conference! Your student was sent a link to confirm the rest of their registration process.</p>
+    <p>Thank you for your student selection. We can't wait to meet your student at the upcoming conference! Your student was sent a unique link to confirm their spot at the conference.</p>
 
+    <p>Conference Information</p>
+    <p>  Date: <%= @conference.start_date.to_formatted_s(:long_ordinal) %> - <%= @conference.end_date.to_formatted_s(:long_ordinal) %></p>
+    <p>  Location: <%= @conference.location %> </p>
     <p>Please review the information below for accuracy. Additionally, please don't forget to review the EDGE information packet here: www.edgeyl.org/reginfo. In terms of next steps, your JCrew (Junior Crew) Leader, who was an EDGE participant last year, will be reaching out to you about a week before EDGE to check in with you and answer any questions you may have. In the meantime, feel free to contact us with any questions (registration@edgeyl.org | 510-408-6606). We can't wait to meet you soon!</p>
 
     <h4>School Information</h4>
@@ -20,7 +23,7 @@
     <p>School Contact Last Name: <%= @school_submission.contact_last_name %></p>
     <p>School Contact Title: <%= @school_submission.contact_title %></p>
     <p>School Contact Email: <%= @school_submission.contact_email %></p>
-    <p>School Contact Phone Number <%= @school_submission.contact_phone_number %></p>
+    <p>School Contact Phone Number: <%= @school_submission.contact_phone_number %></p>
 
     <h4>Primary Student Information</h4>
     <p>Primary Student First Name: <%= @school_submission.primary_first_name %></p>
@@ -34,14 +37,14 @@
     <p>Primary Student Cell Phone: <%= @school_submission.primary_cell_phone %></p>
     <p>Primary Student Email: <%= @school_submission.primary_email %></p>
     <p>Primary Student Birthday: <%= @school_submission.primary_birthday %></p>
-    <p>Primary Student Gender: <%= @school_submission.primary_gender %></p>
+    <p><b>Primary Student Gender: <%= @school_submission.primary_gender %></b></p>
     <p>Primary Student Shirt Size: <%= @school_submission.primary_shirt_size %></p>
     <p>Primary Student Parent/Guardian First Name: <%= @school_submission.primary_guardian_first_name %></p>
     <p>Primary Student Parent/Guardian Last Name: <%= @school_submission.primary_guardian_last_name %></p>
     <p>Primary Student Parent/Guardian Email: <%= @school_submission.primary_guardian_email %></p>
     <p>Primary Student Parent/Guardian Phone Number: <%= @school_submission.primary_guardian_phone_number %></p>
-    <p>Primary Student Parent/Guardian Phone Type: <%= @school_submission.primary_guardian_phone_type %></p>
-    <p>Primary Student Parent/Guardian Relationship: <%= @school_submission.primary_guardian_relationship %></p>
+    <p><b>Primary Student Parent/Guardian Phone Type: <%= @school_submission.primary_guardian_phone_type %></b></p>
+    <p><b>Primary Student Parent/Guardian Relationship: <%= @school_submission.primary_guardian_relationship %></b></p>
 
     <% if @school_submission.has_alternate_student == EnumConstants::BOOLEANS[0] %>
       <h4>Alternate Student Information</h4>
@@ -56,14 +59,14 @@
       <p>Alternate Student Cell Phone: <%= @school_submission.alternate_cell_phone %></p>
       <p>Alternate Student Email: <%= @school_submission.alternate_email %></p>
       <p>Alternate Student Birthday: <%= @school_submission.alternate_birthday %></p>
-      <p>Alternate Student Gender: <%= @school_submission.alternate_gender %></p>
+      <p><b>Alternate Student Gender: <%= @school_submission.alternate_gender %></b></p>
       <p>Alternate Student Shirt Size: <%= @school_submission.alternate_shirt_size %></p>
       <p>Alternate Student Parent/Guardian First Name: <%= @school_submission.alternate_guardian_first_name %></p>
       <p>Alternate Student Parent/Guardian Last Name: <%= @school_submission.alternate_guardian_last_name %></p>
       <p>Alternate Student Parent/Guardian Email: <%= @school_submission.primary_guardian_email %></p>
       <p>Alternate Student Parent/Guardian Phone Number: <%= @school_submission.alternate_guardian_phone_number %></p>
-      <p>Alternate Student Parent/Guardian Phone Type: <%= @school_submission.alternate_guardian_phone_type %></p>
-      <p>Alternate Student Parent/Guardian Relationship: <%= @school_submission.alternate_guardian_relationship %></p>
+      <p><b>Alternate Student Parent/Guardian Phone Type: <%= @school_submission.alternate_guardian_phone_type %></b></p>
+      <p><b>Alternate Student Parent/Guardian Relationship: <%= @school_submission.alternate_guardian_relationship %></b></p>
     <% end %>
 
     <p>Best,</p>

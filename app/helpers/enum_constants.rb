@@ -9,7 +9,7 @@ module EnumConstants
   CARPOOL_OPTIONS = %w(
     Not\ interested
     Interested\ -\ I\ can\ provide\ a\ ride
-    Interested\ -\ I\ can't\ provide\ a\ ride
+    Interested\ -\ I\ need\ a\ ride
   ).freeze
 
   CEREMONY_OPTIONS = %w(
@@ -22,7 +22,7 @@ module EnumConstants
     None
     Dairy\ Free
     Gluten\ Free
-    Nut Allergy
+    Nut\ Allergy
     Vegan
     Vegetarian
   ).freeze
@@ -47,6 +47,7 @@ module EnumConstants
     mother father aunt uncle
     grandmother grandfather
     stepmother stepfather guardian
+    other
   ).freeze
 
   PHONE_TYPES = %w(cell home work).freeze

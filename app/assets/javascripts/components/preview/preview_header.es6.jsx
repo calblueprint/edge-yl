@@ -16,6 +16,12 @@ class PreviewHeader extends Component {
           marginTop: '24px',
         },
       ),
+      warning: Object.assign(
+        {},
+        {
+          color: '#ff4d4d',
+        },
+      ),
     };
   }
 
@@ -26,8 +32,8 @@ class PreviewHeader extends Component {
     return (
       <div style={this.styles.container}>
         <h1>{'Submission Preview'}</h1>
-        <h5>{'IMPORTANT: Your submission is not complete.'}</h5>
-        <h5>{'Please review your responses and click SUBMIT.'}</h5>
+        <h5 style={this.styles.warning}>{'IMPORTANT: Your submission is not complete.'}</h5>
+        <h5 style={this.styles.warning}>{'Please review your responses and click SUBMIT.'}</h5>
       </div>
     );
   }

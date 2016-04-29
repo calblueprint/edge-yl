@@ -89,6 +89,8 @@
 
 class StudentSubmission < ActiveRecord::Base
 
+  before_create :set_defaults
+
   validates :current_page, presence: true
   validates :is_active, inclusion: { in: [false, true] }
   validates :is_primary, inclusion: { in: [false, true] }
@@ -606,6 +608,12 @@ class StudentSubmission < ActiveRecord::Base
       participation_student_consent: participation_student_consent,
       participation_student_name: participation_student_name,
     }
+  end
+
+  def set_defaults
+  conference = Conference.find conference_id
+    self[:transportation_arrival_date] = conference.start_date
+    self[:transportation_departure_date] = conference.end_date
   end
 
 end

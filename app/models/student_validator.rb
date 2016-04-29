@@ -121,13 +121,13 @@ class StudentValidator
   validates :allergies_other, if: :allergies?, presence: true
   validates :dietary_restrictions, if: :page_three?, presence: true
   validates :emergency_consent, if: :page_three?, presence: true
-  validates :emergency_consent_name, if: :emergency_consent?, presence: true
+  validates :emergency_consent_name, if: :page_three?, presence: true
   validates :exercise_limitations, if: :page_three?, presence: true
   validates :health_conditions, if: :page_three?, presence: true
   validates :immunizations, if: :page_three?, presence: true
   validates :medications, if: :page_three?, presence: true
   validates :psychologist_consent, if: :page_three?, presence: true
-  validates :psychologist_consent_name, if: :psychologist_consent?, presence: true
+  validates :psychologist_consent_name, if: :page_three?, presence: true
 
   validates :insurance, if: :page_four?, presence: true
   validates :insurance_address, if: :has_insurance?, presence: true
@@ -138,6 +138,7 @@ class StudentValidator
   validates :insurance_phone_number, if: :has_insurance?, presence: true
   validates :insurance_provider, if: :has_insurance?, presence: true
 
+  validates :carpool, if: :page_five?, presence: true
   validates :transportation, if: :page_five?, presence: true
   validates :transportation_arrival_date, if: :public_transportation?, presence: true
   validates :transportation_arrival_time, if: :public_transportation?, presence: true
