@@ -3,18 +3,18 @@ class SuccessPage extends Component {
   // --------------------------------------------------
   // Props
   // --------------------------------------------------
-	static get propTypes() {
-		return {
+  static get propTypes() {
+    return {
       id: React.PropTypes.string.isRequired,
-			target: React.PropTypes.string.isRequired,
-		};
-	}
+      target: React.PropTypes.string.isRequired,
+    };
+  }
 
   // --------------------------------------------------
   // Styles
   // --------------------------------------------------
   get styles() {
-  	return {
+    return {
       container: Object.assign(
         {},
         StyleConstants.containers.card,
@@ -87,12 +87,12 @@ class SuccessPage extends Component {
   }
   
   render() {
-  	return (
+    return (
       <div style={StyleConstants.wrappers.center}>
-    		<div style={StyleConstants.pages.center}>
+        <div style={StyleConstants.pages.center}>
           {this.renderText()}
-    		</div>
+        </div>
       </div>
-  	);
+    );
   }
 }
