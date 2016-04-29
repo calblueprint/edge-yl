@@ -229,6 +229,13 @@ school_form = Form.create(
       title: 'Primary Student Parent/Guardian Phone Number',
     )
     Question.create(
+      is_required: false,
+      key: 'primary_guardian_phone_number_ext',
+      page: page,
+      style: Question.styles[:input],
+      title: 'Phone Extension',
+    )
+    Question.create(
       key: 'primary_guardian_phone_type',
       options: EnumConstants::PHONE_TYPES,
       page: page,
@@ -407,6 +414,13 @@ school_form = Form.create(
       page: page,
       style: Question.styles[:input],
       title: 'Alternate Student Parent/Guardian Phone Number',
+    )
+    Question.create(
+      is_required: false,
+      key: 'alternate_guardian_phone_number_ext',
+      page: page,
+      style: Question.styles[:input],
+      title: 'Phone Extension',
     )
     Question.create(
       enabler_key: 'has_alternate_student',

@@ -21,6 +21,7 @@ class CreateSchoolSubmissions < ActiveRecord::Migration
       t.string  :alternate_guardian_email
       t.string  :alternate_guardian_last_name
       t.string  :alternate_guardian_phone_number
+      t.string  :alternate_guardian_phone_number_ext
       t.integer :alternate_guardian_phone_type
       t.integer :alternate_guardian_relationship
       t.string  :alternate_home_phone
@@ -49,6 +50,7 @@ class CreateSchoolSubmissions < ActiveRecord::Migration
       t.string  :primary_guardian_email
       t.string  :primary_guardian_last_name
       t.string  :primary_guardian_phone_number
+      t.string  :primary_guardian_phone_number_ext
       t.integer :primary_guardian_phone_type
       t.integer :primary_guardian_relationship
       t.string  :primary_home_phone
