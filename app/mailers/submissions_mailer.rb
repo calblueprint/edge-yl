@@ -33,4 +33,11 @@ class SubmissionsMailer < ApplicationMailer
          to: @student_submission.email
   end
 
+  def submit_parent(student_submission)
+    @student_submission = student_submission
+    name = student_submission.full_name
+    mail subject: "EDGE Student Registration Confirmation | #{name}",
+         template_path: 'mails',
+         to: @student_submission.guardian_one_email
+  end
 end

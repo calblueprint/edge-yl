@@ -53,19 +53,6 @@ Parent/Guardian Digital Signature: <%= @student_submission.emergency_consent_nam
 Consent to Speak to a Licensed Psychologist if in Need: <%= @student_submission.psychologist_consent %>
 Parent/Guardian Digital Signature: <%= @student_submission.psychologist_consent_name %>
 
-Insurance Information
-Does your child have health insurance?: <%= @student_submission.insurance %>
-<% if @student_submission.insurance == EnumConstants::BOOLEANS[0] %>
-  Insurance Provider: <%= @student_submission.insurance_provider %>
-  Insurance Provider Address: <%= @student_submission.insurance_address %>
-  Insurance Provider City: <%= @student_submission.insurance_address_city %>
-  Insurance Provider State: <%= @student_submission.insurance_address_state %>
-  Insurance Provider Zip: <%= @student_submission.insurance_address_zip %>
-  Insurance Provider Phone: <%= @student_submission.insurance_phone_number %>
-  Group # or ID #: <%= @student_submission.insurance_id %>
-  Other relevant information on the card: <%= @student_submission.insurance_other || 'n/a' %>
-<% end %>
-
 Transportation Information
 How will you be getting to and from the conference?: <%= @student_submission.transportation %>
 <% if @student_submission.insurance == EnumConstants::TRANSPORTATION_OPTIONS[2] ||

@@ -55,19 +55,6 @@
     <p>Consent to Speak to a Licensed Psychologist if in Need: <%= @student_submission.psychologist_consent %></p>
     <p>Parent/Guardian Digital Signature: <%= @student_submission.psychologist_consent_name %></p>
 
-    <h4>Insurance Information</h4>
-    <p>Does your child have health insurance?: <%= @student_submission.insurance %></p>
-    <% if @student_submission.insurance == EnumConstants::BOOLEANS[0] %>
-      <p>Insurance Provider: <%= @student_submission.insurance_provider %></p>
-      <p>Insurance Provider Address: <%= @student_submission.insurance_address %></p>
-      <p>Insurance Provider City: <%= @student_submission.insurance_address_city %></p>
-      <p>Insurance Provider State: <%= @student_submission.insurance_address_state %></p>
-      <p>Insurance Provider Zip: <%= @student_submission.insurance_address_zip %></p>
-      <p>Insurance Provider Phone: <%= @student_submission.insurance_phone_number %></p>
-      <p>Group # or ID #: <%= @student_submission.insurance_id %></p>
-      <p>Other relevant information on the card: <%= @student_submission.insurance_other || 'n/a' %></p>
-    <% end %>
-
     <h4>Transportation Information</h4>
     <p>How will you be getting to and from the conference?: <%= @student_submission.transportation %></p>
     <% if @student_submission.insurance == EnumConstants::TRANSPORTATION_OPTIONS[2] ||
