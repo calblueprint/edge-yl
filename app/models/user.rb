@@ -49,9 +49,9 @@ class User < ActiveRecord::Base
 
   def create_volunteer
     Volunteer.create(
-      email: self.email,
-      first_name: self.first_name,
-      last_name: self.last_name,
+      email: email,
+      first_name: first_name,
+      last_name: last_name,
     )
   end
 

@@ -57,7 +57,10 @@ school_form = Form.create(
   end
   Page.create(
     form: form,
-    description: 'Please provide the following information about the School Contact with whom EDGE should communicate.',
+    description: %s(
+      Please provide the following information about the School Contact with
+      whom EDGE should communicate.
+    ),
     number: 2,
     title: 'Step 2 - School Contact Information',
   ) do |page|
@@ -96,7 +99,9 @@ school_form = Form.create(
   end
   Page.create(
     form: form,
-    description: 'Please provide the following information about the student you have chosen to attend EDGE.',
+    description: %s(
+      Please provide the following information about the student you have chosen to attend EDGE.
+    ),
     number: 3,
     title: 'Step 3 - Primary Student Information',
   ) do |page|
@@ -156,7 +161,9 @@ school_form = Form.create(
       description: StringConstants::PHONE_FORMAT,
       key: 'primary_cell_phone',
       page: page,
-      placeholder: 'If student does not have a cell phone, please re-enter their home phone',
+      placeholder: %s(
+        If student does not have a cell phone, please re-enter their home phone
+      ),
       style: Question.styles[:input],
       title: 'Primary Student Cell Phone',
     )

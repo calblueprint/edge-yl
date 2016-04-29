@@ -65,8 +65,12 @@ class Student < ActiveRecord::Base
 
   scope :conference_id, -> (conference_id) { where(conference_id: conference_id) }
   scope :gender, -> (gender) { where(gender: genders(gender.downcase)) }
-  scope :has_group, -> (has_group) { where(has_group == 'True' ? 'group_id IS NOT NULL' : 'group_id IS NULL') }
-  scope :has_room, -> (has_room) { where(has_room == 'True' ? 'room_id IS NOT NULL' : 'room_id IS NULL') }
+  scope :has_group, lambda { |has_group|
+    where(has_group == 'True' ? 'group_id IS NOT NULL' : 'group_id IS NULL')
+  }
+  scope :has_room, lambda { |has_room|
+    where(has_room == 'True' ? 'room_id IS NOT NULL' : 'room_id IS NULL')
+  }
   scope :is_checked_in, -> (is_checked_in) { where(is_checked_in: is_checked_in) }
   scope :is_flagged, -> (is_flagged) { where(is_flagged: is_flagged) }
   scope :is_primary, -> (is_primary) { where(is_primary: is_primary) }

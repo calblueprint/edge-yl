@@ -611,7 +611,7 @@ class StudentSubmission < ActiveRecord::Base
   end
 
   def set_defaults
-  conference = Conference.find conference_id
+    conference = Conference.find conference_id
     self[:transportation_arrival_date] = conference.start_date
     self[:transportation_departure_date] = conference.end_date
   end
