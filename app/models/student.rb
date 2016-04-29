@@ -5,7 +5,7 @@
 #  id                            :integer          not null, primary key
 #  address_city                  :string           not null
 #  address_one                   :string           not null
-#  address_state                 :string           not null
+#  address_state                 :integer          not null
 #  address_two                   :string           default(""), not null
 #  address_zip                   :string           not null
 #  allergies                     :integer          not null
@@ -71,6 +71,16 @@ class Student < ActiveRecord::Base
   scope :is_flagged, -> (is_flagged) { where(is_flagged: is_flagged) }
   scope :is_primary, -> (is_primary) { where(is_primary: is_primary) }
   scope :sort, -> (sort) { order(sort) }
+
+  def address_state
+    unless self[:address_state].nil?
+      EnumConstants::STATES[self[:address_state]]
+    end
+  end
+
+  def address_state=(value)
+    self[:address_state] = EnumConstants::STATES.index(value)
+  end
 
   def allergies
     unless self[:allergies].nil?
