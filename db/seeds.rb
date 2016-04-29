@@ -1,8 +1,8 @@
 if Rails.env.development? || Rails.env.staging?
   seeds = %w(
     users
-    volunteers
     conferences
+    volunteers
     schools
     contacts
     students

@@ -19,6 +19,7 @@ class Conference < ActiveRecord::Base
   has_many :responsibilities, dependent: :destroy
   has_many :rooms, dependent: :destroy
   has_many :students
+  has_many :volunteers
 
   validates :end_date, presence: true
   validates :location, presence: true

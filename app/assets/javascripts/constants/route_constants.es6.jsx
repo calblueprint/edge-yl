@@ -105,7 +105,7 @@
 
     get volunteers() {
       return {
-        index: (page=1) => `/volunteers?page=${page}`,
+        index: (conferenceId, page=1) => `/volunteers?conference_id=${conferenceId}&page=${page}`,
         show: (id) => `/volunteers/${id}`,
       };
     }

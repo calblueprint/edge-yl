@@ -13,6 +13,8 @@ class VolunteersPage extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
+      conference: React.PropTypes.object.isRequired,
+      conferences: React.PropTypes.array.isRequired,
       page: React.PropTypes.number.isRequired,
       profile: React.PropTypes.object.isRequired,
     };
@@ -31,7 +33,11 @@ class VolunteersPage extends Component {
     ProfileStore.listen(this._listener);
     VolunteersStore.listen(this._listener);
     ViewStore.listen(this._listener);
-    VolunteersActions.fetchVolunteers(this.props.page);
+    VolunteersActions.attachListener();
+    VolunteersActions.fetchVolunteers(
+      this.props.conference,
+      this.props.page
+    );
     ViewActions.attachListener();
   }
 
@@ -45,7 +51,7 @@ class VolunteersPage extends Component {
   // Helpers
   // --------------------------------------------------
   changePage(page) {
-    window.location = RouteConstants.conferences.index(page);
+    window.location = RouteConstants.volunteers.index(page);
   }
 
   generateOptions() {
@@ -68,7 +74,11 @@ class VolunteersPage extends Component {
   // --------------------------------------------------
   renderOverlay() {
     if (this.state.overlay) {
-      return <VolunteersPageOverlay template={this.state.template} />;
+      return (
+        <VolunteersPageOverlay
+          conference={this.state.conference}
+          template={this.state.template} />
+      );
     }
   }
 
@@ -89,6 +99,9 @@ class VolunteersPage extends Component {
             <PageNavigator
               action={(page) => this.changePage(page)}
               pagination={this.state.pagination} />
+            <VolunteersSidebar
+              conference={this.state.conference}
+              conferences={this.props.conferences} />
           </div>
         </div>
       </div>

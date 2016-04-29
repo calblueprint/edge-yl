@@ -40,8 +40,6 @@ class User < ActiveRecord::Base
   has_many :responsibilities
   has_many :visits, dependent: :destroy
 
-  has_one :leadership, as: :leadershipable
-
   validates :email, presence: true
   validates :first_name, presence: true
   validates :last_name, presence: true

@@ -1,5 +1,5 @@
 class LeadershipGroupSerializer < LeadershipBaseSerializer
 
-  has_one :leadershipable, serializer: LeadershipableSerializer
+  has_one :volunteer, serializer: VolunteerBaseSerializer
 
 end

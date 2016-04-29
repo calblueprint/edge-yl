@@ -1,1 +1,9 @@
-<%= react_component('VolunteersPage', { page: @page, profile: @profile }) %>
+<%= react_component(
+  'VolunteersPage',
+  {
+    conference: @conference,
+    conferences: @conferences,
+    page: @page,
+    profile: @profile,
+  }
+) %>

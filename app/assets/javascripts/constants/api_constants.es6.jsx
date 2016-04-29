@@ -229,7 +229,7 @@
       return {
         create: '/api/volunteers',
         groupables: '/api/volunteers/groupables',
-        index: (page) => `/api/volunteers?=${page}`,
+        index: (conferenceId, page) => `/api/volunteers?conference_id=${conferenceId}&page=${page}`,
         show: (id) => `/api/volunteers/${id}`,
         update: (id) => `/api/volunteers/${id}`,
       };

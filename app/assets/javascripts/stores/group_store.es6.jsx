@@ -10,8 +10,7 @@
         leaderships: [],
         students: [],
       };
-      this.groupablesUser = [];
-      this.groupablesVolunteer = [];
+      this.groupables = [];
       this.overlay = false;
       this.pairing = null;
       this.results = [];
@@ -26,14 +25,13 @@
         handleCloseOverlay: GroupActions.CLOSE_OVERLAY,
         handleStoreError: GroupActions.STORE_ERROR,
         handleStoreGroup: GroupActions.STORE_GROUP,
+        handleStoreGroupables: GroupActions.STORE_GROUPABLES,
         handleStoreLeadership: GroupActions.STORE_LEADERSHIP,
         handleStorePairing: GroupActions.STORE_PAIRING,
         handleStoreSearch: GroupActions.STORE_SEARCH,
         handleStoreStudentSearch: GroupActions.STORE_STUDENT_SEARCH,
         handleStoreResults: GroupActions.STORE_RESULTS,
-        handleStoreUserGroupables: GroupActions.STORE_USER_GROUPABLES,
         handleStoreValue: GroupActions.STORE_VALUE,
-        handleStoreVolunteerGroupables: GroupActions.STORE_VOLUNTEER_GROUPABLES,
         handleDeleteStudent: GroupActions.DELETE_STUDENT,
       });
     }
@@ -73,10 +71,14 @@
       this.overlay = false;
     }
 
+    handleStoreGroupables(response) {
+      this.groupables = response.volunteers;
+    }
+
     handleStoreLeadership(response) {
       this.group.leaderships.map((leadership) => {
         if (leadership.id === response.leadership.id) {
-          leadership.leadershipable = response.leadership.leadershipable;
+          leadership.volunteer = response.leadership.volunteer;
         }
       });
       this.overlay = false;
@@ -120,16 +122,8 @@
       this.template = template;
     }
 
-    handleStoreUserGroupables(response) {
-      this.groupablesUser = response.users;
-    }
-
     handleStoreValue(value) {
       this.pairing.value = value;
-    }
-
-    handleStoreVolunteerGroupables(response) {
-      this.groupablesVolunteer = response.volunteers;
     }
   }
   this.GroupStore = alt.createStore(GroupStore);

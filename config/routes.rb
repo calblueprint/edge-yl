@@ -82,7 +82,6 @@ Rails.application.routes.draw do
     resources :student_submissions, only: [:create, :show, :update]
     resources :threads, only: [:create, :destroy, :index, :show]
     resources :users, only: [:index, :show, :update] do
-      get '/groupables', on: :collection, to: 'users#groupables'
       get '/schoolables', on: :collection, to: 'users#schoolables'
     end
     resources :volunteers, only: [:create, :index, :show, :update] do

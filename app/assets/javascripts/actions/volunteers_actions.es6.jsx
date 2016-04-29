@@ -7,6 +7,8 @@
     constructor() {
       this.generateActions(
         'closeOverlay',
+        'restoreVolunteers',
+        'storeConference',
         'storeError',
         'storeVolunteer',
         'storeVolunteers',
@@ -14,13 +16,21 @@
     }
 
     // --------------------------------------------------
+    // Listeners
+    // --------------------------------------------------
+    attachListener() {
+      window.onpopstate = (event) => this.restoreVolunteers(event.state);
+      return true;
+    }
+
+    // --------------------------------------------------
     // Requests
     // --------------------------------------------------
-    createVolunteer(template) {
+    createVolunteer(template, conference_id) {
+      template.attributes['conference_id'] = conference_id;
       var params = { volunteer: template.attributes };
       var resolve = (response) => {
         this.storeVolunteer(response);
-        console.log("Hi")
         ViewActions.storeToast(true, 'Volunteer created!');
       };
       var reject = (response) => this.storeError(response);
@@ -33,9 +43,15 @@
       return true;
     }
 
-    fetchVolunteers(page) {
-      var resolve = (response) => this.storeVolunteers(response);
-      Requester.get(ApiConstants.volunteers.index(page), resolve);
+    fetchVolunteers(conference, page) {
+      var resolve = (response) => {
+        this.storeConference(conference);
+        this.storeVolunteers(response);
+      };
+      Requester.get(
+        ApiConstants.volunteers.index(conference.id, page),
+        resolve,
+      );
       return true;
     }
 

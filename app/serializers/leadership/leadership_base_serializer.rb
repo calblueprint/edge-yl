@@ -1,9 +1,8 @@
 class LeadershipBaseSerializer < BaseSerializer
 
   attributes :id,
-             :leadershipable_id,
-             :leadershipable_type,
-             :style
+             :style,
+             :volunteer_id
 
   has_one :group, serializer: GroupBaseSerializer
 

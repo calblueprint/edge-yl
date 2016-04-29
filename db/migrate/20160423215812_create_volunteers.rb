@@ -6,6 +6,8 @@ class CreateVolunteers < ActiveRecord::Migration
       t.string   :first_name, null: false
       t.string   :last_name, null: false
 
+      t.references :conference, index: true, null: false
+
       t.timestamps null: false
     end
   end

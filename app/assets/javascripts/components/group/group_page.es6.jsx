@@ -71,8 +71,7 @@ class GroupPage extends Component {
       return (
         <GroupPageOverlay
           group={this.state.group}
-          groupablesUser={this.state.groupablesUser}
-          groupablesVolunteer={this.state.groupablesVolunteer}
+          groupables={this.state.groupables}
           pairing={this.state.pairing}
           results={this.state.results}
           savedSearch={this.state.savedSearch}

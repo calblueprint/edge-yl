@@ -51,22 +51,16 @@ class GroupsCard extends Component {
   }
 
   renderLeadership(leadership) {
-    var leadershipable = leadership.leadershipable;
-    if (leadershipable) {
-      var route;
-      if (leadership.leadershipable_type == 'User') {
-        route = RouteConstants.users.show(leadershipable.id);
-      } else {
-        route = RouteConstants.volunteers.show(leadershipable.id);
-      }
+    var volunteer = leadership.volunteer;
+    if (volunteer) {
       return (
         <CardAttribute
           clickable={true}
           key={leadership.id}
           label={leadership.style}
-          route={route}
+          route={RouteConstants.volunteers.show(volunteer.id)}
           type={'h6'}
-          value={leadershipable.full_name} />
+          value={volunteer.full_name} />
       );
     } else {
       return (

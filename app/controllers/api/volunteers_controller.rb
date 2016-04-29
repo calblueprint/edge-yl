@@ -1,11 +1,13 @@
 class Api::VolunteersController < Api::BaseController
 
+  has_scope :conference_id, only: [:index]
+
   def create
     volunteer = Volunteer.new volunteer_params
     if volunteer.save
       render json: volunteer,
-      serializer: VolunteerIndexSerializer,
-      status: :created
+             serializer: VolunteerIndexSerializer,
+             status: :created
     else
       unprocessable_response volunteer
     end
@@ -17,7 +19,7 @@ class Api::VolunteersController < Api::BaseController
   end
 
   def index
-    volunteers = Volunteer.page params[:page]
+    volunteers = apply_scopes(Volunteer).all.page params[:page]
     render json: volunteers,
            serializer: PaginatedSerializer,
            each_serializer: VolunteerIndexSerializer
@@ -44,6 +46,7 @@ class Api::VolunteersController < Api::BaseController
 
   def volunteer_params
     params.require(:volunteer).permit(
+      :conference_id,
       :email,
       :first_name,
       :last_name,

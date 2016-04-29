@@ -5,6 +5,7 @@ class VolunteerCreateModal extends CreateModal {
   // --------------------------------------------------
   static get propTypes() {
     return {
+      conference: React.PropTypes.object.isRequired,
       template: React.PropTypes.object.isRequired,
     };
   }
@@ -22,7 +23,8 @@ class VolunteerCreateModal extends CreateModal {
   // Helpers
   // --------------------------------------------------
   createVolunteer() {
-    VolunteersActions.createVolunteer(this.props.template);
+    var template = this.props.template;
+    VolunteersActions.createVolunteer(this.props.template, this.props.conference.id);
   }
 
   generateHandler(field) {

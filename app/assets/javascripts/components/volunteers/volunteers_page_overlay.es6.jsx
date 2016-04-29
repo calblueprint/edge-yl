@@ -5,6 +5,7 @@ class VolunteersPageOverlay extends PageOverlay {
   // --------------------------------------------------
   static get propTypes() {
     return {
+      conference: React.PropTypes.object.isRequired,
       template: React.PropTypes.object.isRequired,
     };
   }
@@ -20,6 +21,10 @@ class VolunteersPageOverlay extends PageOverlay {
   // Render
   // --------------------------------------------------
   renderModal() {
-    return <VolunteerCreateModal template={this.props.template} />;
+    return (
+      <VolunteerCreateModal
+        conference={this.props.conference}
+        template={this.props.template} />
+    );
   }
 }

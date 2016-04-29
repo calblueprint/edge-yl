@@ -64,7 +64,7 @@ class Api::GroupsController < Api::BaseController
 
   def show_json
     group = Group.includes(:conference,
-                           leaderships: :leadershipable,
+                           leaderships: :volunteer,
                            students: :school)
                  .find params[:id]
     current_user.create_visit('Group', params[:id].to_i)
@@ -76,8 +76,7 @@ class Api::GroupsController < Api::BaseController
       :conference_id,
       leaderships_attributes: [
         :style,
-        :leadershipable_id,
-        :leadershipable_type,
+        :volunteer_id,
       ],
     )
   end
