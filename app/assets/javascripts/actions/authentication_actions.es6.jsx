@@ -30,7 +30,9 @@
 
     createUser(template) {
       var params = { registration: template.attributes };
-      var resolve = (response) => this.storeUser(response);
+      var resolve = (response) => {
+        window.location = RouteConstants.pages.loginToast.confirmation;
+      }
       var reject = (response) => this.storeError(response);
       Requester.post(
         ApiConstants.users.create,
@@ -50,7 +52,7 @@
     resetPassword(template) {
       var params = template.attributes;
       var resolve = (response) => {
-        window.location = RouteConstants.pages.login;
+        window.location = RouteConstants.pages.loginToast.reset;
       }
       var reject = (response) => this.storeError(response);
       Requester.post(
@@ -65,7 +67,7 @@
     sendResetEmail(template) {
       var params = template.attributes;
       var resolve = (response) => {
-        window.location = RouteConstants.pages.login;
+        window.location = RouteConstants.pages.loginToast.emailSent;
       };
       var reject = (response) => this.storeError(response);
       Requester.post(

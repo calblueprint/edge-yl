@@ -13,10 +13,17 @@ class AuthenticationPage extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
+      toast: React.PropTypes.string,
       type: React.PropTypes.oneOf([
         TypeConstants.pages.login,
         TypeConstants.pages.signup,
       ]).isRequired,
+    };
+  }
+
+  static get defaultProps() {
+    return {
+      toast: '',
     };
   }
 
@@ -56,15 +63,34 @@ class AuthenticationPage extends Component {
   // --------------------------------------------------
   componentWillMount() {
     this.setState(AuthenticationStore.getState());
+    this.setState(ViewStore.getState());
   }
 
   componentDidMount() {
     AuthenticationStore.listen(this._listener);
+    ViewStore.listen(this._listener);
+    ViewActions.attachListener(this.props.toast);
+    this.updateHistory();
   }
 
   componentWillUnmount() {
     AuthenticationStore.unlisten(this._listener);
+    ViewStore.unlisten(this._listener);
   }
+
+  // --------------------------------------------------
+  // Helpers
+  // --------------------------------------------------
+  updateHistory() {
+    if (this.props.type === TypeConstants.pages.login) {
+       window.history.replaceState(
+        {},
+        null,
+        RouteConstants.pages.login,
+      );
+    }
+  }
+
 
   // --------------------------------------------------
   // Render
@@ -108,6 +134,7 @@ class AuthenticationPage extends Component {
     return (
       <div style={StyleConstants.wrappers.center}>
         <div style={this.styles.container}>
+          <Toast toast={this.state.toast} />
           <AuthenticationCard
             template={this.state.template}
             type={this.props.type} />

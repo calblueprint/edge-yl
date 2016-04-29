@@ -38,6 +38,12 @@
         forgotPassword: '/forgot_password',
         import: '/import',
         login: '/login',
+        loginToast:
+        {
+          confirmation: '/login?confirmation=true',
+          emailSent: '/login?email_sent=true',
+          reset: '/login?reset_success=true',
+        },
         resetPassword: '/reset',
         signup: '/signup',
         profile: '/profile',

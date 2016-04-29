@@ -5,7 +5,6 @@ class Api::Users::RegistrationsController < Devise::RegistrationsController
   def create
     user = User.new registration_params
     if user.save
-      sign_in user
       render json: user,
              serializer: UserBaseSerializer,
              status: :created
