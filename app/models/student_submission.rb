@@ -73,6 +73,7 @@
 #  risk_student_date              :date
 #  risk_student_email             :string
 #  risk_student_name              :string
+#  school_id                      :integer
 #  shirt_size                     :integer
 #  transportation                 :integer
 #  transportation_arrival_date    :date
@@ -439,6 +440,7 @@ class StudentSubmission < ActiveRecord::Base
       psychologist_consent: psychologist_consent,
       psychologist_consent_name: psychologist_consent_name,
       shirt_size: shirt_size,
+      school_id: school_id,
       submission_id: id,
     )
     student
