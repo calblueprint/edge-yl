@@ -206,13 +206,13 @@ ActiveRecord::Schema.define(version: 20160423215812) do
   create_table "school_submissions", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.string  "address_city"
     t.string  "address_one"
-    t.integer "address_state",                   default: 4
-    t.string  "address_two",                     default: ""
+    t.integer "address_state",                       default: 4
+    t.string  "address_two",                         default: ""
     t.string  "address_zip"
     t.string  "alternate_address_city"
     t.string  "alternate_address_one"
-    t.integer "alternate_address_state",         default: 4
-    t.string  "alternate_address_two",           default: ""
+    t.integer "alternate_address_state",             default: 4
+    t.string  "alternate_address_two",               default: ""
     t.string  "alternate_address_zip"
     t.date    "alternate_birthday"
     t.string  "alternate_cell_phone"
@@ -223,6 +223,7 @@ ActiveRecord::Schema.define(version: 20160423215812) do
     t.string  "alternate_guardian_email"
     t.string  "alternate_guardian_last_name"
     t.string  "alternate_guardian_phone_number"
+    t.string  "alternate_guardian_phone_number_ext"
     t.integer "alternate_guardian_phone_type"
     t.integer "alternate_guardian_relationship"
     t.string  "alternate_home_phone"
@@ -233,14 +234,14 @@ ActiveRecord::Schema.define(version: 20160423215812) do
     t.string  "contact_last_name"
     t.string  "contact_phone_number"
     t.string  "contact_title"
-    t.integer "current_page",                    default: 0,    null: false
+    t.integer "current_page",                        default: 0,    null: false
     t.integer "has_alternate_student"
-    t.boolean "is_active",                       default: true, null: false
+    t.boolean "is_active",                           default: true, null: false
     t.string  "name"
     t.string  "primary_address_city"
     t.string  "primary_address_one"
-    t.integer "primary_address_state",           default: 4
-    t.string  "primary_address_two",             default: ""
+    t.integer "primary_address_state",               default: 4
+    t.string  "primary_address_two",                 default: ""
     t.string  "primary_address_zip"
     t.date    "primary_birthday"
     t.string  "primary_cell_phone"
@@ -251,13 +252,14 @@ ActiveRecord::Schema.define(version: 20160423215812) do
     t.string  "primary_guardian_email"
     t.string  "primary_guardian_last_name"
     t.string  "primary_guardian_phone_number"
+    t.string  "primary_guardian_phone_number_ext"
     t.integer "primary_guardian_phone_type"
     t.integer "primary_guardian_relationship"
     t.string  "primary_home_phone"
     t.string  "primary_last_name"
     t.integer "primary_shirt_size"
-    t.string  "website",                         default: ""
-    t.integer "conference_id",                                  null: false
+    t.string  "website",                             default: ""
+    t.integer "conference_id",                                      null: false
   end
 
   add_index "school_submissions", ["conference_id"], name: "index_school_submissions_on_conference_id", using: :btree
