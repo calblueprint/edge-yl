@@ -102,9 +102,8 @@ class Conference < ActiveRecord::Base
 
   # Generates groups_count number of empty groups for a conference.
   def generate_groups(groups_count)
-    letters = ('A'..'Z').take(groups_count)
-    letters.each do |letter|
-      Group.create(conference: self, letter: letter)
+    (1..groups_count).each do |letter|
+      Group.create(conference_id: id)
     end
   end
 
