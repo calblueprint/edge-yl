@@ -474,6 +474,7 @@ class StudentSubmission < ActiveRecord::Base
     end
     begin
       SubmissionsMailer.submit_student(self).deliver_now
+      SubmissionsMailer.submit_parent(self).deliver_now
     rescue
       raise 'Could not deliver appropriate emails'
     end

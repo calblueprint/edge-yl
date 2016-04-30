@@ -1,8 +1,9 @@
 <div style="width: 100%; background-color: #ebeef2;">
   <div style="width: 600px; padding: 24px; margin: auto; background-color: #ffffff;">
-    <h4>Hi <%= @student_submission.first_name %>,</h4>
+    <h4>Hi <%= @student_submission.guardian_one_first_name %>,</h4>
 
-    <p>Thank you for completing your registration.</p>
+    <p>Your student has succesfully completed their registration 
+    with this year's EDGE Youth Leadership conference!</p>
 
     <p>Please review the information below for accuracy. Please email any corrections or questions to registration@edgeyl.org.</p>
 
@@ -54,7 +55,7 @@
     <p>Parent/Guardian Digital Signature: <%= @student_submission.emergency_consent_name %></p>
     <p>Consent to Speak to a Licensed Psychologist if in Need: <%= @student_submission.psychologist_consent %></p>
     <p>Parent/Guardian Digital Signature: <%= @student_submission.psychologist_consent_name %></p>
-
+    
     <h4>Transportation Information</h4>
     <p>How will you be getting to and from the conference?: <%= @student_submission.transportation %></p>
     <% if @student_submission.insurance == EnumConstants::TRANSPORTATION_OPTIONS[2] ||
