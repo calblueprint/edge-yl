@@ -285,6 +285,7 @@ class SchoolSubmission < ActiveRecord::Base
       home_phone: primary_home_phone,
       is_primary: true,
       last_name: primary_last_name,
+      school_id: school.id,
       shirt_size: primary_shirt_size,
     )
     unless primary_submission.save
@@ -312,6 +313,7 @@ class SchoolSubmission < ActiveRecord::Base
         home_phone: alternate_home_phone,
         is_primary: false,
         last_name: alternate_last_name,
+        school_id: school.id,
         shirt_size: alternate_shirt_size,
       )
       unless alternate_submission.save
