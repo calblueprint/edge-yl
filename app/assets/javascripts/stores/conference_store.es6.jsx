@@ -61,7 +61,7 @@
     }
 
     handleStoreGroupables(response) {
-      this.groupables = response.users;
+      this.groupables = response.volunteers;
     }
 
     handleStoreRoom(response) {

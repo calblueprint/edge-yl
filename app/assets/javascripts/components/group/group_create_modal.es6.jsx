@@ -57,9 +57,9 @@ class GroupCreateModal extends CreateModal {
     }
     // don't display an already selected leader as a choice for a different leadership position
     if ((attributes.primary_leader &&
-         groupable.id === attributes.primary_leader.user_id) ||
+         groupable.id === attributes.primary_leader.volunteer_id) ||
         (attributes.secondary_leader &&
-         groupable.id === attributes.secondary_leader.user_id)) {
+         groupable.id === attributes.secondary_leader.volunteer_id)) {
       return;
     }
     return {
@@ -67,7 +67,7 @@ class GroupCreateModal extends CreateModal {
         type === 'primary' ? 'primary_leader' : 'secondary_leader',
         {
           style: type === 'primary' ? 1 : 0,
-          user_id: groupable.id,
+          volunteer_id: groupable.id,
         },
       ),
       content: groupable.full_name,
@@ -104,12 +104,12 @@ class GroupCreateModal extends CreateModal {
     var attributes = this.props.template.attributes;
     if (type === 'primary' && attributes.primary_leader) {
       var id = attributes.primary_leader.user_id;
-      var user = groupables.find((groupable) => groupable.id === id);
-      return user.full_name;
+      var volunteer = groupables.find((groupable) => groupable.volunteer_id === id);
+      return volunteer.full_name;
     } else if (type === 'secondary' && attributes.secondary_leader) {
       var id = attributes.secondary_leader.user_id;
-      var user = groupables.find((groupable) => groupable.id === id);
-      return user.full_name;
+      var volunteer = groupables.find((groupable) => groupable.volunteer_id === id);
+      return volunteer.full_name;
     }
   }
 

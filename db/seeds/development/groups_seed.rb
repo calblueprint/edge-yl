@@ -1,15 +1,13 @@
-def generate_group(alphabet, conference)
+def generate_group(conference)
   new_group = Group.create(
-    conference: conference,
-    letter: alphabet.shift,
+    conference_id: conference.id,
   )
   puts "Created #{new_group.full_name} for conference #{conference.name}."
 end
 
 Conference.all.each do |conference|
-  alphabet = ('A'..'Z').to_a
   (1..4).each do
-    generate_group(alphabet, conference)
+    generate_group(conference)
   end
 end
 
