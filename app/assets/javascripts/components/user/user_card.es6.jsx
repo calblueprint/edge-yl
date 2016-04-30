@@ -9,7 +9,6 @@ class UserCard extends Component {
       media: React.PropTypes.string.isRequired,
       type: React.PropTypes.oneOf([
         TypeConstants.user.general,
-        TypeConstants.user.leadership,
       ]).isRequired,
       user: React.PropTypes.object.isRequired,
     };
@@ -26,11 +25,6 @@ class UserCard extends Component {
             editable={this.props.editable}
             user={this.props.user} />
         );
-      case TypeConstants.user.leadership:
-        return (
-          <UserLeadership
-            user={this.props.user} />
-        );
     };
   }
 
@@ -38,8 +32,6 @@ class UserCard extends Component {
     switch (this.props.type) {
       case TypeConstants.user.general:
         return 'General Information'
-      case TypeConstants.user.leadership:
-        return 'Leadership Information'
     };
   }
   render() {

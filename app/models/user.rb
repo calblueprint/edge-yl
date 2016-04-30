@@ -73,10 +73,6 @@ class User < ActiveRecord::Base
     "#{first_name} #{last_name}"
   end
 
-  def self.groupable
-    includes(:leadership).where(leaderships: { id: nil })
-  end
-
   def self.schoolable
     includes(:responsibilities).where(responsibilities: { user_id: nil })
   end

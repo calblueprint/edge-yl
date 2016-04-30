@@ -23,10 +23,6 @@ class UserGrid extends Component {
           media={this.props.media}
           type={TypeConstants.user.general}
           user={user} />
-        <UserCard
-          media={this.props.media}
-          type={TypeConstants.user.leadership}
-          user={user} />
         <GridHeader
           title={'Responsibilities'} />
         <ResponsibilitiesGrid
