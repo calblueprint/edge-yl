@@ -49,7 +49,7 @@ class ImportCard extends Component {
       <div>
         <div ref={'container'} style={this.styles.container}>
           <div style={this.styles.header}>
-            <h2>{'Import Schools'}</h2>
+            <h2>{'Import schools'}</h2>
           </div>
           <div>
             <form
