@@ -162,7 +162,7 @@ school_form = Form.create(
       key: 'primary_cell_phone',
       page: page,
       placeholder: %s(
-        If student does not have a cell phone, please re-enter their home phone
+        If student does not have a cell phone, please enter their home phone
       ),
       style: Question.styles[:input],
       title: 'Primary Student Cell Phone',
