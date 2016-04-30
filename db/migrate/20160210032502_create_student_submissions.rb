@@ -72,7 +72,6 @@ class CreateStudentSubmissions < ActiveRecord::Migration
       t.date    :risk_student_date
       t.string  :risk_student_email
       t.string  :risk_student_name
-      t.integer :school_id
       t.integer :shirt_size
       t.integer :transportation
       t.date    :transportation_arrival_date
@@ -86,6 +85,7 @@ class CreateStudentSubmissions < ActiveRecord::Migration
       t.string  :transportation_number
 
       t.references :conference, index: true, null: false
+      t.references :school, index: true
     end
   end
 

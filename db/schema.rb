@@ -346,7 +346,6 @@ ActiveRecord::Schema.define(version: 20160423215812) do
     t.date    "risk_student_date"
     t.string  "risk_student_email"
     t.string  "risk_student_name"
-    t.integer "school_id"
     t.integer "shirt_size"
     t.integer "transportation"
     t.date    "transportation_arrival_date"
@@ -359,9 +358,11 @@ ActiveRecord::Schema.define(version: 20160423215812) do
     t.string  "transportation_name"
     t.string  "transportation_number"
     t.integer "conference_id",                                 null: false
+    t.integer "school_id"
   end
 
   add_index "student_submissions", ["conference_id"], name: "index_student_submissions_on_conference_id", using: :btree
+  add_index "student_submissions", ["school_id"], name: "index_student_submissions_on_school_id", using: :btree
 
   create_table "students", force: :cascade do |t|
     t.string   "address_city",                                  null: false
