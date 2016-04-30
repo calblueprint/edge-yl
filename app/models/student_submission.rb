@@ -73,7 +73,6 @@
 #  risk_student_date              :date
 #  risk_student_email             :string
 #  risk_student_name              :string
-#  school_id                      :integer
 #  shirt_size                     :integer
 #  transportation                 :integer
 #  transportation_arrival_date    :date
@@ -86,6 +85,7 @@
 #  transportation_name            :string
 #  transportation_number          :string
 #  conference_id                  :integer          not null
+#  school_id                      :integer          not null
 #
 
 class StudentSubmission < ActiveRecord::Base

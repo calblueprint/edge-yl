@@ -86,7 +86,7 @@ def generate_student_submission(conference)
 end
 
 Conference.all.each do |conference|
-  (1..20).each do
+  (1..10).each do
     student_submission = generate_student_submission(conference)
     student_submission.seed_submission
     puts "Created student submission #{student_submission.id} and associated student."

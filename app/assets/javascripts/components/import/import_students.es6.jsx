@@ -78,7 +78,7 @@ class ImportStudents extends Component {
     return (
       <div style={this.styles.container}>
         <div style={this.styles.header}>
-          <h2>{'Import schools'}</h2>
+          <h2>{'Import schools and students'}</h2>
         </div>
         <h6>{'File'}</h6>
         <input
