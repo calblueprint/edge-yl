@@ -13,6 +13,7 @@ class Api::ThreadsController < Api::BaseController
       subject: params[:subject],
     )
     email = Email.new email_params(custom_params)
+    email.remove_gmail_footer(params['body-html'])
     if email.save
       email.try_send_notification_email
       render json: { message: 'Received' }, status: :ok

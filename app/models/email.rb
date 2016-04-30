@@ -66,6 +66,14 @@ class Email < ActiveRecord::Base
     end
   end
 
+  def remove_gmail_footer(footer)
+    html_doc = Nokogiri::HTML(footer)
+    quotes = html_doc.xpath('//*[@class= "gmail_quote"]')
+    quotes.each do |quote|
+      content.sub! quote.inner_html, ''
+    end
+  end
+
   def self.draft(params, user)
     draft = Email.new params
     draft[:is_draft] = true

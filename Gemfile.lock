@@ -272,6 +272,7 @@ DEPENDENCIES
   kaminari (= 0.16.3)
   launchy
   letter_opener
+  nokogiri
   pg (= 0.18.4)
   pg_search (= 1.0.5)
   quiet_assets
@@ -284,4 +285,4 @@ DEPENDENCIES
   uglifier (= 2.7.2)
 
 BUNDLED WITH
-   1.10.6
+   1.11.2

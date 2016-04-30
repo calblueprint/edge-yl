@@ -94,4 +94,10 @@ Conference.all.each do |conference|
 end
 
 student_submission = generate_student_submission(Conference.active.first)
+student_submission.first_name = "Warren"
+student_submission.last_name = "Shen"
+student_submission.email = "warrenzshen@gmail.com"
+student_submission.seed_submission
+
+student_submission = generate_student_submission(Conference.active.first)
 puts "Created student submission #{student_submission.id}."
