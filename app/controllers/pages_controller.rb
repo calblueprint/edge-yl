@@ -34,18 +34,19 @@ class PagesController < BaseController
 
   def login
     confirmation_token = params[:confirmation_token]
+    if confirmation_token
+      user = User.where(confirmation_token: confirmation_token).first
+      if user
+        user.confirm
+        @toast = 'Email confirmed!'
+      end
+    end
     if params[:reset_success]
       @toast = 'Password reset!'
     elsif params[:email_sent]
       @toast = 'Password reset email sent!'
     elsif params[:confirmation]
       @toast = 'Confirmation email sent!'
-    end
-    if confirmation_token
-      user = User.where(confirmation_token: confirmation_token).first
-      if user
-        user.confirm
-      end
     end
   end
 
