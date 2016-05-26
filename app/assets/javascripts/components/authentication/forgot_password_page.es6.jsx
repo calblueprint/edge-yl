@@ -54,6 +54,9 @@ class ForgotPasswordPage extends Component {
   renderFooter() {
     return (
       <div style={this.styles.footer}>
+        <p style={this.styles.label}>
+          {'Remember your password?'}
+        </p>
         <Clickable
           content={'Log in'}
           route={RouteConstants.pages.login}
