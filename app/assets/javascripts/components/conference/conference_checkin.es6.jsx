@@ -38,13 +38,13 @@ class ConferenceCheckin extends Component {
           label={'Others checked in'}
           value={checkedInCounts.others} />
         <CardAttribute
-          label={'Others Remaining'}
+          label={'Others remaining'}
           value={studentsCounts.others - checkedInCounts.others} />
         <CardAttribute
           label={'Total checked in'}
           value={checkedInCounts.total} />
         <CardAttribute
-          label={'Total Remaining'}
+          label={'Total remaining'}
           value={studentsCounts.total - checkedInCounts.total} />
       </div>
     );
