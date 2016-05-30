@@ -28,7 +28,7 @@ class SidebarCategories extends Component {
       <div style={this.styles.container}>
         <h5 style={this.styles.title}>{'General'}</h5>
         <SidebarItem
-          label={'Check-in'}
+          label={'Checkin'}
           icon={TypeConstants.icons.check}
           route={RouteConstants.pages.defaultCheckin} />
         <SidebarItem

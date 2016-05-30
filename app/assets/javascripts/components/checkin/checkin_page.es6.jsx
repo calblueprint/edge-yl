@@ -23,22 +23,22 @@ class CheckinPage extends Component {
   // Lifecycle
   // --------------------------------------------------
   componentWillMount() {
-    this.setState(ProfileStore.getState());
     this.setState(CheckinStore.getState());
+    this.setState(ProfileStore.getState());
     this.setState(ViewStore.getState());
   }
 
   componentDidMount() {
-    ProfileStore.listen(this._listener);
     CheckinStore.listen(this._listener);
+    ProfileStore.listen(this._listener);
     ViewStore.listen(this._listener);
     CheckinActions.fetchConference(this.props.conferenceId);
     ViewActions.attachListener();
   }
 
   componentWillUnmount() {
-    ProfileStore.unlisten(this._listener);
     CheckinStore.unlisten(this._listener);
+    ProfileStore.unlisten(this._listener);
     ViewStore.unlisten(this._listener);
   }
 
@@ -53,20 +53,21 @@ class CheckinPage extends Component {
   // --------------------------------------------------
   render() {
     var conference = this.state.conference;
+    var title = `Checkin for conference: ${conference.name}`;
     return (
       <div style={StyleConstants.pages.wrapper}>
         <Header profile={this.selectProfile()} />
         <Sidebar profile={this.selectProfile()} />
+        <Toast toast={this.state.toast} />
         <div style={StyleConstants.pages.default}>
           <div style={StyleConstants.pages.content}>
-            <GridHeader title={`Check-in: ${conference.name}`} />
+            <GridHeader title={title} />
             <CheckinGrid
               conference={conference}
               editable={false}
               media={this.state.media}
               pagination={this.state.pagination}
               results={this.state.results}
-              savedSearch={this.state.savedSearch}
               search={this.state.search}
               student={this.state.student} />
             <CheckinSidebar

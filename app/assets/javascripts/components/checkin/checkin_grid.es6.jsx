@@ -9,7 +9,6 @@ class CheckinGrid extends Component {
       media: React.PropTypes.string.isRequired,
       pagination: React.PropTypes.object.isRequired,
       results: React.PropTypes.array.isRequired,
-      savedSearch: React.PropTypes.object.isRequired,
       search: React.PropTypes.object.isRequired,
       student: React.PropTypes.object,
     };
@@ -53,7 +52,6 @@ class CheckinGrid extends Component {
           pagination={this.props.pagination}
           conference={conference}
           results={this.props.results}
-          savedSearch={this.props.savedSearch}
           search={this.props.search} />
         {this.renderStudent()}
       </div>

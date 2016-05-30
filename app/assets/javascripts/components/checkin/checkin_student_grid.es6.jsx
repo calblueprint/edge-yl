@@ -12,61 +12,16 @@ class CheckinStudentGrid extends Component {
   }
 
   // --------------------------------------------------
-  // Helpers
-  // --------------------------------------------------
-  checkin(studentId) {
-    var params = {};
-    var resolve = (response) => {
-      CheckinActions.storeStudent(response);
-      CheckinActions.fetchConference(this.props.conference.id);
-    };
-    var reject = (response) => CheckinActions.storeError(response);
-    Requester.update(
-      ApiConstants.students.checkin(studentId),
-      params,
-      resolve,
-      reject,
-    );
-  }
-
-  cancelCheckin(studentId) {
-    var params = {};
-    var resolve = (response) => {
-      CheckinActions.storeStudent(response);
-      CheckinActions.fetchConference(this.props.conference.id);
-    };
-    var reject = (response) => CheckinActions.storeError(response);
-    Requester.update(
-      ApiConstants.students.checkOut(studentId),
-      params,
-      resolve,
-      reject,
-    );
-  }
-
-  generateCheckin() {
-    var student = this.props.student
-    if (student.is_checked_in) {
-      action = () => this.cancelCheckin(student.id);
-      content = `${student.first_name} Checked In`;
-      style = this.clickableStyles.cancelCheckin
-    } else {
-      action = () => this.checkin(student.id);
-      content = `Check ${student.first_name} In`;
-      style = this.clickableStyles.checkin
-    }
-    return (
-      <Clickable
-        action={action}
-        content={content}
-        styles={style}
-        type={'h5'} />
-    );
-  }
-
-  // --------------------------------------------------
   // Styles
   // --------------------------------------------------
+  get styles() {
+    return {
+      checkinButton: {
+        marginTop: '10px',
+      },
+    };
+  }
+
   get clickableStyles() {
     return {
       checkin: {
@@ -96,12 +51,42 @@ class CheckinStudentGrid extends Component {
     };
   }
 
-  get styles() {
-    return {
-      checkinButton: {
-        marginTop: '10px',
-      },
+  // --------------------------------------------------
+  // Helpers
+  // --------------------------------------------------
+  cancelCheckin(studentId) {
+    var params = {};
+    var resolve = (response) => {
+      CheckinActions.storeStudent(response);
+      CheckinActions.fetchConference(this.props.conference.id);
     };
+    var reject = (response) => CheckinActions.storeError(response);
+    Requester.update(
+      ApiConstants.students.checkOut(studentId),
+      params,
+      resolve,
+      reject,
+    );
+  }
+
+  generateCheckin() {
+    var student = this.props.student
+    if (student.is_checked_in) {
+      action = () => this.cancelCheckin(student.id);
+      content = `${student.first_name} Checked In`;
+      style = this.clickableStyles.cancelCheckin
+    } else {
+      action = () => CheckinActions.checkinStudent(student.id);
+      content = `Check in ${student.first_name}`;
+      style = this.clickableStyles.checkin;
+    }
+    return (
+      <Clickable
+        action={action}
+        content={content}
+        styles={style}
+        type={'h5'} />
+    );
   }
 
   // --------------------------------------------------
@@ -122,7 +107,9 @@ class CheckinStudentGrid extends Component {
             student={this.props.student}
             type={TypeConstants.student.conference} />
         </div>
-        <div style={this.styles.checkinButton}> {this.generateCheckin()} </div>
+        <div style={this.styles.checkinButton}>
+          {this.generateCheckin()}
+        </div>
       </div>
     );
   }

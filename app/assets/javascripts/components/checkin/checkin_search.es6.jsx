@@ -7,7 +7,6 @@ class CheckinSearch extends Component {
       conference: React.PropTypes.object.isRequired,
       pagination: React.PropTypes.object.isRequired,
       results: React.PropTypes.array.isRequired,
-      savedSearch: React.PropTypes.object.isRequired,
       search: React.PropTypes.object.isRequired,
     };
   }
@@ -33,7 +32,8 @@ class CheckinSearch extends Component {
   handleInput(event) {
     CheckinActions.storeSearch(true,
       this.props.conference.id,
-      event.target.value);
+      event.target.value,
+    );
   }
 
   // --------------------------------------------------
@@ -41,10 +41,10 @@ class CheckinSearch extends Component {
   // --------------------------------------------------
   generateChoice(result) {
     var action = () => CheckinActions.fetchStudent(result.searchable_id);
-    var node = <SearchResult label={"student"} value={result.content} />;
+    var node = <SearchResult label={'student'} value={result.content} />;
     return {
-      children: node,
       action: action,
+      children: node,
     };
   }
 

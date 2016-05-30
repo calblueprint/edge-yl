@@ -45,7 +45,7 @@ class ConferenceCard extends Component {
       case TypeConstants.conference.statistic:
         return 'Statistic Information';
       case TypeConstants.conference.checkin:
-        return 'Check-in Information';
+        return 'Checkin Information';
     };
   }
 

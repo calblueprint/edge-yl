@@ -13,14 +13,13 @@
         limit: 1,
       };
       this.query = {};
-      this.savedSearch = {};
+      this.results = [];
       this.search = {
         active: false,
         query: '',
       };
       this.student = null;
       this.students = [];
-      this.results = [];
       this.bindListeners({
         handleStoreConference: CheckinActions.STORE_CONFERENCE,
         handleStoreStudent: CheckinActions.STORE_STUDENT,
@@ -33,6 +32,7 @@
     // Helpers
     // --------------------------------------------------
     resetSearch() {
+      this.results = [];
       this.search = {
         active: false,
         query: '',
@@ -61,14 +61,19 @@
     }
 
     handleStoreResults(response) {
+      if (response.searchables.length > 0) {
+        this.student = null;
+      }
       this.results = response.searchables;
     }
 
     handleStoreSearch(search) {
       if (search.query === undefined) {
-        search.query = this.search.query;
-      } else if (search.query === '') {
-        search.active = false;
+        if (this.search.query === '') {
+          search.query = '';
+        } else {
+          search.query = this.search.query;
+        }
       }
       this.search = search;
     }

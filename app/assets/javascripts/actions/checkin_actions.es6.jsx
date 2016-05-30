@@ -15,6 +15,23 @@
     // --------------------------------------------------
     // Requests
     // --------------------------------------------------
+    checkinStudent(studentId) {
+      var conference = CheckinStore.getState().conference;
+      var resolve = (response) => {
+        this.fetchConference(conference.id);
+        this.storeStudent(response);
+        ViewActions.storeToast(true, 'Student checked in!');
+      };
+      var reject = (response) => CheckinActions.storeError(response);
+      Requester.update(
+        ApiConstants.students.checkin(studentId),
+        {},
+        resolve,
+        reject,
+      );
+      return true;
+    }
+
     fetchConference(id) {
       var resolve = (response) => this.storeConference(response);
       Requester.get(ApiConstants.conferences.show(id), resolve);
@@ -36,7 +53,10 @@
     storeSearch(active, conferenceId, query) {
       if (query) {
         var resolve = (response) => this.storeResults(response);
-        Requester.get(ApiConstants.searchables.checkin(conferenceId, query), resolve);
+        Requester.get(
+          ApiConstants.searchables.checkin(conferenceId, query),
+          resolve,
+        );
       }
       return {
         active: active,
