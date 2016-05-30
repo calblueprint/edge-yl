@@ -5,6 +5,7 @@ class CheckinGrid extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
+      conference: React.PropTypes.object.isRequired,
       editable: React.PropTypes.bool.isRequired,
       media: React.PropTypes.string.isRequired,
       pagination: React.PropTypes.object.isRequired,
@@ -24,19 +25,23 @@ class CheckinGrid extends Component {
   // Render
   // --------------------------------------------------
   renderStudent() {
+    var conference = this.props.conference;
+    var content = 'Please search for a student to check in.';
     if (this.props.student) {
       return (
         <CheckinStudentGrid
-          conference={this.props.conference}
+          conference={conference}
           media={this.props.media}
           student={this.props.student} />
       );
-    } else {
-      return (
-        <GridEmpty
-          content={'Please search for a student to check-in.'}/>
-      );
+    } else if (conference.students_counts) {
+      var studentsCounts = conference.students_counts;
+      var checkedInCounts = conference.checked_in_counts;
+      if (studentsCounts.total - checkedInCounts.total === 0) {
+        content = 'All students in this conference have been checked in!';
+      }
     }
+    return <GridEmpty content={content} />;
   }
 
   render() {

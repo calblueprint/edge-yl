@@ -32,6 +32,23 @@
       return true;
     }
 
+    checkoutStudent(studentId) {
+      var conference = CheckinStore.getState().conference;
+      var resolve = (response) => {
+        this.fetchConference(conference.id);
+        this.storeStudent(response);
+        ViewActions.storeToast(true, 'Student checked out!');
+      };
+      var reject = (response) => CheckinActions.storeError(response);
+      Requester.update(
+        ApiConstants.students.checkOut(studentId),
+        {},
+        resolve,
+        reject,
+      );
+      return true;
+    }
+
     fetchConference(id) {
       var resolve = (response) => this.storeConference(response);
       Requester.get(ApiConstants.conferences.show(id), resolve);

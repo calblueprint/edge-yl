@@ -36,7 +36,7 @@ class CheckinStudentGrid extends Component {
           color: StyleConstants.colors.white,
         },
       },
-      cancelCheckin: {
+      checkout: {
         default: {
           flex: '1',
           display: 'flex',
@@ -54,27 +54,12 @@ class CheckinStudentGrid extends Component {
   // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
-  cancelCheckin(studentId) {
-    var params = {};
-    var resolve = (response) => {
-      CheckinActions.storeStudent(response);
-      CheckinActions.fetchConference(this.props.conference.id);
-    };
-    var reject = (response) => CheckinActions.storeError(response);
-    Requester.update(
-      ApiConstants.students.checkOut(studentId),
-      params,
-      resolve,
-      reject,
-    );
-  }
-
   generateCheckin() {
-    var student = this.props.student
+    var student = this.props.student;
     if (student.is_checked_in) {
-      action = () => this.cancelCheckin(student.id);
-      content = `${student.first_name} Checked In`;
-      style = this.clickableStyles.cancelCheckin
+      action = () => CheckinActions.checkoutStudent(student.id);
+      content = `Check out ${student.first_name}`;
+      style = this.clickableStyles.checkout;
     } else {
       action = () => CheckinActions.checkinStudent(student.id);
       content = `Check in ${student.first_name}`;

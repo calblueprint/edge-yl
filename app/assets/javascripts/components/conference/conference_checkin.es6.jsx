@@ -14,38 +14,38 @@ class ConferenceCheckin extends Component {
   // --------------------------------------------------
   render() {
     var conference = this.props.conference;
-    var students_count = conference.students_count;
-    var checked_in = conference.checked_in_count;
-    if (checked_in == null) {
-      checked_in = {};
-      students_count = {};
+    var studentsCounts = conference.students_counts;
+    var checkedInCounts = conference.checked_in_counts;
+    if (!checkedInCounts) {
+      checkedInCounts = {};
+      studentsCounts = {};
     }
     return (
       <div style={StyleConstants.cards.content}>
         <CardAttribute
-          label={'Females checked-in'}
-          value={checked_in.females} />
+          label={'Females checked in'}
+          value={checkedInCounts.females} />
         <CardAttribute
           label={'Females remaining'}
-          value={students_count.females - checked_in.females} />
+          value={studentsCounts.females - checkedInCounts.females} />
         <CardAttribute
-          label={'Males checked-in'}
-          value={checked_in.males} />
+          label={'Males checked in'}
+          value={checkedInCounts.males} />
         <CardAttribute
           label={'Males remaining'}
-          value={students_count.males - checked_in.males} />
+          value={studentsCounts.males - checkedInCounts.males} />
         <CardAttribute
-          label={'Others checked-in'}
-          value={checked_in.others} />
+          label={'Others checked in'}
+          value={checkedInCounts.others} />
         <CardAttribute
           label={'Others Remaining'}
-          value={students_count.others - checked_in.others} />
+          value={studentsCounts.others - checkedInCounts.others} />
         <CardAttribute
-          label={'Total checked-in'}
-          value={checked_in.total} />
+          label={'Total checked in'}
+          value={checkedInCounts.total} />
         <CardAttribute
           label={'Total Remaining'}
-          value={students_count.total - checked_in.total} />
+          value={studentsCounts.total - checkedInCounts.total} />
       </div>
     );
   }

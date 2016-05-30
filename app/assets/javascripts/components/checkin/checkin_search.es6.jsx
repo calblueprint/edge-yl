@@ -70,7 +70,7 @@ class CheckinSearch extends Component {
     return (
       <div style={{ display: 'flex' }}>
         <input
-          placeholder={'Search for a student to check-in'}
+          placeholder={'Search for a student to check in'}
           ref={'input'}
           style={this.styles.input}
           type={'search'}

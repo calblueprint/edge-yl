@@ -57,7 +57,7 @@ class ConferencePage extends Component {
       },
       {
         route: RouteConstants.pages.checkin(conference.id),
-        content: 'Check-in students',
+        content: 'Check in students',
       },
       {
         action: () => ConferenceActions.exportGroups(conference.id),

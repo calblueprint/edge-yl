@@ -82,10 +82,10 @@ class Conference < ActiveRecord::Base
   end
 
   def active
-    end_date.future?
+    end_date.tomorrow.future?
   end
 
-  def checked_in_count
+  def checked_in_counts
     {
       females: students.female.is_checked_in(1).count,
       males: students.male.is_checked_in(1).count,
@@ -120,7 +120,7 @@ class Conference < ActiveRecord::Base
     rooms.count
   end
 
-  def students_count
+  def students_counts
     {
       females: students.female.count,
       males: students.male.count,
