@@ -14,28 +14,28 @@ class CheckinStudentGrid extends Component {
   // --------------------------------------------------
   // Helpers
   // --------------------------------------------------
-  checkIn(studentId) {
+  checkin(studentId) {
     var params = {};
     var resolve = (response) => {
-      CheckInActions.storeStudent(response);
-      CheckInActions.fetchConference(this.props.conference.id);
+      CheckinActions.storeStudent(response);
+      CheckinActions.fetchConference(this.props.conference.id);
     };
-    var reject = (response) => CheckInActions.storeError(response);
+    var reject = (response) => CheckinActions.storeError(response);
     Requester.update(
-      ApiConstants.students.checkIn(studentId),
+      ApiConstants.students.checkin(studentId),
       params,
       resolve,
       reject,
     );
   }
 
-  cancelCheckIn(studentId) {
+  cancelCheckin(studentId) {
     var params = {};
     var resolve = (response) => {
-      CheckInActions.storeStudent(response);
-      CheckInActions.fetchConference(this.props.conference.id);
+      CheckinActions.storeStudent(response);
+      CheckinActions.fetchConference(this.props.conference.id);
     };
-    var reject = (response) => CheckInActions.storeError(response);
+    var reject = (response) => CheckinActions.storeError(response);
     Requester.update(
       ApiConstants.students.checkOut(studentId),
       params,
@@ -44,16 +44,16 @@ class CheckinStudentGrid extends Component {
     );
   }
 
-  generateCheckIn() {
+  generateCheckin() {
     var student = this.props.student
     if (student.is_checked_in) {
-      action = () => this.cancelCheckIn(student.id);
+      action = () => this.cancelCheckin(student.id);
       content = `${student.first_name} Checked In`;
-      style = this.clickableStyles.cancelCheckIn
+      style = this.clickableStyles.cancelCheckin
     } else {
-      action = () => this.checkIn(student.id);
+      action = () => this.checkin(student.id);
       content = `Check ${student.first_name} In`;
-      style = this.clickableStyles.checkIn
+      style = this.clickableStyles.checkin
     }
     return (
       <Clickable
@@ -69,7 +69,7 @@ class CheckinStudentGrid extends Component {
   // --------------------------------------------------
   get clickableStyles() {
     return {
-      checkIn: {
+      checkin: {
         default: {
           flex: '1',
           display: 'flex',
@@ -81,7 +81,7 @@ class CheckinStudentGrid extends Component {
           color: StyleConstants.colors.white,
         },
       },
-      cancelCheckIn: {
+      cancelCheckin: {
         default: {
           flex: '1',
           display: 'flex',
@@ -98,7 +98,7 @@ class CheckinStudentGrid extends Component {
 
   get styles() {
     return {
-      checkInButton: {
+      checkinButton: {
         marginTop: '10px',
       },
     };
@@ -122,7 +122,7 @@ class CheckinStudentGrid extends Component {
             student={this.props.student}
             type={TypeConstants.student.conference} />
         </div>
-        <div style={this.styles.checkInButton}> {this.generateCheckIn()} </div>
+        <div style={this.styles.checkinButton}> {this.generateCheckin()} </div>
       </div>
     );
   }

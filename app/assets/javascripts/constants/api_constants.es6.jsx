@@ -149,8 +149,8 @@
     get searchables() {
       return {
         search: (query) => `/api/searchables/search?query=${query}`,
-        checkIn: (conferenceId, query) => {
-          return `/api/searchables/check_in?conference_id=${conferenceId}`+
+        checkin: (conferenceId, query) => {
+          return `/api/searchables/checkin?conference_id=${conferenceId}`+
                                           `&query=${query}`;
         },
         students: (conferenceId, groupId, query) => {
@@ -163,7 +163,7 @@
 
     get students() {
       return {
-        checkIn: (id) => `/api/students/check_in/${id}`,
+        checkin: (id) => `/api/students/checkin/${id}`,
         checkOut: (id) => `/api/students/check_out/${id}`,
         index: (conferenceId, page, query={}) => {
           var route = `/api/students?conference_id=${conferenceId}&page=${page}`;

@@ -30,7 +30,7 @@ class SidebarCategories extends Component {
         <SidebarItem
           label={'Check-in'}
           icon={TypeConstants.icons.check}
-          route={RouteConstants.pages.defaultCheckIn} />
+          route={RouteConstants.pages.defaultCheckin} />
         <SidebarItem
           label={'Conferences'}
           icon={TypeConstants.icons.conference}

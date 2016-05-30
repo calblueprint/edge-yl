@@ -27,11 +27,11 @@ class CheckinSearch extends Component {
   // Handlers
   // --------------------------------------------------
   handleFocus(event) {
-    CheckInActions.storeSearch(true);
+    CheckinActions.storeSearch(true);
   }
 
   handleInput(event) {
-    CheckInActions.storeSearch(true,
+    CheckinActions.storeSearch(true,
       this.props.conference.id,
       event.target.value);
   }
@@ -40,7 +40,7 @@ class CheckinSearch extends Component {
   // Helpers
   // --------------------------------------------------
   generateChoice(result) {
-    var action = () => CheckInActions.fetchStudent(result.searchable_id);
+    var action = () => CheckinActions.fetchStudent(result.searchable_id);
     var node = <SearchResult label={"student"} value={result.content} />;
     return {
       children: node,

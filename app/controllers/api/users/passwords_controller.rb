@@ -11,8 +11,7 @@ class Api::Users::PasswordsController < Api::BaseController
       error_response(message: 'Email not found', status: 400)
       return
     elsif user.send_reset_password_instructions
-      render json: { message: 'Password email sent' },
-             status: :created
+      render json: { message: 'Password email sent' }, status: :created
       return
     end
     error_response(message: 'An unknown error occurred', status: 500)
@@ -21,8 +20,7 @@ class Api::Users::PasswordsController < Api::BaseController
   def reset
     resource = User.reset_password_by_token reset_params
     unless resource.id.nil?
-      render json: { message: 'Password reset' },
-             status: :created
+      render json: { message: 'Password reset' }, status: :created
       return
     end
     error_response(message: 'An unknown error occurred', status: 500)

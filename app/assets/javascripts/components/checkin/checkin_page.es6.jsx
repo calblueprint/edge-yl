@@ -1,4 +1,4 @@
-class CheckInPage extends Component {
+class CheckinPage extends Component {
 
   // --------------------------------------------------
   // Setup
@@ -24,21 +24,21 @@ class CheckInPage extends Component {
   // --------------------------------------------------
   componentWillMount() {
     this.setState(ProfileStore.getState());
-    this.setState(CheckInStore.getState());
+    this.setState(CheckinStore.getState());
     this.setState(ViewStore.getState());
   }
 
   componentDidMount() {
     ProfileStore.listen(this._listener);
-    CheckInStore.listen(this._listener);
+    CheckinStore.listen(this._listener);
     ViewStore.listen(this._listener);
-    CheckInActions.fetchConference(this.props.conferenceId);
+    CheckinActions.fetchConference(this.props.conferenceId);
     ViewActions.attachListener();
   }
 
   componentWillUnmount() {
     ProfileStore.unlisten(this._listener);
-    CheckInStore.unlisten(this._listener);
+    CheckinStore.unlisten(this._listener);
     ViewStore.unlisten(this._listener);
   }
 

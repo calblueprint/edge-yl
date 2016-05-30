@@ -34,7 +34,7 @@ class CheckinConference extends Component {
   // --------------------------------------------------
   generateChoice(conference) {
     return {
-      action: () => CheckInActions.fetchConference(conference.id),
+      action: () => CheckinActions.fetchConference(conference.id),
       content: conference.name,
     };
   }

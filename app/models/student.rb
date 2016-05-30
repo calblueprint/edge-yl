@@ -185,7 +185,7 @@ class Student < ActiveRecord::Base
   validates :address_zip, presence: true
   validates :allergies, presence: true
   validates :birthday, presence: true
-  validates :cell_phone, presence: true
+  # validates :cell_phone, presence: true
   validates :dietary_restrictions, presence: true
   validates :email, presence: true
   validates :emergency_consent, presence: true
