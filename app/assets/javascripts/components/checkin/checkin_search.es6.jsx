@@ -30,7 +30,8 @@ class CheckinSearch extends Component {
   }
 
   handleInput(event) {
-    CheckinActions.storeSearch(true,
+    CheckinActions.storeSearch(
+      true,
       this.props.conference.id,
       event.target.value,
     );
