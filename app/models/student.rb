@@ -106,10 +106,6 @@ class Student < ActiveRecord::Base
     self[:gender] = EnumConstants::GENDERS.index(value)
   end
 
-  def self.genders(value)
-    EnumConstants::GENDERS.index(value)
-  end
-
   def guardian_one_phone_type
     unless self[:guardian_one_phone_type].nil?
       EnumConstants::PHONE_TYPES[self[:guardian_one_phone_type]]
@@ -209,6 +205,10 @@ class Student < ActiveRecord::Base
   validates :psychologist_consent_name, presence: true
   validates :shirt_size, presence: true
 
+  def self.genders(value)
+    EnumConstants::GENDERS.index(value)
+  end
+
   def self.to_csv
     attributes = Student.attribute_names
     CSV.generate(headers: true) do |csv|
@@ -217,10 +217,6 @@ class Student < ActiveRecord::Base
         csv << attributes.map { |attr| student.send(attr) }
       end
     end
-  end
-
-  def full_name
-    "#{first_name} #{last_name}"
   end
 
   def self.female
@@ -233,6 +229,10 @@ class Student < ActiveRecord::Base
 
   def self.other
     where(gender: 2)
+  end
+
+  def full_name
+    "#{first_name} #{last_name}"
   end
 
 end
