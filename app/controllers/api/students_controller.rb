@@ -10,7 +10,7 @@ class Api::StudentsController < Api::BaseController
   has_scope :is_primary, only: [:index]
   has_scope :sort, only: [:index]
 
-  def check_in
+  def checkin
     student = Student.find(params[:id])
     student.is_checked_in = true
     if student.save

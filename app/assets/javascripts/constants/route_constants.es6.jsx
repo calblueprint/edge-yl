@@ -32,8 +32,13 @@
 
     get pages() {
       return {
-        defaultCheckIn: '/check_in',
-        checkIn: (conference_id) => `/check_in/${conference_id}`,
+        checkin: (conferenceId) => {
+          if (conferenceId === undefined) {
+            return '/checkin';
+          } else {
+            return `/checkin/${conferenceId}`;
+          }
+        },
         feedback: '/feedback',
         forgotPassword: '/forgot_password',
         import: '/import',

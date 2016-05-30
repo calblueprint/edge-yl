@@ -460,17 +460,19 @@ class StudentSubmission < ActiveRecord::Base
 
   def seed_submission
     student = initialize_student
-    unless student.save
-      fail 'Could not create student from submission'
+    if student.save
+      self.is_active = false
+      save
+    else
+      puts 'Could not create student from submission'
+      # raise 'Could not create student from submission'
     end
-    self.is_active = false
-    save
   end
 
   def submit_submission
     student = initialize_student
     unless student.save
-      fail 'Could not create student from submission'
+      raise 'Could not create student from submission'
     end
     begin
       SubmissionsMailer.submit_student(self).deliver_now

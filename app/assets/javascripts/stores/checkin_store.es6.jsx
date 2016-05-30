@@ -1,5 +1,5 @@
 (() => {
-  class CheckInStore {
+  class CheckinStore {
 
     // --------------------------------------------------
     // Setup
@@ -13,19 +13,18 @@
         limit: 1,
       };
       this.query = {};
-      this.savedSearch = {};
+      this.results = [];
       this.search = {
         active: false,
         query: '',
       };
       this.student = null;
       this.students = [];
-      this.results = [];
       this.bindListeners({
-        handleStoreConference: CheckInActions.STORE_CONFERENCE,
-        handleStoreStudent: CheckInActions.STORE_STUDENT,
-        handleStoreSearch: CheckInActions.STORE_SEARCH,
-        handleStoreResults: CheckInActions.STORE_RESULTS,
+        handleStoreConference: CheckinActions.STORE_CONFERENCE,
+        handleStoreStudent: CheckinActions.STORE_STUDENT,
+        handleStoreSearch: CheckinActions.STORE_SEARCH,
+        handleStoreResults: CheckinActions.STORE_RESULTS,
       });
     }
 
@@ -33,6 +32,7 @@
     // Helpers
     // --------------------------------------------------
     resetSearch() {
+      this.results = [];
       this.search = {
         active: false,
         query: '',
@@ -49,26 +49,31 @@
         window.history.replaceState(
           { conference: this.conference, },
           null,
-          RouteConstants.pages.checkIn(this.conference.id),
+          RouteConstants.pages.checkin(this.conference.id),
         );
       } else {
         window.history.pushState(
           { conference: this.conference, },
           null,
-          RouteConstants.pages.checkIn(this.conference.id),
+          RouteConstants.pages.checkin(this.conference.id),
         );
       }
     }
 
     handleStoreResults(response) {
+      if (response.searchables.length > 0) {
+        this.student = null;
+      }
       this.results = response.searchables;
     }
 
     handleStoreSearch(search) {
       if (search.query === undefined) {
-        search.query = this.search.query;
-      } else if (search.query === '') {
-        search.active = false;
+        if (this.search.query === '') {
+          search.query = '';
+        } else {
+          search.query = this.search.query;
+        }
       }
       this.search = search;
     }
@@ -78,5 +83,5 @@
       this.resetSearch();
     }
   }
-  this.CheckInStore = alt.createStore(CheckInStore);
+  this.CheckinStore = alt.createStore(CheckinStore);
 })();

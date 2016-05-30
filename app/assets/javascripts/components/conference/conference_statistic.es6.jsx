@@ -14,20 +14,23 @@ class ConferenceStatistic extends Component {
   // --------------------------------------------------
   render() {
     var conference = this.props.conference;
+    var studentsCounts = conference.students_counts ?
+                          conference.students_counts :
+                          {};
     return (
       <div style={StyleConstants.cards.content}>
         <CardAttribute
           label={'Females count'}
-          value={conference.students_count.females} />
+          value={studentsCounts.females} />
         <CardAttribute
           label={'Males count'}
-          value={conference.students_count.males} />
+          value={studentsCounts.males} />
         <CardAttribute
           label={'Others count'}
-          value={conference.students_count.others} />
+          value={studentsCounts.others} />
         <CardAttribute
           label={'Students count'}
-          value={conference.students_count.total} />
+          value={studentsCounts.total} />
         <CardAttribute
           label={'Students without a group'}
           value={conference.groupless_students_count} />

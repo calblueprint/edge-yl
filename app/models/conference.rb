@@ -82,10 +82,10 @@ class Conference < ActiveRecord::Base
   end
 
   def active
-    end_date.future?
+    end_date.tomorrow.future?
   end
 
-  def checked_in_count
+  def checked_in_counts
     {
       females: students.female.is_checked_in(1).count,
       males: students.male.is_checked_in(1).count,
@@ -111,15 +111,6 @@ class Conference < ActiveRecord::Base
     groups.count
   end
 
-  def self.most_recent_active_id
-    active_conference = Conference.order(:start_date).active.last
-    if active_conference
-      return active_conference.id
-    else
-      return -1
-    end
-  end
-
   def next_letter
     used_letters = self.used_letters
     ('A'..'Z').select { |letter| !used_letters.include? letter }.first
@@ -129,7 +120,7 @@ class Conference < ActiveRecord::Base
     rooms.count
   end
 
-  def students_count
+  def students_counts
     {
       females: students.female.count,
       males: students.male.count,

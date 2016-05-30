@@ -12,64 +12,19 @@ class CheckinStudentGrid extends Component {
   }
 
   // --------------------------------------------------
-  // Helpers
-  // --------------------------------------------------
-  checkIn(studentId) {
-    var params = {};
-    var resolve = (response) => {
-      CheckInActions.storeStudent(response);
-      CheckInActions.fetchConference(this.props.conference.id);
-    };
-    var reject = (response) => CheckInActions.storeError(response);
-    Requester.update(
-      ApiConstants.students.checkIn(studentId),
-      params,
-      resolve,
-      reject,
-    );
-  }
-
-  cancelCheckIn(studentId) {
-    var params = {};
-    var resolve = (response) => {
-      CheckInActions.storeStudent(response);
-      CheckInActions.fetchConference(this.props.conference.id);
-    };
-    var reject = (response) => CheckInActions.storeError(response);
-    Requester.update(
-      ApiConstants.students.checkOut(studentId),
-      params,
-      resolve,
-      reject,
-    );
-  }
-
-  generateCheckIn() {
-    var student = this.props.student
-    if (student.is_checked_in) {
-      action = () => this.cancelCheckIn(student.id);
-      content = `${student.first_name} Checked In`;
-      style = this.clickableStyles.cancelCheckIn
-    } else {
-      action = () => this.checkIn(student.id);
-      content = `Check ${student.first_name} In`;
-      style = this.clickableStyles.checkIn
-    }
-    return (
-      <Clickable
-        action={action}
-        content={content}
-        styles={style}
-        type={'h5'} />
-    );
-  }
-
-  // --------------------------------------------------
   // Styles
   // --------------------------------------------------
+  get styles() {
+    return {
+      checkinButton: {
+        marginTop: '10px',
+      },
+    };
+  }
+
   get clickableStyles() {
     return {
-      checkIn: {
+      checkin: {
         default: {
           flex: '1',
           display: 'flex',
@@ -81,7 +36,7 @@ class CheckinStudentGrid extends Component {
           color: StyleConstants.colors.white,
         },
       },
-      cancelCheckIn: {
+      checkout: {
         default: {
           flex: '1',
           display: 'flex',
@@ -96,12 +51,27 @@ class CheckinStudentGrid extends Component {
     };
   }
 
-  get styles() {
-    return {
-      checkInButton: {
-        marginTop: '10px',
-      },
-    };
+  // --------------------------------------------------
+  // Helpers
+  // --------------------------------------------------
+  generateCheckin() {
+    var student = this.props.student;
+    if (student.is_checked_in) {
+      action = () => CheckinActions.checkoutStudent(student.id);
+      content = `Check out ${student.first_name}`;
+      style = this.clickableStyles.checkout;
+    } else {
+      action = () => CheckinActions.checkinStudent(student.id);
+      content = `Check in ${student.first_name}`;
+      style = this.clickableStyles.checkin;
+    }
+    return (
+      <Clickable
+        action={action}
+        content={content}
+        styles={style}
+        type={'h5'} />
+    );
   }
 
   // --------------------------------------------------
@@ -122,7 +92,9 @@ class CheckinStudentGrid extends Component {
             student={this.props.student}
             type={TypeConstants.student.conference} />
         </div>
-        <div style={this.styles.checkInButton}> {this.generateCheckIn()} </div>
+        <div style={this.styles.checkinButton}>
+          {this.generateCheckin()}
+        </div>
       </div>
     );
   }

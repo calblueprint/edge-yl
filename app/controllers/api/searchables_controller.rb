@@ -1,6 +1,6 @@
 class Api::SearchablesController < Api::BaseController
 
-  def check_in
+  def checkin
     documents = PgSearch.multisearch(params[:query])
                         .where(searchable_type: 'Student')
                         .limit(4)

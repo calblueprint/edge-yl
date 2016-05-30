@@ -12,9 +12,10 @@ class PagesController < BaseController
   ]
 
   def checkin
-    @conference_id = params[:conference].to_i
-    if @conference_id == 0
-      @conference_id = Conference.most_recent_active_id
+    if params[:conference_id]
+      @conference_id = params[:conference_id].to_i
+    else
+      @conference_id = Conference.first.id
     end
     unless Conference.exists?(@conference_id)
       error_404
