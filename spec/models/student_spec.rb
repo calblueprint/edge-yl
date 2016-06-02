@@ -37,7 +37,7 @@
 #  guardian_two_relationship     :integer
 #  health_conditions             :string           not null
 #  health_conditions_description :string           default(""), not null
-#  home_phone                    :string           not null
+#  home_phone                    :string           default(""), not null
 #  immunizations                 :integer          not null
 #  is_flagged                    :boolean          not null
 #  is_primary                    :boolean          not null

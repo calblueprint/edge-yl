@@ -10,7 +10,7 @@ class CreateStudents < ActiveRecord::Migration
       t.integer :allergies, null: false
       t.string  :allergies_other, default: '', null: false
       t.date    :birthday, null: false
-      t.string  :cell_phone, default: '', null: false
+      t.string  :cell_phone, null: false
       t.boolean :is_checked_in, default: false, null: false
       t.string  :dietary_restrictions, null: false
       t.string  :email, null: false
@@ -36,7 +36,7 @@ class CreateStudents < ActiveRecord::Migration
       t.integer :guardian_two_relationship
       t.string  :health_conditions, null: false
       t.string  :health_conditions_description, default: '', null: false
-      t.string  :home_phone, null: false
+      t.string  :home_phone, default: '', null: false
       t.integer :immunizations, null: false
       t.boolean :is_flagged, null: false
       t.boolean :is_primary, null: false

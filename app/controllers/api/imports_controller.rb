@@ -10,10 +10,10 @@ class Api::ImportsController < Api::BaseController
       student_submission = StudentSubmission.new(
         conference_id: conference_id,
 
-        cell_phone: tuple[4] ? tuple[4] : '',
+        cell_phone: tuple[4] ? tuple[4] : '000-000-0000',
         email: tuple[5],
         first_name: tuple[1],
-        home_phone: tuple[3],
+        home_phone: tuple[3] ? tuple[3] : '000-000-0000',
         last_name: tuple[2],
 
         address_city: 'n/a',

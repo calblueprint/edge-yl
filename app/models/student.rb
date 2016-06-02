@@ -37,7 +37,7 @@
 #  guardian_two_relationship     :integer
 #  health_conditions             :string           not null
 #  health_conditions_description :string           default(""), not null
-#  home_phone                    :string           not null
+#  home_phone                    :string           default(""), not null
 #  immunizations                 :integer          not null
 #  is_flagged                    :boolean          not null
 #  is_primary                    :boolean          not null
@@ -181,7 +181,7 @@ class Student < ActiveRecord::Base
   validates :address_zip, presence: true
   validates :allergies, presence: true
   validates :birthday, presence: true
-  # validates :cell_phone, presence: true
+  validates :cell_phone, presence: true
   validates :dietary_restrictions, presence: true
   validates :email, presence: true
   validates :emergency_consent, presence: true

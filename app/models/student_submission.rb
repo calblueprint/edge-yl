@@ -85,7 +85,7 @@
 #  transportation_name            :string
 #  transportation_number          :string
 #  conference_id                  :integer          not null
-#  school_id                      :integer          not null
+#  school_id                      :integer
 #
 
 class StudentSubmission < ActiveRecord::Base
