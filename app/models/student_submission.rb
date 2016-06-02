@@ -463,9 +463,12 @@ class StudentSubmission < ActiveRecord::Base
     if student.save
       self.is_active = false
       save
+      student
     else
       puts 'Could not create student from submission'
       # raise 'Could not create student from submission'
+      destroy
+      false
     end
   end
 
