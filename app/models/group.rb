@@ -50,12 +50,12 @@ class Group < ActiveRecord::Base
       csv << headers
       all.each do |group|
         row = attributes.map { |attr| group.send(attr) }
-        if group.leaderships.first.user
-          primary_leader = group.leaderships.first.user.full_name
+        if group.leaderships.first.volunteer
+          primary_leader = group.leaderships.first.volunteer.full_name
           row << primary_leader
         end
-        if group.leaderships.last.user
-          secondary_leader = group.leaderships.last.user.full_name
+        if group.leaderships.last.volunteer
+          secondary_leader = group.leaderships.last.volunteer.full_name
           row << secondary_leader
         end
         csv << row

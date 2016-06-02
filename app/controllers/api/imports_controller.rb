@@ -31,17 +31,9 @@ class Api::ImportsController < Api::BaseController
         guardian_one_phone_number: 'n/a',
         guardian_one_phone_type: EnumConstants::PHONE_TYPES.sample,
         guardian_one_relationship: EnumConstants::GUARDIAN_RELATIONSHIPS.sample,
-        guardian_two_email: '',
-        guardian_two_employer: '',
-        guardian_two_first_name: '',
-        guardian_two_job_title: '',
-        guardian_two_last_name: '',
-        guardian_two_phone_number:  '',
-        guardian_two_phone_type:  '',
-        guardian_two_relationship:  '',
         is_primary: true,
-        preferred_name: Faker::Name.first_name,
-        shirt_size: EnumConstants::SHIRT_SIZES.sample,
+        preferred_name: '',
+        shirt_size: EnumConstants::SHIRT_SIZES[5],
       )
       case tuple[6]
       when 'M'
