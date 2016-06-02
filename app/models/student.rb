@@ -179,13 +179,9 @@ class Student < ActiveRecord::Base
   validates :address_one, presence: true
   validates :address_state, presence: true
   validates :address_zip, presence: true
-  validates :allergies, presence: true
   validates :birthday, presence: true
   validates :cell_phone, presence: true
-  validates :dietary_restrictions, presence: true
   validates :email, presence: true
-  validates :emergency_consent, presence: true
-  validates :exercise_limitations, presence: true
   validates :first_name, presence: true
   validates :gender, presence: true
   validates :guardian_one_email, presence: true
@@ -194,15 +190,10 @@ class Student < ActiveRecord::Base
   validates :guardian_one_phone_number, presence: true
   validates :guardian_one_phone_type, presence: true
   validates :guardian_one_relationship, presence: true
-  validates :health_conditions, presence: true
   validates :home_phone, presence: true
-  validates :immunizations, presence: true
   validates :is_flagged, inclusion: { in: [false, true] }
   validates :is_primary, inclusion: { in: [false, true] }
   validates :last_name, presence: true
-  validates :medications, presence: true
-  validates :psychologist_consent, presence: true
-  validates :psychologist_consent_name, presence: true
   validates :shirt_size, presence: true
 
   def self.genders(value)
