@@ -79,7 +79,7 @@ class ImportPage extends Component {
         <Sidebar profile={this.selectProfile()} />
         <div style={StyleConstants.pages.default}>
           <div style={StyleConstants.pages.content}>
-            <ImportCard
+            <ImportCheckin
               conference={this.state.conference}
               conferences={this.props.conferences} />
           </div>

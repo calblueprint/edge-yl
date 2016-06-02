@@ -85,7 +85,7 @@
 #  transportation_name            :string
 #  transportation_number          :string
 #  conference_id                  :integer          not null
-#  school_id                      :integer          not null
+#  school_id                      :integer
 #
 
 class StudentSubmission < ActiveRecord::Base
@@ -400,19 +400,12 @@ class StudentSubmission < ActiveRecord::Base
       address_state: address_state,
       address_two: address_two,
       address_zip: address_zip,
-      allergies: allergies,
-      allergies_other: allergies_other,
       birthday: birthday,
       cell_phone: cell_phone,
       conference_id: conference_id,
-      dietary_restrictions: dietary_restrictions,
-      exercise_limitations: exercise_limitations,
       email: email,
-      emergency_consent: emergency_consent,
       first_name: first_name,
       gender: gender,
-      health_conditions: health_conditions,
-      health_conditions_description: health_conditions_description,
       guardian_one_email: guardian_one_email,
       guardian_one_employer: guardian_one_employer,
       guardian_one_first_name: guardian_one_first_name,
@@ -430,15 +423,9 @@ class StudentSubmission < ActiveRecord::Base
       guardian_two_phone_number: guardian_two_phone_number,
       guardian_two_relationship: guardian_two_relationship,
       home_phone: home_phone,
-      immunizations: immunizations,
-      is_flagged: false,
       is_primary: is_primary,
       last_name: last_name,
-      medications: medications,
-      other_dietary_restrictions: other_dietary_restrictions,
       preferred_name: preferred_name,
-      psychologist_consent: psychologist_consent,
-      psychologist_consent_name: psychologist_consent_name,
       shirt_size: shirt_size,
       school_id: school_id,
       submission_id: id,
@@ -463,9 +450,12 @@ class StudentSubmission < ActiveRecord::Base
     if student.save
       self.is_active = false
       save
+      student
     else
       puts 'Could not create student from submission'
       # raise 'Could not create student from submission'
+      destroy
+      false
     end
   end
 

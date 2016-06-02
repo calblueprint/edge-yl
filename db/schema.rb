@@ -365,58 +365,46 @@ ActiveRecord::Schema.define(version: 20160423215812) do
   add_index "student_submissions", ["school_id"], name: "index_student_submissions_on_school_id", using: :btree
 
   create_table "students", force: :cascade do |t|
-    t.string   "address_city",                                  null: false
-    t.string   "address_one",                                   null: false
-    t.integer  "address_state",                                 null: false
-    t.string   "address_two",                   default: "",    null: false
-    t.string   "address_zip",                                   null: false
-    t.integer  "allergies",                                     null: false
-    t.string   "allergies_other",               default: "",    null: false
-    t.date     "birthday",                                      null: false
-    t.string   "cell_phone",                    default: "",    null: false
-    t.boolean  "is_checked_in",                 default: false, null: false
-    t.string   "dietary_restrictions",                          null: false
-    t.string   "email",                                         null: false
-    t.integer  "emergency_consent",                             null: false
-    t.string   "exercise_limitations",                          null: false
-    t.string   "first_name",                                    null: false
-    t.integer  "gender",                                        null: false
-    t.string   "guardian_one_email",                            null: false
-    t.string   "guardian_one_employer",         default: "",    null: false
-    t.string   "guardian_one_first_name",                       null: false
-    t.string   "guardian_one_job_title",        default: "",    null: false
-    t.string   "guardian_one_last_name",                        null: false
-    t.string   "guardian_one_phone_number",                     null: false
-    t.integer  "guardian_one_phone_type",                       null: false
-    t.integer  "guardian_one_relationship",                     null: false
-    t.string   "guardian_two_email",            default: "",    null: false
-    t.string   "guardian_two_employer",         default: "",    null: false
-    t.string   "guardian_two_first_name",       default: "",    null: false
-    t.string   "guardian_two_job_title",        default: "",    null: false
-    t.string   "guardian_two_last_name",        default: "",    null: false
-    t.string   "guardian_two_phone_number",     default: "",    null: false
+    t.string   "address_city",                              null: false
+    t.string   "address_one",                               null: false
+    t.integer  "address_state",                             null: false
+    t.string   "address_two",               default: "",    null: false
+    t.string   "address_zip",                               null: false
+    t.date     "birthday",                                  null: false
+    t.string   "cell_phone",                                null: false
+    t.boolean  "is_checked_in",             default: false, null: false
+    t.string   "email",                                     null: false
+    t.string   "first_name",                                null: false
+    t.integer  "gender",                                    null: false
+    t.string   "guardian_one_email",                        null: false
+    t.string   "guardian_one_employer",     default: "",    null: false
+    t.string   "guardian_one_first_name",                   null: false
+    t.string   "guardian_one_job_title",    default: "",    null: false
+    t.string   "guardian_one_last_name",                    null: false
+    t.string   "guardian_one_phone_number",                 null: false
+    t.integer  "guardian_one_phone_type",                   null: false
+    t.integer  "guardian_one_relationship",                 null: false
+    t.string   "guardian_two_email",        default: "",    null: false
+    t.string   "guardian_two_employer",     default: "",    null: false
+    t.string   "guardian_two_first_name",   default: "",    null: false
+    t.string   "guardian_two_job_title",    default: "",    null: false
+    t.string   "guardian_two_last_name",    default: "",    null: false
+    t.string   "guardian_two_phone_number", default: "",    null: false
     t.integer  "guardian_two_phone_type"
     t.integer  "guardian_two_relationship"
-    t.string   "health_conditions",                             null: false
-    t.string   "health_conditions_description", default: "",    null: false
-    t.string   "home_phone",                                    null: false
-    t.integer  "immunizations",                                 null: false
-    t.boolean  "is_flagged",                                    null: false
-    t.boolean  "is_primary",                                    null: false
-    t.string   "last_name",                                     null: false
-    t.string   "medications",                                   null: false
-    t.string   "other_dietary_restrictions",                    null: false
-    t.string   "preferred_name",                default: "",    null: false
-    t.integer  "psychologist_consent",                          null: false
-    t.string   "psychologist_consent_name",                     null: false
-    t.integer  "shirt_size",                                    null: false
-    t.uuid     "submission_id",                                 null: false
-    t.integer  "conference_id",                                 null: false
+    t.string   "home_phone",                default: "",    null: false
+    t.boolean  "is_flagged",                default: false, null: false
+    t.boolean  "is_primary",                                null: false
+    t.string   "last_name",                                 null: false
+    t.string   "preferred_name",            default: "",    null: false
+    t.integer  "shirt_size",                                null: false
+    t.uuid     "submission_id",                             null: false
+    t.integer  "conference_id",                             null: false
     t.integer  "group_id"
     t.integer  "room_id"
     t.integer  "school_id"
-    t.datetime "created_at",                                    null: false
-    t.datetime "updated_at",                                    null: false
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
   end
 
   add_index "students", ["conference_id"], name: "index_students_on_conference_id", using: :btree
