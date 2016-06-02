@@ -1,4 +1,4 @@
-class ImportStudents extends Component {
+class ImportCheckin extends Component {
 
   // --------------------------------------------------
   // Props
@@ -36,7 +36,9 @@ class ImportStudents extends Component {
       },
       header: {
         display: 'flex',
+        flexDirection: 'column',
         justifyContent: 'center',
+        alignItems: 'center',
         marginBottom: '12px',
       },
     };
@@ -78,7 +80,8 @@ class ImportStudents extends Component {
     return (
       <div style={this.styles.container}>
         <div style={this.styles.header}>
-          <h2>{'Import students'}</h2>
+          <h2>{'Import students for checkin'}</h2>
+          <p>{'WARNING: Please confirm import with a developer.'}</p>
         </div>
         <h6>{'File'}</h6>
         <input
