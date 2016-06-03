@@ -13,11 +13,17 @@ class StudentsPage extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      conference: React.PropTypes.object.isRequired,
+      conference: React.PropTypes.object,
       conferences: React.PropTypes.array.isRequired,
       page: React.PropTypes.number.isRequired,
       profile: React.PropTypes.object.isRequired,
       query: React.PropTypes.object.isRequired,
+    };
+  }
+
+  static get defaultProps() {
+    return {
+      conference: null,
     };
   }
 
@@ -35,11 +41,13 @@ class StudentsPage extends Component {
     StudentsStore.listen(this._listener);
     ViewStore.listen(this._listener);
     StudentsActions.attachListener();
-    StudentsActions.fetchStudents(
-      this.props.conference,
-      this.props.page,
-      this.props.query,
-    );
+    if (this.props.conference) {
+      StudentsActions.fetchStudents(
+        this.props.conference,
+        this.props.page,
+        this.props.query,
+      );
+    }
     ViewActions.attachListener();
   }
 
@@ -74,6 +82,18 @@ class StudentsPage extends Component {
   // --------------------------------------------------
   // Render
   // --------------------------------------------------
+  renderSidebar() {
+    if (this.state.conference) {
+      return (
+        <StudentsSidebar
+          conference={conference}
+          conferences={this.props.conferences}
+          filters={this.state.filters}
+          sorts={this.state.sorts} />
+      );
+    }
+  }
+
   render() {
     var conference = this.state.conference;
     return (
@@ -88,16 +108,11 @@ class StudentsPage extends Component {
             <StudentsGrid
               media={this.state.media}
               students={this.state.students}
-              type={TypeConstants.students.default}
-              typeId={this.props.conference.id} />
+              type={TypeConstants.students.default} />
             <PageNavigator
               action={(page) => StudentsActions.storePage(page)}
               pagination={this.state.pagination} />
-            <StudentsSidebar
-              conference={conference}
-              conferences={this.props.conferences}
-              filters={this.state.filters}
-              sorts={this.state.sorts} />
+            {this.renderSidebar()}
           </div>
         </div>
       </div>

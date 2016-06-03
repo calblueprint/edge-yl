@@ -26,10 +26,20 @@ class ConferencesGrid extends Component {
     return this.props.conferences.map((conference) => this.renderCard(conference));
   }
 
+  renderEmpty() {
+    if (!this.props.conferences.length) {
+      return (
+        <GridEmpty
+          content={'There are currently no conferences.'} />
+      );
+    }
+  }
+
   render() {
     return (
       <div style={StyleConstants.grids.wrap}>
         {this.renderCards()}
+        {this.renderEmpty()}
       </div>
     );
   }

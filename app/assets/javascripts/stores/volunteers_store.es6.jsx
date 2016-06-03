@@ -5,7 +5,7 @@
     // Setup
     // --------------------------------------------------
     constructor() {
-      this.conference = {};
+      this.conference = null;
       this.conferences = {};
       this.firstLoad = true;
       this.overlay = false;

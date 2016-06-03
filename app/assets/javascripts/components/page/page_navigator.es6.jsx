@@ -78,7 +78,7 @@ class PageNavigator extends Component {
       <div style={this.styles.container}>
         {this.renderPrevious()}
         <h6>
-          {`Displaying page ${pagination.current} of ${pagination.limit} total`}
+          {`Displaying page ${pagination.current} of ${pagination.limit || 1} total`}
         </h6>
         {this.renderNext()}
       </div>
