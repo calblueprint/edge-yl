@@ -15,7 +15,11 @@ class PagesController < BaseController
     if params[:conference_id]
       @conference_id = params[:conference_id].to_i
     else
-      @conference_id = Conference.first.id
+      if Conference.count > 0
+        @conference_id = Conference.first.id
+      else
+        error_404
+      end
     end
     unless Conference.exists?(@conference_id)
       error_404

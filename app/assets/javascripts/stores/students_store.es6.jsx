@@ -5,8 +5,8 @@
     // Setup
     // --------------------------------------------------
     constructor() {
-      this.conference = {};
-      this.conferences = {};
+      this.conference = null;
+      this.conferences = [];
       this.filters = this.generateFilters();
       this.firstLoad = true;
       this.query = {};

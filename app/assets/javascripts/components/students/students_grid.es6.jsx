@@ -14,13 +14,14 @@ class StudentsGrid extends Component {
         TypeConstants.students.room,
         TypeConstants.students.school,
       ]).isRequired,
-      typeId: React.PropTypes.number.isRequired,
+      typeId: React.PropTypes.number,
     };
   }
 
   static get defaultProps() {
     return {
       editable: false,
+      typeId: null,
     };
   }
 

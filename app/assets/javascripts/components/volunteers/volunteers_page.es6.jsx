@@ -13,10 +13,16 @@ class VolunteersPage extends Component {
   // --------------------------------------------------
   static get propTypes() {
     return {
-      conference: React.PropTypes.object.isRequired,
+      conference: React.PropTypes.object,
       conferences: React.PropTypes.array.isRequired,
       page: React.PropTypes.number.isRequired,
       profile: React.PropTypes.object.isRequired,
+    };
+  }
+
+  static get defaultProps() {
+    return {
+      conference: null,
     };
   }
 
@@ -25,20 +31,22 @@ class VolunteersPage extends Component {
   // --------------------------------------------------
   componentWillMount() {
     this.setState(ProfileStore.getState());
-    this.setState(VolunteersStore.getState());
     this.setState(ViewStore.getState());
+    this.setState(VolunteersStore.getState());
   }
 
   componentDidMount() {
     ProfileStore.listen(this._listener);
     VolunteersStore.listen(this._listener);
     ViewStore.listen(this._listener);
-    VolunteersActions.attachListener();
-    VolunteersActions.fetchVolunteers(
-      this.props.conference,
-      this.props.page
-    );
     ViewActions.attachListener();
+    VolunteersActions.attachListener();
+    if (this.props.conference) {
+      VolunteersActions.fetchVolunteers(
+        this.props.conference,
+        this.props.page,
+      );
+    }
   }
 
   componentWillUnmount() {
@@ -82,6 +90,16 @@ class VolunteersPage extends Component {
     }
   }
 
+  renderSidebar() {
+    if (this.props.conference && this.state.conference) {
+      return (
+        <VolunteersSidebar
+          conference={this.state.conference}
+          conferences={this.props.conferences} />
+      );
+    }
+  }
+
   render() {
     return (
       <div style={StyleConstants.pages.wrapper}>
@@ -99,9 +117,7 @@ class VolunteersPage extends Component {
             <PageNavigator
               action={(page) => this.changePage(page)}
               pagination={this.state.pagination} />
-            <VolunteersSidebar
-              conference={this.state.conference}
-              conferences={this.props.conferences} />
+            {this.renderSidebar()}
           </div>
         </div>
       </div>
