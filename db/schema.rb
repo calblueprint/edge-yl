@@ -193,7 +193,7 @@ ActiveRecord::Schema.define(version: 20160423215812) do
     t.string   "building",      null: false
     t.integer  "capacity",      null: false
     t.integer  "gender",        null: false
-    t.integer  "number",        null: false
+    t.string   "number",        null: false
     t.integer  "style",         null: false
     t.integer  "conference_id", null: false
     t.datetime "created_at",    null: false

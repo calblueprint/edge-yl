@@ -91,7 +91,7 @@ class VolunteersPage extends Component {
   }
 
   renderSidebar() {
-    if (this.state.conference) {
+    if (this.props.conference && this.state.conference) {
       return (
         <VolunteersSidebar
           conference={this.state.conference}

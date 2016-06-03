@@ -6,7 +6,7 @@
 #  building      :string           not null
 #  capacity      :integer          not null
 #  gender        :integer          not null
-#  number        :integer          not null
+#  number        :string           not null
 #  style         :integer          not null
 #  conference_id :integer          not null
 #  created_at    :datetime         not null

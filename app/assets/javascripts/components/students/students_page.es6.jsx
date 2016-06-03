@@ -83,10 +83,10 @@ class StudentsPage extends Component {
   // Render
   // --------------------------------------------------
   renderSidebar() {
-    if (this.state.conference) {
+    if (this.props.conference && this.state.conference) {
       return (
         <StudentsSidebar
-          conference={conference}
+          conference={this.state.conference}
           conferences={this.props.conferences}
           filters={this.state.filters}
           sorts={this.state.sorts} />

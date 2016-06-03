@@ -46,11 +46,29 @@ class Api::ImportsController < Api::BaseController
       if student_submission.save
         student = student_submission.seed_submission
         if student
+          puts student.full_name
           group = Group.find_or_create_by(
             conference_id: conference_id,
             letter: tuple[8],
           )
-          student.update_attributes(group: group)
+          room = Room.find_by(
+            conference_id: conference_id,
+            number: tuple[7],
+          )
+          unless room.present?
+            room = Room.create(
+              conference_id: conference_id,
+              building: 'Clark Kerr',
+              capacity: 5,
+              gender: student.gender,
+              style: 'student',
+              number: tuple[7],
+            )
+          end
+          student.update_attributes(
+            group: group,
+            room: room,
+          )
         end
       end
     end
